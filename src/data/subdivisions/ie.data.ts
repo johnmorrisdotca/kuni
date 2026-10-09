@@ -25,7 +25,7 @@ LD|Longford|ロングフォード州|0|L
 LH|Louth|ラウス州|0|L
 LK|Limerick|リムリック州|0|M
 LM|Leitrim|リートリム州|0|C
-LS|Laois|ラオース州|0|L
+LS|Laois|リーシュ州|0|L
 M|Munster|マンスター|1
 MH|Meath|ミース州|0|L
 MN|Monaghan|モナハン州|0|U

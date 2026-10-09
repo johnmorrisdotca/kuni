@@ -135,7 +135,7 @@ const SI: SubdivisionTable = {
 124|Šmarje pri Jelšah|シュマリェ・プリ・イェルシャフ|0
 125|Šmartno ob Paki|シュマルトノ・オプ・パキ|0
 126|Šoštanj|ショーシュタニ|0
-127|Štore|シュトレ (スロベニア)|0
+127|Štore|シュトレ|0
 128|Tolmin|トールミン|0
 129|Trbovlje|トルボヴリェ|0
 130|Trebnje|トレビニェ|0

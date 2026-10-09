@@ -20,7 +20,7 @@ ANS|Angus|アンガス|4|SCT
 BAS|Bath and North East Somerset|バース・アンド・ノース・イースト・サマセット|0|ENG
 BBD|Blackburn with Darwen|ブラックバーン・ウィズ・ダーウェン|5|ENG
 BCP|Bournemouth, Christchurch and Poole|ボーンマス・クライストチャーチ・アンド・プール|9|ENG
-BDF|Bedford|ベッドフォード (バラ)|0|ENG
+BDF|Bedford|ベッドフォード|0|ENG
 BDG|Barking and Dagenham|バーキング・アンド・ダゲナム・ロンドン特別区|0|ENG
 BEN|Brent|ブレント・ロンドン特別区|0|ENG
 BEX|Bexley|ベクスリー・ロンドン特別区|0|ENG
@@ -178,7 +178,7 @@ SFK|Suffolk|サフォーク|4|ENG
 SFT|Sefton|メトロポリタン・バラ・オブ・セフトン|0|ENG
 SGC|South Gloucestershire|サウス・グロスターシャー|9|ENG
 SHF|Sheffield|シェフィールド|5|ENG
-SHN|Saint Helens|セントヘレンズ (マージーサイド)|0|ENG
+SHN|Saint Helens|セントヘレンズ|0|ENG
 SHR|Shropshire|シュロップシャー|4|ENG
 SKP|Stockport|ストックポート・メトロポリタン特別区|0|ENG
 SLF|Salford|シティ・オブ・サルフォード|5|ENG

@@ -38,9 +38,9 @@ ISM|Ismailli|イスマイル県|2
 KAL|Kalbajar|カルバジャル県|2
 KAN|Kangarli|キャンギャルリ県|2|NX
 KUR|Kurdamir|キュルダミル県|2
-LA|Lankaran|レンキャラン県
+LA|Lankaran|ランカラン
 LAC|Lachin|ラチン県|2
-LAN|Lankaran District|ランカラン|2
+LAN|Lankaran District|ランカラン県|2
 LER|Lerik|レリク県|2
 MAS|Masally|マサッル県|2
 MI|Mingachevir|ミンゲチェヴィル
@@ -71,7 +71,7 @@ SKR|Shamkir|シャムキル県|2
 SM|Sumqayit|スムガイト
 SMI|Shamakhi|シャマフ県|2
 SMX|Samukh|サムフ県|2
-SR|Shirvan|シルヴァン (市)
+SR|Shirvan|シルヴァン
 SUS|Shusha|シュシャ県|2
 TAR|Tartar|タルタル県|2
 TOV|Tovuz|トヴズ県|2

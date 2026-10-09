@@ -20,6 +20,10 @@ import { join } from "node:path";
 import { CONTINENTS, SUBDIVISION_TYPES } from "../src/types.ts";
 import {
   COUNTRY_ALIASES,
+  JA_BRACKET_COUNTRY_NAMES,
+  JA_BRACKET_WORDS,
+  JA_NAME_OVERRIDES,
+  JA_OPEN_QUESTIONS,
   JA_TYPE_WORDS,
   JP_TYPE_BY_SUFFIX,
   READING_FILLS,
@@ -70,7 +74,11 @@ interface SubdivisionRecord {
   level: number;
   en: string;
   ja: string | null;
-  jaFrom: "cldr" | "wikidata" | null;
+  jaFrom: "cldr" | "override" | "wikidata" | null;
+  // CLDR's Japanese name as it is in CLDR, before the bracket rule and any override.
+  cldrJa: string | null;
+  // The reason an override gives, when jaFrom is "override".
+  why: string | null;
   wikidataJa: string | null;
   type: string | null;
   reading: string | null;
@@ -349,10 +357,29 @@ const typeFromWikidata = (items: WikidataItem[]): string | null => {
   return null;
 };
 
+// A trailing bracket on a CLDR Japanese name, "セント・ポール (ドミニカ国)" or "バリンゴ (カウンティ)", tells two
+// places of one name apart; in the data of a single country it is noise. It is taken off when what it holds is a
+// country's Japanese name, a direction or a generic kind word (the lists are in scripts/data-config.ts), and left
+// in place, to be caught by the tests, when it is anything else.
+const BRACKET = /^(.*\S)\s*[(（]([^()（）]+)[)）]$/;
+const bracketCountries = new Set([
+  ...countries.flatMap((country) => [country.ja, country.shortJa]).filter((name): name is string => name !== null),
+  ...JA_BRACKET_COUNTRY_NAMES,
+].map(tidy));
+const bracketWords = new Set(JA_BRACKET_WORDS.map(tidy));
+const stripBracket = (name: string): string => {
+  const found = BRACKET.exec(name);
+  if (found === null) return name;
+  const inside = tidy(found[2]);
+
+  return bracketCountries.has(inside) || bracketWords.has(inside) ? tidy(found[1]) : name;
+};
+
 const subdivisions: SubdivisionRecord[] = [];
 const notReached: string[] = [];
 const noEnglish: string[] = [];
 const reached = new Set<string>();
+const usedOverrides = new Set<string>();
 
 const walk = (country: string, ids: string[], parent: string | null, level: number): void => {
   for (const id of ids) {
@@ -371,12 +398,15 @@ const walk = (country: string, ids: string[], parent: string | null, level: numb
       continue;
     }
     const items = currentItems(wikidata.subdivisions[code]);
-    const cldrJaName = namesJa.get(id) ?? (territory === undefined ? null : tidy(territoriesJa[territory]));
+    const cldrJaRaw = namesJa.get(id) ?? (territory === undefined ? null : tidy(territoriesJa[territory]));
+    const cldrJaName = cldrJaRaw === null ? null : stripBracket(cldrJaRaw);
+    const override = JA_NAME_OVERRIDES[code];
+    if (override !== undefined) usedOverrides.add(code);
     // Wikidata's Japanese label, only when the items agree on it and it is written in Japanese: a Latin
     // label or one with a disambiguation in brackets is not a name.
     const labels = [...new Set(items.map((item) => item.ja).filter((label): label is string => label !== null).map(tidy))];
     const wikidataJa = labels.length === 1 && JAPANESE.test(labels[0]) && !/[()（）]/.test(labels[0]) ? labels[0] : null;
-    const ja = cldrJaName ?? wikidataJa;
+    const ja = override?.ja ?? cldrJaName ?? wikidataJa;
     let type = typeFromWikidata(items);
     if (country === "JP" && ja !== null) type = JP_TYPE_BY_SUFFIX[ja.slice(-1)] ?? null;
     if (type !== null && !(SUBDIVISION_TYPES as readonly string[]).includes(type)) throw new Error(`${code}: unknown type ${type}`);
@@ -388,7 +418,9 @@ const walk = (country: string, ids: string[], parent: string | null, level: numb
       level,
       en,
       ja,
-      jaFrom: cldrJaName !== null ? "cldr" : wikidataJa !== null ? "wikidata" : null,
+      jaFrom: override !== undefined ? "override" : cldrJaName !== null ? "cldr" : wikidataJa !== null ? "wikidata" : null,
+      cldrJa: cldrJaRaw,
+      why: override?.why ?? null,
       wikidataJa,
       type,
       reading: country === "JP" ? readingFor(code, ja, items) : null,
@@ -403,6 +435,8 @@ for (const country of countries) {
   walk(country.alpha2, top, null, 1);
 }
 for (const id of regular) if (!reached.has(id)) notReached.push(isoOf(id));
+const unmatched = Object.keys(JA_NAME_OVERRIDES).filter((code) => !usedOverrides.has(code));
+if (unmatched.length > 0) throw new Error(`JA_NAME_OVERRIDES names no subdivision: ${unmatched.join(", ")}`);
 if (noEnglish.length > 0) throw new Error(`No English name in CLDR for ${noEnglish.join(", ")}`);
 subdivisions.sort((a, b) => byText(a.code, b.code));
 
@@ -580,10 +614,12 @@ const writeSubdivisions = (): void => {
 };
 
 // Where CLDR and Wikidata both have a Japanese name and they are not the same name, for a reader to judge.
-// CLDR's name is the one kept.
+// CLDR's name is the one kept, unless the name is overridden (JA_NAME_OVERRIDES), which is listed as resolved.
 const writeDisagreements = (): void => {
   const differ = subdivisions.filter((record) => record.jaFrom === "cldr" && record.wikidataJa !== null && key(record.wikidataJa) !== key(record.ja!));
   const compared = subdivisions.filter((record) => record.jaFrom === "cldr" && record.wikidataJa !== null).length;
+  const overridden = subdivisions.filter((record) => record.jaFrom === "override");
+  const cell = (text: string | null): string => (text === null ? "" : text.replace(/\|/g, "\\|"));
   const lines = [
     "# Japanese names: where CLDR and Wikidata disagree",
     "",
@@ -591,10 +627,27 @@ const writeDisagreements = (): void => {
     "",
     `For ${compared} subdivisions both Unicode CLDR ${versions.cldrNames} and Wikidata (snapshot \`${wikidataFile.path}\`) have a Japanese`,
     `name. For ${differ.length} of them the two are not the same name once case, width, kana and punctuation are folded away. The`,
-    "package keeps CLDR's name. This list is for a reader of Japanese to judge which is right; most of the differences are a",
+    "package keeps CLDR's name (after the bracket rule in [name-rules.md](name-rules.md)), except for the overridden names",
+    "under Resolved. This list is for a reader of Japanese to judge which is right; most of the differences are a",
     "type word one source adds (州, 県, 地域圏) or a different spelling of a foreign name in katakana.",
     "",
+    `## Resolved by an override, ${overridden.length}`,
+    "",
+    "A reviewer found these CLDR names wrong, out of date or naming another place. `JA_NAME_OVERRIDES` in",
+    "`scripts/data-config.ts` replaces them, and the reason is beside each. They are no longer disagreements.",
+    "",
+    "| Code | English | CLDR | Wikidata | Kept | Why |",
+    "| --- | --- | --- | --- | --- | --- |",
   ];
+  for (const record of overridden) lines.push(`| ${record.code} | ${cell(record.en)} | ${cell(record.cldrJa)} | ${cell(record.wikidataJa)} | ${cell(record.ja)} | ${cell(record.why)} |`);
+  lines.push("", `## For a native reader, ${Object.keys(JA_OPEN_QUESTIONS).length}`, "");
+  lines.push("The names below were reviewed by a strong reader of Japanese, not a native one, who left these as open questions.", "");
+  for (const [code, question] of Object.entries(JA_OPEN_QUESTIONS)) {
+    const record = subdivisions.find((one) => one.code === code);
+    if (record === undefined) throw new Error(`JA_OPEN_QUESTIONS names no subdivision: ${code}`);
+    lines.push(`- **${code}** ${record.en}, kept as ${record.ja ?? "(none)"}: ${question}`);
+  }
+  lines.push("");
   for (const [country, records] of groupBy(differ)) {
     const named = countries.find((one) => one.alpha2 === country)!;
     lines.push(`## ${named.en} (${country}), ${records.length}`, "", "| Code | English | CLDR (kept) | Wikidata |", "| --- | --- | --- | --- |");
@@ -603,6 +656,29 @@ const writeDisagreements = (): void => {
   }
   mkdirSync(DOCS, { recursive: true });
   writeFileSync(join(DOCS, "disagreements.md"), lines.join("\n"));
+};
+
+// The brackets the build took off CLDR's Japanese names, so that the rule can be seen at work.
+const writeNameRules = (): void => {
+  const stripped = subdivisions.filter((record) => record.cldrJa !== null && stripBracket(record.cldrJa) !== record.cldrJa);
+  const lines = [
+    "# Japanese names: the bracket rule",
+    "",
+    "Written by `pnpm data` (scripts/build-data.ts); do not edit by hand.",
+    "",
+    `Unicode CLDR ${versions.cldrNames} ends ${stripped.length} of its Japanese subdivision names in a bracket that tells the place`,
+    "from one of the same name elsewhere: a country (セント・ポール (ドミニカ国)), a direction (江原道 (北)) or a generic word for a",
+    "kind of place (バリンゴ (カウンティ)). In one country's list the bracket is noise, so the build takes it off when the",
+    "bracket holds a country's Japanese name, a word in `JA_BRACKET_WORDS` or a spelling in `JA_BRACKET_COUNTRY_NAMES`",
+    "(`scripts/data-config.ts`). A bracket holding anything else stays, and a test fails while any shipped name ends in one.",
+    "A name that is then overridden shows the override in the last column.",
+    "",
+    "| Code | English | CLDR | Without the bracket | Shipped |",
+    "| --- | --- | --- | --- | --- |",
+  ];
+  for (const record of stripped) lines.push(`| ${record.code} | ${record.en.replace(/\|/g, "\\|")} | ${record.cldrJa} | ${stripBracket(record.cldrJa!)} | ${record.ja} |`);
+  lines.push("");
+  writeFileSync(join(DOCS, "name-rules.md"), lines.join("\n"));
 };
 
 const groupBy = (records: SubdivisionRecord[]): [string, SubdivisionRecord[]][] => {
@@ -628,8 +704,8 @@ const report = (): void => {
     `Countries: ${countries.length} (${count(subdivisions, () => false) + countries.filter((country) => country.kind === "iso").length} ISO, ${countries.filter((country) => country.kind === "user").length} user-assigned)`,
     `Countries with subdivisions: ${byCountry.size}`,
     `Subdivisions: ${subdivisions.length} (level 1: ${first.length}, level 2: ${count(subdivisions, (record) => record.level === 2)}, level 3: ${count(subdivisions, (record) => record.level === 3)})`,
-    `Japanese names, level 1: ${count(first, (record) => record.ja !== null)} of ${first.length} (CLDR ${count(first, (record) => record.jaFrom === "cldr")}, Wikidata ${count(first, (record) => record.jaFrom === "wikidata")})`,
-    `Japanese names, all levels: ${count(subdivisions, (record) => record.ja !== null)} of ${subdivisions.length} (CLDR ${count(subdivisions, (record) => record.jaFrom === "cldr")}, Wikidata ${count(subdivisions, (record) => record.jaFrom === "wikidata")})`,
+    `Japanese names, level 1: ${count(first, (record) => record.ja !== null)} of ${first.length} (CLDR ${count(first, (record) => record.jaFrom === "cldr")}, overrides ${count(first, (record) => record.jaFrom === "override")}, Wikidata ${count(first, (record) => record.jaFrom === "wikidata")})`,
+    `Japanese names, all levels: ${count(subdivisions, (record) => record.ja !== null)} of ${subdivisions.length} (CLDR ${count(subdivisions, (record) => record.jaFrom === "cldr")}, overrides ${count(subdivisions, (record) => record.jaFrom === "override")}, Wikidata ${count(subdivisions, (record) => record.jaFrom === "wikidata")})`,
     `Kinds of place known: ${count(subdivisions, (record) => record.type !== null)} of ${subdivisions.length}`,
     `Country readings: ${countries.filter((country) => country.reading !== null).length}; kanji names without one: ${countries.filter((country) => HAN.test(country.ja) && country.reading === null).map((country) => `${country.alpha2} ${country.ja}`).join(", ") || "none"}`,
     `Regular CLDR codes not reached through the containment tree: ${notReached.length}${notReached.length > 0 ? ` (${notReached.join(", ")})` : ""}`,
@@ -664,5 +740,6 @@ if (REPORT) {
   writeCountries();
   writeSubdivisions();
   writeDisagreements();
+  writeNameRules();
   console.log(`Wrote ${countries.length} countries and ${subdivisions.length} subdivisions of ${byCountry.size} countries.`);
 }

@@ -8,14 +8,14 @@ import type { SubdivisionTable } from "../../rows";
 const LU: SubdivisionTable = {
   country: "LU",
   types: ["canton"],
-  typesJa: [null],
+  typesJa: ["郡"],
   rows: `CA|Capellen|カペレン郡|0
 CL|Clervaux|クレルヴォー郡|0
 DI|Diekirch|ディーキルヒ郡|0
 EC|Echternach|エヒタナハ郡|0
 ES|Esch-sur-Alzette|エシュ＝シュル＝アルゼット郡|0
 GR|Grevenmacher|グレーヴェンマハ郡|0
-LU|Luxembourg|ルクセンブルク (カントン)|0
+LU|Luxembourg|ルクセンブルク郡|0
 ME|Mersch|メルシュ郡|0
 RD|Redange|ルダンジュ郡|0
 RM|Remich|レーミッヒ郡|0

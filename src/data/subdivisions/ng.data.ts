@@ -33,7 +33,7 @@ KN|Kano|カノ州|0
 KO|Kogi|コギ州|0
 KT|Katsina|カツィナ州|0
 KW|Kwara|クワラ州|0
-LA|Lagos|レゴス州|0
+LA|Lagos|ラゴス州|0
 NA|Nasarawa|ナサラワ州|0
 NI|Niger|ナイジャ州|0
 OG|Ogun|オグン州|0

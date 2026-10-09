@@ -8,14 +8,14 @@ import type { SubdivisionTable } from "../../rows";
 const ZM: SubdivisionTable = {
   country: "ZM",
   types: ["province"],
-  typesJa: [null],
-  rows: `01|Western|西部州 (ザンビア)|0
-02|Central|中央州 (ザンビア)|0
-03|Eastern|東部州 (ザンビア)|0
+  typesJa: ["州"],
+  rows: `01|Western|西部州|0
+02|Central|中央州|0
+03|Eastern|東部州|0
 04|Luapula|ルアプラ州|0
-05|Northern|北部州 (ザンビア)|0
+05|Northern|北部州|0
 06|North-Western|北西州|0
-07|Southern|南部州 (ザンビア)|0
+07|Southern|南部州|0
 08|Copperbelt|カッパーベルト州|0
 09|Lusaka|ルサカ州|0
 10|Muchinga|ムチンガ州|0`,

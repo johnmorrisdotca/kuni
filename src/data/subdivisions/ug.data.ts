@@ -63,7 +63,7 @@ const UG: SubdivisionTable = {
 226|Buyende|ブイェンデ県|0|E
 227|Kibuku|キブク県|0|E
 228|Kween|クウェエン県|0|E
-229|Luuka|ルッカ県 (ウガンダ)|0|E
+229|Luuka|ルッカ県|0|E
 230|Namayingo|ナマインゴ県|0|E
 231|Ngora|ンゴラ県|0|E
 232|Serere|セレレ県|0|E

@@ -18,14 +18,14 @@ const UA: SubdivisionTable = {
 21|Zakarpattia|ザカルパッチャ州|1
 23|Zaporizhzhya|ザポリージャ州|1
 26|Prykarpattia|イヴァーノ＝フランキーウシク州|1
-30|Kyiv|キエフ|0
-32|Kyivshchyna|キエフ州|1
+30|Kyiv|キーウ|0
+32|Kyivshchyna|キーウ州|1
 35|Kirovohradschyna|キロヴォフラード州|1
 40|Sevastopol|セヴァストポリ|0
 43|Crimea|クリミア自治共和国|2
 46|Lvivshchyna|リヴィウ州|1
 48|Mykolayivschyna|ムィコラーイウ州|1
-51|Odeshchyna|オデッサ州|1
+51|Odeshchyna|オデーサ州|1
 53|Poltavshchyna|ポルタヴァ州|1
 56|Rivnenshchyna|リウネ州|1
 59|Sumshchyna|スームィ州|1

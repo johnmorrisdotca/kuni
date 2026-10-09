@@ -17,17 +17,17 @@ const LV: SubdivisionTable = {
 022|Cēsis|ツェースィス|1
 026|Dobele|ドベレ|1
 033|Gulbene|グルベネ|1
-041|Jelgava Municipality|ヤルガワ|1
-042|Jēkabpils Municipality|ヤーカブピルス|1
+041|Jelgava Municipality|イェルガヴァ|1
+042|Jēkabpils Municipality|イェーカブピルス|1
 047|Krāslava|クラスラヴァ|1
 050|Kuldīga|クルディーガ|1
 052|Ķekava|キェカワ|1
 054|Limbaži|リンバジ|1
 056|Līvāni|リーヴァーニ|1
-058|Ludza|ルヅァ|1
-059|Madona|マドゥアナ|1
+058|Ludza|ルザ|1
+059|Madona|マドナ|1
 062|Mārupe|マールペ|1
-067|Ogre|ウアグレ|1
+067|Ogre|オグレ|1
 068|Olaine|ウアライネ|1
 073|Preiļi|プレイリ|1
 077|Rēzekne Municipality|レーゼクネ|1

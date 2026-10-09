@@ -14,7 +14,7 @@ const MT: SubdivisionTable = {
 03|Birgu|ビルグ|0
 04|Birkirkara|ビルキルカラ|0
 05|Birżebbuġa|ビルゼブジャ|0
-06|Cospicua|ボルムラ|0
+06|Cospicua|コスピクア|0
 07|Dingli|ディングリ
 08|Fgura|フグーラ|0
 09|Floriana|フロリアーナ|0
@@ -28,7 +28,7 @@ const MT: SubdivisionTable = {
 17|Għaxaq|アーシャ
 18|Ħamrun|ハムルーン|0
 19|Iklin|イキリン
-20|Senglea|イシーラ|0
+20|Senglea|セングレア|0
 21|Kalkara|カルカラ
 22|Kerċem|ケルチャム
 23|Kirkop|キルコップ
@@ -53,7 +53,7 @@ const MT: SubdivisionTable = {
 42|Qala|アラ
 43|Qormi|オルミ|0
 44|Qrendi|レンディ
-45|Victoria|ラバット|0
+45|Victoria|ヴィクトリア|0
 46|Rabat|ラバト|0
 47|Safi|サーフィ
 48|St. Julian’s|センジュリアン|0

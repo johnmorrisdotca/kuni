@@ -8,14 +8,14 @@ import type { SubdivisionTable } from "../../rows";
 const GQ: SubdivisionTable = {
   country: "GQ",
   types: ["province","region"],
-  typesJa: [null,null],
+  typesJa: [null,"地方"],
   rows: `AN|Annobón|アンノボン県|0|I
 BN|Bioko Norte|北ビオコ県|0|I
 BS|Bioko Sur|南ビオコ県|0|I
 C|Río Muni|リオ・ムニ|0
 CS|Centro Sur|中南部県|0|C
 DJ|Djibloho|ジブロホ県|0|C
-I|Insular|島嶼地方 (赤道ギニア)|1
+I|Insular|島嶼地方|1
 KN|Kié-Ntem|キエンテム県|0|C
 LI|Litoral|リトラル県|0|C
 WN|Wele-Nzas|ウェレンザス県|0|C`,

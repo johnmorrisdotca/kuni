@@ -8,14 +8,14 @@ import type { SubdivisionTable } from "../../rows";
 const SV: SubdivisionTable = {
   country: "SV",
   types: ["department"],
-  typesJa: [null],
+  typesJa: ["県"],
   rows: `AH|Ahuachapán|アワチャパン県|0
 CA|Cabañas|カバーニャス県|0
 CH|Chalatenango|チャラテナンゴ県|0
 CU|Cuscatlán|クスカトラン県|0
-LI|La Libertad|ラリベルタ県 (エルサルバドル)|0
+LI|La Libertad|ラリベルタ県|0
 MO|Morazán|モラサン県|0
-PA|La Paz|ラ・パス県 (エル・サルバドル)|0
+PA|La Paz|ラ・パス県|0
 SA|Santa Ana|サンタ・アナ県|0
 SM|San Miguel|サンミゲル県|0
 SO|Sonsonate|ソンソナーテ県|0

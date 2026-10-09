@@ -144,6 +144,81 @@ const JA_TYPE_WORDS: string[] = [
   "府",
 ];
 
+// CLDR's Japanese subdivision names sometimes end in a bracket that tells the place from one of the same name
+// elsewhere: "セント・ポール (ドミニカ国)", "バリンゴ (カウンティ)", "江原道 (北)". The build takes the bracket off
+// when what it holds is the Japanese name of a country (any country's CLDR name, short name or the spellings
+// listed below, which CLDR uses in brackets but does not name a country by), one of these direction words, or
+// one of these generic words for a kind of place or a county. A bracket holding anything else stays, and the
+// test that no shipped name ends in one fails, so that somebody looks at it.
+const JA_BRACKET_COUNTRY_NAMES: string[] = ["エル・サルバドル", "マケドニア", "モルドヴァ"];
+
+const JA_BRACKET_WORDS: string[] = ["北", "南", "市", "カウンティ", "カントン", "バラ", "マージーサイド"];
+
+// Japanese names written by hand where CLDR's is wrong, out of date or names another place, applied after CLDR
+// (and the bracket rule) and before Wikidata fills a gap. Each says why, so that a reader can check it. These
+// are the findings of a strong, not a native, reader of Japanese: see "For a native reader" in
+// docs/disagreements.md for what is still to be confirmed.
+const JA_NAME_OVERRIDES: Record<string, { ja: string; why: string }> = {
+  "AG-06": { ja: "セント・ポール教区", why: "A parish (教区), as Wikidata names it; CLDR's bracket names Dominica, not Antigua." },
+  "AG-07": { ja: "セント・ピーター教区", why: "A parish (教区), as Wikidata names it; CLDR's bracket names Dominica, not Antigua." },
+  "GD-01": { ja: "セント・アンドリュー教区", why: "A parish (教区); CLDR's セント・アンドリューズ is not the form used for the other Eastern Caribbean parishes." },
+  "GD-02": { ja: "セント・デイヴィッド教区", why: "A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county) and its bracket names Dominica, not Grenada." },
+  "GD-03": { ja: "セント・ジョージ教区", why: "A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county)." },
+  "GD-04": { ja: "セント・ジョン教区", why: "A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county) and its bracket names Dominica, not Grenada." },
+  "GD-05": { ja: "セント・マーク教区", why: "A parish (教区), as Wikidata names it; CLDR leaves the word off and its bracket names Dominica, not Grenada." },
+  "GD-06": { ja: "セント・パトリック教区", why: "A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county)." },
+  "VC-02": { ja: "セント・アンドリュー教区", why: "A parish (教区), as the neighbouring islands' parishes are written; CLDR has セント・アンドリューズ." },
+  "VC-03": { ja: "セント・デイヴィッド教区", why: "A parish (教区), as the neighbouring islands' parishes are written; CLDR calls it a 郡 (county)." },
+  "DM-02": { ja: "セント・アンドリュー教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-03": { ja: "セント・デイヴィッド教区", why: "A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county)." },
+  "DM-04": { ja: "セント・ジョージ教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-05": { ja: "セント・ジョン教区", why: "A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county)." },
+  "DM-06": { ja: "セント・ジョゼフ教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-07": { ja: "セント・ルーク教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-08": { ja: "セント・マーク教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-09": { ja: "セント・パトリック教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-10": { ja: "セント・ポール教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "DM-11": { ja: "セント・ピーター教区", why: "A parish (教区), as Wikidata names it; CLDR adds a country bracket." },
+  "AZ-LA": { ja: "ランカラン", why: "CLDR swaps the city and the district: ISO's AZ-LA is the city of Lankaran." },
+  "AZ-LAN": { ja: "ランカラン県", why: "CLDR swaps the city and the district: ISO's AZ-LAN is Lankaran District." },
+  "MT-45": { ja: "ヴィクトリア", why: "The name of the town on Gozo; CLDR gives the Maltese Rabat." },
+  "MT-06": { ja: "コスピクア", why: "CLDR gives the Maltese name, Bormla; Japanese uses the English-derived コスピクア." },
+  "MT-20": { ja: "セングレア", why: "CLDR gives the Maltese name, L-Isla; Japanese uses the English-derived セングレア." },
+  "IE-LS": { ja: "リーシュ州", why: "Laois is リーシュ in Japanese, as Wikidata also has it; Ireland's counties are written 州." },
+  "NG-LA": { ja: "ラゴス州", why: "Lagos is ラゴス in Japanese, as Wikidata also has it, not CLDR's レゴス." },
+  "PH-DAV": { ja: "北ダバオ州", why: "Davao del Norte is North Davao: 北ダバオ州." },
+  "PH-DIN": { ja: "ディナガット諸島州", why: "CLDR leaves the English word Islands in katakana; 諸島 is the Japanese word." },
+  "MA-MOH": { ja: "モハメディア", why: "CLDR names the city with its old name in brackets (Fedhala); the city's name today is Mohammedia." },
+  "MK-201": { ja: "ベロヴォ", why: "The country in the bracket is no longer called Macedonia; the bracket is not part of the name." },
+  "LU-LU": { ja: "ルクセンブルク郡", why: "Without CLDR's bracket the name would be the country's own; 郡 marks the canton." },
+  "DO-25": { ja: "サンティアゴ州", why: "The Dominican Republic's divisions are 州 (provinces), as Wikidata has it; CLDR has 県." },
+  "KP-07": { ja: "江原道", why: "North Korea's Kangwon is 江原道; CLDR's bracket (北) is not part of the name." },
+  "UA-30": { ja: "キーウ", why: "Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022." },
+  "UA-32": { ja: "キーウ州", why: "Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022." },
+  "UA-51": { ja: "オデーサ州", why: "Japan's government adopted the Ukrainian form Odesa (オデーサ) in 2022." },
+  "IN-JK": { ja: "ジャンムー・カシミール連邦直轄領", why: "Not a state since 2019: a union territory (連邦直轄領)." },
+  "KR-42": { ja: "江原特別自治道", why: "Renamed in 2023: Gangwon State became Gangwon Special Self-Governing Province." },
+  "KR-45": { ja: "全北特別自治道", why: "Renamed in 2024: North Jeolla became Jeonbuk Special Self-Governing Province." },
+  "FR-CVL": { ja: "サントル＝ヴァル・ド・ロワール地域圏", why: "Renamed in 2015 from Centre; the full name, with its hyphens as ＝." },
+  "LV-067": { ja: "オグレ", why: "Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English." },
+  "LV-059": { ja: "マドナ", why: "Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English." },
+  "LV-041": { ja: "イェルガヴァ", why: "Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English." },
+  "LV-042": { ja: "イェーカブピルス", why: "Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English." },
+  "LV-058": { ja: "ルザ", why: "Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English." },
+};
+
+// Questions a native reader of Japanese should settle, which the build cannot: the name kept is CLDR's, and
+// the note says what the doubt is. They are listed in docs/disagreements.md; a code here must be a subdivision.
+const JA_OPEN_QUESTIONS: Record<string, string> = {
+  "HU-CS": "CLDR's チョングラード県 or Wikidata's チョングラード・チャナード県: the county is Csongrád-Csanád since 2020.",
+  "NI-AS": "CLDR's 南アトランティコ自治地域 or Wikidata's 南カリブ海岸自治地域: which is the usual Japanese name of this autonomous region.",
+  "PH-COM": "Compostela Valley is Davao de Oro since 2019: コンポステラ・バレー州 (CLDR) or ダバオ・デ・オロ (Wikidata)?",
+  "VN-39": "ドンナイ省 (CLDR) or ドンナイ市 (Wikidata): a province, and Wikidata's 市 may come from its city.",
+  "KP-01": "平壌 (CLDR) or 平壌市 (Wikidata): whether the city's name wants 市 here, as 東京都 and 大阪市 do.",
+  "LV-041": "イェルガヴァ is also the name given to the city of Jelgava (LV-JEL), so a search for it finds two places: should the municipality carry a kind word?",
+  "BB-09": "セント・ペーター, while the same saint is セント・ピーター in AG-07 and DM-11: should Barbados match?",
+};
+
 // Wikidata's instance-of (P31) classes, read through their English labels, to a small set of kinds. The
 // label's head is matched (the part before " of " or " in ", so "province of Canada" is read as "province"),
 // and the first rule that matches wins. Labels that say nothing about administration are left out first.
@@ -190,4 +265,4 @@ const TYPE_RULES: [RegExp, string][] = [
 // .gb is delegated but has never been in general use.
 const TLD_EXCEPTIONS: Record<string, string> = { GB: "uk" };
 
-export { COUNTRY_ALIASES, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };
+export { COUNTRY_ALIASES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };

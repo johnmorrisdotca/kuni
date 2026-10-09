@@ -23,7 +23,7 @@ GJ|Gujarat|グジャラート州|1
 HP|Himachal Pradesh|ヒマーチャル・プラデーシュ州|1
 HR|Haryana|ハリヤーナー州|1
 JH|Jharkhand|ジャールカンド州|1
-JK|Jammu and Kashmir|ジャンムー・カシミール州|2
+JK|Jammu and Kashmir|ジャンムー・カシミール連邦直轄領|2
 KA|Karnataka|カルナータカ州|1
 KL|Kerala|ケーララ州|1
 LA|Ladakh|ラダック|2

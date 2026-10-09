@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const BG: SubdivisionTable = {
   country: "BG",
   types: ["oblast"],
-  typesJa: [null],
+  typesJa: ["州"],
   rows: `01|Blagoevgrad|ブラゴエヴグラト州|0
 02|Burgas|ブルガス州|0
 03|Varna|ヴァルナ州|0
@@ -20,7 +20,7 @@ const BG: SubdivisionTable = {
 09|Kardzhali|クルジャリ州|0
 10|Kyustendil|キュステンディル州|0
 11|Lovech|ロヴェチ州|0
-12|Montana|モンタナ州 (ブルガリア)|0
+12|Montana|モンタナ州|0
 13|Pazardzhik|パザルジク州|0
 14|Pernik|ペルニク州|0
 15|Pleven|プレヴェン州|0

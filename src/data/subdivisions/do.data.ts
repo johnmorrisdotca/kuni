@@ -30,10 +30,10 @@ const DO: SubdivisionTable = {
 19|Hermanas Mirabal|エルマーナス・ミラバル州|0|33
 20|Samaná|サマナ州|0|33
 21|San Cristóbal|サン・クリストバル州|0|41
-22|San Juan|サン・フアン州 (ドミニカ共和国)|0|37
+22|San Juan|サン・フアン州|0|37
 23|San Pedro de Macorís|サン・ペテロ・デ・マコリス州|0|39
 24|Sánchez Ramírez|サンチェス・ラミレス州|0|36
-25|Santiago|サンティアゴ県|0|35
+25|Santiago|サンティアゴ州|0|35
 26|Santiago Rodríguez|サンティアーゴ・ロドリゲス州|0|34
 27|Valverde|バルベルデ州|0|34
 28|Monseñor Nouel|モンセニョール・ノウエル州|0|36

@@ -118,7 +118,7 @@ BFC|Burgundy-Franche-Comté|ブルゴーニュ＝フランシュ＝コンテ地�
 BL|St. Barthélemy|サン・バルテルミー|3
 BRE|Brittany|ブルターニュ地域圏|2
 CP|Clipperton Island|クリッパートン島|3
-CVL|Centre-Val de Loire|サントル地域圏|2
+CVL|Centre-Val de Loire|サントル＝ヴァル・ド・ロワール地域圏|2
 GES|Grand-Est|グラン・テスト地域圏|2
 HDF|Hauts-de-France|オー＝ド＝フランス地域圏|2
 IDF|Île-de-France|イル＝ド＝フランス地域圏|2

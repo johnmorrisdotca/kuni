@@ -18,7 +18,7 @@ const MK: SubdivisionTable = {
 107|Rosoman|ロソマン|0
 108|Sveti Nikole|スヴェティ・ニコレ|0
 109|Čaška|チャシュカ|0
-201|Berovo|ベロヴォ (マケドニア)|0
+201|Berovo|ベロヴォ|0
 202|Vinica|ヴィニツァ|0
 203|Delčevo|デルチェヴォ|0
 204|Zrnovci|ズルノヴツィ|0

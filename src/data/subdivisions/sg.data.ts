@@ -10,10 +10,10 @@ const SG: SubdivisionTable = {
   types: [],
   typesJa: [],
   rows: `01|Central Singapore|シンガポール中央地区
-02|North East|北東地区 (シンガポール)
-03|North West|北西地区 (シンガポール)
+02|North East|北東地区
+03|North West|北西地区
 04|South East|南東地区
-05|South West|南西地区 (シンガポール)`,
+05|South West|南西地区`,
 };
 
 export { SG };

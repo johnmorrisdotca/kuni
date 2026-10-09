@@ -11,17 +11,17 @@ const BF: SubdivisionTable = {
   typesJa: [null,null],
   rows: `01|Boucle du Mouhoun|ブクル・デュ・ムウン地方|1
 02|Cascades|カスカード地方|1
-03|Centre|中部地方 (ブルキナファソ)|1
-04|Centre-Est|中東部地方 (ブルキナファソ)|1
-05|Centre-Nord|中北部地方 (ブルキナファソ)|1
-06|Centre-Ouest|中西部地方 (ブルキナファソ)|1
-07|Centre-Sud|中南部地方 (ブルキナファソ)|1
-08|Est|東部地方 (ブルキナファソ)|1
+03|Centre|中部地方|1
+04|Centre-Est|中東部地方|1
+05|Centre-Nord|中北部地方|1
+06|Centre-Ouest|中西部地方|1
+07|Centre-Sud|中南部地方|1
+08|Est|東部地方|1
 09|Hauts-Bassins|上流域地方|1
-10|Nord|北部地方 (ブルキナファソ)|1
+10|Nord|北部地方|1
 11|Plateau-Central|中央大地地方|1
 12|Sahel|サヘル地方|1
-13|Sud-Ouest|南西地方 (ブルキナファソ)|1
+13|Sud-Ouest|南西地方|1
 BAL|Balé|バレ県|0|01
 BAM|Bam|バム県|0|05
 BAN|Banwa|バンワ県|0|01

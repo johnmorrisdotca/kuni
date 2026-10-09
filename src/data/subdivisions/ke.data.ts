@@ -9,53 +9,53 @@ const KE: SubdivisionTable = {
   country: "KE",
   types: ["county"],
   typesJa: [null],
-  rows: `01|Baringo|バリンゴ (カウンティ)|0
-02|Bomet|ボメット (カウンティ)|0
-03|Bungoma|ブンゴマ (カウンティ)|0
-04|Busia|ブシア (カウンティ)|0
+  rows: `01|Baringo|バリンゴ|0
+02|Bomet|ボメット|0
+03|Bungoma|ブンゴマ|0
+04|Busia|ブシア|0
 05|Elgeyo-Marakwet||0
-06|Embu|エンブ (カウンティ)|0
-07|Garissa|ガリッサ (カウンティ)|0
-08|Homa Bay|ホマ・ベイ (カウンティ)|0
-09|Isiolo|イシオロ (カウンティ)|0
-10|Kajiado|カジアド (カウンティ)|0
-11|Kakamega|カカメガ (カウンティ)|0
-12|Kericho|ケリチョ (カウンティ)|0
-13|Kiambu|キアンブ (カウンティ)|0
-14|Kilifi|キリフィ (カウンティ)|0
-15|Kirinyaga|キリーニャガ (カウンティ)|0
+06|Embu|エンブ|0
+07|Garissa|ガリッサ|0
+08|Homa Bay|ホマ・ベイ|0
+09|Isiolo|イシオロ|0
+10|Kajiado|カジアド|0
+11|Kakamega|カカメガ|0
+12|Kericho|ケリチョ|0
+13|Kiambu|キアンブ|0
+14|Kilifi|キリフィ|0
+15|Kirinyaga|キリーニャガ|0
 16|Kisii|キシイ県|0
-17|Kisumu|キスム (カウンティ)|0
-18|Kitui|キツイ (カウンティ)|0
-19|Kwale|クワレ (カウンティ)|0
-20|Laikipia|ライキピア (カウンティ)|0
-21|Lamu|ラム (カウンティ)|0
-22|Machakos|マチャコス (カウンティ)|0
-23|Makueni|マクエニ (カウンティ)|0
-24|Mandera|マンデラ (カウンティ)|0
-25|Marsabit|マルサビット (カウンティ)|0
-26|Meru|メルー (カウンティ)|0
-27|Migori|ミゴリ (カウンティ)|0
-28|Mombasa|モンバサ (カウンティ)|0
-29|Murang’a|ムランガ (カウンティ)|0
-30|Nairobi County|ナイロビ (カウンティ)|0
-31|Nakuru|ナクル (カウンティ)|0
-32|Nandi|ナンディ (カウンティ)|0
-33|Narok|ナロク (カウンティ)|0
+17|Kisumu|キスム|0
+18|Kitui|キツイ|0
+19|Kwale|クワレ|0
+20|Laikipia|ライキピア|0
+21|Lamu|ラム|0
+22|Machakos|マチャコス|0
+23|Makueni|マクエニ|0
+24|Mandera|マンデラ|0
+25|Marsabit|マルサビット|0
+26|Meru|メルー|0
+27|Migori|ミゴリ|0
+28|Mombasa|モンバサ|0
+29|Murang’a|ムランガ|0
+30|Nairobi County|ナイロビ|0
+31|Nakuru|ナクル|0
+32|Nandi|ナンディ|0
+33|Narok|ナロク|0
 34|Nyamira|ニャミラ県|0
-35|Nyandarua|ニャンダルア (カウンティ)|0
-36|Nyeri|ニエリ (カウンティ)|0
-37|Samburu|サンブル (カウンティ)|0
+35|Nyandarua|ニャンダルア|0
+36|Nyeri|ニエリ|0
+37|Samburu|サンブル|0
 38|Siaya|シアヤ|0
 39|Taita-Taveta||0
-40|Tana River|タナ・リバー (カウンティ)|0
+40|Tana River|タナ・リバー|0
 41|Tharaka-Nithi||0
-42|Trans Nzoia|トランス・ンゾイア (カウンティ)|0
-43|Turkana|トゥルカナ (カウンティ)|0
-44|Uasin Gishu|ウアシン・ギシュ (カウンティ)|0
-45|Vihiga|ヴィヒガ (カウンティ)|0
-46|Wajir|ワジール (カウンティ)|0
-47|West Pokot|ウェスト・ポコット (カウンティ)|0`,
+42|Trans Nzoia|トランス・ンゾイア|0
+43|Turkana|トゥルカナ|0
+44|Uasin Gishu|ウアシン・ギシュ|0
+45|Vihiga|ヴィヒガ|0
+46|Wajir|ワジール|0
+47|West Pokot|ウェスト・ポコット|0`,
 };
 
 export { KE };

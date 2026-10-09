@@ -8,11 +8,11 @@ import type { SubdivisionTable } from "../../rows";
 const BH: SubdivisionTable = {
   country: "BH",
   types: ["governorate"],
-  typesJa: [null],
+  typesJa: ["県"],
   rows: `13|Capital|首都県|0
 14|Southern|南部県|0
 15|Muharraq|ムハッラク県|0
-17|Northern|北部県 (バーレーン)|0`,
+17|Northern|北部県|0`,
 };
 
 export { BH };

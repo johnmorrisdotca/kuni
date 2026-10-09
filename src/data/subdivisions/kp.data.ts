@@ -8,14 +8,14 @@ import type { SubdivisionTable } from "../../rows";
 const KP: SubdivisionTable = {
   country: "KP",
   types: ["city","municipality","province"],
-  typesJa: ["特別市",null,null],
+  typesJa: ["特別市",null,"道"],
   rows: `01|Pyongyang|平壌|1
 02|South Pyongan|平安南道|2
 03|North Pyongan|平安北道|2
 04|Chagang|慈江道|2
 05|South Hwanghae|黄海南道|2
 06|North Hwanghae|黄海北道|2
-07|Kangwon|江原道 (北)|2
+07|Kangwon|江原道|2
 08|South Hamgyong|咸鏡南道|2
 09|North Hamgyong|咸鏡北道|2
 10|Ryanggang|両江道|2

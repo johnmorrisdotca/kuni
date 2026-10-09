@@ -16,9 +16,9 @@ const LC: SubdivisionTable = {
 06|Gros Islet|グロス・イスレット地区|2
 07|Laborie|ラボリー地区|2
 08|Micoud|ミクッド地区|2
-10|Soufrière|スフレ (セントルシア)|1
+10|Soufrière|スフレ|1
 11|Vieux Fort|ビュー・フォート|1
-12|Canaries|カナリアス (セントルシア)|0`,
+12|Canaries|カナリアス|0`,
 };
 
 export { LC };

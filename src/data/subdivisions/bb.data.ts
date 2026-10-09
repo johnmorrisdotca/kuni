@@ -9,17 +9,17 @@ const BB: SubdivisionTable = {
   country: "BB",
   types: ["parish"],
   typesJa: [null],
-  rows: `01|Christ Church|クライスト・チャーチ (バルバドス)|0
-02|Saint Andrew|セント・アンドリュー (バルバドス)|0
-03|Saint George|セント・ジョージ (バルバドス)|0
-04|Saint James|セント・ジェームズ (バルバドス)|0
-05|Saint John|セント・ジョン (バルバドス)|0
-06|Saint Joseph|セント・ジョセフ (バルバドス)|0
-07|Saint Lucy|セント・ルーシー (バルバドス)|0
+  rows: `01|Christ Church|クライスト・チャーチ|0
+02|Saint Andrew|セント・アンドリュー|0
+03|Saint George|セント・ジョージ|0
+04|Saint James|セント・ジェームズ|0
+05|Saint John|セント・ジョン|0
+06|Saint Joseph|セント・ジョセフ|0
+07|Saint Lucy|セント・ルーシー|0
 08|Saint Michael|セント・マイケル|0
-09|Saint Peter|セント・ペーター (バルバドス)|0
-10|Saint Philip|セント・フィリップ (バルバドス)|0
-11|Saint Thomas|セント・トーマス (バルバドス)|0`,
+09|Saint Peter|セント・ペーター|0
+10|Saint Philip|セント・フィリップ|0
+11|Saint Thomas|セント・トーマス|0`,
 };
 
 export { BB };

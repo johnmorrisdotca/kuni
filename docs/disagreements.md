@@ -2,10 +2,77 @@
 
 Written by `pnpm data` (scripts/build-data.ts); do not edit by hand.
 
-For 4368 subdivisions both Unicode CLDR 48.2.0 and Wikidata (snapshot `wikidata-2026-10-09.json`) have a Japanese
-name. For 330 of them the two are not the same name once case, width, kana and punctuation are folded away. The
-package keeps CLDR's name. This list is for a reader of Japanese to judge which is right; most of the differences are a
+For 4322 subdivisions both Unicode CLDR 48.2.0 and Wikidata (snapshot `wikidata-2026-10-09.json`) have a Japanese
+name. For 234 of them the two are not the same name once case, width, kana and punctuation are folded away. The
+package keeps CLDR's name (after the bracket rule in [name-rules.md](name-rules.md)), except for the overridden names
+under Resolved. This list is for a reader of Japanese to judge which is right; most of the differences are a
 type word one source adds (州, 県, 地域圏) or a different spelling of a foreign name in katakana.
+
+## Resolved by an override, 46
+
+A reviewer found these CLDR names wrong, out of date or naming another place. `JA_NAME_OVERRIDES` in
+`scripts/data-config.ts` replaces them, and the reason is beside each. They are no longer disagreements.
+
+| Code | English | CLDR | Wikidata | Kept | Why |
+| --- | --- | --- | --- | --- | --- |
+| AG-06 | Saint Paul | セント・ポール (ドミニカ国) | セント・ポール教区 | セント・ポール教区 | A parish (教区), as Wikidata names it; CLDR's bracket names Dominica, not Antigua. |
+| AG-07 | Saint Peter | セント・ピーター (ドミニカ国) | セント・ピーター教区 | セント・ピーター教区 | A parish (教区), as Wikidata names it; CLDR's bracket names Dominica, not Antigua. |
+| AZ-LA | Lankaran | レンキャラン県 | ランカラン | ランカラン | CLDR swaps the city and the district: ISO's AZ-LA is the city of Lankaran. |
+| AZ-LAN | Lankaran District | ランカラン | レンキャラン県 | ランカラン県 | CLDR swaps the city and the district: ISO's AZ-LAN is Lankaran District. |
+| DM-02 | Saint Andrew | セント・アンドルー (ドミニカ国) | セント・アンドリュー教区 | セント・アンドリュー教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド教区 | セント・デイヴィッド教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county). |
+| DM-04 | Saint George | セント・ジョージ (ドミニカ国) | セント・ジョージ教区 | セント・ジョージ教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-05 | Saint John | セント・ジョン郡 (ドミニカ国) | セント・ジョン教区 | セント・ジョン教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county). |
+| DM-06 | Saint Joseph | セント・ジョゼフ教区 (ドミニカ国) | セント・ジョゼフ教区 | セント・ジョゼフ教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-07 | Saint Luke | セント・ルーク (ドミニカ国) | セント・ルーク教区 | セント・ルーク教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-08 | Saint Mark | セント・マーク (ドミニカ国) | セント・マーク教区 | セント・マーク教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-09 | Saint Patrick | セント・パトリック (ドミニカ国) | セント・パトリック教区 | セント・パトリック教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-10 | Saint Paul | セント・ポール (ドミニカ国) | セント・ポール教区 | セント・ポール教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DM-11 | Saint Peter | セント・ピーター (ドミニカ国) | セント・ピーター教区 | セント・ピーター教区 | A parish (教区), as Wikidata names it; CLDR adds a country bracket. |
+| DO-25 | Santiago | サンティアゴ県 | サンティアゴ州 | サンティアゴ州 | The Dominican Republic's divisions are 州 (provinces), as Wikidata has it; CLDR has 県. |
+| FR-CVL | Centre-Val de Loire | サントル地域圏 | サントル＝ヴァル・ド・ロワール地域圏 | サントル＝ヴァル・ド・ロワール地域圏 | Renamed in 2015 from Centre; the full name, with its hyphens as ＝. |
+| GD-01 | Saint Andrew | セント・アンドリューズ | セント・アンドリュー教区 | セント・アンドリュー教区 | A parish (教区); CLDR's セント・アンドリューズ is not the form used for the other Eastern Caribbean parishes. |
+| GD-02 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド教区 | セント・デイヴィッド教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county) and its bracket names Dominica, not Grenada. |
+| GD-03 | Saint George | セント・ジョージ郡 (グレナダ) | セント・ジョージ教区 | セント・ジョージ教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county). |
+| GD-04 | Saint John | セント・ジョン郡 (ドミニカ国) | セント・ジョン教区 | セント・ジョン教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county) and its bracket names Dominica, not Grenada. |
+| GD-05 | Saint Mark | セント・マーク (ドミニカ国) | セント・マーク教区 | セント・マーク教区 | A parish (教区), as Wikidata names it; CLDR leaves the word off and its bracket names Dominica, not Grenada. |
+| GD-06 | Saint Patrick | セント・パトリック郡 (グレナダ) | セント・パトリック教区 | セント・パトリック教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county). |
+| IE-LS | Laois | ラオース州 | リーシュ県 | リーシュ州 | Laois is リーシュ in Japanese, as Wikidata also has it; Ireland's counties are written 州. |
+| IN-JK | Jammu and Kashmir | ジャンムー・カシミール州 | ジャンムー・カシミール連邦直轄領 | ジャンムー・カシミール連邦直轄領 | Not a state since 2019: a union territory (連邦直轄領). |
+| KP-07 | Kangwon | 江原道 (北) | 江原道 | 江原道 | North Korea's Kangwon is 江原道; CLDR's bracket (北) is not part of the name. |
+| KR-42 | Gangwon | 江原道 (南) | 江原特別自治道 | 江原特別自治道 | Renamed in 2023: Gangwon State became Gangwon Special Self-Governing Province. |
+| KR-45 | North Jeolla | 全羅北道 | 全北特別自治道 | 全北特別自治道 | Renamed in 2024: North Jeolla became Jeonbuk Special Self-Governing Province. |
+| LU-LU | Luxembourg | ルクセンブルク (カントン) | ルクセンブルク | ルクセンブルク郡 | Without CLDR's bracket the name would be the country's own; 郡 marks the canton. |
+| LV-041 | Jelgava Municipality | ヤルガワ | イェルガヴァ市 | イェルガヴァ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
+| LV-042 | Jēkabpils Municipality | ヤーカブピルス | イェーカブピルス市 | イェーカブピルス | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
+| LV-058 | Ludza | ルヅァ | ルッザ市 | ルザ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
+| LV-059 | Madona | マドゥアナ | マドナ市 | マドナ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
+| LV-067 | Ogre | ウアグレ | オグレ市 | オグレ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
+| MA-MOH | Mohammedia | フェドハラ（モハメディア） | モハメディア県 | モハメディア | CLDR names the city with its old name in brackets (Fedhala); the city's name today is Mohammedia. |
+| MK-201 | Berovo | ベロヴォ (マケドニア) | ベロヴォ | ベロヴォ | The country in the bracket is no longer called Macedonia; the bracket is not part of the name. |
+| MT-06 | Cospicua | ボルムラ | コスピクア | コスピクア | CLDR gives the Maltese name, Bormla; Japanese uses the English-derived コスピクア. |
+| MT-20 | Senglea | イシーラ | セングレア | セングレア | CLDR gives the Maltese name, L-Isla; Japanese uses the English-derived セングレア. |
+| MT-45 | Victoria | ラバット | ラバト | ヴィクトリア | The name of the town on Gozo; CLDR gives the Maltese Rabat. |
+| NG-LA | Lagos | レゴス州 | ラゴス州 | ラゴス州 | Lagos is ラゴス in Japanese, as Wikidata also has it, not CLDR's レゴス. |
+| PH-DAV | Davao del Norte | ダバオ州 | 北ダバオ | 北ダバオ州 | Davao del Norte is North Davao: 北ダバオ州. |
+| PH-DIN | Dinagat Islands | ディナガット・アイランズ州 | ディナガット諸島 | ディナガット諸島州 | CLDR leaves the English word Islands in katakana; 諸島 is the Japanese word. |
+| UA-30 | Kyiv | キエフ | キーウ | キーウ | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
+| UA-32 | Kyivshchyna | キエフ州 | キーウ州 | キーウ州 | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
+| UA-51 | Odeshchyna | オデッサ州 | オデーサ州 | オデーサ州 | Japan's government adopted the Ukrainian form Odesa (オデーサ) in 2022. |
+| VC-02 | Saint Andrew | セント・アンドリューズ | セント・アンドリューズ | セント・アンドリュー教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR has セント・アンドリューズ. |
+| VC-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド郡 | セント・デイヴィッド教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR calls it a 郡 (county). |
+
+## For a native reader, 7
+
+The names below were reviewed by a strong reader of Japanese, not a native one, who left these as open questions.
+
+- **HU-CS** Csongrád, kept as チョングラード県: CLDR's チョングラード県 or Wikidata's チョングラード・チャナード県: the county is Csongrád-Csanád since 2020.
+- **NI-AS** Atlántico Sur, kept as 南アトランティコ自治地域: CLDR's 南アトランティコ自治地域 or Wikidata's 南カリブ海岸自治地域: which is the usual Japanese name of this autonomous region.
+- **PH-COM** Compostela Valley, kept as コンポステラ・バレー州: Compostela Valley is Davao de Oro since 2019: コンポステラ・バレー州 (CLDR) or ダバオ・デ・オロ (Wikidata)?
+- **VN-39** Đồng Nai, kept as ドンナイ省: ドンナイ省 (CLDR) or ドンナイ市 (Wikidata): a province, and Wikidata's 市 may come from its city.
+- **KP-01** Pyongyang, kept as 平壌: 平壌 (CLDR) or 平壌市 (Wikidata): whether the city's name wants 市 here, as 東京都 and 大阪市 do.
+- **LV-041** Jelgava Municipality, kept as イェルガヴァ: イェルガヴァ is also the name given to the city of Jelgava (LV-JEL), so a search for it finds two places: should the municipality carry a kind word?
+- **BB-09** Saint Peter, kept as セント・ペーター: セント・ペーター, while the same saint is セント・ピーター in AG-07 and DM-11: should Barbados match?
 
 ## United Arab Emirates (AE), 1
 
@@ -13,66 +80,17 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | AE-AZ | Abu Dhabi | アブダビ | アブダビ首長国 |
 
-## Antigua & Barbuda (AG), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| AG-06 | Saint Paul | セント・ポール (ドミニカ国) | セント・ポール教区 |
-| AG-07 | Saint Peter | セント・ピーター (ドミニカ国) | セント・ピーター教区 |
-
 ## Armenia (AM), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | AM-ER | Yerevan | エレバン | イェレヴァン |
 
-## Azerbaijan (AZ), 3
+## Barbados (BB), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| AZ-LA | Lankaran | レンキャラン県 | ランカラン |
-| AZ-LAN | Lankaran District | ランカラン | レンキャラン県 |
-| AZ-SR | Shirvan | シルヴァン (市) | シルヴァン |
-
-## Barbados (BB), 10
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| BB-01 | Christ Church | クライスト・チャーチ (バルバドス) | クライスト・チャーチ教区 |
-| BB-02 | Saint Andrew | セント・アンドリュー (バルバドス) | セント・アンドリュー |
-| BB-03 | Saint George | セント・ジョージ (バルバドス) | セント・ジョージ |
-| BB-04 | Saint James | セント・ジェームズ (バルバドス) | セント・ジェームズ |
-| BB-05 | Saint John | セント・ジョン (バルバドス) | セント・ジョン |
-| BB-06 | Saint Joseph | セント・ジョセフ (バルバドス) | セント・ジョセフ |
-| BB-07 | Saint Lucy | セント・ルーシー (バルバドス) | セント・ルーシー |
-| BB-09 | Saint Peter | セント・ペーター (バルバドス) | セント・ペーター |
-| BB-10 | Saint Philip | セント・フィリップ (バルバドス) | セント・フィリップ |
-| BB-11 | Saint Thomas | セント・トーマス (バルバドス) | セント・トーマス |
-
-## Burkina Faso (BF), 8
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| BF-03 | Centre | 中部地方 (ブルキナファソ) | 中部地方 |
-| BF-04 | Centre-Est | 中東部地方 (ブルキナファソ) | 中東部地方 |
-| BF-05 | Centre-Nord | 中北部地方 (ブルキナファソ) | 中北部地方 |
-| BF-06 | Centre-Ouest | 中西部地方 (ブルキナファソ) | 中西部地方 |
-| BF-07 | Centre-Sud | 中南部地方 (ブルキナファソ) | 中南部地方 |
-| BF-08 | Est | 東部地方 (ブルキナファソ) | 東部地方 |
-| BF-10 | Nord | 北部地方 (ブルキナファソ) | 北部地方 |
-| BF-13 | Sud-Ouest | 南西地方 (ブルキナファソ) | 南西地方 |
-
-## Bulgaria (BG), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| BG-12 | Montana | モンタナ州 (ブルガリア) | モンタナ州 |
-
-## Bahrain (BH), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| BH-17 | Northern | 北部県 (バーレーン) | 北部県 |
+| BB-01 | Christ Church | クライスト・チャーチ | クライスト・チャーチ教区 |
 
 ## Brazil (BR), 1
 
@@ -101,19 +119,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | CU-13 | Santiago de Cuba | サンティアーゴ・デ・クーバ州 | サンティアゴ・デ・クーバ州 |
 | CU-14 | Guantánamo | グァンタナモ州 | グアンタナモ州 |
 
-## Cape Verde (CV), 8
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| CV-BR | Brava | ブラヴァ (カーボベルデ) | ブラヴァ |
-| CV-BV | Boa Vista | ボア・ヴィスタ (カーボベルデ) | ボア・ヴィスタ |
-| CV-CR | Santa Cruz | サンタ・クルス (カーボベルデ) | サンタ・クルス |
-| CV-MA | Maio | マイオ (カーボベルデ) | マイオ |
-| CV-PA | Paul | パウル (カーボベルデ) | パウル |
-| CV-PN | Porto Novo | ポルト・ノボ (カーボベルデ) | ポルト・ノボ |
-| CV-RS | Ribeira Grande de Santiago | リベイラ・グランデ・デ・サンティアゴ (カーボベルデ) | リベイラ・グランデ・デ・サンティアゴ |
-| CV-SL | Sal | サル (カーボベルデ) | サル |
-
 ## Czechia (CZ), 1
 
 | Code | English | CLDR (kept) | Wikidata |
@@ -127,60 +132,32 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | DE-BY | Bavaria | バイエルン自由州 | バイエルン |
 | DE-NI | Lower Saxony | ニーダーザクセン州 | 下ザクセン州 |
 
-## Dominica (DM), 10
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| DM-02 | Saint Andrew | セント・アンドルー (ドミニカ国) | セント・アンドリュー教区 |
-| DM-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド教区 |
-| DM-04 | Saint George | セント・ジョージ (ドミニカ国) | セント・ジョージ教区 |
-| DM-05 | Saint John | セント・ジョン郡 (ドミニカ国) | セント・ジョン教区 |
-| DM-06 | Saint Joseph | セント・ジョゼフ教区 (ドミニカ国) | セント・ジョゼフ教区 |
-| DM-07 | Saint Luke | セント・ルーク (ドミニカ国) | セント・ルーク教区 |
-| DM-08 | Saint Mark | セント・マーク (ドミニカ国) | セント・マーク教区 |
-| DM-09 | Saint Patrick | セント・パトリック (ドミニカ国) | セント・パトリック教区 |
-| DM-10 | Saint Paul | セント・ポール (ドミニカ国) | セント・ポール教区 |
-| DM-11 | Saint Peter | セント・ピーター (ドミニカ国) | セント・ピーター教区 |
-
-## Dominican Republic (DO), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| DO-22 | San Juan | サン・フアン州 (ドミニカ共和国) | サン・フアン州 |
-| DO-25 | Santiago | サンティアゴ県 | サンティアゴ州 |
-
 ## Spain (ES), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | ES-CS | Castellón | カステリョン県 | カステリョン |
 
-## Fiji (FJ), 5
+## Fiji (FJ), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| FJ-C | Central | 中央地域 (フィジー) | 中央地域 |
-| FJ-E | Eastern | 東部地域 (フィジー) | 東部地域 |
-| FJ-N | Northern | 北部地域 (フィジー) | 北部地域 |
 | FJ-R | Rotuma | ロツマ島 | ロツマ |
-| FJ-W | Western | 西部地域 (フィジー) | 西部地域 |
 
-## France (FR), 6
+## France (FR), 5
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | FR-73 | Savoie | サヴォワ県 | サヴォワ |
 | FR-BL | St. Barthélemy | サン・バルテルミー | サン・バルテルミー島 |
-| FR-CVL | Centre-Val de Loire | サントル地域圏 | サントル＝ヴァル・ド・ロワール地域圏 |
 | FR-OCC | Occitanie | オクシタニー地域圏 | オクシタニア地域圏 |
 | FR-PF | French Polynesia | 仏領ポリネシア | フランス領ポリネシア |
 | FR-TF | French Southern Territories | 仏領極南諸島 | フランス領南方・南極地域 |
 
-## United Kingdom (GB), 13
+## United Kingdom (GB), 11
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| GB-BDF | Bedford | ベッドフォード (バラ) | ベッドフォード |
 | GB-BST | Bristol | ブリストル | シティ・オヴ・ブリストル |
 | GB-DND | Dundee | ダンディー | ダンディー市 |
 | GB-DUR | Durham | ダラム | カウンティ・ダラム |
@@ -188,34 +165,16 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | GB-LCE | Leicester | レスター | シティ・オヴ・レスター |
 | GB-NGM | Nottingham | ノッティンガム | シティ・オヴ・ノッティンガム |
 | GB-PLY | Plymouth | プリマス | シティ・オヴ・プリマス |
-| GB-SHN | Saint Helens | セントヘレンズ (マージーサイド) | セントヘレンズ |
 | GB-STE | Stoke-on-Trent | ストーク・オン・トレント | シティ・オヴ・ストーク＝オン＝トレント |
 | GB-STH | Southampton | サウサンプトン | シティ・オヴ・サウサンプトン |
 | GB-WRT | Warrington | ウォリントン | ワリントン |
 | GB-YOR | York | ヨーク | シティ・オヴ・ヨーク |
-
-## Grenada (GD), 6
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| GD-01 | Saint Andrew | セント・アンドリューズ | セント・アンドリュー教区 |
-| GD-02 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド教区 |
-| GD-03 | Saint George | セント・ジョージ郡 (グレナダ) | セント・ジョージ教区 |
-| GD-04 | Saint John | セント・ジョン郡 (ドミニカ国) | セント・ジョン教区 |
-| GD-05 | Saint Mark | セント・マーク (ドミニカ国) | セント・マーク教区 |
-| GD-06 | Saint Patrick | セント・パトリック郡 (グレナダ) | セント・パトリック教区 |
 
 ## Georgia (GE), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | GE-AB | Abkhazia | アブハジア | アブハジア自治共和国 |
-
-## Equatorial Guinea (GQ), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| GQ-I | Insular | 島嶼地方 (赤道ギニア) | 島嶼地方 |
 
 ## Greece (GR), 1
 
@@ -235,7 +194,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | HU-CS | Csongrád | チョングラード県 | チョングラード・チャナード県 |
 
-## Ireland (IE), 25
+## Ireland (IE), 24
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -252,7 +211,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | IE-LH | Louth | ラウス州 | ラウス県 |
 | IE-LK | Limerick | リムリック州 | リムリック県 |
 | IE-LM | Leitrim | リートリム州 | リートリム県 |
-| IE-LS | Laois | ラオース州 | リーシュ県 |
 | IE-MH | Meath | ミース州 | ミーズ県 |
 | IE-MN | Monaghan | モナハン州 | モナハン県 |
 | IE-MO | Mayo | メイヨー州 | メイヨー県 |
@@ -264,12 +222,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | IE-WH | Westmeath | ウェストミース州 | ウェストミーズ県 |
 | IE-WW | Wicklow | ウィックロー州 | ウィックロー県 |
 | IE-WX | Wexford | ウェックスフォード州 | ウェックスフォード県 |
-
-## India (IN), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| IN-JK | Jammu and Kashmir | ジャンムー・カシミール州 | ジャンムー・カシミール連邦直轄領 |
 
 ## Iran (IR), 4
 
@@ -305,26 +257,11 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | KH-13 | Preah Vihear | プレアヴィヒア州 | プリアヴィヒア州 |
 | KH-22 | Oddar Meanchey | ウドンメンチェイ州 | ウドーミアンチェイ州 |
 
-## North Korea (KP), 2
+## North Korea (KP), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | KP-01 | Pyongyang | 平壌 | 平壌市 |
-| KP-07 | Kangwon | 江原道 (北) | 江原道 |
-
-## South Korea (KR), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| KR-42 | Gangwon | 江原道 (南) | 江原特別自治道 |
-| KR-45 | North Jeolla | 全羅北道 | 全北特別自治道 |
-
-## St. Lucia (LC), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| LC-10 | Soufrière | スフレ (セントルシア) | スフレ |
-| LC-12 | Canaries | カナリアス (セントルシア) | カナリアス |
 
 ## Lithuania (LT), 15
 
@@ -346,13 +283,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | LT-UT | Utena County | ウテナ県 | ウテナ郡 |
 | LT-VL | Vilnius County | ヴィリニュス県 | ヴィルニュス郡 |
 
-## Luxembourg (LU), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| LU-LU | Luxembourg | ルクセンブルク (カントン) | ルクセンブルク |
-
-## Latvia (LV), 23
+## Latvia (LV), 18
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -362,15 +293,10 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | LV-016 | Bauska | バウスカ | バウスカ市 |
 | LV-022 | Cēsis | ツェースィス | ツェーシス市 |
 | LV-026 | Dobele | ドベレ | ドベレ市 |
-| LV-041 | Jelgava Municipality | ヤルガワ | イェルガヴァ市 |
-| LV-042 | Jēkabpils Municipality | ヤーカブピルス | イェーカブピルス市 |
 | LV-047 | Krāslava | クラスラヴァ | クラースラヴァ市 |
 | LV-050 | Kuldīga | クルディーガ | クルディーガ市 |
 | LV-052 | Ķekava | キェカワ | キェッカヴァ市 |
 | LV-054 | Limbaži | リンバジ | リンバジ市 |
-| LV-058 | Ludza | ルヅァ | ルッザ市 |
-| LV-059 | Madona | マドゥアナ | マドナ市 |
-| LV-067 | Ogre | ウアグレ | オグレ市 |
 | LV-073 | Preiļi | プレイリ | プレイリ市 |
 | LV-077 | Rēzekne Municipality | レーゼクネ | レーゼクネ市 |
 | LV-088 | Saldus | サルドゥス | サルドゥス市 |
@@ -380,7 +306,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | LV-097 | Talsi | タルスィ | タルスィ市 |
 | LV-099 | Tukums | トゥクムス | トゥクムス市 |
 
-## Morocco (MA), 7
+## Morocco (MA), 6
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -389,7 +315,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | MA-08 | Grand Casablanca | グラン・カサブランカ地方 | ドラア＝タフィラルト地方 |
 | MA-AGD | Agadir-Ida Ou Tanane | アガディール | アガディール＝イダ＝オ＝タナネ県 |
 | MA-MEK | Meknès | メクネス | メクネス県 |
-| MA-MOH | Mohammedia | フェドハラ（モハメディア） | モハメディア県 |
 | MA-RAB | Rabat | ラバト | ラバト県 |
 
 ## Monaco (MC), 1
@@ -398,32 +323,17 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | MC-MO | Monaco-Ville | モナコ・ヴィル | モナコ市 |
 
-## Moldova (MD), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| MD-CL | Călărași | カララシ県 (モルドヴァ) | カララシ県 |
-
-## North Macedonia (MK), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| MK-201 | Berovo | ベロヴォ (マケドニア) | ベロヴォ |
-
 ## Myanmar (Burma) (MM), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | MM-05 | Tanintharyi | タニンダーリ管区 | タニンダーイー管区 |
 
-## Malta (MT), 5
+## Malta (MT), 2
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | MT-02 | Balzan | バルツァーン | バルザン |
-| MT-06 | Cospicua | ボルムラ | コスピクア |
-| MT-20 | Senglea | イシーラ | セングレア |
-| MT-45 | Victoria | ラバット | ラバト |
 | MT-56 | Sliema | スリマ | スリーマ |
 
 ## Malawi (MW), 26
@@ -463,12 +373,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | MZ-L | Maputo Province | マプト州 | マプート州 |
 
-## Nigeria (NG), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| NG-LA | Lagos | レゴス州 | ラゴス州 |
-
 ## Nicaragua (NI), 1
 
 | Code | English | CLDR (kept) | Wikidata |
@@ -488,7 +392,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | NZ-BOP | Bay of Plenty | ベイ・オブ・プレンティ地方 | ベイ・オブ・プレンティ |
 
-## Philippines (PH), 76
+## Philippines (PH), 74
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -519,8 +423,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | PH-COM | Compostela Valley | コンポステラ・バレー州 | ダバオ・デ・オロ |
 | PH-DAO | Davao Oriental | 東ダバオ州 | 東ダバオ |
 | PH-DAS | Davao del Sur | 南ダバオ州 | 南ダバオ |
-| PH-DAV | Davao del Norte | ダバオ州 | 北ダバオ |
-| PH-DIN | Dinagat Islands | ディナガット・アイランズ州 | ディナガット諸島 |
 | PH-EAS | Eastern Samar | 東サマル州 | 東サマル |
 | PH-GUI | Guimaras | ギマラス州 | ギマラス |
 | PH-IFU | Ifugao | イフガオ州 | イフガオ |
@@ -587,19 +489,10 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | SC-15 | La Digue | ラ・ディーグ島 | ラ・ディーグ島およびインナー諸島 |
 
-## Singapore (SG), 3
+## Slovenia (SI), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| SG-02 | North East | 北東地区 (シンガポール) | 北東地区 |
-| SG-03 | North West | 北西地区 (シンガポール) | 北西地区 |
-| SG-05 | South West | 南西地区 (シンガポール) | 南西地区 |
-
-## Slovenia (SI), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| SI-127 | Štore | シュトレ (スロベニア) | シュトレ |
 | SI-193 | Žužemberk | ジュジェンベルク | ジュジュンベルク市 |
 
 ## Suriname (SR), 1
@@ -608,13 +501,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | SR-SA | Saramacca | サラマッカ | サラマッカ地方 |
 
-## El Salvador (SV), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| SV-LI | La Libertad | ラリベルタ県 (エルサルバドル) | ラリベルタ県 |
-| SV-PA | La Paz | ラ・パス県 (エル・サルバドル) | ラ・パス県 |
-
 ## Taiwan (TW), 2
 
 | Code | English | CLDR (kept) | Wikidata |
@@ -622,32 +508,12 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | TW-CYI | Chiayi County | 嘉義県 | 嘉義市 |
 | TW-CYQ | Chiayi | 嘉義市 | 嘉義県 |
 
-## Ukraine (UA), 3
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| UA-30 | Kyiv | キエフ | キーウ |
-| UA-32 | Kyivshchyna | キエフ州 | キーウ州 |
-| UA-51 | Odeshchyna | オデッサ州 | オデーサ州 |
-
-## Uganda (UG), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| UG-229 | Luuka | ルッカ県 (ウガンダ) | ルッカ県 |
-
 ## United States (US), 2
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | US-AS | American Samoa | 米領サモア | アメリカ領サモア |
 | US-VI | U.S. Virgin Islands | 米領ヴァージン諸島 | アメリカ領ヴァージン諸島 |
-
-## St. Vincent & Grenadines (VC), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| VC-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド郡 |
 
 ## Venezuela (VE), 1
 
@@ -661,13 +527,3 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | VN-39 | Đồng Nai | ドンナイ省 | ドンナイ市 |
 | VN-56 | Bắc Ninh | バクニン省 | バクニン |
-
-## Zambia (ZM), 5
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| ZM-01 | Western | 西部州 (ザンビア) | 西部州 |
-| ZM-02 | Central | 中央州 (ザンビア) | 中央州 |
-| ZM-03 | Eastern | 東部州 (ザンビア) | 東部州 |
-| ZM-05 | Northern | 北部州 (ザンビア) | 北部州 |
-| ZM-07 | Southern | 南部州 (ザンビア) | 南部州 |

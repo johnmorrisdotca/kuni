@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const FJ: SubdivisionTable = {
   country: "FJ",
   types: ["division","province","territory"],
-  typesJa: [null,null,null],
+  typesJa: ["地域",null,null],
   rows: `01|Ba|バ州|1|W
 02|Bua|ブア州|1|N
 03|Cakaudrove|ザカウドロベ州|1|N
@@ -23,11 +23,11 @@ const FJ: SubdivisionTable = {
 12|Rewa|レワ州|1|C
 13|Serua|セルア州|1|C
 14|Tailevu|タイレブ州|1|C
-C|Central|中央地域 (フィジー)|0
-E|Eastern|東部地域 (フィジー)|0
-N|Northern|北部地域 (フィジー)|0
+C|Central|中央地域|0
+E|Eastern|東部地域|0
+N|Northern|北部地域|0
 R|Rotuma|ロツマ島|2
-W|Western|西部地域 (フィジー)|0`,
+W|Western|西部地域|0`,
 };
 
 export { FJ };

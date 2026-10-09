@@ -10,23 +10,23 @@ const CV: SubdivisionTable = {
   types: ["island","municipality"],
   typesJa: [null,null],
   rows: `B|Barlavento Islands|バルラヴェント諸島|0
-BR|Brava|ブラヴァ (カーボベルデ)|1|S
-BV|Boa Vista|ボア・ヴィスタ (カーボベルデ)|1|B
+BR|Brava|ブラヴァ|1|S
+BV|Boa Vista|ボア・ヴィスタ|1|B
 CA|Santa Catarina|サンタ・カタリナ|1|S
 CF|Santa Catarina do Fogo|サンタ・カタリナ・ド・フォゴ|1|S
-CR|Santa Cruz|サンタ・クルス (カーボベルデ)|1|S
-MA|Maio|マイオ (カーボベルデ)|1|S
+CR|Santa Cruz|サンタ・クルス|1|S
+MA|Maio|マイオ|1|S
 MO|Mosteiros|モシュテイホシュ|1|S
-PA|Paul|パウル (カーボベルデ)|1|B
-PN|Porto Novo|ポルト・ノボ (カーボベルデ)|1|B
+PA|Paul|パウル|1|B
+PN|Porto Novo|ポルト・ノボ|1|B
 PR|Praia|プライア市|1|S
 RB|Ribeira Brava|リベイラ・ブラヴァ|1|B
 RG|Ribeira Grande|リベイラ・グランデ|1|B
-RS|Ribeira Grande de Santiago|リベイラ・グランデ・デ・サンティアゴ (カーボベルデ)|1|S
+RS|Ribeira Grande de Santiago|リベイラ・グランデ・デ・サンティアゴ|1|S
 S|Sotavento Islands|ソタヴェント諸島|0
 SD|São Domingos|サン・ドミンゴス|1|S
 SF|São Filipe|サン・フィリペ|1|S
-SL|Sal|サル (カーボベルデ)|1|B
+SL|Sal|サル|1|B
 SM|São Miguel|サン・ミゲル|1|S
 SO|São Lourenço dos Órgãos|サン・ローレンソ・ドス・オルガンス|1|S
 SS|São Salvador do Mundo|サン・サルバドル・ド・ムンド|1|S

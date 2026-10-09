@@ -8,13 +8,13 @@ import type { SubdivisionTable } from "../../rows";
 const GD: SubdivisionTable = {
   country: "GD",
   types: ["parish"],
-  typesJa: [null],
-  rows: `01|Saint Andrew|セント・アンドリューズ|0
-02|Saint David|セント・デイヴィッド郡 (ドミニカ国)|0
-03|Saint George|セント・ジョージ郡 (グレナダ)|0
-04|Saint John|セント・ジョン郡 (ドミニカ国)|0
-05|Saint Mark|セント・マーク (ドミニカ国)|0
-06|Saint Patrick|セント・パトリック郡 (グレナダ)|0
+  typesJa: ["教区"],
+  rows: `01|Saint Andrew|セント・アンドリュー教区|0
+02|Saint David|セント・デイヴィッド教区|0
+03|Saint George|セント・ジョージ教区|0
+04|Saint John|セント・ジョン教区|0
+05|Saint Mark|セント・マーク教区|0
+06|Saint Patrick|セント・パトリック教区|0
 10|Carriacou and Petite Martinique|カリアク島`,
 };
 

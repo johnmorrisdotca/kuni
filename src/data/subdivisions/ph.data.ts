@@ -54,8 +54,8 @@ CEB|Cebu|セブ州|1|07
 COM|Compostela Valley|コンポステラ・バレー州|1|11
 DAO|Davao Oriental|東ダバオ州|1|11
 DAS|Davao del Sur|南ダバオ州|1|11
-DAV|Davao del Norte|ダバオ州|1|11
-DIN|Dinagat Islands|ディナガット・アイランズ州|1|13
+DAV|Davao del Norte|北ダバオ州|1|11
+DIN|Dinagat Islands|ディナガット諸島州|1|13
 DVO|Davao Occidental|西ダバオ|1|11
 EAS|Eastern Samar|東サマル州|1|08
 GUI|Guimaras|ギマラス州|1|06

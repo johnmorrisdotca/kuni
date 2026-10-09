@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const KR: SubdivisionTable = {
   country: "KR",
   types: ["capital-district","city","province","state"],
-  typesJa: ["市","広域市","道",null],
+  typesJa: ["市","広域市","道","道"],
   rows: `11|Seoul|ソウル特別市|0
 26|Busan|釜山広域市|1
 27|Daegu|大邱広域市|1
@@ -17,10 +17,10 @@ const KR: SubdivisionTable = {
 30|Daejeon|大田広域市|1
 31|Ulsan|蔚山広域市|1
 41|Gyeonggi|京畿道|2
-42|Gangwon|江原道 (南)|3
+42|Gangwon|江原特別自治道|3
 43|North Chungcheong|忠清北道|2
 44|South Chungcheong|忠清南道|2
-45|North Jeolla|全羅北道|3
+45|North Jeolla|全北特別自治道|3
 46|South Jeolla|全羅南道|2
 47|North Gyeongsang|慶尚北道|2
 48|South Gyeongsang|慶尚南道|2

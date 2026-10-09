@@ -10,8 +10,8 @@ const VC: SubdivisionTable = {
   types: ["parish"],
   typesJa: [null],
   rows: `01|Charlotte|シャーロット教区|0
-02|Saint Andrew|セント・アンドリューズ|0
-03|Saint David|セント・デイヴィッド郡 (ドミニカ国)|0
+02|Saint Andrew|セント・アンドリュー教区|0
+03|Saint David|セント・デイヴィッド教区|0
 04|Saint George|セントジョージ|0
 05|Saint Patrick|セント・パトリック教区|0
 06|Grenadines|グレナディーンズ郡|0`,

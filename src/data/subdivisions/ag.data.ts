@@ -8,12 +8,12 @@ import type { SubdivisionTable } from "../../rows";
 const AG: SubdivisionTable = {
   country: "AG",
   types: ["parish","territory"],
-  typesJa: [null,null],
+  typesJa: ["教区",null],
   rows: `03|Saint George|セント・ジョージ教区|0
 04|Saint John|セント・ジョン教区|0
 05|Saint Mary|セント・メアリー教区|0
-06|Saint Paul|セント・ポール (ドミニカ国)|0
-07|Saint Peter|セント・ピーター (ドミニカ国)|0
+06|Saint Paul|セント・ポール教区|0
+07|Saint Peter|セント・ピーター教区|0
 08|Saint Philip|サンフィリップ教区|0
 10|Barbuda|バーブーダ島|1
 11|Redonda|レドンダ島|1`,

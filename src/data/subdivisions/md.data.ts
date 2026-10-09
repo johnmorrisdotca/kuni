@@ -8,14 +8,14 @@ import type { SubdivisionTable } from "../../rows";
 const MD: SubdivisionTable = {
   country: "MD",
   types: ["district","municipality"],
-  typesJa: [null,null],
+  typesJa: ["県",null],
   rows: `AN|Anenii Noi|アネニイ・ノイ県|0
 BA|Bălţi|バルツィ|1
 BD|Bender|ベンデル|1
 BR|Briceni|ブリチェニー県|0
 BS|Basarabeasca|バサラベアスカ県|0
 CA|Cahul|カフル県|0
-CL|Călărași|カララシ県 (モルドヴァ)|0
+CL|Călărași|カララシ県|0
 CM|Cimișlia|チミシリア県|0
 CR|Criuleni|クリウレニ県|0
 CS|Căușeni|カウシェニ県|0

@@ -64,7 +64,7 @@ MDF|M’diq-Fnideq|メディック・フニデク県|0|01
 MED|Médiouna|メディウナ州|1|06
 MEK|Meknès|メクネス|0|03
 MID|Midelt|ミデルト州|1|08
-MOH|Mohammedia|フェドハラ（モハメディア）|0|06
+MOH|Mohammedia|モハメディア|0|06
 MOU|Moulay Yacoub|ムーレイ・ヤコブ州|1|03
 NAD|Nador|ナドール州|1|02
 NOU|Nouaceur|ノウアセウル州|1|04

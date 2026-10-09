@@ -8,17 +8,17 @@ import type { SubdivisionTable } from "../../rows";
 const DM: SubdivisionTable = {
   country: "DM",
   types: ["parish"],
-  typesJa: [null],
-  rows: `02|Saint Andrew|セント・アンドルー (ドミニカ国)|0
-03|Saint David|セント・デイヴィッド郡 (ドミニカ国)|0
-04|Saint George|セント・ジョージ (ドミニカ国)|0
-05|Saint John|セント・ジョン郡 (ドミニカ国)|0
-06|Saint Joseph|セント・ジョゼフ教区 (ドミニカ国)|0
-07|Saint Luke|セント・ルーク (ドミニカ国)|0
-08|Saint Mark|セント・マーク (ドミニカ国)|0
-09|Saint Patrick|セント・パトリック (ドミニカ国)|0
-10|Saint Paul|セント・ポール (ドミニカ国)|0
-11|Saint Peter|セント・ピーター (ドミニカ国)|0`,
+  typesJa: ["教区"],
+  rows: `02|Saint Andrew|セント・アンドリュー教区|0
+03|Saint David|セント・デイヴィッド教区|0
+04|Saint George|セント・ジョージ教区|0
+05|Saint John|セント・ジョン教区|0
+06|Saint Joseph|セント・ジョゼフ教区|0
+07|Saint Luke|セント・ルーク教区|0
+08|Saint Mark|セント・マーク教区|0
+09|Saint Patrick|セント・パトリック教区|0
+10|Saint Paul|セント・ポール教区|0
+11|Saint Peter|セント・ピーター教区|0`,
 };
 
 export { DM };
