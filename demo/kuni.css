@@ -1,0 +1,36 @@
+/* Kuni's own look, after family.css: a panel for each lookup, its answer, and the call that made it. */
+:root { --intro-room: 14rem; --intro-room-wide: 7rem; }
+.lookups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 16px; align-items: start; }
+.lookup .fam-panel { gap: 12px; }
+.lookup h2 { font-size: 1.05rem; font-weight: 700; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.lookup h2 code { font-size: .8rem; font-weight: 600; color: var(--muted); }
+.lookup .blurb { color: var(--muted); font-size: .9rem; line-height: 1.5; max-width: 70ch; }
+.lookup .fam-row { align-items: center; }
+.lookup .fam-label { min-width: 4.2rem; }
+.lookup .fam-field { flex: 1 1 14rem; width: 0; min-width: 11rem; font-size: 1rem; }
+.lookup select.fam-field { appearance: none; -webkit-appearance: none; padding-right: 32px; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 17px) 50%, calc(100% - 12px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.lookup .fam-seg button { font-weight: 500; font-size: .85rem; }
+/* The answer and the list keep one height whatever they hold, so nothing below them moves; a long answer scrolls inside. */
+.answer { height: 22rem; overflow-y: auto; border: 1px solid var(--rule); border-radius: 12px; padding: 10px 14px; background: color-mix(in srgb, var(--surface) 60%, var(--page)); overflow-wrap: anywhere; }
+.answer .note { margin: 0; font-size: .9rem; line-height: 1.5; }
+.facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 14px; align-items: baseline; font-size: .95rem; }
+.facts dt { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.facts dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.list-box { height: 22rem; overflow: auto; border: 1px solid var(--rule); border-radius: 12px; background: color-mix(in srgb, var(--surface) 60%, var(--page)); }
+.list-box table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.list-box th { position: sticky; top: 0; background: var(--surface); text-align: left; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+.list-box td { padding: 6px 10px; border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent); overflow-wrap: anywhere; vertical-align: top; }
+.list-box td:first-child { font-family: var(--mono); font-size: .82rem; white-space: nowrap; }
+.list-box td.missing { color: var(--muted); font-style: italic; }
+.summary { margin: 0; font-size: .9rem; color: var(--muted); min-height: 2.8em; line-height: 1.4; }
+.call { font-size: .8rem; white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: hidden; min-height: 2.4rem; }
+.uses { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.uses code { font-family: var(--mono); font-size: .85rem; overflow-wrap: anywhere; }
+.more .uses { grid-template-columns: 1fr; }
+@media (max-width: 520px) {
+  .lookup .fam-label { min-width: 100%; }
+  .lookup .fam-field { flex-basis: 100%; }
+  .facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .facts dd { margin-bottom: 8px; }
+  .answer { height: 34rem; }
+}
