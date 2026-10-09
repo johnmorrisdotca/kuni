@@ -40,8 +40,8 @@ const inTarball = new Set(packed[0].files.map((file) => file.path));
 console.log(`ok   npm pack: ${packed[0].filename}, ${packed[0].files.length} files, ${Math.round(packed[0].size / 1024)} KB packed`);
 // The package depends on nothing at run time: chizu and the data sources are for the demo and the build only.
 if (Object.keys(pkg.dependencies ?? {}).length > 0 || Object.keys(pkg.peerDependencies ?? {}).length > 0) fail(`package.json has run-time dependencies: ${JSON.stringify({ ...pkg.dependencies, ...pkg.peerDependencies })}`);
-if ([...inTarball].some((file) => file.endsWith(".js") && /chizu/.test(readFileSync(join(root, file), "utf8")))) fail("a built file names chizu");
-console.log("ok   no run-time dependency, and no built file names chizu");
+if ([...inTarball].some((file) => file.endsWith(".js") && file !== "dist/element.js" && /chizu/.test(readFileSync(join(root, file), "utf8")))) fail("a core built file names chizu");
+console.log("ok   no run-time npm dependency; the optional Chizu loader stays in the browser element entry");
 const shipped = [...inTarball].filter((file) => file.startsWith("docs/") || file.startsWith("data-sources/") || /\.(webp|png|jpe?g|gif)$/.test(file));
 if (shipped.length > 0) fail(`the tarball holds pictures, docs or data sources: ${shipped.join(", ")}`);
 console.log("ok   no picture, nothing from docs/ and nothing from data-sources/ is in the tarball");

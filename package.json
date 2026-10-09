@@ -36,7 +36,10 @@
   "author": "John Morris",
   "license": "MIT",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/element-define.js",
+    "./dist/element-define.cjs"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -131,7 +134,7 @@
         "default": "./dist/groupings.cjs"
       }
     },
-    "./withdrawn": {
+"./withdrawn": {
       "import": {
         "types": "./dist/withdrawn.d.ts",
         "default": "./dist/withdrawn.js"
@@ -141,7 +144,28 @@
         "default": "./dist/withdrawn.cjs"
       }
     },
-    "./package.json": "./package.json"
+    
+"./package.json": "./package.json",
+    "./element": {
+      "import": {
+        "types": "./dist/element.d.ts",
+        "default": "./dist/element.js"
+      },
+      "require": {
+        "types": "./dist/element.d.cts",
+        "default": "./dist/element.cjs"
+      }
+    },
+    "./element/define": {
+      "import": {
+        "types": "./dist/element-define.d.ts",
+        "default": "./dist/element-define.js"
+      },
+      "require": {
+        "types": "./dist/element-define.d.cts",
+        "default": "./dist/element-define.cjs"
+      }
+    }
   },
   "files": [
     "dist",
@@ -174,7 +198,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
-    "@johnmorrisdotca/chizu": "1.0.2",
+    "@johnmorrisdotca/chizu": "1.2.0",
     "@playwright/test": "^1.64.0",
     "@types/node": "^24.0.0",
     "cldr-core": "48.2.0",

@@ -20,6 +20,7 @@ const countryImports: Plugin = {
   name: "kuni-country-imports",
   setup(build) {
     const extension = build.initialOptions.format === "cjs" ? "cjs" : "js";
+    build.onResolve({ filter: /^\.\/element\.js$/ }, () => ({ path: `./element.${extension}`, external: true }));
     build.onResolve({ filter: /^\.\.\/(subdivisions|subdivision-facts)\/[a-z]{2}\.js$/ }, (args) => ({
       path: `./${args.path.split("/")[1]}/${basename(args.path, ".js")}.${extension}`,
       external: true,
@@ -42,7 +43,7 @@ const shared = {
 export default defineConfig([
   {
     ...shared,
-    entry: { index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts" },
+entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts" },
     // Japanese names stay as they are, rather than as \u escapes three times their size.
     esbuildOptions(options) {
       options.charset = "utf8";

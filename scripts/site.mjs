@@ -5,7 +5,7 @@ import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 
 import { API_CSS, apiPage } from "./api.mjs";
 import { FACT_GAPS } from "./facts-config.ts";
-import { FAMILY_SCRIPT, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
+import { FAMILY_SCRIPT, familyEmbedBuilder, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
 
 const id = "kuni";
 
@@ -177,3 +177,13 @@ writeFileSync(
 writeFileSync("site/api.css", API_CSS);
 writeFileSync("site/api.html", apiPage({ id, name: "Kuni", icon: ICON }));
 console.log("site/ is ready: serve it, or let the Pages workflow publish it.");
+
+for (const file of ["builder.js", "builder.css"]) cpSync(`demo/${file}`, `site/${file}`);
+cpSync("demo/embed", "site/embed", { recursive: true });
+writeFileSync("site/family-embed-builder.js", `export ${familyEmbedBuilder.toString()};\n`);
+const builderParts = {
+  builderHead: familyHead({ id, title: "Kuni · build a country card", description: "Choose a country or subdivision, preview its card and copy the embed code." }),
+  builderHeader: familyHeader({ id, links: [{ href: "./", say: "toGallery" }] }),
+  unreviewed: familyUnreviewed({ id }), footer: familyFooter({ id }), script: `<script>${FAMILY_SCRIPT}</script>`,
+};
+writeFileSync("site/builder.html", readFileSync("demo/builder.html", "utf8").replace(/<!-- family:([A-Za-z]+) -->/g, (_match, key) => builderParts[key]));

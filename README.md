@@ -100,6 +100,8 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
 
+[Build a country or subdivision card](https://johnmorrisdotca.github.io/kuni/builder.html). The [embed guide](docs/embeds.md) covers its fields, properties and messages.
+
 ## Use it in your project
 
 ### Install
@@ -117,6 +119,8 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | Entry | What it carries | Size (ESM) |
 | --- | --- | --- |
 | `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 64 KB, 22 KB gzipped |
+| `@johnmorrisdotca/kuni/element` | `KuniCard`, `defineCard`, `KUNI_CARD_FIELDS`, `KUNI_CARD_OPTION_KEYS`; `KuniCardOptions` |
+| `@johnmorrisdotca/kuni/element/define` | registers the tag and re-exports the element API |
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 2 KB |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | One country's subdivisions, every level (`/subdivisions/jp`, `/subdivisions/us`, lower case) | 1 to 13 KB; Japan 2.9 KB |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 11 KB, then the country's own file |
@@ -234,6 +238,33 @@ The 31 are the entries of ISO 3166-3, whose codes, years and successors are the 
   console.log(countryByName("Holland")?.name.ja);   // オランダ
 </script>
 ```
+
+### A card in a framework
+
+React 19:
+
+```jsx
+import "@johnmorrisdotca/kuni/element/define";
+export function Japan() { return <kuni-card code="JP" fields="name flag map capital" />; }
+```
+
+Configure Vue's template compiler with `isCustomElement: tag => tag.startsWith("kuni-")`:
+
+```vue
+<script setup>
+import "@johnmorrisdotca/kuni/element/define";
+</script>
+<template><kuni-card code="JP" /></template>
+```
+
+```svelte
+<script>
+  import "@johnmorrisdotca/kuni/element/define";
+</script>
+<kuni-card code="JP" fields="name codes capital"></kuni-card>
+```
+
+The `@johnmorrisdotca/kuni/element` entry exports the class and `defineCard(tag?)`; `@johnmorrisdotca/kuni/element/define` registers the tag. Both are safe to import on a server. The builder also supplies plain HTML, Vue, Svelte, Angular and iframe examples.
 
 ## Examples
 
@@ -445,6 +476,8 @@ Left out on purpose: geometry (see [Chizu](https://github.com/johnmorrisdotca/ch
 
 ```text
 src/
+├── element.ts             country and subdivision cards
+├── element-define.ts      register the card element
 ├── index.ts            the main entry: the countries and their lookups
 ├── codes.ts            the "/codes" entry: the codes alone
 ├── subdivisions.ts     the "/subdivisions" entry: every subdivision and its lookups
@@ -543,14 +576,14 @@ Kuni is one of twenty-eight packages, each made for the same site, each at
 
 **Geography & data**
 
-- [address-plus](https://github.com/johnmorrisdotca/address-plus) (アドレスプラス): parse and format addresses in the United States, Canada and Japan. [Demo](https://johnmorrisdotca.github.io/address-plus/).
+- [address-plus](https://github.com/johnmorrisdotca/address-plus) (アドレスプラス): parse and format addresses in the United States, Canada, Japan, Australia and the United Kingdom. [Demo](https://johnmorrisdotca.github.io/address-plus/).
 - [Chizu](https://github.com/johnmorrisdotca/chizu) (地図): maps of the world and of countries' regions, in English and Japanese, with a quiz and callouts. [Demo](https://johnmorrisdotca.github.io/chizu/).
 - [Hata](https://github.com/johnmorrisdotca/hata) (旗): country and regional flags as SVG, at their true proportions and keyed by ISO code. [Demo](https://johnmorrisdotca.github.io/hata/).
 - [Kuni](https://github.com/johnmorrisdotca/kuni) (国): countries and their regions, with ISO codes and names in English and Japanese. [Demo](https://johnmorrisdotca.github.io/kuni/).
 
 **Developer tools**
 
-- [REST in Pieces](https://github.com/spxis/rest-in-pieces) (レスト・イン・ピーシズ): seeded test data and REST APIs for frontend development, with latency and error drills. [Demo](https://spxis.github.io/rest-in-pieces/).
+- [REST in Pieces](https://github.com/spxis/rest-in-pieces) (レスト・イン・ピーシーズ): seeded test data and REST APIs for frontend development, with latency and error drills. [Demo](https://spxis.github.io/rest-in-pieces/).
 
 
 **This package is Kuni.** The demos of all twenty-eight share one header and footer, so each links the rest.
