@@ -20,14 +20,14 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
 <td align="center" valign="top">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-desk-dark.webp">
-<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-desk-light.webp" alt="The demo on a desk, in English: the header with its language chooser, the API reference link, five cloth patches and the Help switch, then three panels. Find a country shows ドイツ typed in and its answer: the German flag, DE, DEU and 276, Germany, ドイツ, Deutschland, Europe, Berlin, +49, EUR, .de, two time zones, and 16 states. Subdivisions of a country shows Japan picked and a table of its prefectures with code, English and Japanese name, from JP-01 Hokkaidō 北海道, and the line 47 subdivisions; the main kind is prefecture. Look up a code begins below with JP-13 typed in." width="600">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-desk-light.webp" alt="The demo on a desk, in English: the header with its language chooser, the API reference link, five cloth patches and the Help switch, then a row of views (Look up, Country, Compare, All countries, Groupings, Quiz, Form widget, Data quality) and the Look up view's panels. Find a country shows ドイツ typed in and its answer: the German flag, DE, DEU and 276, Germany, ドイツ, Deutschland, Europe, Berlin, +49, EUR, .de, two time zones, and 16 states. Subdivisions of a country shows Japan picked and a table of its prefectures with code, English and Japanese name, from JP-01 Hokkaidō 北海道, and the line 47 subdivisions; the main kind is prefecture. Look up a code begins below with JP-13 typed in." width="600">
 </picture>
 <br><em>The demo on a desk: a country found by its Japanese name, and Japan's prefectures loaded on demand.</em>
 </td>
 <td align="center" valign="top">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-phone-dark.webp">
-<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-phone-light.webp" alt="The demo on a phone, in Japanese: the header, its language chooser, patches and buttons, then the first panel, 国を探す, with ドイツ typed in, its row of examples, and the start of its answer, the German flag and DE, DEU, 276" width="190">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-phone-light.webp" alt="The demo on a phone, in Japanese: the header, its language chooser, patches and buttons, then the first panel, 国を探す, with ドイツ typed in, its row of examples, and the start of its answer, the German flag and DE, DEU, 276, under the row of views" width="190">
 </picture>
 <br><em>On a phone, in Japanese, in the device's light or dark.</em>
 </td>
