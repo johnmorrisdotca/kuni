@@ -6,6 +6,11 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **The demo's Compare view colours each country on its own**: a colour picker for each outline (the family's green and red at first, never the same), and a "Show capitals" switch for the dot on each capital. Both are kept in the address (`#/compare/JP/GB?colours=2f5d4a,b5452c&capitals=off`), so a shared link shows what its sender saw, and swapping the countries takes each one's colour with it.
+- **The demo's tables and lists also download as a Markdown table and as SQL**, beside CSV, JSON and text. The Markdown is a GitHub table (a `|` in a cell is escaped, a line break is `<br>`); the SQL is a `CREATE TABLE` and an `INSERT` a row, with double-quoted names, single-quoted text and NULL for what is missing, and runs in SQLite, PostgreSQL and MySQL (MySQL needs `ANSI_QUOTES` and `NO_BACKSLASH_ESCAPES`, which the file's second line says). The writers are `demo/downloads.js`, the same file in kuni, chizu and hata, held to one hash and tested by loading the SQL into SQLite.
+
 ## [1.1.0] - 2026-10-09
 
 ### Added

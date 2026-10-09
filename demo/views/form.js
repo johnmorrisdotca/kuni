@@ -120,9 +120,9 @@ export function render(asked) {
     el("pre", { id: "form-snippet", class: "snippet", "data-testid": "form-snippet" }),
     el("h3", { class: "sub" }, say("form_lists")),
     el("p", { class: "fam-fine" }, say("form_lists_countries")),
-    downloads("kuni-countries-names", () => countries({ order: state.lang }).map((one) => ({ code: one.alpha2, en: one.name.en, ja: one.name.ja })), () => ["code", "en", "ja"], "form-downloads-countries"),
+    downloads("kuni-countries-names", () => countries({ order: state.lang }).map((one) => ({ code: one.alpha2, en: one.name.en, ja: one.name.ja })), () => ["code", "en", "ja"], "form-downloads-countries", "country_names"),
     el("p", { class: "fam-fine" }, say("form_lists_regions")),
-    downloads(() => `kuni-${state.country.toLowerCase()}-regions`, () => state.list.map((one) => ({ code: one.code, en: one.name.en, ja: one.name.ja, type: one.type })), () => ["code", "en", "ja", "type"], "form-downloads-regions"),
+    downloads(() => `kuni-${state.country.toLowerCase()}-regions`, () => state.list.map((one) => ({ code: one.code, en: one.name.en, ja: one.name.ja, type: one.type })), () => ["code", "en", "ja", "type"], "form-downloads-regions", "subdivisions"),
   );
   fillRegions();
 }

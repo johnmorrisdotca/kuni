@@ -84,6 +84,6 @@ export function render(asked) {
     table,
     others,
     former,
-    downloads(() => `kuni-${id}${day === "" ? "" : `-${day}`}`, () => members.map((row) => ({ grouping: id, code: row.code, name: row.name, since: periods.get(row.code) ?? null })), () => ["grouping", "code", "name", "since"], "grouping-downloads"),
+    downloads(() => `kuni-${id}${day === "" ? "" : `-${day}`}`, () => members.map((row) => ({ grouping: id, code: row.code, name: row.name, since: periods.get(row.code) ?? null })), () => ["grouping", "code", "name", "since"], "grouping-downloads", "grouping_members"),
   );
 }

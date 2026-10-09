@@ -155,7 +155,7 @@ export function render(asked) {
     el("div", { class: "fam-cards quiz-score", id: "quiz-score" }),
     el("div", { class: "quiz-card fam-felt", id: "quiz-card", "data-testid": "quiz-card" }),
     el("p", { class: "fam-fine" }, say("quiz_note")),
-    downloads(() => `kuni-quiz-${state.kind}-${state.seed}`, () => state.answered, () => ["number", "question", "answer", "chosen", "right"], "quiz-downloads"),
+    downloads(() => `kuni-quiz-${state.kind}-${state.seed}`, () => state.answered, () => ["number", "question", "answer", "chosen", "right"], "quiz-downloads", "quiz_answers"),
   );
   draw();
 }

@@ -101,7 +101,7 @@ export async function render(asked) {
     el("h3", { class: "sub" }, say("zones_title", { count: zones.length })),
     el("p", { class: "fam-fine" }, say("zones_note")),
     time,
-    downloads(() => `kuni-${code.toLowerCase()}`, () => [countryRow(one, facts)], () => ROW_COLUMNS, "country-downloads"),
+    downloads(() => `kuni-${code.toLowerCase()}`, () => [countryRow(one, facts)], () => ROW_COLUMNS, "country-downloads", "countries"),
   );
   startClock();
   const svg = await outline(code, say("outline_of", { name: one.name[lang()] }), fact.capitalPoint ?? undefined);

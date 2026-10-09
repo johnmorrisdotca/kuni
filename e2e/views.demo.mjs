@@ -91,10 +91,10 @@ test("compare: two countries side by side, the distance between capitals, and sw
   await expect(page.locator(at("compare-table"))).toContainText("Tokyo");
   await expect(page.locator(at("compare-outline-0")).locator("svg")).toBeAttached();
   await page.locator(at("compare-swap")).click();
-  await expect(page).toHaveURL(/#\/compare\/GB\/JP$/);
+  await expect(page).toHaveURL(/#\/compare\/GB\/JP(\?|$)/);
   await expect(page.locator(at("compare-a"))).toHaveValue("GB");
   await page.locator(at("compare-b")).selectOption("KR");
-  await expect(page).toHaveURL(/#\/compare\/GB\/KR$/);
+  await expect(page).toHaveURL(/#\/compare\/GB\/KR(\?|$)/);
   expect(errors).toEqual([]);
 });
 
@@ -116,6 +116,13 @@ test("every country: filter in either language, narrow by grouping, sort, and do
   const csv = await download(page, "table-downloads", "csv");
   expect(csv.name).toBe("kuni-countries.csv");
   expect(csv.text.trim().split("\n")).toHaveLength(28);
+  const markdown = await download(page, "table-downloads", "md");
+  expect(markdown.name).toBe("kuni-countries.md");
+  expect(markdown.text.split("\n")[1]).toMatch(/^\| --- /);
+  const sql = await download(page, "table-downloads", "sql");
+  expect(sql.name).toBe("kuni-countries.sql");
+  expect(sql.text).toContain('CREATE TABLE "countries" (');
+  expect(sql.text.match(/^INSERT INTO "countries"/gm)).toHaveLength(markdown.text.trim().split("\n").length - 2);
   const text = await download(page, "table-downloads", "txt");
   expect(text.text).toContain("Malta");
   expect(errors).toEqual([]);

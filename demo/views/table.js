@@ -115,7 +115,7 @@ export function render() {
         el("tbody", { id: "table-rows", "data-testid": "table-rows" }),
       ),
     ),
-    downloads("kuni-countries", shown, () => ROW_COLUMNS, "table-downloads"),
+    downloads("kuni-countries", shown, () => ROW_COLUMNS, "table-downloads", "countries"),
   );
   draw();
 }

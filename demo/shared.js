@@ -2,6 +2,7 @@
 // numbers in the page's language, a flag with its name always beside it, furigana, downloads, the copy button and
 // a country's outline from Chizu.
 import { countryName, flag } from "./dist/index.js";
+import { toMarkdown, toSql } from "./downloads.js";
 import { WORDS } from "./words.js";
 
 export const $ = (id) => document.getElementById(id);
@@ -94,23 +95,27 @@ export function save(name, text, type) {
 }
 
 /**
- * The three download buttons, CSV, JSON and TXT, for what `rows()` gives when pressed: [{ ... }, ...] with
- * `columns` in that order. `name` is the file's name without its extension.
+ * The five download buttons, CSV, JSON, TXT, Markdown (a table) and SQL (a table named `table`, with its rows), for
+ * what `rows()` gives when pressed: [{ ... }, ...] with `columns` in that order. `name` is the file's name without its
+ * extension. The Markdown and SQL writers are demo/downloads.js, the same file in every package of the family.
  */
-export function downloads(name, rows, columns, testid) {
+export function downloads(name, rows, columns, testid, table = "list") {
   const make = (kind) => () => {
     const list = rows();
     const file = typeof name === "function" ? name() : name;
     if (kind === "csv") save(`${file}.csv`, toCsv(list, columns()), "text/csv");
     if (kind === "json") save(`${file}.json`, `${JSON.stringify(list, null, 2)}\n`, "application/json");
     if (kind === "txt") save(`${file}.txt`, toText(list, columns()), "text/plain");
+    if (kind === "md") save(`${file}.md`, toMarkdown(columns(), list), "text/markdown");
+    if (kind === "sql") save(`${file}.sql`, toSql(table, columns(), list), "application/sql");
   };
+  const label = { csv: "CSV", json: "JSON", txt: "TXT", md: "Markdown", sql: "SQL" };
 
   return el(
     "div",
     { class: "fam-actions downloads", role: "group", "aria-label": say("download"), "data-testid": testid },
     el("span", { class: "fam-label" }, say("download")),
-    ...["csv", "json", "txt"].map((kind) => el("button", { type: "button", class: "fam-button", "data-kind": kind, "data-tip-en": WORDS.en[`download_${kind}`], "data-tip-ja": WORDS.ja[`download_${kind}`], onclick: make(kind) }, kind.toUpperCase())),
+    ...Object.keys(label).map((kind) => el("button", { type: "button", class: "fam-button", "data-kind": kind, "data-tip-en": WORDS.en[`download_${kind}`], "data-tip-ja": WORDS.ja[`download_${kind}`], onclick: make(kind) }, label[kind])),
   );
 }
 
