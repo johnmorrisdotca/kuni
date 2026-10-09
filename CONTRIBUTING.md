@@ -90,15 +90,18 @@ pnpm test:demo        # build the demo and play it in a real browser
 pnpm data             # rebuild src/data/ from data-sources/ and node_modules (no network)
 pnpm data:report      # the coverage, and docs/ja-gaps.md
 pnpm data:fetch       # download the CLDR and IANA inputs again (network)
-pnpm data:wikidata    # take a new Wikidata snapshot (network)
+pnpm data:wikidata    # take a new Wikidata snapshot of the names (network)
+pnpm data:facts       # take a new Wikidata snapshot of the facts and the bodies' dates (network)
 pnpm docs:make        # rewrite docs/strings-ja.md after changing a word of the demo
 ```
 
 ### The data
 
-Every file under `src/data/` and `src/subdivisions/` is written by `scripts/build-data.ts`; never edit one by
-hand. A wrong name is fixed at its source (Unicode CLDR, or Wikidata, which takes edits from anyone) and comes
-in with the next snapshot, or, when it is something only this package says, in `scripts/data-config.ts`.
+Every file under `src/data/`, `src/subdivisions/` and `src/subdivision-facts/` is written by
+`scripts/build-data.ts`; never edit one by hand. A wrong name or figure is fixed at its source (Unicode CLDR, or
+Wikidata, which takes edits from anyone) and comes in with the next snapshot, or, when it is something only this
+package says, in `scripts/data-config.ts`, `scripts/facts-config.ts` or `scripts/groupings-config.ts`, with the
+reason beside it.
 `pnpm data` run twice leaves the tree as it was.
 
 - **A name no source has stays `null`.** Never an English name copied into `ja`, and never a transliteration
@@ -108,6 +111,12 @@ in with the next snapshot, or, when it is something only this package says, in `
 - **A change in which Japanese names are missing** fails the tests until it is accepted on purpose with
   `pnpm data:report --accept`, which rewrites `data-sources/expected-ja-gaps.json`. Say in the pull request
   which names arrived or went.
+- **A fact no source has is `null`, and the gap is a decision.** A country without a population, a capital or a
+  driving side, or with no land border, is listed in `FACT_GAPS` (`scripts/facts-config.ts`) with the reason; the
+  build stops on a gap nobody has explained. A land border is kept only when Natural Earth's outlines confirm
+  Wikidata's statement, or when `BORDERS_ADDED` says why it is a border on land.
+- **A grouping says what it follows.** A body's members are its own published list with its address and the day
+  it was read; an informal grouping names the definition it follows and, in `note`, where definitions disagree.
 - **New inputs are pinned**: a file is recorded in `data-sources/sources.json` with its address, date and
   SHA-256, and its licence is added to `NOTICE.md`. No share-alike or GPL data (ODbL, CC BY-SA, GPL).
 

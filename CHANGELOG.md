@@ -6,6 +6,19 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Each country's capital in Japanese**: `country(code).capital` is now `{ en, ja }` (東京都, キーウ), from Wikidata, for all 245 countries that have a capital.
+- **`@johnmorrisdotca/kuni/facts`**, a new entry so the main one stays small: for every country its population and area with the year each is for, the coordinates of the country and of its capital, the countries it shares a land border with (`[]` for an island), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `facts(code)`, `allFacts()`, `distanceKm(from, to)` and `FACTS_READ`, the day Wikidata was read. Plain numbers and codes, for a build script to read as they are.
+- **`@johnmorrisdotca/kuni/subdivision-facts`** and **`/subdivision-facts/<code>`**: each subdivision's capital (in English and Japanese, with a reading in kana for Japan's prefectural capitals), population, area and coordinates, one country at a time, with `loadSubdivisionFacts(code)`. Complete for Japan's 47 prefectures.
+- **`@johnmorrisdotca/kuni/groupings`**: 107 groupings, each named in English and Japanese with its members, definition, source, licence and the day it was true. The seven continents; the 30 UN M49 areas; 23 international bodies (the UN, the EU with its candidates, the euro area, Schengen, the EEA, NATO, the G7 and G20, the OECD, ASEAN, the African Union, the Arab League, the GCC, the Commonwealth, OPEC, BRICS, Mercosur, the USMCA, APEC, CARICOM, the Pacific Islands Forum, the Nordic Council and Benelux) with the days members joined and left; 16 informal groupings (the Middle East, Latin America, the Caribbean, the Balkans, the Western Balkans, Scandinavia, the Nordic countries, the Baltic states, Central and Southeast Asia, the Maghreb, the Horn of Africa, the Sahel, the British Isles, Iberia, Asia-Pacific); and regions inside a country (Japan's eight 地方 and the nine-region variant, the US Census regions and divisions, Canada's five regions, the UK's four nations, Australia's states and territories). `groupings`, `grouping`, `groupingsOf` and `membersOf`, with `on` for a body's members on a past day.
+- Every public export has a doc comment, kept in the built `.d.ts` so an editor shows it, with `@param`, `@returns` and an example; the tests run every example. The API page shows each function's parameters, what it returns and its example, and each interface's fields.
+- `docs/facts.md`, `docs/subdivision-facts.md` and `docs/groupings.md` say what was decided, how much is known, and why the rest is `null`.
+
+### Changed
+
+- Equatorial Guinea's capital is Ciudad de la Paz (シウダ・デ・ラ・パス), where it moved in January 2026; it was Malabo.
+
 ## [1.0.0] - 2026-10-09
 
 The first version: every country and its subdivisions, with ISO 3166 codes and names in English and Japanese.

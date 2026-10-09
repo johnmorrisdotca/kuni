@@ -13,6 +13,7 @@ bytes are not the recorded ones.
 | `iana/tzdb-2026e/zone.tab` | https://data.iana.org/time-zones/tzdb-2026e/zone.tab | 2026-10-09 | Public domain |
 | `iana/tlds-alpha-by-domain.txt` | https://data.iana.org/TLD/tlds-alpha-by-domain.txt (version 2026100900) | 2026-10-09 | IANA, a list of facts |
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
+| `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `expected-ja-gaps.json` | Written by `pnpm data:report --accept`: the subdivisions with no Japanese name | | MIT |
 
 The CLDR files are from the release tag `release-48-2`, the same release as the `cldr-core` and
@@ -23,7 +24,8 @@ release 2026e. The TLD list has no release: IANA keeps one current file, and its
 
 ```sh
 pnpm data:fetch       # the CLDR and IANA files, again, and their lines in sources.json
-pnpm data:wikidata    # a new Wikidata snapshot, named for the day; the old one is removed
+pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day; the old one is removed
+pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
 pnpm data             # rebuild src/data/ from what is here
 pnpm data:report      # the coverage, and docs/ja-gaps.md
 ```
@@ -42,3 +44,19 @@ sorted so that two snapshots compare line by line:
   code (P474).
 
 Wikidata's structured data is CC0 (https://www.wikidata.org/wiki/Wikidata:Licensing).
+
+## The Wikidata facts snapshot
+
+`wikidata-facts-<day>.json` (`scripts/fetch-wikidata-facts.ts`) holds the answers to the queries written in it,
+grouped by code, one line a code, each row's columns named in its `columns`:
+
+- for every ISO 3166-1 code: the items holding it and whether each was dissolved; the capital (P36) with its labels
+  and coordinates; the best-ranked population (P1082) and area (P2046) with their dates and parts; the coordinates
+  (P625); the driving side (P1622); the countries it shares a border with (P47); and its memberships (P463) of the
+  bodies in `scripts/groupings-config.ts`, with their start, end and role;
+- the capitals named by hand in `scripts/facts-config.ts`, with their labels and coordinates;
+- for every ISO 3166-2 code: the capital with its labels, kana name and coordinates, the best-ranked population and
+  area, and the coordinates.
+
+It also needs the land outlines of `@johnmorrisdotca/chizu` (an npm development dependency, pinned to 1.0.2, read
+from `node_modules` as CLDR is) to tell a land border from one at sea.
