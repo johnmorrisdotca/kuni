@@ -3,7 +3,7 @@
 <p align="center"><strong>Every country and its subdivisions, with ISO 3166 codes and names in English and Japanese, for JavaScript and TypeScript.</strong><br>
 Kuni 国 is a typed, zero-dependency dataset of every country and its first-level subdivisions (states, provinces, prefectures, regions) with ISO 3166 codes and names in English and Japanese, built from Unicode CLDR and Wikidata. Look up a country or a region by code or by what somebody typed, in either language, and load only the countries you need.</p>
 
-<p align="center" lang="ja">世界の国と州・県・省などの区分を、ISO 3166コードと英語・日本語の名前で収めた、依存なしのTypeScriptデータセット。</p>
+<p align="center" lang="ja">世界の国と、州・県・省などの行政区画を、ISO 3166のコードと英語・日本語の名前で収めた、依存パッケージのないTypeScriptデータセット。</p>
 
 <p align="center">
   <a href="https://github.com/johnmorrisdotca/kuni/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/johnmorrisdotca/kuni/actions/workflows/ci.yml/badge.svg"></a>

@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const UG: SubdivisionTable = {
   country: "UG",
   types: ["district","region"],
-  typesJa: [null,null],
+  typesJa: [null,"地域"],
   rows: `101|Kalangala|カランガラ県|0|C
 102|Kampala|カンパラ県|0|C
 103|Kiboga|キボガ県|0|C

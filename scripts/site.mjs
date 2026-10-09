@@ -54,8 +54,8 @@ const panels = [
     name: "find",
     entry: "@johnmorrisdotca/kuni",
     fields: field("find-input", "input", "ドイツ"),
-    help: ["Type a country's name, in English or Japanese, or a code. Its codes, names, flag and the rest are shown.", "国名を英語か日本語で、またはコードを入力します。コード、名前、国旗などが表示されます。"],
-    exampleHelp: ["Fill the box with an example: names in either language, in kana, another name for a country, a code.", "例を入れます：英語や日本語の国名、かな、別名、コード。"],
+    help: ["Type a country's name, in English or Japanese, or a code. Its codes, names, flag and the rest are shown.", "英語か日本語の国名、またはコードを入力します。コード、名前、国旗などが表示されます。"],
+    exampleHelp: ["Fill the box with an example: names in either language, in kana, another name for a country, a code.", "入力欄に例を入れます：英語や日本語の国名、かな書きの国名、別名、コード。"],
   }),
   panel({
     name: "list",
@@ -74,7 +74,7 @@ const panels = [
     entry: "/subdivisions",
     fields: field("code-input", "input", "JP-13"),
     help: ["Type an ISO 3166-2 code such as JP-13, or a country's code. Its names, kind, level and the region it is inside are shown.", "JP-13 のような ISO 3166-2 のコード、または国のコードを入力します。名前、種類、階層、上位の区画が表示されます。"],
-    exampleHelp: ["Fill the box with an example: a prefecture, a province, a state, a French department, a country of the United Kingdom, a country's code.", "例を入れます：都道府県、州、フランスの県、イギリスの構成国、国のコード。"],
+    exampleHelp: ["Fill the box with an example: a prefecture, a province, a state, a French department, a country of the United Kingdom, a country's code.", "入力欄に例を入れます：都道府県、州、フランスの県、イギリスの構成国、国のコード。"],
   }),
 ];
 

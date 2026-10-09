@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const BE: SubdivisionTable = {
   country: "BE",
   types: ["province","region"],
-  typesJa: ["州",null],
+  typesJa: ["州","地域"],
   rows: `BRU|Brussels|ブリュッセル首都圏地域|1
 VAN|Antwerp|アントウェルペン州|0|VLG
 VBR|Flemish Brabant|フラームス＝ブラバント州|0|VLG

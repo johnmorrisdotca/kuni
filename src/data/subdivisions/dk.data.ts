@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const DK: SubdivisionTable = {
   country: "DK",
   types: ["region"],
-  typesJa: [null],
+  typesJa: ["地域"],
   rows: `81|Northern Denmark|北ユラン地域|0
 82|Central Denmark|中央ユラン地域|0
 83|Southern Denmark|南デンマーク地域|0

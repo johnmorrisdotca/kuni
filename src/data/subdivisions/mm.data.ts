@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const MM: SubdivisionTable = {
   country: "MM",
   types: ["region","state","territory"],
-  typesJa: ["区","州",null],
+  typesJa: ["管区","州",null],
   rows: `01|Sagaing|ザガイン管区|0
 02|Bago|バゴー管区|0
 03|Magway|マグウェ管区|0

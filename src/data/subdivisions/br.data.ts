@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const BR: SubdivisionTable = {
   country: "BR",
   types: ["capital-district","state"],
-  typesJa: ["区","州"],
+  typesJa: ["連邦直轄区","州"],
   rows: `AC|Acre|アクレ州|1
 AL|Alagoas|アラゴアス州|1
 AM|Amazonas|アマゾナス州|1

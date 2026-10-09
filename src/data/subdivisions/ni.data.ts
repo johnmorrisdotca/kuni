@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const NI: SubdivisionTable = {
   country: "NI",
   types: ["autonomous-region","department"],
-  typesJa: [null,"県"],
+  typesJa: ["自治地域","県"],
   rows: `AN|Atlántico Norte|北アトランティコ自治地域|0
 AS|Atlántico Sur|南アトランティコ自治地域|0
 BO|Boaco|ボアコ県|1

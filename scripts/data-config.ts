@@ -114,7 +114,9 @@ const JP_TYPE_BY_SUFFIX: Record<string, string> = {
 const JA_TYPE_WORDS: string[] = [
   "特別行政区",
   "自治共和国",
+  "連邦直轄区",
   "自治管区",
+  "自治地域",
   "直轄市",
   "特別市",
   "広域市",
@@ -129,6 +131,8 @@ const JA_TYPE_WORDS: string[] = [
   "教区",
   "地方",
   "地区",
+  "地域",
+  "管区",
   "州",
   "県",
   "省",

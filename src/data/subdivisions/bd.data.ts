@@ -8,7 +8,7 @@ import type { SubdivisionTable } from "../../rows";
 const BD: SubdivisionTable = {
   country: "BD",
   types: ["district","division"],
-  typesJa: ["県","区"],
+  typesJa: ["県","管区"],
   rows: `01|Bandarban|バンドルボン県|0|B
 02|Barguna|ボルグナ県|0|A
 03|Bogra|ボグラ県|0|E
