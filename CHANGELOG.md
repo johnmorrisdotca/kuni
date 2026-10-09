@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-09
+
 ### Added
 
 - **Each country's capital in Japanese**: `country(code).capital` is now `{ en, ja }` (東京, キーウ), from Wikidata, for all 245 countries that have a capital.

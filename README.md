@@ -525,7 +525,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md); the commands are under [Development](#
 
 ## Changes
 
-See [CHANGELOG.md](./CHANGELOG.md). The first version is 1.0.0.
+See [CHANGELOG.md](./CHANGELOG.md). The latest release, 1.1.0, adds country and subdivision facts, 107 groupings, corrected names and continents, documentation on every export, and a demo with a country page, compare, a table, quizzes and a form widget.
 
 ## Licence
 
