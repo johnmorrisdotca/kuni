@@ -138,7 +138,7 @@ export async function render(asked) {
       { class: "fam-table-box" },
       el(
         "table",
-        { "data-testid": "compare-table" },
+        { class: "compare-table", "data-testid": "compare-table" },
         el("thead", {}, el("tr", {}, el("th", { scope: "col" }, ""), el("th", { scope: "col" }, flagged(a)), el("th", { scope: "col" }, flagged(b)), el("th", { scope: "col" }, say("compare_diff")))),
         el(
           "tbody",
