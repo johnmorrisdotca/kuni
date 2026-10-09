@@ -30,10 +30,10 @@ export async function render(asked) {
     helpRow(
       "compare",
       el("label", { class: "fam-label", for: "compare-a" }, say("compare_a")),
-      countrySelect("compare-a", a, (value) => go(value, b), { countries }),
+      countrySelect("compare-a", a, (value) => go(value, pair[1]), { countries }),
       el("label", { class: "fam-label", for: "compare-b" }, say("compare_b")),
-      countrySelect("compare-b", b, (value) => go(a, value), { countries }),
-      el("button", { type: "button", class: "fam-button", "data-testid": "compare-swap", onclick: () => go(b, a) }, say("swap")),
+      countrySelect("compare-b", b, (value) => go(pair[0], value), { countries }),
+      el("button", { type: "button", class: "fam-button", "data-testid": "compare-swap", onclick: () => go(pair[1], pair[0]) }, say("swap")),
     ),
     el("div", { class: "compare-pictures" }, pictures),
     el("p", { class: "fam-fine" }, say("compare_scale")),

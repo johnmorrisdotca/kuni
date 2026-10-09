@@ -92,6 +92,7 @@ test("compare: two countries side by side, the distance between capitals, and sw
   await expect(page.locator(at("compare-outline-0")).locator("svg")).toBeAttached();
   await page.locator(at("compare-swap")).click();
   await expect(page).toHaveURL(/#\/compare\/GB\/JP$/);
+  await expect(page.locator(at("compare-a"))).toHaveValue("GB");
   await page.locator(at("compare-b")).selectOption("KR");
   await expect(page).toHaveURL(/#\/compare\/GB\/KR$/);
   expect(errors).toEqual([]);
