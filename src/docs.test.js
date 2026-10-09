@@ -83,7 +83,7 @@ describe("the other documents", () => {
   });
 
   it("have the files a visitor looks for", () => {
-    for (const file of [".github/ISSUE_TEMPLATE/report-a-bug.md", ".github/ISSUE_TEMPLATE/suggest-a-feature.md", ".github/ISSUE_TEMPLATE/fix-a-translation.md", ".github/ISSUE_TEMPLATE/add-my-project.md", ".github/pull_request_template.md", "SECURITY.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE", "NOTICE.md", "docs/PLAN.md", "docs/disagreements.md", "docs/ja-gaps.md", "data-sources/README.md"]) {
+    for (const file of [".github/ISSUE_TEMPLATE/report-a-bug.md", ".github/ISSUE_TEMPLATE/suggest-a-feature.md", ".github/ISSUE_TEMPLATE/fix-a-translation.md", ".github/ISSUE_TEMPLATE/add-my-project.md", ".github/pull_request_template.md", "SECURITY.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE", "NOTICE.md", "docs/PLAN.md", "docs/disagreements.md", "docs/name-rules.md", "docs/ja-gaps.md", "data-sources/README.md"]) {
       expect(existsSync(file), file).toBe(true);
     }
   });

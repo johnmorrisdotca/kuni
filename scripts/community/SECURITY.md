@@ -12,5 +12,5 @@ drawing into the page, please write to john@johnmorris.ca rather than opening
 a public issue. Reports are read and kept confidential, and a fix is released
 as soon as there is one.
 
-Only the latest version of each package is supported. Each needs Node 22 or
+Only the latest version of each package is supported. Each needs Node 24 or
 later on a server; in a browser, any current one.

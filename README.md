@@ -1,7 +1,7 @@
 <h1 align="center">Kuni <sub>国</sub></h1>
 
-<p align="center"><strong>Every country and its subdivisions, with ISO 3166 codes and names in English and Japanese, for JavaScript and TypeScript.</strong><br>
-Kuni 国 is a typed, zero-dependency dataset of every country and its first-level subdivisions (states, provinces, prefectures, regions) with ISO 3166 codes and names in English and Japanese, built from Unicode CLDR and Wikidata. Look up a country or a region by code or by what somebody typed, in either language, and load only the countries you need.</p>
+<p align="center"><strong>Kuni 国: every country and its states, provinces and prefectures, with ISO 3166 codes and names in English and Japanese.</strong><br>
+A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one country at a time, for JavaScript and TypeScript. Look up a country or a region by code or by what somebody typed, in either language, and load only the countries you need.</p>
 
 <p align="center" lang="ja">世界の国と、州・県・省などの行政区画を、ISO 3166のコードと英語・日本語の名前で収めた、依存パッケージのないTypeScriptデータセット。</p>
 
@@ -143,7 +143,7 @@ subdivisionTypeLabel("JP-13", "ja");                         // "都"
 
 ```html
 <script type="module">
-  import { countryByName } from "https://cdn.jsdelivr.net/npm/@johnmorrisdotca/kuni@0/dist/index.js";
+  import { countryByName } from "https://cdn.jsdelivr.net/npm/@johnmorrisdotca/kuni@1/dist/index.js";
   console.log(countryByName("Holland")?.name.ja);   // オランダ
 </script>
 ```
@@ -257,12 +257,12 @@ None, on purpose: Kuni is data and lookups, with no colours, markup or styles, s
 | --- | --- | --- |
 | Countries | 250: the 249 ISO 3166-1 codes and XK | `COUNTRY_CODES` |
 | Subdivisions | 5,046 in 200 countries; 3,590 at level 1, 1,456 at level 2, none at level 3 | `allSubdivisions` |
-| Japanese names of subdivisions | 3,523 of 3,590 at level 1 (3,428 from CLDR, 95 from Wikidata); 4,747 of all 5,046 | `name.ja`, [docs/ja-gaps.md](./docs/ja-gaps.md) |
+| Japanese names of subdivisions | 3,523 of 3,590 at level 1 (3,387 from CLDR, 41 written by hand, 95 from Wikidata); 4,747 of all 5,046 | `name.ja`, [docs/ja-gaps.md](./docs/ja-gaps.md) |
 | Kinds of place | known for 4,739 of 5,046; the rest are `null` | `type` |
 | Readings in kana | Japan's 47 prefectures, and the 53 country names written with kanji | `reading` |
 | Languages | English and Japanese | `LANGUAGES` |
 
-Not here: cities, postal codes, coordinates, outlines, populations, and names in other languages. CLDR marks nearly all of its Japanese subdivision names "provisional"; where Wikidata names a place differently, CLDR's name is kept and the difference listed in [docs/disagreements.md](./docs/disagreements.md) (330 of 4,368 compared) for review.
+Not here: cities, postal codes, coordinates, outlines, populations, and names in other languages. CLDR marks nearly all of its Japanese subdivision names "provisional"; where Wikidata names a place differently, CLDR's name is kept and the difference listed in [docs/disagreements.md](./docs/disagreements.md) (234 of 4,322 compared) for review. CLDR's trailing brackets (セント・ポール (ドミニカ国), バリンゴ (カウンティ)) are taken off by a rule listed in [docs/name-rules.md](./docs/name-rules.md), and 46 names a reviewer found wrong or out of date are written by hand, with their reasons, in [docs/disagreements.md](./docs/disagreements.md).
 
 ## Accessibility
 
@@ -280,7 +280,7 @@ The package is data and plain functions, so it runs anywhere JavaScript does: an
 
 ## Languages
 
-Every name is in English and Japanese. The country names, the subdivision names and the kinds of place in Japanese come from Unicode CLDR and Wikidata. A few strings are written for this package: the aliases (米国, 英国, 豪州), the readings of the 53 country names written with kanji and of two prefectures, the Japanese type words the build looks for, and the demo's own words. **Japanese: included; not yet reviewed by a native reader. Corrections welcome.** Every line of the demo is listed beside its English in [docs/strings-ja.md](./docs/strings-ja.md), and there is an [issue template](https://github.com/johnmorrisdotca/kuni/issues/new?template=fix-a-translation.md) for fixing a name or a line.
+Every name is in English and Japanese. The country names, the subdivision names and the kinds of place in Japanese come from Unicode CLDR and Wikidata. A few strings are written for this package: the aliases (米国, 英国, 豪州), the readings of the 53 country names written with kanji and of two prefectures, the Japanese type words the build looks for, and the demo's own words. The subdivision names have been read through by a strong, but not a native, reader of Japanese, who corrected 46 of them (listed in [docs/disagreements.md](./docs/disagreements.md), with six questions left open). **Japanese: included; not yet reviewed by a native reader. Corrections welcome.** Every line of the demo is listed beside its English in [docs/strings-ja.md](./docs/strings-ja.md), and there is an [issue template](https://github.com/johnmorrisdotca/kuni/issues/new?template=fix-a-translation.md) for fixing a name or a line.
 
 ## Roadmap
 
@@ -319,7 +319,7 @@ src/
 | Japanese names CLDR lacks, prefecture readings, calling codes, kinds of place | Wikidata, a snapshot of 2026-10-09 | CC0 |
 | Own names, capitals, continents, languages | countries-list 3.4.1 | MIT |
 | Time zones and top-level domains | IANA tzdb 2026e `zone.tab`, IANA's TLD list | Public domain; a list of facts |
-| Aliases and a few readings | written for this package | MIT |
+| Aliases, a few readings and 46 corrected Japanese subdivision names | written for this package | MIT |
 
 [NOTICE.md](./NOTICE.md) carries the Unicode licence text and says what was changed, and [data-sources/README.md](./data-sources/README.md) says where every input came from and how to refresh it. Nothing under ODbL, CC BY-SA or the GPL is used, so the dataset is shipped under MIT with those notices.
 
@@ -390,7 +390,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md); the commands are under [Development](#
 
 ## Changes
 
-See [CHANGELOG.md](./CHANGELOG.md). Nothing has been released yet.
+See [CHANGELOG.md](./CHANGELOG.md). The first version is 1.0.0.
 
 ## Licence
 

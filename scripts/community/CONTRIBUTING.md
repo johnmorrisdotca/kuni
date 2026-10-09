@@ -43,7 +43,7 @@ data scripts) are listed under its own heading below.
 - **Art and sound are CC0 or public domain only**, checked at the source and
   credited. Data and word lists may be under another licence that lets them be
   shipped, with its notice kept in `NOTICE.md`. No GPL or LGPL code.
-- **Needs Node 22 or later.**
+- **Needs Node 24 or later.**
 - **A README table, example or count that a test holds to the code** changes
   together with the code.
 - **The family's own files are the same in every package**: `demo/family.css`,
