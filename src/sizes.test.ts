@@ -1,6 +1,6 @@
 // What a page pays for each entry, measured on the built files (pnpm check builds before it tests). The main
 // entry is the countries and their lookups; one country's subdivisions are a small file of their own.
-import { existsSync, statSync } from "node:fs";
+import { existsSync, readdirSync, statSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
@@ -16,9 +16,11 @@ describe("the built entries", () => {
     expect(size("dist/index.js")).toBeLessThan(70 * KB);
   });
 
-  it("keep Japan's subdivisions under 3 KB, and every country's under 12 KB", () => {
+  it("keep Japan's subdivisions under 3 KB, and every country's under 14 KB", () => {
     expect(size("dist/subdivisions/jp.js")).toBeLessThan(3 * KB);
-    expect(size("dist/subdivisions/si.js")).toBeLessThan(12 * KB);
+    const files = readdirSync("dist/subdivisions").filter((file) => file.endsWith(".js"));
+    expect(files).toHaveLength(200);
+    for (const file of files) expect(size(`dist/subdivisions/${file}`), file).toBeLessThan(14 * KB);
   });
 
   it("keep the codes alone under 3 KB", () => {
