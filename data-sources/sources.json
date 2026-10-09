@@ -1,0 +1,46 @@
+{
+  "files": [
+    {
+      "path": "cldr/release-48-2/subdivisions-en.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/en.xml",
+      "read": "2026-10-09",
+      "sha256": "997a14da1144bb66f36a829db1783afe41f7529e33070afbe964bdd8e387b1d2",
+      "note": "Unicode CLDR 48.2, English names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/subdivisions-ja.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/ja.xml",
+      "read": "2026-10-09",
+      "sha256": "3e220ad56170802ec067d4d2836e1f98e62479293c19ee6dcbb451852eda4fe0",
+      "note": "Unicode CLDR 48.2, Japanese names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/validity-subdivision.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/validity/subdivision.xml",
+      "read": "2026-10-09",
+      "sha256": "93b12c9d55938266c96d44a7ccbb66800afeef4f9dd48b0dc16edfab89833d95",
+      "note": "Unicode CLDR 48.2, which subdivision codes are current and which deprecated (Unicode-3.0)"
+    },
+    {
+      "path": "iana/tlds-alpha-by-domain.txt",
+      "url": "https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
+      "read": "2026-10-09",
+      "sha256": "d8596c734273ec6280d42c5feb4db8618e71dc485f64d483774817a781093d85",
+      "note": "IANA root zone, the list of top-level domains"
+    },
+    {
+      "path": "iana/tzdb-2026e/zone.tab",
+      "url": "https://data.iana.org/time-zones/tzdb-2026e/zone.tab",
+      "read": "2026-10-09",
+      "sha256": "e2e8e31c4e10f44576c79345e76060591dbb3eef6ce14e006afc8a373caa9593",
+      "note": "IANA time zone database 2026e, country to zone table (public domain)"
+    },
+    {
+      "path": "wikidata-2026-10-09.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-10-09",
+      "sha256": "5bdc89a3c4f9294fe7dc76c1e73467e673c6f302a00e5217288a6676216363f6",
+      "note": "Wikidata SPARQL answers for ISO 3166-2 (P300) and ISO 3166-1 (P297) codes; the queries are in the file (CC0)"
+    }
+  ]
+}
