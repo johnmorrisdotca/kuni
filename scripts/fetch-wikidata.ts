@@ -151,7 +151,8 @@ const main = async (): Promise<void> => {
   mkdirSync(SOURCES_DIR, { recursive: true });
   let manifest = readManifest();
   // One snapshot at a time: the older file goes, and sources.json names the new one.
-  for (const old of manifest.files.filter((file) => file.path.startsWith("wikidata-") && file.path !== path)) {
+  // The facts snapshot (wikidata-facts-<day>.json, scripts/fetch-wikidata-facts.ts) is a file of its own and stays.
+  for (const old of manifest.files.filter((file) => /^wikidata-\d{4}-\d{2}-\d{2}\.json$/.test(file.path) && file.path !== path)) {
     rmSync(join(SOURCES_DIR, old.path), { force: true });
     manifest = { files: manifest.files.filter((file) => file.path !== old.path) };
   }

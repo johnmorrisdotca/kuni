@@ -91,6 +91,36 @@
         "default": "./dist/load.cjs"
       }
     },
+    "./facts": {
+      "import": {
+        "types": "./dist/facts.d.ts",
+        "default": "./dist/facts.js"
+      },
+      "require": {
+        "types": "./dist/facts.d.cts",
+        "default": "./dist/facts.cjs"
+      }
+    },
+    "./subdivision-facts": {
+      "import": {
+        "types": "./dist/subdivision-facts.d.ts",
+        "default": "./dist/subdivision-facts.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts.d.cts",
+        "default": "./dist/subdivision-facts.cjs"
+      }
+    },
+    "./subdivision-facts/*": {
+      "import": {
+        "types": "./dist/subdivision-facts/*.d.ts",
+        "default": "./dist/subdivision-facts/*.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/*.d.cts",
+        "default": "./dist/subdivision-facts/*.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -115,6 +145,7 @@
     "data:report": "node scripts/build-data.ts --report",
     "data:fetch": "node scripts/fetch-sources.ts",
     "data:wikidata": "node scripts/fetch-wikidata.ts",
+    "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "site": "pnpm build && node scripts/site.mjs",
     "test:demo": "pnpm site && playwright test",
     "screenshots:readme": "pnpm site && node scripts/readme-pictures.mjs",
@@ -122,6 +153,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@johnmorrisdotca/chizu": "1.0.2",
     "@playwright/test": "^1.64.0",
     "@types/node": "^24.0.0",
     "cldr-core": "48.2.0",

@@ -41,6 +41,13 @@
       "read": "2026-10-09",
       "sha256": "5bdc89a3c4f9294fe7dc76c1e73467e673c6f302a00e5217288a6676216363f6",
       "note": "Wikidata SPARQL answers for ISO 3166-2 (P300) and ISO 3166-1 (P297) codes; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-facts-2026-10-09.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-10-09",
+      "sha256": "eacc974f8d0312659be991082389f9ba89d2a30941e710f2bd0bc0c784e311a3",
+      "note": "Wikidata SPARQL answers for each ISO 3166-1 (P297) country and ISO 3166-2 (P300) subdivision: capital, population, area, coordinates, and for countries driving side and borders; the queries are in the file (CC0)"
     }
   ]
 }
