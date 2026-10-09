@@ -210,7 +210,7 @@ test("search by calling code, currency and domain lists every country that uses 
 
 test("data quality: the counts, the gaps by country, the disagreements and the facts no source gives", async ({ page }) => {
   const errors = await view(page, "quality");
-  await expect(page.locator(at("quality-cards"))).toContainText("3,523/3,590");
+  await expect(page.locator(at("quality-cards"))).toContainText("3,527/3,594");
   await expect(page.locator(at("quality-gaps"))).toContainText("Estonia");
   expect(await page.locator(at("quality-disagreements")).locator("tbody tr").count()).toBeGreaterThan(100);
   await expect(page.locator(at("quality-fact-gaps"))).toContainText("Antarctica");

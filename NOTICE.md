@@ -10,7 +10,7 @@ address, the day it was read and its SHA-256.
 | Country names in English and Japanese, their short and variant forms, alpha-3 and numeric codes, currencies, UN M49 continents and subregions | Unicode CLDR 48.2 (`cldr-localenames-full` and `cldr-core` 48.2.0 on npm) | Unicode-3.0, below |
 | Subdivision codes, English and Japanese names, the levels they are at and what they are inside | Unicode CLDR 48.2 (`common/subdivisions/en.xml`, `ja.xml`, `common/validity/subdivision.xml` at the tag `release-48-2`, and `cldr-core`'s `subdivisionContainment.json` and `aliases.json`) | Unicode-3.0, below |
 | Japanese names of the subdivisions CLDR has none for, the kana readings of Japan's prefectures, calling codes, and what kind of place each subdivision is | Wikidata, the snapshot `data-sources/wikidata-2026-10-09.json` | CC0, below |
-| Each country's own name, capital, continent and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |
+| Each country's own name, capital and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |
 | Each country's capital in Japanese and its coordinates, population, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the snapshot `data-sources/wikidata-facts-2026-10-09.json` | CC0, below |
 | Which land borders are real (two outlines touch) | Natural Earth 5.1.2 admin-0 countries at 1:50m, as drawn by `@johnmorrisdotca/chizu` 1.0.2 (a development dependency of the build; the package does not depend on it) | Public domain (Natural Earth); MIT (Chizu), below |
 | The first day of the week, the measurement system, the paper size and the clock; the UN M49 areas and their members; the members of the United Nations | Unicode CLDR 48.2 (`cldr-core` 48.2.0: weekData, measurementData, timeData, territoryContainment) | Unicode-3.0, below |
@@ -125,8 +125,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.```
 
-From https://github.com/annexare/Countries, version 3.4.1 on npm. Its own name (`native`), capital, continent and
-languages are used as they are; its calling code only where Wikidata has none.
+From https://github.com/annexare/Countries, version 3.4.1 on npm. Its own name (`native`), capital and languages
+are used as they are (from 1.1.0 the continent is UN M49's, from CLDR); its calling code only where Wikidata has none.
 
 ## IANA
 

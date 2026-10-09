@@ -34,7 +34,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
 </tr>
 </table>
 
-Kuni is the country list every site ends up keeping for itself, kept once, with what a form, a profile page or a map quiz asks of it: the 250 countries with their ISO 3166-1 codes, and their 5,046 ISO 3166-2 subdivisions (Japan's prefectures, the American states, Canada's provinces and territories, France's regions and departments), each named in English and in Japanese. Beside the names, in entries of their own so a page that only names countries does not carry them: each country's capital, population and area with the year each is for, coordinates, land borders, driving side and calendar conventions; each subdivision's capital, population and area; and 107 groupings, from the continents and the EU to Japan's eight regions. The names are Unicode CLDR's, with Wikidata filling the gaps, so they are the same on a server and in a browser, which `Intl.DisplayNames` is not. It looks a country up by what somebody typed (Holland, ＵＳＡ, どいつ, 米国) and a region by its code or its name. It works in [the demo](https://johnmorrisdotca.github.io/kuni/) with nothing to install.
+Kuni is the country list every site ends up keeping for itself, kept once, with what a form, a profile page or a map quiz asks of it: the 250 countries with their ISO 3166-1 codes, and their 5,050 ISO 3166-2 subdivisions (Japan's prefectures, the American states, Canada's provinces and territories, France's regions and departments), each named in English and in Japanese. Beside the names, in entries of their own so a page that only names countries does not carry them: each country's capital, population and area with the year each is for, coordinates, land borders, driving side and calendar conventions; each subdivision's capital, population and area; and 107 groupings, from the continents and the EU to Japan's eight regions. The names are Unicode CLDR's, with Wikidata filling the gaps, so they are the same on a server and in a browser, which `Intl.DisplayNames` is not. It looks a country up by what somebody typed (Holland, ＵＳＡ, どいつ, 米国) and a region by its code or its name. It works in [the demo](https://johnmorrisdotca.github.io/kuni/) with nothing to install.
 
 ## In 30 seconds
 
@@ -84,11 +84,11 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 ## Features
 
 - **Every country.** The 249 ISO 3166-1 codes and Kosovo (XK, user-assigned), each with alpha-2, alpha-3 and numeric codes, its flag, continent, UN M49 subregion, calling code, currencies, top-level domain, capital, time zones and languages.
-- **Every subdivision.** 5,046 ISO 3166-2 codes in 200 countries: 3,590 at the first level and 1,456 below it (France's departments in its regions, England's councils in England), each with its level and parent.
-- **English and Japanese names** from Unicode CLDR 48.2, with CLDR's short forms (UK, アメリカ) and variants (Ivory Coast, 象牙海岸). Japanese names for 3,523 of the 3,590 first-level subdivisions, and `null` for the rest, never a guess.
+- **Every subdivision.** 5,050 ISO 3166-2 codes in 200 countries: 3,594 at the first level and 1,456 below it (France's departments in its regions, England's councils in England), each with its level and parent.
+- **English and Japanese names** from Unicode CLDR 48.2, with CLDR's short forms (UK, アメリカ) and variants (Ivory Coast, 象牙海岸). Japanese names for 3,527 of the 3,594 first-level subdivisions, and `null` for the rest, never a guess.
 - **Found by what somebody typed.** Case, accents, full-width letters, half-width kana and hiragana or katakana are folded away, and the aliases people use (Holland, UK, Burma, 米国) are known.
 - **Kinds of place**: prefecture, state, province, region and some thirty more, read from Wikidata, with the Japanese word for each (県, 州, 省) where a country's names agree on one.
-- **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,962 of 5,046), with readings in kana for Japan's prefectural capitals (さっぽろし).
+- **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,968 of 5,050), with readings in kana for Japan's prefectural capitals (さっぽろし).
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
@@ -117,7 +117,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 2 KB |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | One country's subdivisions, every level (`/subdivisions/jp`, `/subdivisions/us`, lower case) | 1 to 13 KB; Japan 2.9 KB |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 11 KB, then the country's own file |
-| `@johnmorrisdotca/kuni/subdivisions` | All 5,046 subdivisions and the subdivision lookups | 216 KB, 85 KB gzipped |
+| `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 216 KB, 85 KB gzipped |
 | `@johnmorrisdotca/kuni/facts` | Every country's population, area, coordinates, borders, driving side and conventions | 25 KB, 9 KB gzipped |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 12 KB, then the country's own file |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 1 to 16 KB; Japan 4.9 KB |
@@ -274,7 +274,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/facts` | `facts`, `allFacts`, `distanceKm`, `FACTS_READ`, and the types `CountryFacts`, `LatLon`, `DrivingSide`, `WeekStart`, `MeasurementSystem`, `PaperSize` and `HourCycle` |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts`, and the types `SubdivisionFacts` and `LatLon` |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | the country's subdivision facts as the default export and as `SUBDIVISION_FACTS` |
-| `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
+| `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
 
 A country:
 
@@ -288,7 +288,7 @@ interface Country {
   shortName?: { en?: string; ja?: string };           // "UK", アメリカ
   reading?: string;               // hiragana, where the Japanese name is in kanji: "にほん"
   flag: string;                   // the flag emoji
-  continent: "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
+  continent: "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";   // from UN M49; Antarctica by hand
   subregion?: string;             // UN M49: "030", Eastern Asia
   callingCode?: string;           // "+81"; "+1" for every member of the North American plan
   currency?: string[];            // ["JPY"]
@@ -346,6 +346,7 @@ interface Grouping {
   name: { en: string; ja: string };
   shortName?: { en?: string; ja?: string };   // "EU"
   reading?: string;               // "おうしゅうれんごう"
+  otherNames?: readonly { en: string; ja: string; reading?: string }[];   // Kansai (関西地方) for the Kinki region
   informal: boolean;
   country?: string;               // for regions inside a country: "JP"
   parent?: string;                // for UN M49: "m49-142"
@@ -371,19 +372,19 @@ None, on purpose: Kuni is data and lookups, with no colours, markup or styles, s
 | Limit | Value | Where |
 | --- | --- | --- |
 | Countries | 250: the 249 ISO 3166-1 codes and XK | `COUNTRY_CODES` |
-| Subdivisions | 5,046 in 200 countries; 3,590 at level 1, 1,456 at level 2, none at level 3 | `allSubdivisions` |
-| Japanese names of subdivisions | 3,523 of 3,590 at level 1 (3,387 from CLDR, 41 written by hand, 95 from Wikidata); 4,747 of all 5,046 | `name.ja`, [docs/ja-gaps.md](./docs/ja-gaps.md) |
-| Kinds of place | known for 4,739 of 5,046; the rest are `null` | `type` |
+| Subdivisions | 5,050 in 200 countries; 3,594 at level 1, 1,456 at level 2, none at level 3 | `allSubdivisions` |
+| Japanese names of subdivisions | 3,527 of 3,594 at level 1 (3,376 from CLDR, 50 written by hand, 101 from Wikidata); 4,751 of all 5,050 | `name.ja`, [docs/ja-gaps.md](./docs/ja-gaps.md) |
+| Kinds of place | known for 4,745 of 5,050; the rest are `null` | `type` |
 | Readings in kana | Japan's 47 prefectures, and the 53 country names written with kanji | `reading` |
-| Capitals | 245 of 250 countries, each in English and Japanese; 3,962 of 5,046 subdivisions (2,850 of 3,590 at the first level), Japan's 47 with readings | `capital`, `SubdivisionFacts.capital` |
-| Population | 249 of 250 countries, with the year; 4,238 of 5,046 subdivisions | `/facts`, `/subdivision-facts` |
-| Area | 250 of 250 countries; 4,364 of 5,046 subdivisions | `areaKm2` |
-| Coordinates | 250 of 250 countries, 245 capitals; 4,774 of 5,046 subdivisions | `point`, `capitalPoint` |
+| Capitals | 245 of 250 countries, each in English and Japanese; 3,968 of 5,050 subdivisions (2,856 of 3,594 at the first level), Japan's 47 with readings | `capital`, `SubdivisionFacts.capital` |
+| Population | 249 of 250 countries, with the year; 4,244 of 5,050 subdivisions | `/facts`, `/subdivision-facts` |
+| Area | 250 of 250 countries; 4,371 of 5,050 subdivisions | `areaKm2` |
+| Coordinates | 250 of 250 countries, 245 capitals; 4,780 of 5,050 subdivisions | `point`, `capitalPoint` |
 | Land borders | 327 pairs; 166 countries have one or more, 84 (islands, and Antarctica) none | `borders` |
 | Groupings | 7 continents, 30 UN M49 areas, 23 bodies, 16 informal, 31 inside a country | `/groupings` |
 | Languages | English and Japanese | `LANGUAGES` |
 
-Not here: cities, postal codes, outlines, and names in other languages. CLDR marks nearly all of its Japanese subdivision names "provisional"; where Wikidata names a place differently, CLDR's name is kept and the difference listed in [docs/disagreements.md](./docs/disagreements.md) (234 of 4,322 compared) for review. CLDR's trailing brackets (セント・ポール (ドミニカ国), バリンゴ (カウンティ)) are taken off by a rule listed in [docs/name-rules.md](./docs/name-rules.md), and 46 names a reviewer found wrong or out of date are written by hand, with their reasons, in [docs/disagreements.md](./docs/disagreements.md).
+Not here: cities, postal codes, outlines, and names in other languages. CLDR marks nearly all of its Japanese subdivision names "provisional"; where Wikidata names a place differently, CLDR's name is kept and the difference listed in [docs/disagreements.md](./docs/disagreements.md) (226 of 4,313 compared) for review. CLDR's trailing brackets (セント・ポール (ドミニカ国), バリンゴ (カウンティ)) are taken off by a rule listed in [docs/name-rules.md](./docs/name-rules.md), and 56 Japanese names a reviewer found wrong or out of date are written by hand, with their reasons, in [docs/disagreements.md](./docs/disagreements.md). Every English name is checked against Wikidata's English label for the patterns that were found wrong in 1.0.0 (a name cut short, an adjective for a name, marks stripped, a name swapped with a neighbour's, an old place's name on a reused code); 32 are corrected by hand, with their reasons, in the same file. Where ISO 3166-2 has changed since CLDR's release (Norway's counties of 2024), the codes follow ISO.
 
 ## Accessibility
 
@@ -443,10 +444,10 @@ src/
 
 | What | From | Licence |
 | --- | --- | --- |
-| Country names, short and variant forms, codes, currencies, continents and subregions | Unicode CLDR 48.2 (`cldr-core`, `cldr-localenames-full`) | Unicode-3.0 |
+| Country names, short and variant forms, codes, currencies, continents (UN M49) and subregions | Unicode CLDR 48.2 (`cldr-core`, `cldr-localenames-full`) | Unicode-3.0 |
 | Subdivision codes, names, levels and parents | Unicode CLDR 48.2 (`common/subdivisions`, validity and containment) | Unicode-3.0 |
 | Japanese names CLDR lacks, prefecture readings, calling codes, kinds of place | Wikidata, a snapshot of 2026-10-09 | CC0 |
-| Own names, capitals, continents, languages | countries-list 3.4.1 | MIT |
+| Own names, capitals, languages | countries-list 3.4.1 | MIT |
 | Time zones and top-level domains | IANA tzdb 2026e `zone.tab`, IANA's TLD list | Public domain; a list of facts |
 | Capitals in Japanese, coordinates, population, area, driving side, borders, subdivisions' capitals and figures, and the dates members joined bodies | Wikidata, a snapshot of 2026-10-09 (`data-sources/wikidata-facts-2026-10-09.json`) | CC0 |
 | Land borders, confirmed | Natural Earth 5.1.2 admin-0 at 1:50m, as drawn by Chizu 1.0.2 (a development dependency of the build, never of the package) | Public domain (Natural Earth); MIT (Chizu) |

@@ -43,6 +43,7 @@ export function render(asked) {
     { class: "grouping-head", "data-testid": "grouping-head" },
     el("h3", {}, lang() === "ja" ? ruby(one.name.ja, one.reading) : one.name.en, " ", el("span", { class: "fam-badge" }, say(`kindone_${one.kind}`)), one.informal ? el("span", { class: "fam-badge", "data-tone": "good" }, say("informal")) : ""),
     el("p", { class: "fam-muted" }, lang() === "ja" ? one.name.en : ruby(one.name.ja, one.reading), one.shortName === undefined ? "" : ` · ${[one.shortName.en, one.shortName.ja].filter(Boolean).join(" · ")}`),
+    one.otherNames === undefined ? "" : el("p", { class: "fam-muted", "data-testid": "grouping-other-names" }, say("also_called"), " ", one.otherNames.map((name) => (lang() === "ja" ? `${name.ja}（${name.en}）` : `${name.en} (${name.ja})`)).join(", ")),
     el("p", {}, one.definition),
     one.note === undefined ? "" : el("p", { class: "note-box", "data-testid": "grouping-note" }, one.note),
     el("p", { class: "fam-fine" }, say("source"), ": ", el("a", { href: one.source.url, rel: "noopener" }, one.source.name), ` · ${one.source.licence} · ${say("as_of", { day: one.asOf })}`),

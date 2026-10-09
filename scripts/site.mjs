@@ -108,7 +108,7 @@ const page = `<!doctype html>
       title: "Kuni · every country and its subdivisions, in English and Japanese",
       description: "Look up any country and its states, provinces and prefectures by ISO 3166 code or by name, in English or Japanese, in your browser. A typed, zero-dependency dataset from Unicode CLDR and Wikidata. Free and open source.",
       ogTitle: "Kuni: countries and their subdivisions in English and Japanese",
-      ogDescription: "Every country and its 5,046 ISO 3166-2 subdivisions, with names in English and Japanese, looked up by code or by what somebody typed. No dependencies.",
+      ogDescription: "Every country and its 5,050 ISO 3166-2 subdivisions, with names in English and Japanese, looked up by code or by what somebody typed. No dependencies.",
     })}
     <link rel="icon" href="${ICON}" />
     <link rel="stylesheet" href="family.css" />
