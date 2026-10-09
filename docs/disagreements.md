@@ -52,7 +52,7 @@ A reviewer found these CLDR names wrong, out of date or naming another place. `J
 | MA-04 | Rabat-Salé-Kénitra | オリアンタル地方 | ラバト＝サレ＝ケニトラ地方 | ラバト＝サレ＝ケニトラ地方 | ISO gave MA-04 to Rabat-Salé-Kénitra in 2019; CLDR's name is the old Oriental region's, as Wikidata names the new one. |
 | MA-05 | Béni Mellal-Khénifra | フェズ・ブルマーヌ地方 | ベニ・メラル＝ヘニフラ地方 | ベニ・メラル＝ヘニフラ地方 | ISO gave MA-05 to Béni Mellal-Khénifra in 2019; CLDR's name is the old Fès-Boulemane region's. |
 | MA-08 | Drâa-Tafilalet | グラン・カサブランカ地方 | ドラア＝タフィラルト地方 | ドラア＝タフィラルト地方 | ISO gave MA-08 to Drâa-Tafilalet in 2019; CLDR's name is the old Grand Casablanca region's. |
-| MA-11 | Laâyoune-Sakia El Hamra |  | 赤い足の目 | ラアユーン＝サギア・エル・ハムラ地方 | Laâyoune-Sakia El Hamra; Wikidata's Japanese label, 赤い足の目, is not a name of the place. |
+| MA-11 | Laâyoune-Sakia El Hamra |  | 赤い足の目 | アイウン＝サギア・エル・ハムラ地方 | Laâyoune-Sakia El Hamra, with アイウン as in this package's LAA (アイウン州); Wikidata's Japanese label, 赤い足の目, is not a name of the place. |
 | MA-MOH | Mohammedia | フェドハラ（モハメディア） | モハメディア県 | モハメディア | CLDR names the city with its old name in brackets (Fedhala); the city's name today is Mohammedia. |
 | MK-201 | Berovo | ベロヴォ (マケドニア) | ベロヴォ | ベロヴォ | The country in the bracket is no longer called Macedonia; the bracket is not part of the name. |
 | MT-06 | Cospicua | ボルムラ | コスピクア | コスピクア | CLDR gives the Maltese name, Bormla; Japanese uses the English-derived コスピクア. |

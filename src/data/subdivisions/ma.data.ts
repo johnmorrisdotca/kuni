@@ -19,7 +19,7 @@ const MA: SubdivisionTable = {
 08|Drâa-Tafilalet|ドラア＝タフィラルト地方|2
 09|Souss-Massa|スース＝マサ地方|2
 10|Guelmim-Oued Noun|ゲルミン＝オウィド・ノウン地方|2
-11|Laâyoune-Sakia El Hamra|ラアユーン＝サギア・エル・ハムラ地方|2
+11|Laâyoune-Sakia El Hamra|アイウン＝サギア・エル・ハムラ地方|2
 12|Dakhla-Oued Ed-Dahab|ダフラ＝オウィド・エッ＝ダハブ地方|2
 AGD|Agadir-Ida Ou Tanane|アガディール|0|09
 AOU|Aousserd|アウサード州|1|12

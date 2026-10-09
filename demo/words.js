@@ -507,6 +507,6 @@ export const WORDS = {
     kindone_informal: "非公式のグループ",
     kindone_subdivision: "国内の地方区分",
     q_islands: "このほか、{count}の国と地域は陸上の国境がなく、それぞれ理由を記しています（島国・島しょ地域と南極）。国境は空のリストで、欠けている値ではありません。",
-    also_called: "別名：",
+    also_called: "別名",
   },
 };

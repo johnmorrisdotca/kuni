@@ -246,4 +246,4 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `kindone_informal` | informal grouping | 非公式のグループ |
 | `kindone_subdivision` | regions inside a country | 国内の地方区分 |
 | `q_islands` | Beside these, {count} countries have no land border, each listed with its reason: islands, and Antarctica. Their borders are an empty list, which is a fact, not a gap. | このほか、{count}の国と地域は陸上の国境がなく、それぞれ理由を記しています（島国・島しょ地域と南極）。国境は空のリストで、欠けている値ではありません。 |
-| `also_called` | Also called | 別名： |
+| `also_called` | Also called | 別名 |

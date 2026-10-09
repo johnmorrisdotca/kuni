@@ -162,7 +162,7 @@ const JA_NAME_OVERRIDES: Record<string, { ja: string; why: string }> = {
   "MA-04": { ja: "ラバト＝サレ＝ケニトラ地方", why: "ISO gave MA-04 to Rabat-Salé-Kénitra in 2019; CLDR's name is the old Oriental region's, as Wikidata names the new one." },
   "MA-05": { ja: "ベニ・メラル＝ヘニフラ地方", why: "ISO gave MA-05 to Béni Mellal-Khénifra in 2019; CLDR's name is the old Fès-Boulemane region's." },
   "MA-08": { ja: "ドラア＝タフィラルト地方", why: "ISO gave MA-08 to Drâa-Tafilalet in 2019; CLDR's name is the old Grand Casablanca region's." },
-  "MA-11": { ja: "ラアユーン＝サギア・エル・ハムラ地方", why: "Laâyoune-Sakia El Hamra; Wikidata's Japanese label, 赤い足の目, is not a name of the place." },
+  "MA-11": { ja: "アイウン＝サギア・エル・ハムラ地方", why: "Laâyoune-Sakia El Hamra, with アイウン as in this package's LAA (アイウン州); Wikidata's Japanese label, 赤い足の目, is not a name of the place." },
   "TW-CYI": { ja: "嘉義市", why: "ISO's TW-CYI is Chiayi City; CLDR has the city's and the county's names the wrong way round." },
   "TW-CYQ": { ja: "嘉義県", why: "ISO's TW-CYQ is Chiayi County; CLDR has the city's and the county's names the wrong way round." },
   "PH-COM": { ja: "ダバオ・デ・オロ州", why: "Renamed in 2019: Compostela Valley became Davao de Oro; 州 as for the other provinces." },
