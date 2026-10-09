@@ -127,7 +127,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `title_compare` | Compare two countries | 2つの国を比べる |
 | `blurb_compare` | Two countries side by side, with how many times bigger one is than the other and how far apart their capitals are. | 2つの国を並べて比べます。どちらが何倍大きいか、首都どうしが何km離れているかも表示します。 |
 | `help_compare` | Pick the two countries to compare, or swap them. | 比べる2つの国を選びます。左右を入れ替えることもできます。 |
-| `help_compare_look` | Colour each outline as you like, and show or hide the dot on each capital. The colours and the dots are kept in the address, so a link shows them as you see them. | 輪郭の色を国ごとに選び、首都の点を表示するか隠すか選べます。色と点の設定はアドレスに入るので、リンクを共有すると同じ見た目で開きます。 |
+| `help_compare_look` | Colour each outline as you like, and show or hide the dot on each capital. The colours and the dots are kept in the address, so a link shows them as you see them. | 輪郭の色を国ごとに選んだり、首都の点を表示・非表示にしたりできます。色と点の設定はアドレスに含まれるので、リンクを共有すると同じ見た目で開きます。 |
 | `compare_colour` | Colour of {name} | {name}の色 |
 | `compare_capitals` | Show capitals | 首都を表示 |
 | `compare_capitals_tip` | Show or hide a dot on each capital | 各国の首都の点を表示または非表示にします |
