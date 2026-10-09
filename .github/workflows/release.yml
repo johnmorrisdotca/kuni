@@ -72,11 +72,11 @@ jobs:
         run: |
           NAME="$(node -p "require('./package.json').name")"
           VERSION="$(node -p "require('./package.json').version")"
-          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
-            echo "$NAME@$VERSION is already on npm."
-          else
-            npm publish --provenance --access public --ignore-scripts
+          if [ "$(npm view "$NAME@$VERSION" version 2>/dev/null)" = "$VERSION" ]; then
+            echo "::notice title=Already on npm::$NAME@$VERSION is already on npm, so it is not published again."
+            exit 0
           fi
+          npm publish --provenance --access public --ignore-scripts
 
   release:
     name: GitHub release
