@@ -5,18 +5,10 @@ import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 
 import { API_CSS, apiPage } from "./api.mjs";
 import { FACT_GAPS } from "./facts-config.ts";
-import { FAMILY, FAMILY_PITCH, FAMILY_SCRIPT, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
+import { FAMILY_SCRIPT, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
 
 const id = "kuni";
 
-// Kuni is not in the family's list yet: that list is changed in every repository at once, with a new
-// template version, and family-template.mjs is never edited in one. Until that sweep adds it, the demo
-// joins the list here, at its end, so the shared header and footer can name it. Once the template lists
-// Kuni this does nothing.
-if (!FAMILY.some((one) => one.id === id)) {
-  FAMILY.push({ id, name: "Kuni", kana: "国" });
-  FAMILY_PITCH[id] = "every country and its subdivisions, with ISO 3166 codes and names in English and Japanese";
-}
 
 const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232f5d4a'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23f3efe4' stroke-width='5'/%3E%3Cpath d='M22 50h56M50 22c-10 9-14 18-14 28s4 19 14 28c10-9 14-18 14-28s-4-19-14-28z' fill='none' stroke='%23f3efe4' stroke-width='5'/%3E%3C/svg%3E";
 
