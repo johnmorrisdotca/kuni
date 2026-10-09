@@ -1,0 +1,104 @@
+name: Release
+# Pushing a version tag (vX.Y.Z, the same as package.json's version) checks the package, publishes it to npm with
+# provenance, and makes a GitHub release whose notes are that version's section of CHANGELOG.md.
+#
+# npm publishing uses trusted publishing (OIDC from GitHub Actions): no token and no secret. The package's trusted
+# publisher is configured on npmjs.com (the package's Settings > Trusted Publisher > GitHub Actions, repository
+# johnmorrisdotca/kuni, workflow release.yml). npm can only be told that once the package exists, so the first
+# version is published from the author's machine; every version after it is published here.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+# A release runs to the end once started; a second push of the same tag waits for it.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    name: The tag is the version, and the changelog has its notes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          # This job installs nothing, so there is no pnpm store for setup-node to look for.
+          package-manager-cache: false
+      - name: Compare the tag with package.json and CHANGELOG.md
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "::error title=Version mismatch::The tag $GITHUB_REF_NAME is not package.json's version, $VERSION."
+            exit 1
+          fi
+          node scripts/release-notes.mjs "$VERSION" > /dev/null
+
+  checks:
+    name: Checks
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+
+  npm:
+    name: Publish to npm
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Lets npm exchange GitHub's OIDC token for a short-lived publish credential, and sign the provenance.
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          # Node 24's npm is 11.x, which publishes by trusted publishing when no NODE_AUTH_TOKEN is set.
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Publish, unless this version is already on npm
+        run: |
+          NAME="$(node -p "require('./package.json').name")"
+          VERSION="$(node -p "require('./package.json').version")"
+          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+            echo "$NAME@$VERSION is already on npm."
+          else
+            npm publish --provenance --access public --ignore-scripts
+          fi
+
+  release:
+    name: GitHub release
+    needs: npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          # This job installs nothing, so there is no pnpm store for setup-node to look for.
+          package-manager-cache: false
+      - name: Make the release from CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          node scripts/release-notes.mjs "$VERSION" > "$RUNNER_TEMP/notes.md"
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md"
+          else
+            gh release create "$GITHUB_REF_NAME" --verify-tag --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md"
+          fi
