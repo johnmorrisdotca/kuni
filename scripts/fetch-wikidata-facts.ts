@@ -16,7 +16,10 @@
 //     scripts/facts-config.ts (CAPITAL_ITEMS), for the countries whose item names no capital or names it otherwise;
 //   - for every ISO 3166-2 code (P300): the same capital, population, area and coordinates, and the capital's name in
 //     kana (P1814), for the /subdivision-facts entry, each row naming the item it is about, since some codes are
-//     held by two items (a city and the district around it).
+//     held by two items (a city and the district around it);
+//   - for each international body in scripts/groupings-config.ts (MEMBERSHIPS): the countries Wikidata says are
+//     members of it (P463), with the start and end of each membership (P580, P582) and any role (P2868), for the
+//     dates the /groupings entry gives.
 //
 //   pnpm data:facts
 //
@@ -27,6 +30,7 @@ import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { CAPITAL_ITEMS } from "./facts-config.ts";
+import { MEMBERSHIPS } from "./groupings-config.ts";
 import { readManifest, recordFile, sha256, SOURCES_DIR, USER_AGENT, writeManifest } from "./sources.ts";
 
 const ENDPOINT = "https://query.wikidata.org/sparql";
@@ -124,6 +128,16 @@ const QUERIES = {
   ${SUBDIVISION}
   ?item wdt:P625 ?coord .
 }`,
+  memberships: `SELECT ?code ?item ?org ?rank ?start ?end ?role WHERE {
+  VALUES ?org { ${MEMBERSHIPS.map((body) => `wd:${body.item}`).join(" ")} }
+  ${COUNTRY}
+  ?item p:P463 ?statement .
+  ?statement ps:P463 ?org ; wikibase:rank ?rank .
+  FILTER(?rank != wikibase:DeprecatedRank)
+  OPTIONAL { ?statement pq:P580 ?start }
+  OPTIONAL { ?statement pq:P582 ?end }
+  OPTIONAL { ?statement pq:P2868 ?role }
+}`,
   pinned: `SELECT ?code ?capital ?en ?ja ?coord WHERE {
   VALUES (?code ?capital) { ${Object.entries(CAPITAL_ITEMS)
     .map(([code, { item }]) => `("${code}" wd:${item})`)
@@ -188,6 +202,7 @@ const shape: Record<QueryName, (row: Binding) => unknown[]> = {
   subdivisionPopulation: (row) => [qid(row.item!.value), Number(row.value!.value), day(row.when?.value), row.part === undefined ? null : qid(row.part.value)],
   subdivisionArea: (row) => [qid(row.item!.value), Number(row.amount!.value), qid(row.unit!.value), day(row.when?.value), row.part === undefined ? null : qid(row.part.value)],
   subdivisionPoints: (row) => [qid(row.item!.value), point(row.coord!.value)],
+  memberships: (row) => [qid(row.item!.value), qid(row.org!.value), qid(row.rank!.value), day(row.start?.value), day(row.end?.value), row.role === undefined ? null : qid(row.role.value)],
 };
 
 const group = (name: QueryName, rows: Binding[]): Record<string, unknown[][]> => {
@@ -225,6 +240,7 @@ const stringify = (read: string, answers: Record<QueryName, Record<string, unkno
     subdivisionPopulation: ["item", "value", "when", "appliesToPart"],
     subdivisionArea: ["item", "amount", "unit", "when", "appliesToPart"],
     subdivisionPoints: ["item", "point [lat, lon]"],
+    memberships: ["item", "body", "rank", "start", "end", "role"],
   };
 
   return `{
@@ -266,7 +282,7 @@ const main = async (): Promise<void> => {
     url: ENDPOINT,
     read,
     sha256: sha256(text),
-    note: "Wikidata SPARQL answers for each ISO 3166-1 (P297) country and ISO 3166-2 (P300) subdivision: capital, population, area, coordinates, and for countries driving side and borders; the queries are in the file (CC0)",
+    note: "Wikidata SPARQL answers for each ISO 3166-1 (P297) country and ISO 3166-2 (P300) subdivision: capital, population, area, coordinates, and for countries driving side, borders and memberships; the queries are in the file (CC0)",
   });
   writeManifest(manifest);
   console.log(`Wrote data-sources/${path}.`);

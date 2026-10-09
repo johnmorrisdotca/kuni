@@ -32,6 +32,7 @@ import {
   TYPE_RULES,
 } from "./data-config.ts";
 import { buildFacts } from "./facts.ts";
+import { buildGroupings } from "./groupings.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
@@ -629,6 +630,34 @@ const lower = (alpha2: string): string => alpha2.toLowerCase();
 // One file a country of the facts about its subdivisions, an entry a country, the loaders, and the record of what
 // is known (docs/subdivision-facts.md). Row: shortCode|capitalEn|capitalJa|capitalReading|capitalLat|capitalLon|
 // population|populationYear|areaKm2|areaYear|lat|lon, an absent value empty and trailing ones left off.
+// The /groupings entry's table, one object a line, and docs/groupings.md.
+const writeGroupings = (): void => {
+  const { records, doc } = buildGroupings({
+    countries: countries.map((country) => ({ alpha2: country.alpha2, continent: country.continent, en: country.en, ja: country.ja })),
+    subdivisionCodes: new Set(subdivisions.map((record) => record.code)),
+    territoriesEn,
+    territoriesJa,
+    containment: territoryContainment,
+    continentNames: Object.fromEntries(Object.entries(CONTINENT_AREAS).map(([continent, area]) => [continent, regionNames(area)])),
+    memberships: (factsSnapshot.answers as unknown as Record<string, Record<string, unknown[][]>>).memberships,
+    cldrVersion: versions.cldrNames,
+    snapshotRead: factsFile.read,
+  });
+  writeFileSync(
+    join(OUT_DATA, "groupings.data.ts"),
+    header(`Every grouping (${records.length}): continents, UN M49 areas, international bodies, informal groupings and regions inside a country.`, [
+      `${CLDR_SOURCE}: the continents' names, UN M49, the UN's members`,
+      `${LIST_SOURCE}: each country's continent`,
+      `${FACTS_SOURCE}: the dates members joined and left`,
+      "scripts/groupings-config.ts (MIT): the bodies' members as each body lists them, the informal groupings and the regions inside a country",
+    ]) +
+      'import type { GroupingRow } from "../rows";\n\n' +
+      `const GROUPING_ROWS: readonly GroupingRow[] = [\n${records.map((record) => `  ${literal(record)},`).join("\n")}\n];\n\n` +
+      "export { GROUPING_ROWS };\n",
+  );
+  writeFileSync(join(DOCS, "groupings.md"), doc.join("\n"));
+};
+
 const writeSubdivisionFacts = (): void => {
   mkdirSync(OUT_FACT_TABLES, { recursive: true });
   mkdirSync(OUT_FACT_ENTRIES, { recursive: true });
@@ -931,5 +960,6 @@ if (REPORT) {
   writeNameRules();
   writeFacts();
   writeSubdivisionFacts();
+  writeGroupings();
   console.log(`Wrote ${countries.length} countries and ${subdivisions.length} subdivisions of ${byCountry.size} countries.`);
 }

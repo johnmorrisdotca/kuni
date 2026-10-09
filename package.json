@@ -121,6 +121,16 @@
         "default": "./dist/subdivision-facts/*.cjs"
       }
     },
+    "./groupings": {
+      "import": {
+        "types": "./dist/groupings.d.ts",
+        "default": "./dist/groupings.js"
+      },
+      "require": {
+        "types": "./dist/groupings.d.cts",
+        "default": "./dist/groupings.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "files": [

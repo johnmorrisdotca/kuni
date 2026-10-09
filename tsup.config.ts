@@ -42,7 +42,7 @@ const shared = {
 export default defineConfig([
   {
     ...shared,
-    entry: { index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivisionFacts.ts" },
+    entry: { index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivisionFacts.ts", groupings: "src/groupings.ts" },
     // Japanese names stay as they are, rather than as \u escapes three times their size.
     esbuildOptions(options) {
       options.charset = "utf8";

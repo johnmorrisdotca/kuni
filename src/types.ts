@@ -127,5 +127,13 @@ interface SubdivisionFacts {
   point: LatLon | null; // Wikidata's coordinate location for the subdivision
 }
 
-export { CONTINENTS, LANGUAGES, SUBDIVISION_TYPES };
-export type { Continent, Country, CountryFacts, DrivingSide, HourCycle, Language, LatLon, MeasurementSystem, PaperSize, Subdivision, SubdivisionFacts, SubdivisionType, WeekStart };
+// What kind of grouping it is: a continent, a UN M49 area, an international body's members, a well-known informal
+// grouping, or a grouping of the subdivisions inside one country.
+const GROUPING_KINDS = ["continent", "m49", "membership", "informal", "subdivision"] as const;
+type GroupingKind = (typeof GROUPING_KINDS)[number];
+
+// How a country stands with a body when it is not a member.
+type GroupingStatus = "candidate" | "associate" | "observer" | "suspended";
+
+export { CONTINENTS, GROUPING_KINDS, LANGUAGES, SUBDIVISION_TYPES };
+export type { Continent, Country, CountryFacts, GroupingKind, GroupingStatus, DrivingSide, HourCycle, Language, LatLon, MeasurementSystem, PaperSize, Subdivision, SubdivisionFacts, SubdivisionType, WeekStart };

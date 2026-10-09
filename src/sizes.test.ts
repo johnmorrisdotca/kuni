@@ -32,6 +32,10 @@ describe("the built entries", () => {
     expect(size("dist/subdivision-facts.js")).toBeLessThan(16 * KB);
   });
 
+  it("keep the groupings under 100 KB, out of the main entry", () => {
+    expect(size("dist/groupings.js")).toBeLessThan(100 * KB);
+  });
+
   it("keep the facts about every country under 30 KB, out of the main entry", () => {
     expect(size("dist/facts.js")).toBeLessThan(30 * KB);
   });

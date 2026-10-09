@@ -2,7 +2,7 @@
 // that a page importing one country's subdivisions carries a couple of kilobytes and not five. These turn a
 // row back into the object the lookups hand out. Pure: the same row always makes an equal object.
 
-import type { Continent, Country, LatLon, Subdivision, SubdivisionFacts, SubdivisionType } from "./types";
+import type { Continent, Country, GroupingKind, GroupingStatus, LatLon, Subdivision, SubdivisionFacts, SubdivisionType } from "./types";
 
 // [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, callingCode,
 //  currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, kind]
@@ -160,5 +160,27 @@ const expandSubdivisionFacts = (table: SubdivisionFactsTable): readonly Subdivis
   return Object.freeze(list);
 };
 
+// A grouping as scripts/build-data.ts writes it: members as a list of codes, each membership period as
+// [code, since, until], and the source as [name, url, licence]; src/groupings.ts makes the public object.
+interface GroupingRow {
+  id: string;
+  kind: GroupingKind;
+  en: string;
+  ja: string;
+  reading?: string;
+  shortEn?: string;
+  shortJa?: string;
+  country?: string;
+  parent?: string;
+  sets?: readonly string[];
+  members: readonly string[];
+  periods?: readonly (readonly [string, string | null, string | null])[];
+  others?: readonly (readonly [string, GroupingStatus])[];
+  definition: string;
+  note?: string;
+  source: readonly [string, string, string];
+  asOf: string;
+}
+
 export { expandCountry, expandSubdivisionFacts, expandSubdivisions, flagOf };
-export type { CountryRow, FactsRow, SubdivisionFactsTable, SubdivisionTable };
+export type { CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable };
