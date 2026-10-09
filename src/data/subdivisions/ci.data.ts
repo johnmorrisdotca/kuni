@@ -10,19 +10,19 @@ const CI: SubdivisionTable = {
   types: ["district","municipality"],
   typesJa: [null,null],
   rows: `AB|Abidjan|アビジャン
-BS|Bas-Sassandra²|低サッサンドラ|0
+BS|Bas-Sassandra|低サッサンドラ|0
 CM|Comoé|コモエ地方|0
-DN|Denguélé²|デンゲレ|0
+DN|Denguélé|デンゲレ|0
 GD|Gôh-Djiboua|ゴー＝ジブア地方|0
-LC|Lacs²|ラック地方|0
-LG|Lagunes²|ラギューヌ地方|0
+LC|Lacs|ラック地方|0
+LG|Lagunes|ラギューヌ地方|0
 MG|Montagnes|モンターニュ地方|0
 SM|Sassandra-Marahoué|サッサンドラ＝マラウェ地方|0
 SV|Savanes|サヴァヌ|0
-VB|Vallée du Bandama²|バンダマ渓谷地方|0
+VB|Vallée du Bandama|バンダマ渓谷地方|0
 WR|Woroba|ウォロバ地方|0
 YM|Yamoussoukro|ヤムスクロ|1
-ZZ|Zanzan²|ザンザン州|0`,
+ZZ|Zanzan|ザンザン州|0`,
 };
 
 export { CI };

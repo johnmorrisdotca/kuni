@@ -24,7 +24,7 @@ const UG: SubdivisionTable = {
 113|Wakiso|ワキソ県|0|C
 114|Lyantonde|リャントンデ県|0|C
 115|Mityana|ミティアナ県|0|C
-116|Nakaseke|リャントンデ県²|0|C
+116|Nakaseke|リャントンデ県|0|C
 117|Buikwe|ブイクウェ県|0|C
 118|Bukomansibi|ブコマンシンビ県|0|C
 119|Butambala|ブタンバラ県|0|C
@@ -56,8 +56,8 @@ const UG: SubdivisionTable = {
 219|Bukedea|ブタレジャ県|0|E
 220|Bukwa|カリロ県|0|E
 221|Butaleja|マナフワ県|0|E
-222|Kaliro|カリロ県²|0|E
-223|Manafwa|マナフワ県²|0|E
+222|Kaliro|カリロ県|0|E
+223|Manafwa|マナフワ県|0|E
 224|Namutumba|ブケデア県|0|E
 225|Bulambuli|ブランブリ県|0|E
 226|Buyende|ブイェンデ県|0|E
@@ -88,9 +88,9 @@ const UG: SubdivisionTable = {
 314|Abim|アビム県|0|N
 315|Amolatar|アモラタル県|0|N
 316|Amuru|アムル県|0|N
-317|Dokolo|アビム県²|0|N
+317|Dokolo|アビム県|0|N
 318|Kaabong|ドコロ県|0|N
-319|Koboko|アムル県²|0|N
+319|Koboko|アムル県|0|N
 320|Maracha|マラチャ県|0|N
 321|Oyam|オヤム県|0|N
 322|Agago|アガゴ県|0|N
@@ -101,7 +101,7 @@ const UG: SubdivisionTable = {
 327|Napak|ナパック県|0|N
 328|Nwoya|ナウォヤ県|0|N
 329|Otuke|オツケ県|0|N
-330|Zombo²|ゾンボ県|0|N
+330|Zombo|ゾンボ県|0|N
 331|Zombo|オモロ県|0|N
 332|Pakwach|パクワチ県|0|N
 333|Kwania|||N
@@ -126,7 +126,7 @@ const UG: SubdivisionTable = {
 415|Kyenjojo|キエンジョジョ県|0|W
 416|Buliisa|イバンダ県|0|W
 417|Ibanda|イシンギロ県|0|W
-418|Isingiro|イシンギロ県²|0|W
+418|Isingiro|イシンギロ県|0|W
 419|Kiruhura|キルフラ県|0|W
 420|Buhweju|ブフウェジュ県|0|W
 421|Kiryandongo|キリャンドンゴ県|0|W

@@ -10,7 +10,7 @@ const MA: SubdivisionTable = {
   types: ["prefecture","province","region"],
   typesJa: [null,null,null],
   rows: `01|Tangier-Tétouan|タンジェ＝テトゥアン＝アル・ホセイマ地方|2
-02|Gharb-Chrarda-Béni Hssen|オリアンタル地方²|2
+02|Gharb-Chrarda-Béni Hssen|オリアンタル地方|2
 03|Taza-Al Hoceima-Taounate|フェズ＝メクネス地方|2
 04|Oriental|オリアンタル地方|2
 05|Fès-Boulemane|フェズ・ブルマーヌ地方|2

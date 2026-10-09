@@ -67,7 +67,7 @@ const EE: SubdivisionTable = {
 651|Raasiku|||37
 653|Rae|||37
 661|Rakvere|||60
-663|Rakvere²|||60
+663|Rakvere|||60
 668|Rapla|||71
 68|Pärnumaa|ペルヌ県|1
 689|Ruhnu|||74
@@ -85,7 +85,7 @@ const EE: SubdivisionTable = {
 79|Tartumaa|タルトゥ県|1
 792|Tapa|||60
 793|Tartu|||79
-796|Tartu²|||79
+796|Tartu|||79
 803|Toila|||45
 809|Tori||2|68
 81|Valgamaa|ヴァルガ県|1
@@ -95,12 +95,12 @@ const EE: SubdivisionTable = {
 855|Valga|||81
 87|Võrumaa|ヴォル県|1
 890|Viimsi|||37
-897|Viljandi²|||84
-899|Viljandi³|||84
+897|Viljandi|||84
+899|Viljandi|||84
 901|Vinni|||60
 903|Viru-Nigula|||60
 907|Vormsi|||56
-917|Võru²|||87
+917|Võru|||87
 919|Võru|||87
 928|Väike-Maarja||2|60`,
 };

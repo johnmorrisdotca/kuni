@@ -53,16 +53,16 @@ MC|Murcia Region|ムルシア州|0
 MD|Madrid Autonomous Community|マドリード州|0
 ML|Melilla|メリリャ|2
 MU|Murcia|ムルシア県||MC
-NA|Navarra|ナバラ州²||NC
+NA|Navarra|ナバラ州||NC
 NC|Navarra Chartered Community|ナバラ州
 O|Asturias Province|||AS
 OR|Ourense|オウレンセ県|3|GA
 P|Palencia|パレンシア県|3|CL
-PM|Balears Province|バレアレス諸島²||IB
+PM|Balears Province|バレアレス諸島||IB
 PO|Pontevedra|ポンテベドラ県|3|GA
 PV|Basque Country|バスク州
-RI|La Rioja|ラ・リオハ州²|0
-S|Cantabria Province|カンタブリア州²||CB
+RI|La Rioja|ラ・リオハ州|0
+S|Cantabria Province|カンタブリア州||CB
 SA|Salamanca|サラマンカ県|3|CL
 SE|Seville|セビリア県|3|AN
 SG|Segovia|セゴビア県|3|CL

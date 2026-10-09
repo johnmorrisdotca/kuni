@@ -121,7 +121,7 @@ CP|Clipperton Island|クリッパートン島|3
 CVL|Centre-Val de Loire|サントル地域圏|2
 GES|Grand-Est|グラン・テスト地域圏|2
 HDF|Hauts-de-France|オー＝ド＝フランス地域圏|2
-IDF|Île-de-France²|イル＝ド＝フランス地域圏|2
+IDF|Île-de-France|イル＝ド＝フランス地域圏|2
 MF|St. Martin|サン・マルタン|3
 NAQ|Nouvelle-Aquitaine|ヌーヴェル＝アキテーヌ地域圏|2
 NC|New Caledonia|ニューカレドニア|3

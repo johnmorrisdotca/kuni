@@ -131,7 +131,7 @@ Neither Unicode CLDR nor Wikidata has a Japanese name for these, so their `name.
 - EE-651 Raasiku (level 2)
 - EE-653 Rae (level 2)
 - EE-661 Rakvere (level 2)
-- EE-663 Rakvere² (level 2)
+- EE-663 Rakvere (level 2)
 - EE-668 Rapla (level 2)
 - EE-689 Ruhnu (level 2)
 - EE-698 Rõuge (level 2)
@@ -144,18 +144,18 @@ Neither Unicode CLDR nor Wikidata has a Japanese name for these, so their `name.
 - EE-784 Tallinn (level 2)
 - EE-792 Tapa (level 2)
 - EE-793 Tartu (level 2)
-- EE-796 Tartu² (level 2)
+- EE-796 Tartu (level 2)
 - EE-803 Toila (level 2)
 - EE-809 Tori (level 2)
 - EE-824 Tõrva (level 2)
 - EE-855 Valga (level 2)
 - EE-890 Viimsi (level 2)
-- EE-897 Viljandi² (level 2)
-- EE-899 Viljandi³ (level 2)
+- EE-897 Viljandi (level 2)
+- EE-899 Viljandi (level 2)
 - EE-901 Vinni (level 2)
 - EE-903 Viru-Nigula (level 2)
 - EE-907 Vormsi (level 2)
-- EE-917 Võru² (level 2)
+- EE-917 Võru (level 2)
 - EE-919 Võru (level 2)
 - EE-928 Väike-Maarja (level 2)
 
@@ -335,7 +335,7 @@ Neither Unicode CLDR nor Wikidata has a Japanese name for these, so their `name.
 
 ## Nepal (NP), 1
 
-- NP-P4 Gandaki² (level 1)
+- NP-P4 Gandaki (level 1)
 
 ## Serbia (RS), 4
 

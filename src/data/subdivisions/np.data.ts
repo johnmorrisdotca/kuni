@@ -12,9 +12,9 @@ const NP: SubdivisionTable = {
   rows: `P1|Province 1|第一州|0
 P2|Province 2|マデシ州|0
 P3|Province 3|第三州|0
-P4|Gandaki²
+P4|Gandaki
 P5|Province 5|第五州|0
-P6|Karnali²|カルナリ・プラデーシュ州|0
+P6|Karnali|カルナリ・プラデーシュ州|0
 P7|Province 7|第七州|0`,
 };
 

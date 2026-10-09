@@ -74,7 +74,7 @@ const MT: SubdivisionTable = {
 63|Xgħajra|シャイラ
 64|Żabbar|ザッパール|0
 65|Żebbuġ Gozo|ゼブージ
-66|Żebbuġ|ゼブージ²|0
+66|Żebbuġ|ゼブージ|0
 67|Żejtun|ゼイトゥン|0
 68|Żurrieq|ズッリー|0`,
 };

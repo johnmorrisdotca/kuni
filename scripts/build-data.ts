@@ -130,7 +130,9 @@ const unescapeXml = (text: string): string =>
 const subdivisionNames = (xml: string): Map<string, string> => {
   const names = new Map<string, string>();
   for (const match of xml.matchAll(/<subdivision type="([a-z0-9]+)"[^>]*>([^<]*)<\/subdivision>/g)) {
-    names.set(match[1], tidy(unescapeXml(match[2])));
+    // CLDR marks a name it uses twice with a superscript digit ("Île-de-France²" for the region beside the
+    // department); the mark tells its own lists apart and is no part of the name.
+    names.set(match[1], tidy(unescapeXml(match[2]).replace(/[\u00b2\u00b3\u00b9\u2070-\u2079]+$/, "")));
   }
 
   return names;

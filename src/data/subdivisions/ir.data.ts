@@ -8,8 +8,8 @@ import type { SubdivisionTable } from "../../rows";
 const IR: SubdivisionTable = {
   country: "IR",
   types: ["province"],
-  typesJa: [null],
-  rows: `00|Markazī|マルキャズィー州²|0
+  typesJa: ["州"],
+  rows: `00|Markazī|マルキャズィー州|0
 01|East Azerbaijan|東アーザルバーイジャーン州|0
 02|West Azarbaijan|西アーザルバーイジャーン州|0
 03|Ardabil|アルダビール州|0
@@ -17,8 +17,8 @@ const IR: SubdivisionTable = {
 05|Ilam|イーラーム州|0
 06|Bushehr|ブーシェフル州|0
 07|Tehran|テヘラン州|0
-08|Chaharmahal and Bakhtiari|ケルマーン州²|0
-09|Khorāsān-e Raẕavī|ラザヴィー・ホラーサーン州²|0
+08|Chaharmahal and Bakhtiari|ケルマーン州|0
+09|Khorāsān-e Raẕavī|ラザヴィー・ホラーサーン州|0
 10|Khuzestan|フーゼスターン州|0
 11|Zanjan|ザンジャーン州|0
 12|Semnan|セムナーン州|0
@@ -27,7 +27,7 @@ const IR: SubdivisionTable = {
 15|Kerman|ケルマーン州|0
 16|Kurdistan|コルデスターン州|0
 17|Kermanshah|ケルマーンシャー州|0
-18|Kohgiluyeh and Boyer-Ahmad|ブーシェフル州²|0
+18|Kohgiluyeh and Boyer-Ahmad|ブーシェフル州|0
 19|Gilan|ギーラーン州|0
 20|Lorestan|ロレスターン州|0
 21|Mazandaran|マーザンダラーン州|0

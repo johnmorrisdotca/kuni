@@ -3,7 +3,7 @@
 Written by `pnpm data` (scripts/build-data.ts); do not edit by hand.
 
 For 4368 subdivisions both Unicode CLDR 48.2.0 and Wikidata (snapshot `wikidata-2026-10-09.json`) have a Japanese
-name. For 339 of them the two are not the same name once case, width, kana and punctuation are folded away. The
+name. For 330 of them the two are not the same name once case, width, kana and punctuation are folded away. The
 package keeps CLDR's name. This list is for a reader of Japanese to judge which is right; most of the differences are a
 type word one source adds (州, 県, 地域圏) or a different spelling of a foreign name in katakana.
 
@@ -90,7 +90,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| CI-ZZ | Zanzan² | ザンザン州 | ザンザン地方 |
+| CI-ZZ | Zanzan | ザンザン州 | ザンザン地方 |
 
 ## Cuba (CU), 4
 
@@ -149,12 +149,11 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | DO-22 | San Juan | サン・フアン州 (ドミニカ共和国) | サン・フアン州 |
 | DO-25 | Santiago | サンティアゴ県 | サンティアゴ州 |
 
-## Spain (ES), 2
+## Spain (ES), 1
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | ES-CS | Castellón | カステリョン県 | カステリョン |
-| ES-RI | La Rioja | ラ・リオハ州² | ラ・リオハ州 |
 
 ## Fiji (FJ), 5
 
@@ -272,13 +271,11 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | IN-JK | Jammu and Kashmir | ジャンムー・カシミール州 | ジャンムー・カシミール連邦直轄領 |
 
-## Iran (IR), 6
+## Iran (IR), 4
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| IR-00 | Markazī | マルキャズィー州² | マルキャズィー州 |
 | IR-07 | Tehran | テヘラン州 | ファールス州 |
-| IR-09 | Khorāsān-e Raẕavī | ラザヴィー・ホラーサーン州² | ラザヴィー・ホラーサーン州 |
 | IR-14 | Fars | ファールス州 | チャハール＝マハール・バフティヤーリー州 |
 | IR-22 | Markazi | マルキャズィー州 | ホルモズガーン州 |
 | IR-23 | Hormozgan | ホルモズガーン州 | テヘラン州 |
@@ -355,7 +352,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | LU-LU | Luxembourg | ルクセンブルク (カントン) | ルクセンブルク |
 
-## Latvia (LV), 26
+## Latvia (LV), 23
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -382,15 +379,11 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | LV-094 | Smiltene | スミルテネ | スミルテネ市 |
 | LV-097 | Talsi | タルスィ | タルスィ市 |
 | LV-099 | Tukums | トゥクムス | トゥクムス市 |
-| LV-DGV | Daugavpils | ダウガフピルス² | ダウガフピルス |
-| LV-REZ | Rēzekne | レーゼクネ² | レーゼクネ |
-| LV-VEN | Ventspils | ヴェンツピルス² | ヴェンツピルス |
 
-## Morocco (MA), 8
+## Morocco (MA), 7
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| MA-02 | Gharb-Chrarda-Béni Hssen | オリアンタル地方² | オリアンタル地方 |
 | MA-04 | Oriental | オリアンタル地方 | ラバト＝サレ＝ケニトラ地方 |
 | MA-05 | Fès-Boulemane | フェズ・ブルマーヌ地方 | ベニ・メラル＝ヘニフラ地方 |
 | MA-08 | Grand Casablanca | グラン・カサブランカ地方 | ドラア＝タフィラルト地方 |
@@ -423,7 +416,7 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | --- | --- | --- | --- |
 | MM-05 | Tanintharyi | タニンダーリ管区 | タニンダーイー管区 |
 
-## Malta (MT), 6
+## Malta (MT), 5
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -432,7 +425,6 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | MT-20 | Senglea | イシーラ | セングレア |
 | MT-45 | Victoria | ラバット | ラバト |
 | MT-56 | Sliema | スリマ | スリーマ |
-| MT-66 | Żebbuġ | ゼブージ² | ゼブージ |
 
 ## Malawi (MW), 26
 
@@ -603,11 +595,10 @@ type word one source adds (州, 県, 地域圏) or a different spelling of a for
 | SG-03 | North West | 北西地区 (シンガポール) | 北西地区 |
 | SG-05 | South West | 南西地区 (シンガポール) | 南西地区 |
 
-## Slovenia (SI), 3
+## Slovenia (SI), 2
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| SI-107 | Rogatec | ロガテツ² | ロガテツ |
 | SI-127 | Štore | シュトレ (スロベニア) | シュトレ |
 | SI-193 | Žužemberk | ジュジェンベルク | ジュジュンベルク市 |
 

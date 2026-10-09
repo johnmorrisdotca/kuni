@@ -115,7 +115,7 @@ const SI: SubdivisionTable = {
 104|Ribnica|リブニツァ|0
 105|Rogašovci|ロガショフツィ|0
 106|Rogaška Slatina|ロガーシュカ・スラティナ|0
-107|Rogatec|ロガテツ²|0
+107|Rogatec|ロガテツ|0
 108|Ruše|ルシェ|0
 109|Semič|セミチ|0
 110|Sevnica|セヴニツァ|0

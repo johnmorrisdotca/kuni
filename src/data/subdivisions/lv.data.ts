@@ -45,13 +45,13 @@ const LV: SubdivisionTable = {
 111|Augšdaugavas novads|アウゲシュダウガヴァ市|1
 112|Dienvidkurzemes Novads|南クルゼメ市|1
 113|Valmieras Novads|ヴァルミエラ市|1
-DGV|Daugavpils|ダウガフピルス²|0
+DGV|Daugavpils|ダウガフピルス|0
 JEL|Jelgava|イェルガヴァ|0
 JUR|Jūrmala|ユールマラ|0
 LPX|Liepāja|リエパーヤ|0
-REZ|Rēzekne|レーゼクネ²|0
+REZ|Rēzekne|レーゼクネ|0
 RIX|Riga|リガ|0
-VEN|Ventspils|ヴェンツピルス²|0`,
+VEN|Ventspils|ヴェンツピルス|0`,
 };
 
 export { LV };
