@@ -44,7 +44,23 @@ const CAPITAL_ITEMS: Record<string, { item: string; en?: string; why: string }> 
 
 // Japanese names of capitals where Wikidata's label is wrong for this use, with the reason.
 const CAPITAL_JA_OVERRIDES: Record<string, { ja: string; why: string }> = {
+  AF: { ja: "カブール", why: "Wikidata's カーブル is a rare spelling; Japanese media and the Ministry of Foreign Affairs write カブール." },
+  AG: { ja: "セントジョンズ", why: "Wikidata's セイント・ジョンズ is not the usual spelling; the Ministry of Foreign Affairs and Japanese Wikipedia write セントジョンズ." },
+  AI: { ja: "ザ・バレー", why: "Wikidata's バレー drops the article and reads as volleyball; the capital's name is The Valley, ザ・バレー." },
+  AM: { ja: "エレバン", why: "Wikidata's イェレヴァン is rare; the Ministry of Foreign Affairs and Japanese media write エレバン." },
+  BA: { ja: "サラエボ", why: "Wikidata's サラエヴォ is a rarer spelling; Japanese media and the Ministry of Foreign Affairs write サラエボ." },
+  BE: { ja: "ブリュッセル", why: "Wikidata's ブリュッセル市 names the municipality; the capital is written ブリュッセル." },
+  CG: { ja: "ブラザビル", why: "Wikidata's ブラザヴィル is a rarer spelling; Japanese media and the Ministry of Foreign Affairs write ブラザビル." },
+  CN: { ja: "北京", why: "Wikidata's 北京市 is the municipality's formal name; the capital is written 北京." },
   GQ: { ja: "シウダ・デ・ラ・パス", why: "Wikidata's label ラパス is the name of Bolivia's La Paz; シウダ・デ・ラ・パス is the title of the Japanese Wikipedia article." },
+  JP: { ja: "東京", why: "Wikidata's 東京都 names the prefecture; the capital is written 東京." },
+  KP: { ja: "平壌", why: "Wikidata's 平壌市 is the municipality's formal name; the capital is written 平壌, as CLDR spells it for KP-01." },
+  KR: { ja: "ソウル", why: "Wikidata's ソウル特別市 is the city's formal title; the capital is written ソウル." },
+  LA: { ja: "ビエンチャン", why: "Wikidata's ヴィエンチャン is a rarer spelling; Japanese media and the Ministry of Foreign Affairs write ビエンチャン." },
+  MP: { ja: "サイパン", why: "Wikidata's サイパン市 is the municipality's label; the capital is written サイパン." },
+  NR: { ja: "ヤレン", why: "Wikidata's ヤレン地区 names a district; Nauru has no official capital and Yaren, the place, is written ヤレン." },
+  TV: { ja: "フナフティ", why: "Wikidata's フナフティ島 names the atoll; the capital is written フナフティ." },
+  TW: { ja: "台北", why: "Wikidata's 台北市 is the municipality's formal name; the capital is written 台北." },
 };
 
 // Parts of a place a population figure may be for and still stand for the whole (P518).

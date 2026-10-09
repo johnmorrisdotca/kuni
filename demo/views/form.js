@@ -12,14 +12,18 @@ let asking = 0;
 // The widget's own words, in its own language (which need not be the page's).
 const WIDGET = {
   en: { country: "Country", region: "Region", choose: "Choose…", none: "No regions" },
-  ja: { country: "国", region: "地域", choose: "選んでください", none: "地域なし" },
+  ja: { country: "国", region: "地域", choose: "選択してください", none: "地域なし" },
 };
 
 const regionWord = () => {
+  // Japan's prefectures are of four kinds (都, 道, 府, 県), named together 都道府県.
+  if (state.country === "JP") return state.lang === "ja" ? "都道府県" : "Prefecture";
   const kind = subdivisionTypeLabel(state.country, state.lang);
   if (kind === null) return WIDGET[state.lang].region;
 
-  return state.lang === "ja" ? `${WIDGET.ja.region}（${kind}）` : kind.charAt(0).toUpperCase() + kind.slice(1);
+  if (state.lang === "ja") return kind === WIDGET.ja.region ? kind : `${WIDGET.ja.region}（${kind}）`;
+
+  return kind.charAt(0).toUpperCase() + kind.slice(1);
 };
 
 /** The widget as a page of its own: plain HTML and a module script reading Kuni from a CDN. */

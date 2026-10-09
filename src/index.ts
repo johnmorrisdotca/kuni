@@ -93,7 +93,7 @@ const getTables = (): Tables => {
  * country("JP")?.name.en;     // "Japan"
  * country("jpn")?.alpha2;     // "JP"
  * country("392")?.name.ja;    // "日本"
- * country("JP")?.capital;     // { "en": "Tokyo", "ja": "東京都" }
+ * country("JP")?.capital;     // { "en": "Tokyo", "ja": "東京" }
  * country("XX");              // null
  * ```
  */

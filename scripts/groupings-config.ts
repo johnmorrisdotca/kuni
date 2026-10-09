@@ -453,8 +453,8 @@ const INFORMAL: InformalConfig[] = [
   {
     id: "british-isles",
     en: "British Isles",
-    ja: "イギリス諸島",
-    reading: "いぎりすしょとう",
+    ja: "ブリテン諸島",
+    reading: "ぶりてんしょとう",
     members: "GB GG IE IM JE",
     definition: "The islands of Great Britain and Ireland and the islands near them: the United Kingdom, Ireland, the Isle of Man and the Channel Islands.",
     source: { name: "Encyclopaedia Britannica, British Isles", url: "https://www.britannica.com/place/British-Isles" },
@@ -495,7 +495,7 @@ const SUBDIVISION_GROUPINGS: SubdivisionGroupingConfig[] = [
   { id: "jp-chugoku", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Chugoku region", ja: "中国地方", reading: "ちゅうごくちほう", members: "31 32 33 34 35", definition: "Tottori, Shimane, Okayama, Hiroshima and Yamaguchi.", source: JP_REGIONS },
   { id: "jp-shikoku", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Shikoku region", ja: "四国地方", reading: "しこくちほう", members: "36 37 38 39", definition: "Tokushima, Kagawa, Ehime and Kochi.", source: JP_REGIONS },
   { id: "jp-kyushu", country: "JP", sets: ["jp-regions-8"], en: "Kyushu region", ja: "九州地方", reading: "きゅうしゅうちほう", members: "40 41 42 43 44 45 46 47", definition: "Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima and Okinawa, as the eight-region division counts it.", source: JP_REGIONS },
-  { id: "jp-kyushu-without-okinawa", country: "JP", sets: ["jp-regions-9"], en: "Kyushu region (without Okinawa)", ja: "九州地方（沖縄を除く）", reading: "きゅうしゅうちほう", members: "40 41 42 43 44 45 46", definition: "Kyushu's seven prefectures, where Okinawa is counted as a region of its own.", source: JP_REGIONS },
+  { id: "jp-kyushu-without-okinawa", country: "JP", sets: ["jp-regions-9"], en: "Kyushu region (without Okinawa)", ja: "沖縄を除く九州地方", reading: "おきなわをのぞくきゅうしゅうちほう", members: "40 41 42 43 44 45 46", definition: "Kyushu's seven prefectures, where Okinawa is counted as a region of its own.", source: JP_REGIONS },
   { id: "jp-okinawa", country: "JP", sets: ["jp-regions-9"], en: "Okinawa region", ja: "沖縄地方", reading: "おきなわちほう", members: "47", definition: "Okinawa, where it is counted apart from Kyushu (as in weather forecasts).", source: JP_REGIONS },
   // The United States: four Census regions and nine divisions.
   { id: "us-northeast", country: "US", sets: ["us-census-regions"], en: "Northeast", ja: "北東部", reading: "ほくとうぶ", members: "CT MA ME NH NJ NY PA RI VT", definition: "Census Region 1.", source: CENSUS },
@@ -512,15 +512,15 @@ const SUBDIVISION_GROUPINGS: SubdivisionGroupingConfig[] = [
   { id: "us-mountain", country: "US", sets: ["us-census-divisions"], en: "Mountain", ja: "山岳部", reading: "さんがくぶ", members: "AZ CO ID MT NM NV UT WY", definition: "Census Division 8, in the West.", source: CENSUS },
   { id: "us-pacific", country: "US", sets: ["us-census-divisions"], en: "Pacific", ja: "太平洋岸", reading: "たいへいようがん", members: "AK CA HI OR WA", definition: "Census Division 9, in the West.", source: CENSUS },
   // Canada: five regions as they are commonly named.
-  { id: "ca-atlantic", country: "CA", sets: ["ca-regions"], en: "Atlantic Canada", ja: "大西洋岸カナダ", reading: "たいせいようがんかなだ", members: "NB NL NS PE", definition: "The four Atlantic provinces.", source: CA_REGIONS },
+  { id: "ca-atlantic", country: "CA", sets: ["ca-regions"], en: "Atlantic Canada", ja: "大西洋沿岸諸州", reading: "たいせいようえんがんしょしゅう", members: "NB NL NS PE", definition: "The four Atlantic provinces.", source: CA_REGIONS },
   { id: "ca-central", country: "CA", sets: ["ca-regions"], en: "Central Canada", ja: "中部カナダ", reading: "ちゅうぶかなだ", members: "ON QC", definition: "Ontario and Quebec.", source: CA_REGIONS },
   { id: "ca-prairies", country: "CA", sets: ["ca-regions"], en: "Prairie Provinces", ja: "プレーリー諸州", reading: "ぷれーりーしょしゅう", members: "AB MB SK", definition: "Alberta, Saskatchewan and Manitoba.", source: CA_REGIONS },
   { id: "ca-west-coast", country: "CA", sets: ["ca-regions"], en: "West Coast", ja: "西海岸", reading: "にしかいがん", members: "BC", definition: "British Columbia.", source: CA_REGIONS },
   { id: "ca-north", country: "CA", sets: ["ca-regions"], en: "Northern Canada", ja: "北部カナダ", reading: "ほくぶかなだ", members: "NT NU YT", definition: "The three territories.", source: CA_REGIONS },
   // The United Kingdom's four countries, and Australia's states and territories.
-  { id: "gb-nations", country: "GB", sets: ["gb-nations"], en: "The four nations of the United Kingdom", ja: "イギリスの4つの国", reading: "いぎりすのよっつのくに", members: "ENG NIR SCT WLS", definition: "England, Northern Ireland, Scotland and Wales, the first level of ISO 3166-2:GB.", source: { name: "ISO 3166-2:GB, as Unicode CLDR 48.2 lists it", url: "https://www.iso.org/obp/ui/#iso:code:3166:GB", licence: "Unicode-3.0 (CLDR)" } },
+  { id: "gb-nations", country: "GB", sets: ["gb-nations"], en: "The four nations of the United Kingdom", ja: "イギリスの4つの構成国", reading: "いぎりすのよっつのこうせいこく", members: "ENG NIR SCT WLS", definition: "England, Northern Ireland, Scotland and Wales, the first level of ISO 3166-2:GB.", source: { name: "ISO 3166-2:GB, as Unicode CLDR 48.2 lists it", url: "https://www.iso.org/obp/ui/#iso:code:3166:GB", licence: "Unicode-3.0 (CLDR)" } },
   { id: "au-states", country: "AU", sets: ["au-states-territories"], en: "States of Australia", ja: "オーストラリアの州", reading: "おーすとらりあのしゅう", members: "NSW QLD SA TAS VIC WA", definition: "The six states.", source: { name: "Australian Government, States and territories", url: "https://info.australia.gov.au/about-australia/our-country/states-and-territories", licence: "A list of facts, written for kuni (MIT)" } },
-  { id: "au-territories", country: "AU", sets: ["au-states-territories"], en: "Mainland territories of Australia", ja: "オーストラリアの準州", reading: "おーすとらりあのじゅんしゅう", members: "ACT NT", definition: "The Australian Capital Territory and the Northern Territory; the external territories (Christmas Island, the Cocos Islands, Norfolk Island and others) have codes of their own as countries.", source: { name: "Australian Government, States and territories", url: "https://info.australia.gov.au/about-australia/our-country/states-and-territories", licence: "A list of facts, written for kuni (MIT)" } },
+  { id: "au-territories", country: "AU", sets: ["au-states-territories"], en: "Mainland territories of Australia", ja: "オーストラリアの準州・特別地域", reading: "おーすとらりあのじゅんしゅう・とくべつちいき", members: "ACT NT", definition: "The Australian Capital Territory and the Northern Territory; the external territories (Christmas Island, the Cocos Islands, Norfolk Island and others) have codes of their own as countries.", source: { name: "Australian Government, States and territories", url: "https://info.australia.gov.au/about-australia/our-country/states-and-territories", licence: "A list of facts, written for kuni (MIT)" } },
 ];
 
 // The continents: the seven-continent model of the `continent` field (countries-list), named from CLDR, with the

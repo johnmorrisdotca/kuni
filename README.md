@@ -88,7 +88,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **English and Japanese names** from Unicode CLDR 48.2, with CLDR's short forms (UK, アメリカ) and variants (Ivory Coast, 象牙海岸). Japanese names for 3,523 of the 3,590 first-level subdivisions, and `null` for the rest, never a guess.
 - **Found by what somebody typed.** Case, accents, full-width letters, half-width kana and hiragana or katakana are folded away, and the aliases people use (Holland, UK, Burma, 米国) are known.
 - **Kinds of place**: prefecture, state, province, region and some thirty more, read from Wikidata, with the Japanese word for each (県, 州, 省) where a country's names agree on one.
-- **Capitals in both languages.** Every country's capital in English and Japanese (東京都, キーウ), and every subdivision's capital Wikidata names (3,962 of 5,046), with readings in kana for Japan's prefectural capitals (さっぽろし).
+- **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,962 of 5,046), with readings in kana for Japan's prefectural capitals (さっぽろし).
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
@@ -293,7 +293,7 @@ interface Country {
   callingCode?: string;           // "+81"; "+1" for every member of the North American plan
   currency?: string[];            // ["JPY"]
   tld?: string;                   // "jp"; "uk" for GB
-  capital?: { en: string; ja: string };   // "Tokyo", 東京都
+  capital?: { en: string; ja: string };   // "Tokyo", 東京
   zones?: string[];               // ["Asia/Tokyo"]
   languages?: string[];           // ["ja"]
   subdivisionType?: SubdivisionType;   // "prefecture"

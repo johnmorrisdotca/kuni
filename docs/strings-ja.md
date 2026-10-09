@@ -63,7 +63,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `tab_lookup` | Look up | 調べる |
 | `tab_country` | Country | 国のページ |
 | `tab_compare` | Compare | 比べる |
-| `tab_table` | All countries | 全ての国 |
+| `tab_table` | All countries | すべての国 |
 | `tab_groupings` | Groupings | グループ |
 | `tab_quiz` | Quiz | クイズ |
 | `tab_form` | Form widget | フォーム部品 |
@@ -77,21 +77,21 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `copied` | Copied | コピーしました |
 | `copy_failed` | Could not copy | コピーできませんでした |
 | `search_title` | Search by code | コードで探す |
-| `search_blurb` | Every country that uses a calling code, a currency or a domain: +1 is the whole North American plan, EUR twenty-odd countries. | 国番号・通貨・ドメインを使っている国をすべて表示します。+1 は北米の多くの国と地域、EUR は二十あまりの国で使われています。 |
+| `search_blurb` | Every country that uses a calling code, a currency or a domain: +1 is the whole North American plan, EUR twenty-odd countries. | 国番号・通貨・ドメインから、それを使っている国をすべて探します。+1 は北米の多くの国と地域、EUR は20か国あまりで使われています。 |
 | `search_by` | Search by | 検索の種類 |
-| `search_none` | No country uses that. Try +81, EUR or .jp. | それを使っている国はありません。+81、EUR、.jp などで試してみてください。 |
+| `search_none` | No country uses that. Try +81, EUR or .jp. | その国番号・通貨・ドメインを使っている国はありません。+81、EUR、.jp などで試してみてください。 |
 | `search_count` | {count} countries | {count}か国 |
-| `title_country` | A country, all of it | 国のすべて |
-| `blurb_country` | Everything Kuni knows of one country: its names with their readings, its outline (drawn by Chizu) with the capital marked, its figures with the year each is for, its neighbours, the groupings it is in, and the time now in each of its time zones. | ひとつの国についてKuniが持つ情報をすべて表示します。読みがなつきの国名、首都に印をつけた輪郭（Chizuで描画）、年次つきの統計、隣国、所属するグループ、各タイムゾーンの現在時刻です。 |
+| `title_country` | A country, all of it | ひとつの国のすべて |
+| `blurb_country` | Everything Kuni knows of one country: its names with their readings, its outline (drawn by Chizu) with the capital marked, its figures with the year each is for, its neighbours, the groupings it is in, and the time now in each of its time zones. | ひとつの国についてKuniが持つ情報をすべて表示します。読みがなつきの国名、首都に印をつけた輪郭（Chizuで描画）、対象年つきの統計、隣国、所属するグループ、各タイムゾーンの現在時刻です。 |
 | `help_country` | Pick a country. Its neighbours and groupings are links to their own pages. | 国を選びます。隣国やグループを押すと、そのページに移ります。 |
 | `outline_loading` | Drawing the outline… | 輪郭を描いています… |
-| `outline_none` | Chizu draws no outline of this one on its own. | Chizuには、この国だけの輪郭がありません。 |
+| `outline_none` | Chizu draws no outline of this one on its own. | Chizuには、この国・地域だけの輪郭はありません。 |
 | `outline_of` | The outline of {name}, with its capital marked | {name}の輪郭（首都に印） |
 | `outline_credit` | Outline: Chizu, from Natural Earth (public domain). The dot is the capital. | 輪郭：Chizu（元データはNatural Earth、パブリックドメイン）。点は首都です。 |
 | `fact_population` | Population | 人口 |
 | `fact_area` | Area | 面積 |
 | `fact_density` | Density | 人口密度 |
-| `fact_borders` | Land borders | 陸上の国境を接する国 |
+| `fact_borders` | Land borders | 陸で国境を接する国 |
 | `fact_driving` | Drives on the | 車の通行 |
 | `fact_week` | Week starts | 週の始まり |
 | `fact_units` | Units, paper, clock | 単位・用紙・時刻表記 |
@@ -117,7 +117,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `measure_UK` | metric, with miles and pints | メートル法（マイル・パイントも使用） |
 | `clock_12` | 12-hour clock | 12時間制 |
 | `clock_24` | 24-hour clock | 24時間制 |
-| `zones_title` | Time zones, {count} | タイムゾーン（{count}） |
+| `zones_title` | Time zones, {count} | タイムゾーン（{count}つ） |
 | `zones_short` | Time zones | タイムゾーン |
 | `zones_note` | The time now there, from this device's own clock and time-zone rules; nothing is fetched. | この端末の時計とタイムゾーンの規則から計算した現地の現在時刻です。通信はしていません。 |
 | `zone` | Zone | ゾーン |
@@ -135,7 +135,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `neighbours_yes` | neighbours | 隣国どうし |
 | `same` | the same | 同じ |
 | `differ` | different | 違う |
-| `title_table` | Every country | 全ての国の一覧 |
+| `title_table` | Every country | すべての国の一覧 |
 | `blurb_table` | All 250 countries in one table. Type to filter, narrow by continent or by grouping, press a heading to sort, and download what is on show. | 250の国と地域をひとつの表にまとめています。入力して絞り込み、大陸やグループで絞り、見出しを押して並べ替え、表示中の行をダウンロードできます。 |
 | `help_table_filter` | Type part of a name, in English or Japanese, a code or a capital. | 英語か日本語の名前の一部、コード、首都名を入力します。 |
 | `help_table_narrow` | Keep one continent, or the members of one grouping. | 大陸、またはグループの加盟国だけを表示します。 |
@@ -148,7 +148,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `col_subdivision` | Subdivision | 行政区画 |
 | `table_count` | {count} countries on show. | {count}か国を表示中。 |
 | `title_groupings` | Groupings | 国のグループ |
-| `blurb_groupings` | Continents, UN regions, international bodies, informal groupings such as the Middle East, and the regions inside a country, each with its members, its definition and its source. For a body, its members on any day. | 大陸、国連の地域区分、国際機関、中東のような通称のグループ、国内の地方区分を、加盟国・定義・出典とともに表示します。国際機関は、日付を指定してその日の加盟国も見られます。 |
+| `blurb_groupings` | Continents, UN regions, international bodies, informal groupings such as the Middle East, and the regions inside a country, each with its members, its definition and its source. For a body, its members on any day. | 大陸、国連の地域区分、国際機関、中東のような非公式のグループ、国内の地方区分を、加盟国・定義・出典とともに表示します。国際機関は、日付を指定してその日の加盟国も見られます。 |
 | `help_grouping` | Pick a grouping. Members are links to their own pages. | グループを選びます。加盟国を押すと、その国のページに移ります。 |
 | `help_grouping_day` | For an international body, pick a day to see its members on that day. | 国際機関の場合、日付を選ぶとその日の加盟国を表示します。 |
 | `on_day` | On | 日付 |
@@ -156,15 +156,15 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `kind_continent` | Continents | 大陸 |
 | `kind_m49` | UN M49 regions | 国連M49の地域 |
 | `kind_membership` | International bodies | 国際機関 |
-| `kind_informal` | Informal groupings | 通称のグループ |
+| `kind_informal` | Informal groupings | 非公式のグループ |
 | `kind_subdivision` | Regions inside a country | 国内の地方区分 |
-| `informal` | informal | 通称 |
+| `informal` | informal | 非公式 |
 | `source` | Source | 出典 |
 | `as_of` | as of {day} | {day}時点 |
 | `inside` | Inside | 上位の区分 |
 | `since` | Member since | 加盟日 |
-| `members_now` | {count} members now. | 現在の加盟数：{count} |
-| `members_on` | {count} members on {day}. | {day}時点の加盟数：{count} |
+| `members_now` | {count} members now. | 現在のメンバー数：{count} |
+| `members_on` | {count} members on {day}. | {day}時点のメンバー数：{count} |
 | `others` | Not members | 加盟国以外 |
 | `former` | Former memberships | 過去の加盟 |
 | `status_candidate` | candidate | 加盟候補国 |
@@ -172,7 +172,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `status_observer` | observer | オブザーバー |
 | `status_suspended` | suspended | 資格停止中 |
 | `title_quiz` | Quiz | クイズ |
-| `blurb_quiz` | Capitals, the country a state or prefecture is in, and calling codes. Each round comes from a seed: share the link and a friend gets the same questions. | 首都、州や県がある国、国番号のクイズです。問題はシード値から作るので、リンクを送れば友だちにも同じ問題が出ます。 |
+| `blurb_quiz` | Capitals, the country a state or prefecture is in, and calling codes. Each round comes from a seed: share the link and a friend gets the same questions. | 首都、州や県の所属国、国番号のクイズです。問題はシード値から作るので、リンクを送れば友だちにも同じ問題が出ます。 |
 | `help_quiz` | Choose what to be asked. | 出題の種類を選びます。 |
 | `help_quiz_seed` | Start a new round, or copy the link to this one. | 新しく始めるか、このラウンドへのリンクをコピーします。 |
 | `quiz_kind` | Ask | 出題 |
@@ -189,13 +189,13 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `quiz_wrong` | Not this time: it is {name}. | 残念、正解は{name}です。 |
 | `quiz_next` | Next question | 次の問題 |
 | `quiz_streak` | in a row | 連続正解 |
-| `quiz_best` | best in a row | 最高連続正解 |
+| `quiz_best` | best in a row | 最長連続正解 |
 | `quiz_right_count` | right | 正解数 |
 | `quiz_note` | Map quizzes are Chizu's. The best streak is kept on this device only. | 地図クイズはChizuにあります。最高記録はこの端末にだけ保存されます。 |
 | `title_form` | A country and region form widget | 国と地域を選ぶフォーム部品 |
 | `blurb_form` | The select a sign-up form needs: a country, then its states, provinces or prefectures, in English or Japanese. Copy the code to use it in a page of your own. | 登録フォームに必要な選択欄です。国を選ぶと、その国の州・省・都道府県などが選べます。英語と日本語に対応しています。コードをコピーすれば自分のページで使えます。 |
 | `help_form_lang` | The widget's own language, which need not be the page's. | フォーム部品の言語です。ページの言語と別に選べます。 |
-| `help_form_typed` | Type a country the way people do (UK, Holland, どいつ) and the select follows. | UK、Holland、どいつ のように普段の書き方で国名を入力すると、選択欄がその国に切り替わります。 |
+| `help_form_typed` | Type a country the way people do (UK, Holland, どいつ) and the select follows. | UK、Holland、どいつ のように、ふだん使う名前で国名を入力すると、選択欄がその国に切り替わります。 |
 | `form_lang` | Widget language | 部品の言語 |
 | `form_typed` | Typed | 入力 |
 | `form_typed_found` | That is {name} ({code}). | {name}（{code}）です。 |
@@ -205,17 +205,17 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `form_lists` | The lists | 一覧 |
 | `form_lists_countries` | Every country's code and names: | すべての国のコードと名前： |
 | `form_lists_regions` | This country's regions, with their kinds: | この国の地域と種類： |
-| `title_quality` | Data quality, in the open | データの品質の公開 |
+| `title_quality` | Data quality, in the open | データの品質を公開 |
 | `blurb_quality` | What is known, what is missing and why, and where the sources disagree. Nothing missing is filled with a guess. | 分かっていること、欠けていることとその理由、資料どうしの食い違いを公開しています。欠けている値を推測で埋めることはしません。 |
 | `q_ja_first` | first-level subdivisions with a Japanese name | 日本語名がある第一級行政区画 |
 | `q_disagree` | Japanese names where CLDR and Wikidata disagree | CLDRとWikidataで日本語名が異なるもの |
 | `q_overrides` | names corrected by hand | 手作業で訂正した名前 |
-| `q_fact_gaps` | facts missing, each with its reason | 理由つきで欠けている統計 |
+| `q_fact_gaps` | facts missing, each with its reason | 理由つきで欠けている情報 |
 | `q_gaps_title` | Subdivisions with no Japanese name | 日本語名のない行政区画 |
 | `q_gaps_text` | {count} subdivisions have a Japanese name in no source, so theirs is null rather than a guess. By country: | {count}件の行政区画は、どの資料にも日本語名がないため、推測せずnullにしています。国別の件数： |
 | `q_missing` | Without a Japanese name | 日本語名なし |
 | `q_disagree_title` | Where CLDR and Wikidata disagree | CLDRとWikidataの食い違い |
-| `q_disagree_text` | Kuni keeps CLDR's name; the list is for a reader of Japanese to judge. | KuniはCLDRの名前を採用しています。どちらが正しいかは日本語の読者の判断を待っています。 |
+| `q_disagree_text` | Kuni keeps CLDR's name; the list is for a reader of Japanese to judge. | KuniはCLDRの名前を採用しています。この一覧は、日本語を読める方が判断するためのものです。 |
 | `q_cldr` | CLDR (kept) | CLDR（採用） |
 | `q_wikidata` | Wikidata | Wikidata |
 | `q_overrides_title` | Corrected by hand | 手作業による訂正 |
@@ -224,15 +224,15 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `q_why` | Why | 理由 |
 | `q_questions_title` | Open questions | 未解決の問題 |
 | `q_questions_text` | Left for a native reader of Japanese. | 日本語を母語とする方の判断を待っています。 |
-| `q_facts_title` | Facts no source gives | どの資料にもない統計 |
-| `q_facts_text` | Each missing fact is a decision, with its reason. | 欠けている統計には、それぞれ理由を記しています。 |
+| `q_facts_title` | Facts no source gives | どの資料にもない情報 |
+| `q_facts_text` | Each missing fact is a decision, with its reason. | 欠けている情報には、それぞれ理由を記しています。 |
 | `q_fact` | Fact | 項目 |
 | `q_field_population` | Population | 人口 |
 | `q_field_capital` | Capital | 首都 |
 | `q_field_capitalPoint` | Capital's coordinates | 首都の座標 |
 | `q_field_drivingSide` | Driving side | 車の通行 |
 | `q_field_borders` | Land borders | 陸上の国境 |
-| `q_subfacts_title` | Facts about subdivisions | 行政区画の統計 |
+| `q_subfacts_title` | Facts about subdivisions | 行政区画の情報 |
 | `q_subfacts_text` | How many subdivisions have each fact, and why the rest are null. | 各項目がある行政区画の数と、残りがnullである理由です。 |
 | `q_borders_title` | Borders Wikidata states that are not kept | Wikidataにあるが採用しなかった国境 |
 | `q_borders_text` | Wikidata does not say whether a border is on land or at sea; these are not confirmed by Natural Earth's outlines, so they are left out. | Wikidataは国境が陸上か海上かを区別していません。以下はNatural Earthの輪郭で確認できなかったため、採用していません。 |
@@ -243,6 +243,6 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `kindone_continent` | continent | 大陸 |
 | `kindone_m49` | UN M49 region | 国連M49の地域 |
 | `kindone_membership` | international body | 国際機関 |
-| `kindone_informal` | informal grouping | 通称のグループ |
+| `kindone_informal` | informal grouping | 非公式のグループ |
 | `kindone_subdivision` | regions inside a country | 国内の地方区分 |
 | `q_islands` | Beside these, {count} countries have no land border, each listed with its reason: islands, and Antarctica. Their borders are an empty list, which is a fact, not a gap. | このほか、{count}の国と地域は陸上の国境がなく、それぞれ理由を記しています（島国・島しょ地域と南極）。国境は空のリストで、欠けている値ではありません。 |
