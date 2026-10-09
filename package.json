@@ -1,6 +1,6 @@
 {
   "name": "@johnmorrisdotca/kuni",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Kuni 国, every country and its subdivisions (states, provinces, prefectures, regions) with ISO 3166 codes and names in English and Japanese, from Unicode CLDR and Wikidata. Typed lookups by code or by name. Zero dependencies.",
   "keywords": [
     "countries",

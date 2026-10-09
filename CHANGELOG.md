@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-09
+
 ### Added
 
 - **The demo's Compare view colours each country on its own**: a colour picker for each outline (the family's green and red at first, never the same), and a "Show capitals" switch for the dot on each capital. Both are kept in the address (`#/compare/JP/GB?colours=2f5d4a,b5452c&capitals=off`), so a shared link shows what its sender saw, and swapping the countries takes each one's colour with it.
