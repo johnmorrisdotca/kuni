@@ -5,7 +5,17 @@ import { ES } from "../data/subdivision-facts/es.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Spain, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Spain, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/es";
+ *
+ * facts.length;    // 69
+ * facts[0].code;   // "ES-A"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(ES);
 
 export default SUBDIVISION_FACTS;

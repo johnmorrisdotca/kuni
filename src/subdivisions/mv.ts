@@ -5,7 +5,17 @@ import { MV } from "../data/subdivisions/mv.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Maldives, in code order, every level.
+/**
+ * The subdivisions of Maldives, in code order, every level: 21. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mv";
+ *
+ * subdivisions.length;    // 21
+ * subdivisions[0].code;   // "MV-00"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MV);
 
 export default SUBDIVISIONS;

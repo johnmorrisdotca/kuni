@@ -5,7 +5,17 @@ import { CG } from "../data/subdivision-facts/cg.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Congo - Brazzaville, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Congo - Brazzaville, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/cg";
+ *
+ * facts.length;    // 12
+ * facts[0].code;   // "CG-11"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CG);
 
 export default SUBDIVISION_FACTS;

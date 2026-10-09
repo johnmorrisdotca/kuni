@@ -5,7 +5,17 @@ import { KI } from "../data/subdivision-facts/ki.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Kiribati, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Kiribati, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ki";
+ *
+ * facts.length;    // 3
+ * facts[0].code;   // "KI-G"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(KI);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { MX } from "../data/subdivision-facts/mx.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Mexico, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Mexico, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mx";
+ *
+ * facts.length;    // 32
+ * facts[0].code;   // "MX-AGU"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MX);
 
 export default SUBDIVISION_FACTS;

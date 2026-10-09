@@ -5,7 +5,17 @@ import { MM } from "../data/subdivisions/mm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Myanmar (Burma), in code order, every level.
+/**
+ * The subdivisions of Myanmar (Burma), in code order, every level: 15. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mm";
+ *
+ * subdivisions.length;    // 15
+ * subdivisions[0].code;   // "MM-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MM);
 
 export default SUBDIVISIONS;

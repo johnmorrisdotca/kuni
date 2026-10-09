@@ -5,7 +5,17 @@ import { MX } from "../data/subdivisions/mx.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Mexico, in code order, every level.
+/**
+ * The subdivisions of Mexico, in code order, every level: 32. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mx";
+ *
+ * subdivisions.length;    // 32
+ * subdivisions[0].code;   // "MX-AGU"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MX);
 
 export default SUBDIVISIONS;

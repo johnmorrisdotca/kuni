@@ -5,7 +5,17 @@ import { KI } from "../data/subdivisions/ki.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Kiribati, in code order, every level.
+/**
+ * The subdivisions of Kiribati, in code order, every level: 3. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ki";
+ *
+ * subdivisions.length;    // 3
+ * subdivisions[0].code;   // "KI-G"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KI);
 
 export default SUBDIVISIONS;

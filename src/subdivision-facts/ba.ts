@@ -5,7 +5,17 @@ import { BA } from "../data/subdivision-facts/ba.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Bosnia & Herzegovina, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Bosnia & Herzegovina, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ba";
+ *
+ * facts.length;    // 3
+ * facts[0].code;   // "BA-BIH"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(BA);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { SE } from "../data/subdivisions/se.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Sweden, in code order, every level.
+/**
+ * The subdivisions of Sweden, in code order, every level: 21. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/se";
+ *
+ * subdivisions.length;    // 21
+ * subdivisions[0].code;   // "SE-AB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SE);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { TO } from "../data/subdivision-facts/to.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Tonga, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Tonga, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/to";
+ *
+ * facts.length;    // 5
+ * facts[0].code;   // "TO-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TO);
 
 export default SUBDIVISION_FACTS;

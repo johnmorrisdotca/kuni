@@ -5,7 +5,17 @@ import { GM } from "../data/subdivision-facts/gm.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Gambia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Gambia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gm";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "GM-B"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GM);
 
 export default SUBDIVISION_FACTS;

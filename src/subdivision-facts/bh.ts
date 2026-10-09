@@ -5,7 +5,17 @@ import { BH } from "../data/subdivision-facts/bh.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Bahrain, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Bahrain, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/bh";
+ *
+ * facts.length;    // 4
+ * facts[0].code;   // "BH-13"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(BH);
 
 export default SUBDIVISION_FACTS;

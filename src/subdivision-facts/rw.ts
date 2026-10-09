@@ -5,7 +5,17 @@ import { RW } from "../data/subdivision-facts/rw.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Rwanda, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Rwanda, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/rw";
+ *
+ * facts.length;    // 5
+ * facts[0].code;   // "RW-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(RW);
 
 export default SUBDIVISION_FACTS;

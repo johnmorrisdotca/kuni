@@ -5,7 +5,17 @@ import { ES } from "../data/subdivisions/es.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Spain, in code order, every level.
+/**
+ * The subdivisions of Spain, in code order, every level: 69. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/es";
+ *
+ * subdivisions.length;    // 69
+ * subdivisions[0].code;   // "ES-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ES);
 
 export default SUBDIVISIONS;

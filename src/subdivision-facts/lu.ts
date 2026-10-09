@@ -5,7 +5,17 @@ import { LU } from "../data/subdivision-facts/lu.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Luxembourg, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Luxembourg, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/lu";
+ *
+ * facts.length;    // 12
+ * facts[0].code;   // "LU-CA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(LU);
 
 export default SUBDIVISION_FACTS;

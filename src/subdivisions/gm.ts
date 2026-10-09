@@ -5,7 +5,17 @@ import { GM } from "../data/subdivisions/gm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Gambia, in code order, every level.
+/**
+ * The subdivisions of Gambia, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gm";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "GM-B"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GM);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { CH } from "../data/subdivisions/ch.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Switzerland, in code order, every level.
+/**
+ * The subdivisions of Switzerland, in code order, every level: 26. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ch";
+ *
+ * subdivisions.length;    // 26
+ * subdivisions[0].code;   // "CH-AG"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CH);
 
 export default SUBDIVISIONS;

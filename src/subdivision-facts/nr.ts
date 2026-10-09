@@ -5,7 +5,17 @@ import { NR } from "../data/subdivision-facts/nr.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Nauru, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Nauru, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/nr";
+ *
+ * facts.length;    // 14
+ * facts[0].code;   // "NR-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(NR);
 
 export default SUBDIVISION_FACTS;

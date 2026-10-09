@@ -5,7 +5,17 @@ import { UY } from "../data/subdivisions/uy.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Uruguay, in code order, every level.
+/**
+ * The subdivisions of Uruguay, in code order, every level: 19. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/uy";
+ *
+ * subdivisions.length;    // 19
+ * subdivisions[0].code;   // "UY-AR"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(UY);
 
 export default SUBDIVISIONS;

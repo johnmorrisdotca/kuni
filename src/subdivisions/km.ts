@@ -5,7 +5,17 @@ import { KM } from "../data/subdivisions/km.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Comoros, in code order, every level.
+/**
+ * The subdivisions of Comoros, in code order, every level: 3. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/km";
+ *
+ * subdivisions.length;    // 3
+ * subdivisions[0].code;   // "KM-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KM);
 
 export default SUBDIVISIONS;

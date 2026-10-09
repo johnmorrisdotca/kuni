@@ -5,7 +5,17 @@ import { CO } from "../data/subdivisions/co.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Colombia, in code order, every level.
+/**
+ * The subdivisions of Colombia, in code order, every level: 33. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/co";
+ *
+ * subdivisions.length;    // 33
+ * subdivisions[0].code;   // "CO-AMA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CO);
 
 export default SUBDIVISIONS;

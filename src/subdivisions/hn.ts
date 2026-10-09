@@ -5,7 +5,17 @@ import { HN } from "../data/subdivisions/hn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Honduras, in code order, every level.
+/**
+ * The subdivisions of Honduras, in code order, every level: 18. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/hn";
+ *
+ * subdivisions.length;    // 18
+ * subdivisions[0].code;   // "HN-AT"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(HN);
 
 export default SUBDIVISIONS;

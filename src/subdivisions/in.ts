@@ -5,7 +5,17 @@ import { IN } from "../data/subdivisions/in.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of India, in code order, every level.
+/**
+ * The subdivisions of India, in code order, every level: 36. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/in";
+ *
+ * subdivisions.length;    // 36
+ * subdivisions[0].code;   // "IN-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IN);
 
 export default SUBDIVISIONS;

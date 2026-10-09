@@ -5,7 +5,17 @@ import { FI } from "../data/subdivision-facts/fi.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Finland, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Finland, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/fi";
+ *
+ * facts.length;    // 19
+ * facts[0].code;   // "FI-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(FI);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { FJ } from "../data/subdivisions/fj.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Fiji, in code order, every level.
+/**
+ * The subdivisions of Fiji, in code order, every level: 19. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/fj";
+ *
+ * subdivisions.length;    // 19
+ * subdivisions[0].code;   // "FJ-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(FJ);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { PG } from "../data/subdivision-facts/pg.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Papua New Guinea, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Papua New Guinea, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/pg";
+ *
+ * facts.length;    // 22
+ * facts[0].code;   // "PG-CPK"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PG);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { CA } from "../data/subdivisions/ca.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Canada, in code order, every level.
+/**
+ * The subdivisions of Canada, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ca";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "CA-AB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CA);
 
 export default SUBDIVISIONS;

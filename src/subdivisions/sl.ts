@@ -5,7 +5,17 @@ import { SL } from "../data/subdivisions/sl.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Sierra Leone, in code order, every level.
+/**
+ * The subdivisions of Sierra Leone, in code order, every level: 5. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sl";
+ *
+ * subdivisions.length;    // 5
+ * subdivisions[0].code;   // "SL-E"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SL);
 
 export default SUBDIVISIONS;

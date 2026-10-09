@@ -5,7 +5,17 @@ import { DE } from "../data/subdivisions/de.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Germany, in code order, every level.
+/**
+ * The subdivisions of Germany, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/de";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "DE-BB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DE);
 
 export default SUBDIVISIONS;

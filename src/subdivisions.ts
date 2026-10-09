@@ -10,15 +10,21 @@ import type { SubdivisionTable } from "./rows";
 import { SUBDIVISION_TYPES } from "./types";
 import type { Language, Subdivision, SubdivisionType } from "./types";
 
+/** A level of subdivision: 1 for a country's first division, 2 and 3 for those inside one, or "all". */
 type Level = 1 | 2 | 3 | "all";
 
+/** What `subdivisions()` may be asked. */
 interface SubdivisionsOptions {
-  level?: Level; // 1 (the default) for the first division only; 2 or 3 for one deeper level; "all" for every level
+  /** 1 (the default) for the first division only; 2 or 3 for one deeper level; "all" for every level. */
+  level?: Level;
 }
 
+/** What `subdivisionByName()` and `subdivisionsByName()` may be narrowed to. */
 interface SubdivisionByNameOptions {
-  country?: string; // Only this country's subdivisions (alpha-2, either case)
-  level?: Level; // Only this level ("all", the default, looks at every level)
+  /** Only this country's subdivisions (alpha-2, either case). */
+  country?: string;
+  /** Only this level; "all", the default, looks at every level. */
+  level?: Level;
 }
 
 interface Tables {
@@ -87,8 +93,23 @@ const getTables = (): Tables => {
 const atLevel = (list: readonly Subdivision[], level: Level): readonly Subdivision[] =>
   level === "all" ? list : list.filter((one) => one.level === level);
 
-// A country's subdivisions, in code order: the first level unless `level` asks for another or for "all".
-// An empty list for a country that has none (Antarctica); null for a code that is not a country.
+/**
+ * A country's subdivisions, in code order: the first level unless `level` asks for another or for "all".
+ *
+ * @param countryCode - An alpha-2 code, either case.
+ * @param options - `level`: 1 (the default), 2, 3 or "all".
+ * @returns The list, frozen; an empty list for a country that has none (Antarctica); `null` for a code that is not
+ * a country.
+ * @example
+ * ```ts
+ * import { subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * subdivisions("JP")?.length;                    // 47
+ * subdivisions("FR")?.length;                    // 26
+ * subdivisions("FR", { level: "all" })?.length;  // 124
+ * subdivisions("XX");                            // null
+ * ```
+ */
 const subdivisions = (countryCode: string, options: SubdivisionsOptions = {}): readonly Subdivision[] | null => {
   const code = typeof countryCode === "string" ? countryCode.trim().toUpperCase() : "";
   if (!isCountryCode(code)) return null;
@@ -97,26 +118,77 @@ const subdivisions = (countryCode: string, options: SubdivisionsOptions = {}): r
   return freeze([...atLevel(list, options.level ?? 1)]);
 };
 
-// Every subdivision of every country, every level, in code order.
+/**
+ * Every subdivision of every country, every level, in code order.
+ *
+ * @returns The 5,046 subdivisions, frozen and shared.
+ * @example
+ * ```ts
+ * import { allSubdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * allSubdivisions().length;   // 5046
+ * ```
+ */
 const allSubdivisions = (): readonly Subdivision[] => getTables().list;
 
-// One subdivision by its ISO 3166-2 code ("JP-13", "ca-on"). Null for anything else.
+/**
+ * One subdivision by its ISO 3166-2 code.
+ *
+ * @param code - The full code, either case: "JP-13", "ca-on".
+ * @returns The subdivision, frozen; `null` for anything that is not one.
+ * @example
+ * ```ts
+ * import { subdivision } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * subdivision("JP-13")?.name.ja;   // "東京都"
+ * subdivision("ca-on")?.name.en;   // "Ontario"
+ * subdivision("FR-75C")?.parent;   // "FR-IDF"
+ * subdivision("XX-99");            // null
+ * ```
+ */
 const subdivision = (code: string): Subdivision | null => {
   if (typeof code !== "string") return null;
 
   return getTables().byCode.get(code.trim().toUpperCase()) ?? null;
 };
 
-// One subdivision by its country and the part of its code after the hyphen: ("CA", "ON") is CA-ON.
+/**
+ * One subdivision by its country and the part of its code after the hyphen.
+ *
+ * @param countryCode - An alpha-2 code, either case.
+ * @param shortCode - The part after the hyphen: "ON", "13".
+ * @returns The subdivision, frozen; `null` where the two make no code.
+ * @example
+ * ```ts
+ * import { subdivisionByShortCode } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * subdivisionByShortCode("CA", "ON")?.code;   // "CA-ON"
+ * subdivisionByShortCode("JP", "99");         // null
+ * ```
+ */
 const subdivisionByShortCode = (countryCode: string, shortCode: string): Subdivision | null => {
   if (typeof countryCode !== "string" || typeof shortCode !== "string") return null;
 
   return subdivision(`${countryCode.trim()}-${shortCode.trim()}`);
 };
 
-// Every subdivision a typed name could be, in code order: its English or Japanese name, its Japanese name
-// without the word for its kind (オンタリオ, 東京), a prefecture's reading, or its full code. Folded as
-// `fold` folds, so case, accents, width and kana do not matter.
+/**
+ * Every subdivision a typed name could be, in code order: its English or Japanese name, its Japanese name without
+ * the word for its kind (オンタリオ, 東京), a prefecture's reading, or its full code. Folded as `fold` folds, so
+ * case, accents, width and kana do not matter.
+ *
+ * @param text - What was typed.
+ * @param options - `country` and `level`, to narrow the search.
+ * @returns The subdivisions it could be, frozen; an empty list for none.
+ * @example
+ * ```ts
+ * import { subdivisionsByName } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * subdivisionsByName("Punjab").map((one) => one.code);   // ["IN-PB", "PK-PB"]
+ * subdivisionsByName("とうきょうと").map((one) => one.code); // ["JP-13"]
+ * subdivisionsByName("Narnia");                          // []
+ * ```
+ */
 const subdivisionsByName = (text: string, options: SubdivisionByNameOptions = {}): readonly Subdivision[] => {
   if (typeof text !== "string" || fold(text) === "") return freeze([]);
   const { byName } = getTables();
@@ -128,9 +200,23 @@ const subdivisionsByName = (text: string, options: SubdivisionByNameOptions = {}
   return freeze([...kept].sort((a, b) => (a.code < b.code ? -1 : a.code > b.code ? 1 : 0)));
 };
 
-// The one subdivision a typed name means ("Ontario", or オンタリオ州 with { country: "CA" }). When the name
-// is at more than one level, the highest level wins (a region over a department of the same name). When it
-// is still more than one place (Punjab is in India and in Pakistan), the answer is null: name the country.
+/**
+ * The one subdivision a typed name means. When the name is at more than one level, the highest level wins (a
+ * region over a department of the same name).
+ *
+ * @param text - What was typed: "Ontario", オンタリオ州, オンタリオ.
+ * @param options - `country` and `level`, to narrow the search.
+ * @returns The subdivision, frozen; `null` when nothing matches, or when the name is still more than one place
+ * (Punjab is in India and in Pakistan): name the country.
+ * @example
+ * ```ts
+ * import { subdivisionByName } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * subdivisionByName("オンタリオ州", { country: "CA" })?.code;   // "CA-ON"
+ * subdivisionByName("Punjab");                                 // null
+ * subdivisionByName("Punjab", { country: "PK" })?.code;        // "PK-PB"
+ * ```
+ */
 const subdivisionByName = (text: string, options: SubdivisionByNameOptions = {}): Subdivision | null => {
   const found = subdivisionsByName(text, options);
   if (found.length === 0) return null;
@@ -149,10 +235,24 @@ const mainType = (table: SubdivisionTable, list: readonly Subdivision[]): Subdiv
   return ranked[0]?.[0] ?? (table.types[0] ?? null);
 };
 
-// The word for a kind of subdivision. Given a subdivision's code, its own kind ("JP-13" is "metropolis", 都);
-// given a country's code, the kind most of its first-level subdivisions are ("JP" is "prefecture", 県). In
-// English the kind's name with spaces; in Japanese the word the names of that kind in that country end in,
-// or null where they do not agree on one (or where the kind is not known).
+/**
+ * The word for a kind of subdivision. Given a subdivision's code, its own kind ("JP-13" is "metropolis", 都); given
+ * a country's code, the kind most of its first-level subdivisions are ("JP" is "prefecture", 県). In English the
+ * kind's name with spaces; in Japanese the word the names of that kind in that country end in.
+ *
+ * @param code - A subdivision's code ("JP-13") or a country's alpha-2 code ("JP").
+ * @param language - "en" (the default) or "ja".
+ * @returns The word; `null` where the kind is not known, or, in Japanese, where the names do not agree on one.
+ * @example
+ * ```ts
+ * import { subdivisionTypeLabel } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * subdivisionTypeLabel("JP-13");          // "metropolis"
+ * subdivisionTypeLabel("JP-13", "ja");    // "都"
+ * subdivisionTypeLabel("CA", "ja");       // "州"
+ * subdivisionTypeLabel("XX");             // null
+ * ```
+ */
 const subdivisionTypeLabel = (code: string, language: Language = "en"): string | null => {
   if (typeof code !== "string") return null;
   const { tableOf, byCountry } = getTables();

@@ -5,7 +5,17 @@ import { UZ } from "../data/subdivisions/uz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Uzbekistan, in code order, every level.
+/**
+ * The subdivisions of Uzbekistan, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/uz";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "UZ-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(UZ);
 
 export default SUBDIVISIONS;

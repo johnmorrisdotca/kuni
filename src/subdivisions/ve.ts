@@ -5,7 +5,17 @@ import { VE } from "../data/subdivisions/ve.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Venezuela, in code order, every level.
+/**
+ * The subdivisions of Venezuela, in code order, every level: 25. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ve";
+ *
+ * subdivisions.length;    // 25
+ * subdivisions[0].code;   // "VE-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(VE);
 
 export default SUBDIVISIONS;

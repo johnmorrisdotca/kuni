@@ -5,7 +5,17 @@ import { AG } from "../data/subdivisions/ag.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Antigua & Barbuda, in code order, every level.
+/**
+ * The subdivisions of Antigua & Barbuda, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ag";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "AG-03"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AG);
 
 export default SUBDIVISIONS;

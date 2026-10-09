@@ -5,7 +5,17 @@ import { EE } from "../data/subdivision-facts/ee.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Estonia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Estonia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ee";
+ *
+ * facts.length;    // 94
+ * facts[0].code;   // "EE-130"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(EE);
 
 export default SUBDIVISION_FACTS;

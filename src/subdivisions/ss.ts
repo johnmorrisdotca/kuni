@@ -5,7 +5,17 @@ import { SS } from "../data/subdivisions/ss.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of South Sudan, in code order, every level.
+/**
+ * The subdivisions of South Sudan, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ss";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "SS-BN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SS);
 
 export default SUBDIVISIONS;

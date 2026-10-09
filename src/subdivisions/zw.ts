@@ -5,7 +5,17 @@ import { ZW } from "../data/subdivisions/zw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Zimbabwe, in code order, every level.
+/**
+ * The subdivisions of Zimbabwe, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/zw";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "ZW-BU"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ZW);
 
 export default SUBDIVISIONS;

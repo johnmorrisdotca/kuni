@@ -5,7 +5,17 @@ import { SA } from "../data/subdivisions/sa.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Saudi Arabia, in code order, every level.
+/**
+ * The subdivisions of Saudi Arabia, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sa";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "SA-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SA);
 
 export default SUBDIVISIONS;

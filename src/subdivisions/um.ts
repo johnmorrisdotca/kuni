@@ -5,7 +5,17 @@ import { UM } from "../data/subdivisions/um.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of U.S. Outlying Islands, in code order, every level.
+/**
+ * The subdivisions of U.S. Outlying Islands, in code order, every level: 9. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/um";
+ *
+ * subdivisions.length;    // 9
+ * subdivisions[0].code;   // "UM-67"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(UM);
 
 export default SUBDIVISIONS;

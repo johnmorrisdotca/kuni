@@ -5,7 +5,17 @@ import { KH } from "../data/subdivision-facts/kh.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Cambodia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Cambodia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/kh";
+ *
+ * facts.length;    // 25
+ * facts[0].code;   // "KH-1"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(KH);
 
 export default SUBDIVISION_FACTS;

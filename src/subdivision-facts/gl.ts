@@ -5,7 +5,17 @@ import { GL } from "../data/subdivision-facts/gl.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Greenland, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Greenland, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gl";
+ *
+ * facts.length;    // 5
+ * facts[0].code;   // "GL-AV"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GL);
 
 export default SUBDIVISION_FACTS;

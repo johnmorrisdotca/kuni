@@ -5,7 +5,17 @@ import { BY } from "../data/subdivision-facts/by.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Belarus, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Belarus, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/by";
+ *
+ * facts.length;    // 7
+ * facts[0].code;   // "BY-BR"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(BY);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { MY } from "../data/subdivision-facts/my.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Malaysia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Malaysia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/my";
+ *
+ * facts.length;    // 16
+ * facts[0].code;   // "MY-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MY);
 
 export default SUBDIVISION_FACTS;

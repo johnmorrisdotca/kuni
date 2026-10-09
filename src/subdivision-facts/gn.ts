@@ -5,7 +5,17 @@ import { GN } from "../data/subdivision-facts/gn.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Guinea, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Guinea, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gn";
+ *
+ * facts.length;    // 41
+ * facts[0].code;   // "GN-B"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GN);
 
 export default SUBDIVISION_FACTS;

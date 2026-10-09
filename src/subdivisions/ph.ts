@@ -5,7 +5,17 @@ import { PH } from "../data/subdivisions/ph.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Philippines, in code order, every level.
+/**
+ * The subdivisions of Philippines, in code order, every level: 99. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ph";
+ *
+ * subdivisions.length;    // 99
+ * subdivisions[0].code;   // "PH-00"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PH);
 
 export default SUBDIVISIONS;

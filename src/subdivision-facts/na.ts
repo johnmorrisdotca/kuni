@@ -5,7 +5,17 @@ import { NA } from "../data/subdivision-facts/na.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Namibia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Namibia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/na";
+ *
+ * facts.length;    // 14
+ * facts[0].code;   // "NA-CA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(NA);
 
 export default SUBDIVISION_FACTS;

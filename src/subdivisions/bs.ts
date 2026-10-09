@@ -5,7 +5,17 @@ import { BS } from "../data/subdivisions/bs.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bahamas, in code order, every level.
+/**
+ * The subdivisions of Bahamas, in code order, every level: 32. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bs";
+ *
+ * subdivisions.length;    // 32
+ * subdivisions[0].code;   // "BS-AK"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BS);
 
 export default SUBDIVISIONS;

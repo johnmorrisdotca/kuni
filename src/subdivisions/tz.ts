@@ -5,7 +5,17 @@ import { TZ } from "../data/subdivisions/tz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Tanzania, in code order, every level.
+/**
+ * The subdivisions of Tanzania, in code order, every level: 31. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tz";
+ *
+ * subdivisions.length;    // 31
+ * subdivisions[0].code;   // "TZ-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TZ);
 
 export default SUBDIVISIONS;

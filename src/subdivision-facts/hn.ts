@@ -5,7 +5,17 @@ import { HN } from "../data/subdivision-facts/hn.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Honduras, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Honduras, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/hn";
+ *
+ * facts.length;    // 18
+ * facts[0].code;   // "HN-AT"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(HN);
 
 export default SUBDIVISION_FACTS;

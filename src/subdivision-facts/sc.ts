@@ -5,7 +5,17 @@ import { SC } from "../data/subdivision-facts/sc.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Seychelles, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Seychelles, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sc";
+ *
+ * facts.length;    // 27
+ * facts[0].code;   // "SC-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SC);
 
 export default SUBDIVISION_FACTS;

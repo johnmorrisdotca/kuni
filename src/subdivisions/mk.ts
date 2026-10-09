@@ -5,7 +5,17 @@ import { MK } from "../data/subdivisions/mk.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of North Macedonia, in code order, every level.
+/**
+ * The subdivisions of North Macedonia, in code order, every level: 80. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mk";
+ *
+ * subdivisions.length;    // 80
+ * subdivisions[0].code;   // "MK-101"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MK);
 
 export default SUBDIVISIONS;

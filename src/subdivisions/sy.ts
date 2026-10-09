@@ -5,7 +5,17 @@ import { SY } from "../data/subdivisions/sy.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Syria, in code order, every level.
+/**
+ * The subdivisions of Syria, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sy";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "SY-DI"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SY);
 
 export default SUBDIVISIONS;

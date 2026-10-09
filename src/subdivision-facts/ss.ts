@@ -5,7 +5,17 @@ import { SS } from "../data/subdivision-facts/ss.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of South Sudan, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of South Sudan, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ss";
+ *
+ * facts.length;    // 10
+ * facts[0].code;   // "SS-BN"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SS);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { UY } from "../data/subdivision-facts/uy.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Uruguay, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Uruguay, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/uy";
+ *
+ * facts.length;    // 19
+ * facts[0].code;   // "UY-AR"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(UY);
 
 export default SUBDIVISION_FACTS;

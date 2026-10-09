@@ -5,7 +5,17 @@ import { DZ } from "../data/subdivision-facts/dz.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Algeria, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Algeria, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/dz";
+ *
+ * facts.length;    // 58
+ * facts[0].code;   // "DZ-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(DZ);
 
 export default SUBDIVISION_FACTS;

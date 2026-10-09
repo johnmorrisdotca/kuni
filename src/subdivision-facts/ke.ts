@@ -5,7 +5,17 @@ import { KE } from "../data/subdivision-facts/ke.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Kenya, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Kenya, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ke";
+ *
+ * facts.length;    // 47
+ * facts[0].code;   // "KE-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(KE);
 
 export default SUBDIVISION_FACTS;

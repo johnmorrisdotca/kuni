@@ -5,7 +5,17 @@ import { GH } from "../data/subdivision-facts/gh.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Ghana, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Ghana, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gh";
+ *
+ * facts.length;    // 16
+ * facts[0].code;   // "GH-AA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GH);
 
 export default SUBDIVISION_FACTS;

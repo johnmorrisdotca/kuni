@@ -5,7 +5,17 @@ import { PG } from "../data/subdivisions/pg.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Papua New Guinea, in code order, every level.
+/**
+ * The subdivisions of Papua New Guinea, in code order, every level: 22. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pg";
+ *
+ * subdivisions.length;    // 22
+ * subdivisions[0].code;   // "PG-CPK"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PG);
 
 export default SUBDIVISIONS;

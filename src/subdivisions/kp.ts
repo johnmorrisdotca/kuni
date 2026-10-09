@@ -5,7 +5,17 @@ import { KP } from "../data/subdivisions/kp.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of North Korea, in code order, every level.
+/**
+ * The subdivisions of North Korea, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kp";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "KP-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KP);
 
 export default SUBDIVISIONS;

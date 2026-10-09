@@ -5,7 +5,17 @@ import { GW } from "../data/subdivisions/gw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Guinea-Bissau, in code order, every level.
+/**
+ * The subdivisions of Guinea-Bissau, in code order, every level: 12. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gw";
+ *
+ * subdivisions.length;    // 12
+ * subdivisions[0].code;   // "GW-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GW);
 
 export default SUBDIVISIONS;

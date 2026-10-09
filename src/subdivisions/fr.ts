@@ -5,7 +5,17 @@ import { FR } from "../data/subdivisions/fr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of France, in code order, every level.
+/**
+ * The subdivisions of France, in code order, every level: 124. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/fr";
+ *
+ * subdivisions.length;    // 124
+ * subdivisions[0].code;   // "FR-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(FR);
 
 export default SUBDIVISIONS;

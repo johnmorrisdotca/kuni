@@ -5,7 +5,17 @@ import { RO } from "../data/subdivisions/ro.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Romania, in code order, every level.
+/**
+ * The subdivisions of Romania, in code order, every level: 42. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ro";
+ *
+ * subdivisions.length;    // 42
+ * subdivisions[0].code;   // "RO-AB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(RO);
 
 export default SUBDIVISIONS;

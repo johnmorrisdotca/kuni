@@ -5,7 +5,17 @@ import { GD } from "../data/subdivision-facts/gd.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Grenada, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Grenada, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gd";
+ *
+ * facts.length;    // 7
+ * facts[0].code;   // "GD-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GD);
 
 export default SUBDIVISION_FACTS;

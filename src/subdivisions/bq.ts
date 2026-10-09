@@ -5,7 +5,17 @@ import { BQ } from "../data/subdivisions/bq.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Caribbean Netherlands, in code order, every level.
+/**
+ * The subdivisions of Caribbean Netherlands, in code order, every level: 3. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bq";
+ *
+ * subdivisions.length;    // 3
+ * subdivisions[0].code;   // "BQ-BO"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BQ);
 
 export default SUBDIVISIONS;

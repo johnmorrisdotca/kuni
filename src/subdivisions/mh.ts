@@ -5,7 +5,17 @@ import { MH } from "../data/subdivisions/mh.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Marshall Islands, in code order, every level.
+/**
+ * The subdivisions of Marshall Islands, in code order, every level: 26. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mh";
+ *
+ * subdivisions.length;    // 26
+ * subdivisions[0].code;   // "MH-ALK"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MH);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { EE } from "../data/subdivisions/ee.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Estonia, in code order, every level.
+/**
+ * The subdivisions of Estonia, in code order, every level: 94. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ee";
+ *
+ * subdivisions.length;    // 94
+ * subdivisions[0].code;   // "EE-130"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(EE);
 
 export default SUBDIVISIONS;

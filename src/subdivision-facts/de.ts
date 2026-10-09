@@ -5,7 +5,17 @@ import { DE } from "../data/subdivision-facts/de.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Germany, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Germany, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/de";
+ *
+ * facts.length;    // 16
+ * facts[0].code;   // "DE-BB"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(DE);
 
 export default SUBDIVISION_FACTS;

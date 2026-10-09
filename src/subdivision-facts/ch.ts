@@ -5,7 +5,17 @@ import { CH } from "../data/subdivision-facts/ch.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Switzerland, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Switzerland, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ch";
+ *
+ * facts.length;    // 26
+ * facts[0].code;   // "CH-AG"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CH);
 
 export default SUBDIVISION_FACTS;

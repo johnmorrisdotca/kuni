@@ -5,7 +5,17 @@ import { SR } from "../data/subdivisions/sr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Suriname, in code order, every level.
+/**
+ * The subdivisions of Suriname, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sr";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "SR-BR"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SR);
 
 export default SUBDIVISIONS;

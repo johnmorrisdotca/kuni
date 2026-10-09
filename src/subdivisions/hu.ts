@@ -5,7 +5,17 @@ import { HU } from "../data/subdivisions/hu.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Hungary, in code order, every level.
+/**
+ * The subdivisions of Hungary, in code order, every level: 43. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/hu";
+ *
+ * subdivisions.length;    // 43
+ * subdivisions[0].code;   // "HU-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(HU);
 
 export default SUBDIVISIONS;

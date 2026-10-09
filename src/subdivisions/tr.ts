@@ -5,7 +5,17 @@ import { TR } from "../data/subdivisions/tr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Türkiye, in code order, every level.
+/**
+ * The subdivisions of Türkiye, in code order, every level: 81. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tr";
+ *
+ * subdivisions.length;    // 81
+ * subdivisions[0].code;   // "TR-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TR);
 
 export default SUBDIVISIONS;

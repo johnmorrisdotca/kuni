@@ -5,7 +5,17 @@ import { PL } from "../data/subdivisions/pl.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Poland, in code order, every level.
+/**
+ * The subdivisions of Poland, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pl";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "PL-02"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PL);
 
 export default SUBDIVISIONS;

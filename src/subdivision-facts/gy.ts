@@ -5,7 +5,17 @@ import { GY } from "../data/subdivision-facts/gy.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Guyana, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Guyana, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gy";
+ *
+ * facts.length;    // 10
+ * facts[0].code;   // "GY-BA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GY);
 
 export default SUBDIVISION_FACTS;

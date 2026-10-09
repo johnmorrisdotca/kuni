@@ -5,7 +5,17 @@ import { IL } from "../data/subdivisions/il.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Israel, in code order, every level.
+/**
+ * The subdivisions of Israel, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/il";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "IL-D"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IL);
 
 export default SUBDIVISIONS;

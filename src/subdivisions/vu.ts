@@ -5,7 +5,17 @@ import { VU } from "../data/subdivisions/vu.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Vanuatu, in code order, every level.
+/**
+ * The subdivisions of Vanuatu, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/vu";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "VU-MAP"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(VU);
 
 export default SUBDIVISIONS;

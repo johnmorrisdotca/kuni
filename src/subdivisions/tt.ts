@@ -5,7 +5,17 @@ import { TT } from "../data/subdivisions/tt.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Trinidad & Tobago, in code order, every level.
+/**
+ * The subdivisions of Trinidad & Tobago, in code order, every level: 15. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tt";
+ *
+ * subdivisions.length;    // 15
+ * subdivisions[0].code;   // "TT-ARI"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TT);
 
 export default SUBDIVISIONS;

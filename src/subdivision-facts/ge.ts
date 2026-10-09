@@ -5,7 +5,17 @@ import { GE } from "../data/subdivision-facts/ge.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Georgia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Georgia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ge";
+ *
+ * facts.length;    // 12
+ * facts[0].code;   // "GE-AB"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GE);
 
 export default SUBDIVISION_FACTS;

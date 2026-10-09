@@ -5,7 +5,17 @@ import { UG } from "../data/subdivision-facts/ug.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Uganda, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Uganda, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ug";
+ *
+ * facts.length;    // 139
+ * facts[0].code;   // "UG-101"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(UG);
 
 export default SUBDIVISION_FACTS;

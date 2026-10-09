@@ -5,7 +5,17 @@ import { AO } from "../data/subdivisions/ao.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Angola, in code order, every level.
+/**
+ * The subdivisions of Angola, in code order, every level: 18. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ao";
+ *
+ * subdivisions.length;    // 18
+ * subdivisions[0].code;   // "AO-BGO"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AO);
 
 export default SUBDIVISIONS;

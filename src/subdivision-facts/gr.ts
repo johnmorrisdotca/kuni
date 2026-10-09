@@ -5,7 +5,17 @@ import { GR } from "../data/subdivision-facts/gr.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Greece, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Greece, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gr";
+ *
+ * facts.length;    // 14
+ * facts[0].code;   // "GR-69"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GR);
 
 export default SUBDIVISION_FACTS;

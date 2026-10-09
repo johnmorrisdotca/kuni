@@ -5,7 +5,17 @@ import { AD } from "../data/subdivision-facts/ad.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Andorra, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Andorra, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ad";
+ *
+ * facts.length;    // 7
+ * facts[0].code;   // "AD-02"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(AD);
 
 export default SUBDIVISION_FACTS;

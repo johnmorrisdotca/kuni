@@ -5,7 +5,17 @@ import { LU } from "../data/subdivisions/lu.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Luxembourg, in code order, every level.
+/**
+ * The subdivisions of Luxembourg, in code order, every level: 12. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lu";
+ *
+ * subdivisions.length;    // 12
+ * subdivisions[0].code;   // "LU-CA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LU);
 
 export default SUBDIVISIONS;

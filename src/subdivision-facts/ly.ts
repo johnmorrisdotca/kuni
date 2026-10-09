@@ -5,7 +5,17 @@ import { LY } from "../data/subdivision-facts/ly.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Libya, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Libya, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ly";
+ *
+ * facts.length;    // 22
+ * facts[0].code;   // "LY-BA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(LY);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { MT } from "../data/subdivisions/mt.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Malta, in code order, every level.
+/**
+ * The subdivisions of Malta, in code order, every level: 68. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mt";
+ *
+ * subdivisions.length;    // 68
+ * subdivisions[0].code;   // "MT-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MT);
 
 export default SUBDIVISIONS;

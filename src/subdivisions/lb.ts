@@ -5,7 +5,17 @@ import { LB } from "../data/subdivisions/lb.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Lebanon, in code order, every level.
+/**
+ * The subdivisions of Lebanon, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lb";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "LB-AK"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LB);
 
 export default SUBDIVISIONS;

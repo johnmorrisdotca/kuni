@@ -5,7 +5,17 @@ import { NR } from "../data/subdivisions/nr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Nauru, in code order, every level.
+/**
+ * The subdivisions of Nauru, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/nr";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "NR-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NR);
 
 export default SUBDIVISIONS;

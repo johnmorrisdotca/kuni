@@ -5,7 +5,17 @@ import { ER } from "../data/subdivision-facts/er.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Eritrea, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Eritrea, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/er";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "ER-AN"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(ER);
 
 export default SUBDIVISION_FACTS;

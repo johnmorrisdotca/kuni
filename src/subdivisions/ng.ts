@@ -5,7 +5,17 @@ import { NG } from "../data/subdivisions/ng.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Nigeria, in code order, every level.
+/**
+ * The subdivisions of Nigeria, in code order, every level: 37. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ng";
+ *
+ * subdivisions.length;    // 37
+ * subdivisions[0].code;   // "NG-AB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NG);
 
 export default SUBDIVISIONS;

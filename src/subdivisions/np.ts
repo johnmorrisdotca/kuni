@@ -5,7 +5,17 @@ import { NP } from "../data/subdivisions/np.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Nepal, in code order, every level.
+/**
+ * The subdivisions of Nepal, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/np";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "NP-P1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NP);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { PE } from "../data/subdivision-facts/pe.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Peru, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Peru, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/pe";
+ *
+ * facts.length;    // 26
+ * facts[0].code;   // "PE-AMA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PE);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { WF } from "../data/subdivision-facts/wf.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Wallis & Futuna, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Wallis & Futuna, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/wf";
+ *
+ * facts.length;    // 3
+ * facts[0].code;   // "WF-AL"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(WF);
 
 export default SUBDIVISION_FACTS;

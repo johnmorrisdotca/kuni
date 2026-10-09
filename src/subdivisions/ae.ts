@@ -5,7 +5,17 @@ import { AE } from "../data/subdivisions/ae.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of United Arab Emirates, in code order, every level.
+/**
+ * The subdivisions of United Arab Emirates, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ae";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "AE-AJ"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AE);
 
 export default SUBDIVISIONS;

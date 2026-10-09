@@ -5,7 +5,17 @@ import { JM } from "../data/subdivisions/jm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Jamaica, in code order, every level.
+/**
+ * The subdivisions of Jamaica, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/jm";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "JM-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(JM);
 
 export default SUBDIVISIONS;

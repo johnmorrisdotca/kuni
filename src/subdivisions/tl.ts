@@ -5,7 +5,17 @@ import { TL } from "../data/subdivisions/tl.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Timor-Leste, in code order, every level.
+/**
+ * The subdivisions of Timor-Leste, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tl";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "TL-AL"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TL);
 
 export default SUBDIVISIONS;

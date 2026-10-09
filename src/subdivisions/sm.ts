@@ -5,7 +5,17 @@ import { SM } from "../data/subdivisions/sm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of San Marino, in code order, every level.
+/**
+ * The subdivisions of San Marino, in code order, every level: 9. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sm";
+ *
+ * subdivisions.length;    // 9
+ * subdivisions[0].code;   // "SM-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SM);
 
 export default SUBDIVISIONS;

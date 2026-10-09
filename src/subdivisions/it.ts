@@ -5,7 +5,17 @@ import { IT } from "../data/subdivisions/it.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Italy, in code order, every level.
+/**
+ * The subdivisions of Italy, in code order, every level: 126. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/it";
+ *
+ * subdivisions.length;    // 126
+ * subdivisions[0].code;   // "IT-21"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IT);
 
 export default SUBDIVISIONS;

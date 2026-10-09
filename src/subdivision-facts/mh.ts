@@ -5,7 +5,17 @@ import { MH } from "../data/subdivision-facts/mh.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Marshall Islands, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Marshall Islands, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mh";
+ *
+ * facts.length;    // 26
+ * facts[0].code;   // "MH-ALK"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MH);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { DJ } from "../data/subdivisions/dj.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Djibouti, in code order, every level.
+/**
+ * The subdivisions of Djibouti, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/dj";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "DJ-AR"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DJ);
 
 export default SUBDIVISIONS;

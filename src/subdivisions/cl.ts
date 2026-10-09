@@ -5,7 +5,17 @@ import { CL } from "../data/subdivisions/cl.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Chile, in code order, every level.
+/**
+ * The subdivisions of Chile, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cl";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "CL-AI"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CL);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { SK } from "../data/subdivision-facts/sk.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Slovakia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Slovakia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sk";
+ *
+ * facts.length;    // 8
+ * facts[0].code;   // "SK-BC"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SK);
 
 export default SUBDIVISION_FACTS;

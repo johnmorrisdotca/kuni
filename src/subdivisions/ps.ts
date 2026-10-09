@@ -5,7 +5,17 @@ import { PS } from "../data/subdivisions/ps.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Palestinian Territories, in code order, every level.
+/**
+ * The subdivisions of Palestinian Territories, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ps";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "PS-BTH"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PS);
 
 export default SUBDIVISIONS;

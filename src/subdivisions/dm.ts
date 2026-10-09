@@ -5,7 +5,17 @@ import { DM } from "../data/subdivisions/dm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Dominica, in code order, every level.
+/**
+ * The subdivisions of Dominica, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/dm";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "DM-02"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DM);
 
 export default SUBDIVISIONS;

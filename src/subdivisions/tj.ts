@@ -5,7 +5,17 @@ import { TJ } from "../data/subdivisions/tj.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Tajikistan, in code order, every level.
+/**
+ * The subdivisions of Tajikistan, in code order, every level: 5. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tj";
+ *
+ * subdivisions.length;    // 5
+ * subdivisions[0].code;   // "TJ-DU"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TJ);
 
 export default SUBDIVISIONS;

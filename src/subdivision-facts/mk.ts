@@ -5,7 +5,17 @@ import { MK } from "../data/subdivision-facts/mk.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of North Macedonia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of North Macedonia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mk";
+ *
+ * facts.length;    // 80
+ * facts[0].code;   // "MK-101"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MK);
 
 export default SUBDIVISION_FACTS;

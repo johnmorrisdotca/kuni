@@ -5,7 +5,17 @@ import { SI } from "../data/subdivision-facts/si.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Slovenia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Slovenia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/si";
+ *
+ * facts.length;    // 212
+ * facts[0].code;   // "SI-001"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SI);
 
 export default SUBDIVISION_FACTS;

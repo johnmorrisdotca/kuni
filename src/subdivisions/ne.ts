@@ -5,7 +5,17 @@ import { NE } from "../data/subdivisions/ne.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Niger, in code order, every level.
+/**
+ * The subdivisions of Niger, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ne";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "NE-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NE);
 
 export default SUBDIVISIONS;

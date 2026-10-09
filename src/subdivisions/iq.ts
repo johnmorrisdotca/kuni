@@ -5,7 +5,17 @@ import { IQ } from "../data/subdivisions/iq.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Iraq, in code order, every level.
+/**
+ * The subdivisions of Iraq, in code order, every level: 19. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/iq";
+ *
+ * subdivisions.length;    // 19
+ * subdivisions[0].code;   // "IQ-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IQ);
 
 export default SUBDIVISIONS;

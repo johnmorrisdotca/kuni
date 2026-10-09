@@ -5,7 +5,17 @@ import { CN } from "../data/subdivisions/cn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of China, in code order, every level.
+/**
+ * The subdivisions of China, in code order, every level: 34. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cn";
+ *
+ * subdivisions.length;    // 34
+ * subdivisions[0].code;   // "CN-AH"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CN);
 
 export default SUBDIVISIONS;

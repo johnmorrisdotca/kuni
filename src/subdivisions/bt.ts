@@ -5,7 +5,17 @@ import { BT } from "../data/subdivisions/bt.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bhutan, in code order, every level.
+/**
+ * The subdivisions of Bhutan, in code order, every level: 20. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bt";
+ *
+ * subdivisions.length;    // 20
+ * subdivisions[0].code;   // "BT-11"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BT);
 
 export default SUBDIVISIONS;

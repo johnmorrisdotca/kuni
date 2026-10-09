@@ -5,7 +5,17 @@ import { MU } from "../data/subdivisions/mu.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Mauritius, in code order, every level.
+/**
+ * The subdivisions of Mauritius, in code order, every level: 12. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mu";
+ *
+ * subdivisions.length;    // 12
+ * subdivisions[0].code;   // "MU-AG"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MU);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { ZM } from "../data/subdivisions/zm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Zambia, in code order, every level.
+/**
+ * The subdivisions of Zambia, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/zm";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "ZM-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ZM);
 
 export default SUBDIVISIONS;

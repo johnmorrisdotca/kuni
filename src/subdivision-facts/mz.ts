@@ -5,7 +5,17 @@ import { MZ } from "../data/subdivision-facts/mz.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Mozambique, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Mozambique, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mz";
+ *
+ * facts.length;    // 11
+ * facts[0].code;   // "MZ-A"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MZ);
 
 export default SUBDIVISION_FACTS;

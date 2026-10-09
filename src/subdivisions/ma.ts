@@ -5,7 +5,17 @@ import { MA } from "../data/subdivisions/ma.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Morocco, in code order, every level.
+/**
+ * The subdivisions of Morocco, in code order, every level: 87. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ma";
+ *
+ * subdivisions.length;    // 87
+ * subdivisions[0].code;   // "MA-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MA);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { JP } from "../data/subdivisions/jp.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Japan, in code order, every level.
+/**
+ * The subdivisions of Japan, in code order, every level: 47. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/jp";
+ *
+ * subdivisions.length;    // 47
+ * subdivisions[0].code;   // "JP-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(JP);
 
 export default SUBDIVISIONS;

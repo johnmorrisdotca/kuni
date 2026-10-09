@@ -5,7 +5,17 @@ import { PA } from "../data/subdivisions/pa.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Panama, in code order, every level.
+/**
+ * The subdivisions of Panama, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pa";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "PA-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PA);
 
 export default SUBDIVISIONS;

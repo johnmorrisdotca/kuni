@@ -5,7 +5,17 @@ import { MG } from "../data/subdivisions/mg.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Madagascar, in code order, every level.
+/**
+ * The subdivisions of Madagascar, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mg";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "MG-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MG);
 
 export default SUBDIVISIONS;

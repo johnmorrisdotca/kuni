@@ -5,7 +5,17 @@ import { CL } from "../data/subdivision-facts/cl.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Chile, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Chile, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/cl";
+ *
+ * facts.length;    // 16
+ * facts[0].code;   // "CL-AI"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CL);
 
 export default SUBDIVISION_FACTS;

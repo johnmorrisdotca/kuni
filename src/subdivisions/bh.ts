@@ -5,7 +5,17 @@ import { BH } from "../data/subdivisions/bh.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bahrain, in code order, every level.
+/**
+ * The subdivisions of Bahrain, in code order, every level: 4. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bh";
+ *
+ * subdivisions.length;    // 4
+ * subdivisions[0].code;   // "BH-13"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BH);
 
 export default SUBDIVISIONS;

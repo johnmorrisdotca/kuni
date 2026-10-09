@@ -5,7 +5,17 @@ import { BD } from "../data/subdivision-facts/bd.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Bangladesh, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Bangladesh, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/bd";
+ *
+ * facts.length;    // 72
+ * facts[0].code;   // "BD-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(BD);
 
 export default SUBDIVISION_FACTS;

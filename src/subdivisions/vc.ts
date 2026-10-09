@@ -5,7 +5,17 @@ import { VC } from "../data/subdivisions/vc.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of St. Vincent & Grenadines, in code order, every level.
+/**
+ * The subdivisions of St. Vincent & Grenadines, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/vc";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "VC-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(VC);
 
 export default SUBDIVISIONS;

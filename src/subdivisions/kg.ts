@@ -5,7 +5,17 @@ import { KG } from "../data/subdivisions/kg.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Kyrgyzstan, in code order, every level.
+/**
+ * The subdivisions of Kyrgyzstan, in code order, every level: 9. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kg";
+ *
+ * subdivisions.length;    // 9
+ * subdivisions[0].code;   // "KG-B"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KG);
 
 export default SUBDIVISIONS;

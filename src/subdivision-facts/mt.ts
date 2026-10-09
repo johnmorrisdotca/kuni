@@ -5,7 +5,17 @@ import { MT } from "../data/subdivision-facts/mt.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Malta, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Malta, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mt";
+ *
+ * facts.length;    // 68
+ * facts[0].code;   // "MT-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MT);
 
 export default SUBDIVISION_FACTS;

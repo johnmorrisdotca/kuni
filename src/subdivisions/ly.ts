@@ -5,7 +5,17 @@ import { LY } from "../data/subdivisions/ly.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Libya, in code order, every level.
+/**
+ * The subdivisions of Libya, in code order, every level: 22. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ly";
+ *
+ * subdivisions.length;    // 22
+ * subdivisions[0].code;   // "LY-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LY);
 
 export default SUBDIVISIONS;

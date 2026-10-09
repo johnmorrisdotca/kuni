@@ -5,7 +5,17 @@ import { MV } from "../data/subdivision-facts/mv.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Maldives, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Maldives, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mv";
+ *
+ * facts.length;    // 21
+ * facts[0].code;   // "MV-00"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MV);
 
 export default SUBDIVISION_FACTS;

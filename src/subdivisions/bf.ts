@@ -5,7 +5,17 @@ import { BF } from "../data/subdivisions/bf.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Burkina Faso, in code order, every level.
+/**
+ * The subdivisions of Burkina Faso, in code order, every level: 58. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bf";
+ *
+ * subdivisions.length;    // 58
+ * subdivisions[0].code;   // "BF-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BF);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { CV } from "../data/subdivisions/cv.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Cape Verde, in code order, every level.
+/**
+ * The subdivisions of Cape Verde, in code order, every level: 24. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cv";
+ *
+ * subdivisions.length;    // 24
+ * subdivisions[0].code;   // "CV-B"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CV);
 
 export default SUBDIVISIONS;

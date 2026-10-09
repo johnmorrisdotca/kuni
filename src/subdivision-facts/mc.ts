@@ -5,7 +5,17 @@ import { MC } from "../data/subdivision-facts/mc.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Monaco, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Monaco, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mc";
+ *
+ * facts.length;    // 17
+ * facts[0].code;   // "MC-CL"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MC);
 
 export default SUBDIVISION_FACTS;

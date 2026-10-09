@@ -5,7 +5,17 @@ import { AE } from "../data/subdivision-facts/ae.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of United Arab Emirates, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of United Arab Emirates, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ae";
+ *
+ * facts.length;    // 7
+ * facts[0].code;   // "AE-AJ"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(AE);
 
 export default SUBDIVISION_FACTS;

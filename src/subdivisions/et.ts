@@ -5,7 +5,17 @@ import { ET } from "../data/subdivisions/et.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Ethiopia, in code order, every level.
+/**
+ * The subdivisions of Ethiopia, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/et";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "ET-AA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ET);
 
 export default SUBDIVISIONS;

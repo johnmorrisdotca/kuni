@@ -5,7 +5,17 @@ import { TV } from "../data/subdivisions/tv.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Tuvalu, in code order, every level.
+/**
+ * The subdivisions of Tuvalu, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tv";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "TV-FUN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TV);
 
 export default SUBDIVISIONS;

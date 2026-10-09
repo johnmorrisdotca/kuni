@@ -5,7 +5,17 @@ import { ZA } from "../data/subdivision-facts/za.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of South Africa, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of South Africa, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/za";
+ *
+ * facts.length;    // 9
+ * facts[0].code;   // "ZA-EC"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(ZA);
 
 export default SUBDIVISION_FACTS;

@@ -2,6 +2,17 @@
 // The 250 country codes: ISO 3166-1 alpha-2, and XK for Kosovo.
 // Source: Unicode CLDR 48.2.0 (Unicode-3.0), cldr-localenames-full and cldr-core 48.2.0 on npm
 
+/**
+ * The 250 country codes: the 249 ISO 3166-1 alpha-2 codes and XK for Kosovo, in alphabetical order.
+ *
+ * @example
+ * ```ts
+ * import { COUNTRY_CODES } from "@johnmorrisdotca/kuni/codes";
+ *
+ * COUNTRY_CODES.length;   // 250
+ * COUNTRY_CODES[0];       // "AD"
+ * ```
+ */
 const COUNTRY_CODES = [
   "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ",
   "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS",
@@ -21,6 +32,7 @@ const COUNTRY_CODES = [
   "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW",
 ] as const;
 
+/** One of the 250 country codes, as a type: "JP" | "US" | ... */
 type CountryCode = (typeof COUNTRY_CODES)[number];
 
 export { COUNTRY_CODES };

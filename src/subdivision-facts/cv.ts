@@ -5,7 +5,17 @@ import { CV } from "../data/subdivision-facts/cv.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Cape Verde, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Cape Verde, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/cv";
+ *
+ * facts.length;    // 24
+ * facts[0].code;   // "CV-B"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CV);
 
 export default SUBDIVISION_FACTS;

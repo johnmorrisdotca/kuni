@@ -5,7 +5,17 @@ import { SI } from "../data/subdivisions/si.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Slovenia, in code order, every level.
+/**
+ * The subdivisions of Slovenia, in code order, every level: 212. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/si";
+ *
+ * subdivisions.length;    // 212
+ * subdivisions[0].code;   // "SI-001"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SI);
 
 export default SUBDIVISIONS;

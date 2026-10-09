@@ -5,7 +5,17 @@ import { CO } from "../data/subdivision-facts/co.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Colombia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Colombia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/co";
+ *
+ * facts.length;    // 33
+ * facts[0].code;   // "CO-AMA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CO);
 
 export default SUBDIVISION_FACTS;

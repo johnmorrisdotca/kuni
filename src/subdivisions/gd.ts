@@ -5,7 +5,17 @@ import { GD } from "../data/subdivisions/gd.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Grenada, in code order, every level.
+/**
+ * The subdivisions of Grenada, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gd";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "GD-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GD);
 
 export default SUBDIVISIONS;

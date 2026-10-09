@@ -5,7 +5,17 @@ import { EC } from "../data/subdivisions/ec.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Ecuador, in code order, every level.
+/**
+ * The subdivisions of Ecuador, in code order, every level: 24. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ec";
+ *
+ * subdivisions.length;    // 24
+ * subdivisions[0].code;   // "EC-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(EC);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { AZ } from "../data/subdivisions/az.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Azerbaijan, in code order, every level.
+/**
+ * The subdivisions of Azerbaijan, in code order, every level: 78. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/az";
+ *
+ * subdivisions.length;    // 78
+ * subdivisions[0].code;   // "AZ-ABS"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AZ);
 
 export default SUBDIVISIONS;

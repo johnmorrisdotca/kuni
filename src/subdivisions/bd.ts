@@ -5,7 +5,17 @@ import { BD } from "../data/subdivisions/bd.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bangladesh, in code order, every level.
+/**
+ * The subdivisions of Bangladesh, in code order, every level: 72. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bd";
+ *
+ * subdivisions.length;    // 72
+ * subdivisions[0].code;   // "BD-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BD);
 
 export default SUBDIVISIONS;

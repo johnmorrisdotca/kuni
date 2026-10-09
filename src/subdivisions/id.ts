@@ -5,7 +5,17 @@ import { ID } from "../data/subdivisions/id.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Indonesia, in code order, every level.
+/**
+ * The subdivisions of Indonesia, in code order, every level: 45. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/id";
+ *
+ * subdivisions.length;    // 45
+ * subdivisions[0].code;   // "ID-AC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ID);
 
 export default SUBDIVISIONS;

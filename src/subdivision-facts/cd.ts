@@ -5,7 +5,17 @@ import { CD } from "../data/subdivision-facts/cd.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Congo - Kinshasa, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Congo - Kinshasa, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/cd";
+ *
+ * facts.length;    // 26
+ * facts[0].code;   // "CD-BC"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CD);
 
 export default SUBDIVISION_FACTS;

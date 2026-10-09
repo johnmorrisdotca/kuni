@@ -5,7 +5,17 @@ import { SG } from "../data/subdivision-facts/sg.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Singapore, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Singapore, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sg";
+ *
+ * facts.length;    // 5
+ * facts[0].code;   // "SG-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SG);
 
 export default SUBDIVISION_FACTS;

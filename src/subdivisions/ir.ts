@@ -5,7 +5,17 @@ import { IR } from "../data/subdivisions/ir.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Iran, in code order, every level.
+/**
+ * The subdivisions of Iran, in code order, every level: 31. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ir";
+ *
+ * subdivisions.length;    // 31
+ * subdivisions[0].code;   // "IR-00"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IR);
 
 export default SUBDIVISIONS;

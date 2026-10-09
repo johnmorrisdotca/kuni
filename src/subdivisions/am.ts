@@ -5,7 +5,17 @@ import { AM } from "../data/subdivisions/am.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Armenia, in code order, every level.
+/**
+ * The subdivisions of Armenia, in code order, every level: 11. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/am";
+ *
+ * subdivisions.length;    // 11
+ * subdivisions[0].code;   // "AM-AG"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AM);
 
 export default SUBDIVISIONS;

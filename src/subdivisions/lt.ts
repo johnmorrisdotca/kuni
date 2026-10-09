@@ -5,7 +5,17 @@ import { LT } from "../data/subdivisions/lt.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Lithuania, in code order, every level.
+/**
+ * The subdivisions of Lithuania, in code order, every level: 70. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lt";
+ *
+ * subdivisions.length;    // 70
+ * subdivisions[0].code;   // "LT-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LT);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { NI } from "../data/subdivision-facts/ni.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Nicaragua, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Nicaragua, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ni";
+ *
+ * facts.length;    // 17
+ * facts[0].code;   // "NI-AN"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(NI);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { SL } from "../data/subdivision-facts/sl.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Sierra Leone, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Sierra Leone, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sl";
+ *
+ * facts.length;    // 5
+ * facts[0].code;   // "SL-E"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SL);
 
 export default SUBDIVISION_FACTS;

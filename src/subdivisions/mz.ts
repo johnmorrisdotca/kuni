@@ -5,7 +5,17 @@ import { MZ } from "../data/subdivisions/mz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Mozambique, in code order, every level.
+/**
+ * The subdivisions of Mozambique, in code order, every level: 11. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mz";
+ *
+ * subdivisions.length;    // 11
+ * subdivisions[0].code;   // "MZ-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MZ);
 
 export default SUBDIVISIONS;

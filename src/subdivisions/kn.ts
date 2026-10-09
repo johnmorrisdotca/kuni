@@ -5,7 +5,17 @@ import { KN } from "../data/subdivisions/kn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of St. Kitts & Nevis, in code order, every level.
+/**
+ * The subdivisions of St. Kitts & Nevis, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kn";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "KN-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KN);
 
 export default SUBDIVISIONS;

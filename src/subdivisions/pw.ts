@@ -5,7 +5,17 @@ import { PW } from "../data/subdivisions/pw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Palau, in code order, every level.
+/**
+ * The subdivisions of Palau, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pw";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "PW-002"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PW);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { TN } from "../data/subdivisions/tn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Tunisia, in code order, every level.
+/**
+ * The subdivisions of Tunisia, in code order, every level: 24. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tn";
+ *
+ * subdivisions.length;    // 24
+ * subdivisions[0].code;   // "TN-11"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TN);
 
 export default SUBDIVISIONS;

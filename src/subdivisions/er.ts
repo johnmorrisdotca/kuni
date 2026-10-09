@@ -5,7 +5,17 @@ import { ER } from "../data/subdivisions/er.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Eritrea, in code order, every level.
+/**
+ * The subdivisions of Eritrea, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/er";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "ER-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ER);
 
 export default SUBDIVISIONS;

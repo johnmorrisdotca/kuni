@@ -5,7 +5,17 @@ import { BN } from "../data/subdivisions/bn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Brunei, in code order, every level.
+/**
+ * The subdivisions of Brunei, in code order, every level: 4. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bn";
+ *
+ * subdivisions.length;    // 4
+ * subdivisions[0].code;   // "BN-BE"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BN);
 
 export default SUBDIVISIONS;

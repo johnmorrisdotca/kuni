@@ -5,7 +5,17 @@ import { BG } from "../data/subdivisions/bg.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bulgaria, in code order, every level.
+/**
+ * The subdivisions of Bulgaria, in code order, every level: 28. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bg";
+ *
+ * subdivisions.length;    // 28
+ * subdivisions[0].code;   // "BG-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BG);
 
 export default SUBDIVISIONS;

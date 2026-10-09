@@ -5,7 +5,17 @@ import { GH } from "../data/subdivisions/gh.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Ghana, in code order, every level.
+/**
+ * The subdivisions of Ghana, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gh";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "GH-AA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GH);
 
 export default SUBDIVISIONS;

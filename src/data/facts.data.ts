@@ -6,7 +6,16 @@
 
 import type { FactsRow } from "../rows";
 
-// The day the Wikidata snapshot was read: every figure is as Wikidata gave it on this day.
+/**
+ * The day the Wikidata snapshot was read: every figure in /facts is as Wikidata gave it on this day.
+ *
+ * @example
+ * ```ts
+ * import { FACTS_READ, facts } from "@johnmorrisdotca/kuni/facts";
+ *
+ * console.log(`${facts("JP")?.population} people in ${facts("JP")?.populationYear}, as Wikidata gave it on ${FACTS_READ}`);
+ * ```
+ */
 const FACTS_READ = "2026-10-09";
 
 const FACT_ROWS: readonly FactsRow[] = [

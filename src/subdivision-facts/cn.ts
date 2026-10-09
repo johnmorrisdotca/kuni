@@ -5,7 +5,17 @@ import { CN } from "../data/subdivision-facts/cn.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of China, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of China, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/cn";
+ *
+ * facts.length;    // 34
+ * facts[0].code;   // "CN-AH"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CN);
 
 export default SUBDIVISION_FACTS;

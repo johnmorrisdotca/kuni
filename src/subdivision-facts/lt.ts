@@ -5,7 +5,17 @@ import { LT } from "../data/subdivision-facts/lt.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Lithuania, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Lithuania, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/lt";
+ *
+ * facts.length;    // 70
+ * facts[0].code;   // "LT-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(LT);
 
 export default SUBDIVISION_FACTS;

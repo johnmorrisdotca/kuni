@@ -5,7 +5,17 @@ import { BS } from "../data/subdivision-facts/bs.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Bahamas, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Bahamas, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/bs";
+ *
+ * facts.length;    // 32
+ * facts[0].code;   // "BS-AK"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(BS);
 
 export default SUBDIVISION_FACTS;

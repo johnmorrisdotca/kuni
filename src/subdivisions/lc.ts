@@ -5,7 +5,17 @@ import { LC } from "../data/subdivisions/lc.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of St. Lucia, in code order, every level.
+/**
+ * The subdivisions of St. Lucia, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lc";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "LC-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LC);
 
 export default SUBDIVISIONS;

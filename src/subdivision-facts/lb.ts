@@ -5,7 +5,17 @@ import { LB } from "../data/subdivision-facts/lb.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Lebanon, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Lebanon, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/lb";
+ *
+ * facts.length;    // 8
+ * facts[0].code;   // "LB-AK"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(LB);
 
 export default SUBDIVISION_FACTS;

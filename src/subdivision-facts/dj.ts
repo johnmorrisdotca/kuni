@@ -5,7 +5,17 @@ import { DJ } from "../data/subdivision-facts/dj.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Djibouti, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Djibouti, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/dj";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "DJ-AR"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(DJ);
 
 export default SUBDIVISION_FACTS;

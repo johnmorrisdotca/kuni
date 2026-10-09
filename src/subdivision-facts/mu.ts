@@ -5,7 +5,17 @@ import { MU } from "../data/subdivision-facts/mu.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Mauritius, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Mauritius, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mu";
+ *
+ * facts.length;    // 12
+ * facts[0].code;   // "MU-AG"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MU);
 
 export default SUBDIVISION_FACTS;

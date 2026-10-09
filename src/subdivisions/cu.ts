@@ -5,7 +5,17 @@ import { CU } from "../data/subdivisions/cu.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Cuba, in code order, every level.
+/**
+ * The subdivisions of Cuba, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cu";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "CU-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CU);
 
 export default SUBDIVISIONS;

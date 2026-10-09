@@ -5,7 +5,17 @@ import { GN } from "../data/subdivisions/gn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Guinea, in code order, every level.
+/**
+ * The subdivisions of Guinea, in code order, every level: 41. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gn";
+ *
+ * subdivisions.length;    // 41
+ * subdivisions[0].code;   // "GN-B"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GN);
 
 export default SUBDIVISIONS;

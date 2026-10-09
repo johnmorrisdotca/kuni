@@ -5,7 +5,17 @@ import { DK } from "../data/subdivisions/dk.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Denmark, in code order, every level.
+/**
+ * The subdivisions of Denmark, in code order, every level: 5. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/dk";
+ *
+ * subdivisions.length;    // 5
+ * subdivisions[0].code;   // "DK-81"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DK);
 
 export default SUBDIVISIONS;

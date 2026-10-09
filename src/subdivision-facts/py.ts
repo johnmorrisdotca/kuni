@@ -5,7 +5,17 @@ import { PY } from "../data/subdivision-facts/py.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Paraguay, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Paraguay, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/py";
+ *
+ * facts.length;    // 18
+ * facts[0].code;   // "PY-1"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PY);
 
 export default SUBDIVISION_FACTS;

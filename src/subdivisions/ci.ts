@@ -5,7 +5,17 @@ import { CI } from "../data/subdivisions/ci.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Côte d’Ivoire, in code order, every level.
+/**
+ * The subdivisions of Côte d’Ivoire, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ci";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "CI-AB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CI);
 
 export default SUBDIVISIONS;

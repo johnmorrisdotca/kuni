@@ -5,7 +5,17 @@ import { SV } from "../data/subdivisions/sv.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of El Salvador, in code order, every level.
+/**
+ * The subdivisions of El Salvador, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sv";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "SV-AH"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SV);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { SH } from "../data/subdivision-facts/sh.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of St. Helena, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of St. Helena, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sh";
+ *
+ * facts.length;    // 3
+ * facts[0].code;   // "SH-AC"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SH);
 
 export default SUBDIVISION_FACTS;

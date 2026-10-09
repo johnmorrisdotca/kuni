@@ -5,7 +5,17 @@ import { RS } from "../data/subdivision-facts/rs.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Serbia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Serbia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/rs";
+ *
+ * facts.length;    // 32
+ * facts[0].code;   // "RS-00"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(RS);
 
 export default SUBDIVISION_FACTS;

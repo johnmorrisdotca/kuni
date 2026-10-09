@@ -5,7 +5,17 @@ import { NL } from "../data/subdivision-facts/nl.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Netherlands, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Netherlands, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/nl";
+ *
+ * facts.length;    // 18
+ * facts[0].code;   // "NL-AW"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(NL);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { CG } from "../data/subdivisions/cg.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Congo - Brazzaville, in code order, every level.
+/**
+ * The subdivisions of Congo - Brazzaville, in code order, every level: 12. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cg";
+ *
+ * subdivisions.length;    // 12
+ * subdivisions[0].code;   // "CG-11"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CG);
 
 export default SUBDIVISIONS;

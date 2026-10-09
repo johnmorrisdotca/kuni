@@ -5,7 +5,17 @@ import { SK } from "../data/subdivisions/sk.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Slovakia, in code order, every level.
+/**
+ * The subdivisions of Slovakia, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sk";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "SK-BC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SK);
 
 export default SUBDIVISIONS;

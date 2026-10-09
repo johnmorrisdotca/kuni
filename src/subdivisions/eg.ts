@@ -5,7 +5,17 @@ import { EG } from "../data/subdivisions/eg.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Egypt, in code order, every level.
+/**
+ * The subdivisions of Egypt, in code order, every level: 27. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/eg";
+ *
+ * subdivisions.length;    // 27
+ * subdivisions[0].code;   // "EG-ALX"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(EG);
 
 export default SUBDIVISIONS;

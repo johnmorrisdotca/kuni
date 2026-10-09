@@ -5,7 +5,17 @@ import { DO } from "../data/subdivisions/do.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Dominican Republic, in code order, every level.
+/**
+ * The subdivisions of Dominican Republic, in code order, every level: 42. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/do";
+ *
+ * subdivisions.length;    // 42
+ * subdivisions[0].code;   // "DO-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DO);
 
 export default SUBDIVISIONS;

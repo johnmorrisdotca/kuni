@@ -5,7 +5,17 @@ import { US } from "../data/subdivisions/us.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of United States, in code order, every level.
+/**
+ * The subdivisions of United States, in code order, every level: 57. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/us";
+ *
+ * subdivisions.length;    // 57
+ * subdivisions[0].code;   // "US-AK"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(US);
 
 export default SUBDIVISIONS;

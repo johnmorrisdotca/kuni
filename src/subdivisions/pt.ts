@@ -5,7 +5,17 @@ import { PT } from "../data/subdivisions/pt.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Portugal, in code order, every level.
+/**
+ * The subdivisions of Portugal, in code order, every level: 20. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pt";
+ *
+ * subdivisions.length;    // 20
+ * subdivisions[0].code;   // "PT-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PT);
 
 export default SUBDIVISIONS;

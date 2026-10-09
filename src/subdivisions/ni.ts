@@ -5,7 +5,17 @@ import { NI } from "../data/subdivisions/ni.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Nicaragua, in code order, every level.
+/**
+ * The subdivisions of Nicaragua, in code order, every level: 17. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ni";
+ *
+ * subdivisions.length;    // 17
+ * subdivisions[0].code;   // "NI-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NI);
 
 export default SUBDIVISIONS;

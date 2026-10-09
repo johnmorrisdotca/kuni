@@ -5,7 +5,17 @@ import { KW } from "../data/subdivision-facts/kw.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Kuwait, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Kuwait, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/kw";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "KW-AH"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(KW);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { IS } from "../data/subdivisions/is.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Iceland, in code order, every level.
+/**
+ * The subdivisions of Iceland, in code order, every level: 72. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/is";
+ *
+ * subdivisions.length;    // 72
+ * subdivisions[0].code;   // "IS-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IS);
 
 export default SUBDIVISIONS;

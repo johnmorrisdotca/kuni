@@ -5,7 +5,17 @@ import { PE } from "../data/subdivisions/pe.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Peru, in code order, every level.
+/**
+ * The subdivisions of Peru, in code order, every level: 26. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pe";
+ *
+ * subdivisions.length;    // 26
+ * subdivisions[0].code;   // "PE-AMA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PE);
 
 export default SUBDIVISIONS;

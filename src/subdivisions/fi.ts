@@ -5,7 +5,17 @@ import { FI } from "../data/subdivisions/fi.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Finland, in code order, every level.
+/**
+ * The subdivisions of Finland, in code order, every level: 19. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/fi";
+ *
+ * subdivisions.length;    // 19
+ * subdivisions[0].code;   // "FI-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(FI);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { CZ } from "../data/subdivisions/cz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Czechia, in code order, every level.
+/**
+ * The subdivisions of Czechia, in code order, every level: 90. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cz";
+ *
+ * subdivisions.length;    // 90
+ * subdivisions[0].code;   // "CZ-10"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CZ);
 
 export default SUBDIVISIONS;

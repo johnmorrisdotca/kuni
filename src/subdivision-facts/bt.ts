@@ -5,7 +5,17 @@ import { BT } from "../data/subdivision-facts/bt.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Bhutan, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Bhutan, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/bt";
+ *
+ * facts.length;    // 20
+ * facts[0].code;   // "BT-11"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(BT);
 
 export default SUBDIVISION_FACTS;

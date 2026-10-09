@@ -5,7 +5,17 @@ import { CM } from "../data/subdivisions/cm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Cameroon, in code order, every level.
+/**
+ * The subdivisions of Cameroon, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cm";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "CM-AD"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CM);
 
 export default SUBDIVISIONS;

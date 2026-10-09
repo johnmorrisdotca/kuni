@@ -5,7 +5,17 @@ import { RU } from "../data/subdivisions/ru.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Russia, in code order, every level.
+/**
+ * The subdivisions of Russia, in code order, every level: 83. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ru";
+ *
+ * subdivisions.length;    // 83
+ * subdivisions[0].code;   // "RU-AD"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(RU);
 
 export default SUBDIVISIONS;

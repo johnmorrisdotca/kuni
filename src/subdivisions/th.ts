@@ -5,7 +5,17 @@ import { TH } from "../data/subdivisions/th.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Thailand, in code order, every level.
+/**
+ * The subdivisions of Thailand, in code order, every level: 78. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/th";
+ *
+ * subdivisions.length;    // 78
+ * subdivisions[0].code;   // "TH-10"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TH);
 
 export default SUBDIVISIONS;

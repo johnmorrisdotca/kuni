@@ -5,7 +5,17 @@ import { MW } from "../data/subdivisions/mw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Malawi, in code order, every level.
+/**
+ * The subdivisions of Malawi, in code order, every level: 31. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mw";
+ *
+ * subdivisions.length;    // 31
+ * subdivisions[0].code;   // "MW-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MW);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { CF } from "../data/subdivisions/cf.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Central African Republic, in code order, every level.
+/**
+ * The subdivisions of Central African Republic, in code order, every level: 17. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cf";
+ *
+ * subdivisions.length;    // 17
+ * subdivisions[0].code;   // "CF-AC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CF);
 
 export default SUBDIVISIONS;

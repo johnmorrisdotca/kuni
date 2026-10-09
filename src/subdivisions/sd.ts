@@ -5,7 +5,17 @@ import { SD } from "../data/subdivisions/sd.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Sudan, in code order, every level.
+/**
+ * The subdivisions of Sudan, in code order, every level: 18. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sd";
+ *
+ * subdivisions.length;    // 18
+ * subdivisions[0].code;   // "SD-DC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SD);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { IN } from "../data/subdivision-facts/in.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of India, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of India, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/in";
+ *
+ * facts.length;    // 36
+ * facts[0].code;   // "IN-AN"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(IN);
 
 export default SUBDIVISION_FACTS;

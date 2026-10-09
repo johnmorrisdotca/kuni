@@ -5,7 +5,17 @@ import { ST } from "../data/subdivisions/st.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of São Tomé & Príncipe, in code order, every level.
+/**
+ * The subdivisions of São Tomé & Príncipe, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/st";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "ST-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ST);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { ML } from "../data/subdivisions/ml.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Mali, in code order, every level.
+/**
+ * The subdivisions of Mali, in code order, every level: 11. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ml";
+ *
+ * subdivisions.length;    // 11
+ * subdivisions[0].code;   // "ML-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ML);
 
 export default SUBDIVISIONS;

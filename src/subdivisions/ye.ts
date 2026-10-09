@@ -5,7 +5,17 @@ import { YE } from "../data/subdivisions/ye.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Yemen, in code order, every level.
+/**
+ * The subdivisions of Yemen, in code order, every level: 22. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ye";
+ *
+ * subdivisions.length;    // 22
+ * subdivisions[0].code;   // "YE-AB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(YE);
 
 export default SUBDIVISIONS;

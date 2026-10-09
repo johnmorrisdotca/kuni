@@ -5,7 +5,17 @@ import { KE } from "../data/subdivisions/ke.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Kenya, in code order, every level.
+/**
+ * The subdivisions of Kenya, in code order, every level: 47. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ke";
+ *
+ * subdivisions.length;    // 47
+ * subdivisions[0].code;   // "KE-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KE);
 
 export default SUBDIVISIONS;

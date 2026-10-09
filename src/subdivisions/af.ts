@@ -5,7 +5,17 @@ import { AF } from "../data/subdivisions/af.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Afghanistan, in code order, every level.
+/**
+ * The subdivisions of Afghanistan, in code order, every level: 34. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/af";
+ *
+ * subdivisions.length;    // 34
+ * subdivisions[0].code;   // "AF-BAL"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AF);
 
 export default SUBDIVISIONS;

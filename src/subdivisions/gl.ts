@@ -5,7 +5,17 @@ import { GL } from "../data/subdivisions/gl.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Greenland, in code order, every level.
+/**
+ * The subdivisions of Greenland, in code order, every level: 5. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gl";
+ *
+ * subdivisions.length;    // 5
+ * subdivisions[0].code;   // "GL-AV"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GL);
 
 export default SUBDIVISIONS;

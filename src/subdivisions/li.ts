@@ -5,7 +5,17 @@ import { LI } from "../data/subdivisions/li.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Liechtenstein, in code order, every level.
+/**
+ * The subdivisions of Liechtenstein, in code order, every level: 11. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/li";
+ *
+ * subdivisions.length;    // 11
+ * subdivisions[0].code;   // "LI-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LI);
 
 export default SUBDIVISIONS;

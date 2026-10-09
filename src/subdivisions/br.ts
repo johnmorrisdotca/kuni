@@ -5,7 +5,17 @@ import { BR } from "../data/subdivisions/br.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Brazil, in code order, every level.
+/**
+ * The subdivisions of Brazil, in code order, every level: 27. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/br";
+ *
+ * subdivisions.length;    // 27
+ * subdivisions[0].code;   // "BR-AC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BR);
 
 export default SUBDIVISIONS;

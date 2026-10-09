@@ -5,7 +5,17 @@ import { CY } from "../data/subdivisions/cy.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Cyprus, in code order, every level.
+/**
+ * The subdivisions of Cyprus, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cy";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "CY-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CY);
 
 export default SUBDIVISIONS;

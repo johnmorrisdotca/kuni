@@ -5,7 +5,17 @@ import { MR } from "../data/subdivisions/mr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Mauritania, in code order, every level.
+/**
+ * The subdivisions of Mauritania, in code order, every level: 15. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mr";
+ *
+ * subdivisions.length;    // 15
+ * subdivisions[0].code;   // "MR-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MR);
 
 export default SUBDIVISIONS;

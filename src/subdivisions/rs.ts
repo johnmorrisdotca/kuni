@@ -5,7 +5,17 @@ import { RS } from "../data/subdivisions/rs.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Serbia, in code order, every level.
+/**
+ * The subdivisions of Serbia, in code order, every level: 32. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/rs";
+ *
+ * subdivisions.length;    // 32
+ * subdivisions[0].code;   // "RS-00"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(RS);
 
 export default SUBDIVISIONS;

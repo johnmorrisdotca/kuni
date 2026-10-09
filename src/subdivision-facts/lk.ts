@@ -5,7 +5,17 @@ import { LK } from "../data/subdivision-facts/lk.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Sri Lanka, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Sri Lanka, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/lk";
+ *
+ * facts.length;    // 34
+ * facts[0].code;   // "LK-1"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(LK);
 
 export default SUBDIVISION_FACTS;

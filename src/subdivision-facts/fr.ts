@@ -5,7 +5,17 @@ import { FR } from "../data/subdivision-facts/fr.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of France, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of France, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/fr";
+ *
+ * facts.length;    // 124
+ * facts[0].code;   // "FR-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(FR);
 
 export default SUBDIVISION_FACTS;

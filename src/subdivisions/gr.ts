@@ -5,7 +5,17 @@ import { GR } from "../data/subdivisions/gr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Greece, in code order, every level.
+/**
+ * The subdivisions of Greece, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gr";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "GR-69"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GR);
 
 export default SUBDIVISIONS;

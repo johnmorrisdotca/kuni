@@ -5,7 +5,17 @@ import { AT } from "../data/subdivisions/at.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Austria, in code order, every level.
+/**
+ * The subdivisions of Austria, in code order, every level: 9. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/at";
+ *
+ * subdivisions.length;    // 9
+ * subdivisions[0].code;   // "AT-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AT);
 
 export default SUBDIVISIONS;

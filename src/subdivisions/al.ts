@@ -5,7 +5,17 @@ import { AL } from "../data/subdivisions/al.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Albania, in code order, every level.
+/**
+ * The subdivisions of Albania, in code order, every level: 12. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/al";
+ *
+ * subdivisions.length;    // 12
+ * subdivisions[0].code;   // "AL-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AL);
 
 export default SUBDIVISIONS;

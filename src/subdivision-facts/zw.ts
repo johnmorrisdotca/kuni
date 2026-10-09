@@ -5,7 +5,17 @@ import { ZW } from "../data/subdivision-facts/zw.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Zimbabwe, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Zimbabwe, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/zw";
+ *
+ * facts.length;    // 10
+ * facts[0].code;   // "ZW-BU"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(ZW);
 
 export default SUBDIVISION_FACTS;

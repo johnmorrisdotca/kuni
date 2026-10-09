@@ -5,7 +5,17 @@ import { TG } from "../data/subdivision-facts/tg.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Togo, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Togo, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/tg";
+ *
+ * facts.length;    // 5
+ * facts[0].code;   // "TG-C"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TG);
 
 export default SUBDIVISION_FACTS;

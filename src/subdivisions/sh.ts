@@ -5,7 +5,17 @@ import { SH } from "../data/subdivisions/sh.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of St. Helena, in code order, every level.
+/**
+ * The subdivisions of St. Helena, in code order, every level: 3. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sh";
+ *
+ * subdivisions.length;    // 3
+ * subdivisions[0].code;   // "SH-AC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SH);
 
 export default SUBDIVISIONS;

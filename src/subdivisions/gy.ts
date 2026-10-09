@@ -5,7 +5,17 @@ import { GY } from "../data/subdivisions/gy.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Guyana, in code order, every level.
+/**
+ * The subdivisions of Guyana, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gy";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "GY-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GY);
 
 export default SUBDIVISIONS;

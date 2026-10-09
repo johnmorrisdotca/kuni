@@ -5,7 +5,17 @@ import { HT } from "../data/subdivisions/ht.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Haiti, in code order, every level.
+/**
+ * The subdivisions of Haiti, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ht";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "HT-AR"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(HT);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { KZ } from "../data/subdivisions/kz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Kazakhstan, in code order, every level.
+/**
+ * The subdivisions of Kazakhstan, in code order, every level: 20. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kz";
+ *
+ * subdivisions.length;    // 20
+ * subdivisions[0].code;   // "KZ-10"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KZ);
 
 export default SUBDIVISIONS;

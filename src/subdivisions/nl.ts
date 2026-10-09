@@ -5,7 +5,17 @@ import { NL } from "../data/subdivisions/nl.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Netherlands, in code order, every level.
+/**
+ * The subdivisions of Netherlands, in code order, every level: 18. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/nl";
+ *
+ * subdivisions.length;    // 18
+ * subdivisions[0].code;   // "NL-AW"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NL);
 
 export default SUBDIVISIONS;

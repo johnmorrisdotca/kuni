@@ -5,7 +5,17 @@ import { RW } from "../data/subdivisions/rw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Rwanda, in code order, every level.
+/**
+ * The subdivisions of Rwanda, in code order, every level: 5. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/rw";
+ *
+ * subdivisions.length;    // 5
+ * subdivisions[0].code;   // "RW-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(RW);
 
 export default SUBDIVISIONS;

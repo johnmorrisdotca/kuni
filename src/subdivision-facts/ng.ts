@@ -5,7 +5,17 @@ import { NG } from "../data/subdivision-facts/ng.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Nigeria, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Nigeria, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ng";
+ *
+ * facts.length;    // 37
+ * facts[0].code;   // "NG-AB"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(NG);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { PT } from "../data/subdivision-facts/pt.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Portugal, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Portugal, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/pt";
+ *
+ * facts.length;    // 20
+ * facts[0].code;   // "PT-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PT);
 
 export default SUBDIVISION_FACTS;

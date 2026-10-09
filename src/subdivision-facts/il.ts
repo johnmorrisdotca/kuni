@@ -5,7 +5,17 @@ import { IL } from "../data/subdivision-facts/il.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Israel, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Israel, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/il";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "IL-D"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(IL);
 
 export default SUBDIVISION_FACTS;

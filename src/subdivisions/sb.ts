@@ -5,7 +5,17 @@ import { SB } from "../data/subdivisions/sb.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Solomon Islands, in code order, every level.
+/**
+ * The subdivisions of Solomon Islands, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sb";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "SB-CE"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SB);
 
 export default SUBDIVISIONS;

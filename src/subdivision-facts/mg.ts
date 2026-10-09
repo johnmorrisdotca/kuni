@@ -5,7 +5,17 @@ import { MG } from "../data/subdivision-facts/mg.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Madagascar, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Madagascar, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mg";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "MG-A"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MG);
 
 export default SUBDIVISION_FACTS;

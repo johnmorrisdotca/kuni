@@ -5,7 +5,17 @@ import { NZ } from "../data/subdivisions/nz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of New Zealand, in code order, every level.
+/**
+ * The subdivisions of New Zealand, in code order, every level: 17. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/nz";
+ *
+ * subdivisions.length;    // 17
+ * subdivisions[0].code;   // "NZ-AUK"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NZ);
 
 export default SUBDIVISIONS;

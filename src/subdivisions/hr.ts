@@ -5,7 +5,17 @@ import { HR } from "../data/subdivisions/hr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Croatia, in code order, every level.
+/**
+ * The subdivisions of Croatia, in code order, every level: 21. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/hr";
+ *
+ * subdivisions.length;    // 21
+ * subdivisions[0].code;   // "HR-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(HR);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { WS } from "../data/subdivisions/ws.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Samoa, in code order, every level.
+/**
+ * The subdivisions of Samoa, in code order, every level: 11. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ws";
+ *
+ * subdivisions.length;    // 11
+ * subdivisions[0].code;   // "WS-AA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(WS);
 
 export default SUBDIVISIONS;

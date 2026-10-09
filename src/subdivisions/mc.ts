@@ -5,7 +5,17 @@ import { MC } from "../data/subdivisions/mc.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Monaco, in code order, every level.
+/**
+ * The subdivisions of Monaco, in code order, every level: 17. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mc";
+ *
+ * subdivisions.length;    // 17
+ * subdivisions[0].code;   // "MC-CL"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MC);
 
 export default SUBDIVISIONS;

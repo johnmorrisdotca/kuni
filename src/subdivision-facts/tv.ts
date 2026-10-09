@@ -5,7 +5,17 @@ import { TV } from "../data/subdivision-facts/tv.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Tuvalu, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Tuvalu, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/tv";
+ *
+ * facts.length;    // 8
+ * facts[0].code;   // "TV-FUN"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TV);
 
 export default SUBDIVISION_FACTS;

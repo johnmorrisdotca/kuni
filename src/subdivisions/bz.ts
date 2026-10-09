@@ -5,7 +5,17 @@ import { BZ } from "../data/subdivisions/bz.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Belize, in code order, every level.
+/**
+ * The subdivisions of Belize, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bz";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "BZ-BZ"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BZ);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { TM } from "../data/subdivisions/tm.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Turkmenistan, in code order, every level.
+/**
+ * The subdivisions of Turkmenistan, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tm";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "TM-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TM);
 
 export default SUBDIVISIONS;

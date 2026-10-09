@@ -5,7 +5,17 @@ import { AD } from "../data/subdivisions/ad.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Andorra, in code order, every level.
+/**
+ * The subdivisions of Andorra, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ad";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "AD-02"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AD);
 
 export default SUBDIVISIONS;

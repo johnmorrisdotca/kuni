@@ -5,7 +5,17 @@ import { WF } from "../data/subdivisions/wf.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Wallis & Futuna, in code order, every level.
+/**
+ * The subdivisions of Wallis & Futuna, in code order, every level: 3. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/wf";
+ *
+ * subdivisions.length;    // 3
+ * subdivisions[0].code;   // "WF-AL"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(WF);
 
 export default SUBDIVISIONS;

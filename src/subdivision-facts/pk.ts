@@ -5,7 +5,17 @@ import { PK } from "../data/subdivision-facts/pk.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Pakistan, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Pakistan, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/pk";
+ *
+ * facts.length;    // 7
+ * facts[0].code;   // "PK-BA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PK);
 
 export default SUBDIVISION_FACTS;

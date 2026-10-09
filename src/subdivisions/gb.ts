@@ -5,7 +5,17 @@ import { GB } from "../data/subdivisions/gb.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of United Kingdom, in code order, every level.
+/**
+ * The subdivisions of United Kingdom, in code order, every level: 221. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gb";
+ *
+ * subdivisions.length;    // 221
+ * subdivisions[0].code;   // "GB-ABC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GB);
 
 export default SUBDIVISIONS;

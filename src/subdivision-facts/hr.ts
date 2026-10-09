@@ -5,7 +5,17 @@ import { HR } from "../data/subdivision-facts/hr.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Croatia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Croatia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/hr";
+ *
+ * facts.length;    // 21
+ * facts[0].code;   // "HR-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(HR);
 
 export default SUBDIVISION_FACTS;

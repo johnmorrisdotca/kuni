@@ -5,7 +5,17 @@ import { MY } from "../data/subdivisions/my.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Malaysia, in code order, every level.
+/**
+ * The subdivisions of Malaysia, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/my";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "MY-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MY);
 
 export default SUBDIVISIONS;

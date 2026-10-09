@@ -5,7 +5,17 @@ import { BW } from "../data/subdivisions/bw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Botswana, in code order, every level.
+/**
+ * The subdivisions of Botswana, in code order, every level: 16. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bw";
+ *
+ * subdivisions.length;    // 16
+ * subdivisions[0].code;   // "BW-CE"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BW);
 
 export default SUBDIVISIONS;

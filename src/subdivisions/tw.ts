@@ -5,7 +5,17 @@ import { TW } from "../data/subdivisions/tw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Taiwan, in code order, every level.
+/**
+ * The subdivisions of Taiwan, in code order, every level: 22. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tw";
+ *
+ * subdivisions.length;    // 22
+ * subdivisions[0].code;   // "TW-CHA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TW);
 
 export default SUBDIVISIONS;

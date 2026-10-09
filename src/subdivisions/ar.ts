@@ -5,7 +5,17 @@ import { AR } from "../data/subdivisions/ar.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Argentina, in code order, every level.
+/**
+ * The subdivisions of Argentina, in code order, every level: 24. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ar";
+ *
+ * subdivisions.length;    // 24
+ * subdivisions[0].code;   // "AR-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AR);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { MD } from "../data/subdivisions/md.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Moldova, in code order, every level.
+/**
+ * The subdivisions of Moldova, in code order, every level: 37. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/md";
+ *
+ * subdivisions.length;    // 37
+ * subdivisions[0].code;   // "MD-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MD);
 
 export default SUBDIVISIONS;

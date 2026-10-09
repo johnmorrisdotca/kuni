@@ -5,7 +5,17 @@ import { IE } from "../data/subdivisions/ie.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Ireland, in code order, every level.
+/**
+ * The subdivisions of Ireland, in code order, every level: 30. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ie";
+ *
+ * subdivisions.length;    // 30
+ * subdivisions[0].code;   // "IE-C"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(IE);
 
 export default SUBDIVISIONS;

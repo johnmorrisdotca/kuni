@@ -5,7 +5,17 @@ import { NA } from "../data/subdivisions/na.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Namibia, in code order, every level.
+/**
+ * The subdivisions of Namibia, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/na";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "NA-CA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NA);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { UG } from "../data/subdivisions/ug.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Uganda, in code order, every level.
+/**
+ * The subdivisions of Uganda, in code order, every level: 139. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ug";
+ *
+ * subdivisions.length;    // 139
+ * subdivisions[0].code;   // "UG-101"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(UG);
 
 export default SUBDIVISIONS;

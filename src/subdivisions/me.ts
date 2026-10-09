@@ -5,7 +5,17 @@ import { ME } from "../data/subdivisions/me.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Montenegro, in code order, every level.
+/**
+ * The subdivisions of Montenegro, in code order, every level: 25. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/me";
+ *
+ * subdivisions.length;    // 25
+ * subdivisions[0].code;   // "ME-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ME);
 
 export default SUBDIVISIONS;

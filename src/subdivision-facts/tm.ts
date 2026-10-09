@@ -5,7 +5,17 @@ import { TM } from "../data/subdivision-facts/tm.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Turkmenistan, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Turkmenistan, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/tm";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "TM-A"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TM);
 
 export default SUBDIVISION_FACTS;

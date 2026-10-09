@@ -5,7 +5,17 @@ import { LV } from "../data/subdivisions/lv.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Latvia, in code order, every level.
+/**
+ * The subdivisions of Latvia, in code order, every level: 43. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lv";
+ *
+ * subdivisions.length;    // 43
+ * subdivisions[0].code;   // "LV-002"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LV);
 
 export default SUBDIVISIONS;

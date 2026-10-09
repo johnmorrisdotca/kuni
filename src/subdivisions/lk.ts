@@ -5,7 +5,17 @@ import { LK } from "../data/subdivisions/lk.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Sri Lanka, in code order, every level.
+/**
+ * The subdivisions of Sri Lanka, in code order, every level: 34. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lk";
+ *
+ * subdivisions.length;    // 34
+ * subdivisions[0].code;   // "LK-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LK);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { TD } from "../data/subdivisions/td.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Chad, in code order, every level.
+/**
+ * The subdivisions of Chad, in code order, every level: 23. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/td";
+ *
+ * subdivisions.length;    // 23
+ * subdivisions[0].code;   // "TD-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TD);
 
 export default SUBDIVISIONS;

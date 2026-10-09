@@ -5,7 +5,17 @@ import { NO } from "../data/subdivisions/no.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Norway, in code order, every level.
+/**
+ * The subdivisions of Norway, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/no";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "NO-03"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(NO);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { GQ } from "../data/subdivisions/gq.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Equatorial Guinea, in code order, every level.
+/**
+ * The subdivisions of Equatorial Guinea, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gq";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "GQ-AN"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GQ);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { VN } from "../data/subdivision-facts/vn.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Vietnam, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Vietnam, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/vn";
+ *
+ * facts.length;    // 63
+ * facts[0].code;   // "VN-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(VN);
 
 export default SUBDIVISION_FACTS;

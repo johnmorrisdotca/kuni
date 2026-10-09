@@ -5,7 +5,17 @@ import { CR } from "../data/subdivisions/cr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Costa Rica, in code order, every level.
+/**
+ * The subdivisions of Costa Rica, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cr";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "CR-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CR);
 
 export default SUBDIVISIONS;

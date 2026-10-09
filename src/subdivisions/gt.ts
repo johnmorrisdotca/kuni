@@ -5,7 +5,17 @@ import { GT } from "../data/subdivisions/gt.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Guatemala, in code order, every level.
+/**
+ * The subdivisions of Guatemala, in code order, every level: 22. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/gt";
+ *
+ * subdivisions.length;    // 22
+ * subdivisions[0].code;   // "GT-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(GT);
 
 export default SUBDIVISIONS;

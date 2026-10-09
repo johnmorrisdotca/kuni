@@ -5,7 +5,17 @@ import { BE } from "../data/subdivisions/be.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Belgium, in code order, every level.
+/**
+ * The subdivisions of Belgium, in code order, every level: 13. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/be";
+ *
+ * subdivisions.length;    // 13
+ * subdivisions[0].code;   // "BE-BRU"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BE);
 
 export default SUBDIVISIONS;

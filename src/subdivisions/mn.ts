@@ -5,7 +5,17 @@ import { MN } from "../data/subdivisions/mn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Mongolia, in code order, every level.
+/**
+ * The subdivisions of Mongolia, in code order, every level: 22. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mn";
+ *
+ * subdivisions.length;    // 22
+ * subdivisions[0].code;   // "MN-035"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MN);
 
 export default SUBDIVISIONS;

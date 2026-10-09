@@ -5,7 +5,17 @@ import { BO } from "../data/subdivisions/bo.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bolivia, in code order, every level.
+/**
+ * The subdivisions of Bolivia, in code order, every level: 9. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/bo";
+ *
+ * subdivisions.length;    // 9
+ * subdivisions[0].code;   // "BO-B"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BO);
 
 export default SUBDIVISIONS;

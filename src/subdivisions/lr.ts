@@ -5,7 +5,17 @@ import { LR } from "../data/subdivisions/lr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Liberia, in code order, every level.
+/**
+ * The subdivisions of Liberia, in code order, every level: 15. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/lr";
+ *
+ * subdivisions.length;    // 15
+ * subdivisions[0].code;   // "LR-BG"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LR);
 
 export default SUBDIVISIONS;

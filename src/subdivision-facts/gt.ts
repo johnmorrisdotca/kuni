@@ -5,7 +5,17 @@ import { GT } from "../data/subdivision-facts/gt.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Guatemala, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Guatemala, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/gt";
+ *
+ * facts.length;    // 22
+ * facts[0].code;   // "GT-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(GT);
 
 export default SUBDIVISION_FACTS;

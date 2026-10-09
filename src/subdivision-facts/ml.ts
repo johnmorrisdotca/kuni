@@ -5,7 +5,17 @@ import { ML } from "../data/subdivision-facts/ml.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Mali, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Mali, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ml";
+ *
+ * facts.length;    // 11
+ * facts[0].code;   // "ML-1"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(ML);
 
 export default SUBDIVISION_FACTS;

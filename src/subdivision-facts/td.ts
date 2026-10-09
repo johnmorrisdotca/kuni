@@ -5,7 +5,17 @@ import { TD } from "../data/subdivision-facts/td.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Chad, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Chad, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/td";
+ *
+ * facts.length;    // 23
+ * facts[0].code;   // "TD-BA"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TD);
 
 export default SUBDIVISION_FACTS;

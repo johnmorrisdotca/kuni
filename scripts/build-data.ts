@@ -557,8 +557,9 @@ const writeCountries = (): void => {
   writeFileSync(
     join(OUT_DATA, "codes.data.ts"),
     header(`The ${codes.length} country codes: ISO 3166-1 alpha-2, and XK for Kosovo.`, [CLDR_SOURCE]) +
+      "/**\n * The 250 country codes: the 249 ISO 3166-1 alpha-2 codes and XK for Kosovo, in alphabetical order.\n *\n * @example\n * ```ts\n * import { COUNTRY_CODES } from \"@johnmorrisdotca/kuni/codes\";\n *\n * COUNTRY_CODES.length;   // 250\n * COUNTRY_CODES[0];       // \"AD\"\n * ```\n */\n" +
       `const COUNTRY_CODES = [\n${codes.map((code, index) => `${index % 16 === 0 ? "  " : " "}${literal(code)},${index % 16 === 15 || index === codes.length - 1 ? "\n" : ""}`).join("")}] as const;\n\n` +
-      "type CountryCode = (typeof COUNTRY_CODES)[number];\n\n" +
+      "/** One of the 250 country codes, as a type: \"JP\" | \"US\" | ... */\ntype CountryCode = (typeof COUNTRY_CODES)[number];\n\n" +
       "export { COUNTRY_CODES };\nexport type { CountryCode };\n",
   );
   writeFileSync(
@@ -618,7 +619,7 @@ const writeFacts = (): void => {
       `${CLDR_SOURCE}: first day of the week, measurement system, paper size, clock`,
     ]) +
       'import type { FactsRow } from "../rows";\n\n' +
-      `// The day the Wikidata snapshot was read: every figure is as Wikidata gave it on this day.\nconst FACTS_READ = ${literal(factsFile.read)};\n\n` +
+      `/**\n * The day the Wikidata snapshot was read: every figure in /facts is as Wikidata gave it on this day.\n *\n * @example\n * \`\`\`ts\n * import { FACTS_READ, facts } from "@johnmorrisdotca/kuni/facts";\n *\n * console.log(\`\${facts("JP")?.population} people in \${facts("JP")?.populationYear}, as Wikidata gave it on \${FACTS_READ}\`);\n * \`\`\`\n */\nconst FACTS_READ = ${literal(factsFile.read)};\n\n` +
       `const FACT_ROWS: readonly FactsRow[] = [\n${rows.join("\n")}\n];\n\n` +
       "export { FACT_ROWS, FACTS_READ };\n",
   );
@@ -691,7 +692,17 @@ const writeSubdivisionFacts = (): void => {
         'import { expandSubdivisionFacts } from "../rows";',
         'import type { SubdivisionFacts } from "../types";',
         "",
-        `/** The facts about the subdivisions of ${named.en}, in code order, one for each subdivision, every level. */`,
+        "/**",
+        ` * The facts about the subdivisions of ${named.en}, in code order, one for each subdivision, every level. Also the default export.`,
+        " *",
+        " * @example",
+        " * ```ts",
+        ` * import facts from "@johnmorrisdotca/kuni/subdivision-facts/${name}";`,
+        " *",
+        ` * facts.length;    // ${records.length}`,
+        ` * facts[0].code;   // ${literal(records[0].code)}`,
+        " * ```",
+        " */",
         `const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(${alpha2});`,
         "",
         "export default SUBDIVISION_FACTS;",
@@ -798,7 +809,17 @@ const writeSubdivisions = (): void => {
         'import { expandSubdivisions } from "../rows";',
         'import type { Subdivision } from "../types";',
         "",
-        `// The subdivisions of ${country.en}, in code order, every level.`,
+        "/**",
+        ` * The subdivisions of ${country.en}, in code order, every level: ${records.length}. Also the default export.`,
+        " *",
+        " * @example",
+        " * ```ts",
+        ` * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/${name}";`,
+        " *",
+        ` * subdivisions.length;    // ${records.length}`,
+        ` * subdivisions[0].code;   // ${literal(records[0].code)}`,
+        " * ```",
+        " */",
         `const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(${constant});`,
         "",
         "export default SUBDIVISIONS;",

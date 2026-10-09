@@ -5,7 +5,17 @@ import { CI } from "../data/subdivision-facts/ci.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Côte d’Ivoire, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Côte d’Ivoire, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ci";
+ *
+ * facts.length;    // 14
+ * facts[0].code;   // "CI-AB"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CI);
 
 export default SUBDIVISION_FACTS;

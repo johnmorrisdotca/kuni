@@ -5,7 +5,17 @@ import { AU } from "../data/subdivisions/au.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Australia, in code order, every level.
+/**
+ * The subdivisions of Australia, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/au";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "AU-ACT"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AU);
 
 export default SUBDIVISIONS;

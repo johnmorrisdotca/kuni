@@ -5,7 +5,17 @@ import { BA } from "../data/subdivisions/ba.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Bosnia & Herzegovina, in code order, every level.
+/**
+ * The subdivisions of Bosnia & Herzegovina, in code order, every level: 3. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ba";
+ *
+ * subdivisions.length;    // 3
+ * subdivisions[0].code;   // "BA-BIH"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(BA);
 
 export default SUBDIVISIONS;

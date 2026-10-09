@@ -5,7 +5,17 @@ import { CD } from "../data/subdivisions/cd.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Congo - Kinshasa, in code order, every level.
+/**
+ * The subdivisions of Congo - Kinshasa, in code order, every level: 26. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/cd";
+ *
+ * subdivisions.length;    // 26
+ * subdivisions[0].code;   // "CD-BC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(CD);
 
 export default SUBDIVISIONS;

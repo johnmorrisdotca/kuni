@@ -5,7 +5,17 @@ import { SR } from "../data/subdivision-facts/sr.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Suriname, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Suriname, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sr";
+ *
+ * facts.length;    // 10
+ * facts[0].code;   // "SR-BR"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SR);
 
 export default SUBDIVISION_FACTS;

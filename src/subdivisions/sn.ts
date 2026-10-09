@@ -5,7 +5,17 @@ import { SN } from "../data/subdivisions/sn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Senegal, in code order, every level.
+/**
+ * The subdivisions of Senegal, in code order, every level: 14. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/sn";
+ *
+ * subdivisions.length;    // 14
+ * subdivisions[0].code;   // "SN-DB"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(SN);
 
 export default SUBDIVISIONS;

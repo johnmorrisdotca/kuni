@@ -5,7 +5,17 @@ import { KW } from "../data/subdivisions/kw.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Kuwait, in code order, every level.
+/**
+ * The subdivisions of Kuwait, in code order, every level: 6. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kw";
+ *
+ * subdivisions.length;    // 6
+ * subdivisions[0].code;   // "KW-AH"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KW);
 
 export default SUBDIVISIONS;

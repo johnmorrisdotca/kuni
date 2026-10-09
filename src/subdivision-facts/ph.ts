@@ -5,7 +5,17 @@ import { PH } from "../data/subdivision-facts/ph.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Philippines, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Philippines, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ph";
+ *
+ * facts.length;    // 99
+ * facts[0].code;   // "PH-00"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PH);
 
 export default SUBDIVISION_FACTS;

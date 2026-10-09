@@ -5,7 +5,17 @@ import { PL } from "../data/subdivision-facts/pl.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Poland, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Poland, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/pl";
+ *
+ * facts.length;    // 16
+ * facts[0].code;   // "PL-02"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(PL);
 
 export default SUBDIVISION_FACTS;

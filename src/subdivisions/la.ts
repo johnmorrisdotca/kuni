@@ -5,7 +5,17 @@ import { LA } from "../data/subdivisions/la.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Laos, in code order, every level.
+/**
+ * The subdivisions of Laos, in code order, every level: 18. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/la";
+ *
+ * subdivisions.length;    // 18
+ * subdivisions[0].code;   // "LA-AT"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LA);
 
 export default SUBDIVISIONS;

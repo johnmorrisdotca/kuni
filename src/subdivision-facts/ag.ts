@@ -5,7 +5,17 @@ import { AG } from "../data/subdivision-facts/ag.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Antigua & Barbuda, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Antigua & Barbuda, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ag";
+ *
+ * facts.length;    // 8
+ * facts[0].code;   // "AG-03"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(AG);
 
 export default SUBDIVISION_FACTS;

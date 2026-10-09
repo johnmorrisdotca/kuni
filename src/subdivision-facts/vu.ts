@@ -5,7 +5,17 @@ import { VU } from "../data/subdivision-facts/vu.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Vanuatu, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Vanuatu, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/vu";
+ *
+ * facts.length;    // 6
+ * facts[0].code;   // "VU-MAP"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(VU);
 
 export default SUBDIVISION_FACTS;

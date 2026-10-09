@@ -5,7 +5,17 @@ import { LS } from "../data/subdivisions/ls.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Lesotho, in code order, every level.
+/**
+ * The subdivisions of Lesotho, in code order, every level: 10. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ls";
+ *
+ * subdivisions.length;    // 10
+ * subdivisions[0].code;   // "LS-A"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(LS);
 
 export default SUBDIVISIONS;

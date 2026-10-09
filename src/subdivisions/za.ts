@@ -5,7 +5,17 @@ import { ZA } from "../data/subdivisions/za.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of South Africa, in code order, every level.
+/**
+ * The subdivisions of South Africa, in code order, every level: 9. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/za";
+ *
+ * subdivisions.length;    // 9
+ * subdivisions[0].code;   // "ZA-EC"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(ZA);
 
 export default SUBDIVISIONS;

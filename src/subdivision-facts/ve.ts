@@ -5,7 +5,17 @@ import { VE } from "../data/subdivision-facts/ve.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Venezuela, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Venezuela, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ve";
+ *
+ * facts.length;    // 25
+ * facts[0].code;   // "VE-A"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(VE);
 
 export default SUBDIVISION_FACTS;

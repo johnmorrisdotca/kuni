@@ -5,7 +5,17 @@ import { KH } from "../data/subdivisions/kh.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Cambodia, in code order, every level.
+/**
+ * The subdivisions of Cambodia, in code order, every level: 25. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kh";
+ *
+ * subdivisions.length;    // 25
+ * subdivisions[0].code;   // "KH-1"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KH);
 
 export default SUBDIVISIONS;

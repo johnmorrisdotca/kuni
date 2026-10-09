@@ -5,7 +5,17 @@ import { PK } from "../data/subdivisions/pk.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Pakistan, in code order, every level.
+/**
+ * The subdivisions of Pakistan, in code order, every level: 7. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/pk";
+ *
+ * subdivisions.length;    // 7
+ * subdivisions[0].code;   // "PK-BA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PK);
 
 export default SUBDIVISIONS;

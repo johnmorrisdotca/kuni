@@ -5,7 +5,17 @@ import { SB } from "../data/subdivision-facts/sb.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Solomon Islands, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Solomon Islands, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sb";
+ *
+ * facts.length;    // 10
+ * facts[0].code;   // "SB-CE"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SB);
 
 export default SUBDIVISION_FACTS;

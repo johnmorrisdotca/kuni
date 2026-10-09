@@ -5,7 +5,17 @@ import { LI } from "../data/subdivision-facts/li.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Liechtenstein, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Liechtenstein, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/li";
+ *
+ * facts.length;    // 11
+ * facts[0].code;   // "LI-01"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(LI);
 
 export default SUBDIVISION_FACTS;

@@ -5,7 +5,17 @@ import { KR } from "../data/subdivisions/kr.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of South Korea, in code order, every level.
+/**
+ * The subdivisions of South Korea, in code order, every level: 17. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/kr";
+ *
+ * subdivisions.length;    // 17
+ * subdivisions[0].code;   // "KR-11"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(KR);
 
 export default SUBDIVISIONS;

@@ -5,7 +5,17 @@ import { VN } from "../data/subdivisions/vn.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Vietnam, in code order, every level.
+/**
+ * The subdivisions of Vietnam, in code order, every level: 63. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/vn";
+ *
+ * subdivisions.length;    // 63
+ * subdivisions[0].code;   // "VN-01"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(VN);
 
 export default SUBDIVISIONS;

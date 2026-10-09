@@ -8,9 +8,22 @@ const KANA_OFFSET = 0x60;
 const VOICED_MARK = "\u3099";
 const SEMI_VOICED_MARK = "\u309a";
 
-// Width (NFKC: full-width letters to ASCII, half-width katakana to full), case, accents (the marks NFD
-// splits off, except the two that make が and ぱ), katakana to hiragana, apostrophes dropped, and every
-// other run of punctuation or space to one space.
+/**
+ * What two ways of typing a name have in common: width (full-width letters to ASCII, half-width katakana to full),
+ * case, accents (except the two marks that make が and ぱ), katakana to hiragana, apostrophes dropped, and every
+ * other run of punctuation or space to one space. The lookups compare names folded, and so can a page.
+ *
+ * @param text - Any text.
+ * @returns The text folded; "" for text that is only punctuation or space.
+ * @example
+ * ```ts
+ * import { fold } from "@johnmorrisdotca/kuni";
+ *
+ * fold("Côte d'Ivoire");   // "cote divoire"
+ * fold("ＵＳＡ");           // "usa"
+ * fold("ドイツ");           // "どいつ"
+ * ```
+ */
 const fold = (text: string): string =>
   String(text)
     .normalize("NFKC")

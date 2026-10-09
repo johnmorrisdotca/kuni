@@ -5,7 +5,17 @@ import { QA } from "../data/subdivisions/qa.data";
 import { expandSubdivisions } from "../rows";
 import type { Subdivision } from "../types";
 
-// The subdivisions of Qatar, in code order, every level.
+/**
+ * The subdivisions of Qatar, in code order, every level: 8. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/qa";
+ *
+ * subdivisions.length;    // 8
+ * subdivisions[0].code;   // "QA-DA"
+ * ```
+ */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(QA);
 
 export default SUBDIVISIONS;

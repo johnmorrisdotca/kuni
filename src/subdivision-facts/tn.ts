@@ -5,7 +5,17 @@ import { TN } from "../data/subdivision-facts/tn.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Tunisia, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Tunisia, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/tn";
+ *
+ * facts.length;    // 24
+ * facts[0].code;   // "TN-11"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TN);
 
 export default SUBDIVISION_FACTS;

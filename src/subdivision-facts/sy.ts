@@ -5,7 +5,17 @@ import { SY } from "../data/subdivision-facts/sy.data";
 import { expandSubdivisionFacts } from "../rows";
 import type { SubdivisionFacts } from "../types";
 
-/** The facts about the subdivisions of Syria, in code order, one for each subdivision, every level. */
+/**
+ * The facts about the subdivisions of Syria, in code order, one for each subdivision, every level. Also the default export.
+ *
+ * @example
+ * ```ts
+ * import facts from "@johnmorrisdotca/kuni/subdivision-facts/sy";
+ *
+ * facts.length;    // 14
+ * facts[0].code;   // "SY-DI"
+ * ```
+ */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(SY);
 
 export default SUBDIVISION_FACTS;
