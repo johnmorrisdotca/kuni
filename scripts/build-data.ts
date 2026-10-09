@@ -31,6 +31,9 @@ import {
   TYPE_NOISE,
   TYPE_RULES,
 } from "./data-config.ts";
+import { buildFacts } from "./facts.ts";
+import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
+import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
 
 type Json = Record<string, unknown>;
@@ -60,6 +63,7 @@ interface CountryRecord {
   currencies: string[];
   tld: string | null;
   capital: string | null;
+  capitalJa: string | null;
   zones: string[];
   languages: string[];
   subdivisionType: string | null;
@@ -89,6 +93,8 @@ const NODE_MODULES = join(ROOT, "node_modules");
 const OUT_DATA = join(ROOT, "src", "data");
 const OUT_TABLES = join(OUT_DATA, "subdivisions");
 const OUT_ENTRIES = join(ROOT, "src", "subdivisions");
+const OUT_FACT_TABLES = join(OUT_DATA, "subdivision-facts");
+const OUT_FACT_ENTRIES = join(ROOT, "src", "subdivision-facts");
 const DOCS = join(ROOT, "docs");
 const EXPECTED_GAPS = join(ROOT, "data-sources", "expected-ja-gaps.json");
 const HAN = /\p{Script=Han}/u;
@@ -180,7 +186,7 @@ const cldrJa = readSource(manifest, `cldr/${CLDR_TAG}/subdivisions-ja.xml`).text
 const validity = readSource(manifest, `cldr/${CLDR_TAG}/validity-subdivision.xml`).text;
 const zoneTab = readSource(manifest, "iana/tzdb-2026e/zone.tab").text;
 const tldList = readSource(manifest, "iana/tlds-alpha-by-domain.txt");
-const wikidataFile = manifest.files.find((file) => file.path.startsWith("wikidata-"));
+const wikidataFile = manifest.files.find((file) => /^wikidata-\d{4}-\d{2}-\d{2}\.json$/.test(file.path));
 if (wikidataFile === undefined) throw new Error("No Wikidata snapshot in data-sources/sources.json: run pnpm data:wikidata");
 const wikidata = JSON.parse(readSource(manifest, wikidataFile.path).text) as {
   subdivisions: Record<string, WikidataItem[]>;
@@ -193,9 +199,12 @@ const codeMappings = dig(readJson("cldr-core/supplemental/codeMappings.json"), [
 const currencyData = dig(readJson("cldr-core/supplemental/currencyData.json"), ["supplemental", "currencyData", "region"]) as Record<string, Record<string, { _to?: string; _tender?: string }>[]>;
 const territoryContainment = dig(readJson("cldr-core/supplemental/territoryContainment.json"), ["supplemental", "territoryContainment"]) as Record<string, { _contains: string[]; _grouping?: string }>;
 const subdivisionContainment = dig(readJson("cldr-core/supplemental/subdivisionContainment.json"), ["supplemental", "subdivisionContainment"]) as Record<string, { _contains: string[] }>;
+const factsFile = manifest.files.find((file) => file.path.startsWith("wikidata-facts-"));
+if (factsFile === undefined) throw new Error("No Wikidata facts snapshot in data-sources/sources.json: run pnpm data:facts");
+const factsSnapshot = JSON.parse(readSource(manifest, factsFile.path).text) as FactsSnapshot;
 const countriesList = readJson("countries-list/countries.min.json") as Record<string, { name: string; native: string; phone: number[]; continent: string; capital: string; languages: string[] }>;
 
-const versions = { cldrCore: versionOf("cldr-core"), cldrNames: versionOf("cldr-localenames-full"), countriesList: versionOf("countries-list") };
+const versions = { cldrCore: versionOf("cldr-core"), cldrNames: versionOf("cldr-localenames-full"), countriesList: versionOf("countries-list"), chizu: versionOf("@johnmorrisdotca/chizu") };
 const tlds = new Set(tldList.text.split("\n").filter((line) => line !== "" && !line.startsWith("#")).map((line) => line.trim().toLowerCase()));
 const tldVersion = tldList.text.split("\n")[0].replace(/^#\s*/, "");
 
@@ -304,6 +313,7 @@ const countries: CountryRecord[] = alpha2Codes.map((alpha2) => {
     currencies: currenciesOf(alpha2),
     tld: TLD_EXCEPTIONS[alpha2] ?? (tlds.has(alpha2.toLowerCase()) ? alpha2.toLowerCase() : null),
     capital: listed.capital.trim() === "" ? null : listed.capital.trim(),
+    capitalJa: null,
     zones: zonesOf.get(alpha2) ?? [],
     languages: listed.languages,
     subdivisionType: null,
@@ -326,6 +336,28 @@ for (const country of countries) {
     if (other !== undefined && other !== country.alpha2) throw new Error(`"${name}" names both ${other} and ${country.alpha2}`);
     countryKeys.set(folded, country.alpha2);
   }
+}
+
+// ----- Facts ---------------------------------------------------------------------------------------------
+
+// The capital's Japanese name and the /facts entry's figures; scripts/facts.ts says how, scripts/facts-config.ts
+// lists the exceptions. Where the facts replace countries-list's capital (it moved), the country takes the new one.
+const facts = buildFacts({
+  snapshot: factsSnapshot,
+  countries: countries.map((country) => ({ alpha2: country.alpha2, capital: country.capital })),
+  cldr: {
+    weekData: dig(readJson("cldr-core/supplemental/weekData.json"), ["supplemental", "weekData"]),
+    measurementData: dig(readJson("cldr-core/supplemental/measurementData.json"), ["supplemental", "measurementData"]),
+    timeData: dig(readJson("cldr-core/supplemental/timeData.json"), ["supplemental", "timeData"]),
+    territoryContainment,
+  },
+  chizuCountries: join(NODE_MODULES, "@johnmorrisdotca", "chizu", "dist", "data", "countries"),
+});
+const factsOf = new Map(facts.records.map((record) => [record.alpha2, record]));
+for (const country of countries) {
+  const record = factsOf.get(country.alpha2)!;
+  country.capital = record.capitalEn;
+  country.capitalJa = record.capitalJa;
 }
 
 // ----- Subdivisions -------------------------------------------------------------------------------------
@@ -440,6 +472,12 @@ if (unmatched.length > 0) throw new Error(`JA_NAME_OVERRIDES names no subdivisio
 if (noEnglish.length > 0) throw new Error(`No English name in CLDR for ${noEnglish.join(", ")}`);
 subdivisions.sort((a, b) => byText(a.code, b.code));
 
+// The facts about each subdivision (scripts/subdivision-facts.ts), from the same current Wikidata items as its names.
+const subdivisionFacts = buildSubdivisionFacts(
+  factsSnapshot.answers as unknown as Record<string, Record<string, unknown[][]>>,
+  subdivisions.map((record) => ({ code: record.code, items: currentItems(wikidata.subdivisions[record.code]).map((item) => item.id) })),
+);
+
 const byCountry = new Map<string, SubdivisionRecord[]>();
 for (const subdivision of subdivisions) byCountry.set(subdivision.country, [...(byCountry.get(subdivision.country) ?? []), subdivision]);
 
@@ -497,6 +535,7 @@ const countryRow = (country: CountryRecord): string => {
     joined(country.currencies, " "),
     country.tld,
     country.capital,
+    country.capitalJa,
     joined(country.zones, " "),
     joined(country.languages, " "),
     country.subdivisionType,
@@ -527,6 +566,7 @@ const writeCountries = (): void => {
       `${CLDR_SOURCE}: names, short names, variants, codes, currencies, regions`,
       `${WIKIDATA_SOURCE}: calling codes, readings`,
       `${LIST_SOURCE}: own names, capitals, continents, languages`,
+      `Wikidata (CC0), the snapshot data-sources/${factsFile.path}: capitals' Japanese names`,
       IANA_SOURCE,
     ]) +
       'import type { CountryRow } from "../rows";\n\n' +
@@ -540,7 +580,155 @@ const writeCountries = (): void => {
   );
 };
 
+// The /facts entry's table: one row a country, and the record of what was decided (docs/facts.md).
+// Row: [alpha2, population, populationYear, areaKm2, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders,
+// drivingSide, conventions]. borders is one string of codes with spaces between; drivingSide "L" or "R";
+// conventions lists, with spaces between, only the CLDR values that are not the world's default (mon, metric, A4,
+// h23), so that most countries write null there. areaOf is "L" for a figure for the land alone, null for the whole.
+const FACTS_SOURCE = `Wikidata (CC0), the snapshot data-sources/${factsFile.path}`;
+const DEFAULT_CONVENTIONS = new Set(["mon", "metric", "A4", "h23"]);
+const writeFacts = (): void => {
+  const rows = facts.records.map((record) => {
+    const conventions = [record.weekStart, record.measurement, record.paper, record.hourCycle].filter((value) => !DEFAULT_CONVENTIONS.has(value));
+    const row: unknown[] = [
+      record.alpha2,
+      record.population,
+      record.populationYear,
+      record.area,
+      record.areaYear,
+      record.areaPart === "land" ? "L" : null,
+      record.point?.[0] ?? null,
+      record.point?.[1] ?? null,
+      record.capitalPoint?.[0] ?? null,
+      record.capitalPoint?.[1] ?? null,
+      joined(record.borders, " "),
+      record.drivingSide === null ? null : record.drivingSide === "left" ? "L" : "R",
+      joined(conventions, " "),
+    ];
+    while (row.length > 1 && row[row.length - 1] === null) row.pop();
+
+    return `  ${literal(row)},`;
+  });
+  writeFileSync(
+    join(OUT_DATA, "facts.data.ts"),
+    header(`The facts about every country (${facts.records.length}), one row each; src/facts.ts says what the columns are.`, [
+      `${FACTS_SOURCE}: population, area, coordinates, capitals' coordinates, driving side, borders`,
+      `Natural Earth 5.1.2 admin-0 1:50m (public domain), as drawn by @johnmorrisdotca/chizu ${versions.chizu} (MIT): land borders confirmed`,
+      `${CLDR_SOURCE}: first day of the week, measurement system, paper size, clock`,
+    ]) +
+      'import type { FactsRow } from "../rows";\n\n' +
+      `// The day the Wikidata snapshot was read: every figure is as Wikidata gave it on this day.\nconst FACTS_READ = ${literal(factsFile.read)};\n\n` +
+      `const FACT_ROWS: readonly FactsRow[] = [\n${rows.join("\n")}\n];\n\n` +
+      "export { FACT_ROWS, FACTS_READ };\n",
+  );
+  writeFileSync(join(DOCS, "facts.md"), facts.doc.join("\n"));
+};
+
 const lower = (alpha2: string): string => alpha2.toLowerCase();
+
+// One file a country of the facts about its subdivisions, an entry a country, the loaders, and the record of what
+// is known (docs/subdivision-facts.md). Row: shortCode|capitalEn|capitalJa|capitalReading|capitalLat|capitalLon|
+// population|populationYear|areaKm2|areaYear|lat|lon, an absent value empty and trailing ones left off.
+const writeSubdivisionFacts = (): void => {
+  mkdirSync(OUT_FACT_TABLES, { recursive: true });
+  mkdirSync(OUT_FACT_ENTRIES, { recursive: true });
+  const names: string[] = [];
+  const text = (value: unknown): string => (value === null || value === undefined ? "" : String(value));
+  for (const [alpha2, records] of byCountry) {
+    const rows = records.map((record) => {
+      const fact = subdivisionFacts.records.get(record.code)!;
+      const fields = [record.shortCode, fact.capitalEn, fact.capitalJa, fact.capitalReading, fact.capitalPoint?.[0], fact.capitalPoint?.[1], fact.population, fact.populationYear, fact.area, fact.areaYear, fact.point?.[0], fact.point?.[1]].map(text);
+      for (const field of fields) if (/[|\n`\\]|\$\{/.test(field)) throw new Error(`${record.code}: "${field}" cannot be written in a row`);
+      while (fields.length > 1 && fields[fields.length - 1] === "") fields.pop();
+
+      return fields.join("|");
+    });
+    const name = lower(alpha2);
+    names.push(name);
+    const named = countries.find((one) => one.alpha2 === alpha2)!;
+    writeFileSync(
+      join(OUT_FACT_TABLES, `${name}.data.ts`),
+      header(`The facts about the ${records.length} subdivisions of ${named.en} (${alpha2}): capitals, population, area, coordinates.`, [`${FACTS_SOURCE}`]) +
+        'import type { SubdivisionFactsTable } from "../../rows";\n\n' +
+        `const ${alpha2}: SubdivisionFactsTable = {\n  country: ${literal(alpha2)},\n  rows: \`${rows.join("\n")}\`,\n};\n\nexport { ${alpha2} };\n`,
+    );
+    writeFileSync(
+      join(OUT_FACT_ENTRIES, `${name}.ts`),
+      [
+        "// Generated by scripts/build-data.ts. Do not edit by hand.",
+        `// The entry @johnmorrisdotca/kuni/subdivision-facts/${name}: the facts about the ${records.length} subdivisions of ${named.en}.`,
+        "",
+        `import { ${alpha2} } from "../data/subdivision-facts/${name}.data";`,
+        'import { expandSubdivisionFacts } from "../rows";',
+        'import type { SubdivisionFacts } from "../types";',
+        "",
+        `/** The facts about the subdivisions of ${named.en}, in code order, one for each subdivision, every level. */`,
+        `const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(${alpha2});`,
+        "",
+        "export default SUBDIVISION_FACTS;",
+        "export { SUBDIVISION_FACTS };",
+        "",
+      ].join("\n"),
+    );
+  }
+  for (const file of readdirSync(OUT_FACT_TABLES)) if (!names.includes(file.slice(0, 2))) rmSync(join(OUT_FACT_TABLES, file));
+  for (const file of readdirSync(OUT_FACT_ENTRIES)) if (!names.includes(file.slice(0, 2))) rmSync(join(OUT_FACT_ENTRIES, file));
+  names.sort(byText);
+  writeFileSync(
+    join(OUT_DATA, "fact-loaders.data.ts"),
+    header(`One dynamic import for each of the ${names.length} countries with subdivisions, for loadSubdivisionFacts.`, [FACTS_SOURCE]) +
+      'import type { SubdivisionFacts } from "../types";\n\n' +
+      "type FactsLoader = () => Promise<{ SUBDIVISION_FACTS: readonly SubdivisionFacts[] }>;\n\n" +
+      `const FACT_LOADERS: Readonly<Record<string, FactsLoader>> = {\n${names.map((name) => `  ${name}: () => import("../subdivision-facts/${name}.js"),`).join("\n")}\n};\n\n` +
+      "export { FACT_LOADERS };\nexport type { FactsLoader };\n",
+  );
+
+  // The record: how much is known, country by country, and why the rest is not.
+  const fields = ["capital", "population", "area", "point"] as const;
+  const all = [...subdivisionFacts.gaps.entries()];
+  const firsts = subdivisions.filter((record) => record.level === 1).map((record) => record.code);
+  const known = (codes: string[], field: (typeof fields)[number]): number => codes.filter((code) => subdivisionFacts.gaps.get(code)![field] === null).length;
+  const why = (field: (typeof fields)[number]): string =>
+    (["none", "no item", "items disagree", "two capitals"] as const)
+      .map((gap) => [gap, all.filter(([, gaps]) => gaps[field] === gap).length] as const)
+      .filter(([, count]) => count > 0)
+      .map(([gap, count]) => `${count} ${gap}`)
+      .join(", ");
+  const lines = [
+    "# The facts about subdivisions: what is known",
+    "",
+    "Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules are at the top of",
+    "`scripts/subdivision-facts.ts`. Every figure is Wikidata's (CC0), from the snapshot",
+    `\`${factsFile.path}\`; a fact Wikidata does not give, or gives two ways, is \`null\`, never a guess.`,
+    "",
+    "| Fact | Level 1 | All levels | Why the rest are null |",
+    "| --- | --- | --- | --- |",
+    ...fields.map((field) => `| ${field} | ${known(firsts, field)} of ${firsts.length} | ${known(all.map(([code]) => code), field)} of ${all.length} | ${why(field)} |`),
+    "",
+    "*none*: Wikidata gives no such statement. *no item*: no current Wikidata item holds the code. *items disagree*:",
+    "two items hold the code (a city and the district of the same name) and give different values. *two capitals*:",
+    "Wikidata names two current capitals.",
+    "",
+    "Capitals with a Japanese name: " + `${[...subdivisionFacts.records.values()].filter((record) => record.capitalJa !== null).length}` + "; with a reading in kana: " + `${[...subdivisionFacts.records.values()].filter((record) => record.capitalReading !== null).length}.`,
+    "",
+    "## Capitals named by hand",
+    "",
+    ...Object.entries(SUBDIVISION_CAPITALS).map(([code, { item, why: reason }]) => `- **${code}**, ${item}: ${reason}`),
+    "",
+    "## By country, level 1",
+    "",
+    "| Country | Level 1 | Capital | Population | Area | Point |",
+    "| --- | --- | --- | --- | --- | --- |",
+  ];
+  for (const [alpha2, records] of [...byCountry.entries()].sort((a, b) => byText(a[0], b[0]))) {
+    const codes = records.filter((record) => record.level === 1).map((record) => record.code);
+    lines.push(`| ${alpha2} | ${codes.length} | ${fields.map((field) => known(codes, field)).join(" | ")} |`);
+  }
+  lines.push("");
+  writeFileSync(join(DOCS, "subdivision-facts.md"), lines.join("\n"));
+};
+
+
 
 const writeSubdivisions = (): void => {
   mkdirSync(OUT_TABLES, { recursive: true });
@@ -741,5 +929,7 @@ if (REPORT) {
   writeSubdivisions();
   writeDisagreements();
   writeNameRules();
+  writeFacts();
+  writeSubdivisionFacts();
   console.log(`Wrote ${countries.length} countries and ${subdivisions.length} subdivisions of ${byCountry.size} countries.`);
 }

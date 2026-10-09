@@ -2,10 +2,10 @@
 // that a page importing one country's subdivisions carries a couple of kilobytes and not five. These turn a
 // row back into the object the lookups hand out. Pure: the same row always makes an equal object.
 
-import type { Continent, Country, Subdivision, SubdivisionType } from "./types";
+import type { Continent, Country, LatLon, Subdivision, SubdivisionFacts, SubdivisionType } from "./types";
 
 // [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, callingCode,
-//  currencies, tld, capital, zones, languages, subdivisionType, aliases, kind]
+//  currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, kind]
 // Lists of codes are one string with spaces between; aliases are one string with "|" between; an absent
 // value is null. The last element is present only for a user-assigned code.
 type CountryRow = readonly [
@@ -19,6 +19,7 @@ type CountryRow = readonly [
   string | null,
   string | null,
   Continent,
+  string | null,
   string | null,
   string | null,
   string | null,
@@ -57,7 +58,7 @@ const listOf = (text: string | null, separator: string): string[] | undefined =>
 
 const expandCountry = (row: CountryRow): Country => {
   const [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, calling] = row;
-  const [, , , , , , , , , , , , currencies, tld, capital, zones, languages, subdivisionType, aliases, kind] = row;
+  const [, , , , , , , , , , , , currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, kind] = row;
   const country: Country = {
     alpha2,
     alpha3,
@@ -77,7 +78,7 @@ const expandCountry = (row: CountryRow): Country => {
   if (calling !== null) country.callingCode = calling;
   if (currencies !== null) country.currency = listOf(currencies, " ");
   if (tld !== null) country.tld = tld;
-  if (capital !== null) country.capital = { en: capital };
+  if (capital !== null && capitalJa !== null) country.capital = { en: capital, ja: capitalJa };
   if (zones !== null) country.zones = listOf(zones, " ");
   if (languages !== null) country.languages = listOf(languages, " ");
   if (subdivisionType !== null) country.subdivisionType = subdivisionType;
@@ -114,5 +115,50 @@ const expandSubdivisions = (table: SubdivisionTable): readonly Subdivision[] => 
   return Object.freeze(list);
 };
 
-export { expandCountry, expandSubdivisions, flagOf };
-export type { CountryRow, SubdivisionTable };
+// [alpha2, population, populationYear, areaKm2, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders,
+//  drivingSide, conventions], written by scripts/build-data.ts. Trailing nulls are left off. areaOf is "L" for a
+// figure for the land alone; borders is one string of codes with spaces between; drivingSide is "L" or "R";
+// conventions lists, with spaces between, only the CLDR values that are not the world's default (mon, metric, A4, h23).
+type FactsRow = readonly [string, ...(string | number | null)[]];
+
+// One country's subdivision facts as text, a line each: shortCode|capitalEn|capitalJa|capitalReading|capitalLat|
+// capitalLon|population|populationYear|areaKm2|areaYear|lat|lon, an absent value empty and trailing ones left off.
+interface SubdivisionFactsTable {
+  country: string;
+  rows: string;
+}
+
+// Frozen, list and objects alike.
+const expandSubdivisionFacts = (table: SubdivisionFactsTable): readonly SubdivisionFacts[] => {
+  const number = (text: string | undefined): number | null => (text === undefined || text === "" ? null : Number(text));
+  const point = (lat: string | undefined, lon: string | undefined): LatLon | null => {
+    const [a, b] = [number(lat), number(lon)];
+
+    return a === null || b === null ? null : Object.freeze({ lat: a, lon: b });
+  };
+  const list = table.rows.split(LINE).map((line) => {
+    const [shortCode, capitalEn = "", capitalJa = "", reading = "", capitalLat, capitalLon, population, populationYear, area, areaYear, lat, lon] = line.split(FIELD);
+    let capital: SubdivisionFacts["capital"] = null;
+    if (capitalEn !== "") {
+      const named: { en: string; ja: string | null; reading?: string } = { en: capitalEn, ja: capitalJa === "" ? null : capitalJa };
+      if (reading !== "") named.reading = reading;
+      capital = Object.freeze(named);
+    }
+
+    return Object.freeze({
+      code: `${table.country}-${shortCode}`,
+      capital,
+      capitalPoint: point(capitalLat, capitalLon),
+      population: number(population),
+      populationYear: number(populationYear),
+      areaKm2: number(area),
+      areaYear: number(areaYear),
+      point: point(lat, lon),
+    } satisfies SubdivisionFacts);
+  });
+
+  return Object.freeze(list);
+};
+
+export { expandCountry, expandSubdivisionFacts, expandSubdivisions, flagOf };
+export type { CountryRow, FactsRow, SubdivisionFactsTable, SubdivisionTable };
