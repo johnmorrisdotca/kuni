@@ -109,7 +109,7 @@
     "typecheck": "tsc -p tsconfig.check.json",
     "test": "vitest run",
     "test:package": "pnpm build && node scripts/check-package.mjs",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:package",
+    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test && node scripts/check-package.mjs",
     "prepublishOnly": "pnpm check",
     "data": "node scripts/build-data.ts",
     "data:report": "node scripts/build-data.ts --report",
