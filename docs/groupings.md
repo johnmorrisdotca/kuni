@@ -75,7 +75,7 @@ Left out on purpose:
 - **Tohoku region** (jp-tohoku, sets jp-regions-8, jp-regions-9): Aomori, Iwate, Miyagi, Akita, Yamagata and Fukushima.
 - **Kanto region** (jp-kanto, sets jp-regions-8, jp-regions-9): Ibaraki, Tochigi, Gunma, Saitama, Chiba, Tokyo and Kanagawa.
 - **Chubu region** (jp-chubu, sets jp-regions-8, jp-regions-9): Niigata, Toyama, Ishikawa, Fukui, Yamanashi, Nagano, Gifu, Shizuoka and Aichi.
-- **Kinki region** (jp-kinki, sets jp-regions-8, jp-regions-9): Mie, Shiga, Kyoto, Osaka, Hyogo, Nara and Wakayama. Kinki (近畿) is the official name; Kansai (関西) is the name in everyday use, and some count it without Mie.
+- **Kinki region** (jp-kinki, sets jp-regions-8, jp-regions-9): Mie, Shiga, Kyoto, Osaka, Hyogo, Nara and Wakayama. Kinki (近畿) is the name official divisions use; Kansai (関西) is the everyday name, and its limits are looser: Mie is often left out.
 - **Chugoku region** (jp-chugoku, sets jp-regions-8, jp-regions-9): Tottori, Shimane, Okayama, Hiroshima and Yamaguchi.
 - **Shikoku region** (jp-shikoku, sets jp-regions-8, jp-regions-9): Tokushima, Kagawa, Ehime and Kochi.
 - **Kyushu region** (jp-kyushu, sets jp-regions-8): Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima and Okinawa, as the eight-region division counts it.
