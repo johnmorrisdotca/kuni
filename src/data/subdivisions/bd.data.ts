@@ -14,7 +14,7 @@ const BD: SubdivisionTable = {
 03|Bogra|ボグラ県|0|E
 04|Brahmanbaria|ブラモンバリア県|0|B
 05|Bagerhat|バゲルハット県|0|D
-06|Barisal Division|バリサル県|0|A
+06|Barisal District|バリサル県|0|A
 07|Bhola|ボラ県|0|A
 08|Comilla|コミラ県|0|B
 09|Chandpur|チャンドプール県|0|B
@@ -73,7 +73,7 @@ const BD: SubdivisionTable = {
 62|Shariatpur|シャリアトプル県|0|C
 63|Tangail|タンガイル県|0|C
 64|Thakurgaon|タクルガオン県|0|F
-A|Barisal|バリサル管区|1
+A|Barisal Division|バリサル管区|1
 B|Chittagong Division|チッタゴン管区|1
 C|Dhaka Division|ダッカ管区|1
 D|Khulna Division|クルナ管区|1

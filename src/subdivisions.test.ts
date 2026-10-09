@@ -21,9 +21,9 @@ const expectedGaps = JSON.parse(readFileSync("data-sources/expected-ja-gaps.json
 describe("the subdivisions", () => {
   const all = allSubdivisions();
 
-  it("are the 5,046 ISO 3166-2 codes CLDR knows, 3,590 of them at the first level", () => {
-    expect(all).toHaveLength(5046);
-    expect(all.filter((one) => one.level === 1)).toHaveLength(3590);
+  it("are the 5,050 ISO 3166-2 codes: CLDR's, with ISO's changes since (Norway's counties of 2024), 3,594 of them at the first level", () => {
+    expect(all).toHaveLength(5050);
+    expect(all.filter((one) => one.level === 1)).toHaveLength(3594);
     expect(new Set(all.map((one) => one.code)).size).toBe(all.length);
   });
 

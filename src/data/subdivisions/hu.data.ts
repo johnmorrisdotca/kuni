@@ -15,7 +15,7 @@ BE|Békés|ベーケーシュ県|2
 BK|Bács-Kiskun|バーチ・キシュクン県|2
 BU|Budapest|ブダペスト|0
 BZ|Borsod-Abaúj-Zemplén|ボルショド・アバウーイ・ゼンプレーン県|2
-CS|Csongrád|チョングラード県|2
+CS|Csongrád-Csanád|チョングラード・チャナード県|2
 DE|Debrecen|デブレツェン|1
 DU|Dunaújváros|ドゥナウーイヴァーロシュ|1
 EG|Eger|エゲル|1

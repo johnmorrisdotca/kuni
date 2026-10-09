@@ -23,7 +23,7 @@ CES|Cesar|セサール県|1
 CHO|Chocó|チョコ県|1
 COR|Córdoba|コルドバ県|1
 CUN|Cundinamarca|クンディナマルカ県|1
-DC|Capital District|ボゴタ|0
+DC|Bogotá|ボゴタ|0
 GUA|Guainía|グアイニア県|1
 GUV|Guaviare|グアビアーレ県|1
 HUI|Huila|ウイラ県|1

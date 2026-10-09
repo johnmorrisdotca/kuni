@@ -168,6 +168,7 @@ interface GroupingRow {
   en: string;
   ja: string;
   reading?: string;
+  otherNames?: readonly { en: string; ja: string; reading?: string }[];
   shortEn?: string;
   shortJa?: string;
   country?: string;

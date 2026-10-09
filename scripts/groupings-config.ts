@@ -44,6 +44,7 @@ interface SubdivisionGroupingConfig {
   en: string;
   ja: string;
   reading?: string;
+  otherNames?: { en: string; ja: string; reading?: string }[]; // Other names it is known by: 関西 for 近畿
   members: string; // Short codes of the country's subdivisions ("13" for JP-13), with spaces between
   definition: string;
   source: { name: string; url: string; licence: string };
@@ -491,7 +492,7 @@ const SUBDIVISION_GROUPINGS: SubdivisionGroupingConfig[] = [
   { id: "jp-tohoku", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Tohoku region", ja: "東北地方", reading: "とうほくちほう", members: "02 03 04 05 06 07", definition: "Aomori, Iwate, Miyagi, Akita, Yamagata and Fukushima.", source: JP_REGIONS },
   { id: "jp-kanto", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Kanto region", ja: "関東地方", reading: "かんとうちほう", members: "08 09 10 11 12 13 14", definition: "Ibaraki, Tochigi, Gunma, Saitama, Chiba, Tokyo and Kanagawa.", source: JP_REGIONS },
   { id: "jp-chubu", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Chubu region", ja: "中部地方", reading: "ちゅうぶちほう", members: "15 16 17 18 19 20 21 22 23", definition: "Niigata, Toyama, Ishikawa, Fukui, Yamanashi, Nagano, Gifu, Shizuoka and Aichi.", source: JP_REGIONS },
-  { id: "jp-kinki", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Kinki region", ja: "近畿地方", reading: "きんきちほう", members: "24 25 26 27 28 29 30", definition: "Mie, Shiga, Kyoto, Osaka, Hyogo, Nara and Wakayama; also called Kansai.", source: JP_REGIONS },
+  { id: "jp-kinki", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Kinki region", ja: "近畿地方", reading: "きんきちほう", otherNames: [{ en: "Kansai region", ja: "関西地方", reading: "かんさいちほう" }], members: "24 25 26 27 28 29 30", definition: "Mie, Shiga, Kyoto, Osaka, Hyogo, Nara and Wakayama. Kinki (近畿) is the official name; Kansai (関西) is the name in everyday use, and some count it without Mie.", source: JP_REGIONS },
   { id: "jp-chugoku", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Chugoku region", ja: "中国地方", reading: "ちゅうごくちほう", members: "31 32 33 34 35", definition: "Tottori, Shimane, Okayama, Hiroshima and Yamaguchi.", source: JP_REGIONS },
   { id: "jp-shikoku", country: "JP", sets: ["jp-regions-8", "jp-regions-9"], en: "Shikoku region", ja: "四国地方", reading: "しこくちほう", members: "36 37 38 39", definition: "Tokushima, Kagawa, Ehime and Kochi.", source: JP_REGIONS },
   { id: "jp-kyushu", country: "JP", sets: ["jp-regions-8"], en: "Kyushu region", ja: "九州地方", reading: "きゅうしゅうちほう", members: "40 41 42 43 44 45 46 47", definition: "Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima and Okinawa, as the eight-region division counts it.", source: JP_REGIONS },
@@ -523,7 +524,7 @@ const SUBDIVISION_GROUPINGS: SubdivisionGroupingConfig[] = [
   { id: "au-territories", country: "AU", sets: ["au-states-territories"], en: "Mainland territories of Australia", ja: "オーストラリアの準州・特別地域", reading: "おーすとらりあのじゅんしゅう・とくべつちいき", members: "ACT NT", definition: "The Australian Capital Territory and the Northern Territory; the external territories (Christmas Island, the Cocos Islands, Norfolk Island and others) have codes of their own as countries.", source: { name: "Australian Government, States and territories", url: "https://info.australia.gov.au/about-australia/our-country/states-and-territories", licence: "A list of facts, written for kuni (MIT)" } },
 ];
 
-// The continents: the seven-continent model of the `continent` field (countries-list), named from CLDR, with the
+// The continents: seven, read from UN M49 as the `continent` field is, named from CLDR, with the
 // readings of the names written with kanji.
 const CONTINENT_READINGS: Record<string, string> = { AN: "なんきょく", NA: "きたあめりかたいりく", SA: "みなみあめりか" };
 

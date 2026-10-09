@@ -42,7 +42,12 @@ describe("every grouping", () => {
     expect(continents).toHaveLength(7);
     const all = continents.flatMap((one) => one.members).sort();
     expect(all).toEqual([...COUNTRY_CODES].sort());
-    expect(grouping("continent-an")?.members).toEqual(["AQ", "BV", "GS", "HM", "TF"]);
+    expect(grouping("continent-an")?.members).toEqual(["AQ"]);
+    // UN M49's continents, where 1.0.0's departed from them.
+    expect(groupingsOf("RU", { kind: "continent" })[0].id).toBe("continent-eu");
+    expect(groupingsOf("CY", { kind: "continent" })[0].id).toBe("continent-as");
+    expect(groupingsOf("TL", { kind: "continent" })[0].id).toBe("continent-as");
+    expect(groupingsOf("TF", { kind: "continent" })[0].id).toBe("continent-af");
     for (const one of countries()) expect(groupingsOf(one.alpha2, { kind: "continent" }).map((found) => found.id)).toEqual([`continent-${one.continent.toLowerCase()}`]);
   });
 
@@ -129,6 +134,8 @@ describe("the groupings inside a country", () => {
     expect(groupingsOf("JP-40").map((one) => one.id)).toEqual(["jp-kyushu", "jp-kyushu-without-okinawa"]);
     expect(groupings({ country: "jp" })).toHaveLength(10);
     expect(grouping("jp-kanto")?.name.ja).toBe("関東地方");
+    expect(grouping("jp-kinki")?.name).toEqual({ en: "Kinki region", ja: "近畿地方" });
+    expect(grouping("jp-kinki")?.otherNames).toEqual([{ en: "Kansai region", ja: "関西地方", reading: "かんさいちほう" }]);
   });
 
   it("answer nothing for what is not there", () => {

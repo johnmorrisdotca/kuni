@@ -9,8 +9,8 @@ const NI: SubdivisionTable = {
   country: "NI",
   types: ["autonomous-region","department"],
   typesJa: ["自治地域","県"],
-  rows: `AN|Atlántico Norte|北アトランティコ自治地域|0
-AS|Atlántico Sur|南アトランティコ自治地域|0
+  rows: `AN|North Caribbean Coast|北カリブ海岸自治地域|0
+AS|South Caribbean Coast|南カリブ海岸自治地域|0
 BO|Boaco|ボアコ県|1
 CA|Carazo|カラソ県|1
 CI|Chinandega|チナンデガ県|1

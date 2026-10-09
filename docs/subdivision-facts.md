@@ -6,16 +6,16 @@ Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules a
 
 | Fact | Level 1 | All levels | Why the rest are null |
 | --- | --- | --- | --- |
-| capital | 2850 of 3590 | 3962 of 5046 | 826 none, 159 no item, 53 items disagree, 46 two capitals |
-| population | 3124 of 3590 | 4238 of 5046 | 547 none, 159 no item, 102 items disagree |
-| area | 3185 of 3590 | 4364 of 5046 | 352 none, 159 no item, 171 items disagree |
-| point | 3479 of 3590 | 4774 of 5046 | 23 none, 159 no item, 90 items disagree |
+| capital | 2856 of 3594 | 3968 of 5050 | 826 none, 157 no item, 53 items disagree, 46 two capitals |
+| population | 3130 of 3594 | 4244 of 5050 | 547 none, 157 no item, 102 items disagree |
+| area | 3192 of 3594 | 4371 of 5050 | 351 none, 157 no item, 171 items disagree |
+| point | 3485 of 3594 | 4780 of 5050 | 23 none, 157 no item, 90 items disagree |
 
 *none*: Wikidata gives no such statement. *no item*: no current Wikidata item holds the code. *items disagree*:
 two items hold the code (a city and the district of the same name) and give different values. *two capitals*:
 Wikidata names two current capitals.
 
-Capitals with a Japanese name: 3653; with a reading in kana: 46.
+Capitals with a Japanese name: 3655; with a reading in kana: 46.
 
 ## Capitals named by hand
 
@@ -157,7 +157,7 @@ Capitals with a Japanese name: 3653; with a reading in kana: 46.
 | NG | 37 | 37 | 37 | 37 | 36 |
 | NI | 17 | 17 | 17 | 17 | 17 |
 | NL | 18 | 17 | 18 | 18 | 18 |
-| NO | 13 | 7 | 11 | 3 | 11 |
+| NO | 17 | 13 | 17 | 10 | 17 |
 | NP | 7 | 5 | 6 | 6 | 6 |
 | NR | 14 | 2 | 9 | 14 | 14 |
 | NZ | 17 | 15 | 17 | 17 | 17 |

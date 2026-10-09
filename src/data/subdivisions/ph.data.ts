@@ -51,7 +51,7 @@ CAS|Camarines Sur|南カマリネス州|1|05
 CAT|Catanduanes|カタンドゥアネス州|1|05
 CAV|Cavite|カヴィテ州|1|40
 CEB|Cebu|セブ州|1|07
-COM|Compostela Valley|コンポステラ・バレー州|1|11
+COM|Davao de Oro|ダバオ・デ・オロ州|1|11
 DAO|Davao Oriental|東ダバオ州|1|11
 DAS|Davao del Sur|南ダバオ州|1|11
 DAV|Davao del Norte|北ダバオ州|1|11

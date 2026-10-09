@@ -14,6 +14,7 @@ interface GroupingRecord {
   en: string;
   ja: string;
   reading?: string;
+  otherNames?: { en: string; ja: string; reading?: string }[];
   shortEn?: string;
   shortJa?: string;
   country?: string;
@@ -69,9 +70,9 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       ja,
       ...(reading === undefined ? {} : { reading }),
       members,
-      definition: "The seven-continent model of the `continent` field: the Americas as North and South America, with Central America and the Caribbean in North America; Antarctica as a continent, with the sub-Antarctic islands (Bouvet Island, South Georgia, Heard and McDonald, the French Southern Lands); Russia in Europe; Turkey, Cyprus and the Caucasus in Asia; Egypt in Africa.",
+      definition: "Seven continents read from UN M49: Africa (002), Asia (142), Europe (150) and Oceania (009) as M49 has them, and the Americas (019) as South America (005) and North America (the rest: Northern America, Central America and the Caribbean). Antarctica, in no M49 region, is the seventh. So Russia is in Europe, Cyprus and Turkey in Asia, Timor-Leste in Asia, and the sub-Antarctic islands where M49 puts them (Bouvet Island and South Georgia in South America, Heard and McDonald in Oceania, the French Southern Lands in Africa).",
       note: "A six-continent model counts the Americas as one (UN M49's Americas, 019); another joins Europe and Asia.",
-      source: ["countries-list 3.4.1 for each country's continent; Unicode CLDR for the names", "https://github.com/annexare/Countries", "MIT; names Unicode-3.0"],
+      source: [`Unicode CLDR ${inputs.cldrVersion}, territoryContainment (UN M49); Antarctica by hand`, M49_URL, CLDR_LICENCE],
       asOf: AS_OF,
     });
   }
@@ -205,6 +206,7 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       ...(group.reading === undefined ? {} : { reading: group.reading }),
       country: group.country,
       sets: group.sets,
+      ...(group.otherNames === undefined ? {} : { otherNames: group.otherNames }),
       members,
       definition: group.definition,
       source: [group.source.name, group.source.url, group.source.licence],

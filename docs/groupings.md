@@ -7,7 +7,7 @@ Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The lists w
 
 ## The continents
 
-The seven-continent model of the `continent` field: the Americas as North and South America, with Central America and the Caribbean in North America; Antarctica as a continent, with the sub-Antarctic islands (Bouvet Island, South Georgia, Heard and McDonald, the French Southern Lands); Russia in Europe; Turkey, Cyprus and the Caucasus in Asia; Egypt in Africa.
+Seven continents read from UN M49: Africa (002), Asia (142), Europe (150) and Oceania (009) as M49 has them, and the Americas (019) as South America (005) and North America (the rest: Northern America, Central America and the Caribbean). Antarctica, in no M49 region, is the seventh. So Russia is in Europe, Cyprus and Turkey in Asia, Timor-Leste in Asia, and the sub-Antarctic islands where M49 puts them (Bouvet Island and South Georgia in South America, Heard and McDonald in Oceania, the French Southern Lands in Africa).
 
 ## UN M49
 
@@ -75,7 +75,7 @@ Left out on purpose:
 - **Tohoku region** (jp-tohoku, sets jp-regions-8, jp-regions-9): Aomori, Iwate, Miyagi, Akita, Yamagata and Fukushima.
 - **Kanto region** (jp-kanto, sets jp-regions-8, jp-regions-9): Ibaraki, Tochigi, Gunma, Saitama, Chiba, Tokyo and Kanagawa.
 - **Chubu region** (jp-chubu, sets jp-regions-8, jp-regions-9): Niigata, Toyama, Ishikawa, Fukui, Yamanashi, Nagano, Gifu, Shizuoka and Aichi.
-- **Kinki region** (jp-kinki, sets jp-regions-8, jp-regions-9): Mie, Shiga, Kyoto, Osaka, Hyogo, Nara and Wakayama; also called Kansai.
+- **Kinki region** (jp-kinki, sets jp-regions-8, jp-regions-9): Mie, Shiga, Kyoto, Osaka, Hyogo, Nara and Wakayama. Kinki (近畿) is the official name; Kansai (関西) is the name in everyday use, and some count it without Mie.
 - **Chugoku region** (jp-chugoku, sets jp-regions-8, jp-regions-9): Tottori, Shimane, Okayama, Hiroshima and Yamaguchi.
 - **Shikoku region** (jp-shikoku, sets jp-regions-8, jp-regions-9): Tokushima, Kagawa, Ehime and Kochi.
 - **Kyushu region** (jp-kyushu, sets jp-regions-8): Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima and Okinawa, as the eight-region division counts it.

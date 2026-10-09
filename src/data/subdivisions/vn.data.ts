@@ -67,7 +67,7 @@ const VN: SubdivisionTable = {
 71|Điện Biên|ディエンビエン省|1
 72|Đắk Nông|ダクノン省
 73|Hậu Giang|ハウザン省
-CT|Can Tho|カントー|0
+CT|Cần Thơ|カントー|0
 DN|Da Nang|ダナン|0
 HN|Hanoi|ハノイ|0
 HP|Haiphong|ハイフォン|0

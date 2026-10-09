@@ -19,6 +19,16 @@ interface GroupingMember {
   until: string | null;
 }
 
+/** Another name a grouping goes by, in English and Japanese. */
+interface GroupingName {
+  /** In English: "Kansai region". */
+  en: string;
+  /** In Japanese: "関西地方". */
+  ja: string;
+  /** The Japanese in hiragana, where it has kanji: "かんさいちほう". */
+  reading?: string;
+}
+
 /** A country that stands with a body without being a member: a candidate, an associate, an observer or suspended. */
 interface GroupingOther {
   /** The country's alpha-2 code. */
@@ -49,6 +59,8 @@ interface Grouping {
   shortName?: { en?: string; ja?: string };
   /** The Japanese name in hiragana, where it is written with kanji. */
   reading?: string;
+  /** Other names it is known by, each in both languages with its reading: Kansai (関西地方) for the Kinki region. */
+  otherNames?: readonly GroupingName[];
   /** True for a grouping no body defines (the Middle East, Scandinavia), whose members follow the definition given. */
   informal: boolean;
   /** For a grouping of subdivisions: the alpha-2 code of the country they are in. */
@@ -107,6 +119,7 @@ const expand = (row: GroupingRow): Grouping => {
     grouping.shortName = Object.freeze({ ...(row.shortEn === undefined ? {} : { en: row.shortEn }), ...(row.shortJa === undefined ? {} : { ja: row.shortJa }) });
   }
   if (row.reading !== undefined) grouping.reading = row.reading;
+  if (row.otherNames !== undefined) grouping.otherNames = Object.freeze(row.otherNames.map((name) => Object.freeze({ ...name })));
   if (row.country !== undefined) grouping.country = row.country;
   if (row.parent !== undefined) grouping.parent = row.parent;
   if (row.sets !== undefined) grouping.sets = Object.freeze([...row.sets]);
@@ -220,4 +233,4 @@ const membersOf = (id: string, options: GroupingDateOptions = {}): readonly stri
 };
 
 export { GROUPING_KINDS, grouping, groupings, groupingsOf, membersOf };
-export type { Grouping, GroupingDateOptions, GroupingKind, GroupingMember, GroupingOther, GroupingsOptions, GroupingSource, GroupingStatus };
+export type { Grouping, GroupingDateOptions, GroupingKind, GroupingMember, GroupingName, GroupingOther, GroupingsOptions, GroupingSource, GroupingStatus };

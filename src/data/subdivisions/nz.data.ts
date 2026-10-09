@@ -15,7 +15,7 @@ CAN|Canterbury|カンタベリー地方|1
 CIT|Chatham Islands|チャタム諸島|0
 GIS|Gisborne|ギズボーン地方|1
 HKB|Hawke’s Bay|ホークス・ベイ地方|1
-MBH|Marl|マールボロ地方|1
+MBH|Marlborough|マールボロ地方|1
 MWT|Manawatu-Wanganui|マナワツ・ワンガヌイ地方|1
 NSN|Nelson|ネルソン地方|1
 NTL|Northland|ノースランド地方|1

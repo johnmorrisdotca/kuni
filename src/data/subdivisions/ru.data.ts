@@ -10,7 +10,7 @@ const RU: SubdivisionTable = {
   types: ["autonomous-region","city","krai","oblast","republic"],
   typesJa: [null,null,"地方","州","共和国"],
   rows: `AD|Adygea|アディゲ共和国|4
-AL|Altai|アルタイ共和国|4
+AL|Altai Republic|アルタイ共和国|4
 ALT|Altai Krai|アルタイ地方|2
 AMU|Amur|アムール州|3
 ARK|Arkhangelsk|アルハンゲリスク州|3
@@ -18,18 +18,18 @@ AST|Astrakhan|アストラハン州|3
 BA|Bashkortostan|バシコルトスタン共和国|4
 BEL|Belgorod|ベルゴロド州|3
 BRY|Bryansk|ブリャンスク州|3
-BU|Buryat|ブリヤート共和国|4
-CE|Chechen|チェチェン共和国|4
+BU|Buryatia|ブリヤート共和国|4
+CE|Chechnya|チェチェン共和国|4
 CHE|Chelyabinsk|チェリャビンスク州|3
 CHU|Chukotka Okrug|チュクチ自治管区|0
-CU|Chuvash|チュヴァシ共和国|4
+CU|Chuvashia|チュヴァシ共和国|4
 DA|Dagestan|ダゲスタン共和国|4
 IN|Ingushetia|イングーシ共和国|4
 IRK|Irkutsk|イルクーツク州|3
 IVA|Ivanovo|イヴァノヴォ州|3
 KAM|Kamchatka Krai|カムチャツカ地方|2
-KB|Kabardino-Balkar|カバルダ・バルカル共和国|4
-KC|Karachay-Cherkess|カラチャイ・チェルケス共和国|4
+KB|Kabardino-Balkaria|カバルダ・バルカル共和国|4
+KC|Karachay-Cherkessia|カラチャイ・チェルケス共和国|4
 KDA|Krasnodar Krai|クラスノダール地方|2
 KEM|Kemerovo|ケメロヴォ州|3
 KGD|Kaliningrad|カリーニングラード州|3
@@ -40,7 +40,7 @@ KIR|Kirov|キーロフ州|3
 KK|Khakassia|ハカス共和国|4
 KL|Kalmykia|カルムイク共和国|4
 KLU|Kaluga|カルーガ州|3
-KO|Komi|コミ共和国|4
+KO|Komi Republic|コミ共和国|4
 KOS|Kostroma|コストロマ州|3
 KR|Karelia|カレリア共和国|4
 KRS|Kursk|クルスク州|3
@@ -82,7 +82,7 @@ TUL|Tula|トゥーラ州|3
 TVE|Tver|トヴェリ州|3
 TY|Tuva|トゥヴァ共和国|4
 TYU|Tyumen|チュメニ州|3
-UD|Udmurt|ウドムルト共和国|4
+UD|Udmurtia|ウドムルト共和国|4
 ULY|Ulyanovsk|ウリヤノフスク州|3
 VGG|Volgograd|ヴォルゴグラード州|3
 VLA|Vladimir|ヴラジーミル州|3

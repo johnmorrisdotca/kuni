@@ -1,4 +1,4 @@
-// The entry @johnmorrisdotca/kuni/subdivisions: every country's subdivisions (5,046 of 200 countries) and
+// The entry @johnmorrisdotca/kuni/subdivisions: every country's subdivisions (5,050 of 200 countries) and
 // the lookups over them. For one country only, import @johnmorrisdotca/kuni/subdivisions/<code> instead, or
 // load it when it is wanted with @johnmorrisdotca/kuni/load.
 
@@ -121,12 +121,12 @@ const subdivisions = (countryCode: string, options: SubdivisionsOptions = {}): r
 /**
  * Every subdivision of every country, every level, in code order.
  *
- * @returns The 5,046 subdivisions, frozen and shared.
+ * @returns The 5,050 subdivisions, frozen and shared.
  * @example
  * ```ts
  * import { allSubdivisions } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * allSubdivisions().length;   // 5046
+ * allSubdivisions().length;   // 5050
  * ```
  */
 const allSubdivisions = (): readonly Subdivision[] => getTables().list;

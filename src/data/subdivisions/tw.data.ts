@@ -8,10 +8,10 @@ import type { SubdivisionTable } from "../../rows";
 const TW: SubdivisionTable = {
   country: "TW",
   types: ["capital-district","city","county","municipality"],
-  typesJa: ["市",null,null,"市"],
+  typesJa: ["市","市","県","市"],
   rows: `CHA|Changhua|彰化県|2
-CYI|Chiayi County|嘉義県|1
-CYQ|Chiayi|嘉義市|2
+CYI|Chiayi City|嘉義市|1
+CYQ|Chiayi County|嘉義県|2
 HSQ|Hsinchu County|新竹県|2
 HSZ|Hsinchu|新竹市|1
 HUA|Hualien|花蓮県|2

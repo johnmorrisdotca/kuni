@@ -8,19 +8,19 @@ import type { SubdivisionTable } from "../../rows";
 const MA: SubdivisionTable = {
   country: "MA",
   types: ["prefecture","province","region"],
-  typesJa: [null,null,null],
-  rows: `01|Tangier-Tétouan|タンジェ＝テトゥアン＝アル・ホセイマ地方|2
-02|Gharb-Chrarda-Béni Hssen|オリアンタル地方|2
-03|Taza-Al Hoceima-Taounate|フェズ＝メクネス地方|2
-04|Oriental|オリアンタル地方|2
-05|Fès-Boulemane|フェズ・ブルマーヌ地方|2
-06|Meknès-Tafilalet|カサブランカ＝セタット地方|2
-07|Rabat-Salé-Zemmour-Zaer|マラケシュ＝サフィ地方|2
-08|Grand Casablanca|グラン・カサブランカ地方|2
-09|Chaouia-Ouardigha|スース＝マサ地方|2
-10|Doukkala-Abda|ゲルミン＝オウィド・ノウン地方|2
-11|Marrakesh-Tensift-El Haouz|赤い足の目|2
-12|Tadla-Azilal|ダフラ＝オウィド・エッ＝ダハブ地方|2
+  typesJa: [null,null,"地方"],
+  rows: `01|Tangier-Tetouan-Al Hoceima|タンジェ＝テトゥアン＝アル・ホセイマ地方|2
+02|Oriental|オリアンタル地方|2
+03|Fès-Meknès|フェズ＝メクネス地方|2
+04|Rabat-Salé-Kénitra|ラバト＝サレ＝ケニトラ地方|2
+05|Béni Mellal-Khénifra|ベニ・メラル＝ヘニフラ地方|2
+06|Casablanca-Settat|カサブランカ＝セタット地方|2
+07|Marrakesh-Safi|マラケシュ＝サフィ地方|2
+08|Drâa-Tafilalet|ドラア＝タフィラルト地方|2
+09|Souss-Massa|スース＝マサ地方|2
+10|Guelmim-Oued Noun|ゲルミン＝オウィド・ノウン地方|2
+11|Laâyoune-Sakia El Hamra|ラアユーン＝サギア・エル・ハムラ地方|2
+12|Dakhla-Oued Ed-Dahab|ダフラ＝オウィド・エッ＝ダハブ地方|2
 AGD|Agadir-Ida Ou Tanane|アガディール|0|09
 AOU|Aousserd|アウサード州|1|12
 ASZ|Assa-Zag|アサ・ザグ州|1|10

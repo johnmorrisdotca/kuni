@@ -5,7 +5,7 @@
 //     subdivision tree (cldr-core), and subdivision names and validity (the XML in data-sources/cldr/);
 //   - Wikidata (CC0), a snapshot in data-sources/: Japanese names where CLDR has none, the kana readings of
 //     Japan's prefectures and of kanji country names, calling codes, and what kind of place each is;
-//   - countries-list (MIT): each country's own name, capital, continent and languages;
+//   - countries-list (MIT): each country's own name, capital and languages;
 //   - IANA: time zones (zone.tab) and top-level domains.
 //
 //   pnpm data            write src/data/, src/subdivisions/ and docs/disagreements.md
@@ -19,7 +19,10 @@ import { join } from "node:path";
 
 import { CONTINENTS, SUBDIVISION_TYPES } from "../src/types.ts";
 import {
+  CODE_CHANGES,
   COUNTRY_ALIASES,
+  EN_NAME_ACCEPTED,
+  EN_NAME_OVERRIDES,
   JA_BRACKET_COUNTRY_NAMES,
   JA_BRACKET_WORDS,
   JA_NAME_OVERRIDES,
@@ -27,10 +30,12 @@ import {
   JA_TYPE_WORDS,
   JP_TYPE_BY_SUFFIX,
   READING_FILLS,
+  SHORT_NAME_FILLS,
   TLD_EXCEPTIONS,
   TYPE_NOISE,
   TYPE_RULES,
 } from "./data-config.ts";
+import { englishSuspects } from "./en-names.ts";
 import { buildFacts } from "./facts.ts";
 import { buildGroupings } from "./groupings.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
@@ -272,6 +277,25 @@ const readingFor = (code: string, name: string | null, items: WikidataItem[]): s
   return READING_FILLS[code] ?? null;
 };
 
+// The continent, from UN M49 as CLDR gives it: the region that holds the country (Africa 002, Asia 142, Europe 150,
+// Oceania 009), and for the Americas (019) South America (005) or else North America, which takes in Central
+// America and the Caribbean. Antarctica, in no M49 region, is the one continent named by hand.
+const M49_CONTINENT: Record<string, string> = { "002": "AF", "142": "AS", "150": "EU", "009": "OC" };
+const m49Parent = new Map<string, string>();
+for (const [area, { _contains }] of Object.entries(territoryContainment)) {
+  if (!/^\d{3}$/.test(area) || ["001", "003", "202", "419"].includes(area)) continue;
+  for (const inner of _contains) m49Parent.set(inner, area);
+}
+const continentOf = (alpha2: string): string | null => {
+  if (alpha2 === "AQ") return "AN";
+  const chain: string[] = [];
+  for (let at = m49Parent.get(alpha2); at !== undefined; at = m49Parent.get(at)) chain.push(at);
+  const region = chain[chain.length - 1];
+  if (region === "019") return chain.includes("005") ? "SA" : "NA";
+
+  return region === undefined ? null : (M49_CONTINENT[region] ?? null);
+};
+
 const countries: CountryRecord[] = alpha2Codes.map((alpha2) => {
   const mapping = codeMappings[alpha2] ?? {};
   const listed = countriesList[alpha2];
@@ -280,8 +304,8 @@ const countries: CountryRecord[] = alpha2Codes.map((alpha2) => {
   const ja = tidy(territoriesJa[alpha2]);
   if (!JAPANESE.test(ja)) throw new Error(`CLDR's Japanese name for ${alpha2} is ${ja}`);
   const native = tidy(listed.native);
-  const shortEn = territoriesEn[`${alpha2}-alt-short`] ?? null;
-  const shortJa = territoriesJa[`${alpha2}-alt-short`] ?? null;
+  const shortEn = territoriesEn[`${alpha2}-alt-short`] ?? SHORT_NAME_FILLS[alpha2]?.en ?? null;
+  const shortJa = territoriesJa[`${alpha2}-alt-short`] ?? SHORT_NAME_FILLS[alpha2]?.ja ?? null;
   const variants = [territoriesEn, territoriesJa].flatMap((names) =>
     Object.entries(names)
       .filter(([name]) => name.startsWith(`${alpha2}-alt-`) && !name.endsWith("-alt-short"))
@@ -295,7 +319,8 @@ const countries: CountryRecord[] = alpha2Codes.map((alpha2) => {
     known.add(key(alias));
     aliases.push(alias);
   }
-  if (!(CONTINENTS as readonly string[]).includes(listed.continent)) throw new Error(`${alpha2} is in continent ${listed.continent}`);
+  const continent = continentOf(alpha2);
+  if (continent === null || !(CONTINENTS as readonly string[]).includes(continent)) throw new Error(`${alpha2} is in no UN M49 region`);
 
   return {
     alpha2,
@@ -308,7 +333,7 @@ const countries: CountryRecord[] = alpha2Codes.map((alpha2) => {
     shortEn: shortEn === null ? null : tidy(shortEn),
     shortJa: shortJa === null ? null : tidy(shortJa),
     reading: readingFor(alpha2, ja, wikidata.countries[alpha2] ?? []),
-    continent: listed.continent,
+    continent,
     subregion: subregionOf.get(alpha2) ?? null,
     calling: callingOf(alpha2),
     currencies: currenciesOf(alpha2),
@@ -413,6 +438,7 @@ const notReached: string[] = [];
 const noEnglish: string[] = [];
 const reached = new Set<string>();
 const usedOverrides = new Set<string>();
+const usedEnOverrides = new Set<string>();
 
 const walk = (country: string, ids: string[], parent: string | null, level: number): void => {
   for (const id of ids) {
@@ -424,8 +450,13 @@ const walk = (country: string, ids: string[], parent: string | null, level: numb
     }
     reached.add(id);
     const code = isoOf(id);
+    // A code ISO has withdrawn since CLDR's release is left out (CODE_CHANGES in scripts/data-config.ts).
+    if (code in CODE_CHANGES.removed) continue;
     const territory = overlong.get(id);
-    const en = namesEn.get(id) ?? (territory === undefined ? undefined : tidy(territoriesEn[territory]));
+    const cldrEn = namesEn.get(id) ?? (territory === undefined ? undefined : tidy(territoriesEn[territory]));
+    const enOverride = EN_NAME_OVERRIDES[code];
+    if (enOverride !== undefined) usedEnOverrides.add(code);
+    const en = enOverride?.en ?? cldrEn;
     if (en === undefined || en === "") {
       noEnglish.push(code);
       continue;
@@ -463,15 +494,72 @@ const walk = (country: string, ids: string[], parent: string | null, level: numb
   }
 };
 
+// A code ISO has added since CLDR's release, at the first level: its English name from CODE_CHANGES, its Japanese
+// name and kind from Wikidata by the same rules as any code CLDR has no Japanese name for.
+const addCode = (code: string, en: string): void => {
+  const country = code.slice(0, 2);
+  const items = currentItems(wikidata.subdivisions[code]);
+  const labels = [...new Set(items.map((item) => item.ja).filter((label): label is string => label !== null).map(tidy))];
+  const wikidataJa = labels.length === 1 && JAPANESE.test(labels[0]) && !/[()（）]/.test(labels[0]) ? labels[0] : null;
+  const override = JA_NAME_OVERRIDES[code];
+  if (override !== undefined) usedOverrides.add(code);
+  const type = typeFromWikidata(items);
+  if (type !== null && !(SUBDIVISION_TYPES as readonly string[]).includes(type)) throw new Error(`${code}: unknown type ${type}`);
+  subdivisions.push({
+    code,
+    country,
+    shortCode: code.slice(3),
+    parent: null,
+    level: 1,
+    en,
+    ja: override?.ja ?? wikidataJa,
+    jaFrom: override !== undefined ? "override" : wikidataJa !== null ? "wikidata" : null,
+    cldrJa: null,
+    why: override?.why ?? null,
+    wikidataJa,
+    type,
+    reading: null,
+  });
+};
+
 for (const country of countries) {
   const top = subdivisionContainment[country.alpha2]?._contains ?? [];
   walk(country.alpha2, top, null, 1);
 }
+for (const [code, { en }] of Object.entries(CODE_CHANGES.added)) {
+  if (subdivisions.some((record) => record.code === code)) throw new Error(`CODE_CHANGES adds ${code}, which CLDR already has`);
+  addCode(code, en);
+}
+for (const code of Object.keys(CODE_CHANGES.removed)) if (!reached.has(code.replace("-", "").toLowerCase())) throw new Error(`CODE_CHANGES removes ${code}, which CLDR does not have`);
+const unusedEn = Object.keys(EN_NAME_OVERRIDES).filter((code) => !usedEnOverrides.has(code));
+if (unusedEn.length > 0) throw new Error(`EN_NAME_OVERRIDES names no subdivision: ${unusedEn.join(", ")}`);
 for (const id of regular) if (!reached.has(id)) notReached.push(isoOf(id));
 const unmatched = Object.keys(JA_NAME_OVERRIDES).filter((code) => !usedOverrides.has(code));
 if (unmatched.length > 0) throw new Error(`JA_NAME_OVERRIDES names no subdivision: ${unmatched.join(", ")}`);
 if (noEnglish.length > 0) throw new Error(`No English name in CLDR for ${noEnglish.join(", ")}`);
 subdivisions.sort((a, b) => byText(a.code, b.code));
+
+// Every English name a check in scripts/en-names.ts points at (cut short, an adjective, marks stripped, swapped
+// with a neighbour's) must be put right in EN_NAME_OVERRIDES or kept on purpose in EN_NAME_ACCEPTED.
+const englishLabels = (factsSnapshot.answers as unknown as Record<string, Record<string, unknown[][]>>).subdivisionLabels;
+const suspects = englishSuspects(
+  subdivisions.map((record) => ({ code: record.code, country: record.country, en: record.en })),
+  (code) => {
+    const ids = currentItems(wikidata.subdivisions[code]).map((item) => item.id);
+    const labels = [...new Set((englishLabels[code] ?? []).filter((row) => ids.includes(row[0] as string)).map((row) => row[1] as string))];
+
+    return labels.length === 1 ? labels[0] : null;
+  },
+  (code) => {
+    const current = currentItems(wikidata.subdivisions[code]).map((item) => item.id);
+
+    return (englishLabels[code] ?? []).filter((row) => !current.includes(row[0] as string)).map((row) => row[1] as string);
+  },
+);
+const undecided = suspects.filter((one) => !(one.code in EN_NAME_ACCEPTED));
+if (undecided.length > 0) throw new Error(`English names to decide (EN_NAME_OVERRIDES or EN_NAME_ACCEPTED):\n  ${undecided.map((one) => `${one.code} ${one.pattern}: ${one.en} / Wikidata ${one.wikidata}`).join("\n  ")}`);
+const staleAccepted = Object.keys(EN_NAME_ACCEPTED).filter((code) => !suspects.some((one) => one.code === code));
+if (staleAccepted.length > 0) throw new Error(`EN_NAME_ACCEPTED names a code no check points at: ${staleAccepted.join(", ")}`);
 
 // The facts about each subdivision (scripts/subdivision-facts.ts), from the same current Wikidata items as its names.
 const subdivisionFacts = buildSubdivisionFacts(
@@ -567,7 +655,8 @@ const writeCountries = (): void => {
     header(`Every country (${countries.length}), one row each; src/rows.ts says what the columns are.`, [
       `${CLDR_SOURCE}: names, short names, variants, codes, currencies, regions`,
       `${WIKIDATA_SOURCE}: calling codes, readings`,
-      `${LIST_SOURCE}: own names, capitals, continents, languages`,
+      `${LIST_SOURCE}: own names, capitals, languages`,
+      `${CLDR_SOURCE}: continents, from UN M49`,
       `Wikidata (CC0), the snapshot data-sources/${factsFile.path}: capitals' Japanese names`,
       IANA_SOURCE,
     ]) +
@@ -878,6 +967,27 @@ const writeDisagreements = (): void => {
     "| --- | --- | --- | --- | --- | --- |",
   ];
   for (const record of overridden) lines.push(`| ${record.code} | ${cell(record.en)} | ${cell(record.cldrJa)} | ${cell(record.wikidataJa)} | ${cell(record.ja)} | ${cell(record.why)} |`);
+  lines.push(
+    "",
+    `## English names corrected, ${Object.keys(EN_NAME_OVERRIDES).length}`,
+    "",
+    "Every English name is checked against Wikidata's English label for the patterns in `scripts/en-names.ts` (cut short,",
+    "an adjective, marks stripped, swapped, a former place's name). These are corrected by `EN_NAME_OVERRIDES`; the build",
+    "stops on a name a check points at that is neither corrected nor accepted below.",
+    "",
+    "| Code | CLDR | Kept | Why |",
+    "| --- | --- | --- | --- |",
+    ...Object.entries(EN_NAME_OVERRIDES).map(([code, { en, why }]) => `| ${code} | ${cell(namesEn.get(code.replace("-", "").toLowerCase()) ?? null)} | ${cell(en)} | ${cell(why)} |`),
+    "",
+    `## English names kept although a check points at them, ${Object.keys(EN_NAME_ACCEPTED).length}`,
+    "",
+    ...Object.entries(EN_NAME_ACCEPTED).map(([code, why]) => `- **${code}**: ${why}`),
+    "",
+    `## Codes ISO has changed since CLDR's release`,
+    "",
+    ...Object.entries(CODE_CHANGES.removed).map(([code, why]) => `- **${code}** withdrawn: ${why}`),
+    ...Object.entries(CODE_CHANGES.added).map(([code, { en, why }]) => `- **${code}** ${en} added: ${why}`),
+  );
   lines.push("", `## For a native reader, ${Object.keys(JA_OPEN_QUESTIONS).length}`, "");
   lines.push("The names below were reviewed by a strong reader of Japanese, not a native one, who left these as open questions.", "");
   for (const [code, question] of Object.entries(JA_OPEN_QUESTIONS)) {

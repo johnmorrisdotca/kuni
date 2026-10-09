@@ -160,7 +160,7 @@ PKN|Perth and Kinross|パース・アンド・キンロス|2|SCT
 PLY|Plymouth|プリマス|1|ENG
 POR|Portsmouth|ポーツマス|5|ENG
 POW|Powys|ポーイス|4|WLS
-PTE|Peter|ピーターバラ|5|ENG
+PTE|Peterborough|ピーターバラ|5|ENG
 RCC|Redcar and Cleveland|レッドカー・アンド・クリーヴランド|4|ENG
 RCH|Rochdale|メトロポリタン・バラ・オブ・ロッチデール|0|ENG
 RCT|Rhondda Cynon Taf|ロンザ・カノン・タフ|7|WLS

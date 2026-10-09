@@ -4,10 +4,10 @@ Written by `pnpm data:report`; do not edit by hand.
 
 - Countries: 250 (249 ISO, 1 user-assigned)
 - Countries with subdivisions: 200
-- Subdivisions: 5046 (level 1: 3590, level 2: 1456, level 3: 0)
-- Japanese names, level 1: 3523 of 3590 (CLDR 3387, overrides 41, Wikidata 95)
-- Japanese names, all levels: 4747 of 5046 (CLDR 4556, overrides 46, Wikidata 145)
-- Kinds of place known: 4739 of 5046
+- Subdivisions: 5050 (level 1: 3594, level 2: 1456, level 3: 0)
+- Japanese names, level 1: 3527 of 3594 (CLDR 3376, overrides 50, Wikidata 101)
+- Japanese names, all levels: 4751 of 5050 (CLDR 4544, overrides 56, Wikidata 151)
+- Kinds of place known: 4745 of 5050
 - Country readings: 53; kanji names without one: none
 - Regular CLDR codes not reached through the containment tree: 0
 

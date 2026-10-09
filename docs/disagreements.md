@@ -2,13 +2,13 @@
 
 Written by `pnpm data` (scripts/build-data.ts); do not edit by hand.
 
-For 4322 subdivisions both Unicode CLDR 48.2.0 and Wikidata (snapshot `wikidata-2026-10-09.json`) have a Japanese
-name. For 234 of them the two are not the same name once case, width, kana and punctuation are folded away. The
+For 4313 subdivisions both Unicode CLDR 48.2.0 and Wikidata (snapshot `wikidata-2026-10-09.json`) have a Japanese
+name. For 226 of them the two are not the same name once case, width, kana and punctuation are folded away. The
 package keeps CLDR's name (after the bracket rule in [name-rules.md](name-rules.md)), except for the overridden names
 under Resolved. This list is for a reader of Japanese to judge which is right; most of the differences are a
 type word one source adds (州, 県, 地域圏) or a different spelling of a foreign name in katakana.
 
-## Resolved by an override, 46
+## Resolved by an override, 56
 
 A reviewer found these CLDR names wrong, out of date or naming another place. `JA_NAME_OVERRIDES` in
 `scripts/data-config.ts` replaces them, and the reason is beside each. They are no longer disagreements.
@@ -37,6 +37,7 @@ A reviewer found these CLDR names wrong, out of date or naming another place. `J
 | GD-04 | Saint John | セント・ジョン郡 (ドミニカ国) | セント・ジョン教区 | セント・ジョン教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county) and its bracket names Dominica, not Grenada. |
 | GD-05 | Saint Mark | セント・マーク (ドミニカ国) | セント・マーク教区 | セント・マーク教区 | A parish (教区), as Wikidata names it; CLDR leaves the word off and its bracket names Dominica, not Grenada. |
 | GD-06 | Saint Patrick | セント・パトリック郡 (グレナダ) | セント・パトリック教区 | セント・パトリック教区 | A parish (教区), as Wikidata names it; CLDR calls it a 郡 (county). |
+| HU-CS | Csongrád-Csanád | チョングラード県 | チョングラード・チャナード県 | チョングラード・チャナード県 | Renamed in 2020: Csongrád became Csongrád-Csanád, as Wikidata has it. |
 | IE-LS | Laois | ラオース州 | リーシュ県 | リーシュ州 | Laois is リーシュ in Japanese, as Wikidata also has it; Ireland's counties are written 州. |
 | IN-JK | Jammu and Kashmir | ジャンムー・カシミール州 | ジャンムー・カシミール連邦直轄領 | ジャンムー・カシミール連邦直轄領 | Not a state since 2019: a union territory (連邦直轄領). |
 | KP-07 | Kangwon | 江原道 (北) | 江原道 | 江原道 | North Korea's Kangwon is 江原道; CLDR's bracket (北) is not part of the name. |
@@ -48,27 +49,100 @@ A reviewer found these CLDR names wrong, out of date or naming another place. `J
 | LV-058 | Ludza | ルヅァ | ルッザ市 | ルザ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
 | LV-059 | Madona | マドゥアナ | マドナ市 | マドナ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
 | LV-067 | Ogre | ウアグレ | オグレ市 | オグレ | Spelled after the Latvian name, as Wikidata does for its city of the same name; CLDR's spelling reads the English. |
+| MA-04 | Rabat-Salé-Kénitra | オリアンタル地方 | ラバト＝サレ＝ケニトラ地方 | ラバト＝サレ＝ケニトラ地方 | ISO gave MA-04 to Rabat-Salé-Kénitra in 2019; CLDR's name is the old Oriental region's, as Wikidata names the new one. |
+| MA-05 | Béni Mellal-Khénifra | フェズ・ブルマーヌ地方 | ベニ・メラル＝ヘニフラ地方 | ベニ・メラル＝ヘニフラ地方 | ISO gave MA-05 to Béni Mellal-Khénifra in 2019; CLDR's name is the old Fès-Boulemane region's. |
+| MA-08 | Drâa-Tafilalet | グラン・カサブランカ地方 | ドラア＝タフィラルト地方 | ドラア＝タフィラルト地方 | ISO gave MA-08 to Drâa-Tafilalet in 2019; CLDR's name is the old Grand Casablanca region's. |
+| MA-11 | Laâyoune-Sakia El Hamra |  | 赤い足の目 | ラアユーン＝サギア・エル・ハムラ地方 | Laâyoune-Sakia El Hamra; Wikidata's Japanese label, 赤い足の目, is not a name of the place. |
 | MA-MOH | Mohammedia | フェドハラ（モハメディア） | モハメディア県 | モハメディア | CLDR names the city with its old name in brackets (Fedhala); the city's name today is Mohammedia. |
 | MK-201 | Berovo | ベロヴォ (マケドニア) | ベロヴォ | ベロヴォ | The country in the bracket is no longer called Macedonia; the bracket is not part of the name. |
 | MT-06 | Cospicua | ボルムラ | コスピクア | コスピクア | CLDR gives the Maltese name, Bormla; Japanese uses the English-derived コスピクア. |
 | MT-20 | Senglea | イシーラ | セングレア | セングレア | CLDR gives the Maltese name, L-Isla; Japanese uses the English-derived セングレア. |
 | MT-45 | Victoria | ラバット | ラバト | ヴィクトリア | The name of the town on Gozo; CLDR gives the Maltese Rabat. |
 | NG-LA | Lagos | レゴス州 | ラゴス州 | ラゴス州 | Lagos is ラゴス in Japanese, as Wikidata also has it, not CLDR's レゴス. |
+| NI-AN | North Caribbean Coast | 北アトランティコ自治地域 |  | 北カリブ海岸自治地域 | Renamed in 2016: the North Atlantic autonomous region became the North Caribbean Coast, as Wikidata has it. |
+| NI-AS | South Caribbean Coast | 南アトランティコ自治地域 | 南カリブ海岸自治地域 | 南カリブ海岸自治地域 | Renamed in 2016: the South Atlantic autonomous region became the South Caribbean Coast, as Wikidata has it. |
+| PH-COM | Davao de Oro | コンポステラ・バレー州 | ダバオ・デ・オロ | ダバオ・デ・オロ州 | Renamed in 2019: Compostela Valley became Davao de Oro; 州 as for the other provinces. |
 | PH-DAV | Davao del Norte | ダバオ州 | 北ダバオ | 北ダバオ州 | Davao del Norte is North Davao: 北ダバオ州. |
 | PH-DIN | Dinagat Islands | ディナガット・アイランズ州 | ディナガット諸島 | ディナガット諸島州 | CLDR leaves the English word Islands in katakana; 諸島 is the Japanese word. |
+| TW-CYI | Chiayi City | 嘉義県 | 嘉義市 | 嘉義市 | ISO's TW-CYI is Chiayi City; CLDR has the city's and the county's names the wrong way round. |
+| TW-CYQ | Chiayi County | 嘉義市 | 嘉義県 | 嘉義県 | ISO's TW-CYQ is Chiayi County; CLDR has the city's and the county's names the wrong way round. |
 | UA-30 | Kyiv | キエフ | キーウ | キーウ | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
 | UA-32 | Kyivshchyna | キエフ州 | キーウ州 | キーウ州 | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
 | UA-51 | Odeshchyna | オデッサ州 | オデーサ州 | オデーサ州 | Japan's government adopted the Ukrainian form Odesa (オデーサ) in 2022. |
 | VC-02 | Saint Andrew | セント・アンドリューズ | セント・アンドリューズ | セント・アンドリュー教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR has セント・アンドリューズ. |
 | VC-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド郡 | セント・デイヴィッド教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR calls it a 郡 (county). |
 
-## For a native reader, 7
+## English names corrected, 32
+
+Every English name is checked against Wikidata's English label for the patterns in `scripts/en-names.ts` (cut short,
+an adjective, marks stripped, swapped, a former place's name). These are corrected by `EN_NAME_OVERRIDES`; the build
+stops on a name a check points at that is neither corrected nor accepted below.
+
+| Code | CLDR | Kept | Why |
+| --- | --- | --- | --- |
+| GB-PTE | Peter | Peterborough | CLDR cuts the name short at -borough. |
+| NZ-MBH | Marl | Marlborough | CLDR cuts the name short at -borough. |
+| TW-CYI | Chiayi County | Chiayi City | ISO's TW-CYI is the city; CLDR gives it the county's name. |
+| TW-CYQ | Chiayi | Chiayi County | ISO's TW-CYQ is the county; CLDR gives it the city's name. |
+| CO-DC | Capital District | Bogotá | ISO names it Distrito Capital de Bogotá; CLDR's Capital District leaves out the city. |
+| PH-COM | Compostela Valley | Davao de Oro | Renamed in 2019 from Compostela Valley. |
+| HU-CS | Csongrád | Csongrád-Csanád | Renamed in 2020 from Csongrád. |
+| NI-AN | Atlántico Norte | North Caribbean Coast | Renamed in 2016 from North Atlantic (Atlántico Norte); ISO's name is Costa Caribe Norte. |
+| NI-AS | Atlántico Sur | South Caribbean Coast | Renamed in 2016 from South Atlantic (Atlántico Sur); ISO's name is Costa Caribe Sur. |
+| RU-AL | Altai | Altai Republic | CLDR's Altai cannot be told from Altai Krai (RU-ALT). |
+| RU-BU | Buryat | Buryatia | CLDR gives the adjective, Buryat. |
+| RU-CE | Chechen | Chechnya | CLDR gives the adjective, Chechen. |
+| RU-CU | Chuvash | Chuvashia | CLDR gives the adjective, Chuvash. |
+| RU-KB | Kabardino-Balkar | Kabardino-Balkaria | CLDR gives the adjective, Kabardino-Balkar. |
+| RU-KC | Karachay-Cherkess | Karachay-Cherkessia | CLDR gives the adjective, Karachay-Cherkess. |
+| RU-KO | Komi | Komi Republic | CLDR gives the people's name, Komi, alone. |
+| RU-UD | Udmurt | Udmurtia | CLDR gives the adjective, Udmurt. |
+| VN-CT | Can Tho | Cần Thơ | CLDR strips its marks; the other provinces keep theirs. |
+| BD-A | Barisal | Barisal Division | The division, named as the other seven are; CLDR gives the division's name to the district BD-06. |
+| BD-06 | Barisal Division | Barisal District | ISO's BD-06 is the district; CLDR gives it the division's name. |
+| MA-01 | Tangier-Tétouan | Tangier-Tetouan-Al Hoceima | ISO gave MA-01 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-02 | Gharb-Chrarda-Béni Hssen | Oriental | ISO gave MA-02 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-03 | Taza-Al Hoceima-Taounate | Fès-Meknès | ISO gave MA-03 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-04 | Oriental | Rabat-Salé-Kénitra | ISO gave MA-04 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-05 | Fès-Boulemane | Béni Mellal-Khénifra | ISO gave MA-05 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-06 | Meknès-Tafilalet | Casablanca-Settat | ISO gave MA-06 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-07 | Rabat-Salé-Zemmour-Zaer | Marrakesh-Safi | ISO gave MA-07 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-08 | Grand Casablanca | Drâa-Tafilalet | ISO gave MA-08 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-09 | Chaouia-Ouardigha | Souss-Massa | ISO gave MA-09 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-10 | Doukkala-Abda | Guelmim-Oued Noun | ISO gave MA-10 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-11 | Marrakesh-Tensift-El Haouz | Laâyoune-Sakia El Hamra | ISO gave MA-11 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| MA-12 | Tadla-Azilal | Dakhla-Oued Ed-Dahab | ISO gave MA-12 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+
+## English names kept although a check points at them, 10
+
+- **PL-02**: Lower Silesia is the region's English name; Wikidata's Lower Silesian Voivodeship is its formal title.
+- **PL-22**: Pomerania is the region's English name; Wikidata's Pomeranian Voivodeship is its formal title.
+- **PL-24**: Silesia is the region's English name; Wikidata's Silesian Voivodeship is its formal title.
+- **PL-32**: West Pomerania is the region's English name; Wikidata's West Pomeranian Voivodeship is its formal title.
+- **LA-LM**: Luang Namtha is the usual English spelling; Wikidata's macrons are a romanisation of Lao.
+- **LA-XA**: Sainyabuli is the usual English spelling; Wikidata's macrons are a romanisation of Lao.
+- **BF-KAD**: Kadiogo is the province; Wikidata gives the same name to the region around it (BF-03), which Burkina Faso renamed in 2025 and ISO 3166-2 still calls Centre.
+- **FR-6AE**: Alsace is the usual name of the European Collectivity of Alsace (2021), which covers the old region's land.
+- **GR-E**: Thessaly is the region's name, the same as the earlier region Wikidata keeps as a former item.
+- **FR-OCC**: Occitanie is the region's official name, used in English too; Wikidata's Occitania is the historical region's.
+
+## Codes ISO has changed since CLDR's release
+
+- **NO-30** withdrawn: Viken was divided again on 1 January 2024 into Østfold, Akershus and Buskerud (NO-31, NO-32, NO-33).
+- **NO-38** withdrawn: Vestfold og Telemark was divided again on 1 January 2024 into Vestfold and Telemark (NO-39, NO-40).
+- **NO-54** withdrawn: Troms og Finnmark was divided again on 1 January 2024 into Troms and Finnmark (NO-55, NO-56).
+- **NO-31** Østfold added: A county again from 1 January 2024, when Viken was divided.
+- **NO-32** Akershus added: A county again from 1 January 2024, when Viken was divided.
+- **NO-33** Buskerud added: A county again from 1 January 2024, when Viken was divided.
+- **NO-39** Vestfold added: A county again from 1 January 2024, when Vestfold og Telemark was divided.
+- **NO-40** Telemark added: A county again from 1 January 2024, when Vestfold og Telemark was divided.
+- **NO-55** Troms added: A county again from 1 January 2024, when Troms og Finnmark was divided.
+- **NO-56** Finnmark added: A county again from 1 January 2024, when Troms og Finnmark was divided.
+
+## For a native reader, 4
 
 The names below were reviewed by a strong reader of Japanese, not a native one, who left these as open questions.
 
-- **HU-CS** Csongrád, kept as チョングラード県: CLDR's チョングラード県 or Wikidata's チョングラード・チャナード県: the county is Csongrád-Csanád since 2020.
-- **NI-AS** Atlántico Sur, kept as 南アトランティコ自治地域: CLDR's 南アトランティコ自治地域 or Wikidata's 南カリブ海岸自治地域: which is the usual Japanese name of this autonomous region.
-- **PH-COM** Compostela Valley, kept as コンポステラ・バレー州: Compostela Valley is Davao de Oro since 2019: コンポステラ・バレー州 (CLDR) or ダバオ・デ・オロ (Wikidata)?
 - **VN-39** Đồng Nai, kept as ドンナイ省: ドンナイ省 (CLDR) or ドンナイ市 (Wikidata): a province, and Wikidata's 市 may come from its city.
 - **KP-01** Pyongyang, kept as 平壌: 平壌 (CLDR) or 平壌市 (Wikidata): whether the city's name wants 市 here, as 東京都 and 大阪市 do.
 - **LV-041** Jelgava Municipality, kept as イェルガヴァ: イェルガヴァ is also the name given to the city of Jelgava (LV-JEL), so a search for it finds two places: should the municipality carry a kind word?
@@ -188,12 +262,6 @@ The names below were reviewed by a strong reader of Japanese, not a native one, 
 | --- | --- | --- | --- |
 | HT-OU | Ouest | 西県 | ウエスト県 |
 
-## Hungary (HU), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| HU-CS | Csongrád | チョングラード県 | チョングラード・チャナード県 |
-
 ## Ireland (IE), 24
 
 | Code | English | CLDR (kept) | Wikidata |
@@ -306,13 +374,10 @@ The names below were reviewed by a strong reader of Japanese, not a native one, 
 | LV-097 | Talsi | タルスィ | タルスィ市 |
 | LV-099 | Tukums | トゥクムス | トゥクムス市 |
 
-## Morocco (MA), 6
+## Morocco (MA), 3
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
-| MA-04 | Oriental | オリアンタル地方 | ラバト＝サレ＝ケニトラ地方 |
-| MA-05 | Fès-Boulemane | フェズ・ブルマーヌ地方 | ベニ・メラル＝ヘニフラ地方 |
-| MA-08 | Grand Casablanca | グラン・カサブランカ地方 | ドラア＝タフィラルト地方 |
 | MA-AGD | Agadir-Ida Ou Tanane | アガディール | アガディール＝イダ＝オ＝タナネ県 |
 | MA-MEK | Meknès | メクネス | メクネス県 |
 | MA-RAB | Rabat | ラバト | ラバト県 |
@@ -373,12 +438,6 @@ The names below were reviewed by a strong reader of Japanese, not a native one, 
 | --- | --- | --- | --- |
 | MZ-L | Maputo Province | マプト州 | マプート州 |
 
-## Nicaragua (NI), 1
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| NI-AS | Atlántico Sur | 南アトランティコ自治地域 | 南カリブ海岸自治地域 |
-
 ## Norway (NO), 2
 
 | Code | English | CLDR (kept) | Wikidata |
@@ -392,7 +451,7 @@ The names below were reviewed by a strong reader of Japanese, not a native one, 
 | --- | --- | --- | --- |
 | NZ-BOP | Bay of Plenty | ベイ・オブ・プレンティ地方 | ベイ・オブ・プレンティ |
 
-## Philippines (PH), 74
+## Philippines (PH), 73
 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
@@ -420,7 +479,6 @@ The names below were reviewed by a strong reader of Japanese, not a native one, 
 | PH-CAS | Camarines Sur | 南カマリネス州 | 南カマリネス |
 | PH-CAT | Catanduanes | カタンドゥアネス州 | カタンドゥアネス |
 | PH-CAV | Cavite | カヴィテ州 | カヴィテ |
-| PH-COM | Compostela Valley | コンポステラ・バレー州 | ダバオ・デ・オロ |
 | PH-DAO | Davao Oriental | 東ダバオ州 | 東ダバオ |
 | PH-DAS | Davao del Sur | 南ダバオ州 | 南ダバオ |
 | PH-EAS | Eastern Samar | 東サマル州 | 東サマル |
@@ -500,13 +558,6 @@ The names below were reviewed by a strong reader of Japanese, not a native one, 
 | Code | English | CLDR (kept) | Wikidata |
 | --- | --- | --- | --- |
 | SR-SA | Saramacca | サラマッカ | サラマッカ地方 |
-
-## Taiwan (TW), 2
-
-| Code | English | CLDR (kept) | Wikidata |
-| --- | --- | --- | --- |
-| TW-CYI | Chiayi County | 嘉義県 | 嘉義市 |
-| TW-CYQ | Chiayi | 嘉義市 | 嘉義県 |
 
 ## United States (US), 2
 
