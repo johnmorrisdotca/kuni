@@ -77,7 +77,7 @@ describe("the countries", () => {
       callingCode: "+81",
       currency: ["JPY"],
       tld: "jp",
-      capital: { en: "Tokyo" },
+      capital: { en: "Tokyo", ja: "東京都" },
       zones: ["Asia/Tokyo"],
       languages: ["ja"],
       subdivisionType: "prefecture",

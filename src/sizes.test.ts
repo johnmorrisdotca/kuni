@@ -27,7 +27,19 @@ describe("the built entries", () => {
     expect(size("dist/codes.js")).toBeLessThan(3 * KB);
   });
 
-  it("leave each country's data out of /load, which imports it only when asked", () => {
+  it("leave each country's data out of /load and /subdivision-facts, which import it only when asked", () => {
     expect(size("dist/load.js")).toBeLessThan(16 * KB);
+    expect(size("dist/subdivision-facts.js")).toBeLessThan(16 * KB);
+  });
+
+  it("keep the facts about every country under 30 KB, out of the main entry", () => {
+    expect(size("dist/facts.js")).toBeLessThan(30 * KB);
+  });
+
+  it("keep Japan's subdivision facts under 6 KB, and every country's under 20 KB", () => {
+    expect(size("dist/subdivision-facts/jp.js")).toBeLessThan(6 * KB);
+    const files = readdirSync("dist/subdivision-facts").filter((file) => file.endsWith(".js"));
+    expect(files).toHaveLength(200);
+    for (const file of files) expect(size(`dist/subdivision-facts/${file}`), file).toBeLessThan(20 * KB);
   });
 });
