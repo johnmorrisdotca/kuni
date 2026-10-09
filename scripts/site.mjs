@@ -1,9 +1,10 @@
 // Builds the static demo for GitHub Pages into ./site: the page, written here from the family's shared header
 // and footer, with the family's stylesheet, Kuni's own, the page's script and the compiled package (its ESM
 // files only) beside it.
-import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 
 import { API_CSS, apiPage } from "./api.mjs";
+import { FACT_GAPS } from "./facts-config.ts";
 import { FAMILY, FAMILY_PITCH, FAMILY_SCRIPT, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
 
 const id = "kuni";
@@ -70,6 +71,14 @@ const panels = [
           <p class="summary" id="list-summary" data-testid="list-summary" aria-live="polite"></p>`,
   }),
   panel({
+    name: "search",
+    entry: "@johnmorrisdotca/kuni",
+    fields: `<label class="fam-label" for="search-input" data-say="input"></label><input id="search-input" class="fam-field" data-testid="search-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" value="+81" />
+          <div class="fam-seg" role="group" id="search-by" data-testid="search-by" data-say-label="search_by"><button type="button" data-by="calling" data-say="find_calling"></button><button type="button" data-by="currency" data-say="find_currency"></button><button type="button" data-by="tld" data-say="find_tld"></button></div>`,
+    help: ["Choose what to search by, a calling code, a currency or a domain, and type it. Every country that uses it is listed.", "国番号・通貨・ドメインのどれで探すかを選んで入力します。それを使っている国をすべて表示します。"],
+    exampleHelp: ["Fill the box with an example of the kind chosen.", "選んだ種類の例を入力欄に入れます。"],
+  }),
+  panel({
     name: "code",
     entry: "/subdivisions",
     fields: field("code-input", "input", "JP-13"),
@@ -77,6 +86,19 @@ const panels = [
     exampleHelp: ["Fill the box with an example: a prefecture, a province, a state, a French department, a country of the United Kingdom, a country's code.", "入力欄に例を入れます：都道府県、州、フランスの県、イギリスの構成国、国のコード。"],
   }),
 ];
+
+// The views beside "Look up", each a tab with its own address; views/<name>.js draws each into its body.
+const VIEW_NAMES = ["lookup", "country", "compare", "table", "groupings", "quiz", "form", "quality"];
+const tabs = `<nav class="views" aria-label="Views" data-say-label="views" data-testid="views">
+        ${VIEW_NAMES.map((name) => `<a href="#/${name}" data-view-link="${name}" data-say="tab_${name}"></a>`).join("\n        ")}
+      </nav>`;
+const view = (name) => `<section class="view fam-panels" data-view="${name}" aria-labelledby="view-${name}-title" data-testid="view-${name}" hidden>
+        <div class="fam-panel">
+          <h2 id="view-${name}-title" data-say="title_${name}"></h2>
+          <p class="blurb" data-say="blurb_${name}"></p>
+          <div class="view-body" id="view-${name}"></div>
+        </div>
+      </section>`;
 
 const page = `<!doctype html>
 <html lang="en">
@@ -95,9 +117,11 @@ const page = `<!doctype html>
   <body>
     <main>
       ${familyHeader({ id, links: [{ href: "api.html", say: "pageApi" }] })}
-      <div class="lookups">
+      ${tabs}
+      <div class="lookups view" data-view="lookup" data-testid="view-lookup">
       ${panels.join("\n      ")}
       </div>
+      ${VIEW_NAMES.filter((name) => name !== "lookup").map(view).join("\n      ")}
       ${familyUnreviewed({ id })}
       <section class="more" aria-labelledby="more-title">
         <h2 id="more-title" data-say="moreTitle"></h2>
@@ -120,6 +144,43 @@ cpSync("demo", "site", { recursive: true });
 // The page imports the ESM build only; the CommonJS files and the type declarations are left out.
 cpSync("dist", "site/dist", { recursive: true, filter: (source) => !/\.(cjs|d\.ts|d\.cts)$/.test(source) });
 writeFileSync("site/index.html", page);
+
+// Chizu's map of each country alone, for the country page's outline: one small module a country, imported when it is
+// wanted. Chizu is a development dependency of this repository, for the demo; the package does not depend on it.
+cpSync("node_modules/@johnmorrisdotca/chizu/dist/data/countries", "site/chizu/countries", { recursive: true, filter: (source) => !/\.d\.ts$/.test(source) });
+
+// The data-quality view's figures, read from the documents the data build writes: CLDR and Wikidata's disagreements,
+// the names corrected by hand and the open questions, the facts' gaps with their reasons, the subdivision facts'
+// coverage, the land borders not kept, and the bodies' cross-check.
+const doc = (name) => readFileSync(`docs/${name}`, "utf8");
+const tableRows = (text, after) => {
+  const start = text.indexOf(after);
+  const lines = text.slice(start).split("\n");
+  const first = lines.findIndex((line) => line.startsWith("|"));
+  const rows = [];
+  for (const line of lines.slice(first)) {
+    if (!line.startsWith("|")) break;
+    rows.push(line.slice(1, -1).split(/(?<!\\)\|/).map((cell) => cell.trim().replace(/\\\|/g, "|")));
+  }
+  return { head: rows[0], rows: rows.slice(2) };
+};
+const disagreements = doc("disagreements.md");
+const perCountry = [...disagreements.matchAll(/^\| ([A-Z]{2}-[A-Z0-9]+) \| (.*?) \| (.*?) \| (.*?) \|$/gm)].map(([, code, en, cldr, wikidata]) => ({ code, en, cldr, wikidata }));
+const overrides = tableRows(disagreements, "## Resolved").rows.map(([code, en, cldr, wikidata, kept, why]) => ({ code, en, cldr, wikidata, kept, why }));
+const facts = doc("facts.md");
+const notKept = facts.slice(facts.indexOf("### Stated by Wikidata"), facts.indexOf("### Touching in Natural Earth")).split("\n").filter((line) => /–/.test(line) && !line.startsWith("#")).join(" ");
+writeFileSync(
+  "site/quality.json",
+  JSON.stringify({
+    disagreements: perCountry.filter((row) => !overrides.some((done) => done.code === row.code)),
+    overrides,
+    questions: [...disagreements.matchAll(/^- \*\*([A-Z]{2}-[A-Z0-9]+)\*\* (.*)$/gm)].map(([, code, text]) => `${code} ${text}`),
+    factGaps: FACT_GAPS,
+    subdivisionFacts: tableRows(doc("subdivision-facts.md"), "| Fact |"),
+    bordersNotKept: notKept,
+    bodies: tableRows(doc("groupings.md"), "| Body |"),
+  }),
+);
 // The API reference, made from the source: every export of every entry point.
 writeFileSync("site/api.css", API_CSS);
 writeFileSync("site/api.html", apiPage({ id, name: "Kuni", icon: ICON }));

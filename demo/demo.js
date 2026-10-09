@@ -1,22 +1,20 @@
-// The demo page's own script: three panels, each answering from the package's own built files, as a page that
-// installed it would. "Find a country" uses the main entry (./dist/index.js); "Subdivisions of a country" loads
-// one country at a time with ./dist/load.js; "Look up a code" uses ./dist/subdivisions.js. The page's words are
-// set as text, never as HTML.
+// The demo page's own script. The page is a set of views, each a tab with its own address (#/country/JP,
+// #/quiz/capital/12345), every one answering from the package's own built files as a page that installed it would.
+// "Look up" is four panels: "Find a country" uses the main entry (./dist/index.js); "Subdivisions of a country" loads
+// one country at a time with ./dist/load.js; "Look up a code" uses ./dist/subdivisions.js; "Search by code" filters
+// the countries. The other views are in views/, each loaded when it is first opened. The page's words are set as
+// text, never as HTML.
 import { continentName, countries, country, countryByName } from "./dist/index.js";
 import { loadSubdivisions } from "./dist/load.js";
 import { subdivision, subdivisions, subdivisionTypeLabel } from "./dist/subdivisions.js";
+import { $, say, setLanguage } from "./shared.js";
+import { search, setUp as setUpSearch } from "./views/search.js";
 import { WORDS } from "./words.js";
 
 const language = familyLanguage({ id: "kuni", words: WORDS, onChange: () => render() });
+setLanguage(language);
 
-// A line of the page in its language, with each `{name}` filled in from `values`.
-const say = (key, values) => {
-  const word = WORDS[language.lang][key];
-
-  return typeof word === "string" && values !== undefined ? word.replace(/\{(\w+)\}/g, (whole, name) => String(values[name] ?? "")) : word;
-};
 const ja = () => language.lang === "ja";
-const $ = (id) => document.getElementById(id);
 const quote = (text) => JSON.stringify(text);
 
 // A definition list: [[label, value], ...] written as text.
@@ -73,7 +71,7 @@ function find() {
   if (short !== undefined) pairs.push([say("find_short"), short]);
   if (found.name.local !== undefined) pairs.push([say("find_local"), found.name.local]);
   pairs.push([say("find_continent"), continentName(found.continent, language.lang)]);
-  if (found.capital !== undefined) pairs.push([say("find_capital"), found.capital.en]);
+  if (found.capital !== undefined) pairs.push([say("find_capital"), ja() ? `${found.capital.ja}（${found.capital.en}）` : `${found.capital.en} (${found.capital.ja})`]);
   if (found.callingCode !== undefined) pairs.push([say("find_calling"), found.callingCode]);
   if (found.currency !== undefined) pairs.push([say("find_currency"), found.currency.join(", ")]);
   if (found.tld !== undefined) pairs.push([say("find_tld"), `.${found.tld}`]);
@@ -81,6 +79,12 @@ function find() {
   const count = subdivisions(found.alpha2)?.length ?? 0;
   if (count > 0) pairs.push([say("find_divisions"), kindOf(found.alpha2) === null ? String(count) : (ja() ? `${count}（${kindOf(found.alpha2)}）` : `${count} (${kindOf(found.alpha2)})`)]);
   facts(out, pairs);
+  const more = document.createElement("a");
+  more.href = `#/country/${found.alpha2}`;
+  more.className = "more-link";
+  more.dataset.testid = "find-more";
+  more.textContent = say("find_more", { name: found.name[language.lang] });
+  out.append(more);
 }
 
 // ----- Subdivisions of a country ----------------------------------------------------------------------
@@ -186,6 +190,46 @@ const PANELS = {
   code: { run: code, input: "code-input", examples: ["JP-13", "CA-ON", "US-NY", "FR-75C", "GB-ENG", "jp"] },
 };
 
+// ----- The views -------------------------------------------------------------------------------------------------
+
+// Each view but "Look up" is a module of its own, loaded when it is first opened; its render() draws it, given what
+// the address says after its name (#/country/JP gives "JP").
+const VIEWS = {
+  lookup: null,
+  country: () => import("./views/country.js"),
+  compare: () => import("./views/compare.js"),
+  table: () => import("./views/table.js"),
+  groupings: () => import("./views/groupings.js"),
+  quiz: () => import("./views/quiz.js"),
+  form: () => import("./views/form.js"),
+  quality: () => import("./views/quality.js"),
+};
+let showing = "";
+
+async function route() {
+  const [, name = "lookup", ...rest] = (location.hash.replace(/^#\/?/, "/") || "/").split("/");
+  const view = name in VIEWS ? name : "lookup";
+  const asked = rest.length === 0 ? undefined : decodeURIComponent(rest.join("/"));
+  for (const section of document.querySelectorAll("[data-view]")) section.hidden = section.dataset.view !== view;
+  for (const link of document.querySelectorAll("[data-view-link]")) {
+    if (link.dataset.viewLink === view) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+  if (showing === "country" && view !== "country") (await VIEWS.country()).stopClock();
+  if (view !== showing) {
+    const panel = document.querySelector(`[data-view="${view}"]`);
+    if (showing !== "") panel.scrollIntoView({ block: "nearest" });
+  }
+  showing = view;
+  const main = document.querySelector("main");
+  main.dataset.showing = view;
+  if (VIEWS[view] !== null) {
+    main.dataset.viewReady = "false";
+    await (await VIEWS[view]()).render(asked);
+  }
+  main.dataset.viewReady = "true";
+}
+
 function fillExamples() {
   for (const [name, panel] of Object.entries(PANELS)) {
     $(`${name}-examples`).replaceChildren(
@@ -218,9 +262,11 @@ async function render() {
   fillCountries();
   find();
   code();
+  search();
   pressLevel();
   press();
   await list();
+  if (showing !== "" && showing !== "lookup") await route();
 }
 
 $("find-input").addEventListener("input", () => {
@@ -244,5 +290,8 @@ $("list-level").querySelectorAll("button").forEach((button) =>
 );
 
 fillExamples();
+setUpSearch();
+window.addEventListener("hashchange", () => route());
 await render();
+await route();
 document.querySelector("main").dataset.ready = "true";

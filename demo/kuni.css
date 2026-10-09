@@ -34,3 +34,106 @@
   .facts dd { margin-bottom: 8px; }
   .answer { height: 34rem; }
 }
+
+/* The views: a row of tabs, each its own address, and the view's body under its title. */
+.views { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+.views a { text-decoration: none; border: 1px solid var(--rule); border-radius: 999px; padding: 0 14px; min-height: 44px; display: inline-flex; align-items: center; font-size: .9rem; font-weight: 600; background: var(--surface); }
+.views a:hover { border-color: var(--ink); }
+.views a[aria-current="page"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.view.fam-panels .fam-panel { gap: 14px; }
+.view h2 { font-size: 1.15rem; font-weight: 700; }
+.view .blurb { color: var(--muted); font-size: .9rem; line-height: 1.5; max-width: 75ch; }
+.view-body { display: grid; gap: 14px; min-width: 0; }
+.view-body > * { min-width: 0; max-width: 100%; }
+.view-body .fam-field { font-size: 1rem; flex: 1 1 12rem; min-width: 0; max-width: 100%; }
+.view-body select.fam-field, .widget select.fam-field { max-width: 26rem; min-height: 44px; appearance: none; -webkit-appearance: none; padding-right: 32px; background-color: var(--surface); background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 17px) 50%, calc(100% - 12px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.view-body input.fam-field { min-height: 44px; }
+.view-body .fam-label { min-width: 4.2rem; }
+.view-body h3 { margin: 0; font-size: 1rem; }
+.view-body h3.sub { font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.view-body .fam-felt .fam-field { color: var(--ink); }
+.mono { font-family: var(--mono); font-size: .85rem; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.more-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; margin-top: 6px; }
+ruby rt { font-size: .55em; color: var(--muted); }
+
+/* A flag is an emoji, which some systems draw as two letters: the name is always beside it. */
+.flagged { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; }
+a.flagged { text-decoration: none; }
+a.flagged .flag-name { text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }
+.flag { font-size: 1.15em; line-height: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.chips a.flagged { min-height: 32px; align-items: center; }
+a.fam-chip { text-decoration: none; color: inherit; font-weight: 600; }
+
+/* The country page. */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 18px; align-items: start; }
+.country-title { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+.country-title h3 { font-size: 1.6rem; line-height: 1.3; }
+.country-title p { margin: 2px 0 0; font-size: .9rem; overflow-wrap: anywhere; }
+.big-flag { font-size: 3rem; line-height: 1; }
+.outline-box { margin: 0; aspect-ratio: 1 / 1; max-height: 360px; width: 100%; display: grid; grid-template-rows: 1fr auto; place-items: center; border: 1px solid var(--rule); border-radius: 12px; padding: 10px; background: color-mix(in srgb, var(--surface) 60%, var(--page)); }
+.outline-box .outline { width: 100%; height: 100%; max-height: 300px; }
+.outline path { fill: var(--felt); stroke: var(--felt-deep); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.outline .capital-dot { fill: var(--accent); stroke: var(--surface); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.outline-box .fam-fine { text-align: center; }
+.zones { max-height: 22rem; overflow: auto; }
+.zones table td:first-child { overflow-wrap: anywhere; word-break: break-word; }
+.zones table td:last-child { white-space: nowrap; width: 1%; }
+.downloads { flex-wrap: wrap; }
+
+/* Compare. */
+.compare-pictures { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.outline-box.small { max-height: 260px; grid-template-rows: auto 1fr; }
+.outline-box.small figcaption { font-weight: 600; font-size: .9rem; }
+.outline-box.small .outline { max-height: 200px; }
+
+/* The table of every country: it scrolls inside its own box, never the page. */
+.table-box { max-height: 34rem; overflow: auto; }
+.table-box th { position: sticky; top: 0; background: var(--surface); z-index: 1; padding: 0; }
+.table-box th button.sort { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 10px; width: 100%; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; white-space: nowrap; }
+.table-box th[data-number="true"] button.sort { justify-content: flex-end; }
+.table-box th button.sort::after { content: attr(data-arrow); font-size: .7rem; }
+.table-box th button.sort:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.table-box td { white-space: nowrap; }
+.members-box, .quality-box { max-height: 26rem; overflow: auto; }
+.members-box th, .quality-box th { position: sticky; top: 0; background: var(--surface); }
+.quality-box td { white-space: normal; min-width: 6rem; }
+.quality-section { display: grid; gap: 8px; }
+.quality-list { margin: 0; padding-left: 18px; line-height: 1.5; font-size: .9rem; }
+.note-box { border-left: 3px solid var(--gold); padding: 4px 10px; font-size: .9rem; line-height: 1.5; }
+.grouping-head { display: grid; gap: 6px; }
+.grouping-head h3 { font-size: 1.3rem; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.grouping-head p { line-height: 1.5; max-width: 80ch; overflow-wrap: anywhere; }
+.former { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: .9rem; }
+.search-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 4px 12px; }
+.search-list li { min-height: 32px; display: flex; align-items: center; gap: 6px; }
+
+/* The quiz. */
+.quiz-score { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.quiz-card { display: grid; gap: 14px; }
+.quiz-card .fam-muted { color: inherit; opacity: .85; }
+.quiz-question { font-size: 1.35rem; font-weight: 700; line-height: 1.35; margin: 0; overflow-wrap: anywhere; }
+.quiz-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 8px; }
+.quiz-choices .choice { justify-content: flex-start; min-height: 52px; font-size: 1rem; text-align: left; border-radius: 14px; }
+.quiz-choices .choice:disabled { opacity: 1; }
+.quiz-choices .choice[data-state="right"] { background: var(--good); color: #fff; box-shadow: none; }
+.quiz-choices .choice[data-state="wrong"] { background: var(--bad); color: #fff; box-shadow: none; }
+.quiz-feedback { min-height: 1.5em; margin: 0; font-weight: 600; }
+.quiz-link { font-size: .78rem; overflow-wrap: anywhere; color: var(--muted); flex: 1 1 14rem; min-width: 0; }
+
+/* The form widget, on the felt. */
+.widget { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 12px; }
+.widget-field { display: grid; gap: 6px; }
+.widget-field label { font-size: .8rem; letter-spacing: .04em; font-weight: 600; }
+.widget-field .fam-field { width: 100%; max-width: none; color: var(--ink); }
+pre.snippet, #form-output { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .8rem; max-height: 24rem; overflow-y: auto; }
+
+@media (max-width: 520px) {
+  .view-body .fam-label { min-width: 100%; }
+  .view-body .fam-field, .view-body select.fam-field { flex-basis: 100%; max-width: 100%; }
+  .compare-pictures { grid-template-columns: 1fr; }
+  .big-flag { font-size: 2.4rem; }
+  .country-title h3 { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
