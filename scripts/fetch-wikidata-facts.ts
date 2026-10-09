@@ -14,8 +14,9 @@
 //     statement's end (P582);
 //   - the English and Japanese labels and the coordinates of the capitals named by hand in
 //     scripts/facts-config.ts (CAPITAL_ITEMS), for the countries whose item names no capital or names it otherwise;
-//   - for every ISO 3166-2 code (P300): the same capital, population, area and coordinates, and the capital's name in
-//     kana (P1814), for the /subdivision-facts entry, each row naming the item it is about, since some codes are
+//   - for every ISO 3166-2 code (P300): the item's English label, against which CLDR's English names are checked;
+//     the same capital, population, area and coordinates, and the capital's name in kana (P1814), for the
+//     /subdivision-facts entry, each row naming the item it is about, since some codes are
 //     held by two items (a city and the district around it);
 //   - for each international body in scripts/groupings-config.ts (MEMBERSHIPS): the countries Wikidata says are
 //     members of it (P463), with the start and end of each membership (P580, P582) and any role (P2868), for the
@@ -124,6 +125,10 @@ const QUERIES = {
   OPTIONAL { ?statement pq:P585 ?when }
   OPTIONAL { ?statement pq:P518 ?part }
 }`,
+  subdivisionLabels: `SELECT ?code ?item ?en WHERE {
+  ${SUBDIVISION}
+  ?item rdfs:label ?en . FILTER(LANG(?en) = "en")
+}`,
   subdivisionPoints: `SELECT ?code ?item ?coord WHERE {
   ${SUBDIVISION}
   ?item wdt:P625 ?coord .
@@ -171,7 +176,17 @@ const ask = async (query: string, tries = 5): Promise<Binding[]> => {
     return ask(query, tries - 1);
   }
   if (!response.ok) throw new Error(`Wikidata answered ${response.status}: ${(await response.text()).slice(0, 400)}`);
-  const body = (await response.json()) as { results: { bindings: Binding[] } };
+  // A long answer is now and then cut off mid-stream (the endpoint's time limit), which reads as broken JSON: ask again.
+  let body: { results: { bindings: Binding[] } };
+  try {
+    body = JSON.parse(await response.text()) as { results: { bindings: Binding[] } };
+  } catch (error) {
+    if (tries <= 1) throw error;
+    console.log("  Wikidata's answer was cut off; asking again in 20 s.");
+    await wait(20);
+
+    return ask(query, tries - 1);
+  }
 
   return body.results.bindings;
 };
@@ -202,6 +217,7 @@ const shape: Record<QueryName, (row: Binding) => unknown[]> = {
   subdivisionPopulation: (row) => [qid(row.item!.value), Number(row.value!.value), day(row.when?.value), row.part === undefined ? null : qid(row.part.value)],
   subdivisionArea: (row) => [qid(row.item!.value), Number(row.amount!.value), qid(row.unit!.value), day(row.when?.value), row.part === undefined ? null : qid(row.part.value)],
   subdivisionPoints: (row) => [qid(row.item!.value), point(row.coord!.value)],
+  subdivisionLabels: (row) => [qid(row.item!.value), row.en!.value],
   memberships: (row) => [qid(row.item!.value), qid(row.org!.value), qid(row.rank!.value), day(row.start?.value), day(row.end?.value), row.role === undefined ? null : qid(row.role.value)],
 };
 
@@ -240,6 +256,7 @@ const stringify = (read: string, answers: Record<QueryName, Record<string, unkno
     subdivisionPopulation: ["item", "value", "when", "appliesToPart"],
     subdivisionArea: ["item", "amount", "unit", "when", "appliesToPart"],
     subdivisionPoints: ["item", "point [lat, lon]"],
+    subdivisionLabels: ["item", "en"],
     memberships: ["item", "body", "rank", "start", "end", "role"],
   };
 
