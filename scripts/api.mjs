@@ -79,7 +79,19 @@ export function apiOf() {
           signature = clip(`${symbol.name}: ${checker.typeToString(type, declaration, ts.TypeFormatFlags.NoTruncation)}`);
         } else signature = clip(`${symbol.name}: ${checker.typeToString(type, declaration, ts.TypeFormatFlags.NoTruncation)}`);
       }
-      return { name: symbol.name, kind, signature: kind === "function" ? clip(signature, 600) : signature, doc };
+      // The tags of a TSDoc comment: each parameter, what it returns, and the example, shown under the summary.
+      const tags = target.getJsDocTags(checker).map((tag) => ({ name: tag.name, text: ts.displayPartsToString(tag.text ?? []).trim() }));
+      // The fields of an interface, each with its comment, rather than the declaration's text.
+      const fields =
+        target.flags & ts.SymbolFlags.Interface
+          ? checker.getDeclaredTypeOfSymbol(target).getProperties().map((member) => ({
+              name: `${member.name}${member.flags & ts.SymbolFlags.Optional ? "?" : ""}`,
+              type: checker.typeToString(checker.getTypeOfSymbolAtLocation(member, declaration), declaration, ts.TypeFormatFlags.NoTruncation),
+              doc: ts.displayPartsToString(member.getDocumentationComment(checker)).trim(),
+            }))
+          : [];
+      if (fields.length > 0) signature = `interface ${symbol.name}`;
+      return { name: symbol.name, kind, signature: kind === "function" ? clip(signature, 600) : signature, doc, tags, fields };
     });
     exports.sort((a, b) => a.name.localeCompare(b.name, "en"));
     return { entry: key, name, exports };
@@ -111,6 +123,10 @@ export function apiBody(api = apiOf()) {
           <h3><span class="fam-badge">${one.kind}</span> ${escape(one.name)}</h3>
           <pre>${escape(one.signature)}</pre>
           ${one.doc === "" ? "" : prose(one.doc)}
+          ${(one.fields ?? []).length === 0 ? "" : `<dl class="api-fields">${one.fields.map((field) => `<dt><code>${escape(field.name)}: ${escape(field.type)}</code></dt><dd>${escape(field.doc)}</dd>`).join("")}</dl>`}
+          ${(one.tags ?? []).filter((tag) => tag.name === "param").length === 0 ? "" : `<ul class="api-params">${one.tags.filter((tag) => tag.name === "param").map((tag) => { const [name, ...rest] = tag.text.split(/\s+/); return `<li><code>${escape(name)}</code> ${escape(rest.join(" ").replace(/^-\s*/, ""))}</li>`; }).join("")}</ul>`}
+          ${(one.tags ?? []).filter((tag) => tag.name === "returns").map((tag) => `<p class="api-returns"><strong>Returns</strong> ${escape(tag.text)}</p>`).join("")}
+          ${(one.tags ?? []).filter((tag) => tag.name === "example").map((tag) => `<div class="api-example"><strong>Example</strong>${prose(tag.text)}</div>`).join("")}
         </article>`,
           )
           .join("\n")}
@@ -122,8 +138,8 @@ export function apiBody(api = apiOf()) {
 
 /** The reference page's own words, in both languages, under the names the family's header and footer ask for. */
 export const API_WORDS = {
-  en: { pitch: "Every export of every entry point, with its signature and its doc comment. Made from the source when the site is built, so it cannot fall behind the code.", name: "", nameLink: "About the name", foot: "Made from the package's own source.", pageBack: "Demo" },
-  ja: { pitch: "すべてのエントリーポイントのすべてのエクスポートを、シグネチャとドキュメントコメント付きで一覧にしています。サイトをビルドするときにソースから作るので、コードとずれることはありません。", name: "", nameLink: "名前について（英語）", foot: "このページは、パッケージ自身のソースから作っています。", pageBack: "デモ" },
+  en: { pitch: "Every export of every entry point, with its signature, its doc comment, its parameters and an example. Made from the source when the site is built, so it cannot fall behind the code.", name: "", nameLink: "About the name", foot: "Made from the package's own source.", pageBack: "Demo" },
+  ja: { pitch: "すべてのエントリーポイントのすべてのエクスポートを、シグネチャ、ドキュメントコメント、引数、使用例とともに一覧にしています。サイトをビルドするときにソースから作るので、コードとずれることはありません。", name: "", nameLink: "名前について（英語）", foot: "このページは、パッケージ自身のソースから作っています。", pageBack: "デモ" },
 };
 
 /** The words the demo's own header link to this page needs, for the page that links to it: `pageApi`. */
@@ -145,6 +161,12 @@ export const API_CSS = `/* The API reference page: made by scripts/api.mjs. */
 .api-entry p { margin: 0; line-height: 1.5; max-width: 72ch; overflow-wrap: anywhere; }
 .api-entry p.api-names { max-width: none; }
 .api-entry pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.api-fields { margin: 0; display: grid; gap: 2px 0; font-size: .88rem; }
+.api-fields dt { overflow-wrap: anywhere; }
+.api-fields dd { margin: 0 0 6px 14px; color: var(--muted); line-height: 1.45; }
+.api-params { margin: 0; padding-left: 18px; font-size: .9rem; line-height: 1.5; }
+.api-returns { font-size: .9rem; }
+.api-example { display: grid; gap: 6px; }
 `;
 
 /** The whole page, api.html: the family's header and footer around the reference. `name` is the package's name as written, `icon` its data: URI. */

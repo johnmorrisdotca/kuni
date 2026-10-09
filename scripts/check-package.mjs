@@ -38,6 +38,10 @@ const packed = JSON.parse(run("npm", ["pack", "--json", "--ignore-scripts", "--p
 const tarball = join(scratch, packed[0].filename);
 const inTarball = new Set(packed[0].files.map((file) => file.path));
 console.log(`ok   npm pack: ${packed[0].filename}, ${packed[0].files.length} files, ${Math.round(packed[0].size / 1024)} KB packed`);
+// The package depends on nothing at run time: chizu and the data sources are for the demo and the build only.
+if (Object.keys(pkg.dependencies ?? {}).length > 0 || Object.keys(pkg.peerDependencies ?? {}).length > 0) fail(`package.json has run-time dependencies: ${JSON.stringify({ ...pkg.dependencies, ...pkg.peerDependencies })}`);
+if ([...inTarball].some((file) => file.endsWith(".js") && /chizu/.test(readFileSync(join(root, file), "utf8")))) fail("a built file names chizu");
+console.log("ok   no run-time dependency, and no built file names chizu");
 const shipped = [...inTarball].filter((file) => file.startsWith("docs/") || file.startsWith("data-sources/") || /\.(webp|png|jpe?g|gif)$/.test(file));
 if (shipped.length > 0) fail(`the tarball holds pictures, docs or data sources: ${shipped.join(", ")}`);
 console.log("ok   no picture, nothing from docs/ and nothing from data-sources/ is in the tarball");
@@ -52,6 +56,8 @@ for (const named of pkg.files) {
 }
 const countryFiles = [...inTarball].filter((file) => /^dist\/subdivisions\/[a-z]{2}\.js$/.test(file));
 if (countryFiles.length !== 200) fail(`the tarball has ${countryFiles.length} country files, not 200`);
+const factFiles = [...inTarball].filter((file) => /^dist\/subdivision-facts\/[a-z]{2}\.js$/.test(file));
+if (factFiles.length !== 200) fail(`the tarball has ${factFiles.length} countries' subdivision facts, not 200`);
 console.log(`ok   everything in package.json's files is in the tarball, and the 200 countries' files`);
 
 // 3. Install it into an empty project.
@@ -90,6 +96,9 @@ writeFileSync(
   `${entries.map((entry, at) => `import * as m${at} from ${JSON.stringify(entry)};`).join("\n")}
 import japan from "${pkg.name}/subdivisions/jp";
 import { loadSubdivisions } from "${pkg.name}/load";
+import { facts } from "${pkg.name}/facts";
+import { membersOf } from "${pkg.name}/groupings";
+import { loadSubdivisionFacts } from "${pkg.name}/subdivision-facts";
 ${probe}
 const all = [${entries.map((_, at) => `m${at}`).join(", ")}];
 const names = ${JSON.stringify(entries)};
@@ -97,6 +106,9 @@ all.forEach((m, at) => { if (Object.keys(m).length === 0) throw new Error(names[
 if (JSON.stringify(answers(m0, m${entries.indexOf(`${pkg.name}/subdivisions`)})) !== wanted) throw new Error("the installed package answered " + JSON.stringify(answers(m0, m2)));
 if (m0.VERSION !== ${JSON.stringify(pkg.version)}) throw new Error("VERSION is " + m0.VERSION);
 if (japan.length !== 47 || japan[12].code !== "JP-13") throw new Error("subdivisions/jp gave " + japan.length);
+if (facts("JP")?.drivingSide !== "left") throw new Error("facts(JP) gave " + JSON.stringify(facts("JP")));
+if (membersOf("g7")?.length !== 7) throw new Error("membersOf(g7) gave " + membersOf("g7"));
+if ((await loadSubdivisionFacts("JP"))?.[0].capital?.ja !== "札幌市") throw new Error("loadSubdivisionFacts(JP) did not load");
 const canada = await loadSubdivisions("CA");
 if (canada.length !== 13) throw new Error("loadSubdivisions(CA) gave " + canada?.length);
 console.log(names.join(" "));
@@ -110,6 +122,11 @@ for (const name of names) { const m = require(name); if (Object.keys(m).length =
 if (JSON.stringify(answers(require(${JSON.stringify(pkg.name)}), require("${pkg.name}/subdivisions"))) !== wanted) throw new Error("the package answered differently by require");
 const { SUBDIVISIONS } = require("${pkg.name}/subdivisions/jp");
 if (SUBDIVISIONS.length !== 47) throw new Error("subdivisions/jp by require gave " + SUBDIVISIONS.length);
+if (require("${pkg.name}/facts").facts("US").measurement !== "US") throw new Error("facts by require");
+if (require("${pkg.name}/groupings").grouping("eu").members.length !== 27) throw new Error("groupings by require");
+require("${pkg.name}/subdivision-facts").loadSubdivisionFacts("CA").then((list) => {
+  if (list.length !== 13) throw new Error("loadSubdivisionFacts by require gave " + list.length);
+});
 require("${pkg.name}/load").loadSubdivisions("JP").then((list) => {
   if (list.length !== 47) throw new Error("loadSubdivisions by require gave " + list.length);
   console.log(names.join(" "));
@@ -125,17 +142,25 @@ import { COUNTRY_CODES, isCountryCode, type CountryCode } from "${pkg.name}/code
 import { subdivision, subdivisionByName, type Subdivision } from "${pkg.name}/subdivisions";
 import japan from "${pkg.name}/subdivisions/jp";
 import { loadSubdivisions } from "${pkg.name}/load";
+import { facts, type CountryFacts } from "${pkg.name}/facts";
+import { grouping, type Grouping } from "${pkg.name}/groupings";
+import { loadSubdivisionFacts, type SubdivisionFacts } from "${pkg.name}/subdivision-facts";
+import japanFacts from "${pkg.name}/subdivision-facts/jp";
 
+const fact: CountryFacts | null = facts("JP");
+const body: Grouping | null = grouping("eu");
+const prefectureFacts: Promise<readonly SubdivisionFacts[] | null> = loadSubdivisionFacts("JP");
+const firstFact: SubdivisionFacts | undefined = japanFacts[0];
 const one: Country | null = country("JP");
 const code: CountryCode = COUNTRY_CODES[0];
 const known: boolean = isCountryCode("JP");
 const place: Subdivision | null = subdivision("JP-13") ?? subdivisionByName("Ontario");
 const first: Subdivision | undefined = japan[0];
 const later: Promise<readonly Subdivision[] | null> = loadSubdivisions("CA");
-export { code, first, known, later, one, place, countryByName };
+export { body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
 `;
 writeFileSync(join(project, "types.mts"), typed);
-writeFileSync(join(project, "types.cts"), typed.replace(/^import (\w+) from/m, "import $1 from"));
+writeFileSync(join(project, "types.cts"), typed);
 writeFileSync(
   join(project, "tsconfig.json"),
   JSON.stringify({ compilerOptions: { module: "nodenext", moduleResolution: "nodenext", target: "es2022", strict: true, noEmit: true, types: [], skipLibCheck: false }, files: ["types.mts", "types.cts"] }),

@@ -3,7 +3,7 @@
 import { describe, expect, it } from "vitest";
 
 import { allSubdivisions, subdivisions } from "./subdivisions";
-import { loadSubdivisionFacts } from "./subdivisionFacts";
+import { loadSubdivisionFacts } from "./subdivision-facts";
 import japan from "./subdivision-facts/jp";
 import { COUNTRY_CODES } from "./index";
 

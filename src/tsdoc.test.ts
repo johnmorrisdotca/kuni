@@ -16,7 +16,7 @@ const entries = Object.entries(pkg.exports)
   .filter(([key]) => key !== "./package.json")
   .map(([key, value]) => {
     const built = ((value as { import: { default: string } }).import.default as string).replace("*", "jp");
-    const file = join(ROOT, built.replace("./dist/", "src/").replace(/\.js$/, ".ts").replace("src/subdivision-facts.ts", "src/subdivisionFacts.ts"));
+    const file = join(ROOT, built.replace("./dist/", "src/").replace(/\.js$/, ".ts"));
 
     return { name: key === "." ? pkg.name : `${pkg.name}/${key.slice(2).replace("*", "jp")}`, file };
   });
