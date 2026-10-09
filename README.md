@@ -94,6 +94,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
 - **Small where it matters.** The countries and lookups are about 57 KB (19 KB gzipped); one country's subdivisions are their own entry (Japan's 47, 2.9 KB) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
+- **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON or text: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
 
 ## Use it in your project
@@ -391,6 +392,7 @@ Kuni draws nothing: it gives a page names, codes and readings, so what it can do
 - **Names in the reader's language.** Every country and nearly every first-level subdivision has a Japanese name, and Japan's prefectures and the kanji country names have readings in hiragana, for furigana or for a screen reader.
 - **Forgiving search.** A person who types in kana, in full-width letters or without accents still finds the place.
 - **Flags are never the only label.** A flag is an emoji that many screen readers say only as two letters; the demo always writes the name beside it.
+- **In the demo's views**, the country page's outline has a label naming the country, every table has column headers (the table of every country sorts from its headers, which are buttons and say which way they sort), a quiz's answer is said in words as well as colour, and the time in each zone is text, not a moving picture.
 - **In the demo**, every panel is a labelled region, each box has a label, the answers are `aria-live`, the list of subdivisions is a real table with column headers, every control is at least 44 pixels square, and the page fits a phone at 390 pixels.
 - **Not yet.** The demo's colours have not been measured against WCAG contrast ratios, and its Japanese has not been read by a native reader (see [Languages](#languages)).
 
