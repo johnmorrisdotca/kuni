@@ -1,0 +1,146 @@
+{
+  "name": "@johnmorrisdotca/kuni",
+  "version": "0.1.0",
+  "description": "Kuni 国, every country and its subdivisions (states, provinces, prefectures, regions) with ISO 3166 codes and names in English and Japanese, from Unicode CLDR and Wikidata. Typed lookups by code or by name. Zero dependencies.",
+  "keywords": [
+    "countries",
+    "subdivisions",
+    "iso-3166",
+    "iso-3166-1",
+    "iso-3166-2",
+    "prefectures",
+    "provinces",
+    "states",
+    "regions",
+    "country-names",
+    "flags",
+    "japanese",
+    "cldr",
+    "wikidata",
+    "typescript",
+    "zero-dependencies",
+    "esm",
+    "cjs",
+    "browser",
+    "node",
+    "itsutsu"
+  ],
+  "homepage": "https://johnmorrisdotca.github.io/kuni/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnmorrisdotca/kuni.git"
+  },
+  "bugs": {
+    "url": "https://github.com/johnmorrisdotca/kuni/issues"
+  },
+  "author": "John Morris",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./codes": {
+      "import": {
+        "types": "./dist/codes.d.ts",
+        "default": "./dist/codes.js"
+      },
+      "require": {
+        "types": "./dist/codes.d.cts",
+        "default": "./dist/codes.cjs"
+      }
+    },
+    "./subdivisions": {
+      "import": {
+        "types": "./dist/subdivisions.d.ts",
+        "default": "./dist/subdivisions.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions.d.cts",
+        "default": "./dist/subdivisions.cjs"
+      }
+    },
+    "./subdivisions/*": {
+      "import": {
+        "types": "./dist/subdivisions/*.d.ts",
+        "default": "./dist/subdivisions/*.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/*.d.cts",
+        "default": "./dist/subdivisions/*.cjs"
+      }
+    },
+    "./load": {
+      "import": {
+        "types": "./dist/load.d.ts",
+        "default": "./dist/load.js"
+      },
+      "require": {
+        "types": "./dist/load.d.cts",
+        "default": "./dist/load.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsup",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.check.json",
+    "test": "vitest run",
+    "test:package": "pnpm build && node scripts/check-package.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:package",
+    "prepublishOnly": "pnpm check",
+    "data": "node scripts/build-data.ts",
+    "data:report": "node scripts/build-data.ts --report",
+    "data:fetch": "node scripts/fetch-sources.ts",
+    "data:wikidata": "node scripts/fetch-wikidata.ts",
+    "site": "pnpm build && node scripts/site.mjs",
+    "test:demo": "pnpm site && playwright test",
+    "screenshots:readme": "pnpm site && node scripts/readme-pictures.mjs",
+    "docs:make": "node scripts/docs.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^24.0.0",
+    "cldr-core": "48.2.0",
+    "cldr-localenames-full": "48.2.0",
+    "countries-list": "3.4.1",
+    "esbuild": "0.27.7",
+    "eslint": "^9.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "~5.9.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
