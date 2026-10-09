@@ -185,7 +185,7 @@ function code() {
 // ----- The page ---------------------------------------------------------------------------------------
 
 const PANELS = {
-  find: { run: find, input: "find-input", examples: ["Germany", "ドイツ", "どいつ", "Holland", "UK", "米国", "cote d'ivoire", "JP"] },
+  find: { run: find, input: "find-input", examples: ["Germany", "ドイツ", "にほん", "Holland", "UK", "米国", "cote d'ivoire", "JP"] },
   list: { run: list, input: "list-country", examples: ["JP", "US", "CA", "FR", "GB", "SI"] },
   code: { run: code, input: "code-input", examples: ["JP-13", "CA-ON", "US-NY", "FR-75C", "GB-ENG", "jp"] },
 };

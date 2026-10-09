@@ -1,5 +1,5 @@
 // The form widget: a country select that feeds a state, province or prefecture select, in English or Japanese,
-// with a box that turns what somebody typed ("UK", どいつ) into the country. What it would submit is shown as it
+// with a box that turns what somebody typed ("UK", にほん) into the country. What it would submit is shown as it
 // changes; "Copy the code" gives the same widget as a page of its own, and the lists download as CSV, JSON or text.
 import { countries, country, countryByName } from "../dist/index.js";
 import { loadSubdivisions } from "../dist/load.js";

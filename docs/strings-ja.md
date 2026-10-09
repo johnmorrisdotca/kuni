@@ -195,7 +195,7 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `title_form` | A country and region form widget | 国と地域を選ぶフォーム部品 |
 | `blurb_form` | The select a sign-up form needs: a country, then its states, provinces or prefectures, in English or Japanese. Copy the code to use it in a page of your own. | 登録フォームに必要な選択欄です。国を選ぶと、その国の州・省・都道府県などが選べます。英語と日本語に対応しています。コードをコピーすれば自分のページで使えます。 |
 | `help_form_lang` | The widget's own language, which need not be the page's. | フォーム部品の言語です。ページの言語と別に選べます。 |
-| `help_form_typed` | Type a country the way people do (UK, Holland, どいつ) and the select follows. | UK、Holland、どいつ のように、ふだん使う名前で国名を入力すると、選択欄がその国に切り替わります。 |
+| `help_form_typed` | Type a country the way people do (UK, Holland, にほん) and the select follows. | UK、Holland、にほん のように、ふだん使う名前で国名を入力すると、選択欄がその国に切り替わります。 |
 | `form_lang` | Widget language | 部品の言語 |
 | `form_typed` | Typed | 入力 |
 | `form_typed_found` | That is {name} ({code}). | {name}（{code}）です。 |

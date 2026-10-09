@@ -34,7 +34,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
 </tr>
 </table>
 
-Kuni is the country list every site ends up keeping for itself, kept once, with what a form, a profile page or a map quiz asks of it: the 250 countries with their ISO 3166-1 codes, and their 5,050 ISO 3166-2 subdivisions (Japan's prefectures, the American states, Canada's provinces and territories, France's regions and departments), each named in English and in Japanese. Beside the names, in entries of their own so a page that only names countries does not carry them: each country's capital, population and area with the year each is for, coordinates, land borders, driving side and calendar conventions; each subdivision's capital, population and area; and 107 groupings, from the continents and the EU to Japan's eight regions. The names are Unicode CLDR's, with Wikidata filling the gaps, so they are the same on a server and in a browser, which `Intl.DisplayNames` is not. It looks a country up by what somebody typed (Holland, ＵＳＡ, どいつ, 米国) and a region by its code or its name. It works in [the demo](https://johnmorrisdotca.github.io/kuni/) with nothing to install.
+Kuni is the country list every site ends up keeping for itself, kept once, with what a form, a profile page or a map quiz asks of it: the 250 countries with their ISO 3166-1 codes, and their 5,050 ISO 3166-2 subdivisions (Japan's prefectures, the American states, Canada's provinces and territories, France's regions and departments), each named in English and in Japanese. Beside the names, in entries of their own so a page that only names countries does not carry them: each country's capital, population and area with the year each is for, coordinates, land borders, driving side and calendar conventions; each subdivision's capital, population and area; and 107 groupings, from the continents and the EU to Japan's eight regions. The names are Unicode CLDR's, with Wikidata filling the gaps, so they are the same on a server and in a browser, which `Intl.DisplayNames` is not. It looks a country up by what somebody typed (Holland, ＵＳＡ, にほん, 米国) and a region by its code or its name. It works in [the demo](https://johnmorrisdotca.github.io/kuni/) with nothing to install.
 
 ## In 30 seconds
 
@@ -45,7 +45,7 @@ npm install @johnmorrisdotca/kuni
 ```ts
 import { country, countryByName, countryName } from "@johnmorrisdotca/kuni";
 
-countryByName("ドイツ")?.alpha2;          // "DE"; "Germany", "どいつ" and "Deutschland" find it too
+countryByName("ドイツ")?.alpha2;          // "DE"; "Germany" and "Deutschland" find it too
 countryByName("Holland")?.name.ja;        // "オランダ"
 countryName("US", "ja", { short: true }); // "アメリカ"
 country("JP")?.callingCode;               // "+81"
@@ -244,10 +244,10 @@ The Japanese name is `null` where no source has one, so the fallback to English 
 ```ts
 import { countryByName } from "@johnmorrisdotca/kuni";
 
-for (const typed of ["UK", "the Netherlands", "ＵＳＡ", "どいつ", "Burma", "Narnia"]) {
+for (const typed of ["UK", "the Netherlands", "ＵＳＡ", "にほん", "Burma", "Narnia"]) {
   console.log(typed, countryByName(typed)?.alpha2 ?? "(keep their words, no flag)");
 }
-// UK GB · the Netherlands NL · ＵＳＡ US · どいつ DE · Burma MM · Narnia (keep their words, no flag)
+// UK GB · the Netherlands NL · ＵＳＡ US · にほん JP · Burma MM · Narnia (keep their words, no flag)
 ```
 
 ### A name that is two places

@@ -22,7 +22,7 @@ const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewB
 
 const uses = [
   `import { country, countryByName } from "@johnmorrisdotca/kuni";`,
-  `countryByName("ドイツ")?.alpha2  // "DE"; also "Germany", "どいつ", "Deutschland"`,
+  `countryByName("ドイツ")?.alpha2  // "DE"; also "Germany", "Deutschland"`,
   `countryByName("Holland")?.name.ja  // "オランダ"`,
   `country("JP")?.callingCode  // "+81"`,
   `import prefectures from "@johnmorrisdotca/kuni/subdivisions/jp";  // 47, under 3 KB`,
