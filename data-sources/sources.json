@@ -43,6 +43,13 @@
       "note": "Wikidata SPARQL answers for ISO 3166-2 (P300) and ISO 3166-1 (P297) codes; the queries are in the file (CC0)"
     },
     {
+      "path": "wikidata-codes-2026-10-10.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-10-10",
+      "sha256": "95a121a68e8b1f6b81f2f84dd6e80e8c65406b7b5d8bdaaa5c69dfc4c728df62",
+      "note": "Wikidata SPARQL answers for IOC codes (P984) and the withdrawn ISO 3166-3 codes (P773) with their former codes and successors; the queries are in the file (CC0)"
+    },
+    {
       "path": "wikidata-facts-2026-10-09.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-10-09",

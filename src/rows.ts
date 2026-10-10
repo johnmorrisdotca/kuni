@@ -5,7 +5,7 @@
 import type { Continent, Country, GroupingKind, GroupingStatus, LatLon, Subdivision, SubdivisionFacts, SubdivisionType } from "./types";
 
 // [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, callingCode,
-//  currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, kind]
+//  currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, ioc, kind]
 // Lists of codes are one string with spaces between; aliases are one string with "|" between; an absent
 // value is null. The last element is present only for a user-assigned code.
 type CountryRow = readonly [
@@ -28,6 +28,7 @@ type CountryRow = readonly [
   string | null,
   string | null,
   SubdivisionType | null,
+  string | null,
   string | null,
   "user"?,
 ];
@@ -58,7 +59,7 @@ const listOf = (text: string | null, separator: string): string[] | undefined =>
 
 const expandCountry = (row: CountryRow): Country => {
   const [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, calling] = row;
-  const [, , , , , , , , , , , , currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, kind] = row;
+  const [, , , , , , , , , , , , currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, ioc, kind] = row;
   const country: Country = {
     alpha2,
     alpha3,
@@ -83,6 +84,7 @@ const expandCountry = (row: CountryRow): Country => {
   if (languages !== null) country.languages = listOf(languages, " ");
   if (subdivisionType !== null) country.subdivisionType = subdivisionType;
   if (aliases !== null) country.aliases = listOf(aliases, "|");
+  if (ioc !== null) country.ioc = ioc;
 
   return country;
 };
@@ -183,5 +185,19 @@ interface GroupingRow {
   asOf: string;
 }
 
+// A withdrawn country as scripts/build-data.ts writes it (src/withdrawn.ts makes the public object).
+interface WithdrawnRow {
+  code: string;
+  alpha2: string;
+  alpha3: string | null;
+  numeric: string | null;
+  en: string;
+  ja: string | null;
+  since: string;
+  until: string;
+  successors: readonly string[];
+  reusedBy: string | null;
+}
+
 export { expandCountry, expandSubdivisionFacts, expandSubdivisions, flagOf };
-export type { CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable };
+export type { CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable, WithdrawnRow };

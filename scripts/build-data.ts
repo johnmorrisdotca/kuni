@@ -38,6 +38,8 @@ import {
 import { englishSuspects } from "./en-names.ts";
 import { buildFacts } from "./facts.ts";
 import { buildGroupings } from "./groupings.ts";
+import { buildWithdrawn, withdrawnDoc } from "./withdrawn.ts";
+import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
@@ -74,6 +76,7 @@ interface CountryRecord {
   languages: string[];
   subdivisionType: string | null;
   aliases: string[];
+  ioc: string | null;
 }
 
 interface SubdivisionRecord {
@@ -208,6 +211,9 @@ const subdivisionContainment = dig(readJson("cldr-core/supplemental/subdivisionC
 const factsFile = manifest.files.find((file) => file.path.startsWith("wikidata-facts-"));
 if (factsFile === undefined) throw new Error("No Wikidata facts snapshot in data-sources/sources.json: run pnpm data:facts");
 const factsSnapshot = JSON.parse(readSource(manifest, factsFile.path).text) as FactsSnapshot;
+const codesFile = manifest.files.find((file) => file.path.startsWith("wikidata-codes-"));
+if (codesFile === undefined) throw new Error("No Wikidata codes snapshot in data-sources/sources.json: run pnpm data:codes");
+const codesSnapshot = JSON.parse(readSource(manifest, codesFile.path).text) as CodesSnapshot;
 const countriesList = readJson("countries-list/countries.min.json") as Record<string, { name: string; native: string; phone: number[]; continent: string; capital: string; languages: string[] }>;
 
 const versions = { cldrCore: versionOf("cldr-core"), cldrNames: versionOf("cldr-localenames-full"), countriesList: versionOf("countries-list"), chizu: versionOf("@johnmorrisdotca/chizu") };
@@ -344,8 +350,13 @@ const countries: CountryRecord[] = alpha2Codes.map((alpha2) => {
     languages: listed.languages,
     subdivisionType: null,
     aliases,
+    ioc: null,
   };
 });
+
+// The IOC codes and the withdrawn countries (scripts/withdrawn.ts), from the codes snapshot.
+const withdrawn = buildWithdrawn(codesSnapshot, new Set(countries.map((country) => country.alpha2)));
+for (const country of countries) country.ioc = withdrawn.ioc.get(country.alpha2) ?? null;
 
 for (const country of countries) {
   if (!/^[A-Z]{3}$/.test(country.alpha3) || !/^\d{3}$/.test(country.numeric)) throw new Error(`${country.alpha2} has no alpha-3 or numeric code`);
@@ -629,6 +640,7 @@ const countryRow = (country: CountryRecord): string => {
     joined(country.languages, " "),
     country.subdivisionType,
     joined(country.aliases, "|"),
+    country.ioc,
   ];
   if (country.kind === "user") row.push("user");
 
@@ -655,6 +667,7 @@ const writeCountries = (): void => {
     header(`Every country (${countries.length}), one row each; src/rows.ts says what the columns are.`, [
       `${CLDR_SOURCE}: names, short names, variants, codes, currencies, regions`,
       `${WIKIDATA_SOURCE}: calling codes, readings`,
+      `Wikidata (CC0), the snapshot data-sources/${codesFile.path}: IOC codes`,
       `${LIST_SOURCE}: own names, capitals, languages`,
       `${CLDR_SOURCE}: continents, from UN M49`,
       `Wikidata (CC0), the snapshot data-sources/${factsFile.path}: capitals' Japanese names`,
@@ -746,6 +759,24 @@ const writeGroupings = (): void => {
       "export { GROUPING_ROWS };\n",
   );
   writeFileSync(join(DOCS, "groupings.md"), doc.join("\n"));
+};
+
+// The /withdrawn entry's table, one object a line, and docs/withdrawn.md.
+const writeWithdrawn = (): void => {
+  const { records } = withdrawn;
+  const rows = records.map(({ items: _items, filled: _filled, ...row }) => row);
+  writeFileSync(
+    join(OUT_DATA, "withdrawn.data.ts"),
+    header(`The ${records.length} withdrawn countries of ISO 3166-3, one object each.`, [
+      `Wikidata (CC0), the snapshot data-sources/${codesFile.path}: the codes, names, years and successors`,
+      "scripts/withdrawn-config.ts (MIT): the few codes, years, names and successors Wikidata does not give, with the reasons",
+    ]) +
+      'import type { WithdrawnRow } from "../rows";\n\n' +
+      `const WITHDRAWN_ROWS: readonly WithdrawnRow[] = [\n${rows.map((row) => `  ${literal(row)},`).join("\n")}\n];\n\n` +
+      `/**\n * The day the Wikidata snapshot of the withdrawn codes was read.\n *\n * @example\n * \`\`\`ts\n * import { WITHDRAWN_READ } from "@johnmorrisdotca/kuni/withdrawn";\n *\n * WITHDRAWN_READ; // "${codesFile.read}"\n * \`\`\`\n */\nconst WITHDRAWN_READ = ${literal(codesFile.read)};\n\n` +
+      "export { WITHDRAWN_READ, WITHDRAWN_ROWS };\n",
+  );
+  writeFileSync(join(DOCS, "withdrawn.md"), withdrawnDoc(records, codesSnapshot, withdrawn.ioc.size).join("\n"));
 };
 
 const writeSubdivisionFacts = (): void => {
@@ -1092,5 +1123,6 @@ if (REPORT) {
   writeFacts();
   writeSubdivisionFacts();
   writeGroupings();
+  writeWithdrawn();
   console.log(`Wrote ${countries.length} countries and ${subdivisions.length} subdivisions of ${byCountry.size} countries.`);
 }

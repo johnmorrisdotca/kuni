@@ -81,6 +81,7 @@ describe("the countries", () => {
       zones: ["Asia/Tokyo"],
       languages: ["ja"],
       subdivisionType: "prefecture",
+      ioc: "JPN",
     });
   });
 
@@ -90,6 +91,22 @@ describe("the countries", () => {
     expect(country("XK")?.callingCode).toBe("+383");
     expect(country("GB")?.tld).toBe("uk");
     expect(country("XK")?.tld).toBeUndefined();
+  });
+
+  it("carry the International Olympic Committee's code where Wikidata gives one, three letters and each its own", () => {
+    expect(country("JP")?.ioc).toBe("JPN");
+    expect(country("DE")?.ioc).toBe("GER");
+    expect(country("CH")?.ioc).toBe("SUI");
+    expect(country("NL")?.ioc).toBe("NED");
+    expect(country("ES")?.ioc).toBe("ESP");
+    expect(country("TW")?.ioc).toBe("TPE");
+    expect(country("XK")?.ioc).toBe("KOS");
+    const given = countries().filter((one) => one.ioc !== undefined);
+    expect(given.length).toBeGreaterThan(200);
+    for (const one of given) expect(one.ioc, one.alpha2).toMatch(/^[A-Z]{3}$/);
+    expect(new Set(given.map((one) => one.ioc)).size).toBe(given.length);
+    // A country with no committee has no field, rather than an empty one.
+    expect(country("AQ")).not.toHaveProperty("ioc");
   });
 
   it("have short names from CLDR where it has them", () => {

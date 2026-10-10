@@ -98,6 +98,7 @@ import japan from "${pkg.name}/subdivisions/jp";
 import { loadSubdivisions } from "${pkg.name}/load";
 import { facts } from "${pkg.name}/facts";
 import { membersOf } from "${pkg.name}/groupings";
+import { withdrawn } from "${pkg.name}/withdrawn";
 import { loadSubdivisionFacts } from "${pkg.name}/subdivision-facts";
 ${probe}
 const all = [${entries.map((_, at) => `m${at}`).join(", ")}];
@@ -107,6 +108,7 @@ if (JSON.stringify(answers(m0, m${entries.indexOf(`${pkg.name}/subdivisions`)}))
 if (m0.VERSION !== ${JSON.stringify(pkg.version)}) throw new Error("VERSION is " + m0.VERSION);
 if (japan.length !== 47 || japan[12].code !== "JP-13") throw new Error("subdivisions/jp gave " + japan.length);
 if (facts("JP")?.drivingSide !== "left") throw new Error("facts(JP) gave " + JSON.stringify(facts("JP")));
+if (withdrawn("SU")[0]?.name.en !== "Soviet Union" || m0.country("DE")?.ioc !== "GER") throw new Error("withdrawn or ioc gave " + JSON.stringify(withdrawn("SU")));
 if (membersOf("g7")?.length !== 7) throw new Error("membersOf(g7) gave " + membersOf("g7"));
 if ((await loadSubdivisionFacts("JP"))?.[0].capital?.ja !== "札幌市") throw new Error("loadSubdivisionFacts(JP) did not load");
 const canada = await loadSubdivisions("CA");
@@ -124,6 +126,7 @@ const { SUBDIVISIONS } = require("${pkg.name}/subdivisions/jp");
 if (SUBDIVISIONS.length !== 47) throw new Error("subdivisions/jp by require gave " + SUBDIVISIONS.length);
 if (require("${pkg.name}/facts").facts("US").measurement !== "US") throw new Error("facts by require");
 if (require("${pkg.name}/groupings").grouping("eu").members.length !== 27) throw new Error("groupings by require");
+if (require("${pkg.name}/withdrawn").withdrawn("YU")[0].successors.length !== 6) throw new Error("withdrawn by require");
 require("${pkg.name}/subdivision-facts").loadSubdivisionFacts("CA").then((list) => {
   if (list.length !== 13) throw new Error("loadSubdivisionFacts by require gave " + list.length);
 });
@@ -144,11 +147,13 @@ import japan from "${pkg.name}/subdivisions/jp";
 import { loadSubdivisions } from "${pkg.name}/load";
 import { facts, type CountryFacts } from "${pkg.name}/facts";
 import { grouping, type Grouping } from "${pkg.name}/groupings";
+import { withdrawn, type WithdrawnCountry } from "${pkg.name}/withdrawn";
 import { loadSubdivisionFacts, type SubdivisionFacts } from "${pkg.name}/subdivision-facts";
 import japanFacts from "${pkg.name}/subdivision-facts/jp";
 
 const fact: CountryFacts | null = facts("JP");
 const body: Grouping | null = grouping("eu");
+const old: readonly WithdrawnCountry[] = withdrawn("SU");
 const prefectureFacts: Promise<readonly SubdivisionFacts[] | null> = loadSubdivisionFacts("JP");
 const firstFact: SubdivisionFacts | undefined = japanFacts[0];
 const one: Country | null = country("JP");
@@ -157,7 +162,7 @@ const known: boolean = isCountryCode("JP");
 const place: Subdivision | null = subdivision("JP-13") ?? subdivisionByName("Ontario");
 const first: Subdivision | undefined = japan[0];
 const later: Promise<readonly Subdivision[] | null> = loadSubdivisions("CA");
-export { body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
+export { old, body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
 `;
 writeFileSync(join(project, "types.mts"), typed);
 writeFileSync(join(project, "types.cts"), typed);

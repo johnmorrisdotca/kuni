@@ -131,6 +131,16 @@
         "default": "./dist/groupings.cjs"
       }
     },
+    "./withdrawn": {
+      "import": {
+        "types": "./dist/withdrawn.d.ts",
+        "default": "./dist/withdrawn.js"
+      },
+      "require": {
+        "types": "./dist/withdrawn.d.cts",
+        "default": "./dist/withdrawn.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -156,6 +166,7 @@
     "data:fetch": "node scripts/fetch-sources.ts",
     "data:wikidata": "node scripts/fetch-wikidata.ts",
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
+    "data:codes": "node scripts/fetch-wikidata-codes.ts",
     "site": "pnpm build && node scripts/site.mjs",
     "test:demo": "pnpm site && playwright test",
     "screenshots:readme": "pnpm site && node scripts/readme-pictures.mjs",

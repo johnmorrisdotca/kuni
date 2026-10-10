@@ -119,6 +119,12 @@ interface Country {
   subdivisionType?: SubdivisionType;
   /** Other names people use for it, in either language: "Holland", "UK", 米国 */
   aliases?: string[];
+  /**
+   * The International Olympic Committee's country code, three letters and not always the alpha-3: "JPN", "GER" for
+   * Germany (DEU), "SUI" for Switzerland (CHE). From Wikidata (P984). Absent for the countries with no National
+   * Olympic Committee.
+   */
+  ioc?: string;
 }
 
 /** A subdivision of a country (a state, a province, a prefecture), with its ISO 3166-2 code, as the lookups hand it out (frozen). */

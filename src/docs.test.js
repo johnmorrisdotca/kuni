@@ -9,6 +9,7 @@ import { WORDS } from "../demo/words.js";
 import * as codes from "./codes.ts";
 import * as facts from "./facts.ts";
 import * as groupingsEntry from "./groupings.ts";
+import * as withdrawnEntry from "./withdrawn.ts";
 import * as main from "./index.ts";
 import * as load from "./load.ts";
 import * as subdivisionFacts from "./subdivision-facts.ts";
@@ -37,7 +38,7 @@ describe("the README", () => {
   it("names in its API table every runtime export of every entry", () => {
     const table = section("API");
     const rowOf = (entry) => table.split("\n").find((line) => line.startsWith(`| \`${entry}\``)) ?? "";
-    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry]]) {
+    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry]]) {
       const row = rowOf(entry);
       for (const name of Object.keys(module)) expect(row, `${name} is not in the API table's row for ${entry}`).toContain(`\`${name}\``);
     }
@@ -86,7 +87,7 @@ describe("the other documents", () => {
   });
 
   it("have the files a visitor looks for", () => {
-    for (const file of [".github/ISSUE_TEMPLATE/report-a-bug.md", ".github/ISSUE_TEMPLATE/suggest-a-feature.md", ".github/ISSUE_TEMPLATE/fix-a-translation.md", ".github/ISSUE_TEMPLATE/add-my-project.md", ".github/pull_request_template.md", "SECURITY.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE", "NOTICE.md", "docs/PLAN.md", "docs/disagreements.md", "docs/name-rules.md", "docs/ja-gaps.md", "docs/facts.md", "docs/subdivision-facts.md", "docs/groupings.md", "data-sources/README.md"]) {
+    for (const file of [".github/ISSUE_TEMPLATE/report-a-bug.md", ".github/ISSUE_TEMPLATE/suggest-a-feature.md", ".github/ISSUE_TEMPLATE/fix-a-translation.md", ".github/ISSUE_TEMPLATE/add-my-project.md", ".github/pull_request_template.md", "SECURITY.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE", "NOTICE.md", "docs/PLAN.md", "docs/disagreements.md", "docs/name-rules.md", "docs/ja-gaps.md", "docs/facts.md", "docs/subdivision-facts.md", "docs/groupings.md", "docs/withdrawn.md", "data-sources/README.md"]) {
       expect(existsSync(file), file).toBe(true);
     }
   });

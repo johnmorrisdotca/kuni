@@ -14,6 +14,7 @@ bytes are not the recorded ones.
 | `iana/tlds-alpha-by-domain.txt` | https://data.iana.org/TLD/tlds-alpha-by-domain.txt (version 2026100900) | 2026-10-09 | IANA, a list of facts |
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
+| `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
 | `expected-ja-gaps.json` | Written by `pnpm data:report --accept`: the subdivisions with no Japanese name | | MIT |
 
 The CLDR files are from the release tag `release-48-2`, the same release as the `cldr-core` and
@@ -26,6 +27,7 @@ release 2026e. The TLD list has no release: IANA keeps one current file, and its
 pnpm data:fetch       # the CLDR and IANA files, again, and their lines in sources.json
 pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day; the old one is removed
 pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
+pnpm data:codes       # a new Wikidata snapshot of the IOC and withdrawn codes, named for the day; the old one is removed
 pnpm data             # rebuild src/data/ from what is here
 pnpm data:report      # the coverage, and docs/ja-gaps.md
 ```
@@ -44,6 +46,15 @@ sorted so that two snapshots compare line by line:
   code (P474).
 
 Wikidata's structured data is CC0 (https://www.wikidata.org/wiki/Wikidata:Licensing).
+
+## The Wikidata codes snapshot
+
+`wikidata-codes-<day>.json` (`scripts/fetch-wikidata-codes.ts`) holds the answers to the four queries written in it:
+
+- for every ISO 3166-1 alpha-2 code (P297, deprecated statements left out): the International Olympic Committee country code (P984);
+- for every item with an ISO 3166-3 code (P773): its English and Japanese labels, when it began (P571) and ended (P576), every alpha-2 (P297), alpha-3 (P298) and numeric (P299) code it held with the rank, start and end of each statement, and the items that replaced it (P1366) or followed it (P156) with the alpha-2 code each holds now.
+
+`scripts/withdrawn.ts` turns them into the `/withdrawn` entry and the `ioc` field and stops with every problem listed when a record cannot be stood behind; `scripts/withdrawn-config.ts` holds the few things Wikidata lacks, each with its reason, and `docs/withdrawn.md` lists them.
 
 ## The Wikidata facts snapshot
 

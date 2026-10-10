@@ -34,7 +34,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
 </tr>
 </table>
 
-Kuni is the country list every site ends up keeping for itself, kept once, with what a form, a profile page or a map quiz asks of it: the 250 countries with their ISO 3166-1 codes, and their 5,050 ISO 3166-2 subdivisions (Japan's prefectures, the American states, Canada's provinces and territories, France's regions and departments), each named in English and in Japanese. Beside the names, in entries of their own so a page that only names countries does not carry them: each country's capital, population and area with the year each is for, coordinates, land borders, driving side and calendar conventions; each subdivision's capital, population and area; and 107 groupings, from the continents and the EU to Japan's eight regions. The names are Unicode CLDR's, with Wikidata filling the gaps, so they are the same on a server and in a browser, which `Intl.DisplayNames` is not. It looks a country up by what somebody typed (Holland, ＵＳＡ, にほん, 米国) and a region by its code or its name. It works in [the demo](https://johnmorrisdotca.github.io/kuni/) with nothing to install.
+Kuni is the country list every site ends up keeping for itself, kept once, with what a form, a profile page or a map quiz asks of it: the 250 countries with their ISO 3166-1 codes, and their 5,050 ISO 3166-2 subdivisions (Japan's prefectures, the American states, Canada's provinces and territories, France's regions and departments), each named in English and in Japanese. Beside the names, in entries of their own so a page that only names countries does not carry them: each country's capital, population and area with the year each is for, coordinates, land borders, driving side and calendar conventions; each subdivision's capital, population and area; and 107 groupings, from the continents and the EU to Japan's eight regions; and, in a list of its own so no country picker shows them, the 31 countries that were withdrawn from ISO 3166-1 (the Soviet Union, Yugoslavia, Czechoslovakia, East Germany, Zaire) with the codes they held and what came after. The names are Unicode CLDR's, with Wikidata filling the gaps, so they are the same on a server and in a browser, which `Intl.DisplayNames` is not. It looks a country up by what somebody typed (Holland, ＵＳＡ, にほん, 米国) and a region by its code or its name. It works in [the demo](https://johnmorrisdotca.github.io/kuni/) with nothing to install.
 
 ## In 30 seconds
 
@@ -79,6 +79,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Sites rendered on a server and hydrated in a browser**, where `Intl.DisplayNames` spells some countries differently in Node and in Chromium and the page does not match itself.
 - **Japanese-language pages** that need アメリカ合衆国 and オンタリオ州, the four kinds of Japanese prefecture (都道府県), and prefecture readings in kana.
 - **Maps, quizzes and data pipelines** that join their own figures to a country or a region by its ISO code, or want the capital, the population, the neighbours and the groupings a quiz asks about.
+- **Old records**: a table that still says SU, YU, CS, DD or ZR, or an export from before 1993, which `withdrawn(code)` names and points to the countries that came after.
 - **Build scripts** in sister packages (a map that draws any grouping, a site with a page per prefecture) that read plain numbers, stable codes and as-of dates.
 
 ## Features
@@ -91,6 +92,8 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,968 of 5,050), with readings in kana for Japan's prefectural capitals (さっぽろし).
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
+- **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the current countries that came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
+- **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
 - **Small where it matters.** The countries and lookups are about 57 KB (19 KB gzipped); one country's subdivisions are their own entry (Japan's 47, 2.9 KB) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
@@ -113,7 +116,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 
 | Entry | What it carries | Size (ESM) |
 | --- | --- | --- |
-| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 57 KB, 19 KB gzipped |
+| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 64 KB, 22 KB gzipped |
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 2 KB |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | One country's subdivisions, every level (`/subdivisions/jp`, `/subdivisions/us`, lower case) | 1 to 13 KB; Japan 2.9 KB |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 11 KB, then the country's own file |
@@ -122,6 +125,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 12 KB, then the country's own file |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 1 to 16 KB; Japan 4.9 KB |
 | `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 84 KB, 16 KB gzipped |
+| `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 8 KB, 2.4 KB gzipped |
 
 ### 1. The countries
 
@@ -131,6 +135,7 @@ import { countries, country, countryByName } from "@johnmorrisdotca/kuni";
 country("jp");                      // alpha-2 in either case, "JPN" or "392" too
 countryByName("cote d'ivoire");     // Côte d'Ivoire, CI
 countries({ order: "ja" });         // in Japanese order, by reading where a name is in kanji
+country("DE")?.ioc;                 // "GER", the Olympic committee's code (absent where Wikidata gives none)
 ```
 
 ### 2. One country's subdivisions
@@ -206,6 +211,21 @@ groupings({ kind: "informal" }).map((one) => one.id);     // ["middle-east", "la
 
 Each grouping has `definition`, `source` (name, address and licence) and `asOf`; an informal one has `informal: true` and, where definitions disagree, a `note`. `docs/groupings.md` cross-checks the bodies' lists against Wikidata and says what each grouping follows.
 
+### 8. Withdrawn countries
+
+```ts
+import { withdrawn, withdrawnCountries } from "@johnmorrisdotca/kuni/withdrawn";
+
+withdrawn("SU")[0].name.en;          // "Soviet Union" (also by "SUHH", "SUN" or "810")
+withdrawn("SU")[0].until;            // "1992"
+withdrawn("YU")[0].successors;       // ["BA", "HR", "ME", "MK", "RS", "SI"]
+withdrawn("CS").map((one) => one.code); // ["CSXX", "CSHH"]: Serbia and Montenegro, then Czechoslovakia
+withdrawn("BY")[0].reusedBy;         // "BY": the Byelorussian SSR's code is Belarus's now
+withdrawnCountries().length;         // 31
+```
+
+The 31 are the entries of ISO 3166-3, read from Wikidata (property P773, with the years of the code's statements and the countries that replaced it), with a few years, codes and successors Wikidata lacks written by hand and listed with their reasons in [docs/withdrawn.md](./docs/withdrawn.md), which also lists their Japanese names for review. They are a list of their own: `country("SU")` is still `null`, `isCountryCode("SU")` is still `false` and `countries()` never holds them. A lookup by a code answers every withdrawn country that held it, the last one first, and an empty list for anything else; a record whose alpha-2 code a current country holds now (`BY`, `AI`, `BQ`, `GE`, `SK`) says so in `reusedBy`.
+
 ### In a page, with no bundler
 
 ```html
@@ -274,6 +294,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/facts` | `facts`, `allFacts`, `distanceKm`, `FACTS_READ`, and the types `CountryFacts`, `LatLon`, `DrivingSide`, `WeekStart`, `MeasurementSystem`, `PaperSize` and `HourCycle` |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts`, and the types `SubdivisionFacts` and `LatLon` |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | the country's subdivision facts as the default export and as `SUBDIVISION_FACTS` |
+| `@johnmorrisdotca/kuni/withdrawn` | `withdrawn`, `withdrawnCountries`, `WITHDRAWN_READ` and the type `WithdrawnCountry` |
 | `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
 
 A country:
@@ -381,6 +402,8 @@ None, on purpose: Kuni is data and lookups, with no colours, markup or styles, s
 | Area | 250 of 250 countries; 4,371 of 5,050 subdivisions | `areaKm2` |
 | Coordinates | 250 of 250 countries, 245 capitals; 4,780 of 5,050 subdivisions | `point`, `capitalPoint` |
 | Land borders | 327 pairs; 166 countries have one or more, 84 (islands, and Antarctica) none | `borders` |
+| Olympic codes | 209 of 250 countries | `ioc` |
+| Withdrawn countries | the 31 of ISO 3166-3, each with a successor | `/withdrawn` |
 | Groupings | 7 continents, 30 UN M49 areas, 23 bodies, 16 informal, 31 inside a country | `/groupings` |
 | Languages | English and Japanese | `LANGUAGES` |
 
@@ -429,6 +452,7 @@ src/
 ├── facts.ts            the "/facts" entry: population, area, coordinates, borders and conventions
 ├── subdivision-facts.ts  the "/subdivision-facts" entry: one country's subdivision facts by dynamic import
 ├── groupings.ts        the "/groupings" entry: continents, UN M49, bodies, informal groupings, regions
+├── withdrawn.ts        the "/withdrawn" entry: the countries ISO 3166-3 lists as withdrawn, and the codes they held
 ├── fold.ts             folding what somebody typed: case, accents, width, kana
 ├── rows.ts             turning the data's compact rows into objects
 ├── types.ts            the shapes of a country and a subdivision, and the kinds of place
@@ -438,7 +462,7 @@ src/
 └── subdivision-facts/  written by scripts/build-data.ts: the "/subdivision-facts/<code>" entries
 ```
 
-`scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts` and `scripts/groupings-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts` and `scripts/groupings.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
+`scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
 
 ## Data and licences
 
@@ -453,6 +477,7 @@ src/
 | Land borders, confirmed | Natural Earth 5.1.2 admin-0 at 1:50m, as drawn by Chizu 1.0.2 (a development dependency of the build, never of the package) | Public domain (Natural Earth); MIT (Chizu) |
 | First day of the week, measurement system, paper size, clock; UN M49; the UN's members | Unicode CLDR 48.2 (`cldr-core`) | Unicode-3.0 |
 | The bodies' members, the informal groupings and the regions inside a country | written for this package from each body's own list, on 2026-10-09 (`scripts/groupings-config.ts`) | MIT; lists of facts |
+| IOC codes, and the withdrawn countries' codes, names, years and successors | Wikidata, a snapshot of 2026-10-10 (`data-sources/wikidata-codes-2026-10-10.json`); a few years, codes and successors written by hand from ISO 3166-3's published list (`scripts/withdrawn-config.ts`) | CC0; lists of facts |
 | Aliases, a few readings and 46 corrected Japanese subdivision names | written for this package | MIT |
 
 [NOTICE.md](./NOTICE.md) carries the Unicode licence text and says what was changed, and [data-sources/README.md](./data-sources/README.md) says where every input came from and how to refresh it. Nothing under ODbL, CC BY-SA or the GPL is used, so the dataset is shipped under MIT with those notices.
@@ -467,7 +492,9 @@ Kuni was written because several sites by the same author each kept their own co
 
 ### Used by
 
-Nothing yet: it is new. Using Kuni in something? Open an *Add my project* issue and we will add you.
+- **[REST in Pieces](https://github.com/spxis/rest-in-pieces)**, a fake-data REST service, serves Kuni's countries (with their Olympic codes and withdrawn codes), subdivisions and groupings as an API, so a form or a test can fetch real country and region data without installing anything.
+
+Using Kuni in something else? Open an *Add my project* issue and we will add you.
 
 ### The family
 
