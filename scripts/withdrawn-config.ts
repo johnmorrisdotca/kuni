@@ -78,6 +78,11 @@ const NAME_FILLS: Record<string, { en?: string; ja?: string; why: string }> = {
   BUMM: { en: "Burma", ja: "ビルマ", why: "Wikidata's item is today's Myanmar, which holds the code MM; the withdrawn code BU named the country Burma." },
   TPTL: { en: "East Timor", ja: "東ティモール", why: "Wikidata's item is today's Timor-Leste, which holds the code TL; the withdrawn code TP named the country East Timor." },
   FXFR: { en: "Metropolitan France", why: "Wikidata's label is in lower case." },
+  BYAA: { ja: "ベラルーシ・ソビエト社会主義共和国", why: "Wikidata's 白ロシア is the Soviet-era spelling; Japanese now says ベラルーシ, as kuni's name for BY does." },
+  DDDE: { ja: "東ドイツ", why: "The English name is East Germany, and 東ドイツ is the name Japanese references and readers use; Wikidata's ドイツ民主共和国 is the long official form." },
+  VDVN: { ja: "北ベトナム", why: "The English name is North Vietnam, and 北ベトナム is the name Japanese references and readers use; Wikidata's ベトナム民主共和国 is the long official form." },
+  GEHH: { ja: "ギルバート・エリス諸島", why: "Japanese joins the two island groups with a middle dot; Wikidata's ギルバートおよびエリス諸島 reads as a translation." },
+  NTHH: { ja: "サウジアラビア・イラク中立地帯", why: "Wikidata's 中立地帯 alone does not say which neutral zone; the English name is the Saudi–Iraqi one." },
   DYBJ: { ja: "ダホメ共和国", why: "Wikidata's label has a bracket telling it from a place of the same name; kuni takes such brackets off, as it does CLDR's (docs/name-rules.md)." },
 };
 

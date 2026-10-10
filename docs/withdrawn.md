@@ -29,21 +29,21 @@ Both come from Wikidata (CC0), the snapshot `data-sources/wikidata-codes-2026-10
 | ANHH | AN | ANT | 530 | Netherlands Antilles | オランダ領アンティル | 1974 | 2010 | BQ CW SX |  |
 | BQAQ | BQ | ATB |  | British Antarctic Territory | イギリス領南極地域 | 1974 | 1979 | AQ | BQ |
 | BUMM | BU | BUR | 104 | Burma | ビルマ | 1974 | 1989 | MM |  |
-| BYAA | BY | BYS | 112 | Byelorussian Soviet Socialist Republic | 白ロシア・ソビエト社会主義共和国 | 1974 | 1992 | BY | BY |
+| BYAA | BY | BYS | 112 | Byelorussian Soviet Socialist Republic | ベラルーシ・ソビエト社会主義共和国 | 1974 | 1992 | BY | BY |
 | CSHH | CS | CSK | 200 | Czechoslovakia | チェコスロバキア | 1974 | 1993 | CZ SK |  |
 | CSXX | CS | SCG | 891 | Serbia and Montenegro | セルビア・モンテネグロ | 2003 | 2006 | ME RS |  |
 | CTKI | CT | CTE | 128 | Canton and Enderbury Islands | (none) | 1974 | 1984 | KI |  |
-| DDDE | DD | DDR | 278 | East Germany | ドイツ民主共和国 | 1974 | 1990 | DE |  |
+| DDDE | DD | DDR | 278 | East Germany | 東ドイツ | 1974 | 1990 | DE |  |
 | DYBJ | DY | DHY | 204 | Republic of Dahomey | ダホメ共和国 | 1974 | 1977 | BJ |  |
 | FQHH | FQ | ATF |  | French Southern and Antarctic Lands | フランス領南方・南極地域 | 1974 | 1979 | AQ TF |  |
 | FXFR | FX | FXX | 249 | Metropolitan France | フランス本土 | 1993 | 1997 | FR |  |
-| GEHH | GE | GEL |  | Gilbert and Ellice Islands | ギルバートおよびエリス諸島 | 1974 | 1979 | KI | GE |
+| GEHH | GE | GEL |  | Gilbert and Ellice Islands | ギルバート・エリス諸島 | 1974 | 1979 | KI | GE |
 | HVBF | HV | HVO | 854 | Republic of Upper Volta | オートボルタ | 1974 | 1984 | BF |  |
 | JTUM | JT | JTN | 396 | Johnston Atoll | ジョンストン島 | 1974 | 1986 | UM |  |
 | MIUM | MI | MID | 488 | Midway Atoll | ミッドウェー島 | 1974 | 1986 | UM |  |
 | NHVU | NH | NHB |  | New Hebrides | ニューヘブリディーズ諸島 | 1974 | 1980 | VU |  |
 | NQAQ | NQ | ATN | 216 | Queen Maud Land | ドローニング・モード・ランド | 1974 | 1983 | AQ |  |
-| NTHH | NT | NTZ | 536 | Saudi–Iraqi Neutral Zone | 中立地帯 | 1974 | 1993 | IQ SA |  |
+| NTHH | NT | NTZ | 536 | Saudi–Iraqi Neutral Zone | サウジアラビア・イラク中立地帯 | 1974 | 1993 | IQ SA |  |
 | PCHH | PC | PCI | 582 | Trust Territory of the Pacific Islands | 太平洋諸島信託統治領 | 1974 | 1986 | FM MH MP PW |  |
 | PUUM | PU | PUS | 849 | United States Miscellaneous Pacific Islands | (none) | 1974 | 1986 | UM |  |
 | PZPA | PZ | PCZ |  | Panama Canal Zone | パナマ運河地帯 | 1974 | 1980 | PA |  |
@@ -51,7 +51,7 @@ Both come from Wikidata (CC0), the snapshot `data-sources/wikidata-codes-2026-10
 | SKIN | SK | SKM |  | Kingdom of Sikkim | シッキム王国 | 1974 | 1975 | IN | SK |
 | SUHH | SU | SUN | 810 | Soviet Union | ソビエト連邦 | 1974 | 1992 | AM AZ EE GE KZ KG LV LT MD RU TJ TM UZ |  |
 | TPTL | TP | TMP | 626 | East Timor | 東ティモール | 1974 | 2002 | TL |  |
-| VDVN | VD | VDR |  | North Vietnam | ベトナム民主共和国 | 1974 | 1977 | VN |  |
+| VDVN | VD | VDR |  | North Vietnam | 北ベトナム | 1974 | 1977 | VN |  |
 | WKUM | WK | WAK | 872 | Wake Island | ウェーク島 | 1974 | 1986 | UM |  |
 | YDYE | YD | YMD | 720 | South Yemen | 南イエメン | 1974 | 1990 | YE |  |
 | YUCS | YU | YUG | 891 | Yugoslavia | ユーゴスラビア | 1974 | 2003 | CS |  |
@@ -65,21 +65,21 @@ Wikidata's labels. A native reader of Japanese should look at these before they 
 - ANHH: Netherlands Antilles / オランダ領アンティル
 - BQAQ: British Antarctic Territory / イギリス領南極地域
 - BUMM: Burma / ビルマ
-- BYAA: Byelorussian Soviet Socialist Republic / 白ロシア・ソビエト社会主義共和国
+- BYAA: Byelorussian Soviet Socialist Republic / ベラルーシ・ソビエト社会主義共和国
 - CSHH: Czechoslovakia / チェコスロバキア
 - CSXX: Serbia and Montenegro / セルビア・モンテネグロ
 - CTKI: Canton and Enderbury Islands / (none)
-- DDDE: East Germany / ドイツ民主共和国
+- DDDE: East Germany / 東ドイツ
 - DYBJ: Republic of Dahomey / ダホメ共和国
 - FQHH: French Southern and Antarctic Lands / フランス領南方・南極地域
 - FXFR: Metropolitan France / フランス本土
-- GEHH: Gilbert and Ellice Islands / ギルバートおよびエリス諸島
+- GEHH: Gilbert and Ellice Islands / ギルバート・エリス諸島
 - HVBF: Republic of Upper Volta / オートボルタ
 - JTUM: Johnston Atoll / ジョンストン島
 - MIUM: Midway Atoll / ミッドウェー島
 - NHVU: New Hebrides / ニューヘブリディーズ諸島
 - NQAQ: Queen Maud Land / ドローニング・モード・ランド
-- NTHH: Saudi–Iraqi Neutral Zone / 中立地帯
+- NTHH: Saudi–Iraqi Neutral Zone / サウジアラビア・イラク中立地帯
 - PCHH: Trust Territory of the Pacific Islands / 太平洋諸島信託統治領
 - PUUM: United States Miscellaneous Pacific Islands / (none)
 - PZPA: Panama Canal Zone / パナマ運河地帯
@@ -87,7 +87,7 @@ Wikidata's labels. A native reader of Japanese should look at these before they 
 - SKIN: Kingdom of Sikkim / シッキム王国
 - SUHH: Soviet Union / ソビエト連邦
 - TPTL: East Timor / 東ティモール
-- VDVN: North Vietnam / ベトナム民主共和国
+- VDVN: North Vietnam / 北ベトナム
 - WKUM: Wake Island / ウェーク島
 - YDYE: South Yemen / 南イエメン
 - YUCS: Yugoslavia / ユーゴスラビア
@@ -99,11 +99,21 @@ Every other name is Wikidata's.
 
 - **BUMM** Burma
   - name (Wikidata's item is today's Myanmar, which holds the code MM; the withdrawn code BU named the country Burma.)
+- **BYAA** Byelorussian Soviet Socialist Republic
+  - name (Wikidata's 白ロシア is the Soviet-era spelling; Japanese now says ベラルーシ, as kuni's name for BY does.)
+- **DDDE** East Germany
+  - name (The English name is East Germany, and 東ドイツ is the name Japanese references and readers use; Wikidata's ドイツ民主共和国 is the long official form.)
 - **DYBJ** Republic of Dahomey
   - name (Wikidata's label has a bracket telling it from a place of the same name; kuni takes such brackets off, as it does CLDR's (docs/name-rules.md).)
 - **FXFR** Metropolitan France
   - name (Wikidata's label is in lower case.)
+- **GEHH** Gilbert and Ellice Islands
+  - name (Japanese joins the two island groups with a middle dot; Wikidata's ギルバートおよびエリス諸島 reads as a translation.)
+- **NTHH** Saudi–Iraqi Neutral Zone
+  - name (Wikidata's 中立地帯 alone does not say which neutral zone; the English name is the Saudi–Iraqi one.)
 - **TPTL** East Timor
   - name (Wikidata's item is today's Timor-Leste, which holds the code TL; the withdrawn code TP named the country East Timor.)
+- **VDVN** North Vietnam
+  - name (The English name is North Vietnam, and 北ベトナム is the name Japanese references and readers use; Wikidata's ベトナム民主共和国 is the long official form.)
 - **YUCS** Yugoslavia
   - name (Two Wikidata items share the code (the Socialist Federal Republic, 1945 to 1992, and the Federal Republic, 1992 to 2003); ISO 3166-3's entry is just Yugoslavia.)
