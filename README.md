@@ -553,7 +553,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md); the commands are under [Development](#
 
 ## Changes
 
-See [CHANGELOG.md](./CHANGELOG.md). The latest release, 1.2.0, lets Compare colour each country and hide the capitals' dots, fits Compare's table on a phone, and downloads every list as a Markdown table and as SQL too.
+See [CHANGELOG.md](./CHANGELOG.md). The latest release, 1.3.0, adds each country's IOC code and the 31 withdrawn countries of ISO 3166-3 (Yugoslavia, the Soviet Union, Zaire and the rest) in a list of their own, with their years and the codes that replaced them.
 
 ## Licence
 

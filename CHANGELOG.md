@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-09
+
 ### Added
 
 - **`country(code).ioc`**, the International Olympic Committee's three-letter country code (`"JPN"`, `"GER"` for Germany, `"SUI"` for Switzerland, `"TPE"` for Taiwan, `"KOS"` for Kosovo), for the 209 countries Wikidata (P984, CC0) gives one. A country with none has no `ioc` field. It is one more column in the main entry's table: the entry grew by 1.7 KB (0.8 KB gzipped).
