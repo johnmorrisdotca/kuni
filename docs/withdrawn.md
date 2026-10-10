@@ -15,10 +15,9 @@ Both come from Wikidata (CC0), the snapshot `data-sources/wikidata-codes-2026-10
 
 ## How a record is made
 
-- A record is one ISO 3166-3 code (Wikidata property P773). Its first two letters are the alpha-2 code that was withdrawn, as the standard defines them; where Wikidata has an alpha-2 code that ended, it must say the same, or the build stops.
-- The years are those Wikidata gives the alpha-2 code's statement (start and end). Wikidata gives the first of January, so they are years ("1974"); a day that is not the first of January is kept whole. ISO 3166-1 began in 1974, which is the start where none is given.
-- A code the successor still uses (Timor-Leste's numeric 626, the French Southern Lands' ATF) is not a withdrawn code and is left out.
-- A successor is a current country that Wikidata says replaced or followed it, or one added by hand in `SUCCESSOR_FILLS` with the reason. Every record has at least one.
+- **ISO 3166-3 is the authority** for a withdrawn country's codes, years and successors. `WITHDRAWN_TABLE` in `scripts/withdrawn-config.ts` is that list transcribed once, as ISO's Online Browsing Platform and the published ISO 3166-3 list give it, and `src/withdrawn.test.ts` pins the whole table, so a rebuild cannot drift from it. The first two letters of a four-letter code are the alpha-2 code that was withdrawn; the alpha-3 and numeric codes are the ones it held (none, where ISO lists none); `since` and `until` are the years the code was in force.
+- **Wikidata is used for the names** in English and Japanese only (property P773 finds the item), with the few fixes in `NAME_FILLS`. The build stops if the Wikidata snapshot and ISO's table do not name the same 31 codes.
+- **A successor is exactly the new code ISO lists.** It may itself be withdrawn: Yugoslavia (`YUCS`) is replaced by `CS`, which names Serbia and Montenegro (`CSXX`, 2003 to 2006) and, before it, Czechoslovakia (`CSHH`, 1974 to 1993). `withdrawn("CS")` answers both, `CSXX` first, the one withdrawn last, so following the chain from `YUCS` leads to Serbia and Montenegro, and from there to `ME` and `RS`.
 - `reusedBy` is set where the withdrawn alpha-2 code was later given to a current country, so that BY, AI, BQ, GE and SK mean a country today and the older one only through this entry.
 - Japanese names are Wikidata's labels, with a trailing bracket taken off (ダホメ共和国 (西アフリカ) is ダホメ共和国); where Wikidata has none, the name is `null`, never an English name copied in.
 
@@ -27,36 +26,36 @@ Both come from Wikidata (CC0), the snapshot `data-sources/wikidata-codes-2026-10
 | ISO 3166-3 | Alpha-2 | Alpha-3 | Numeric | English | Japanese | Since | Until | Successors | Reused by |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | AIDJ | AI | AFI | 262 | French Territory of the Afars and the Issas | フランス領アファル・イッサ | 1974 | 1977 | DJ | AI |
-| ANHH | AN | ANT | 530 | Netherlands Antilles | オランダ領アンティル | 1974 | 2010 | AW BQ CW SX |  |
-| BQAQ | BQ | ATB | 080 | British Antarctic Territory | イギリス領南極地域 | 1974 | 1979 | AQ | BQ |
-| BUMM | BU | BUR |  | Burma | ビルマ | 1974 | 1989 | MM |  |
+| ANHH | AN | ANT | 530 | Netherlands Antilles | オランダ領アンティル | 1974 | 2010 | BQ CW SX |  |
+| BQAQ | BQ | ATB |  | British Antarctic Territory | イギリス領南極地域 | 1974 | 1979 | AQ | BQ |
+| BUMM | BU | BUR | 104 | Burma | ビルマ | 1974 | 1989 | MM |  |
 | BYAA | BY | BYS | 112 | Byelorussian Soviet Socialist Republic | 白ロシア・ソビエト社会主義共和国 | 1974 | 1992 | BY | BY |
 | CSHH | CS | CSK | 200 | Czechoslovakia | チェコスロバキア | 1974 | 1993 | CZ SK |  |
 | CSXX | CS | SCG | 891 | Serbia and Montenegro | セルビア・モンテネグロ | 2003 | 2006 | ME RS |  |
 | CTKI | CT | CTE | 128 | Canton and Enderbury Islands | (none) | 1974 | 1984 | KI |  |
 | DDDE | DD | DDR | 278 | East Germany | ドイツ民主共和国 | 1974 | 1990 | DE |  |
 | DYBJ | DY | DHY | 204 | Republic of Dahomey | ダホメ共和国 | 1974 | 1977 | BJ |  |
-| FQHH | FQ |  |  | French Southern and Antarctic Lands | フランス領南方・南極地域 | 1974 | 1979 | TF |  |
+| FQHH | FQ | ATF |  | French Southern and Antarctic Lands | フランス領南方・南極地域 | 1974 | 1979 | AQ TF |  |
 | FXFR | FX | FXX | 249 | Metropolitan France | フランス本土 | 1993 | 1997 | FR |  |
-| GEHH | GE | GEL | 296 | Gilbert and Ellice Islands | ギルバートおよびエリス諸島 | 1974 | 1979 | KI TV | GE |
+| GEHH | GE | GEL |  | Gilbert and Ellice Islands | ギルバートおよびエリス諸島 | 1974 | 1979 | KI | GE |
 | HVBF | HV | HVO | 854 | Republic of Upper Volta | オートボルタ | 1974 | 1984 | BF |  |
 | JTUM | JT | JTN | 396 | Johnston Atoll | ジョンストン島 | 1974 | 1986 | UM |  |
 | MIUM | MI | MID | 488 | Midway Atoll | ミッドウェー島 | 1974 | 1986 | UM |  |
-| NHVU | NH | NHB | 548 | New Hebrides | ニューヘブリディーズ諸島 | 1974 | 1980 | VU |  |
+| NHVU | NH | NHB |  | New Hebrides | ニューヘブリディーズ諸島 | 1974 | 1980 | VU |  |
 | NQAQ | NQ | ATN | 216 | Queen Maud Land | ドローニング・モード・ランド | 1974 | 1983 | AQ |  |
 | NTHH | NT | NTZ | 536 | Saudi–Iraqi Neutral Zone | 中立地帯 | 1974 | 1993 | IQ SA |  |
-| PCHH | PC | PCI | 582 | Trust Territory of the Pacific Islands | 太平洋諸島信託統治領 | 1974-12-15 | 1986-01-15 | FM MH MP PW |  |
+| PCHH | PC | PCI | 582 | Trust Territory of the Pacific Islands | 太平洋諸島信託統治領 | 1974 | 1986 | FM MH MP PW |  |
 | PUUM | PU | PUS | 849 | United States Miscellaneous Pacific Islands | (none) | 1974 | 1986 | UM |  |
-| PZPA | PZ | PCZ | 594 | Panama Canal Zone | パナマ運河地帯 | 1974 | 1979-10-01 | PA |  |
-| RHZW | RH | RHO |  | Southern Rhodesia | 南ローデシア | 1974 | 1980-04-18 | ZW |  |
-| SKIN | SK | SKM |  | Kingdom of Sikkim | シッキム王国 | 1974 | 1975-05-16 | IN | SK |
-| SUHH | SU | SUN | 810 | Soviet Union | ソビエト連邦 | 1974 | 1992 | AM AZ BY EE GE KG KZ LT LV MD RU TJ TM UA UZ |  |
-| TPTL | TP | TMP |  | East Timor | 東ティモール | 1974 | 2002 | TL |  |
-| VDVN | VD | VDR |  | North Vietnam | ベトナム民主共和国 | 1974 | 1976-07-02 | VN |  |
+| PZPA | PZ | PCZ |  | Panama Canal Zone | パナマ運河地帯 | 1974 | 1980 | PA |  |
+| RHZW | RH | RHO |  | Southern Rhodesia | 南ローデシア | 1974 | 1980 | ZW |  |
+| SKIN | SK | SKM |  | Kingdom of Sikkim | シッキム王国 | 1974 | 1975 | IN | SK |
+| SUHH | SU | SUN | 810 | Soviet Union | ソビエト連邦 | 1974 | 1992 | AM AZ EE GE KZ KG LV LT MD RU TJ TM UZ |  |
+| TPTL | TP | TMP | 626 | East Timor | 東ティモール | 1974 | 2002 | TL |  |
+| VDVN | VD | VDR |  | North Vietnam | ベトナム民主共和国 | 1974 | 1977 | VN |  |
 | WKUM | WK | WAK | 872 | Wake Island | ウェーク島 | 1974 | 1986 | UM |  |
-| YDYE | YD | YMD | 720 | South Yemen | 南イエメン | 1974 | 1990-08-14 | YE |  |
-| YUCS | YU | YUG | 891 | Yugoslavia | ユーゴスラビア | 1974 | 2003 | BA HR ME MK RS SI |  |
-| ZRCD | ZR | ZAR | 180 | Zaire | ザイール | 1974 | 1997-05-16 | CD |  |
+| YDYE | YD | YMD | 720 | South Yemen | 南イエメン | 1974 | 1990 | YE |  |
+| YUCS | YU | YUG | 891 | Yugoslavia | ユーゴスラビア | 1974 | 2003 | CS |  |
+| ZRCD | ZR | ZAR | 180 | Zaire | ザイール | 1974 | 1997 | CD |  |
 
 ## Japanese names, for review
 
@@ -94,65 +93,17 @@ Wikidata's labels. A native reader of Japanese should look at these before they 
 - YUCS: Yugoslavia / ユーゴスラビア
 - ZRCD: Zaire / ザイール
 
-## What was filled by hand
+## Names written by hand
 
-Every other part of every record is Wikidata's.
+Every other name is Wikidata's.
 
-- **BQAQ** British Antarctic Territory
-  - successors AQ (The British Antarctic Territory is a claim on Antarctica, AQ.)
 - **BUMM** Burma
   - name (Wikidata's item is today's Myanmar, which holds the code MM; the withdrawn code BU named the country Burma.)
-  - successors MM (Burma was renamed Myanmar; its code BU became MM.)
-- **CSHH** Czechoslovakia
-  - successors CZ SK (Czechoslovakia divided into Czechia and Slovakia on 1 January 1993.)
-- **CTKI** Canton and Enderbury Islands
-  - successors KI (The Canton and Enderbury Islands are part of Kiribati.)
 - **DYBJ** Republic of Dahomey
   - name (Wikidata's label has a bracket telling it from a place of the same name; kuni takes such brackets off, as it does CLDR's (docs/name-rules.md).)
-  - successors BJ (Dahomey was renamed Benin in 1975.)
-- **FQHH** French Southern and Antarctic Lands
-  - successors TF (The French Southern and Antarctic Territories are TF today.)
 - **FXFR** Metropolitan France
   - name (Wikidata's label is in lower case.)
-  - successors FR (Metropolitan France is part of France.)
-- **GEHH** Gilbert and Ellice Islands
-  - successors KI TV (The Gilbert and Ellice Islands became Kiribati and Tuvalu.)
-- **JTUM** Johnston Atoll
-  - successors UM (Johnston Atoll is one of the United States Minor Outlying Islands.)
-- **MIUM** Midway Atoll
-  - successors UM (Midway Atoll is one of the United States Minor Outlying Islands.)
-- **NQAQ** Queen Maud Land
-  - successors AQ (Queen Maud Land is a claim on Antarctica, AQ.)
-- **NTHH** Saudi–Iraqi Neutral Zone
-  - period (ISO 3166-3: the Saudi-Iraqi Neutral Zone's code was withdrawn in 1993; Wikidata dates the zone's end to 1991.)
-  - codes (ISO 3166-3: the Neutral Zone's alpha-3 and numeric codes.)
-  - successors IQ SA (The Neutral Zone was divided between Saudi Arabia and Iraq.)
-- **PCHH** Trust Territory of the Pacific Islands
-  - successors FM MH MP PW (The Trust Territory of the Pacific Islands became the Federated States of Micronesia, the Marshall Islands, the Northern Mariana Islands and Palau.)
-- **PUUM** United States Miscellaneous Pacific Islands
-  - period (ISO 3166-3: the code went when the US Minor Outlying Islands (UM) were given one code in 1986.)
-  - codes (ISO 3166-3: US Miscellaneous Pacific Islands.)
-  - successors UM (The islands became the United States Minor Outlying Islands.)
-- **PZPA** Panama Canal Zone
-  - codes (ISO 3166-3: the Panama Canal Zone.)
-  - successors PA (The Canal Zone was returned to Panama.)
-- **RHZW** Southern Rhodesia
-  - codes (ISO 3166-3: Southern Rhodesia has an alpha-3 code and no numeric one.)
-- **SKIN** Kingdom of Sikkim
-  - codes (ISO 3166-3: Sikkim has an alpha-3 code and no numeric one.)
-  - successors IN (Sikkim joined India in 1975.)
 - **TPTL** East Timor
   - name (Wikidata's item is today's Timor-Leste, which holds the code TL; the withdrawn code TP named the country East Timor.)
-  - successors TL (Portuguese Timor's code TP became TL when East Timor became independent.)
-- **VDVN** North Vietnam
-  - codes (ISO 3166-3: North Vietnam has an alpha-3 code and no numeric one.)
-  - successors VN (North Vietnam united with the south as Vietnam in 1976.)
-- **WKUM** Wake Island
-  - period (ISO 3166-3: the code went when the US Minor Outlying Islands (UM) were given one code in 1986.)
-  - codes (ISO 3166-3: Wake Island.)
-  - successors UM (Wake Island is one of the United States Minor Outlying Islands.)
 - **YUCS** Yugoslavia
   - name (Two Wikidata items share the code (the Socialist Federal Republic, 1945 to 1992, and the Federal Republic, 1992 to 2003); ISO 3166-3's entry is just Yugoslavia.)
-  - successors ME RS (The Federal Republic of Yugoslavia became Serbia and Montenegro, then these two; Wikidata gives the Socialist Federal Republic's four but not these.)
-- **ZRCD** Zaire
-  - codes (ISO 3166-3: Zaire's alpha-3 code and its numeric code, 180, which the Democratic Republic of the Congo still uses.)

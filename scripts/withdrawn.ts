@@ -1,8 +1,9 @@
-// The withdrawn countries (ISO 3166-3) and the IOC codes, for scripts/build-data.ts, from the Wikidata snapshot
-// data-sources/wikidata-codes-<day>.json and the choices in scripts/withdrawn-config.ts. Pure: the same inputs make
-// the same records. It stops, with every problem listed, rather than make a record it cannot stand behind.
+// The withdrawn countries (ISO 3166-3) and the IOC codes, for scripts/build-data.ts. The withdrawn countries' codes, years and
+// successors are ISO 3166-3's (WITHDRAWN_TABLE in scripts/withdrawn-config.ts); their names, and the IOC codes, are Wikidata's
+// (the snapshot data-sources/wikidata-codes-<day>.json). Pure: the same inputs make the same records. It stops, with every
+// problem listed, rather than make a record it cannot stand behind.
 
-import { CODE_FILLS, FIRST_YEAR, IOC_CHOICES, IOC_FILLS, NAME_FILLS, PERIOD_FILLS, SUCCESSOR_FILLS } from "./withdrawn-config.ts";
+import { IOC_CHOICES, IOC_FILLS, NAME_FILLS, WITHDRAWN_TABLE } from "./withdrawn-config.ts";
 
 type CodeRow = [property: string, value: string, rank: string, start: string | null, end: string | null];
 
@@ -42,107 +43,46 @@ interface WithdrawnRecord {
 const byText = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
 const HAN_BRACKET = /\s*[(（][^)）]*[)）]$/;
 
-// "1974-01-01" is a year, as Wikidata gives it for these statements; any other day is kept whole.
-const dateOf = (day: string): string => (day.endsWith("-01-01") ? day.slice(0, 4) : day);
-
 const buildWithdrawn = (snapshot: CodesSnapshot, current: Set<string>): { records: WithdrawnRecord[]; ioc: Map<string, string> } => {
   const problems: string[] = [];
   const records: WithdrawnRecord[] = [];
+  const known = new Set(Object.keys(WITHDRAWN_TABLE).map((code) => code.slice(0, 2)));
 
+  for (const code of Object.keys(WITHDRAWN_TABLE)) if (!(code in snapshot.withdrawn)) problems.push(`${code} is in ISO 3166-3's table and not in the Wikidata snapshot, which names it`);
   for (const [code, items] of Object.entries(snapshot.withdrawn)) {
-    if (!/^[A-Z]{4}$/.test(code)) {
-      problems.push(`${code} is not four letters`);
+    const entry = WITHDRAWN_TABLE[code];
+    if (!entry) {
+      problems.push(`${code} is in the Wikidata snapshot and not in ISO 3166-3's table (WITHDRAWN_TABLE)`);
       continue;
     }
     const alpha2 = code.slice(0, 2);
-    const filled: string[] = [];
-    // The item that ended last is the one the record is about (the Federal Republic, for YUCS).
+    // The item that ended last is the one the names come from (the Federal Republic, for YUCS).
     const ordered = [...items].sort((a, b) => byText(a.ended.at(-1) ?? "9999", b.ended.at(-1) ?? "9999"));
-    const last = ordered[ordered.length - 1];
-    const dissolved = (item: SnapshotItem): boolean => item.ended.length > 0;
-    const isWithdrawn = (item: SnapshotItem, row: CodeRow): boolean => row[4] !== null || row[2] === "deprecated" || dissolved(item);
-
-    // The alpha-2 statements for the withdrawn code, which must agree with the four letters.
-    const own = items.flatMap((item) => item.codes.filter((row) => row[0] === "P297" && row[1] === alpha2));
-    for (const item of items) {
-      for (const row of item.codes.filter((one) => one[0] === "P297" && isWithdrawn(item, one))) {
-        if (row[1] !== alpha2) problems.push(`${code}: Wikidata's withdrawn alpha-2 code ${row[1]} is not the first two letters`);
-      }
-    }
-    // The period.
-    const ends = own.map((row) => row[4]).filter((day): day is string => day !== null).sort(byText);
-    // Each item's start is its alpha-2 statement's, or the first edition's year, or the year the item began if later.
-    const startOf = (item: SnapshotItem): string => {
-      const given = item.codes.filter((row) => row[0] === "P297" && row[1] === alpha2 && row[3] !== null).map((row) => row[3] as string).sort(byText)[0];
-      const began = item.began[0];
-
-      return given !== undefined ? dateOf(given) : began !== undefined && began > `${FIRST_YEAR}-12-31` ? dateOf(began) : FIRST_YEAR;
-    };
-    const fill = PERIOD_FILLS[code];
-    let since = items.map(startOf).sort(byText)[0];
-    if (fill?.since !== undefined) since = fill.since;
-    let until: string | null = ends.at(-1) !== undefined ? dateOf(ends.at(-1)!) : last.ended.at(-1) !== undefined ? dateOf(last.ended.at(-1)!) : null;
-    if (fill?.until !== undefined) until = fill.until;
-    if (fill !== undefined) filled.push(`period (${fill.why})`);
-    if (until === null) {
-      problems.push(`${code}: Wikidata gives no end and PERIOD_FILLS has none`);
-      until = "";
-    }
-
-    // The alpha-3 and numeric codes: those of the last item that were withdrawn, else the fill.
-    const pick = (property: string): string | null => {
-      const rows = last.codes.filter((row) => row[0] === property && isWithdrawn(last, row));
-      // The one that ended last: Netherlands Antilles' 530, not the 532 it had before.
-      const latest = [...rows].sort((a, b) => byText(a[4] ?? "9999", b[4] ?? "9999") || byText(a[1], b[1]));
-
-      return latest.at(-1)?.[1] ?? null;
-    };
-    let alpha3 = pick("P298");
-    let numeric = pick("P299");
-    const codeFill = CODE_FILLS[code];
-    if (codeFill !== undefined) {
-      if (alpha3 !== null || numeric !== null) problems.push(`${code}: CODE_FILLS has codes for a record that has its own`);
-      alpha3 = codeFill.alpha3 ?? null;
-      numeric = codeFill.numeric ?? null;
-      filled.push(`codes (${codeFill.why})`);
-    }
-
-    // The names.
+    const last = ordered[ordered.length - 1] as SnapshotItem;
     const nameFill = NAME_FILLS[code];
     const en = nameFill?.en ?? last.en;
     if (en === null || en === undefined) problems.push(`${code}: no English name`);
     let ja = nameFill?.ja ?? last.ja?.replace(HAN_BRACKET, "") ?? null;
     if (ja !== null && ja.trim() === "") ja = null;
-    if (nameFill !== undefined) filled.push(`name (${nameFill.why})`);
-
-    // The successors: current countries that replaced it or followed it, from Wikidata and then SUCCESSOR_FILLS.
-    const wikidata = items.flatMap((item) => item.successors.map(([, alpha]) => alpha)).filter((alpha): alpha is string => alpha !== null && current.has(alpha));
-    const added = SUCCESSOR_FILLS[code]?.codes ?? [];
-    for (const one of added) {
-      if (!current.has(one)) problems.push(`${code}: successor ${one} is not a current country code`);
-      if (wikidata.includes(one)) problems.push(`${code}: SUCCESSOR_FILLS repeats ${one}, which Wikidata gives`);
+    for (const one of entry.successors) {
+      if (!current.has(one) && !known.has(one)) problems.push(`${code}: successor ${one} is neither a current country code nor a withdrawn one`);
     }
-    if (added.length > 0) filled.push(`successors ${added.join(" ")} (${SUCCESSOR_FILLS[code].why})`);
-    const successors = [...new Set([...wikidata, ...added])].sort(byText);
-    if (successors.length === 0) problems.push(`${code}: no successor`);
-
+    if (entry.successors.length === 0) problems.push(`${code}: no successor`);
+    if (!(entry.until > entry.since)) problems.push(`${code}: until ${entry.until} is not after since ${entry.since}`);
     records.push({
       code,
       alpha2,
-      alpha3,
-      numeric,
+      alpha3: entry.alpha3,
+      numeric: entry.numeric,
       en: en ?? "",
       ja,
-      since,
-      until,
-      successors,
+      since: entry.since,
+      until: entry.until,
+      successors: [...entry.successors],
       reusedBy: current.has(alpha2) ? alpha2 : null,
       items: items.map((item) => item.id),
-      filled,
+      filled: nameFill ? [`name (${nameFill.why})`] : [],
     });
-  }
-  for (const code of [...Object.keys(CODE_FILLS), ...Object.keys(PERIOD_FILLS), ...Object.keys(SUCCESSOR_FILLS), ...Object.keys(NAME_FILLS)]) {
-    if (!(code in snapshot.withdrawn)) problems.push(`${code} is in withdrawn-config.ts and not in the snapshot`);
   }
 
   // The IOC codes: one for each country, or a choice that says which.
@@ -192,10 +132,9 @@ const withdrawnDoc = (records: WithdrawnRecord[], snapshot: CodesSnapshot, iocCo
     "",
     "## How a record is made",
     "",
-    "- A record is one ISO 3166-3 code (Wikidata property P773). Its first two letters are the alpha-2 code that was withdrawn, as the standard defines them; where Wikidata has an alpha-2 code that ended, it must say the same, or the build stops.",
-    "- The years are those Wikidata gives the alpha-2 code's statement (start and end). Wikidata gives the first of January, so they are years (\"1974\"); a day that is not the first of January is kept whole. ISO 3166-1 began in 1974, which is the start where none is given.",
-    "- A code the successor still uses (Timor-Leste's numeric 626, the French Southern Lands' ATF) is not a withdrawn code and is left out.",
-    "- A successor is a current country that Wikidata says replaced or followed it, or one added by hand in `SUCCESSOR_FILLS` with the reason. Every record has at least one.",
+    "- **ISO 3166-3 is the authority** for a withdrawn country's codes, years and successors. `WITHDRAWN_TABLE` in `scripts/withdrawn-config.ts` is that list transcribed once, as ISO's Online Browsing Platform and the published ISO 3166-3 list give it, and `src/withdrawn.test.ts` pins the whole table, so a rebuild cannot drift from it. The first two letters of a four-letter code are the alpha-2 code that was withdrawn; the alpha-3 and numeric codes are the ones it held (none, where ISO lists none); `since` and `until` are the years the code was in force.",
+    "- **Wikidata is used for the names** in English and Japanese only (property P773 finds the item), with the few fixes in `NAME_FILLS`. The build stops if the Wikidata snapshot and ISO's table do not name the same 31 codes.",
+    "- **A successor is exactly the new code ISO lists.** It may itself be withdrawn: Yugoslavia (`YUCS`) is replaced by `CS`, which names Serbia and Montenegro (`CSXX`, 2003 to 2006) and, before it, Czechoslovakia (`CSHH`, 1974 to 1993). `withdrawn(\"CS\")` answers both, `CSXX` first, the one withdrawn last, so following the chain from `YUCS` leads to Serbia and Montenegro, and from there to `ME` and `RS`.",
     "- `reusedBy` is set where the withdrawn alpha-2 code was later given to a current country, so that BY, AI, BQ, GE and SK mean a country today and the older one only through this entry.",
     "- Japanese names are Wikidata's labels, with a trailing bracket taken off (ダホメ共和国 (西アフリカ) is ダホメ共和国); where Wikidata has none, the name is `null`, never an English name copied in.",
     "",
@@ -211,9 +150,9 @@ const withdrawnDoc = (records: WithdrawnRecord[], snapshot: CodesSnapshot, iocCo
     "",
     ...records.map((one) => `- ${one.code}: ${one.en} / ${one.ja ?? "(none)"}`),
     "",
-    "## What was filled by hand",
+    "## Names written by hand",
     "",
-    "Every other part of every record is Wikidata's.",
+    "Every other name is Wikidata's.",
     "",
     ...records.filter((one) => one.filled.length > 0).flatMap((one) => [`- **${one.code}** ${one.en}`, ...one.filled.map((what) => `  - ${what}`)]),
     "",

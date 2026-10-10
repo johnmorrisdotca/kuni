@@ -126,7 +126,7 @@ const { SUBDIVISIONS } = require("${pkg.name}/subdivisions/jp");
 if (SUBDIVISIONS.length !== 47) throw new Error("subdivisions/jp by require gave " + SUBDIVISIONS.length);
 if (require("${pkg.name}/facts").facts("US").measurement !== "US") throw new Error("facts by require");
 if (require("${pkg.name}/groupings").grouping("eu").members.length !== 27) throw new Error("groupings by require");
-if (require("${pkg.name}/withdrawn").withdrawn("YU")[0].successors.length !== 6) throw new Error("withdrawn by require");
+if (require("${pkg.name}/withdrawn").withdrawn("YU")[0].successors.length !== 1) throw new Error("withdrawn by require");
 require("${pkg.name}/subdivision-facts").loadSubdivisionFacts("CA").then((list) => {
   if (list.length !== 13) throw new Error("loadSubdivisionFacts by require gave " + list.length);
 });

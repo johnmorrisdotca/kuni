@@ -1,11 +1,18 @@
 // The /withdrawn entry: the 31 entries of ISO 3166-3, each with a four-letter code that begins with its alpha-2 code,
-// the years it was in force, at least one successor that is a current country, and a name in English; a code that is
-// a current country's too is marked; and none of them is in the main entry.
+// the years it was in force, at least one successor, and a name in English; a code that is a current country's too is
+// marked; and none of them is in the main entry. The whole table of codes, years and successors is pinned below, written out
+// again from ISO 3166-3's published list, so that a rebuild of the data cannot drift from it.
 import { describe, expect, it } from "vitest";
 
-import { CODE_FILLS, IOC_CHOICES, IOC_FILLS, NAME_FILLS, PERIOD_FILLS, SUCCESSOR_FILLS } from "../scripts/withdrawn-config";
+import { IOC_CHOICES, IOC_FILLS, NAME_FILLS, WITHDRAWN_TABLE } from "../scripts/withdrawn-config";
 import { countries, country, COUNTRY_CODES, isCountryCode } from "./index";
 import { withdrawn, withdrawnCountries, WITHDRAWN_READ } from "./withdrawn";
+
+/**
+ * ISO 3166-3 as published (Online Browsing Platform, https://www.iso.org/obp/ui/#iso:code:3166:3): code | alpha-3 | numeric
+ * (none where ISO lists none) | from | until | new codes in ISO's order. Written out here by hand, apart from the data's own table.
+ */
+const ISO_3166_3 = `BQAQ|ATB|none|1974|1979|AQ ; BUMM|BUR|104|1974|1989|MM ; BYAA|BYS|112|1974|1992|BY ; CTKI|CTE|128|1974|1984|KI ; CSHH|CSK|200|1974|1993|CZ,SK ; DYBJ|DHY|204|1974|1977|BJ ; NQAQ|ATN|216|1974|1983|AQ ; TPTL|TMP|626|1974|2002|TL ; FXFR|FXX|249|1993|1997|FR ; AIDJ|AFI|262|1974|1977|DJ ; FQHH|ATF|none|1974|1979|AQ,TF ; DDDE|DDR|278|1974|1990|DE ; GEHH|GEL|none|1974|1979|KI ; JTUM|JTN|396|1974|1986|UM ; MIUM|MID|488|1974|1986|UM ; ANHH|ANT|530|1974|2010|BQ,CW,SX ; NTHH|NTZ|536|1974|1993|IQ,SA ; NHVU|NHB|none|1974|1980|VU ; PCHH|PCI|582|1974|1986|FM,MH,MP,PW ; PZPA|PCZ|none|1974|1980|PA ; CSXX|SCG|891|2003|2006|ME,RS ; SKIN|SKM|none|1974|1975|IN ; RHZW|RHO|none|1974|1980|ZW ; PUUM|PUS|849|1974|1986|UM ; HVBF|HVO|854|1974|1984|BF ; SUHH|SUN|810|1974|1992|AM,AZ,EE,GE,KZ,KG,LV,LT,MD,RU,TJ,TM,UZ ; VDVN|VDR|none|1974|1977|VN ; WKUM|WAK|872|1974|1986|UM ; YDYE|YMD|720|1974|1990|YE ; YUCS|YUG|891|1974|2003|CS ; ZRCD|ZAR|180|1974|1997|CD`;
 
 const JAPANESE = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
 
@@ -31,12 +38,32 @@ describe("every withdrawn country", () => {
     }
   });
 
-  it("has at least one successor, every one a current country, in order", () => {
+  it("has at least one successor: a current country, or a withdrawn one (Yugoslavia's is CS), in ISO's order", () => {
+    const withdrawnCodes = new Set(withdrawnCountries().map((one) => one.alpha2));
     for (const one of withdrawnCountries()) {
       expect(one.successors.length, one.code).toBeGreaterThan(0);
-      for (const code of one.successors) expect(COUNTRY_CODES as readonly string[], `${one.code} ${code}`).toContain(code);
-      expect([...one.successors].sort(), one.code).toEqual(one.successors);
+      for (const code of one.successors) {
+        expect((COUNTRY_CODES as readonly string[]).includes(code) || withdrawnCodes.has(code), `${one.code} ${code}`).toBe(true);
+      }
     }
+    // The chain: YUCS to CS, which is Serbia and Montenegro first and Czechoslovakia after, and from there to ME, RS, CZ and SK.
+    expect(withdrawn("YUCS")[0].successors).toEqual(["CS"]);
+    expect(withdrawn("CS").map((one) => one.code)).toEqual(["CSXX", "CSHH"]);
+  });
+
+  it("is ISO 3166-3's table, every code, alpha-3, numeric, year and successor, as published", () => {
+    const written = ISO_3166_3.split(" ; ").map((row) => row.split("|"));
+    expect(written).toHaveLength(31);
+    const records = new Map(withdrawnCountries().map((one) => [one.code, one]));
+    expect(records.size).toBe(31);
+    for (const [code, alpha3, numeric, from, until, successors] of written) {
+      const one = records.get(code as string);
+      expect(one, code).toBeDefined();
+      expect({ alpha3: one?.alpha3, numeric: one?.numeric ?? "none", since: one?.since, until: one?.until, successors: one?.successors.join(",") }, code).toEqual({ alpha3, numeric, since: from, until, successors });
+    }
+    // And the data's own table says the same, so that nothing but ISO's list can change what is served.
+    const own = Object.entries(WITHDRAWN_TABLE).map(([code, e]) => [code, e.alpha3, e.numeric ?? "none", e.since, e.until, e.successors.join(",")].join("|"));
+    expect(own.sort()).toEqual(written.map((row) => row.join("|")).sort());
   });
 
   it("is never in the main entry's lists or lookups, and a code a current country holds says so", () => {
@@ -70,22 +97,22 @@ describe("the places a reader would check", () => {
   it("knows the Soviet Union, Yugoslavia, Czechoslovakia, East Germany and Zaire", () => {
     expect(withdrawn("SU")).toHaveLength(1);
     expect(withdrawn("SU")[0]).toMatchObject({ code: "SUHH", alpha3: "SUN", numeric: "810", name: { en: "Soviet Union", ja: "ソビエト連邦" }, since: "1974", until: "1992" });
-    expect(withdrawn("SU")[0].successors).toEqual(["AM", "AZ", "BY", "EE", "GE", "KG", "KZ", "LT", "LV", "MD", "RU", "TJ", "TM", "UA", "UZ"]);
+    expect(withdrawn("SU")[0].successors).toEqual(["AM", "AZ", "EE", "GE", "KZ", "KG", "LV", "LT", "MD", "RU", "TJ", "TM", "UZ"]);
     expect(withdrawn("YU")[0]).toMatchObject({ code: "YUCS", alpha3: "YUG", name: { en: "Yugoslavia", ja: "ユーゴスラビア" }, until: "2003" });
-    expect(withdrawn("YU")[0].successors).toEqual(["BA", "HR", "ME", "MK", "RS", "SI"]);
+    expect(withdrawn("YU")[0].successors).toEqual(["CS"]);
     expect(withdrawn("CSK")[0]).toMatchObject({ code: "CSHH", successors: ["CZ", "SK"], until: "1993" });
     expect(withdrawn("DD")[0]).toMatchObject({ code: "DDDE", numeric: "278", successors: ["DE"], until: "1990" });
     expect(withdrawn("ZR")[0]).toMatchObject({ code: "ZRCD", alpha3: "ZAR", name: { en: "Zaire" }, successors: ["CD"] });
-    expect(withdrawn("TP")[0]).toMatchObject({ code: "TPTL", alpha3: "TMP", name: { en: "East Timor" }, successors: ["TL"], until: "2002" });
-    expect(withdrawn("AN")[0].successors).toEqual(["AW", "BQ", "CW", "SX"]);
-    expect(withdrawn("BU")[0]).toMatchObject({ code: "BUMM", alpha3: "BUR", name: { en: "Burma", ja: "ビルマ" }, successors: ["MM"] });
+    expect(withdrawn("TP")[0]).toMatchObject({ code: "TPTL", alpha3: "TMP", numeric: "626", name: { en: "East Timor" }, successors: ["TL"], until: "2002" });
+    expect(withdrawn("AN")[0].successors).toEqual(["BQ", "CW", "SX"]);
+    expect(withdrawn("BU")[0]).toMatchObject({ code: "BUMM", alpha3: "BUR", numeric: "104", name: { en: "Burma", ja: "ビルマ" }, successors: ["MM"] });
   });
 
-  it("leaves out a code the successor still uses", () => {
-    expect(withdrawn("TPTL")[0].numeric).toBeUndefined();
-    expect(withdrawn("BUMM")[0].numeric).toBeUndefined();
-    expect(withdrawn("FQHH")[0].alpha3).toBeUndefined();
-    expect(withdrawn("FQHH")[0].numeric).toBeUndefined();
+  it("lists no numeric code where ISO lists none, and the ones a successor still uses where ISO does", () => {
+    for (const code of ["BQAQ", "FQHH", "GEHH", "NHVU", "PZPA", "SKIN", "RHZW", "VDVN"]) expect(withdrawn(code)[0].numeric, code).toBeUndefined();
+    expect(withdrawn("FQHH")[0]).toMatchObject({ alpha3: "ATF", successors: ["AQ", "TF"] });
+    expect(withdrawn("PZPA")[0].until).toBe("1980");
+    expect(withdrawn("VDVN")[0].until).toBe("1977");
     expect(withdrawn("ZRCD")[0].numeric).toBe("180");
   });
 
@@ -121,15 +148,14 @@ describe("the lookup", () => {
   });
 });
 
-describe("what was filled by hand", () => {
+describe("what was written by hand", () => {
   it("is explained, and is for a record that exists", () => {
     const codes = new Set(withdrawnCountries().map((one) => one.code));
-    for (const table of [CODE_FILLS, PERIOD_FILLS, SUCCESSOR_FILLS, NAME_FILLS]) {
-      for (const [code, fill] of Object.entries(table)) {
-        expect(codes.has(code), code).toBe(true);
-        expect(fill.why.trim().length, code).toBeGreaterThan(15);
-      }
+    for (const [code, fill] of Object.entries(NAME_FILLS)) {
+      expect(codes.has(code), code).toBe(true);
+      expect(fill.why.trim().length, code).toBeGreaterThan(15);
     }
+    expect([...codes].sort()).toEqual(Object.keys(WITHDRAWN_TABLE).sort());
     for (const fill of [...Object.values(IOC_CHOICES), ...Object.values(IOC_FILLS)]) expect(fill.why.trim().length).toBeGreaterThan(15);
   });
 });

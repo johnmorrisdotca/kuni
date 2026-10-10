@@ -13,9 +13,9 @@ interface WithdrawnCountry {
   code: string;
   /** The ISO 3166-1 alpha-2 code it held: "SU". */
   alpha2: string;
-  /** The alpha-3 code it held, "SUN"; absent where it had none, or where a successor still uses it (ATF, TF's). */
+  /** The alpha-3 code it held, "SUN", as ISO 3166-3 lists it. */
   alpha3?: string;
-  /** The numeric code it held, "810"; absent under the same rules. */
+  /** The numeric code it held, "810"; absent where ISO 3166-3 lists none (Gilbert and Ellice Islands, New Hebrides). */
   numeric?: string;
   /** Its name in English and Japanese; `ja` is `null` where Wikidata has none, never an English name copied in. */
   name: { en: string; ja: string | null };
@@ -23,7 +23,11 @@ interface WithdrawnCountry {
   since: string;
   /** The year its code was withdrawn, "1992", or a full day, "1990-08-14". */
   until: string;
-  /** The alpha-2 codes of the current countries that came after it, in order: ["AM", "AZ", ...] for the Soviet Union. */
+  /**
+   * The new codes ISO 3166-3 lists for it, in ISO's order: ["AM", "AZ", ...] for the Soviet Union. A successor may itself
+   * be withdrawn: Yugoslavia's is "CS", which `withdrawn("CS")` resolves to Serbia and Montenegro (CSXX) first and
+   * Czechoslovakia (CSHH) after it.
+   */
   successors: readonly string[];
   /**
    * Set when the alpha-2 code was later given to a current country, so that the code means two things in time: "BY"
@@ -86,7 +90,7 @@ const withdrawnCountries = (): readonly WithdrawnCountry[] => getTable();
  *
  * withdrawn("su")[0].name.en;        // "Soviet Union"
  * withdrawn("SU")[0].until;          // "1992"
- * withdrawn("YUCS")[0].successors;   // ["BA", "HR", "ME", "MK", "RS", "SI"]
+ * withdrawn("YUCS")[0].successors;   // ["CS"]: itself withdrawn, and resolved by withdrawn("CS")
  * withdrawn("CS").map((one) => one.code); // ["CSXX", "CSHH"]
  * withdrawn("JP");                   // []
  * ```

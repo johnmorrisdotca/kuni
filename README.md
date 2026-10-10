@@ -92,7 +92,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,968 of 5,050), with readings in kana for Japan's prefectural capitals (さっぽろし).
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
-- **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the current countries that came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
+- **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
 - **Small where it matters.** The countries and lookups are about 57 KB (19 KB gzipped); one country's subdivisions are their own entry (Japan's 47, 2.9 KB) or a dynamic import.
@@ -218,13 +218,13 @@ import { withdrawn, withdrawnCountries } from "@johnmorrisdotca/kuni/withdrawn";
 
 withdrawn("SU")[0].name.en;          // "Soviet Union" (also by "SUHH", "SUN" or "810")
 withdrawn("SU")[0].until;            // "1992"
-withdrawn("YU")[0].successors;       // ["BA", "HR", "ME", "MK", "RS", "SI"]
+withdrawn("YU")[0].successors;       // ["CS"]: ISO's new code, itself withdrawn (below)
 withdrawn("CS").map((one) => one.code); // ["CSXX", "CSHH"]: Serbia and Montenegro, then Czechoslovakia
 withdrawn("BY")[0].reusedBy;         // "BY": the Byelorussian SSR's code is Belarus's now
 withdrawnCountries().length;         // 31
 ```
 
-The 31 are the entries of ISO 3166-3, read from Wikidata (property P773, with the years of the code's statements and the countries that replaced it), with a few years, codes and successors Wikidata lacks written by hand and listed with their reasons in [docs/withdrawn.md](./docs/withdrawn.md), which also lists their Japanese names for review. They are a list of their own: `country("SU")` is still `null`, `isCountryCode("SU")` is still `false` and `countries()` never holds them. A lookup by a code answers every withdrawn country that held it, the last one first, and an empty list for anything else; a record whose alpha-2 code a current country holds now (`BY`, `AI`, `BQ`, `GE`, `SK`) says so in `reusedBy`.
+The 31 are the entries of ISO 3166-3, whose codes, years and successors are the published list's, transcribed once and pinned whole by a test; their names in English and Japanese are Wikidata's (property P773). A successor is exactly the new code ISO lists, and may itself be withdrawn: Yugoslavia's is `CS`, which `withdrawn("CS")` answers as Serbia and Montenegro first and Czechoslovakia after. [docs/withdrawn.md](./docs/withdrawn.md) says how, and lists their Japanese names for review. They are a list of their own: `country("SU")` is still `null`, `isCountryCode("SU")` is still `false` and `countries()` never holds them. A lookup by a code answers every withdrawn country that held it, the last one first, and an empty list for anything else; a record whose alpha-2 code a current country holds now (`BY`, `AI`, `BQ`, `GE`, `SK`) says so in `reusedBy`.
 
 ### In a page, with no bundler
 
@@ -477,7 +477,8 @@ src/
 | Land borders, confirmed | Natural Earth 5.1.2 admin-0 at 1:50m, as drawn by Chizu 1.0.2 (a development dependency of the build, never of the package) | Public domain (Natural Earth); MIT (Chizu) |
 | First day of the week, measurement system, paper size, clock; UN M49; the UN's members | Unicode CLDR 48.2 (`cldr-core`) | Unicode-3.0 |
 | The bodies' members, the informal groupings and the regions inside a country | written for this package from each body's own list, on 2026-10-09 (`scripts/groupings-config.ts`) | MIT; lists of facts |
-| IOC codes, and the withdrawn countries' codes, names, years and successors | Wikidata, a snapshot of 2026-10-10 (`data-sources/wikidata-codes-2026-10-10.json`); a few years, codes and successors written by hand from ISO 3166-3's published list (`scripts/withdrawn-config.ts`) | CC0; lists of facts |
+| IOC codes, and the withdrawn countries' names | Wikidata, a snapshot of 2026-10-10 (`data-sources/wikidata-codes-2026-10-10.json`) | CC0 |
+| The withdrawn countries' codes, years and successors | ISO 3166-3's published list, transcribed once (`scripts/withdrawn-config.ts`) | A list of facts |
 | Aliases, a few readings and 46 corrected Japanese subdivision names | written for this package | MIT |
 
 [NOTICE.md](./NOTICE.md) carries the Unicode licence text and says what was changed, and [data-sources/README.md](./data-sources/README.md) says where every input came from and how to refresh it. Nothing under ODbL, CC BY-SA or the GPL is used, so the dataset is shipped under MIT with those notices.

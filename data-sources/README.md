@@ -52,9 +52,9 @@ Wikidata's structured data is CC0 (https://www.wikidata.org/wiki/Wikidata:Licens
 `wikidata-codes-<day>.json` (`scripts/fetch-wikidata-codes.ts`) holds the answers to the four queries written in it:
 
 - for every ISO 3166-1 alpha-2 code (P297, deprecated statements left out): the International Olympic Committee country code (P984);
-- for every item with an ISO 3166-3 code (P773): its English and Japanese labels, when it began (P571) and ended (P576), every alpha-2 (P297), alpha-3 (P298) and numeric (P299) code it held with the rank, start and end of each statement, and the items that replaced it (P1366) or followed it (P156) with the alpha-2 code each holds now.
+- for every item with an ISO 3166-3 code (P773): its English and Japanese labels (used for the names), and, kept in the snapshot but not used to make records, when it began (P571) and ended (P576), every alpha-2 (P297), alpha-3 (P298) and numeric (P299) code it held with the rank, start and end of each statement, and the items that replaced it (P1366) or followed it (P156).
 
-`scripts/withdrawn.ts` turns them into the `/withdrawn` entry and the `ioc` field and stops with every problem listed when a record cannot be stood behind; `scripts/withdrawn-config.ts` holds the few things Wikidata lacks, each with its reason, and `docs/withdrawn.md` lists them.
+`scripts/withdrawn.ts` turns them into the `/withdrawn` entry and the `ioc` field and stops with every problem listed when a record cannot be stood behind; `scripts/withdrawn-config.ts` holds ISO 3166-3's table (the withdrawn countries' codes, years and successors, which are not Wikidata's) and the few name fixes, each with its reason, and `docs/withdrawn.md` lists them.
 
 ## The Wikidata facts snapshot
 
