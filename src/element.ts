@@ -36,7 +36,7 @@ export const KUNI_CARD_OPTION_KEYS = Object.keys({ flag: true, map: true } satis
 const DEFAULT_FIELDS = "name codes flag map capital population area currency";
 const labels = {
   en: { name: "Name", codes: "Codes", flag: "Flag", map: "Map", capital: "Capital or seat", population: "Population", area: "Area", continent: "Continent", subregion: "Subregion", currency: "Currency", languages: "Languages", "calling-code": "Calling code", tld: "Domain", zones: "Time zones" },
-  ja: { name: "名前", codes: "コード", flag: "旗", map: "地図", capital: "首都・行政の中心地", population: "人口", area: "面積", continent: "大陸", subregion: "地域", currency: "通貨", languages: "言語", "calling-code": "国番号", tld: "ドメイン", zones: "時間帯" },
+  ja: { name: "名前", codes: "国コード", flag: "旗", map: "地図", capital: "首都・行政の中心地", population: "人口", area: "面積", continent: "大陸", subregion: "地域", currency: "通貨", languages: "言語", "calling-code": "国番号", tld: "国別ドメイン", zones: "タイムゾーン" },
 };
 const write = (element: Element, name: string, value: unknown): void => {
   if (value === null || value === undefined) element.removeAttribute(name);
