@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+- Reconcile cards with the released IOC/withdrawn APIs; append optional ioc display while keeping current-country pickers and default fields unchanged.
+
 - Add a country and subdivision card, embed builder and validated storage-free iframe.
 - Compose optional Hata flags and Chizu maps, retain dated facts and land-area scope, and expose reflected properties and native load/error events.
 

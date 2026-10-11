@@ -29,3 +29,8 @@ Flags are Hata's actual SVG flag modules, and maps are Chizu's country or divisi
 The transparent, `noindex` iframe is `embed/?code=JP&fields=name+flag+map+capital&size=medium`. Query choices, code syntax, field names, language, theme and numeric width are validated. Invalid query values are ignored; a nonexistent country or subdivision is reported as a status message. It stores nothing and requests no external content other than jsDelivr. Its static card has no motion and no controls that need a pointer.
 
 `kuni-load` bubbles across shadow boundaries with `{ code, country, fields }`. `kuni-error` carries `{ code, message }`, with `part: "flag"` or `"map"` for unavailable artwork. The iframe forwards the identical JSON-safe detail as `{ type: event.type, detail: event.detail }`. A host must check `event.origin === "https://johnmorrisdotca.github.io"` and `event.source === iframe.contentWindow` before using a message. No personal data is included.
+
+The optional ioc field displays the released native IOC code, or an em dash
+when none is recorded. On a subdivision card it is marked as the country's
+value. Current cards use current countries only; withdrawn ISO records remain
+in the separate kuni/withdrawn API and do not enter the picker.

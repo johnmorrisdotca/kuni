@@ -116,3 +116,17 @@ test("copied iframe code fits a narrow article without inner scrolling", async (
   const child = page.frames().find((frame) => frame.url().startsWith("http://kuni.test/embed/"));
   expect(await child.evaluate(() => document.documentElement.scrollHeight <= window.innerHeight && document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
+
+test("native IOC codes display without adding withdrawn countries to current cards", async ({ page }) => {
+  await serve(page);
+  await page.goto("http://kuni.test/embed/?code=DE&fields=name%20codes%20ioc");
+  const card = page.locator("kuni-card");
+  await expect(card).toHaveAttribute("data-ready", "true");
+  await expect(card.locator('[data-field="ioc"] dd')).toHaveText("GER");
+  await page.goto("http://kuni.test/embed/?code=JP-13&fields=name%20ioc");
+  await expect(card).toHaveAttribute("data-ready", "true");
+  await expect(card.locator('[data-field="ioc"]')).toContainText("(country)");
+  await expect(card.locator('[data-field="ioc"] dd')).toHaveText("JPN");
+  await page.goto("http://kuni.test/embed/?code=SU&fields=name%20ioc");
+  await expect(card.getByRole("status")).toContainText("country code");
+});

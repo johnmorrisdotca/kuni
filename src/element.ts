@@ -14,7 +14,7 @@ const ElementBase: typeof HTMLElement = typeof HTMLElement === "undefined" ? cla
  * KUNI_CARD_FIELDS.includes("population"); // true
  * ```
  */
-export const KUNI_CARD_FIELDS = ["name", "codes", "flag", "map", "capital", "population", "area", "continent", "subregion", "currency", "languages", "calling-code", "tld", "zones"] as const;
+export const KUNI_CARD_FIELDS = ["name", "codes", "flag", "map", "capital", "population", "area", "continent", "subregion", "currency", "languages", "calling-code", "tld", "zones", "ioc"] as const;
 
 /** Host loaders for trusted SVG artwork, replacing the optional jsDelivr loaders. */
 export interface KuniCardOptions {
@@ -35,8 +35,8 @@ export interface KuniCardOptions {
 export const KUNI_CARD_OPTION_KEYS = Object.keys({ flag: true, map: true } satisfies Record<keyof KuniCardOptions, boolean>);
 const DEFAULT_FIELDS = "name codes flag map capital population area currency";
 const labels = {
-  en: { name: "Name", codes: "Codes", flag: "Flag", map: "Map", capital: "Capital or seat", population: "Population", area: "Area", continent: "Continent", subregion: "Subregion", currency: "Currency", languages: "Languages", "calling-code": "Calling code", tld: "Domain", zones: "Time zones" },
-  ja: { name: "名前", codes: "国コード", flag: "旗", map: "地図", capital: "首都・行政の中心地", population: "人口", area: "面積", continent: "大陸", subregion: "地域", currency: "通貨", languages: "言語", "calling-code": "国番号", tld: "国別ドメイン", zones: "タイムゾーン" },
+  en: { name: "Name", codes: "Codes", ioc: "IOC code", flag: "Flag", map: "Map", capital: "Capital or seat", population: "Population", area: "Area", continent: "Continent", subregion: "Subregion", currency: "Currency", languages: "Languages", "calling-code": "Calling code", tld: "Domain", zones: "Time zones" },
+  ja: { name: "名前", codes: "国コード", ioc: "IOCコード", flag: "旗", map: "地図", capital: "首都・行政の中心地", population: "人口", area: "面積", continent: "大陸", subregion: "地域", currency: "通貨", languages: "言語", "calling-code": "国番号", tld: "国別ドメイン", zones: "タイムゾーン" },
 };
 const write = (element: Element, name: string, value: unknown): void => {
   if (value === null || value === undefined) element.removeAttribute(name);
@@ -158,6 +158,7 @@ export class KuniCard extends ElementBase {
       const displayNumber = (value: number | null | undefined, year: number | null | undefined): string => value === null || value === undefined ? "—" : `${String(value).split(".").map((part, index) => index === 0 ? part.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : part).join(".")}${year ? ` (${year})` : ""}`;
       const capital = subdivision ? (fact && "capital" in fact ? fact.capital : null) : parent.capital;
       const values: Record<string, string> = {
+        ioc: parent.ioc ?? "—",
         codes: subdivision ? subdivision.code : `${parent.alpha2} · ${parent.alpha3} · ${parent.numeric}`,
         capital: capital?.[language] ?? capital?.en ?? "—",
         population: displayNumber(fact?.population, fact?.populationYear),
@@ -184,7 +185,7 @@ export class KuniCard extends ElementBase {
         }
         const row = this.#text("dl", ""); row.dataset.field = field;
         const term = this.#text("dt", labels[language][field as keyof typeof labels.en]);
-        if (subdivision && ["continent", "subregion", "currency", "languages", "calling-code", "tld", "zones"].includes(field)) term.append(this.#text("span", language === "ja" ? "（国）" : " (country)"));
+        if (subdivision && ["continent", "subregion", "currency", "languages", "calling-code", "tld", "zones", "ioc"].includes(field)) term.append(this.#text("span", language === "ja" ? "（国）" : " (country)"));
         row.append(term, this.#text("dd", values[field])); article.append(row);
       }
       await Promise.all(artwork);
