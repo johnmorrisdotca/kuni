@@ -100,7 +100,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
 
-[Build a country or subdivision card](https://johnmorrisdotca.github.io/kuni/builder.html). The [embed guide](docs/embeds.md) covers its fields, properties and messages.
+[Build a country or subdivision card](https://johnmorrisdotca.github.io/kuni/builder.html). The [embed guide](docs/embeds.md) covers its fields, properties and messages. Cards support per-place `colors` and `capital="off"` for the native Chizu map; capital text stays separate. [Map colours and markers](docs/embeds.md#map-colours-and-markers).
 
 ## Use it in your project
 

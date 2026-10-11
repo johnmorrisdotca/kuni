@@ -13,6 +13,8 @@ All notable changes to this project are written here. The format follows
 
 ### Added
 
+- Add per-place colours and a capital-marker switch to country cards and their builder/frame links. Hosts can receive drawing options in map loaders; capital text fields stay separate.
+
 - Share a package-independent embed builder for option controls, preview adapters, code tabs and shareable links.
 
 ### Changed

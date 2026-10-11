@@ -130,3 +130,31 @@ test("native IOC codes display without adding withdrawn countries to current car
   await page.goto("http://kuni.test/embed/?code=SU&fields=name%20ioc");
   await expect(card.getByRole("status")).toContainText("country code");
 });
+
+
+test("card colours and capital markers restore from builder links and frame code", async ({ page }) => {
+  await serve(page); await artwork(page);
+  await page.goto("http://kuni.test/builder.html?lang=en");
+  await page.locator("#opt-colors").fill("JP:#2f6b4f");
+  await page.locator("#opt-capital").click();
+  const card = page.locator("#bld-stage kuni-card");
+  await expect(card).toHaveAttribute("data-ready", "true");
+  await expect(card.locator('.map .cz-region[data-code="JP"]').first()).toHaveAttribute("data-color", "#2f6b4f");
+  await expect(card.locator('[data-group="capitals"]')).toHaveCount(0);
+  await expect(card.locator('[data-field="capital"]')).toBeVisible();
+  await page.goto(page.url());
+  await expect(page.locator("#opt-colors")).toHaveValue("JP:#2f6b4f");
+  await expect(page.locator("#opt-capital")).toHaveAttribute("aria-pressed", "false");
+  await page.locator('#bld-formats [data-format="url"]').click();
+  const frame = (await page.locator("#bld-code").textContent()).replace("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/");
+  await page.goto(frame);
+  const embedded = page.locator("kuni-card");
+  await expect(embedded).toHaveAttribute("data-ready", "true");
+  await expect(embedded.locator('.map .cz-region[data-code="JP"]').first()).toHaveAttribute("data-color", "#2f6b4f");
+  await expect(embedded.locator('[data-group="capitals"]')).toHaveCount(0);
+  await embedded.evaluate((element) => { element.capital = true; });
+  await expect(embedded.locator('[data-group="capitals"]').first()).toBeVisible();
+  await page.goto("http://kuni.test/embed/?colors=JP:url(evil)&capital=invalid&fields=name");
+  await expect(page.locator("kuni-card")).not.toHaveAttribute("colors", /.*/);
+  await expect(page.locator("kuni-card")).not.toHaveAttribute("capital", /.*/);
+});

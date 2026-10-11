@@ -16,20 +16,24 @@ const ElementBase: typeof HTMLElement = typeof HTMLElement === "undefined" ? cla
  */
 export const KUNI_CARD_FIELDS = ["name", "codes", "flag", "map", "capital", "population", "area", "continent", "subregion", "currency", "languages", "calling-code", "tld", "zones", "ioc"] as const;
 
-/** Host loaders for trusted SVG artwork, replacing the optional jsDelivr loaders.
+/** Host SVG loaders and native map appearance; attributes override drawing defaults.
  * @example
  * ```ts
  * import { type KuniCardOptions, KUNI_CARD_OPTION_KEYS } from "@johnmorrisdotca/kuni/element";
  * const options: KuniCardOptions = {};
  * Object.keys(options).length; // 0
- * KUNI_CARD_OPTION_KEYS.length; // 2
+ * KUNI_CARD_OPTION_KEYS.length; // 4
  * ```
  */
 export interface KuniCardOptions {
   /** Load a Hata flag or an equivalent SVG for the ISO code; null means unavailable. */
   flag?: (code: string) => Promise<string | null>;
-  /** Load a Chizu map or an equivalent SVG for the ISO code and language; null means unavailable. */
-  map?: (code: string, language: "en" | "ja") => Promise<string | null>;
+  /** Load trusted SVG for the ISO code/language, honouring optional drawing settings; null means unavailable. */
+  map?: (code: string, language: "en" | "ja", drawing?: Pick<KuniCardOptions, "colors" | "capital">) => Promise<string | null>;
+  /** Per-region CSS colours for the native drawing; code:hex-colour attribute pairs override this map. */
+  colors?: Readonly<Record<string, string>>;
+  /** Show the capital markers on the map, true by default. This does not remove the capital text field. */
+  capital?: boolean;
 }
 
 /**
@@ -37,10 +41,33 @@ export interface KuniCardOptions {
  * @example
  * ```ts
  * import { KUNI_CARD_OPTION_KEYS } from "@johnmorrisdotca/kuni/element";
- * KUNI_CARD_OPTION_KEYS.length; // 2
+ * KUNI_CARD_OPTION_KEYS.length; // 4
  * ```
  */
-export const KUNI_CARD_OPTION_KEYS = Object.keys({ flag: true, map: true } satisfies Record<keyof KuniCardOptions, boolean>);
+export const KUNI_CARD_OPTION_KEYS = Object.keys({ flag: true, map: true, colors: true, capital: true } satisfies Record<keyof KuniCardOptions, boolean>);
+/** Read the card's bounded code:hex-colour attribute without accepting CSS or markup fragments.
+ * @param text - Comma-separated pairs; null or empty means the theme colour.
+ * @returns Validated colour pairs, or null when any pair is malformed.
+ * @example
+ * ```ts
+ * import { readCardColors } from "@johnmorrisdotca/kuni/element";
+ * readCardColors("JP:#2f6b4f")?.JP; // "#2f6b4f"
+ * readCardColors("JP:url(evil)"); // null
+ * ```
+ */
+export function readCardColors(text: string | null): Record<string, string> | null {
+  if (text === null || text.trim() === "") return {};
+  if (text.length > 16000) return null;
+  const pairs = text.split(",");
+  if (pairs.length > 1500) return null;
+  const entries: [string, string][] = [];
+  for (const pair of pairs) {
+    const match = /^\s*([\w-]{1,40})\s*:\s*(#[0-9a-f]{3}(?:[0-9a-f]|[0-9a-f]{3}|[0-9a-f]{5})?)\s*$/i.exec(pair);
+    if (!match) return null;
+    entries.push([match[1]!, match[2]!]);
+  }
+  return Object.fromEntries(entries);
+}
 const DEFAULT_FIELDS = "name codes flag map capital population area currency";
 const labels = {
   en: { name: "Name", codes: "Codes", ioc: "IOC code", flag: "Flag", map: "Map", capital: "Capital or seat", population: "Population", area: "Area", continent: "Continent", subregion: "Subregion", currency: "Currency", languages: "Languages", "calling-code": "Calling code", tld: "Domain", zones: "Time zones" },
@@ -54,9 +81,9 @@ const flagSvg = async (code: string): Promise<string | null> => {
   const address = `https://cdn.jsdelivr.net/npm/@johnmorrisdotca/hata@1/dist/flags/${code.toLowerCase()}.js`;
   return (await import(/* @vite-ignore */ address)).default ?? null;
 };
-const mapSvg = async (code: string, language: "en" | "ja"): Promise<string | null> => {
+const mapSvg = async (code: string, language: "en" | "ja", drawing: Pick<KuniCardOptions, "colors" | "capital"> = {}): Promise<string | null> => {
   const base = "https://cdn.jsdelivr.net/npm/@johnmorrisdotca/chizu@1/dist/";
-  const { loadCountry, loadDivisions } = await import(/* @vite-ignore */ `${base}load-entry.js`);
+  const { loadCountry, loadDivisions, loadFeatures } = await import(/* @vite-ignore */ `${base}load-entry.js`);
   const { drawChizu } = await import(/* @vite-ignore */ `${base}draw-entry.js`);
   const map = code.includes("-") ? await loadDivisions(code.split("-")[0]) : await loadCountry(code);
   if (!map) return null;
@@ -68,7 +95,9 @@ const mapSvg = async (code: string, language: "en" | "ja"): Promise<string | nul
     const { focusBox } = await import(/* @vite-ignore */ `${base}index.js`);
     box = focusBox(map, [region.code]); tones = { [region.code]: "selected" };
   }
-  return drawChizu(map, { language, tones, box, style: true });
+  const colors = Object.fromEntries(Object.entries(drawing.colors ?? {}).map(([key, colour]) => [map.regions.find((region: { code: string; iso?: string }) => region.code === key || region.iso === key)?.code ?? key, colour]));
+  const featureLayer = drawing.capital === false ? null : await loadFeatures(map.id);
+  return drawChizu(map, { language, tones, colors, box, style: true, featureLayer, features: drawing.capital === false ? [] : ["capitals"] });
 };
 
 /**
@@ -81,12 +110,14 @@ const mapSvg = async (code: string, language: "en" | "ja"): Promise<string | nul
  *   defineCard();
  *   const card = document.createElement("kuni-card");
  *   card.setAttribute("code", "JP");
+ *   card.setAttribute("colors", "JP:#2f6b4f");
+ *   card.setAttribute("capital", "off");
  *   document.body.append(card);
  * }
  * ```
  */
 export class KuniCard extends ElementBase {
-  static get observedAttributes(): readonly string[] { return ["code", "fields", "lang", "theme", "size", "width", "label"]; }
+  static get observedAttributes(): readonly string[] { return ["code", "fields", "lang", "theme", "size", "width", "label", "colors", "capital"]; }
   /** The country or subdivision code. */
   get code(): string { return this.getAttribute("code") ?? "JP"; }
   set code(value: string | null | undefined) { write(this, "code", value); }
@@ -105,6 +136,12 @@ export class KuniCard extends ElementBase {
   /** Optional spoken label. */
   get label(): string | null { return this.getAttribute("label"); }
   set label(value: string | null | undefined) { write(this, "label", value); }
+  /** Per-region hex colours, reflected as comma-separated code:colour pairs. */
+  get colors(): string | null { return this.getAttribute("colors"); }
+  set colors(value: string | null | undefined) { write(this, "colors", value); }
+  /** Show map capital markers; false aliases turn them off. The capital text field is separate. */
+  get capital(): boolean { return this.hasAttribute("capital") ? !["off", "false", "no", "0"].includes((this.getAttribute("capital") ?? "").trim().toLowerCase()) : this.#options.capital ?? true; }
+  set capital(value: boolean | string | null | undefined) { write(this, "capital", value); }
   /** Optional host SVG loaders; assigning them redraws the card. */
   get options(): KuniCardOptions { return this.#options; }
   set options(value: KuniCardOptions) { this.#options = value ?? {}; this.refresh(); }
@@ -176,12 +213,14 @@ export class KuniCard extends ElementBase {
       };
       // Country capital is in the main country record; subdivision facts carry its own seat.
       if (!subdivision) values.capital = parent.capital?.[language] ?? parent.capital?.en ?? "—";
+      const colors = this.hasAttribute("colors") ? readCardColors(this.colors) : this.#options.colors ?? {};
+      if (colors === null) throw new Error(language === "ja" ? "地域コードと16進数の色を、コード:色の形式で指定してください。" : "Colours must be code:hex-colour pairs.");
       const artwork: Promise<void>[] = [];
       for (const field of fields) {
         if (field === "name") { const title = this.#text("h2", one.name[language] ?? one.name.en); title.dataset.field = field; article.append(title); continue; }
         if (field === "flag" || field === "map") {
           const box = this.#text("div", language === "ja" ? "読み込み中…" : "Loading…"); box.className = field; box.dataset.field = field; article.append(box);
-          const load = field === "flag" ? (this.#options.flag ?? flagSvg)(subdivision ? code : parent.alpha2) : (this.#options.map ?? mapSvg)(subdivision ? code : parent.alpha2, language);
+          const load = field === "flag" ? (this.#options.flag ?? flagSvg)(subdivision ? code : parent.alpha2) : (this.#options.map ?? mapSvg)(subdivision ? code : parent.alpha2, language, { colors, capital: this.capital });
           artwork.push(load.then((value) => {
             if (!this.isConnected || revision !== this.#revision) return;
             const svg = value ? this.#svg(value, `${labels[language][field]}: ${one.name[language] ?? one.name.en}`) : null;

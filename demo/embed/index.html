@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="color-scheme" content="light dark"><title>Kuni · country card</title>
 <style>html,body{margin:0;width:100%;height:100%;background:transparent;overflow:hidden}body{display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box}</style></head><body><script type="module">
-import { KUNI_CARD_FIELDS } from "../dist/element.js";
+import { KUNI_CARD_FIELDS, readCardColors } from "../dist/element.js";
 import "../dist/element-define.js";
 const query = new URLSearchParams(location.search.length > 1 ? location.search : location.hash.slice(1));
 const card = document.createElement("kuni-card");
@@ -10,6 +10,8 @@ if (/^(?:[a-z]{2,3}|\d{3}|[a-z]{2}-[a-z0-9]{1,8})$/i.test(code ?? "")) card.setA
 const fields = query.get("fields");
 if (fields !== null && fields.length <= 500 && fields.split(/[\s,]+/).filter(Boolean).every(field => KUNI_CARD_FIELDS.includes(field))) card.setAttribute("fields",fields);
 for (const [name,values] of Object.entries({size:["small","medium","large"],theme:["auto","light","dark"],lang:["en","ja"]})) if(values.includes(query.get(name)))card.setAttribute(name,query.get(name));
+if(query.has("colors")&&readCardColors(query.get("colors"))!==null)card.setAttribute("colors",query.get("colors"));
+if(query.has("capital")&&["","on","true","1","off","false","no","0"].includes(query.get("capital").trim().toLowerCase()))card.setAttribute("capital",query.get("capital"));
 const width=Number(query.get("width")); if(query.has("width")&&Number.isFinite(width)&&width>=100&&width<=2000)card.setAttribute("width",String(width));
 if(query.has("label")&&query.get("label").length<=200)card.setAttribute("label",query.get("label"));
 if(query.get("lang")==="ja")document.documentElement.lang="ja";
