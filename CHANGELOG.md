@@ -11,8 +11,6 @@ All notable changes to this project are written here. The format follows
 - Add a country and subdivision card, embed builder and validated storage-free iframe.
 - Compose optional Hata flags and Chizu maps, retain dated facts and land-area scope, and expose reflected properties and native load/error events.
 
-
-
 ### Added
 
 - Share a package-independent embed builder for option controls, preview adapters, code tabs and shareable links.
@@ -20,6 +18,8 @@ All notable changes to this project are written here. The format follows
 ### Changed
 
 - Group the package family by kind, alphabetize each group, and include the geography packages and REST in Pieces in the shared footer and README.
+
+- Update the shared family description for addresses in all seven supported countries, including France and Germany.
 
 ## [1.3.0] - 2026-10-09
 

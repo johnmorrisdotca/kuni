@@ -16,7 +16,15 @@ const ElementBase: typeof HTMLElement = typeof HTMLElement === "undefined" ? cla
  */
 export const KUNI_CARD_FIELDS = ["name", "codes", "flag", "map", "capital", "population", "area", "continent", "subregion", "currency", "languages", "calling-code", "tld", "zones", "ioc"] as const;
 
-/** Host loaders for trusted SVG artwork, replacing the optional jsDelivr loaders. */
+/** Host loaders for trusted SVG artwork, replacing the optional jsDelivr loaders.
+ * @example
+ * ```ts
+ * import { type KuniCardOptions, KUNI_CARD_OPTION_KEYS } from "@johnmorrisdotca/kuni/element";
+ * const options: KuniCardOptions = {};
+ * Object.keys(options).length; // 0
+ * KUNI_CARD_OPTION_KEYS.length; // 2
+ * ```
+ */
 export interface KuniCardOptions {
   /** Load a Hata flag or an equivalent SVG for the ISO code; null means unavailable. */
   flag?: (code: string) => Promise<string | null>;
