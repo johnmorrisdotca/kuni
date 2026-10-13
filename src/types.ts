@@ -7,8 +7,8 @@
  * ```ts
  * import { CONTINENTS, continentName } from "@johnmorrisdotca/kuni";
  *
- * CONTINENTS.length; // 7
- * CONTINENTS.map((one) => continentName(one, "ja"))[0]; // "アフリカ"
+ * console.log(CONTINENTS.length); // 7
+ * console.log(CONTINENTS.map((one) => continentName(one, "ja"))[0]); // "アフリカ"
  * ```
  */
 const CONTINENTS = ["AF", "AN", "AS", "EU", "NA", "OC", "SA"] as const;
@@ -21,7 +21,7 @@ const CONTINENTS = ["AF", "AN", "AS", "EU", "NA", "OC", "SA"] as const;
  * ```ts
  * import { SUBDIVISION_TYPES } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * SUBDIVISION_TYPES.includes("prefecture"); // true
+ * console.log(SUBDIVISION_TYPES.includes("prefecture")); // true
  * ```
  */
 const SUBDIVISION_TYPES = [
@@ -69,19 +69,58 @@ const SUBDIVISION_TYPES = [
  * ```ts
  * import { LANGUAGES } from "@johnmorrisdotca/kuni";
  *
- * LANGUAGES; // ["en", "ja"]
+ * console.log(LANGUAGES); // ["en", "ja"]
  * ```
  */
 const LANGUAGES = ["en", "ja"] as const;
 
-/** A continent's two letters: "AF", "AN", "AS", "EU", "NA", "OC" or "SA". */
+/** A continent's two letters: "AF", "AN", "AS", "EU", "NA", "OC" or "SA".
+ *
+ * @example
+ * ```ts
+ * import type { Continent } from "@johnmorrisdotca/kuni";
+ * import { CONTINENTS } from "@johnmorrisdotca/kuni";
+ *
+ * const value: Continent = CONTINENTS[0];
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type Continent = (typeof CONTINENTS)[number];
-/** A kind of subdivision, in kebab case: "prefecture", "state", "autonomous-community". */
+/** A kind of subdivision, in kebab case: "prefecture", "state", "autonomous-community".
+ *
+ * @example
+ * ```ts
+ * import type { SubdivisionType } from "@johnmorrisdotca/kuni/subdivisions";
+ * import { SUBDIVISION_TYPES } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * const value: SubdivisionType = SUBDIVISION_TYPES[0];
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type SubdivisionType = (typeof SUBDIVISION_TYPES)[number];
-/** A language every name is kept in: "en" or "ja". */
+/** A language every name is kept in: "en" or "ja".
+ *
+ * @example
+ * ```ts
+ * import type { Language } from "@johnmorrisdotca/kuni";
+ *
+ * const value: Language = "ja";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type Language = (typeof LANGUAGES)[number];
 
-/** A country, or a territory with an ISO 3166-1 code of its own, as the lookups hand it out (frozen). */
+/** A country, or a territory with an ISO 3166-1 code of its own, as the lookups hand it out (frozen).
+ *
+ * @example
+ * ```ts
+ * import type { Country } from "@johnmorrisdotca/kuni";
+ * import { country } from "@johnmorrisdotca/kuni";
+ *
+ * const value: Country = country("JP")!;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface Country {
   /** ISO 3166-1 alpha-2, "JP" */
   alpha2: string;
@@ -127,7 +166,17 @@ interface Country {
   ioc?: string;
 }
 
-/** A subdivision of a country (a state, a province, a prefecture), with its ISO 3166-2 code, as the lookups hand it out (frozen). */
+/** A subdivision of a country (a state, a province, a prefecture), with its ISO 3166-2 code, as the lookups hand it out (frozen).
+ *
+ * @example
+ * ```ts
+ * import type { Subdivision } from "@johnmorrisdotca/kuni/subdivisions";
+ * import { subdivision } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * const value: Subdivision = subdivision("JP-13")!;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface Subdivision {
   /** ISO 3166-2, always in full: "JP-13", "CA-ON", "US-NY" */
   code: string;
@@ -147,18 +196,72 @@ interface Subdivision {
   reading?: string;
 }
 
-/** The side of the road a country drives on. */
+/** The side of the road a country drives on.
+ *
+ * @example
+ * ```ts
+ * import type { DrivingSide } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: DrivingSide = "left";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type DrivingSide = "left" | "right";
-/** The first day of the week on a calendar there, as CLDR writes it. */
+/** The first day of the week on a calendar there, as CLDR writes it.
+ *
+ * @example
+ * ```ts
+ * import type { WeekStart } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: WeekStart = "mon";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type WeekStart = "mon" | "sun" | "sat" | "fri";
-/** The system of measurement in everyday use, as CLDR writes it: the United States' and Britain's are their own. */
+/** The system of measurement in everyday use, as CLDR writes it: the United States' and Britain's are their own.
+ *
+ * @example
+ * ```ts
+ * import type { MeasurementSystem } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: MeasurementSystem = "metric";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type MeasurementSystem = "metric" | "US" | "UK";
-/** The paper size in everyday use, as CLDR writes it. */
+/** The paper size in everyday use, as CLDR writes it.
+ *
+ * @example
+ * ```ts
+ * import type { PaperSize } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: PaperSize = "A4";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type PaperSize = "A4" | "US-Letter";
-/** The clock in everyday use, named as an hour cycle is in JavaScript: "h12" is 1 to 12 with AM and PM, "h23" is 0 to 23. */
+/** The clock in everyday use, named as an hour cycle is in JavaScript: "h12" is 1 to 12 with AM and PM, "h23" is 0 to 23.
+ *
+ * @example
+ * ```ts
+ * import type { HourCycle } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: HourCycle = "h23";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type HourCycle = "h12" | "h23";
 
-/** A point on the earth, in degrees: north and east are positive. */
+/** A point on the earth, in degrees: north and east are positive.
+ *
+ * @example
+ * ```ts
+ * import type { LatLon } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: LatLon = {lat:35.68,lon:139.76};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface LatLon {
   /** Latitude in degrees, north positive: -90 to 90. */
   lat: number;
@@ -166,7 +269,17 @@ interface LatLon {
   lon: number;
 }
 
-/** The facts about one country, from the /facts entry: plain numbers and codes, `null` where a source has none. */
+/** The facts about one country, from the /facts entry: plain numbers and codes, `null` where a source has none.
+ *
+ * @example
+ * ```ts
+ * import type { CountryFacts } from "@johnmorrisdotca/kuni/facts";
+ * import { facts } from "@johnmorrisdotca/kuni/facts";
+ *
+ * const value: CountryFacts = facts("JP")!;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface CountryFacts {
   /** ISO 3166-1 alpha-2, "JP" */
   alpha2: string;
@@ -198,7 +311,17 @@ interface CountryFacts {
   hourCycle: HourCycle;
 }
 
-/** The facts about one subdivision, from the /subdivision-facts entry: `null` where Wikidata has none, or gives two. */
+/** The facts about one subdivision, from the /subdivision-facts entry: `null` where Wikidata has none, or gives two.
+ *
+ * @example
+ * ```ts
+ * import type { SubdivisionFacts } from "@johnmorrisdotca/kuni/subdivision-facts";
+ * import { loadSubdivisionFacts } from "@johnmorrisdotca/kuni/subdivision-facts";
+ *
+ * const value: SubdivisionFacts = (await loadSubdivisionFacts("JP"))![0];
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface SubdivisionFacts {
   /** ISO 3166-2, "JP-13" */
   code: string;
@@ -226,14 +349,33 @@ interface SubdivisionFacts {
  * ```ts
  * import { GROUPING_KINDS, groupings } from "@johnmorrisdotca/kuni/groupings";
  *
- * GROUPING_KINDS.map((kind) => groupings({ kind }).length)[0]; // 7
+ * console.log(GROUPING_KINDS.map((kind) => groupings({ kind }).length)[0]); // 7
  * ```
  */
 const GROUPING_KINDS = ["continent", "m49", "membership", "informal", "subdivision"] as const;
-/** What kind of grouping it is: "continent", "m49", "membership", "informal" or "subdivision". */
+/** What kind of grouping it is: "continent", "m49", "membership", "informal" or "subdivision".
+ *
+ * @example
+ * ```ts
+ * import type { GroupingKind } from "@johnmorrisdotca/kuni/groupings";
+ * import { GROUPING_KINDS } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingKind = GROUPING_KINDS[0];
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type GroupingKind = (typeof GROUPING_KINDS)[number];
 
-/** How a country stands with a body when it is not a member. */
+/** How a country stands with a body when it is not a member.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingStatus } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingStatus = "observer";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type GroupingStatus = "candidate" | "associate" | "observer" | "suspended";
 
 export { CONTINENTS, GROUPING_KINDS, LANGUAGES, SUBDIVISION_TYPES };

@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/tv";
  *
- * subdivisions.length;    // 8
- * subdivisions[0].code;   // "TV-FUN"
+ * console.log(subdivisions.length);    // 8
+ * console.log(subdivisions[0].code);   // "TV-FUN"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(TV);

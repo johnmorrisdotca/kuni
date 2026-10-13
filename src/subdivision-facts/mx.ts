@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/mx";
  *
- * facts.length;    // 32
- * facts[0].code;   // "MX-AGU"
+ * console.log(facts.length);    // 32
+ * console.log(facts[0].code);   // "MX-AGU"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(MX);

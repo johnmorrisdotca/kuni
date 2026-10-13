@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/ae";
  *
- * subdivisions.length;    // 7
- * subdivisions[0].code;   // "AE-AJ"
+ * console.log(subdivisions.length);    // 7
+ * console.log(subdivisions[0].code);   // "AE-AJ"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(AE);

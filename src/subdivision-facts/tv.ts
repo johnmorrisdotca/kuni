@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/tv";
  *
- * facts.length;    // 8
- * facts[0].code;   // "TV-FUN"
+ * console.log(facts.length);    // 8
+ * console.log(facts[0].code);   // "TV-FUN"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(TV);

@@ -60,12 +60,12 @@ const getTable = (): NonNullable<typeof table> => {
  * ```ts
  * import { facts } from "@johnmorrisdotca/kuni/facts";
  *
- * facts("JP")?.population;    // 123802000
- * facts("JP")?.populationYear; // 2024
- * facts("FR")?.borders;        // ["AD", "BE", "BR", "CH", "DE", "ES", "IT", "LU", "MC", "SR"]
- * facts("GB")?.drivingSide;    // "left"
- * facts("US")?.weekStart;      // "sun"
- * facts("XX");                 // null
+ * console.log(facts("JP")?.population);    // 123802000
+ * console.log(facts("JP")?.populationYear); // 2024
+ * console.log(facts("FR")?.borders);        // ["AD", "BE", "BR", "CH", "DE", "ES", "IT", "LU", "MC", "SR"]
+ * console.log(facts("GB")?.drivingSide);    // "left"
+ * console.log(facts("US")?.weekStart);      // "sun"
+ * console.log(facts("XX"));                 // null
  * ```
  */
 const facts = (code: string): CountryFacts | null => {
@@ -104,7 +104,7 @@ const RADIANS = Math.PI / 180;
  * ```ts
  * import { distanceKm, facts } from "@johnmorrisdotca/kuni/facts";
  *
- * Math.round(distanceKm(facts("JP")!.capitalPoint!, facts("GB")!.capitalPoint!)); // 9558
+ * console.log(Math.round(distanceKm(facts("JP")!.capitalPoint!, facts("GB")!.capitalPoint!))); // 9558
  * ```
  */
 const distanceKm = (from: LatLon, to: LatLon): number => {

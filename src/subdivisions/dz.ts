@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/dz";
  *
- * subdivisions.length;    // 58
- * subdivisions[0].code;   // "DZ-01"
+ * console.log(subdivisions.length);    // 58
+ * console.log(subdivisions[0].code);   // "DZ-01"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DZ);

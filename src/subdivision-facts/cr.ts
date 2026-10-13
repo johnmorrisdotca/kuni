@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/cr";
  *
- * facts.length;    // 7
- * facts[0].code;   // "CR-A"
+ * console.log(facts.length);    // 7
+ * console.log(facts[0].code);   // "CR-A"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(CR);

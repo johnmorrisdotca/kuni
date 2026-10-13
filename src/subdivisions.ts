@@ -10,16 +10,44 @@ import type { SubdivisionTable } from "./rows";
 import { SUBDIVISION_TYPES } from "./types";
 import type { Language, Subdivision, SubdivisionType } from "./types";
 
-/** A level of subdivision: 1 for a country's first division, 2 and 3 for those inside one, or "all". */
+/** A level of subdivision: 1 for a country's first division, 2 and 3 for those inside one, or "all".
+ *
+ * @example
+ * ```ts
+ * import type { Level } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * const value: Level = "all";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type Level = 1 | 2 | 3 | "all";
 
-/** What `subdivisions()` may be asked. */
+/** What `subdivisions()` may be asked.
+ *
+ * @example
+ * ```ts
+ * import type { SubdivisionsOptions } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * const value: SubdivisionsOptions = {level:1};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface SubdivisionsOptions {
   /** 1 (the default) for the first division only; 2 or 3 for one deeper level; "all" for every level. */
   level?: Level;
 }
 
-/** What `subdivisionByName()` and `subdivisionsByName()` may be narrowed to. */
+/** What `subdivisionByName()` and `subdivisionsByName()` may be narrowed to.
+ *
+ * @example
+ * ```ts
+ * import type { SubdivisionByNameOptions } from "@johnmorrisdotca/kuni/subdivisions";
+ * import { country } from "@johnmorrisdotca/kuni";
+ *
+ * const value: SubdivisionByNameOptions = {country:"JP",level:1};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface SubdivisionByNameOptions {
   /** Only this country's subdivisions (alpha-2, either case). */
   country?: string;
@@ -104,10 +132,10 @@ const atLevel = (list: readonly Subdivision[], level: Level): readonly Subdivisi
  * ```ts
  * import { subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * subdivisions("JP")?.length;                    // 47
- * subdivisions("FR")?.length;                    // 26
- * subdivisions("FR", { level: "all" })?.length;  // 124
- * subdivisions("XX");                            // null
+ * console.log(subdivisions("JP")?.length);                    // 47
+ * console.log(subdivisions("FR")?.length);                    // 26
+ * console.log(subdivisions("FR", { level: "all" })?.length);  // 124
+ * console.log(subdivisions("XX"));                            // null
  * ```
  */
 const subdivisions = (countryCode: string, options: SubdivisionsOptions = {}): readonly Subdivision[] | null => {
@@ -126,7 +154,7 @@ const subdivisions = (countryCode: string, options: SubdivisionsOptions = {}): r
  * ```ts
  * import { allSubdivisions } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * allSubdivisions().length;   // 5050
+ * console.log(allSubdivisions().length);   // 5050
  * ```
  */
 const allSubdivisions = (): readonly Subdivision[] => getTables().list;
@@ -140,10 +168,10 @@ const allSubdivisions = (): readonly Subdivision[] => getTables().list;
  * ```ts
  * import { subdivision } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * subdivision("JP-13")?.name.ja;   // "東京都"
- * subdivision("ca-on")?.name.en;   // "Ontario"
- * subdivision("FR-75C")?.parent;   // "FR-IDF"
- * subdivision("XX-99");            // null
+ * console.log(subdivision("JP-13")?.name.ja);   // "東京都"
+ * console.log(subdivision("ca-on")?.name.en);   // "Ontario"
+ * console.log(subdivision("FR-75C")?.parent);   // "FR-IDF"
+ * console.log(subdivision("XX-99"));            // null
  * ```
  */
 const subdivision = (code: string): Subdivision | null => {
@@ -162,8 +190,8 @@ const subdivision = (code: string): Subdivision | null => {
  * ```ts
  * import { subdivisionByShortCode } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * subdivisionByShortCode("CA", "ON")?.code;   // "CA-ON"
- * subdivisionByShortCode("JP", "99");         // null
+ * console.log(subdivisionByShortCode("CA", "ON")?.code);   // "CA-ON"
+ * console.log(subdivisionByShortCode("JP", "99"));         // null
  * ```
  */
 const subdivisionByShortCode = (countryCode: string, shortCode: string): Subdivision | null => {
@@ -184,9 +212,9 @@ const subdivisionByShortCode = (countryCode: string, shortCode: string): Subdivi
  * ```ts
  * import { subdivisionsByName } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * subdivisionsByName("Punjab").map((one) => one.code);   // ["IN-PB", "PK-PB"]
- * subdivisionsByName("とうきょうと").map((one) => one.code); // ["JP-13"]
- * subdivisionsByName("Narnia");                          // []
+ * console.log(subdivisionsByName("Punjab").map((one) => one.code));   // ["IN-PB", "PK-PB"]
+ * console.log(subdivisionsByName("とうきょうと").map((one) => one.code)); // ["JP-13"]
+ * console.log(subdivisionsByName("Narnia"));                          // []
  * ```
  */
 const subdivisionsByName = (text: string, options: SubdivisionByNameOptions = {}): readonly Subdivision[] => {
@@ -212,9 +240,9 @@ const subdivisionsByName = (text: string, options: SubdivisionByNameOptions = {}
  * ```ts
  * import { subdivisionByName } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * subdivisionByName("オンタリオ州", { country: "CA" })?.code;   // "CA-ON"
- * subdivisionByName("Punjab");                                 // null
- * subdivisionByName("Punjab", { country: "PK" })?.code;        // "PK-PB"
+ * console.log(subdivisionByName("オンタリオ州", { country: "CA" })?.code);   // "CA-ON"
+ * console.log(subdivisionByName("Punjab"));                                 // null
+ * console.log(subdivisionByName("Punjab", { country: "PK" })?.code);        // "PK-PB"
  * ```
  */
 const subdivisionByName = (text: string, options: SubdivisionByNameOptions = {}): Subdivision | null => {
@@ -247,10 +275,10 @@ const mainType = (table: SubdivisionTable, list: readonly Subdivision[]): Subdiv
  * ```ts
  * import { subdivisionTypeLabel } from "@johnmorrisdotca/kuni/subdivisions";
  *
- * subdivisionTypeLabel("JP-13");          // "metropolis"
- * subdivisionTypeLabel("JP-13", "ja");    // "都"
- * subdivisionTypeLabel("CA", "ja");       // "州"
- * subdivisionTypeLabel("XX");             // null
+ * console.log(subdivisionTypeLabel("JP-13"));          // "metropolis"
+ * console.log(subdivisionTypeLabel("JP-13", "ja"));    // "都"
+ * console.log(subdivisionTypeLabel("CA", "ja"));       // "州"
+ * console.log(subdivisionTypeLabel("XX"));             // null
  * ```
  */
 const subdivisionTypeLabel = (code: string, language: Language = "en"): string | null => {

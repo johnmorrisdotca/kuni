@@ -13,16 +13,43 @@ import { CONTINENTS, LANGUAGES } from "./types";
 import type { Continent, Country, Language } from "./types";
 import { VERSION } from "./version";
 
-/** The order `countries()` lists them in: "code" (alpha-2), "en" (by English name) or "ja" (by Japanese name, in kana). */
+/** The order `countries()` lists them in: "code" (alpha-2), "en" (by English name) or "ja" (by Japanese name, in kana).
+ *
+ * @example
+ * ```ts
+ * import type { CountryOrder } from "@johnmorrisdotca/kuni";
+ *
+ * const value: CountryOrder = "code";
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 type CountryOrder = "code" | "en" | "ja";
 
-/** What `countries()` may be asked. */
+/** What `countries()` may be asked.
+ *
+ * @example
+ * ```ts
+ * import type { CountriesOptions } from "@johnmorrisdotca/kuni";
+ *
+ * const value: CountriesOptions = {order:"ja"};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface CountriesOptions {
   /** "code" (the default) is alpha-2 order; "en" and "ja" are by name, as `countries` says. */
   order?: CountryOrder;
 }
 
-/** What `countryName()` may be asked. */
+/** What `countryName()` may be asked.
+ *
+ * @example
+ * ```ts
+ * import type { CountryNameOptions } from "@johnmorrisdotca/kuni";
+ *
+ * const value: CountryNameOptions = {short:true};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface CountryNameOptions {
   /** The short form where CLDR has one ("UK", アメリカ), the full name otherwise. */
   short?: boolean;
@@ -90,11 +117,11 @@ const getTables = (): Tables => {
  * ```ts
  * import { country } from "@johnmorrisdotca/kuni";
  *
- * country("JP")?.name.en;     // "Japan"
- * country("jpn")?.alpha2;     // "JP"
- * country("392")?.name.ja;    // "日本"
- * country("JP")?.capital;     // { "en": "Tokyo", "ja": "東京" }
- * country("XX");              // null
+ * console.log(country("JP")?.name.en);     // "Japan"
+ * console.log(country("jpn")?.alpha2);     // "JP"
+ * console.log(country("392")?.name.ja);    // "日本"
+ * console.log(country("JP")?.capital);     // { "en": "Tokyo", "ja": "東京" }
+ * console.log(country("XX"));              // null
  * ```
  */
 const country = (code: string): Country | null => {
@@ -117,9 +144,9 @@ const compare = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
  * ```ts
  * import { countries } from "@johnmorrisdotca/kuni";
  *
- * countries().length;                          // 250
- * countries({ order: "en" })[0].name.en;       // "Afghanistan"
- * countries({ order: "ja" })[0].name.ja;       // "アイスランド"
+ * console.log(countries().length);                          // 250
+ * console.log(countries({ order: "en" })[0].name.en);       // "Afghanistan"
+ * console.log(countries({ order: "ja" })[0].name.ja);       // "アイスランド"
  * ```
  */
 const countries = (options: CountriesOptions = {}): readonly Country[] => {
@@ -145,11 +172,11 @@ const countries = (options: CountriesOptions = {}): readonly Country[] => {
  * ```ts
  * import { countryByName } from "@johnmorrisdotca/kuni";
  *
- * countryByName("ドイツ")?.alpha2;          // "DE"
- * countryByName("Holland")?.name.ja;        // "オランダ"
- * countryByName("ＵＳＡ")?.alpha2;           // "US"
- * countryByName("cote d'ivoire")?.alpha2;   // "CI"
- * countryByName("Narnia");                  // null
+ * console.log(countryByName("ドイツ")?.alpha2);          // "DE"
+ * console.log(countryByName("Holland")?.name.ja);        // "オランダ"
+ * console.log(countryByName("ＵＳＡ")?.alpha2);           // "US"
+ * console.log(countryByName("cote d'ivoire")?.alpha2);   // "CI"
+ * console.log(countryByName("Narnia"));                  // null
  * ```
  */
 const countryByName = (text: string): Country | null => {
@@ -174,10 +201,10 @@ const countryByName = (text: string): Country | null => {
  * ```ts
  * import { countryName } from "@johnmorrisdotca/kuni";
  *
- * countryName("US");                         // "United States"
- * countryName("US", "ja", { short: true });  // "アメリカ"
- * countryName("GB", "en", { short: true });  // "UK"
- * countryName("XX");                         // null
+ * console.log(countryName("US"));                         // "United States"
+ * console.log(countryName("US", "ja", { short: true }));  // "アメリカ"
+ * console.log(countryName("GB", "en", { short: true }));  // "UK"
+ * console.log(countryName("XX"));                         // null
  * ```
  */
 const countryName = (code: string, language: Language = "en", options: CountryNameOptions = {}): string | null => {
@@ -197,8 +224,8 @@ const countryName = (code: string, language: Language = "en", options: CountryNa
  * ```ts
  * import { flag } from "@johnmorrisdotca/kuni";
  *
- * flag("JP");   // "🇯🇵"
- * flag("XX");   // null
+ * console.log(flag("JP"));   // "🇯🇵"
+ * console.log(flag("XX"));   // null
  * ```
  */
 const flag = (code: string): string | null => country(code)?.flag ?? null;
@@ -213,8 +240,8 @@ const flag = (code: string): string | null => country(code)?.flag ?? null;
  * ```ts
  * import { continentName } from "@johnmorrisdotca/kuni";
  *
- * continentName("AS");         // "Asia"
- * continentName("AS", "ja");   // "アジア"
+ * console.log(continentName("AS"));         // "Asia"
+ * console.log(continentName("AS", "ja"));   // "アジア"
  * ```
  */
 const continentName = (continent: Continent, language: Language = "en"): string | null => {
@@ -233,8 +260,8 @@ const continentName = (continent: Continent, language: Language = "en"): string 
  * ```ts
  * import { subregionName } from "@johnmorrisdotca/kuni";
  *
- * subregionName("030");         // "Eastern Asia"
- * subregionName("030", "ja");   // "東アジア"
+ * console.log(subregionName("030"));         // "Eastern Asia"
+ * console.log(subregionName("030", "ja"));   // "東アジア"
  * ```
  */
 const subregionName = (subregion: string, language: Language = "en"): string | null =>

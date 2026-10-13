@@ -16,9 +16,9 @@ const CODE_SET: ReadonlySet<string> = new Set(COUNTRY_CODES);
  * ```ts
  * import { isCountryCode } from "@johnmorrisdotca/kuni/codes";
  *
- * isCountryCode("JP");   // true
- * isCountryCode("jp");   // false
- * isCountryCode("XX");   // false
+ * console.log(isCountryCode("JP"));   // true
+ * console.log(isCountryCode("jp"));   // false
+ * console.log(isCountryCode("XX"));   // false
  * ```
  */
 const isCountryCode = (value: unknown): value is CountryCode => typeof value === "string" && CODE_SET.has(value);

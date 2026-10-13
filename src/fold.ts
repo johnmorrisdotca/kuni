@@ -19,9 +19,9 @@ const SEMI_VOICED_MARK = "\u309a";
  * ```ts
  * import { fold } from "@johnmorrisdotca/kuni";
  *
- * fold("Côte d'Ivoire");   // "cote divoire"
- * fold("ＵＳＡ");           // "usa"
- * fold("ドイツ");           // "どいつ"
+ * console.log(fold("Côte d'Ivoire"));   // "cote divoire"
+ * console.log(fold("ＵＳＡ"));           // "usa"
+ * console.log(fold("ドイツ"));           // "どいつ"
  * ```
  */
 const fold = (text: string): string =>

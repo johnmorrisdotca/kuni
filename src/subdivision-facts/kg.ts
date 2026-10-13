@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/kg";
  *
- * facts.length;    // 9
- * facts[0].code;   // "KG-B"
+ * console.log(facts.length);    // 9
+ * console.log(facts[0].code);   // "KG-B"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(KG);

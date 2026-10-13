@@ -11,7 +11,7 @@ const ElementBase: typeof HTMLElement = typeof HTMLElement === "undefined" ? cla
  * @example
  * ```ts
  * import { KUNI_CARD_FIELDS } from "@johnmorrisdotca/kuni/element";
- * KUNI_CARD_FIELDS.includes("population"); // true
+ * console.log(KUNI_CARD_FIELDS.includes("population")); // true
  * ```
  */
 export const KUNI_CARD_FIELDS = ["name", "codes", "flag", "map", "capital", "population", "area", "continent", "subregion", "currency", "languages", "calling-code", "tld", "zones", "ioc"] as const;
@@ -21,8 +21,8 @@ export const KUNI_CARD_FIELDS = ["name", "codes", "flag", "map", "capital", "pop
  * ```ts
  * import { type KuniCardOptions, KUNI_CARD_OPTION_KEYS } from "@johnmorrisdotca/kuni/element";
  * const options: KuniCardOptions = {};
- * Object.keys(options).length; // 0
- * KUNI_CARD_OPTION_KEYS.length; // 4
+ * console.log(Object.keys(options).length); // 0
+ * console.log(KUNI_CARD_OPTION_KEYS.length); // 4
  * ```
  */
 export interface KuniCardOptions {
@@ -41,7 +41,7 @@ export interface KuniCardOptions {
  * @example
  * ```ts
  * import { KUNI_CARD_OPTION_KEYS } from "@johnmorrisdotca/kuni/element";
- * KUNI_CARD_OPTION_KEYS.length; // 4
+ * console.log(KUNI_CARD_OPTION_KEYS.length); // 4
  * ```
  */
 export const KUNI_CARD_OPTION_KEYS = Object.keys({ flag: true, map: true, colors: true, capital: true } satisfies Record<keyof KuniCardOptions, boolean>);
@@ -51,8 +51,8 @@ export const KUNI_CARD_OPTION_KEYS = Object.keys({ flag: true, map: true, colors
  * @example
  * ```ts
  * import { readCardColors } from "@johnmorrisdotca/kuni/element";
- * readCardColors("JP:#2f6b4f")?.JP; // "#2f6b4f"
- * readCardColors("JP:url(evil)"); // null
+ * console.log(readCardColors("JP:#2f6b4f")?.JP); // "#2f6b4f"
+ * console.log(readCardColors("JP:url(evil)")); // null
  * ```
  */
 export function readCardColors(text: string | null): Record<string, string> | null {
@@ -105,7 +105,7 @@ const mapSvg = async (code: string, language: "en" | "ja", drawing: Pick<KuniCar
  * @example
  * ```ts
  * import { KuniCard, defineCard } from "@johnmorrisdotca/kuni/element";
- * typeof KuniCard; // "function"
+ * console.log(typeof KuniCard); // "function"
  * if (typeof document !== "undefined") {
  *   defineCard();
  *   const card = document.createElement("kuni-card");
@@ -253,7 +253,7 @@ const STYLE = `:host{display:block;max-width:100%;box-sizing:border-box;font-fam
  * @example
  * ```ts
  * import { defineCard } from "@johnmorrisdotca/kuni/element";
- * defineCard();
+ * console.log(defineCard());
  * ```
  */
 export function defineCard(tag = "kuni-card"): void {

@@ -21,11 +21,11 @@ const EMPTY: readonly SubdivisionFacts[] = Object.freeze([]);
  * import { loadSubdivisionFacts } from "@johnmorrisdotca/kuni/subdivision-facts";
  *
  * const prefectures = await loadSubdivisionFacts("JP");
- * prefectures?.[0].capital;    // { en: "Sapporo", ja: "札幌市", reading: "さっぽろし" }
- * prefectures?.[12].population; // 14264798, for Tokyo
- * prefectures?.[12].populationYear; // 2022
- * await loadSubdivisionFacts("AQ"); // []
- * await loadSubdivisionFacts("XX"); // null
+ * console.log(prefectures?.[0].capital);    // { en: "Sapporo", ja: "札幌市", reading: "さっぽろし" }
+ * console.log(prefectures?.[12].population); // 14264798, for Tokyo
+ * console.log(prefectures?.[12].populationYear); // 2022
+ * console.log(await loadSubdivisionFacts("AQ")); // []
+ * console.log(await loadSubdivisionFacts("XX")); // null
  * ```
  */
 const loadSubdivisionFacts = async (countryCode: string): Promise<readonly SubdivisionFacts[] | null> => {

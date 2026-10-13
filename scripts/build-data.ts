@@ -14,8 +14,10 @@
 //
 // Running it twice leaves the tree as it was: nothing it writes depends on the day it runs.
 
-import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
+
+import { refreshDataDocs, writeDocumentedFile } from "./data-docs.ts";
 
 import { CONTINENTS, SUBDIVISION_TYPES } from "../src/types.ts";
 import {
@@ -96,6 +98,8 @@ interface SubdivisionRecord {
   type: string | null;
   reading: string | null;
 }
+
+if (process.argv.includes("--docs-only")) { refreshDataDocs(); process.exit(0); }
 
 const CLDR_TAG = "release-48-2";
 const NODE_MODULES = join(ROOT, "node_modules");
@@ -654,7 +658,7 @@ const regionNames = (area: string): [string, string] => [tidy(territoriesEn[area
 
 const writeCountries = (): void => {
   const codes = countries.map((country) => country.alpha2);
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "codes.data.ts"),
     header(`The ${codes.length} country codes: ISO 3166-1 alpha-2, and XK for Kosovo.`, [CLDR_SOURCE]) +
       "/**\n * The 250 country codes: the 249 ISO 3166-1 alpha-2 codes and XK for Kosovo, in alphabetical order.\n *\n * @example\n * ```ts\n * import { COUNTRY_CODES } from \"@johnmorrisdotca/kuni/codes\";\n *\n * COUNTRY_CODES.length;   // 250\n * COUNTRY_CODES[0];       // \"AD\"\n * ```\n */\n" +
@@ -662,7 +666,7 @@ const writeCountries = (): void => {
       "/** One of the 250 country codes, as a type: \"JP\" | \"US\" | ... */\ntype CountryCode = (typeof COUNTRY_CODES)[number];\n\n" +
       "export { COUNTRY_CODES };\nexport type { CountryCode };\n",
   );
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "countries.data.ts"),
     header(`Every country (${countries.length}), one row each; src/rows.ts says what the columns are.`, [
       `${CLDR_SOURCE}: names, short names, variants, codes, currencies, regions`,
@@ -713,7 +717,7 @@ const writeFacts = (): void => {
 
     return `  ${literal(row)},`;
   });
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "facts.data.ts"),
     header(`The facts about every country (${facts.records.length}), one row each; src/facts.ts says what the columns are.`, [
       `${FACTS_SOURCE}: population, area, coordinates, capitals' coordinates, driving side, borders`,
@@ -725,7 +729,7 @@ const writeFacts = (): void => {
       `const FACT_ROWS: readonly FactsRow[] = [\n${rows.join("\n")}\n];\n\n` +
       "export { FACT_ROWS, FACTS_READ };\n",
   );
-  writeFileSync(join(DOCS, "facts.md"), facts.doc.join("\n"));
+  writeDocumentedFile(join(DOCS, "facts.md"), facts.doc.join("\n"));
 };
 
 const lower = (alpha2: string): string => alpha2.toLowerCase();
@@ -746,7 +750,7 @@ const writeGroupings = (): void => {
     cldrVersion: versions.cldrNames,
     snapshotRead: factsFile.read,
   });
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "groupings.data.ts"),
     header(`Every grouping (${records.length}): continents, UN M49 areas, international bodies, informal groupings and regions inside a country.`, [
       `${CLDR_SOURCE}: the continents' names, UN M49, the UN's members`,
@@ -758,14 +762,14 @@ const writeGroupings = (): void => {
       `const GROUPING_ROWS: readonly GroupingRow[] = [\n${records.map((record) => `  ${literal(record)},`).join("\n")}\n];\n\n` +
       "export { GROUPING_ROWS };\n",
   );
-  writeFileSync(join(DOCS, "groupings.md"), doc.join("\n"));
+  writeDocumentedFile(join(DOCS, "groupings.md"), doc.join("\n"));
 };
 
 // The /withdrawn entry's table, one object a line, and docs/withdrawn.md.
 const writeWithdrawn = (): void => {
   const { records } = withdrawn;
   const rows = records.map(({ items: _items, filled: _filled, ...row }) => row);
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "withdrawn.data.ts"),
     header(`The ${records.length} withdrawn countries of ISO 3166-3, one object each.`, [
       `Wikidata (CC0), the snapshot data-sources/${codesFile.path}: the codes, names, years and successors`,
@@ -776,7 +780,7 @@ const writeWithdrawn = (): void => {
       `/**\n * The day the Wikidata snapshot of the withdrawn codes was read.\n *\n * @example\n * \`\`\`ts\n * import { WITHDRAWN_READ } from "@johnmorrisdotca/kuni/withdrawn";\n *\n * WITHDRAWN_READ; // "${codesFile.read}"\n * \`\`\`\n */\nconst WITHDRAWN_READ = ${literal(codesFile.read)};\n\n` +
       "export { WITHDRAWN_READ, WITHDRAWN_ROWS };\n",
   );
-  writeFileSync(join(DOCS, "withdrawn.md"), withdrawnDoc(records, codesSnapshot, withdrawn.ioc.size).join("\n"));
+  writeDocumentedFile(join(DOCS, "withdrawn.md"), withdrawnDoc(records, codesSnapshot, withdrawn.ioc.size).join("\n"));
 };
 
 const writeSubdivisionFacts = (): void => {
@@ -796,13 +800,13 @@ const writeSubdivisionFacts = (): void => {
     const name = lower(alpha2);
     names.push(name);
     const named = countries.find((one) => one.alpha2 === alpha2)!;
-    writeFileSync(
+    writeDocumentedFile(
       join(OUT_FACT_TABLES, `${name}.data.ts`),
       header(`The facts about the ${records.length} subdivisions of ${named.en} (${alpha2}): capitals, population, area, coordinates.`, [`${FACTS_SOURCE}`]) +
         'import type { SubdivisionFactsTable } from "../../rows";\n\n' +
         `const ${alpha2}: SubdivisionFactsTable = {\n  country: ${literal(alpha2)},\n  rows: \`${rows.join("\n")}\`,\n};\n\nexport { ${alpha2} };\n`,
     );
-    writeFileSync(
+    writeDocumentedFile(
       join(OUT_FACT_ENTRIES, `${name}.ts`),
       [
         "// Generated by scripts/build-data.ts. Do not edit by hand.",
@@ -834,7 +838,7 @@ const writeSubdivisionFacts = (): void => {
   for (const file of readdirSync(OUT_FACT_TABLES)) if (!names.includes(file.slice(0, 2))) rmSync(join(OUT_FACT_TABLES, file));
   for (const file of readdirSync(OUT_FACT_ENTRIES)) if (!names.includes(file.slice(0, 2))) rmSync(join(OUT_FACT_ENTRIES, file));
   names.sort(byText);
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "fact-loaders.data.ts"),
     header(`One dynamic import for each of the ${names.length} countries with subdivisions, for loadSubdivisionFacts.`, [FACTS_SOURCE]) +
       'import type { SubdivisionFacts } from "../types";\n\n' +
@@ -885,7 +889,7 @@ const writeSubdivisionFacts = (): void => {
     lines.push(`| ${alpha2} | ${codes.length} | ${fields.map((field) => known(codes, field)).join(" | ")} |`);
   }
   lines.push("");
-  writeFileSync(join(DOCS, "subdivision-facts.md"), lines.join("\n"));
+  writeDocumentedFile(join(DOCS, "subdivision-facts.md"), lines.join("\n"));
 };
 
 
@@ -909,7 +913,7 @@ const writeSubdivisions = (): void => {
     const levels = [...new Set(records.map((record) => record.level))].sort();
     const name = lower(country.alpha2);
     const constant = country.alpha2;
-    writeFileSync(
+    writeDocumentedFile(
       join(OUT_TABLES, `${name}.data.ts`),
       header(`${country.en} (${country.alpha2}): ${records.length} subdivisions, at level ${levels.join(" and ")}.`, [
         CLDR_XML_SOURCE,
@@ -919,7 +923,7 @@ const writeSubdivisions = (): void => {
         `const ${constant}: SubdivisionTable = {\n  country: ${literal(country.alpha2)},\n  types: ${literal(types)},\n  typesJa: ${literal(typesJa)},\n  rows: \`${rows.join("\n")}\`,\n};\n\n` +
         `export { ${constant} };\n`,
     );
-    writeFileSync(
+    writeDocumentedFile(
       join(OUT_ENTRIES, `${name}.ts`),
       [
         "// Generated by scripts/build-data.ts. Do not edit by hand.",
@@ -954,14 +958,14 @@ const writeSubdivisions = (): void => {
   for (const file of readdirSync(OUT_ENTRIES)) if (file.endsWith(".ts") && !written.has(file.slice(0, 2))) rmSync(join(OUT_ENTRIES, file));
 
   const names = [...written].sort(byText);
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_TABLES, "index.data.ts"),
     header(`Every country's subdivision table (${names.length} countries, ${subdivisions.length} subdivisions), for the /subdivisions entry.`, [CLDR_XML_SOURCE, WIKIDATA_SOURCE]) +
       'import type { SubdivisionTable } from "../../rows";\n' +
       names.map((name) => `import { ${name.toUpperCase()} } from "./${name}.data";`).join("\n") +
       `\n\nconst SUBDIVISION_TABLES: readonly SubdivisionTable[] = [\n${names.map((name) => `  ${name.toUpperCase()},`).join("\n")}\n];\n\nexport { SUBDIVISION_TABLES };\n`,
   );
-  writeFileSync(
+  writeDocumentedFile(
     join(OUT_DATA, "loaders.data.ts"),
     header(`One dynamic import for each of the ${names.length} countries with subdivisions, so a bundler makes a chunk of each.`, [CLDR_XML_SOURCE]) +
       'import type { Subdivision } from "../types";\n\n' +
@@ -1034,7 +1038,7 @@ const writeDisagreements = (): void => {
     lines.push("");
   }
   mkdirSync(DOCS, { recursive: true });
-  writeFileSync(join(DOCS, "disagreements.md"), lines.join("\n"));
+  writeDocumentedFile(join(DOCS, "disagreements.md"), lines.join("\n"));
 };
 
 // The brackets the build took off CLDR's Japanese names, so that the rule can be seen at work.
@@ -1057,7 +1061,7 @@ const writeNameRules = (): void => {
   ];
   for (const record of stripped) lines.push(`| ${record.code} | ${record.en.replace(/\|/g, "\\|")} | ${record.cldrJa} | ${stripBracket(record.cldrJa!)} | ${record.ja} |`);
   lines.push("");
-  writeFileSync(join(DOCS, "name-rules.md"), lines.join("\n"));
+  writeDocumentedFile(join(DOCS, "name-rules.md"), lines.join("\n"));
 };
 
 const groupBy = (records: SubdivisionRecord[]): [string, SubdivisionRecord[]][] => {
@@ -1098,7 +1102,7 @@ const report = (): void => {
     for (const record of records) lines.push(`- ${record.code} ${record.en} (level ${record.level})`);
     lines.push("");
   }
-  writeFileSync(join(DOCS, "ja-gaps.md"), lines.join("\n"));
+  writeDocumentedFile(join(DOCS, "ja-gaps.md"), lines.join("\n"));
   const types = new Map<string, Map<string, number>>();
   for (const record of first) {
     const kinds = types.get(record.country) ?? new Map<string, number>();
@@ -1107,7 +1111,7 @@ const report = (): void => {
   }
   if (args.includes("--types")) for (const [country, kinds] of types) console.log(country, [...kinds].map(([kind, n]) => `${kind} ${n}`).join(", "));
   if (ACCEPT) {
-    writeFileSync(EXPECTED_GAPS, `${JSON.stringify(gaps(), null, 2)}\n`);
+    writeDocumentedFile(EXPECTED_GAPS, `${JSON.stringify(gaps(), null, 2)}\n`);
     console.log(`Wrote ${EXPECTED_GAPS}`);
   }
 };

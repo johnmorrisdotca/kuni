@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/vu";
  *
- * subdivisions.length;    // 6
- * subdivisions[0].code;   // "VU-MAP"
+ * console.log(subdivisions.length);    // 6
+ * console.log(subdivisions[0].code);   // "VU-MAP"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(VU);

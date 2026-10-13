@@ -19,10 +19,10 @@ const EMPTY: readonly Subdivision[] = Object.freeze([]);
  * ```ts
  * import { loadSubdivisions } from "@johnmorrisdotca/kuni/load";
  *
- * (await loadSubdivisions("CA"))?.length;         // 13
- * (await loadSubdivisions("jp"))?.[12].name.ja;   // "東京都"
- * await loadSubdivisions("AQ");                   // []
- * await loadSubdivisions("XX");                   // null
+ * console.log((await loadSubdivisions("CA"))?.length);         // 13
+ * console.log((await loadSubdivisions("jp"))?.[12].name.ja);   // "東京都"
+ * console.log(await loadSubdivisions("AQ"));                   // []
+ * console.log(await loadSubdivisions("XX"));                   // null
  * ```
  */
 const loadSubdivisions = async (countryCode: string): Promise<readonly Subdivision[] | null> => {

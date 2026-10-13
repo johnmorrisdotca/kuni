@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/eg";
  *
- * subdivisions.length;    // 27
- * subdivisions[0].code;   // "EG-ALX"
+ * console.log(subdivisions.length);    // 27
+ * console.log(subdivisions[0].code);   // "EG-ALX"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(EG);

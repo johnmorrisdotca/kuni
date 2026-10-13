@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/dj";
  *
- * subdivisions.length;    // 6
- * subdivisions[0].code;   // "DJ-AR"
+ * console.log(subdivisions.length);    // 6
+ * console.log(subdivisions[0].code);   // "DJ-AR"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(DJ);

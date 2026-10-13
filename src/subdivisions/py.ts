@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/py";
  *
- * subdivisions.length;    // 18
- * subdivisions[0].code;   // "PY-1"
+ * console.log(subdivisions.length);    // 18
+ * console.log(subdivisions[0].code);   // "PY-1"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(PY);

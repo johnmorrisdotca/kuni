@@ -9,7 +9,16 @@ import type { GroupingRow } from "./rows";
 import { GROUPING_KINDS } from "./types";
 import type { GroupingKind, GroupingStatus } from "./types";
 
-/** One period of membership of a body: a member from `since` (or a day Wikidata does not give) until `until`. */
+/** One period of membership of a body: a member from `since` (or a day Wikidata does not give) until `until`.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingMember } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingMember = {code:"DE",since:"1958-01-01",until:null};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface GroupingMember {
   /** The member's alpha-2 code: "DE". */
   code: string;
@@ -19,7 +28,16 @@ interface GroupingMember {
   until: string | null;
 }
 
-/** Another name a grouping goes by, in English and Japanese. */
+/** Another name a grouping goes by, in English and Japanese.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingName } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingName = {en:"Kansai region",ja:"関西地方",reading:"かんさいちほう"};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface GroupingName {
   /** In English: "Kansai region". */
   en: string;
@@ -29,7 +47,16 @@ interface GroupingName {
   reading?: string;
 }
 
-/** A country that stands with a body without being a member: a candidate, an associate, an observer or suspended. */
+/** A country that stands with a body without being a member: a candidate, an associate, an observer or suspended.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingOther } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingOther = {code:"UA",status:"candidate"};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface GroupingOther {
   /** The country's alpha-2 code. */
   code: string;
@@ -37,7 +64,17 @@ interface GroupingOther {
   status: GroupingStatus;
 }
 
-/** Where a grouping's definition comes from, and the terms its list is under. */
+/** Where a grouping's definition comes from, and the terms its list is under.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingSource } from "@johnmorrisdotca/kuni/groupings";
+ * import { grouping } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingSource = grouping("eu")!.source;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface GroupingSource {
   /** The source's name: "European Union, Countries". */
   name: string;
@@ -47,7 +84,17 @@ interface GroupingSource {
   licence: string;
 }
 
-/** A grouping of countries, or of the subdivisions inside one country. */
+/** A grouping of countries, or of the subdivisions inside one country.
+ *
+ * @example
+ * ```ts
+ * import type { Grouping } from "@johnmorrisdotca/kuni/groupings";
+ * import { grouping } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: Grouping = grouping("eu")!;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface Grouping {
   /** A stable id in kebab case: "eu", "m49-030", "continent-as", "jp-kanto". */
   id: string;
@@ -85,7 +132,17 @@ interface Grouping {
   asOf: string;
 }
 
-/** What `groupings()` may be narrowed to. */
+/** What `groupings()` may be narrowed to.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingsOptions } from "@johnmorrisdotca/kuni/groupings";
+ * import { country } from "@johnmorrisdotca/kuni";
+ *
+ * const value: GroupingsOptions = {country:"JP"};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface GroupingsOptions {
   /** Only groupings of this kind. */
   kind?: GroupingKind;
@@ -93,7 +150,16 @@ interface GroupingsOptions {
   country?: string;
 }
 
-/** What `groupingsOf()` and `membersOf()` may be asked. */
+/** What `groupingsOf()` and `membersOf()` may be asked.
+ *
+ * @example
+ * ```ts
+ * import type { GroupingDateOptions } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * const value: GroupingDateOptions = {on:"2015-06-30"};
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface GroupingDateOptions {
   /**
    * A day, "2015-06-30": an international body's members on that day rather than now. A member whose start Wikidata
@@ -159,8 +225,8 @@ const membersOn = (one: Grouping, on: string | undefined): readonly string[] => 
  * ```ts
  * import { groupings } from "@johnmorrisdotca/kuni/groupings";
  *
- * groupings({ kind: "continent" }).map((one) => one.name.en); // ["Africa", "Antarctica", "Asia", "Europe", ...]
- * groupings({ country: "JP" }).length;                         // 10: the eight 地方, and the nine-region variant's two
+ * console.log(groupings({ kind: "continent" }).map((one) => one.name.en)); // ["Africa", "Antarctica", "Asia", "Europe", ...]
+ * console.log(groupings({ country: "JP" }).length);                         // 10: the eight 地方, and the nine-region variant's two
  * ```
  */
 const groupings = (options: GroupingsOptions = {}): readonly Grouping[] => {
@@ -178,10 +244,10 @@ const groupings = (options: GroupingsOptions = {}): readonly Grouping[] => {
  * ```ts
  * import { grouping } from "@johnmorrisdotca/kuni/groupings";
  *
- * grouping("eu")?.members.length;    // 27
- * grouping("eu")?.name.ja;           // "欧州連合"
- * grouping("jp-kanto")?.members[5];  // "JP-13"
- * grouping("atlantis");              // null
+ * console.log(grouping("eu")?.members.length);    // 27
+ * console.log(grouping("eu")?.name.ja);           // "欧州連合"
+ * console.log(grouping("jp-kanto")?.members[5]);  // "JP-13"
+ * console.log(grouping("atlantis"));              // null
  * ```
  */
 const grouping = (id: string): Grouping | null => (typeof id === "string" ? (getTable().byId.get(id.trim().toLowerCase()) ?? null) : null);
@@ -196,9 +262,9 @@ const grouping = (id: string): Grouping | null => (typeof id === "string" ? (get
  * ```ts
  * import { groupingsOf } from "@johnmorrisdotca/kuni/groupings";
  *
- * groupingsOf("GB", { kind: "membership" }).map((one) => one.id);                    // ["un", "nato", "g7", ...]
- * groupingsOf("GB", { kind: "membership", on: "2015-01-01" }).some((one) => one.id === "eu"); // true
- * groupingsOf("JP-13").map((one) => one.id);                                          // ["jp-kanto"]
+ * console.log(groupingsOf("GB", { kind: "membership" }).map((one) => one.id));                    // ["un", "nato", "g7", ...]
+ * console.log(groupingsOf("GB", { kind: "membership", on: "2015-01-01" }).some((one) => one.id === "eu")); // true
+ * console.log(groupingsOf("JP-13").map((one) => one.id));                                          // ["jp-kanto"]
  * ```
  */
 const groupingsOf = (code: string, options: GroupingDateOptions = {}): readonly Grouping[] => {
@@ -219,9 +285,9 @@ const groupingsOf = (code: string, options: GroupingDateOptions = {}): readonly 
  * ```ts
  * import { membersOf } from "@johnmorrisdotca/kuni/groupings";
  *
- * membersOf("eu")?.includes("GB");                       // false
- * membersOf("eu", { on: "2019-06-30" })?.includes("GB"); // true
- * membersOf("us-pacific");                               // ["US-AK", "US-CA", "US-HI", "US-OR", "US-WA"]
+ * console.log(membersOf("eu")?.includes("GB"));                       // false
+ * console.log(membersOf("eu", { on: "2019-06-30" })?.includes("GB")); // true
+ * console.log(membersOf("us-pacific"));                               // ["US-AK", "US-CA", "US-HI", "US-OR", "US-WA"]
  * ```
  */
 const membersOf = (id: string, options: GroupingDateOptions = {}): readonly string[] | null => {

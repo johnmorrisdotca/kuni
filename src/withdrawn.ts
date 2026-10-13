@@ -7,7 +7,17 @@
 import { WITHDRAWN_READ, WITHDRAWN_ROWS } from "./data/withdrawn.data";
 import type { WithdrawnRow } from "./rows";
 
-/** A country that was withdrawn from ISO 3166-1, as ISO 3166-3 lists it (frozen). */
+/** A country that was withdrawn from ISO 3166-1, as ISO 3166-3 lists it (frozen).
+ *
+ * @example
+ * ```ts
+ * import type { WithdrawnCountry } from "@johnmorrisdotca/kuni/withdrawn";
+ * import { withdrawn } from "@johnmorrisdotca/kuni/withdrawn";
+ *
+ * const value: WithdrawnCountry = withdrawn("SU")[0]!;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
 interface WithdrawnCountry {
   /** The four-letter ISO 3166-3 code: "SUHH" for the Soviet Union. Its first two letters are the alpha-2 code. */
   code: string;
@@ -69,8 +79,8 @@ const getTable = (): readonly WithdrawnCountry[] => {
  * ```ts
  * import { withdrawnCountries } from "@johnmorrisdotca/kuni/withdrawn";
  *
- * withdrawnCountries().length;                              // 31
- * withdrawnCountries().map((one) => one.alpha2).includes("SU"); // true
+ * console.log(withdrawnCountries().length);                              // 31
+ * console.log(withdrawnCountries().map((one) => one.alpha2).includes("SU")); // true
  * ```
  */
 const withdrawnCountries = (): readonly WithdrawnCountry[] => getTable();
@@ -88,11 +98,11 @@ const withdrawnCountries = (): readonly WithdrawnCountry[] => getTable();
  * ```ts
  * import { withdrawn } from "@johnmorrisdotca/kuni/withdrawn";
  *
- * withdrawn("su")[0].name.en;        // "Soviet Union"
- * withdrawn("SU")[0].until;          // "1992"
- * withdrawn("YUCS")[0].successors;   // ["CS"]: itself withdrawn, and resolved by withdrawn("CS")
- * withdrawn("CS").map((one) => one.code); // ["CSXX", "CSHH"]
- * withdrawn("JP");                   // []
+ * console.log(withdrawn("su")[0].name.en);        // "Soviet Union"
+ * console.log(withdrawn("SU")[0].until);          // "1992"
+ * console.log(withdrawn("YUCS")[0].successors);   // ["CS"]: itself withdrawn, and resolved by withdrawn("CS")
+ * console.log(withdrawn("CS").map((one) => one.code)); // ["CSXX", "CSHH"]
+ * console.log(withdrawn("JP"));                   // []
  * ```
  */
 const withdrawn = (code: string): readonly WithdrawnCountry[] => {

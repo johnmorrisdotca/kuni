@@ -1,7 +1,7 @@
 // Every public export is documented where an editor shows it: a doc comment (/** */, which the built .d.ts keeps) on
 // every function, constant and type, every field of every public interface, @param for each parameter and @returns
 // on every function, and an @example on every function and constant. Then every @example is run, against the
-// source, and each line written `expression; // value` is checked: the value after // is what the line gives.
+// source, and each expression or logged value with a `// value` comment is checked against that original answer.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -112,6 +112,7 @@ const asJs = (code: string): string => {
       const first = starts;
       starts = line.trim() === "" || /;\s*(\/\/.*)?$/.test(line) || /^import /.test(line);
       if (!first) return line;
+      if (/^import type /.test(line)) return "";
       const imported = /^import \{([^}]+)\} from "([^"]+)";/.exec(line);
       if (imported !== null) return `const {${imported[1].replace(/\btype \w+,?/g, "")}} = await __import(${JSON.stringify(imported[2])});`;
       const fallback = /^import (\w+) from "([^"]+)";/.exec(line);
@@ -125,7 +126,13 @@ const asJs = (code: string): string => {
         return line;
       }
 
-      return `${checked[1]}__check(${checked[2]}, ${value}, ${JSON.stringify(line.trim())});`;
+      const statement = ts.createSourceFile("value.ts", checked[2], ts.ScriptTarget.Latest, true).statements[0];
+      let expression = checked[2];
+      if (statement && ts.isExpressionStatement(statement) && ts.isCallExpression(statement.expression) && statement.expression.expression.getText() === "console.log") {
+        if (statement.expression.arguments.length !== 1) throw new Error("An expected-value log must have one argument.");
+        expression = statement.expression.arguments[0].getText();
+      }
+      return `${checked[1]}__check(${expression}, ${value}, ${JSON.stringify(line.trim())});`;
     })
     .join("\n");
 

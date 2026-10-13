@@ -9,8 +9,8 @@
  * ```ts
  * import { COUNTRY_CODES } from "@johnmorrisdotca/kuni/codes";
  *
- * COUNTRY_CODES.length;   // 250
- * COUNTRY_CODES[0];       // "AD"
+ * console.log(COUNTRY_CODES.length);   // 250
+ * console.log(COUNTRY_CODES[0]);       // "AD"
  * ```
  */
 const COUNTRY_CODES = [
@@ -32,7 +32,14 @@ const COUNTRY_CODES = [
   "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW",
 ] as const;
 
-/** One of the 250 country codes, as a type: "JP" | "US" | ... */
+/** One of the 250 country codes, as a type: "JP" | "US" | ...
+ * @example
+ * ```ts
+ * import type { CountryCode } from "@johnmorrisdotca/kuni/codes";
+ * const code: CountryCode = "JP";
+ * console.log(code);
+ * ```
+ */
 type CountryCode = (typeof COUNTRY_CODES)[number];
 
 export { COUNTRY_CODES };

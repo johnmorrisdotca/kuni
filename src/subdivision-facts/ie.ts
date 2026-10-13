@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/ie";
  *
- * facts.length;    // 30
- * facts[0].code;   // "IE-C"
+ * console.log(facts.length);    // 30
+ * console.log(facts[0].code);   // "IE-C"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(IE);

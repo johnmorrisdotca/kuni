@@ -46,7 +46,7 @@ const WITHDRAWN_ROWS: readonly WithdrawnRow[] = [
  * ```ts
  * import { WITHDRAWN_READ } from "@johnmorrisdotca/kuni/withdrawn";
  *
- * WITHDRAWN_READ; // "2026-10-10"
+ * console.log(WITHDRAWN_READ); // "2026-10-10"
  * ```
  */
 const WITHDRAWN_READ = "2026-10-10";

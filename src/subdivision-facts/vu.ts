@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/vu";
  *
- * facts.length;    // 6
- * facts[0].code;   // "VU-MAP"
+ * console.log(facts.length);    // 6
+ * console.log(facts[0].code);   // "VU-MAP"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(VU);

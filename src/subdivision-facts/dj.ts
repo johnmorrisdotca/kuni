@@ -12,8 +12,8 @@ import type { SubdivisionFacts } from "../types";
  * ```ts
  * import facts from "@johnmorrisdotca/kuni/subdivision-facts/dj";
  *
- * facts.length;    // 6
- * facts[0].code;   // "DJ-AR"
+ * console.log(facts.length);    // 6
+ * console.log(facts[0].code);   // "DJ-AR"
  * ```
  */
 const SUBDIVISION_FACTS: readonly SubdivisionFacts[] = expandSubdivisionFacts(DJ);

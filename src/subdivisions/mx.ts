@@ -12,8 +12,8 @@ import type { Subdivision } from "../types";
  * ```ts
  * import subdivisions from "@johnmorrisdotca/kuni/subdivisions/mx";
  *
- * subdivisions.length;    // 32
- * subdivisions[0].code;   // "MX-AGU"
+ * console.log(subdivisions.length);    // 32
+ * console.log(subdivisions[0].code);   // "MX-AGU"
  * ```
  */
 const SUBDIVISIONS: readonly Subdivision[] = expandSubdivisions(MX);
