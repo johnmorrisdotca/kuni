@@ -2,6 +2,7 @@
 // docs/strings-ja.md lists these beside each other, and a test keeps that list true (`pnpm docs:make` rewrites it).
 export const WORDS = {
   en: {
+    pageDocs: "Docs",
     pageApi: "API reference",
     pitch: "Every country and its states, provinces and prefectures, with ISO 3166 codes and names in English and Japanese. Type in any panel and the answer appears, from the package's own data.",
     name: "Kuni (国) is Japanese for “country”, and also for the region somebody comes from.",
@@ -262,6 +263,7 @@ export const WORDS = {
     also_called: "Also called",
   },
   ja: {
+    pageDocs: "ドキュメント",
     pageApi: "API（英語）",
     pitch: "世界の国と、その州・県・省などの行政区画を、ISO 3166 のコードと英語・日本語の名前で調べられます。どのパネルも、入力するとパッケージ自身のデータからすぐに結果を表示します。",
     name: "「国（くに）」は国家のことであり、生まれ育った土地のことでもあります。",

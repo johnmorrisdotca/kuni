@@ -1,0 +1,1654 @@
+{
+  "job": "Countries, states and provinces",
+  "pitch": {
+    "en": "Look up countries, codes, names and subdivisions, load country data on demand and mount a native country card.",
+    "ja": "国、コード、名前、行政区画を調べ、必要なときに国のデータを読み込み、標準の国のカードを表示できます。"
+  },
+  "name": {
+    "en": "Kuni (国) is Japanese for a country.",
+    "ja": "「国（くに）」は、国を表す日本語です。"
+  },
+  "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232f5d4a'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23f3efe4' stroke-width='5'/%3E%3Cpath d='M22 50h56M50 22c-10 9-14 18-14 28s4 19 14 28c10-9 14-18 14-28s-4-19-14-28z' fill='none' stroke='%23f3efe4' stroke-width='5'/%3E%3C/svg%3E",
+  "entries": {
+    ".": {
+      "en": "Countries and lookup tools",
+      "ja": "国と検索の道具"
+    },
+    "./codes": {
+      "en": "Country code validation",
+      "ja": "国のコードの確認"
+    },
+    "./subdivisions": {
+      "en": "All subdivisions",
+      "ja": "すべての行政区画"
+    },
+    "./load": {
+      "en": "On-demand subdivisions",
+      "ja": "必要なときの行政区画"
+    },
+    "./facts": {
+      "en": "Country facts",
+      "ja": "国の情報"
+    },
+    "./subdivision-facts": {
+      "en": "Subdivision facts",
+      "ja": "行政区画の情報"
+    },
+    "./groupings": {
+      "en": "Regions and international bodies",
+      "ja": "地域と国際機関"
+    },
+    "./withdrawn": {
+      "en": "Withdrawn country codes",
+      "ja": "廃止された国のコード"
+    },
+    "./element": {
+      "en": "Country card element",
+      "ja": "国のカードの要素"
+    },
+    "./element/define": {
+      "en": "Register country cards",
+      "ja": "国のカードを登録する"
+    },
+    "./subdivisions/ad": {
+      "en": "AD subdivisions",
+      "ja": "ADの行政区画"
+    },
+    "./subdivisions/ae": {
+      "en": "AE subdivisions",
+      "ja": "AEの行政区画"
+    },
+    "./subdivisions/af": {
+      "en": "AF subdivisions",
+      "ja": "AFの行政区画"
+    },
+    "./subdivisions/ag": {
+      "en": "AG subdivisions",
+      "ja": "AGの行政区画"
+    },
+    "./subdivisions/al": {
+      "en": "AL subdivisions",
+      "ja": "ALの行政区画"
+    },
+    "./subdivisions/am": {
+      "en": "AM subdivisions",
+      "ja": "AMの行政区画"
+    },
+    "./subdivisions/ao": {
+      "en": "AO subdivisions",
+      "ja": "AOの行政区画"
+    },
+    "./subdivisions/ar": {
+      "en": "AR subdivisions",
+      "ja": "ARの行政区画"
+    },
+    "./subdivisions/at": {
+      "en": "AT subdivisions",
+      "ja": "ATの行政区画"
+    },
+    "./subdivisions/au": {
+      "en": "AU subdivisions",
+      "ja": "AUの行政区画"
+    },
+    "./subdivisions/az": {
+      "en": "AZ subdivisions",
+      "ja": "AZの行政区画"
+    },
+    "./subdivisions/ba": {
+      "en": "BA subdivisions",
+      "ja": "BAの行政区画"
+    },
+    "./subdivisions/bb": {
+      "en": "BB subdivisions",
+      "ja": "BBの行政区画"
+    },
+    "./subdivisions/bd": {
+      "en": "BD subdivisions",
+      "ja": "BDの行政区画"
+    },
+    "./subdivisions/be": {
+      "en": "BE subdivisions",
+      "ja": "BEの行政区画"
+    },
+    "./subdivisions/bf": {
+      "en": "BF subdivisions",
+      "ja": "BFの行政区画"
+    },
+    "./subdivisions/bg": {
+      "en": "BG subdivisions",
+      "ja": "BGの行政区画"
+    },
+    "./subdivisions/bh": {
+      "en": "BH subdivisions",
+      "ja": "BHの行政区画"
+    },
+    "./subdivisions/bi": {
+      "en": "BI subdivisions",
+      "ja": "BIの行政区画"
+    },
+    "./subdivisions/bj": {
+      "en": "BJ subdivisions",
+      "ja": "BJの行政区画"
+    },
+    "./subdivisions/bn": {
+      "en": "BN subdivisions",
+      "ja": "BNの行政区画"
+    },
+    "./subdivisions/bo": {
+      "en": "BO subdivisions",
+      "ja": "BOの行政区画"
+    },
+    "./subdivisions/bq": {
+      "en": "BQ subdivisions",
+      "ja": "BQの行政区画"
+    },
+    "./subdivisions/br": {
+      "en": "BR subdivisions",
+      "ja": "BRの行政区画"
+    },
+    "./subdivisions/bs": {
+      "en": "BS subdivisions",
+      "ja": "BSの行政区画"
+    },
+    "./subdivisions/bt": {
+      "en": "BT subdivisions",
+      "ja": "BTの行政区画"
+    },
+    "./subdivisions/bw": {
+      "en": "BW subdivisions",
+      "ja": "BWの行政区画"
+    },
+    "./subdivisions/by": {
+      "en": "BY subdivisions",
+      "ja": "BYの行政区画"
+    },
+    "./subdivisions/bz": {
+      "en": "BZ subdivisions",
+      "ja": "BZの行政区画"
+    },
+    "./subdivisions/ca": {
+      "en": "CA subdivisions",
+      "ja": "CAの行政区画"
+    },
+    "./subdivisions/cd": {
+      "en": "CD subdivisions",
+      "ja": "CDの行政区画"
+    },
+    "./subdivisions/cf": {
+      "en": "CF subdivisions",
+      "ja": "CFの行政区画"
+    },
+    "./subdivisions/cg": {
+      "en": "CG subdivisions",
+      "ja": "CGの行政区画"
+    },
+    "./subdivisions/ch": {
+      "en": "CH subdivisions",
+      "ja": "CHの行政区画"
+    },
+    "./subdivisions/ci": {
+      "en": "CI subdivisions",
+      "ja": "CIの行政区画"
+    },
+    "./subdivisions/cl": {
+      "en": "CL subdivisions",
+      "ja": "CLの行政区画"
+    },
+    "./subdivisions/cm": {
+      "en": "CM subdivisions",
+      "ja": "CMの行政区画"
+    },
+    "./subdivisions/cn": {
+      "en": "CN subdivisions",
+      "ja": "CNの行政区画"
+    },
+    "./subdivisions/co": {
+      "en": "CO subdivisions",
+      "ja": "COの行政区画"
+    },
+    "./subdivisions/cr": {
+      "en": "CR subdivisions",
+      "ja": "CRの行政区画"
+    },
+    "./subdivisions/cu": {
+      "en": "CU subdivisions",
+      "ja": "CUの行政区画"
+    },
+    "./subdivisions/cv": {
+      "en": "CV subdivisions",
+      "ja": "CVの行政区画"
+    },
+    "./subdivisions/cy": {
+      "en": "CY subdivisions",
+      "ja": "CYの行政区画"
+    },
+    "./subdivisions/cz": {
+      "en": "CZ subdivisions",
+      "ja": "CZの行政区画"
+    },
+    "./subdivisions/de": {
+      "en": "DE subdivisions",
+      "ja": "DEの行政区画"
+    },
+    "./subdivisions/dj": {
+      "en": "DJ subdivisions",
+      "ja": "DJの行政区画"
+    },
+    "./subdivisions/dk": {
+      "en": "DK subdivisions",
+      "ja": "DKの行政区画"
+    },
+    "./subdivisions/dm": {
+      "en": "DM subdivisions",
+      "ja": "DMの行政区画"
+    },
+    "./subdivisions/do": {
+      "en": "DO subdivisions",
+      "ja": "DOの行政区画"
+    },
+    "./subdivisions/dz": {
+      "en": "DZ subdivisions",
+      "ja": "DZの行政区画"
+    },
+    "./subdivisions/ec": {
+      "en": "EC subdivisions",
+      "ja": "ECの行政区画"
+    },
+    "./subdivisions/ee": {
+      "en": "EE subdivisions",
+      "ja": "EEの行政区画"
+    },
+    "./subdivisions/eg": {
+      "en": "EG subdivisions",
+      "ja": "EGの行政区画"
+    },
+    "./subdivisions/er": {
+      "en": "ER subdivisions",
+      "ja": "ERの行政区画"
+    },
+    "./subdivisions/es": {
+      "en": "ES subdivisions",
+      "ja": "ESの行政区画"
+    },
+    "./subdivisions/et": {
+      "en": "ET subdivisions",
+      "ja": "ETの行政区画"
+    },
+    "./subdivisions/fi": {
+      "en": "FI subdivisions",
+      "ja": "FIの行政区画"
+    },
+    "./subdivisions/fj": {
+      "en": "FJ subdivisions",
+      "ja": "FJの行政区画"
+    },
+    "./subdivisions/fm": {
+      "en": "FM subdivisions",
+      "ja": "FMの行政区画"
+    },
+    "./subdivisions/fr": {
+      "en": "FR subdivisions",
+      "ja": "FRの行政区画"
+    },
+    "./subdivisions/ga": {
+      "en": "GA subdivisions",
+      "ja": "GAの行政区画"
+    },
+    "./subdivisions/gb": {
+      "en": "GB subdivisions",
+      "ja": "GBの行政区画"
+    },
+    "./subdivisions/gd": {
+      "en": "GD subdivisions",
+      "ja": "GDの行政区画"
+    },
+    "./subdivisions/ge": {
+      "en": "GE subdivisions",
+      "ja": "GEの行政区画"
+    },
+    "./subdivisions/gh": {
+      "en": "GH subdivisions",
+      "ja": "GHの行政区画"
+    },
+    "./subdivisions/gl": {
+      "en": "GL subdivisions",
+      "ja": "GLの行政区画"
+    },
+    "./subdivisions/gm": {
+      "en": "GM subdivisions",
+      "ja": "GMの行政区画"
+    },
+    "./subdivisions/gn": {
+      "en": "GN subdivisions",
+      "ja": "GNの行政区画"
+    },
+    "./subdivisions/gq": {
+      "en": "GQ subdivisions",
+      "ja": "GQの行政区画"
+    },
+    "./subdivisions/gr": {
+      "en": "GR subdivisions",
+      "ja": "GRの行政区画"
+    },
+    "./subdivisions/gt": {
+      "en": "GT subdivisions",
+      "ja": "GTの行政区画"
+    },
+    "./subdivisions/gw": {
+      "en": "GW subdivisions",
+      "ja": "GWの行政区画"
+    },
+    "./subdivisions/gy": {
+      "en": "GY subdivisions",
+      "ja": "GYの行政区画"
+    },
+    "./subdivisions/hn": {
+      "en": "HN subdivisions",
+      "ja": "HNの行政区画"
+    },
+    "./subdivisions/hr": {
+      "en": "HR subdivisions",
+      "ja": "HRの行政区画"
+    },
+    "./subdivisions/ht": {
+      "en": "HT subdivisions",
+      "ja": "HTの行政区画"
+    },
+    "./subdivisions/hu": {
+      "en": "HU subdivisions",
+      "ja": "HUの行政区画"
+    },
+    "./subdivisions/id": {
+      "en": "ID subdivisions",
+      "ja": "IDの行政区画"
+    },
+    "./subdivisions/ie": {
+      "en": "IE subdivisions",
+      "ja": "IEの行政区画"
+    },
+    "./subdivisions/il": {
+      "en": "IL subdivisions",
+      "ja": "ILの行政区画"
+    },
+    "./subdivisions/in": {
+      "en": "IN subdivisions",
+      "ja": "INの行政区画"
+    },
+    "./subdivisions/iq": {
+      "en": "IQ subdivisions",
+      "ja": "IQの行政区画"
+    },
+    "./subdivisions/ir": {
+      "en": "IR subdivisions",
+      "ja": "IRの行政区画"
+    },
+    "./subdivisions/is": {
+      "en": "IS subdivisions",
+      "ja": "ISの行政区画"
+    },
+    "./subdivisions/it": {
+      "en": "IT subdivisions",
+      "ja": "ITの行政区画"
+    },
+    "./subdivisions/jm": {
+      "en": "JM subdivisions",
+      "ja": "JMの行政区画"
+    },
+    "./subdivisions/jo": {
+      "en": "JO subdivisions",
+      "ja": "JOの行政区画"
+    },
+    "./subdivisions/jp": {
+      "en": "JP subdivisions",
+      "ja": "JPの行政区画"
+    },
+    "./subdivisions/ke": {
+      "en": "KE subdivisions",
+      "ja": "KEの行政区画"
+    },
+    "./subdivisions/kg": {
+      "en": "KG subdivisions",
+      "ja": "KGの行政区画"
+    },
+    "./subdivisions/kh": {
+      "en": "KH subdivisions",
+      "ja": "KHの行政区画"
+    },
+    "./subdivisions/ki": {
+      "en": "KI subdivisions",
+      "ja": "KIの行政区画"
+    },
+    "./subdivisions/km": {
+      "en": "KM subdivisions",
+      "ja": "KMの行政区画"
+    },
+    "./subdivisions/kn": {
+      "en": "KN subdivisions",
+      "ja": "KNの行政区画"
+    },
+    "./subdivisions/kp": {
+      "en": "KP subdivisions",
+      "ja": "KPの行政区画"
+    },
+    "./subdivisions/kr": {
+      "en": "KR subdivisions",
+      "ja": "KRの行政区画"
+    },
+    "./subdivisions/kw": {
+      "en": "KW subdivisions",
+      "ja": "KWの行政区画"
+    },
+    "./subdivisions/kz": {
+      "en": "KZ subdivisions",
+      "ja": "KZの行政区画"
+    },
+    "./subdivisions/la": {
+      "en": "LA subdivisions",
+      "ja": "LAの行政区画"
+    },
+    "./subdivisions/lb": {
+      "en": "LB subdivisions",
+      "ja": "LBの行政区画"
+    },
+    "./subdivisions/lc": {
+      "en": "LC subdivisions",
+      "ja": "LCの行政区画"
+    },
+    "./subdivisions/li": {
+      "en": "LI subdivisions",
+      "ja": "LIの行政区画"
+    },
+    "./subdivisions/lk": {
+      "en": "LK subdivisions",
+      "ja": "LKの行政区画"
+    },
+    "./subdivisions/lr": {
+      "en": "LR subdivisions",
+      "ja": "LRの行政区画"
+    },
+    "./subdivisions/ls": {
+      "en": "LS subdivisions",
+      "ja": "LSの行政区画"
+    },
+    "./subdivisions/lt": {
+      "en": "LT subdivisions",
+      "ja": "LTの行政区画"
+    },
+    "./subdivisions/lu": {
+      "en": "LU subdivisions",
+      "ja": "LUの行政区画"
+    },
+    "./subdivisions/lv": {
+      "en": "LV subdivisions",
+      "ja": "LVの行政区画"
+    },
+    "./subdivisions/ly": {
+      "en": "LY subdivisions",
+      "ja": "LYの行政区画"
+    },
+    "./subdivisions/ma": {
+      "en": "MA subdivisions",
+      "ja": "MAの行政区画"
+    },
+    "./subdivisions/mc": {
+      "en": "MC subdivisions",
+      "ja": "MCの行政区画"
+    },
+    "./subdivisions/md": {
+      "en": "MD subdivisions",
+      "ja": "MDの行政区画"
+    },
+    "./subdivisions/me": {
+      "en": "ME subdivisions",
+      "ja": "MEの行政区画"
+    },
+    "./subdivisions/mg": {
+      "en": "MG subdivisions",
+      "ja": "MGの行政区画"
+    },
+    "./subdivisions/mh": {
+      "en": "MH subdivisions",
+      "ja": "MHの行政区画"
+    },
+    "./subdivisions/mk": {
+      "en": "MK subdivisions",
+      "ja": "MKの行政区画"
+    },
+    "./subdivisions/ml": {
+      "en": "ML subdivisions",
+      "ja": "MLの行政区画"
+    },
+    "./subdivisions/mm": {
+      "en": "MM subdivisions",
+      "ja": "MMの行政区画"
+    },
+    "./subdivisions/mn": {
+      "en": "MN subdivisions",
+      "ja": "MNの行政区画"
+    },
+    "./subdivisions/mr": {
+      "en": "MR subdivisions",
+      "ja": "MRの行政区画"
+    },
+    "./subdivisions/mt": {
+      "en": "MT subdivisions",
+      "ja": "MTの行政区画"
+    },
+    "./subdivisions/mu": {
+      "en": "MU subdivisions",
+      "ja": "MUの行政区画"
+    },
+    "./subdivisions/mv": {
+      "en": "MV subdivisions",
+      "ja": "MVの行政区画"
+    },
+    "./subdivisions/mw": {
+      "en": "MW subdivisions",
+      "ja": "MWの行政区画"
+    },
+    "./subdivisions/mx": {
+      "en": "MX subdivisions",
+      "ja": "MXの行政区画"
+    },
+    "./subdivisions/my": {
+      "en": "MY subdivisions",
+      "ja": "MYの行政区画"
+    },
+    "./subdivisions/mz": {
+      "en": "MZ subdivisions",
+      "ja": "MZの行政区画"
+    },
+    "./subdivisions/na": {
+      "en": "NA subdivisions",
+      "ja": "NAの行政区画"
+    },
+    "./subdivisions/ne": {
+      "en": "NE subdivisions",
+      "ja": "NEの行政区画"
+    },
+    "./subdivisions/ng": {
+      "en": "NG subdivisions",
+      "ja": "NGの行政区画"
+    },
+    "./subdivisions/ni": {
+      "en": "NI subdivisions",
+      "ja": "NIの行政区画"
+    },
+    "./subdivisions/nl": {
+      "en": "NL subdivisions",
+      "ja": "NLの行政区画"
+    },
+    "./subdivisions/no": {
+      "en": "NO subdivisions",
+      "ja": "NOの行政区画"
+    },
+    "./subdivisions/np": {
+      "en": "NP subdivisions",
+      "ja": "NPの行政区画"
+    },
+    "./subdivisions/nr": {
+      "en": "NR subdivisions",
+      "ja": "NRの行政区画"
+    },
+    "./subdivisions/nz": {
+      "en": "NZ subdivisions",
+      "ja": "NZの行政区画"
+    },
+    "./subdivisions/om": {
+      "en": "OM subdivisions",
+      "ja": "OMの行政区画"
+    },
+    "./subdivisions/pa": {
+      "en": "PA subdivisions",
+      "ja": "PAの行政区画"
+    },
+    "./subdivisions/pe": {
+      "en": "PE subdivisions",
+      "ja": "PEの行政区画"
+    },
+    "./subdivisions/pg": {
+      "en": "PG subdivisions",
+      "ja": "PGの行政区画"
+    },
+    "./subdivisions/ph": {
+      "en": "PH subdivisions",
+      "ja": "PHの行政区画"
+    },
+    "./subdivisions/pk": {
+      "en": "PK subdivisions",
+      "ja": "PKの行政区画"
+    },
+    "./subdivisions/pl": {
+      "en": "PL subdivisions",
+      "ja": "PLの行政区画"
+    },
+    "./subdivisions/ps": {
+      "en": "PS subdivisions",
+      "ja": "PSの行政区画"
+    },
+    "./subdivisions/pt": {
+      "en": "PT subdivisions",
+      "ja": "PTの行政区画"
+    },
+    "./subdivisions/pw": {
+      "en": "PW subdivisions",
+      "ja": "PWの行政区画"
+    },
+    "./subdivisions/py": {
+      "en": "PY subdivisions",
+      "ja": "PYの行政区画"
+    },
+    "./subdivisions/qa": {
+      "en": "QA subdivisions",
+      "ja": "QAの行政区画"
+    },
+    "./subdivisions/ro": {
+      "en": "RO subdivisions",
+      "ja": "ROの行政区画"
+    },
+    "./subdivisions/rs": {
+      "en": "RS subdivisions",
+      "ja": "RSの行政区画"
+    },
+    "./subdivisions/ru": {
+      "en": "RU subdivisions",
+      "ja": "RUの行政区画"
+    },
+    "./subdivisions/rw": {
+      "en": "RW subdivisions",
+      "ja": "RWの行政区画"
+    },
+    "./subdivisions/sa": {
+      "en": "SA subdivisions",
+      "ja": "SAの行政区画"
+    },
+    "./subdivisions/sb": {
+      "en": "SB subdivisions",
+      "ja": "SBの行政区画"
+    },
+    "./subdivisions/sc": {
+      "en": "SC subdivisions",
+      "ja": "SCの行政区画"
+    },
+    "./subdivisions/sd": {
+      "en": "SD subdivisions",
+      "ja": "SDの行政区画"
+    },
+    "./subdivisions/se": {
+      "en": "SE subdivisions",
+      "ja": "SEの行政区画"
+    },
+    "./subdivisions/sg": {
+      "en": "SG subdivisions",
+      "ja": "SGの行政区画"
+    },
+    "./subdivisions/sh": {
+      "en": "SH subdivisions",
+      "ja": "SHの行政区画"
+    },
+    "./subdivisions/si": {
+      "en": "SI subdivisions",
+      "ja": "SIの行政区画"
+    },
+    "./subdivisions/sk": {
+      "en": "SK subdivisions",
+      "ja": "SKの行政区画"
+    },
+    "./subdivisions/sl": {
+      "en": "SL subdivisions",
+      "ja": "SLの行政区画"
+    },
+    "./subdivisions/sm": {
+      "en": "SM subdivisions",
+      "ja": "SMの行政区画"
+    },
+    "./subdivisions/sn": {
+      "en": "SN subdivisions",
+      "ja": "SNの行政区画"
+    },
+    "./subdivisions/so": {
+      "en": "SO subdivisions",
+      "ja": "SOの行政区画"
+    },
+    "./subdivisions/sr": {
+      "en": "SR subdivisions",
+      "ja": "SRの行政区画"
+    },
+    "./subdivisions/ss": {
+      "en": "SS subdivisions",
+      "ja": "SSの行政区画"
+    },
+    "./subdivisions/st": {
+      "en": "ST subdivisions",
+      "ja": "STの行政区画"
+    },
+    "./subdivisions/sv": {
+      "en": "SV subdivisions",
+      "ja": "SVの行政区画"
+    },
+    "./subdivisions/sy": {
+      "en": "SY subdivisions",
+      "ja": "SYの行政区画"
+    },
+    "./subdivisions/sz": {
+      "en": "SZ subdivisions",
+      "ja": "SZの行政区画"
+    },
+    "./subdivisions/td": {
+      "en": "TD subdivisions",
+      "ja": "TDの行政区画"
+    },
+    "./subdivisions/tg": {
+      "en": "TG subdivisions",
+      "ja": "TGの行政区画"
+    },
+    "./subdivisions/th": {
+      "en": "TH subdivisions",
+      "ja": "THの行政区画"
+    },
+    "./subdivisions/tj": {
+      "en": "TJ subdivisions",
+      "ja": "TJの行政区画"
+    },
+    "./subdivisions/tl": {
+      "en": "TL subdivisions",
+      "ja": "TLの行政区画"
+    },
+    "./subdivisions/tm": {
+      "en": "TM subdivisions",
+      "ja": "TMの行政区画"
+    },
+    "./subdivisions/tn": {
+      "en": "TN subdivisions",
+      "ja": "TNの行政区画"
+    },
+    "./subdivisions/to": {
+      "en": "TO subdivisions",
+      "ja": "TOの行政区画"
+    },
+    "./subdivisions/tr": {
+      "en": "TR subdivisions",
+      "ja": "TRの行政区画"
+    },
+    "./subdivisions/tt": {
+      "en": "TT subdivisions",
+      "ja": "TTの行政区画"
+    },
+    "./subdivisions/tv": {
+      "en": "TV subdivisions",
+      "ja": "TVの行政区画"
+    },
+    "./subdivisions/tw": {
+      "en": "TW subdivisions",
+      "ja": "TWの行政区画"
+    },
+    "./subdivisions/tz": {
+      "en": "TZ subdivisions",
+      "ja": "TZの行政区画"
+    },
+    "./subdivisions/ua": {
+      "en": "UA subdivisions",
+      "ja": "UAの行政区画"
+    },
+    "./subdivisions/ug": {
+      "en": "UG subdivisions",
+      "ja": "UGの行政区画"
+    },
+    "./subdivisions/um": {
+      "en": "UM subdivisions",
+      "ja": "UMの行政区画"
+    },
+    "./subdivisions/us": {
+      "en": "US subdivisions",
+      "ja": "USの行政区画"
+    },
+    "./subdivisions/uy": {
+      "en": "UY subdivisions",
+      "ja": "UYの行政区画"
+    },
+    "./subdivisions/uz": {
+      "en": "UZ subdivisions",
+      "ja": "UZの行政区画"
+    },
+    "./subdivisions/vc": {
+      "en": "VC subdivisions",
+      "ja": "VCの行政区画"
+    },
+    "./subdivisions/ve": {
+      "en": "VE subdivisions",
+      "ja": "VEの行政区画"
+    },
+    "./subdivisions/vn": {
+      "en": "VN subdivisions",
+      "ja": "VNの行政区画"
+    },
+    "./subdivisions/vu": {
+      "en": "VU subdivisions",
+      "ja": "VUの行政区画"
+    },
+    "./subdivisions/wf": {
+      "en": "WF subdivisions",
+      "ja": "WFの行政区画"
+    },
+    "./subdivisions/ws": {
+      "en": "WS subdivisions",
+      "ja": "WSの行政区画"
+    },
+    "./subdivisions/ye": {
+      "en": "YE subdivisions",
+      "ja": "YEの行政区画"
+    },
+    "./subdivisions/za": {
+      "en": "ZA subdivisions",
+      "ja": "ZAの行政区画"
+    },
+    "./subdivisions/zm": {
+      "en": "ZM subdivisions",
+      "ja": "ZMの行政区画"
+    },
+    "./subdivisions/zw": {
+      "en": "ZW subdivisions",
+      "ja": "ZWの行政区画"
+    },
+    "./subdivision-facts/ad": {
+      "en": "AD subdivision facts",
+      "ja": "ADの行政区画の情報"
+    },
+    "./subdivision-facts/ae": {
+      "en": "AE subdivision facts",
+      "ja": "AEの行政区画の情報"
+    },
+    "./subdivision-facts/af": {
+      "en": "AF subdivision facts",
+      "ja": "AFの行政区画の情報"
+    },
+    "./subdivision-facts/ag": {
+      "en": "AG subdivision facts",
+      "ja": "AGの行政区画の情報"
+    },
+    "./subdivision-facts/al": {
+      "en": "AL subdivision facts",
+      "ja": "ALの行政区画の情報"
+    },
+    "./subdivision-facts/am": {
+      "en": "AM subdivision facts",
+      "ja": "AMの行政区画の情報"
+    },
+    "./subdivision-facts/ao": {
+      "en": "AO subdivision facts",
+      "ja": "AOの行政区画の情報"
+    },
+    "./subdivision-facts/ar": {
+      "en": "AR subdivision facts",
+      "ja": "ARの行政区画の情報"
+    },
+    "./subdivision-facts/at": {
+      "en": "AT subdivision facts",
+      "ja": "ATの行政区画の情報"
+    },
+    "./subdivision-facts/au": {
+      "en": "AU subdivision facts",
+      "ja": "AUの行政区画の情報"
+    },
+    "./subdivision-facts/az": {
+      "en": "AZ subdivision facts",
+      "ja": "AZの行政区画の情報"
+    },
+    "./subdivision-facts/ba": {
+      "en": "BA subdivision facts",
+      "ja": "BAの行政区画の情報"
+    },
+    "./subdivision-facts/bb": {
+      "en": "BB subdivision facts",
+      "ja": "BBの行政区画の情報"
+    },
+    "./subdivision-facts/bd": {
+      "en": "BD subdivision facts",
+      "ja": "BDの行政区画の情報"
+    },
+    "./subdivision-facts/be": {
+      "en": "BE subdivision facts",
+      "ja": "BEの行政区画の情報"
+    },
+    "./subdivision-facts/bf": {
+      "en": "BF subdivision facts",
+      "ja": "BFの行政区画の情報"
+    },
+    "./subdivision-facts/bg": {
+      "en": "BG subdivision facts",
+      "ja": "BGの行政区画の情報"
+    },
+    "./subdivision-facts/bh": {
+      "en": "BH subdivision facts",
+      "ja": "BHの行政区画の情報"
+    },
+    "./subdivision-facts/bi": {
+      "en": "BI subdivision facts",
+      "ja": "BIの行政区画の情報"
+    },
+    "./subdivision-facts/bj": {
+      "en": "BJ subdivision facts",
+      "ja": "BJの行政区画の情報"
+    },
+    "./subdivision-facts/bn": {
+      "en": "BN subdivision facts",
+      "ja": "BNの行政区画の情報"
+    },
+    "./subdivision-facts/bo": {
+      "en": "BO subdivision facts",
+      "ja": "BOの行政区画の情報"
+    },
+    "./subdivision-facts/bq": {
+      "en": "BQ subdivision facts",
+      "ja": "BQの行政区画の情報"
+    },
+    "./subdivision-facts/br": {
+      "en": "BR subdivision facts",
+      "ja": "BRの行政区画の情報"
+    },
+    "./subdivision-facts/bs": {
+      "en": "BS subdivision facts",
+      "ja": "BSの行政区画の情報"
+    },
+    "./subdivision-facts/bt": {
+      "en": "BT subdivision facts",
+      "ja": "BTの行政区画の情報"
+    },
+    "./subdivision-facts/bw": {
+      "en": "BW subdivision facts",
+      "ja": "BWの行政区画の情報"
+    },
+    "./subdivision-facts/by": {
+      "en": "BY subdivision facts",
+      "ja": "BYの行政区画の情報"
+    },
+    "./subdivision-facts/bz": {
+      "en": "BZ subdivision facts",
+      "ja": "BZの行政区画の情報"
+    },
+    "./subdivision-facts/ca": {
+      "en": "CA subdivision facts",
+      "ja": "CAの行政区画の情報"
+    },
+    "./subdivision-facts/cd": {
+      "en": "CD subdivision facts",
+      "ja": "CDの行政区画の情報"
+    },
+    "./subdivision-facts/cf": {
+      "en": "CF subdivision facts",
+      "ja": "CFの行政区画の情報"
+    },
+    "./subdivision-facts/cg": {
+      "en": "CG subdivision facts",
+      "ja": "CGの行政区画の情報"
+    },
+    "./subdivision-facts/ch": {
+      "en": "CH subdivision facts",
+      "ja": "CHの行政区画の情報"
+    },
+    "./subdivision-facts/ci": {
+      "en": "CI subdivision facts",
+      "ja": "CIの行政区画の情報"
+    },
+    "./subdivision-facts/cl": {
+      "en": "CL subdivision facts",
+      "ja": "CLの行政区画の情報"
+    },
+    "./subdivision-facts/cm": {
+      "en": "CM subdivision facts",
+      "ja": "CMの行政区画の情報"
+    },
+    "./subdivision-facts/cn": {
+      "en": "CN subdivision facts",
+      "ja": "CNの行政区画の情報"
+    },
+    "./subdivision-facts/co": {
+      "en": "CO subdivision facts",
+      "ja": "COの行政区画の情報"
+    },
+    "./subdivision-facts/cr": {
+      "en": "CR subdivision facts",
+      "ja": "CRの行政区画の情報"
+    },
+    "./subdivision-facts/cu": {
+      "en": "CU subdivision facts",
+      "ja": "CUの行政区画の情報"
+    },
+    "./subdivision-facts/cv": {
+      "en": "CV subdivision facts",
+      "ja": "CVの行政区画の情報"
+    },
+    "./subdivision-facts/cy": {
+      "en": "CY subdivision facts",
+      "ja": "CYの行政区画の情報"
+    },
+    "./subdivision-facts/cz": {
+      "en": "CZ subdivision facts",
+      "ja": "CZの行政区画の情報"
+    },
+    "./subdivision-facts/de": {
+      "en": "DE subdivision facts",
+      "ja": "DEの行政区画の情報"
+    },
+    "./subdivision-facts/dj": {
+      "en": "DJ subdivision facts",
+      "ja": "DJの行政区画の情報"
+    },
+    "./subdivision-facts/dk": {
+      "en": "DK subdivision facts",
+      "ja": "DKの行政区画の情報"
+    },
+    "./subdivision-facts/dm": {
+      "en": "DM subdivision facts",
+      "ja": "DMの行政区画の情報"
+    },
+    "./subdivision-facts/do": {
+      "en": "DO subdivision facts",
+      "ja": "DOの行政区画の情報"
+    },
+    "./subdivision-facts/dz": {
+      "en": "DZ subdivision facts",
+      "ja": "DZの行政区画の情報"
+    },
+    "./subdivision-facts/ec": {
+      "en": "EC subdivision facts",
+      "ja": "ECの行政区画の情報"
+    },
+    "./subdivision-facts/ee": {
+      "en": "EE subdivision facts",
+      "ja": "EEの行政区画の情報"
+    },
+    "./subdivision-facts/eg": {
+      "en": "EG subdivision facts",
+      "ja": "EGの行政区画の情報"
+    },
+    "./subdivision-facts/er": {
+      "en": "ER subdivision facts",
+      "ja": "ERの行政区画の情報"
+    },
+    "./subdivision-facts/es": {
+      "en": "ES subdivision facts",
+      "ja": "ESの行政区画の情報"
+    },
+    "./subdivision-facts/et": {
+      "en": "ET subdivision facts",
+      "ja": "ETの行政区画の情報"
+    },
+    "./subdivision-facts/fi": {
+      "en": "FI subdivision facts",
+      "ja": "FIの行政区画の情報"
+    },
+    "./subdivision-facts/fj": {
+      "en": "FJ subdivision facts",
+      "ja": "FJの行政区画の情報"
+    },
+    "./subdivision-facts/fm": {
+      "en": "FM subdivision facts",
+      "ja": "FMの行政区画の情報"
+    },
+    "./subdivision-facts/fr": {
+      "en": "FR subdivision facts",
+      "ja": "FRの行政区画の情報"
+    },
+    "./subdivision-facts/ga": {
+      "en": "GA subdivision facts",
+      "ja": "GAの行政区画の情報"
+    },
+    "./subdivision-facts/gb": {
+      "en": "GB subdivision facts",
+      "ja": "GBの行政区画の情報"
+    },
+    "./subdivision-facts/gd": {
+      "en": "GD subdivision facts",
+      "ja": "GDの行政区画の情報"
+    },
+    "./subdivision-facts/ge": {
+      "en": "GE subdivision facts",
+      "ja": "GEの行政区画の情報"
+    },
+    "./subdivision-facts/gh": {
+      "en": "GH subdivision facts",
+      "ja": "GHの行政区画の情報"
+    },
+    "./subdivision-facts/gl": {
+      "en": "GL subdivision facts",
+      "ja": "GLの行政区画の情報"
+    },
+    "./subdivision-facts/gm": {
+      "en": "GM subdivision facts",
+      "ja": "GMの行政区画の情報"
+    },
+    "./subdivision-facts/gn": {
+      "en": "GN subdivision facts",
+      "ja": "GNの行政区画の情報"
+    },
+    "./subdivision-facts/gq": {
+      "en": "GQ subdivision facts",
+      "ja": "GQの行政区画の情報"
+    },
+    "./subdivision-facts/gr": {
+      "en": "GR subdivision facts",
+      "ja": "GRの行政区画の情報"
+    },
+    "./subdivision-facts/gt": {
+      "en": "GT subdivision facts",
+      "ja": "GTの行政区画の情報"
+    },
+    "./subdivision-facts/gw": {
+      "en": "GW subdivision facts",
+      "ja": "GWの行政区画の情報"
+    },
+    "./subdivision-facts/gy": {
+      "en": "GY subdivision facts",
+      "ja": "GYの行政区画の情報"
+    },
+    "./subdivision-facts/hn": {
+      "en": "HN subdivision facts",
+      "ja": "HNの行政区画の情報"
+    },
+    "./subdivision-facts/hr": {
+      "en": "HR subdivision facts",
+      "ja": "HRの行政区画の情報"
+    },
+    "./subdivision-facts/ht": {
+      "en": "HT subdivision facts",
+      "ja": "HTの行政区画の情報"
+    },
+    "./subdivision-facts/hu": {
+      "en": "HU subdivision facts",
+      "ja": "HUの行政区画の情報"
+    },
+    "./subdivision-facts/id": {
+      "en": "ID subdivision facts",
+      "ja": "IDの行政区画の情報"
+    },
+    "./subdivision-facts/ie": {
+      "en": "IE subdivision facts",
+      "ja": "IEの行政区画の情報"
+    },
+    "./subdivision-facts/il": {
+      "en": "IL subdivision facts",
+      "ja": "ILの行政区画の情報"
+    },
+    "./subdivision-facts/in": {
+      "en": "IN subdivision facts",
+      "ja": "INの行政区画の情報"
+    },
+    "./subdivision-facts/iq": {
+      "en": "IQ subdivision facts",
+      "ja": "IQの行政区画の情報"
+    },
+    "./subdivision-facts/ir": {
+      "en": "IR subdivision facts",
+      "ja": "IRの行政区画の情報"
+    },
+    "./subdivision-facts/is": {
+      "en": "IS subdivision facts",
+      "ja": "ISの行政区画の情報"
+    },
+    "./subdivision-facts/it": {
+      "en": "IT subdivision facts",
+      "ja": "ITの行政区画の情報"
+    },
+    "./subdivision-facts/jm": {
+      "en": "JM subdivision facts",
+      "ja": "JMの行政区画の情報"
+    },
+    "./subdivision-facts/jo": {
+      "en": "JO subdivision facts",
+      "ja": "JOの行政区画の情報"
+    },
+    "./subdivision-facts/jp": {
+      "en": "JP subdivision facts",
+      "ja": "JPの行政区画の情報"
+    },
+    "./subdivision-facts/ke": {
+      "en": "KE subdivision facts",
+      "ja": "KEの行政区画の情報"
+    },
+    "./subdivision-facts/kg": {
+      "en": "KG subdivision facts",
+      "ja": "KGの行政区画の情報"
+    },
+    "./subdivision-facts/kh": {
+      "en": "KH subdivision facts",
+      "ja": "KHの行政区画の情報"
+    },
+    "./subdivision-facts/ki": {
+      "en": "KI subdivision facts",
+      "ja": "KIの行政区画の情報"
+    },
+    "./subdivision-facts/km": {
+      "en": "KM subdivision facts",
+      "ja": "KMの行政区画の情報"
+    },
+    "./subdivision-facts/kn": {
+      "en": "KN subdivision facts",
+      "ja": "KNの行政区画の情報"
+    },
+    "./subdivision-facts/kp": {
+      "en": "KP subdivision facts",
+      "ja": "KPの行政区画の情報"
+    },
+    "./subdivision-facts/kr": {
+      "en": "KR subdivision facts",
+      "ja": "KRの行政区画の情報"
+    },
+    "./subdivision-facts/kw": {
+      "en": "KW subdivision facts",
+      "ja": "KWの行政区画の情報"
+    },
+    "./subdivision-facts/kz": {
+      "en": "KZ subdivision facts",
+      "ja": "KZの行政区画の情報"
+    },
+    "./subdivision-facts/la": {
+      "en": "LA subdivision facts",
+      "ja": "LAの行政区画の情報"
+    },
+    "./subdivision-facts/lb": {
+      "en": "LB subdivision facts",
+      "ja": "LBの行政区画の情報"
+    },
+    "./subdivision-facts/lc": {
+      "en": "LC subdivision facts",
+      "ja": "LCの行政区画の情報"
+    },
+    "./subdivision-facts/li": {
+      "en": "LI subdivision facts",
+      "ja": "LIの行政区画の情報"
+    },
+    "./subdivision-facts/lk": {
+      "en": "LK subdivision facts",
+      "ja": "LKの行政区画の情報"
+    },
+    "./subdivision-facts/lr": {
+      "en": "LR subdivision facts",
+      "ja": "LRの行政区画の情報"
+    },
+    "./subdivision-facts/ls": {
+      "en": "LS subdivision facts",
+      "ja": "LSの行政区画の情報"
+    },
+    "./subdivision-facts/lt": {
+      "en": "LT subdivision facts",
+      "ja": "LTの行政区画の情報"
+    },
+    "./subdivision-facts/lu": {
+      "en": "LU subdivision facts",
+      "ja": "LUの行政区画の情報"
+    },
+    "./subdivision-facts/lv": {
+      "en": "LV subdivision facts",
+      "ja": "LVの行政区画の情報"
+    },
+    "./subdivision-facts/ly": {
+      "en": "LY subdivision facts",
+      "ja": "LYの行政区画の情報"
+    },
+    "./subdivision-facts/ma": {
+      "en": "MA subdivision facts",
+      "ja": "MAの行政区画の情報"
+    },
+    "./subdivision-facts/mc": {
+      "en": "MC subdivision facts",
+      "ja": "MCの行政区画の情報"
+    },
+    "./subdivision-facts/md": {
+      "en": "MD subdivision facts",
+      "ja": "MDの行政区画の情報"
+    },
+    "./subdivision-facts/me": {
+      "en": "ME subdivision facts",
+      "ja": "MEの行政区画の情報"
+    },
+    "./subdivision-facts/mg": {
+      "en": "MG subdivision facts",
+      "ja": "MGの行政区画の情報"
+    },
+    "./subdivision-facts/mh": {
+      "en": "MH subdivision facts",
+      "ja": "MHの行政区画の情報"
+    },
+    "./subdivision-facts/mk": {
+      "en": "MK subdivision facts",
+      "ja": "MKの行政区画の情報"
+    },
+    "./subdivision-facts/ml": {
+      "en": "ML subdivision facts",
+      "ja": "MLの行政区画の情報"
+    },
+    "./subdivision-facts/mm": {
+      "en": "MM subdivision facts",
+      "ja": "MMの行政区画の情報"
+    },
+    "./subdivision-facts/mn": {
+      "en": "MN subdivision facts",
+      "ja": "MNの行政区画の情報"
+    },
+    "./subdivision-facts/mr": {
+      "en": "MR subdivision facts",
+      "ja": "MRの行政区画の情報"
+    },
+    "./subdivision-facts/mt": {
+      "en": "MT subdivision facts",
+      "ja": "MTの行政区画の情報"
+    },
+    "./subdivision-facts/mu": {
+      "en": "MU subdivision facts",
+      "ja": "MUの行政区画の情報"
+    },
+    "./subdivision-facts/mv": {
+      "en": "MV subdivision facts",
+      "ja": "MVの行政区画の情報"
+    },
+    "./subdivision-facts/mw": {
+      "en": "MW subdivision facts",
+      "ja": "MWの行政区画の情報"
+    },
+    "./subdivision-facts/mx": {
+      "en": "MX subdivision facts",
+      "ja": "MXの行政区画の情報"
+    },
+    "./subdivision-facts/my": {
+      "en": "MY subdivision facts",
+      "ja": "MYの行政区画の情報"
+    },
+    "./subdivision-facts/mz": {
+      "en": "MZ subdivision facts",
+      "ja": "MZの行政区画の情報"
+    },
+    "./subdivision-facts/na": {
+      "en": "NA subdivision facts",
+      "ja": "NAの行政区画の情報"
+    },
+    "./subdivision-facts/ne": {
+      "en": "NE subdivision facts",
+      "ja": "NEの行政区画の情報"
+    },
+    "./subdivision-facts/ng": {
+      "en": "NG subdivision facts",
+      "ja": "NGの行政区画の情報"
+    },
+    "./subdivision-facts/ni": {
+      "en": "NI subdivision facts",
+      "ja": "NIの行政区画の情報"
+    },
+    "./subdivision-facts/nl": {
+      "en": "NL subdivision facts",
+      "ja": "NLの行政区画の情報"
+    },
+    "./subdivision-facts/no": {
+      "en": "NO subdivision facts",
+      "ja": "NOの行政区画の情報"
+    },
+    "./subdivision-facts/np": {
+      "en": "NP subdivision facts",
+      "ja": "NPの行政区画の情報"
+    },
+    "./subdivision-facts/nr": {
+      "en": "NR subdivision facts",
+      "ja": "NRの行政区画の情報"
+    },
+    "./subdivision-facts/nz": {
+      "en": "NZ subdivision facts",
+      "ja": "NZの行政区画の情報"
+    },
+    "./subdivision-facts/om": {
+      "en": "OM subdivision facts",
+      "ja": "OMの行政区画の情報"
+    },
+    "./subdivision-facts/pa": {
+      "en": "PA subdivision facts",
+      "ja": "PAの行政区画の情報"
+    },
+    "./subdivision-facts/pe": {
+      "en": "PE subdivision facts",
+      "ja": "PEの行政区画の情報"
+    },
+    "./subdivision-facts/pg": {
+      "en": "PG subdivision facts",
+      "ja": "PGの行政区画の情報"
+    },
+    "./subdivision-facts/ph": {
+      "en": "PH subdivision facts",
+      "ja": "PHの行政区画の情報"
+    },
+    "./subdivision-facts/pk": {
+      "en": "PK subdivision facts",
+      "ja": "PKの行政区画の情報"
+    },
+    "./subdivision-facts/pl": {
+      "en": "PL subdivision facts",
+      "ja": "PLの行政区画の情報"
+    },
+    "./subdivision-facts/ps": {
+      "en": "PS subdivision facts",
+      "ja": "PSの行政区画の情報"
+    },
+    "./subdivision-facts/pt": {
+      "en": "PT subdivision facts",
+      "ja": "PTの行政区画の情報"
+    },
+    "./subdivision-facts/pw": {
+      "en": "PW subdivision facts",
+      "ja": "PWの行政区画の情報"
+    },
+    "./subdivision-facts/py": {
+      "en": "PY subdivision facts",
+      "ja": "PYの行政区画の情報"
+    },
+    "./subdivision-facts/qa": {
+      "en": "QA subdivision facts",
+      "ja": "QAの行政区画の情報"
+    },
+    "./subdivision-facts/ro": {
+      "en": "RO subdivision facts",
+      "ja": "ROの行政区画の情報"
+    },
+    "./subdivision-facts/rs": {
+      "en": "RS subdivision facts",
+      "ja": "RSの行政区画の情報"
+    },
+    "./subdivision-facts/ru": {
+      "en": "RU subdivision facts",
+      "ja": "RUの行政区画の情報"
+    },
+    "./subdivision-facts/rw": {
+      "en": "RW subdivision facts",
+      "ja": "RWの行政区画の情報"
+    },
+    "./subdivision-facts/sa": {
+      "en": "SA subdivision facts",
+      "ja": "SAの行政区画の情報"
+    },
+    "./subdivision-facts/sb": {
+      "en": "SB subdivision facts",
+      "ja": "SBの行政区画の情報"
+    },
+    "./subdivision-facts/sc": {
+      "en": "SC subdivision facts",
+      "ja": "SCの行政区画の情報"
+    },
+    "./subdivision-facts/sd": {
+      "en": "SD subdivision facts",
+      "ja": "SDの行政区画の情報"
+    },
+    "./subdivision-facts/se": {
+      "en": "SE subdivision facts",
+      "ja": "SEの行政区画の情報"
+    },
+    "./subdivision-facts/sg": {
+      "en": "SG subdivision facts",
+      "ja": "SGの行政区画の情報"
+    },
+    "./subdivision-facts/sh": {
+      "en": "SH subdivision facts",
+      "ja": "SHの行政区画の情報"
+    },
+    "./subdivision-facts/si": {
+      "en": "SI subdivision facts",
+      "ja": "SIの行政区画の情報"
+    },
+    "./subdivision-facts/sk": {
+      "en": "SK subdivision facts",
+      "ja": "SKの行政区画の情報"
+    },
+    "./subdivision-facts/sl": {
+      "en": "SL subdivision facts",
+      "ja": "SLの行政区画の情報"
+    },
+    "./subdivision-facts/sm": {
+      "en": "SM subdivision facts",
+      "ja": "SMの行政区画の情報"
+    },
+    "./subdivision-facts/sn": {
+      "en": "SN subdivision facts",
+      "ja": "SNの行政区画の情報"
+    },
+    "./subdivision-facts/so": {
+      "en": "SO subdivision facts",
+      "ja": "SOの行政区画の情報"
+    },
+    "./subdivision-facts/sr": {
+      "en": "SR subdivision facts",
+      "ja": "SRの行政区画の情報"
+    },
+    "./subdivision-facts/ss": {
+      "en": "SS subdivision facts",
+      "ja": "SSの行政区画の情報"
+    },
+    "./subdivision-facts/st": {
+      "en": "ST subdivision facts",
+      "ja": "STの行政区画の情報"
+    },
+    "./subdivision-facts/sv": {
+      "en": "SV subdivision facts",
+      "ja": "SVの行政区画の情報"
+    },
+    "./subdivision-facts/sy": {
+      "en": "SY subdivision facts",
+      "ja": "SYの行政区画の情報"
+    },
+    "./subdivision-facts/sz": {
+      "en": "SZ subdivision facts",
+      "ja": "SZの行政区画の情報"
+    },
+    "./subdivision-facts/td": {
+      "en": "TD subdivision facts",
+      "ja": "TDの行政区画の情報"
+    },
+    "./subdivision-facts/tg": {
+      "en": "TG subdivision facts",
+      "ja": "TGの行政区画の情報"
+    },
+    "./subdivision-facts/th": {
+      "en": "TH subdivision facts",
+      "ja": "THの行政区画の情報"
+    },
+    "./subdivision-facts/tj": {
+      "en": "TJ subdivision facts",
+      "ja": "TJの行政区画の情報"
+    },
+    "./subdivision-facts/tl": {
+      "en": "TL subdivision facts",
+      "ja": "TLの行政区画の情報"
+    },
+    "./subdivision-facts/tm": {
+      "en": "TM subdivision facts",
+      "ja": "TMの行政区画の情報"
+    },
+    "./subdivision-facts/tn": {
+      "en": "TN subdivision facts",
+      "ja": "TNの行政区画の情報"
+    },
+    "./subdivision-facts/to": {
+      "en": "TO subdivision facts",
+      "ja": "TOの行政区画の情報"
+    },
+    "./subdivision-facts/tr": {
+      "en": "TR subdivision facts",
+      "ja": "TRの行政区画の情報"
+    },
+    "./subdivision-facts/tt": {
+      "en": "TT subdivision facts",
+      "ja": "TTの行政区画の情報"
+    },
+    "./subdivision-facts/tv": {
+      "en": "TV subdivision facts",
+      "ja": "TVの行政区画の情報"
+    },
+    "./subdivision-facts/tw": {
+      "en": "TW subdivision facts",
+      "ja": "TWの行政区画の情報"
+    },
+    "./subdivision-facts/tz": {
+      "en": "TZ subdivision facts",
+      "ja": "TZの行政区画の情報"
+    },
+    "./subdivision-facts/ua": {
+      "en": "UA subdivision facts",
+      "ja": "UAの行政区画の情報"
+    },
+    "./subdivision-facts/ug": {
+      "en": "UG subdivision facts",
+      "ja": "UGの行政区画の情報"
+    },
+    "./subdivision-facts/um": {
+      "en": "UM subdivision facts",
+      "ja": "UMの行政区画の情報"
+    },
+    "./subdivision-facts/us": {
+      "en": "US subdivision facts",
+      "ja": "USの行政区画の情報"
+    },
+    "./subdivision-facts/uy": {
+      "en": "UY subdivision facts",
+      "ja": "UYの行政区画の情報"
+    },
+    "./subdivision-facts/uz": {
+      "en": "UZ subdivision facts",
+      "ja": "UZの行政区画の情報"
+    },
+    "./subdivision-facts/vc": {
+      "en": "VC subdivision facts",
+      "ja": "VCの行政区画の情報"
+    },
+    "./subdivision-facts/ve": {
+      "en": "VE subdivision facts",
+      "ja": "VEの行政区画の情報"
+    },
+    "./subdivision-facts/vn": {
+      "en": "VN subdivision facts",
+      "ja": "VNの行政区画の情報"
+    },
+    "./subdivision-facts/vu": {
+      "en": "VU subdivision facts",
+      "ja": "VUの行政区画の情報"
+    },
+    "./subdivision-facts/wf": {
+      "en": "WF subdivision facts",
+      "ja": "WFの行政区画の情報"
+    },
+    "./subdivision-facts/ws": {
+      "en": "WS subdivision facts",
+      "ja": "WSの行政区画の情報"
+    },
+    "./subdivision-facts/ye": {
+      "en": "YE subdivision facts",
+      "ja": "YEの行政区画の情報"
+    },
+    "./subdivision-facts/za": {
+      "en": "ZA subdivision facts",
+      "ja": "ZAの行政区画の情報"
+    },
+    "./subdivision-facts/zm": {
+      "en": "ZM subdivision facts",
+      "ja": "ZMの行政区画の情報"
+    },
+    "./subdivision-facts/zw": {
+      "en": "ZW subdivision facts",
+      "ja": "ZWの行政区画の情報"
+    }
+  }
+}

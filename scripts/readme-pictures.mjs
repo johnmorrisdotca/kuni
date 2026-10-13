@@ -9,6 +9,7 @@ const READY = 'main[data-ready="true"]';
 
 await takePictures({
   shots: [
+    ...["find","list","code","search"].map(subject=>({subject,views:["desk"],url:"/?lang=en&help=off",ready:READY,target:`[data-testid="${subject}-panel"]`})),
     // From the top of the page, so the header, the language chooser, the cloth patches and the first panels show.
     // On a phone, in Japanese.
     {

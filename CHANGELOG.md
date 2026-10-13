@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+- Add the bilingual documentation site, checked public examples, full country-resource catalogue, local search and machine-readable pages.
+
 - Reconcile cards with the released IOC/withdrawn APIs; append optional ioc display while keeping current-country pickers and default fields unchanged.
 
 - Add a country and subdivision card, embed builder and validated storage-free iframe.

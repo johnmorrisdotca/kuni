@@ -146,3 +146,5 @@ pre.snippet, #form-output { white-space: pre-wrap; overflow-wrap: anywhere; font
   .country-title h3 { font-size: 1.3rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+header nav a[data-say="pageDocs"] { inline-size: 8rem; justify-content: center; flex: none; }

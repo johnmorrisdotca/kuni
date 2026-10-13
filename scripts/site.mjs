@@ -97,9 +97,9 @@ const page = `<!doctype html>
   <head>
     ${familyHead({
       id,
-      title: "Kuni · every country and its subdivisions, in English and Japanese",
+      title: "Kuni 国 — Countries, states and provinces",
       description: "Look up any country and its states, provinces and prefectures by ISO 3166 code or by name, in English or Japanese, in your browser. A typed, zero-dependency dataset from Unicode CLDR and Wikidata. Free and open source.",
-      ogTitle: "Kuni: countries and their subdivisions in English and Japanese",
+      ogTitle: "Kuni 国 — Countries, states and provinces",
       ogDescription: "Every country and its 5,050 ISO 3166-2 subdivisions, with names in English and Japanese, looked up by code or by what somebody typed. No dependencies.",
     })}
     <link rel="icon" href="${ICON}" />
@@ -108,7 +108,7 @@ const page = `<!doctype html>
   </head>
   <body>
     <main>
-      ${familyHeader({ id, links: [{ href: "api.html", say: "pageApi" }] })}
+      ${familyHeader({ id, links: [{ href: "docs/index.html", say: "pageDocs" }, { href: "api.html", say: "pageApi" }] })}
       ${tabs}
       <div class="lookups view" data-view="lookup" data-testid="view-lookup">
       ${panels.join("\n      ")}
@@ -182,8 +182,8 @@ for (const file of ["builder.js", "builder.css"]) cpSync(`demo/${file}`, `site/$
 cpSync("demo/embed", "site/embed", { recursive: true });
 writeFileSync("site/family-embed-builder.js", `export const FAMILY_EMBED_BUILDER_WORDS = ${JSON.stringify(FAMILY_EMBED_BUILDER_WORDS)};\nexport ${familyEmbedBuilder.toString()};\n`);
 const builderParts = {
-  builderHead: familyHead({ id, title: "Kuni · build a country card", description: "Choose a country or subdivision, preview its card and copy the embed code." }),
-  builderHeader: familyHeader({ id, links: [{ href: "./", say: "toGallery" }] }),
+  builderHead: familyHead({ id, title: "Kuni 国 — Countries, states and provinces · Build a country card", description: "Choose a country or subdivision, preview its card and copy the embed code." }),
+  builderHeader: familyHeader({ id, links: [{ href: "./", say: "toGallery" }, { href: "docs/index.html", say: "pageDocs" }, { href: "api.html", say: "pageApi" }] }),
   unreviewed: familyUnreviewed({ id }), footer: familyFooter({ id }), script: `<script>${FAMILY_SCRIPT}</script>`,
 };
 writeFileSync("site/builder.html", readFileSync("demo/builder.html", "utf8").replace(/<!-- family:([A-Za-z]+) -->/g, (_match, key) => builderParts[key]));

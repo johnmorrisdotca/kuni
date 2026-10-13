@@ -258,6 +258,7 @@ function press() {
 }
 
 async function render() {
+  document.querySelector('[data-say="pageDocs"]')?.setAttribute("href",language.lang==="ja"?"docs/ja/index.html":"docs/index.html");
   language.say();
   fillCountries();
   find();

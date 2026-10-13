@@ -29,7 +29,8 @@ const section = (heading, level = "##") => {
 describe("the README", () => {
   it("names every entry package.json exports, and no other", () => {
     const exported = Object.keys(pkg.exports).filter((key) => key !== "." && key !== "./package.json").map((key) => `${pkg.name}/${key.slice(2).replace("*", "<code>")}`);
-    for (const entry of exported) expect(readme, entry).toContain(`\`${entry}\``);
+    const documented = readme + readFileSync("docs/guides/country-resources.md", "utf8");
+    for (const entry of exported) expect(documented, entry).toContain(`\`${entry}\``);
     // Any other entry the README names is one country's: /subdivisions/jp, /subdivisions/us.
     const named = [...readme.matchAll(/`(@johnmorrisdotca\/kuni\/[\w<>/-]+)`/g)].map((match) => match[1]);
     for (const entry of named) if (!exported.includes(entry)) expect(entry).toMatch(/^@johnmorrisdotca\/kuni\/(subdivisions|subdivision-facts)\/[a-z]{2}$/);
@@ -45,7 +46,7 @@ describe("the README", () => {
   });
 
   it("names in its Architecture tree every hand-written source file, and nothing that is not one", () => {
-    const tree = section("Architecture");
+    const tree = readFileSync("docs/guides/architecture.md", "utf8");
     const named = [...tree.matchAll(/[├└]── ([\w.-]+\.ts)\b/g)].map((match) => match[1]).sort();
     const files = readdirSync("src").filter((file) => file.endsWith(".ts") && !file.endsWith(".test.ts")).sort();
     expect(named).toEqual(files);

@@ -4,7 +4,7 @@ import "./dist/element-define.js";
 import { familyEmbedBuilder, FAMILY_EMBED_BUILDER_WORDS } from "./family-embed-builder.js";
 const words = {
   en: {
-    ...FAMILY_EMBED_BUILDER_WORDS.en,
+    ...FAMILY_EMBED_BUILDER_WORDS.en,pageDocs:"Docs",pageApi:"API reference",
     pitch: "Choose a country or subdivision and its fields, preview the card, and copy the code for your page.",
     name: "Kuni means country in Japanese.",
     nameLink: "About the name",
@@ -15,7 +15,7 @@ const words = {
     copyLink: "Copy a link to this card"
   },
   ja: {
-    ...FAMILY_EMBED_BUILDER_WORDS.ja,
+    ...FAMILY_EMBED_BUILDER_WORDS.ja,pageDocs:"ドキュメント",pageApi:"API（英語）",
     pitch: "国や行政区画と表示する項目を選び、カードを確認して、ページに埋め込むコードをコピーできます。",
     name: "「国」は英語の country に当たる日本語です。",
     nameLink: "名前について",
@@ -42,7 +42,7 @@ const options = [
 const heights = {};
 const key = (settings) => JSON.stringify(settings);
 let mounted;
-const page = globalThis.familyLanguage({ id: "kuni", words, onChange: () => mounted?.draw() });
+const page = globalThis.familyLanguage({ id: "kuni", words, onChange: () => { docsLink(); mounted?.draw(); } });
 const builder = familyEmbedBuilder({ id: "kuni", packageName: "@johnmorrisdotca/kuni", major: VERSION.split(".")[0], site: "https://johnmorrisdotca.github.io/kuni/", title: "Kuni · country card", titleJa: "国のカードの埋め込み", options, groups: { card: { en: "The card", ja: "カードの設定" } }, leftOut: { "options.colors": "The colours control writes colors.", "options.capital": "The capital switch writes capital.", "options.flag": "Host SVG loaders belong to host code; the builder uses Hata on jsDelivr.", "options.map": "Host SVG loaders belong to host code; the builder uses Chizu on jsDelivr." }, makers: { card: { names: "card", element: "card", tag: "kuni-card", embed: "embed/", required: ["code"], description: "makerCardSays", formats: ["element", "iframe", "module", "react", "vue", "svelte", "angular", "html", "url"], width: 600, height: (settings) => heights[key(settings)] ?? ({ small: 700, medium: 800, large: 900 }[settings.size] ?? 800) } }, code: ({ maker, format, settings }) => {
   if (readCardColors(settings.colors ?? null) === null) return null;
   if (String(settings.fields ?? defaultFields).split(/[\s,]+/).filter(Boolean).some((field) => !KUNI_CARD_FIELDS.includes(field))) return null;
@@ -57,3 +57,6 @@ mounted = builder.mount({ words, language: () => page, initial: { card: { code: 
   stage.append(card);
   return { destroy() { card.remove(); } };
 } });
+
+function docsLink(){document.querySelector('[data-say="pageDocs"]')?.setAttribute("href",page.lang==="ja"?"docs/ja/index.html":"docs/index.html");}
+docsLink();

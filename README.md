@@ -1,4 +1,4 @@
-<h1 align="center">Kuni <sub>国</sub></h1>
+<h1 align="center">Kuni <sub>国</sub> — Countries, states and provinces</h1>
 
 <p align="center"><strong>Kuni 国: every country and its states, provinces and prefectures, with ISO 3166 codes and names in English and Japanese.</strong><br>
 A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one country at a time, for JavaScript and TypeScript. Look up a country or a region by code or by what somebody typed, in either language, and load only the countries you need.</p>
@@ -11,23 +11,25 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
   <a href="./LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-2f5d4a"></a>
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-0-2f5d4a">
   <img alt="TypeScript" src="https://img.shields.io/badge/types-TypeScript-3178c6">
+  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="21.4 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-21.4%20kB-2f5d4a"></a>
+  <a href="https://www.npmjs.com/package/@johnmorrisdotca/kuni#provenance"><img alt="Published with npm provenance" src="https://img.shields.io/badge/npm-provenance-2f5d4a"></a>
 </p>
 
-<p align="center"><a href="https://johnmorrisdotca.github.io/kuni/"><strong>Try it →</strong></a> · <a href="https://johnmorrisdotca.github.io/kuni/api.html">API reference</a></p>
+<p align="center"><a href="https://johnmorrisdotca.github.io/kuni/"><strong>Try it →</strong></a> · <a href="https://johnmorrisdotca.github.io/kuni/docs/">Documentation</a> · <a href="https://johnmorrisdotca.github.io/kuni/docs/guides/getting-started.html">Getting started</a> · <a href="https://johnmorrisdotca.github.io/kuni/api.html">API reference</a></p>
 
 <table align="center">
 <tr>
 <td align="center" valign="top">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-desk-dark.webp">
-<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-desk-light.webp" alt="The demo on a desk, in English: the header with its language chooser, the API reference link, five cloth patches and the Help switch, then a row of views (Look up, Country, Compare, All countries, Groupings, Quiz, Form widget, Data quality) and the Look up view's panels. Find a country shows ドイツ typed in and its answer: the German flag, DE, DEU and 276, Germany, ドイツ, Deutschland, Europe, Berlin, +49, EUR, .de, two time zones, and 16 states. Subdivisions of a country shows Japan picked and a table of its prefectures with code, English and Japanese name, from JP-01 Hokkaidō 北海道, and the line 47 subdivisions; the main kind is prefecture. Look up a code begins below with JP-13 typed in." width="600">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-desk-light.webp" alt="The demo on a desk, in English: the header with its language chooser, the Docs and API reference links, five cloth patches and the Help switch, then a row of views (Look up, Country, Compare, All countries, Groupings, Quiz, Form widget, Data quality) and the Look up view's panels. Find a country shows ドイツ typed in and its answer: the German flag, DE, DEU and 276, Germany, ドイツ, Deutschland, Europe, Berlin, +49, EUR, .de, two time zones, and 16 states. Subdivisions of a country shows Japan picked and a table of its prefectures with code, English and Japanese name, from JP-01 Hokkaidō 北海道, and the line 47 subdivisions; the main kind is prefecture. Look up a code begins below with JP-13 typed in." width="600">
 </picture>
 <br><em>The demo on a desk: a country found by its Japanese name, and Japan's prefectures loaded on demand.</em>
 </td>
 <td align="center" valign="top">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-phone-dark.webp">
-<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-phone-light.webp" alt="The demo on a phone, in Japanese: the header, its language chooser, patches and buttons, then the first panel, 国を探す, with ドイツ typed in, its row of examples, and the start of its answer, the German flag and DE, DEU, 276, under the row of views" width="190">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/hero-phone-light.webp" alt="The demo on a phone, in Japanese: the header, its language chooser, patches and buttons, then the first panel, 国を探す, with ドイツ typed in below the view choices and the Docs/API navigation" width="190">
 </picture>
 <br><em>On a phone, in Japanese, in the device's light or dark.</em>
 </td>
@@ -84,6 +86,8 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 
 ## Features
 
+### What's in it
+
 - **Every country.** The 249 ISO 3166-1 codes and Kosovo (XK, user-assigned), each with alpha-2, alpha-3 and numeric codes, its flag, continent, UN M49 subregion, calling code, currencies, top-level domain, capital, time zones and languages.
 - **Every subdivision.** 5,050 ISO 3166-2 codes in 200 countries: 3,594 at the first level and 1,456 below it (France's departments in its regions, England's councils in England), each with its level and parent.
 - **English and Japanese names** from Unicode CLDR 48.2, with CLDR's short forms (UK, アメリカ) and variants (Ivory Coast, 象牙海岸). Japanese names for 3,527 of the 3,594 first-level subdivisions, and `null` for the rest, never a guess.
@@ -95,7 +99,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
-- **Small where it matters.** The countries and lookups are about 57 KB (19 KB gzipped); one country's subdivisions are their own entry (Japan's 47, 2.9 KB) or a dynamic import.
+- **Small where it matters.** The countries and lookups are 21.4 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
@@ -103,6 +107,17 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 [Build a country or subdivision card](https://johnmorrisdotca.github.io/kuni/builder.html). The [embed guide](docs/embeds.md) covers its fields, properties and messages. Cards support per-place `colors` and `capital="off"` for the native Chizu map; capital text stays separate. [Map colours and markers](docs/embeds.md#map-colours-and-markers).
 
 ## Use it in your project
+
+### Install under another name
+
+```sh
+npm install countries@npm:@johnmorrisdotca/kuni
+```
+
+```ts no-check
+import { country } from "countries";
+console.log(country("JP")?.name.en);
+```
 
 ### Install
 
@@ -116,20 +131,20 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 
 ### The entry points
 
-| Entry | What it carries | Size (ESM) |
+| Entry | What it carries | Size (minified + gzip) |
 | --- | --- | --- |
-| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 64 KB, 22 KB gzipped |
-| `@johnmorrisdotca/kuni/element` | `KuniCard`, `defineCard`, `KUNI_CARD_FIELDS`, `KUNI_CARD_OPTION_KEYS`; `KuniCardOptions` |
-| `@johnmorrisdotca/kuni/element/define` | registers the tag and re-exports the element API |
-| `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 2 KB |
-| `@johnmorrisdotca/kuni/subdivisions/<code>` | One country's subdivisions, every level (`/subdivisions/jp`, `/subdivisions/us`, lower case) | 1 to 13 KB; Japan 2.9 KB |
-| `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 11 KB, then the country's own file |
-| `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 216 KB, 85 KB gzipped |
-| `@johnmorrisdotca/kuni/facts` | Every country's population, area, coordinates, borders, driving side and conventions | 25 KB, 9 KB gzipped |
-| `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 12 KB, then the country's own file |
-| `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 1 to 16 KB; Japan 4.9 KB |
-| `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 84 KB, 16 KB gzipped |
-| `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 8 KB, 2.4 KB gzipped |
+| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 21.4 kB min+gzip |
+| `@johnmorrisdotca/kuni/element` | `KuniCard`, `defineCard`, `KUNI_CARD_FIELDS`, `KUNI_CARD_OPTION_KEYS`, `readCardColors`; `KuniCardOptions` | 290.5 kB min+gzip |
+| `@johnmorrisdotca/kuni/element/define` | registers the tag and re-exports the element API | 290.5 kB min+gzip |
+| `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 0.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/subdivisions/<code>` | One country's subdivisions, every level (`/subdivisions/jp`, `/subdivisions/us`, lower case) | 0.4–5.0 kB; Japan 1.5 kB |
+| `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 97.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 88.4 kB min+gzip |
+| `@johnmorrisdotca/kuni/facts` | Every country's population, area, coordinates, borders, driving side and conventions | 8.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 161.1 kB min+gzip |
+| `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 0.4–7.3 kB; Japan 2.4 kB |
+| `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 15.9 kB min+gzip |
+| `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 2.1 kB min+gzip |
 
 ### 1. The countries
 
@@ -311,9 +326,51 @@ subdivisionsByName("Punjab").map((one) => one.code); // ["IN-PB", "PK-PB"]
 subdivisionByName("Punjab", { country: "PK" })?.code; // "PK-PB"
 ```
 
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/find-desk-dark.webp">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/find-desk-light.webp" alt="The find panel showing a country found by its Japanese name and its native codes and fields" width="600">
+</picture>
+<br><em>The find panel shows a country found by its Japanese name and its native codes and fields.</em>
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/list-desk-dark.webp">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/list-desk-light.webp" alt="The list panel showing Japan’s prefectures loaded as a native subdivision table" width="600">
+</picture>
+<br><em>The list panel shows Japan’s prefectures loaded as a native subdivision table.</em>
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/code-desk-dark.webp">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/code-desk-light.webp" alt="The code panel showing a full subdivision code resolved to its native record" width="600">
+</picture>
+<br><em>The code panel shows a full subdivision code resolved to its native record.</em>
+
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/search-desk-dark.webp">
+<img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/search-desk-light.webp" alt="The search panel showing all countries using the typed calling code, currency or domain" width="600">
+</picture>
+<br><em>The search panel shows all countries using the typed calling code, currency or domain.</em>
+
+### Validate an exact country code
+
+```ts
+import { isCountryCode } from "@johnmorrisdotca/kuni/codes";
+console.log(isCountryCode("JP"),isCountryCode("jp"));
+```
+
+### Read a dated country figure
+
+```ts
+import { facts,FACTS_READ } from "@johnmorrisdotca/kuni/facts";
+const japan=facts("JP");
+console.log(FACTS_READ,japan?.population,japan?.populationYear);
+```
+
 ## API
 
-The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every export of every entry point with its signature and its comment. It is made from the source by `pnpm site`, so it cannot fall behind the code.
+The [documentation](https://johnmorrisdotca.github.io/kuni/docs/) provides paired guides, local search and checked examples. The [complete country-resource catalogue](docs/guides/country-resources.md) names every existing per-country import, including subdivisions and their facts.
+
+The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every export of every entry point with its signature and its comment. `pnpm docs:site` retains the index anchors and builds individual reference pages from source, so the documentation stays with the code.
 
 | Entry | Exports |
 | --- | --- |
@@ -474,28 +531,7 @@ Left out on purpose: geometry (see [Chizu](https://github.com/johnmorrisdotca/ch
 
 ## Architecture
 
-```text
-src/
-├── element.ts             country and subdivision cards
-├── element-define.ts      register the card element
-├── index.ts            the main entry: the countries and their lookups
-├── codes.ts            the "/codes" entry: the codes alone
-├── subdivisions.ts     the "/subdivisions" entry: every subdivision and its lookups
-├── load.ts             the "/load" entry: one country's subdivisions by dynamic import
-├── facts.ts            the "/facts" entry: population, area, coordinates, borders and conventions
-├── subdivision-facts.ts  the "/subdivision-facts" entry: one country's subdivision facts by dynamic import
-├── groupings.ts        the "/groupings" entry: continents, UN M49, bodies, informal groupings, regions
-├── withdrawn.ts        the "/withdrawn" entry: the countries ISO 3166-3 lists as withdrawn, and the codes they held
-├── fold.ts             folding what somebody typed: case, accents, width, kana
-├── rows.ts             turning the data's compact rows into objects
-├── types.ts            the shapes of a country and a subdivision, and the kinds of place
-├── version.ts          the package's version
-├── data/               written by scripts/build-data.ts: countries, codes, facts, groupings, and files per country
-├── subdivisions/       written by scripts/build-data.ts: the "/subdivisions/<code>" entries
-└── subdivision-facts/  written by scripts/build-data.ts: the "/subdivision-facts/<code>" entries
-```
-
-`scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
+The [architecture guide](docs/guides/architecture.md) retains the complete original source tree and explanation of data generation, lazy loading and public boundaries. Each native country resource keeps its existing file and runtime data.
 
 ## Data and licences
 
@@ -590,6 +626,14 @@ Kuni is one of twenty-eight packages, each made for the same site, each at
 <!-- family:end -->
 
 ## Development
+
+```sh
+pnpm docs:site
+pnpm docs:check
+pnpm size --write
+```
+
+The shared generator checks real imports and guide examples. `pnpm docs:make` also refreshes the country-resource catalogue and the original language reference. `node scripts/build-data.ts --docs-only` refreshes stored generated examples without fetching or changing source data.
 
 ```sh
 pnpm install

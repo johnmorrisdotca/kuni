@@ -1,7 +1,7 @@
 {
   "name": "@johnmorrisdotca/kuni",
   "version": "1.3.0",
-  "description": "Kuni 国, every country and its subdivisions (states, provinces, prefectures, regions) with ISO 3166 codes and names in English and Japanese, from Unicode CLDR and Wikidata. Typed lookups by code or by name. Zero dependencies.",
+  "description": "Kuni 国 — Countries, states and provinces: ISO 3166 codes and English/Japanese names, subdivisions, country facts and groupings, typed lookups, on-demand country data and an optional card. Zero dependencies.",
   "keywords": [
     "countries",
     "subdivisions",
@@ -52,7 +52,8 @@
       "require": {
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
-      }
+      },
+      "default": "./dist/index.js"
     },
     "./codes": {
       "import": {
@@ -62,7 +63,8 @@
       "require": {
         "types": "./dist/codes.d.cts",
         "default": "./dist/codes.cjs"
-      }
+      },
+      "default": "./dist/codes.js"
     },
     "./subdivisions": {
       "import": {
@@ -72,7 +74,8 @@
       "require": {
         "types": "./dist/subdivisions.d.cts",
         "default": "./dist/subdivisions.cjs"
-      }
+      },
+      "default": "./dist/subdivisions.js"
     },
     "./subdivisions/*": {
       "import": {
@@ -82,7 +85,8 @@
       "require": {
         "types": "./dist/subdivisions/*.d.cts",
         "default": "./dist/subdivisions/*.cjs"
-      }
+      },
+      "default": "./dist/subdivisions/*.js"
     },
     "./load": {
       "import": {
@@ -92,7 +96,8 @@
       "require": {
         "types": "./dist/load.d.cts",
         "default": "./dist/load.cjs"
-      }
+      },
+      "default": "./dist/load.js"
     },
     "./facts": {
       "import": {
@@ -102,7 +107,8 @@
       "require": {
         "types": "./dist/facts.d.cts",
         "default": "./dist/facts.cjs"
-      }
+      },
+      "default": "./dist/facts.js"
     },
     "./subdivision-facts": {
       "import": {
@@ -112,7 +118,8 @@
       "require": {
         "types": "./dist/subdivision-facts.d.cts",
         "default": "./dist/subdivision-facts.cjs"
-      }
+      },
+      "default": "./dist/subdivision-facts.js"
     },
     "./subdivision-facts/*": {
       "import": {
@@ -122,7 +129,8 @@
       "require": {
         "types": "./dist/subdivision-facts/*.d.cts",
         "default": "./dist/subdivision-facts/*.cjs"
-      }
+      },
+      "default": "./dist/subdivision-facts/*.js"
     },
     "./groupings": {
       "import": {
@@ -132,9 +140,10 @@
       "require": {
         "types": "./dist/groupings.d.cts",
         "default": "./dist/groupings.cjs"
-      }
+      },
+      "default": "./dist/groupings.js"
     },
-"./withdrawn": {
+    "./withdrawn": {
       "import": {
         "types": "./dist/withdrawn.d.ts",
         "default": "./dist/withdrawn.js"
@@ -142,10 +151,10 @@
       "require": {
         "types": "./dist/withdrawn.d.cts",
         "default": "./dist/withdrawn.cjs"
-      }
+      },
+      "default": "./dist/withdrawn.js"
     },
-    
-"./package.json": "./package.json",
+    "./package.json": "./package.json",
     "./element": {
       "import": {
         "types": "./dist/element.d.ts",
@@ -154,7 +163,8 @@
       "require": {
         "types": "./dist/element.d.cts",
         "default": "./dist/element.cjs"
-      }
+      },
+      "default": "./dist/element.js"
     },
     "./element/define": {
       "import": {
@@ -164,7 +174,4408 @@
       "require": {
         "types": "./dist/element-define.d.cts",
         "default": "./dist/element-define.cjs"
-      }
+      },
+      "default": "./dist/element-define.js"
+    },
+    "./subdivisions/ad": {
+      "import": {
+        "types": "./dist/subdivisions/ad.d.ts",
+        "default": "./dist/subdivisions/ad.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ad.d.cts",
+        "default": "./dist/subdivisions/ad.cjs"
+      },
+      "default": "./dist/subdivisions/ad.js"
+    },
+    "./subdivisions/ae": {
+      "import": {
+        "types": "./dist/subdivisions/ae.d.ts",
+        "default": "./dist/subdivisions/ae.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ae.d.cts",
+        "default": "./dist/subdivisions/ae.cjs"
+      },
+      "default": "./dist/subdivisions/ae.js"
+    },
+    "./subdivisions/af": {
+      "import": {
+        "types": "./dist/subdivisions/af.d.ts",
+        "default": "./dist/subdivisions/af.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/af.d.cts",
+        "default": "./dist/subdivisions/af.cjs"
+      },
+      "default": "./dist/subdivisions/af.js"
+    },
+    "./subdivisions/ag": {
+      "import": {
+        "types": "./dist/subdivisions/ag.d.ts",
+        "default": "./dist/subdivisions/ag.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ag.d.cts",
+        "default": "./dist/subdivisions/ag.cjs"
+      },
+      "default": "./dist/subdivisions/ag.js"
+    },
+    "./subdivisions/al": {
+      "import": {
+        "types": "./dist/subdivisions/al.d.ts",
+        "default": "./dist/subdivisions/al.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/al.d.cts",
+        "default": "./dist/subdivisions/al.cjs"
+      },
+      "default": "./dist/subdivisions/al.js"
+    },
+    "./subdivisions/am": {
+      "import": {
+        "types": "./dist/subdivisions/am.d.ts",
+        "default": "./dist/subdivisions/am.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/am.d.cts",
+        "default": "./dist/subdivisions/am.cjs"
+      },
+      "default": "./dist/subdivisions/am.js"
+    },
+    "./subdivisions/ao": {
+      "import": {
+        "types": "./dist/subdivisions/ao.d.ts",
+        "default": "./dist/subdivisions/ao.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ao.d.cts",
+        "default": "./dist/subdivisions/ao.cjs"
+      },
+      "default": "./dist/subdivisions/ao.js"
+    },
+    "./subdivisions/ar": {
+      "import": {
+        "types": "./dist/subdivisions/ar.d.ts",
+        "default": "./dist/subdivisions/ar.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ar.d.cts",
+        "default": "./dist/subdivisions/ar.cjs"
+      },
+      "default": "./dist/subdivisions/ar.js"
+    },
+    "./subdivisions/at": {
+      "import": {
+        "types": "./dist/subdivisions/at.d.ts",
+        "default": "./dist/subdivisions/at.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/at.d.cts",
+        "default": "./dist/subdivisions/at.cjs"
+      },
+      "default": "./dist/subdivisions/at.js"
+    },
+    "./subdivisions/au": {
+      "import": {
+        "types": "./dist/subdivisions/au.d.ts",
+        "default": "./dist/subdivisions/au.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/au.d.cts",
+        "default": "./dist/subdivisions/au.cjs"
+      },
+      "default": "./dist/subdivisions/au.js"
+    },
+    "./subdivisions/az": {
+      "import": {
+        "types": "./dist/subdivisions/az.d.ts",
+        "default": "./dist/subdivisions/az.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/az.d.cts",
+        "default": "./dist/subdivisions/az.cjs"
+      },
+      "default": "./dist/subdivisions/az.js"
+    },
+    "./subdivisions/ba": {
+      "import": {
+        "types": "./dist/subdivisions/ba.d.ts",
+        "default": "./dist/subdivisions/ba.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ba.d.cts",
+        "default": "./dist/subdivisions/ba.cjs"
+      },
+      "default": "./dist/subdivisions/ba.js"
+    },
+    "./subdivisions/bb": {
+      "import": {
+        "types": "./dist/subdivisions/bb.d.ts",
+        "default": "./dist/subdivisions/bb.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bb.d.cts",
+        "default": "./dist/subdivisions/bb.cjs"
+      },
+      "default": "./dist/subdivisions/bb.js"
+    },
+    "./subdivisions/bd": {
+      "import": {
+        "types": "./dist/subdivisions/bd.d.ts",
+        "default": "./dist/subdivisions/bd.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bd.d.cts",
+        "default": "./dist/subdivisions/bd.cjs"
+      },
+      "default": "./dist/subdivisions/bd.js"
+    },
+    "./subdivisions/be": {
+      "import": {
+        "types": "./dist/subdivisions/be.d.ts",
+        "default": "./dist/subdivisions/be.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/be.d.cts",
+        "default": "./dist/subdivisions/be.cjs"
+      },
+      "default": "./dist/subdivisions/be.js"
+    },
+    "./subdivisions/bf": {
+      "import": {
+        "types": "./dist/subdivisions/bf.d.ts",
+        "default": "./dist/subdivisions/bf.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bf.d.cts",
+        "default": "./dist/subdivisions/bf.cjs"
+      },
+      "default": "./dist/subdivisions/bf.js"
+    },
+    "./subdivisions/bg": {
+      "import": {
+        "types": "./dist/subdivisions/bg.d.ts",
+        "default": "./dist/subdivisions/bg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bg.d.cts",
+        "default": "./dist/subdivisions/bg.cjs"
+      },
+      "default": "./dist/subdivisions/bg.js"
+    },
+    "./subdivisions/bh": {
+      "import": {
+        "types": "./dist/subdivisions/bh.d.ts",
+        "default": "./dist/subdivisions/bh.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bh.d.cts",
+        "default": "./dist/subdivisions/bh.cjs"
+      },
+      "default": "./dist/subdivisions/bh.js"
+    },
+    "./subdivisions/bi": {
+      "import": {
+        "types": "./dist/subdivisions/bi.d.ts",
+        "default": "./dist/subdivisions/bi.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bi.d.cts",
+        "default": "./dist/subdivisions/bi.cjs"
+      },
+      "default": "./dist/subdivisions/bi.js"
+    },
+    "./subdivisions/bj": {
+      "import": {
+        "types": "./dist/subdivisions/bj.d.ts",
+        "default": "./dist/subdivisions/bj.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bj.d.cts",
+        "default": "./dist/subdivisions/bj.cjs"
+      },
+      "default": "./dist/subdivisions/bj.js"
+    },
+    "./subdivisions/bn": {
+      "import": {
+        "types": "./dist/subdivisions/bn.d.ts",
+        "default": "./dist/subdivisions/bn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bn.d.cts",
+        "default": "./dist/subdivisions/bn.cjs"
+      },
+      "default": "./dist/subdivisions/bn.js"
+    },
+    "./subdivisions/bo": {
+      "import": {
+        "types": "./dist/subdivisions/bo.d.ts",
+        "default": "./dist/subdivisions/bo.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bo.d.cts",
+        "default": "./dist/subdivisions/bo.cjs"
+      },
+      "default": "./dist/subdivisions/bo.js"
+    },
+    "./subdivisions/bq": {
+      "import": {
+        "types": "./dist/subdivisions/bq.d.ts",
+        "default": "./dist/subdivisions/bq.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bq.d.cts",
+        "default": "./dist/subdivisions/bq.cjs"
+      },
+      "default": "./dist/subdivisions/bq.js"
+    },
+    "./subdivisions/br": {
+      "import": {
+        "types": "./dist/subdivisions/br.d.ts",
+        "default": "./dist/subdivisions/br.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/br.d.cts",
+        "default": "./dist/subdivisions/br.cjs"
+      },
+      "default": "./dist/subdivisions/br.js"
+    },
+    "./subdivisions/bs": {
+      "import": {
+        "types": "./dist/subdivisions/bs.d.ts",
+        "default": "./dist/subdivisions/bs.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bs.d.cts",
+        "default": "./dist/subdivisions/bs.cjs"
+      },
+      "default": "./dist/subdivisions/bs.js"
+    },
+    "./subdivisions/bt": {
+      "import": {
+        "types": "./dist/subdivisions/bt.d.ts",
+        "default": "./dist/subdivisions/bt.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bt.d.cts",
+        "default": "./dist/subdivisions/bt.cjs"
+      },
+      "default": "./dist/subdivisions/bt.js"
+    },
+    "./subdivisions/bw": {
+      "import": {
+        "types": "./dist/subdivisions/bw.d.ts",
+        "default": "./dist/subdivisions/bw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bw.d.cts",
+        "default": "./dist/subdivisions/bw.cjs"
+      },
+      "default": "./dist/subdivisions/bw.js"
+    },
+    "./subdivisions/by": {
+      "import": {
+        "types": "./dist/subdivisions/by.d.ts",
+        "default": "./dist/subdivisions/by.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/by.d.cts",
+        "default": "./dist/subdivisions/by.cjs"
+      },
+      "default": "./dist/subdivisions/by.js"
+    },
+    "./subdivisions/bz": {
+      "import": {
+        "types": "./dist/subdivisions/bz.d.ts",
+        "default": "./dist/subdivisions/bz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/bz.d.cts",
+        "default": "./dist/subdivisions/bz.cjs"
+      },
+      "default": "./dist/subdivisions/bz.js"
+    },
+    "./subdivisions/ca": {
+      "import": {
+        "types": "./dist/subdivisions/ca.d.ts",
+        "default": "./dist/subdivisions/ca.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ca.d.cts",
+        "default": "./dist/subdivisions/ca.cjs"
+      },
+      "default": "./dist/subdivisions/ca.js"
+    },
+    "./subdivisions/cd": {
+      "import": {
+        "types": "./dist/subdivisions/cd.d.ts",
+        "default": "./dist/subdivisions/cd.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cd.d.cts",
+        "default": "./dist/subdivisions/cd.cjs"
+      },
+      "default": "./dist/subdivisions/cd.js"
+    },
+    "./subdivisions/cf": {
+      "import": {
+        "types": "./dist/subdivisions/cf.d.ts",
+        "default": "./dist/subdivisions/cf.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cf.d.cts",
+        "default": "./dist/subdivisions/cf.cjs"
+      },
+      "default": "./dist/subdivisions/cf.js"
+    },
+    "./subdivisions/cg": {
+      "import": {
+        "types": "./dist/subdivisions/cg.d.ts",
+        "default": "./dist/subdivisions/cg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cg.d.cts",
+        "default": "./dist/subdivisions/cg.cjs"
+      },
+      "default": "./dist/subdivisions/cg.js"
+    },
+    "./subdivisions/ch": {
+      "import": {
+        "types": "./dist/subdivisions/ch.d.ts",
+        "default": "./dist/subdivisions/ch.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ch.d.cts",
+        "default": "./dist/subdivisions/ch.cjs"
+      },
+      "default": "./dist/subdivisions/ch.js"
+    },
+    "./subdivisions/ci": {
+      "import": {
+        "types": "./dist/subdivisions/ci.d.ts",
+        "default": "./dist/subdivisions/ci.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ci.d.cts",
+        "default": "./dist/subdivisions/ci.cjs"
+      },
+      "default": "./dist/subdivisions/ci.js"
+    },
+    "./subdivisions/cl": {
+      "import": {
+        "types": "./dist/subdivisions/cl.d.ts",
+        "default": "./dist/subdivisions/cl.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cl.d.cts",
+        "default": "./dist/subdivisions/cl.cjs"
+      },
+      "default": "./dist/subdivisions/cl.js"
+    },
+    "./subdivisions/cm": {
+      "import": {
+        "types": "./dist/subdivisions/cm.d.ts",
+        "default": "./dist/subdivisions/cm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cm.d.cts",
+        "default": "./dist/subdivisions/cm.cjs"
+      },
+      "default": "./dist/subdivisions/cm.js"
+    },
+    "./subdivisions/cn": {
+      "import": {
+        "types": "./dist/subdivisions/cn.d.ts",
+        "default": "./dist/subdivisions/cn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cn.d.cts",
+        "default": "./dist/subdivisions/cn.cjs"
+      },
+      "default": "./dist/subdivisions/cn.js"
+    },
+    "./subdivisions/co": {
+      "import": {
+        "types": "./dist/subdivisions/co.d.ts",
+        "default": "./dist/subdivisions/co.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/co.d.cts",
+        "default": "./dist/subdivisions/co.cjs"
+      },
+      "default": "./dist/subdivisions/co.js"
+    },
+    "./subdivisions/cr": {
+      "import": {
+        "types": "./dist/subdivisions/cr.d.ts",
+        "default": "./dist/subdivisions/cr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cr.d.cts",
+        "default": "./dist/subdivisions/cr.cjs"
+      },
+      "default": "./dist/subdivisions/cr.js"
+    },
+    "./subdivisions/cu": {
+      "import": {
+        "types": "./dist/subdivisions/cu.d.ts",
+        "default": "./dist/subdivisions/cu.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cu.d.cts",
+        "default": "./dist/subdivisions/cu.cjs"
+      },
+      "default": "./dist/subdivisions/cu.js"
+    },
+    "./subdivisions/cv": {
+      "import": {
+        "types": "./dist/subdivisions/cv.d.ts",
+        "default": "./dist/subdivisions/cv.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cv.d.cts",
+        "default": "./dist/subdivisions/cv.cjs"
+      },
+      "default": "./dist/subdivisions/cv.js"
+    },
+    "./subdivisions/cy": {
+      "import": {
+        "types": "./dist/subdivisions/cy.d.ts",
+        "default": "./dist/subdivisions/cy.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cy.d.cts",
+        "default": "./dist/subdivisions/cy.cjs"
+      },
+      "default": "./dist/subdivisions/cy.js"
+    },
+    "./subdivisions/cz": {
+      "import": {
+        "types": "./dist/subdivisions/cz.d.ts",
+        "default": "./dist/subdivisions/cz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/cz.d.cts",
+        "default": "./dist/subdivisions/cz.cjs"
+      },
+      "default": "./dist/subdivisions/cz.js"
+    },
+    "./subdivisions/de": {
+      "import": {
+        "types": "./dist/subdivisions/de.d.ts",
+        "default": "./dist/subdivisions/de.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/de.d.cts",
+        "default": "./dist/subdivisions/de.cjs"
+      },
+      "default": "./dist/subdivisions/de.js"
+    },
+    "./subdivisions/dj": {
+      "import": {
+        "types": "./dist/subdivisions/dj.d.ts",
+        "default": "./dist/subdivisions/dj.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/dj.d.cts",
+        "default": "./dist/subdivisions/dj.cjs"
+      },
+      "default": "./dist/subdivisions/dj.js"
+    },
+    "./subdivisions/dk": {
+      "import": {
+        "types": "./dist/subdivisions/dk.d.ts",
+        "default": "./dist/subdivisions/dk.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/dk.d.cts",
+        "default": "./dist/subdivisions/dk.cjs"
+      },
+      "default": "./dist/subdivisions/dk.js"
+    },
+    "./subdivisions/dm": {
+      "import": {
+        "types": "./dist/subdivisions/dm.d.ts",
+        "default": "./dist/subdivisions/dm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/dm.d.cts",
+        "default": "./dist/subdivisions/dm.cjs"
+      },
+      "default": "./dist/subdivisions/dm.js"
+    },
+    "./subdivisions/do": {
+      "import": {
+        "types": "./dist/subdivisions/do.d.ts",
+        "default": "./dist/subdivisions/do.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/do.d.cts",
+        "default": "./dist/subdivisions/do.cjs"
+      },
+      "default": "./dist/subdivisions/do.js"
+    },
+    "./subdivisions/dz": {
+      "import": {
+        "types": "./dist/subdivisions/dz.d.ts",
+        "default": "./dist/subdivisions/dz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/dz.d.cts",
+        "default": "./dist/subdivisions/dz.cjs"
+      },
+      "default": "./dist/subdivisions/dz.js"
+    },
+    "./subdivisions/ec": {
+      "import": {
+        "types": "./dist/subdivisions/ec.d.ts",
+        "default": "./dist/subdivisions/ec.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ec.d.cts",
+        "default": "./dist/subdivisions/ec.cjs"
+      },
+      "default": "./dist/subdivisions/ec.js"
+    },
+    "./subdivisions/ee": {
+      "import": {
+        "types": "./dist/subdivisions/ee.d.ts",
+        "default": "./dist/subdivisions/ee.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ee.d.cts",
+        "default": "./dist/subdivisions/ee.cjs"
+      },
+      "default": "./dist/subdivisions/ee.js"
+    },
+    "./subdivisions/eg": {
+      "import": {
+        "types": "./dist/subdivisions/eg.d.ts",
+        "default": "./dist/subdivisions/eg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/eg.d.cts",
+        "default": "./dist/subdivisions/eg.cjs"
+      },
+      "default": "./dist/subdivisions/eg.js"
+    },
+    "./subdivisions/er": {
+      "import": {
+        "types": "./dist/subdivisions/er.d.ts",
+        "default": "./dist/subdivisions/er.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/er.d.cts",
+        "default": "./dist/subdivisions/er.cjs"
+      },
+      "default": "./dist/subdivisions/er.js"
+    },
+    "./subdivisions/es": {
+      "import": {
+        "types": "./dist/subdivisions/es.d.ts",
+        "default": "./dist/subdivisions/es.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/es.d.cts",
+        "default": "./dist/subdivisions/es.cjs"
+      },
+      "default": "./dist/subdivisions/es.js"
+    },
+    "./subdivisions/et": {
+      "import": {
+        "types": "./dist/subdivisions/et.d.ts",
+        "default": "./dist/subdivisions/et.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/et.d.cts",
+        "default": "./dist/subdivisions/et.cjs"
+      },
+      "default": "./dist/subdivisions/et.js"
+    },
+    "./subdivisions/fi": {
+      "import": {
+        "types": "./dist/subdivisions/fi.d.ts",
+        "default": "./dist/subdivisions/fi.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/fi.d.cts",
+        "default": "./dist/subdivisions/fi.cjs"
+      },
+      "default": "./dist/subdivisions/fi.js"
+    },
+    "./subdivisions/fj": {
+      "import": {
+        "types": "./dist/subdivisions/fj.d.ts",
+        "default": "./dist/subdivisions/fj.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/fj.d.cts",
+        "default": "./dist/subdivisions/fj.cjs"
+      },
+      "default": "./dist/subdivisions/fj.js"
+    },
+    "./subdivisions/fm": {
+      "import": {
+        "types": "./dist/subdivisions/fm.d.ts",
+        "default": "./dist/subdivisions/fm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/fm.d.cts",
+        "default": "./dist/subdivisions/fm.cjs"
+      },
+      "default": "./dist/subdivisions/fm.js"
+    },
+    "./subdivisions/fr": {
+      "import": {
+        "types": "./dist/subdivisions/fr.d.ts",
+        "default": "./dist/subdivisions/fr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/fr.d.cts",
+        "default": "./dist/subdivisions/fr.cjs"
+      },
+      "default": "./dist/subdivisions/fr.js"
+    },
+    "./subdivisions/ga": {
+      "import": {
+        "types": "./dist/subdivisions/ga.d.ts",
+        "default": "./dist/subdivisions/ga.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ga.d.cts",
+        "default": "./dist/subdivisions/ga.cjs"
+      },
+      "default": "./dist/subdivisions/ga.js"
+    },
+    "./subdivisions/gb": {
+      "import": {
+        "types": "./dist/subdivisions/gb.d.ts",
+        "default": "./dist/subdivisions/gb.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gb.d.cts",
+        "default": "./dist/subdivisions/gb.cjs"
+      },
+      "default": "./dist/subdivisions/gb.js"
+    },
+    "./subdivisions/gd": {
+      "import": {
+        "types": "./dist/subdivisions/gd.d.ts",
+        "default": "./dist/subdivisions/gd.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gd.d.cts",
+        "default": "./dist/subdivisions/gd.cjs"
+      },
+      "default": "./dist/subdivisions/gd.js"
+    },
+    "./subdivisions/ge": {
+      "import": {
+        "types": "./dist/subdivisions/ge.d.ts",
+        "default": "./dist/subdivisions/ge.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ge.d.cts",
+        "default": "./dist/subdivisions/ge.cjs"
+      },
+      "default": "./dist/subdivisions/ge.js"
+    },
+    "./subdivisions/gh": {
+      "import": {
+        "types": "./dist/subdivisions/gh.d.ts",
+        "default": "./dist/subdivisions/gh.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gh.d.cts",
+        "default": "./dist/subdivisions/gh.cjs"
+      },
+      "default": "./dist/subdivisions/gh.js"
+    },
+    "./subdivisions/gl": {
+      "import": {
+        "types": "./dist/subdivisions/gl.d.ts",
+        "default": "./dist/subdivisions/gl.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gl.d.cts",
+        "default": "./dist/subdivisions/gl.cjs"
+      },
+      "default": "./dist/subdivisions/gl.js"
+    },
+    "./subdivisions/gm": {
+      "import": {
+        "types": "./dist/subdivisions/gm.d.ts",
+        "default": "./dist/subdivisions/gm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gm.d.cts",
+        "default": "./dist/subdivisions/gm.cjs"
+      },
+      "default": "./dist/subdivisions/gm.js"
+    },
+    "./subdivisions/gn": {
+      "import": {
+        "types": "./dist/subdivisions/gn.d.ts",
+        "default": "./dist/subdivisions/gn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gn.d.cts",
+        "default": "./dist/subdivisions/gn.cjs"
+      },
+      "default": "./dist/subdivisions/gn.js"
+    },
+    "./subdivisions/gq": {
+      "import": {
+        "types": "./dist/subdivisions/gq.d.ts",
+        "default": "./dist/subdivisions/gq.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gq.d.cts",
+        "default": "./dist/subdivisions/gq.cjs"
+      },
+      "default": "./dist/subdivisions/gq.js"
+    },
+    "./subdivisions/gr": {
+      "import": {
+        "types": "./dist/subdivisions/gr.d.ts",
+        "default": "./dist/subdivisions/gr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gr.d.cts",
+        "default": "./dist/subdivisions/gr.cjs"
+      },
+      "default": "./dist/subdivisions/gr.js"
+    },
+    "./subdivisions/gt": {
+      "import": {
+        "types": "./dist/subdivisions/gt.d.ts",
+        "default": "./dist/subdivisions/gt.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gt.d.cts",
+        "default": "./dist/subdivisions/gt.cjs"
+      },
+      "default": "./dist/subdivisions/gt.js"
+    },
+    "./subdivisions/gw": {
+      "import": {
+        "types": "./dist/subdivisions/gw.d.ts",
+        "default": "./dist/subdivisions/gw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gw.d.cts",
+        "default": "./dist/subdivisions/gw.cjs"
+      },
+      "default": "./dist/subdivisions/gw.js"
+    },
+    "./subdivisions/gy": {
+      "import": {
+        "types": "./dist/subdivisions/gy.d.ts",
+        "default": "./dist/subdivisions/gy.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/gy.d.cts",
+        "default": "./dist/subdivisions/gy.cjs"
+      },
+      "default": "./dist/subdivisions/gy.js"
+    },
+    "./subdivisions/hn": {
+      "import": {
+        "types": "./dist/subdivisions/hn.d.ts",
+        "default": "./dist/subdivisions/hn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/hn.d.cts",
+        "default": "./dist/subdivisions/hn.cjs"
+      },
+      "default": "./dist/subdivisions/hn.js"
+    },
+    "./subdivisions/hr": {
+      "import": {
+        "types": "./dist/subdivisions/hr.d.ts",
+        "default": "./dist/subdivisions/hr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/hr.d.cts",
+        "default": "./dist/subdivisions/hr.cjs"
+      },
+      "default": "./dist/subdivisions/hr.js"
+    },
+    "./subdivisions/ht": {
+      "import": {
+        "types": "./dist/subdivisions/ht.d.ts",
+        "default": "./dist/subdivisions/ht.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ht.d.cts",
+        "default": "./dist/subdivisions/ht.cjs"
+      },
+      "default": "./dist/subdivisions/ht.js"
+    },
+    "./subdivisions/hu": {
+      "import": {
+        "types": "./dist/subdivisions/hu.d.ts",
+        "default": "./dist/subdivisions/hu.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/hu.d.cts",
+        "default": "./dist/subdivisions/hu.cjs"
+      },
+      "default": "./dist/subdivisions/hu.js"
+    },
+    "./subdivisions/id": {
+      "import": {
+        "types": "./dist/subdivisions/id.d.ts",
+        "default": "./dist/subdivisions/id.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/id.d.cts",
+        "default": "./dist/subdivisions/id.cjs"
+      },
+      "default": "./dist/subdivisions/id.js"
+    },
+    "./subdivisions/ie": {
+      "import": {
+        "types": "./dist/subdivisions/ie.d.ts",
+        "default": "./dist/subdivisions/ie.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ie.d.cts",
+        "default": "./dist/subdivisions/ie.cjs"
+      },
+      "default": "./dist/subdivisions/ie.js"
+    },
+    "./subdivisions/il": {
+      "import": {
+        "types": "./dist/subdivisions/il.d.ts",
+        "default": "./dist/subdivisions/il.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/il.d.cts",
+        "default": "./dist/subdivisions/il.cjs"
+      },
+      "default": "./dist/subdivisions/il.js"
+    },
+    "./subdivisions/in": {
+      "import": {
+        "types": "./dist/subdivisions/in.d.ts",
+        "default": "./dist/subdivisions/in.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/in.d.cts",
+        "default": "./dist/subdivisions/in.cjs"
+      },
+      "default": "./dist/subdivisions/in.js"
+    },
+    "./subdivisions/iq": {
+      "import": {
+        "types": "./dist/subdivisions/iq.d.ts",
+        "default": "./dist/subdivisions/iq.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/iq.d.cts",
+        "default": "./dist/subdivisions/iq.cjs"
+      },
+      "default": "./dist/subdivisions/iq.js"
+    },
+    "./subdivisions/ir": {
+      "import": {
+        "types": "./dist/subdivisions/ir.d.ts",
+        "default": "./dist/subdivisions/ir.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ir.d.cts",
+        "default": "./dist/subdivisions/ir.cjs"
+      },
+      "default": "./dist/subdivisions/ir.js"
+    },
+    "./subdivisions/is": {
+      "import": {
+        "types": "./dist/subdivisions/is.d.ts",
+        "default": "./dist/subdivisions/is.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/is.d.cts",
+        "default": "./dist/subdivisions/is.cjs"
+      },
+      "default": "./dist/subdivisions/is.js"
+    },
+    "./subdivisions/it": {
+      "import": {
+        "types": "./dist/subdivisions/it.d.ts",
+        "default": "./dist/subdivisions/it.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/it.d.cts",
+        "default": "./dist/subdivisions/it.cjs"
+      },
+      "default": "./dist/subdivisions/it.js"
+    },
+    "./subdivisions/jm": {
+      "import": {
+        "types": "./dist/subdivisions/jm.d.ts",
+        "default": "./dist/subdivisions/jm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/jm.d.cts",
+        "default": "./dist/subdivisions/jm.cjs"
+      },
+      "default": "./dist/subdivisions/jm.js"
+    },
+    "./subdivisions/jo": {
+      "import": {
+        "types": "./dist/subdivisions/jo.d.ts",
+        "default": "./dist/subdivisions/jo.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/jo.d.cts",
+        "default": "./dist/subdivisions/jo.cjs"
+      },
+      "default": "./dist/subdivisions/jo.js"
+    },
+    "./subdivisions/jp": {
+      "import": {
+        "types": "./dist/subdivisions/jp.d.ts",
+        "default": "./dist/subdivisions/jp.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/jp.d.cts",
+        "default": "./dist/subdivisions/jp.cjs"
+      },
+      "default": "./dist/subdivisions/jp.js"
+    },
+    "./subdivisions/ke": {
+      "import": {
+        "types": "./dist/subdivisions/ke.d.ts",
+        "default": "./dist/subdivisions/ke.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ke.d.cts",
+        "default": "./dist/subdivisions/ke.cjs"
+      },
+      "default": "./dist/subdivisions/ke.js"
+    },
+    "./subdivisions/kg": {
+      "import": {
+        "types": "./dist/subdivisions/kg.d.ts",
+        "default": "./dist/subdivisions/kg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kg.d.cts",
+        "default": "./dist/subdivisions/kg.cjs"
+      },
+      "default": "./dist/subdivisions/kg.js"
+    },
+    "./subdivisions/kh": {
+      "import": {
+        "types": "./dist/subdivisions/kh.d.ts",
+        "default": "./dist/subdivisions/kh.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kh.d.cts",
+        "default": "./dist/subdivisions/kh.cjs"
+      },
+      "default": "./dist/subdivisions/kh.js"
+    },
+    "./subdivisions/ki": {
+      "import": {
+        "types": "./dist/subdivisions/ki.d.ts",
+        "default": "./dist/subdivisions/ki.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ki.d.cts",
+        "default": "./dist/subdivisions/ki.cjs"
+      },
+      "default": "./dist/subdivisions/ki.js"
+    },
+    "./subdivisions/km": {
+      "import": {
+        "types": "./dist/subdivisions/km.d.ts",
+        "default": "./dist/subdivisions/km.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/km.d.cts",
+        "default": "./dist/subdivisions/km.cjs"
+      },
+      "default": "./dist/subdivisions/km.js"
+    },
+    "./subdivisions/kn": {
+      "import": {
+        "types": "./dist/subdivisions/kn.d.ts",
+        "default": "./dist/subdivisions/kn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kn.d.cts",
+        "default": "./dist/subdivisions/kn.cjs"
+      },
+      "default": "./dist/subdivisions/kn.js"
+    },
+    "./subdivisions/kp": {
+      "import": {
+        "types": "./dist/subdivisions/kp.d.ts",
+        "default": "./dist/subdivisions/kp.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kp.d.cts",
+        "default": "./dist/subdivisions/kp.cjs"
+      },
+      "default": "./dist/subdivisions/kp.js"
+    },
+    "./subdivisions/kr": {
+      "import": {
+        "types": "./dist/subdivisions/kr.d.ts",
+        "default": "./dist/subdivisions/kr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kr.d.cts",
+        "default": "./dist/subdivisions/kr.cjs"
+      },
+      "default": "./dist/subdivisions/kr.js"
+    },
+    "./subdivisions/kw": {
+      "import": {
+        "types": "./dist/subdivisions/kw.d.ts",
+        "default": "./dist/subdivisions/kw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kw.d.cts",
+        "default": "./dist/subdivisions/kw.cjs"
+      },
+      "default": "./dist/subdivisions/kw.js"
+    },
+    "./subdivisions/kz": {
+      "import": {
+        "types": "./dist/subdivisions/kz.d.ts",
+        "default": "./dist/subdivisions/kz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/kz.d.cts",
+        "default": "./dist/subdivisions/kz.cjs"
+      },
+      "default": "./dist/subdivisions/kz.js"
+    },
+    "./subdivisions/la": {
+      "import": {
+        "types": "./dist/subdivisions/la.d.ts",
+        "default": "./dist/subdivisions/la.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/la.d.cts",
+        "default": "./dist/subdivisions/la.cjs"
+      },
+      "default": "./dist/subdivisions/la.js"
+    },
+    "./subdivisions/lb": {
+      "import": {
+        "types": "./dist/subdivisions/lb.d.ts",
+        "default": "./dist/subdivisions/lb.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lb.d.cts",
+        "default": "./dist/subdivisions/lb.cjs"
+      },
+      "default": "./dist/subdivisions/lb.js"
+    },
+    "./subdivisions/lc": {
+      "import": {
+        "types": "./dist/subdivisions/lc.d.ts",
+        "default": "./dist/subdivisions/lc.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lc.d.cts",
+        "default": "./dist/subdivisions/lc.cjs"
+      },
+      "default": "./dist/subdivisions/lc.js"
+    },
+    "./subdivisions/li": {
+      "import": {
+        "types": "./dist/subdivisions/li.d.ts",
+        "default": "./dist/subdivisions/li.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/li.d.cts",
+        "default": "./dist/subdivisions/li.cjs"
+      },
+      "default": "./dist/subdivisions/li.js"
+    },
+    "./subdivisions/lk": {
+      "import": {
+        "types": "./dist/subdivisions/lk.d.ts",
+        "default": "./dist/subdivisions/lk.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lk.d.cts",
+        "default": "./dist/subdivisions/lk.cjs"
+      },
+      "default": "./dist/subdivisions/lk.js"
+    },
+    "./subdivisions/lr": {
+      "import": {
+        "types": "./dist/subdivisions/lr.d.ts",
+        "default": "./dist/subdivisions/lr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lr.d.cts",
+        "default": "./dist/subdivisions/lr.cjs"
+      },
+      "default": "./dist/subdivisions/lr.js"
+    },
+    "./subdivisions/ls": {
+      "import": {
+        "types": "./dist/subdivisions/ls.d.ts",
+        "default": "./dist/subdivisions/ls.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ls.d.cts",
+        "default": "./dist/subdivisions/ls.cjs"
+      },
+      "default": "./dist/subdivisions/ls.js"
+    },
+    "./subdivisions/lt": {
+      "import": {
+        "types": "./dist/subdivisions/lt.d.ts",
+        "default": "./dist/subdivisions/lt.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lt.d.cts",
+        "default": "./dist/subdivisions/lt.cjs"
+      },
+      "default": "./dist/subdivisions/lt.js"
+    },
+    "./subdivisions/lu": {
+      "import": {
+        "types": "./dist/subdivisions/lu.d.ts",
+        "default": "./dist/subdivisions/lu.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lu.d.cts",
+        "default": "./dist/subdivisions/lu.cjs"
+      },
+      "default": "./dist/subdivisions/lu.js"
+    },
+    "./subdivisions/lv": {
+      "import": {
+        "types": "./dist/subdivisions/lv.d.ts",
+        "default": "./dist/subdivisions/lv.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/lv.d.cts",
+        "default": "./dist/subdivisions/lv.cjs"
+      },
+      "default": "./dist/subdivisions/lv.js"
+    },
+    "./subdivisions/ly": {
+      "import": {
+        "types": "./dist/subdivisions/ly.d.ts",
+        "default": "./dist/subdivisions/ly.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ly.d.cts",
+        "default": "./dist/subdivisions/ly.cjs"
+      },
+      "default": "./dist/subdivisions/ly.js"
+    },
+    "./subdivisions/ma": {
+      "import": {
+        "types": "./dist/subdivisions/ma.d.ts",
+        "default": "./dist/subdivisions/ma.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ma.d.cts",
+        "default": "./dist/subdivisions/ma.cjs"
+      },
+      "default": "./dist/subdivisions/ma.js"
+    },
+    "./subdivisions/mc": {
+      "import": {
+        "types": "./dist/subdivisions/mc.d.ts",
+        "default": "./dist/subdivisions/mc.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mc.d.cts",
+        "default": "./dist/subdivisions/mc.cjs"
+      },
+      "default": "./dist/subdivisions/mc.js"
+    },
+    "./subdivisions/md": {
+      "import": {
+        "types": "./dist/subdivisions/md.d.ts",
+        "default": "./dist/subdivisions/md.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/md.d.cts",
+        "default": "./dist/subdivisions/md.cjs"
+      },
+      "default": "./dist/subdivisions/md.js"
+    },
+    "./subdivisions/me": {
+      "import": {
+        "types": "./dist/subdivisions/me.d.ts",
+        "default": "./dist/subdivisions/me.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/me.d.cts",
+        "default": "./dist/subdivisions/me.cjs"
+      },
+      "default": "./dist/subdivisions/me.js"
+    },
+    "./subdivisions/mg": {
+      "import": {
+        "types": "./dist/subdivisions/mg.d.ts",
+        "default": "./dist/subdivisions/mg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mg.d.cts",
+        "default": "./dist/subdivisions/mg.cjs"
+      },
+      "default": "./dist/subdivisions/mg.js"
+    },
+    "./subdivisions/mh": {
+      "import": {
+        "types": "./dist/subdivisions/mh.d.ts",
+        "default": "./dist/subdivisions/mh.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mh.d.cts",
+        "default": "./dist/subdivisions/mh.cjs"
+      },
+      "default": "./dist/subdivisions/mh.js"
+    },
+    "./subdivisions/mk": {
+      "import": {
+        "types": "./dist/subdivisions/mk.d.ts",
+        "default": "./dist/subdivisions/mk.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mk.d.cts",
+        "default": "./dist/subdivisions/mk.cjs"
+      },
+      "default": "./dist/subdivisions/mk.js"
+    },
+    "./subdivisions/ml": {
+      "import": {
+        "types": "./dist/subdivisions/ml.d.ts",
+        "default": "./dist/subdivisions/ml.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ml.d.cts",
+        "default": "./dist/subdivisions/ml.cjs"
+      },
+      "default": "./dist/subdivisions/ml.js"
+    },
+    "./subdivisions/mm": {
+      "import": {
+        "types": "./dist/subdivisions/mm.d.ts",
+        "default": "./dist/subdivisions/mm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mm.d.cts",
+        "default": "./dist/subdivisions/mm.cjs"
+      },
+      "default": "./dist/subdivisions/mm.js"
+    },
+    "./subdivisions/mn": {
+      "import": {
+        "types": "./dist/subdivisions/mn.d.ts",
+        "default": "./dist/subdivisions/mn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mn.d.cts",
+        "default": "./dist/subdivisions/mn.cjs"
+      },
+      "default": "./dist/subdivisions/mn.js"
+    },
+    "./subdivisions/mr": {
+      "import": {
+        "types": "./dist/subdivisions/mr.d.ts",
+        "default": "./dist/subdivisions/mr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mr.d.cts",
+        "default": "./dist/subdivisions/mr.cjs"
+      },
+      "default": "./dist/subdivisions/mr.js"
+    },
+    "./subdivisions/mt": {
+      "import": {
+        "types": "./dist/subdivisions/mt.d.ts",
+        "default": "./dist/subdivisions/mt.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mt.d.cts",
+        "default": "./dist/subdivisions/mt.cjs"
+      },
+      "default": "./dist/subdivisions/mt.js"
+    },
+    "./subdivisions/mu": {
+      "import": {
+        "types": "./dist/subdivisions/mu.d.ts",
+        "default": "./dist/subdivisions/mu.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mu.d.cts",
+        "default": "./dist/subdivisions/mu.cjs"
+      },
+      "default": "./dist/subdivisions/mu.js"
+    },
+    "./subdivisions/mv": {
+      "import": {
+        "types": "./dist/subdivisions/mv.d.ts",
+        "default": "./dist/subdivisions/mv.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mv.d.cts",
+        "default": "./dist/subdivisions/mv.cjs"
+      },
+      "default": "./dist/subdivisions/mv.js"
+    },
+    "./subdivisions/mw": {
+      "import": {
+        "types": "./dist/subdivisions/mw.d.ts",
+        "default": "./dist/subdivisions/mw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mw.d.cts",
+        "default": "./dist/subdivisions/mw.cjs"
+      },
+      "default": "./dist/subdivisions/mw.js"
+    },
+    "./subdivisions/mx": {
+      "import": {
+        "types": "./dist/subdivisions/mx.d.ts",
+        "default": "./dist/subdivisions/mx.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mx.d.cts",
+        "default": "./dist/subdivisions/mx.cjs"
+      },
+      "default": "./dist/subdivisions/mx.js"
+    },
+    "./subdivisions/my": {
+      "import": {
+        "types": "./dist/subdivisions/my.d.ts",
+        "default": "./dist/subdivisions/my.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/my.d.cts",
+        "default": "./dist/subdivisions/my.cjs"
+      },
+      "default": "./dist/subdivisions/my.js"
+    },
+    "./subdivisions/mz": {
+      "import": {
+        "types": "./dist/subdivisions/mz.d.ts",
+        "default": "./dist/subdivisions/mz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/mz.d.cts",
+        "default": "./dist/subdivisions/mz.cjs"
+      },
+      "default": "./dist/subdivisions/mz.js"
+    },
+    "./subdivisions/na": {
+      "import": {
+        "types": "./dist/subdivisions/na.d.ts",
+        "default": "./dist/subdivisions/na.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/na.d.cts",
+        "default": "./dist/subdivisions/na.cjs"
+      },
+      "default": "./dist/subdivisions/na.js"
+    },
+    "./subdivisions/ne": {
+      "import": {
+        "types": "./dist/subdivisions/ne.d.ts",
+        "default": "./dist/subdivisions/ne.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ne.d.cts",
+        "default": "./dist/subdivisions/ne.cjs"
+      },
+      "default": "./dist/subdivisions/ne.js"
+    },
+    "./subdivisions/ng": {
+      "import": {
+        "types": "./dist/subdivisions/ng.d.ts",
+        "default": "./dist/subdivisions/ng.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ng.d.cts",
+        "default": "./dist/subdivisions/ng.cjs"
+      },
+      "default": "./dist/subdivisions/ng.js"
+    },
+    "./subdivisions/ni": {
+      "import": {
+        "types": "./dist/subdivisions/ni.d.ts",
+        "default": "./dist/subdivisions/ni.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ni.d.cts",
+        "default": "./dist/subdivisions/ni.cjs"
+      },
+      "default": "./dist/subdivisions/ni.js"
+    },
+    "./subdivisions/nl": {
+      "import": {
+        "types": "./dist/subdivisions/nl.d.ts",
+        "default": "./dist/subdivisions/nl.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/nl.d.cts",
+        "default": "./dist/subdivisions/nl.cjs"
+      },
+      "default": "./dist/subdivisions/nl.js"
+    },
+    "./subdivisions/no": {
+      "import": {
+        "types": "./dist/subdivisions/no.d.ts",
+        "default": "./dist/subdivisions/no.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/no.d.cts",
+        "default": "./dist/subdivisions/no.cjs"
+      },
+      "default": "./dist/subdivisions/no.js"
+    },
+    "./subdivisions/np": {
+      "import": {
+        "types": "./dist/subdivisions/np.d.ts",
+        "default": "./dist/subdivisions/np.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/np.d.cts",
+        "default": "./dist/subdivisions/np.cjs"
+      },
+      "default": "./dist/subdivisions/np.js"
+    },
+    "./subdivisions/nr": {
+      "import": {
+        "types": "./dist/subdivisions/nr.d.ts",
+        "default": "./dist/subdivisions/nr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/nr.d.cts",
+        "default": "./dist/subdivisions/nr.cjs"
+      },
+      "default": "./dist/subdivisions/nr.js"
+    },
+    "./subdivisions/nz": {
+      "import": {
+        "types": "./dist/subdivisions/nz.d.ts",
+        "default": "./dist/subdivisions/nz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/nz.d.cts",
+        "default": "./dist/subdivisions/nz.cjs"
+      },
+      "default": "./dist/subdivisions/nz.js"
+    },
+    "./subdivisions/om": {
+      "import": {
+        "types": "./dist/subdivisions/om.d.ts",
+        "default": "./dist/subdivisions/om.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/om.d.cts",
+        "default": "./dist/subdivisions/om.cjs"
+      },
+      "default": "./dist/subdivisions/om.js"
+    },
+    "./subdivisions/pa": {
+      "import": {
+        "types": "./dist/subdivisions/pa.d.ts",
+        "default": "./dist/subdivisions/pa.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pa.d.cts",
+        "default": "./dist/subdivisions/pa.cjs"
+      },
+      "default": "./dist/subdivisions/pa.js"
+    },
+    "./subdivisions/pe": {
+      "import": {
+        "types": "./dist/subdivisions/pe.d.ts",
+        "default": "./dist/subdivisions/pe.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pe.d.cts",
+        "default": "./dist/subdivisions/pe.cjs"
+      },
+      "default": "./dist/subdivisions/pe.js"
+    },
+    "./subdivisions/pg": {
+      "import": {
+        "types": "./dist/subdivisions/pg.d.ts",
+        "default": "./dist/subdivisions/pg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pg.d.cts",
+        "default": "./dist/subdivisions/pg.cjs"
+      },
+      "default": "./dist/subdivisions/pg.js"
+    },
+    "./subdivisions/ph": {
+      "import": {
+        "types": "./dist/subdivisions/ph.d.ts",
+        "default": "./dist/subdivisions/ph.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ph.d.cts",
+        "default": "./dist/subdivisions/ph.cjs"
+      },
+      "default": "./dist/subdivisions/ph.js"
+    },
+    "./subdivisions/pk": {
+      "import": {
+        "types": "./dist/subdivisions/pk.d.ts",
+        "default": "./dist/subdivisions/pk.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pk.d.cts",
+        "default": "./dist/subdivisions/pk.cjs"
+      },
+      "default": "./dist/subdivisions/pk.js"
+    },
+    "./subdivisions/pl": {
+      "import": {
+        "types": "./dist/subdivisions/pl.d.ts",
+        "default": "./dist/subdivisions/pl.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pl.d.cts",
+        "default": "./dist/subdivisions/pl.cjs"
+      },
+      "default": "./dist/subdivisions/pl.js"
+    },
+    "./subdivisions/ps": {
+      "import": {
+        "types": "./dist/subdivisions/ps.d.ts",
+        "default": "./dist/subdivisions/ps.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ps.d.cts",
+        "default": "./dist/subdivisions/ps.cjs"
+      },
+      "default": "./dist/subdivisions/ps.js"
+    },
+    "./subdivisions/pt": {
+      "import": {
+        "types": "./dist/subdivisions/pt.d.ts",
+        "default": "./dist/subdivisions/pt.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pt.d.cts",
+        "default": "./dist/subdivisions/pt.cjs"
+      },
+      "default": "./dist/subdivisions/pt.js"
+    },
+    "./subdivisions/pw": {
+      "import": {
+        "types": "./dist/subdivisions/pw.d.ts",
+        "default": "./dist/subdivisions/pw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/pw.d.cts",
+        "default": "./dist/subdivisions/pw.cjs"
+      },
+      "default": "./dist/subdivisions/pw.js"
+    },
+    "./subdivisions/py": {
+      "import": {
+        "types": "./dist/subdivisions/py.d.ts",
+        "default": "./dist/subdivisions/py.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/py.d.cts",
+        "default": "./dist/subdivisions/py.cjs"
+      },
+      "default": "./dist/subdivisions/py.js"
+    },
+    "./subdivisions/qa": {
+      "import": {
+        "types": "./dist/subdivisions/qa.d.ts",
+        "default": "./dist/subdivisions/qa.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/qa.d.cts",
+        "default": "./dist/subdivisions/qa.cjs"
+      },
+      "default": "./dist/subdivisions/qa.js"
+    },
+    "./subdivisions/ro": {
+      "import": {
+        "types": "./dist/subdivisions/ro.d.ts",
+        "default": "./dist/subdivisions/ro.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ro.d.cts",
+        "default": "./dist/subdivisions/ro.cjs"
+      },
+      "default": "./dist/subdivisions/ro.js"
+    },
+    "./subdivisions/rs": {
+      "import": {
+        "types": "./dist/subdivisions/rs.d.ts",
+        "default": "./dist/subdivisions/rs.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/rs.d.cts",
+        "default": "./dist/subdivisions/rs.cjs"
+      },
+      "default": "./dist/subdivisions/rs.js"
+    },
+    "./subdivisions/ru": {
+      "import": {
+        "types": "./dist/subdivisions/ru.d.ts",
+        "default": "./dist/subdivisions/ru.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ru.d.cts",
+        "default": "./dist/subdivisions/ru.cjs"
+      },
+      "default": "./dist/subdivisions/ru.js"
+    },
+    "./subdivisions/rw": {
+      "import": {
+        "types": "./dist/subdivisions/rw.d.ts",
+        "default": "./dist/subdivisions/rw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/rw.d.cts",
+        "default": "./dist/subdivisions/rw.cjs"
+      },
+      "default": "./dist/subdivisions/rw.js"
+    },
+    "./subdivisions/sa": {
+      "import": {
+        "types": "./dist/subdivisions/sa.d.ts",
+        "default": "./dist/subdivisions/sa.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sa.d.cts",
+        "default": "./dist/subdivisions/sa.cjs"
+      },
+      "default": "./dist/subdivisions/sa.js"
+    },
+    "./subdivisions/sb": {
+      "import": {
+        "types": "./dist/subdivisions/sb.d.ts",
+        "default": "./dist/subdivisions/sb.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sb.d.cts",
+        "default": "./dist/subdivisions/sb.cjs"
+      },
+      "default": "./dist/subdivisions/sb.js"
+    },
+    "./subdivisions/sc": {
+      "import": {
+        "types": "./dist/subdivisions/sc.d.ts",
+        "default": "./dist/subdivisions/sc.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sc.d.cts",
+        "default": "./dist/subdivisions/sc.cjs"
+      },
+      "default": "./dist/subdivisions/sc.js"
+    },
+    "./subdivisions/sd": {
+      "import": {
+        "types": "./dist/subdivisions/sd.d.ts",
+        "default": "./dist/subdivisions/sd.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sd.d.cts",
+        "default": "./dist/subdivisions/sd.cjs"
+      },
+      "default": "./dist/subdivisions/sd.js"
+    },
+    "./subdivisions/se": {
+      "import": {
+        "types": "./dist/subdivisions/se.d.ts",
+        "default": "./dist/subdivisions/se.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/se.d.cts",
+        "default": "./dist/subdivisions/se.cjs"
+      },
+      "default": "./dist/subdivisions/se.js"
+    },
+    "./subdivisions/sg": {
+      "import": {
+        "types": "./dist/subdivisions/sg.d.ts",
+        "default": "./dist/subdivisions/sg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sg.d.cts",
+        "default": "./dist/subdivisions/sg.cjs"
+      },
+      "default": "./dist/subdivisions/sg.js"
+    },
+    "./subdivisions/sh": {
+      "import": {
+        "types": "./dist/subdivisions/sh.d.ts",
+        "default": "./dist/subdivisions/sh.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sh.d.cts",
+        "default": "./dist/subdivisions/sh.cjs"
+      },
+      "default": "./dist/subdivisions/sh.js"
+    },
+    "./subdivisions/si": {
+      "import": {
+        "types": "./dist/subdivisions/si.d.ts",
+        "default": "./dist/subdivisions/si.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/si.d.cts",
+        "default": "./dist/subdivisions/si.cjs"
+      },
+      "default": "./dist/subdivisions/si.js"
+    },
+    "./subdivisions/sk": {
+      "import": {
+        "types": "./dist/subdivisions/sk.d.ts",
+        "default": "./dist/subdivisions/sk.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sk.d.cts",
+        "default": "./dist/subdivisions/sk.cjs"
+      },
+      "default": "./dist/subdivisions/sk.js"
+    },
+    "./subdivisions/sl": {
+      "import": {
+        "types": "./dist/subdivisions/sl.d.ts",
+        "default": "./dist/subdivisions/sl.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sl.d.cts",
+        "default": "./dist/subdivisions/sl.cjs"
+      },
+      "default": "./dist/subdivisions/sl.js"
+    },
+    "./subdivisions/sm": {
+      "import": {
+        "types": "./dist/subdivisions/sm.d.ts",
+        "default": "./dist/subdivisions/sm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sm.d.cts",
+        "default": "./dist/subdivisions/sm.cjs"
+      },
+      "default": "./dist/subdivisions/sm.js"
+    },
+    "./subdivisions/sn": {
+      "import": {
+        "types": "./dist/subdivisions/sn.d.ts",
+        "default": "./dist/subdivisions/sn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sn.d.cts",
+        "default": "./dist/subdivisions/sn.cjs"
+      },
+      "default": "./dist/subdivisions/sn.js"
+    },
+    "./subdivisions/so": {
+      "import": {
+        "types": "./dist/subdivisions/so.d.ts",
+        "default": "./dist/subdivisions/so.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/so.d.cts",
+        "default": "./dist/subdivisions/so.cjs"
+      },
+      "default": "./dist/subdivisions/so.js"
+    },
+    "./subdivisions/sr": {
+      "import": {
+        "types": "./dist/subdivisions/sr.d.ts",
+        "default": "./dist/subdivisions/sr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sr.d.cts",
+        "default": "./dist/subdivisions/sr.cjs"
+      },
+      "default": "./dist/subdivisions/sr.js"
+    },
+    "./subdivisions/ss": {
+      "import": {
+        "types": "./dist/subdivisions/ss.d.ts",
+        "default": "./dist/subdivisions/ss.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ss.d.cts",
+        "default": "./dist/subdivisions/ss.cjs"
+      },
+      "default": "./dist/subdivisions/ss.js"
+    },
+    "./subdivisions/st": {
+      "import": {
+        "types": "./dist/subdivisions/st.d.ts",
+        "default": "./dist/subdivisions/st.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/st.d.cts",
+        "default": "./dist/subdivisions/st.cjs"
+      },
+      "default": "./dist/subdivisions/st.js"
+    },
+    "./subdivisions/sv": {
+      "import": {
+        "types": "./dist/subdivisions/sv.d.ts",
+        "default": "./dist/subdivisions/sv.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sv.d.cts",
+        "default": "./dist/subdivisions/sv.cjs"
+      },
+      "default": "./dist/subdivisions/sv.js"
+    },
+    "./subdivisions/sy": {
+      "import": {
+        "types": "./dist/subdivisions/sy.d.ts",
+        "default": "./dist/subdivisions/sy.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sy.d.cts",
+        "default": "./dist/subdivisions/sy.cjs"
+      },
+      "default": "./dist/subdivisions/sy.js"
+    },
+    "./subdivisions/sz": {
+      "import": {
+        "types": "./dist/subdivisions/sz.d.ts",
+        "default": "./dist/subdivisions/sz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/sz.d.cts",
+        "default": "./dist/subdivisions/sz.cjs"
+      },
+      "default": "./dist/subdivisions/sz.js"
+    },
+    "./subdivisions/td": {
+      "import": {
+        "types": "./dist/subdivisions/td.d.ts",
+        "default": "./dist/subdivisions/td.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/td.d.cts",
+        "default": "./dist/subdivisions/td.cjs"
+      },
+      "default": "./dist/subdivisions/td.js"
+    },
+    "./subdivisions/tg": {
+      "import": {
+        "types": "./dist/subdivisions/tg.d.ts",
+        "default": "./dist/subdivisions/tg.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tg.d.cts",
+        "default": "./dist/subdivisions/tg.cjs"
+      },
+      "default": "./dist/subdivisions/tg.js"
+    },
+    "./subdivisions/th": {
+      "import": {
+        "types": "./dist/subdivisions/th.d.ts",
+        "default": "./dist/subdivisions/th.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/th.d.cts",
+        "default": "./dist/subdivisions/th.cjs"
+      },
+      "default": "./dist/subdivisions/th.js"
+    },
+    "./subdivisions/tj": {
+      "import": {
+        "types": "./dist/subdivisions/tj.d.ts",
+        "default": "./dist/subdivisions/tj.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tj.d.cts",
+        "default": "./dist/subdivisions/tj.cjs"
+      },
+      "default": "./dist/subdivisions/tj.js"
+    },
+    "./subdivisions/tl": {
+      "import": {
+        "types": "./dist/subdivisions/tl.d.ts",
+        "default": "./dist/subdivisions/tl.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tl.d.cts",
+        "default": "./dist/subdivisions/tl.cjs"
+      },
+      "default": "./dist/subdivisions/tl.js"
+    },
+    "./subdivisions/tm": {
+      "import": {
+        "types": "./dist/subdivisions/tm.d.ts",
+        "default": "./dist/subdivisions/tm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tm.d.cts",
+        "default": "./dist/subdivisions/tm.cjs"
+      },
+      "default": "./dist/subdivisions/tm.js"
+    },
+    "./subdivisions/tn": {
+      "import": {
+        "types": "./dist/subdivisions/tn.d.ts",
+        "default": "./dist/subdivisions/tn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tn.d.cts",
+        "default": "./dist/subdivisions/tn.cjs"
+      },
+      "default": "./dist/subdivisions/tn.js"
+    },
+    "./subdivisions/to": {
+      "import": {
+        "types": "./dist/subdivisions/to.d.ts",
+        "default": "./dist/subdivisions/to.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/to.d.cts",
+        "default": "./dist/subdivisions/to.cjs"
+      },
+      "default": "./dist/subdivisions/to.js"
+    },
+    "./subdivisions/tr": {
+      "import": {
+        "types": "./dist/subdivisions/tr.d.ts",
+        "default": "./dist/subdivisions/tr.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tr.d.cts",
+        "default": "./dist/subdivisions/tr.cjs"
+      },
+      "default": "./dist/subdivisions/tr.js"
+    },
+    "./subdivisions/tt": {
+      "import": {
+        "types": "./dist/subdivisions/tt.d.ts",
+        "default": "./dist/subdivisions/tt.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tt.d.cts",
+        "default": "./dist/subdivisions/tt.cjs"
+      },
+      "default": "./dist/subdivisions/tt.js"
+    },
+    "./subdivisions/tv": {
+      "import": {
+        "types": "./dist/subdivisions/tv.d.ts",
+        "default": "./dist/subdivisions/tv.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tv.d.cts",
+        "default": "./dist/subdivisions/tv.cjs"
+      },
+      "default": "./dist/subdivisions/tv.js"
+    },
+    "./subdivisions/tw": {
+      "import": {
+        "types": "./dist/subdivisions/tw.d.ts",
+        "default": "./dist/subdivisions/tw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tw.d.cts",
+        "default": "./dist/subdivisions/tw.cjs"
+      },
+      "default": "./dist/subdivisions/tw.js"
+    },
+    "./subdivisions/tz": {
+      "import": {
+        "types": "./dist/subdivisions/tz.d.ts",
+        "default": "./dist/subdivisions/tz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/tz.d.cts",
+        "default": "./dist/subdivisions/tz.cjs"
+      },
+      "default": "./dist/subdivisions/tz.js"
+    },
+    "./subdivisions/ua": {
+      "import": {
+        "types": "./dist/subdivisions/ua.d.ts",
+        "default": "./dist/subdivisions/ua.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ua.d.cts",
+        "default": "./dist/subdivisions/ua.cjs"
+      },
+      "default": "./dist/subdivisions/ua.js"
+    },
+    "./subdivisions/ug": {
+      "import": {
+        "types": "./dist/subdivisions/ug.d.ts",
+        "default": "./dist/subdivisions/ug.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ug.d.cts",
+        "default": "./dist/subdivisions/ug.cjs"
+      },
+      "default": "./dist/subdivisions/ug.js"
+    },
+    "./subdivisions/um": {
+      "import": {
+        "types": "./dist/subdivisions/um.d.ts",
+        "default": "./dist/subdivisions/um.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/um.d.cts",
+        "default": "./dist/subdivisions/um.cjs"
+      },
+      "default": "./dist/subdivisions/um.js"
+    },
+    "./subdivisions/us": {
+      "import": {
+        "types": "./dist/subdivisions/us.d.ts",
+        "default": "./dist/subdivisions/us.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/us.d.cts",
+        "default": "./dist/subdivisions/us.cjs"
+      },
+      "default": "./dist/subdivisions/us.js"
+    },
+    "./subdivisions/uy": {
+      "import": {
+        "types": "./dist/subdivisions/uy.d.ts",
+        "default": "./dist/subdivisions/uy.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/uy.d.cts",
+        "default": "./dist/subdivisions/uy.cjs"
+      },
+      "default": "./dist/subdivisions/uy.js"
+    },
+    "./subdivisions/uz": {
+      "import": {
+        "types": "./dist/subdivisions/uz.d.ts",
+        "default": "./dist/subdivisions/uz.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/uz.d.cts",
+        "default": "./dist/subdivisions/uz.cjs"
+      },
+      "default": "./dist/subdivisions/uz.js"
+    },
+    "./subdivisions/vc": {
+      "import": {
+        "types": "./dist/subdivisions/vc.d.ts",
+        "default": "./dist/subdivisions/vc.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/vc.d.cts",
+        "default": "./dist/subdivisions/vc.cjs"
+      },
+      "default": "./dist/subdivisions/vc.js"
+    },
+    "./subdivisions/ve": {
+      "import": {
+        "types": "./dist/subdivisions/ve.d.ts",
+        "default": "./dist/subdivisions/ve.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ve.d.cts",
+        "default": "./dist/subdivisions/ve.cjs"
+      },
+      "default": "./dist/subdivisions/ve.js"
+    },
+    "./subdivisions/vn": {
+      "import": {
+        "types": "./dist/subdivisions/vn.d.ts",
+        "default": "./dist/subdivisions/vn.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/vn.d.cts",
+        "default": "./dist/subdivisions/vn.cjs"
+      },
+      "default": "./dist/subdivisions/vn.js"
+    },
+    "./subdivisions/vu": {
+      "import": {
+        "types": "./dist/subdivisions/vu.d.ts",
+        "default": "./dist/subdivisions/vu.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/vu.d.cts",
+        "default": "./dist/subdivisions/vu.cjs"
+      },
+      "default": "./dist/subdivisions/vu.js"
+    },
+    "./subdivisions/wf": {
+      "import": {
+        "types": "./dist/subdivisions/wf.d.ts",
+        "default": "./dist/subdivisions/wf.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/wf.d.cts",
+        "default": "./dist/subdivisions/wf.cjs"
+      },
+      "default": "./dist/subdivisions/wf.js"
+    },
+    "./subdivisions/ws": {
+      "import": {
+        "types": "./dist/subdivisions/ws.d.ts",
+        "default": "./dist/subdivisions/ws.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ws.d.cts",
+        "default": "./dist/subdivisions/ws.cjs"
+      },
+      "default": "./dist/subdivisions/ws.js"
+    },
+    "./subdivisions/ye": {
+      "import": {
+        "types": "./dist/subdivisions/ye.d.ts",
+        "default": "./dist/subdivisions/ye.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/ye.d.cts",
+        "default": "./dist/subdivisions/ye.cjs"
+      },
+      "default": "./dist/subdivisions/ye.js"
+    },
+    "./subdivisions/za": {
+      "import": {
+        "types": "./dist/subdivisions/za.d.ts",
+        "default": "./dist/subdivisions/za.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/za.d.cts",
+        "default": "./dist/subdivisions/za.cjs"
+      },
+      "default": "./dist/subdivisions/za.js"
+    },
+    "./subdivisions/zm": {
+      "import": {
+        "types": "./dist/subdivisions/zm.d.ts",
+        "default": "./dist/subdivisions/zm.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/zm.d.cts",
+        "default": "./dist/subdivisions/zm.cjs"
+      },
+      "default": "./dist/subdivisions/zm.js"
+    },
+    "./subdivisions/zw": {
+      "import": {
+        "types": "./dist/subdivisions/zw.d.ts",
+        "default": "./dist/subdivisions/zw.js"
+      },
+      "require": {
+        "types": "./dist/subdivisions/zw.d.cts",
+        "default": "./dist/subdivisions/zw.cjs"
+      },
+      "default": "./dist/subdivisions/zw.js"
+    },
+    "./subdivision-facts/ad": {
+      "import": {
+        "types": "./dist/subdivision-facts/ad.d.ts",
+        "default": "./dist/subdivision-facts/ad.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ad.d.cts",
+        "default": "./dist/subdivision-facts/ad.cjs"
+      },
+      "default": "./dist/subdivision-facts/ad.js"
+    },
+    "./subdivision-facts/ae": {
+      "import": {
+        "types": "./dist/subdivision-facts/ae.d.ts",
+        "default": "./dist/subdivision-facts/ae.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ae.d.cts",
+        "default": "./dist/subdivision-facts/ae.cjs"
+      },
+      "default": "./dist/subdivision-facts/ae.js"
+    },
+    "./subdivision-facts/af": {
+      "import": {
+        "types": "./dist/subdivision-facts/af.d.ts",
+        "default": "./dist/subdivision-facts/af.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/af.d.cts",
+        "default": "./dist/subdivision-facts/af.cjs"
+      },
+      "default": "./dist/subdivision-facts/af.js"
+    },
+    "./subdivision-facts/ag": {
+      "import": {
+        "types": "./dist/subdivision-facts/ag.d.ts",
+        "default": "./dist/subdivision-facts/ag.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ag.d.cts",
+        "default": "./dist/subdivision-facts/ag.cjs"
+      },
+      "default": "./dist/subdivision-facts/ag.js"
+    },
+    "./subdivision-facts/al": {
+      "import": {
+        "types": "./dist/subdivision-facts/al.d.ts",
+        "default": "./dist/subdivision-facts/al.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/al.d.cts",
+        "default": "./dist/subdivision-facts/al.cjs"
+      },
+      "default": "./dist/subdivision-facts/al.js"
+    },
+    "./subdivision-facts/am": {
+      "import": {
+        "types": "./dist/subdivision-facts/am.d.ts",
+        "default": "./dist/subdivision-facts/am.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/am.d.cts",
+        "default": "./dist/subdivision-facts/am.cjs"
+      },
+      "default": "./dist/subdivision-facts/am.js"
+    },
+    "./subdivision-facts/ao": {
+      "import": {
+        "types": "./dist/subdivision-facts/ao.d.ts",
+        "default": "./dist/subdivision-facts/ao.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ao.d.cts",
+        "default": "./dist/subdivision-facts/ao.cjs"
+      },
+      "default": "./dist/subdivision-facts/ao.js"
+    },
+    "./subdivision-facts/ar": {
+      "import": {
+        "types": "./dist/subdivision-facts/ar.d.ts",
+        "default": "./dist/subdivision-facts/ar.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ar.d.cts",
+        "default": "./dist/subdivision-facts/ar.cjs"
+      },
+      "default": "./dist/subdivision-facts/ar.js"
+    },
+    "./subdivision-facts/at": {
+      "import": {
+        "types": "./dist/subdivision-facts/at.d.ts",
+        "default": "./dist/subdivision-facts/at.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/at.d.cts",
+        "default": "./dist/subdivision-facts/at.cjs"
+      },
+      "default": "./dist/subdivision-facts/at.js"
+    },
+    "./subdivision-facts/au": {
+      "import": {
+        "types": "./dist/subdivision-facts/au.d.ts",
+        "default": "./dist/subdivision-facts/au.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/au.d.cts",
+        "default": "./dist/subdivision-facts/au.cjs"
+      },
+      "default": "./dist/subdivision-facts/au.js"
+    },
+    "./subdivision-facts/az": {
+      "import": {
+        "types": "./dist/subdivision-facts/az.d.ts",
+        "default": "./dist/subdivision-facts/az.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/az.d.cts",
+        "default": "./dist/subdivision-facts/az.cjs"
+      },
+      "default": "./dist/subdivision-facts/az.js"
+    },
+    "./subdivision-facts/ba": {
+      "import": {
+        "types": "./dist/subdivision-facts/ba.d.ts",
+        "default": "./dist/subdivision-facts/ba.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ba.d.cts",
+        "default": "./dist/subdivision-facts/ba.cjs"
+      },
+      "default": "./dist/subdivision-facts/ba.js"
+    },
+    "./subdivision-facts/bb": {
+      "import": {
+        "types": "./dist/subdivision-facts/bb.d.ts",
+        "default": "./dist/subdivision-facts/bb.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bb.d.cts",
+        "default": "./dist/subdivision-facts/bb.cjs"
+      },
+      "default": "./dist/subdivision-facts/bb.js"
+    },
+    "./subdivision-facts/bd": {
+      "import": {
+        "types": "./dist/subdivision-facts/bd.d.ts",
+        "default": "./dist/subdivision-facts/bd.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bd.d.cts",
+        "default": "./dist/subdivision-facts/bd.cjs"
+      },
+      "default": "./dist/subdivision-facts/bd.js"
+    },
+    "./subdivision-facts/be": {
+      "import": {
+        "types": "./dist/subdivision-facts/be.d.ts",
+        "default": "./dist/subdivision-facts/be.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/be.d.cts",
+        "default": "./dist/subdivision-facts/be.cjs"
+      },
+      "default": "./dist/subdivision-facts/be.js"
+    },
+    "./subdivision-facts/bf": {
+      "import": {
+        "types": "./dist/subdivision-facts/bf.d.ts",
+        "default": "./dist/subdivision-facts/bf.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bf.d.cts",
+        "default": "./dist/subdivision-facts/bf.cjs"
+      },
+      "default": "./dist/subdivision-facts/bf.js"
+    },
+    "./subdivision-facts/bg": {
+      "import": {
+        "types": "./dist/subdivision-facts/bg.d.ts",
+        "default": "./dist/subdivision-facts/bg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bg.d.cts",
+        "default": "./dist/subdivision-facts/bg.cjs"
+      },
+      "default": "./dist/subdivision-facts/bg.js"
+    },
+    "./subdivision-facts/bh": {
+      "import": {
+        "types": "./dist/subdivision-facts/bh.d.ts",
+        "default": "./dist/subdivision-facts/bh.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bh.d.cts",
+        "default": "./dist/subdivision-facts/bh.cjs"
+      },
+      "default": "./dist/subdivision-facts/bh.js"
+    },
+    "./subdivision-facts/bi": {
+      "import": {
+        "types": "./dist/subdivision-facts/bi.d.ts",
+        "default": "./dist/subdivision-facts/bi.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bi.d.cts",
+        "default": "./dist/subdivision-facts/bi.cjs"
+      },
+      "default": "./dist/subdivision-facts/bi.js"
+    },
+    "./subdivision-facts/bj": {
+      "import": {
+        "types": "./dist/subdivision-facts/bj.d.ts",
+        "default": "./dist/subdivision-facts/bj.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bj.d.cts",
+        "default": "./dist/subdivision-facts/bj.cjs"
+      },
+      "default": "./dist/subdivision-facts/bj.js"
+    },
+    "./subdivision-facts/bn": {
+      "import": {
+        "types": "./dist/subdivision-facts/bn.d.ts",
+        "default": "./dist/subdivision-facts/bn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bn.d.cts",
+        "default": "./dist/subdivision-facts/bn.cjs"
+      },
+      "default": "./dist/subdivision-facts/bn.js"
+    },
+    "./subdivision-facts/bo": {
+      "import": {
+        "types": "./dist/subdivision-facts/bo.d.ts",
+        "default": "./dist/subdivision-facts/bo.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bo.d.cts",
+        "default": "./dist/subdivision-facts/bo.cjs"
+      },
+      "default": "./dist/subdivision-facts/bo.js"
+    },
+    "./subdivision-facts/bq": {
+      "import": {
+        "types": "./dist/subdivision-facts/bq.d.ts",
+        "default": "./dist/subdivision-facts/bq.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bq.d.cts",
+        "default": "./dist/subdivision-facts/bq.cjs"
+      },
+      "default": "./dist/subdivision-facts/bq.js"
+    },
+    "./subdivision-facts/br": {
+      "import": {
+        "types": "./dist/subdivision-facts/br.d.ts",
+        "default": "./dist/subdivision-facts/br.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/br.d.cts",
+        "default": "./dist/subdivision-facts/br.cjs"
+      },
+      "default": "./dist/subdivision-facts/br.js"
+    },
+    "./subdivision-facts/bs": {
+      "import": {
+        "types": "./dist/subdivision-facts/bs.d.ts",
+        "default": "./dist/subdivision-facts/bs.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bs.d.cts",
+        "default": "./dist/subdivision-facts/bs.cjs"
+      },
+      "default": "./dist/subdivision-facts/bs.js"
+    },
+    "./subdivision-facts/bt": {
+      "import": {
+        "types": "./dist/subdivision-facts/bt.d.ts",
+        "default": "./dist/subdivision-facts/bt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bt.d.cts",
+        "default": "./dist/subdivision-facts/bt.cjs"
+      },
+      "default": "./dist/subdivision-facts/bt.js"
+    },
+    "./subdivision-facts/bw": {
+      "import": {
+        "types": "./dist/subdivision-facts/bw.d.ts",
+        "default": "./dist/subdivision-facts/bw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bw.d.cts",
+        "default": "./dist/subdivision-facts/bw.cjs"
+      },
+      "default": "./dist/subdivision-facts/bw.js"
+    },
+    "./subdivision-facts/by": {
+      "import": {
+        "types": "./dist/subdivision-facts/by.d.ts",
+        "default": "./dist/subdivision-facts/by.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/by.d.cts",
+        "default": "./dist/subdivision-facts/by.cjs"
+      },
+      "default": "./dist/subdivision-facts/by.js"
+    },
+    "./subdivision-facts/bz": {
+      "import": {
+        "types": "./dist/subdivision-facts/bz.d.ts",
+        "default": "./dist/subdivision-facts/bz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/bz.d.cts",
+        "default": "./dist/subdivision-facts/bz.cjs"
+      },
+      "default": "./dist/subdivision-facts/bz.js"
+    },
+    "./subdivision-facts/ca": {
+      "import": {
+        "types": "./dist/subdivision-facts/ca.d.ts",
+        "default": "./dist/subdivision-facts/ca.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ca.d.cts",
+        "default": "./dist/subdivision-facts/ca.cjs"
+      },
+      "default": "./dist/subdivision-facts/ca.js"
+    },
+    "./subdivision-facts/cd": {
+      "import": {
+        "types": "./dist/subdivision-facts/cd.d.ts",
+        "default": "./dist/subdivision-facts/cd.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cd.d.cts",
+        "default": "./dist/subdivision-facts/cd.cjs"
+      },
+      "default": "./dist/subdivision-facts/cd.js"
+    },
+    "./subdivision-facts/cf": {
+      "import": {
+        "types": "./dist/subdivision-facts/cf.d.ts",
+        "default": "./dist/subdivision-facts/cf.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cf.d.cts",
+        "default": "./dist/subdivision-facts/cf.cjs"
+      },
+      "default": "./dist/subdivision-facts/cf.js"
+    },
+    "./subdivision-facts/cg": {
+      "import": {
+        "types": "./dist/subdivision-facts/cg.d.ts",
+        "default": "./dist/subdivision-facts/cg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cg.d.cts",
+        "default": "./dist/subdivision-facts/cg.cjs"
+      },
+      "default": "./dist/subdivision-facts/cg.js"
+    },
+    "./subdivision-facts/ch": {
+      "import": {
+        "types": "./dist/subdivision-facts/ch.d.ts",
+        "default": "./dist/subdivision-facts/ch.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ch.d.cts",
+        "default": "./dist/subdivision-facts/ch.cjs"
+      },
+      "default": "./dist/subdivision-facts/ch.js"
+    },
+    "./subdivision-facts/ci": {
+      "import": {
+        "types": "./dist/subdivision-facts/ci.d.ts",
+        "default": "./dist/subdivision-facts/ci.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ci.d.cts",
+        "default": "./dist/subdivision-facts/ci.cjs"
+      },
+      "default": "./dist/subdivision-facts/ci.js"
+    },
+    "./subdivision-facts/cl": {
+      "import": {
+        "types": "./dist/subdivision-facts/cl.d.ts",
+        "default": "./dist/subdivision-facts/cl.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cl.d.cts",
+        "default": "./dist/subdivision-facts/cl.cjs"
+      },
+      "default": "./dist/subdivision-facts/cl.js"
+    },
+    "./subdivision-facts/cm": {
+      "import": {
+        "types": "./dist/subdivision-facts/cm.d.ts",
+        "default": "./dist/subdivision-facts/cm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cm.d.cts",
+        "default": "./dist/subdivision-facts/cm.cjs"
+      },
+      "default": "./dist/subdivision-facts/cm.js"
+    },
+    "./subdivision-facts/cn": {
+      "import": {
+        "types": "./dist/subdivision-facts/cn.d.ts",
+        "default": "./dist/subdivision-facts/cn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cn.d.cts",
+        "default": "./dist/subdivision-facts/cn.cjs"
+      },
+      "default": "./dist/subdivision-facts/cn.js"
+    },
+    "./subdivision-facts/co": {
+      "import": {
+        "types": "./dist/subdivision-facts/co.d.ts",
+        "default": "./dist/subdivision-facts/co.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/co.d.cts",
+        "default": "./dist/subdivision-facts/co.cjs"
+      },
+      "default": "./dist/subdivision-facts/co.js"
+    },
+    "./subdivision-facts/cr": {
+      "import": {
+        "types": "./dist/subdivision-facts/cr.d.ts",
+        "default": "./dist/subdivision-facts/cr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cr.d.cts",
+        "default": "./dist/subdivision-facts/cr.cjs"
+      },
+      "default": "./dist/subdivision-facts/cr.js"
+    },
+    "./subdivision-facts/cu": {
+      "import": {
+        "types": "./dist/subdivision-facts/cu.d.ts",
+        "default": "./dist/subdivision-facts/cu.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cu.d.cts",
+        "default": "./dist/subdivision-facts/cu.cjs"
+      },
+      "default": "./dist/subdivision-facts/cu.js"
+    },
+    "./subdivision-facts/cv": {
+      "import": {
+        "types": "./dist/subdivision-facts/cv.d.ts",
+        "default": "./dist/subdivision-facts/cv.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cv.d.cts",
+        "default": "./dist/subdivision-facts/cv.cjs"
+      },
+      "default": "./dist/subdivision-facts/cv.js"
+    },
+    "./subdivision-facts/cy": {
+      "import": {
+        "types": "./dist/subdivision-facts/cy.d.ts",
+        "default": "./dist/subdivision-facts/cy.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cy.d.cts",
+        "default": "./dist/subdivision-facts/cy.cjs"
+      },
+      "default": "./dist/subdivision-facts/cy.js"
+    },
+    "./subdivision-facts/cz": {
+      "import": {
+        "types": "./dist/subdivision-facts/cz.d.ts",
+        "default": "./dist/subdivision-facts/cz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/cz.d.cts",
+        "default": "./dist/subdivision-facts/cz.cjs"
+      },
+      "default": "./dist/subdivision-facts/cz.js"
+    },
+    "./subdivision-facts/de": {
+      "import": {
+        "types": "./dist/subdivision-facts/de.d.ts",
+        "default": "./dist/subdivision-facts/de.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/de.d.cts",
+        "default": "./dist/subdivision-facts/de.cjs"
+      },
+      "default": "./dist/subdivision-facts/de.js"
+    },
+    "./subdivision-facts/dj": {
+      "import": {
+        "types": "./dist/subdivision-facts/dj.d.ts",
+        "default": "./dist/subdivision-facts/dj.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/dj.d.cts",
+        "default": "./dist/subdivision-facts/dj.cjs"
+      },
+      "default": "./dist/subdivision-facts/dj.js"
+    },
+    "./subdivision-facts/dk": {
+      "import": {
+        "types": "./dist/subdivision-facts/dk.d.ts",
+        "default": "./dist/subdivision-facts/dk.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/dk.d.cts",
+        "default": "./dist/subdivision-facts/dk.cjs"
+      },
+      "default": "./dist/subdivision-facts/dk.js"
+    },
+    "./subdivision-facts/dm": {
+      "import": {
+        "types": "./dist/subdivision-facts/dm.d.ts",
+        "default": "./dist/subdivision-facts/dm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/dm.d.cts",
+        "default": "./dist/subdivision-facts/dm.cjs"
+      },
+      "default": "./dist/subdivision-facts/dm.js"
+    },
+    "./subdivision-facts/do": {
+      "import": {
+        "types": "./dist/subdivision-facts/do.d.ts",
+        "default": "./dist/subdivision-facts/do.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/do.d.cts",
+        "default": "./dist/subdivision-facts/do.cjs"
+      },
+      "default": "./dist/subdivision-facts/do.js"
+    },
+    "./subdivision-facts/dz": {
+      "import": {
+        "types": "./dist/subdivision-facts/dz.d.ts",
+        "default": "./dist/subdivision-facts/dz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/dz.d.cts",
+        "default": "./dist/subdivision-facts/dz.cjs"
+      },
+      "default": "./dist/subdivision-facts/dz.js"
+    },
+    "./subdivision-facts/ec": {
+      "import": {
+        "types": "./dist/subdivision-facts/ec.d.ts",
+        "default": "./dist/subdivision-facts/ec.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ec.d.cts",
+        "default": "./dist/subdivision-facts/ec.cjs"
+      },
+      "default": "./dist/subdivision-facts/ec.js"
+    },
+    "./subdivision-facts/ee": {
+      "import": {
+        "types": "./dist/subdivision-facts/ee.d.ts",
+        "default": "./dist/subdivision-facts/ee.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ee.d.cts",
+        "default": "./dist/subdivision-facts/ee.cjs"
+      },
+      "default": "./dist/subdivision-facts/ee.js"
+    },
+    "./subdivision-facts/eg": {
+      "import": {
+        "types": "./dist/subdivision-facts/eg.d.ts",
+        "default": "./dist/subdivision-facts/eg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/eg.d.cts",
+        "default": "./dist/subdivision-facts/eg.cjs"
+      },
+      "default": "./dist/subdivision-facts/eg.js"
+    },
+    "./subdivision-facts/er": {
+      "import": {
+        "types": "./dist/subdivision-facts/er.d.ts",
+        "default": "./dist/subdivision-facts/er.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/er.d.cts",
+        "default": "./dist/subdivision-facts/er.cjs"
+      },
+      "default": "./dist/subdivision-facts/er.js"
+    },
+    "./subdivision-facts/es": {
+      "import": {
+        "types": "./dist/subdivision-facts/es.d.ts",
+        "default": "./dist/subdivision-facts/es.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/es.d.cts",
+        "default": "./dist/subdivision-facts/es.cjs"
+      },
+      "default": "./dist/subdivision-facts/es.js"
+    },
+    "./subdivision-facts/et": {
+      "import": {
+        "types": "./dist/subdivision-facts/et.d.ts",
+        "default": "./dist/subdivision-facts/et.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/et.d.cts",
+        "default": "./dist/subdivision-facts/et.cjs"
+      },
+      "default": "./dist/subdivision-facts/et.js"
+    },
+    "./subdivision-facts/fi": {
+      "import": {
+        "types": "./dist/subdivision-facts/fi.d.ts",
+        "default": "./dist/subdivision-facts/fi.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/fi.d.cts",
+        "default": "./dist/subdivision-facts/fi.cjs"
+      },
+      "default": "./dist/subdivision-facts/fi.js"
+    },
+    "./subdivision-facts/fj": {
+      "import": {
+        "types": "./dist/subdivision-facts/fj.d.ts",
+        "default": "./dist/subdivision-facts/fj.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/fj.d.cts",
+        "default": "./dist/subdivision-facts/fj.cjs"
+      },
+      "default": "./dist/subdivision-facts/fj.js"
+    },
+    "./subdivision-facts/fm": {
+      "import": {
+        "types": "./dist/subdivision-facts/fm.d.ts",
+        "default": "./dist/subdivision-facts/fm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/fm.d.cts",
+        "default": "./dist/subdivision-facts/fm.cjs"
+      },
+      "default": "./dist/subdivision-facts/fm.js"
+    },
+    "./subdivision-facts/fr": {
+      "import": {
+        "types": "./dist/subdivision-facts/fr.d.ts",
+        "default": "./dist/subdivision-facts/fr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/fr.d.cts",
+        "default": "./dist/subdivision-facts/fr.cjs"
+      },
+      "default": "./dist/subdivision-facts/fr.js"
+    },
+    "./subdivision-facts/ga": {
+      "import": {
+        "types": "./dist/subdivision-facts/ga.d.ts",
+        "default": "./dist/subdivision-facts/ga.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ga.d.cts",
+        "default": "./dist/subdivision-facts/ga.cjs"
+      },
+      "default": "./dist/subdivision-facts/ga.js"
+    },
+    "./subdivision-facts/gb": {
+      "import": {
+        "types": "./dist/subdivision-facts/gb.d.ts",
+        "default": "./dist/subdivision-facts/gb.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gb.d.cts",
+        "default": "./dist/subdivision-facts/gb.cjs"
+      },
+      "default": "./dist/subdivision-facts/gb.js"
+    },
+    "./subdivision-facts/gd": {
+      "import": {
+        "types": "./dist/subdivision-facts/gd.d.ts",
+        "default": "./dist/subdivision-facts/gd.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gd.d.cts",
+        "default": "./dist/subdivision-facts/gd.cjs"
+      },
+      "default": "./dist/subdivision-facts/gd.js"
+    },
+    "./subdivision-facts/ge": {
+      "import": {
+        "types": "./dist/subdivision-facts/ge.d.ts",
+        "default": "./dist/subdivision-facts/ge.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ge.d.cts",
+        "default": "./dist/subdivision-facts/ge.cjs"
+      },
+      "default": "./dist/subdivision-facts/ge.js"
+    },
+    "./subdivision-facts/gh": {
+      "import": {
+        "types": "./dist/subdivision-facts/gh.d.ts",
+        "default": "./dist/subdivision-facts/gh.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gh.d.cts",
+        "default": "./dist/subdivision-facts/gh.cjs"
+      },
+      "default": "./dist/subdivision-facts/gh.js"
+    },
+    "./subdivision-facts/gl": {
+      "import": {
+        "types": "./dist/subdivision-facts/gl.d.ts",
+        "default": "./dist/subdivision-facts/gl.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gl.d.cts",
+        "default": "./dist/subdivision-facts/gl.cjs"
+      },
+      "default": "./dist/subdivision-facts/gl.js"
+    },
+    "./subdivision-facts/gm": {
+      "import": {
+        "types": "./dist/subdivision-facts/gm.d.ts",
+        "default": "./dist/subdivision-facts/gm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gm.d.cts",
+        "default": "./dist/subdivision-facts/gm.cjs"
+      },
+      "default": "./dist/subdivision-facts/gm.js"
+    },
+    "./subdivision-facts/gn": {
+      "import": {
+        "types": "./dist/subdivision-facts/gn.d.ts",
+        "default": "./dist/subdivision-facts/gn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gn.d.cts",
+        "default": "./dist/subdivision-facts/gn.cjs"
+      },
+      "default": "./dist/subdivision-facts/gn.js"
+    },
+    "./subdivision-facts/gq": {
+      "import": {
+        "types": "./dist/subdivision-facts/gq.d.ts",
+        "default": "./dist/subdivision-facts/gq.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gq.d.cts",
+        "default": "./dist/subdivision-facts/gq.cjs"
+      },
+      "default": "./dist/subdivision-facts/gq.js"
+    },
+    "./subdivision-facts/gr": {
+      "import": {
+        "types": "./dist/subdivision-facts/gr.d.ts",
+        "default": "./dist/subdivision-facts/gr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gr.d.cts",
+        "default": "./dist/subdivision-facts/gr.cjs"
+      },
+      "default": "./dist/subdivision-facts/gr.js"
+    },
+    "./subdivision-facts/gt": {
+      "import": {
+        "types": "./dist/subdivision-facts/gt.d.ts",
+        "default": "./dist/subdivision-facts/gt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gt.d.cts",
+        "default": "./dist/subdivision-facts/gt.cjs"
+      },
+      "default": "./dist/subdivision-facts/gt.js"
+    },
+    "./subdivision-facts/gw": {
+      "import": {
+        "types": "./dist/subdivision-facts/gw.d.ts",
+        "default": "./dist/subdivision-facts/gw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gw.d.cts",
+        "default": "./dist/subdivision-facts/gw.cjs"
+      },
+      "default": "./dist/subdivision-facts/gw.js"
+    },
+    "./subdivision-facts/gy": {
+      "import": {
+        "types": "./dist/subdivision-facts/gy.d.ts",
+        "default": "./dist/subdivision-facts/gy.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/gy.d.cts",
+        "default": "./dist/subdivision-facts/gy.cjs"
+      },
+      "default": "./dist/subdivision-facts/gy.js"
+    },
+    "./subdivision-facts/hn": {
+      "import": {
+        "types": "./dist/subdivision-facts/hn.d.ts",
+        "default": "./dist/subdivision-facts/hn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/hn.d.cts",
+        "default": "./dist/subdivision-facts/hn.cjs"
+      },
+      "default": "./dist/subdivision-facts/hn.js"
+    },
+    "./subdivision-facts/hr": {
+      "import": {
+        "types": "./dist/subdivision-facts/hr.d.ts",
+        "default": "./dist/subdivision-facts/hr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/hr.d.cts",
+        "default": "./dist/subdivision-facts/hr.cjs"
+      },
+      "default": "./dist/subdivision-facts/hr.js"
+    },
+    "./subdivision-facts/ht": {
+      "import": {
+        "types": "./dist/subdivision-facts/ht.d.ts",
+        "default": "./dist/subdivision-facts/ht.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ht.d.cts",
+        "default": "./dist/subdivision-facts/ht.cjs"
+      },
+      "default": "./dist/subdivision-facts/ht.js"
+    },
+    "./subdivision-facts/hu": {
+      "import": {
+        "types": "./dist/subdivision-facts/hu.d.ts",
+        "default": "./dist/subdivision-facts/hu.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/hu.d.cts",
+        "default": "./dist/subdivision-facts/hu.cjs"
+      },
+      "default": "./dist/subdivision-facts/hu.js"
+    },
+    "./subdivision-facts/id": {
+      "import": {
+        "types": "./dist/subdivision-facts/id.d.ts",
+        "default": "./dist/subdivision-facts/id.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/id.d.cts",
+        "default": "./dist/subdivision-facts/id.cjs"
+      },
+      "default": "./dist/subdivision-facts/id.js"
+    },
+    "./subdivision-facts/ie": {
+      "import": {
+        "types": "./dist/subdivision-facts/ie.d.ts",
+        "default": "./dist/subdivision-facts/ie.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ie.d.cts",
+        "default": "./dist/subdivision-facts/ie.cjs"
+      },
+      "default": "./dist/subdivision-facts/ie.js"
+    },
+    "./subdivision-facts/il": {
+      "import": {
+        "types": "./dist/subdivision-facts/il.d.ts",
+        "default": "./dist/subdivision-facts/il.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/il.d.cts",
+        "default": "./dist/subdivision-facts/il.cjs"
+      },
+      "default": "./dist/subdivision-facts/il.js"
+    },
+    "./subdivision-facts/in": {
+      "import": {
+        "types": "./dist/subdivision-facts/in.d.ts",
+        "default": "./dist/subdivision-facts/in.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/in.d.cts",
+        "default": "./dist/subdivision-facts/in.cjs"
+      },
+      "default": "./dist/subdivision-facts/in.js"
+    },
+    "./subdivision-facts/iq": {
+      "import": {
+        "types": "./dist/subdivision-facts/iq.d.ts",
+        "default": "./dist/subdivision-facts/iq.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/iq.d.cts",
+        "default": "./dist/subdivision-facts/iq.cjs"
+      },
+      "default": "./dist/subdivision-facts/iq.js"
+    },
+    "./subdivision-facts/ir": {
+      "import": {
+        "types": "./dist/subdivision-facts/ir.d.ts",
+        "default": "./dist/subdivision-facts/ir.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ir.d.cts",
+        "default": "./dist/subdivision-facts/ir.cjs"
+      },
+      "default": "./dist/subdivision-facts/ir.js"
+    },
+    "./subdivision-facts/is": {
+      "import": {
+        "types": "./dist/subdivision-facts/is.d.ts",
+        "default": "./dist/subdivision-facts/is.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/is.d.cts",
+        "default": "./dist/subdivision-facts/is.cjs"
+      },
+      "default": "./dist/subdivision-facts/is.js"
+    },
+    "./subdivision-facts/it": {
+      "import": {
+        "types": "./dist/subdivision-facts/it.d.ts",
+        "default": "./dist/subdivision-facts/it.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/it.d.cts",
+        "default": "./dist/subdivision-facts/it.cjs"
+      },
+      "default": "./dist/subdivision-facts/it.js"
+    },
+    "./subdivision-facts/jm": {
+      "import": {
+        "types": "./dist/subdivision-facts/jm.d.ts",
+        "default": "./dist/subdivision-facts/jm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/jm.d.cts",
+        "default": "./dist/subdivision-facts/jm.cjs"
+      },
+      "default": "./dist/subdivision-facts/jm.js"
+    },
+    "./subdivision-facts/jo": {
+      "import": {
+        "types": "./dist/subdivision-facts/jo.d.ts",
+        "default": "./dist/subdivision-facts/jo.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/jo.d.cts",
+        "default": "./dist/subdivision-facts/jo.cjs"
+      },
+      "default": "./dist/subdivision-facts/jo.js"
+    },
+    "./subdivision-facts/jp": {
+      "import": {
+        "types": "./dist/subdivision-facts/jp.d.ts",
+        "default": "./dist/subdivision-facts/jp.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/jp.d.cts",
+        "default": "./dist/subdivision-facts/jp.cjs"
+      },
+      "default": "./dist/subdivision-facts/jp.js"
+    },
+    "./subdivision-facts/ke": {
+      "import": {
+        "types": "./dist/subdivision-facts/ke.d.ts",
+        "default": "./dist/subdivision-facts/ke.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ke.d.cts",
+        "default": "./dist/subdivision-facts/ke.cjs"
+      },
+      "default": "./dist/subdivision-facts/ke.js"
+    },
+    "./subdivision-facts/kg": {
+      "import": {
+        "types": "./dist/subdivision-facts/kg.d.ts",
+        "default": "./dist/subdivision-facts/kg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kg.d.cts",
+        "default": "./dist/subdivision-facts/kg.cjs"
+      },
+      "default": "./dist/subdivision-facts/kg.js"
+    },
+    "./subdivision-facts/kh": {
+      "import": {
+        "types": "./dist/subdivision-facts/kh.d.ts",
+        "default": "./dist/subdivision-facts/kh.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kh.d.cts",
+        "default": "./dist/subdivision-facts/kh.cjs"
+      },
+      "default": "./dist/subdivision-facts/kh.js"
+    },
+    "./subdivision-facts/ki": {
+      "import": {
+        "types": "./dist/subdivision-facts/ki.d.ts",
+        "default": "./dist/subdivision-facts/ki.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ki.d.cts",
+        "default": "./dist/subdivision-facts/ki.cjs"
+      },
+      "default": "./dist/subdivision-facts/ki.js"
+    },
+    "./subdivision-facts/km": {
+      "import": {
+        "types": "./dist/subdivision-facts/km.d.ts",
+        "default": "./dist/subdivision-facts/km.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/km.d.cts",
+        "default": "./dist/subdivision-facts/km.cjs"
+      },
+      "default": "./dist/subdivision-facts/km.js"
+    },
+    "./subdivision-facts/kn": {
+      "import": {
+        "types": "./dist/subdivision-facts/kn.d.ts",
+        "default": "./dist/subdivision-facts/kn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kn.d.cts",
+        "default": "./dist/subdivision-facts/kn.cjs"
+      },
+      "default": "./dist/subdivision-facts/kn.js"
+    },
+    "./subdivision-facts/kp": {
+      "import": {
+        "types": "./dist/subdivision-facts/kp.d.ts",
+        "default": "./dist/subdivision-facts/kp.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kp.d.cts",
+        "default": "./dist/subdivision-facts/kp.cjs"
+      },
+      "default": "./dist/subdivision-facts/kp.js"
+    },
+    "./subdivision-facts/kr": {
+      "import": {
+        "types": "./dist/subdivision-facts/kr.d.ts",
+        "default": "./dist/subdivision-facts/kr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kr.d.cts",
+        "default": "./dist/subdivision-facts/kr.cjs"
+      },
+      "default": "./dist/subdivision-facts/kr.js"
+    },
+    "./subdivision-facts/kw": {
+      "import": {
+        "types": "./dist/subdivision-facts/kw.d.ts",
+        "default": "./dist/subdivision-facts/kw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kw.d.cts",
+        "default": "./dist/subdivision-facts/kw.cjs"
+      },
+      "default": "./dist/subdivision-facts/kw.js"
+    },
+    "./subdivision-facts/kz": {
+      "import": {
+        "types": "./dist/subdivision-facts/kz.d.ts",
+        "default": "./dist/subdivision-facts/kz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/kz.d.cts",
+        "default": "./dist/subdivision-facts/kz.cjs"
+      },
+      "default": "./dist/subdivision-facts/kz.js"
+    },
+    "./subdivision-facts/la": {
+      "import": {
+        "types": "./dist/subdivision-facts/la.d.ts",
+        "default": "./dist/subdivision-facts/la.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/la.d.cts",
+        "default": "./dist/subdivision-facts/la.cjs"
+      },
+      "default": "./dist/subdivision-facts/la.js"
+    },
+    "./subdivision-facts/lb": {
+      "import": {
+        "types": "./dist/subdivision-facts/lb.d.ts",
+        "default": "./dist/subdivision-facts/lb.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lb.d.cts",
+        "default": "./dist/subdivision-facts/lb.cjs"
+      },
+      "default": "./dist/subdivision-facts/lb.js"
+    },
+    "./subdivision-facts/lc": {
+      "import": {
+        "types": "./dist/subdivision-facts/lc.d.ts",
+        "default": "./dist/subdivision-facts/lc.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lc.d.cts",
+        "default": "./dist/subdivision-facts/lc.cjs"
+      },
+      "default": "./dist/subdivision-facts/lc.js"
+    },
+    "./subdivision-facts/li": {
+      "import": {
+        "types": "./dist/subdivision-facts/li.d.ts",
+        "default": "./dist/subdivision-facts/li.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/li.d.cts",
+        "default": "./dist/subdivision-facts/li.cjs"
+      },
+      "default": "./dist/subdivision-facts/li.js"
+    },
+    "./subdivision-facts/lk": {
+      "import": {
+        "types": "./dist/subdivision-facts/lk.d.ts",
+        "default": "./dist/subdivision-facts/lk.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lk.d.cts",
+        "default": "./dist/subdivision-facts/lk.cjs"
+      },
+      "default": "./dist/subdivision-facts/lk.js"
+    },
+    "./subdivision-facts/lr": {
+      "import": {
+        "types": "./dist/subdivision-facts/lr.d.ts",
+        "default": "./dist/subdivision-facts/lr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lr.d.cts",
+        "default": "./dist/subdivision-facts/lr.cjs"
+      },
+      "default": "./dist/subdivision-facts/lr.js"
+    },
+    "./subdivision-facts/ls": {
+      "import": {
+        "types": "./dist/subdivision-facts/ls.d.ts",
+        "default": "./dist/subdivision-facts/ls.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ls.d.cts",
+        "default": "./dist/subdivision-facts/ls.cjs"
+      },
+      "default": "./dist/subdivision-facts/ls.js"
+    },
+    "./subdivision-facts/lt": {
+      "import": {
+        "types": "./dist/subdivision-facts/lt.d.ts",
+        "default": "./dist/subdivision-facts/lt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lt.d.cts",
+        "default": "./dist/subdivision-facts/lt.cjs"
+      },
+      "default": "./dist/subdivision-facts/lt.js"
+    },
+    "./subdivision-facts/lu": {
+      "import": {
+        "types": "./dist/subdivision-facts/lu.d.ts",
+        "default": "./dist/subdivision-facts/lu.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lu.d.cts",
+        "default": "./dist/subdivision-facts/lu.cjs"
+      },
+      "default": "./dist/subdivision-facts/lu.js"
+    },
+    "./subdivision-facts/lv": {
+      "import": {
+        "types": "./dist/subdivision-facts/lv.d.ts",
+        "default": "./dist/subdivision-facts/lv.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/lv.d.cts",
+        "default": "./dist/subdivision-facts/lv.cjs"
+      },
+      "default": "./dist/subdivision-facts/lv.js"
+    },
+    "./subdivision-facts/ly": {
+      "import": {
+        "types": "./dist/subdivision-facts/ly.d.ts",
+        "default": "./dist/subdivision-facts/ly.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ly.d.cts",
+        "default": "./dist/subdivision-facts/ly.cjs"
+      },
+      "default": "./dist/subdivision-facts/ly.js"
+    },
+    "./subdivision-facts/ma": {
+      "import": {
+        "types": "./dist/subdivision-facts/ma.d.ts",
+        "default": "./dist/subdivision-facts/ma.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ma.d.cts",
+        "default": "./dist/subdivision-facts/ma.cjs"
+      },
+      "default": "./dist/subdivision-facts/ma.js"
+    },
+    "./subdivision-facts/mc": {
+      "import": {
+        "types": "./dist/subdivision-facts/mc.d.ts",
+        "default": "./dist/subdivision-facts/mc.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mc.d.cts",
+        "default": "./dist/subdivision-facts/mc.cjs"
+      },
+      "default": "./dist/subdivision-facts/mc.js"
+    },
+    "./subdivision-facts/md": {
+      "import": {
+        "types": "./dist/subdivision-facts/md.d.ts",
+        "default": "./dist/subdivision-facts/md.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/md.d.cts",
+        "default": "./dist/subdivision-facts/md.cjs"
+      },
+      "default": "./dist/subdivision-facts/md.js"
+    },
+    "./subdivision-facts/me": {
+      "import": {
+        "types": "./dist/subdivision-facts/me.d.ts",
+        "default": "./dist/subdivision-facts/me.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/me.d.cts",
+        "default": "./dist/subdivision-facts/me.cjs"
+      },
+      "default": "./dist/subdivision-facts/me.js"
+    },
+    "./subdivision-facts/mg": {
+      "import": {
+        "types": "./dist/subdivision-facts/mg.d.ts",
+        "default": "./dist/subdivision-facts/mg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mg.d.cts",
+        "default": "./dist/subdivision-facts/mg.cjs"
+      },
+      "default": "./dist/subdivision-facts/mg.js"
+    },
+    "./subdivision-facts/mh": {
+      "import": {
+        "types": "./dist/subdivision-facts/mh.d.ts",
+        "default": "./dist/subdivision-facts/mh.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mh.d.cts",
+        "default": "./dist/subdivision-facts/mh.cjs"
+      },
+      "default": "./dist/subdivision-facts/mh.js"
+    },
+    "./subdivision-facts/mk": {
+      "import": {
+        "types": "./dist/subdivision-facts/mk.d.ts",
+        "default": "./dist/subdivision-facts/mk.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mk.d.cts",
+        "default": "./dist/subdivision-facts/mk.cjs"
+      },
+      "default": "./dist/subdivision-facts/mk.js"
+    },
+    "./subdivision-facts/ml": {
+      "import": {
+        "types": "./dist/subdivision-facts/ml.d.ts",
+        "default": "./dist/subdivision-facts/ml.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ml.d.cts",
+        "default": "./dist/subdivision-facts/ml.cjs"
+      },
+      "default": "./dist/subdivision-facts/ml.js"
+    },
+    "./subdivision-facts/mm": {
+      "import": {
+        "types": "./dist/subdivision-facts/mm.d.ts",
+        "default": "./dist/subdivision-facts/mm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mm.d.cts",
+        "default": "./dist/subdivision-facts/mm.cjs"
+      },
+      "default": "./dist/subdivision-facts/mm.js"
+    },
+    "./subdivision-facts/mn": {
+      "import": {
+        "types": "./dist/subdivision-facts/mn.d.ts",
+        "default": "./dist/subdivision-facts/mn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mn.d.cts",
+        "default": "./dist/subdivision-facts/mn.cjs"
+      },
+      "default": "./dist/subdivision-facts/mn.js"
+    },
+    "./subdivision-facts/mr": {
+      "import": {
+        "types": "./dist/subdivision-facts/mr.d.ts",
+        "default": "./dist/subdivision-facts/mr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mr.d.cts",
+        "default": "./dist/subdivision-facts/mr.cjs"
+      },
+      "default": "./dist/subdivision-facts/mr.js"
+    },
+    "./subdivision-facts/mt": {
+      "import": {
+        "types": "./dist/subdivision-facts/mt.d.ts",
+        "default": "./dist/subdivision-facts/mt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mt.d.cts",
+        "default": "./dist/subdivision-facts/mt.cjs"
+      },
+      "default": "./dist/subdivision-facts/mt.js"
+    },
+    "./subdivision-facts/mu": {
+      "import": {
+        "types": "./dist/subdivision-facts/mu.d.ts",
+        "default": "./dist/subdivision-facts/mu.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mu.d.cts",
+        "default": "./dist/subdivision-facts/mu.cjs"
+      },
+      "default": "./dist/subdivision-facts/mu.js"
+    },
+    "./subdivision-facts/mv": {
+      "import": {
+        "types": "./dist/subdivision-facts/mv.d.ts",
+        "default": "./dist/subdivision-facts/mv.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mv.d.cts",
+        "default": "./dist/subdivision-facts/mv.cjs"
+      },
+      "default": "./dist/subdivision-facts/mv.js"
+    },
+    "./subdivision-facts/mw": {
+      "import": {
+        "types": "./dist/subdivision-facts/mw.d.ts",
+        "default": "./dist/subdivision-facts/mw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mw.d.cts",
+        "default": "./dist/subdivision-facts/mw.cjs"
+      },
+      "default": "./dist/subdivision-facts/mw.js"
+    },
+    "./subdivision-facts/mx": {
+      "import": {
+        "types": "./dist/subdivision-facts/mx.d.ts",
+        "default": "./dist/subdivision-facts/mx.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mx.d.cts",
+        "default": "./dist/subdivision-facts/mx.cjs"
+      },
+      "default": "./dist/subdivision-facts/mx.js"
+    },
+    "./subdivision-facts/my": {
+      "import": {
+        "types": "./dist/subdivision-facts/my.d.ts",
+        "default": "./dist/subdivision-facts/my.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/my.d.cts",
+        "default": "./dist/subdivision-facts/my.cjs"
+      },
+      "default": "./dist/subdivision-facts/my.js"
+    },
+    "./subdivision-facts/mz": {
+      "import": {
+        "types": "./dist/subdivision-facts/mz.d.ts",
+        "default": "./dist/subdivision-facts/mz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/mz.d.cts",
+        "default": "./dist/subdivision-facts/mz.cjs"
+      },
+      "default": "./dist/subdivision-facts/mz.js"
+    },
+    "./subdivision-facts/na": {
+      "import": {
+        "types": "./dist/subdivision-facts/na.d.ts",
+        "default": "./dist/subdivision-facts/na.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/na.d.cts",
+        "default": "./dist/subdivision-facts/na.cjs"
+      },
+      "default": "./dist/subdivision-facts/na.js"
+    },
+    "./subdivision-facts/ne": {
+      "import": {
+        "types": "./dist/subdivision-facts/ne.d.ts",
+        "default": "./dist/subdivision-facts/ne.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ne.d.cts",
+        "default": "./dist/subdivision-facts/ne.cjs"
+      },
+      "default": "./dist/subdivision-facts/ne.js"
+    },
+    "./subdivision-facts/ng": {
+      "import": {
+        "types": "./dist/subdivision-facts/ng.d.ts",
+        "default": "./dist/subdivision-facts/ng.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ng.d.cts",
+        "default": "./dist/subdivision-facts/ng.cjs"
+      },
+      "default": "./dist/subdivision-facts/ng.js"
+    },
+    "./subdivision-facts/ni": {
+      "import": {
+        "types": "./dist/subdivision-facts/ni.d.ts",
+        "default": "./dist/subdivision-facts/ni.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ni.d.cts",
+        "default": "./dist/subdivision-facts/ni.cjs"
+      },
+      "default": "./dist/subdivision-facts/ni.js"
+    },
+    "./subdivision-facts/nl": {
+      "import": {
+        "types": "./dist/subdivision-facts/nl.d.ts",
+        "default": "./dist/subdivision-facts/nl.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/nl.d.cts",
+        "default": "./dist/subdivision-facts/nl.cjs"
+      },
+      "default": "./dist/subdivision-facts/nl.js"
+    },
+    "./subdivision-facts/no": {
+      "import": {
+        "types": "./dist/subdivision-facts/no.d.ts",
+        "default": "./dist/subdivision-facts/no.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/no.d.cts",
+        "default": "./dist/subdivision-facts/no.cjs"
+      },
+      "default": "./dist/subdivision-facts/no.js"
+    },
+    "./subdivision-facts/np": {
+      "import": {
+        "types": "./dist/subdivision-facts/np.d.ts",
+        "default": "./dist/subdivision-facts/np.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/np.d.cts",
+        "default": "./dist/subdivision-facts/np.cjs"
+      },
+      "default": "./dist/subdivision-facts/np.js"
+    },
+    "./subdivision-facts/nr": {
+      "import": {
+        "types": "./dist/subdivision-facts/nr.d.ts",
+        "default": "./dist/subdivision-facts/nr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/nr.d.cts",
+        "default": "./dist/subdivision-facts/nr.cjs"
+      },
+      "default": "./dist/subdivision-facts/nr.js"
+    },
+    "./subdivision-facts/nz": {
+      "import": {
+        "types": "./dist/subdivision-facts/nz.d.ts",
+        "default": "./dist/subdivision-facts/nz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/nz.d.cts",
+        "default": "./dist/subdivision-facts/nz.cjs"
+      },
+      "default": "./dist/subdivision-facts/nz.js"
+    },
+    "./subdivision-facts/om": {
+      "import": {
+        "types": "./dist/subdivision-facts/om.d.ts",
+        "default": "./dist/subdivision-facts/om.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/om.d.cts",
+        "default": "./dist/subdivision-facts/om.cjs"
+      },
+      "default": "./dist/subdivision-facts/om.js"
+    },
+    "./subdivision-facts/pa": {
+      "import": {
+        "types": "./dist/subdivision-facts/pa.d.ts",
+        "default": "./dist/subdivision-facts/pa.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pa.d.cts",
+        "default": "./dist/subdivision-facts/pa.cjs"
+      },
+      "default": "./dist/subdivision-facts/pa.js"
+    },
+    "./subdivision-facts/pe": {
+      "import": {
+        "types": "./dist/subdivision-facts/pe.d.ts",
+        "default": "./dist/subdivision-facts/pe.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pe.d.cts",
+        "default": "./dist/subdivision-facts/pe.cjs"
+      },
+      "default": "./dist/subdivision-facts/pe.js"
+    },
+    "./subdivision-facts/pg": {
+      "import": {
+        "types": "./dist/subdivision-facts/pg.d.ts",
+        "default": "./dist/subdivision-facts/pg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pg.d.cts",
+        "default": "./dist/subdivision-facts/pg.cjs"
+      },
+      "default": "./dist/subdivision-facts/pg.js"
+    },
+    "./subdivision-facts/ph": {
+      "import": {
+        "types": "./dist/subdivision-facts/ph.d.ts",
+        "default": "./dist/subdivision-facts/ph.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ph.d.cts",
+        "default": "./dist/subdivision-facts/ph.cjs"
+      },
+      "default": "./dist/subdivision-facts/ph.js"
+    },
+    "./subdivision-facts/pk": {
+      "import": {
+        "types": "./dist/subdivision-facts/pk.d.ts",
+        "default": "./dist/subdivision-facts/pk.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pk.d.cts",
+        "default": "./dist/subdivision-facts/pk.cjs"
+      },
+      "default": "./dist/subdivision-facts/pk.js"
+    },
+    "./subdivision-facts/pl": {
+      "import": {
+        "types": "./dist/subdivision-facts/pl.d.ts",
+        "default": "./dist/subdivision-facts/pl.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pl.d.cts",
+        "default": "./dist/subdivision-facts/pl.cjs"
+      },
+      "default": "./dist/subdivision-facts/pl.js"
+    },
+    "./subdivision-facts/ps": {
+      "import": {
+        "types": "./dist/subdivision-facts/ps.d.ts",
+        "default": "./dist/subdivision-facts/ps.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ps.d.cts",
+        "default": "./dist/subdivision-facts/ps.cjs"
+      },
+      "default": "./dist/subdivision-facts/ps.js"
+    },
+    "./subdivision-facts/pt": {
+      "import": {
+        "types": "./dist/subdivision-facts/pt.d.ts",
+        "default": "./dist/subdivision-facts/pt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pt.d.cts",
+        "default": "./dist/subdivision-facts/pt.cjs"
+      },
+      "default": "./dist/subdivision-facts/pt.js"
+    },
+    "./subdivision-facts/pw": {
+      "import": {
+        "types": "./dist/subdivision-facts/pw.d.ts",
+        "default": "./dist/subdivision-facts/pw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/pw.d.cts",
+        "default": "./dist/subdivision-facts/pw.cjs"
+      },
+      "default": "./dist/subdivision-facts/pw.js"
+    },
+    "./subdivision-facts/py": {
+      "import": {
+        "types": "./dist/subdivision-facts/py.d.ts",
+        "default": "./dist/subdivision-facts/py.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/py.d.cts",
+        "default": "./dist/subdivision-facts/py.cjs"
+      },
+      "default": "./dist/subdivision-facts/py.js"
+    },
+    "./subdivision-facts/qa": {
+      "import": {
+        "types": "./dist/subdivision-facts/qa.d.ts",
+        "default": "./dist/subdivision-facts/qa.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/qa.d.cts",
+        "default": "./dist/subdivision-facts/qa.cjs"
+      },
+      "default": "./dist/subdivision-facts/qa.js"
+    },
+    "./subdivision-facts/ro": {
+      "import": {
+        "types": "./dist/subdivision-facts/ro.d.ts",
+        "default": "./dist/subdivision-facts/ro.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ro.d.cts",
+        "default": "./dist/subdivision-facts/ro.cjs"
+      },
+      "default": "./dist/subdivision-facts/ro.js"
+    },
+    "./subdivision-facts/rs": {
+      "import": {
+        "types": "./dist/subdivision-facts/rs.d.ts",
+        "default": "./dist/subdivision-facts/rs.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/rs.d.cts",
+        "default": "./dist/subdivision-facts/rs.cjs"
+      },
+      "default": "./dist/subdivision-facts/rs.js"
+    },
+    "./subdivision-facts/ru": {
+      "import": {
+        "types": "./dist/subdivision-facts/ru.d.ts",
+        "default": "./dist/subdivision-facts/ru.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ru.d.cts",
+        "default": "./dist/subdivision-facts/ru.cjs"
+      },
+      "default": "./dist/subdivision-facts/ru.js"
+    },
+    "./subdivision-facts/rw": {
+      "import": {
+        "types": "./dist/subdivision-facts/rw.d.ts",
+        "default": "./dist/subdivision-facts/rw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/rw.d.cts",
+        "default": "./dist/subdivision-facts/rw.cjs"
+      },
+      "default": "./dist/subdivision-facts/rw.js"
+    },
+    "./subdivision-facts/sa": {
+      "import": {
+        "types": "./dist/subdivision-facts/sa.d.ts",
+        "default": "./dist/subdivision-facts/sa.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sa.d.cts",
+        "default": "./dist/subdivision-facts/sa.cjs"
+      },
+      "default": "./dist/subdivision-facts/sa.js"
+    },
+    "./subdivision-facts/sb": {
+      "import": {
+        "types": "./dist/subdivision-facts/sb.d.ts",
+        "default": "./dist/subdivision-facts/sb.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sb.d.cts",
+        "default": "./dist/subdivision-facts/sb.cjs"
+      },
+      "default": "./dist/subdivision-facts/sb.js"
+    },
+    "./subdivision-facts/sc": {
+      "import": {
+        "types": "./dist/subdivision-facts/sc.d.ts",
+        "default": "./dist/subdivision-facts/sc.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sc.d.cts",
+        "default": "./dist/subdivision-facts/sc.cjs"
+      },
+      "default": "./dist/subdivision-facts/sc.js"
+    },
+    "./subdivision-facts/sd": {
+      "import": {
+        "types": "./dist/subdivision-facts/sd.d.ts",
+        "default": "./dist/subdivision-facts/sd.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sd.d.cts",
+        "default": "./dist/subdivision-facts/sd.cjs"
+      },
+      "default": "./dist/subdivision-facts/sd.js"
+    },
+    "./subdivision-facts/se": {
+      "import": {
+        "types": "./dist/subdivision-facts/se.d.ts",
+        "default": "./dist/subdivision-facts/se.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/se.d.cts",
+        "default": "./dist/subdivision-facts/se.cjs"
+      },
+      "default": "./dist/subdivision-facts/se.js"
+    },
+    "./subdivision-facts/sg": {
+      "import": {
+        "types": "./dist/subdivision-facts/sg.d.ts",
+        "default": "./dist/subdivision-facts/sg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sg.d.cts",
+        "default": "./dist/subdivision-facts/sg.cjs"
+      },
+      "default": "./dist/subdivision-facts/sg.js"
+    },
+    "./subdivision-facts/sh": {
+      "import": {
+        "types": "./dist/subdivision-facts/sh.d.ts",
+        "default": "./dist/subdivision-facts/sh.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sh.d.cts",
+        "default": "./dist/subdivision-facts/sh.cjs"
+      },
+      "default": "./dist/subdivision-facts/sh.js"
+    },
+    "./subdivision-facts/si": {
+      "import": {
+        "types": "./dist/subdivision-facts/si.d.ts",
+        "default": "./dist/subdivision-facts/si.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/si.d.cts",
+        "default": "./dist/subdivision-facts/si.cjs"
+      },
+      "default": "./dist/subdivision-facts/si.js"
+    },
+    "./subdivision-facts/sk": {
+      "import": {
+        "types": "./dist/subdivision-facts/sk.d.ts",
+        "default": "./dist/subdivision-facts/sk.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sk.d.cts",
+        "default": "./dist/subdivision-facts/sk.cjs"
+      },
+      "default": "./dist/subdivision-facts/sk.js"
+    },
+    "./subdivision-facts/sl": {
+      "import": {
+        "types": "./dist/subdivision-facts/sl.d.ts",
+        "default": "./dist/subdivision-facts/sl.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sl.d.cts",
+        "default": "./dist/subdivision-facts/sl.cjs"
+      },
+      "default": "./dist/subdivision-facts/sl.js"
+    },
+    "./subdivision-facts/sm": {
+      "import": {
+        "types": "./dist/subdivision-facts/sm.d.ts",
+        "default": "./dist/subdivision-facts/sm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sm.d.cts",
+        "default": "./dist/subdivision-facts/sm.cjs"
+      },
+      "default": "./dist/subdivision-facts/sm.js"
+    },
+    "./subdivision-facts/sn": {
+      "import": {
+        "types": "./dist/subdivision-facts/sn.d.ts",
+        "default": "./dist/subdivision-facts/sn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sn.d.cts",
+        "default": "./dist/subdivision-facts/sn.cjs"
+      },
+      "default": "./dist/subdivision-facts/sn.js"
+    },
+    "./subdivision-facts/so": {
+      "import": {
+        "types": "./dist/subdivision-facts/so.d.ts",
+        "default": "./dist/subdivision-facts/so.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/so.d.cts",
+        "default": "./dist/subdivision-facts/so.cjs"
+      },
+      "default": "./dist/subdivision-facts/so.js"
+    },
+    "./subdivision-facts/sr": {
+      "import": {
+        "types": "./dist/subdivision-facts/sr.d.ts",
+        "default": "./dist/subdivision-facts/sr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sr.d.cts",
+        "default": "./dist/subdivision-facts/sr.cjs"
+      },
+      "default": "./dist/subdivision-facts/sr.js"
+    },
+    "./subdivision-facts/ss": {
+      "import": {
+        "types": "./dist/subdivision-facts/ss.d.ts",
+        "default": "./dist/subdivision-facts/ss.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ss.d.cts",
+        "default": "./dist/subdivision-facts/ss.cjs"
+      },
+      "default": "./dist/subdivision-facts/ss.js"
+    },
+    "./subdivision-facts/st": {
+      "import": {
+        "types": "./dist/subdivision-facts/st.d.ts",
+        "default": "./dist/subdivision-facts/st.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/st.d.cts",
+        "default": "./dist/subdivision-facts/st.cjs"
+      },
+      "default": "./dist/subdivision-facts/st.js"
+    },
+    "./subdivision-facts/sv": {
+      "import": {
+        "types": "./dist/subdivision-facts/sv.d.ts",
+        "default": "./dist/subdivision-facts/sv.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sv.d.cts",
+        "default": "./dist/subdivision-facts/sv.cjs"
+      },
+      "default": "./dist/subdivision-facts/sv.js"
+    },
+    "./subdivision-facts/sy": {
+      "import": {
+        "types": "./dist/subdivision-facts/sy.d.ts",
+        "default": "./dist/subdivision-facts/sy.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sy.d.cts",
+        "default": "./dist/subdivision-facts/sy.cjs"
+      },
+      "default": "./dist/subdivision-facts/sy.js"
+    },
+    "./subdivision-facts/sz": {
+      "import": {
+        "types": "./dist/subdivision-facts/sz.d.ts",
+        "default": "./dist/subdivision-facts/sz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/sz.d.cts",
+        "default": "./dist/subdivision-facts/sz.cjs"
+      },
+      "default": "./dist/subdivision-facts/sz.js"
+    },
+    "./subdivision-facts/td": {
+      "import": {
+        "types": "./dist/subdivision-facts/td.d.ts",
+        "default": "./dist/subdivision-facts/td.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/td.d.cts",
+        "default": "./dist/subdivision-facts/td.cjs"
+      },
+      "default": "./dist/subdivision-facts/td.js"
+    },
+    "./subdivision-facts/tg": {
+      "import": {
+        "types": "./dist/subdivision-facts/tg.d.ts",
+        "default": "./dist/subdivision-facts/tg.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tg.d.cts",
+        "default": "./dist/subdivision-facts/tg.cjs"
+      },
+      "default": "./dist/subdivision-facts/tg.js"
+    },
+    "./subdivision-facts/th": {
+      "import": {
+        "types": "./dist/subdivision-facts/th.d.ts",
+        "default": "./dist/subdivision-facts/th.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/th.d.cts",
+        "default": "./dist/subdivision-facts/th.cjs"
+      },
+      "default": "./dist/subdivision-facts/th.js"
+    },
+    "./subdivision-facts/tj": {
+      "import": {
+        "types": "./dist/subdivision-facts/tj.d.ts",
+        "default": "./dist/subdivision-facts/tj.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tj.d.cts",
+        "default": "./dist/subdivision-facts/tj.cjs"
+      },
+      "default": "./dist/subdivision-facts/tj.js"
+    },
+    "./subdivision-facts/tl": {
+      "import": {
+        "types": "./dist/subdivision-facts/tl.d.ts",
+        "default": "./dist/subdivision-facts/tl.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tl.d.cts",
+        "default": "./dist/subdivision-facts/tl.cjs"
+      },
+      "default": "./dist/subdivision-facts/tl.js"
+    },
+    "./subdivision-facts/tm": {
+      "import": {
+        "types": "./dist/subdivision-facts/tm.d.ts",
+        "default": "./dist/subdivision-facts/tm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tm.d.cts",
+        "default": "./dist/subdivision-facts/tm.cjs"
+      },
+      "default": "./dist/subdivision-facts/tm.js"
+    },
+    "./subdivision-facts/tn": {
+      "import": {
+        "types": "./dist/subdivision-facts/tn.d.ts",
+        "default": "./dist/subdivision-facts/tn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tn.d.cts",
+        "default": "./dist/subdivision-facts/tn.cjs"
+      },
+      "default": "./dist/subdivision-facts/tn.js"
+    },
+    "./subdivision-facts/to": {
+      "import": {
+        "types": "./dist/subdivision-facts/to.d.ts",
+        "default": "./dist/subdivision-facts/to.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/to.d.cts",
+        "default": "./dist/subdivision-facts/to.cjs"
+      },
+      "default": "./dist/subdivision-facts/to.js"
+    },
+    "./subdivision-facts/tr": {
+      "import": {
+        "types": "./dist/subdivision-facts/tr.d.ts",
+        "default": "./dist/subdivision-facts/tr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tr.d.cts",
+        "default": "./dist/subdivision-facts/tr.cjs"
+      },
+      "default": "./dist/subdivision-facts/tr.js"
+    },
+    "./subdivision-facts/tt": {
+      "import": {
+        "types": "./dist/subdivision-facts/tt.d.ts",
+        "default": "./dist/subdivision-facts/tt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tt.d.cts",
+        "default": "./dist/subdivision-facts/tt.cjs"
+      },
+      "default": "./dist/subdivision-facts/tt.js"
+    },
+    "./subdivision-facts/tv": {
+      "import": {
+        "types": "./dist/subdivision-facts/tv.d.ts",
+        "default": "./dist/subdivision-facts/tv.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tv.d.cts",
+        "default": "./dist/subdivision-facts/tv.cjs"
+      },
+      "default": "./dist/subdivision-facts/tv.js"
+    },
+    "./subdivision-facts/tw": {
+      "import": {
+        "types": "./dist/subdivision-facts/tw.d.ts",
+        "default": "./dist/subdivision-facts/tw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tw.d.cts",
+        "default": "./dist/subdivision-facts/tw.cjs"
+      },
+      "default": "./dist/subdivision-facts/tw.js"
+    },
+    "./subdivision-facts/tz": {
+      "import": {
+        "types": "./dist/subdivision-facts/tz.d.ts",
+        "default": "./dist/subdivision-facts/tz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/tz.d.cts",
+        "default": "./dist/subdivision-facts/tz.cjs"
+      },
+      "default": "./dist/subdivision-facts/tz.js"
+    },
+    "./subdivision-facts/ua": {
+      "import": {
+        "types": "./dist/subdivision-facts/ua.d.ts",
+        "default": "./dist/subdivision-facts/ua.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ua.d.cts",
+        "default": "./dist/subdivision-facts/ua.cjs"
+      },
+      "default": "./dist/subdivision-facts/ua.js"
+    },
+    "./subdivision-facts/ug": {
+      "import": {
+        "types": "./dist/subdivision-facts/ug.d.ts",
+        "default": "./dist/subdivision-facts/ug.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ug.d.cts",
+        "default": "./dist/subdivision-facts/ug.cjs"
+      },
+      "default": "./dist/subdivision-facts/ug.js"
+    },
+    "./subdivision-facts/um": {
+      "import": {
+        "types": "./dist/subdivision-facts/um.d.ts",
+        "default": "./dist/subdivision-facts/um.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/um.d.cts",
+        "default": "./dist/subdivision-facts/um.cjs"
+      },
+      "default": "./dist/subdivision-facts/um.js"
+    },
+    "./subdivision-facts/us": {
+      "import": {
+        "types": "./dist/subdivision-facts/us.d.ts",
+        "default": "./dist/subdivision-facts/us.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/us.d.cts",
+        "default": "./dist/subdivision-facts/us.cjs"
+      },
+      "default": "./dist/subdivision-facts/us.js"
+    },
+    "./subdivision-facts/uy": {
+      "import": {
+        "types": "./dist/subdivision-facts/uy.d.ts",
+        "default": "./dist/subdivision-facts/uy.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/uy.d.cts",
+        "default": "./dist/subdivision-facts/uy.cjs"
+      },
+      "default": "./dist/subdivision-facts/uy.js"
+    },
+    "./subdivision-facts/uz": {
+      "import": {
+        "types": "./dist/subdivision-facts/uz.d.ts",
+        "default": "./dist/subdivision-facts/uz.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/uz.d.cts",
+        "default": "./dist/subdivision-facts/uz.cjs"
+      },
+      "default": "./dist/subdivision-facts/uz.js"
+    },
+    "./subdivision-facts/vc": {
+      "import": {
+        "types": "./dist/subdivision-facts/vc.d.ts",
+        "default": "./dist/subdivision-facts/vc.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/vc.d.cts",
+        "default": "./dist/subdivision-facts/vc.cjs"
+      },
+      "default": "./dist/subdivision-facts/vc.js"
+    },
+    "./subdivision-facts/ve": {
+      "import": {
+        "types": "./dist/subdivision-facts/ve.d.ts",
+        "default": "./dist/subdivision-facts/ve.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ve.d.cts",
+        "default": "./dist/subdivision-facts/ve.cjs"
+      },
+      "default": "./dist/subdivision-facts/ve.js"
+    },
+    "./subdivision-facts/vn": {
+      "import": {
+        "types": "./dist/subdivision-facts/vn.d.ts",
+        "default": "./dist/subdivision-facts/vn.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/vn.d.cts",
+        "default": "./dist/subdivision-facts/vn.cjs"
+      },
+      "default": "./dist/subdivision-facts/vn.js"
+    },
+    "./subdivision-facts/vu": {
+      "import": {
+        "types": "./dist/subdivision-facts/vu.d.ts",
+        "default": "./dist/subdivision-facts/vu.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/vu.d.cts",
+        "default": "./dist/subdivision-facts/vu.cjs"
+      },
+      "default": "./dist/subdivision-facts/vu.js"
+    },
+    "./subdivision-facts/wf": {
+      "import": {
+        "types": "./dist/subdivision-facts/wf.d.ts",
+        "default": "./dist/subdivision-facts/wf.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/wf.d.cts",
+        "default": "./dist/subdivision-facts/wf.cjs"
+      },
+      "default": "./dist/subdivision-facts/wf.js"
+    },
+    "./subdivision-facts/ws": {
+      "import": {
+        "types": "./dist/subdivision-facts/ws.d.ts",
+        "default": "./dist/subdivision-facts/ws.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ws.d.cts",
+        "default": "./dist/subdivision-facts/ws.cjs"
+      },
+      "default": "./dist/subdivision-facts/ws.js"
+    },
+    "./subdivision-facts/ye": {
+      "import": {
+        "types": "./dist/subdivision-facts/ye.d.ts",
+        "default": "./dist/subdivision-facts/ye.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/ye.d.cts",
+        "default": "./dist/subdivision-facts/ye.cjs"
+      },
+      "default": "./dist/subdivision-facts/ye.js"
+    },
+    "./subdivision-facts/za": {
+      "import": {
+        "types": "./dist/subdivision-facts/za.d.ts",
+        "default": "./dist/subdivision-facts/za.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/za.d.cts",
+        "default": "./dist/subdivision-facts/za.cjs"
+      },
+      "default": "./dist/subdivision-facts/za.js"
+    },
+    "./subdivision-facts/zm": {
+      "import": {
+        "types": "./dist/subdivision-facts/zm.d.ts",
+        "default": "./dist/subdivision-facts/zm.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/zm.d.cts",
+        "default": "./dist/subdivision-facts/zm.cjs"
+      },
+      "default": "./dist/subdivision-facts/zm.js"
+    },
+    "./subdivision-facts/zw": {
+      "import": {
+        "types": "./dist/subdivision-facts/zw.d.ts",
+        "default": "./dist/subdivision-facts/zw.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-facts/zw.d.cts",
+        "default": "./dist/subdivision-facts/zw.cjs"
+      },
+      "default": "./dist/subdivision-facts/zw.js"
     }
   },
   "files": [
@@ -192,9 +4603,12 @@
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
     "site": "pnpm build && node scripts/site.mjs",
-    "test:demo": "pnpm site && playwright test",
+    "test:demo": "pnpm site && node scripts/docs-site.mjs build && playwright test",
     "screenshots:readme": "pnpm site && node scripts/readme-pictures.mjs",
-    "docs:make": "node scripts/docs.mjs"
+    "docs:make": "node scripts/docs-resources.mjs && node scripts/docs.mjs",
+    "docs:site": "pnpm build && node scripts/docs-site.mjs build",
+    "docs:check": "pnpm build && node scripts/docs-site.mjs check",
+    "size": "node scripts/docs-site.mjs size"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
@@ -204,12 +4618,14 @@
     "cldr-core": "48.2.0",
     "cldr-localenames-full": "48.2.0",
     "countries-list": "3.4.1",
-    "esbuild": "0.27.7",
+    "esbuild": "^0.28.0",
     "eslint": "^9.0.0",
     "tsup": "^8.5.0",
     "typescript": "~5.9.0",
     "typescript-eslint": "^8.0.0",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.0",
+    "pagefind": "^1.5.2",
+    "marked": "^18.0.0"
   },
   "publishConfig": {
     "access": "public"

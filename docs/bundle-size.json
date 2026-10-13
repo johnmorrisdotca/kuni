@@ -1,0 +1,1645 @@
+{
+  "measured": "esbuild 0.28.2, bundled, minified, ES2020, gzip level 9",
+  "entries": {
+    ".": {
+      "minified": 67344,
+      "gzip": 21434
+    },
+    "./codes": {
+      "minified": 1356,
+      "gzip": 631
+    },
+    "./subdivisions": {
+      "minified": 300552,
+      "gzip": 88397
+    },
+    "./load": {
+      "minified": 334339,
+      "gzip": 97636
+    },
+    "./facts": {
+      "minified": 20491,
+      "gzip": 8561
+    },
+    "./subdivision-facts": {
+      "minified": 415427,
+      "gzip": 161074
+    },
+    "./groupings": {
+      "minified": 81851,
+      "gzip": 15883
+    },
+    "./withdrawn": {
+      "minified": 6620,
+      "gzip": 2126
+    },
+    "./element": {
+      "minified": 844682,
+      "gzip": 290537
+    },
+    "./element/define": {
+      "minified": 844685,
+      "gzip": 290539
+    },
+    "./subdivisions/ad": {
+      "minified": 1172,
+      "gzip": 626
+    },
+    "./subdivisions/ae": {
+      "minified": 982,
+      "gzip": 576
+    },
+    "./subdivisions/af": {
+      "minified": 2396,
+      "gzip": 993
+    },
+    "./subdivisions/ag": {
+      "minified": 1147,
+      "gzip": 576
+    },
+    "./subdivisions/al": {
+      "minified": 1207,
+      "gzip": 606
+    },
+    "./subdivisions/am": {
+      "minified": 1190,
+      "gzip": 629
+    },
+    "./subdivisions/ao": {
+      "minified": 1462,
+      "gzip": 702
+    },
+    "./subdivisions/ar": {
+      "minified": 1940,
+      "gzip": 886
+    },
+    "./subdivisions/at": {
+      "minified": 1162,
+      "gzip": 602
+    },
+    "./subdivisions/au": {
+      "minified": 1215,
+      "gzip": 644
+    },
+    "./subdivisions/az": {
+      "minified": 4469,
+      "gzip": 1702
+    },
+    "./subdivisions/ba": {
+      "minified": 828,
+      "gzip": 533
+    },
+    "./subdivisions/bb": {
+      "minified": 1340,
+      "gzip": 616
+    },
+    "./subdivisions/bd": {
+      "minified": 4698,
+      "gzip": 1653
+    },
+    "./subdivisions/be": {
+      "minified": 1529,
+      "gzip": 726
+    },
+    "./subdivisions/bf": {
+      "minified": 3353,
+      "gzip": 1399
+    },
+    "./subdivisions/bg": {
+      "minified": 2024,
+      "gzip": 901
+    },
+    "./subdivisions/bh": {
+      "minified": 735,
+      "gzip": 465
+    },
+    "./subdivisions/bi": {
+      "minified": 1408,
+      "gzip": 709
+    },
+    "./subdivisions/bj": {
+      "minified": 1099,
+      "gzip": 607
+    },
+    "./subdivisions/bn": {
+      "minified": 818,
+      "gzip": 483
+    },
+    "./subdivisions/bo": {
+      "minified": 962,
+      "gzip": 559
+    },
+    "./subdivisions/bq": {
+      "minified": 752,
+      "gzip": 468
+    },
+    "./subdivisions/br": {
+      "minified": 2254,
+      "gzip": 976
+    },
+    "./subdivisions/bs": {
+      "minified": 2629,
+      "gzip": 1058
+    },
+    "./subdivisions/bt": {
+      "minified": 1518,
+      "gzip": 741
+    },
+    "./subdivisions/bw": {
+      "minified": 1452,
+      "gzip": 721
+    },
+    "./subdivisions/by": {
+      "minified": 917,
+      "gzip": 531
+    },
+    "./subdivisions/bz": {
+      "minified": 876,
+      "gzip": 525
+    },
+    "./subdivisions/ca": {
+      "minified": 1555,
+      "gzip": 775
+    },
+    "./subdivisions/cd": {
+      "minified": 1840,
+      "gzip": 890
+    },
+    "./subdivisions/cf": {
+      "minified": 1550,
+      "gzip": 750
+    },
+    "./subdivisions/cg": {
+      "minified": 1168,
+      "gzip": 627
+    },
+    "./subdivisions/ch": {
+      "minified": 2212,
+      "gzip": 942
+    },
+    "./subdivisions/ci": {
+      "minified": 1383,
+      "gzip": 737
+    },
+    "./subdivisions/cl": {
+      "minified": 1873,
+      "gzip": 860
+    },
+    "./subdivisions/cm": {
+      "minified": 921,
+      "gzip": 540
+    },
+    "./subdivisions/cn": {
+      "minified": 1913,
+      "gzip": 1013
+    },
+    "./subdivisions/co": {
+      "minified": 2461,
+      "gzip": 1089
+    },
+    "./subdivisions/cr": {
+      "minified": 927,
+      "gzip": 543
+    },
+    "./subdivisions/cu": {
+      "minified": 1624,
+      "gzip": 815
+    },
+    "./subdivisions/cv": {
+      "minified": 2332,
+      "gzip": 965
+    },
+    "./subdivisions/cy": {
+      "minified": 909,
+      "gzip": 522
+    },
+    "./subdivisions/cz": {
+      "minified": 4636,
+      "gzip": 1871
+    },
+    "./subdivisions/de": {
+      "minified": 1826,
+      "gzip": 835
+    },
+    "./subdivisions/dj": {
+      "minified": 861,
+      "gzip": 526
+    },
+    "./subdivisions/dk": {
+      "minified": 906,
+      "gzip": 513
+    },
+    "./subdivisions/dm": {
+      "minified": 1374,
+      "gzip": 587
+    },
+    "./subdivisions/do": {
+      "minified": 3097,
+      "gzip": 1295
+    },
+    "./subdivisions/dz": {
+      "minified": 3762,
+      "gzip": 1454
+    },
+    "./subdivisions/ec": {
+      "minified": 1945,
+      "gzip": 900
+    },
+    "./subdivisions/ee": {
+      "minified": 2936,
+      "gzip": 1442
+    },
+    "./subdivisions/eg": {
+      "minified": 1964,
+      "gzip": 916
+    },
+    "./subdivisions/er": {
+      "minified": 1000,
+      "gzip": 542
+    },
+    "./subdivisions/es": {
+      "minified": 4377,
+      "gzip": 1683
+    },
+    "./subdivisions/et": {
+      "minified": 1324,
+      "gzip": 734
+    },
+    "./subdivisions/fi": {
+      "minified": 1756,
+      "gzip": 796
+    },
+    "./subdivisions/fj": {
+      "minified": 1416,
+      "gzip": 754
+    },
+    "./subdivisions/fm": {
+      "minified": 747,
+      "gzip": 473
+    },
+    "./subdivisions/fr": {
+      "minified": 9087,
+      "gzip": 2765
+    },
+    "./subdivisions/ga": {
+      "minified": 1204,
+      "gzip": 598
+    },
+    "./subdivisions/gb": {
+      "minified": 19333,
+      "gzip": 4998
+    },
+    "./subdivisions/gd": {
+      "minified": 1141,
+      "gzip": 568
+    },
+    "./subdivisions/ge": {
+      "minified": 1523,
+      "gzip": 741
+    },
+    "./subdivisions/gh": {
+      "minified": 1473,
+      "gzip": 678
+    },
+    "./subdivisions/gl": {
+      "minified": 847,
+      "gzip": 515
+    },
+    "./subdivisions/gm": {
+      "minified": 989,
+      "gzip": 538
+    },
+    "./subdivisions/gn": {
+      "minified": 2466,
+      "gzip": 1050
+    },
+    "./subdivisions/gq": {
+      "minified": 1092,
+      "gzip": 637
+    },
+    "./subdivisions/gr": {
+      "minified": 1255,
+      "gzip": 679
+    },
+    "./subdivisions/gt": {
+      "minified": 1838,
+      "gzip": 840
+    },
+    "./subdivisions/gw": {
+      "minified": 1004,
+      "gzip": 596
+    },
+    "./subdivisions/gy": {
+      "minified": 1552,
+      "gzip": 733
+    },
+    "./subdivisions/hn": {
+      "minified": 1634,
+      "gzip": 786
+    },
+    "./subdivisions/hr": {
+      "minified": 2265,
+      "gzip": 994
+    },
+    "./subdivisions/ht": {
+      "minified": 957,
+      "gzip": 552
+    },
+    "./subdivisions/hu": {
+      "minified": 3462,
+      "gzip": 1398
+    },
+    "./subdivisions/id": {
+      "minified": 3244,
+      "gzip": 1150
+    },
+    "./subdivisions/ie": {
+      "minified": 2083,
+      "gzip": 929
+    },
+    "./subdivisions/il": {
+      "minified": 874,
+      "gzip": 513
+    },
+    "./subdivisions/in": {
+      "minified": 3168,
+      "gzip": 1251
+    },
+    "./subdivisions/iq": {
+      "minified": 1534,
+      "gzip": 749
+    },
+    "./subdivisions/ir": {
+      "minified": 2611,
+      "gzip": 983
+    },
+    "./subdivisions/is": {
+      "minified": 3934,
+      "gzip": 1614
+    },
+    "./subdivisions/it": {
+      "minified": 7858,
+      "gzip": 2732
+    },
+    "./subdivisions/jm": {
+      "minified": 1623,
+      "gzip": 703
+    },
+    "./subdivisions/jo": {
+      "minified": 1083,
+      "gzip": 592
+    },
+    "./subdivisions/jp": {
+      "minified": 3804,
+      "gzip": 1455
+    },
+    "./subdivisions/ke": {
+      "minified": 2394,
+      "gzip": 1141
+    },
+    "./subdivisions/kg": {
+      "minified": 964,
+      "gzip": 560
+    },
+    "./subdivisions/kh": {
+      "minified": 1997,
+      "gzip": 897
+    },
+    "./subdivisions/ki": {
+      "minified": 757,
+      "gzip": 468
+    },
+    "./subdivisions/km": {
+      "minified": 738,
+      "gzip": 462
+    },
+    "./subdivisions/kn": {
+      "minified": 2498,
+      "gzip": 920
+    },
+    "./subdivisions/kp": {
+      "minified": 1155,
+      "gzip": 622
+    },
+    "./subdivisions/kr": {
+      "minified": 1458,
+      "gzip": 731
+    },
+    "./subdivisions/kw": {
+      "minified": 961,
+      "gzip": 558
+    },
+    "./subdivisions/kz": {
+      "minified": 1809,
+      "gzip": 808
+    },
+    "./subdivisions/la": {
+      "minified": 1661,
+      "gzip": 773
+    },
+    "./subdivisions/lb": {
+      "minified": 1033,
+      "gzip": 571
+    },
+    "./subdivisions/lc": {
+      "minified": 1194,
+      "gzip": 636
+    },
+    "./subdivisions/li": {
+      "minified": 1113,
+      "gzip": 609
+    },
+    "./subdivisions/lk": {
+      "minified": 2326,
+      "gzip": 1044
+    },
+    "./subdivisions/lr": {
+      "minified": 1335,
+      "gzip": 663
+    },
+    "./subdivisions/ls": {
+      "minified": 1143,
+      "gzip": 616
+    },
+    "./subdivisions/lt": {
+      "minified": 3216,
+      "gzip": 1362
+    },
+    "./subdivisions/lu": {
+      "minified": 1278,
+      "gzip": 667
+    },
+    "./subdivisions/lv": {
+      "minified": 2779,
+      "gzip": 1179
+    },
+    "./subdivisions/ly": {
+      "minified": 1814,
+      "gzip": 815
+    },
+    "./subdivisions/ma": {
+      "minified": 6269,
+      "gzip": 2303
+    },
+    "./subdivisions/mc": {
+      "minified": 1256,
+      "gzip": 736
+    },
+    "./subdivisions/md": {
+      "minified": 2661,
+      "gzip": 1132
+    },
+    "./subdivisions/me": {
+      "minified": 1530,
+      "gzip": 797
+    },
+    "./subdivisions/mg": {
+      "minified": 937,
+      "gzip": 527
+    },
+    "./subdivisions/mh": {
+      "minified": 2038,
+      "gzip": 878
+    },
+    "./subdivisions/mk": {
+      "minified": 4700,
+      "gzip": 1796
+    },
+    "./subdivisions/ml": {
+      "minified": 1035,
+      "gzip": 602
+    },
+    "./subdivisions/mm": {
+      "minified": 1301,
+      "gzip": 670
+    },
+    "./subdivisions/mn": {
+      "minified": 1811,
+      "gzip": 820
+    },
+    "./subdivisions/mr": {
+      "minified": 1469,
+      "gzip": 721
+    },
+    "./subdivisions/mt": {
+      "minified": 3579,
+      "gzip": 1498
+    },
+    "./subdivisions/mu": {
+      "minified": 1398,
+      "gzip": 731
+    },
+    "./subdivisions/mv": {
+      "minified": 1749,
+      "gzip": 754
+    },
+    "./subdivisions/mw": {
+      "minified": 1790,
+      "gzip": 910
+    },
+    "./subdivisions/mx": {
+      "minified": 2395,
+      "gzip": 1091
+    },
+    "./subdivisions/my": {
+      "minified": 1340,
+      "gzip": 696
+    },
+    "./subdivisions/mz": {
+      "minified": 1084,
+      "gzip": 606
+    },
+    "./subdivisions/na": {
+      "minified": 1250,
+      "gzip": 655
+    },
+    "./subdivisions/ne": {
+      "minified": 921,
+      "gzip": 544
+    },
+    "./subdivisions/ng": {
+      "minified": 2043,
+      "gzip": 962
+    },
+    "./subdivisions/ni": {
+      "minified": 1533,
+      "gzip": 779
+    },
+    "./subdivisions/nl": {
+      "minified": 1655,
+      "gzip": 794
+    },
+    "./subdivisions/no": {
+      "minified": 1577,
+      "gzip": 768
+    },
+    "./subdivisions/np": {
+      "minified": 861,
+      "gzip": 501
+    },
+    "./subdivisions/nr": {
+      "minified": 1263,
+      "gzip": 630
+    },
+    "./subdivisions/nz": {
+      "minified": 1709,
+      "gzip": 815
+    },
+    "./subdivisions/om": {
+      "minified": 1363,
+      "gzip": 662
+    },
+    "./subdivisions/pa": {
+      "minified": 1370,
+      "gzip": 709
+    },
+    "./subdivisions/pe": {
+      "minified": 1866,
+      "gzip": 920
+    },
+    "./subdivisions/pg": {
+      "minified": 1656,
+      "gzip": 828
+    },
+    "./subdivisions/ph": {
+      "minified": 6384,
+      "gzip": 2227
+    },
+    "./subdivisions/pk": {
+      "minified": 1111,
+      "gzip": 619
+    },
+    "./subdivisions/pl": {
+      "minified": 1603,
+      "gzip": 755
+    },
+    "./subdivisions/ps": {
+      "minified": 1399,
+      "gzip": 750
+    },
+    "./subdivisions/pt": {
+      "minified": 1642,
+      "gzip": 788
+    },
+    "./subdivisions/pw": {
+      "minified": 1381,
+      "gzip": 691
+    },
+    "./subdivisions/py": {
+      "minified": 1697,
+      "gzip": 795
+    },
+    "./subdivisions/qa": {
+      "minified": 1090,
+      "gzip": 623
+    },
+    "./subdivisions/ro": {
+      "minified": 2770,
+      "gzip": 1146
+    },
+    "./subdivisions/rs": {
+      "minified": 2206,
+      "gzip": 980
+    },
+    "./subdivisions/ru": {
+      "minified": 5611,
+      "gzip": 1993
+    },
+    "./subdivisions/rw": {
+      "minified": 768,
+      "gzip": 481
+    },
+    "./subdivisions/sa": {
+      "minified": 1175,
+      "gzip": 636
+    },
+    "./subdivisions/sb": {
+      "minified": 1085,
+      "gzip": 624
+    },
+    "./subdivisions/sc": {
+      "minified": 2324,
+      "gzip": 986
+    },
+    "./subdivisions/sd": {
+      "minified": 1552,
+      "gzip": 696
+    },
+    "./subdivisions/se": {
+      "minified": 1954,
+      "gzip": 803
+    },
+    "./subdivisions/sg": {
+      "minified": 803,
+      "gzip": 480
+    },
+    "./subdivisions/sh": {
+      "minified": 774,
+      "gzip": 476
+    },
+    "./subdivisions/si": {
+      "minified": 13008,
+      "gzip": 4046
+    },
+    "./subdivisions/sk": {
+      "minified": 1042,
+      "gzip": 579
+    },
+    "./subdivisions/sl": {
+      "minified": 760,
+      "gzip": 464
+    },
+    "./subdivisions/sm": {
+      "minified": 1159,
+      "gzip": 618
+    },
+    "./subdivisions/sn": {
+      "minified": 1245,
+      "gzip": 663
+    },
+    "./subdivisions/so": {
+      "minified": 1439,
+      "gzip": 710
+    },
+    "./subdivisions/sr": {
+      "minified": 1032,
+      "gzip": 583
+    },
+    "./subdivisions/ss": {
+      "minified": 1235,
+      "gzip": 623
+    },
+    "./subdivisions/st": {
+      "minified": 926,
+      "gzip": 547
+    },
+    "./subdivisions/sv": {
+      "minified": 1400,
+      "gzip": 697
+    },
+    "./subdivisions/sy": {
+      "minified": 1238,
+      "gzip": 666
+    },
+    "./subdivisions/sz": {
+      "minified": 743,
+      "gzip": 473
+    },
+    "./subdivisions/td": {
+      "minified": 1852,
+      "gzip": 867
+    },
+    "./subdivisions/tg": {
+      "minified": 742,
+      "gzip": 477
+    },
+    "./subdivisions/th": {
+      "minified": 5322,
+      "gzip": 1736
+    },
+    "./subdivisions/tj": {
+      "minified": 902,
+      "gzip": 570
+    },
+    "./subdivisions/tl": {
+      "minified": 1244,
+      "gzip": 681
+    },
+    "./subdivisions/tm": {
+      "minified": 840,
+      "gzip": 508
+    },
+    "./subdivisions/tn": {
+      "minified": 1683,
+      "gzip": 809
+    },
+    "./subdivisions/to": {
+      "minified": 834,
+      "gzip": 498
+    },
+    "./subdivisions/tr": {
+      "minified": 4721,
+      "gzip": 1711
+    },
+    "./subdivisions/tt": {
+      "minified": 1812,
+      "gzip": 874
+    },
+    "./subdivisions/tv": {
+      "minified": 978,
+      "gzip": 556
+    },
+    "./subdivisions/tw": {
+      "minified": 1394,
+      "gzip": 793
+    },
+    "./subdivisions/tz": {
+      "minified": 2074,
+      "gzip": 923
+    },
+    "./subdivisions/ua": {
+      "minified": 2333,
+      "gzip": 983
+    },
+    "./subdivisions/ug": {
+      "minified": 6881,
+      "gzip": 2372
+    },
+    "./subdivisions/um": {
+      "minified": 1106,
+      "gzip": 605
+    },
+    "./subdivisions/us": {
+      "minified": 3724,
+      "gzip": 1511
+    },
+    "./subdivisions/uy": {
+      "minified": 1586,
+      "gzip": 785
+    },
+    "./subdivisions/uz": {
+      "minified": 1425,
+      "gzip": 735
+    },
+    "./subdivisions/vc": {
+      "minified": 1040,
+      "gzip": 560
+    },
+    "./subdivisions/ve": {
+      "minified": 1796,
+      "gzip": 895
+    },
+    "./subdivisions/vn": {
+      "minified": 3959,
+      "gzip": 1464
+    },
+    "./subdivisions/vu": {
+      "minified": 826,
+      "gzip": 496
+    },
+    "./subdivisions/wf": {
+      "minified": 695,
+      "gzip": 439
+    },
+    "./subdivisions/ws": {
+      "minified": 1232,
+      "gzip": 643
+    },
+    "./subdivisions/ye": {
+      "minified": 1552,
+      "gzip": 755
+    },
+    "./subdivisions/za": {
+      "minified": 1065,
+      "gzip": 595
+    },
+    "./subdivisions/zm": {
+      "minified": 974,
+      "gzip": 559
+    },
+    "./subdivisions/zw": {
+      "minified": 1190,
+      "gzip": 590
+    },
+    "./subdivision-facts/ad": {
+      "minified": 1050,
+      "gzip": 623
+    },
+    "./subdivision-facts/ae": {
+      "minified": 1268,
+      "gzip": 731
+    },
+    "./subdivision-facts/af": {
+      "minified": 3623,
+      "gzip": 1761
+    },
+    "./subdivision-facts/ag": {
+      "minified": 1157,
+      "gzip": 665
+    },
+    "./subdivision-facts/al": {
+      "minified": 1542,
+      "gzip": 851
+    },
+    "./subdivision-facts/am": {
+      "minified": 1481,
+      "gzip": 832
+    },
+    "./subdivision-facts/ao": {
+      "minified": 2088,
+      "gzip": 1142
+    },
+    "./subdivision-facts/ar": {
+      "minified": 3021,
+      "gzip": 1443
+    },
+    "./subdivision-facts/at": {
+      "minified": 1250,
+      "gzip": 746
+    },
+    "./subdivision-facts/au": {
+      "minified": 1230,
+      "gzip": 758
+    },
+    "./subdivision-facts/az": {
+      "minified": 6236,
+      "gzip": 2684
+    },
+    "./subdivision-facts/ba": {
+      "minified": 796,
+      "gzip": 526
+    },
+    "./subdivision-facts/bb": {
+      "minified": 972,
+      "gzip": 560
+    },
+    "./subdivision-facts/bd": {
+      "minified": 5382,
+      "gzip": 2433
+    },
+    "./subdivision-facts/be": {
+      "minified": 1688,
+      "gzip": 901
+    },
+    "./subdivision-facts/bf": {
+      "minified": 4547,
+      "gzip": 1927
+    },
+    "./subdivision-facts/bg": {
+      "minified": 2977,
+      "gzip": 1438
+    },
+    "./subdivision-facts/bh": {
+      "minified": 820,
+      "gzip": 529
+    },
+    "./subdivision-facts/bi": {
+      "minified": 1993,
+      "gzip": 1059
+    },
+    "./subdivision-facts/bj": {
+      "minified": 1404,
+      "gzip": 799
+    },
+    "./subdivision-facts/bn": {
+      "minified": 985,
+      "gzip": 595
+    },
+    "./subdivision-facts/bo": {
+      "minified": 1377,
+      "gzip": 803
+    },
+    "./subdivision-facts/bq": {
+      "minified": 860,
+      "gzip": 546
+    },
+    "./subdivision-facts/br": {
+      "minified": 3301,
+      "gzip": 1695
+    },
+    "./subdivision-facts/bs": {
+      "minified": 1857,
+      "gzip": 957
+    },
+    "./subdivision-facts/bt": {
+      "minified": 2058,
+      "gzip": 1070
+    },
+    "./subdivision-facts/bw": {
+      "minified": 1562,
+      "gzip": 898
+    },
+    "./subdivision-facts/by": {
+      "minified": 1122,
+      "gzip": 681
+    },
+    "./subdivision-facts/bz": {
+      "minified": 1160,
+      "gzip": 694
+    },
+    "./subdivision-facts/ca": {
+      "minified": 1754,
+      "gzip": 1012
+    },
+    "./subdivision-facts/cd": {
+      "minified": 2542,
+      "gzip": 1312
+    },
+    "./subdivision-facts/cf": {
+      "minified": 1763,
+      "gzip": 1012
+    },
+    "./subdivision-facts/cg": {
+      "minified": 1429,
+      "gzip": 814
+    },
+    "./subdivision-facts/ch": {
+      "minified": 2756,
+      "gzip": 1403
+    },
+    "./subdivision-facts/ci": {
+      "minified": 1468,
+      "gzip": 861
+    },
+    "./subdivision-facts/cl": {
+      "minified": 2089,
+      "gzip": 1104
+    },
+    "./subdivision-facts/cm": {
+      "minified": 1378,
+      "gzip": 779
+    },
+    "./subdivision-facts/cn": {
+      "minified": 2949,
+      "gzip": 1579
+    },
+    "./subdivision-facts/co": {
+      "minified": 3393,
+      "gzip": 1760
+    },
+    "./subdivision-facts/cr": {
+      "minified": 1154,
+      "gzip": 699
+    },
+    "./subdivision-facts/cu": {
+      "minified": 2322,
+      "gzip": 1161
+    },
+    "./subdivision-facts/cv": {
+      "minified": 2658,
+      "gzip": 1206
+    },
+    "./subdivision-facts/cy": {
+      "minified": 974,
+      "gzip": 592
+    },
+    "./subdivision-facts/cz": {
+      "minified": 9571,
+      "gzip": 3493
+    },
+    "./subdivision-facts/de": {
+      "minified": 1982,
+      "gzip": 1098
+    },
+    "./subdivision-facts/dj": {
+      "minified": 975,
+      "gzip": 600
+    },
+    "./subdivision-facts/dk": {
+      "minified": 999,
+      "gzip": 609
+    },
+    "./subdivision-facts/dm": {
+      "minified": 1071,
+      "gzip": 632
+    },
+    "./subdivision-facts/do": {
+      "minified": 4052,
+      "gzip": 1752
+    },
+    "./subdivision-facts/dz": {
+      "minified": 5505,
+      "gzip": 2486
+    },
+    "./subdivision-facts/ec": {
+      "minified": 2863,
+      "gzip": 1418
+    },
+    "./subdivision-facts/ee": {
+      "minified": 3582,
+      "gzip": 1741
+    },
+    "./subdivision-facts/eg": {
+      "minified": 2898,
+      "gzip": 1495
+    },
+    "./subdivision-facts/er": {
+      "minified": 960,
+      "gzip": 604
+    },
+    "./subdivision-facts/es": {
+      "minified": 5414,
+      "gzip": 2520
+    },
+    "./subdivision-facts/et": {
+      "minified": 1360,
+      "gzip": 827
+    },
+    "./subdivision-facts/fi": {
+      "minified": 2243,
+      "gzip": 1200
+    },
+    "./subdivision-facts/fj": {
+      "minified": 1451,
+      "gzip": 758
+    },
+    "./subdivision-facts/fm": {
+      "minified": 893,
+      "gzip": 565
+    },
+    "./subdivision-facts/fr": {
+      "minified": 10796,
+      "gzip": 4510
+    },
+    "./subdivision-facts/ga": {
+      "minified": 1323,
+      "gzip": 781
+    },
+    "./subdivision-facts/gb": {
+      "minified": 18483,
+      "gzip": 7326
+    },
+    "./subdivision-facts/gd": {
+      "minified": 1147,
+      "gzip": 654
+    },
+    "./subdivision-facts/ge": {
+      "minified": 1530,
+      "gzip": 862
+    },
+    "./subdivision-facts/gh": {
+      "minified": 1694,
+      "gzip": 960
+    },
+    "./subdivision-facts/gl": {
+      "minified": 1001,
+      "gzip": 631
+    },
+    "./subdivision-facts/gm": {
+      "minified": 885,
+      "gzip": 563
+    },
+    "./subdivision-facts/gn": {
+      "minified": 2224,
+      "gzip": 1155
+    },
+    "./subdivision-facts/gq": {
+      "minified": 1288,
+      "gzip": 747
+    },
+    "./subdivision-facts/gr": {
+      "minified": 1673,
+      "gzip": 948
+    },
+    "./subdivision-facts/gt": {
+      "minified": 2736,
+      "gzip": 1267
+    },
+    "./subdivision-facts/gw": {
+      "minified": 1316,
+      "gzip": 765
+    },
+    "./subdivision-facts/gy": {
+      "minified": 1451,
+      "gzip": 835
+    },
+    "./subdivision-facts/hn": {
+      "minified": 2267,
+      "gzip": 1132
+    },
+    "./subdivision-facts/hr": {
+      "minified": 2334,
+      "gzip": 1197
+    },
+    "./subdivision-facts/ht": {
+      "minified": 1445,
+      "gzip": 796
+    },
+    "./subdivision-facts/hu": {
+      "minified": 3305,
+      "gzip": 1582
+    },
+    "./subdivision-facts/id": {
+      "minified": 3620,
+      "gzip": 1769
+    },
+    "./subdivision-facts/ie": {
+      "minified": 2875,
+      "gzip": 1430
+    },
+    "./subdivision-facts/il": {
+      "minified": 1091,
+      "gzip": 660
+    },
+    "./subdivision-facts/in": {
+      "minified": 3584,
+      "gzip": 1752
+    },
+    "./subdivision-facts/iq": {
+      "minified": 2103,
+      "gzip": 1121
+    },
+    "./subdivision-facts/ir": {
+      "minified": 1400,
+      "gzip": 813
+    },
+    "./subdivision-facts/is": {
+      "minified": 3563,
+      "gzip": 1640
+    },
+    "./subdivision-facts/it": {
+      "minified": 10284,
+      "gzip": 4128
+    },
+    "./subdivision-facts/jm": {
+      "minified": 1949,
+      "gzip": 1018
+    },
+    "./subdivision-facts/jo": {
+      "minified": 1474,
+      "gzip": 836
+    },
+    "./subdivision-facts/jp": {
+      "minified": 5593,
+      "gzip": 2384
+    },
+    "./subdivision-facts/ke": {
+      "minified": 3841,
+      "gzip": 1862
+    },
+    "./subdivision-facts/kg": {
+      "minified": 1179,
+      "gzip": 698
+    },
+    "./subdivision-facts/kh": {
+      "minified": 2610,
+      "gzip": 1300
+    },
+    "./subdivision-facts/ki": {
+      "minified": 836,
+      "gzip": 551
+    },
+    "./subdivision-facts/km": {
+      "minified": 824,
+      "gzip": 528
+    },
+    "./subdivision-facts/kn": {
+      "minified": 2218,
+      "gzip": 1016
+    },
+    "./subdivision-facts/kp": {
+      "minified": 1426,
+      "gzip": 819
+    },
+    "./subdivision-facts/kr": {
+      "minified": 1705,
+      "gzip": 961
+    },
+    "./subdivision-facts/kw": {
+      "minified": 995,
+      "gzip": 607
+    },
+    "./subdivision-facts/kz": {
+      "minified": 2129,
+      "gzip": 1152
+    },
+    "./subdivision-facts/la": {
+      "minified": 2300,
+      "gzip": 1157
+    },
+    "./subdivision-facts/lb": {
+      "minified": 1139,
+      "gzip": 682
+    },
+    "./subdivision-facts/lc": {
+      "minified": 1142,
+      "gzip": 665
+    },
+    "./subdivision-facts/li": {
+      "minified": 1025,
+      "gzip": 601
+    },
+    "./subdivision-facts/lk": {
+      "minified": 3047,
+      "gzip": 1332
+    },
+    "./subdivision-facts/lr": {
+      "minified": 1886,
+      "gzip": 1042
+    },
+    "./subdivision-facts/ls": {
+      "minified": 1516,
+      "gzip": 827
+    },
+    "./subdivision-facts/lt": {
+      "minified": 6756,
+      "gzip": 2546
+    },
+    "./subdivision-facts/lu": {
+      "minified": 1531,
+      "gzip": 845
+    },
+    "./subdivision-facts/lv": {
+      "minified": 4139,
+      "gzip": 1860
+    },
+    "./subdivision-facts/ly": {
+      "minified": 2066,
+      "gzip": 1102
+    },
+    "./subdivision-facts/ma": {
+      "minified": 7836,
+      "gzip": 3272
+    },
+    "./subdivision-facts/mc": {
+      "minified": 964,
+      "gzip": 546
+    },
+    "./subdivision-facts/md": {
+      "minified": 3763,
+      "gzip": 1697
+    },
+    "./subdivision-facts/me": {
+      "minified": 2667,
+      "gzip": 1266
+    },
+    "./subdivision-facts/mg": {
+      "minified": 1099,
+      "gzip": 662
+    },
+    "./subdivision-facts/mh": {
+      "minified": 1419,
+      "gzip": 805
+    },
+    "./subdivision-facts/mk": {
+      "minified": 5810,
+      "gzip": 2530
+    },
+    "./subdivision-facts/ml": {
+      "minified": 1328,
+      "gzip": 821
+    },
+    "./subdivision-facts/mm": {
+      "minified": 1759,
+      "gzip": 987
+    },
+    "./subdivision-facts/mn": {
+      "minified": 2528,
+      "gzip": 1298
+    },
+    "./subdivision-facts/mr": {
+      "minified": 1863,
+      "gzip": 991
+    },
+    "./subdivision-facts/mt": {
+      "minified": 2960,
+      "gzip": 1182
+    },
+    "./subdivision-facts/mu": {
+      "minified": 1293,
+      "gzip": 753
+    },
+    "./subdivision-facts/mv": {
+      "minified": 1108,
+      "gzip": 623
+    },
+    "./subdivision-facts/mw": {
+      "minified": 2744,
+      "gzip": 1324
+    },
+    "./subdivision-facts/mx": {
+      "minified": 3720,
+      "gzip": 1891
+    },
+    "./subdivision-facts/my": {
+      "minified": 1857,
+      "gzip": 1013
+    },
+    "./subdivision-facts/mz": {
+      "minified": 1412,
+      "gzip": 825
+    },
+    "./subdivision-facts/na": {
+      "minified": 1887,
+      "gzip": 1019
+    },
+    "./subdivision-facts/ne": {
+      "minified": 1151,
+      "gzip": 696
+    },
+    "./subdivision-facts/ng": {
+      "minified": 3372,
+      "gzip": 1755
+    },
+    "./subdivision-facts/ni": {
+      "minified": 1760,
+      "gzip": 949
+    },
+    "./subdivision-facts/nl": {
+      "minified": 2184,
+      "gzip": 1139
+    },
+    "./subdivision-facts/no": {
+      "minified": 1662,
+      "gzip": 962
+    },
+    "./subdivision-facts/np": {
+      "minified": 1073,
+      "gzip": 656
+    },
+    "./subdivision-facts/nr": {
+      "minified": 1075,
+      "gzip": 581
+    },
+    "./subdivision-facts/nz": {
+      "minified": 2066,
+      "gzip": 1112
+    },
+    "./subdivision-facts/om": {
+      "minified": 1361,
+      "gzip": 784
+    },
+    "./subdivision-facts/pa": {
+      "minified": 1754,
+      "gzip": 988
+    },
+    "./subdivision-facts/pe": {
+      "minified": 2914,
+      "gzip": 1509
+    },
+    "./subdivision-facts/pg": {
+      "minified": 2013,
+      "gzip": 1128
+    },
+    "./subdivision-facts/ph": {
+      "minified": 8693,
+      "gzip": 3759
+    },
+    "./subdivision-facts/pk": {
+      "minified": 1200,
+      "gzip": 730
+    },
+    "./subdivision-facts/pl": {
+      "minified": 1887,
+      "gzip": 1049
+    },
+    "./subdivision-facts/ps": {
+      "minified": 1891,
+      "gzip": 1018
+    },
+    "./subdivision-facts/pt": {
+      "minified": 1703,
+      "gzip": 960
+    },
+    "./subdivision-facts/pw": {
+      "minified": 1339,
+      "gzip": 746
+    },
+    "./subdivision-facts/py": {
+      "minified": 2318,
+      "gzip": 1175
+    },
+    "./subdivision-facts/qa": {
+      "minified": 1142,
+      "gzip": 676
+    },
+    "./subdivision-facts/ro": {
+      "minified": 4493,
+      "gzip": 2059
+    },
+    "./subdivision-facts/rs": {
+      "minified": 3402,
+      "gzip": 1508
+    },
+    "./subdivision-facts/ru": {
+      "minified": 8176,
+      "gzip": 3738
+    },
+    "./subdivision-facts/rw": {
+      "minified": 948,
+      "gzip": 598
+    },
+    "./subdivision-facts/sa": {
+      "minified": 1564,
+      "gzip": 903
+    },
+    "./subdivision-facts/sb": {
+      "minified": 1153,
+      "gzip": 707
+    },
+    "./subdivision-facts/sc": {
+      "minified": 1255,
+      "gzip": 626
+    },
+    "./subdivision-facts/sd": {
+      "minified": 2083,
+      "gzip": 1155
+    },
+    "./subdivision-facts/se": {
+      "minified": 2426,
+      "gzip": 1207
+    },
+    "./subdivision-facts/sg": {
+      "minified": 701,
+      "gzip": 439
+    },
+    "./subdivision-facts/sh": {
+      "minified": 943,
+      "gzip": 563
+    },
+    "./subdivision-facts/si": {
+      "minified": 11017,
+      "gzip": 4310
+    },
+    "./subdivision-facts/sk": {
+      "minified": 1374,
+      "gzip": 769
+    },
+    "./subdivision-facts/sl": {
+      "minified": 885,
+      "gzip": 574
+    },
+    "./subdivision-facts/sm": {
+      "minified": 906,
+      "gzip": 549
+    },
+    "./subdivision-facts/sn": {
+      "minified": 1755,
+      "gzip": 956
+    },
+    "./subdivision-facts/so": {
+      "minified": 1835,
+      "gzip": 1038
+    },
+    "./subdivision-facts/sr": {
+      "minified": 1425,
+      "gzip": 808
+    },
+    "./subdivision-facts/ss": {
+      "minified": 1315,
+      "gzip": 801
+    },
+    "./subdivision-facts/st": {
+      "minified": 1204,
+      "gzip": 693
+    },
+    "./subdivision-facts/sv": {
+      "minified": 1959,
+      "gzip": 963
+    },
+    "./subdivision-facts/sy": {
+      "minified": 1702,
+      "gzip": 923
+    },
+    "./subdivision-facts/sz": {
+      "minified": 911,
+      "gzip": 570
+    },
+    "./subdivision-facts/td": {
+      "minified": 2337,
+      "gzip": 1203
+    },
+    "./subdivision-facts/tg": {
+      "minified": 932,
+      "gzip": 595
+    },
+    "./subdivision-facts/th": {
+      "minified": 7510,
+      "gzip": 3068
+    },
+    "./subdivision-facts/tj": {
+      "minified": 945,
+      "gzip": 602
+    },
+    "./subdivision-facts/tl": {
+      "minified": 1674,
+      "gzip": 902
+    },
+    "./subdivision-facts/tm": {
+      "minified": 1051,
+      "gzip": 645
+    },
+    "./subdivision-facts/tn": {
+      "minified": 2421,
+      "gzip": 1212
+    },
+    "./subdivision-facts/to": {
+      "minified": 777,
+      "gzip": 498
+    },
+    "./subdivision-facts/tr": {
+      "minified": 7284,
+      "gzip": 3114
+    },
+    "./subdivision-facts/tt": {
+      "minified": 1284,
+      "gzip": 738
+    },
+    "./subdivision-facts/tv": {
+      "minified": 860,
+      "gzip": 553
+    },
+    "./subdivision-facts/tw": {
+      "minified": 2234,
+      "gzip": 1199
+    },
+    "./subdivision-facts/tz": {
+      "minified": 3000,
+      "gzip": 1500
+    },
+    "./subdivision-facts/ua": {
+      "minified": 2943,
+      "gzip": 1456
+    },
+    "./subdivision-facts/ug": {
+      "minified": 7961,
+      "gzip": 3463
+    },
+    "./subdivision-facts/um": {
+      "minified": 881,
+      "gzip": 546
+    },
+    "./subdivision-facts/us": {
+      "minified": 5733,
+      "gzip": 2721
+    },
+    "./subdivision-facts/uy": {
+      "minified": 2409,
+      "gzip": 1217
+    },
+    "./subdivision-facts/uz": {
+      "minified": 1670,
+      "gzip": 958
+    },
+    "./subdivision-facts/vc": {
+      "minified": 1024,
+      "gzip": 606
+    },
+    "./subdivision-facts/ve": {
+      "minified": 2670,
+      "gzip": 1372
+    },
+    "./subdivision-facts/vn": {
+      "minified": 3424,
+      "gzip": 1662
+    },
+    "./subdivision-facts/vu": {
+      "minified": 1018,
+      "gzip": 632
+    },
+    "./subdivision-facts/wf": {
+      "minified": 761,
+      "gzip": 501
+    },
+    "./subdivision-facts/ws": {
+      "minified": 1120,
+      "gzip": 620
+    },
+    "./subdivision-facts/ye": {
+      "minified": 2231,
+      "gzip": 1170
+    },
+    "./subdivision-facts/za": {
+      "minified": 1453,
+      "gzip": 852
+    },
+    "./subdivision-facts/zm": {
+      "minified": 1262,
+      "gzip": 753
+    },
+    "./subdivision-facts/zw": {
+      "minified": 1194,
+      "gzip": 718
+    }
+  }
+}
