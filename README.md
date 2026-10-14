@@ -501,7 +501,7 @@ Using Kuni in something else? Open an *Add my project* issue and we will add you
 
 Kuni is not yet in the family's shared list (the template every demo's header and footer read), which is changed in every repository at once; until it is, its demo adds itself at the end. The list as it will be:
 
-Kuni is one of twenty-five packages, each made for the same site, each at
+Kuni is one of twenty-nine packages, each made for the same site, each at
 [github.com/johnmorrisdotca](https://github.com/johnmorrisdotca). The code of every one is MIT.
 
 - [Korokoro](https://github.com/johnmorrisdotca/korokoro) (コロコロ): dice, with notation, exact odds, real sounds and the dice of many games. [Demo](https://johnmorrisdotca.github.io/korokoro/).
@@ -528,9 +528,13 @@ Kuni is one of twenty-five packages, each made for the same site, each at
 - [Gunjin](https://github.com/johnmorrisdotca/gunjin) (軍人): five hidden-rank strategy games with pass-the-device play. [Demo](https://johnmorrisdotca.github.io/gunjin/).
 - [Karakuri](https://github.com/johnmorrisdotca/karakuri) (からくり): eight hyper-casual puzzle games, some of them physics: draw a shield, pull pins, cut ropes, slide blocks, pour tubes. [Demo](https://johnmorrisdotca.github.io/karakuri/).
 - [Houseki](https://github.com/johnmorrisdotca/houseki) (宝石): gem and stone matching puzzles: falling triplets, stone collapse, colour chains and gem swap. [Demo](https://johnmorrisdotca.github.io/houseki/).
+- [Kyogijo Stadiums](https://github.com/johnmorrisdotca/kyogijo-stadiums) (競技場): sports fields, rinks, courts and ballparks drawn to scale as SVG, with each team and the score on them. [Demo](https://johnmorrisdotca.github.io/kyogijo-stadiums/).
+- [Taisen Brackets](https://github.com/johnmorrisdotca/taisen-brackets) (対戦): a sport-agnostic tournament bracket, drawn as SVG, from a list of ties. [Demo](https://johnmorrisdotca.github.io/taisen-brackets/).
+- [Dougu Sports](https://github.com/johnmorrisdotca/dougu-sports) (道具): sports emblems as SVG: trophies, medals, crests, and the ball and gear of every sport, with optional 3D turning. [Demo](https://johnmorrisdotca.github.io/dougu-sports/).
+- [Senshu Jerseys](https://github.com/johnmorrisdotca/senshu-jerseys) (選手): sports jerseys, sweaters, kits, caps, helmets and retired-number banners as SVG, front and back, with optional 2.5D turning. [Demo](https://johnmorrisdotca.github.io/senshu-jerseys/).
 - [Kuni](https://github.com/johnmorrisdotca/kuni) (国): every country and its subdivisions, with ISO 3166 codes and names in English and Japanese. [Demo](https://johnmorrisdotca.github.io/kuni/).
 
-**This package is Kuni.** The demos of all twenty-five share one header and footer, so each links the rest.
+**This package is Kuni.** The demos of all twenty-nine share one header and footer, so each links the rest.
 
 ## Development
 
