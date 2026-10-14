@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+- Keep complete resource catalogues on the documentation entry index and the active resource beside core navigation; render valid default imports in HTML and Markdown.
+
 - Add the bilingual documentation site, checked public examples, full country-resource catalogue, local search and machine-readable pages.
 
 - Reconcile cards with the released IOC/withdrawn APIs; append optional ioc display while keeping current-country pickers and default fields unchanged.
