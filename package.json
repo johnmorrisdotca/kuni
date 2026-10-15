@@ -1,6 +1,6 @@
 {
   "name": "@johnmorrisdotca/kuni",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Kuni 国 — Countries, states and provinces: ISO 3166 codes and English/Japanese names, subdivisions, country facts and groupings, typed lookups, on-demand country data and an optional card. Zero dependencies.",
   "keywords": [
     "countries",

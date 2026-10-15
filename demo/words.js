@@ -3,7 +3,7 @@
 export const WORDS = {
   en: {
     pageDocs: "Docs",
-    pageApi: "API reference",
+    pageApi: "API",
     pitch: "Every country and its states, provinces and prefectures, with ISO 3166 codes and names in English and Japanese. Type in any panel and the answer appears, from the package's own data.",
     name: "Kuni (国) is Japanese for “country”, and also for the region somebody comes from.",
     nameLink: "About the name",

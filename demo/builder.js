@@ -4,7 +4,7 @@ import "./dist/element-define.js";
 import { familyEmbedBuilder, FAMILY_EMBED_BUILDER_WORDS } from "./family-embed-builder.js";
 const words = {
   en: {
-    ...FAMILY_EMBED_BUILDER_WORDS.en,pageDocs:"Docs",pageApi:"API reference",
+    ...FAMILY_EMBED_BUILDER_WORDS.en,pageDocs:"Docs",pageApi: "API",
     pitch: "Choose a country or subdivision and its fields, preview the card, and copy the code for your page.",
     name: "Kuni means country in Japanese.",
     nameLink: "About the name",
@@ -17,7 +17,7 @@ const words = {
   ja: {
     ...FAMILY_EMBED_BUILDER_WORDS.ja,pageDocs:"ドキュメント",pageApi:"API（英語）",
     pitch: "国や行政区画と表示する項目を選び、カードを確認して、ページに埋め込むコードをコピーできます。",
-    name: "「国」は英語の country に当たる日本語です。",
+    name: "「国」は英語のcountryに当たる日本語です。",
     nameLink: "名前について",
     foot: "設定はリンクに入ります。個人情報は保存しません。",
     toGallery: "国の一覧",

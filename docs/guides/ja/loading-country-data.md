@@ -5,7 +5,7 @@ order: 4
 description: 元の固定のパスか、必要なときの読み込みを使います。
 ---
 
-## 標準の API を使う
+## 標準のAPIを使う
 
 ```ts
 import { loadSubdivisions } from "@johnmorrisdotca/kuni/load";
@@ -14,7 +14,7 @@ console.log((await loadSubdivisions("JP"))?.length,prefectures.length,prefecture
 console.log(await loadSubdivisions("XX"));
 ```
 
-固定の import は、残すワイルドカードのパスと同じ元のファイルを指します。既定の export と SUBDIVISIONS は同じ標準の一覧です。必要なときの読み込みは国ごとのモジュールで、表示側のビルドが国ごとの部分を作れます。これはモジュールの読み込みで、最新の地理データの API ではありません。未対応のコードは null、有効でも行政区画がない国は空の一覧です。
+固定のimportは、残すワイルドカードのパスと同じ元のファイルを指します。既定のexportとSUBDIVISIONSは同じ標準の一覧です。必要なときの読み込みは国ごとのモジュールで、表示側のビルドが国ごとの部分を作れます。これはモジュールの読み込みで、最新の地理データのAPIではありません。未対応のコードはnull、有効でも行政区画がない国は空の一覧です。
 
 ## 行政区画の情報を別に読む
 
@@ -24,4 +24,4 @@ import facts from "@johnmorrisdotca/kuni/subdivision-facts/jp";
 console.log((await loadSubdivisionFacts("JP"))?.length,facts[0].code);
 ```
 
-名前の記録と情報を区別します。[一覧](country-resources.md)に元の400の固定のパスがあります。ワイルドカードの import と元の ESM・CommonJS のファイルを保ちます。
+名前の記録と情報を区別します。[一覧](country-resources.md)に元の400の固定のパスがあります。ワイルドカードのimportと元のESM・CommonJSのファイルを保ちます。
