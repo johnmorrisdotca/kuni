@@ -19,6 +19,7 @@ A country and subdivision card with a shared embed builder joins the demo and th
 
 ### Changed
 
+- The tests allow thirty seconds each (`vitest.config.js`), because the shared test that measures each entry point's size builds the country data and took longer than five seconds on a slow runner.
 - The API link in the header reads "API" in English, so that the header takes the same number of rows in English and in Japanese on a phone, as the demo's test of a language change asks.
 - Synchronize documentation tooling for repository layouts, generated type references, Node entry points and repository-specific README links.
 - Keep complete resource catalogues on the documentation entry index and the active resource beside core navigation; render valid default imports in HTML and Markdown.
