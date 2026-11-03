@@ -95,7 +95,7 @@ test("in Japanese: the page's words, the countries in Japanese order, and the ki
   const first = await page.locator(at("list-country")).locator("option").first().textContent();
   expect(first).toContain("アイスランド");
   await expect(page.locator("#unreviewed")).toBeVisible();
-  await page.locator('[data-lang="en"]').click();
+  await page.locator('kazoku-language-picker [data-v="en"]').click();
   await expect(page.locator("#find-title")).toHaveText(/Find a country/);
   await expect(page.locator(at("list-country"))).toHaveValue("JP");
   expect(errors).toEqual([]);

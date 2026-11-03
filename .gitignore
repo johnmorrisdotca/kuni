@@ -6,3 +6,4 @@ playwright-report/
 *.tgz
 .readme-examples/
 .docs-examples/
+.usage/

@@ -3,6 +3,8 @@
 // files only) beside it.
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 
+import { build } from "esbuild";
+
 import { API_CSS, apiPage } from "./api.mjs";
 import { FACT_GAPS } from "./facts-config.ts";
 import { FAMILY_SCRIPT, FAMILY_EMBED_BUILDER_WORDS, familyEmbedBuilder, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
@@ -92,43 +94,26 @@ const view = (name) => `<section class="view fam-panels" data-view="${name}" ari
         </div>
       </section>`;
 
-const page = `<!doctype html>
-<html lang="en">
-  <head>
-    ${familyHead({
-      id,
-      title: "Kuni 国 — Countries, states and provinces",
-      description: "Look up any country and its states, provinces and prefectures by ISO 3166 code or by name, in English or Japanese, in your browser. A typed, zero-dependency dataset from Unicode CLDR and Wikidata. Free and open source.",
-      ogTitle: "Kuni 国 — Countries, states and provinces",
-      ogDescription: "Every country and its 5,050 ISO 3166-2 subdivisions, with names in English and Japanese, looked up by code or by what somebody typed. No dependencies.",
-    })}
-    <link rel="icon" href="${ICON}" />
-    <link rel="stylesheet" href="family.css" />
-    <link rel="stylesheet" href="kuni.css" />
-  </head>
-  <body>
-    <main>
-      ${familyHeader({ id, links: [{ href: "docs/index.html", say: "pageDocs" }, { href: "api.html", say: "pageApi" }] })}
-      ${tabs}
-      <div class="lookups view" data-view="lookup" data-testid="view-lookup">
-      ${panels.join("\n      ")}
-      </div>
-      ${VIEW_NAMES.filter((name) => name !== "lookup").map(view).join("\n      ")}
-      ${familyUnreviewed({ id })}
-      <section class="more" aria-labelledby="more-title">
-        <h2 id="more-title" data-say="moreTitle"></h2>
-        <p data-say="moreText"></p>
-        <ul class="uses">
-          ${uses.map((line) => `<li><code>${escape(line)}</code></li>`).join("\n          ")}
-        </ul>
-      </section>
-      ${familyFooter({ id })}
-    </main>
-    <script>${FAMILY_SCRIPT}</script>
-    <script type="module" src="demo.js"></script>
-  </body>
-</html>
-`;
+// The page is demo/index.html; each <!-- family:key --> in it is replaced by the text below.
+const pageParts = {
+  head: familyHead({
+    id,
+    title: "Kuni 国 — Countries, states and provinces",
+    description: "Look up any country and its states, provinces and prefectures by ISO 3166 code or by name, in English or Japanese, in your browser. A typed, zero-dependency dataset from Unicode CLDR and Wikidata. Free and open source.",
+    ogTitle: "Kuni 国 — Countries, states and provinces",
+    ogDescription: "Every country and its 5,050 ISO 3166-2 subdivisions, with names in English and Japanese, looked up by code or by what somebody typed. No dependencies.",
+  }),
+  icon: ICON,
+  header: familyHeader({ id, links: [{ href: "docs/index.html", say: "pageDocs" }, { href: "api.html", say: "pageApi" }] }),
+  tabs,
+  lookups: panels.join("\n      "),
+  views: VIEW_NAMES.filter((name) => name !== "lookup").map(view).join("\n      "),
+  unreviewed: familyUnreviewed({ id }),
+  uses: uses.map((line) => `<li><code>${escape(line)}</code></li>`).join("\n          "),
+  footer: familyFooter({ id }),
+  script: `<script>${FAMILY_SCRIPT}</script>\n    <script type="module" src="kazoku-parts.js"></script>`,
+};
+const page = readFileSync("demo/index.html", "utf8").replace(/<!-- family:([A-Za-z]+) -->/g, (_match, key) => pageParts[key]);
 
 rmSync("site", { recursive: true, force: true });
 mkdirSync("site", { recursive: true });
@@ -136,6 +121,15 @@ cpSync("demo", "site", { recursive: true });
 // The page imports the ESM build only; the CommonJS files and the type declarations are left out.
 cpSync("dist", "site/dist", { recursive: true, filter: (source) => !/\.(cjs|d\.ts|d\.cts)$/.test(source) });
 writeFileSync("site/index.html", page);
+// The family header's language picker and theme switch, as one small module for every page of the site (the demo, the builder, the API reference and the docs).
+await build({
+  stdin: { contents: 'import "@johnmorrisdotca/kazoku-ui/language-picker/define";\nimport "@johnmorrisdotca/kazoku-ui/theme-switch/define";\n', resolveDir: process.cwd() },
+  outfile: "site/kazoku-parts.js",
+  bundle: true,
+  format: "esm",
+  minify: true,
+  logLevel: "silent",
+});
 
 // Chizu's map of each country alone, for the country page's outline: one small module a country, imported when it is
 // wanted. Chizu is a development dependency of this repository, for the demo; the package does not depend on it.
@@ -184,6 +178,6 @@ writeFileSync("site/family-embed-builder.js", `export const FAMILY_EMBED_BUILDER
 const builderParts = {
   builderHead: familyHead({ id, title: "Kuni 国 — Countries, states and provinces · Build a country card", description: "Choose a country or subdivision, preview its card and copy the embed code." }),
   builderHeader: familyHeader({ id, links: [{ href: "./", say: "toGallery" }, { href: "docs/index.html", say: "pageDocs" }, { href: "api.html", say: "pageApi" }] }),
-  unreviewed: familyUnreviewed({ id }), footer: familyFooter({ id }), script: `<script>${FAMILY_SCRIPT}</script>`,
+  unreviewed: familyUnreviewed({ id }), footer: familyFooter({ id }), script: `<script>${FAMILY_SCRIPT}</script>\n    <script type="module" src="kazoku-parts.js"></script>`,
 };
 writeFileSync("site/builder.html", readFileSync("demo/builder.html", "utf8").replace(/<!-- family:([A-Za-z]+) -->/g, (_match, key) => builderParts[key]));
