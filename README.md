@@ -1,3 +1,5 @@
+<p align="center"><a href="https://johnmorrisdotca.github.io/kuni/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/thumbnail-dark.png"><img src="https://raw.githubusercontent.com/johnmorrisdotca/kuni/main/docs/images/thumbnail.png" alt="Kuni: the outlines of Japan, Canada, Italy and Brazil with their capitals marked, their ISO codes and their names in English and Japanese." width="1200"></picture></a></p>
+
 <h1 align="center">Kuni <sub>国</sub> — Countries, states and provinces</h1>
 
 <p align="center"><strong>Kuni 国: every country and its states, provinces and prefectures, with ISO 3166 codes and names in English and Japanese.</strong><br>

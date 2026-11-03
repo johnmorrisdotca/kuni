@@ -8,8 +8,10 @@ import { build } from "esbuild";
 import { API_CSS, apiPage } from "./api.mjs";
 import { FACT_GAPS } from "./facts-config.ts";
 import { FAMILY_SCRIPT, FAMILY_EMBED_BUILDER_WORDS, familyEmbedBuilder, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
+import { publishThumbnails, thumbnailHead } from "./family-thumbnail.mjs";
 
 const id = "kuni";
+const ALT = "Kuni: the outlines of Japan, Canada, Italy and Brazil with their capitals marked, their ISO codes and their names in English and Japanese.";
 
 
 const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232f5d4a'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23f3efe4' stroke-width='5'/%3E%3Cpath d='M22 50h56M50 22c-10 9-14 18-14 28s4 19 14 28c10-9 14-18 14-28s-4-19-14-28z' fill='none' stroke='%23f3efe4' stroke-width='5'/%3E%3C/svg%3E";
@@ -96,6 +98,7 @@ const view = (name) => `<section class="view fam-panels" data-view="${name}" ari
 
 // The page is demo/index.html; each <!-- family:key --> in it is replaced by the text below.
 const pageParts = {
+  thumbnail: thumbnailHead(JSON.parse(readFileSync("package.json", "utf8")), { alt: ALT }),
   head: familyHead({
     id,
     title: "Kuni 国 — Countries, states and provinces",
@@ -121,6 +124,8 @@ cpSync("demo", "site", { recursive: true });
 // The page imports the ESM build only; the CommonJS files and the type declarations are left out.
 cpSync("dist", "site/dist", { recursive: true, filter: (source) => !/\.(cjs|d\.ts|d\.cts)$/.test(source) });
 writeFileSync("site/index.html", page);
+// The family's card, dark card and icon, at <site>/thumbnail.png, thumbnail-dark.png and icon.png.
+publishThumbnails(".", "site");
 // The family header's language picker and theme switch, as one small module for every page of the site (the demo, the builder, the API reference and the docs).
 await build({
   stdin: { contents: 'import "@johnmorrisdotca/kazoku-ui/language-picker/define";\nimport "@johnmorrisdotca/kazoku-ui/theme-switch/define";\n', resolveDir: process.cwd() },
