@@ -283,7 +283,7 @@ import "@johnmorrisdotca/kuni/element/define";
 
 The `@johnmorrisdotca/kuni/element` entry exports the class and `defineCard(tag?)`; `@johnmorrisdotca/kuni/element/define` registers the tag. Both are safe to import on a server. The builder also supplies plain HTML, Vue, Svelte, Angular and iframe examples.
 
-## Use it anywhere
+## Every way to use it
 
 The [demo](https://johnmorrisdotca.github.io/kuni/), the [docs](https://johnmorrisdotca.github.io/kuni/docs/) (English and Japanese) and the [embed page](https://johnmorrisdotca.github.io/kuni/embed/). Each way below is a tested file in [`examples/`](./examples) (`pnpm test:usage`).
 
