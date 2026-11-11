@@ -437,28 +437,58 @@ describe("the top cities of a country", () => {
   const top = async (code: string, count: number): Promise<string[]> =>
     [...(await citiesOf(code))!].sort((a, b) => rankingPopulation(b) - rankingPopulation(a)).slice(0, count).map((city) => city.name.en);
 
-  it("rank by the metropolitan area where Wikidata names one, so Vancouver is Canada's third", async () => {
-    expect(await top("CA", 3)).toEqual(["Toronto", "Montreal", "Vancouver"]);
-    expect((await top("FR", 1))[0]).toBe("Paris");
-    // Manila is Metro Manila's capital, so the region's figure is Manila's and it is first; Quezon City, larger within its own limits, comes after.
-    expect((await top("PH", 1))[0]).toBe("Manila");
-    expect((await top("JP", 1))[0]).toBe("Tokyo");
-    expect((await top("US", 1))[0]).toBe("New York City");
-    expect((await top("AU", 2)).sort()).toEqual(["Melbourne", "Sydney"]);
-    // Wikidata has these metros but links them to no city: set by name in scripts/metro-links.ts.
+  it("rank by the urban area each heads, by one official source for each country, as a city picker lists them", async () => {
+    // Statistics Canada's census metropolitan areas (1 July 2025) and the Census Bureau's statistical areas (1 July 2024).
+    expect(await top("CA", 15)).toEqual(["Toronto", "Montreal", "Vancouver", "Calgary", "Ottawa", "Edmonton", "Winnipeg", "Quebec City", "Hamilton", "Kitchener", "London", "Halifax", "St. Catharines", "Oshawa", "Windsor"]);
+    expect(await top("US", 15)).toEqual(["New York City", "Los Angeles", "Chicago", "Dallas", "Houston", "Miami", "Washington, D.C.", "Atlanta", "Philadelphia", "Phoenix", "Boston", "Riverside", "San Francisco", "Detroit", "Seattle"]);
+    // The OECD's functional urban areas.
+    expect(await top("GB", 10)).toEqual(["London", "Manchester", "Birmingham", "Leeds", "Glasgow", "Liverpool", "Newcastle upon Tyne", "Sheffield", "Bristol", "Leicester"]);
+    expect(await top("JP", 10)).toEqual(["Tokyo", "Osaka", "Nagoya", "Fukuoka", "Sapporo", "Sendai", "Okayama", "Kyoto", "Hiroshima", "Kitakyūshū"]);
+    expect(await top("AU", 10)).toEqual(["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle", "Canberra", "Geelong", "Central Coast"]);
+    expect(await top("DE", 10)).toEqual(["Berlin", "Hamburg", "Munich", "Frankfurt", "Stuttgart", "Cologne", "Essen", "Düsseldorf", "Nuremberg", "Mannheim"]);
+    expect(await top("FR", 10)).toEqual(["Paris", "Lyon", "Marseille", "Lille", "Toulouse", "Bordeaux", "Nantes", "Strasbourg", "Montpellier", "Rennes"]);
+    expect(await top("MX", 10)).toEqual(["Mexico City", "Guadalajara", "Monterrey", "Heroica Puebla de Zaragoza", "Toluca de Lerdo", "Tijuana", "Santiago de Querétaro", "León de Los Aldama", "Mérida", "Ciudad Juárez"]);
+    // China by the urban population, not the whole municipality: Chongqing is eighth, not first at 32 million, and once.
+    expect(await top("CN", 10)).toEqual(["Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Wuhan", "Hong Kong", "Tianjin", "Chongqing", "Shenyang", "Dongguan"]);
+    expect((await citiesOf("CN"))!.filter((city) => /^Chongqing/.test(city.name.en)).length).toBe(1);
+    // Wikidata's estimates elsewhere: Brussels set by name in scripts/metro-links.ts.
     expect((await top("BE", 1))[0]).toBe("Brussels");
-    expect(await top("DE", 3)).toEqual(["Berlin", "Hamburg", "Munich"]);
-    expect(await top("GB", 3)).toEqual(["London", "Manchester", "Birmingham"]);
-    // Somerset is a county, not a town.
+    expect((await top("PH", 1))[0]).toBe("Manila");
+    // Somerset is a county, not a town; Taunton, its county town, stays.
     expect((await citiesOf("GB"))!.some((city) => city.name.en === "Somerset")).toBe(false);
+    expect((await citiesOf("GB"))!.some((city) => city.name.en === "Taunton")).toBe(true);
   });
 
-  it("keep each city's own figure beside its metro's, and give the metro only where it is bigger", async () => {
+  it("list a city inside another's area after every city that heads one, and say whose area it is in", async () => {
+    const canada = (await citiesOf("CA"))!;
+    const toronto = canada.find((city) => city.name.en === "Toronto")!;
+    for (const name of ["Mississauga", "Brampton", "Etobicoke"]) {
+      const city = canada.find((one) => one.name.en === name)!;
+      expect(city.inMetroOf, name).toBe(toronto.id);
+      expect(canada.indexOf(city), name).toBeGreaterThan(canada.findIndex((one) => one.name.en === "Kelowna"));
+    }
+    expect(canada.find((city) => city.name.en === "Laval")?.inMetroOf).toBe(canada.find((city) => city.name.en === "Montreal")?.id);
+    expect(toronto.inMetroOf).toBeNull();
+    // Yokohama is in Tokyo's.
+    const japan = (await citiesOf("JP"))!;
+    expect(japan.find((city) => city.name.en === "Yokohama")?.inMetroOf).toBe("Q1490");
+  });
+
+  it("keep each city's own figure beside its area's, and say which figures are estimates", async () => {
     const vancouver = (await citiesOf("CA"))!.find((city) => city.name.en === "Vancouver")!;
     expect(vancouver.population).toBeLessThan(1000000);
-    expect(vancouver.metro?.population).toBeGreaterThan(2000000);
-    for (const code of ["CA", "FR", "JP", "US"])
-      for (const city of (await citiesOf(code))!) if (city.metro !== null) expect(city.metro.population, city.name.en).toBeGreaterThan(city.population ?? 0);
+    expect(vancouver.metro).toMatchObject({ id: expect.stringMatching(/^statcan:/), populationDate: "2025-07-01", estimated: false });
+    expect(vancouver.metro!.population).toBeGreaterThan(3000000);
+    expect((await citiesOf("US"))!.find((city) => city.name.en === "Seattle")?.metro).toMatchObject({ id: "census:42660", populationDate: "2024-07-01", estimated: false });
+    expect((await citiesOf("FR"))!.find((city) => city.name.en === "Lyon")?.metro).toMatchObject({ id: "oecd:FR002F", estimated: false });
+    expect((await citiesOf("CN"))!.find((city) => city.name.en === "Chongqing")?.metro).toMatchObject({ id: expect.stringMatching(/^ne:/), estimated: true });
+    // Wikidata's metro is an estimate, and only where it is bigger than the city.
+    for (const code of ["BR", "IN", "PH"])
+      for (const city of (await citiesOf(code))!) {
+        if (city.metro === null) continue;
+        expect(city.metro.estimated, city.name.en).toBe(true);
+        expect(city.metro.population, city.name.en).toBeGreaterThan(city.population ?? 0);
+      }
   });
 });
 

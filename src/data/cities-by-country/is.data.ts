@@ -5,11 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const IS: readonly CityRow[] = [
-  [1764,64.1475,-21.935,138772,2025,"IS","IS-1","Reykjavík","レイキャヴィーク",null,null,1,"IS",0],
-  [163852,64.1119,-21.9,40040,2025,"IS","IS-1","Kópavogur","コーパヴォグル",null,null,0,null,0],
-  [103725,64.0671,-21.9377,31525,2025,"IS","IS-1","Hafnarfjörður","ハフナルフィヨルズゥル",null,null,0,null,0],
+  [1764,64.1475,-21.935,138772,2025,"IS","IS-1","Reykjavík","レイキャヴィーク",null,null,1,"IS",0,"oecd:IS001F","Reykjavík functional urban area",251555,2025],
   [170693,64.0011,-22.5533,23329,"2023-12-31","IS","IS-2","Keflavík","ケプラヴィーク",null,null,2,"IS-2",0],
-  [186142,64.0902,-21.9264,20116,2025,"IS","IS-1","Garðabær","ガルザバイル",null,null,0,null,0],
   [29042,65.6835,-18.0878,20050,2025,"IS","IS-6","Akureyri","アークレイリ",null,null,2,"IS-6",0],
   [192898,63.9322,-21.0002,9812,2024,"IS","IS-8","Selfoss","セールフォス",null,null,2,"IS-8",0],
   [107398,64.3167,-22.1,8285,2025,"IS","IS-3","Akranes","アクラネース",null,null,2,"IS-AKN",0],
@@ -27,6 +24,9 @@ const IS: readonly CityRow[] = [
   [1020276,65.1082,-21.7679,256,2022,"IS","IS-3","Búðardalur","ブザルダールル",null,null,2,"IS-DAB",0],
   [944111,66.05,-23,204,2019,"IS","IS-4","Súðavík","スーザヴィーク",null,null,2,"IS-SDV",0],
   [2001538,66.0444,-21.5339,null,null,"IS","IS-4","Norðurfjörður",null,null,null,2,"IS-ARN",0],
+  [163852,64.1119,-21.9,40040,2025,"IS","IS-1","Kópavogur","コーパヴォグル",null,null,0,null,0,1764],
+  [103725,64.0671,-21.9377,31525,2025,"IS","IS-1","Hafnarfjörður","ハフナルフィヨルズゥル",null,null,0,null,0,1764],
+  [186142,64.0902,-21.9264,20116,2025,"IS","IS-1","Garðabær","ガルザバイル",null,null,0,null,0,1764],
 ];
 
 export { IS };

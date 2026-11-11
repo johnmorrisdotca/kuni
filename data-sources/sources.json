@@ -50,6 +50,13 @@
       "note": "Statistics Canada, Table 98-10-0005-01 (2021 Census): the population of each census metropolitan area and census agglomeration (Statistics Canada Open Licence)"
     },
     {
+      "path": "urban-areas-2026-11-11.json",
+      "url": "https://www150.statcan.gc.ca/n1/tbl/csv/17100148-eng.zip https://www150.statcan.gc.ca/n1/tbl/csv/98100003-eng.zip https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/metro/totals/cbsa-est2024-alldata.csv https://sdmx.oecd.org/public/rest/data/OECD.CFE.EDS,DSD_FUA_DEMO@DF_AGE_SEX,/.A.POP.PS._T._T._Z.FUA._Z?startPeriod=2015",
+      "read": "2026-11-11",
+      "sha256": "c64fd4606f44ab3cf11c01e088d20a21f3a22978c50814a0370c12ae7731e787",
+      "note": "The official populations of urban areas: Statistics Canada's CMAs and CAs and their municipalities (Statistics Canada Open Licence), the U.S. Census Bureau's metropolitan and micropolitan statistical areas (public domain), and the OECD's functional urban areas (OECD Terms and Conditions)"
+    },
+    {
       "path": "wikidata-2026-10-09.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-10-09",

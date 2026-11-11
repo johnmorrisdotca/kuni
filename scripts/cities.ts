@@ -21,6 +21,7 @@
 //     as the fallback (scripts/fetch-cities.ts chooses it); it is `null` where it is the English name.
 
 import type { CityRow } from "../src/city-rows.ts";
+import { URBAN_FIGURE_ONLY } from "../src/rank.ts";
 import { METRO_LINKS } from "./metro-links.ts";
 
 type TierName = "capitals" | "1m" | "100k" | "15k";
@@ -55,6 +56,10 @@ interface Report {
   leftOut: { noName: number; noPoint: number; noCountry: number; noPopulation: number; belowFloor: number; area: number; duplicate: number; township: number };
   /** The cities that have a metropolitan area (CityRow's metro columns). */
   withMetro: number;
+  /** Cities inside another city's urban area (Mississauga, in Toronto's), ranked after every city that heads one. */
+  inMetroOf: number;
+  /** The urban areas of an official source that name no city kuni has. */
+  areasUnmatched: string[];
   /** Each civil township and each unit or part of a city left out (step 1c), by its id, and the city its id answers with (null for none). */
   townshipCities: Record<string, string | null>;
   /** Units Natural Earth names with no city apart, kept as the town Natural Earth has (Yishui County as Yishui). */
@@ -121,6 +126,13 @@ const NOT_CITIES: Readonly<Record<string, string>> = {
   Q33396: "Quảng Ninh, Vietnam: the province (クアンニン省), not a town; its capital is Hạ Long.",
   Q36903: "Ninh Thuận, Vietnam: the province (ニントゥアン省), not a town; its capital is Phan Rang – Tháp Chàm.",
   Q16632172: "Ennedi-Ouest, Chad: the province (西エネディ州), not a town; its capital is Fada.",
+  Q32664319: "München, Germany: a second item for Munich (Q1726), with the 1987 census figure.",
+  Q116170766: "Madrid city, Spain: a second item for Madrid (Q2807).",
+  Q55893348: "Seville city, Spain: a second item for Seville (Q8717).",
+  Q116450968: "Málaga City, Spain: a second item for Málaga (Q8851).",
+  Q15897817: "Chongqing Shi, China: a second item for Chongqing (Q11725).",
+  Q1480013: "Minneapolis–Saint Paul: the metropolitan area of the two cities, not a city.",
+  Q20148959: "San Pedro Zacachimalpa, Mexico: Wikidata gives the village 4,712,999 people, the Puebla area's.",
 };
 const RADIANS = Math.PI / 180;
 const km = (a: [number, number], b: [number, number]): number => {
@@ -159,13 +171,23 @@ interface StatcanSnapshot {
   read: string;
   places: [string, string, string, "CMA" | "CA", number][];
 }
+// The official urban areas: data-sources/urban-areas-<day>.json (scripts/fetch-urban.ts).
+interface UrbanSnapshot {
+  read: string;
+  statcan: { estimatesFor: string; estimates: [string, number][]; members: [string, string, string][] };
+  census: { areas: [string, string, "MSA" | "μSA", number][] };
+  oecd: { areas: [string, string, string, number, number][] };
+}
+// A census subdivision's DGUID holds its province's number: 2021A0005 35 21005 is in Ontario.
+const PROVINCE_NUMBERS: Readonly<Record<string, string>> = { "10": "CA-NL", "11": "CA-PE", "12": "CA-NS", "13": "CA-NB", "24": "CA-QC", "35": "CA-ON", "46": "CA-MB", "47": "CA-SK", "48": "CA-AB", "59": "CA-BC", "60": "CA-YT", "61": "CA-NT", "62": "CA-NU" };
 const PROVINCES: Readonly<Record<string, string>> = {
   "Newfoundland and Labrador": "CA-NL", "Prince Edward Island": "CA-PE", "Nova Scotia": "CA-NS", "New Brunswick": "CA-NB", Quebec: "CA-QC", Ontario: "CA-ON", Manitoba: "CA-MB",
   Saskatchewan: "CA-SK", Alberta: "CA-AB", "British Columbia": "CA-BC", Yukon: "CA-YT", "Northwest Territories": "CA-NT", Nunavut: "CA-NU",
 };
 
 // The figure a row is ranked by (its metro's people where it has one, else its own), most first, then its id.
-const rankOf = (row: CityRow): number => (row.length > 14 ? (row[16] as number) : (row[3] ?? 0));
+// A city inside another's urban area (a row of 15 columns) comes after every city that heads one.
+const rankOf = (row: CityRow): number => (row.length > 15 ? (row[16] as number) : row.length === 15 || URBAN_FIGURE_ONLY.has(row[5]) ? (row[3] ?? 0) - 1e12 : (row[3] ?? 0));
 const byRank = (a: CityRow, b: CityRow): number => rankOf(b) - rankOf(a) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true });
 
 // A city's metropolitan area: an area Wikidata links to it (scripts/fetch-metros.ts says how) whose English name holds the
@@ -197,6 +219,94 @@ const metroChooser = (
 
     return fromWikidata(city, population);
   };
+};
+
+// Which figure a country's cities are ranked by: one definition for each country, the official one where there is one.
+// Canada: Statistics Canada's census metropolitan areas and agglomerations; the United States: the Census Bureau's
+// metropolitan and micropolitan statistical areas; the other members of the OECD: its functional urban areas; China:
+// Natural Earth's urban population of each place (Wikidata's figure is the whole municipality, Chongqing's 32 million);
+// everywhere else, the metropolitan areas Wikidata links, an estimate.
+type AreaSource = "statcan" | "census" | "oecd" | "natural-earth" | "wikidata";
+const areaSourceOf = (country: string, urban: UrbanSnapshot | undefined): AreaSource => {
+  if (urban === undefined) return "wikidata";
+  if (country === "CA") return "statcan";
+  if (country === "US") return "census";
+  if (country === "CN") return "natural-earth";
+
+  return urban.oecd.areas.some((area) => area[2] === country) ? "oecd" : "wikidata";
+};
+
+// The names a city is known by, for matching an area's: "New York City" is the New York of the Census Bureau's
+// "New York-Newark-Jersey City"; "Washington, D.C." its Washington; München Munich's native name.
+const nameKeys = (one: { en: string; native: string | null }): Set<string> =>
+  new Set([one.en, one.en.replace(/ City$/, ""), one.en.replace(/-shi$/, ""), one.en.replace(/^Ciudad /, ""), one.en.split(",")[0]!, ...(one.native === null ? [] : [one.native])].map(simple).filter((key) => key !== ""));
+// The names an area's title may stand for, longest first: "Winston-Salem" before "Winston", each of "Alicante/Alacant",
+// and the name without its brackets or "D.C." ("Oldenburg (Oldenburg)", "Bogotá D.C."); the first a city has is used.
+const areaNames = (title: string): string[] => {
+  const plain = title.replace(/\s*\([^)]*\)/g, "").replace(/ D\.C\.$/, "").replace(/^Urban /, "").trim();
+  return plain.split("/").flatMap((part) => {
+    const pieces = part.trim().split(/\s*-+\s*/);
+    return pieces.map((_, at) => pieces.slice(0, pieces.length - at).join("-"));
+  });
+};
+
+interface UrbanCity {
+  number: number | string;
+  en: string;
+  native: string | null;
+  country: string;
+  subdivision: string | null;
+  population: number | null;
+  neUrban: { id: number; name: string; population: number } | null;
+}
+
+// The urban area each city heads, by its country's source (areaSourceOf), and the cities that lie inside another
+// city's area. An area belongs to the city its name names first ("Ottawa - Gatineau" to Ottawa, "Dallas-Fort
+// Worth-Arlington" to Dallas), in its province or state, the most populous where two share the name; OECD_AREAS sets
+// those whose name is no city's ("West Midlands urban area").
+const urbanAreas = <T extends UrbanCity>(cities: readonly T[], urban: UrbanSnapshot, statcan: StatcanSnapshot | undefined, oecdNames: Readonly<Record<string, number>>): { heads: Map<T, Metro>; unmatched: string[] } => {
+  const heads = new Map<T, Metro>();
+  const unmatched: string[] = [];
+  const byKey = new Map<string, T[]>();
+  for (const city of cities) for (const key of nameKeys(city)) byKey.set(`${city.country} ${key}`, [...(byKey.get(`${city.country} ${key}`) ?? []), city]);
+  const pick = (country: string, title: string, subdivision: string | null): T | undefined => {
+    for (const name of areaNames(title)) {
+      const found = (byKey.get(`${country} ${simple(name)}`) ?? []).filter((city) => subdivision === null || city.subdivision === subdivision).sort((a, b) => (b.population ?? 0) - (a.population ?? 0))[0];
+      if (found !== undefined) return found;
+    }
+
+    return undefined;
+  };
+  const give = (city: T | undefined, metro: Metro, label: string): void => {
+    if (city === undefined) unmatched.push(label);
+    else if (!heads.has(city) || heads.get(city)!.population < metro.population) heads.set(city, metro);
+  };
+  // Canada: the estimate of 1 July of the latest year where there is one, else the 2021 Census.
+  const estimates = new Map(urban.statcan.estimates);
+  for (const [name, province, dguid, kind, people] of statcan?.places ?? []) {
+    const first = name.split(" - ")[0]!.split(" / ")[0]!;
+    const estimate = estimates.get(dguid);
+    give(pick("CA", first.split("-")[0]!, PROVINCES[province] ?? null), { id: `statcan:${dguid}`, en: `${name} ${kind === "CMA" ? "census metropolitan area" : "census agglomeration"}`, population: estimate ?? people, date: estimate === undefined ? "2021-05-11" : urban.statcan.estimatesFor }, `CA ${name}`);
+  }
+  // The United States: "New York-Newark-Jersey City, NY-NJ" is New York City's, in New York.
+  for (const [code, title, kind, people] of urban.census.areas) {
+    const [places, states] = title.split(", ");
+    give(pick("US", places!, `US-${states!.split("-")[0]}`), { id: `census:${code}`, en: `${title} ${kind === "MSA" ? "metropolitan" : "micropolitan"} statistical area`, population: people, date: "2024-07-01" }, `US ${title}`);
+  }
+  // The OECD's functional urban areas, in its other members: "Greater Sydney", "New York (Greater)", "Köln".
+  for (const [code, name, country, year, people] of urban.oecd.areas) {
+    if (areaSourceOf(country, urban) !== "oecd") continue;
+    const set = oecdNames[code];
+    const city = set !== undefined ? cities.find((one) => one.number === set) : pick(country, name.replace(/ \(Greater\)$/, "").replace(/^Greater /, ""), null);
+    give(city, { id: `oecd:${code}`, en: `${name} functional urban area`, population: people, date: year }, `${country} ${code} ${name}`);
+  }
+  // China: Natural Earth's urban population of the place.
+  for (const city of cities) {
+    if (city.country !== "CN" || city.neUrban === null || heads.has(city)) continue;
+    heads.set(city, { id: `ne:${city.neUrban.id}`, en: `${city.neUrban.name} urban area`, population: city.neUrban.population, date: null });
+  }
+
+  return { heads, unmatched };
 };
 
 const wikidataMetros = (metros: MetrosSnapshot | undefined, snapshot: CitiesSnapshot): ((city: number, population: number | null) => Metro | null) => {
@@ -265,11 +375,13 @@ interface Candidate {
   subdivision: string | null;
   codes: string[];
   neKind: string | null;
+  /** Natural Earth's place for it: its number, name and POP_MAX (the people of its urban area). */
+  neUrban: { id: number; name: string; population: number } | null;
   sources: number;
   viaPlace: boolean;
 }
 
-const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
+const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot; urban?: UrbanSnapshot; oecdNames?: Readonly<Record<string, number>> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
   const { snapshot, naturalEarth, levels, countries } = input;
   const metroOf = metroChooser(input.metros, snapshot, input.statcan);
   // Every ISO 3166-2 code kuni lists, at any level, for the codes a capital is the capital of.
@@ -291,6 +403,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     townshipCities: {},
     unitTowns: 0,
     withMetro: 0,
+    inMetroOf: 0,
+    areasUnmatched: [],
     capitals: { national: 0, alternate: 0, subdivision: 0, droppedWithoutCode: 0 },
     jaFromNaturalEarth: 0,
     populationFromNaturalEarth: 0,
@@ -392,6 +506,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       subdivision,
       codes: capitalCodes.filter((code) => (code.includes("-") ? known.has(code) : countries.has(code))),
       neKind: place?.[7] ?? null,
+      neUrban: place?.[9] != null && place[6] !== null ? { id: place[9], name: place[2] ?? place[1], population: place[6] } : null,
       sources,
       viaPlace: place !== undefined,
     });
@@ -403,7 +518,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       report.naturalEarthLeftOut.noCountry += 1;
       continue;
     }
-    candidates.push({ number: `ne:${neId}`, en: nameEn ?? name, ja: nameJa, native: null, nativeLanguage: null, point: [lat, lon], country: iso, population: pop, populationDate: null, subdivision: null, codes: [], neKind: kind, sources: (nameJa === null ? 0 : 1) | (pop === null ? 0 : 2) | 4, viaPlace: true });
+    candidates.push({ number: `ne:${neId}`, en: nameEn ?? name, ja: nameJa, native: null, nativeLanguage: null, point: [lat, lon], country: iso, population: pop, populationDate: null, subdivision: null, codes: [], neKind: kind, neUrban: pop === null ? null : { id: neId, name: nameEn ?? name, population: pop }, sources: (nameJa === null ? 0 : 1) | (pop === null ? 0 : 2) | 4, viaPlace: true });
   }
 
   // 1b. A civil township is no city of its own. In the states where townships are units of a county with cities inside
@@ -529,6 +644,11 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   }
 
   const rows: CityRow[] = [];
+  // The urban area each city heads, where its country has an official source (areaSourceOf).
+  const urban = input.urban;
+  const owned = urban === undefined ? { heads: new Map<Candidate, Metro>(), unmatched: [] } : urbanAreas(kept, urban, input.statcan, input.oecdNames ?? {});
+  report.areasUnmatched = owned.unmatched;
+  const rowOf = new Map<Candidate, CityRow>();
   for (const one of kept) {
     const national = [...nationalOf].filter(([, chosen]) => chosen === one).map(([code]) => code);
     const alternate = [...(alternates.get(one) ?? [])].filter((code) => nationalOf.get(code) !== one);
@@ -562,11 +682,43 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     const country = capital === 1 && !national.includes(one.country) ? national[0]! : one.country;
     const subdivisionOf = country === one.country ? one.subdivision : null;
     const row: CityRow = [one.number, rounded(one.point[0]), rounded(one.point[1]), population, one.populationDate, country, subdivisionOf, one.en, one.ja, one.native, one.native === null ? null : one.nativeLanguage, capital, capitalOf.length === 0 ? null : [...new Set(capitalOf)].sort().join(" "), one.sources];
-    const metro = typeof one.number === "number" ? metroOf(one.number, population, one.en, country, subdivisionOf) : null;
-    if (metro === null) rows.push(row);
-    else {
-      rows.push([...row, metro.id, metro.en, metro.population, metro.date] as CityRow);
-      report.withMetro += 1;
+    const metro = areaSourceOf(country, urban) === "wikidata" ? (typeof one.number === "number" ? metroOf(one.number, population, one.en, country, subdivisionOf) : null) : (owned.heads.get(one) ?? null);
+    const full: CityRow = metro === null ? row : ([...row, metro.id, metro.en, metro.population, metro.date] as CityRow);
+    if (metro !== null) report.withMetro += 1;
+    rows.push(full);
+    rowOf.set(one, full);
+  }
+  // A city that heads no area of its own but lies inside another city's is ranked after every city that heads one:
+  // Mississauga and Brampton are Toronto's, by Statistics Canada's list of the municipalities in each area; elsewhere a
+  // city within 10 km plus 5 km for each square root of a million people of a city whose area holds three times its own
+  // people or more (Yokohama, 28 km from Tokyo; Newark, 15 km from New York City). Its row holds that city's id.
+  if (urban !== undefined) {
+    const headOfArea = new Map<string, Candidate>();
+    for (const [one, metro] of owned.heads) headOfArea.set(String(metro.id), one);
+    const memberOf = new Map<string, string>();
+    for (const [name, dguid, area] of urban.statcan.members) memberOf.set(`${PROVINCE_NUMBERS[dguid.slice(9, 11)] ?? ""} ${simple(name)}`, `statcan:${area}`);
+    const headsIn = new Map<string, [Candidate, Metro][]>();
+    for (const [one, metro] of owned.heads) if (rowOf.has(one)) headsIn.set(one.country, [...(headsIn.get(one.country) ?? []), [one, metro]]);
+    const indexOf = new Map(rows.map((row, at) => [row, at]));
+    for (const [one, row] of rowOf) {
+      if (row.length > 14 || areaSourceOf(row[5], urban) === "wikidata") continue;
+      const own = row[3] ?? 0;
+      let head: Candidate | undefined;
+      if (row[5] === "CA") {
+        const area = [...nameKeys(one)].map((key) => memberOf.get(`${row[6] ?? ""} ${key}`)).find((found) => found !== undefined);
+        head = area === undefined ? undefined : headOfArea.get(area);
+      }
+      // Not a municipality of Statistics Canada's list (Etobicoke, a part of Toronto since 1998), or another country.
+      if (head === undefined) {
+        head = (headsIn.get(one.country) ?? [])
+          .filter(([other, metro]) => other !== one && metro.population >= 3 * own && km(other.point, one.point) <= 10 + 5 * Math.sqrt(metro.population / 1e6))
+          .sort((a, b) => b[1].population - a[1].population)[0]?.[0];
+      }
+      if (head === undefined || head === one) continue;
+      const at = indexOf.get(row)!;
+      const inside = [...row.slice(0, 14), head.number] as unknown as CityRow;
+      rows[at] = inside;
+      report.inMetroOf += 1;
     }
   }
   report.naturalEarthOnly = rows.filter((row) => typeof row[0] === "string").length;
@@ -848,4 +1000,4 @@ export { CITY_ALIASES };
 };
 
 export { buildCities, byRank, cityAliases, cityIndex, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
-export type { MetrosSnapshot, StatcanSnapshot, CitiesSnapshot, NaturalEarthFile, Report, TierName };
+export type { MetrosSnapshot, StatcanSnapshot, CitiesSnapshot, NaturalEarthFile, Report, TierName, UrbanSnapshot };

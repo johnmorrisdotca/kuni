@@ -47,7 +47,8 @@ import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
 import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
-import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName } from "./cities.ts";
+import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
+import { OECD_AREAS } from "./metro-links.ts";
 
 type Json = Record<string, unknown>;
 
@@ -969,16 +970,23 @@ const writeCities = (): void => {
   if (metrosFile === undefined) throw new Error("No metros snapshot in data-sources/sources.json: run node scripts/fetch-metros.ts");
   const metros = JSON.parse(readSource(manifest, metrosFile.path).text) as MetrosSnapshot;
   const statcan = JSON.parse(readSource(manifest, "statcan-cma-2021.json").text) as StatcanSnapshot;
+  // The official urban areas a city is ranked by (scripts/fetch-urban.ts).
+  const urbanFile = manifest.files.find((file) => file.path.startsWith("urban-areas-"));
+  if (urbanFile === undefined) throw new Error("No urban areas in data-sources/sources.json: run node scripts/fetch-urban.ts");
+  const urban = JSON.parse(readSource(manifest, urbanFile.path).text) as UrbanSnapshot;
   const { rows, tiers, report } = buildCities({
     snapshot,
     naturalEarth,
     metros,
     statcan,
+    urban,
+    oecdNames: Object.fromEntries(Object.entries(OECD_AREAS).map(([code, { city }]) => [code, city])),
     levels: new Map(subdivisions.filter((record) => record.level === 1).map((record) => [record.code, record.level])),
     countries: new Set(countries.map((country) => country.alpha2)),
     subdivisions: new Set(subdivisions.map((record) => record.code)),
     capitalNames: new Map(countries.flatMap((country) => (country.capital === null ? [] : [[country.alpha2, country.capital] as [string, string]]))),
   });
+  console.log(`Cities: ${report.withMetro} head an urban area, ${report.inMetroOf} lie inside another city's; ${report.areasUnmatched.length} official areas name no city kuni has${process.env.KUNI_AREAS === undefined ? "" : `: ${report.areasUnmatched.join("; ")}`}.`);
   // Ids never change between releases: every id a past release had is still a city's or is in the alias file.
   const current = new Set(rows.map((row) => (typeof row[0] === "number" ? `Q${row[0]}` : row[0])));
   const idsFile = join(ROOT, "data-sources", "city-ids.json");

@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const EE: readonly CityRow[] = [
-  [1770,59.4372,24.745,457572,2024,"EE","EE-37","Tallinn","タリン",null,null,1,"EE",0],
-  [13972,58.38,26.7225,97759,2024,"EE","EE-79","Tartu","タルトゥ",null,null,2,"EE-79",0],
-  [102158,59.3792,28.2006,53360,2024,"EE","EE-45","Narva","ナルヴァ",null,null,0,null,0],
+  [1770,59.4372,24.745,457572,2024,"EE","EE-37","Tallinn","タリン",null,null,1,"EE",0,"oecd:EE001F","Tallinn functional urban area",731191,2025],
+  [13972,58.38,26.7225,97759,2024,"EE","EE-79","Tartu","タルトゥ",null,null,2,"EE-79",0,"oecd:EE002F","Tartu functional urban area",188623,2025],
+  [102158,59.3792,28.2006,53360,2024,"EE","EE-45","Narva","ナルヴァ",null,null,0,null,0,"oecd:EE003F","Narva functional urban area",56734,2025],
   [102365,58.3844,24.4989,41520,2024,"EE","EE-68","Pärnu","パルヌ",null,null,2,"EE-68",0],
   [201391,59.4,27.2833,33434,2024,"EE","EE-45","Kohtla-Järve","コフトラ＝ヤルヴェ",null,null,0,null,0],
   [44840,58.3633,25.5956,17255,2024,"EE","EE-84","Viljandi","ヴィリャンディ",null,null,2,"EE-84",0],

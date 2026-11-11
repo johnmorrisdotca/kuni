@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/il";
  *
  * console.log(cities.length);      // 105
- * console.log(cities[0].name.en);  // "Jerusalem"
+ * console.log(cities[0].name.en);  // "Tel Aviv"
  * console.log(cities[0].country);  // "IL"
  * ```
  */

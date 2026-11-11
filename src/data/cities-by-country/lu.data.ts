@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const LU: readonly CityRow[] = [
-  [1842,49.6114,6.13,137678,2026,"LU","LU-LU","Luxembourg","ルクセンブルク市","Luxemburg","de",1,"LU",0],
+  [1842,49.6114,6.13,137678,2026,"LU","LU-LU","Luxembourg","ルクセンブルク市","Luxemburg","de",1,"LU",0,"oecd:LU001F","Luxembourg functional urban area",602556,2022],
   [16010,49.4969,5.9806,38275,2026,"LU","LU-ES","Esch-sur-Alzette","エシュ＝シュル＝アルゼット","Esch an der Alzette","de",2,"LU-ES",0],
   [20969331,49.4806,6.0875,21953,2023,"LU","LU-ES","Dudelange",null,"Düdelingen","de",0,null,0],
   [4844168,49.5242,5.8914,16968,2023,"LU","LU-ES","Differdange",null,null,null,0,null,0],
@@ -16,9 +16,9 @@ const LU: readonly CityRow[] = [
   [204317,49.8117,6.4217,6031,2026,"LU","LU-EC","Echternach","エヒタナハ",null,null,2,"LU-EC",0],
   [4132923,49.6747,6.4419,5092,2023,"LU","LU-GR","Grevenmacher",null,null,null,2,"LU-GR",0],
   [734284,49.5444,6.3667,4156,2026,"LU","LU-RM","Remich","レーミヒ",null,null,2,"LU-RM",0],
-  [1988543,49.6444,5.9897,2224,2023,"LU","LU-CA","Capellen","カペレン",null,null,2,"LU-CA",0],
   [20969217,49.935,6.2089,2203,2023,"LU","LU-VD","Vianden","ヴェイアネン",null,null,2,"LU-VD",0],
   [16764501,49.7656,5.8908,1549,2023,"LU","LU-RD","Redange-sur-Attert",null,"Réiden","de",2,"LU-RD",0],
+  [1988543,49.6444,5.9897,2224,2023,"LU","LU-CA","Capellen","カペレン",null,null,2,"LU-CA",0,1842],
 ];
 
 export { LU };

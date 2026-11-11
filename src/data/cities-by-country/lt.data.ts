@@ -5,24 +5,20 @@
 import type { CityRow } from "../../city-rows";
 
 const LT: readonly CityRow[] = [
-  [216,54.6872,25.28,619405,"2026-07-01","LT",null,"Vilnius","ヴィルニュス",null,null,1,"LT",0],
-  [4115712,54.9,23.9333,305120,2023,"LT",null,"Kaunas","カウナス",null,null,2,"LT-15 LT-16 LT-KU",0],
-  [776965,55.7125,21.135,158420,2023,"LT",null,"Klaipėda","クライペダ",null,null,2,"LT-20 LT-KL",0],
-  [134712,55.9281,23.3167,104300,2023,"LT",null,"Šiauliai","シャウレイ",null,null,2,"LT-43 LT-44 LT-SA",0],
-  [1719466,55.725,24.3639,87913,2023,"LT",null,"Panevėžys","パネヴェジース",null,null,2,"LT-32 LT-33 LT-PN",0],
-  [450625,54.4,24.05,51856,2023,"LT",null,"Alytus","アリートゥス",null,null,2,"LT-02 LT-03 LT-AL",0],
-  [570649,54.7567,25.3675,47400,2001,"LT",null,"Antakalnis",null,null,null,0,null,0],
-  [5609826,54.9036,23.9628,45000,2005,"LT",null,"Gričiupis",null,null,null,0,null,0],
+  [216,54.6872,25.28,619405,"2026-07-01","LT",null,"Vilnius","ヴィルニュス",null,null,1,"LT",0,"oecd:LT001F","Vilnius functional urban area",1039279,2025],
+  [4115712,54.9,23.9333,305120,2023,"LT",null,"Kaunas","カウナス",null,null,2,"LT-15 LT-16 LT-KU",0,"oecd:LT002F","Kaunas functional urban area",519221,2025],
+  [776965,55.7125,21.135,158420,2023,"LT",null,"Klaipėda","クライペダ",null,null,2,"LT-20 LT-KL",0,"oecd:LT005F","Klaipėda functional urban area",267661,2025],
+  [134712,55.9281,23.3167,104300,2023,"LT",null,"Šiauliai","シャウレイ",null,null,2,"LT-43 LT-44 LT-SA",0,"oecd:LT006F","Šiauliai functional urban area",152138,2025],
+  [1719466,55.725,24.3639,87913,2023,"LT",null,"Panevėžys","パネヴェジース",null,null,2,"LT-32 LT-33 LT-PN",0,"oecd:LT003F","Panevėžys functional urban area",121198,2025],
+  [450625,54.4,24.05,51856,2023,"LT",null,"Alytus","アリートゥス",null,null,2,"LT-02 LT-03 LT-AL",0,"oecd:LT004F","Alytus functional urban area",76120,2025],
   [1351046,54.5567,23.3544,36807,2023,"LT",null,"Marijampolė","マリヤーンポレ",null,null,2,"LT-25 LT-MR",0],
   [203675,56.3111,22.3361,33249,2023,"LT",null,"Mažeikiai","マジェイケイ",null,null,2,"LT-26",0],
-  [16452473,55.9083,23.2472,30200,2005,"LT",null,"Gytariai",null,null,null,0,null,0],
   [743218,55.0722,24.2806,27134,2023,"LT",null,"Jonava","ヨナヴァ",null,null,2,"LT-10",0],
   [189157,55.5,25.6,25608,2023,"LT",null,"Utena","ウテナ",null,null,2,"LT-54 LT-UT",0],
   [735138,55.2833,23.9667,23447,2023,"LT",null,"Kėdainiai","ケダイネイ",null,null,2,"LT-18",0],
   [2222616,55.9833,22.25,22261,2023,"LT",null,"Telšiai","テルシェイ",null,null,2,"LT-51 LT-TE",0],
   [213127,55.25,24.7667,21990,2024,"LT",null,"Ukmergė","ウクメルゲ",null,null,2,"LT-53",0],
   [193787,55.25,22.2833,21416,2023,"LT",null,"Tauragė","タウラゲ",null,null,2,"LT-50 LT-TA",0],
-  [8082717,54.989,24.067,21097,2011,"LT",null,"Šančiai",null,null,null,0,null,0],
   [203892,55.6,26.4333,19586,2023,"LT",null,"Visaginas","ヴィサギナス",null,null,2,"LT-59",0],
   [2047414,55.9167,21.0667,18132,2023,"LT",null,"Palanga","パランガ",null,null,2,"LT-31",0],
   [977255,55.9167,21.85,17385,2023,"LT",null,"Plungė","プルンゲ",null,null,2,"LT-35",0],
@@ -64,6 +60,10 @@ const LT: readonly CityRow[] = [
   [3657,55.725,21.9278,3253,2023,"LT",null,"Rietavas","リエタヴァス",null,null,2,"LT-39",0],
   [185555,54.6,24.0333,3094,2023,"LT",null,"Birštonas","ビルシュトナス",null,null,2,"LT-05",0],
   [643376,55.1361,21.9056,1537,2023,"LT",null,"Pagėgiai","パゲゲイ",null,null,2,"LT-29",0],
+  [570649,54.7567,25.3675,47400,2001,"LT",null,"Antakalnis",null,null,null,0,null,0,216],
+  [5609826,54.9036,23.9628,45000,2005,"LT",null,"Gričiupis",null,null,null,0,null,0,4115712],
+  [16452473,55.9083,23.2472,30200,2005,"LT",null,"Gytariai",null,null,null,0,null,0,134712],
+  [8082717,54.989,24.067,21097,2011,"LT",null,"Šančiai",null,null,null,0,null,0,4115712],
 ];
 
 export { LT };

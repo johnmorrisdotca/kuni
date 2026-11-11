@@ -67,24 +67,37 @@ interface City {
   /** Where each fact came from; a fact no source gave is `null`. */
   source: { point: CitySource; population: CitySource | null; ja: CitySource | null };
   /**
-   * The metropolitan area round the city, where one is named for it: a Canadian city's census metropolitan area or
-   * agglomeration by Statistics Canada (2021 Census, id "statcan:<DGUID>"), any other's from Wikidata (CC0, its item:
-   * "Q683705", the New York metropolitan area). Its id, English name, people and the day the figure is for. `null` where Wikidata
-   * names none for the city, or none bigger than the city itself. The tiers and the order of every list rank a city by
-   * this figure where there is one, else by `population`; a tier still holds a city by its own `population`.
+   * The urban area the city heads, by one source for each country: a Canadian city's census metropolitan area or
+   * agglomeration by Statistics Canada (the estimate of 1 July 2025, else the 2021 Census; id "statcan:<DGUID>"), a city
+   * of the United States its metropolitan or micropolitan statistical area by the Census Bureau (1 July 2024,
+   * "census:<CBSA code>"), a city of another OECD member its functional urban area by the OECD ("oecd:<code>"), a Chinese
+   * city its urban population by Natural Earth ("ne:<number>", not the whole municipality), and any other city the
+   * metropolitan area Wikidata names for it (its item, "Q683705"; CC0). Its id, English name, people, the day the figure is
+   * for, and whether the figure is an estimate (`estimated`: Wikidata's and Natural Earth's are; the three official ones are
+   * not). `null` where the source names none for the city. The tiers and the order of every list rank a city by this
+   * figure where there is one, else by `population`; a tier still holds a city by its own `population`.
    */
-  metro: { id: string; name: string; population: number; populationDate: string | null } | null;
+  metro: { id: string; name: string; population: number; populationDate: string | null; estimated: boolean } | null;
+  /**
+   * The id of the city whose urban area this one lies inside, where it heads none of its own: Mississauga and Brampton
+   * are in Toronto's ("Q172"). Such a city is ranked after every city that heads an area. `null` for the others, and in a
+   * country whose areas are Wikidata's estimates.
+   */
+  inMetroOf: string | null;
 }
 
 // [item number (or "ne:<number>"), latitude, longitude, population, population date, country, subdivision, en, ja, native, native language,
 //  capital (0 none, 1 national, 2 subdivision, 3 alternate), capital of (space-separated), sources (bit 8: ja written for this package, bit 1: ja from Natural Earth, bit 2:
-//  population from Natural Earth, bit 4: point from Natural Earth), and only where the city has a metro: its item number, English name, population and population date]
+//  population from Natural Earth, bit 4: point from Natural Earth), and only where the city has a metro: its item number, English name, population and population date,
+//  or only where it lies inside another city's urban area: that city's item number]
 type CityRow =
   | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number]
+  | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number, number | string]
   | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number, number | string, string, number, number | string | null];
 
 const freezeCity = (row: CityRow): City => {
   const [id, lat, lon, population, date, country, subdivision, en, ja, native, nativeLanguage, capital, capitalOf, sources, metroId, metroName, metroPopulation, metroDate] = row;
+  const head = row.length === 15 ? row[14] : null;
 
   return Object.freeze({
     id: typeof id === "number" ? `Q${id}` : id,
@@ -107,7 +120,14 @@ const freezeCity = (row: CityRow): City => {
     metro:
       metroId === undefined || metroName === undefined || metroPopulation === undefined
         ? null
-        : Object.freeze({ id: typeof metroId === "number" ? `Q${metroId}` : metroId, name: metroName, population: metroPopulation, populationDate: metroDate === undefined || metroDate === null ? null : String(metroDate) }),
+        : Object.freeze({
+            id: typeof metroId === "number" ? `Q${metroId}` : metroId,
+            name: metroName,
+            population: metroPopulation,
+            populationDate: metroDate === undefined || metroDate === null ? null : String(metroDate),
+            estimated: typeof metroId === "number" || metroId.startsWith("ne:"),
+          }),
+    inMetroOf: head === null ? null : typeof head === "number" ? `Q${head}` : head,
   } satisfies City);
 };
 

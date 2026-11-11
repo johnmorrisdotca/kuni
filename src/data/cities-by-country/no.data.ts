@@ -5,19 +5,16 @@
 import type { CityRow } from "../../city-rows";
 
 const NO: readonly CityRow[] = [
-  [585,59.9133,10.7389,717710,2024,"NO","NO-03","Oslo","オスロ",null,null,1,"NO",0,126685091,"Oslo metropolitan area",1278827,2013],
-  [26793,60.3925,5.3233,291189,"2023-09-30","NO","NO-46","Bergen","ベルゲン",null,null,2,"NO-46",0],
+  [585,59.9133,10.7389,717710,2024,"NO","NO-03","Oslo","オスロ",null,null,1,"NO",0,"oecd:NO001F","Oslo functional urban area",1551008,2025],
+  [26793,60.3925,5.3233,291189,"2023-09-30","NO","NO-46","Bergen","ベルゲン",null,null,2,"NO-46",0,"oecd:NO002F","Bergen functional urban area",435240,2025],
+  [25416,58.97,5.7314,151669,2026,"NO","NO-11","Stavanger","スタヴァンゲル",null,null,0,null,0,"oecd:NO004F","Stavanger functional urban area",343671,2025],
+  [25804,63.44,10.4,198777,2024,"NO","NO-50","Trondheim","トロンハイム",null,null,2,"NO-50",0,"oecd:NO003F","Trondheim functional urban area",282801,2025],
   [3355629,58.965,5.7178,241644,2025,"NO","NO-11","Stavanger/Sandnes",null,null,null,0,null,0],
-  [25804,63.44,10.4,198777,2024,"NO","NO-50","Trondheim","トロンハイム",null,null,2,"NO-50",0],
-  [25416,58.97,5.7314,151669,2026,"NO","NO-11","Stavanger","スタヴァンゲル",null,null,0,null,0],
-  [57076,59.8904,10.526,133228,2026,"NO","NO-32","Bærum Municipality","バールム","Bærum","nb",0,null,0],
   [3355000,59.2167,10.9833,122704,2025,"NO","NO-31","Fredrikstad/Sarpsborg",null,null,null,0,null,0],
-  [651744,59.89,10.5264,115543,2021,"NO","NO-32","Sandvika","サンドヴィケン",null,null,0,null,0],
   [26525,59.7454,10.206,106013,2026,"NO","NO-33","Drammen","ドランメン",null,null,0,null,0],
   [3354033,59.0767,9.6869,97043,2025,"NO","NO-40","Porsgrunn/Skien",null,null,null,0,null,0],
   [26772254,58.1467,7.9956,67920,2025,"NO","NO-42","Kristiansand","クリスチャンサン",null,null,2,"NO-42",1],
   [10498783,59.2181,10.9298,63610,2016,"NO","NO-31","Fredrikstad",null,null,null,0,null,0],
-  [1493178,59.9129,10.7819,61756,2023,"NO",null,"Gamle Oslo",null,"Bydel Gamle Oslo","nb",0,null,0],
   [108025,59.2906,11.2028,60614,2026,"NO","NO-31","Sarpsborg","サルプスボルグ",null,null,2,"NO-31",0],
   [107392,59.2981,10.4236,60246,2026,"NO","NO-39","Tønsberg","トンスベルグ",null,null,0,null,0],
   [14955813,58.85,5.7333,58694,2015,"NO","NO-11","Sandnes","サンドネス",null,null,0,null,1],
@@ -39,7 +36,6 @@ const NO: readonly CityRow[] = [
   [2284798,59.0532,10.0271,27661,2025,"NO","NO-39","Larvik",null,null,null,0,null,0],
   [11494262,59.1247,11.3875,26320,2025,"NO","NO-31","Halden","ハルデン",null,null,0,null,0],
   [990999,60.14,11.1753,25469,2025,"NO","NO-32","Jessheim","イェスハイム",null,null,0,null,0],
-  [10419861,60.4239,5.1986,24660,2025,"NO","NO-46","Askøy",null,null,null,0,null,0],
   [3916095,59.6737,9.6481,23770,2025,"NO","NO-33","Kongsberg","コングスベルグ",null,null,0,null,0],
   [1770672,59.7419,10.8939,22718,2025,"NO","NO-32","Ski",null,null,null,0,null,0],
   [10587563,62.7375,7.1631,22666,2025,"NO","NO-15","Molde","モルデ",null,null,2,"NO-15",1],
@@ -62,6 +58,10 @@ const NO: readonly CityRow[] = [
   [7606901,64.0147,11.4942,13123,2025,"NO","NO-50","Steinkjer","スタインシャー",null,null,2,"NO-50",1],
   [7908355,70.0667,29.75,4847,2025,"NO","NO-56","Vadsø",null,null,null,2,"NO-56",0],
   [25923,78.2167,15.6333,2417,2020,"NO","NO-21","Longyearbyen","ロングイェールビーン",null,null,2,"NO-21",0],
+  [57076,59.8904,10.526,133228,2026,"NO","NO-32","Bærum Municipality","バールム","Bærum","nb",0,null,0,585],
+  [651744,59.89,10.5264,115543,2021,"NO","NO-32","Sandvika","サンドヴィケン",null,null,0,null,0,585],
+  [1493178,59.9129,10.7819,61756,2023,"NO",null,"Gamle Oslo",null,"Bydel Gamle Oslo","nb",0,null,0,585],
+  [10419861,60.4239,5.1986,24660,2025,"NO","NO-46","Askøy",null,null,null,0,null,0,26793],
 ];
 
 export { NO };
