@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/li: the 2 cities of Liechtenstein, every tier together, as a list.
 
 import { LI } from "../data/cities-by-country/li.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(LI);
+const CITIES: readonly City[] = expandCities(rowsOf(LI));
 
 export default CITIES;
 export { CITIES };

@@ -2,15 +2,26 @@
 // The 6 cities of Kuwait (KW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const KW: readonly CityRow[] = [
-  [35178,29.375,47.98,2989000,2018,"KW",null,"Kuwait City","クウェート市","مدينة الكويت","ar",1,"KW",16],
-  [1077024,29.35,47.6833,393432,2014,"KW","KW-JA","Al Jahra","ジャハラー","الجهراء","ar",2,"KW-JA",16],
-  [980396,29.0906,48.0653,30991,"2018-12-31","KW","KW-AH","Al Ahmadi","アハマディ","الأحمدي","ar",2,"KW-AH",16],
-  [4120400,29.1875,48.0847,null,null,"KW",null,"Mubarak Al-Kabeer","ムバーラク・アル＝カビール (クウェート)","مبارك الكبير","ar",2,"KW-MU",16],
-  [3235220,29.3333,48.0333,164212,null,"KW","KW-HA","Hawally","ハワッリー","حولي","ar",2,"KW-HA",18,35178],
-  [1195526,29.2756,47.9603,null,null,"KW",null,"Farwaniya","ファルワーニーヤ","الفروانية","ar",2,"KW-FA",16,35178],
-];
+const KW: CityColumns = {
+  id: "r56,n31c,l0h8,2gbbk,1xcb8,pmh2",
+  lat: [293750,293500,290906,291875,293333,292756],
+  lon: [479800,476833,480653,480847,480333,479603],
+  population: [2989000,393432,30991,-1,164212,-1],
+  date: "2018,2014,2018-12-31,,,",
+  country: "KWKWKWKWKWKW",
+  subdivisions: "JA,AH,HA",
+  subdivision: [-1,0,1,-1,2,-1],
+  en: "Kuwait City|Al Jahra|Al Ahmadi|Mubarak Al-Kabeer|Hawally|Farwaniya",
+  ja: "クウェート市|ジャハラー|アハマディ|ムバーラク・アル＝カビール (クウェート)|ハワッリー|ファルワーニーヤ",
+  native: "مدينة الكويت|الجهراء|الأحمدي|مبارك الكبير|حولي|الفروانية",
+  languages: "ar",
+  language: [0,0,0,0,0,0],
+  capital: "122222",
+  capitalOf: "KW|KW-JA|KW-AH|KW-MU|KW-HA|KW-FA",
+  sources: "101010101210",
+  extra: [[4,35178],[5,35178]],
+};
 
 export { KW };

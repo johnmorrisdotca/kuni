@@ -2,10 +2,26 @@
 // The 1 cities of Puerto Rico (PR), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PR: readonly CityRow[] = [
-  [41211,18.4653,-66.1167,342259,"2020-04-01","PR",null,"San Juan","サン・フアン",null,null,1,"PR",16],
-];
+const PR: CityColumns = {
+  id: "vsr",
+  lat: [184653],
+  lon: [-661167],
+  population: [342259],
+  date: "2020-04-01",
+  country: "PR",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "San Juan",
+  ja: "サン・フアン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "PR",
+  sources: "10",
+  extra: [],
+};
 
 export { PR };

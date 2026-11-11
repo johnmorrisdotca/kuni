@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bg: the 49 cities of Bulgaria, every tier together, as a list.
 
 import { BG } from "../data/cities-by-country/bg.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BG);
+const CITIES: readonly City[] = expandCities(rowsOf(BG));
 
 export default CITIES;
 export { CITIES };

@@ -2,10 +2,26 @@
 // The 1 cities of Gibraltar (GI), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GI: readonly CityRow[] = [
-  [1410,36.14,-5.35,34003,2020,"GI",null,"Gibraltar","ジブラルタル",null,null,1,"GI",16],
-];
+const GI: CityColumns = {
+  id: "136",
+  lat: [361400],
+  lon: [-53500],
+  population: [34003],
+  date: "2020",
+  country: "GI",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Gibraltar",
+  ja: "ジブラルタル",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "GI",
+  sources: "10",
+  extra: [],
+};
 
 export { GI };

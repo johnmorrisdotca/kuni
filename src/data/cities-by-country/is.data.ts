@@ -2,31 +2,26 @@
 // The 22 cities of Iceland (IS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const IS: readonly CityRow[] = [
-  [1764,64.1475,-21.935,138772,2025,"IS","IS-1","Reykjavík","レイキャヴィーク",null,null,1,"IS",0,"oecd:IS001F","Reykjavík",251555,2025],
-  [170693,64.0011,-22.5533,23329,"2023-12-31","IS","IS-2","Keflavík","ケプラヴィーク",null,null,2,"IS-2",0],
-  [29042,65.6835,-18.0878,20050,2025,"IS","IS-6","Akureyri","アークレイリ",null,null,2,"IS-6",0],
-  [192898,63.9322,-21.0002,9812,2024,"IS","IS-8","Selfoss","セールフォス",null,null,2,"IS-8",0],
-  [107398,64.3167,-22.1,8285,2025,"IS","IS-3","Akranes","アクラネース",null,null,2,"IS-AKN",0],
-  [106896,66.0738,-23.1417,2620,2018,"IS","IS-4","Ísafjörður","イーサフィヨルズゥル",null,null,2,"IS-4",0],
-  [831718,65.7461,-19.6394,2574,2018,"IS","IS-5","Sauðárkrókur","ソイザウルクロウクル",null,null,2,"IS-5 IS-SKR",0],
-  [14453,65.2667,-14.4,2572,2022,"IS","IS-7","Egilsstaðir","エイイルススタジル",null,null,2,"IS-7",0],
-  [276537,64.5431,-21.9125,2181,2023,"IS","IS-3","Borgarnes","ボルガルネース",null,null,2,"IS-3",0],
-  [1019448,63.9817,-22.3847,1354,2022,"IS","IS-2","Vogar","ヴォーガル",null,null,2,"IS-SVG",0],
-  [1019443,65.0326,-14.2201,1270,2018,"IS","IS-7","Reyðarfjörður","レイザルフィヨルズル",null,null,2,"IS-FJD",0],
-  [472822,63.8413,-22.4371,1246,2025,"IS","IS-2","Grindavík","グリンダヴィーク",null,null,2,"IS-GRN",0],
-  [1602650,63.8348,-20.4008,861,2018,"IS","IS-8","Hella","ヘットラ",null,null,2,"IS-ASA",0],
-  [1639538,65.3972,-20.9438,578,2018,"IS","IS-5","Hvammstangi",null,null,null,2,"IS-HUV",0],
-  [1240428,65.8232,-20.3025,462,2025,"IS","IS-5","Skagaströnd","スカガストロンド",null,null,2,"IS-SSS",0],
-  [2292590,65.7064,-21.6703,320,2018,"IS","IS-4","Hólmavík",null,null,null,2,"IS-STR",0],
-  [1020276,65.1082,-21.7679,256,2022,"IS","IS-3","Búðardalur","ブザルダールル",null,null,2,"IS-DAB",0],
-  [944111,66.05,-23,204,2019,"IS","IS-4","Súðavík","スーザヴィーク",null,null,2,"IS-SDV",0],
-  [2001538,66.0444,-21.5339,null,null,"IS","IS-4","Norðurfjörður",null,null,null,2,"IS-ARN",0],
-  [163852,64.1119,-21.9,40040,2025,"IS","IS-1","Kópavogur","コーパヴォグル",null,null,0,null,0,1764],
-  [103725,64.0671,-21.9377,31525,2025,"IS","IS-1","Hafnarfjörður","ハフナルフィヨルズゥル",null,null,0,null,0,1764],
-  [186142,64.0902,-21.9264,20116,2025,"IS","IS-1","Garðabær","ガルザバイル",null,null,0,null,0,1764],
-];
+const IS: CityColumns = {
+  id: "1d0,3nph,meq,44ua,2ava,2ahc,htra,b5h,5xdl,lum0,lulv,a4ty,ycm2,z52q,ql4c,1d4z2,lv90,k8hb,16wea,3ifg,2819,3zmm",
+  lat: [641475,640011,656835,639322,643167,660738,657461,652667,645431,639817,650326,638413,638348,653972,658232,657064,651082,660500,660444,641119,640671,640902],
+  lon: [-219350,-225533,-180878,-210002,-221000,-231417,-196394,-144000,-219125,-223847,-142201,-224371,-204008,-209438,-203025,-216703,-217679,-230000,-215339,-219000,-219377,-219264],
+  population: [138772,23329,20050,9812,8285,2620,2574,2572,2181,1354,1270,1246,861,578,462,320,256,204,-1,40040,31525,20116],
+  date: "2025,2023-12-31,2025,2024,2025,2018,2018,2022,2023,2022,2018,2025,2018,2018,2025,2018,2022,2019,,2025,2025,2025",
+  country: "ISISISISISISISISISISISISISISISISISISISISISIS",
+  subdivisions: "1,2,6,8,3,4,5,7",
+  subdivision: [0,1,2,3,4,5,6,7,4,1,7,1,3,6,6,5,4,5,5,0,0,0],
+  en: "Reykjavík|Keflavík|Akureyri|Selfoss|Akranes|Ísafjörður|Sauðárkrókur|Egilsstaðir|Borgarnes|Vogar|Reyðarfjörður|Grindavík|Hella|Hvammstangi|Skagaströnd|Hólmavík|Búðardalur|Súðavík|Norðurfjörður|Kópavogur|Hafnarfjörður|Garðabær",
+  ja: "レイキャヴィーク|ケプラヴィーク|アークレイリ|セールフォス|アクラネース|イーサフィヨルズゥル|ソイザウルクロウクル|エイイルススタジル|ボルガルネース|ヴォーガル|レイザルフィヨルズル|グリンダヴィーク|ヘットラ||スカガストロンド||ブザルダールル|スーザヴィーク||コーパヴォグル|ハフナルフィヨルズゥル|ガルザバイル",
+  native: "|||||||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1222222222222222222000",
+  capitalOf: "IS|IS-2|IS-6|IS-8|IS-AKN|IS-4|IS-5 IS-SKR|IS-7|IS-3|IS-SVG|IS-FJD|IS-GRN|IS-ASA|IS-HUV|IS-SSS|IS-STR|IS-DAB|IS-SDV|IS-ARN|||",
+  sources: "00000000000000000000000000000000000000000000",
+  extra: [[0,"oecd:IS001F","Reykjavík",251555,2025],[19,1764],[20,1764],[21,1764]],
+};
 
 export { IS };

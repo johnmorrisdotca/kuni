@@ -2,20 +2,26 @@
 // The 11 cities of Equatorial Guinea (GQ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GQ: readonly CityRow[] = [
-  [3818,3.7521,8.7737,297000,2018,"GQ","GQ-I","Malabo","マラボ",null,null,2,"GQ-BN GQ-I",16],
-  [320792,1.865,9.77,290000,2015,"GQ","GQ-C","Bata","バタ",null,null,2,"GQ-C GQ-LI",16],
-  [2550461,1.85,10.25,41084,2014,"GQ","GQ-C","Niefang","ニエファング",null,null,0,null,16],
-  [911358,2.15,11.3167,36565,2012,"GQ","GQ-C","Ebibeyin","エベビイン","Ebibeyín","es",2,"GQ-KN",16],
-  [2720938,1.8656,10.7689,16626,2012,"GQ","GQ-C","Añisok","アニソク",null,null,0,null,16],
-  [2604898,1.6931,11.0342,15644,2012,"GQ","GQ-C","Mengomeyén","モンゴメイェン",null,null,0,null,16],
-  [1988320,1.45,10.5667,9155,2012,"GQ","GQ-C","Evinayong","エヴィナヨング","Evínayong","es",2,"GQ-CS",16],
-  [985548,3.45,8.55,7739,2012,"GQ","GQ-I","Luba","ルバ",null,null,2,"GQ-BS",16],
-  [526539,1.6287,11.3168,7251,2012,"GQ","GQ-C","Mongomo","モンゴモ",null,null,2,"GQ-WN",16],
-  [1001897,-1.4043,5.6322,5008,2001,"GQ","GQ-I","San Antonio de Palé","サンアントニオ・デ・パレ",null,null,2,"GQ-AN",16],
-  [1140136,1.5917,10.8222,2000,2022,"GQ","GQ-C","Ciudad de la Paz","ラパス",null,null,1,"GQ",16],
-];
+const GQ: CityColumns = {
+  id: "2y2,6viw,1iny5,jj7i,1mbhm,1jtya,16m74,l4gc,baa3,lh2h,ofqg",
+  lat: [37521,18650,18500,21500,18656,16931,14500,34500,16287,-14043,15917],
+  lon: [87737,97700,102500,113167,107689,110342,105667,85500,113168,56322,108222],
+  population: [297000,290000,41084,36565,16626,15644,9155,7739,7251,5008,2000],
+  date: "2018,2015,2014,2012,2012,2012,2012,2012,2012,2001,2022",
+  country: "GQGQGQGQGQGQGQGQGQGQGQ",
+  subdivisions: "I,C",
+  subdivision: [0,1,1,1,1,1,1,0,1,0,1],
+  en: "Malabo|Bata|Niefang|Ebibeyin|Añisok|Mengomeyén|Evinayong|Luba|Mongomo|San Antonio de Palé|Ciudad de la Paz",
+  ja: "マラボ|バタ|ニエファング|エベビイン|アニソク|モンゴメイェン|エヴィナヨング|ルバ|モンゴモ|サンアントニオ・デ・パレ|ラパス",
+  native: "|||Ebibeyín|||Evínayong||||",
+  languages: "es",
+  language: [-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1],
+  capital: "22020022221",
+  capitalOf: "GQ-BN GQ-I|GQ-C GQ-LI||GQ-KN|||GQ-CS|GQ-BS|GQ-WN|GQ-AN|GQ",
+  sources: "1010101010101010101010",
+  extra: [],
+};
 
 export { GQ };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mt: the 12 cities of Malta, every tier together, as a list.
 
 import { MT } from "../data/cities-by-country/mt.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MT);
+const CITIES: readonly City[] = expandCities(rowsOf(MT));
 
 export default CITIES;
 export { CITIES };

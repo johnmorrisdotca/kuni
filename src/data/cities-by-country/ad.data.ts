@@ -2,16 +2,26 @@
 // The 7 cities of Andorra (AD), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const AD: readonly CityRow[] = [
-  [1863,42.5072,1.5222,24042,2023,"AD","AD-07","Andorra la Vella","アンドラ・ラ・ベリャ",null,null,1,"AD",16],
-  [386802,42.5667,1.6,null,null,"AD","AD-02","Canillo",null,null,null,2,"AD-02",16],
-  [989558,42.5347,1.5801,null,null,"AD","AD-03","Encamp",null,null,null,2,"AD-03",16],
-  [1050185,42.5092,1.5398,null,null,"AD","AD-08","Les Escaldes","レス・エスカルデス","les Escaldes","ca",2,"AD-08",16],
-  [1120573,42.4647,1.4914,null,null,"AD","AD-06","Sant Julià de Lòria",null,null,null,2,"AD-06",16],
-  [3820973,42.5444,1.5154,null,null,"AD","AD-04","La Massana",null,"la Massana","ca",2,"AD-04",16],
-  [3885480,42.5562,1.5332,null,null,"AD","AD-05","Ordino",null,null,null,2,"AD-05",16],
-];
+const AD: CityColumns = {
+  id: "1fr,8agi,l7jq,mibt,o0n1,29wa5,2ba20",
+  lat: [425072,425667,425347,425092,424647,425444,425562],
+  lon: [15222,16000,15801,15398,14914,15154,15332],
+  population: [24042,-1,-1,-1,-1,-1,-1],
+  date: "2023,,,,,,",
+  country: "ADADADADADADAD",
+  subdivisions: "07,02,03,08,06,04,05",
+  subdivision: [0,1,2,3,4,5,6],
+  en: "Andorra la Vella|Canillo|Encamp|Les Escaldes|Sant Julià de Lòria|La Massana|Ordino",
+  ja: "アンドラ・ラ・ベリャ|||レス・エスカルデス|||",
+  native: "|||les Escaldes||la Massana|",
+  languages: "ca",
+  language: [-1,-1,-1,0,-1,0,-1],
+  capital: "1222222",
+  capitalOf: "AD|AD-02|AD-03|AD-08|AD-06|AD-04|AD-05",
+  sources: "10101010101010",
+  extra: [],
+};
 
 export { AD };

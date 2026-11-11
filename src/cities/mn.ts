@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mn: the 24 cities of Mongolia, every tier together, as a list.
 
 import { MN } from "../data/cities-by-country/mn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MN);
+const CITIES: readonly City[] = expandCities(rowsOf(MN));
 
 export default CITIES;
 export { CITIES };

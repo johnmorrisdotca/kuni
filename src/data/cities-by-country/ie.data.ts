@@ -2,47 +2,26 @@
 // The 38 cities of Ireland (IE), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const IE: readonly CityRow[] = [
-  [1761,53.3497,-6.2603,592713,"2022-04-03","IE","IE-L","Dublin","ダブリン","Baile Átha Cliath","ga",1,"IE",0,"oecd:IE001F","Dublin",2096412,2022],
-  [36647,51.9,-8.4731,222333,2022,"IE","IE-M","Cork","コーク","Corcaigh","ga",2,"IE-CO",0,"oecd:IE002F","Cork",500578,2022],
-  [133315,52.6653,-8.6238,62702,"2022-04-03","IE","IE-M","Limerick","リムリック","Luimneach","ga",2,"IE-LK",0,"oecd:IE003F","Limerick",251673,2022],
-  [129610,53.2719,-9.0488,83456,2022,"IE","IE-C","Galway","ゴールウェイ","Gaillimh","ga",2,"IE-G",0,"oecd:IE004F","Galway",247882,2022],
-  [183551,52.2583,-7.119,48369,2016,"IE","IE-M","Waterford","ウォーターフォード","Port Láirge","ga",2,"IE-WD",0,"oecd:IE005F","Waterford",116451,2022],
-  [207223,53.715,-6.3525,40956,2016,"IE","IE-L","Drogheda","ドロヘダ","Droichead Átha","ga",0,null,0],
-  [204956,54.0044,-6.4003,39004,2016,"IE","IE-L","Dundalk","ダンドーク","Dún Dealgan","ga",2,"IE-LH",0],
-  [213358,52.2721,-9.7026,26079,2022,"IE","IE-M","Tralee","トラリー","Trá Lí","ga",2,"IE-KY",0],
-  [211703,52.8306,-6.9317,24272,2016,"IE","IE-L","Carlow","カーロウ","Ceatharlach","ga",2,"IE-CW",0],
-  [209128,52.8463,-8.9807,24253,2006,"IE","IE-M","Ennis","エニス","Inis","ga",2,"IE-CE",0],
-  [109092,52.6506,-7.2514,22179,2011,"IE","IE-L","Kilkenny","キルケニー","Cill Chainnigh","ga",2,"IE-KK",0],
-  [804704,53.6086,-6.1831,21722,2016,"IE","IE-L","Balbriggan","バルブリガン","Baile Brigín","ga",0,null,0],
-  [216038,53.2158,-6.6669,21393,2016,"IE","IE-L","Naas","ナース","An Nás","ga",2,"IE-KE",0],
-  [55308,53.5224,-7.3378,20928,2016,"IE","IE-L","Mullingar","マリンガー","An Muileann gCearr","ga",2,"IE-WH",0],
-  [209126,52.3383,-6.4617,20188,2016,"IE","IE-L","Wexford","ウェックスフォード","Loch Garman","ga",2,"IE-WX",0],
-  [952497,54.9566,-7.7204,19274,2016,"IE","IE-U","Letterkenny","レタケニー","Leitir Ceanainn","ga",0,null,0],
-  [190002,54.2667,-8.4833,19199,2016,"IE","IE-C","Sligo","スライゴ","Sligeach","ga",2,"IE-SO",0],
-  [217057,52.3539,-7.7116,18369,2022,"IE","IE-M","Clonmel","クロンメル","Cluain Meala","ga",2,"IE-TA",0],
-  [1766143,53.512,-6.398,15680,2022,"IE","IE-L","Ashbourne","アッシュボーン","Cill Dhéagláin","ga",0,null,0],
-  [321091,53.2667,-7.5,14607,2016,"IE","IE-L","Tullamore","タラモア","Tulach Mhór","ga",2,"IE-OY",0],
-  [749196,53.8608,-9.2988,12068,2016,"IE","IE-C","Castlebar","カスルバー","Caisleán an Bharraigh","ga",2,"IE-MO",0],
-  [373901,54.2478,-6.9708,5937,null,"IE","IE-U","Monaghan","モナハン","Muineachán","ga",2,"IE-MN",2],
-  [677631,53.6333,-8.1833,4860,null,"IE","IE-C","Roscommon","ロスコモン","Ros Comáin","ga",2,"IE-RN",2],
-  [215361,53.991,-7.3601,null,null,"IE","IE-U","Cavan","キャバン","An Cabhán","ga",2,"IE-CN",0],
-  [217845,53.6528,-6.6814,null,null,"IE","IE-L","Navan","ナヴァン","An Uaimh","ga",2,"IE-MH",0],
-  [589390,53.9469,-8.09,null,null,"IE","IE-C","Carrick-on-Shannon","キャリック＝オン＝シャノン","Cora Droma Rúisc","ga",2,"IE-LM",0],
-  [645623,53.727,-7.7998,null,null,"IE","IE-L","Longford","ロングフォード","An Longfort","ga",2,"IE-LD",0],
-  [652101,52.9779,-6.033,null,null,"IE","IE-L","Wicklow","ウィックロー","Cill Mhantáin","ga",2,"IE-WW",0],
-  [822871,53.0309,-7.3008,null,null,"IE","IE-L","Port Laoise","ポート・レーイシュ",null,null,2,"IE-LS",0],
-  [844546,54.8356,-7.4779,null,null,"IE","IE-U","Lifford","リフォード","Leifear","ga",2,"IE-DL",0],
-  [918372,52.8632,-8.1995,null,null,"IE","IE-M","Nenagh","ニナ","An tAonach","ga",2,"IE-TA",0],
-  [4169280,53.3551,-6.2492,506211,2006,"IE","IE-L","Dublin City",null,"Cathair Átha Cliath","ga",0,null,0,1761],
-  [987745,53.4597,-6.2181,40776,2022,"IE","IE-L","Swords","スウォーズ","Sord","ga",0,null,0,1761],
-  [2448591,53.3015,-6.1778,28557,2002,"IE","IE-L","Blackrock","ブラックロック","An Charraig Dhubh","ga",0,null,0,1761],
-  [745989,53.3,-6.14,23857,null,"IE","IE-L","Dún Laoghaire","ダン・レアリー",null,null,0,null,0,1761],
-  [2088319,53.3657,-6.2908,22740,2002,"IE","IE-L","Cabra",null,"an Chabrach","ga",0,null,0,1761],
-  [2528844,51.8883,-8.5873,16308,2006,"IE","IE-M","Ballincollig","バリンコリグ","Baile an Chollaigh","ga",0,null,0,36647],
-  [987797,53.3636,-6.4864,15504,2016,"IE","IE-L","Leixlip","リークスリップ","Léim an Bhradáin","ga",0,null,0,1761],
-];
+const IE: CityColumns = {
+  id: "1cx,s9z,2uv7,2s0a,3xmn,4fw7,4e58,4kmm,4jcn,4hd4,2c6c,h8ww,4mp2,16oc,4hd2,key9,42lu,4nhd,11urj,6vr7,g230,80i5,eiv3,4m69,4o39,cmry,du5z,dz5x,hmxj,i3nm,jomc,2hd1c,l65d,1ghcf,fzlx,18rcv,1i79o,l66t",
+  lat: [533497,519000,526653,532719,522583,537150,540044,522721,528306,528463,526506,536086,532158,535224,523383,549566,542667,523539,535120,532667,538608,542478,536333,539910,536528,539469,537270,529779,530309,548356,528632,533551,534597,533015,533000,533657,518883,533636],
+  lon: [-62603,-84731,-86238,-90488,-71190,-63525,-64003,-97026,-69317,-89807,-72514,-61831,-66669,-73378,-64617,-77204,-84833,-77116,-63980,-75000,-92988,-69708,-81833,-73601,-66814,-80900,-77998,-60330,-73008,-74779,-81995,-62492,-62181,-61778,-61400,-62908,-85873,-64864],
+  population: [592713,222333,62702,83456,48369,40956,39004,26079,24272,24253,22179,21722,21393,20928,20188,19274,19199,18369,15680,14607,12068,5937,4860,-1,-1,-1,-1,-1,-1,-1,-1,506211,40776,28557,23857,22740,16308,15504],
+  date: "2022-04-03,2022,2022-04-03,2022,2016,2016,2016,2022,2016,2006,2011,2016,2016,2016,2016,2016,2016,2022,2022,2016,2016,,,,,,,,,,,2006,2022,2002,,2002,2006,2016",
+  country: "IEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIE",
+  subdivisions: "L,M,C,U",
+  subdivision: [0,1,1,2,1,0,0,1,0,1,0,0,0,0,0,3,2,1,0,0,2,3,2,3,0,2,0,0,0,3,1,0,0,0,0,0,1,0],
+  en: "Dublin|Cork|Limerick|Galway|Waterford|Drogheda|Dundalk|Tralee|Carlow|Ennis|Kilkenny|Balbriggan|Naas|Mullingar|Wexford|Letterkenny|Sligo|Clonmel|Ashbourne|Tullamore|Castlebar|Monaghan|Roscommon|Cavan|Navan|Carrick-on-Shannon|Longford|Wicklow|Port Laoise|Lifford|Nenagh|Dublin City|Swords|Blackrock|Dún Laoghaire|Cabra|Ballincollig|Leixlip",
+  ja: "ダブリン|コーク|リムリック|ゴールウェイ|ウォーターフォード|ドロヘダ|ダンドーク|トラリー|カーロウ|エニス|キルケニー|バルブリガン|ナース|マリンガー|ウェックスフォード|レタケニー|スライゴ|クロンメル|アッシュボーン|タラモア|カスルバー|モナハン|ロスコモン|キャバン|ナヴァン|キャリック＝オン＝シャノン|ロングフォード|ウィックロー|ポート・レーイシュ|リフォード|ニナ||スウォーズ|ブラックロック|ダン・レアリー||バリンコリグ|リークスリップ",
+  native: "Baile Átha Cliath|Corcaigh|Luimneach|Gaillimh|Port Láirge|Droichead Átha|Dún Dealgan|Trá Lí|Ceatharlach|Inis|Cill Chainnigh|Baile Brigín|An Nás|An Muileann gCearr|Loch Garman|Leitir Ceanainn|Sligeach|Cluain Meala|Cill Dhéagláin|Tulach Mhór|Caisleán an Bharraigh|Muineachán|Ros Comáin|An Cabhán|An Uaimh|Cora Droma Rúisc|An Longfort|Cill Mhantáin||Leifear|An tAonach|Cathair Átha Cliath|Sord|An Charraig Dhubh||an Chabrach|Baile an Chollaigh|Léim an Bhradáin",
+  languages: "ga",
+  language: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,-1,0,0,0],
+  capital: "12222022222022202202222222222220000000",
+  capitalOf: "IE|IE-CO|IE-LK|IE-G|IE-WD||IE-LH|IE-KY|IE-CW|IE-CE|IE-KK||IE-KE|IE-WH|IE-WX||IE-SO|IE-TA||IE-OY|IE-MO|IE-MN|IE-RN|IE-CN|IE-MH|IE-LM|IE-LD|IE-WW|IE-LS|IE-DL|IE-TA|||||||",
+  sources: "0000000000000000000000000000000000000000000202000000000000000000000000000000",
+  extra: [[0,"oecd:IE001F","Dublin",2096412,2022],[1,"oecd:IE002F","Cork",500578,2022],[2,"oecd:IE003F","Limerick",251673,2022],[3,"oecd:IE004F","Galway",247882,2022],[4,"oecd:IE005F","Waterford",116451,2022],[31,1761],[32,1761],[33,1761],[34,1761],[35,1761],[36,36647],[37,1761]],
+};
 
 export { IE };

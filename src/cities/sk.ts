@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sk: the 67 cities of Slovakia, every tier together, as a list.
 
 import { SK } from "../data/cities-by-country/sk.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SK);
+const CITIES: readonly City[] = expandCities(rowsOf(SK));
 
 export default CITIES;
 export { CITIES };

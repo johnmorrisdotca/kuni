@@ -2,10 +2,26 @@
 // The 1 cities of St. Martin (MF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MF: readonly CityRow[] = [
-  [200605,18.0667,-63.0847,5700,2006,"MF",null,"Marigot","マリゴ",null,null,1,"MF",16],
-];
+const MF: CityColumns = {
+  id: "4asd",
+  lat: [180667],
+  lon: [-630847],
+  population: [5700],
+  date: "2006",
+  country: "MF",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Marigot",
+  ja: "マリゴ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "MF",
+  sources: "10",
+  extra: [],
+};
 
 export { MF };

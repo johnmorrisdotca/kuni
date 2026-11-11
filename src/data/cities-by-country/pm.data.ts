@@ -2,10 +2,26 @@
 // The 1 cities of St. Pierre & Miquelon (PM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PM: readonly CityRow[] = [
-  [185678,46.7778,-56.1778,5282,2021,"PM",null,"Saint-Pierre","サン＝ピエール",null,null,1,"PM",16],
-];
+const PM: CityColumns = {
+  id: "3z9q",
+  lat: [467778],
+  lon: [-561778],
+  population: [5282],
+  date: "2021",
+  country: "PM",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Saint-Pierre",
+  ja: "サン＝ピエール",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "PM",
+  sources: "10",
+  extra: [],
+};
 
 export { PM };

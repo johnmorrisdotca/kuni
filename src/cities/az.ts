@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/az: the 96 cities of Azerbaijan, every tier together, as a list.
 
 import { AZ } from "../data/cities-by-country/az.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AZ);
+const CITIES: readonly City[] = expandCities(rowsOf(AZ));
 
 export default CITIES;
 export { CITIES };

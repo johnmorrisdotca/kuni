@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/dj: the 6 cities of Djibouti, every tier together, as a list.
 
 import { DJ } from "../data/cities-by-country/dj.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "DJ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(DJ);
+const CITIES: readonly City[] = expandCities(rowsOf(DJ));
 
 export default CITIES;
 export { CITIES };

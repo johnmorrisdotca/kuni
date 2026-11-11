@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/nr: the 3 cities of Nauru, every tier together, as a list.
 
 import { NR } from "../data/cities-by-country/nr.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(NR);
+const CITIES: readonly City[] = expandCities(rowsOf(NR));
 
 export default CITIES;
 export { CITIES };

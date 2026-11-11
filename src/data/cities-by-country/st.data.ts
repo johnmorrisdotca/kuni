@@ -2,16 +2,26 @@
 // The 7 cities of São Tomé & Príncipe (ST), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const ST: readonly CityRow[] = [
-  [3932,0.3375,6.7283,65468,2010,"ST","ST-01","São Tomé","サントメ",null,null,1,"ST",16],
-  [1552353,0.2531,6.7414,7496,2013,"ST","ST-02","Santana","サンタナ",null,null,2,"ST-02",16],
-  [1635802,0.3,6.6667,6636,2005,"ST","ST-06","Trindade","トリンダージ",null,null,2,"ST-06",16],
-  [2209215,0.1338,6.6483,6636,null,"ST","ST-03","São João dos Angolares","ドナ・エウゲニア",null,null,2,"ST-03",16],
-  [1552608,0.3667,6.6333,1734,2005,"ST","ST-05","Guadalupe","グアダルーペ",null,null,2,"ST-05",16],
-  [973656,1.6367,7.4178,1300,null,"ST","ST-P","Santo António","サント・アントニオ",null,null,2,"ST-P",16],
-  [612376,0.3592,6.5517,null,null,"ST","ST-04","Neves","ネヴィス",null,null,2,"ST-04",16],
-];
+const ST: CityColumns = {
+  id: "318,x9sx,z26y,1bcn3,xa00,kva0,d4ig",
+  lat: [3375,2531,3000,1338,3667,16367,3592],
+  lon: [67283,67414,66667,66483,66333,74178,65517],
+  population: [65468,7496,6636,6636,1734,1300,-1],
+  date: "2010,2013,2005,,2005,,",
+  country: "STSTSTSTSTSTST",
+  subdivisions: "01,02,06,03,05,P,04",
+  subdivision: [0,1,2,3,4,5,6],
+  en: "São Tomé|Santana|Trindade|São João dos Angolares|Guadalupe|Santo António|Neves",
+  ja: "サントメ|サンタナ|トリンダージ|ドナ・エウゲニア|グアダルーペ|サント・アントニオ|ネヴィス",
+  native: "||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1],
+  capital: "1222222",
+  capitalOf: "ST|ST-02|ST-06|ST-03|ST-05|ST-P|ST-04",
+  sources: "10101010101010",
+  extra: [],
+};
 
 export { ST };

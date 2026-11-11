@@ -2,23 +2,26 @@
 // The 14 cities of Costa Rica (CR), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CR: readonly CityRow[] = [
-  [3070,9.9327,-84.0796,335007,2025,"CR","CR-SJ","San José","サンホセ",null,null,1,"CR",16,7414547,"Greater Metropolitan Area",2576374,2022],
-  [30620,10.0022,-83.084,71514,2022,"CR","CR-L","Limón","リモン",null,null,2,"CR-L",16],
-  [1387526,10.6296,-85.4383,65922,2022,"CR","CR-G","Liberia","リベリア",null,null,2,"CR-G",16],
-  [787675,10.3441,-84.4199,46975,2022,"CR","CR-A","Quesada","ケサダ",null,null,0,null,16],
-  [2518620,9.3403,-83.7338,45324,2022,"CR","CR-SJ","San Isidro de El General","サン・イシドロ・デ・エル・ヘネラル",null,null,0,null,16],
-  [37104,10.0165,-84.2139,44374,2022,"CR","CR-A","Alajuela","アラフエラ",null,null,2,"CR-A",16],
-  [30687,9.9773,-84.8346,41528,2011,"CR","CR-P","Puntarenas","プンタレナス",null,null,2,"CR-P",16],
-  [14108797,9.8967,-84.0706,31783,2022,"CR","CR-SJ","Desamparados",null,null,null,0,null,16],
-  [3947434,9.9609,-84.0731,25978,2022,"CR","CR-SJ","San Juan","ティバス",null,null,0,null,16],
-  [2412778,9.9771,-84.7443,23953,2022,"CR","CR-P","El Roble",null,null,null,0,null,16],
-  [1706524,10.4448,-85.104,23624,2022,"CR","CR-G","Cañas","カーニャス",null,null,0,null,17],
-  [30617,9.8643,-83.9207,22775,2022,"CR","CR-C","Cartago","カルタゴ (コスタリカ)",null,null,2,"CR-C",16],
-  [1001817,9.1985,-83.2816,22619,2022,"CR","CR-P","Buenos Aires",null,null,null,0,null,16],
-  [30616,9.9984,-84.1171,16686,2022,"CR","CR-H","Heredia","エレディア",null,null,2,"CR-H",16],
-];
+const CR: CityColumns = {
+  id: "2da,nmk,tqme,gvrv,1hzdo,smo,nof,8eef1,2cluy,1fppm,10krg,nmh,lh09,nmg",
+  lat: [99327,100022,106296,103441,93403,100165,99773,98967,99609,99771,104448,98643,91985,99984],
+  lon: [-840796,-830840,-854383,-844199,-837338,-842139,-848346,-840706,-840731,-847443,-851040,-839207,-832816,-841171],
+  population: [335007,71514,65922,46975,45324,44374,41528,31783,25978,23953,23624,22775,22619,16686],
+  date: "2025,2022,2022,2022,2022,2022,2011,2022,2022,2022,2022,2022,2022,2022",
+  country: "CRCRCRCRCRCRCRCRCRCRCRCRCRCR",
+  subdivisions: "SJ,L,G,A,P,C,H",
+  subdivision: [0,1,2,3,0,3,4,0,0,4,2,5,4,6],
+  en: "San José|Limón|Liberia|Quesada|San Isidro de El General|Alajuela|Puntarenas|Desamparados|San Juan|El Roble|Cañas|Cartago|Buenos Aires|Heredia",
+  ja: "サンホセ|リモン|リベリア|ケサダ|サン・イシドロ・デ・エル・ヘネラル|アラフエラ|プンタレナス||ティバス||カーニャス|カルタゴ (コスタリカ)||エレディア",
+  native: "|||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12200220000202",
+  capitalOf: "CR|CR-L|CR-G|||CR-A|CR-P|||||CR-C||CR-H",
+  sources: "1010101010101010101011101010",
+  extra: [[0,7414547,"Greater Metropolitan Area",2576374,2022]],
+};
 
 export { CR };

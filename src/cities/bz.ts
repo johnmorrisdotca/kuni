@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bz: the 8 cities of Belize, every tier together, as a list.
 
 import { BZ } from "../data/cities-by-country/bz.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BZ);
+const CITIES: readonly City[] = expandCities(rowsOf(BZ));
 
 export default CITIES;
 export { CITIES };

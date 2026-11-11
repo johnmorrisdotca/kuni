@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/nl: the 340 cities of Netherlands, every tier together, as a list.
 
 import { NL } from "../data/cities-by-country/nl.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(NL);
+const CITIES: readonly City[] = expandCities(rowsOf(NL));
 
 export default CITIES;
 export { CITIES };

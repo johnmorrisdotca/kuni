@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/wf: the 1 cities of Wallis & Futuna, every tier together, as a list.
 
 import { WF } from "../data/cities-by-country/wf.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "WF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(WF);
+const CITIES: readonly City[] = expandCities(rowsOf(WF));
 
 export default CITIES;
 export { CITIES };

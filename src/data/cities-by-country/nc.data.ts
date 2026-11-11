@@ -2,10 +2,26 @@
 // The 1 cities of New Caledonia (NC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NC: readonly CityRow[] = [
-  [9733,-22.2667,166.45,96082,2019,"NC",null,"Nouméa","ヌメア",null,null,1,"NC",16],
-];
+const NC: CityColumns = {
+  id: "7id",
+  lat: [-222667],
+  lon: [1664500],
+  population: [96082],
+  date: "2019",
+  country: "NC",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Nouméa",
+  ja: "ヌメア",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "NC",
+  sources: "10",
+  extra: [],
+};
 
 export { NC };

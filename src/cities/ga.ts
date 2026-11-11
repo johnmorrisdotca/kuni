@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ga: the 14 cities of Gabon, every tier together, as a list.
 
 import { GA } from "../data/cities-by-country/ga.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GA);
+const CITIES: readonly City[] = expandCities(rowsOf(GA));
 
 export default CITIES;
 export { CITIES };

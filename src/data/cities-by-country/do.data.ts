@@ -2,44 +2,26 @@
 // The 35 cities of Dominican Republic (DO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const DO: readonly CityRow[] = [
-  [34820,18.4625,-69.9361,2201941,2025,"DO",null,"Santo Domingo","サント・ドミンゴ",null,null,1,"DO",16],
-  [42763,19.45,-70.7,1343423,2021,"DO",null,"Santiago de los Caballeros","サンティアゴ・デ・ロス・カバリェロス",null,null,2,"DO-25",16],
-  [2713354,18.4855,-69.8734,948855,2010,"DO",null,"Santo Domingo Este","サント・ドミンゴ・エステ",null,null,2,"DO-32",16],
-  [988413,19.7958,-70.6944,338339,2022,"DO",null,"Luperon pto pta","プエルト・プラタ","Puerto Plata","es",2,"DO-18",16],
-  [538953,19.2242,-70.5283,282055,2022,"DO",null,"La Vega","コンセプシオン・デ・ラ・ベガ",null,null,2,"DO-13",16],
-  [1020261,18.6181,-68.7111,251243,2010,"DO",null,"Higüey","イグエイ",null,null,2,"DO-11",16],
-  [373759,18.4167,-70.1333,232769,2010,"DO",null,"San Cristóbal","サン・クリストバル",null,null,2,"DO-21",16],
-  [680596,18.4572,-69.3061,217141,2015,"DO",null,"San Pedro de Macorís","サンペドロ・デ・マコリス",null,null,2,"DO-23",16],
-  [681999,19.3,-70.25,188118,2010,"DO",null,"San Francisco de Macorís","サン・フランシスコ・デ・マコリス",null,null,2,"DO-06",16],
-  [2430320,18.81,-71.23,169032,2012,"DO",null,"San Juan de la Maguana","サン・フアン・デ・ラ・マグアーナ","San Juan","es",2,"DO-22",16],
-  [2306136,18.9333,-70.4,158034,2012,"DO",null,"Bonao","ボナオ",null,null,2,"DO-28",16],
-  [1902349,18.29,-70.33,145595,2014,"DO",null,"Baní","バニ",null,null,2,"DO-17",16],
-  [40508,18.43,-68.97,139238,"2022-11-10","DO",null,"La Romana","ラ・ロマーナ",null,null,2,"DO-12",16],
-  [1568095,18.5586,-68.3694,138919,2022,"DO",null,"Punta Cana","プンタ・カナ",null,null,0,null,16],
-  [579950,19.2053,-69.3364,108179,2012,"DO",null,"Samaná","サマナ",null,null,2,"DO-20",16],
-  [1836680,18.46,-70.74,103276,2022,"DO",null,"Azua","アスア (ドミニカ共和国)","Municipio de Azua","es",2,"DO-02",16],
-  [2021983,19.4833,-71.35,98453,2012,"DO",null,"Sabaneta","サバネタ","San Ignacio de Sabaneta","es",2,"DO-26",16],
-  [1241374,19.3833,-70.5167,94981,2010,"DO",null,"Moca","モカ (ドミニカ共和国)",null,null,2,"DO-09",16],
-  [958586,18.2079,-71.0996,83619,2010,"DO",null,"Santa Cruz de Barahona","バラオナ",null,null,2,"DO-04",16],
-  [2087489,19.06,-70.15,79596,2012,"DO",null,"Cotuí","コトゥイ",null,null,2,"DO-24",16],
-  [2306984,19.38,-69.85,76933,2010,"DO",null,"Nagua","ナグア",null,null,2,"DO-14",16],
-  [692560,19.5556,-71.0778,76863,2010,"DO",null,"Mao","マオ",null,null,2,"DO-27",16],
-  [2420339,18.77,-69.04,66867,2010,"DO",null,"Santa Cruz del Seibo","エル・セイボ","El Seibo","es",2,"DO-08",16],
-  [2427660,18.767,-69.267,61517,2010,"DO",null,"Hato Mayor del Rey","アト・マジョール・デル・レイ","Hato Mayor","es",2,"DO-30",16],
-  [2119082,18.55,-70.5,57174,2012,"DO",null,"San José de Ocoa","サン・ホセ・デ・オコア",null,null,2,"DO-31",16],
-  [634487,18.81,-69.79,46723,2010,"DO",null,"Monte Plata","モンテ・プラタ",null,null,2,"DO-29",16],
-  [1023951,19.42,-70.39,39557,2010,"DO",null,"Salcedo","サルセド",null,null,2,"DO-19",16],
-  [2107258,18.49,-71.42,36511,2010,"DO",null,"Neiba","ネイバ",null,null,2,"DO-03",16],
-  [1969407,19.5667,-71.71,28071,2010,"DO",null,"Dajabón","ダハボン",null,null,2,"DO-05",16],
-  [617647,18.8775,-71.7028,25924,2010,"DO",null,"Comendador","コメンダドル",null,null,2,"DO-07",16],
-  [2130701,19.85,-71.65,24674,2010,"DO",null,"Monte Cristi","モンテ・クリスティ (ドミニカ共和国)",null,null,2,"DO-15",16],
-  [2628384,18.0333,-71.75,24291,2010,"DO",null,"Pedernales","ペデルナレス",null,null,2,"DO-16",16],
-  [1770214,18.83,-70.3,20934,2010,"DO",null,"Piedra Blanca","ピエドラ・ブランカ",null,null,0,null,16],
-  [3905064,19.1833,-70.1,17864,2010,"DO",null,"Pimentel","ピメンテル (ドミニカ共和国)","Pimentel (República Dominicana)","es",0,null,16],
-  [1409818,18.4833,-71.85,16510,2010,"DO",null,"Jimaní","ヒマニ",null,null,2,"DO-10",16],
-];
+const DO: CityColumns = {
+  id: "qv8,wzv,1m5my,l6nx,bjux,lv8l,80e7,el5g,em8f,1g38w,1dffc,14rv1,v98,xly7,cfhq,13d6w,17c67,qlum,kjne,18qpt,1dg2w,euds,1fvjn,1g170,19f3e,dlkn,ly33,195yy,167lr,d8kv,19o25,1kc2o,11xwm,2bp60,u7tm",
+  lat: [184625,194500,184855,197958,192242,186181,184167,184572,193000,188100,189333,182900,184300,185586,192053,184600,194833,193833,182079,190600,193800,195556,187700,187670,185500,188100,194200,184900,195667,188775,198500,180333,188300,191833,184833],
+  lon: [-699361,-707000,-698734,-706944,-705283,-687111,-701333,-693061,-702500,-712300,-704000,-703300,-689700,-683694,-693364,-707400,-713500,-705167,-710996,-701500,-698500,-710778,-690400,-692670,-705000,-697900,-703900,-714200,-717100,-717028,-716500,-717500,-703000,-701000,-718500],
+  population: [2201941,1343423,948855,338339,282055,251243,232769,217141,188118,169032,158034,145595,139238,138919,108179,103276,98453,94981,83619,79596,76933,76863,66867,61517,57174,46723,39557,36511,28071,25924,24674,24291,20934,17864,16510],
+  date: "2025,2021,2010,2022,2022,2010,2010,2015,2010,2012,2012,2014,2022-11-10,2022,2012,2022,2012,2010,2010,2012,2010,2010,2010,2010,2012,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010",
+  country: "DODODODODODODODODODODODODODODODODODODODODODODODODODODODODODODODODODODO",
+  subdivisions: "",
+  subdivision: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  en: "Santo Domingo|Santiago de los Caballeros|Santo Domingo Este|Luperon pto pta|La Vega|Higüey|San Cristóbal|San Pedro de Macorís|San Francisco de Macorís|San Juan de la Maguana|Bonao|Baní|La Romana|Punta Cana|Samaná|Azua|Sabaneta|Moca|Santa Cruz de Barahona|Cotuí|Nagua|Mao|Santa Cruz del Seibo|Hato Mayor del Rey|San José de Ocoa|Monte Plata|Salcedo|Neiba|Dajabón|Comendador|Monte Cristi|Pedernales|Piedra Blanca|Pimentel|Jimaní",
+  ja: "サント・ドミンゴ|サンティアゴ・デ・ロス・カバリェロス|サント・ドミンゴ・エステ|プエルト・プラタ|コンセプシオン・デ・ラ・ベガ|イグエイ|サン・クリストバル|サンペドロ・デ・マコリス|サン・フランシスコ・デ・マコリス|サン・フアン・デ・ラ・マグアーナ|ボナオ|バニ|ラ・ロマーナ|プンタ・カナ|サマナ|アスア (ドミニカ共和国)|サバネタ|モカ (ドミニカ共和国)|バラオナ|コトゥイ|ナグア|マオ|エル・セイボ|アト・マジョール・デル・レイ|サン・ホセ・デ・オコア|モンテ・プラタ|サルセド|ネイバ|ダハボン|コメンダドル|モンテ・クリスティ (ドミニカ共和国)|ペデルナレス|ピエドラ・ブランカ|ピメンテル (ドミニカ共和国)|ヒマニ",
+  native: "|||Puerto Plata||||||San Juan||||||Municipio de Azua|San Ignacio de Sabaneta||||||El Seibo|Hato Mayor||||||||||Pimentel (República Dominicana)|",
+  languages: "es",
+  language: [-1,-1,-1,0,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1],
+  capital: "12222222222220222222222222222222002",
+  capitalOf: "DO|DO-25|DO-32|DO-18|DO-13|DO-11|DO-21|DO-23|DO-06|DO-22|DO-28|DO-17|DO-12||DO-20|DO-02|DO-26|DO-09|DO-04|DO-24|DO-14|DO-27|DO-08|DO-30|DO-31|DO-29|DO-19|DO-03|DO-05|DO-07|DO-15|DO-16|||DO-10",
+  sources: "1010101010101010101010101010101010101010101010101010101010101010101010",
+  extra: [],
+};
 
 export { DO };

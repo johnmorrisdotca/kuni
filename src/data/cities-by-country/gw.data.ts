@@ -2,19 +2,26 @@
 // The 10 cities of Guinea-Bissau (GW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GW: readonly CityRow[] = [
-  [3739,11.86,-15.5833,492004,2015,"GW","GW-BS","Bissau","ビサウ",null,null,1,"GW",16],
-  [1022984,12.4833,-15.2167,46268,2009,"GW","GW-N","Farim","ファリン",null,null,2,"GW-OI",16],
-  [1015891,12.2833,-14.2167,43556,"2009-03-01","GW","GW-L","Gabu","ガブ",null,null,2,"GW-GA GW-L",16],
-  [616404,11.8869,-15.8556,42659,2009,"GW","GW-N","Quinhamel","キニャーメウ",null,null,2,"GW-BM",16],
-  [799788,12.1719,-14.6575,29556,"2009-03-01","GW","GW-L","Bafatá","バファタ",null,null,2,"GW-BA",16],
-  [572152,12.2167,-15.45,11964,2008,"GW","GW-N","Bissorã","ビソラン",null,null,2,"GW-N",16],
-  [997402,11.59,-14.99,7898,"2009-03-01","GW","GW-S","Buba","ブバ",null,null,2,"GW-QU GW-S",16],
-  [1002807,12.278,-16.165,5674,2009,"GW","GW-N","Cacheu","カシェウ",null,null,2,"GW-CA",16],
-  [1190869,11.2833,-15.25,5081,2009,"GW",null,"Catió","カチオ",null,null,2,"GW-TO",16],
-  [681802,11.5776,-15.4742,5026,"2009-03-01","GW","GW-S","Bolama","ボラマ",null,null,2,"GW-BL",16],
-];
+const GW: CityColumns = {
+  id: "2vv,lxc8,lrv7,d7mc,h54c,c9h4,ldlm,lhrr,pivp,em2y",
+  lat: [118600,124833,122833,118869,121719,122167,115900,122780,112833,115776],
+  lon: [-155833,-152167,-142167,-158556,-146575,-154500,-149900,-161650,-152500,-154742],
+  population: [492004,46268,43556,42659,29556,11964,7898,5674,5081,5026],
+  date: "2015,2009,2009-03-01,2009,2009-03-01,2008,2009-03-01,2009,2009,2009-03-01",
+  country: "GWGWGWGWGWGWGWGWGWGW",
+  subdivisions: "BS,N,L,S",
+  subdivision: [0,1,2,1,2,1,3,1,-1,3],
+  en: "Bissau|Farim|Gabu|Quinhamel|Bafatá|Bissorã|Buba|Cacheu|Catió|Bolama",
+  ja: "ビサウ|ファリン|ガブ|キニャーメウ|バファタ|ビソラン|ブバ|カシェウ|カチオ|ボラマ",
+  native: "|||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1222222222",
+  capitalOf: "GW|GW-OI|GW-GA GW-L|GW-BM|GW-BA|GW-N|GW-QU GW-S|GW-CA|GW-TO|GW-BL",
+  sources: "10101010101010101010",
+  extra: [],
+};
 
 export { GW };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/my: the 46 cities of Malaysia, every tier together, as a list.
 
 import { MY } from "../data/cities-by-country/my.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MY);
+const CITIES: readonly City[] = expandCities(rowsOf(MY));
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ao: the 48 cities of Angola, every tier together, as a list.
 
 import { AO } from "../data/cities-by-country/ao.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AO);
+const CITIES: readonly City[] = expandCities(rowsOf(AO));
 
 export default CITIES;
 export { CITIES };

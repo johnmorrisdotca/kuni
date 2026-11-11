@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/py: the 37 cities of Paraguay, every tier together, as a list.
 
 import { PY } from "../data/cities-by-country/py.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PY);
+const CITIES: readonly City[] = expandCities(rowsOf(PY));
 
 export default CITIES;
 export { CITIES };

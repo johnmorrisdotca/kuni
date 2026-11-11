@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pe: the 144 cities of Peru, every tier together, as a list.
 
 import { PE } from "../data/cities-by-country/pe.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PE);
+const CITIES: readonly City[] = expandCities(rowsOf(PE));
 
 export default CITIES;
 export { CITIES };

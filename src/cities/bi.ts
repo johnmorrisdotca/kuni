@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bi: the 18 cities of Burundi, every tier together, as a list.
 
 import { BI } from "../data/cities-by-country/bi.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BI);
+const CITIES: readonly City[] = expandCities(rowsOf(BI));
 
 export default CITIES;
 export { CITIES };

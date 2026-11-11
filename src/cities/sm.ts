@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sm: the 1 cities of San Marino, every tier together, as a list.
 
 import { SM } from "../data/cities-by-country/sm.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SM);
+const CITIES: readonly City[] = expandCities(rowsOf(SM));
 
 export default CITIES;
 export { CITIES };

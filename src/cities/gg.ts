@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gg: the 1 cities of Guernsey, every tier together, as a list.
 
 import { GG } from "../data/cities-by-country/gg.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GG);
+const CITIES: readonly City[] = expandCities(rowsOf(GG));
 
 export default CITIES;
 export { CITIES };

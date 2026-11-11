@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gl: the 5 cities of Greenland, every tier together, as a list.
 
 import { GL } from "../data/cities-by-country/gl.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GL);
+const CITIES: readonly City[] = expandCities(rowsOf(GL));
 
 export default CITIES;
 export { CITIES };

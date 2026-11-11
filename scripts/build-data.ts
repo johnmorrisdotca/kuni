@@ -46,7 +46,7 @@ import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
-import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
+import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
 import { INSIDE_AREAS, INSIDE_SUBDIVISIONS, OECD_AREAS } from "./metro-links.ts";
 
@@ -1046,7 +1046,7 @@ const writeCities = (): void => {
   const OUT_CITY_COUNTRIES = join(OUT_DATA, "cities-by-country");
   rmSync(OUT_CITY_COUNTRIES, { recursive: true, force: true });
   mkdirSync(OUT_CITY_COUNTRIES, { recursive: true });
-  for (const file of readdirSync(join(ROOT, "src", "cities"))) if (/^[a-z]{2}\.ts$/.test(file)) rmSync(join(ROOT, "src", "cities", file));
+  for (const file of readdirSync(join(ROOT, "src", "cities"))) if (/^([a-z]{2}|names-[a-z]{2}|(capitals|100k)-[a-z0-9-]+)\.ts$/.test(file)) rmSync(join(ROOT, "src", "cities", file));
   const byCountryRows = new Map<string, typeof rows>();
   for (const row of rows) {
     const list = byCountryRows.get(row[5]) ?? [];
@@ -1059,7 +1059,11 @@ const writeCities = (): void => {
     const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en);
     writeDocumentedFile(join(OUT_CITY_COUNTRIES, `${alpha2.toLowerCase()}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);
+    writeDocumentedFile(join(ROOT, "src", "cities", `names-${alpha2.toLowerCase()}.ts`), countryNames(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en));
   }
+  // The capitals and the 100k tier again, in parts by the first letter of a word of a name, for a search from the start of a word.
+  for (const tier of SPLIT_TIERS) for (const part of startParts(tier, tiers[tier])) writeDocumentedFile(join(ROOT, "src", "cities", `${tier}-${part.key}.ts`), part.entry);
+  writeDocumentedFile(join(OUT_DATA, "city-start-loaders.data.ts"), startLoaders(withCities.map((code) => code.toLowerCase())));
   writeDocumentedFile(join(OUT_DATA, "city-loaders.data.ts"), cityLoaders(withCities.map((code) => code.toLowerCase())));
   writeDocumentedFile(join(OUT_DATA, "city-index.data.ts"), cityIndex(rows));
   // The Japanese city names a short label must keep whole: those whose 市 or 区 dropped would give a country's name

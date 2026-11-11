@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tl: the 13 cities of Timor-Leste, every tier together, as a list.
 
 import { TL } from "../data/cities-by-country/tl.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TL);
+const CITIES: readonly City[] = expandCities(rowsOf(TL));
 
 export default CITIES;
 export { CITIES };

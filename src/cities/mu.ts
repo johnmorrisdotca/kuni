@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mu: the 16 cities of Mauritius, every tier together, as a list.
 
 import { MU } from "../data/cities-by-country/mu.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MU"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MU);
+const CITIES: readonly City[] = expandCities(rowsOf(MU));
 
 export default CITIES;
 export { CITIES };

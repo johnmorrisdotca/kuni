@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/er: the 6 cities of Eritrea, every tier together, as a list.
 
 import { ER } from "../data/cities-by-country/er.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ER"
  * ```
  */
-const CITIES: readonly City[] = expandCities(ER);
+const CITIES: readonly City[] = expandCities(rowsOf(ER));
 
 export default CITIES;
 export { CITIES };

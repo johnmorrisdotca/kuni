@@ -2,26 +2,26 @@
 // The 17 cities of Bahamas (BS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BS: readonly CityRow[] = [
-  [2467,25.0781,-77.3386,227940,2025,"BS","BS-NP","Nassau","ナッソー",null,null,1,"BS",16],
-  [867573,26.52,-78.66,45945,2012,"BS","BS-FP","Freeport","フリーポート",null,null,0,null,16],
-  [1129877,26.8686,-77.5081,9948,2012,"BS",null,"Coopers Town","クーパーズ・タウン",null,null,2,"BS-NO",16],
-  [1337651,26.5333,-77.0667,6283,null,"BS","BS-CO","Marsh Harbour","マーシュ・ハーバー",null,null,2,"BS-CO",16],
-  [1771787,24.1278,-77.5639,3995,null,"BS",null,"High Rock","ハイ・ロック",null,null,2,"BS-EG",16],
-  [14209513,24.5833,-78,2576,2000,"BS","BS-NS","Fresh Creek","フレッシュ・クリーク",null,null,2,"BS-CS",16],
-  [891114,23.1,-74.9828,1788,2012,"BS","BS-BP","Clarence Town","クラレンス・タウン",null,null,2,"BS-LI",16],
-  [1771833,25.7277,-79.2976,1131,2012,"BS","BS-BI","Alice Town","アリス・タウン",null,null,2,"BS-BI",16],
-  [1771799,24.8333,-76.3333,1000,null,"BS","BS-SE","Rock Sound","ロック・サウンド",null,null,2,"BS-SE",16],
-  [1771829,20.95,-73.6667,430,2012,"BS","BS-IN","Matthew Town","マシュー・タウン",null,null,2,"BS-IN",16],
-  [9195237,24.0513,-74.5297,271,2010,"BS","BS-SS","Cockburn Town","コックスバーン・タウン",null,null,2,"BS-SS",16],
-  [1771812,25.1414,-78.0058,268,2012,"BS","BS-NS","Nicholls Town","ニコルズ・タウン",null,null,2,"BS-NS",16],
-  [4668720,22.375,-72.9622,143,2010,"BS",null,"Abraham's Bay",null,null,null,2,"BS-MG",16],
-  [3101961,23.5047,-75.7697,null,null,"BS","BS-EX","George Town","ジョージ・タウン (バハマ)",null,null,2,"BS-EX",16],
-  [5589465,25.1953,-76.2431,null,null,"BS",null,"Governor's Harbour","ガヴァナーズ・ハーバー",null,null,2,"BS-CE",16],
-  [7417405,26.0167,-77.4,null,null,"BS",null,"Sandy Point","サンディー・ポイント",null,null,2,"BS-SO",16],
-  [14208339,26.5336,-78.7894,null,null,"BS","BS-WG","Eight Mile Rock",null,null,null,2,"BS-WG",16],
-];
+const BS: CityColumns = {
+  id: "1wj,ilf9,o7th,so4z,11z4b,8gk4p,j3l6,11z5l,11z4n,11z5h,5h339,11z50,2s2eo,1uhhl,3bsux,4ezb1,8gj83",
+  lat: [250781,265200,268686,265333,241278,245833,231000,257277,248333,209500,240513,251414,223750,235047,251953,260167,265336],
+  lon: [-773386,-786600,-775081,-770667,-775639,-780000,-749828,-792976,-763333,-736667,-745297,-780058,-729622,-757697,-762431,-774000,-787894],
+  population: [227940,45945,9948,6283,3995,2576,1788,1131,1000,430,271,268,143,-1,-1,-1,-1],
+  date: "2025,2012,2012,,,2000,2012,2012,,2012,2010,2012,2010,,,,",
+  country: "BSBSBSBSBSBSBSBSBSBSBSBSBSBSBSBSBS",
+  subdivisions: "NP,FP,CO,NS,BP,BI,SE,IN,SS,EX,WG",
+  subdivision: [0,1,-1,2,-1,3,4,5,6,7,8,3,-1,9,-1,-1,10],
+  en: "Nassau|Freeport|Coopers Town|Marsh Harbour|High Rock|Fresh Creek|Clarence Town|Alice Town|Rock Sound|Matthew Town|Cockburn Town|Nicholls Town|Abraham's Bay|George Town|Governor's Harbour|Sandy Point|Eight Mile Rock",
+  ja: "ナッソー|フリーポート|クーパーズ・タウン|マーシュ・ハーバー|ハイ・ロック|フレッシュ・クリーク|クラレンス・タウン|アリス・タウン|ロック・サウンド|マシュー・タウン|コックスバーン・タウン|ニコルズ・タウン||ジョージ・タウン (バハマ)|ガヴァナーズ・ハーバー|サンディー・ポイント|",
+  native: "||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "10222222222222222",
+  capitalOf: "BS||BS-NO|BS-CO|BS-EG|BS-CS|BS-LI|BS-BI|BS-SE|BS-IN|BS-SS|BS-NS|BS-MG|BS-EX|BS-CE|BS-SO|BS-WG",
+  sources: "1010101010101010101010101010101010",
+  extra: [],
+};
 
 export { BS };

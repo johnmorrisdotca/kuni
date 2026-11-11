@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gw: the 10 cities of Guinea-Bissau, every tier together, as a list.
 
 import { GW } from "../data/cities-by-country/gw.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GW);
+const CITIES: readonly City[] = expandCities(rowsOf(GW));
 
 export default CITIES;
 export { CITIES };

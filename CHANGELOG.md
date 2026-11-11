@@ -6,6 +6,14 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **A lighter download for a city picker.** `searchPlaces(text, { match: "start" })` finds a name from its start or the start of a word, and fetches only the part of the capitals and of the 100k tier that holds such names: each tier is also written in 53 parts, `/cities/capitals-<key>` and `/cities/100k-<key>` (a to z, a digit, a kana row, sixteen groups for other scripts). A first search fetches about 54 kB gzipped at the median and 122 kB at most, against 478 kB for the whole capitals, 1m and 100k tiers. `cityNamesOf(code)` in /places, and `/cities/names-<code>`, give a country's light list first: ids, names and `major` (the capital and the first twenty), about half the full file (United States 52 kB, not 115 kB; China 87 kB, not 154 kB). The default search, and every other call, answers as before.
+
+### Changed
+
+- **Smaller city files, the same data.** Each tier and country file is written in columns (one array or string for each field, integer coordinates, shared tables of subdivisions and languages) rather than an array for each city. Gzipped as built, before and after: the capitals 208 kB to 172 kB, the 1m tier 37 kB to 35 kB, the 100k tier 233 kB to 194 kB, the United States 138 kB to 115 kB, China 193 kB to 154 kB, Japan 39 kB to 31 kB. Every city is as before.
+
 ### Fixed
 
 - **The Netherlands' cities.** Wikidata gives most Dutch municipalities no country, and some of them (Nijmegen, Amersfoort, Haarlemmermeer) no class that is a kind of settlement, so the list held 14 cities. A city now takes its country from its ISO 3166-2 code where Wikidata names none, and a supplement of the municipalities of the Netherlands (`scripts/fetch-cities-extra.ts`) adds the rest: Tilburg, Almere, Breda, Nijmegen, Amersfoort and every other of 100,000 or more are listed once, the districts of The Hague, Rotterdam and Groningen inside their city. Dissolved municipalities, those with no figure since 2015, and the merged ones named for a region rather than a town (Haarlemmermeer, Westland, Súdwest-Fryslân) are left out; Kralendijk and The Bottom are in the Caribbean Netherlands (BQ), not the Netherlands, as the most specific code says.

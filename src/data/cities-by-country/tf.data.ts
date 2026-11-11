@@ -2,10 +2,26 @@
 // The 1 cities of French Southern Territories (TF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TF: readonly CityRow[] = [
-  [839559,-49.35,70.2167,null,null,"TF",null,"Port-aux-Français","ポルトーフランセ",null,null,1,"TF",16],
-];
+const TF: CityColumns = {
+  id: "hzt3",
+  lat: [-493500],
+  lon: [702167],
+  population: [-1],
+  date: "",
+  country: "TF",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Port-aux-Français",
+  ja: "ポルトーフランセ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "TF",
+  sources: "10",
+  extra: [],
+};
 
 export { TF };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gh: the 52 cities of Ghana, every tier together, as a list.
 
 import { GH } from "../data/cities-by-country/gh.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GH);
+const CITIES: readonly City[] = expandCities(rowsOf(GH));
 
 export default CITIES;
 export { CITIES };

@@ -2,18 +2,26 @@
 // The 9 cities of Guyana (GY), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GY: readonly CityRow[] = [
-  [10717,6.8058,-58.1508,235017,2024,"GY","GY-DE","Georgetown","ジョージタウン",null,null,1,"GY",16],
-  [923811,6.25,-57.5167,46874,null,"GY","GY-EB","New Amsterdam","ニューアムステルダム",null,null,2,"GY-EB",18],
-  [741134,6,-58.3,28674,"2012-09-15","GY","GY-UD","Linden","リンデン",null,null,2,"GY-UD",16],
-  [563067,7.25,-58.5167,12448,2002,"GY","GY-PM","Anna Regina","アンナ・レジャイナ",null,null,2,"GY-PM",16],
-  [809428,6.4,-58.6167,8532,null,"GY","GY-CU","Bartica","バルティカ",null,null,2,"GY-CU",16],
-  [1203781,3.3833,-59.8,3000,2002,"GY","GY-UT","Lethem","レセム",null,null,2,"GY-UT",16],
-  [597458,8.2,-59.7833,2972,null,"GY","GY-BA","Mabaruma","マバルマ",null,null,2,"GY-BA",18],
-  [1018877,6.8,-58.1833,null,null,"GY","GY-ES","Vreed en Hoop","ブリード・エン・ホープ",null,null,2,"GY-ES",16],
-  [2137017,6.75,-57.9833,null,null,"GY","GY-DE","Paradise","パラダイス",null,null,2,"GY-DE",16],
-];
+const GY: CityColumns = {
+  id: "89p,jstf,fvv2,c2gr,hck4,psud,ct02,lu65,19sxl",
+  lat: [68058,62500,60000,72500,64000,33833,82000,68000,67500],
+  lon: [-581508,-575167,-583000,-585167,-586167,-598000,-597833,-581833,-579833],
+  population: [235017,46874,28674,12448,8532,3000,2972,-1,-1],
+  date: "2024,,2012-09-15,2002,,2002,,,",
+  country: "GYGYGYGYGYGYGYGYGY",
+  subdivisions: "DE,EB,UD,PM,CU,UT,BA,ES",
+  subdivision: [0,1,2,3,4,5,6,7,0],
+  en: "Georgetown|New Amsterdam|Linden|Anna Regina|Bartica|Lethem|Mabaruma|Vreed en Hoop|Paradise",
+  ja: "ジョージタウン|ニューアムステルダム|リンデン|アンナ・レジャイナ|バルティカ|レセム|マバルマ|ブリード・エン・ホープ|パラダイス",
+  native: "||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "122222222",
+  capitalOf: "GY|GY-EB|GY-UD|GY-PM|GY-CU|GY-UT|GY-BA|GY-ES|GY-DE",
+  sources: "101210101010121010",
+  extra: [],
+};
 
 export { GY };

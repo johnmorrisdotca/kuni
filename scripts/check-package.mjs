@@ -107,6 +107,8 @@ import { loadSubdivisionFacts } from "${pkg.name}/subdivision-facts";
 import { citySet, loadCities, citiesOf } from "${pkg.name}/cities";
 import { capitalCities } from "${pkg.name}/cities/capitals";
 import japanCities from "${pkg.name}/cities/jp";
+import japanNames from "${pkg.name}/cities/names-jp";
+import { searchPlaces, cityNamesOf } from "${pkg.name}/places";
 ${probe}
 const all = [${entries.map((_, at) => `m${at}`).join(", ")}];
 const names = ${JSON.stringify(entries)};
@@ -120,6 +122,8 @@ if (withdrawn("SU")[0]?.name.en !== "Soviet Union" || m0.country("DE")?.ioc !== 
 if (membersOf("g7")?.length !== 7) throw new Error("membersOf(g7) gave " + membersOf("g7"));
 if ((await loadSubdivisionFacts("JP"))?.[0].capital?.ja !== "札幌市") throw new Error("loadSubdivisionFacts(JP) did not load");
 if (citySet(capitalCities()).byId("Q90")?.name.en !== "Paris") throw new Error("the cities did not find Paris");
+if (japanNames.length !== japanCities.length || (await cityNamesOf("JP")).length !== japanCities.length) throw new Error("cities/names-jp is not /cities/jp");
+if (!(await searchPlaces("toky", { match: "start" })).some((hit) => hit.kind === "city" && hit.city.id === "Q1490")) throw new Error("searchPlaces from the start found no Tokyo");
 if ((await citiesOf("JP")).length !== japanCities.length) throw new Error("citiesOf(JP) is not /cities/jp");
 if ((await loadCities("capitals")).cities.length !== capitalCities().length) throw new Error("loadCities(capitals) did not load");
 const canada = await loadSubdivisions("CA");

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/st: the 7 cities of São Tomé & Príncipe, every tier together, as a list.
 
 import { ST } from "../data/cities-by-country/st.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ST"
  * ```
  */
-const CITIES: readonly City[] = expandCities(ST);
+const CITIES: readonly City[] = expandCities(rowsOf(ST));
 
 export default CITIES;
 export { CITIES };

@@ -2,30 +2,26 @@
 // The 21 cities of Papua New Guinea (PG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PG: readonly CityRow[] = [
-  [36526,-9.4789,147.1494,317374,2012,"PG","PG-NCD","Port Moresby","ポートモレスビー","Pot Mosbi","tpi",1,"PG",16],
-  [612250,-6.7303,147.0008,100677,2012,"PG","PG-MPL","Lae","ラエ",null,null,2,"PG-MPL",16],
-  [586673,-5.2167,145.8,62023,null,"PG","PG-MPM","Madang","マダン",null,null,2,"PG-MPM",18],
-  [626729,-6.225,155.5667,38200,2013,"PG","PG-NSB","Arawa","アラワ",null,null,2,"PG-NSB",16],
-  [1017362,-5.8667,144.2167,29765,"2011-07-10","PG","PG-WHM","Mount Hagen","マウントハーゲン","Maun Hagen","tpi",2,"PG-WHM",16],
-  [1017376,-8.7656,148.2347,28198,null,"PG","PG-NPP","Popondetta","ポポンデッタ",null,null,2,"PG-NPP",18],
-  [1017120,-6.1478,143.6572,26252,null,"PG","PG-SHM","Mendi","メンディ",null,null,2,"PG-SHM",18],
-  [1017763,-3.55,143.6333,25143,null,"PG","PG-ESW","Wewak","ウェワク",null,null,2,"PG-ESW",18],
-  [498192,-6.0833,145.3833,21507,2013,"PG","PG-EHG","Goroka","ゴロカ",null,null,2,"PG-EHG",16],
-  [1017358,-2.5667,150.8,19849,2012,"PG","PG-NIK","Kavieng","カビエン",null,null,2,"PG-NIK",16],
-  [59718,-5.5575,150.155,18847,null,"PG","PG-WBK","Kimbe","キンベ",null,null,2,"PG-WBK",18],
-  [499375,-9.0833,143.2,12879,null,"PG","PG-WPD","Daru","ダル",null,null,2,"PG-WPD",16],
-  [568137,-10.3167,150.4333,11624,null,"PG","PG-MBA","Alotau","アロタウ",null,null,2,"PG-MBA",18],
-  [1017354,-2.6817,141.3014,11204,null,"PG","PG-SAN","Vanimo","ヴァニモ",null,null,2,"PG-SAN",18],
-  [612162,-6.0167,144.8,9383,null,"PG","PG-CPK","Kundiawa","クンディアワ",null,null,2,"PG-CPK",18],
-  [1017430,-2.0208,147.2667,5806,null,"PG","PG-MRL","Lorengau","ローレンガウ",null,null,2,"PG-MRL",18],
-  [1280242,-7.9597,145.7722,5646,null,"PG","PG-GPK","Kerema","ケレマ",null,null,2,"PG-GPK",18],
-  [2482803,-5.4833,143.7,3958,null,"PG","PG-EPW","Wabag","ワバック",null,null,2,"PG-EPW",18],
-  [1017369,-4.35,152.2736,null,null,"PG","PG-EBR","Kokopo","ココポ",null,null,2,"PG-EBR",16],
-  [2482800,-5.4219,154.6728,null,null,"PG","PG-NSB","Buka","ブカ (パプアニューギニア)",null,null,2,"PG-NSB",16],
-  [2485587,-5.4444,154.6667,null,null,"PG","PG-NSB","Sohana",null,null,null,2,"PG-NSB",16],
-];
+const PG: CityColumns = {
+  id: "s6m,d4ey,ckoh,dfl5,lt02,lt0g,lstc,ltb7,aoeo,lszy,1a2u,apbj,c6dl,lszu,d4ci,lt1y,rfua,1h7qr,lt09,1h7qo,1h9w3",
+  lat: [-94789,-67303,-52167,-62250,-58667,-87656,-61478,-35500,-60833,-25667,-55575,-90833,-103167,-26817,-60167,-20208,-79597,-54833,-43500,-54219,-54444],
+  lon: [1471494,1470008,1458000,1555667,1442167,1482347,1436572,1436333,1453833,1508000,1501550,1432000,1504333,1413014,1448000,1472667,1457722,1437000,1522736,1546728,1546667],
+  population: [317374,100677,62023,38200,29765,28198,26252,25143,21507,19849,18847,12879,11624,11204,9383,5806,5646,3958,-1,-1,-1],
+  date: "2012,2012,,2013,2011-07-10,,,,2013,2012,,,,,,,,,,,",
+  country: "PGPGPGPGPGPGPGPGPGPGPGPGPGPGPGPGPGPGPGPGPG",
+  subdivisions: "NCD,MPL,MPM,NSB,WHM,NPP,SHM,ESW,EHG,NIK,WBK,WPD,MBA,SAN,CPK,MRL,GPK,EPW,EBR",
+  subdivision: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,3,3],
+  en: "Port Moresby|Lae|Madang|Arawa|Mount Hagen|Popondetta|Mendi|Wewak|Goroka|Kavieng|Kimbe|Daru|Alotau|Vanimo|Kundiawa|Lorengau|Kerema|Wabag|Kokopo|Buka|Sohana",
+  ja: "ポートモレスビー|ラエ|マダン|アラワ|マウントハーゲン|ポポンデッタ|メンディ|ウェワク|ゴロカ|カビエン|キンベ|ダル|アロタウ|ヴァニモ|クンディアワ|ローレンガウ|ケレマ|ワバック|ココポ|ブカ (パプアニューギニア)|",
+  native: "Pot Mosbi||||Maun Hagen||||||||||||||||",
+  languages: "tpi",
+  language: [0,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "122222222222222222222",
+  capitalOf: "PG|PG-MPL|PG-MPM|PG-NSB|PG-WHM|PG-NPP|PG-SHM|PG-ESW|PG-EHG|PG-NIK|PG-WBK|PG-WPD|PG-MBA|PG-SAN|PG-CPK|PG-MRL|PG-GPK|PG-EPW|PG-EBR|PG-NSB|PG-NSB",
+  sources: "101012101012121210101210121212121212101010",
+  extra: [],
+};
 
 export { PG };

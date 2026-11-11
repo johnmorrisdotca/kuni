@@ -2,12 +2,26 @@
 // The 3 cities of Caribbean Netherlands (BQ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BQ: readonly CityRow[] = [
-  [331584,12.1508,-68.2767,12531,2011,"BQ",null,"Kralendijk","クラレンダイク",null,null,2,"BQ-BO NL-BQ1",16],
-  [217610,17.4833,-62.9833,1021,2006,"BQ","BQ-SE","Oranjestad","オラニエスタッド",null,null,2,"BQ-SE NL-BQ3",16],
-  [475718,17.6261,-63.2492,495,2006,"BQ",null,"The Bottom","ボトム",null,null,2,"BQ-SA NL-BQ2",16],
-];
+const BQ: CityColumns = {
+  id: "73uo,4nwq,a72e",
+  lat: [121508,174833,176261],
+  lon: [-682767,-629833,-632492],
+  population: [12531,1021,495],
+  date: "2011,2006,2006",
+  country: "BQBQBQ",
+  subdivisions: "SE",
+  subdivision: [-1,0,-1],
+  en: "Kralendijk|Oranjestad|The Bottom",
+  ja: "クラレンダイク|オラニエスタッド|ボトム",
+  native: "||",
+  languages: "",
+  language: [-1,-1,-1],
+  capital: "222",
+  capitalOf: "BQ-BO NL-BQ1|BQ-SE NL-BQ3|BQ-SA NL-BQ2",
+  sources: "101010",
+  extra: [],
+};
 
 export { BQ };

@@ -2,20 +2,26 @@
 // The 11 cities of Lesotho (LS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const LS: readonly CityRow[] = [
-  [3909,-29.31,27.48,343541,"2016-04-10","LS","LS-A","Maseru","マセル",null,null,1,"LS",16],
-  [844423,-29.15,27.7333,75115,2005,"LS","LS-D","Teyateyaneng","テヤテヤネング",null,null,2,"LS-D",16],
-  [1013379,-29.8167,27.25,57059,2005,"LS","LS-E","Mafeteng","マフェテング",null,null,2,"LS-E",16],
-  [993076,-28.8734,28.0416,47675,null,"LS","LS-C","Hlotse","フロツェ",null,null,2,"LS-C",18],
-  [1892158,-28.8833,27.9,32117,2005,"LS","LS-C","Maputsoe","マプツォエ",null,null,0,null,16],
-  [491829,-30.1153,28.6894,25573,null,"LS","LS-H","Qacha's Nek","クァクハスネック",null,null,2,"LS-H",18],
-  [1818943,-30.15,27.4667,24992,2006,"LS","LS-F","Mohale's Hoek","モハレス・フーク",null,null,2,"LS-F",16],
-  [1003318,-30.4001,27.7002,15000,2004,"LS","LS-G","Quthing","クティング",null,null,2,"LS-G",16],
-  [382249,-28.7667,28.2494,10000,2004,"LS","LS-B","Butha-Buthe","ブータ・ブーテ",null,null,2,"LS-B",16],
-  [1013428,-29.2885,29.0656,8809,2005,"LS","LS-J","Mokhotlong","モコトロング",null,null,2,"LS-J",16],
-  [777028,-29.522,28.6084,5423,2005,"LS","LS-K","Thaba-Tseka","ターバ・ツェーカ",null,null,2,"LS-K",16],
-];
+const LS: CityColumns = {
+  id: "30l,i3k7,lpxf,la9g,14jzy,ajhx,12zi7,li5y,86y1,lpys,gnk4",
+  lat: [-293100,-291500,-298167,-288734,-288833,-301153,-301500,-304001,-287667,-292885,-295220],
+  lon: [274800,277333,272500,280416,279000,286894,274667,277002,282494,290656,286084],
+  population: [343541,75115,57059,47675,32117,25573,24992,15000,10000,8809,5423],
+  date: "2016-04-10,2005,2005,,2005,,2006,2004,2004,2005,2005",
+  country: "LSLSLSLSLSLSLSLSLSLSLS",
+  subdivisions: "A,D,E,C,H,F,G,B,J,K",
+  subdivision: [0,1,2,3,3,4,5,6,7,8,9],
+  en: "Maseru|Teyateyaneng|Mafeteng|Hlotse|Maputsoe|Qacha's Nek|Mohale's Hoek|Quthing|Butha-Buthe|Mokhotlong|Thaba-Tseka",
+  ja: "マセル|テヤテヤネング|マフェテング|フロツェ|マプツォエ|クァクハスネック|モハレス・フーク|クティング|ブータ・ブーテ|モコトロング|ターバ・ツェーカ",
+  native: "||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12220222222",
+  capitalOf: "LS|LS-D|LS-E|LS-C||LS-H|LS-F|LS-G|LS-B|LS-J|LS-K",
+  sources: "1010101210121010101010",
+  extra: [],
+};
 
 export { LS };

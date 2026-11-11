@@ -2,31 +2,26 @@
 // The 22 cities of Togo (TG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TG: readonly CityRow[] = [
-  [3792,6.13,1.2158,2188376,2023,"TG","TG-M","Lomé","ロメ",null,null,1,"TG",16],
-  [860729,9.5489,1.1906,158090,2023,"TG","TG-K","Kara","カラ",null,null,2,"TG-K",16],
-  [970904,10.8667,0.2,117675,2022,"TG","TG-S","Durum Town","ダパング","Dapaong","fr",2,"TG-S",16],
-  [845097,8.9833,1.1333,115442,2022,"TG","TG-C","Sokodé","ソコデ",null,null,2,"TG-C",16],
-  [126124,7.5269,1.1267,98193,2022,"TG","TG-P","Atakpamé","アタクパメ",null,null,2,"TG-P",16],
-  [995413,6.91,0.6281,87478,2022,"TG","TG-P","Kpalimé","パリメ",null,null,0,null,16],
-  [2060202,6.4333,1.2167,76861,2022,"TG","TG-M","Tsévié","ツェビエ",null,null,0,null,16],
-  [2972817,11.1001,0.0173,56830,2022,"TG","TG-S","Cinkassé",null,null,null,0,null,16],
-  [3173182,6.9483,1.1681,49143,2022,"TG","TG-P","Notsé",null,null,null,0,null,16],
-  [2528080,6.5833,1.5,36961,2022,"TG","TG-M","Tabligbo",null,null,null,0,null,16],
-  [2711981,9.0333,1.4167,36173,2022,"TG","TG-C","Tchamba","チャンバ",null,null,0,null,16],
-  [1392195,10.3556,0.4756,34791,2022,"TG","TG-S","Mango","サンサネ＝マンゴ",null,null,0,null,16],
-  [810474,9.25,0.7833,33156,2022,"TG","TG-K","Bassar","バサッリ",null,null,0,null,17],
-  [1120978,8.5667,0.9833,32464,2022,"TG","TG-C","Sotouboua","ソトゥブア",null,null,0,null,17],
-  [1018574,6.2289,1.5931,28238,2022,"TG","TG-M","Aného","アネホ",null,null,0,null,16],
-  [201342,9.7667,1.1,27132,2023,"TG","TG-K","Niamtougou","ニャムトゥーグー",null,null,0,null,16],
-  [2740491,6.3333,1.5333,24983,2022,"TG","TG-M","Vogan",null,null,null,0,null,16],
-  [618060,9.35,1.2667,23627,2023,"TG","TG-K","Bafilo",null,null,null,0,null,16],
-  [3122451,9.6833,0.6,20047,2022,"TG","TG-K","Guérin-Kouka, Dankpen",null,"Guérin-Kouka","fr",0,null,16],
-  [127419125,6.361,1.4085,18036,2010,"TG","TG-M","Hahotoe",null,null,null,0,null,16],
-  [127418930,6.3335,1.5321,16347,2010,"TG","TG-M","Vogan",null,null,null,0,null,16],
-  [3095099,10.3257,0.749,16346,2022,"TG","TG-S","Gando",null,null,null,0,null,16],
-];
+const TG: CityColumns = {
+  id: "2xc,ig55,kt5k,i42x,2pbg,lc2d,185nu,1rpu9,1w0fy,1i6og,1m4kt,tu83,hdd6,o0ya,ltxq,4bcu,1mqkr,d8wc,1uxar,23v185,23v12q,1uc6z",
+  lat: [61300,95489,108667,89833,75269,69100,64333,111001,69483,65833,90333,103556,92500,85667,62289,97667,63333,93500,96833,63610,63335,103257],
+  lon: [12158,11906,2000,11333,11267,6281,12167,173,11681,15000,14167,4756,7833,9833,15931,11000,15333,12667,6000,14085,15321,7490],
+  population: [2188376,158090,117675,115442,98193,87478,76861,56830,49143,36961,36173,34791,33156,32464,28238,27132,24983,23627,20047,18036,16347,16346],
+  date: "2023,2023,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2023,2022,2023,2022,2010,2010,2022",
+  country: "TGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTG",
+  subdivisions: "M,K,S,C,P",
+  subdivision: [0,1,2,3,4,4,0,2,4,0,3,2,1,3,0,1,0,1,1,0,0,2],
+  en: "Lomé|Kara|Durum Town|Sokodé|Atakpamé|Kpalimé|Tsévié|Cinkassé|Notsé|Tabligbo|Tchamba|Mango|Bassar|Sotouboua|Aného|Niamtougou|Vogan|Bafilo|Guérin-Kouka, Dankpen|Hahotoe|Vogan|Gando",
+  ja: "ロメ|カラ|ダパング|ソコデ|アタクパメ|パリメ|ツェビエ||||チャンバ|サンサネ＝マンゴ|バサッリ|ソトゥブア|アネホ|ニャムトゥーグー||||||",
+  native: "||Dapaong||||||||||||||||Guérin-Kouka|||",
+  languages: "fr",
+  language: [-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1],
+  capital: "1222200000000000000000",
+  capitalOf: "TG|TG-K|TG-S|TG-C|TG-P|||||||||||||||||",
+  sources: "10101010101010101010101011111010101010101010",
+  extra: [],
+};
 
 export { TG };

@@ -2,18 +2,26 @@
 // The 9 cities of Gambia (GM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GM: readonly CityRow[] = [
-  [217568,13.445,-16.675,382096,2013,"GM",null,"Serekunda","セレクンダ",null,null,0,null,16],
-  [916988,13.2667,-16.65,81007,"2013-04-15","GM","GM-W","Brikama","ブリカマ",null,null,2,"GM-W",16],
-  [1200999,13.5667,-15.6,36000,null,"GM","GM-N","Farafenni","ファラフェニ",null,null,0,null,16],
-  [3726,13.4531,-16.5775,31356,2013,"GM","GM-B","Banjul","バンジュール",null,null,1,"GM",16],
-  [455163,13.3858,-16.6428,31133,2008,"GM","GM-W","Lamin, Western Division, Gambia",null,null,null,0,null,16],
-  [972281,13.4667,-15.55,18672,null,"GM","GM-L","Mansa Konko","マンサ・コンコ",null,null,2,"GM-L",18],
-  [153498,13.3167,-14.2167,14380,null,"GM","GM-U","Basse Santa Su","バセ・サンタ・ス",null,null,2,"GM-U",18],
-  [1002786,13.5341,-14.7662,3998,2013,"GM","GM-M","Janjanbureh","ジャンジャンブレア",null,null,2,"GM-M",16],
-  [1478583,13.5,-16.0833,3500,2013,"GM","GM-N","Kerewan","ケレワン",null,null,2,"GM-N",16],
-];
+const GM: CityColumns = {
+  id: "4nvk,jnjw,pqp3,2vi,9r7f,ku7t,3afu,lhr6,vovr",
+  lat: [134450,132667,135667,134531,133858,134667,133167,135341,135000],
+  lon: [-166750,-166500,-156000,-165775,-166428,-155500,-142167,-147662,-160833],
+  population: [382096,81007,36000,31356,31133,18672,14380,3998,3500],
+  date: "2013,2013-04-15,,2013,2008,,,2013,2013",
+  country: "GMGMGMGMGMGMGMGMGM",
+  subdivisions: "W,N,B,L,U,M",
+  subdivision: [-1,0,1,2,0,3,4,5,1],
+  en: "Serekunda|Brikama|Farafenni|Banjul|Lamin, Western Division, Gambia|Mansa Konko|Basse Santa Su|Janjanbureh|Kerewan",
+  ja: "セレクンダ|ブリカマ|ファラフェニ|バンジュール||マンサ・コンコ|バセ・サンタ・ス|ジャンジャンブレア|ケレワン",
+  native: "||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "020102222",
+  capitalOf: "|GM-W||GM||GM-L|GM-U|GM-M|GM-N",
+  sources: "101010101012121010",
+  extra: [],
+};
 
 export { GM };

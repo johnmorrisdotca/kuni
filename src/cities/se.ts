@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/se: the 109 cities of Sweden, every tier together, as a list.
 
 import { SE } from "../data/cities-by-country/se.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SE);
+const CITIES: readonly City[] = expandCities(rowsOf(SE));
 
 export default CITIES;
 export { CITIES };

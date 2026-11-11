@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/au: the 126 cities of Australia, every tier together, as a list.
 
 import { AU } from "../data/cities-by-country/au.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AU"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AU);
+const CITIES: readonly City[] = expandCities(rowsOf(AU));
 
 export default CITIES;
 export { CITIES };

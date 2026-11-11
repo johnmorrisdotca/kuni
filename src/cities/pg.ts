@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pg: the 21 cities of Papua New Guinea, every tier together, as a list.
 
 import { PG } from "../data/cities-by-country/pg.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PG);
+const CITIES: readonly City[] = expandCities(rowsOf(PG));
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mm: the 46 cities of Myanmar (Burma), every tier together, as a list.
 
 import { MM } from "../data/cities-by-country/mm.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MM);
+const CITIES: readonly City[] = expandCities(rowsOf(MM));
 
 export default CITIES;
 export { CITIES };

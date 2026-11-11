@@ -2,10 +2,26 @@
 // The 1 cities of St. Helena (SH), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SH: readonly CityRow[] = [
-  [30970,-15.9251,-5.7179,714,2016,"SH","SH-HL","Jamestown","ジェームズタウン",null,null,1,"SH",16],
-];
+const SH: CityColumns = {
+  id: "nwa",
+  lat: [-159251],
+  lon: [-57179],
+  population: [714],
+  date: "2016",
+  country: "SH",
+  subdivisions: "HL",
+  subdivision: [0],
+  en: "Jamestown",
+  ja: "ジェームズタウン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "SH",
+  sources: "10",
+  extra: [],
+};
 
 export { SH };

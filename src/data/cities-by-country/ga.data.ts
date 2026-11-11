@@ -2,23 +2,26 @@
 // The 14 cities of Gabon (GA), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GA: readonly CityRow[] = [
-  [3825,0.4078,9.4403,899000,2025,"GA","GA-1","Libreville","リーブルヴィル",null,null,1,"GA",16],
-  [501715,-0.7167,8.7833,154632,2013,"GA","GA-8","Port-Gentil","ポールジャンティ",null,null,2,"GA-8",16],
-  [459369,-1.6333,13.5833,110568,2013,"GA","GA-2","Franceville","フランスヴィル",null,null,2,"GA-2",16],
-  [2613788,0.2833,9.5,79300,"2013-10-01","GA","GA-1","Owendo","オウェンド",null,null,0,null,16],
-  [983886,1.6,11.5736,60685,"2013-10-01","GA","GA-9","Oyem","オイェム",null,null,2,"GA-9",16],
-  [1015100,-1.5667,13.2,59154,2013,"GA","GA-2","Moanda","モアンダ",null,null,0,null,16],
-  [218714,0.3906,9.7608,51954,"2013-10-01","GA","GA-1","Ntoum","ントゥム",null,null,0,null,16],
-  [874197,-0.6883,10.2319,38775,"2013-10-01","GA","GA-3","Lambaréné","ランバレネ",null,null,2,"GA-3",16],
-  [746670,-1.8667,11.055,36061,"2013-10-01","GA","GA-4","Mouila","ムイラ",null,null,2,"GA-4",16],
-  [21294265,0.5,9.5,34548,"2013-10-01","GA","GA-1","Akanda","アカンダ",null,null,2,"GA-1",16],
-  [690421,-2.9331,10.9831,30042,"2013-10-01","GA","GA-5","Tchibanga","チバンガ",null,null,2,"GA-5",16],
-  [1023124,2.0833,11.4833,27923,"2013-10-01","GA","GA-9","Bitam","ビタム",null,null,0,null,16],
-  [985614,-1.1333,12.4833,25651,"2013-10-01","GA","GA-7","Koulamoutou","クラムトゥ",null,null,2,"GA-7",16],
-  [1002583,0.5667,12.8667,20653,"2013-10-01","GA","GA-6","Makokou","マコクー",null,null,2,"GA-6",16],
-];
+const GA: CityColumns = {
+  id: "2y9,ar4j,9ug9,1k0t8,l366,lr98,4ore,iqj9,g04u,coerd,esqd,lxg4,l4i6,lhlj",
+  lat: [4078,-7167,-16333,2833,16000,-15667,3906,-6883,-18667,5000,-29331,20833,-11333,5667],
+  lon: [94403,87833,135833,95000,115736,132000,97608,102319,110550,95000,109831,114833,124833,128667],
+  population: [899000,154632,110568,79300,60685,59154,51954,38775,36061,34548,30042,27923,25651,20653],
+  date: "2025,2013,2013,2013-10-01,2013-10-01,2013,2013-10-01,2013-10-01,2013-10-01,2013-10-01,2013-10-01,2013-10-01,2013-10-01,2013-10-01",
+  country: "GAGAGAGAGAGAGAGAGAGAGAGAGAGA",
+  subdivisions: "1,8,2,9,3,4,5,7,6",
+  subdivision: [0,1,2,0,3,2,0,4,5,0,6,3,7,8],
+  en: "Libreville|Port-Gentil|Franceville|Owendo|Oyem|Moanda|Ntoum|Lambaréné|Mouila|Akanda|Tchibanga|Bitam|Koulamoutou|Makokou",
+  ja: "リーブルヴィル|ポールジャンティ|フランスヴィル|オウェンド|オイェム|モアンダ|ントゥム|ランバレネ|ムイラ|アカンダ|チバンガ|ビタム|クラムトゥ|マコクー",
+  native: "|||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12202002222022",
+  capitalOf: "GA|GA-8|GA-2||GA-9|||GA-3|GA-4|GA-1|GA-5||GA-7|GA-6",
+  sources: "1010101010101010101010101010",
+  extra: [],
+};
 
 export { GA };

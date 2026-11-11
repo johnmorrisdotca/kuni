@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mk: the 67 cities of North Macedonia, every tier together, as a list.
 
 import { MK } from "../data/cities-by-country/mk.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MK);
+const CITIES: readonly City[] = expandCities(rowsOf(MK));
 
 export default CITIES;
 export { CITIES };

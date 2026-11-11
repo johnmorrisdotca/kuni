@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mp: the 1 cities of Northern Mariana Islands, every tier together, as a list.
 
 import { MP } from "../data/cities-by-country/mp.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MP"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MP);
+const CITIES: readonly City[] = expandCities(rowsOf(MP));
 
 export default CITIES;
 export { CITIES };

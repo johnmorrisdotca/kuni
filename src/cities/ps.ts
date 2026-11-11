@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ps: the 57 cities of Palestinian Territories, every tier together, as a list.
 
 import { PS } from "../data/cities-by-country/ps.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PS);
+const CITIES: readonly City[] = expandCities(rowsOf(PS));
 
 export default CITIES;
 export { CITIES };

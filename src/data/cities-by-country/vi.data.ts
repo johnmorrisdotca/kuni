@@ -2,10 +2,26 @@
 // The 1 cities of U.S. Virgin Islands (VI), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const VI: readonly CityRow[] = [
-  [51681,18.35,-64.95,14477,2020,"VI",null,"Charlotte Amalie","シャーロット・アマリー",null,null,1,"VI",16],
-];
+const VI: CityColumns = {
+  id: "13vl",
+  lat: [183500],
+  lon: [-649500],
+  population: [14477],
+  date: "2020",
+  country: "VI",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Charlotte Amalie",
+  ja: "シャーロット・アマリー",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "VI",
+  sources: "10",
+  extra: [],
+};
 
 export { VI };

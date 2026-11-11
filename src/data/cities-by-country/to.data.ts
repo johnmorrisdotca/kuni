@@ -2,14 +2,26 @@
 // The 5 cities of Tonga (TO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TO: readonly CityRow[] = [
-  [38834,-21.1343,-175.2018,23221,2016,"TO",null,"Nukuʻalofa","ヌクアロファ",null,null,1,"TO",16],
-  [1025393,-18.6508,-173.9831,6000,2008,"TO","TO-05","Neiafu","ネイアフ",null,null,2,"TO-05",16],
-  [1027037,-19.8033,-174.3489,2000,2008,"TO",null,"Pangai","パンガイ",null,null,2,"TO-02",16],
-  [3711222,-21.3333,-174.95,1200,null,"TO",null,"ʻOhonua",null,null,null,2,"TO-01",16],
-  [2563164,-15.9528,-173.7956,null,null,"TO","TO-03","Hihifo","ヒヒフォ",null,null,2,"TO-03",16],
-];
+const TO: CityColumns = {
+  id: "tyq,lz75,m0gt,27jli,1ixr0",
+  lat: [-211343,-186508,-198033,-213333,-159528],
+  lon: [-1752018,-1739831,-1743489,-1749500,-1737956],
+  population: [23221,6000,2000,1200,-1],
+  date: "2016,2008,2008,,",
+  country: "TOTOTOTOTO",
+  subdivisions: "05,03",
+  subdivision: [-1,0,-1,-1,1],
+  en: "Nukuʻalofa|Neiafu|Pangai|ʻOhonua|Hihifo",
+  ja: "ヌクアロファ|ネイアフ|パンガイ||ヒヒフォ",
+  native: "||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1],
+  capital: "12222",
+  capitalOf: "TO|TO-05|TO-02|TO-01|TO-03",
+  sources: "1010101010",
+  extra: [],
+};
 
 export { TO };

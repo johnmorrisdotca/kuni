@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cc: the 1 cities of Cocos (Keeling) Islands, every tier together, as a list.
 
 import { CC } from "../data/cities-by-country/cc.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CC);
+const CITIES: readonly City[] = expandCities(rowsOf(CC));
 
 export default CITIES;
 export { CITIES };

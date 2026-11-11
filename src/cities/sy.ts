@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sy: the 95 cities of Syria, every tier together, as a list.
 
 import { SY } from "../data/cities-by-country/sy.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SY);
+const CITIES: readonly City[] = expandCities(rowsOf(SY));
 
 export default CITIES;
 export { CITIES };

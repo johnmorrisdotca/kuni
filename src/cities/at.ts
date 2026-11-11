@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/at: the 70 cities of Austria, every tier together, as a list.
 
 import { AT } from "../data/cities-by-country/at.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AT);
+const CITIES: readonly City[] = expandCities(rowsOf(AT));
 
 export default CITIES;
 export { CITIES };

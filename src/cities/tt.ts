@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tt: the 17 cities of Trinidad & Tobago, every tier together, as a list.
 
 import { TT } from "../data/cities-by-country/tt.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TT);
+const CITIES: readonly City[] = expandCities(rowsOf(TT));
 
 export default CITIES;
 export { CITIES };

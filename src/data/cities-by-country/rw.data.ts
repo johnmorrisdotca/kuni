@@ -2,29 +2,26 @@
 // The 20 cities of Rwanda (RW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const RW: readonly CityRow[] = [
-  [3859,-1.9525,30.115,1745555,2022,"RW","RW-01","Kigali","キガリ",null,null,1,"RW",16],
-  [668180,-2.0842,29.7514,319141,2012,"RW","RW-05","Muhanga","ギタラマ",null,null,0,null,16],
-  [246145,-1.4944,29.6417,153368,2022,"RW","RW-03","Ruhengeri","ルヘンゲリ",null,null,0,null,16],
-  [830631,-1.6928,29.25,53603,2012,"RW","RW-04","Gisenyi","ギセニ","La ville de Rubavu","fr",0,null,16],
-  [15045858,-1.7014,29.325,42305,2022,"RW","RW-04","Nyundo, Rubavu",null,"Nyundo","fr",0,null,16],
-  [391747,-1.5794,30.0694,36401,2012,"RW","RW-03","Byumba hospital","ビュンバ","Byumba","fr",2,"RW-03",16],
-  [21405762,-2.1178,30.2464,33753,2022,"RW","RW-02","Juru",null,"Umurenge wa Juru","rw",0,null,16],
-  [782857,-2.4833,28.8967,27416,2012,"RW","RW-04","Cyangugu","チャンググ",null,null,0,null,16],
-  [6937304,-1.8133,30.0456,27283,2022,"RW","RW-03","Murambi",null,null,null,0,null,16],
-  [1740795,-2.6503,29.5567,25885,2022,"RW","RW-05","Kibeho",null,null,null,0,null,16],
-  [528679,-2.3517,29.7508,25417,2012,"RW","RW-05","Nyanza","ニャンザ",null,null,2,"RW-05",16],
-  [5003385,-1.6897,30.0153,24721,2022,"RW","RW-03","Buyoga",null,"Umurenge wa Buyoga","rw",0,null,16],
-  [509739,-2.6,29.75,19937,2012,"RW","RW-05","Butare","ブタレ","Huye","fr",0,null,16],
-  [246139,-1.9525,30.4378,18009,2012,"RW","RW-02","Rwamagana","ルワマガナ",null,null,2,"RW-02",16],
-  [2356928,-2.1958,30.1222,17076,2012,"RW","RW-02","Nyamata","ニャマタ",null,null,0,null,16],
-  [12884189,-2.2325,29.7803,17051,2012,"RW","RW-05","Ruhango",null,null,null,0,null,16],
-  [1377368,-2.4697,29.5814,16695,2012,"RW","RW-05","Gikongoro","ギコンゴロ",null,null,0,null,16],
-  [617032,-2.0594,29.3481,12325,2012,"RW","RW-04","Kibuye","キブエ",null,null,2,"RW-04",16],
-  [3453668,-1.8442,30.1931,50000,null,"RW","RW-01","Rutongo",null,null,null,0,null,16,3859],
-  [3191685,-1.9765,30.2247,40202,2012,"RW","RW-01","Kabuga",null,null,null,0,null,16,3859],
-];
+const RW: CityColumns = {
+  id: "2z7,ebkk,59xd,hsx3,8yhgi,8e9v,cqssi,gs21,44ouw,11b7f,bbxj,2z8mx,axbf,59x7,1eim8,7o5i5,tis8,d83s,220v8,1wepx",
+  lat: [-19525,-20842,-14944,-16928,-17014,-15794,-21178,-24833,-18133,-26503,-23517,-16897,-26000,-19525,-21958,-22325,-24697,-20594,-18442,-19765],
+  lon: [301150,297514,296417,292500,293250,300694,302464,288967,300456,295567,297508,300153,297500,304378,301222,297803,295814,293481,301931,302247],
+  population: [1745555,319141,153368,53603,42305,36401,33753,27416,27283,25885,25417,24721,19937,18009,17076,17051,16695,12325,50000,40202],
+  date: "2022,2012,2022,2012,2022,2012,2022,2012,2022,2022,2012,2022,2012,2012,2012,2012,2012,2012,,2012",
+  country: "RWRWRWRWRWRWRWRWRWRWRWRWRWRWRWRWRWRWRWRW",
+  subdivisions: "01,05,03,04,02",
+  subdivision: [0,1,2,3,3,2,4,3,2,1,1,2,1,4,4,1,1,3,0,0],
+  en: "Kigali|Muhanga|Ruhengeri|Gisenyi|Nyundo, Rubavu|Byumba hospital|Juru|Cyangugu|Murambi|Kibeho|Nyanza|Buyoga|Butare|Rwamagana|Nyamata|Ruhango|Gikongoro|Kibuye|Rutongo|Kabuga",
+  ja: "キガリ|ギタラマ|ルヘンゲリ|ギセニ||ビュンバ||チャンググ|||ニャンザ||ブタレ|ルワマガナ|ニャマタ||ギコンゴロ|キブエ||",
+  native: "|||La ville de Rubavu|Nyundo|Byumba|Umurenge wa Juru|||||Umurenge wa Buyoga|Huye|||||||",
+  languages: "fr,rw",
+  language: [-1,-1,-1,0,0,0,1,-1,-1,-1,-1,1,0,-1,-1,-1,-1,-1,-1,-1],
+  capital: "10000200002002000200",
+  capitalOf: "RW|||||RW-03|||||RW-05|||RW-02||||RW-04||",
+  sources: "1010101010101010101010101010101010101010",
+  extra: [[18,3859],[19,3859]],
+};
 
 export { RW };

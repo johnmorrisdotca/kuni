@@ -2,10 +2,26 @@
 // The 1 cities of French Polynesia (PF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PF: readonly CityRow[] = [
-  [130800,-17.5397,-149.5689,26654,2022,"PF",null,"Papeete","パペーテ",null,null,1,"PF",16],
-];
+const PF: CityColumns = {
+  id: "2sxc",
+  lat: [-175397],
+  lon: [-1495689],
+  population: [26654],
+  date: "2022",
+  country: "PF",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Papeete",
+  ja: "パペーテ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "PF",
+  sources: "10",
+  extra: [],
+};
 
 export { PF };

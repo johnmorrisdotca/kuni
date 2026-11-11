@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/hr: the 52 cities of Croatia, every tier together, as a list.
 
 import { HR } from "../data/cities-by-country/hr.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "HR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(HR);
+const CITIES: readonly City[] = expandCities(rowsOf(HR));
 
 export default CITIES;
 export { CITIES };

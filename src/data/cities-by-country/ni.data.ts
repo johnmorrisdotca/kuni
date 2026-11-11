@@ -2,43 +2,26 @@
 // The 34 cities of Nicaragua (NI), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NI: readonly CityRow[] = [
-  [3274,12.1547,-86.2737,937489,2005,"NI","NI-MN","Managua","マナグア",null,null,1,"NI",16,6173978,"Metropolitan Area of Managua",2415203,2023],
-  [208151,12.4348,-86.8788,174051,2005,"NI","NI-LE","León","レオン",null,null,0,null,16],
-  [1001914,11.9736,-86.0961,139582,2005,"NI","NI-MS","Masaya","マサヤ",null,null,0,null,16],
-  [596688,12.9284,-85.9184,133416,2005,"NI","NI-MT","Matagalpa","マタガルパ",null,null,0,null,16],
-  [974354,12.6311,-87.1347,121793,2005,"NI","NI-CI","Chinandega","チナンデガ",null,null,0,null,16],
-  [1007634,13.0929,-86.3562,112084,2005,"NI","NI-ES","Estelí","エステリ",null,null,0,null,16],
-  [205648,11.9304,-85.9536,105171,2005,"NI","NI-GR","Granada","グラナダ",null,null,0,null,16],
-  [1026296,13.092,-86.0032,99382,2005,"NI","NI-JI","Jinotega","ヒノテガ",null,null,0,null,16],
-  [1008456,14.0284,-83.3823,66169,2005,"NI","NI-AN","Puerto Cabezas","プエルト・カベサス",null,null,0,null,16],
-  [1025801,12.1061,-85.3652,51838,2005,"NI","NI-CO","Juigalpa","フイガルパ",null,null,0,null,16],
-  [887488,12.4726,-85.66,49839,2005,"NI","NI-BO","Boaco","ボアコ",null,null,0,null,16],
-  [885996,12.0131,-83.7649,45547,2005,"NI","NI-AS","Bluefields","ブルーフィールズ",null,null,0,null,16],
-  [477580,11.8478,-86.1993,42109,2005,"NI","NI-CA","Jinotepe","Jinotepe",null,null,0,null,16],
-  [1757609,11.4389,-85.8287,41080,2005,"NI","NI-RI","Rivas","リバス",null,null,0,null,16],
-  [1020320,11.123,-84.7783,37461,2005,"NI","NI-SJ","San Carlos","サン・カルロス",null,null,0,null,16],
-  [15069753,14.0284,-83.3823,37282,2005,"NI","NI-AN","Bilwi",null,null,null,2,"NI-AN",16],
-  [1025830,13.6319,-86.4744,34580,2005,"NI","NI-NS","Ocotal","オコタル",null,null,0,null,16],
-  [1010954,13.4837,-86.5826,33788,2005,"NI","NI-MD","Somoto","ソモト",null,null,0,null,16],
-  [31891668,11.7562,-86.0534,20810,null,"NI","NI-GR","Nandaime","ナンダイメ",null,null,0,null,16],
-  [31540229,12.8549,-86.0985,20261,2005,"NI","NI-MT","Sébaco",null,null,null,0,null,16],
-  [137766088,12.1385,-86.199,17159,2005,"NI","NI-MN","Villa Reconciliación","ビジャ・レコンシリアシオン",null,null,0,null,16],
-  [137766105,12.1225,-86.2137,16993,2005,"NI","NI-MN","Villa Venezuela","ビジャ・ベネズエラ",null,null,0,null,16],
-  [77285651,12.4321,-86.8937,15335,2005,"NI","NI-LE","Sutiava",null,null,null,0,null,16],
-  [21053651,11.123,-84.7783,13451,null,"NI","NI-SJ","San Carlos (City)","サン・カルロス（市）",null,null,2,"NI-SJ",16],
-  [31489519,11.4389,-85.8287,null,null,"NI","NI-RI","Rivas",null,null,null,2,"NI-RI",16],
-  [31809994,13.6319,-86.4744,null,null,"NI","NI-NS","Ocotal","オコタル (都市)",null,null,2,"NI-NS",16],
-  [31843513,13.4837,-86.5826,null,null,"NI","NI-MD","Somoto",null,null,null,2,"NI-MD",16],
-  [115471966,12.0131,-83.7649,null,null,"NI","NI-AS","Bluefields","ブルーフィールズ",null,null,2,"NI-AS",16],
-  [124957052,13.091,-86.0023,null,null,"NI","NI-JI","Jinotega",null,null,null,2,"NI-JI",16],
-  [124962768,12.4726,-85.66,null,null,"NI","NI-BO","Boaco","ボアコ",null,null,2,"NI-BO",16],
-  [126877414,12.1061,-85.3652,null,null,"NI","NI-CO","Juigalpa",null,null,null,2,"NI-CO",16],
-  [137454412,11.9304,-85.9536,null,null,"NI","NI-GR","Granada (City)","グラナダ（都市）","Granada (Ciudad)","es",2,"NI-GR",16],
-  [137660768,12.6311,-87.1347,null,null,"NI","NI-CI","Chinandega (city)",null,null,null,2,"NI-CI",16],
-  [137660829,11.8483,-86.1992,null,null,"NI","NI-CA","Jinotepe (City)","Jinotepe (市)","Jinotepe (Ciudad)","es",2,"NI-CA",16],
-];
+const NI: CityColumns = {
+  id: "2iy,4glz,lh2y,cseo,kvte,llhu,4eog,lzw8,lm4o,lzih,j0sg,izn0,a8i4,11o6h,lva8,8yzw9,lzja,lo22,izjro,is0lh,2a0szs,2a0t09,1a0hzn,cj93n,iqxgv,ixsqy,iyim1,1wqyqm,22e9h8,22edw0,23jf8m,29u4i4,29yjq8,29yjrx",
+  lat: [121547,124348,119736,129284,126311,130929,119304,130920,140284,121061,124726,120131,118478,114389,111230,140284,136319,134837,117562,128549,121385,121225,124321,111230,114389,136319,134837,120131,130910,124726,121061,119304,126311,118483],
+  lon: [-862737,-868788,-860961,-859184,-871347,-863562,-859536,-860032,-833823,-853652,-856600,-837649,-861993,-858287,-847783,-833823,-864744,-865826,-860534,-860985,-861990,-862137,-868937,-847783,-858287,-864744,-865826,-837649,-860023,-856600,-853652,-859536,-871347,-861992],
+  population: [937489,174051,139582,133416,121793,112084,105171,99382,66169,51838,49839,45547,42109,41080,37461,37282,34580,33788,20810,20261,17159,16993,15335,13451,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  date: "2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,,2005,2005,2005,2005,,,,,,,,,,,",
+  country: "NINININININININININININININININININININININININININININININININININI",
+  subdivisions: "MN,LE,MS,MT,CI,ES,GR,JI,AN,CO,BO,AS,CA,RI,SJ,NS,MD",
+  subdivision: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,8,15,16,6,3,0,0,1,14,13,15,16,11,7,10,9,6,4,12],
+  en: "Managua|León|Masaya|Matagalpa|Chinandega|Estelí|Granada|Jinotega|Puerto Cabezas|Juigalpa|Boaco|Bluefields|Jinotepe|Rivas|San Carlos|Bilwi|Ocotal|Somoto|Nandaime|Sébaco|Villa Reconciliación|Villa Venezuela|Sutiava|San Carlos (City)|Rivas|Ocotal|Somoto|Bluefields|Jinotega|Boaco|Juigalpa|Granada (City)|Chinandega (city)|Jinotepe (City)",
+  ja: "マナグア|レオン|マサヤ|マタガルパ|チナンデガ|エステリ|グラナダ|ヒノテガ|プエルト・カベサス|フイガルパ|ボアコ|ブルーフィールズ|Jinotepe|リバス|サン・カルロス||オコタル|ソモト|ナンダイメ||ビジャ・レコンシリアシオン|ビジャ・ベネズエラ||サン・カルロス（市）||オコタル (都市)||ブルーフィールズ||ボアコ||グラナダ（都市）||Jinotepe (市)",
+  native: "|||||||||||||||||||||||||||||||Granada (Ciudad)||Jinotepe (Ciudad)",
+  languages: "es",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,0],
+  capital: "1000000000000002000000022222222222",
+  capitalOf: "NI|||||||||||||||NI-AN||||||||NI-SJ|NI-RI|NI-NS|NI-MD|NI-AS|NI-JI|NI-BO|NI-CO|NI-GR|NI-CI|NI-CA",
+  sources: "10101010101010101010101010101010101010101010101010101010101010101010",
+  extra: [[0,6173978,"Metropolitan Area of Managua",2415203,2023]],
+};
 
 export { NI };

@@ -2,24 +2,26 @@
 // The 15 cities of Oman (OM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const OM: readonly CityRow[] = [
-  [3826,23.6139,58.5922,1421409,2019,"OM","OM-MA","Muscat","マスカット","مسقط","ar",1,"OM",16],
-  [948050,23.6667,58.1617,470878,2020,"OM","OM-MA","Seeb","スィーブ","ولاية السيب","ar",0,null,16],
-  [2892151,23.5786,58.4089,402023,2016,"OM","OM-MA","Bawshar","バウシャル","بوشر","ar",0,null,16],
-  [1294439,17.0197,54.0897,331949,2020,"OM","OM-ZU","Salalah","サラーラ","صلالة","ar",2,"OM-ZU",16],
-  [943270,24.342,56.7299,219264,2020,"OM","OM-BS","Sohar","ソハール","ولاية صحار","ar",2,"OM-BS",16],
-  [737270,22.5667,59.5289,120000,2017,"OM","OM-SJ","Sur","スール","ولاية صور","ar",2,"OM-SJ",16],
-  [225376,23.2364,56.5044,98000,2006,"OM","OM-ZA","Ibri","イブリー","عبري","ar",2,"OM-ZA",16],
-  [1915327,22.9333,57.5333,83544,"2023-05-16","OM","OM-DA","Nizwa","ニズワ","ولاية نزوى","ar",2,"OM-DA",16],
-  ["ne:1159128941",23.3032,57.9782,47718,null,"OM",null,"'Alayat Sama’il","アラヤットサマイル",null,null,0,null,23],
-  [426646,26.1833,56.25,17777,null,"OM","OM-MU","Khasab","ハサブ","ولاية خصب","ar",2,"OM-MU",16],
-  [1938064,16.9833,54.7,17305,2008,"OM","OM-ZU","Mirbat","ミルバト","ولاية مرباط","ar",0,null,16],
-  [542678,23.3908,57.4244,null,null,"OM","OM-BJ","Rustaq","ルスタク","ولاية الرستاق","ar",2,"OM-BJ",16],
-  [1456113,19.9555,56.2823,null,null,"OM","OM-WU","Haima","ハイマー","ولاية هيما","ar",2,"OM-WU",16],
-  [1655950,22.6833,58.55,null,null,"OM","OM-SS","Ibra","イブラー","ولاية إبراء","ar",2,"OM-SS",16],
-  [1166791,23.6167,58.5667,230881,"2020-12-12","OM","OM-MA","Muttrah","ムトラ","مطرح","ar",0,null,16,3826],
-];
+const OM: CityColumns = {
+  id: "2ya,kbiq,1pzlj,rqsn,k7ty,fsvq,4twg,151vj,~j645m5,957a,15jf4,bmqe,v7jl,zhqm,p0av",
+  lat: [236139,236667,235786,170197,243420,225667,232364,229333,233032,261833,169833,233908,199555,226833,236167],
+  lon: [585922,581617,584089,540897,567299,595289,565044,575333,579782,562500,547000,574244,562823,585500,585667],
+  population: [1421409,470878,402023,331949,219264,120000,98000,83544,47718,17777,17305,-1,-1,-1,230881],
+  date: "2019,2020,2016,2020,2020,2017,2006,2023-05-16,,,2008,,,,2020-12-12",
+  country: "OMOMOMOMOMOMOMOMOMOMOMOMOMOMOM",
+  subdivisions: "MA,ZU,BS,SJ,ZA,DA,MU,BJ,WU,SS",
+  subdivision: [0,0,0,1,2,3,4,5,-1,6,1,7,8,9,0],
+  en: "Muscat|Seeb|Bawshar|Salalah|Sohar|Sur|Ibri|Nizwa|'Alayat Sama’il|Khasab|Mirbat|Rustaq|Haima|Ibra|Muttrah",
+  ja: "マスカット|スィーブ|バウシャル|サラーラ|ソハール|スール|イブリー|ニズワ|アラヤットサマイル|ハサブ|ミルバト|ルスタク|ハイマー|イブラー|ムトラ",
+  native: "مسقط|ولاية السيب|بوشر|صلالة|ولاية صحار|ولاية صور|عبري|ولاية نزوى||ولاية خصب|ولاية مرباط|ولاية الرستاق|ولاية هيما|ولاية إبراء|مطرح",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0],
+  capital: "100222220202220",
+  capitalOf: "OM|||OM-ZU|OM-BS|OM-SJ|OM-ZA|OM-DA||OM-MU||OM-BJ|OM-WU|OM-SS|",
+  sources: "101010101010101017101010101010",
+  extra: [[14,3826]],
+};
 
 export { OM };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/la: the 19 cities of Laos, every tier together, as a list.
 
 import { LA } from "../data/cities-by-country/la.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(LA);
+const CITIES: readonly City[] = expandCities(rowsOf(LA));
 
 export default CITIES;
 export { CITIES };

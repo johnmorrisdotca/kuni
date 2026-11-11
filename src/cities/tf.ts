@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tf: the 1 cities of French Southern Territories, every tier together, as a list.
 
 import { TF } from "../data/cities-by-country/tf.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TF);
+const CITIES: readonly City[] = expandCities(rowsOf(TF));
 
 export default CITIES;
 export { CITIES };

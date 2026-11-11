@@ -2,10 +2,26 @@
 // The 1 cities of Curaçao (CW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CW: readonly CityRow[] = [
-  [132679,12.108,-68.935,136660,2011,"CW",null,"Willemstad","ウィレムスタッド",null,null,1,"CW",16],
-];
+const CW: CityColumns = {
+  id: "2udj",
+  lat: [121080],
+  lon: [-689350],
+  population: [136660],
+  date: "2011",
+  country: "CW",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Willemstad",
+  ja: "ウィレムスタッド",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "CW",
+  sources: "10",
+  extra: [],
+};
 
 export { CW };

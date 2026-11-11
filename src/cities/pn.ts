@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pn: the 1 cities of Pitcairn Islands, every tier together, as a list.
 
 import { PN } from "../data/cities-by-country/pn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PN);
+const CITIES: readonly City[] = expandCities(rowsOf(PN));
 
 export default CITIES;
 export { CITIES };
