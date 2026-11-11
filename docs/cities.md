@@ -10,10 +10,10 @@ from the two inputs: the Wikidata snapshot of 2026-11-11 (CC0) and Natural Earth
 | Tier | Entry | Holds | Cities | With a Japanese name | Japanese name from Natural Earth | Population from Natural Earth |
 |---|---|---|---:|---:|---:|---:|
 | `capitals` | `@johnmorrisdotca/kuni/cities/capitals` | every capital, of a country or of a subdivision, of any size | 4,278 | 3,984 (93.1%) | 34 | 183 |
-| `1m` | `@johnmorrisdotca/kuni/cities/1m` | the cities of a million people or more (capitals too) | 694 | 682 (98.3%) | 6 | 8 |
-| `100k` | `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 to a million people (capitals too) | 5,414 | 4,484 (82.8%) | 50 | 159 |
-| `15k` | `loadCities("15k")` | the cities of 15,000 to 100,000 people (capitals too); from the countries' own files, not a file of its own | 23,334 | 14,616 (62.6%) | 387 | 306 |
-| every city once | | | 30,616 | 20,710 (67.6%) | 448 | 538 |
+| `1m` | `@johnmorrisdotca/kuni/cities/1m` | the cities of a million people or more (capitals too) | 690 | 681 (98.7%) | 6 | 8 |
+| `100k` | `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 to a million people (capitals too) | 4,953 | 4,446 (89.8%) | 50 | 159 |
+| `15k` | `loadCities("15k")` | the cities of 15,000 to 100,000 people (capitals too); from the countries' own files, not a file of its own | 23,267 | 14,613 (62.8%) | 387 | 306 |
+| every city once | | | 30,084 | 20,668 (68.7%) | 448 | 538 |
 
 ## How a city is chosen
 
@@ -29,12 +29,12 @@ from the two inputs: the Wikidata snapshot of 2026-11-11 (CC0) and Natural Earth
 
 ## What was left out
 
-Of the 33,692 items in the snapshot: 693 had no English name (in Wikidata or Natural Earth), 9 no coordinates, 211 no country, 8 no population and were no capital, 634 had an English name of an area or an administrative unit (a metropolitan area, an urban area, a province, a county, a district) and no capital or Natural Earth place behind them, 111 were the same city as another item (Tokyo is two), and 1,556 fell below 15,000 people by the figure used (they were in because another statement was above it, or Natural Earth names them).
+Of the 33,692 items in the snapshot: 693 had no English name (in Wikidata or Natural Earth), 9 no coordinates, 211 no country, 8 no population and were no capital, 1,166 had an English name of an area or an administrative unit (a metropolitan area, an urban area, a province, a county, a district) and no capital or Natural Earth place behind them, 111 were the same city as another item (Tokyo is two), and 1,556 fell below 15,000 people by the figure used (they were in because another statement was above it, or Natural Earth names them).
 
 ## What is missing
 
-- **Japanese name**: 9,906 of 30,616 cities have none, in either source; the field is `null`.
-- **Native name**: 15,814 cities have none or it is the English name; the field is `null`.
-- **Subdivision**: 1,267 cities have none (Wikidata does not place them in a first-level subdivision kuni lists).
+- **Japanese name**: 9,416 of 30,084 cities have none, in either source; the field is `null`.
+- **Native name**: 15,813 cities have none or it is the English name; the field is `null`.
+- **Subdivision**: 1,265 cities have none (Wikidata does not place them in a first-level subdivision kuni lists).
 
 Natural Earth release 5.1.2; Wikidata read 2026-11-11.
