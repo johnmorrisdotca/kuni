@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-11-11
+
 ### Added
 
 - **Readings of Japanese names in hiragana.** `name.jaReading` reads a city's `ja` in hiragana, so a list sorts in Japanese order with a Japanese collation. A name in kana is read from itself (ゴヤ (アルゼンチン), ごや; コザン県, こざんけん). A name in kanji is read only from a source: Wikidata's reading in kana in any country (香港, ほんこん), Japan Post's for a municipality of Japan where Wikidata has none (山口市, やまぐちし), or, for twenty new towns and neighbourhoods neither reads, one written in `scripts/data-config.ts`. Every Japanese name of a place in Japan has one. A name in Chinese characters of China, Taiwan or Korea has none: no source with clear terms gives one, and none is made up. `searchPlaces` and the start parts find a city by its reading (とうきょう finds 東京都). `continentReading` reads the seven continents (南極, なんきょく). Five areas of Japan that are not towns (Woodland Kyoto, Kansai Science City, Otokuni, the castle town of Kagoshima, a group of Fukuoka's city blocks) are no longer cities; their ids are in `city-id-aliases.json` as removed.
