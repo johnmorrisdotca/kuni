@@ -42,6 +42,8 @@ describe("the built entries", () => {
 
   it("keep the facts about every country under 30 KB, out of the main entry", () => {
     expect(size("dist/facts.js")).toBeLessThan(30 * KB);
+    // The zones: zone.tab's principal cities and each subdivision's zone, apart from /facts.
+    expect(size("dist/zones.js")).toBeLessThan(96 * KB);
   });
 
   it("keep Japan's subdivision facts under 6 KB, and every country's under 20 KB", () => {

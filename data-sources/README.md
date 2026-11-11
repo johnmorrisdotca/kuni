@@ -16,6 +16,9 @@ bytes are not the recorded ones.
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
 | `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
+| `wikidata-metros-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-metros.ts`) | the day it was read | CC0 |
+| `wikidata-zones-<day>.json` | https://query.wikidata.org/sparql, the query written in the file (`node scripts/fetch-zones.ts`) | the day it was read | CC0 |
+| `statcan-cma-2021.json` | https://www150.statcan.gc.ca/n1/tbl/csv/98100005-eng.zip, Statistics Canada Table 98-10-0005-01, cut to name, province, DGUID, kind and 2021 population (`node scripts/fetch-statcan.ts`) | 2026-11-11 | Statistics Canada Open Licence; the credit is in the file and in NOTICE.md |
 | `natural-earth-populated-places-5.1.2.json` | https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson, cut down to the columns the build uses | the day it was read | Public domain |
 | `city-ids.json`, `city-id-aliases.json` | `city-ids.json` is written by `pnpm data:record-ids`, at a release, and holds every id a release has had; `city-id-aliases.json` is written by hand: an id that is no longer a city's, with the id it was merged into, or null | | MIT |
 | `expected-ja-gaps.json` | Written by `pnpm data:report --accept`: the subdivisions with no Japanese name | | MIT |

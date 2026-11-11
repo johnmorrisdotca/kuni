@@ -455,4 +455,3 @@ describe("the top cities of a country", () => {
       for (const city of (await citiesOf(code))!) if (city.metro !== null) expect(city.metro.population, city.name.en).toBeGreaterThan(city.population ?? 0);
   });
 });
-

@@ -15,12 +15,9 @@ All notable changes to this project are written here. The format follows
 ### Fixed
 
 - **Units below a district are not cities**: upazilas, thanas, tehsils, talukas, municipal okrugs, subdistricts, wards, unions, arrondissements, county boroughs, regional councils, communes, the French métropoles and the Swiss cantons are left out (532 + 5 ids). Bangladesh's cities are now its 101 towns.
-- **Civil townships round a city are not cities**: in Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is left out where a city that is not a township holds at least half its people within 15 km (Kaw Township, round Kansas City: 295 townships); elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays.
+- **Civil townships round a city are not cities**: in Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas, where a township is a civil unit of its county with cities inside it, every township is left out (Kaw Township, round Kansas City; Thornton Township, round South Holland and Harvey); elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays.
 - Every id that leaves answers through `cityById` and `byId` with the city it belongs to, or with `null`. The alias table is written small, so the core of `/cities` stays under 24 KB.
 
-### Changed
-
-- kazoku-ui 0.37 (from 0.10), for its browser lock and queue, taken in `playwright.config`: one browser at a time on a machine.
 
 ## [1.6.1] - 2026-11-11
 

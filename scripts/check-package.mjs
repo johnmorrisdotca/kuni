@@ -100,6 +100,7 @@ writeFileSync(
 import japan from "${pkg.name}/subdivisions/jp";
 import { loadSubdivisions } from "${pkg.name}/load";
 import { facts } from "${pkg.name}/facts";
+import { subdivisionTimeZone, timeZoneAt } from "${pkg.name}/zones";
 import { membersOf } from "${pkg.name}/groupings";
 import { withdrawn } from "${pkg.name}/withdrawn";
 import { loadSubdivisionFacts } from "${pkg.name}/subdivision-facts";
@@ -114,6 +115,7 @@ if (JSON.stringify(answers(m0, m${entries.indexOf(`${pkg.name}/subdivisions`)}))
 if (m0.VERSION !== ${JSON.stringify(pkg.version)}) throw new Error("VERSION is " + m0.VERSION);
 if (japan.length !== 47 || japan[12].code !== "JP-13") throw new Error("subdivisions/jp gave " + japan.length);
 if (facts("JP")?.drivingSide !== "left") throw new Error("facts(JP) gave " + JSON.stringify(facts("JP")));
+if (subdivisionTimeZone("US-WA")?.zone !== "America/Los_Angeles" || timeZoneAt("US", { lat: 13.47, lon: 144.75 })?.zone !== "Pacific/Guam") throw new Error("the zones gave " + JSON.stringify(subdivisionTimeZone("US-WA")));
 if (withdrawn("SU")[0]?.name.en !== "Soviet Union" || m0.country("DE")?.ioc !== "GER") throw new Error("withdrawn or ioc gave " + JSON.stringify(withdrawn("SU")));
 if (membersOf("g7")?.length !== 7) throw new Error("membersOf(g7) gave " + membersOf("g7"));
 if ((await loadSubdivisionFacts("JP"))?.[0].capital?.ja !== "札幌市") throw new Error("loadSubdivisionFacts(JP) did not load");
