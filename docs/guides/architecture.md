@@ -24,6 +24,7 @@ src/
 ├── city-rows.ts        turning a city's compact row into a City
 ├── rank.ts             the figure a city is ranked by: its urban area's people, else its own; after the others inside another's area
 ├── ja-short.ts         a city's short Japanese name for a map label: 東京, not 東京都
+├── city-start.ts       which part of a split tier holds a city: the first letter of a word of a name
 ├── places.ts           the "/places" entry: the countries of a continent, and a search over countries and cities
 ├── fold.ts             folding what somebody typed: case, accents, width, kana
 ├── rows.ts             turning the data's compact rows into objects
@@ -32,7 +33,7 @@ src/
 ├── data/               written by scripts/build-data.ts: countries, codes, facts, groupings, and files per country
 ├── subdivisions/       written by scripts/build-data.ts: the "/subdivisions/<code>" entries
 ├── subdivision-facts/  written by scripts/build-data.ts: the "/subdivision-facts/<code>" entries
-└── cities/             written by scripts/build-data.ts: the "/cities/<tier>" and "/cities/<code>" entries
+└── cities/             written by scripts/build-data.ts: the "/cities/<tier>", "/cities/<code>", "/cities/names-<code>" and "/cities/<tier>-<key>" entries
 ```
 
 `scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
