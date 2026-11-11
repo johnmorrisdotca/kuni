@@ -62,4 +62,13 @@ describe("the built entries", () => {
     expect(files.length).toBeGreaterThan(190);
     for (const file of files) expect(size(`dist/cities/${file}`), file).toBeLessThan(700 * KB);
   });
+
+  it("keep each part of a split tier small, and each country's light list under half its full file", () => {
+    const parts = readdirSync("dist/cities").filter((file) => /^(capitals|100k)-[a-z0-9-]+\.js$/.test(file));
+    expect(parts).toHaveLength(2 * 53);
+    for (const file of parts) expect(size(`dist/cities/${file}`), file).toBeLessThan(150 * KB);
+    const lists = readdirSync("dist/cities").filter((file) => /^names-[a-z]{2}\.js$/.test(file));
+    expect(lists.length).toBeGreaterThan(190);
+    for (const file of lists) if (size(`dist/cities/${file.slice(6)}`) > 20 * KB) expect(size(`dist/cities/${file}`), file).toBeLessThan(size(`dist/cities/${file.slice(6)}`) / 2);
+  });
 });

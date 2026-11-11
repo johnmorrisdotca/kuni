@@ -2,10 +2,26 @@
 // The 1 cities of Falkland Islands (FK), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const FK: readonly CityRow[] = [
-  [12245,-51.6939,-57.8496,2538,2021,"FK",null,"Stanley","スタンリー",null,null,1,"FK",16],
-];
+const FK: CityColumns = {
+  id: "9g5",
+  lat: [-516939],
+  lon: [-578496],
+  population: [2538],
+  date: "2021",
+  country: "FK",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Stanley",
+  ja: "スタンリー",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "FK",
+  sources: "10",
+  extra: [],
+};
 
 export { FK };

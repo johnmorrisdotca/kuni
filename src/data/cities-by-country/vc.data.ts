@@ -2,15 +2,26 @@
 // The 6 cities of St. Vincent & Grenadines (VC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const VC: readonly CityRow[] = [
-  [41474,13.1553,-61.2274,24518,2025,"VC","VC-04","Kingstown","キングスタウン",null,null,1,"VC",16],
-  [2630835,13.2033,-61.2686,6344,"2023-06-15","VC","VC-02","Layou","ラヨー",null,null,2,"VC-02",16],
-  [2995389,13.0111,-61.2344,847,2006,"VC","VC-06","Port Elizabeth","ポート・エリザベス (セントビンセント・グレナディーン)",null,null,2,"VC-06",16],
-  [672197,13.2883,-61.2403,741,2006,"VC","VC-03","Chateaubelair","チャトーベレア",null,null,2,"VC-03",16],
-  [2495209,13.2861,-61.1228,null,null,"VC","VC-01","Georgetown","ジョージタウン (セントビンセント・グレナディーン)",null,null,2,"VC-01",16],
-  [2885705,13.2358,-61.2719,null,null,"VC","VC-05","Barrouallie","バローアリー",null,null,2,"VC-05",16],
-];
+const VC: CityColumns = {
+  id: "w02,1kdyr,1s799,eeo5,1hhbd,1pumh",
+  lat: [131553,132033,130111,132883,132861,132358],
+  lon: [-612274,-612686,-612344,-612403,-611228,-612719],
+  population: [24518,6344,847,741,-1,-1],
+  date: "2025,2023-06-15,2006,2006,,",
+  country: "VCVCVCVCVCVC",
+  subdivisions: "04,02,06,03,01,05",
+  subdivision: [0,1,2,3,4,5],
+  en: "Kingstown|Layou|Port Elizabeth|Chateaubelair|Georgetown|Barrouallie",
+  ja: "キングスタウン|ラヨー|ポート・エリザベス (セントビンセント・グレナディーン)|チャトーベレア|ジョージタウン (セントビンセント・グレナディーン)|バローアリー",
+  native: "|||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1],
+  capital: "122222",
+  capitalOf: "VC|VC-02|VC-06|VC-03|VC-01|VC-05",
+  sources: "101010101010",
+  extra: [],
+};
 
 export { VC };

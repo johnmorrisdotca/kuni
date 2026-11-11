@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ir: the 407 cities of Iran, every tier together, as a list.
 
 import { IR } from "../data/cities-by-country/ir.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(IR);
+const CITIES: readonly City[] = expandCities(rowsOf(IR));
 
 export default CITIES;
 export { CITIES };

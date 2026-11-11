@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bh: the 8 cities of Bahrain, every tier together, as a list.
 
 import { BH } from "../data/cities-by-country/bh.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BH);
+const CITIES: readonly City[] = expandCities(rowsOf(BH));
 
 export default CITIES;
 export { CITIES };

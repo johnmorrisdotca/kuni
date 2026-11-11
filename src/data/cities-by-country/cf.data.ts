@@ -2,32 +2,26 @@
 // The 23 cities of Central African Republic (CF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CF: readonly CityRow[] = [
-  [3832,4.3733,18.5628,889231,2020,"CF","CF-BGF","Bangui","バンギ",null,null,1,"CF",16],
-  [863461,4.3313,18.5163,124176,null,"CF","CF-MP","Bimbo","ビンボ (中央アフリカ共和国)",null,null,2,"CF-MP",16],
-  [544701,4.2667,15.7833,76918,2003,"CF","CF-HS","Berbérati","ベルベラティ",null,null,2,"CF-HS",16],
-  [521702,4.9427,15.8774,45421,2003,"CF",null,"Carnot","カルノ",null,null,0,null,16],
-  [805946,5.7667,20.6833,41356,2003,"CF","CF-UK","Bambari","バンバリ",null,null,2,"CF-UK",16],
-  [512111,5.95,15.6,40353,2003,"CF","CF-NM","Bouar","ブワル",null,null,2,"CF-NM",16],
-  [894513,6.4833,17.45,37780,2005,"CF","CF-AC","Bossangoa","ボサンゴア",null,null,2,"CF-AC",16],
-  [598667,6.5369,21.9919,35204,2003,"CF","CF-HK","Bria","ブリア",null,null,2,"CF-HK",16],
-  [806478,4.7414,22.8183,31453,2003,"CF","CF-MB","Bangassou","バンガスー",null,null,2,"CF-MB",16],
-  [522912,3.5333,16.0667,29181,2003,"CF","CF-SE","Nola","ノラ",null,null,2,"CF-SE",16],
-  [1210015,7.0006,19.1808,24661,2003,"CF","CF-KB","Kaga-Bandoro","ガガ＝バンドロ",null,null,2,"CF-KB",16],
-  [1757279,5.7378,19.0867,22419,2003,"CF","CF-KG","Sibut","シブート",null,null,2,"CF-KG",16],
-  [593435,3.8833,18,22166,2003,"CF","CF-LB","Mbaïki","ムバイキ",null,null,2,"CF-LB",16],
-  [896185,6.3172,16.3783,20665,2003,"CF","CF-OP","Bozoum","ボズム",null,null,2,"CF-OP",16],
-  [2428263,7.25,16.4333,17370,2003,"CF",null,"Paoua","パウア (中央アフリカ共和国)",null,null,0,null,16],
-  [2626276,7.3,18.3,16420,2003,"CF","CF-AC","Batangafo","バタンガフォ",null,null,0,null,16],
-  [2428075,7.6994,18.6292,16279,2003,"CF","CF-AC","Kabo","カボ",null,null,0,null,16],
-  [1771423,6.9843,15.6408,15744,2003,"CF","CF-OP","Bocaranga","ボカランガ",null,null,0,null,16],
-  [2428110,6.2628,21.1981,15196,2003,"CF","CF-UK","Ippy","イッピー",null,null,0,null,16],
-  [612713,8.4064,20.6531,10850,2003,"CF","CF-BB","N'Délé","ンデレ","Ndélé","fr",2,"CF-BB",16],
-  [1025617,5.3967,26.4925,7187,2003,"CF","CF-HM","Obo","オボ",null,null,2,"CF-HM",16],
-  [1025621,4.3167,21.1833,7176,null,"CF","CF-BK","Mobaye","モバイエ",null,null,2,"CF-BK",16],
-  [864999,10.2934,22.7848,6019,2003,"CF","CF-VK","Birao","ビラオ",null,null,2,"CF-VK",16],
-];
+const CF: CityColumns = {
+  id: "2yg,ii91,boal,b6jq,h9ve,az5b,j67l,ctxn,haa6,b7hc,pxnj,11nxb,cpwb,j7i1,1g1nr,1kag4,1g1ij,11yu7,1g1ji,d4rt,lzdd,lzdh,ijfr",
+  lat: [43733,43313,42667,49427,57667,59500,64833,65369,47414,35333,70006,57378,38833,63172,72500,73000,76994,69843,62628,84064,53967,43167,102934],
+  lon: [185628,185163,157833,158774,206833,156000,174500,219919,228183,160667,191808,190867,180000,163783,164333,183000,186292,156408,211981,206531,264925,211833,227848],
+  population: [889231,124176,76918,45421,41356,40353,37780,35204,31453,29181,24661,22419,22166,20665,17370,16420,16279,15744,15196,10850,7187,7176,6019],
+  date: "2020,,2003,2003,2003,2003,2005,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,,2003",
+  country: "CFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCF",
+  subdivisions: "BGF,MP,HS,UK,NM,AC,HK,MB,SE,KB,KG,LB,OP,BB,HM,BK,VK",
+  subdivision: [0,1,2,-1,3,4,5,6,7,8,9,10,11,12,-1,5,5,12,3,13,14,15,16],
+  en: "Bangui|Bimbo|Berbérati|Carnot|Bambari|Bouar|Bossangoa|Bria|Bangassou|Nola|Kaga-Bandoro|Sibut|Mbaïki|Bozoum|Paoua|Batangafo|Kabo|Bocaranga|Ippy|N'Délé|Obo|Mobaye|Birao",
+  ja: "バンギ|ビンボ (中央アフリカ共和国)|ベルベラティ|カルノ|バンバリ|ブワル|ボサンゴア|ブリア|バンガスー|ノラ|ガガ＝バンドロ|シブート|ムバイキ|ボズム|パウア (中央アフリカ共和国)|バタンガフォ|カボ|ボカランガ|イッピー|ンデレ|オボ|モバイエ|ビラオ",
+  native: "|||||||||||||||||||Ndélé|||",
+  languages: "fr",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1],
+  capital: "12202222222222000002222",
+  capitalOf: "CF|CF-MP|CF-HS||CF-UK|CF-NM|CF-AC|CF-HK|CF-MB|CF-SE|CF-KB|CF-KG|CF-LB|CF-OP||||||CF-BB|CF-HM|CF-BK|CF-VK",
+  sources: "1010101010101010101010101010101010101010101010",
+  extra: [],
+};
 
 export { CF };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cy: the 21 cities of Cyprus, every tier together, as a list.
 
 import { CY } from "../data/cities-by-country/cy.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CY);
+const CITIES: readonly City[] = expandCities(rowsOf(CY));
 
 export default CITIES;
 export { CITIES };

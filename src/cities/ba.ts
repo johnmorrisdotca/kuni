@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ba: the 25 cities of Bosnia & Herzegovina, every tier together, as a list.
 
 import { BA } from "../data/cities-by-country/ba.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BA);
+const CITIES: readonly City[] = expandCities(rowsOf(BA));
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sa: the 92 cities of Saudi Arabia, every tier together, as a list.
 
 import { SA } from "../data/cities-by-country/sa.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SA);
+const CITIES: readonly City[] = expandCities(rowsOf(SA));
 
 export default CITIES;
 export { CITIES };

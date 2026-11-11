@@ -2,22 +2,26 @@
 // The 13 cities of Fiji (FJ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const FJ: readonly CityRow[] = [
-  [38807,-18.1333,178.4333,88271,2009,"FJ","FJ-C","Suva","スバ",null,null,1,"FJ",16],
-  [26715,-18.0667,178.5,87446,2007,"FJ","FJ-C","Nasinu","ナシヌー",null,null,0,null,16],
-  [619443,-17.8,177.4167,71048,2017,"FJ","FJ-W","Nadi","ナンディ",null,null,0,null,16],
-  [26707,-18.0244,178.5454,57882,null,"FJ","FJ-C","Nausori","ナウソリ",null,null,0,null,16],
-  [856662,-17.6242,177.4528,52220,2007,"FJ","FJ-W","Lautoka","ラウトカ",null,null,2,"FJ-W",16],
-  [579556,-16.4333,179.3667,27949,null,"FJ","FJ-N","Labasa","ランバサ",null,null,2,"FJ-N",16],
-  [26703,-18.1167,178.4167,20529,2007,"FJ","FJ-C","Lami","ラミ",null,null,0,null,16],
-  [26713,-17.5333,177.6833,18526,null,"FJ","FJ-W","Ba","バ",null,null,2,"FJ-01 FJ-04",16],
-  [26720,-18.15,177.5,9622,null,"FJ","FJ-W","Sigatoka","シンガトカ",null,null,2,"FJ-08",16],
-  [2705079,-17.3667,178.15,5078,2009,"FJ","FJ-W","Vaileka",null,null,null,2,"FJ-11",16],
-  [26692,-17.684,178.8401,null,null,"FJ","FJ-E","Levuka","レブカ",null,null,2,"FJ-06 FJ-E",16],
-  [1809825,-18.23,-178.8,null,null,"FJ","FJ-E","Tubou",null,null,null,2,"FJ-05",16],
-  [1950120,-12.5167,177.0333,null,null,"FJ","FJ-R","Motusa","モトゥサ",null,null,2,"FJ-R",16],
-];
+const FJ: CityColumns = {
+  id: "txz,km3,d9yr,klv,id06,cf6s,klr,km1,km8,1lz93,klg,12sgx,15sq0",
+  lat: [-181333,-180667,-178000,-180244,-176242,-164333,-181167,-175333,-181500,-173667,-176840,-182300,-125167],
+  lon: [1784333,1785000,1774167,1785454,1774528,1793667,1784167,1776833,1775000,1781500,1788401,-1788000,1770333],
+  population: [88271,87446,71048,57882,52220,27949,20529,18526,9622,5078,-1,-1,-1],
+  date: "2009,2007,2017,,2007,,2007,,,2009,,,",
+  country: "FJFJFJFJFJFJFJFJFJFJFJFJFJ",
+  subdivisions: "C,W,N,E,R",
+  subdivision: [0,0,1,0,1,2,0,1,1,1,3,3,4],
+  en: "Suva|Nasinu|Nadi|Nausori|Lautoka|Labasa|Lami|Ba|Sigatoka|Vaileka|Levuka|Tubou|Motusa",
+  ja: "スバ|ナシヌー|ナンディ|ナウソリ|ラウトカ|ランバサ|ラミ|バ|シンガトカ||レブカ||モトゥサ",
+  native: "||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1000220222222",
+  capitalOf: "FJ||||FJ-W|FJ-N||FJ-01 FJ-04|FJ-08|FJ-11|FJ-06 FJ-E|FJ-05|FJ-R",
+  sources: "10101010101010101010101010",
+  extra: [],
+};
 
 export { FJ };

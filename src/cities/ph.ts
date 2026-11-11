@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ph: the 1,465 cities of Philippines, every tier together, as a list.
 
 import { PH } from "../data/cities-by-country/ph.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PH);
+const CITIES: readonly City[] = expandCities(rowsOf(PH));
 
 export default CITIES;
 export { CITIES };

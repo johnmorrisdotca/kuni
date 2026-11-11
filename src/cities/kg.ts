@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kg: the 32 cities of Kyrgyzstan, every tier together, as a list.
 
 import { KG } from "../data/cities-by-country/kg.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(KG);
+const CITIES: readonly City[] = expandCities(rowsOf(KG));
 
 export default CITIES;
 export { CITIES };

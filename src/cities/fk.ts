@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/fk: the 1 cities of Falkland Islands, every tier together, as a list.
 
 import { FK } from "../data/cities-by-country/fk.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "FK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(FK);
+const CITIES: readonly City[] = expandCities(rowsOf(FK));
 
 export default CITIES;
 export { CITIES };

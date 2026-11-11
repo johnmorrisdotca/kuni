@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cm: the 37 cities of Cameroon, every tier together, as a list.
 
 import { CM } from "../data/cities-by-country/cm.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CM);
+const CITIES: readonly City[] = expandCities(rowsOf(CM));
 
 export default CITIES;
 export { CITIES };

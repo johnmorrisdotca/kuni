@@ -2,11 +2,26 @@
 // The 2 cities of Aruba (AW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const AW: readonly CityRow[] = [
-  [131243,12.5186,-70.0358,28658,2020,"AW",null,"Oranjestad","オラニエスタッド",null,null,1,"AW",16],
-  [7683552,12.5418,-70.022,21495,2010,"AW",null,"Tanki Lender",null,"Tanki Leendert","nl",0,null,16],
-];
+const AW: CityColumns = {
+  id: "2t9n,4koo0",
+  lat: [125186,125418],
+  lon: [-700358,-700220],
+  population: [28658,21495],
+  date: "2020,2010",
+  country: "AWAW",
+  subdivisions: "",
+  subdivision: [-1,-1],
+  en: "Oranjestad|Tanki Lender",
+  ja: "オラニエスタッド|",
+  native: "|Tanki Leendert",
+  languages: "nl",
+  language: [-1,0],
+  capital: "10",
+  capitalOf: "AW|",
+  sources: "1010",
+  extra: [],
+};
 
 export { AW };

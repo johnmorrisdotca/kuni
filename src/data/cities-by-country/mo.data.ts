@@ -2,11 +2,26 @@
 // The 2 cities of Macao SAR China (MO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MO: readonly CityRow[] = [
-  [14773,22.19,113.5381,682100,2021,"MO",null,"Macau","マカオ","澳门","zh-cn",0,null,16],
-  [135907986,22.1181,113.5519,36384,null,"MO",null,"Luhuan",null,null,null,0,null,16],
-];
+const MO: CityColumns = {
+  id: "bed,28wz9u",
+  lat: [221900,221181],
+  lon: [1135381,1135519],
+  population: [682100,36384],
+  date: "2021,",
+  country: "MOMO",
+  subdivisions: "",
+  subdivision: [-1,-1],
+  en: "Macau|Luhuan",
+  ja: "マカオ|",
+  native: "澳门|",
+  languages: "zh-cn",
+  language: [0,-1],
+  capital: "00",
+  capitalOf: "|",
+  sources: "1010",
+  extra: [],
+};
 
 export { MO };

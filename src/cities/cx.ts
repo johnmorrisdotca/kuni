@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cx: the 1 cities of Christmas Island, every tier together, as a list.
 
 import { CX } from "../data/cities-by-country/cx.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CX"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CX);
+const CITIES: readonly City[] = expandCities(rowsOf(CX));
 
 export default CITIES;
 export { CITIES };

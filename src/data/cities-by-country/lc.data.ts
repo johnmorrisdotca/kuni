@@ -2,14 +2,26 @@
 // The 5 cities of St. Lucia (LC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const LC: readonly CityRow[] = [
-  [3116994,14.081,-60.953,21660,null,"LC","LC-06","Gros Islet","グロス・イスレット",null,null,0,null,16],
-  [41699,14.0108,-60.9894,20000,2025,"LC","LC-02","Castries","カストリーズ",null,null,1,"LC",16],
-  [569439,13.94,-61.0425,1410,null,"LC","LC-01","Anse La Raye","アンス・ラ・レイ",null,null,2,"LC-01",16],
-  [3494579,13.728,-60.954,null,null,"LC","LC-11","Vieux Fort","ヴューフォート (セントルシア)",null,null,2,"LC-11",16],
-  [3556840,13.7744,-61.0505,null,null,"LC","LC-03","Choiseul","ショアズール",null,null,2,"LC-03",16],
-];
+const LC: CityColumns = {
+  id: "1ut36,w6b,c7dr,22wfn,248h4",
+  lat: [140810,140108,139400,137280,137744],
+  lon: [-609530,-609894,-610425,-609540,-610505],
+  population: [21660,20000,1410,-1,-1],
+  date: ",2025,,,",
+  country: "LCLCLCLCLC",
+  subdivisions: "06,02,01,11,03",
+  subdivision: [0,1,2,3,4],
+  en: "Gros Islet|Castries|Anse La Raye|Vieux Fort|Choiseul",
+  ja: "グロス・イスレット|カストリーズ|アンス・ラ・レイ|ヴューフォート (セントルシア)|ショアズール",
+  native: "||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1],
+  capital: "01222",
+  capitalOf: "|LC|LC-01|LC-11|LC-03",
+  sources: "1010101010",
+  extra: [],
+};
 
 export { LC };

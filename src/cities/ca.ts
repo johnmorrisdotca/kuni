@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ca: the 239 cities of Canada, every tier together, as a list.
 
 import { CA } from "../data/cities-by-country/ca.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CA);
+const CITIES: readonly City[] = expandCities(rowsOf(CA));
 
 export default CITIES;
 export { CITIES };

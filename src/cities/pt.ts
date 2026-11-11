@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pt: the 59 cities of Portugal, every tier together, as a list.
 
 import { PT } from "../data/cities-by-country/pt.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PT);
+const CITIES: readonly City[] = expandCities(rowsOf(PT));
 
 export default CITIES;
 export { CITIES };

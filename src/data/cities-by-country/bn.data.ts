@@ -2,24 +2,26 @@
 // The 15 cities of Brunei (BN), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BN: readonly CityRow[] = [
-  [9279,4.9167,114.9167,50000,2015,"BN","BN-BM","Bandar Seri Begawan","バンダルスリブガワン",null,null,1,"BN",16],
-  [2024412,4.9833,114.9167,40710,2016,"BN","BN-BM","Mukim Berakas 'B'",null,null,null,0,null,16],
-  [2364102,4.5262,114.6193,34049,2016,"BN","BN-BM","Mukim Gadong 'A'",null,null,null,0,null,16],
-  [3866969,4.5262,114.6193,33637,2016,"BN","BN-BM","Mukim Gadong 'B'",null,null,null,0,null,16],
-  [2490410,4.9358,114.8289,31493,2016,"BN","BN-BM","Mukim Sengkurong",null,null,null,0,null,16],
-  [1954622,4.5833,114.1833,31308,2016,"BN","BN-BE","Mukim Kuala Belait","クアラ・ブライト郡",null,null,0,null,16],
-  [2365615,4.962,115.023,30192,2016,"BN","BN-BM","Mukim Mentiri",null,null,null,0,null,16],
-  [1952924,4.9833,114.9167,27223,2016,"BN","BN-BM","Mukim Berakas 'A'",null,null,null,0,null,16],
-  [2365651,4.8492,114.8817,22492,2016,"BN","BN-BM","Mukim Kilanas",null,null,null,0,null,16],
-  [1953067,4.6,114.3333,21214,2016,"BN","BN-BE","Mukim Seria","セリア郡",null,null,0,null,16],
-  [2159472,4.6142,114.3303,21082,null,"BN","BN-BE","Seria","セリア","Pekan Seria","ms",0,null,16],
-  [2490398,5.008,115.0525,16173,2016,"BN","BN-BM","Mukim Serasa","セラサ郡",null,null,0,null,16],
-  [588045,4.5828,114.1918,4259,2016,"BN","BN-BE","Kuala Belait","クアラブライト",null,null,2,"BN-BE",16],
-  [1125479,4.7086,115.0739,626,2016,"BN","BN-TE","Bangar Town","バンガル","Pekan Bangar","ms",2,"BN-TE",16],
-  [2299301,4.8067,114.6592,null,null,"BN","BN-TU","Tutong","プカン・ツトン","Pekan Tutong","ms",2,"BN-TU",16],
-];
+const BN: CityColumns = {
+  id: "75r,17e1o,1eo5i,2avrt,1hdm2,15w72,1epbj,15uvw,1epcj,15uzv,1aa9c,1hdlq,clql,o4fb,1da5h",
+  lat: [49167,49833,45262,45262,49358,45833,49620,49833,48492,46000,46142,50080,45828,47086,48067],
+  lon: [1149167,1149167,1146193,1146193,1148289,1141833,1150230,1149167,1148817,1143333,1143303,1150525,1141918,1150739,1146592],
+  population: [50000,40710,34049,33637,31493,31308,30192,27223,22492,21214,21082,16173,4259,626,-1],
+  date: "2015,2016,2016,2016,2016,2016,2016,2016,2016,2016,,2016,2016,2016,",
+  country: "BNBNBNBNBNBNBNBNBNBNBNBNBNBNBN",
+  subdivisions: "BM,BE,TE,TU",
+  subdivision: [0,0,0,0,0,1,0,0,0,1,1,0,1,2,3],
+  en: "Bandar Seri Begawan|Mukim Berakas 'B'|Mukim Gadong 'A'|Mukim Gadong 'B'|Mukim Sengkurong|Mukim Kuala Belait|Mukim Mentiri|Mukim Berakas 'A'|Mukim Kilanas|Mukim Seria|Seria|Mukim Serasa|Kuala Belait|Bangar Town|Tutong",
+  ja: "バンダルスリブガワン|||||クアラ・ブライト郡||||セリア郡|セリア|セラサ郡|クアラブライト|バンガル|プカン・ツトン",
+  native: "||||||||||Pekan Seria|||Pekan Bangar|Pekan Tutong",
+  languages: "ms",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,0,0],
+  capital: "100000000000222",
+  capitalOf: "BN||||||||||||BN-BE|BN-TE|BN-TU",
+  sources: "101010101010101010101010101010",
+  extra: [],
+};
 
 export { BN };

@@ -2,47 +2,26 @@
 // The 38 cities of Uruguay (UY), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const UY: readonly CityRow[] = [
-  [1335,-34.9059,-56.1913,1302954,2023,"UY","UY-MO","Montevideo","モンテビデオ","San Felipe y Santiago de Montevideo","es",1,"UY",16],
-  [335506,-31.3889,-57.9609,112527,2023,"UY","UY-SA","Salto","サルト",null,null,2,"UY-SA",16],
-  [869403,-34.8167,-55.95,112449,2011,"UY","UY-CA","Ciudad de la Costa","シウダ・デ・ラ・コスタ",null,null,0,null,16],
-  [16258,-34.9087,-54.9583,86782,2011,"UY","UY-MA","Maldonado","マルドナド",null,null,2,"UY-MA",16],
-  [646498,-30.9001,-55.5408,82602,2023,"UY","UY-RV","Rivera","リベラ",null,null,2,"UY-RV",16],
-  [309442,-32.3176,-58.078,81489,2023,"UY","UY-PA","Paysandú","パイサンドゥー",null,null,2,"UY-PA",16],
-  [615470,-34.7265,-56.2217,61292,2023,"UY","UY-CA","Las Piedras","ラス・ピエドラス",null,null,0,null,16],
-  [833016,-31.711,-55.9789,60581,2023,"UY","UY-TA","Tacuarembó","タクアレンボー",null,null,2,"UY-TA",16],
-  [738250,-32.3678,-54.1662,55985,2023,"UY","UY-CL","Melo","メロ",null,null,2,"UY-CL",16],
-  [712567,-30.3984,-56.4638,43843,2023,"UY","UY-AR","Artigas","アルティガス",null,null,2,"UY-AR",16],
-  [844914,-33.2484,-58.0299,43528,2023,"UY","UY-SO","Mercedes","メルセデス",null,null,2,"UY-SO",16],
-  [855645,-33.3801,-56.5225,40279,2023,"UY","UY-DU","Durazno","ドゥラスノ","San Pedro del Durazno","es",2,"UY-DU",16],
-  [868205,-34.3745,-55.2358,38633,2023,"UY","UY-LA","Minas","ミナス",null,null,2,"UY-LA",16],
-  [983435,-34.3383,-56.7119,38550,2023,"UY","UY-SJ","San José de Mayo","サン・ホセ・デ・マジョ",null,null,2,"UY-SJ",16],
-  [370254,-34.749,-56.4355,38249,2023,"UY","UY-SJ","Ciudad del Plata","シウダー・デル・プラタ",null,null,0,null,16],
-  [808981,-34.7525,-55.9934,35660,2023,"UY","UY-CA","Barros Blancos","バロス・ブランコス",null,null,0,null,16],
-  [842472,-34.1007,-56.2118,34893,2023,"UY","UY-FD","Florida","フロリダ",null,null,2,"UY-FD",16],
-  [56064,-34.4699,-57.8434,31720,2023,"UY","UY-CO","Colonia del Sacramento","コロニア・デル・サクラメント",null,null,2,"UY-CO",16],
-  [639340,-34.7222,-55.9603,31191,2023,"UY","UY-CA","Pando","パンド (ウルグアイ)",null,null,0,null,16],
-  [374670,-34.7866,-54.9189,29299,2023,"UY","UY-MA","San Carlos","サン・カルロス",null,null,0,null,16],
-  [1017387,-34.48,-54.3344,26784,2023,"UY","UY-RO","Rocha","ロチャ",null,null,2,"UY-RO",16],
-  [849835,-33.1165,-58.3131,26231,2023,"UY","UY-RN","Fray Bentos","フライ・ベントス",null,null,2,"UY-RN",16],
-  [830390,-33.2316,-54.3863,25870,2023,"UY","UY-TT","Treinta y Tres","トレインタ・イ・トレス",null,null,2,"UY-TT",16],
-  [841342,-34.5249,-56.2814,24159,2023,"UY","UY-CA","Canelones","カネローネス",null,null,2,"UY-CA",16],
-  [862508,-33.5143,-56.8983,22893,2023,"UY","UY-FS","Trinidad","トリニダ",null,null,2,"UY-FS",16],
-  [50293544,-34.6986,-56.2153,22592,2023,"UY","UY-CA","18 de Mayo",null,null,null,0,null,16],
-  [1020954,-34.8139,-55.9369,22525,2023,"UY","UY-CA","Lomas de Solymar",null,null,null,0,null,16],
-  [723697,-34.8308,-55.9618,22340,2023,"UY","UY-CA","Solymar",null,null,null,0,null,16],
-  [1043575,-33.9964,-58.2905,19972,2023,"UY","UY-CO","Carmelo","カルメロ (ウルグアイ)",null,null,0,null,16],
-  [997833,-34.7617,-56.2233,19132,2023,"UY","UY-CA","La Paz","ラ・パス",null,null,0,null,16],
-  [546964,-33.5333,-58.2167,18781,2023,"UY","UY-SO","Dolores","ドローレス (ウルグアイ)",null,null,0,null,16],
-  [1006165,-32.5931,-53.3788,17379,2023,"UY","UY-CL","Río Branco","リオ・ブランコ (ウルグアイ)",null,null,0,null,16],
-  [2055651,-34.8431,-56.0349,17239,2023,"UY","UY-CA","Paso Carrasco","パソ・デ・カラスコ",null,null,0,null,16],
-  [1005607,-32.7009,-57.6323,17035,2023,"UY","UY-RN","Young","ヨウング",null,null,0,null,16],
-  [1014315,-34.4589,-56.3897,16876,2023,"UY","UY-CA","Santa Lucía","サンタ・ルシア",null,null,0,null,16],
-  [815782,-30.259,-57.5968,16166,2023,"UY","UY-AR","Bella Unión","ベジャ・ウニオン",null,null,0,null,16],
-  [1020933,-34.7667,-56.0167,15057,null,"UY","UY-CA","Fraccionamiento Camino Maldonado",null,null,null,0,null,16],
-  [984518,-34.8786,-56.1358,39880,null,"UY","UY-MO","La Unión","ウニオン",null,null,0,null,16,1335],
-];
+const UY: CityColumns = {
+  id: "113,76vm,imu3,cjm,duua,6mrm,d6we,hurc,ftmy,f9tj,i3xu,ic7x,ilwt,l2tn,7xou,hc7p,i220,179c,dpbg,813i,lt0r,i7qj,hsqe,i16m,ihik,txyqw,lvru,fiep,md87,ldxl,bq1g,lkd1,1825f,ljxj,lqnf,hhgm,lvr9,l3nq",
+  lat: [-349059,-313889,-348167,-349087,-309001,-323176,-347265,-317110,-323678,-303984,-332484,-333801,-343745,-343383,-347490,-347525,-341007,-344699,-347222,-347866,-344800,-331165,-332316,-345249,-335143,-346986,-348139,-348308,-339964,-347617,-335333,-325931,-348431,-327009,-344589,-302590,-347667,-348786],
+  lon: [-561913,-579609,-559500,-549583,-555408,-580780,-562217,-559789,-541662,-564638,-580299,-565225,-552358,-567119,-564355,-559934,-562118,-578434,-559603,-549189,-543344,-583131,-543863,-562814,-568983,-562153,-559369,-559618,-582905,-562233,-582167,-533788,-560349,-576323,-563897,-575968,-560167,-561358],
+  population: [1302954,112527,112449,86782,82602,81489,61292,60581,55985,43843,43528,40279,38633,38550,38249,35660,34893,31720,31191,29299,26784,26231,25870,24159,22893,22592,22525,22340,19972,19132,18781,17379,17239,17035,16876,16166,15057,39880],
+  date: "2023,2023,2011,2011,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,,",
+  country: "UYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUYUY",
+  subdivisions: "MO,SA,CA,MA,RV,PA,TA,CL,AR,SO,DU,LA,SJ,FD,CO,RO,RN,TT,FS",
+  subdivision: [0,1,2,3,4,5,2,6,7,8,9,10,11,12,12,2,13,14,2,3,15,16,17,2,18,2,2,2,14,2,9,7,2,16,2,8,2,0],
+  en: "Montevideo|Salto|Ciudad de la Costa|Maldonado|Rivera|Paysandú|Las Piedras|Tacuarembó|Melo|Artigas|Mercedes|Durazno|Minas|San José de Mayo|Ciudad del Plata|Barros Blancos|Florida|Colonia del Sacramento|Pando|San Carlos|Rocha|Fray Bentos|Treinta y Tres|Canelones|Trinidad|18 de Mayo|Lomas de Solymar|Solymar|Carmelo|La Paz|Dolores|Río Branco|Paso Carrasco|Young|Santa Lucía|Bella Unión|Fraccionamiento Camino Maldonado|La Unión",
+  ja: "モンテビデオ|サルト|シウダ・デ・ラ・コスタ|マルドナド|リベラ|パイサンドゥー|ラス・ピエドラス|タクアレンボー|メロ|アルティガス|メルセデス|ドゥラスノ|ミナス|サン・ホセ・デ・マジョ|シウダー・デル・プラタ|バロス・ブランコス|フロリダ|コロニア・デル・サクラメント|パンド (ウルグアイ)|サン・カルロス|ロチャ|フライ・ベントス|トレインタ・イ・トレス|カネローネス|トリニダ||||カルメロ (ウルグアイ)|ラ・パス|ドローレス (ウルグアイ)|リオ・ブランコ (ウルグアイ)|パソ・デ・カラスコ|ヨウング|サンタ・ルシア|ベジャ・ウニオン||ウニオン",
+  native: "San Felipe y Santiago de Montevideo|||||||||||San Pedro del Durazno||||||||||||||||||||||||||",
+  languages: "es",
+  language: [0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12022202222222002200222220000000000000",
+  capitalOf: "UY|UY-SA||UY-MA|UY-RV|UY-PA||UY-TA|UY-CL|UY-AR|UY-SO|UY-DU|UY-LA|UY-SJ|||UY-FD|UY-CO|||UY-RO|UY-RN|UY-TT|UY-CA|UY-FS|||||||||||||",
+  sources: "1010101010101010101010101010101010101010101010101010101010101010101010101010",
+  extra: [[37,1335]],
+};
 
 export { UY };

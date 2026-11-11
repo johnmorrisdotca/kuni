@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kw: the 6 cities of Kuwait, every tier together, as a list.
 
 import { KW } from "../data/cities-by-country/kw.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(KW);
+const CITIES: readonly City[] = expandCities(rowsOf(KW));
 
 export default CITIES;
 export { CITIES };

@@ -2,10 +2,26 @@
 // The 1 cities of Martinique (MQ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MQ: readonly CityRow[] = [
-  [81621,14.6,-61.0667,75506,2023,"MQ",null,"Fort-de-France","フォール＝ド＝フランス",null,null,1,"MQ",0,"oecd:FR046F","Fort-de-France",346937,2022],
-];
+const MQ: CityColumns = {
+  id: "1qz9",
+  lat: [146000],
+  lon: [-610667],
+  population: [75506],
+  date: "2023",
+  country: "MQ",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Fort-de-France",
+  ja: "フォール＝ド＝フランス",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "MQ",
+  sources: "00",
+  extra: [[0,"oecd:FR046F","Fort-de-France",346937,2022]],
+};
 
 export { MQ };

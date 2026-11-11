@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/br: the 558 cities of Brazil, every tier together, as a list.
 
 import { BR } from "../data/cities-by-country/br.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BR);
+const CITIES: readonly City[] = expandCities(rowsOf(BR));
 
 export default CITIES;
 export { CITIES };

@@ -2,34 +2,26 @@
 // The 25 cities of Bosnia & Herzegovina (BA), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BA: readonly CityRow[] = [
-  [11194,43.8564,18.4131,275524,2013,"BA","BA-BIH","Sarajevo","サラエヴォ",null,null,1,"BA",16],
-  [131127,44.7725,17.1925,185042,2013,"BA","BA-SRP","Banja Luka","バニャ・ルカ",null,null,2,"BA-SRP",16],
-  [174684,44.5391,18.6752,110979,2013,"BA","BA-BIH","Tuzla","トゥズラ",null,null,0,null,16],
-  [93347,43.3436,17.8075,105448,2003,"BA","BA-BIH","Mostar","モスタル",null,null,0,null,16],
-  [323986,44.9667,16.7,89397,2013,"BA","BA-SRP","Prijedor","プリイェドル",null,null,0,null,16],
-  [184046,44.2017,17.9039,70553,null,"BA","BA-BIH","Zenica","ゼニツァ",null,null,0,null,16],
-  [169247,44.7333,18.1333,68514,2013,"BA","BA-SRP","Doboj","ドボイ",null,null,0,null,16],
-  [994203,44.9669,15.9431,66149,null,"BA","BA-BIH","Cazin","ツァジン",null,null,0,null,16],
-  [204434,44.8147,15.8692,56261,2013,"BA","BA-BIH","Bihać","ビハチ",null,null,0,null,16],
-  [159818,44.2254,17.6669,53482,2013,"BA","BA-BIH","Travnik","トラヴニク",null,null,0,null,16],
-  [207801,44.7567,19.2156,42278,2013,"BA","BA-SRP","Bijeljina","ビイェリナ",null,null,0,null,16],
-  [193229,43.9894,18.1806,39938,2013,"BA","BA-BIH","Visoko","ヴィソコ",null,null,0,null,16],
-  [322828,44.8783,18.8092,39893,2013,"BA","BA-BIH","Brčko","ブルチコ",null,null,2,"BA-BRC",16],
-  [999004,44.7031,18.4928,39678,2013,"BA","BA-BIH","Srebrenik","スレブレニク",null,null,0,null,16],
-  [963038,44.1311,18.0972,37441,2013,"BA","BA-BIH","Kakanj","カカニ",null,null,0,null,16],
-  [393860,44.4333,18.0333,31582,2013,"BA","BA-BIH","Žepče","ジェプチェ",null,null,0,null,16],
-  [690052,42.7093,18.3487,31433,2013,"BA","BA-SRP","Trebinje","トレビニェ",null,null,0,null,16],
-  [337683,43.11,17.7,28122,2013,"BA","BA-BIH","Čapljina","チャプリナ",null,null,0,null,16],
-  [1018006,44.1585,17.7885,25836,2013,"BA","BA-BIH","Vitez","ビテツ",null,null,0,null,16],
-  [974745,43.6514,17.9608,25148,null,"BA","BA-BIH","Konjic","コニツ",null,null,0,null,16],
-  [939528,43.8236,18.2211,23891,2013,"BA","BA-BIH","Hadžići","ハジチ",null,null,0,null,16],
-  [806935,44.4089,18.5287,22773,2013,"BA","BA-BIH","Banovići","バノヴィチ",null,null,0,null,16],
-  [2189505,44.7667,16.6667,16913,2013,"BA","BA-BIH","Sanski Most","サンスキ・モスト",null,null,0,null,16],
-  [394166,44.45,18.65,16157,2013,"BA","BA-BIH","Živinice","ジヴィニツェ",null,null,0,null,16],
-  [934612,44.0572,17.4508,15555,2013,"BA","BA-BIH","Bugojno","ブゴイノ",null,null,0,null,16],
-];
+const BA: CityColumns = {
+  id: "8my,2t6f,3qsc,200z,6xzm,3y0e,3mlb,lb4r,4dqq,3fbe,4gc9,453h,6x3g,leu4,kn32,8fwk,esg4,78k3,lthy,kw49,k4y0,hamv,1axfl,8g52,k15g",
+  lat: [438564,447725,445391,433436,449667,442017,447333,449669,448147,442254,447567,439894,448783,447031,441311,444333,427093,431100,441585,436514,438236,444089,447667,444500,440572],
+  lon: [184131,171925,186752,178075,167000,179039,181333,159431,158692,176669,192156,181806,188092,184928,180972,180333,183487,177000,177885,179608,182211,185287,166667,186500,174508],
+  population: [275524,185042,110979,105448,89397,70553,68514,66149,56261,53482,42278,39938,39893,39678,37441,31582,31433,28122,25836,25148,23891,22773,16913,16157,15555],
+  date: "2013,2013,2013,2003,2013,,2013,,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,,2013,2013,2013,2013,2013",
+  country: "BABABABABABABABABABABABABABABABABABABABABABABABABA",
+  subdivisions: "BIH,SRP",
+  subdivision: [0,1,0,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0],
+  en: "Sarajevo|Banja Luka|Tuzla|Mostar|Prijedor|Zenica|Doboj|Cazin|Bihać|Travnik|Bijeljina|Visoko|Brčko|Srebrenik|Kakanj|Žepče|Trebinje|Čapljina|Vitez|Konjic|Hadžići|Banovići|Sanski Most|Živinice|Bugojno",
+  ja: "サラエヴォ|バニャ・ルカ|トゥズラ|モスタル|プリイェドル|ゼニツァ|ドボイ|ツァジン|ビハチ|トラヴニク|ビイェリナ|ヴィソコ|ブルチコ|スレブレニク|カカニ|ジェプチェ|トレビニェ|チャプリナ|ビテツ|コニツ|ハジチ|バノヴィチ|サンスキ・モスト|ジヴィニツェ|ブゴイノ",
+  native: "||||||||||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1200000000002000000000000",
+  capitalOf: "BA|BA-SRP|||||||||||BA-BRC||||||||||||",
+  sources: "10101010101010101010101010101010101010101010101010",
+  extra: [],
+};
 
 export { BA };

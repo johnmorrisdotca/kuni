@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/me: the 26 cities of Montenegro, every tier together, as a list.
 
 import { ME } from "../data/cities-by-country/me.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ME"
  * ```
  */
-const CITIES: readonly City[] = expandCities(ME);
+const CITIES: readonly City[] = expandCities(rowsOf(ME));
 
 export default CITIES;
 export { CITIES };

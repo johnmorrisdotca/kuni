@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ee: the 28 cities of Estonia, every tier together, as a list.
 
 import { EE } from "../data/cities-by-country/ee.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "EE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(EE);
+const CITIES: readonly City[] = expandCities(rowsOf(EE));
 
 export default CITIES;
 export { CITIES };

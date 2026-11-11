@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/rw: the 20 cities of Rwanda, every tier together, as a list.
 
 import { RW } from "../data/cities-by-country/rw.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "RW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(RW);
+const CITIES: readonly City[] = expandCities(rowsOf(RW));
 
 export default CITIES;
 export { CITIES };

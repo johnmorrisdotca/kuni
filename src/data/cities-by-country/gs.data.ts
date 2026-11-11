@@ -2,10 +2,26 @@
 // The 1 cities of South Georgia & South Sandwich Islands (GS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GS: readonly CityRow[] = [
-  [393878,-54.2823,-36.4871,22,null,"GS",null,"King Edward Point","キング・エドワード・ポイント",null,null,1,"GS",16],
-];
+const GS: CityColumns = {
+  id: "8fx2",
+  lat: [-542823],
+  lon: [-364871],
+  population: [22],
+  date: "",
+  country: "GS",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "King Edward Point",
+  ja: "キング・エドワード・ポイント",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "GS",
+  sources: "10",
+  extra: [],
+};
 
 export { GS };

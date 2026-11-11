@@ -10,6 +10,9 @@ import type { Continent, Country } from "./types";
 import { country, countries } from "./index";
 import { facts } from "./facts";
 import { fold } from "./fold";
+import { startKey } from "./city-start";
+import type { CityName } from "./city-rows";
+import { CITY_NAME_LOADERS, CITY_START_LOADERS } from "./data/city-start-loaders.data";
 import { groupings, membersOf } from "./groupings";
 
 /**
@@ -121,6 +124,12 @@ interface SearchPlacesOptions {
   tiers?: readonly CityTier[];
   /** Search the cities of this country only (every tier, loaded on its own), and no countries. */
   country?: string;
+  /**
+   * "anywhere" (the default) finds the text anywhere in a name. "start" finds it only at the start of a name or of a
+   * word in it (Paris, New York for "york"), and so fetches only the part of the capitals and of the 100k tier that
+   * holds such names (a few kilobytes, not the whole tier): the right one for a box that searches as somebody types.
+   */
+  match?: "anywhere" | "start";
 }
 
 const LIMIT = 20;
@@ -154,7 +163,19 @@ const searchPlaces = async (text: string, options: SearchPlacesOptions = {}): Pr
   const lang = options.lang === "ja" ? "ja" : "en";
   const limit = Number.isFinite(options.limit) ? Math.max(1, Math.min(100, Math.floor(options.limit!))) : LIMIT;
   const inCountry = typeof options.country === "string" ? options.country : null;
-  const cities: readonly City[] = inCountry !== null ? ((await citiesOf(inCountry)) ?? []) : citySet(...(await Promise.all((options.tiers ?? DEFAULT_TIERS).map(async (tier) => (await loadCities(tier)).cities)))).cities;
+  const fromStart = options.match === "start";
+  // From the start of a word, the capitals and the 100k tier are fetched in the part of the text's first letter only.
+  const tierCities = async (tier: CityTier): Promise<readonly City[]> => {
+    if (fromStart && (tier === "capitals" || tier === "100k")) {
+      const key = startKey(wanted);
+      const load = key === null ? undefined : CITY_START_LOADERS[tier][key];
+
+      return load === undefined ? [] : (await load()).CITIES;
+    }
+
+    return (await loadCities(tier)).cities;
+  };
+  const cities: readonly City[] = inCountry !== null ? ((await citiesOf(inCountry)) ?? []) : citySet(...(await Promise.all((options.tiers ?? DEFAULT_TIERS).map(tierCities)))).cities;
 
   const scored: { hit: PlaceHit; score: number; population: number; length: number; order: number }[] = [];
   const consider = (hit: PlaceHit, names: readonly (string | undefined)[], population: number | null, order: number): void => {
@@ -171,7 +192,7 @@ const searchPlaces = async (text: string, options: SearchPlacesOptions = {}): Pr
         length = folded.length;
       }
     }
-    if (score !== Infinity) scored.push({ hit, score, population: population ?? 0, length, order });
+    if (score !== Infinity && !(fromStart && score === 3)) scored.push({ hit, score, population: population ?? 0, length, order });
   };
   let order = 0;
   if (inCountry === null) {
@@ -184,5 +205,28 @@ const searchPlaces = async (text: string, options: SearchPlacesOptions = {}): Pr
   return scored.slice(0, limit).map((one) => one.hit);
 };
 
-export { continents, countriesOf, searchPlaces };
-export type { PlaceContinent, PlaceHit, SearchPlacesOptions };
+/**
+ * A country's cities, ids and names only: the light list a picker shows first (a third to a half of the country's
+ * full file), in the order of `citiesOf`, each with `major` for the country's capital and its first twenty cities. The
+ * rest of a city is one `cityById` away.
+ *
+ * @param code - An ISO 3166-1 alpha-2 code, any case.
+ * @returns The list, or `null` for a code with no cities.
+ * @example
+ * ```ts
+ * import { cityNamesOf } from "@johnmorrisdotca/kuni/places";
+ *
+ * const japan = await cityNamesOf("JP");
+ * console.log(japan?.[0].name.en);                          // "Tokyo"
+ * console.log(japan?.filter((one) => one.major).length);   // 20
+ * ```
+ */
+const cityNamesOf = async (code: string): Promise<readonly CityName[] | null> => {
+  const key = typeof code === "string" ? code.trim().toLowerCase() : "";
+  const load = /^[a-z]{2}$/.test(key) ? CITY_NAME_LOADERS[key] : undefined;
+
+  return load === undefined ? null : (await load()).CITY_NAMES;
+};
+
+export { cityNamesOf, continents, countriesOf, searchPlaces };
+export type { CityName, PlaceContinent, PlaceHit, SearchPlacesOptions };

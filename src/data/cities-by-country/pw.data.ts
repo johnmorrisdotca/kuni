@@ -2,20 +2,26 @@
 // The 11 cities of Palau (PW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PW: readonly CityRow[] = [
-  [527748,7.3433,134.4804,8744,2013,"PW","PW-150","Koror","コロール","コロール","ja",2,"PW-150",16],
-  [2560228,7.0333,134.25,520,2013,"PW","PW-350","Kloulklubed","クルルクベド","クルルクベド","ja",2,"PW-350",16],
-  [154002,7.4933,134.6342,299,2012,"PW","PW-212","Melekeok","マルキョク","マルキョク","ja",2,"PW-212",16],
-  [2868400,5.326,132.2199,42,2014,"PW","PW-370","Dongosaru","ドンゴサル","ドンゴサル","ja",2,"PW-370",16],
-  [515229,7.5006,134.6242,0,null,"PW",null,"Ngerulmud","ンゲルルムッド","ンゲルルムッド","ja",1,"PW",16],
-  [2456642,3.0042,131.122,null,null,"PW","PW-050","Hatohobei",null,null,null,2,"PW-050",16],
-  [2640394,7.5333,134.5333,null,null,"PW",null,"Imeong",null,null,null,2,"PW-227",16],
-  [2740497,6.9014,134.1294,null,null,"PW","PW-010","Ngeremasch","ゲレマッシュ","ゲレマッシュ","ja",2,"PW-010",16],
-  [3001462,7.7,134.6333,null,null,"PW",null,"Mengellang",null,null,null,2,"PW-218",16],
-  [7022290,7.3667,134.5167,null,null,"PW",null,"Ngetkib","ネゲキブ","ネゲキブ","ja",2,"PW-004",16],
-  [49278647,7.5546,134.6361,null,null,"PW",null,"Ngerkeai",null,null,null,2,"PW-228",16],
-];
+const PW: CityColumns = {
+  id: "bb7o,1ivhg,3atu,1ph9s,b1jx,1gnk2,1klca,1mqkx,1sbxy,46ifm,tc7nb",
+  lat: [73433,70333,74933,53260,75006,30042,75333,69014,77000,73667,75546],
+  lon: [1344804,1342500,1346342,1322199,1346242,1311220,1345333,1341294,1346333,1345167,1346361],
+  population: [8744,520,299,42,0,-1,-1,-1,-1,-1,-1],
+  date: "2013,2013,2012,2014,,,,,,,",
+  country: "PWPWPWPWPWPWPWPWPWPWPW",
+  subdivisions: "150,350,212,370,050,010",
+  subdivision: [0,1,2,3,-1,4,-1,5,-1,-1,-1],
+  en: "Koror|Kloulklubed|Melekeok|Dongosaru|Ngerulmud|Hatohobei|Imeong|Ngeremasch|Mengellang|Ngetkib|Ngerkeai",
+  ja: "コロール|クルルクベド|マルキョク|ドンゴサル|ンゲルルムッド|||ゲレマッシュ||ネゲキブ|",
+  native: "コロール|クルルクベド|マルキョク|ドンゴサル|ンゲルルムッド|||ゲレマッシュ||ネゲキブ|",
+  languages: "ja",
+  language: [0,0,0,0,0,-1,-1,0,-1,0,-1],
+  capital: "22221222222",
+  capitalOf: "PW-150|PW-350|PW-212|PW-370|PW|PW-050|PW-227|PW-010|PW-218|PW-004|PW-228",
+  sources: "1010101010101010101010",
+  extra: [],
+};
 
 export { PW };

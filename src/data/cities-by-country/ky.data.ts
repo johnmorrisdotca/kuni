@@ -2,10 +2,26 @@
 // The 1 cities of Cayman Islands (KY), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const KY: readonly CityRow[] = [
-  [172996,19.2964,-81.3817,27704,null,"KY",null,"George Town","ジョージタウン",null,null,1,"KY",16],
-];
+const KY: CityColumns = {
+  id: "3phg",
+  lat: [192964],
+  lon: [-813817],
+  population: [27704],
+  date: "",
+  country: "KY",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "George Town",
+  ja: "ジョージタウン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "KY",
+  sources: "10",
+  extra: [],
+};
 
 export { KY };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gt: the 46 cities of Guatemala, every tier together, as a list.
 
 import { GT } from "../data/cities-by-country/gt.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GT);
+const CITIES: readonly City[] = expandCities(rowsOf(GT));
 
 export default CITIES;
 export { CITIES };

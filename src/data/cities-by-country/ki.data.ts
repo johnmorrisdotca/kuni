@@ -2,13 +2,26 @@
 // The 4 cities of Kiribati (KI), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const KI: readonly CityRow[] = [
-  [2486,1.4333,173,70090,2020,"KI","KI-G","Tarawa","タラワ",null,null,0,null,16],
-  [131233,1.3333,172.9667,63439,2020,"KI","KI-G","South Tarawa","サウス・タラワ",null,null,1,"KI",16],
-  [30895,-2.8106,-171.6756,41,2020,"KI","KI-P","Kanton Island","カントン島","Kanton","en",2,"KI-P",16],
-  [4853814,1.9833,-157.3653,null,null,"KI",null,"Banana","バナナ",null,null,2,"KI-L",16],
-];
+const KI: CityColumns = {
+  id: "1x2,2t9d,nu7,2w186",
+  lat: [14333,13333,-28106,19833],
+  lon: [1730000,1729667,-1716756,-1573653],
+  population: [70090,63439,41,-1],
+  date: "2020,2020,2020,",
+  country: "KIKIKIKI",
+  subdivisions: "G,P",
+  subdivision: [0,0,1,-1],
+  en: "Tarawa|South Tarawa|Kanton Island|Banana",
+  ja: "タラワ|サウス・タラワ|カントン島|バナナ",
+  native: "||Kanton|",
+  languages: "en",
+  language: [-1,-1,0,-1],
+  capital: "0122",
+  capitalOf: "|KI|KI-P|KI-L",
+  sources: "10101010",
+  extra: [],
+};
 
 export { KI };

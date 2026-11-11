@@ -2,26 +2,26 @@
 // The 17 cities of South Sudan (SS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SS: readonly CityRow[] = [
-  [1947,4.8539,31.5825,500088,2025,"SS","SS-EC","Juba","ジュバ",null,null,1,"SS",16],
-  [276534,7.7,27.9833,320752,2022,"SS","SS-BW","Wau","ワーウ",null,null,2,"SS-BW",16],
-  [893274,6.2167,31.55,315351,2010,"SS","SS-JG","Bor","ボー",null,null,2,"SS-JG",16],
-  [1561403,4.0833,30.6833,185000,null,"SS","SS-EC","Yei","イェイ",null,null,0,null,18],
-  [220049,9.5333,31.65,147450,2014,"SS","SS-NU","Malakal","マラカル",null,null,2,"SS-NU",16],
-  [986355,4.5667,28.4167,130250,2008,"SS","SS-EW","Yambio","ヤンビオ",null,null,2,"SS-EW",16],
-  [3132444,4.9158,29.4739,65072,2013,"SS","SS-EW","Maridi","マリーディー",null,null,0,null,16],
-  [55614362,3.2452,31.2841,57758,null,"SS",null,"Imvepi Refugee Settlement",null,null,null,0,null,16],
-  [1534350,8.53,28.1,50065,null,"SS","SS-WR","Gogrial","ゴグリアル",null,null,0,null,18],
-  [1965843,8.6,33.0667,43733,2010,"SS","SS-NU","Nasir","ナシル",null,null,0,null,16],
-  [791685,8.7667,27.4,40054,2008,"SS","SS-BN","Aweil","アウェル",null,null,2,"SS-BN",16],
-  [607336,6.8,29.6833,32083,null,"SS","SS-LK","Rumbek","ルンベク",null,null,2,"SS-LK",18],
-  [1010278,4.4167,32.5667,17957,2008,"SS","SS-EE","Torit","トリット (南スーダン)",null,null,2,"SS-EE",16],
-  [3228987,8.3018,30.1418,17827,2008,"SS","SS-UY","Leer","リーア",null,null,0,null,16],
-  [1371016,7.28,28.68,17340,2010,"SS","SS-WR","Tonj","トンジ",null,null,0,null,16],
-  [818284,9.25,29.8,7781,null,"SS","SS-UY","Bentiu","ベンティーウ",null,null,2,"SS-UY",16],
-  [1010287,8.31,27.99,null,null,"SS","SS-WR","Kuajok","クアジョク",null,null,2,"SS-WR",16],
-];
+const SS: CityColumns = {
+  id: "1i3,5xdi,j596,xgsb,4psh,l52r,1v50c,x40be,wvwu,164ur,gyv9,d0mg,lnja,1x7i3,tdvs,hje4,lnjj",
+  lat: [48539,77000,62167,40833,95333,45667,49158,32452,85300,86000,87667,68000,44167,83018,72800,92500,83100],
+  lon: [315825,279833,315500,306833,316500,284167,294739,312841,281000,330667,274000,296833,325667,301418,286800,298000,279900],
+  population: [500088,320752,315351,185000,147450,130250,65072,57758,50065,43733,40054,32083,17957,17827,17340,7781,-1],
+  date: "2025,2022,2010,,2014,2008,2013,,,2010,2008,,2008,2008,2010,,",
+  country: "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+  subdivisions: "EC,BW,JG,NU,EW,WR,BN,LK,EE,UY",
+  subdivision: [0,1,2,0,3,4,4,-1,5,3,6,7,8,9,5,9,5],
+  en: "Juba|Wau|Bor|Yei|Malakal|Yambio|Maridi|Imvepi Refugee Settlement|Gogrial|Nasir|Aweil|Rumbek|Torit|Leer|Tonj|Bentiu|Kuajok",
+  ja: "ジュバ|ワーウ|ボー|イェイ|マラカル|ヤンビオ|マリーディー||ゴグリアル|ナシル|アウェル|ルンベク|トリット (南スーダン)|リーア|トンジ|ベンティーウ|クアジョク",
+  native: "||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12202200002220022",
+  capitalOf: "SS|SS-BW|SS-JG||SS-NU|SS-EW|||||SS-BN|SS-LK|SS-EE|||SS-UY|SS-WR",
+  sources: "1010101210101010121010121010101010",
+  extra: [],
+};
 
 export { SS };

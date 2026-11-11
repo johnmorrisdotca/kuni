@@ -2,10 +2,26 @@
 // The 1 cities of Réunion (RE), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const RE: readonly CityRow[] = [
-  [47045,-20.8789,55.4481,155634,2023,"RE",null,"Saint-Denis","サン＝ドニ",null,null,1,"RE",0,"oecd:FR030F","Saint-Denis",323655,2022],
-];
+const RE: CityColumns = {
+  id: "10at",
+  lat: [-208789],
+  lon: [554481],
+  population: [155634],
+  date: "2023",
+  country: "RE",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Saint-Denis",
+  ja: "サン＝ドニ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "RE",
+  sources: "00",
+  extra: [[0,"oecd:FR030F","Saint-Denis",323655,2022]],
+};
 
 export { RE };

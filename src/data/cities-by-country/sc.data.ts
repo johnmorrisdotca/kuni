@@ -2,10 +2,26 @@
 // The 1 cities of Seychelles (SC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SC: readonly CityRow[] = [
-  [3940,-4.6236,55.4544,24701,2014,"SC",null,"Victoria","ヴィクトリア",null,null,1,"SC",16],
-];
+const SC: CityColumns = {
+  id: "31g",
+  lat: [-46236],
+  lon: [554544],
+  population: [24701],
+  date: "2014",
+  country: "SC",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Victoria",
+  ja: "ヴィクトリア",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "SC",
+  sources: "10",
+  extra: [],
+};
 
 export { SC };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/hn: the 21 cities of Honduras, every tier together, as a list.
 
 import { HN } from "../data/cities-by-country/hn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "HN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(HN);
+const CITIES: readonly City[] = expandCities(rowsOf(HN));
 
 export default CITIES;
 export { CITIES };

@@ -2,46 +2,26 @@
 // The 37 cities of Cameroon (CM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CM: readonly CityRow[] = [
-  [132830,4.05,9.7,2768436,2015,"CM","CM-LT","Douala","ドゥアラ",null,null,2,"CM-LT",16],
-  [3808,3.8578,11.5181,2440462,2012,"CM","CM-CE","Yaoundé","ヤウンデ",null,null,1,"CM",16],
-  [157915,9.3,13.4,1750000,2020,"CM","CM-NO","Garoua","ガルア",null,null,2,"CM-NO",16],
-  [799808,5.4667,10.4167,480000,2024,"CM","CM-OU","Bafoussam","バフーサム",null,null,2,"CM-OU",16],
-  [528432,5.9614,10.1517,348766,2012,"CM","CM-NW","Bamenda","バメンダ",null,null,2,"CM-NW",16],
-  [818824,10.5909,14.3159,201371,"2005-11-01","CM","CM-EN","Maroua","マルア",null,null,2,"CM-EN",16],
-  [745906,7.3214,13.5839,189800,2001,"CM","CM-AD","Ngaoundéré","ヌガウンデレ",null,null,2,"CM-AD",16],
-  [997047,4.6333,9.45,144268,2005,"CM","CM-SW","Kumba","クンバ",null,null,0,null,16],
-  [999070,4.95,9.9167,135405,2022,"CM","CM-LT","Nkongsamba","ンコングサンバ",null,null,0,null,16],
-  [312209,4.1667,9.2333,131325,2005,"CM","CM-SW","Buea","ブエア","Buéa","fr",2,"CM-SW",16],
-  [2533580,6.2,10.66,125486,null,"CM","CM-NW","Kumbo","クンボ",null,null,0,null,18],
-  [697662,12.0833,15.0333,101246,2010,"CM","CM-EN","Kousséri","クッセリ",null,null,0,null,16],
-  [23012952,10.7361,14.6108,95230,2005,"CM","CM-EN","Bogo","ボゴ",null,null,0,null,16],
-  [1439847,5.7167,10.9167,92673,null,"CM","CM-OU","Foumban","フーンバン",null,null,0,null,18],
-  [657734,4.5833,13.6833,88462,2005,"CM","CM-ES","Bertoua","ベルトゥア",null,null,2,"CM-ES",16],
-  [2708439,9.9342,13.9486,84647,null,"CM","CM-NO","Guider","ギデ",null,null,0,null,18],
-  [819314,4.0167,9.2167,84223,"2005-11-01","CM","CM-SW","Limbe","リンベ","Limbé","fr",0,null,16],
-  [2702755,3.52,11.5122,80206,null,"CM","CM-CE","Mbalmayo","ムバルマヨ",null,null,0,null,18],
-  [2629052,6.5172,14.2947,80100,null,"CM","CM-AD","Meiganga","メイガンガ",null,null,0,null,18],
-  [2228759,4.0786,9.3681,78885,2012,"CM","CM-SW","Tiko","チコ (カメルーン)",null,null,0,null,16],
-  [910616,2.9167,11.15,76885,2012,"CM","CM-SU","Ebolowa","エボロワ",null,null,2,"CM-SU",16],
-  [289267,5.45,10.05,76524,2012,"CM","CM-OU","Dschang","ジャング",null,null,0,null,16],
-  [1002900,3.8,10.1333,73128,2012,"CM","CM-LT","Edéa","エデア","Édéa","fr",0,null,16],
-  [2005262,6.4669,12.6158,72081,2005,"CM","CM-AD","Tibati","ティバティ",null,null,0,null,16],
-  [799790,4.7425,11.2247,69270,2010,"CM","CM-CE","Bafia","バフィア",null,null,0,null,16],
-  [2034978,6.3833,10.0667,68836,null,"CM","CM-NW","Wum","ウム",null,null,0,null,18],
-  [997121,2.95,9.9167,60000,2007,"CM","CM-SU","Kribi","クリビ",null,null,0,null,16],
-  [2709339,5.62,10.25,49313,2012,"CM","CM-OU","Mbouda","ムブーダ",null,null,0,null,16],
-  [1828275,4.7,9.73,47305,2012,"CM","CM-LT","Loum",null,null,null,0,null,16],
-  [2708658,10.7403,13.8028,40168,2012,"CM","CM-EN","Mokolo","モコロ",null,null,0,null,16],
-  [2878900,5.4667,10.1167,36869,null,"CM","CM-OU","Bafou",null,null,null,0,null,16],
-  [1888230,5.7667,9.2833,36500,2017,"CM","CM-SW","Mamfe","マンフェ","Mamfé","fr",0,null,16],
-  [673185,4.4333,14.3667,33594,2012,"CM","CM-ES","Batouri","バトゥーリ",null,null,0,null,16],
-  [667828,5.15,10.1833,33342,2012,"CM","CM-OU","Bafang","バファン",null,null,0,null,16],
-  [3192173,10.284,14.9298,26223,2005,"CM","CM-EN","Kalfou","カルフー",null,null,0,null,16],
-  [2929807,4.9333,13.3,22553,null,"CM","CM-ES","Bélabo","ベラボ",null,null,0,null,19],
-  [3591508,3.6478,10.7744,22221,null,"CM","CM-CE","Éséka","エセカ",null,null,0,null,18],
-];
+const CM: CityColumns = {
+  id: "2uhq,2xs,3duj,h54w,bbqo,hjt4,fzjm,ldbr,levy,6owh,1iax8,eybi,dp8wo,uuzr,e3ie,1m1uf,hk6q,1lxgj,1kcl8,1brpz,jimw,6777,lhuc,16z9q,h54e,17m76,lddt,1m2jf,136pf,1m20i,1ppdg,14gyu,effl,ebas,1wf3h,1qsnj,24z84",
+  lat: [40500,38578,93000,54667,59614,105909,73214,46333,49500,41667,62000,120833,107361,57167,45833,99342,40167,35200,65172,40786,29167,54500,38000,64669,47425,63833,29500,56200,47000,107403,54667,57667,44333,51500,102840,49333,36478],
+  lon: [97000,115181,134000,104167,101517,143159,135839,94500,99167,92333,106600,150333,146108,109167,136833,139486,92167,115122,142947,93681,111500,100500,101333,126158,112247,100667,99167,102500,97300,138028,101167,92833,143667,101833,149298,133000,107744],
+  population: [2768436,2440462,1750000,480000,348766,201371,189800,144268,135405,131325,125486,101246,95230,92673,88462,84647,84223,80206,80100,78885,76885,76524,73128,72081,69270,68836,60000,49313,47305,40168,36869,36500,33594,33342,26223,22553,22221],
+  date: "2015,2012,2020,2024,2012,2005-11-01,2001,2005,2022,2005,,2010,2005,,2005,,2005-11-01,,,2012,2012,2012,2012,2005,2010,,2007,2012,2012,2012,,2017,2012,2012,2005,,",
+  country: "CMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCMCM",
+  subdivisions: "LT,CE,NO,OU,NW,EN,AD,SW,ES,SU",
+  subdivision: [0,1,2,3,4,5,6,7,0,7,4,5,5,3,8,2,7,1,6,7,9,3,0,6,1,4,9,3,0,5,3,7,8,3,5,8,1],
+  en: "Douala|Yaoundé|Garoua|Bafoussam|Bamenda|Maroua|Ngaoundéré|Kumba|Nkongsamba|Buea|Kumbo|Kousséri|Bogo|Foumban|Bertoua|Guider|Limbe|Mbalmayo|Meiganga|Tiko|Ebolowa|Dschang|Edéa|Tibati|Bafia|Wum|Kribi|Mbouda|Loum|Mokolo|Bafou|Mamfe|Batouri|Bafang|Kalfou|Bélabo|Éséka",
+  ja: "ドゥアラ|ヤウンデ|ガルア|バフーサム|バメンダ|マルア|ヌガウンデレ|クンバ|ンコングサンバ|ブエア|クンボ|クッセリ|ボゴ|フーンバン|ベルトゥア|ギデ|リンベ|ムバルマヨ|メイガンガ|チコ (カメルーン)|エボロワ|ジャング|エデア|ティバティ|バフィア|ウム|クリビ|ムブーダ||モコロ||マンフェ|バトゥーリ|バファン|カルフー|ベラボ|エセカ",
+  native: "|||||||||Buéa|||||||Limbé||||||Édéa|||||||||Mamfé|||||",
+  languages: "fr",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1],
+  capital: "2122222002000020000020000000000000000",
+  capitalOf: "CM-LT|CM|CM-NO|CM-OU|CM-NW|CM-EN|CM-AD|||CM-SW|||||CM-ES||||||CM-SU||||||||||||||||",
+  sources: "10101010101010101010121010121012101212101010101010121010101010101010101312",
+  extra: [],
+};
 
 export { CM };

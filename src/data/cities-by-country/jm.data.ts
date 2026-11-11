@@ -2,27 +2,26 @@
 // The 18 cities of Jamaica (JM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const JM: readonly CityRow[] = [
-  [34692,17.9714,-76.7931,937700,2025,"JM",null,"Kingston","キングストン","Kinston","jam",1,"JM",16],
-  [644663,17.9667,-76.8667,182153,"2011-04-05","JM","JM-14","Portmore","ポートモア","Puotmuor","jam",0,null,16],
-  [1677434,17.95,-77.25,135142,null,"JM","JM-13","May Pen","メイ・ペン","Mie Pen","jam",2,"JM-13",18],
-  [846939,17.9961,-76.9547,131056,2001,"JM","JM-14","Spanish Town","スパニッシュ・タウン","Panish Tong","jam",2,"JM-14",16],
-  [637555,18.4667,-77.9167,123994,2015,"JM","JM-08","Montego Bay","モンテゴ・ベイ","Mantigo Bie","jam",2,"JM-08",16],
-  [1423367,18.0106,-76.7975,96494,null,"JM","JM-02","Half Way Tree","ハーフ・ウェイ・ツリー","Aafwe Chrii","jam",2,"JM-02",18],
-  [1807660,18.0417,-77.5072,48317,2010,"JM","JM-12","Mandeville","マンデヴィル","Mandivl","jam",2,"JM-12",16],
-  [771267,17.9333,-77.1167,28665,2010,"JM","JM-14","Old Harbour","オールド・ハーバー",null,null,0,null,16],
-  [769578,18.15,-77.0167,22757,2010,"JM","JM-14","Linstead","リンステッド",null,null,0,null,16],
-  [305508,18.2167,-78.1333,22600,null,"JM","JM-10","Savanna-la-Mar","サバナラマル","Savlamaar","jam",2,"JM-10",16],
-  [602783,18.3994,-77.1031,16671,2011,"JM","JM-06","Ocho Rios","オーチョ・リオス",null,null,0,null,16],
-  [162782,18.1763,-76.4483,14816,2011,"JM","JM-04","Port Antonio","ポート・アントニオ","Puot Antuoni","jam",2,"JM-04",16],
-  [630692,18.435,-77.2017,13671,2009,"JM","JM-06","Saint Ann's Bay","聖アン湾","Sint Anz Bie","jam",2,"JM-06",16],
-  [429741,17.8814,-76.4092,11121,2010,"JM","JM-03","Morant Bay","モラント湾","Morant Bie","jam",2,"JM-03",16],
-  [265115,18.3703,-76.8903,7906,null,"JM","JM-05","Port Maria La luz","マリア港","Puot Maraya","jam",2,"JM-05",18],
-  [1394786,18.4936,-77.6558,7779,null,"JM","JM-07","Falmouth","ファルマウス","Falmot","jam",2,"JM-07",18],
-  [1632220,18.451,-78.1736,6002,null,"JM","JM-09","Lucea","ルセア","Luusi","jam",2,"JM-09",16],
-  [880512,18.0264,-77.8487,4261,2009,"JM","JM-11","Black River","ブラック・リバー","Blak Riva","jam",2,"JM-11",16],
-];
+const JM: CityColumns = {
+  id: "qro,dtfb,zybe,i5i3,dnxv,ui9z,12qss,gj43,ght6,6jqc,cx3z,3hlq,din8,97l9,5okb,tw82,yzfg,iveo",
+  lat: [179714,179667,179500,179961,184667,180106,180417,179333,181500,182167,183994,181763,184350,178814,183703,184936,184510,180264],
+  lon: [-767931,-768667,-772500,-769547,-779167,-767975,-775072,-771167,-770167,-781333,-771031,-764483,-772017,-764092,-768903,-776558,-781736,-778487],
+  population: [937700,182153,135142,131056,123994,96494,48317,28665,22757,22600,16671,14816,13671,11121,7906,7779,6002,4261],
+  date: "2025,2011-04-05,,2001,2015,,2010,2010,2010,,2011,2011,2009,2010,,,,2009",
+  country: "JMJMJMJMJMJMJMJMJMJMJMJMJMJMJMJMJMJM",
+  subdivisions: "14,13,08,02,12,10,06,04,03,05,07,09,11",
+  subdivision: [-1,0,1,0,2,3,4,0,0,5,6,7,6,8,9,10,11,12],
+  en: "Kingston|Portmore|May Pen|Spanish Town|Montego Bay|Half Way Tree|Mandeville|Old Harbour|Linstead|Savanna-la-Mar|Ocho Rios|Port Antonio|Saint Ann's Bay|Morant Bay|Port Maria La luz|Falmouth|Lucea|Black River",
+  ja: "キングストン|ポートモア|メイ・ペン|スパニッシュ・タウン|モンテゴ・ベイ|ハーフ・ウェイ・ツリー|マンデヴィル|オールド・ハーバー|リンステッド|サバナラマル|オーチョ・リオス|ポート・アントニオ|聖アン湾|モラント湾|マリア港|ファルマウス|ルセア|ブラック・リバー",
+  native: "Kinston|Puotmuor|Mie Pen|Panish Tong|Mantigo Bie|Aafwe Chrii|Mandivl|||Savlamaar||Puot Antuoni|Sint Anz Bie|Morant Bie|Puot Maraya|Falmot|Luusi|Blak Riva",
+  languages: "jam",
+  language: [0,0,0,0,0,0,0,-1,-1,0,-1,0,0,0,0,0,0,0],
+  capital: "102222200202222222",
+  capitalOf: "JM||JM-13|JM-14|JM-08|JM-02|JM-12|||JM-10||JM-04|JM-06|JM-03|JM-05|JM-07|JM-09|JM-11",
+  sources: "101012101012101010101010101012121010",
+  extra: [],
+};
 
 export { JM };

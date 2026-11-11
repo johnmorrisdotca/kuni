@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/td: the 48 cities of Chad, every tier together, as a list.
 
 import { TD } from "../data/cities-by-country/td.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TD);
+const CITIES: readonly City[] = expandCities(rowsOf(TD));
 
 export default CITIES;
 export { CITIES };

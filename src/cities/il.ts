@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/il: the 105 cities of Israel, every tier together, as a list.
 
 import { IL } from "../data/cities-by-country/il.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(IL);
+const CITIES: readonly City[] = expandCities(rowsOf(IL));
 
 export default CITIES;
 export { CITIES };

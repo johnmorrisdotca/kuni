@@ -2,13 +2,26 @@
 // The 4 cities of Singapore (SG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SG: readonly CityRow[] = [
-  [334,1.3,103.8,5866139,"2021-07-01","SG",null,"Singapore","シンガポール","Singapura","ms",1,"SG",16],
-  [4986926,1.2819,103.8239,151870,2018,"SG",null,"Bukit Merah","紅山 (シンガポール)",null,null,0,null,16,334],
-  [4259064,1.3162,103.7649,91630,null,"SG",null,"Clementi","クレメンティ地区",null,null,0,null,16,334],
-  [3249777,1.3508,103.851,88120,2023,"SG",null,"Bishan","ビシャン (シンガポール)","Bishan, Singapura","ms",0,null,16,334],
-];
+const SG: CityColumns = {
+  id: "9a,2yvxq,2jabc,1xnjl",
+  lat: [13000,12819,13162,13508],
+  lon: [1038000,1038239,1037649,1038510],
+  population: [5866139,151870,91630,88120],
+  date: "2021-07-01,2018,,2023",
+  country: "SGSGSGSG",
+  subdivisions: "",
+  subdivision: [-1,-1,-1,-1],
+  en: "Singapore|Bukit Merah|Clementi|Bishan",
+  ja: "シンガポール|紅山 (シンガポール)|クレメンティ地区|ビシャン (シンガポール)",
+  native: "Singapura|||Bishan, Singapura",
+  languages: "ms",
+  language: [0,-1,-1,0],
+  capital: "1000",
+  capitalOf: "SG|||",
+  sources: "10101010",
+  extra: [[1,334],[2,334],[3,334]],
+};
 
 export { SG };

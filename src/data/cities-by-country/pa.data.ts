@@ -2,30 +2,26 @@
 // The 21 cities of Panama (PA), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PA: readonly CityRow[] = [
-  [3306,8.9711,-79.5347,1540000,2026,"PA","PA-8","Panama City","パナマ市","Ciudad de Panamá","es",1,"PA",16],
-  [12825018,9.3598,-79.9004,241817,2016,"PA","PA-3","Colón City","コロン","Ciudad de Colón","es",2,"PA-3",16],
-  [685509,8.1057,-80.9711,109605,2023,"PA",null,"Santiago de Veraguas","サンティアゴ・デ・ベラグアス",null,null,2,"PA-9",16],
-  [186116,9.08,-79.38,103177,2010,"PA","PA-8","Tocumen","トクメン",null,null,0,null,16],
-  [279009,8.4382,-82.4243,82907,2010,"PA","PA-4","David","ダビッド",null,null,2,"PA-4",16],
-  [774405,8.8792,-79.7822,68896,2010,"PA","PA-10","La Chorrera","ラ・チョレラ",null,null,2,"PA-10",16],
-  [1985435,9.08,-79.28,52494,2010,"PA","PA-8","Pacora","パコラ",null,null,0,null,16],
-  [2212702,8.8667,-79.6667,46597,2023,"PA","PA-8","Vacamonte",null,null,null,0,null,16],
-  [919017,9.2961,-78.3442,33109,2010,"PA","PA-KY","Guna Yala","クナ・ヤラ自治区",null,null,0,null,16],
-  [654169,8.5187,-80.3553,21748,2010,"PA","PA-2","Penonomé","ペノノメ",null,null,2,"PA-2",16],
-  [3130855,8.2778,-82.8621,19763,2010,"PA","PA-4","Puerto Armuelles","プエルトアルムエレス",null,null,0,null,17],
-  [888971,9.3333,-82.25,9883,null,"PA","PA-1","Bocas del Toro","ボカスデルトロ",null,null,2,"PA-1",18],
-  [2712890,7.7667,-80.2833,9255,2010,"PA","PA-7","Las Tablas","ラス・タブラス",null,null,2,"PA-7",16],
-  [657763,7.9667,-80.4333,9022,2023,"PA","PA-6","Chitré","チトレ",null,null,2,"PA-6",16],
-  [1798993,8.41,-78.15,4205,null,"PA","PA-5","La Palma","ラ・パルマ (ダリエン県)",null,null,2,"PA-5",16],
-  [1018577,9.5583,-78.9483,10,null,"PA","PA-KY","El Porvenir","エル・ポルベニール (グナ・ヤラ)","Gaigirgordub","es",2,"PA-KY",18],
-  [4845142,8.0778,-77.5583,null,null,"PA","PA-5","Unión Chocó","ウニオン・チョコ",null,null,2,"PA-EM",16],
-  [21329042,8.4746,-81.6983,null,null,"PA","PA-NB","Buäbti",null,"Llano Tugrí","es",2,"PA-NB",16],
-  [104541152,9.3832,-82.6521,null,null,"PA","PA-NT","Sieyic","シーイク",null,null,2,"PA-NT",16],
-  [3916792,9.08,-79.53,127440,null,"PA","PA-8","Las Cumbres","ラス・クンブレス",null,null,0,null,16,3306],
-  [2078026,8.9571,-79.5593,62882,null,"PA","PA-8","Balboa","バルボア",null,null,0,null,18,3306],
-];
+const PA: CityColumns = {
+  id: "2ju,7mvui,eoxx,3zlw,5za9,glj9,16jyz,1bfby,jp49,e0rd,1v3s7,j1xn,1m5a2,e3j7,12k41,ltxt,2vuja,cp5le,1q8ogw,2by7s,18jey",
+  lat: [89711,93598,81057,90800,84382,88792,90800,88667,92961,85187,82778,93333,77667,79667,84100,95583,80778,84746,93832,90800,89571],
+  lon: [-795347,-799004,-809711,-793800,-824243,-797822,-792800,-796667,-783442,-803553,-828621,-822500,-802833,-804333,-781500,-789483,-775583,-816983,-826521,-795300,-795593],
+  population: [1540000,241817,109605,103177,82907,68896,52494,46597,33109,21748,19763,9883,9255,9022,4205,10,-1,-1,-1,127440,62882],
+  date: "2026,2016,2023,2010,2010,2010,2010,2023,2010,2010,2010,,2010,2023,,,,,,,",
+  country: "PAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPA",
+  subdivisions: "8,3,4,10,KY,2,1,7,6,5,NB,NT",
+  subdivision: [0,1,-1,0,2,3,0,0,4,5,2,6,7,8,9,4,9,10,11,0,0],
+  en: "Panama City|Colón City|Santiago de Veraguas|Tocumen|David|La Chorrera|Pacora|Vacamonte|Guna Yala|Penonomé|Puerto Armuelles|Bocas del Toro|Las Tablas|Chitré|La Palma|El Porvenir|Unión Chocó|Buäbti|Sieyic|Las Cumbres|Balboa",
+  ja: "パナマ市|コロン|サンティアゴ・デ・ベラグアス|トクメン|ダビッド|ラ・チョレラ|パコラ||クナ・ヤラ自治区|ペノノメ|プエルトアルムエレス|ボカスデルトロ|ラス・タブラス|チトレ|ラ・パルマ (ダリエン県)|エル・ポルベニール (グナ・ヤラ)|ウニオン・チョコ||シーイク|ラス・クンブレス|バルボア",
+  native: "Ciudad de Panamá|Ciudad de Colón||||||||||||||Gaigirgordub||Llano Tugrí|||",
+  languages: "es",
+  language: [0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,0,-1,-1,-1],
+  capital: "122022000202222222200",
+  capitalOf: "PA|PA-3|PA-9||PA-4|PA-10||||PA-2||PA-1|PA-7|PA-6|PA-5|PA-KY|PA-EM|PA-NB|PA-NT||",
+  sources: "101010101010101010101112101010121010101012",
+  extra: [[19,3306],[20,3306]],
+};
 
 export { PA };

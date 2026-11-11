@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bo: the 50 cities of Bolivia, every tier together, as a list.
 
 import { BO } from "../data/cities-by-country/bo.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BO);
+const CITIES: readonly City[] = expandCities(rowsOf(BO));
 
 export default CITIES;
 export { CITIES };

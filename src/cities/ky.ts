@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ky: the 1 cities of Cayman Islands, every tier together, as a list.
 
 import { KY } from "../data/cities-by-country/ky.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(KY);
+const CITIES: readonly City[] = expandCities(rowsOf(KY));
 
 export default CITIES;
 export { CITIES };

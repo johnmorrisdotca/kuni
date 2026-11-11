@@ -2,13 +2,26 @@
 // The 4 cities of Comoros (KM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const KM: readonly CityRow[] = [
-  [3901,-11.7036,43.2536,85400,2025,"KM","KM-G","Moroni","モロニ","موروني","ar",1,"KM",16],
-  [691016,-12.1675,44.3939,30000,2013,"KM","KM-A","Mutsamudu","ムツァムドゥ","موتسامودو","ar",2,"KM-A",16],
-  [2721251,-12.2586,44.5303,17665,2012,"KM",null,"Domoni","ドモニ","دوموني","ar",0,null,16],
-  [1002823,-12.2822,43.7419,null,null,"KM","KM-M","Fomboni","フォンボニ","فومبوني","ar",2,"KM-M",16],
-];
+const KM: CityColumns = {
+  id: "30d,et6w,1mbqb,lhs7",
+  lat: [-117036,-121675,-122586,-122822],
+  lon: [432536,443939,445303,437419],
+  population: [85400,30000,17665,-1],
+  date: "2025,2013,2012,",
+  country: "KMKMKMKM",
+  subdivisions: "G,A,M",
+  subdivision: [0,1,-1,2],
+  en: "Moroni|Mutsamudu|Domoni|Fomboni",
+  ja: "モロニ|ムツァムドゥ|ドモニ|フォンボニ",
+  native: "موروني|موتسامودو|دوموني|فومبوني",
+  languages: "ar",
+  language: [0,0,0,0],
+  capital: "1202",
+  capitalOf: "KM|KM-A||KM-M",
+  sources: "10101010",
+  extra: [],
+};
 
 export { KM };

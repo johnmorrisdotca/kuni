@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/va: the 1 cities of Vatican City, every tier together, as a list.
 
 import { VA } from "../data/cities-by-country/va.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "VA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(VA);
+const CITIES: readonly City[] = expandCities(rowsOf(VA));
 
 export default CITIES;
 export { CITIES };

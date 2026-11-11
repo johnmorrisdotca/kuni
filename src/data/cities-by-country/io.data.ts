@@ -2,10 +2,26 @@
 // The 1 cities of British Indian Ocean Territory (IO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const IO: readonly CityRow[] = [
-  [184851,-7.3133,72.4111,4202,null,"IO",null,"Diego Garcia","ディエゴガルシア島",null,null,1,"IO",16],
-];
+const IO: CityColumns = {
+  id: "3ymr",
+  lat: [-73133],
+  lon: [724111],
+  population: [4202],
+  date: "",
+  country: "IO",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Diego Garcia",
+  ja: "ディエゴガルシア島",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "IO",
+  sources: "10",
+  extra: [],
+};
 
 export { IO };

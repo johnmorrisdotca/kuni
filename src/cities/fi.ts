@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/fi: the 85 cities of Finland, every tier together, as a list.
 
 import { FI } from "../data/cities-by-country/fi.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "FI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(FI);
+const CITIES: readonly City[] = expandCities(rowsOf(FI));
 
 export default CITIES;
 export { CITIES };

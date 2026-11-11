@@ -2,10 +2,26 @@
 // The 1 cities of British Virgin Islands (VG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const VG: readonly CityRow[] = [
-  [179431,18.4333,-64.6167,12603,2012,"VG",null,"Road Town","ロードタウン",null,null,1,"VG",16],
-];
+const VG: CityColumns = {
+  id: "3ug7",
+  lat: [184333],
+  lon: [-646167],
+  population: [12603],
+  date: "2012",
+  country: "VG",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Road Town",
+  ja: "ロードタウン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "VG",
+  sources: "10",
+  extra: [],
+};
 
 export { VG };

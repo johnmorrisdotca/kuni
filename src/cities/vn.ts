@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/vn: the 86 cities of Vietnam, every tier together, as a list.
 
 import { VN } from "../data/cities-by-country/vn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "VN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(VN);
+const CITIES: readonly City[] = expandCities(rowsOf(VN));
 
 export default CITIES;
 export { CITIES };

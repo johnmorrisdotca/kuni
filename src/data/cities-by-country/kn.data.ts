@@ -2,23 +2,26 @@
 // The 14 cities of St. Kitts & Nevis (KN), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const KN: readonly CityRow[] = [
-  [41295,17.2983,-62.7342,12920,2025,"KN","KN-K","Basseterre","バセテール",null,null,1,"KN",16],
-  [3316336,17.35,-62.7333,2500,2010,"KN","KN-K","Cayon","ケイオン",null,null,2,"KN-08",16],
-  [992311,17.1431,-62.6269,2204,2010,"KN","KN-N","Charlestown","チャールズタウン",null,null,2,"KN-10 KN-N",16],
-  [2835379,17.2,-62.5833,593,null,"KN","KN-N","Newcastle","ニューカッスル",null,null,2,"KN-05",16],
-  [3395174,17.3236,-62.725,592,2020,"KN","KN-K","Monkey Hill","モンキーヒル",null,null,2,"KN-11",16],
-  [3394446,17.1667,-62.6167,381,null,"KN","KN-N","Cotton Ground","コットン・グラウンド",null,null,2,"KN-12",16],
-  [1010810,17.4167,-62.8167,null,null,"KN","KN-K","Dieppe Bay Town","ディエップベイタウン",null,null,2,"KN-06",16],
-  [1972542,17.35,-62.8333,null,null,"KN","KN-K","Sandy Point Town","サンディ・ポイント",null,null,2,"KN-02",16],
-  [3394074,17.3233,-62.8036,null,null,"KN","KN-K","Middle Island","ミドルアイランド",null,null,2,"KN-13",16],
-  [3394454,17.381,-62.754,null,null,"KN","KN-K","Nichola Town","ニコラタウン",null,null,2,"KN-01",16],
-  [3395177,17.1208,-62.6017,null,null,"KN","KN-N","Figtree","フィグツリー",null,null,2,"KN-07",16],
-  [3398739,17.1318,-62.5711,null,null,"KN","KN-N","Market Shop","マーケット・ショップ",null,null,2,"KN-04",16],
-  [4490232,17.3986,-62.8239,null,null,"KN","KN-K","Saint Paul Capisterre","セントポール・カピステール",null,null,2,"KN-09",16],
-  [7842533,17.3,-62.7667,null,null,"KN","KN-K","Trinity","トリニティ (セントクリストファー・ネイビス)",null,null,2,"KN-15",16],
-];
+const KN: CityColumns = {
+  id: "vv3,1z2wg,l9o7,1orsj,20rqe,20r66,lny2,16a0u,20qvu,20r6e,20rqh,20uhf,2o8oo,4o3c5",
+  lat: [172983,173500,171431,172000,173236,171667,174167,173500,173233,173810,171208,171318,173986,173000],
+  lon: [-627342,-627333,-626269,-625833,-627250,-626167,-628167,-628333,-628036,-627540,-626017,-625711,-628239,-627667],
+  population: [12920,2500,2204,593,592,381,-1,-1,-1,-1,-1,-1,-1,-1],
+  date: "2025,2010,2010,,2020,,,,,,,,,",
+  country: "KNKNKNKNKNKNKNKNKNKNKNKNKNKN",
+  subdivisions: "K,N",
+  subdivision: [0,0,1,1,0,1,0,0,0,0,1,1,0,0],
+  en: "Basseterre|Cayon|Charlestown|Newcastle|Monkey Hill|Cotton Ground|Dieppe Bay Town|Sandy Point Town|Middle Island|Nichola Town|Figtree|Market Shop|Saint Paul Capisterre|Trinity",
+  ja: "バセテール|ケイオン|チャールズタウン|ニューカッスル|モンキーヒル|コットン・グラウンド|ディエップベイタウン|サンディ・ポイント|ミドルアイランド|ニコラタウン|フィグツリー|マーケット・ショップ|セントポール・カピステール|トリニティ (セントクリストファー・ネイビス)",
+  native: "|||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12222222222222",
+  capitalOf: "KN|KN-08|KN-10 KN-N|KN-05|KN-11|KN-12|KN-06|KN-02|KN-13|KN-01|KN-07|KN-04|KN-09|KN-15",
+  sources: "1010101010101010101010101010",
+  extra: [],
+};
 
 export { KN };

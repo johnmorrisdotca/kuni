@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pm: the 1 cities of St. Pierre & Miquelon, every tier together, as a list.
 
 import { PM } from "../data/cities-by-country/pm.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PM);
+const CITIES: readonly City[] = expandCities(rowsOf(PM));
 
 export default CITIES;
 export { CITIES };

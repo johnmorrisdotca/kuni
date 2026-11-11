@@ -2,25 +2,26 @@
 // The 16 cities of Mauritius (MU), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MU: readonly CityRow[] = [
-  [3929,-20.1619,57.4989,149194,2012,"MU","MU-PL","Port Louis","ポートルイス","Port-Louis","fr",1,"MU",16],
-  [813337,-20.2333,57.4667,104973,null,"MU","MU-PW","Beau Bassin-Rose Hill","ボー・バッサン＝ローズ・ヒル","Beau-Bassin Rose-Hill","fr",2,"MU-PW",16],
-  [1341194,-20.25,57.4667,81773,2015,"MU","MU-PW","Quatre Bornes","カトル・ボルヌ",null,null,0,null,16],
-  [1002525,-20.3167,57.5167,77466,2011,"MU","MU-PW","Curepipe","キュールピップ",null,null,0,null,16],
-  [641130,-20.0547,57.5453,23386,2011,"MU","MU-PA","Triolet","トリオレット",null,null,2,"MU-PA",16],
-  [770184,-20.25,57.55,22745,null,"MU","MU-MO","Quartier-Militaire","カルティエ・ミリテール","quartier Militaire","fr",0,null,16],
-  [3110720,-20.035,57.6431,20712,2011,"MU","MU-RR","Goodlands","グッドランズ",null,null,0,null,16],
-  [1154985,-20.2225,57.5382,16025,2022,"MU","MU-MO","Saint Pierre","サンピエール","Saint-Pierre","fr",0,null,16],
-  [1054191,-20.2002,57.7177,15791,2011,"MU","MU-FL","Centre de Flacq","サントル・ド・フラック","centre de Flacq","fr",2,"MU-FL",16],
-  [1291379,-20.4,57.7,15753,2000,"MU","MU-GP","Mahébourg","マエブール",null,null,2,"MU-GP",16],
-  [431990,-20.26,57.4148,15345,2011,"MU","MU-BL","Bambous","バンブース",null,null,0,null,16],
-  [282908,-20.219,57.496,8845,null,"MU","MU-MO","Moka","モカ",null,null,2,"MU-MO",16],
-  [1021638,-19.6833,63.4211,5929,2008,"MU","MU-RO","Port Mathurin","ポート・マチュリン",null,null,2,"MU-RO",16],
-  [2215428,-20.5194,57.525,4154,2000,"MU","MU-SA","Souillac","スイヤック (モーリシャス)",null,null,2,"MU-SA",16],
-  [2322083,-20.3167,57.3833,3256,2000,"MU","MU-BL","Tamarin","タマリン",null,null,2,"MU-BL",16],
-  [3400179,-20.06,57.67,null,null,"MU","MU-RR","Poudre d'Or",null,null,null,2,"MU-RR",16],
-];
+const MU: CityColumns = {
+  id: "315,hfkp,sqve,lhjx,dqp6,gia0,1uo8w,or6x,mlf3,rofn,99bq,62ak,lwau,1bhfo,1drqb,20vlf",
+  lat: [-201619,-202333,-202500,-203167,-200547,-202500,-200350,-202225,-202002,-204000,-202600,-202190,-196833,-205194,-203167,-200600],
+  lon: [574989,574667,574667,575167,575453,575500,576431,575382,577177,577000,574148,574960,634211,575250,573833,576700],
+  population: [149194,104973,81773,77466,23386,22745,20712,16025,15791,15753,15345,8845,5929,4154,3256,-1],
+  date: "2012,,2015,2011,2011,,2011,2022,2011,2000,2011,,2008,2000,2000,",
+  country: "MUMUMUMUMUMUMUMUMUMUMUMUMUMUMUMU",
+  subdivisions: "PL,PW,PA,MO,RR,FL,GP,BL,RO,SA",
+  subdivision: [0,1,1,1,2,3,4,3,5,6,7,3,8,9,7,4],
+  en: "Port Louis|Beau Bassin-Rose Hill|Quatre Bornes|Curepipe|Triolet|Quartier-Militaire|Goodlands|Saint Pierre|Centre de Flacq|Mahébourg|Bambous|Moka|Port Mathurin|Souillac|Tamarin|Poudre d'Or",
+  ja: "ポートルイス|ボー・バッサン＝ローズ・ヒル|カトル・ボルヌ|キュールピップ|トリオレット|カルティエ・ミリテール|グッドランズ|サンピエール|サントル・ド・フラック|マエブール|バンブース|モカ|ポート・マチュリン|スイヤック (モーリシャス)|タマリン|",
+  native: "Port-Louis|Beau-Bassin Rose-Hill||||quartier Militaire||Saint-Pierre|centre de Flacq|||||||",
+  languages: "fr",
+  language: [0,0,-1,-1,-1,0,-1,0,0,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1200200022022222",
+  capitalOf: "MU|MU-PW|||MU-PA||||MU-FL|MU-GP||MU-MO|MU-RO|MU-SA|MU-BL|MU-RR",
+  sources: "10101010101010101010101010101010",
+  extra: [],
+};
 
 export { MU };

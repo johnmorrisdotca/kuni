@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gy: the 9 cities of Guyana, every tier together, as a list.
 
 import { GY } from "../data/cities-by-country/gy.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GY);
+const CITIES: readonly City[] = expandCities(rowsOf(GY));
 
 export default CITIES;
 export { CITIES };

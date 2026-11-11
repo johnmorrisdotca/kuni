@@ -2,11 +2,26 @@
 // The 2 cities of Hong Kong SAR China (HK), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const HK: readonly CityRow[] = [
-  [8646,22.2783,114.1586,7413070,2021,"HK",null,"Hong Kong","香港","香港","zh-cn",0,null,16],
-  [239143,22.3167,114.1833,2108419,2011,"HK",null,"Kowloon","九龍","九龙","zh-cn",0,null,16],
-];
+const HK: CityColumns = {
+  id: "6o6,54iv",
+  lat: [222783,223167],
+  lon: [1141586,1141833],
+  population: [7413070,2108419],
+  date: "2021,2011",
+  country: "HKHK",
+  subdivisions: "",
+  subdivision: [-1,-1],
+  en: "Hong Kong|Kowloon",
+  ja: "香港|九龍",
+  native: "香港|九龙",
+  languages: "zh-cn",
+  language: [0,0],
+  capital: "00",
+  capitalOf: "|",
+  sources: "1010",
+  extra: [],
+};
 
 export { HK };

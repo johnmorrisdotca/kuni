@@ -2,15 +2,26 @@
 // The 6 cities of Grenada (GD), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GD: readonly CityRow[] = [
-  [41547,12.0525,-61.7531,33734,2025,"GD","GD-03","St. George's","セントジョージズ",null,null,1,"GD",16],
-  [375507,12.1664,-61.73,3378,2008,"GD","GD-04","Gouyave","グヤヴェ",null,null,2,"GD-04",16],
-  [3116519,12.1192,-61.6264,2476,2004,"GD","GD-01","Grenville","グレンヴィル",null,null,2,"GD-01",16],
-  [12874663,12.1953,-61.7039,2000,null,"GD","GD-05","Victoria","ビクトリア",null,null,2,"GD-05",16],
-  [1318103,12.2183,-61.6392,1300,1999,"GD","GD-06","Sauteurs","ソーターズ",null,null,2,"GD-06",16],
-  [3267362,12.483,-61.4573,1000,1999,"GD","GD-10","Hillsborough","ヒルズボロ",null,null,2,"GD-10",16],
-];
+const GD: CityColumns = {
+  id: "w23,81qr,1uspz,7ny5j,s91z,1y142",
+  lat: [120525,121664,121192,121953,122183,124830],
+  lon: [-617531,-617300,-616264,-617039,-616392,-614573],
+  population: [33734,3378,2476,2000,1300,1000],
+  date: "2025,2008,2004,,1999,1999",
+  country: "GDGDGDGDGDGD",
+  subdivisions: "03,04,01,05,06,10",
+  subdivision: [0,1,2,3,4,5],
+  en: "St. George's|Gouyave|Grenville|Victoria|Sauteurs|Hillsborough",
+  ja: "セントジョージズ|グヤヴェ|グレンヴィル|ビクトリア|ソーターズ|ヒルズボロ",
+  native: "|||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1],
+  capital: "122222",
+  capitalOf: "GD|GD-04|GD-01|GD-05|GD-06|GD-10",
+  sources: "101010101010",
+  extra: [],
+};
 
 export { GD };

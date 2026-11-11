@@ -2,32 +2,26 @@
 // The 23 cities of Madagascar (MG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MG: readonly CityRow[] = [
-  [3915,-18.91,47.525,1275207,2018,"MG",null,"Antananarivo","アンタナナリボ",null,null,1,"MG",16],
-  [583184,-19.8667,47.0333,265018,2018,"MG",null,"Antsirabe","アンツィラベ",null,null,0,null,16],
-  [178067,-18.155,49.41,225116,2010,"MG","MG-A","Toamasina","トゥアマシナ","Tamatave","fr",2,"MG-A",16],
-  [527441,-21.4333,47.0833,184184,null,"MG",null,"Fianarantsoa","フィアナランツォア",null,null,2,"MG-F",18],
-  [218753,-15.7167,46.3167,166384,2010,"MG",null,"Mahajanga","マジュンガ",null,null,2,"MG-M",16],
-  [824043,-23.35,43.6667,115319,null,"MG",null,"Toliara","トゥリアラ","Urbaine Toliara","mg",2,"MG-U",18],
-  [218928,-12.3224,49.295,82937,null,"MG",null,"Antsiranana","アンツィラナナ",null,null,2,"MG-D",18],
-  [526568,-25.0325,46.9833,67284,2018,"MG",null,"Tôlanaro","トラニャロ",null,null,0,null,16],
-  [864109,-20.2847,44.3175,53510,2018,"MG",null,"Morondava","モロンダバ",null,null,0,null,16],
-  [492217,-13.4012,48.2718,50000,null,"MG",null,"Andoany","アンドゥアニ","Hell-Ville","fr",0,null,16],
-  [456731,-17.8333,48.4167,43134,null,"MG",null,"Ambatondrazaka","アンバトンドザカ",null,null,0,null,18],
-  [118175,-15.4333,49.75,38046,null,"MG",null,"Maroantsetra","マルアンツェトラ",null,null,0,null,18],
-  [2423152,-21.2311,48.3419,35900,2014,"MG",null,"Mananjary","マナンジャリー",null,null,0,null,16],
-  [254480,-14.2667,50.1667,35150,2012,"MG",null,"Sambava","サンバヴァ",null,null,0,null,16],
-  [570816,-14.9042,50.2833,32496,2005,"MG",null,"Antalaha","アンタラハ",null,null,0,null,16],
-  [1902425,-16.1111,46.6439,31253,null,"MG",null,"Marovoay","マルブエー",null,null,0,null,19],
-  [456642,-13.6786,48.4522,30621,null,"MG","MG-D","Ambanja","アンバンジャ",null,null,0,null,18],
-  [1006566,-22.8167,47.8167,24764,null,"MG",null,"Farafangana","ファラファンガナ",null,null,0,null,18],
-  [609567,-14.8833,47.9833,24417,2012,"MG",null,"Antsohihy","アンツヒヒ",null,null,0,null,16],
-  [2573754,-19.5556,45.4508,20631,null,"MG",null,"Miandrivazo","ミアンドリバズ",null,null,0,null,18],
-  [1657947,-22.4029,46.1258,16990,null,"MG",null,"Ihosy","イフシ",null,null,0,null,18],
-  [1028252,-21.7489,43.3631,16727,null,"MG",null,"Morombe","ムルンベ",null,null,0,null,18],
-  [218954,-13.375,50.01,15000,2001,"MG",null,"Vohemar","ヴォヒマル",null,null,0,null,16],
-];
+const MG: CityColumns = {
+  id: "30r,chzk,3teb,baz5,4osh,hnu3,4oxc,baaw,iir1,ajsp,9sez,2j6n,1fxps,5gcw,c8g0,14rx5,9sci,lko6,d2cf,1j5x6,zja3,m1ek,4oy2",
+  lat: [-189100,-198667,-181550,-214333,-157167,-233500,-123224,-250325,-202847,-134012,-178333,-154333,-212311,-142667,-149042,-161111,-136786,-228167,-148833,-195556,-224029,-217489,-133750],
+  lon: [475250,470333,494100,470833,463167,436667,492950,469833,443175,482718,484167,497500,483419,501667,502833,466439,484522,478167,479833,454508,461258,433631,500100],
+  population: [1275207,265018,225116,184184,166384,115319,82937,67284,53510,50000,43134,38046,35900,35150,32496,31253,30621,24764,24417,20631,16990,16727,15000],
+  date: "2018,2018,2010,,2010,,,2018,2018,,,,2014,2012,2005,,,,2012,,,,2001",
+  country: "MGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMGMG",
+  subdivisions: "A,D",
+  subdivision: [-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,-1,-1,-1],
+  en: "Antananarivo|Antsirabe|Toamasina|Fianarantsoa|Mahajanga|Toliara|Antsiranana|Tôlanaro|Morondava|Andoany|Ambatondrazaka|Maroantsetra|Mananjary|Sambava|Antalaha|Marovoay|Ambanja|Farafangana|Antsohihy|Miandrivazo|Ihosy|Morombe|Vohemar",
+  ja: "アンタナナリボ|アンツィラベ|トゥアマシナ|フィアナランツォア|マジュンガ|トゥリアラ|アンツィラナナ|トラニャロ|モロンダバ|アンドゥアニ|アンバトンドザカ|マルアンツェトラ|マナンジャリー|サンバヴァ|アンタラハ|マルブエー|アンバンジャ|ファラファンガナ|アンツヒヒ|ミアンドリバズ|イフシ|ムルンベ|ヴォヒマル",
+  native: "||Tamatave|||Urbaine Toliara||||Hell-Ville|||||||||||||",
+  languages: "fr,mg",
+  language: [-1,-1,0,-1,-1,1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "10222220000000000000000",
+  capitalOf: "MG||MG-A|MG-F|MG-M|MG-U|MG-D||||||||||||||||",
+  sources: "1010101210121210101012121010101312121012121210",
+  extra: [],
+};
 
 export { MG };

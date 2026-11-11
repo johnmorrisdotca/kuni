@@ -2,23 +2,26 @@
 // The 14 cities of Netherlands (NL), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NL: readonly CityRow[] = [
-  [727,52.3667,4.8833,921468,2023,"NL","NL-NH","Amsterdam","アムステルダム",null,null,1,"NL",0,"oecd:NL001F","Amsterdam",2980410,2025],
-  [34370,51.92,4.48,664311,2023,"NL","NL-ZH","Rotterdam","ロッテルダム",null,null,0,null,0,"oecd:NL037F","Rotterdam",1885110,2025],
-  [36600,52.08,4.31,548320,2021,"NL","NL-ZH","The Hague","デン・ハーグ","'s-Gravenhage","nl",2,"NL-ZH",0,"oecd:NL017F","s-Gravenhage",1236069,2025],
-  [803,52.0908,5.1217,359370,2021,"NL","NL-UT","Utrecht","ユトレヒト",null,null,2,"NL-UT",0,"oecd:NL042F","Utrecht",970860,2025],
-  [9832,51.4344,5.4842,243730,2023,"NL","NL-NB","Eindhoven","アイントホーフェン",null,null,0,null,0,"oecd:NL014F","Eindhoven",853993,2025],
-  [749,53.2189,6.5675,238147,2023,"NL","NL-GR","Groningen","フローニンゲン",null,null,2,"NL-GR",0,"oecd:NL018F","Groningen",728025,2025],
-  [1310,51.9833,5.9167,164096,"2022-01-31","NL","NL-GE","Arnhem","アーネム","Torres Colón","es",2,"NL-GE",0,"oecd:NL008F","Arnhem",428463,2025],
-  [793,52.5167,6.1,129840,2021,"NL","NL-OV","Zwolle","ズヴォレ",null,null,2,"NL-OV",0,"oecd:NL047F","Zwolle",412489,2025],
-  [2766547,51.7,5.3167,158753,2023,"NL","NL-NB","'s-Hertogenbosch","スヘルトーヘンボス","Den Bosch","nl",2,"NL-NB",0,"oecd:NL025F","s-Hertogenbosch",297370,2025],
-  [25390,53.2,5.7833,93765,2021,"NL","NL-FR","Leeuwarden","レーワルデン","Ljouwert","fy",2,"NL-FR",0,"oecd:NL028F","Leeuwarden",290862,2025],
-  [1309,50.8667,5.6833,120227,2021,"NL","NL-LI","Maastricht","マーストリヒト",null,null,2,"NL-LI",0,"oecd:NL031F","Maastricht",200685,2025],
-  [798,52.9953,6.5606,68836,2021,"NL","NL-DR","Assen","アッセン",null,null,2,"NL-DR",0],
-  [52101,51.4997,3.6136,49956,2023,"NL","NL-ZE","Middelburg","ミデルブルフ",null,null,2,"NL-ZE",0],
-  [9920,52.3814,4.6356,162543,2021,"NL","NL-NH","Haarlem","ハールレム",null,null,2,"NL-NH",0,727],
-];
+const NL: CityColumns = {
+  id: "k7,qiq,s8o,mb,7l4,kt,10e,m1,1naoj,jla,10d,m6,1479,7nk",
+  lat: [523667,519200,520800,520908,514344,532189,519833,525167,517000,532000,508667,529953,514997,523814],
+  lon: [48833,44800,43100,51217,54842,65675,59167,61000,53167,57833,56833,65606,36136,46356],
+  population: [921468,664311,548320,359370,243730,238147,164096,129840,158753,93765,120227,68836,49956,162543],
+  date: "2023,2023,2021,2021,2023,2023,2022-01-31,2021,2023,2021,2021,2021,2023,2021",
+  country: "NLNLNLNLNLNLNLNLNLNLNLNLNLNL",
+  subdivisions: "NH,ZH,UT,NB,GR,GE,OV,FR,LI,DR,ZE",
+  subdivision: [0,1,1,2,3,4,5,6,3,7,8,9,10,0],
+  en: "Amsterdam|Rotterdam|The Hague|Utrecht|Eindhoven|Groningen|Arnhem|Zwolle|'s-Hertogenbosch|Leeuwarden|Maastricht|Assen|Middelburg|Haarlem",
+  ja: "アムステルダム|ロッテルダム|デン・ハーグ|ユトレヒト|アイントホーフェン|フローニンゲン|アーネム|ズヴォレ|スヘルトーヘンボス|レーワルデン|マーストリヒト|アッセン|ミデルブルフ|ハールレム",
+  native: "||'s-Gravenhage||||Torres Colón||Den Bosch|Ljouwert||||",
+  languages: "nl,es,fy",
+  language: [-1,-1,0,-1,-1,-1,1,-1,0,2,-1,-1,-1,-1],
+  capital: "10220222222222",
+  capitalOf: "NL||NL-ZH|NL-UT||NL-GR|NL-GE|NL-OV|NL-NB|NL-FR|NL-LI|NL-DR|NL-ZE|NL-NH",
+  sources: "0000000000000000000000000000",
+  extra: [[0,"oecd:NL001F","Amsterdam",2980410,2025],[1,"oecd:NL037F","Rotterdam",1885110,2025],[2,"oecd:NL017F","s-Gravenhage",1236069,2025],[3,"oecd:NL042F","Utrecht",970860,2025],[4,"oecd:NL014F","Eindhoven",853993,2025],[5,"oecd:NL018F","Groningen",728025,2025],[6,"oecd:NL008F","Arnhem",428463,2025],[7,"oecd:NL047F","Zwolle",412489,2025],[8,"oecd:NL025F","s-Hertogenbosch",297370,2025],[9,"oecd:NL028F","Leeuwarden",290862,2025],[10,"oecd:NL031F","Maastricht",200685,2025],[13,727]],
+};
 
 export { NL };

@@ -2,10 +2,26 @@
 // The 1 cities of Niue (NU), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NU: readonly CityRow[] = [
-  [30966,-19.056,-169.921,575,2025,"NU",null,"Alofi","アロフィ",null,null,1,"NU",16],
-];
+const NU: CityColumns = {
+  id: "nw6",
+  lat: [-190560],
+  lon: [-1699210],
+  population: [575],
+  date: "2025",
+  country: "NU",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Alofi",
+  ja: "アロフィ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "NU",
+  sources: "10",
+  extra: [],
+};
 
 export { NU };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/am: the 20 cities of Armenia, every tier together, as a list.
 
 import { AM } from "../data/cities-by-country/am.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AM);
+const CITIES: readonly City[] = expandCities(rowsOf(AM));
 
 export default CITIES;
 export { CITIES };

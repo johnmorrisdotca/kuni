@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tz: the 79 cities of Tanzania, every tier together, as a list.
 
 import { TZ } from "../data/cities-by-country/tz.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TZ);
+const CITIES: readonly City[] = expandCities(rowsOf(TZ));
 
 export default CITIES;
 export { CITIES };

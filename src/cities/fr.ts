@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/fr: the 160 cities of France, every tier together, as a list.
 
 import { FR } from "../data/cities-by-country/fr.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "FR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(FR);
+const CITIES: readonly City[] = expandCities(rowsOf(FR));
 
 export default CITIES;
 export { CITIES };

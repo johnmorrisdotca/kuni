@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/be: the 111 cities of Belgium, every tier together, as a list.
 
 import { BE } from "../data/cities-by-country/be.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(BE);
+const CITIES: readonly City[] = expandCities(rowsOf(BE));
 
 export default CITIES;
 export { CITIES };

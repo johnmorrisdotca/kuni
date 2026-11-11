@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pa: the 21 cities of Panama, every tier together, as a list.
 
 import { PA } from "../data/cities-by-country/pa.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PA);
+const CITIES: readonly City[] = expandCities(rowsOf(PA));
 
 export default CITIES;
 export { CITIES };

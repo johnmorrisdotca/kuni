@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/fj: the 13 cities of Fiji, every tier together, as a list.
 
 import { FJ } from "../data/cities-by-country/fj.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "FJ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(FJ);
+const CITIES: readonly City[] = expandCities(rowsOf(FJ));
 
 export default CITIES;
 export { CITIES };

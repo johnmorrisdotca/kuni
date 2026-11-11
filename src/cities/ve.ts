@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ve: the 121 cities of Venezuela, every tier together, as a list.
 
 import { VE } from "../data/cities-by-country/ve.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "VE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(VE);
+const CITIES: readonly City[] = expandCities(rowsOf(VE));
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pl: the 312 cities of Poland, every tier together, as a list.
 
 import { PL } from "../data/cities-by-country/pl.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PL);
+const CITIES: readonly City[] = expandCities(rowsOf(PL));
 
 export default CITIES;
 export { CITIES };

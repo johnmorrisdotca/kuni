@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sd: the 51 cities of Sudan, every tier together, as a list.
 
 import { SD } from "../data/cities-by-country/sd.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SD);
+const CITIES: readonly City[] = expandCities(rowsOf(SD));
 
 export default CITIES;
 export { CITIES };

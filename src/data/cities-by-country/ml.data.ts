@@ -2,35 +2,26 @@
 // The 26 cities of Mali (ML), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const ML: readonly CityRow[] = [
-  [3703,12.6458,-7.9922,4227569,2023,"ML","ML-BKO","Bamako","バマコ","Bamakɔ","bm",1,"ML",16],
-  [722827,11.3167,-5.6667,213977,null,"ML","ML-3","Sikasso","シカソ","Sikaso","bm",2,"ML-3",16],
-  [333476,13.4317,-6.2157,133501,null,"ML","ML-4","Ségou","セグー","Segu","bm",2,"ML-4",16],
-  [211227,14.4873,-4.1896,120786,"2009-04-01","ML","ML-5","Mopti","モプティ",null,null,2,"ML-5",16],
-  [281000,12.3833,-5.4667,104927,null,"ML","ML-3","Koutiala","クティアラ",null,null,0,null,18],
-  [325164,14.4497,-11.4367,77207,null,"ML","ML-1","Kayes","カイ","Kayi","bm",2,"ML-1",18],
-  [976115,13.6739,-6.075,53738,null,"ML","ML-4","Markala","マルカラ",null,null,0,null,18],
-  [188904,16.2667,-0.05,49483,2013,"ML","ML-7","Gao","ガオ",null,null,2,"ML-7",16],
-  [578014,13.0389,-9.4875,46435,null,"ML","ML-1","Kita","キタ",null,null,0,null,18],
-  [740974,12.8667,-7.5667,43174,2009,"ML","ML-2","Koulikoro","クリコロ","Kulikɔrɔ","bm",2,"ML-2",16],
-  [950460,13.3,-4.9,41386,null,"ML","ML-4","San","サン",null,null,0,null,18],
-  [848574,11.4177,-7.4832,35450,null,"ML","ML-3","Bougouni","ブグニ","Buguni","bm",0,null,18],
-  [9427,16.7733,-2.9994,35330,2012,"ML","ML-6","Timbuktu","トンブクトゥ",null,null,2,"ML-6",16],
-  [3571536,11.1789,-8.15,34349,2023,"ML","ML-3","Yanfolila","ヤンフォリラ",null,null,0,null,16],
-  [213507,13.9,-4.55,32944,null,"ML","ML-5","Djenné","ジェンネ","Djenne","bm",0,null,18],
-  [572737,13.55,-7.45,30591,null,"ML","ML-2","Banamba","バナンバ",null,null,0,null,18],
-  [2337119,16.9542,-0.3503,30000,null,"ML","ML-7","Bourem","ブーレム",null,null,0,null,18],
-  [799794,13.8064,-10.8322,26823,null,"ML","ML-1","Bafoulabé","バフーラベ",null,null,0,null,18],
-  [538753,14.35,-3.6111,25564,2009,"ML","ML-5","Bandiagara","バンディアガラ",null,null,0,null,16],
-  [855986,15.9183,2.4022,20702,2009,"ML","ML-9","Ménaka","メナカ",null,null,2,"ML-9",16],
-  [927937,14.9083,-9.679,20186,2009,"ML","ML-1","Simbi",null,null,null,0,null,16],
-  [937352,15.1681,-7.2875,18459,null,"ML","ML-2","Nara","ナラ",null,null,0,null,18],
-  [1031919,11.9333,-8.4167,17232,null,"ML","ML-2","Kangaba","カンガバ",null,null,0,null,18],
-  [650100,18.4411,1.4078,15086,2013,"ML","ML-8","Kidal","キダル",null,null,2,"ML-8",16],
-  [1888993,22.6316,-3.9536,3436,2013,"ML","ML-10","Taoudenni","タウデニ",null,null,2,"ML-10",16],
-  [771251,12.7467,-8.0714,66895,null,"ML","ML-2","Kati","カティ",null,null,0,null,18,3703],
-];
+const ML: CityColumns = {
+  id: "2uv,fhqj,75b8,4izf,60tk,6ywc,kx6b,41rc,cdzy,fvqm,kddo,i6ri,79v,24jtc,4kqr,c9xd,1e3bz,h54i,bjpd,iche,jw01,k39k,m48f,dxmc,14hk1,gj3n",
+  lat: [126458,113167,134317,144873,123833,144497,136739,162667,130389,128667,133000,114177,167733,111789,139000,135500,169542,138064,143500,159183,149083,151681,119333,184411,226316,127467],
+  lon: [-79922,-56667,-62157,-41896,-54667,-114367,-60750,-500,-94875,-75667,-49000,-74832,-29994,-81500,-45500,-74500,-3503,-108322,-36111,24022,-96790,-72875,-84167,14078,-39536,-80714],
+  population: [4227569,213977,133501,120786,104927,77207,53738,49483,46435,43174,41386,35450,35330,34349,32944,30591,30000,26823,25564,20702,20186,18459,17232,15086,3436,66895],
+  date: "2023,,,2009-04-01,,,,2013,,2009,,,2012,2023,,,,,2009,2009,2009,,,2013,2013,",
+  country: "MLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLML",
+  subdivisions: "BKO,3,4,5,1,7,2,6,9,8,10",
+  subdivision: [0,1,2,3,1,4,2,5,4,6,2,1,7,1,3,6,5,4,3,8,4,6,6,9,10,6],
+  en: "Bamako|Sikasso|Ségou|Mopti|Koutiala|Kayes|Markala|Gao|Kita|Koulikoro|San|Bougouni|Timbuktu|Yanfolila|Djenné|Banamba|Bourem|Bafoulabé|Bandiagara|Ménaka|Simbi|Nara|Kangaba|Kidal|Taoudenni|Kati",
+  ja: "バマコ|シカソ|セグー|モプティ|クティアラ|カイ|マルカラ|ガオ|キタ|クリコロ|サン|ブグニ|トンブクトゥ|ヤンフォリラ|ジェンネ|バナンバ|ブーレム|バフーラベ|バンディアガラ|メナカ||ナラ|カンガバ|キダル|タウデニ|カティ",
+  native: "Bamakɔ|Sikaso|Segu|||Kayi||||Kulikɔrɔ||Buguni|||Djenne|||||||||||",
+  languages: "bm",
+  language: [0,0,0,-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12220202020020000002000220",
+  capitalOf: "ML|ML-3|ML-4|ML-5||ML-1||ML-7||ML-2|||ML-6|||||||ML-9||||ML-8|ML-10|",
+  sources: "1010101012121210121012121010121212121010101212101012",
+  extra: [[25,3703]],
+};
 
 export { ML };

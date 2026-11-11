@@ -2,23 +2,26 @@
 // The 14 cities of Luxembourg (LU), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const LU: readonly CityRow[] = [
-  [1842,49.6114,6.13,137678,2026,"LU","LU-LU","Luxembourg","ルクセンブルク市","Luxemburg","de",1,"LU",0,"oecd:LU001F","Luxembourg",602556,2022],
-  [16010,49.4969,5.9806,38275,2026,"LU","LU-ES","Esch-sur-Alzette","エシュ＝シュル＝アルゼット","Esch an der Alzette","de",2,"LU-ES",0],
-  [20969331,49.4806,6.0875,21953,2023,"LU","LU-ES","Dudelange",null,"Düdelingen","de",0,null,0],
-  [4844168,49.5242,5.8914,16968,2023,"LU","LU-ES","Differdange",null,null,null,0,null,0],
-  [284855,49.75,6.1,10888,2026,"LU","LU-ME","Mersch","メルシュ",null,null,2,"LU-ME",0],
-  [741589,49.9661,5.9325,8538,2026,"LU","LU-WI","Wiltz","ヴィルツ",null,null,2,"LU-WI",0],
-  [16050,49.8681,6.1567,7398,2026,"LU","LU-DI","Diekirch","ディーキルヒ",null,null,2,"LU-DI",0],
-  [836075,50.05,6.0333,6327,2026,"LU","LU-CL","Clervaux","クレルヴォー","Clerf","de",2,"LU-CL",0],
-  [204317,49.8117,6.4217,6031,2026,"LU","LU-EC","Echternach","エヒタナハ",null,null,2,"LU-EC",0],
-  [4132923,49.6747,6.4419,5092,2023,"LU","LU-GR","Grevenmacher",null,null,null,2,"LU-GR",0],
-  [734284,49.5444,6.3667,4156,2026,"LU","LU-RM","Remich","レーミヒ",null,null,2,"LU-RM",0],
-  [20969217,49.935,6.2089,2203,2023,"LU","LU-VD","Vianden","ヴェイアネン",null,null,2,"LU-VD",0],
-  [16764501,49.7656,5.8908,1549,2023,"LU","LU-RD","Redange-sur-Attert",null,"Réiden","de",2,"LU-RD",0],
-  [1988543,49.6444,5.9897,2224,2023,"LU","LU-CA","Capellen","カペレン",null,null,2,"LU-CA",0,1842],
-];
+const LU: CityColumns = {
+  id: "1f6,ccq,chg1f,2vts8,63sn,fw7p,cdu,hx4b,4dnh,2gkzf,fqks,chfy9,9zbkl,16mdb",
+  lat: [496114,494969,494806,495242,497500,499661,498681,500500,498117,496747,495444,499350,497656,496444],
+  lon: [61300,59806,60875,58914,61000,59325,61567,60333,64217,64419,63667,62089,58908,59897],
+  population: [137678,38275,21953,16968,10888,8538,7398,6327,6031,5092,4156,2203,1549,2224],
+  date: "2026,2026,2023,2023,2026,2026,2026,2026,2026,2023,2026,2023,2023,2023",
+  country: "LULULULULULULULULULULULULULU",
+  subdivisions: "LU,ES,ME,WI,DI,CL,EC,GR,RM,VD,RD,CA",
+  subdivision: [0,1,1,1,2,3,4,5,6,7,8,9,10,11],
+  en: "Luxembourg|Esch-sur-Alzette|Dudelange|Differdange|Mersch|Wiltz|Diekirch|Clervaux|Echternach|Grevenmacher|Remich|Vianden|Redange-sur-Attert|Capellen",
+  ja: "ルクセンブルク市|エシュ＝シュル＝アルゼット|||メルシュ|ヴィルツ|ディーキルヒ|クレルヴォー|エヒタナハ||レーミヒ|ヴェイアネン||カペレン",
+  native: "Luxemburg|Esch an der Alzette|Düdelingen|||||Clerf|||||Réiden|",
+  languages: "de",
+  language: [0,0,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1],
+  capital: "12002222222222",
+  capitalOf: "LU|LU-ES|||LU-ME|LU-WI|LU-DI|LU-CL|LU-EC|LU-GR|LU-RM|LU-VD|LU-RD|LU-CA",
+  sources: "0000000000000000000000000000",
+  extra: [[0,"oecd:LU001F","Luxembourg",602556,2022],[13,1842]],
+};
 
 export { LU };

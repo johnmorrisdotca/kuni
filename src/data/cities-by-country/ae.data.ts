@@ -2,24 +2,26 @@
 // The 15 cities of United Arab Emirates (AE), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const AE: readonly CityRow[] = [
-  [612,25.2697,55.3094,3944751,2025,"AE","AE-DU","Dubai","ドバイ","دبي","ar",2,"AE-DU",16],
-  [1519,24.4511,54.3969,1570000,2023,"AE","AE-AZ","Abu Dhabi","アブダビ","أبو ظبي","ar",1,"AE",16],
-  [289693,25.3375,55.4119,1247749,2015,"AE","AE-SH","Sharjah","シャールジャ","الشارقة","ar",2,"AE-SH",16],
-  [234600,24.2075,55.7447,766936,2017,"AE","AE-AZ","Al Ain","アル・アイン","العين","ar",0,null,16],
-  [530171,25.3994,55.4797,490035,2017,"AE","AE-AJ","Ajman","アジュマーン","عجمان","ar",2,"AE-AJ",16],
-  [2126436,25.8986,56.1283,115949,2020,"AE","AE-RK","Ras al-Khaimah","ラアス・アル＝ハイマ市","رأس الخيمة","ar",2,"AE-RK",16],
-  [4045,25.1222,56.3344,93673,null,"AE","AE-FU","Fujairah","フジャイラ市","الفجيرة","ar",2,"AE-FU",16],
-  [2204078,25.0513,56.3542,54876,2015,"AE","AE-SH","Kalba","カルバ","كلباء","ar",0,null,16],
-  [2788830,25.5598,55.5572,44411,2020,"AE","AE-UQ","Umm Al Quwain","ウンム・アル＝カイワイン市","أم القيوين","ar",2,"AE-UQ",16],
-  [3696182,25.6,56.35,41017,2019,"AE","AE-FU","Dibba Al-Fujairah","ディバ・アル・フジャイラ","دبا الفجيرة","ar",0,null,16],
-  [764279,25.3392,56.3561,39151,2015,"AE","AE-SH","Khor Fakkan","ホール・ファカン","خورفكان","ar",0,null,16],
-  [665502,24.9605,55.1009,31634,null,"AE","AE-DU","Jebel Ali","ジュベル・アリ","جبل علي","ar",0,null,16],
-  [12241857,23.6522,53.6536,29095,2005,"AE","AE-AZ","Madinat Zayed","ザイード・シティ","مدينة زايد","ar",0,null,16],
-  [3492826,25.2833,55.8833,20165,2015,"AE","AE-SH","Dhaid",null,"الذيد","ar",0,null,16],
-  [770233,24.8007,56.1273,15324,null,"AE","AE-DU","Hatta","ハッタ (アラブ首長国連邦)","حتا، دبي","ar",0,null,16],
-];
+const AE: CityColumns = {
+  id: "h0,167,67j1,510o,bd2z,19kro,34d,1b8oe,1nrvi,277zq,gdpz,e9i6,7advl,22v2y,gibd",
+  lat: [252697,244511,253375,242075,253994,258986,251222,250513,255598,256000,253392,249605,236522,252833,248007],
+  lon: [553094,543969,554119,557447,554797,561283,563344,563542,555572,563500,563561,551009,536536,558833,561273],
+  population: [3944751,1570000,1247749,766936,490035,115949,93673,54876,44411,41017,39151,31634,29095,20165,15324],
+  date: "2025,2023,2015,2017,2017,2020,,2015,2020,2019,2015,,2005,2015,",
+  country: "AEAEAEAEAEAEAEAEAEAEAEAEAEAEAE",
+  subdivisions: "DU,AZ,SH,AJ,RK,FU,UQ",
+  subdivision: [0,1,2,1,3,4,5,2,6,5,2,0,1,2,0],
+  en: "Dubai|Abu Dhabi|Sharjah|Al Ain|Ajman|Ras al-Khaimah|Fujairah|Kalba|Umm Al Quwain|Dibba Al-Fujairah|Khor Fakkan|Jebel Ali|Madinat Zayed|Dhaid|Hatta",
+  ja: "ドバイ|アブダビ|シャールジャ|アル・アイン|アジュマーン|ラアス・アル＝ハイマ市|フジャイラ市|カルバ|ウンム・アル＝カイワイン市|ディバ・アル・フジャイラ|ホール・ファカン|ジュベル・アリ|ザイード・シティ||ハッタ (アラブ首長国連邦)",
+  native: "دبي|أبو ظبي|الشارقة|العين|عجمان|رأس الخيمة|الفجيرة|كلباء|أم القيوين|دبا الفجيرة|خورفكان|جبل علي|مدينة زايد|الذيد|حتا، دبي",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  capital: "212022202000000",
+  capitalOf: "AE-DU|AE|AE-SH||AE-AJ|AE-RK|AE-FU||AE-UQ||||||",
+  sources: "101010101010101010101010101010",
+  extra: [],
+};
 
 export { AE };

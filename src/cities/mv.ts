@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mv: the 21 cities of Maldives, every tier together, as a list.
 
 import { MV } from "../data/cities-by-country/mv.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MV"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MV);
+const CITIES: readonly City[] = expandCities(rowsOf(MV));
 
 export default CITIES;
 export { CITIES };

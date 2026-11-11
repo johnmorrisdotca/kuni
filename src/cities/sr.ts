@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sr: the 11 cities of Suriname, every tier together, as a list.
 
 import { SR } from "../data/cities-by-country/sr.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SR);
+const CITIES: readonly City[] = expandCities(rowsOf(SR));
 
 export default CITIES;
 export { CITIES };

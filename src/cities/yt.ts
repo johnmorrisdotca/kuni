@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/yt: the 1 cities of Mayotte, every tier together, as a list.
 
 import { YT } from "../data/cities-by-country/yt.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "YT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(YT);
+const CITIES: readonly City[] = expandCities(rowsOf(YT));
 
 export default CITIES;
 export { CITIES };

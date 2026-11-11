@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/om: the 15 cities of Oman, every tier together, as a list.
 
 import { OM } from "../data/cities-by-country/om.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "OM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(OM);
+const CITIES: readonly City[] = expandCities(rowsOf(OM));
 
 export default CITIES;
 export { CITIES };

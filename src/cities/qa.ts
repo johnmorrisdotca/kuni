@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/qa: the 7 cities of Qatar, every tier together, as a list.
 
 import { QA } from "../data/cities-by-country/qa.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "QA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(QA);
+const CITIES: readonly City[] = expandCities(rowsOf(QA));
 
 export default CITIES;
 export { CITIES };

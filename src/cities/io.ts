@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/io: the 1 cities of British Indian Ocean Territory, every tier together, as a list.
 
 import { IO } from "../data/cities-by-country/io.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(IO);
+const CITIES: readonly City[] = expandCities(rowsOf(IO));
 
 export default CITIES;
 export { CITIES };

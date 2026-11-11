@@ -2,10 +2,26 @@
 // The 1 cities of Turks & Caicos Islands (TC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TC: readonly CityRow[] = [
-  [34205,21.4603,-71.1414,4100,null,"TC",null,"Cockburn Town","コックバーンタウン",null,null,1,"TC",16],
-];
+const TC: CityColumns = {
+  id: "qe5",
+  lat: [214603],
+  lon: [-711414],
+  population: [4100],
+  date: "",
+  country: "TC",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Cockburn Town",
+  ja: "コックバーンタウン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "TC",
+  sources: "10",
+  extra: [],
+};
 
 export { TC };

@@ -2,17 +2,26 @@
 // The 8 cities of Belize (BZ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BZ: readonly CityRow[] = [
-  [108223,17.4986,-88.1886,63999,2022,"BZ","BZ-BZ","Belize City","ベリーズシティ",null,null,2,"BZ-BZ",16],
-  [724815,17.1588,-89.0696,26151,2018,"BZ","BZ-CY","San Ignacio","サン・イグナシオ",null,null,2,"BZ-CY",16],
-  [3043,17.25,-88.7675,20754,2022,"BZ","BZ-CY","Belmopan","ベルモパン",null,null,1,"BZ",16],
-  [677300,17.9214,-87.9611,15456,2022,"BZ","BZ-BZ","San Pedro Town","サン・ペドロ",null,null,0,null,16],
-  [882964,18.075,-88.5583,14553,2022,"BZ","BZ-OW","Orange Walk Town","オレンジウォーク",null,null,2,"BZ-OW",16],
-  [888300,16.9663,-88.2242,9927,2022,"BZ","BZ-SC","Dangriga","ダンリガ",null,null,2,"BZ-SC",16],
-  [882907,18.4,-88.4,9815,2022,"BZ","BZ-CZL","Corozal","コロザル",null,null,2,"BZ-CZL",16],
-  [883362,16.1,-88.8,5406,2022,"BZ","BZ-TOL","Punta Gorda","プンタゴルタ",null,null,2,"BZ-TOL",16],
-];
+const BZ: CityColumns = {
+  id: "2bi7,fj9r,2cj,eilw,ixas,j1f0,ix97,ixlu",
+  lat: [174986,171588,172500,179214,180750,169663,184000,161000],
+  lon: [-881886,-890696,-887675,-879611,-885583,-882242,-884000,-888000],
+  population: [63999,26151,20754,15456,14553,9927,9815,5406],
+  date: "2022,2018,2022,2022,2022,2022,2022,2022",
+  country: "BZBZBZBZBZBZBZBZ",
+  subdivisions: "BZ,CY,OW,SC,CZL,TOL",
+  subdivision: [0,1,1,0,2,3,4,5],
+  en: "Belize City|San Ignacio|Belmopan|San Pedro Town|Orange Walk Town|Dangriga|Corozal|Punta Gorda",
+  ja: "ベリーズシティ|サン・イグナシオ|ベルモパン|サン・ペドロ|オレンジウォーク|ダンリガ|コロザル|プンタゴルタ",
+  native: "|||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "22102222",
+  capitalOf: "BZ-BZ|BZ-CY|BZ||BZ-OW|BZ-SC|BZ-CZL|BZ-TOL",
+  sources: "1010101010101010",
+  extra: [],
+};
 
 export { BZ };

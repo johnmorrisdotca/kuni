@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lt: the 59 cities of Lithuania, every tier together, as a list.
 
 import { LT } from "../data/cities-by-country/lt.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(LT);
+const CITIES: readonly City[] = expandCities(rowsOf(LT));
 
 export default CITIES;
 export { CITIES };
