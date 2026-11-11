@@ -496,7 +496,7 @@ const BR: readonly CityRow[] = [
   [675142,-16.4419,-51.1178,35684,2022,"BR","BR-GO","Iporá","イポラ",null,null,0,null,1],
   [1994833,-8.1639,-70.3539,35426,2022,"BR","BR-AC","Feijó","フェイジョ",null,null,0,null,0],
   [2021082,-4.3289,-38.885,35218,2022,"BR","BR-CE","Baturité","バトゥリテー",null,null,0,null,1],
-  [1117969,-0.8419,-52.5158,35114,2022,"BR","BR-AP","Laranjal do Jari","アマパー州",null,null,0,null,0],
+  [1117969,-0.8419,-52.5158,35114,2022,"BR","BR-AP","Laranjal do Jari",null,null,null,0,null,0],
   [83011,-17.8389,-40.3539,35038,2022,"BR","BR-MG","Nanuque","ナヌケ",null,null,0,null,1],
   [1794378,-14.4739,-48.46,34964,2022,"BR","BR-GO","Niquelândia","ニケランディア",null,null,0,null,1],
   [647406,-28.4078,-54.9608,34752,2022,"BR","BR-RS","São Luiz Gonzaga","サンルイスゴンザーガ",null,null,0,null,1],

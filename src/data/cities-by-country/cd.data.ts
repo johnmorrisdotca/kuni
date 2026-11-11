@@ -33,7 +33,7 @@ const CD: readonly CityRow[] = [
   [132572271,-2.2789,28.7925,154414,null,"CD","CD-SK","Kamakombe",null,null,null,0,null,0],
   [417523,2.74,23.78,150000,2004,"CD","CD-BU","Aketi","アケティ",null,null,0,null,0],
   [732801,-5.9475,29.1947,146974,2012,"CD","CD-TA","Kalemie","カレミ",null,null,2,"CD-TA",0],
-  [3565982,2.15,28,146871,null,"CD","CD-HU","Wamba Territory","ワンバ","Wamba","fr",0,null,3],
+  [3565982,2.1404,27.99,146871,null,"CD","CD-HU","Wamba","ワンバ",null,null,0,null,7],
   [693554,-6.75,23.9667,146217,2012,"CD","CD-LO","Gandajika","ガンダジーカ","Ngandajika","fr",0,null,0],
   [581179,-8.7351,24.998,128803,null,"CD","CD-HL","Kamina","カミナ",null,null,2,"CD-HL",2],
   [736061,-3.3167,17.3833,118211,null,"CD","CD-KL","Bandundu","バンドゥンドゥ",null,null,2,"CD-KL",2],

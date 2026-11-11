@@ -128,7 +128,7 @@ const MX: readonly CityRow[] = [
   [985521,27.9192,-110.8975,117253,"2020-03-15","MX","MX-SON","Heroica Guaymas","グアイマス",null,null,0,null,0],
   [20246301,20.5397,-100.4414,115264,"2020-03-15","MX","MX-QUE","El Pueblito",null,null,null,0,null,0],
   [1013930,25.5436,-100.9503,114010,"2020-03-15","MX","MX-COA","Ramos Arizpe",null,null,null,0,null,0],
-  [771214,26.9284,-105.6674,113843,"2020-03-15","MX","MX-CHH","Hidalgo del Parral","チワワ州",null,null,0,null,0],
+  [771214,26.9284,-105.6674,113843,"2020-03-15","MX","MX-CHH","Hidalgo del Parral",null,null,null,0,null,0],
   [1961680,16.2511,-92.1342,113479,"2020-03-15","MX","MX-CHP","Comitán de Domínguez","コミタン",null,null,0,null,0],
   [1094355,19.7047,-103.4625,111975,2020,"MX","MX-JAL","Ciudad Guzmán","シウダ・グスマン",null,null,0,null,0],
   [1962295,21.3614,-101.935,111569,2020,"MX","MX-JAL","Lagos de Moreno","ラゴス・デ・モレノ",null,null,0,null,0],

@@ -75,7 +75,7 @@ const VE: readonly CityRow[] = [
   [631483,9.6866,-63.611,100000,2017,"VE","VE-N","Punta de Mata",null,null,null,0,null,0],
   [1028164,10.2822,-66.3772,100000,null,"VE","VE-M","Caucagua","カウカグア",null,null,0,null,0],
   [940082,8.0073,-62.3978,98274,2011,"VE","VE-F","Upata","ウパタ",null,null,0,null,0],
-  [1002638,7.7,-72.35,95041,2013,"VE","VE-S","Rubio","ベネズエラ",null,null,0,null,0],
+  [1002638,7.7,-72.35,95041,2013,"VE","VE-S","Rubio",null,null,null,0,null,0],
   [3542009,7.299,-61.5044,90384,2011,"VE","VE-F","Tumeremo","トゥメレモ",null,null,0,null,0],
   [2919593,9.3005,-64.3564,89552,2011,"VE","VE-B","Cantaura","カンタウラ",null,null,0,null,0],
   [3134346,8.1333,-71.9833,88450,2011,"VE","VE-S","La Grita","ラ・グリタ",null,null,0,null,0],

@@ -461,3 +461,36 @@ describe("the top cities of a country", () => {
       for (const city of (await citiesOf(code))!) if (city.metro !== null) expect(city.metro.population, city.name.en).toBeGreaterThan(city.population ?? 0);
   });
 });
+
+describe("what is no city", () => {
+  it("names no unit or part of a city as one: a city whose name ends in such a word is a capital, or a municipality that is the town", async () => {
+    const set = await loadCities("capitals", "1m", "100k", "15k");
+    const unit = /\s(County|Subdistrict|Sub-district|Microdistrict|Raion|Governorate|Territory|Region|Area|District|Borough)$/i;
+    const part = /^(?:(?:first|second|third|fourth|fifth|sixth|seventh|eighth) sector|Zone \d+|Municipality \d+|(?:North|South|East|West|Central) borough) of /i;
+    const found = set.cities.filter((city) => city.capital === null && !city.name.en.includes(",") && (unit.test(city.name.en.replace(/\s*\([^)]*\)\s*/g, " ").trim()) || part.test(city.name.en)));
+    expect(found.map((city) => `${city.id} ${city.name.en}`)).toEqual([]);
+    // Each answers with its town or the city holding it.
+    expect((await cityById("Q3479066"))?.name.en).toBe("Marseille");
+    expect((await cityById("Q2076557"))?.name.en).toBe("Baku");
+    expect((await cityById("Q27135"))?.name.en).toBe("Bisha");
+    expect((await cityById("Q391980"))?.name.en).toBe("Trieste");
+  });
+
+  it("gives no city the Japanese name of a larger subdivision it is not the capital of, nor a country's", async () => {
+    const { allSubdivisions } = await import("./subdivisions");
+    const { countries } = await import("./index");
+    const set = await loadCities("capitals", "1m", "100k", "15k");
+    const units = new Map(allSubdivisions().filter((one) => one.name.ja !== undefined && /[州県省]$/.test(one.name.ja)).map((one) => [`${one.country} ${one.name.ja}`, one.code]));
+    // A town of a country's own name (Armenia, Colombia; Lebanon, Pennsylvania) rightly shares its Japanese name.
+    const nations = new Map(countries().map((one) => [one.name.ja, one.name.en]));
+    const wrong = set.cities.filter((city) => {
+      if (city.name.ja === undefined) return false;
+      const code = units.get(`${city.country} ${city.name.ja}`);
+      if (code !== undefined && !city.capitalOf.includes(code)) return true;
+      const nation = nations.get(city.name.ja);
+      // Columbia, Taï and Chili sound as Colombia, Thailand and Chile do in Japanese, and are written so.
+      return nation !== undefined && nation !== city.name.en && !["Q38453", "Q59670", "Q397905", "Q5675279", "Q3516529", "Q2412213"].includes(city.id);
+    });
+    expect(wrong.map((city) => `${city.id} ${city.name.en} ${city.name.ja}`)).toEqual([]);
+  });
+});
