@@ -112,3 +112,13 @@ NA–ZW
 - **MX** area, 1,964,375 km²: INEGI's figure, the one Mexico publishes; Wikidata also has 1,972,550.
 - **SD** area, 1,886,068 km²: Sudan since South Sudan's independence in 2011, the figure most sources give; Wikidata also has 1,840,687.
 - A population for the part Q33112019 stands for the whole: suburb and locality: an Australian census area that is the whole of Christmas Island and of Norfolk Island
+
+
+## The capital's time zone
+
+`capitalZone` is the IANA zone the capital keeps, from IANA tzdb's zone.tab (public domain): a country's one zone, or, where it has several, the zone whose principal city is nearest the capital, checked by hand for each such country. These are set by name instead (`CAPITAL_ZONES` in scripts/facts-config.ts):
+
+| Country | Zone | Why |
+|---|---|---|
+| KZ | Asia/Almaty | Astana keeps Asia/Almaty, zone.tab's zone for most of Kazakhstan; the nearest principal city to it is Qostanay's, 580 km away. |
+| XK | Europe/Belgrade | zone.tab lists no zone for Kosovo; Pristina keeps Central European time, as Europe/Belgrade. |

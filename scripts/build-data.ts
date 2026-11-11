@@ -284,6 +284,7 @@ const capitalZoneOf = (alpha2: string, capital: { lat: number; lon: number } | n
 
   return list.map((one) => ({ zone: one.zone, km: greatCircleKm(here, one.at) })).sort((a, b) => a.km - b.km)[0]!.zone;
 };
+const rounded4 = (value: number): number => Math.round(value * 10000) / 10000;
 const greatCircleKm = (a: [number, number], b: [number, number]): number => {
   const radians = Math.PI / 180;
   const half = Math.sin(((b[0] - a[0]) * radians) / 2) ** 2 + Math.cos(a[0] * radians) * Math.cos(b[0] * radians) * Math.sin(((b[1] - a[1]) * radians) / 2) ** 2;
@@ -781,6 +782,13 @@ const writeFacts = (): void => {
     ...Object.entries(CAPITAL_ZONES).map(([code, { zone, why }]) => `| ${code} | ${zone} | ${why} |`),
   ];
   writeDocumentedFile(join(DOCS, "facts.md"), [...facts.doc, ...zoneDoc].join("\n"));
+  // The zones' principal cities, for timeZoneAt: [alpha2, lat, lon, zone], in zone.tab's order.
+  const zoneRows = [...zonePoints.entries()].sort(([a], [b]) => byText(a, b)).flatMap(([code, list]) => list.map((one) => `  ${literal([code, rounded4(one.at[0]), rounded4(one.at[1]), one.zone])},`));
+  writeDocumentedFile(
+    join(OUT_DATA, "zones.data.ts"),
+    header(`The principal city of each IANA time zone (${zoneRows.length}), for timeZoneAt in /facts.`, [IANA_SOURCE]) +
+      `const ZONE_ROWS: readonly (readonly [string, number, number, string])[] = [\n${zoneRows.join("\n")}\n];\n\nexport { ZONE_ROWS };\n`,
+  );
 };
 
 const lower = (alpha2: string): string => alpha2.toLowerCase();
