@@ -6,6 +6,22 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Cities ranked by their metropolitan area.** Each city has `metro`: the metropolitan area round it where one is named for it (`{ id, name, population, populationDate }`, else `null`): a Canadian city's census metropolitan area or agglomeration by Statistics Canada (2021 Census, id `statcan:<DGUID>`), any other's from Wikidata (CC0). The tiers, each country's file and `searchPlaces` rank a city by its metro's people where it has one, else by its own: Canada's first three are Toronto, Montreal and Vancouver, the United States' New York City, France's Paris, the Philippines' Manila. A tier still holds a city by its own `population`.
+- **`@johnmorrisdotca/kuni/zones`**: `subdivisionTimeZone(code)`, the IANA zone of a first-level subdivision (Wikidata's where it names one of the country's zones alone, else estimated and said so), and `timeZoneAt(country, point)`, the zone at a point (the country's one zone, or the zone of the subdivision whose capital is nearest, estimated). kuni has no boundaries, so a point near the edge of a zone can be given its neighbour's.
+- **`capitalZone`** in `/facts`: the IANA zone each capital keeps (245 countries; Astana's Asia/Almaty and Kosovo's Europe/Belgrade set by name, with the reason in docs/facts.md).
+
+### Fixed
+
+- **Units below a district are not cities**: upazilas, thanas, tehsils, talukas, municipal okrugs, subdistricts, wards, unions, arrondissements, county boroughs, regional councils, communes, the French métropoles and the Swiss cantons are left out (532 + 5 ids). Bangladesh's cities are now its 101 towns.
+- **Civil townships round a city are not cities**: in Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is left out where a city that is not a township holds at least half its people within 15 km (Kaw Township, round Kansas City: 295 townships); elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays.
+- Every id that leaves answers through `cityById` and `byId` with the city it belongs to, or with `null`. The alias table is written small, so the core of `/cities` stays under 24 KB.
+
+### Changed
+
+- kazoku-ui 0.37 (from 0.10), for its browser lock and queue, taken in `playwright.config`: one browser at a time on a machine.
+
 ## [1.6.1] - 2026-11-11
 
 ### Fixed

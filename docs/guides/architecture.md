@@ -16,11 +16,13 @@ src/
 ├── subdivisions.ts     the "/subdivisions" entry: every subdivision and its lookups
 ├── load.ts             the "/load" entry: one country's subdivisions by dynamic import
 ├── facts.ts            the "/facts" entry: population, area, coordinates, borders and conventions
+├── zones.ts            the "/zones" entry: a subdivision's time zone, and the zone at a point
 ├── subdivision-facts.ts  the "/subdivision-facts" entry: one country's subdivision facts by dynamic import
 ├── groupings.ts        the "/groupings" entry: continents, UN M49, bodies, informal groupings, regions
 ├── withdrawn.ts        the "/withdrawn" entry: the countries ISO 3166-3 lists as withdrawn, and the codes they held
 ├── cities.ts           the "/cities" entry: joining tiers of cities, and finding one by id, country or nearness
 ├── city-rows.ts        turning a city's compact row into a City
+├── rank.ts             the figure a city is ranked by: its metro's people, else its own
 ├── places.ts           the "/places" entry: the countries of a continent, and a search over countries and cities
 ├── fold.ts             folding what somebody typed: case, accents, width, kana
 ├── rows.ts             turning the data's compact rows into objects

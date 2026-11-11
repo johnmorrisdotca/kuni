@@ -103,6 +103,23 @@ or a subdivision, and the items Natural Earth's places name. For each, the Engli
 label, the coordinates, the country, the populations with their dates and the ISO 3166-2 codes of the places it is in.
 No Wikipedia text is used.
 
+A city's metropolitan area (`metro` on each city) comes from a third Wikidata snapshot
+(`data-sources/wikidata-metros-<day>.json`), CC0 on the same terms (read on 2026-11-11), asked for by
+`scripts/fetch-metros.ts`: the items that are a metropolitan or urban area, the links between them and the cities, their
+English labels and their populations with dates.
+
+A Canadian city's metropolitan area is Statistics Canada's census metropolitan area or census agglomeration, its 2021
+population from Table 98-10-0005-01, kept in `data-sources/statcan-cma-2021.json` by `scripts/fetch-statcan.ts`, under the
+Statistics Canada Open Licence (https://www.statcan.gc.ca/en/reference/licence, read on 2026-11-11):
+
+> Adapted from Statistics Canada, Table 98-10-0005-01, Population and dwelling counts: Canada, provinces and territories,
+> census metropolitan areas and census agglomerations, 2021 Census, reference date 2021-05-11. This does not constitute
+> an endorsement by Statistics Canada of this product.
+
+The time zones (`/zones`, and `capitalZone` in `/facts`) are from IANA's tzdb zone.tab (public domain, below) and a
+fourth Wikidata snapshot (`data-sources/wikidata-zones-<day>.json`, CC0 on the same terms, read on 2026-11-11), asked for
+by `scripts/fetch-zones.ts`: the IANA ids (P6687) of the zones each first-level subdivision is in (P421).
+
 ## Natural Earth's populated places
 
 Natural Earth's 10m Populated Places, version 5.1.2 (https://www.naturalearthdata.com/, public domain: "No permission

@@ -144,6 +144,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 97.6 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 88.4 kB min+gzip |
 | `@johnmorrisdotca/kuni/facts` | Every country's population, area, coordinates, borders, driving side and conventions | 8.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/zones` | A subdivision's IANA time zone, and the zone at a point in a country | – |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 161.1 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 0.4–7.3 kB; Japan 2.4 kB |
 | `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 15.9 kB min+gzip |
@@ -416,6 +417,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | the country's list as the default export and as `SUBDIVISIONS` |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions` and the type `Subdivision` |
 | `@johnmorrisdotca/kuni/facts` | `facts`, `allFacts`, `distanceKm`, `FACTS_READ`, and the types `CountryFacts`, `LatLon`, `DrivingSide`, `WeekStart`, `MeasurementSystem`, `PaperSize` and `HourCycle` |
+| `@johnmorrisdotca/kuni/zones` | `subdivisionTimeZone`, `timeZoneAt`, and the type `ZoneAnswer` |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts`, and the types `SubdivisionFacts` and `LatLon` |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | the country's subdivision facts as the default export and as `SUBDIVISION_FACTS` |
 | `@johnmorrisdotca/kuni/withdrawn` | `withdrawn`, `withdrawnCountries`, `WITHDRAWN_READ` and the type `WithdrawnCountry` |
