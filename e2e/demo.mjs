@@ -29,6 +29,13 @@ function listen(page) {
 
 export const at = (id) => `[data-testid="${id}"]`;
 
+/**
+ * Wait for a kuni-card to finish drawing, by its own signal: data-ready, which it sets once its flag and its map are in.
+ * A card draws in 0.1 to 0.2 s on an idle machine, its first draw on a page included (measured on 2026-11-11); a
+ * machine running several browsers at a load near 20 took over 5 s, so the wait allows 20 s.
+ */
+export const cardDrawn = (card) => expect(card).toHaveAttribute("data-ready", "true", { timeout: 20_000 });
+
 /** Open the demo with a query and wait until its panels are written; returns what the page complains of. */
 export async function open(page, query = "") {
   const errors = listen(page);

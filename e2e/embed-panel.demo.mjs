@@ -3,7 +3,7 @@
 // page, the guide and the credit. The builder's preview and its choices stay the package's, so the panel shows neither.
 import { expect, test } from "@playwright/test";
 import { artwork } from "./artwork.mjs";
-import { serve } from "./demo.mjs";
+import { cardDrawn, serve } from "./demo.mjs";
 
 const TABS = [
   "Custom element",
@@ -26,7 +26,7 @@ test("the code section is the embed panel, with every item it had and the guide,
   await serve(page);
   await artwork(page);
   await page.goto("http://kuni.test/builder.html?lang=en");
-  await expect(page.locator("#bld-stage kuni-card")).toHaveAttribute("data-ready", "true");
+  await cardDrawn(page.locator("#bld-stage kuni-card"));
   // the nine tabs, by their names, and the code of the one chosen
   await expect(panel(page).getByRole("tab")).toHaveText(TABS);
   await expect(panel(page).locator("[part=code]")).toContainText("<kuni-card");
@@ -77,7 +77,7 @@ test("a page opened in Japanese gives the panel its Japanese tabs, note, buttons
   await serve(page);
   await artwork(page);
   await page.goto("http://kuni.test/builder.html?lang=ja");
-  await expect(page.locator("#bld-stage kuni-card")).toHaveAttribute("data-ready", "true");
+  await cardDrawn(page.locator("#bld-stage kuni-card"));
   await expect(panel(page).getByRole("tab").first()).toHaveText("カスタム要素");
   await expect(panel(page).locator("[part=note]")).toHaveText("初期値と異なる選択だけがコードに含まれます。");
   await expect(panel(page).getByTestId("bld-link")).toHaveText("このカードへのリンクをコピー");

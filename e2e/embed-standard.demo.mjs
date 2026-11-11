@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { serve } from "./demo.mjs";
+import { cardDrawn, serve } from "./demo.mjs";
 import { artwork } from "./artwork.mjs";
 
 
@@ -10,7 +10,7 @@ test("the shared card builder composes Hata and Chizu and writes every host form
   await serve(page); const requests = await artwork(page);
   await page.goto("http://kuni.test/builder.html?lang=en");
   const card = page.locator("#bld-stage kuni-card");
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await cardDrawn(card);
   await expect(card.locator('[data-field="name"]')).toHaveText("Japan");
   await expect(card.locator(".flag svg")).toBeVisible();
   await expect(card.locator(".map svg")).toBeVisible();
@@ -28,7 +28,7 @@ test("subdivision cards use their own dated facts and map while marking country 
   await serve(page); await artwork(page);
   await page.goto("http://kuni.test/embed/?code=JP-13&fields=name+codes+flag+map+capital+population+currency&lang=ja&theme=dark");
   const card = page.locator("kuni-card");
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await cardDrawn(card);
   await expect(card.locator('[data-field="name"]')).toHaveText("東京都");
   await expect(card.locator('[data-field="codes"] dd')).toHaveText("JP-13");
   await expect(card.locator('[data-field="population"] dd')).toContainText("2022");
@@ -41,7 +41,7 @@ test("plain facts need no artwork request, query values are validated and labels
   await serve(page); const requests = await artwork(page);
   const label = '<img src=x onerror="bad">';
   await page.goto(`http://kuni.test/embed/?code=JPN&fields=name+codes+capital&theme=invalid&width=Infinity&label=${encodeURIComponent(label)}`);
-  const card = page.locator("kuni-card"); await expect(card).toHaveAttribute("data-ready", "true");
+  const card = page.locator("kuni-card"); await cardDrawn(card);
   await expect(card.locator("article")).toHaveAttribute("aria-label", label);
   await expect(card.locator('[data-field="codes"] dd')).toHaveText("JP · JPN · 392");
   expect(requests).toEqual([]); expect(await page.locator("img").count()).toBe(0);
@@ -63,7 +63,7 @@ test("load events forward the same JSON-safe detail and unavailable artwork pres
   await page.route("http://host.test/", (route) => route.fulfill({ contentType: "text/html", body: '<script>window.messages=[];addEventListener("message",event=>{if(event.origin==="http://kuni.test")messages.push(event.data);});</script><iframe src="http://kuni.test/embed/?code=JP&fields=name+flag+capital" width="360" height="500"></iframe>' }));
   await page.goto("http://host.test/");
   const card = page.frameLocator("iframe").locator("kuni-card");
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await cardDrawn(card);
   await expect(card.locator('.flag')).toContainText("Unavailable");
   await expect(card.locator('[data-field="capital"] dd')).toHaveText("Tokyo");
   await expect.poll(() => page.evaluate(() => window.messages.some((message) => message.type === "kuni-load"))).toBe(true);
@@ -75,14 +75,14 @@ test("load events forward the same JSON-safe detail and unavailable artwork pres
 test("a late artwork response cannot replace a new card, and host SVGs discard active content", async ({ page }) => {
   await serve(page);
   await page.goto("http://kuni.test/embed/?fields=name+codes");
-  const card = page.locator("kuni-card"); await expect(card).toHaveAttribute("data-ready", "true");
+  const card = page.locator("kuni-card"); await cardDrawn(card);
   await card.evaluate((element) => {
     element.options = { flag: (code) => code === "JP" ? new Promise((resolve) => { window.finishOldFlag = resolve; }) : Promise.resolve('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" onload="bad"><script>bad</script><rect width="10" height="10"/></svg>') };
     element.fields = "name flag";
   });
   await expect.poll(() => page.evaluate(() => typeof window.finishOldFlag)).toBe("function");
   await card.evaluate((element) => { element.code = "CA"; });
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await cardDrawn(card);
   await page.evaluate(() => window.finishOldFlag('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle r="2"/></svg>'));
   await expect(card.locator('[data-field="name"]')).toHaveText("Canada");
   await expect(card.locator(".flag rect")).toHaveCount(1);
@@ -94,12 +94,12 @@ test("a late artwork response cannot replace a new card, and host SVGs discard a
 test("copied iframe code fits a narrow article without inner scrolling", async ({ page }) => {
   await serve(page); await artwork(page);
   await page.goto("http://kuni.test/builder.html?lang=en");
-  await expect(page.locator("#bld-stage kuni-card")).toHaveAttribute("data-ready", "true");
+  await cardDrawn(page.locator("#bld-stage kuni-card"));
   await page.locator('[data-testid="bld-embed"] button[data-kind="iframe"]').click();
   const code = (await page.locator('[data-testid="bld-embed"] [part="code"]').textContent()).replaceAll("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/").replace('loading="lazy"', '');
   await page.route("http://article.test/", (route) => route.fulfill({ contentType: "text/html", body: `<style>body{margin:0;width:320px}</style>${code}` }));
   await page.goto("http://article.test/");
-  await expect(page.frameLocator("iframe").locator("kuni-card")).toHaveAttribute("data-ready", "true");
+  await cardDrawn(page.frameLocator("iframe").locator("kuni-card"));
   const child = page.frames().find((frame) => frame.url().startsWith("http://kuni.test/embed/"));
   expect(await child.evaluate(() => document.documentElement.scrollHeight <= window.innerHeight && document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
@@ -108,10 +108,10 @@ test("native IOC codes display without adding withdrawn countries to current car
   await serve(page);
   await page.goto("http://kuni.test/embed/?code=DE&fields=name%20codes%20ioc");
   const card = page.locator("kuni-card");
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await cardDrawn(card);
   await expect(card.locator('[data-field="ioc"] dd')).toHaveText("GER");
   await page.goto("http://kuni.test/embed/?code=JP-13&fields=name%20ioc");
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await cardDrawn(card);
   await expect(card.locator('[data-field="ioc"]')).toContainText("(country)");
   await expect(card.locator('[data-field="ioc"] dd')).toHaveText("JPN");
   await page.goto("http://kuni.test/embed/?code=SU&fields=name%20ioc");
@@ -122,10 +122,14 @@ test("native IOC codes display without adding withdrawn countries to current car
 test("card colours and capital markers restore from builder links and frame code", async ({ page }) => {
   await serve(page); await artwork(page);
   await page.goto("http://kuni.test/builder.html?lang=en");
+  const card = page.locator("#bld-stage kuni-card");
+  // the first card is drawn before anything changes, and then the one that carries the new choices
+  await cardDrawn(card);
   await page.locator("#opt-colors").fill("JP:#2f6b4f");
   await page.locator("#opt-capital").click();
-  const card = page.locator("#bld-stage kuni-card");
-  await expect(card).toHaveAttribute("data-ready", "true");
+  await expect(card).toHaveAttribute("colors", "JP:#2f6b4f");
+  await expect(card).toHaveAttribute("capital", "false");
+  await cardDrawn(card);
   await expect(card.locator('.map .cz-region[data-code="JP"]').first()).toHaveAttribute("data-color", "#2f6b4f");
   await expect(card.locator('[data-group="capitals"]')).toHaveCount(0);
   await expect(card.locator('[data-field="capital"]')).toBeVisible();
@@ -136,7 +140,7 @@ test("card colours and capital markers restore from builder links and frame code
   const frame = (await page.locator('[data-testid="bld-embed"] [part="code"]').textContent()).replace("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/");
   await page.goto(frame);
   const embedded = page.locator("kuni-card");
-  await expect(embedded).toHaveAttribute("data-ready", "true");
+  await cardDrawn(embedded);
   await expect(embedded.locator('.map .cz-region[data-code="JP"]').first()).toHaveAttribute("data-color", "#2f6b4f");
   await expect(embedded.locator('[data-group="capitals"]')).toHaveCount(0);
   await embedded.evaluate((element) => { element.capital = true; });
