@@ -2,14 +2,26 @@
 // The 5 cities of Samoa (WS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const WS: readonly CityRow[] = [
-  [36260,-13.8333,-171.8333,37708,2006,"WS","WS-TU","Apia","アピア",null,null,1,"WS",0],
-  [2038921,-13.8,-171.817,1998,2016,"WS","WS-TU","Afega","アフェガ",null,null,2,"WS-TU",0],
-  [1944685,-13.8167,-171.9167,1184,2016,"WS","WS-AA","Leulumoega","レウルモエガ",null,null,2,"WS-AA",0],
-  [741740,-13.8745,-171.5986,null,null,"WS","WS-AT","Lufilufi","ルフィルフィ",null,null,2,"WS-AT",0],
-  [2270858,-13.8333,-171.9833,null,null,"WS","WS-AL","Mulifanua","ムリファヌア村",null,null,2,"WS-AL",0],
-];
+const WS: CityColumns = {
+  id: "rz8,17p8p,15oj1,fwbw,1co7e",
+  lat: [-138333,-138000,-138167,-138745,-138333],
+  lon: [-1718333,-1718170,-1719167,-1715986,-1719833],
+  population: [37708,1998,1184,-1,-1],
+  date: "2006,2016,2016,,",
+  country: "WSWSWSWSWS",
+  subdivisions: "TU,AA,AT,AL",
+  subdivision: [0,0,1,2,3],
+  en: "Apia|Afega|Leulumoega|Lufilufi|Mulifanua",
+  ja: "アピア|アフェガ|レウルモエガ|ルフィルフィ|ムリファヌア村",
+  native: "||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1],
+  capital: "12222",
+  capitalOf: "WS|WS-TU|WS-AA|WS-AT|WS-AL",
+  sources: "00000",
+  extra: [],
+};
 
 export { WS };

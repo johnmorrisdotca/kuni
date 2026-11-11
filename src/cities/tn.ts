@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tn: the 28 cities of Tunisia, every tier together, as a list.
 
 import { TN } from "../data/cities-by-country/tn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TN);
+const CITIES: readonly City[] = expandCities(rowsOf(TN));
 
 export default CITIES;
 export { CITIES };

@@ -2,10 +2,26 @@
 // The 1 cities of Caribbean Netherlands (BQ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BQ: readonly CityRow[] = [
-  [1635867,-67.5667,-68.1283,130,null,"BQ",null,"Rothera Research Station","ロゼラ基地",null,null,1,"BQ",2],
-];
+const BQ: CityColumns = {
+  id: "z28r",
+  lat: [-675667],
+  lon: [-681283],
+  population: [130],
+  date: "",
+  country: "BQ",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Rothera Research Station",
+  ja: "ロゼラ基地",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "BQ",
+  sources: "2",
+  extra: [],
+};
 
 export { BQ };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/iq: the 68 cities of Iraq, every tier together, as a list.
 
 import { IQ } from "../data/cities-by-country/iq.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IQ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(IQ);
+const CITIES: readonly City[] = expandCities(rowsOf(IQ));
 
 export default CITIES;
 export { CITIES };

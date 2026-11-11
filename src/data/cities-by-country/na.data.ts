@@ -2,34 +2,26 @@
 // The 25 cities of Namibia (NA), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NA: readonly CityRow[] = [
-  [3935,-22.57,17.0836,486169,2023,"NA","NA-KH","Windhoek","ウィントフック",null,null,1,"NA",0],
-  [662291,-17.9167,19.7667,118632,2023,"NA","NA-KE","Rundu","ルンドゥ",null,null,2,"NA-KE",0],
-  [220843,-22.9494,14.5069,102704,2023,"NA","NA-ER","Walvis Bay","ウォルビスベイ",null,null,0,null,0],
-  [59698,-22.6667,14.5333,75921,2023,"NA","NA-ER","Swakopmund","スワコプムント",null,null,2,"NA-ER",0],
-  [985622,-17.8,15.6833,58656,2023,"NA","NA-ON","Oshakati","オシャカティ",null,null,2,"NA-ON",0],
-  [993149,-20.4642,16.6528,49022,2023,"NA","NA-OD","Otjiwarongo","オティワロンゴ",null,null,2,"NA-OD",0],
-  [864100,-17.5039,24.275,46401,2023,"NA","NA-CA","Katima Mulilo","カティマ・ムリロ",null,null,2,"NA-CA",0],
-  [597491,-21.9833,16.9167,45159,2023,"NA","NA-OD","Okahandja","オカハンジャ",null,null,0,null,0],
-  [700050,-23.3167,17.0833,40788,2023,"NA","NA-HA","Rehoboth","レホボス",null,null,0,null,0],
-  [639467,-19.25,17.7167,34960,2023,"NA","NA-OT","Tsumeb","ツメブ",null,null,0,null,0],
-  [841557,-17.7833,15.7667,33777,2023,"NA","NA-ON","Ongwediva","オンウェディバ",null,null,0,null,1],
-  [1000609,-22.45,18.9667,33404,2023,"NA","NA-OH","Gobabis","ゴバビス",null,null,2,"NA-OH",0],
-  [2023773,-17.9208,15.9542,30364,2023,"NA","NA-ON","Ondangwa","オンダングワ",null,null,0,null,0],
-  [1601663,-17.4023,15.8864,29119,2023,"NA","NA-OW","Helao Nafidi",null,null,null,0,null,0],
-  [986336,-19.5658,18.1036,26839,2023,"NA","NA-OD","Grootfontein","グルートフォンテイン",null,null,0,null,0],
-  [160884,-26.5833,18.1333,18900,2011,"NA","NA-KA","Keetmanshoop","ケートマンスフープ",null,null,2,"NA-KA",0],
-  [876166,-24.6333,17.9667,18494,2023,"NA","NA-HA","Mariental","マリエンタール",null,null,2,"NA-HA",0],
-  [774264,-17.4797,16.3333,16588,2023,"NA","NA-OW","Eenhana","エーンハナ",null,null,2,"NA-OW",0],
-  [159325,-26.6478,15.1578,16156,2023,"NA","NA-KA","Lüderitz","リューデリッツ",null,null,0,null,0],
-  [1704346,-20.1069,16.1503,15063,2023,"NA","NA-KU","Outjo","オウチョ",null,null,0,null,0],
-  [48774348,-17.9497,16.1917,15000,2011,"NA","NA-OT","Onayena",null,null,null,0,null,0],
-  [1758215,-17.5,14.9833,13664,2023,"NA","NA-OS","Outapi","アウタピ",null,null,2,"NA-OS",0],
-  [1024089,-18.05,13.8333,12331,2023,"NA","NA-KU","Opuwo","オプウォ",null,null,2,"NA-KU",0],
-  [918461,-17.6167,18.6,10463,2023,"NA","NA-KW","Nkurenkuru","ンクレンクル",null,null,2,"NA-KW",0],
-  [1005584,-18.3592,16.5795,7560,2023,"NA","NA-OT","Omuthiya","オムシーヤ",null,null,2,"NA-OT",0],
-];
+const NA: CityColumns = {
+  id: "31b,e70z,4qej,1a2a,l4ie,labh,iiqs,ct0z,f05u,dpez,i1cl,lg2p,17djx,ybun,l528,3g50,is1y,glfc,3exp,10j2y,t1ej0,11onb,ly6x,joot,ljww",
+  lat: [-225700,-179167,-229494,-226667,-178000,-204642,-175039,-219833,-233167,-192500,-177833,-224500,-179208,-174023,-195658,-265833,-246333,-174797,-266478,-201069,-179497,-175000,-180500,-176167,-183592],
+  lon: [170836,197667,145069,145333,156833,166528,242750,169167,170833,177167,157667,189667,159542,158864,181036,181333,179667,163333,151578,161503,161917,149833,138333,186000,165795],
+  population: [486169,118632,102704,75921,58656,49022,46401,45159,40788,34960,33777,33404,30364,29119,26839,18900,18494,16588,16156,15063,15000,13664,12331,10463,7560],
+  date: "2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2023,2011,2023,2023,2023,2023,2011,2023,2023,2023,2023",
+  country: "NANANANANANANANANANANANANANANANANANANANANANANANANA",
+  subdivisions: "KH,KE,ER,ON,OD,CA,HA,OT,OH,OW,KA,KU,OS,KW",
+  subdivision: [0,1,2,2,3,4,5,4,6,7,3,8,3,9,4,10,6,9,10,11,7,12,11,13,7],
+  en: "Windhoek|Rundu|Walvis Bay|Swakopmund|Oshakati|Otjiwarongo|Katima Mulilo|Okahandja|Rehoboth|Tsumeb|Ongwediva|Gobabis|Ondangwa|Helao Nafidi|Grootfontein|Keetmanshoop|Mariental|Eenhana|Lüderitz|Outjo|Onayena|Outapi|Opuwo|Nkurenkuru|Omuthiya",
+  ja: "ウィントフック|ルンドゥ|ウォルビスベイ|スワコプムント|オシャカティ|オティワロンゴ|カティマ・ムリロ|オカハンジャ|レホボス|ツメブ|オンウェディバ|ゴバビス|オンダングワ||グルートフォンテイン|ケートマンスフープ|マリエンタール|エーンハナ|リューデリッツ|オウチョ||アウタピ|オプウォ|ンクレンクル|オムシーヤ",
+  native: "||||||||||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1202222000020002220002222",
+  capitalOf: "NA|NA-KE||NA-ER|NA-ON|NA-OD|NA-CA|||||NA-OH||||NA-KA|NA-HA|NA-OW||||NA-OS|NA-KU|NA-KW|NA-OT",
+  sources: "0000000000100000000000000",
+  extra: [],
+};
 
 export { NA };

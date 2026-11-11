@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tr: the 541 cities of Türkiye, every tier together, as a list.
 
 import { TR } from "../data/cities-by-country/tr.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(TR);
+const CITIES: readonly City[] = expandCities(rowsOf(TR));
 
 export default CITIES;
 export { CITIES };

@@ -2,10 +2,26 @@
 // The 1 cities of St. Barthélemy (BL), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BL: readonly CityRow[] = [
-  [34112,17.8986,-62.8492,9131,null,"BL",null,"Gustavia","グスタビア",null,null,1,"BL",0],
-];
+const BL: CityColumns = {
+  id: "qbk",
+  lat: [178986],
+  lon: [-628492],
+  population: [9131],
+  date: "",
+  country: "BL",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Gustavia",
+  ja: "グスタビア",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "BL",
+  sources: "0",
+  extra: [],
+};
 
 export { BL };

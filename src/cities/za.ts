@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/za: the 85 cities of South Africa, every tier together, as a list.
 
 import { ZA } from "../data/cities-by-country/za.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ZA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(ZA);
+const CITIES: readonly City[] = expandCities(rowsOf(ZA));
 
 export default CITIES;
 export { CITIES };

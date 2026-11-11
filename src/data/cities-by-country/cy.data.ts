@@ -2,30 +2,26 @@
 // The 21 cities of Cyprus (CY), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CY: readonly CityRow[] = [
-  [185632,34.675,33.0443,107970,2021,"CY","CY-02","Limassol","リマソール","Λεμεσός","el",0,null,0],
-  [28870916,34.675,33.0443,101000,2011,"CY","CY-02","Limassol Municipality",null,"Δήμος Λεμεσού","el",2,"CY-02",0],
-  [2762100,35.19,33.3636,61378,2011,"CY","CY-01","North Nicosia","北ニコシア","Βόρεια Λευκωσία","el",0,null,0],
-  [171882,34.9167,33.6333,59200,2016,"CY","CY-03","Larnaca","ラルナカ","Λάρνακα","el",2,"CY-03",0],
-  [3856,35.1725,33.365,56848,2021,"CY","CY-01","Nicosia","ニコシア","Λευκωσία","el",1,"CY",0],
-  [56037497,35.1695,33.3609,55014,2011,"CY","CY-01","Nicosia Municipality",null,"Δήμος Λευκωσίας","el",2,"CY-01",0],
-  [55099871,34.9155,33.6198,51214,2011,"CY","CY-03","Larnaca Municipality",null,"Δήμος Λάρνακας","el",2,"CY-03",0],
-  [193190,35.1167,33.95,40920,2011,"CY",null,"Famagusta","ファマグスタ","Αμμόχωστος","el",0,null,0],
-  [56118759,35.1176,33.9434,38960,1973,"CY","CY-04","Famagusta Municipality",null,"Δήμος Αμμοχώστου","el",2,"CY-04",0],
-  [349503,35.1117,33.3126,38345,2011,"CY","CY-01","Lakatamia","ラカタミア","Λακατάμια","el",0,null,0],
-  [180918,34.7761,32.4265,35961,2019,"CY","CY-05","Paphos","パフォス","Πάφος","el",0,null,0],
-  [206760,35.3403,33.3192,33207,"2011-12-31","CY","CY-06","Kyrenia","キレニア","Κερύνεια","el",0,null,0],
-  [56046916,34.7744,32.4229,32892,2011,"CY","CY-05","Paphos Municipality",null,"Δήμος Πάφου","el",2,"CY-05",0],
-  [47319805,35.1289,33.3333,22251,2011,"CY","CY-01","Agios Vasileios",null,"Άγιος Βασίλειος","el",0,null,0],
-  [2009604,34.9478,33.5881,19199,2011,"CY","CY-03","Aradhippou","アラディプ","Αραδίππου","el",0,null,0],
-  [47319766,35.1494,33.3346,17386,2011,"CY","CY-01","Chryseleousa",null,"Χρυσελεούσα","el",0,null,0],
-  [47326062,34.9127,33.6107,16798,2011,"CY","CY-03","Agios Nikolaos",null,"Άγιος Νικόλαος","el",0,null,0],
-  [47313323,34.7733,32.4293,16450,2011,"CY","CY-05","Ayios Theodoros",null,"Άγιος Θεόδωρος","el",0,null,0],
-  [47319778,35.1313,33.289,15053,2011,"CY","CY-01","Archangelos - Anthoupoli",null,"Αρχάγγελος-Ανθούπολη","el",0,null,0],
-  [47319812,35.1173,33.3145,15024,2011,"CY","CY-01","Agia Paraskevi",null,"Αγία Παρασκευή","el",0,null,0],
-  [56241597,35.3367,33.315,3892,1973,"CY","CY-06","Kyrenia Municipality",null,"Δήμος Κερύνειας","el",2,"CY-06",0],
-];
+const CY: CityColumns = {
+  id: "3z8g,h6sxw,1n790,3omi,2z4,xd2t5,wszbz,452e,xetif,7hof,3vli,4fjc,xda2s,s6871,172mc,s685y,s6d0u,s636z,s686a,s6878,xhgal",
+  lat: [346750,346750,351900,349167,351725,351695,349155,351167,351176,351117,347761,353403,347744,351289,349478,351494,349127,347733,351313,351173,353367],
+  lon: [330443,330443,333636,336333,333650,333609,336198,339500,339434,333126,324265,333192,324229,333333,335881,333346,336107,324293,332890,333145,333150],
+  population: [107970,101000,61378,59200,56848,55014,51214,40920,38960,38345,35961,33207,32892,22251,19199,17386,16798,16450,15053,15024,3892],
+  date: "2021,2011,2011,2016,2021,2011,2011,2011,1973,2011,2019,2011-12-31,2011,2011,2011,2011,2011,2011,2011,2011,1973",
+  country: "CYCYCYCYCYCYCYCYCYCYCYCYCYCYCYCYCYCYCYCYCY",
+  subdivisions: "02,01,03,04,05,06",
+  subdivision: [0,0,1,2,1,1,2,-1,3,1,4,5,4,1,2,1,2,4,1,1,5],
+  en: "Limassol|Limassol Municipality|North Nicosia|Larnaca|Nicosia|Nicosia Municipality|Larnaca Municipality|Famagusta|Famagusta Municipality|Lakatamia|Paphos|Kyrenia|Paphos Municipality|Agios Vasileios|Aradhippou|Chryseleousa|Agios Nikolaos|Ayios Theodoros|Archangelos - Anthoupoli|Agia Paraskevi|Kyrenia Municipality",
+  ja: "リマソール||北ニコシア|ラルナカ|ニコシア|||ファマグスタ||ラカタミア|パフォス|キレニア|||アラディプ||||||",
+  native: "Λεμεσός|Δήμος Λεμεσού|Βόρεια Λευκωσία|Λάρνακα|Λευκωσία|Δήμος Λευκωσίας|Δήμος Λάρνακας|Αμμόχωστος|Δήμος Αμμοχώστου|Λακατάμια|Πάφος|Κερύνεια|Δήμος Πάφου|Άγιος Βασίλειος|Αραδίππου|Χρυσελεούσα|Άγιος Νικόλαος|Άγιος Θεόδωρος|Αρχάγγελος-Ανθούπολη|Αγία Παρασκευή|Δήμος Κερύνειας",
+  languages: "el",
+  language: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  capital: "020212202000200000002",
+  capitalOf: "|CY-02||CY-03|CY|CY-01|CY-03||CY-04||||CY-05||||||||CY-06",
+  sources: "000000000000000000000",
+  extra: [],
+};
 
 export { CY };

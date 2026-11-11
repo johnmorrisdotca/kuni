@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mc: the 1 cities of Monaco, every tier together, as a list.
 
 import { MC } from "../data/cities-by-country/mc.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MC);
+const CITIES: readonly City[] = expandCities(rowsOf(MC));
 
 export default CITIES;
 export { CITIES };

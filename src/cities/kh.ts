@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kh: the 26 cities of Cambodia, every tier together, as a list.
 
 import { KH } from "../data/cities-by-country/kh.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(KH);
+const CITIES: readonly City[] = expandCities(rowsOf(KH));
 
 export default CITIES;
 export { CITIES };

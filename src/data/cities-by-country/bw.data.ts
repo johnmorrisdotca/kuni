@@ -2,28 +2,26 @@
 // The 19 cities of Botswana (BW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BW: readonly CityRow[] = [
-  [3919,-24.6569,25.9086,235884,2013,"BW","BW-GA","Gaborone","ハボローネ",null,null,1,"BW",0],
-  [165422,-21.1736,27.5125,89979,null,"BW","BW-FR","Francistown","フランシスタウン",null,null,2,"BW-NE",2],
-  [170717,-24.6333,25.8667,88098,2022,"BW","BW-KW","Mogoditshane","モホディツァネ",null,null,0,null,0],
-  [170732,-19.9833,23.4167,85293,2021,"BW","BW-NW","Maun","マウン",null,null,2,"BW-NW",0],
-  [170725,-24.4066,25.4951,67598,2011,"BW","BW-KW","Molepolole","モレポロレ",null,null,2,"BW-KW",0],
-  [859785,-24.6686,25.9711,55517,2022,"BW","BW-SE","Tlokweng",null,null,null,0,null,0],
-  [170724,-23.1041,26.8142,50744,null,"BW","BW-CE","Mahalapye","マハラピエ",null,null,0,null,2],
-  [141263,-21.9667,27.9167,49724,2011,"BW","BW-CE","Selebi-Phikwe","セレビ・ピクウェ",null,null,0,null,0],
-  [855634,-22.3833,26.7167,47447,2011,"BW","BW-CE","Serowe","セロウェ",null,null,2,"BW-CE",0],
-  [170730,-24.9833,25.35,46831,null,"BW","BW-SO","Kanye","カニエ",null,null,2,"BW-SO",2],
-  [615877,-24.4167,26.15,44339,2011,"BW","BW-KL","Mochudi","モチュディ",null,null,2,"BW-KL",0],
-  [170711,-22.55,27.1333,36211,2011,"BW","BW-CE","Palapye","パラピエ",null,null,0,null,0],
-  [165768,-25.2167,25.6667,26900,2020,"BW","BW-LO","Lobatse","ロバツェ",null,null,0,null,0],
-  [165988,-21.9655,28.4363,21216,2022,"BW","BW-CE","Bobonong",null,null,null,0,null,0],
-  [38855,-24.6667,25.7822,20018,2022,"BW","BW-KW","Gabane",null,null,null,0,null,0],
-  [170727,-26.02,22.4056,9679,null,"BW","BW-KG","Tshabong","ツァボン",null,null,2,"BW-KG",2],
-  [170715,-17.7983,25.1536,9250,null,"BW","BW-CH","Kasane","カサネ",null,null,2,"BW-CH",2],
-  [859319,-21.5667,21.7833,6306,null,"BW","BW-GH","Ghanzi","ハンツィ",null,null,2,"BW-GH",2],
-  [170714,-24.8667,25.8167,null,null,"BW","BW-SE","Ramotswa","ラモッツァ",null,null,2,"BW-SE",0],
-];
+const BW: CityColumns = {
+  id: "30v,3jn2,3nq5,3nqk,3nqd,ifex,3nqc,30zz,ic7m,3nqi,d77p,3npz,3jwo,3k2s,tzb,3nqf,3nq3,if1z,3nq2",
+  lat: [-246569,-211736,-246333,-199833,-244066,-246686,-231041,-219667,-223833,-249833,-244167,-225500,-252167,-219655,-246667,-260200,-177983,-215667,-248667],
+  lon: [259086,275125,258667,234167,254951,259711,268142,279167,267167,253500,261500,271333,256667,284363,257822,224056,251536,217833,258167],
+  population: [235884,89979,88098,85293,67598,55517,50744,49724,47447,46831,44339,36211,26900,21216,20018,9679,9250,6306,-1],
+  date: "2013,,2022,2021,2011,2022,,2011,2011,,2011,2011,2020,2022,2022,,,,",
+  country: "BWBWBWBWBWBWBWBWBWBWBWBWBWBWBWBWBWBWBW",
+  subdivisions: "GA,FR,KW,NW,SE,CE,SO,KL,LO,KG,CH,GH",
+  subdivision: [0,1,2,3,2,4,5,5,5,6,7,5,8,5,2,9,10,11,4],
+  en: "Gaborone|Francistown|Mogoditshane|Maun|Molepolole|Tlokweng|Mahalapye|Selebi-Phikwe|Serowe|Kanye|Mochudi|Palapye|Lobatse|Bobonong|Gabane|Tshabong|Kasane|Ghanzi|Ramotswa",
+  ja: "ハボローネ|フランシスタウン|モホディツァネ|マウン|モレポロレ||マハラピエ|セレビ・ピクウェ|セロウェ|カニエ|モチュディ|パラピエ|ロバツェ|||ツァボン|カサネ|ハンツィ|ラモッツァ",
+  native: "||||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1202200022200002222",
+  capitalOf: "BW|BW-NE||BW-NW|BW-KW||||BW-CE|BW-SO|BW-KL|||||BW-KG|BW-CH|BW-GH|BW-SE",
+  sources: "0200002002000002220",
+  extra: [],
+};
 
 export { BW };

@@ -2,15 +2,26 @@
 // The 6 cities of Eritrea (ER), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const ER: readonly CityRow[] = [
-  [3642,15.3333,38.9167,963000,2020,"ER","ER-MA","Asmara","アスマラ","أسمرة","ar",1,"ER",0],
-  [534409,15.7833,38.45,146500,null,"ER","ER-AN","Keren","ケレン","كرن","ar",2,"ER-AN",0],
-  [738496,13.0103,42.7442,74405,2006,"ER","ER-DK","Assab","アッサブ","عصب","ar",2,"ER-DK",0],
-  [275635,15.6,39.4333,39758,2006,"ER","ER-SK","Massawa","マッサワ","مصوع","ar",2,"ER-SK",0],
-  [1019356,14.8833,38.8167,28492,2005,"ER","ER-DU","Mendefera","メンデフェラ","مندفرا","ar",2,"ER-DU",0],
-  [808100,15.1167,37.6,2500,"1984-05-09","ER","ER-GB","Barentu","バレンツ (エリトリア)","بارنتو","ar",2,"ER-GB",0],
-];
+const ER: CityColumns = {
+  id: "2t6,bgcp,ftts,5woj,lujg,hbj8",
+  lat: [153333,157833,130103,156000,148833,151167],
+  lon: [389167,384500,427442,394333,388167,376000],
+  population: [963000,146500,74405,39758,28492,2500],
+  date: "2020,,2006,2006,2005,1984-05-09",
+  country: "ERERERERERER",
+  subdivisions: "MA,AN,DK,SK,DU,GB",
+  subdivision: [0,1,2,3,4,5],
+  en: "Asmara|Keren|Assab|Massawa|Mendefera|Barentu",
+  ja: "アスマラ|ケレン|アッサブ|マッサワ|メンデフェラ|バレンツ (エリトリア)",
+  native: "أسمرة|كرن|عصب|مصوع|مندفرا|بارنتو",
+  languages: "ar",
+  language: [0,0,0,0,0,0],
+  capital: "122222",
+  capitalOf: "ER|ER-AN|ER-DK|ER-SK|ER-DU|ER-GB",
+  sources: "000000",
+  extra: [],
+};
 
 export { ER };

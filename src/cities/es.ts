@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/es: the 499 cities of Spain, every tier together, as a list.
 
 import { ES } from "../data/cities-by-country/es.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ES"
  * ```
  */
-const CITIES: readonly City[] = expandCities(ES);
+const CITIES: readonly City[] = expandCities(rowsOf(ES));
 
 export default CITIES;
 export { CITIES };

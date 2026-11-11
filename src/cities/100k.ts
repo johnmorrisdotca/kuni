@@ -1,7 +1,7 @@
 // The entry @johnmorrisdotca/kuni/cities/100k: the cities of 100,000 to a million people (capitals too). Written by scripts/build-data.ts. The core,
 // @johnmorrisdotca/kuni/cities, joins this tier with the others and answers the lookups.
 
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 import { CITY_100K_ROWS } from "../data/cities-100k.data";
 
@@ -22,7 +22,7 @@ let table: readonly City[] | null = null;
  * ```
  */
 const cities100k = (): readonly City[] => {
-  if (table === null) table = expandCities(CITY_100K_ROWS);
+  if (table === null) table = expandCities(rowsOf(CITY_100K_ROWS));
 
   return table;
 };

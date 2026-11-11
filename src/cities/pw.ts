@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pw: the 11 cities of Palau, every tier together, as a list.
 
 import { PW } from "../data/cities-by-country/pw.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PW);
+const CITIES: readonly City[] = expandCities(rowsOf(PW));
 
 export default CITIES;
 export { CITIES };

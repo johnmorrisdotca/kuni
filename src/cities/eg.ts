@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/eg: the 178 cities of Egypt, every tier together, as a list.
 
 import { EG } from "../data/cities-by-country/eg.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "EG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(EG);
+const CITIES: readonly City[] = expandCities(rowsOf(EG));
 
 export default CITIES;
 export { CITIES };

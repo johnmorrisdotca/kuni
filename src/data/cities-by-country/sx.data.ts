@@ -2,10 +2,26 @@
 // The 1 cities of Sint Maarten (SX), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SX: readonly CityRow[] = [
-  [30958,18.0242,-63.0433,1338,2006,"SX",null,"Philipsburg","フィリップスブルフ",null,null,1,"SX",0],
-];
+const SX: CityColumns = {
+  id: "nvy",
+  lat: [180242],
+  lon: [-630433],
+  population: [1338],
+  date: "2006",
+  country: "SX",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Philipsburg",
+  ja: "フィリップスブルフ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "SX",
+  sources: "0",
+  extra: [],
+};
 
 export { SX };

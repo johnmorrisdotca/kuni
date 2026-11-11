@@ -2,10 +2,26 @@
 // The 1 cities of Christmas Island (CX), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CX: readonly CityRow[] = [
-  [30980,-10.4217,105.6781,1355,"2021-08-10","CX",null,"Flying Fish Cove","フライング・フィッシュ・コーブ",null,null,1,"CX",0],
-];
+const CX: CityColumns = {
+  id: "nwk",
+  lat: [-104217],
+  lon: [1056781],
+  population: [1355],
+  date: "2021-08-10",
+  country: "CX",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Flying Fish Cove",
+  ja: "フライング・フィッシュ・コーブ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "CX",
+  sources: "0",
+  extra: [],
+};
 
 export { CX };

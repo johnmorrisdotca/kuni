@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/jm: the 18 cities of Jamaica, every tier together, as a list.
 
 import { JM } from "../data/cities-by-country/jm.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "JM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(JM);
+const CITIES: readonly City[] = expandCities(rowsOf(JM));
 
 export default CITIES;
 export { CITIES };

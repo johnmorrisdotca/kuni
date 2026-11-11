@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mr: the 17 cities of Mauritania, every tier together, as a list.
 
 import { MR } from "../data/cities-by-country/mr.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MR);
+const CITIES: readonly City[] = expandCities(rowsOf(MR));
 
 export default CITIES;
 export { CITIES };

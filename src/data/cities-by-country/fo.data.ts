@@ -2,10 +2,26 @@
 // The 1 cities of Faroe Islands (FO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const FO: readonly CityRow[] = [
-  [10704,62.0098,-6.7713,14038,2024,"FO",null,"Tórshavn","トースハウン","Thorshavn","da",1,"FO",0],
-];
+const FO: CityColumns = {
+  id: "89c",
+  lat: [620098],
+  lon: [-67713],
+  population: [14038],
+  date: "2024",
+  country: "FO",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Tórshavn",
+  ja: "トースハウン",
+  native: "Thorshavn",
+  languages: "da",
+  language: [0],
+  capital: "1",
+  capitalOf: "FO",
+  sources: "0",
+  extra: [],
+};
 
 export { FO };

@@ -2,14 +2,26 @@
 // The 5 cities of Micronesia (FM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const FM: readonly CityRow[] = [
-  [42751,6.9178,158.185,6227,null,"FM","FM-PNI","Palikir","パリキール",null,null,1,"FM",0],
-  [514165,6.9639,158.2081,6074,2010,"FM","FM-PNI","Kolonia","コロニア",null,null,2,"FM-PNI",0],
-  [787588,5.3258,163.0086,2591,2000,"FM","FM-KSA","Tofol","トフォール",null,null,2,"FM-KSA",0],
-  [631152,9.5167,138.1333,null,null,"FM","FM-YAP","Colonia","コロニア",null,null,2,"FM-YAP",0],
-  [1009384,7.44,151.8689,null,null,"FM","FM-TRK","Weno","ウェノ",null,null,2,"FM-TRK",0],
-];
+const FM: CityColumns = {
+  id: "wzj,b0qd,gvpg,dj00,lmug",
+  lat: [69178,69639,53258,95167,74400],
+  lon: [1581850,1582081,1630086,1381333,1518689],
+  population: [6227,6074,2591,-1,-1],
+  date: ",2010,2000,,",
+  country: "FMFMFMFMFM",
+  subdivisions: "PNI,KSA,YAP,TRK",
+  subdivision: [0,0,1,2,3],
+  en: "Palikir|Kolonia|Tofol|Colonia|Weno",
+  ja: "パリキール|コロニア|トフォール|コロニア|ウェノ",
+  native: "||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1],
+  capital: "12222",
+  capitalOf: "FM|FM-PNI|FM-KSA|FM-YAP|FM-TRK",
+  sources: "00000",
+  extra: [],
+};
 
 export { FM };

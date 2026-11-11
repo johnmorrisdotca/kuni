@@ -2,14 +2,26 @@
 // The 5 cities of Eswatini (SZ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SZ: readonly CityRow[] = [
-  [101418,-26.4465,31.2064,114585,2025,"SZ","SZ-HH","Lobamba","ロバンバ",null,null,1,"SZ",0],
-  [495730,-26.4833,31.3667,110508,2005,"SZ","SZ-MA","Manzini","マンジニ",null,null,2,"SZ-MA",0],
-  [3904,-26.3167,31.1333,76218,2025,"SZ","SZ-HH","Mbabane","ムババーネ","ÉMbábáne","ss",3,"SZ SZ-HH",0],
-  [2300140,-26.45,31.95,6381,null,"SZ","SZ-LU","Siteki","シテキ",null,null,2,"SZ-LU",0],
-  [2029702,-27.1167,31.2,null,null,"SZ","SZ-SH","Nhlangano","ンランガーノ",null,null,2,"SZ-SH",0],
-];
+const SZ: CityColumns = {
+  id: "2696,amia,30g,1dass,17i4m",
+  lat: [-264465,-264833,-263167,-264500,-271167],
+  lon: [312064,313667,311333,319500,312000],
+  population: [114585,110508,76218,6381,-1],
+  date: "2025,2005,2025,,",
+  country: "SZSZSZSZSZ",
+  subdivisions: "HH,MA,LU,SH",
+  subdivision: [0,1,0,2,3],
+  en: "Lobamba|Manzini|Mbabane|Siteki|Nhlangano",
+  ja: "ロバンバ|マンジニ|ムババーネ|シテキ|ンランガーノ",
+  native: "||ÉMbábáne||",
+  languages: "ss",
+  language: [-1,-1,0,-1,-1],
+  capital: "12322",
+  capitalOf: "SZ|SZ-MA|SZ SZ-HH|SZ-LU|SZ-SH",
+  sources: "00000",
+  extra: [],
+};
 
 export { SZ };

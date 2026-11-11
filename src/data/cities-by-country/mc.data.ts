@@ -2,10 +2,26 @@
 // The 1 cities of Monaco (MC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MC: readonly CityRow[] = [
-  [235,43.7311,7.42,38857,2025,"MC",null,"Monaco","モナコ",null,null,1,"MC",0],
-];
+const MC: CityColumns = {
+  id: "6j",
+  lat: [437311],
+  lon: [74200],
+  population: [38857],
+  date: "2025",
+  country: "MC",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Monaco",
+  ja: "モナコ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "MC",
+  sources: "0",
+  extra: [],
+};
 
 export { MC };

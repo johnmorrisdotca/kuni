@@ -15,7 +15,7 @@ description: 世界の都市を段階ごとに読み込み、IDで引き、国�
 | `loadCities("15k")` | 人口1万5千人以上の都市。各国のファイルから作られます（すべての国のファイルを取得します） |
 | `@johnmorrisdotca/kuni/cities/<code>` | 1つの国の都市を、すべての段階まとめて（`/cities/jp`） |
 | `@johnmorrisdotca/kuni/cities` | 検索用の関数：`citySet`、`loadCities`、`citiesOf`、`cityById` |
-| `@johnmorrisdotca/kuni/places` | 場所の選択用：`continents()`、`countriesOf(continent)`、`searchPlaces(text)` |
+| `@johnmorrisdotca/kuni/places` | 場所の選択用：`continents()`、`countriesOf(continent)`、`searchPlaces(text)`、`cityNamesOf(code)` |
 
 ## 段階を組み合わせて検索する
 
@@ -46,6 +46,8 @@ console.log(countriesOf("OC").length > 10, found[0].label);
 ## 場所を選ぶ画面で使うもの
 
 `continents()` は7つの大陸を英語名と日本語名つきで返し、`countriesOf("AS")` はある大陸の国を一覧にします。どちらも kuni の分類に基づきます。`searchPlaces(text, { lang, limit })` は、入力された文字から国と都市を探します。英語名、日本語名、現地語名が対象で、大文字小文字、アクセント、ひらがなとカタカナの違いは無視します。並び順は、名前全体の一致、名前の先頭、単語の先頭、名前の途中の順で、同順位なら人口の多い順です。標準では首都と人口10万人以上の都市を探します。`tiers` で段階を指定でき（`"15k"` はすべての国のファイルを取得します）、`country` を指定すると、その国の都市だけを、すべての段階から探します。`lang` は、各結果の `label` に使う言語です。kuni は何も描画しません。選択画面は、ページ側でこれらを使って作ります。
+
+入力に合わせて探す検索窓には `searchPlaces(text, { match: "start" })` を使います。名前の先頭か、名前の中の単語の先頭からだけ探すので（"york" で New York は見つかりますが、"ork" では見つかりません）、首都と10万人以上の段階のうち、そうした名前を含む部分だけを取得します。最初の検索で取得する量は中央値で約 54 kB（gzip 圧縮後）、最大で 122 kB で、3つの段階全体の 478 kB より小さくなります。部分はそれぞれ独立したエントリーで、`/cities/capitals-<key>` と `/cities/100k-<key>` です。キーは a〜z、`0`、かなの行（`kana-k`）、または漢字やほかの文字の16のグループのいずれかです。国ごとには、`cityNamesOf("US")` で軽い一覧を先に取得できます。各都市の `id`、`name`、`major`（首都と上位20都市）だけを持ち、国の完全なファイルの約半分の大きさです。選ばれた都市の残りは `cityById` で取得します。
 
 ## 都市が持つもの
 

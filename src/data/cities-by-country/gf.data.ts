@@ -2,10 +2,26 @@
 // The 1 cities of French Guiana (GF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GF: readonly CityRow[] = [
-  [44401,4.9386,-52.335,62675,2023,"GF",null,"Cayenne","カイエンヌ",null,null,1,"GF",0],
-];
+const GF: CityColumns = {
+  id: "y9d",
+  lat: [49386],
+  lon: [-523350],
+  population: [62675],
+  date: "2023",
+  country: "GF",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Cayenne",
+  ja: "カイエンヌ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "GF",
+  sources: "0",
+  extra: [],
+};
 
 export { GF };

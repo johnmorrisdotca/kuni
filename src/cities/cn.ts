@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cn: the 5,701 cities of China, every tier together, as a list.
 
 import { CN } from "../data/cities-by-country/cn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CN);
+const CITIES: readonly City[] = expandCities(rowsOf(CN));
 
 export default CITIES;
 export { CITIES };

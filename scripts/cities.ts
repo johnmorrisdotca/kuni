@@ -22,6 +22,8 @@
 
 import type { CityRow } from "../src/city-rows.ts";
 import { URBAN_FIGURE_ONLY } from "../src/rank.ts";
+import { fold } from "../src/fold.ts";
+import { START_KEYS, startKeys } from "../src/city-start.ts";
 import { METRO_LINKS } from "./metro-links.ts";
 
 type TierName = "capitals" | "1m" | "100k" | "15k";
@@ -758,6 +760,45 @@ const TIER_FILES: Record<TierName, { fn: string; constant: string; what: string;
 };
 
 // The files of one tier: the data (src/data/cities-<tier>.data.ts) and the entry (src/cities/<tier>.ts).
+// A list of rows as the columns src/city-rows.ts reads (CityColumns, rowsOf): the text of an object literal.
+const columnsText = (rows: readonly CityRow[]): string => {
+  const table = (values: readonly (string | null)[]): [string[], number[]] => {
+    const list = [...new Set(values.filter((value): value is string => value !== null))];
+    const at = new Map(list.map((value, index) => [value, index]));
+
+    return [list, values.map((value) => (value === null ? -1 : at.get(value)!))];
+  };
+  const joined = (values: readonly (string | null)[], separator: string): string => {
+    for (const value of values) if (value !== null && value.includes(separator)) throw new Error(`A city's field holds "${separator}": ${value}`);
+
+    return values.map((value) => value ?? "").join(separator);
+  };
+  const [subdivisions, subdivision] = table(rows.map((row) => (row[6] === null ? null : row[6].slice(row[5].length + 1))));
+  const [languages, language] = table(rows.map((row) => row[10]));
+  const extra = rows.flatMap((row, at) => (row.length > 14 ? [[at, ...row.slice(14)]] : []));
+  const fields: [string, unknown][] = [
+    ["id", joined(rows.map((row) => (typeof row[0] === "number" ? row[0].toString(36) : `~${Number(row[0].slice(3)).toString(36)}`)), ",")],
+    ["lat", rows.map((row) => Math.round(row[1] * 1e4))],
+    ["lon", rows.map((row) => Math.round(row[2] * 1e4))],
+    ["population", rows.map((row) => row[3] ?? -1)],
+    ["date", joined(rows.map((row) => (row[4] === null ? null : String(row[4]))), ",")],
+    ["country", rows.map((row) => row[5]).join("")],
+    ["subdivisions", joined(subdivisions, ",")],
+    ["subdivision", subdivision],
+    ["en", joined(rows.map((row) => row[7]), "|")],
+    ["ja", joined(rows.map((row) => row[8]), "|")],
+    ["native", joined(rows.map((row) => row[9]), "|")],
+    ["languages", joined(languages, ",")],
+    ["language", language],
+    ["capital", rows.map((row) => row[11]).join("")],
+    ["capitalOf", joined(rows.map((row) => row[12]), "|")],
+    ["sources", rows.map((row) => row[13].toString(16)).join("")],
+    ["extra", extra],
+  ];
+
+  return `{\n${fields.map(([name, value]) => `  ${name}: ${JSON.stringify(value)},`).join("\n")}\n}`;
+};
+
 const cityFiles = (tier: TierName, rows: CityRow[], read: string, neRelease: string): { data: string; entry: string } => {
   const { fn, constant, what } = TIER_FILES[tier];
   const first = rows[0]!;
@@ -766,11 +807,9 @@ const cityFiles = (tier: TierName, rows: CityRow[], read: string, neRelease: str
 // Source: Wikidata (CC0), the snapshot data-sources/wikidata-cities-${read}.json
 // Source: Natural Earth ${neRelease} 10m Populated Places (public domain), data-sources/natural-earth-populated-places-${neRelease}.json: what Wikidata lacks, and the capital class
 
-import type { CityRow } from "../city-rows";
+import type { CityColumns } from "../city-rows";
 
-const ${constant}: readonly CityRow[] = [
-${rows.map((row) => `  ${JSON.stringify(row)},`).join("\n")}
-];
+const ${constant}: CityColumns = ${columnsText(rows)};
 
 export { ${constant} };
 `;
@@ -778,7 +817,7 @@ export { ${constant} };
   const entry = `// The entry @johnmorrisdotca/kuni/cities/${tier}: ${what}. Written by scripts/build-data.ts. The core,
 // @johnmorrisdotca/kuni/cities, joins this tier with the others and answers the lookups.
 
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 import { ${constant} } from "../data/cities-${tier}.data";
 
@@ -799,7 +838,7 @@ let table: readonly City[] | null = null;
  * \`\`\`
  */
 const ${fn} = (): readonly City[] => {
-  if (table === null) table = expandCities(${constant});
+  if (table === null) table = expandCities(rowsOf(${constant}));
 
   return table;
 };
@@ -831,11 +870,9 @@ const countryCityFiles = (alpha2: string, rows: CityRow[], englishName: string):
 // The ${rows.length.toLocaleString("en-US")} cities of ${englishName} (${alpha2}), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const ${alpha2}: readonly CityRow[] = [
-${rows.map((row) => `  ${JSON.stringify(row)},`).join("\n")}
-];
+const ${alpha2}: CityColumns = ${columnsText(rows)};
 
 export { ${alpha2} };
 `;
@@ -843,7 +880,7 @@ export { ${alpha2} };
 // The entry @johnmorrisdotca/kuni/cities/${code}: the ${rows.length.toLocaleString("en-US")} cities of ${englishName}, every tier together, as a list.
 
 import { ${alpha2} } from "../data/cities-by-country/${code}.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -858,7 +895,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // ${JSON.stringify(alpha2)}
  * \`\`\`
  */
-const CITIES: readonly City[] = expandCities(${alpha2});
+const CITIES: readonly City[] = expandCities(rowsOf(${alpha2}));
 
 export default CITIES;
 export { CITIES };
@@ -866,6 +903,77 @@ export { CITIES };
 
   return { data, entry };
 };
+
+// The parts of a tier, one for each first letter of a word of a name (src/city-start.ts): a city is in the part of each
+// word of its English, Japanese and native names, so a search from the start of a word fetches one part.
+const SPLIT_TIERS = ["capitals", "100k"] as const;
+const startParts = (tier: (typeof SPLIT_TIERS)[number], rows: readonly CityRow[]): { key: string; entry: string }[] => {
+  const parts = new Map<string, CityRow[]>(START_KEYS.map((key) => [key, []]));
+  for (const row of rows) for (const key of startKeys([row[7], row[8], row[9]].flatMap((name) => (name === null ? [] : [fold(name)])))) parts.get(key)!.push(row);
+
+  return [...parts].map(([key, list]) => ({
+    key,
+    entry: `// Generated by scripts/build-data.ts. Do not edit by hand.
+// The entry @johnmorrisdotca/kuni/cities/${tier}-${key}: the ${list.length.toLocaleString("en-US")} cities of the tier ${tier} with a word of a name starting in the part ${key} (src/city-start.ts), the most populous first.
+
+import { expandCities, rowsOf } from "../city-rows";
+import type { City, CityColumns } from "../city-rows";
+
+const COLUMNS: CityColumns = ${columnsText(list)};
+
+/** The cities of the tier ${tier} with a word of their English, Japanese or native name starting in the part ${key}. Also the default export. */
+const CITIES: readonly City[] = expandCities(rowsOf(COLUMNS));
+
+export default CITIES;
+export { CITIES };
+`,
+  }));
+};
+
+// A country's light list for a picker: each city's id and names, and whether it is one of the country's major cities
+// (its national capital, or one of its first twenty, which head an urban area before any city inside another's).
+const MAJOR_CITIES = 20;
+const countryNames = (alpha2: string, rows: readonly CityRow[], englishName: string): string => {
+  const major = rows.map((row, at) => (at < MAJOR_CITIES || row[11] === 1 ? "1" : "0")).join("");
+  const columns = columnsText(rows);
+  const keep = /^ {2}(id|en|ja|native): .*$/gm;
+  const code = alpha2.toLowerCase();
+
+  return `// Generated by scripts/build-data.ts. Do not edit by hand.
+// The entry @johnmorrisdotca/kuni/cities/names-${code}: the ${rows.length.toLocaleString("en-US")} cities of ${englishName}, their ids and names only, the most populous first.
+
+import { namesOf } from "../city-rows";
+import type { CityName } from "../city-rows";
+
+/** The cities of ${englishName}, ids and names only, in the order of /cities/${code}; \`major\` for its capital and its first ${MAJOR_CITIES}. Also the default export. */
+const CITY_NAMES: readonly CityName[] = namesOf({
+${(columns.match(keep) ?? []).join("\n")}
+  major: ${JSON.stringify(major)},
+});
+
+export default CITY_NAMES;
+export { CITY_NAMES };
+`;
+};
+
+// The loaders of the parts and of the light lists, for /places.
+const startLoaders = (codes: string[]): string => `// Generated by scripts/build-data.ts. Do not edit by hand: change the script or its inputs and run pnpm data.
+// One dynamic import for each part of the tiers split by first letters, and for each country's light list.
+
+import type { City, CityName } from "../city-rows";
+
+type Loader = () => Promise<{ CITIES: readonly City[] }>;
+
+const CITY_START_LOADERS: Readonly<Record<"capitals" | "100k", Readonly<Record<string, Loader>>>> = {
+${SPLIT_TIERS.map((tier) => `  ${JSON.stringify(tier)}: {\n${START_KEYS.map((key) => `    ${JSON.stringify(key)}: () => import("../cities/${tier}-${key}.js"),`).join("\n")}\n  },`).join("\n")}
+};
+
+const CITY_NAME_LOADERS: Readonly<Record<string, () => Promise<{ CITY_NAMES: readonly CityName[] }>>> = {
+${codes.map((code) => `  ${code}: () => import("../cities/names-${code}.js"),`).join("\n")}
+};
+
+export { CITY_NAME_LOADERS, CITY_START_LOADERS };
+`;
 
 // The loaders: one dynamic import for each country that has cities, so a bundler makes a chunk of each.
 const cityLoaders = (codes: string[]): string => `// Generated by scripts/build-data.ts. Do not edit by hand: change the script or its inputs and run pnpm data.
@@ -1000,5 +1108,5 @@ export { CITY_ALIASES };
 `;
 };
 
-export { buildCities, byRank, cityAliases, cityIndex, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
+export { buildCities, byRank, columnsText, countryNames, SPLIT_TIERS, startLoaders, startParts, cityAliases, cityIndex, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
 export type { MetrosSnapshot, StatcanSnapshot, CitiesSnapshot, NaturalEarthFile, Report, TierName, UrbanSnapshot };

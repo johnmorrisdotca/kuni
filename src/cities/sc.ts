@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sc: the 1 cities of Seychelles, every tier together, as a list.
 
 import { SC } from "../data/cities-by-country/sc.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SC);
+const CITIES: readonly City[] = expandCities(rowsOf(SC));
 
 export default CITIES;
 export { CITIES };

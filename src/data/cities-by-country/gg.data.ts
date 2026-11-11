@@ -2,10 +2,26 @@
 // The 1 cities of Guernsey (GG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GG: readonly CityRow[] = [
-  [174262,49.46,-2.5519,null,null,"GG",null,"Saint Peter Port","セント・ピーター・ポート","Saint-Pierre-Port","fr",1,"GG",0],
-];
+const GG: CityColumns = {
+  id: "3qgm",
+  lat: [494600],
+  lon: [-25519],
+  population: [-1],
+  date: "",
+  country: "GG",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Saint Peter Port",
+  ja: "セント・ピーター・ポート",
+  native: "Saint-Pierre-Port",
+  languages: "fr",
+  language: [0],
+  capital: "1",
+  capitalOf: "GG",
+  sources: "0",
+  extra: [],
+};
 
 export { GG };

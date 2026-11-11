@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ug: the 127 cities of Uganda, every tier together, as a list.
 
 import { UG } from "../data/cities-by-country/ug.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "UG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(UG);
+const CITIES: readonly City[] = expandCities(rowsOf(UG));
 
 export default CITIES;
 export { CITIES };

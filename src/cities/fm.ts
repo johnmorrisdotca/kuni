@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/fm: the 5 cities of Micronesia, every tier together, as a list.
 
 import { FM } from "../data/cities-by-country/fm.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "FM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(FM);
+const CITIES: readonly City[] = expandCities(rowsOf(FM));
 
 export default CITIES;
 export { CITIES };

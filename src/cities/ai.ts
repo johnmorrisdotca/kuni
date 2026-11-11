@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ai: the 1 cities of Anguilla, every tier together, as a list.
 
 import { AI } from "../data/cities-by-country/ai.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AI);
+const CITIES: readonly City[] = expandCities(rowsOf(AI));
 
 export default CITIES;
 export { CITIES };

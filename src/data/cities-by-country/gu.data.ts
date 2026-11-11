@@ -2,10 +2,26 @@
 // The 1 cities of Guam (GU), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GU: readonly CityRow[] = [
-  [30988,13.4833,144.75,943,2020,"GU",null,"Hagåtña","ハガニア",null,null,1,"GU",0],
-];
+const GU: CityColumns = {
+  id: "nws",
+  lat: [134833],
+  lon: [1447500],
+  population: [943],
+  date: "2020",
+  country: "GU",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Hagåtña",
+  ja: "ハガニア",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "GU",
+  sources: "0",
+  extra: [],
+};
 
 export { GU };

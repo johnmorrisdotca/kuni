@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sl: the 7 cities of Sierra Leone, every tier together, as a list.
 
 import { SL } from "../data/cities-by-country/sl.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SL);
+const CITIES: readonly City[] = expandCities(rowsOf(SL));
 
 export default CITIES;
 export { CITIES };

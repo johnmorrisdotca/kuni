@@ -2,10 +2,26 @@
 // The 1 cities of Åland Islands (AX), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const AX: readonly CityRow[] = [
-  [48329,60.0986,19.9444,11957,"2025-12-31","AX",null,"Mariehamn","マリエハムン","Maarianhamina","fi",1,"AX",0],
-];
+const AX: CityColumns = {
+  id: "11ah",
+  lat: [600986],
+  lon: [199444],
+  population: [11957],
+  date: "2025-12-31",
+  country: "AX",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Mariehamn",
+  ja: "マリエハムン",
+  native: "Maarianhamina",
+  languages: "fi",
+  language: [0],
+  capital: "1",
+  capitalOf: "AX",
+  sources: "0",
+  extra: [],
+};
 
 export { AX };

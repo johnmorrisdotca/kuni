@@ -2,30 +2,26 @@
 // The 21 cities of Maldives (MV), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MV: readonly CityRow[] = [
-  [9347,4.175,73.5083,133019,2014,"MV","MV-26","Malé","マレ","މާލެ","dv",1,"MV",0],
-  [3185775,6.6226,73.07,6998,2006,"MV","MV-23","Kulhudhuffushi",null,"ކުޅުދުއްފުށި","dv",2,"MV-23",0],
-  [2295035,5.4444,73.3657,5082,2013,"MV","MV-03","Naifaru",null,"ނައިފަރު","dv",2,"MV-03",0],
-  [2339256,2.6667,72.9,3580,2014,"MV","MV-17","Kudahuvadhoo",null,"ކުޑަހުވަދޫ","dv",2,"MV-17",0],
-  [3025720,6.89,73.1123,2424,null,"MV","MV-07","Dhiddhoo",null,"ދިއްދޫ (ހއ. އަތޮޅު)","dv",2,"MV-07",0],
-  [2461849,5.1167,73.0333,2409,2006,"MV","MV-20","Eydhafushi",null,"އޭދަފުށި","dv",2,"MV-20",0],
-  [779848,4.3728,73.6489,null,null,"MV","MV-26","Thulusdhoo",null,"ތުލުސްދޫ","dv",2,"MV-26",0],
-  [1854744,3.0778,72.9653,null,null,"MV","MV-14","Magoodhoo",null,"މަގޫދޫ","dv",2,"MV-14",0],
-  [2023266,-0.6028,73.0889,null,null,"MV","MV-01","Hithadhoo",null,"ހިތަދޫ","dv",2,"MV-01",0],
-  [2045427,0.7569,73.4361,null,null,"MV","MV-27","Villingili",null,"ވިލިނގިލި","dv",2,"MV-27",0],
-  [2053471,4.2628,72.9914,null,null,"MV","MV-02","Rasdhoo",null,null,null,2,"MV-02",0],
-  [2060910,-0.2932,73.4236,null,null,"MV","MV-29","Fuvahmulah","フヴァンムラ環礁","ފުވައްމުލައް","dv",2,"MV-29",0],
-  [2147686,0.5308,72.9964,null,null,"MV","MV-28","Thinadhoo",null,"ތިނަދޫ","dv",2,"MV-28",0],
-  [2236156,2.9219,73.5814,null,null,"MV","MV-12","Muli","ムリ (モルディブ)",null,null,2,"MV-12",0],
-  [2390425,2.1833,73.1167,null,null,"MV","MV-08","Veymandoo",null,"ވޭމަންޑޫ","dv",2,"MV-08",0],
-  [2599649,5.7628,73.4106,null,null,"MV","MV-25","Manadhoo","マナドゥー","މަނަދޫ","dv",2,"MV-25",0],
-  [2613356,5.6681,73.0217,null,null,"MV","MV-13","Ungoofaaru",null,"އުނގޫފާރު","dv",2,"MV-13",0],
-  [3284371,3.7542,72.9764,null,null,"MV","MV-00","Mahibadhoo","マヒバドホー","މަހިބަދޫ","dv",2,"MV-00",0],
-  [3304717,1.8333,73.5,null,null,"MV","MV-05","Fonadhoo",null,"ފޮނަދޫ","dv",2,"MV-05",0],
-  [4043243,3.4718,73.547,null,null,"MV","MV-04","Felidhoo","フェリドゥー","ފެލިދޫ","dv",2,"MV-04",0],
-  [4175766,6.1333,73.2833,null,null,"MV","MV-24","Funadhoo",null,"ފުނަދޫ(ށ. އަތޮޅު)","dv",2,"MV-24",0],
-];
+const MV: CityColumns = {
+  id: "77n,1wa5r,1d6uz,1e4zc,1suns,1grkp,gpqg,13r4o,17d5u,17u9f,180gv,1867i,1a15y,1bxfg,1f8gp,1jpwh,1k0h8,1ye8j,1ytxp,2ensb,2hi1i",
+  lat: [41750,66226,54444,26667,68900,51167,43728,30778,-6028,7569,42628,-2932,5308,29219,21833,57628,56681,37542,18333,34718,61333],
+  lon: [735083,730700,733657,729000,731123,730333,736489,729653,730889,734361,729914,734236,729964,735814,731167,734106,730217,729764,735000,735470,732833],
+  population: [133019,6998,5082,3580,2424,2409,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  date: "2014,2006,2013,2014,,2006,,,,,,,,,,,,,,,",
+  country: "MVMVMVMVMVMVMVMVMVMVMVMVMVMVMVMVMVMVMVMVMV",
+  subdivisions: "26,23,03,17,07,20,14,01,27,02,29,28,12,08,25,13,00,05,04,24",
+  subdivision: [0,1,2,3,4,5,0,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+  en: "Malé|Kulhudhuffushi|Naifaru|Kudahuvadhoo|Dhiddhoo|Eydhafushi|Thulusdhoo|Magoodhoo|Hithadhoo|Villingili|Rasdhoo|Fuvahmulah|Thinadhoo|Muli|Veymandoo|Manadhoo|Ungoofaaru|Mahibadhoo|Fonadhoo|Felidhoo|Funadhoo",
+  ja: "マレ|||||||||||フヴァンムラ環礁||ムリ (モルディブ)||マナドゥー||マヒバドホー||フェリドゥー|",
+  native: "މާލެ|ކުޅުދުއްފުށި|ނައިފަރު|ކުޑަހުވަދޫ|ދިއްދޫ (ހއ. އަތޮޅު)|އޭދަފުށި|ތުލުސްދޫ|މަގޫދޫ|ހިތަދޫ|ވިލިނގިލި||ފުވައްމުލައް|ތިނަދޫ||ވޭމަންޑޫ|މަނަދޫ|އުނގޫފާރު|މަހިބަދޫ|ފޮނަދޫ|ފެލިދޫ|ފުނަދޫ(ށ. އަތޮޅު)",
+  languages: "dv",
+  language: [0,0,0,0,0,0,0,0,0,0,-1,0,0,-1,0,0,0,0,0,0,0],
+  capital: "122222222222222222222",
+  capitalOf: "MV|MV-23|MV-03|MV-17|MV-07|MV-20|MV-26|MV-14|MV-01|MV-27|MV-02|MV-29|MV-28|MV-12|MV-08|MV-25|MV-13|MV-00|MV-05|MV-04|MV-24",
+  sources: "000000000000000000000",
+  extra: [],
+};
 
 export { MV };

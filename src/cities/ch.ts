@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ch: the 99 cities of Switzerland, every tier together, as a list.
 
 import { CH } from "../data/cities-by-country/ch.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(CH);
+const CITIES: readonly City[] = expandCities(rowsOf(CH));
 
 export default CITIES;
 export { CITIES };

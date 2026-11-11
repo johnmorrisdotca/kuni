@@ -2,10 +2,26 @@
 // The 1 cities of Bermuda (BM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BM: readonly CityRow[] = [
-  [30985,32.295,-64.7831,3686,2010,"BM",null,"Hamilton","ハミルトン",null,null,1,"BM",0],
-];
+const BM: CityColumns = {
+  id: "nwp",
+  lat: [322950],
+  lon: [-647831],
+  population: [3686],
+  date: "2010",
+  country: "BM",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Hamilton",
+  ja: "ハミルトン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "BM",
+  sources: "0",
+  extra: [],
+};
 
 export { BM };

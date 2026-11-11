@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ng: the 144 cities of Nigeria, every tier together, as a list.
 
 import { NG } from "../data/cities-by-country/ng.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(NG);
+const CITIES: readonly City[] = expandCities(rowsOf(NG));
 
 export default CITIES;
 export { CITIES };

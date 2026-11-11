@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gd: the 6 cities of Grenada, every tier together, as a list.
 
 import { GD } from "../data/cities-by-country/gd.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(GD);
+const CITIES: readonly City[] = expandCities(rowsOf(GD));
 
 export default CITIES;
 export { CITIES };

@@ -2,10 +2,26 @@
 // The 1 cities of Pitcairn Islands (PN), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const PN: readonly CityRow[] = [
-  [48273,-25.0667,-130.1,50,2019,"PN",null,"Adamstown","アダムスタウン",null,null,1,"PN",0],
-];
+const PN: CityColumns = {
+  id: "118x",
+  lat: [-250667],
+  lon: [-1301000],
+  population: [50],
+  date: "2019",
+  country: "PN",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Adamstown",
+  ja: "アダムスタウン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "PN",
+  sources: "0",
+  extra: [],
+};
 
 export { PN };

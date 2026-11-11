@@ -2,26 +2,26 @@
 // The 17 cities of Lebanon (LB), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const LB: readonly CityRow[] = [
-  [3820,33.8869,35.5131,2421354,2023,"LB","LB-BA","Beirut","ベイルート","بيروت","ar",1,"LB",0],
-  [168954,34.4367,35.8344,227857,null,"LB","LB-AS","Tripoli","トリポリ","طرابلس","ar",2,"LB-AS",0],
-  [163490,33.5606,35.3758,163554,2022,"LB","LB-JA","Sidon","サイダ","صيدا","ar",2,"LB-JA",0],
-  [82070,33.2667,35.2,160000,2018,"LB","LB-JA","Tyre","ティルス","صور","ar",0,null,0],
-  [895235,33.8936,35.5403,150000,null,"LB","LB-JL","Bourj Hammoud","ブルジュ・ハムード","برج حمود","ar",0,null,0],
-  [26134,33.3772,35.4836,120000,null,"LB","LB-NA","Nabatieh","ナバティーエ","النبطية","ar",2,"LB-NA",0],
-  [26155,33.9697,35.6156,102221,2012,"LB",null,"Jounieh","ジュニーエ","جونيه","ar",0,null,0],
-  [26569,33.8439,35.9072,100000,2006,"LB","LB-BI","Zahlé","ザーレ","زحلة","ar",2,"LB-BI",0],
-  [178835,34.0061,36.2086,81052,2008,"LB","LB-BH","Baalbek","バールベック","بعلبك","ar",0,null,0],
-  [12232099,33.7986,35.825,50000,2011,"LB","LB-BI","Kabelias",null,"قب الياس","ar",0,null,0],
-  [3285145,34.2548,35.659,38000,null,"LB",null,"Batroun","バトルーン","البترون","ar",0,null,0],
-  [145355,33.1258,35.4428,30000,null,"LB","LB-NA","Bint Jbeil",null,"بنت جبيل","ar",0,null,0],
-  [25910,33.54,35.5836,25000,2004,"LB","LB-JA","Jezzine",null,"جزين","ar",0,null,0],
-  [2877638,33.6799,35.5582,17000,null,"LB","LB-JL","Baakleen","バクライン","بعقلين","ar",0,null,0],
-  [7294639,34.2597,36.4236,15000,null,"LB","LB-BH","Ras Baalbek",null,"راس بعلبك","ar",0,null,0],
-  [26454,33.8342,35.5436,9000,null,"LB","LB-JL","Baabda","バアブダー","بعبدا","ar",2,"LB-JL",2],
-  [1852400,34.5428,36.0797,null,null,"LB","LB-AK","Halba","ハルバ","حلبا","ar",2,"LB-AK",0],
-];
+const LB: CityColumns = {
+  id: "2y4,3md6,3i5e,1rbq,j6rn,k5y,k6j,ki1,3tzn,7a6cj,1yeu1,345n,jzq,1poee,4cckv,keu,13pbk",
+  lat: [338869,344367,335606,332667,338936,333772,339697,338439,340061,337986,342548,331258,335400,336799,342597,338342,345428],
+  lon: [355131,358344,353758,352000,355403,354836,356156,359072,362086,358250,356590,354428,355836,355582,364236,355436,360797],
+  population: [2421354,227857,163554,160000,150000,120000,102221,100000,81052,50000,38000,30000,25000,17000,15000,9000,-1],
+  date: "2023,,2022,2018,,,2012,2006,2008,2011,,,2004,,,,",
+  country: "LBLBLBLBLBLBLBLBLBLBLBLBLBLBLBLBLB",
+  subdivisions: "BA,AS,JA,JL,NA,BI,BH,AK",
+  subdivision: [0,1,2,2,3,4,-1,5,6,5,-1,4,2,3,6,3,7],
+  en: "Beirut|Tripoli|Sidon|Tyre|Bourj Hammoud|Nabatieh|Jounieh|Zahlé|Baalbek|Kabelias|Batroun|Bint Jbeil|Jezzine|Baakleen|Ras Baalbek|Baabda|Halba",
+  ja: "ベイルート|トリポリ|サイダ|ティルス|ブルジュ・ハムード|ナバティーエ|ジュニーエ|ザーレ|バールベック||バトルーン|||バクライン||バアブダー|ハルバ",
+  native: "بيروت|طرابلس|صيدا|صور|برج حمود|النبطية|جونيه|زحلة|بعلبك|قب الياس|البترون|بنت جبيل|جزين|بعقلين|راس بعلبك|بعبدا|حلبا",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  capital: "12200202000000022",
+  capitalOf: "LB|LB-AS|LB-JA|||LB-NA||LB-BI||||||||LB-JL|LB-AK",
+  sources: "00000000000000020",
+  extra: [],
+};
 
 export { LB };

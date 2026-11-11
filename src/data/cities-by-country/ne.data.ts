@@ -2,40 +2,26 @@
 // The 31 cities of Niger (NE), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NE: readonly CityRow[] = [
-  [3674,13.515,2.1175,1496260,2024,"NE","NE-8","Niamey","ニアメ",null,null,1,"NE",0],
-  [664550,13.501,7.1036,267249,2012,"NE","NE-4","Maradi","マラディ",null,null,2,"NE-4",0],
-  [204365,13.8017,8.9854,235605,2012,"NE","NE-7","Zinder","ザンデール",null,null,2,"NE-7",0],
-  [1003546,14.4605,5.2437,142214,2012,"NE","NE-5","Illéla","イェラ","Illéla (gari)","ha",0,null,0],
-  [1883198,14.073,5.96,127254,2012,"NE","NE-5","Madaoua","マダウワ",null,null,0,null,0],
-  [877122,14.8903,5.2642,117826,2012,"NE","NE-5","Tahoua","タウア",null,null,2,"NE-5",0],
-  [320049,16.9733,7.9911,110497,2012,"NE","NE-1","Agadez","アガデス",null,null,2,"NE-1",0],
-  [568628,13.6608,6.6958,95791,2012,"NE","NE-4","Guidan Roumdji",null,"Guidan-Roumdji (gari)","ha",0,null,0],
-  [985961,13.6131,3.2356,82400,2012,"NE","NE-3","Loga",null,"Loga (gari)","ha",0,null,0],
-  [976600,15.8989,5.8033,79889,2012,"NE","NE-5","Tchintabaraden","チン・タバラディーヌ","Tchintabaraden (gari)","ha",0,null,0],
-  [675806,18.7333,7.3833,78651,2012,"NE","NE-1","Arlit","アーリット",null,null,0,null,0],
-  [986061,13.9835,10.2704,73732,2012,"NE","NE-7","Gouré","グレー","Gure","ha",0,null,0],
-  [984304,13.3087,7.156,71832,2012,"NE","NE-4","Madarounfa",null,"Madarounfa (gari)","ha",0,null,0],
-  [657290,13.65,4.0333,71692,2012,"NE","NE-3","Dogondoutchi","ドゴンドゥチ",null,null,0,null,0],
-  [891781,14.0106,0.7531,71648,2012,"NE","NE-6","Téra","テラ","Tera (gari)","ha",0,null,0],
-  [252598,12.2597,3.5781,68404,2012,"NE","NE-3","Yélou",null,"Yelou","ha",0,null,0],
-  [865804,13.7947,5.2528,63169,2012,"NE","NE-5","Birni-N'Konni","ビルニ・ンコニ","Birnin-Konni","ha",0,null,0],
-  [985620,13.0505,3.2081,58671,2012,"NE","NE-3","Dosso","ドッソ",null,null,2,"NE-3",0],
-  [990527,13.3167,12.6167,56437,2012,"NE","NE-2","Diffa","ディファ",null,null,2,"NE-2",0],
-  [1227096,12.6169,3.5439,54157,2012,"NE","NE-3","Dioundiou",null,"Dioudiou","ha",0,null,0],
-  [1011866,14.2117,1.4531,51439,2011,"NE","NE-6","Tillabéri","ティラベリ",null,null,2,"NE-6",0],
-  [1785679,12.4,3.05,50820,2012,"NE","NE-3","Sambéra",null,"Sambera","ha",0,null,0],
-  [646915,14.2495,13.1092,47198,2012,"NE","NE-2","N'Guigmi","ンギグミ","N'guigmi","ha",0,null,0],
-  [766896,11.8878,3.4467,45465,2012,"NE","NE-3","Gaya","ガヤ",null,null,0,null,0],
-  [1743660,12.8111,2.4851,39693,2012,"NE","NE-6","Kirtachi",null,null,null,0,null,0],
-  [793407,14.7346,0.9201,33527,2012,"NE","NE-6","Ayérou","アヨル","Ayourou","ha",0,null,1],
-  [1393649,13.5129,3.1525,19077,2012,"NE","NE-3","Fakara",null,null,null,0,null,0],
-  [817195,11.9889,3.5939,18469,2012,"NE","NE-3","Bengou",null,null,null,0,null,0],
-  [806047,12.0517,3.5522,18128,2012,"NE","NE-3","Bana",null,null,null,0,null,0],
-  [3779123,13.6575,6.6958,17525,2012,"NE","NE-4","Guidan Roumdji",null,"Guidan Roilumdji","ha",0,null,0],
-  [14202231,13.7838,2.9523,16063,2012,"NE","NE-6","Balleyara",null,"Balléyara","ha",0,null,0],
-];
+const NE: CityColumns = {
+  id: "2u2,e8rq,4dot,lica,14d32,issi,6uy9,c6r8,l4rt,kxjs,ehge,l4ul,l3hs,e362,j43p,5ewm,ik24,l4ic,l8an,qau0,lore,129u7,dv5v,gfqo,11df0,h073,tvch,hijv,h9y7,28zzn,8geif",
+  lat: [135150,135010,138017,144605,140730,148903,169733,136608,136131,158989,187333,139835,133087,136500,140106,122597,137947,130505,133167,126169,142117,124000,142495,118878,128111,147346,135129,119889,120517,136575,137838],
+  lon: [21175,71036,89854,52437,59600,52642,79911,66958,32356,58033,73833,102704,71560,40333,7531,35781,52528,32081,126167,35439,14531,30500,131092,34467,24851,9201,31525,35939,35522,66958,29523],
+  population: [1496260,267249,235605,142214,127254,117826,110497,95791,82400,79889,78651,73732,71832,71692,71648,68404,63169,58671,56437,54157,51439,50820,47198,45465,39693,33527,19077,18469,18128,17525,16063],
+  date: "2024,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2011,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012",
+  country: "NENENENENENENENENENENENENENENENENENENENENENENENENENENENENENENE",
+  subdivisions: "8,4,7,5,1,3,6,2",
+  subdivision: [0,1,2,3,3,3,4,1,5,3,4,2,1,5,6,5,3,5,7,5,6,5,7,5,6,6,5,5,5,1,6],
+  en: "Niamey|Maradi|Zinder|Illéla|Madaoua|Tahoua|Agadez|Guidan Roumdji|Loga|Tchintabaraden|Arlit|Gouré|Madarounfa|Dogondoutchi|Téra|Yélou|Birni-N'Konni|Dosso|Diffa|Dioundiou|Tillabéri|Sambéra|N'Guigmi|Gaya|Kirtachi|Ayérou|Fakara|Bengou|Bana|Guidan Roumdji|Balleyara",
+  ja: "ニアメ|マラディ|ザンデール|イェラ|マダウワ|タウア|アガデス|||チン・タバラディーヌ|アーリット|グレー||ドゴンドゥチ|テラ||ビルニ・ンコニ|ドッソ|ディファ||ティラベリ||ンギグミ|ガヤ||アヨル|||||",
+  native: "|||Illéla (gari)||||Guidan-Roumdji (gari)|Loga (gari)|Tchintabaraden (gari)||Gure|Madarounfa (gari)||Tera (gari)|Yelou|Birnin-Konni|||Dioudiou||Sambera|N'guigmi|||Ayourou||||Guidan Roilumdji|Balléyara",
+  languages: "ha",
+  language: [-1,-1,-1,0,-1,-1,-1,0,0,0,-1,0,0,-1,0,0,0,-1,-1,0,-1,0,0,-1,-1,0,-1,-1,-1,0,0],
+  capital: "1220022000000000022020000000000",
+  capitalOf: "NE|NE-4|NE-7|||NE-5|NE-1|||||||||||NE-3|NE-2||NE-6||||||||||",
+  sources: "0000000000000000000000000100000",
+  extra: [],
+};
 
 export { NE };

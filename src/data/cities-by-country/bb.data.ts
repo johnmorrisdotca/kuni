@@ -2,10 +2,26 @@
 // The 1 cities of Barbados (BB), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BB: readonly CityRow[] = [
-  [36168,13.0975,-59.6167,98511,2025,"BB","BB-08","Bridgetown","ブリッジタウン",null,null,1,"BB",0],
-];
+const BB: CityColumns = {
+  id: "rwo",
+  lat: [130975],
+  lon: [-596167],
+  population: [98511],
+  date: "2025",
+  country: "BB",
+  subdivisions: "08",
+  subdivision: [0],
+  en: "Bridgetown",
+  ja: "ブリッジタウン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "BB",
+  sources: "0",
+  extra: [],
+};
 
 export { BB };

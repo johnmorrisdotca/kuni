@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ma: the 380 cities of Morocco, every tier together, as a list.
 
 import { MA } from "../data/cities-by-country/ma.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MA);
+const CITIES: readonly City[] = expandCities(rowsOf(MA));
 
 export default CITIES;
 export { CITIES };

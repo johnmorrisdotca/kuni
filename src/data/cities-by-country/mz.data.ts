@@ -2,39 +2,26 @@
 // The 30 cities of Mozambique (MZ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MZ: readonly CityRow[] = [
-  [3889,-25.9689,32.5733,1133200,"2023-07-01","MZ","MZ-MPM","Maputo","マプト",null,null,1,"MZ",0],
-  [109949,-25.9667,32.4667,1032197,2017,"MZ","MZ-L","Matola","マトラ",null,null,2,"MZ-L",0],
-  [323801,-15.1167,39.2667,743000,2017,"MZ","MZ-N","Nampula","ナンプラ",null,null,2,"MZ-N",0],
-  [211563,-19.8333,34.85,530604,2019,"MZ","MZ-S","Beira","ベイラ",null,null,2,"MZ-S",0],
-  [318306,-17.8764,36.8872,349842,2017,"MZ","MZ-Q","Quelimane","ケリマネ",null,null,2,"MZ-Q",0],
-  [638509,-19.1167,33.45,238976,2007,"MZ","MZ-B","Chimoio","シモイオ",null,null,2,"MZ-B",0],
-  [990080,-14.55,40.6833,206449,null,"MZ","MZ-N","Nacala","ナカラ","Nacala Porto","pt",0,null,0],
-  [525118,-23.8597,35.3472,155521,2022,"MZ","MZ-I","Maxixe","マシーシェ",null,null,0,null,0],
-  [388242,-16.1579,33.5898,152909,2007,"MZ","MZ-T","Tete","テテ (モザンビーク)",null,null,2,"MZ-T",0],
-  [667650,-13.3,35.2456,142253,2007,"MZ","MZ-A","Lichinga","リシンガ",null,null,2,"MZ-A",0],
-  [498048,-12.9667,40.5167,141316,2007,"MZ","MZ-P","Pemba","ペンバ",null,null,2,"MZ-P",0],
-  [6748076,-14.353,35.651,118922,"2012-07-01","MZ","MZ-A","Mandimba",null,null,null,0,null,0],
-  [318299,-25.05,33.65,116343,2007,"MZ","MZ-G","Xai-Xai","シャイシャイ",null,null,2,"MZ-G",0],
-  [456577,-23.865,35.3833,82119,"2017-08-01","MZ","MZ-I","Inhambane","イニャンバネ市",null,null,2,"MZ-I",0],
-  [1241126,-19.6167,34.75,78648,null,"MZ","MZ-S","Dondo","ドンド",null,null,0,null,2],
-  [3315681,-10.7833,40.4833,75000,2020,"MZ","MZ-P","Palma","パルマ (モザンビーク)",null,null,0,null,0],
-  [1142811,-14.82,36.5486,73268,null,"MZ","MZ-A","Cuamba","クアンバ",null,null,0,null,2],
-  [1027174,-13.1167,39,72279,null,"MZ","MZ-P","Montepuez","モンテプエズ",null,null,0,null,3],
-  [520687,-16.8391,36.9855,69045,2008,"MZ","MZ-Q","Mocuba","モクバ",null,null,0,null,0],
-  [1022170,-24.5253,33.0086,63695,2017,"MZ","MZ-G","Chokwe",null,"Chócue","pt",0,null,0],
-  [10323671,-25.4,32.8,60031,null,"MZ","MZ-L","Manhiça",null,null,null,0,null,0],
-  [1011972,-24.6867,33.5306,58012,2009,"MZ","MZ-G","Chibuto",null,null,null,0,null,0],
-  [541656,-16.2308,39.9105,57835,null,"MZ","MZ-N","Angoche","アンゴシェ",null,null,0,null,2],
-  [1289776,-16.1167,33.75,42000,null,"MZ","MZ-T","Moatize","モアティゼ",null,null,0,null,2],
-  [10373307,-15.6142,32.7709,36523,2007,"MZ","MZ-T","Songo",null,"Songo (Moçambique)","pt",0,null,0],
-  [1362117,-11.35,40.3333,30950,2010,"MZ","MZ-P","Mocímboa da Praia","モスィンボア・ダ・プライア",null,null,0,null,0],
-  [3233176,-25.9667,32.0333,29272,2005,"MZ","MZ-L","Namaacha",null,null,null,0,null,0],
-  [2653584,-25.0333,33.1,23156,null,"MZ","MZ-G","Macia","マシア",null,null,0,null,3],
-  [1102602,-22.7306,32.0583,19932,2005,"MZ","MZ-G","Mapai","マパイ",null,null,0,null,1],
-  [2261361,-18.5833,36.4667,16500,1980,"MZ","MZ-Q","Chinde",null,null,null,0,null,0],
-];
+const MZ: CityColumns = {
+  id: "301,2cu5,6xuh,4j8r,6tlu,dood,l7y8,b96m,8bki,eb5u,aoao,40muk,6tln,9sap,qlnq,1z2e9,ohsr,m0km,b5rj,lwpm,659sn,louc,bly0,rn74,66c3f,t70l,1xaqg,1kvio,nmru,1cgvl",
+  lat: [-259689,-259667,-151167,-198333,-178764,-191167,-145500,-238597,-161579,-133000,-129667,-143530,-250500,-238650,-196167,-107833,-148200,-131167,-168391,-245253,-254000,-246867,-162308,-161167,-156142,-113500,-259667,-250333,-227306,-185833],
+  lon: [325733,324667,392667,348500,368872,334500,406833,353472,335898,352456,405167,356510,336500,353833,347500,404833,365486,390000,369855,330086,328000,335306,399105,337500,327709,403333,320333,331000,320583,364667],
+  population: [1133200,1032197,743000,530604,349842,238976,206449,155521,152909,142253,141316,118922,116343,82119,78648,75000,73268,72279,69045,63695,60031,58012,57835,42000,36523,30950,29272,23156,19932,16500],
+  date: "2023-07-01,2017,2017,2019,2017,2007,,2022,2007,2007,2007,2012-07-01,2007,2017-08-01,,2020,,,2008,2017,,2009,,,2007,2010,2005,,2005,1980",
+  country: "MZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZMZ",
+  subdivisions: "MPM,L,N,S,Q,B,I,T,A,P,G",
+  subdivision: [0,1,2,3,4,5,2,6,7,8,9,8,10,6,3,9,8,9,4,10,1,10,2,7,7,9,1,10,10,4],
+  en: "Maputo|Matola|Nampula|Beira|Quelimane|Chimoio|Nacala|Maxixe|Tete|Lichinga|Pemba|Mandimba|Xai-Xai|Inhambane|Dondo|Palma|Cuamba|Montepuez|Mocuba|Chokwe|Manhiça|Chibuto|Angoche|Moatize|Songo|Mocímboa da Praia|Namaacha|Macia|Mapai|Chinde",
+  ja: "マプト|マトラ|ナンプラ|ベイラ|ケリマネ|シモイオ|ナカラ|マシーシェ|テテ (モザンビーク)|リシンガ|ペンバ||シャイシャイ|イニャンバネ市|ドンド|パルマ (モザンビーク)|クアンバ|モンテプエズ|モクバ||||アンゴシェ|モアティゼ||モスィンボア・ダ・プライア||マシア|マパイ|",
+  native: "||||||Nacala Porto|||||||||||||Chócue|||||Songo (Moçambique)|||||",
+  languages: "pt",
+  language: [-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,-1],
+  capital: "122222002220220000000000000000",
+  capitalOf: "MZ|MZ-L|MZ-N|MZ-S|MZ-Q|MZ-B|||MZ-T|MZ-A|MZ-P||MZ-G|MZ-I||||||||||||||||",
+  sources: "000000000000002023000022000310",
+  extra: [],
+};
 
 export { MZ };

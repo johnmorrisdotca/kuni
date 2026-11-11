@@ -2,34 +2,26 @@
 // The 25 cities of Jordan (JO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const JO: readonly CityRow[] = [
-  [3805,31.95,35.9333,4007526,2015,"JO","JO-AM","Amman","アンマン","عَمَّان","ar",1,"JO",0],
-  [194165,32.5556,35.85,1911600,2018,"JO","JO-IR","Irbid","イルビド","إربد","ar",2,"JO-IR",0],
-  [148062,32.0833,36.1,481300,2013,"JO","JO-AZ","Zarqa","ザルカ","الزرقاء","ar",2,"JO-AZ",0],
-  [2361176,32.0178,36.0464,472604,2015,"JO","JO-AZ","Russeifa","ルセイファ","الرصيفة","ar",0,null,0],
-  [31594,32.5592,36.0069,297830,null,"JO","JO-IR","Ar Ramtha","アル・ラムサ","الرمثا","ar",0,null,0],
-  [1141858,32.3325,35.7517,190200,null,"JO","JO-AJ","Ajloun","アジュルン","عجلون","ar",2,"JO-AJ",0],
-  [1020997,31.9545,35.8183,152000,2011,"JO","JO-AM","Wadi Al-Seer","ワディ・アル・シール","وادي السير","ar",0,null,0],
-  [180522,29.5322,35.0061,140000,2014,"JO","JO-AQ","Aqaba","アカバ","العقبة","ar",2,"JO-AQ",0],
-  [867586,32.0392,35.7272,88900,null,"JO","JO-BA","Salt","サルト","السلط","ar",2,"JO-BA",0],
-  [8063414,32.2957,36.3238,79000,null,"JO","JO-MA","Zaatari refugee camp","ザータリ難民キャンプ","مخيم الزعتري","ar",0,null,0],
-  [27125371,32.5103,35.8544,63244,null,"JO",null,"Aydoun",null,"ايدون","ar",0,null,0],
-  [2426928,31.8333,36.8167,57490,2019,"JO","JO-AZ","Azraq","アズラック","الأزرق","ar",0,null,0],
-  [31565,32.2723,35.8914,50745,2015,"JO","JO-JA","Jerash","ジェラシュ","جرش","ar",2,"JO-JA",0],
-  [3696209,32.487,35.88,35085,null,"JO","JO-IR","Al Husn",null,"الحصن","ar",0,null,0],
-  [27125366,32.6368,35.99,34948,2017,"JO","JO-IR","Al-Turra",null,"الطرة","ar",0,null,0],
-  [4804350,32.6417,35.9417,30848,null,"JO","JO-IR","al-Shajara",null,"الشجرة","ar",0,null,0],
-  [31616,30.1933,35.7333,30046,2008,"JO","JO-MN","Ma'an","マアーン","معان","ar",2,"JO-MN",0],
-  [6441911,32.4167,35.6833,30000,null,"JO","JO-IR","Kufr 'Awan",null,"كفرعوان","ar",0,null,0],
-  [5261124,32.5025,35.6922,29590,null,"JO","JO-IR","Der Abi Saeed",null,"دير أبي سعيد","ar",0,null,0],
-  [2550996,30.8375,35.6044,23512,2004,"JO","JO-AT","Tafilah","タフィラ","الطفيلة","ar",2,"JO-AT",0],
-  [31572,31.1844,35.705,21678,null,"JO","JO-KA","Al-Karak","カラク","الكرك","ar",2,"JO-KA",0],
-  [12198462,32.55,35.9,21496,2019,"JO",null,"Bushra",null,"بشرى","ar",0,null,0],
-  [12235661,32.4839,35.6969,17919,null,"JO","JO-IR","Kafr Al-Maa",null,"كفرالماء","ar",0,null,0],
-  [276747,32.3428,36.205,580,null,"JO","JO-MA","Mafraq","マフラク","المفرق","ar",2,"JO-MA",0],
-  [1683958,31.7167,35.8,null,null,"JO","JO-MD","Madaba","マダバ","مادبا","ar",2,"JO-MD",0],
-];
+const JO: CityColumns = {
+  id: "2xp,45th,368u,1elw8,odm,oh2a,lvt1,3vai,ilfm,4strq,g5e2j,1g0mo,oct,2780h,g5e2e,2uz26,oe8,3u2lz,34ric,1iod0,od0,79ge6,7a93h,5xjf,103cm",
+  lat: [319500,325556,320833,320178,325592,323325,319545,295322,320392,322957,325103,318333,322723,324870,326368,326417,301933,324167,325025,308375,311844,325500,324839,323428,317167],
+  lon: [359333,358500,361000,360464,360069,357517,358183,350061,357272,363238,358544,368167,358914,358800,359900,359417,357333,356833,356922,356044,357050,359000,356969,362050,358000],
+  population: [4007526,1911600,481300,472604,297830,190200,152000,140000,88900,79000,63244,57490,50745,35085,34948,30848,30046,30000,29590,23512,21678,21496,17919,580,-1],
+  date: "2015,2018,2013,2015,,,2011,2014,,,,2019,2015,,2017,,2008,,,2004,,2019,,,",
+  country: "JOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJO",
+  subdivisions: "AM,IR,AZ,AJ,AQ,BA,MA,JA,MN,AT,KA,MD",
+  subdivision: [0,1,2,2,1,3,0,4,5,6,-1,2,7,1,1,1,8,1,1,9,10,-1,1,6,11],
+  en: "Amman|Irbid|Zarqa|Russeifa|Ar Ramtha|Ajloun|Wadi Al-Seer|Aqaba|Salt|Zaatari refugee camp|Aydoun|Azraq|Jerash|Al Husn|Al-Turra|al-Shajara|Ma'an|Kufr 'Awan|Der Abi Saeed|Tafilah|Al-Karak|Bushra|Kafr Al-Maa|Mafraq|Madaba",
+  ja: "アンマン|イルビド|ザルカ|ルセイファ|アル・ラムサ|アジュルン|ワディ・アル・シール|アカバ|サルト|ザータリ難民キャンプ||アズラック|ジェラシュ||||マアーン|||タフィラ|カラク|||マフラク|マダバ",
+  native: "عَمَّان|إربد|الزرقاء|الرصيفة|الرمثا|عجلون|وادي السير|العقبة|السلط|مخيم الزعتري|ايدون|الأزرق|جرش|الحصن|الطرة|الشجرة|معان|كفرعوان|دير أبي سعيد|الطفيلة|الكرك|بشرى|كفرالماء|المفرق|مادبا",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  capital: "1220020220002000200220022",
+  capitalOf: "JO|JO-IR|JO-AZ|||JO-AJ||JO-AQ|JO-BA||||JO-JA||||JO-MN|||JO-AT|JO-KA|||JO-MA|JO-MD",
+  sources: "0000000000000000000000000",
+  extra: [],
+};
 
 export { JO };

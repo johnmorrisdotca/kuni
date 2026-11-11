@@ -2,16 +2,26 @@
 // The 7 cities of Sierra Leone (SL), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SL: readonly CityRow[] = [
-  [3780,8.4872,-13.2356,951000,2014,"SL","SL-W","Freetown","フリータウン",null,null,1,"SL",0],
-  [844878,7.9564,-11.74,233684,2017,"SL","SL-S","Bo","ボー",null,null,2,"SL-S",0],
-  [623241,8.3383,-13.0719,213778,2015,"SL","SL-W","Waterloo","ウォータールー",null,null,0,null,0],
-  [634698,7.8833,-11.1833,188463,2013,"SL","SL-E","Kenema","ケネマ",null,null,2,"SL-E",0],
-  [42678,8.8817,-12.0442,125970,2015,"SL","SL-N","Makeni","マケニ",null,null,2,"SL-N",0],
-  [1002580,8.6439,-10.9717,87539,null,"SL","SL-E","Koidu","コイドゥ",null,null,0,null,2],
-  [1635196,8.7667,-12.7833,44900,2016,"SL","SL-NW","Port Loko","ポート・ロコ",null,null,0,null,0],
-];
+const SL: CityColumns = {
+  id: "2x0,i3wu,dcw9,dlqi,wxi,lhlg,z1q4",
+  lat: [84872,79564,83383,78833,88817,86439,87667],
+  lon: [-132356,-117400,-130719,-111833,-120442,-109717,-127833],
+  population: [951000,233684,213778,188463,125970,87539,44900],
+  date: "2014,2017,2015,2013,2015,,2016",
+  country: "SLSLSLSLSLSLSL",
+  subdivisions: "W,S,E,N,NW",
+  subdivision: [0,1,0,2,3,2,4],
+  en: "Freetown|Bo|Waterloo|Kenema|Makeni|Koidu|Port Loko",
+  ja: "フリータウン|ボー|ウォータールー|ケネマ|マケニ|コイドゥ|ポート・ロコ",
+  native: "||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1],
+  capital: "1202200",
+  capitalOf: "SL|SL-S||SL-E|SL-N||",
+  sources: "0000020",
+  extra: [],
+};
 
 export { SL };

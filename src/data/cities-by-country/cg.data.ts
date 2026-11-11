@@ -2,28 +2,26 @@
 // The 19 cities of Congo - Brazzaville (CG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CG: readonly CityRow[] = [
-  [3844,-4.2694,15.2711,2145783,2023,"CG",null,"Brazzaville","ブラザヴィル",null,null,1,"CG",0],
-  [223920,-4.7975,11.8503,1420612,2023,"CG",null,"Pointe-Noire","ポワントノワール",null,null,0,null,0],
-  [246554,-4.2006,12.6792,117920,2018,"CG","CG-9","Dolisie","ドリシー",null,null,2,"CG-9",0],
-  [2088506,-4.1842,13.2883,104083,2023,"CG","CG-11","Nkayi","ネイ (コンゴ共和国)",null,null,0,null,0],
-  [6271177,-4.1683,13.2933,62521,null,"CG","CG-11","Kayes","ケイズ",null,null,0,null,3],
-  [627885,1.6106,16.0514,39653,2018,"CG","CG-13","Ouésso","ウェッソ","Ouesso","fr",2,"CG-13",0],
-  [1142926,1.6186,18.0622,39653,2018,"CG","CG-7","Impfondo","アンフォンド",null,null,2,"CG-7",0],
-  [1971302,-4.1642,13.5517,36183,2018,"CG","CG-11","Madingou","マディング",null,null,2,"CG-11",0],
-  [1201732,-0.4833,15.8975,34808,2018,"CG","CG-8","Owando","オワンド",null,null,2,"CG-8",0],
-  [739308,-3.685,13.3511,32296,2018,"CG","CG-2","Sibiti","シビティ",null,null,2,"CG-2",0],
-  [3307130,-2.9453,12.7156,30936,null,"CG","CG-9","Mossendjo","モセンジョ",null,null,0,null,2],
-  [3307123,-1.8711,15.8781,26053,2018,"CG","CG-14","Gamboma","ガンボマ",null,null,0,null,0],
-  [3314787,-4.2747,14.3575,20462,2018,"CG","CG-12","Mindouli",null,null,null,0,null,0],
-  [1667693,-0.0067,15.6181,20038,2018,"CG","CG-8","Makoua","マクア",null,null,0,null,0],
-  [3260216,-4.1122,13.06,19884,2018,"CG","CG-11","Loudima",null,null,null,0,null,0],
-  [667652,-4.3567,14.7589,12102,2018,"CG","CG-12","Kinkala","キンカラ",null,null,2,"CG-12",0],
-  [2362433,-0.8742,14.8167,11457,2018,"CG","CG-15","Ewo","エウォ",null,null,2,"CG-15",0],
-  [2490824,-2.54,14.7519,9651,null,"CG","CG-14","Djambala","ジャンバラ",null,null,2,"CG-14",2],
-  [48989691,-4.6561,11.8114,null,null,"CG","CG-5","Loango, Republic of Congo","ロアンゴ","Loango","fr",2,"CG-5",0],
-];
+const CG: CityColumns = {
+  id: "2ys,4ss0,5a8q,18ri2,3qevd,dgh9,ohvy,1692e,pr9g,fugc,1yvsq,1yvsj,1z1pf,zqst,1xvlk,eb5w,1emv5,1hdxk,t60or",
+  lat: [-42694,-47975,-42006,-41842,-41683,16106,16186,-41642,-4833,-36850,-29453,-18711,-42747,-67,-41122,-43567,-8742,-25400,-46561],
+  lon: [152711,118503,126792,132883,132933,160514,180622,135517,158975,133511,127156,158781,143575,156181,130600,147589,148167,147519,118114],
+  population: [2145783,1420612,117920,104083,62521,39653,39653,36183,34808,32296,30936,26053,20462,20038,19884,12102,11457,9651,-1],
+  date: "2023,2023,2018,2023,,2018,2018,2018,2018,2018,,2018,2018,2018,2018,2018,2018,,",
+  country: "CGCGCGCGCGCGCGCGCGCGCGCGCGCGCGCGCGCGCG",
+  subdivisions: "9,11,13,7,8,2,14,12,15,5",
+  subdivision: [-1,-1,0,1,1,2,3,1,4,5,0,6,7,4,1,7,8,6,9],
+  en: "Brazzaville|Pointe-Noire|Dolisie|Nkayi|Kayes|Ouésso|Impfondo|Madingou|Owando|Sibiti|Mossendjo|Gamboma|Mindouli|Makoua|Loudima|Kinkala|Ewo|Djambala|Loango, Republic of Congo",
+  ja: "ブラザヴィル|ポワントノワール|ドリシー|ネイ (コンゴ共和国)|ケイズ|ウェッソ|アンフォンド|マディング|オワンド|シビティ|モセンジョ|ガンボマ||マクア||キンカラ|エウォ|ジャンバラ|ロアンゴ",
+  native: "|||||Ouesso|||||||||||||Loango",
+  languages: "fr",
+  language: [-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0],
+  capital: "1020022222000002222",
+  capitalOf: "CG||CG-9|||CG-13|CG-7|CG-11|CG-8|CG-2||||||CG-12|CG-15|CG-14|CG-5",
+  sources: "0000300000200000020",
+  extra: [],
+};
 
 export { CG };

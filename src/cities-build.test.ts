@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { buildCities, cityAliases, unresolvedIds } from "../scripts/cities.ts";
+import { buildCities, cityAliases, columnsText, unresolvedIds } from "../scripts/cities.ts";
+import { rowsOf } from "./city-rows";
+import type { CityColumns, CityRow } from "./city-rows";
 import type { CitiesSnapshot, NaturalEarthFile } from "../scripts/cities.ts";
 
 // A snapshot of a few made-up cities, for the rules that choose and join, not for the data.
@@ -404,3 +406,21 @@ describe("ids that never change", () => {
     expect(Object.fromEntries((JSON.parse(PAIRS) as string).split(",").map((pair) => pair.split("=").map(long)))).toEqual({ Q2: "Q3", Q1000: "ne:7" });
   });
 });
+
+describe("the columns a list of cities is written in", () => {
+  it("give back every row as it was: ids of both kinds, no figure, a year or a day, metros and the city an area is in", () => {
+    const rows: CityRow[] = [
+      [90, 48.8567, 2.3522, 2103778, 2023, "FR", "FR-IDF", "Paris", "パリ", null, null, 1, "FR FR-IDF", 0, 1081225, "Paris functional urban area", 13200000, 2022],
+      ["ne:1159151605", -33.8678, 151.21, null, null, "AU", null, "Sydney", null, "Sydney", "en", 0, null, 7],
+      [1027, 43.5833, -79.6431, 717961, "2021-05-11", "CA", "CA-ON", "Mississauga", "ミシサガ", null, null, 0, null, 0, 172],
+      [34600, 35.6895, 139.6917, 14000000, 2024, "JP", "JP-13", "Tokyo", "東京都", "東京都", "ja", 1, "JP JP-13", 8],
+    ];
+    const columns = new Function(`return ${columnsText(rows)};`)() as CityColumns;
+    expect(rowsOf(columns)).toEqual(rows);
+  });
+
+  it("refuse a name that holds the separator", () => {
+    expect(() => columnsText([[1, 0, 0, null, null, "FR", null, "A|B", null, null, null, 0, null, 0]])).toThrow(/holds "\|"/);
+  });
+});
+

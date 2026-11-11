@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/eh: the 1 cities of Western Sahara, every tier together, as a list.
 
 import { EH } from "../data/cities-by-country/eh.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "EH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(EH);
+const CITIES: readonly City[] = expandCities(rowsOf(EH));
 
 export default CITIES;
 export { CITIES };

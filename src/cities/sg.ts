@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sg: the 4 cities of Singapore, every tier together, as a list.
 
 import { SG } from "../data/cities-by-country/sg.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SG);
+const CITIES: readonly City[] = expandCities(rowsOf(SG));
 
 export default CITIES;
 export { CITIES };

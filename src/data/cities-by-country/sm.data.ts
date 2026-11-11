@@ -2,10 +2,26 @@
 // The 1 cities of San Marino (SM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SM: readonly CityRow[] = [
-  [1848,43.932,12.4485,4040,2018,"SM","SM-07","San Marino","サンマリノ市",null,null,1,"SM",0],
-];
+const SM: CityColumns = {
+  id: "1fc",
+  lat: [439320],
+  lon: [124485],
+  population: [4040],
+  date: "2018",
+  country: "SM",
+  subdivisions: "07",
+  subdivision: [0],
+  en: "San Marino",
+  ja: "サンマリノ市",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "SM",
+  sources: "0",
+  extra: [],
+};
 
 export { SM };

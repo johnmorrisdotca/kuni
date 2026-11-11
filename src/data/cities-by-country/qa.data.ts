@@ -2,16 +2,26 @@
 // The 7 cities of Qatar (QA), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const QA: readonly CityRow[] = [
-  [3861,25.2861,51.5294,1186023,2020,"QA","QA-DA","Doha","ドーハ","الدوحة","ar",1,"QA",0],
-  [310893,25.18,51.61,87970,2015,"QA","QA-WA","Al Wakrah","アル＝ワクラ市","الوكرة","ar",0,null,0],
-  [311717,25.6839,51.5058,31547,2008,"QA","QA-KH","Al Khor","アル・ホール","الخور","ar",2,"QA-KH",0],
-  [2131826,25.9146,51.5564,30000,2017,"QA",null,"Ras Laffan Industrial City","ラアス・ラファーン工業都市","رأس لفان","ar",0,null,0],
-  [3298627,25.4167,51.4,null,null,"QA","QA-US","Umm Salal Mohammed","ウンム・サラール・ムハンマド","أم صلال","ar",2,"QA-US",0],
-  [4120525,25.37,51.2231,null,null,"QA","QA-SH","Al-Shahaniya","シャハーニーヤ市","الشحانية","ar",2,"QA-SH",0],
-  [18576873,25.2919,51.4244,null,null,"QA","QA-RA","Ar Rayyan","ライヤーン","الريان","ar",2,"QA-RA",0],
-];
+const QA: CityColumns = {
+  id: "2z9,6nvx,6oit,19oxe,1yp8j,2gbf1,b2609",
+  lat: [252861,251800,256839,259146,254167,253700,252919],
+  lon: [515294,516100,515058,515564,514000,512231,514244],
+  population: [1186023,87970,31547,30000,-1,-1,-1],
+  date: "2020,2015,2008,2017,,,",
+  country: "QAQAQAQAQAQAQA",
+  subdivisions: "DA,WA,KH,US,SH,RA",
+  subdivision: [0,1,2,-1,3,4,5],
+  en: "Doha|Al Wakrah|Al Khor|Ras Laffan Industrial City|Umm Salal Mohammed|Al-Shahaniya|Ar Rayyan",
+  ja: "ドーハ|アル＝ワクラ市|アル・ホール|ラアス・ラファーン工業都市|ウンム・サラール・ムハンマド|シャハーニーヤ市|ライヤーン",
+  native: "الدوحة|الوكرة|الخور|رأس لفان|أم صلال|الشحانية|الريان",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0],
+  capital: "1020222",
+  capitalOf: "QA||QA-KH||QA-US|QA-SH|QA-RA",
+  sources: "0000000",
+  extra: [],
+};
 
 export { QA };

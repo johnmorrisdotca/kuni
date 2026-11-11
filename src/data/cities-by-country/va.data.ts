@@ -2,10 +2,26 @@
 // The 1 cities of Vatican City (VA), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const VA: readonly CityRow[] = [
-  [237,41.904,12.453,949,"2024-12-31","VA",null,"Vatican City","バチカン","Città del Vaticano","it",1,"VA",0],
-];
+const VA: CityColumns = {
+  id: "6l",
+  lat: [419040],
+  lon: [124530],
+  population: [949],
+  date: "2024-12-31",
+  country: "VA",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Vatican City",
+  ja: "バチカン",
+  native: "Città del Vaticano",
+  languages: "it",
+  language: [0],
+  capital: "1",
+  capitalOf: "VA",
+  sources: "0",
+  extra: [],
+};
 
 export { VA };

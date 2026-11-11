@@ -2,31 +2,26 @@
 // The 22 cities of Cape Verde (CV), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CV: readonly CityRow[] = [
-  [3751,14.9177,-23.5092,159050,2017,"CV","CV-S","Praia","プライア",null,null,1,"CV",0],
-  [495547,16.8914,-24.988,70468,"2010-06-16","CV","CV-B","Mindelo","ミンデロ","Mindelu","kea",2,"CV-SV",0],
-  [497445,16.6,-22.9042,25779,2010,"CV","CV-B","Santa Maria","サンタ・マリア (カーボベルデ)",null,null,0,null,0],
-  [490573,15.0949,-23.6654,12026,"2010-06-16","CV","CV-S","Assomada","アソマダ",null,null,2,"CV-CA",0],
-  [13957085,14.8966,-24.4955,8122,2010,"CV","CV-S","São Filipe","サン・フェリペ",null,null,2,"CV-SF",0],
-  [501656,16.176,-22.9171,6357,2012,"CV","CV-B","Sal Rei","サル・レイ",null,null,2,"CV-BV",0],
-  [2311253,15.2667,-23.75,6272,null,"CV","CV-S","Tarrafal","タラファル",null,null,2,"CV-TA",0],
-  [498968,16.7546,-22.9453,6173,2005,"CV","CV-B","Espargos","エスパルゴス",null,null,2,"CV-SL",0],
-  [768314,17.2018,-25.0915,4738,null,"CV","CV-B","Ponta do Sol","ポンタ・ド・ソル",null,null,2,"CV-RG",0],
-  [2539817,15.1875,-23.5917,4123,null,"CV","CV-S","Calheta de São Miguel","カリェタ・デ・サン・ミゲル","Kadjeta di San Migel","kea",2,"CV-SM",0],
-  [489776,15.1375,-23.2083,3056,2012,"CV","CV-S","Porto Inglês","ヴィーラ・ド・マイオ","Vila do Maio","pt",2,"CV-MA",0],
-  [2718745,15.025,-23.5625,2818,2010,"CV","CV-S","São Domingos","サン・ドミンゴス",null,null,2,"CV-SD",0],
-  [3077671,15.0667,-23.5917,1699,null,"CV","CV-S","João Teves","ジョアン・テベス",null,null,2,"CV-SO",0],
-  [485198,14.8899,-24.294,1370,2000,"CV","CV-S","Cova Figueira","コーヴァ・フィゲイラ",null,null,2,"CV-CF",0],
-  [768920,17.1458,-25.0125,1184,null,"CV","CV-B","Pombas","ポンバス","Vila das Pombas","pt",2,"CV-PA",0],
-  [464913,14.9167,-23.6042,1156,2021,"CV","CV-S","Cidade Velha","シダーデ・ヴェーリャ",null,null,2,"CV-RS",0],
-  [736200,15.0833,-23.6333,1143,null,"CV","CV-S","Picos","ピコス",null,null,2,"CV-SS",0],
-  [493634,14.8708,-24.6958,1049,2012,"CV","CV-S","Nova Sintra","ノーヴァ・シントラ",null,null,2,"CV-BR",0],
-  [494854,15.0343,-24.3253,null,null,"CV","CV-S","Mosteiros","モステイロス",null,null,2,"CV-MO",0],
-  [862114,17.0208,-25.0667,null,null,"CV","CV-B","Porto Novo","ポルト・ノボ",null,null,2,"CV-PN",0],
-  [2718860,16.5667,-24.3556,null,null,"CV","CV-B","Tarrafal de São Nicolau","タラファル・デ・サン・ニコラウ",null,null,2,"CV-TS",0],
-  [3136127,16.616,-24.2983,null,null,"CV","CV-B","Ribeira Brava","リベイラ・ブラヴァ",null,null,2,"CV-RB",0],
-];
+const CV: CityColumns = {
+  id: "2w7,amd7,antx,aij1,8b5ct,ar2w,1djdh,ap08,ggu2,1ifqh,ahww,1m9sp,1tyqv,aedq,ghaw,9yq9,fs20,akw2,alty,ih7m,1m9vw,1v7un",
+  lat: [149177,168914,166000,150949,148966,161760,152667,167546,172018,151875,151375,150250,150667,148899,171458,149167,150833,148708,150343,170208,165667,166160],
+  lon: [-235092,-249880,-229042,-236654,-244955,-229171,-237500,-229453,-250915,-235917,-232083,-235625,-235917,-242940,-250125,-236042,-236333,-246958,-243253,-250667,-243556,-242983],
+  population: [159050,70468,25779,12026,8122,6357,6272,6173,4738,4123,3056,2818,1699,1370,1184,1156,1143,1049,-1,-1,-1,-1],
+  date: "2017,2010-06-16,2010,2010-06-16,2010,2012,,2005,,,2012,2010,,2000,,2021,,2012,,,,",
+  country: "CVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV",
+  subdivisions: "S,B",
+  subdivision: [0,1,1,0,0,1,0,1,1,0,0,0,0,0,1,0,0,0,0,1,1,1],
+  en: "Praia|Mindelo|Santa Maria|Assomada|São Filipe|Sal Rei|Tarrafal|Espargos|Ponta do Sol|Calheta de São Miguel|Porto Inglês|São Domingos|João Teves|Cova Figueira|Pombas|Cidade Velha|Picos|Nova Sintra|Mosteiros|Porto Novo|Tarrafal de São Nicolau|Ribeira Brava",
+  ja: "プライア|ミンデロ|サンタ・マリア (カーボベルデ)|アソマダ|サン・フェリペ|サル・レイ|タラファル|エスパルゴス|ポンタ・ド・ソル|カリェタ・デ・サン・ミゲル|ヴィーラ・ド・マイオ|サン・ドミンゴス|ジョアン・テベス|コーヴァ・フィゲイラ|ポンバス|シダーデ・ヴェーリャ|ピコス|ノーヴァ・シントラ|モステイロス|ポルト・ノボ|タラファル・デ・サン・ニコラウ|リベイラ・ブラヴァ",
+  native: "|Mindelu||||||||Kadjeta di San Migel|Vila do Maio||||Vila das Pombas|||||||",
+  languages: "kea,pt",
+  language: [-1,0,-1,-1,-1,-1,-1,-1,-1,0,1,-1,-1,-1,1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1202222222222222222222",
+  capitalOf: "CV|CV-SV||CV-CA|CV-SF|CV-BV|CV-TA|CV-SL|CV-RG|CV-SM|CV-MA|CV-SD|CV-SO|CV-CF|CV-PA|CV-RS|CV-SS|CV-BR|CV-MO|CV-PN|CV-TS|CV-RB",
+  sources: "0000000000000000000000",
+  extra: [],
+};
 
 export { CV };

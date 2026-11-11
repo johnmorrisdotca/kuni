@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lv: the 40 cities of Latvia, every tier together, as a list.
 
 import { LV } from "../data/cities-by-country/lv.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LV"
  * ```
  */
-const CITIES: readonly City[] = expandCities(LV);
+const CITIES: readonly City[] = expandCities(rowsOf(LV));
 
 export default CITIES;
 export { CITIES };

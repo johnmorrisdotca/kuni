@@ -2,15 +2,26 @@
 // The 6 cities of Kosovo (XK), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const XK: readonly CityRow[] = [
-  [25270,42.6667,21.1667,227466,"2024-04-05","XK",null,"Pristina","プリシュティナ","Prishtina","sq",1,"XK",0],
-  [200061,42.23,20.74,186986,1996,"XK",null,"Prizren","プリズレン","Prizreni","sq",2,"RS-27",0],
-  [738901,42.37,21.155,180583,"2024-04-05","XK",null,"Ferizaj","フェリザイ",null,null,0,null,0],
-  [739808,42.4667,21.4667,82980,"2024-04-05","XK",null,"Gjilan","ジラニ","Gjilani","sq",2,"RS-29",0],
-  [474651,42.3825,20.4356,41809,2024,"XK",null,"Gjakova","ジャコヴァ",null,null,0,null,0],
-  [248378,42.2319,21.2594,33409,null,"XK",null,"Kaçanik","カチャニク","Kaçaniku","sq",0,null,0],
-];
+const XK: CityColumns = {
+  id: "jhy,4ad9,fu51,fuu8,a68r,5bne",
+  lat: [426667,422300,423700,424667,423825,422319],
+  lon: [211667,207400,211550,214667,204356,212594],
+  population: [227466,186986,180583,82980,41809,33409],
+  date: "2024-04-05,1996,2024-04-05,2024-04-05,2024,",
+  country: "XKXKXKXKXKXK",
+  subdivisions: "",
+  subdivision: [-1,-1,-1,-1,-1,-1],
+  en: "Pristina|Prizren|Ferizaj|Gjilan|Gjakova|Kaçanik",
+  ja: "プリシュティナ|プリズレン|フェリザイ|ジラニ|ジャコヴァ|カチャニク",
+  native: "Prishtina|Prizreni||Gjilani||Kaçaniku",
+  languages: "sq",
+  language: [0,0,-1,0,-1,0],
+  capital: "120200",
+  capitalOf: "XK|RS-27||RS-29||",
+  sources: "000000",
+  extra: [],
+};
 
 export { XK };

@@ -2,10 +2,26 @@
 // The 1 cities of Wallis & Futuna (WF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const WF: readonly CityRow[] = [
-  [31002,-13.2827,-176.1737,1029,2018,"WF",null,"Mata-Utu","マタウトゥ","Mata Utu","fr",1,"WF",0],
-];
+const WF: CityColumns = {
+  id: "nx6",
+  lat: [-132827],
+  lon: [-1761737],
+  population: [1029],
+  date: "2018",
+  country: "WF",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Mata-Utu",
+  ja: "マタウトゥ",
+  native: "Mata Utu",
+  languages: "fr",
+  language: [0],
+  capital: "1",
+  capitalOf: "WF",
+  sources: "0",
+  extra: [],
+};
 
 export { WF };

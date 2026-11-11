@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mx: the 730 cities of Mexico, every tier together, as a list.
 
 import { MX } from "../data/cities-by-country/mx.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MX"
  * ```
  */
-const CITIES: readonly City[] = expandCities(MX);
+const CITIES: readonly City[] = expandCities(rowsOf(MX));
 
 export default CITIES;
 export { CITIES };

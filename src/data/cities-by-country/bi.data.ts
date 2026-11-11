@@ -2,27 +2,26 @@
 // The 18 cities of Burundi (BI), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BI: readonly CityRow[] = [
-  [3854,-3.3825,29.3611,658859,2014,"BI","BI-BM","Bujumbura","ブジュンブラ","Bujumbura-Mairie","fr",2,"BI-BM",0],
-  [167551,-3.4283,29.925,135467,2020,"BI","BI-GI","Gitega","ギテガ",null,null,1,"BI",0],
-  [929689,-2.9075,29.8306,39884,2008,"BI",null,"Ngozi","ンゴジ",null,null,2,"BI-NG",0],
-  [3110231,-3.9667,29.4333,35931,2008,"BI",null,"Rumonge","ルモンゲ",null,null,2,"BI-RM",0],
-  [746329,-2.8883,29.1197,23885,2008,"BI",null,"Cibitoke","チビトケ",null,null,2,"BI-CI",0],
-  [2305839,-2.9167,29.6167,21767,2008,"BI",null,"Kayanza","カヤンザ","Commune de Kayanza","fr",2,"BI-KY",0],
-  [2020432,-3.0833,29.4,20031,2008,"BI",null,"Bubanza","ブバンザ",null,null,2,"BI-BB",0],
-  [684152,-3.1,30.1667,10317,2008,"BI","BI-GI","Karuzi","カルジ",null,null,2,"BI-KR",0],
-  [2640808,-2.5833,30.1,10024,2008,"BI",null,"Kirundo","キルンド",null,null,2,"BI-KI",0],
-  [2006076,-2.85,30.3333,9609,2008,"BI",null,"Muyinga","ムインガ",null,null,2,"BI-MY",0],
-  [1286083,-4.1333,29.8,9396,2008,"BI",null,"Makamba","マカンバ",null,null,2,"BI-MA",0],
-  [1018116,-3.4667,30.25,7139,2008,"BI",null,"Ruyigi","ルイギ",null,null,2,"BI-RY",0],
-  [246069,-3.9236,30.0061,5865,2008,"BI",null,"Rutana","ルタナ",null,null,2,"BI-RT",0],
-  [557529,-3.25,29.6,5458,2008,"BI","BI-GI","Muramvya","ムランヴィヤ",null,null,2,"BI-MU",0],
-  [992247,-3.9333,29.6167,4478,2008,"BI",null,"Bururi","ブルリ",null,null,2,"BI-BR",0],
-  [2669640,-3.2194,30.5528,3624,2008,"BI",null,"Cankuzo","カンクゾ",null,null,2,"BI-CA",0],
-  [2458075,-3.5333,29.7,2403,2008,"BI","BI-GI","Mwaro","ムワロ",null,null,2,"BI-MW",0],
-  [96079661,-3.3444,29.4833,null,null,"BI","BI-BL","Isale",null,null,null,2,"BI-BL",0],
-];
+const BI: CityColumns = {
+  id: "2z2,3la7,jxcp,1unvb,fzvd,1df73,17az4,enw8,1klns,16zwc,rkcj,ltl0,59v9,by6x,l9mf,1l7wo,1gonv,1l7bjh",
+  lat: [-33825,-34283,-29075,-39667,-28883,-29167,-30833,-31000,-25833,-28500,-41333,-34667,-39236,-32500,-39333,-32194,-35333,-33444],
+  lon: [293611,299250,298306,294333,291197,296167,294000,301667,301000,303333,298000,302500,300061,296000,296167,305528,297000,294833],
+  population: [658859,135467,39884,35931,23885,21767,20031,10317,10024,9609,9396,7139,5865,5458,4478,3624,2403,-1],
+  date: "2014,2020,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,",
+  country: "BIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBI",
+  subdivisions: "BM,GI,BL",
+  subdivision: [0,1,-1,-1,-1,-1,-1,1,-1,-1,-1,-1,-1,1,-1,-1,1,2],
+  en: "Bujumbura|Gitega|Ngozi|Rumonge|Cibitoke|Kayanza|Bubanza|Karuzi|Kirundo|Muyinga|Makamba|Ruyigi|Rutana|Muramvya|Bururi|Cankuzo|Mwaro|Isale",
+  ja: "ブジュンブラ|ギテガ|ンゴジ|ルモンゲ|チビトケ|カヤンザ|ブバンザ|カルジ|キルンド|ムインガ|マカンバ|ルイギ|ルタナ|ムランヴィヤ|ブルリ|カンクゾ|ムワロ|",
+  native: "Bujumbura-Mairie|||||Commune de Kayanza||||||||||||",
+  languages: "fr",
+  language: [0,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "212222222222222222",
+  capitalOf: "BI-BM|BI|BI-NG|BI-RM|BI-CI|BI-KY|BI-BB|BI-KR|BI-KI|BI-MY|BI-MA|BI-RY|BI-RT|BI-MU|BI-BR|BI-CA|BI-MW|BI-BL",
+  sources: "000000000000000000",
+  extra: [],
+};
 
 export { BI };

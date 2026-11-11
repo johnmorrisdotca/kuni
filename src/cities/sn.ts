@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sn: the 71 cities of Senegal, every tier together, as a list.
 
 import { SN } from "../data/cities-by-country/sn.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SN);
+const CITIES: readonly City[] = expandCities(rowsOf(SN));
 
 export default CITIES;
 export { CITIES };

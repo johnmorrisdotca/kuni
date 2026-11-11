@@ -2,16 +2,26 @@
 // The 7 cities of Antigua & Barbuda (AG), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const AG: readonly CityRow[] = [
-  [36262,17.1211,-61.8447,21394,2025,"AG","AG-04","Saint John's","セイント・ジョンズ","Saint John","es",1,"AG",0],
-  [1024679,17.6333,-61.8333,1252,1991,"AG","AG-10","Codrington","コドリントン",null,null,2,"AG-10",0],
-  [376195,17.1,-61.7667,null,null,"AG","AG-07","Parham","パーハム",null,null,2,"AG-07",0],
-  [1771701,17.0667,-61.8833,null,null,"AG","AG-05","Bolans","ボランス","Bolands","es",2,"AG-05",0],
-  [1771704,17.1167,-61.8,null,null,"AG","AG-03","Piggotts","ピゴッツ",null,null,2,"AG-03",0],
-  [1942963,17.05,-61.7,null,null,"AG","AG-08","Freetown","フリータウン",null,null,2,"AG-08",0],
-  [3299460,17.0167,-61.7833,null,null,"AG","AG-06","Falmouth","ファルマス",null,null,2,"AG-06",0],
-];
+const AG: CityColumns = {
+  id: "rza,lynb,829v,11z1x,11z20,15n77,1ypvo",
+  lat: [171211,176333,171000,170667,171167,170500,170167],
+  lon: [-618447,-618333,-617667,-618833,-618000,-617000,-617833],
+  population: [21394,1252,-1,-1,-1,-1,-1],
+  date: "2025,1991,,,,,",
+  country: "AGAGAGAGAGAGAG",
+  subdivisions: "04,10,07,05,03,08,06",
+  subdivision: [0,1,2,3,4,5,6],
+  en: "Saint John's|Codrington|Parham|Bolans|Piggotts|Freetown|Falmouth",
+  ja: "セイント・ジョンズ|コドリントン|パーハム|ボランス|ピゴッツ|フリータウン|ファルマス",
+  native: "Saint John|||Bolands|||",
+  languages: "es",
+  language: [0,-1,-1,0,-1,-1,-1],
+  capital: "1222222",
+  capitalOf: "AG|AG-10|AG-07|AG-05|AG-03|AG-08|AG-06",
+  sources: "0000000",
+  extra: [],
+};
 
 export { AG };

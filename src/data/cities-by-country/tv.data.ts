@@ -2,12 +2,26 @@
 // The 3 cities of Tuvalu (TV), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TV: readonly CityRow[] = [
-  [34126,-8.5048,179.1174,6025,2012,"TV","TV-FUN","Funafuti","フナフティ島",null,null,1,"TV",0],
-  [9018086,-6.1083,177.3414,224,null,"TV","TV-NIT","Kulia",null,null,null,2,"TV-NIT",0],
-  [7813539,-6.2911,176.3231,null,null,"TV",null,"Tokelau",null,null,null,2,"TV-NMG",0],
-];
+const TV: CityColumns = {
+  id: "qby,5daee,4ngyr",
+  lat: [-85048,-61083,-62911],
+  lon: [1791174,1773414,1763231],
+  population: [6025,224,-1],
+  date: "2012,,",
+  country: "TVTVTV",
+  subdivisions: "FUN,NIT",
+  subdivision: [0,1,-1],
+  en: "Funafuti|Kulia|Tokelau",
+  ja: "フナフティ島||",
+  native: "||",
+  languages: "",
+  language: [-1,-1,-1],
+  capital: "122",
+  capitalOf: "TV|TV-NIT|TV-NMG",
+  sources: "000",
+  extra: [],
+};
 
 export { TV };

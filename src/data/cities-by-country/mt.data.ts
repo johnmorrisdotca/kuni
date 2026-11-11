@@ -2,21 +2,26 @@
 // The 12 cities of Malta (MT), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MT: readonly CityRow[] = [
-  [39583,35.9,14.4667,29482,"2024-12-31","MT","MT-04","Birkirkara","ビルキルカラ",null,null,0,null,0],
-  [39520,35.9,14.4333,25496,"2024-12-31","MT","MT-32","Mosta","モスタ",null,null,0,null,0],
-  [39526,35.9122,14.5042,22730,"2024-12-31","MT","MT-56","Sliema","スリーマ","Tas-Sliema","mt",0,null,0],
-  [39578,35.8794,14.4722,20041,"2024-12-31","MT","MT-43","Qormi","オルミ","Ħal Qormi","mt",0,null,0],
-  [534571,35.8625,14.5675,18714,"2024-12-31","MT","MT-27","Marsaskala","マルサスカラ","Wied il-Għajn","mt",0,null,0],
-  [44397,35.915,14.4447,18126,"2024-12-31","MT","MT-38","Naxxar","ナッシャー",null,null,0,null,0],
-  [39518,35.8772,14.5381,17962,"2024-12-31","MT","MT-64","Żabbar","ザッパール","Ħaż-Żabbar","mt",0,null,0],
-  [585187,35.8978,14.4894,16609,"2024-12-31","MT","MT-34","Msida","イムシーダ","L-Imsida","mt",0,null,0],
-  [39507,35.9094,14.4786,16075,"2024-12-31","MT","MT-49","San Ġwann","サンジュワン",null,null,0,null,0],
-  [669979,35.9186,14.49,15208,"2024-12-31","MT","MT-48","St. Julian's","センジュリアン","San Ġiljan","mt",0,null,0],
-  [44573,35.8733,14.4417,15017,"2024-12-31","MT","MT-66","Żebbuġ","ゼブージ","Ħaż-Żebbuġ","mt",0,null,0],
-  [23800,35.8978,14.5125,5197,"2021-12-31","MT","MT-60","Valletta","バレッタ",null,null,1,"MT",0],
-];
+const MT: CityColumns = {
+  id: "ujj,uhs,uhy,uje,bgh7,y99,uhq,cjj7,uhf,ecyj,ye5,id4",
+  lat: [359000,359000,359122,358794,358625,359150,358772,358978,359094,359186,358733,358978],
+  lon: [144667,144333,145042,144722,145675,144447,145381,144894,144786,144900,144417,145125],
+  population: [29482,25496,22730,20041,18714,18126,17962,16609,16075,15208,15017,5197],
+  date: "2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2024-12-31,2021-12-31",
+  country: "MTMTMTMTMTMTMTMTMTMTMTMT",
+  subdivisions: "04,32,56,43,27,38,64,34,49,48,66,60",
+  subdivision: [0,1,2,3,4,5,6,7,8,9,10,11],
+  en: "Birkirkara|Mosta|Sliema|Qormi|Marsaskala|Naxxar|Żabbar|Msida|San Ġwann|St. Julian's|Żebbuġ|Valletta",
+  ja: "ビルキルカラ|モスタ|スリーマ|オルミ|マルサスカラ|ナッシャー|ザッパール|イムシーダ|サンジュワン|センジュリアン|ゼブージ|バレッタ",
+  native: "||Tas-Sliema|Ħal Qormi|Wied il-Għajn||Ħaż-Żabbar|L-Imsida||San Ġiljan|Ħaż-Żebbuġ|",
+  languages: "mt",
+  language: [-1,-1,0,0,0,-1,0,0,-1,0,0,-1],
+  capital: "000000000001",
+  capitalOf: "|||||||||||MT",
+  sources: "000000000000",
+  extra: [],
+};
 
 export { MT };

@@ -95,6 +95,83 @@ type CityRow =
   | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number, number | string]
   | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number, number | string, string, number, number | string | null];
 
+/**
+ * A list of cities as scripts/build-data.ts writes it (src/data/cities-*.data.ts): one array or string for each column
+ * rather than an array for each city, so the file is smaller and packs better. `rowsOf` makes the rows of it.
+ */
+interface CityColumns {
+  /** Each id, comma-separated: a Wikidata item's number in base 36, or "~" and Natural Earth's number in base 36. */
+  id: string;
+  /** Latitude and longitude in ten-thousandths of a degree. */
+  lat: readonly number[];
+  lon: readonly number[];
+  /** The people, -1 where no source has a figure. */
+  population: readonly number[];
+  /** The day of each figure, comma-separated: a year, a day, or empty for none. */
+  date: string;
+  /** The countries, two letters each, one after another. */
+  country: string;
+  /** The subdivision codes after the country's ("CA" of "US-CA"), comma-separated, and each city's place in them (-1 for none). */
+  subdivisions: string;
+  subdivision: readonly number[];
+  /** The names in English, Japanese and the native language, "|" between them; an empty Japanese or native name is none. */
+  en: string;
+  ja: string;
+  native: string;
+  /** The languages of the native names, comma-separated, and each city's place in them (-1 for none). */
+  languages: string;
+  language: readonly number[];
+  /** One digit for each city's capital (0 none, 1 national, 2 subdivision, 3 alternate). */
+  capital: string;
+  /** What each is the capital of, "|" between cities, a space between codes; empty for none. */
+  capitalOf: string;
+  /** One hexadecimal digit for each city's source bits. */
+  sources: string;
+  /** Only for the cities that have one, by place: the metro [place, id, name, people, day], or the city whose area it lies in [place, id]. */
+  extra: readonly (readonly [number, number | string, string, number, number | string | null] | readonly [number, number | string])[];
+}
+
+const idOf = (text: string): number | string => (text.startsWith("~") ? `ne:${parseInt(text.slice(1), 36)}` : parseInt(text, 36));
+
+/** The rows of a list written as columns, in its order. */
+const rowsOf = (columns: CityColumns): CityRow[] => {
+  const ids = columns.id.split(",");
+  const dates = columns.date.split(",");
+  const subdivisions = columns.subdivisions.split(",");
+  const en = columns.en.split("|");
+  const ja = columns.ja.split("|");
+  const native = columns.native.split("|");
+  const languages = columns.languages.split(",");
+  const capitalOf = columns.capitalOf.split("|");
+  const rows = ids.map((id, at): CityRow => {
+    const country = columns.country.slice(at * 2, at * 2 + 2);
+    const date = dates[at]!;
+    const subdivision = columns.subdivision[at]!;
+    const language = columns.language[at]!;
+    const population = columns.population[at]!;
+
+    return [
+      idOf(id),
+      columns.lat[at]! / 1e4,
+      columns.lon[at]! / 1e4,
+      population < 0 ? null : population,
+      date === "" ? null : /^\d+$/.test(date) ? Number(date) : date,
+      country,
+      subdivision < 0 ? null : `${country}-${subdivisions[subdivision]}`,
+      en[at]!,
+      ja[at] === "" ? null : ja[at]!,
+      native[at] === "" ? null : native[at]!,
+      language < 0 ? null : languages[language]!,
+      Number(columns.capital[at]) as 0 | 1 | 2 | 3,
+      capitalOf[at] === "" ? null : capitalOf[at]!,
+      parseInt(columns.sources[at]!, 16),
+    ];
+  });
+  for (const [at, ...rest] of columns.extra) rows[at] = [...rows[at]!, ...rest] as unknown as CityRow;
+
+  return rows;
+};
+
 const freezeCity = (row: CityRow): City => {
   const [id, lat, lon, population, date, country, subdivision, en, ja, native, nativeLanguage, capital, capitalOf, sources, metroId, metroName, metroPopulation, metroDate] = row;
   const head = row.length === 15 ? row[14] : null;
@@ -131,8 +208,49 @@ const freezeCity = (row: CityRow): City => {
   } satisfies City);
 };
 
+/**
+ * A city in a country's light list (@johnmorrisdotca/kuni/cities/names-<code>): its id and names only, for a picker
+ * to show before it fetches the rest, and whether it is one of the country's major cities (its capital, or one of its
+ * first twenty, ranked by the urban area each heads).
+ *
+ * @example
+ * ```ts
+ * import type { CityName } from "@johnmorrisdotca/kuni/places";
+ *
+ * const tokyo: CityName = { id: "Q1490", name: { en: "Tokyo", ja: "東京都", jaShort: "東京" }, major: true };
+ * console.log(tokyo.name.jaShort);
+ * ```
+ */
+interface CityName {
+  /** The city's id, as `City.id`. */
+  id: string;
+  /** Its names, as `City.name`. */
+  name: { en: string; ja?: string; jaShort?: string; native?: string };
+  /** True for the country's national capital and its first twenty cities. */
+  major: boolean;
+}
+
+/** A light list written as columns (the id and name columns of CityColumns, and one digit each for major). */
+const namesOf = (columns: Pick<CityColumns, "id" | "en" | "ja" | "native"> & { major: string }): readonly CityName[] => {
+  const en = columns.en.split("|");
+  const ja = columns.ja.split("|");
+  const native = columns.native.split("|");
+
+  return Object.freeze(
+    columns.id.split(",").map((id, at) => {
+      const raw = idOf(id);
+
+      return Object.freeze({
+        id: typeof raw === "number" ? `Q${raw}` : raw,
+        name: Object.freeze({ en: en[at]!, ...(ja[at] === "" ? {} : { ja: ja[at]!, jaShort: jaShortOf(ja[at]!) }), ...(native[at] === "" ? {} : { native: native[at]! }) }),
+        major: columns.major[at] === "1",
+      });
+    }),
+  );
+};
+
 /** A tier's rows made into cities, frozen, in the order of the rows. */
 const expandCities = (rows: readonly CityRow[]): readonly City[] => Object.freeze(rows.map(freezeCity));
 
-export { expandCities };
-export type { City, CityRow, CitySource };
+export { expandCities, namesOf, rowsOf };
+export type { City, CityColumns, CityName, CityRow, CitySource };

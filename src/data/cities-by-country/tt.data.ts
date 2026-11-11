@@ -2,26 +2,26 @@
 // The 17 cities of Trinidad & Tobago (TT), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TT: readonly CityRow[] = [
-  [1444575,10.5144,-61.4075,83489,2011,"TT","TT-CHA","Chaguanas","チャグアナス",null,null,0,null,0],
-  [1023712,10.2833,-61.4667,55419,2000,"TT","TT-SFO","San Fernando","サンフェルナンド",null,null,0,null,0],
-  [39178,10.6667,-61.5167,49031,2025,"TT","TT-POS","Port of Spain","ポートオブスペイン",null,null,1,"TT",0],
-  [2602007,10.4167,-61.45,48858,null,"TT","TT-CTT","Couva","クーヴァ",null,null,2,"TT-CTT",0],
-  [4795612,10.6333,-61.3333,27820,null,"TT","TT-TUP","Arouca","アルーカ",null,null,0,null,0],
-  [3865976,10.65,-61.4667,22742,null,"TT","TT-SJL","Morvant","モーヴァント",null,null,0,null,0],
-  [6502566,10.65,-61.4833,21454,null,"TT","TT-SJL","Laventille","ラヴェンティル",null,null,0,null,0],
-  [4858482,10.65,-61.4667,18299,null,"TT","TT-SJL","Barataria","バラタリア",null,null,0,null,0],
-  [2522343,10.6333,-61.3833,17650,null,"TT","TT-TUP","Tunapuna","トゥナプナ",null,null,2,"TT-TUP",0],
-  [966660,11.1833,-60.7333,17000,2000,"TT","TT-SGE","Scarborough","スカボロー",null,null,2,"TT-TOB",0],
-  [1976992,10.65,-61.45,13797,2000,"TT","TT-SJL","San Juan","サン・フアン (トリニダード・トバゴ)",null,null,2,"TT-SJL",0],
-  [3493381,10.1333,-61.5,10254,null,"TT","TT-SIP","Siparia","シパリア",null,null,2,"TT-SIP",0],
-  [514272,10.3042,-61.1708,3821,2011,"TT","TT-MRC","Rio Claro","リオ・クラロ (トリニダード・トバゴ)",null,null,2,"TT-MRC",0],
-  [1011576,10.2667,-61.3833,null,null,"TT","TT-PRT","Princes Town","プリンセス・タウン",null,null,2,"TT-PRT",0],
-  [1220518,10.708,-61.5581,null,null,"TT","TT-DMN","Diego Martin","ディエゴ・マーティン",null,null,2,"TT-DMN",0],
-  [2510034,10.1678,-61.4544,null,null,"TT","TT-PED","Penal","ペナル (町)",null,null,2,"TT-PED",0],
-  [2957578,10.5667,-61.1333,null,null,"TT","TT-SGE","Sangre Grande","サングレ・グランデ",null,null,2,"TT-SGE",0],
-];
+const TT: CityColumns = {
+  id: "uyn3,lxwg,u8a,1jrpz,2usbg,2av08,3vdeu,2w4tu,1i293,kpvo,16dgg,22vid,b0tc,lojc,q5ra,1hsr6,1re2y",
+  lat: [105144,102833,106667,104167,106333,106500,106500,106500,106333,111833,106500,101333,103042,102667,107080,101678,105667],
+  lon: [-614075,-614667,-615167,-614500,-613333,-614667,-614833,-614667,-613833,-607333,-614500,-615000,-611708,-613833,-615581,-614544,-611333],
+  population: [83489,55419,49031,48858,27820,22742,21454,18299,17650,17000,13797,10254,3821,-1,-1,-1,-1],
+  date: "2011,2000,2025,,,,,,,2000,2000,,2011,,,,",
+  country: "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+  subdivisions: "CHA,SFO,POS,CTT,TUP,SJL,SGE,SIP,MRC,PRT,DMN,PED",
+  subdivision: [0,1,2,3,4,5,5,5,4,6,5,7,8,9,10,11,6],
+  en: "Chaguanas|San Fernando|Port of Spain|Couva|Arouca|Morvant|Laventille|Barataria|Tunapuna|Scarborough|San Juan|Siparia|Rio Claro|Princes Town|Diego Martin|Penal|Sangre Grande",
+  ja: "チャグアナス|サンフェルナンド|ポートオブスペイン|クーヴァ|アルーカ|モーヴァント|ラヴェンティル|バラタリア|トゥナプナ|スカボロー|サン・フアン (トリニダード・トバゴ)|シパリア|リオ・クラロ (トリニダード・トバゴ)|プリンセス・タウン|ディエゴ・マーティン|ペナル (町)|サングレ・グランデ",
+  native: "||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "00120000222222222",
+  capitalOf: "||TT|TT-CTT|||||TT-TUP|TT-TOB|TT-SJL|TT-SIP|TT-MRC|TT-PRT|TT-DMN|TT-PED|TT-SGE",
+  sources: "00000000000000000",
+  extra: [],
+};
 
 export { TT };

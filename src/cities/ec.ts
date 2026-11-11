@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ec: the 77 cities of Ecuador, every tier together, as a list.
 
 import { EC } from "../data/cities-by-country/ec.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "EC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(EC);
+const CITIES: readonly City[] = expandCities(rowsOf(EC));
 
 export default CITIES;
 export { CITIES };

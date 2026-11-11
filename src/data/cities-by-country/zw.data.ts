@@ -2,39 +2,26 @@
 // The 30 cities of Zimbabwe (ZW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const ZW: readonly CityRow[] = [
-  [3921,-17.8292,31.0522,2150000,2012,"ZW","ZW-HA","Harare","ハラレ",null,null,1,"ZW",0],
-  [601142,-20.0744,30.8328,1638528,2022,"ZW","ZW-MV","Masvingo","マシンゴ",null,null,2,"ZW-MV",0],
-  [193250,-20.1667,28.5667,665940,2022,"ZW","ZW-BU","Bulawayo","ブラワヨ",null,null,2,"ZW-BU",0],
-  [399119,-17.9939,31.0481,371246,2022,"ZW","ZW-ME","Chitungwiza","チトゥンギザ",null,null,0,null,0],
-  [399322,-18.9707,32.6709,224804,2022,"ZW","ZW-MA","Mutare","ムタレ",null,null,2,"ZW-MA",0],
-  [125506173,-19.4614,29.8022,158200,null,"ZW",null,"Ascot, Gweru Zimbabwe",null,null,null,0,null,0],
-  [2084814,-17.8894,31.1614,152116,2013,"ZW","ZW-HA","Epworth","エプワース","Epworth, Zimbabwe","sn",0,null,0],
-  [399316,-19.4533,29.8153,141260,2002,"ZW","ZW-MI","Gweru","グウェル",null,null,2,"ZW-MI",0],
-  [381560,-18.35,29.9167,116300,2022,"ZW","ZW-MW","Kadoma","カドマ",null,null,0,null,0],
-  [399083,-18.9167,29.9833,93072,2002,"ZW","ZW-MI","Kwekwe","クウェクウェ",null,null,0,null,0],
-  [782743,-17.35,30.2,56794,2002,"ZW","ZW-MW","Chinhoyi","チノイ",null,null,2,"ZW-MW",0],
-  [1019991,-18.1833,31.55,52283,2002,"ZW","ZW-ME","Marondera","マロンデラ",null,null,2,"ZW-ME",0],
-  [863727,-17.3,31.3333,46275,2013,"ZW","ZW-MC","Bindura","ビンドゥラ","Bindura (guta)","sn",2,"ZW-MC",0],
-  [994406,-17.8833,30.7,44054,2002,"ZW","ZW-MW","Norton","ノートン",null,null,0,null,0],
-  [1068972,-18.14,30.15,42959,2002,"ZW","ZW-MW","Chegutu","チェグトゥ",null,null,0,null,0],
-  [1202229,-18.3647,26.5,42581,1992,"ZW","ZW-MN","Hwange","ワンゲ",null,null,0,null,0],
-  [814922,-22.2167,30,41767,2012,"ZW","ZW-MS","Beitbridge","ベイトブリッジ",null,null,0,null,0],
-  [231399,-20.3333,30.0333,35229,2002,"ZW","ZW-MI","Zvishavane","ズビシャバネ",null,null,0,null,0],
-  [1393804,-17.9333,25.8333,33060,2012,"ZW","ZW-MN","Victoria Falls","ビクトリア・フォールズ",null,null,0,null,0],
-  [584001,-19.0333,29.7833,32346,2002,"ZW","ZW-MI","Redcliff","レッドクリフ",null,null,0,null,0],
-  [1074697,-21.05,31.6667,26129,2002,"ZW","ZW-MV","Chiredzi","チレドジ",null,null,0,null,0],
-  [991725,-18.5367,32.1247,25054,2002,"ZW","ZW-MA","Rusape","ルサペ",null,null,0,null,0],
-  [1025799,-16.5333,28.8,24210,2002,"ZW","ZW-MW","Kariba","カリバ",null,null,0,null,0],
-  [994419,-16.81,29.7,22293,2002,"ZW","ZW-MW","Karoi","カロイ",null,null,0,null,0],
-  [1972938,-17.8897,31.2447,22038,2002,"ZW","ZW-ME","Ruwa","ルワ",null,null,0,null,0],
-  [1534487,-18.2167,28.9333,17633,2002,"ZW","ZW-MI","Gokwe centre","ゴクウェ",null,null,0,null,0],
-  [994412,-20.1883,32.6236,17458,2002,"ZW","ZW-MA","Chipinge","チピンゲ",null,null,0,null,0],
-  [1188217,-19.6667,30,16866,2002,"ZW","ZW-MI","Shurugwi","シュルグウィ",null,null,0,null,0],
-  [1557796,-20.945,29.025,14450,2004,"ZW","ZW-MS","Gwanda","グワンダ",null,null,2,"ZW-MS",0],
-  [31945140,-18.9315,27.807,null,null,"ZW",null,"Lupane","ルパネ",null,null,2,"ZW-MN",0],
-];
+const ZW: CityColumns = {
+  id: "30x,cvue,4542,8jyn,8k4a,22q16l,18oni,8k44,86ew,8jxn,gryv,lv13,iigf,lbae,mwto,prn9,hgsq,4yjr,tvgs,cim9,n18p,l97x,lzif,lbar,16abu,ww0n,lbak,pgu1,xe04,j0p10",
+  lat: [-178292,-200744,-201667,-179939,-189707,-194614,-178894,-194533,-183500,-189167,-173500,-181833,-173000,-178833,-181400,-183647,-222167,-203333,-179333,-190333,-210500,-185367,-165333,-168100,-178897,-182167,-201883,-196667,-209450,-189315],
+  lon: [310522,308328,285667,310481,326709,298022,311614,298153,299167,299833,302000,315500,313333,307000,301500,265000,300000,300333,258333,297833,316667,321247,288000,297000,312447,289333,326236,300000,290250,278070],
+  population: [2150000,1638528,665940,371246,224804,158200,152116,141260,116300,93072,56794,52283,46275,44054,42959,42581,41767,35229,33060,32346,26129,25054,24210,22293,22038,17633,17458,16866,14450,-1],
+  date: "2012,2022,2022,2022,2022,,2013,2002,2022,2002,2002,2002,2013,2002,2002,1992,2012,2002,2012,2002,2002,2002,2002,2002,2002,2002,2002,2002,2004,",
+  country: "ZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZWZW",
+  subdivisions: "HA,MV,BU,ME,MA,MI,MW,MC,MN,MS",
+  subdivision: [0,1,2,3,4,-1,0,5,6,5,6,3,7,6,6,8,9,5,8,5,1,4,6,6,3,5,4,5,9,-1],
+  en: "Harare|Masvingo|Bulawayo|Chitungwiza|Mutare|Ascot, Gweru Zimbabwe|Epworth|Gweru|Kadoma|Kwekwe|Chinhoyi|Marondera|Bindura|Norton|Chegutu|Hwange|Beitbridge|Zvishavane|Victoria Falls|Redcliff|Chiredzi|Rusape|Kariba|Karoi|Ruwa|Gokwe centre|Chipinge|Shurugwi|Gwanda|Lupane",
+  ja: "ハラレ|マシンゴ|ブラワヨ|チトゥンギザ|ムタレ||エプワース|グウェル|カドマ|クウェクウェ|チノイ|マロンデラ|ビンドゥラ|ノートン|チェグトゥ|ワンゲ|ベイトブリッジ|ズビシャバネ|ビクトリア・フォールズ|レッドクリフ|チレドジ|ルサペ|カリバ|カロイ|ルワ|ゴクウェ|チピンゲ|シュルグウィ|グワンダ|ルパネ",
+  native: "||||||Epworth, Zimbabwe||||||Bindura (guta)|||||||||||||||||",
+  languages: "sn",
+  language: [-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "122020020022200000000000000022",
+  capitalOf: "ZW|ZW-MV|ZW-BU||ZW-MA|||ZW-MI|||ZW-MW|ZW-ME|ZW-MC||||||||||||||||ZW-MS|ZW-MN",
+  sources: "000000000000000000000000000000",
+  extra: [],
+};
 
 export { ZW };

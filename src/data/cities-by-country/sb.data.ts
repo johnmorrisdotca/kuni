@@ -2,18 +2,26 @@
 // The 9 cities of Solomon Islands (SB), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SB: readonly CityRow[] = [
-  [40921,-9.4333,159.95,84520,2017,"SB","SB-CT","Honiara","ホニアラ",null,null,1,"SB",0],
-  [1236908,-8.1,156.85,7177,2019,"SB","SB-WE","Gizo","ギゾ",null,null,2,"SB-WE",0],
-  [538476,-8.7683,160.6969,6811,2009,"SB","SB-ML","Auki","アウキ",null,null,2,"SB-ML",0],
-  [646756,-10.7233,165.7964,553,2007,"SB","SB-TE","Lata","ラタ (サンタクルーズ諸島)",null,null,2,"SB-TE",0],
-  [1440679,-6.7114,156.3964,440,null,"SB","SB-CH","Taro Island","タロ島",null,null,2,"SB-CH",0],
-  [574769,-8.1662,159.619,null,null,"SB","SB-IS","Buala","ブアラ",null,null,2,"SB-IS",0],
-  [713152,-10.4544,161.9204,null,null,"SB","SB-MK","Kirakira","キラキラ",null,null,2,"SB-MK",0],
-  [987011,-11.5583,160.0706,null,null,"SB","SB-RB","Tigoa","ティゴア",null,null,2,"SB-RB",0],
-  [139487651,-9.1031,160.1506,null,null,"SB","SB-CE","Tulagi",null,null,null,2,"SB-CE",0],
-];
+const SB: CityColumns = {
+  id: "vkp,qiek,bjho,dv1g,uvmv,cbht,fa9s,l5kz,2b1pcz",
+  lat: [-94333,-81000,-87683,-107233,-67114,-81662,-104544,-115583,-91031],
+  lon: [1599500,1568500,1606969,1657964,1563964,1596190,1619204,1600706,1601506],
+  population: [84520,7177,6811,553,440,-1,-1,-1,-1],
+  date: "2017,2019,2009,2007,,,,,",
+  country: "SBSBSBSBSBSBSBSBSB",
+  subdivisions: "CT,WE,ML,TE,CH,IS,MK,RB,CE",
+  subdivision: [0,1,2,3,4,5,6,7,8],
+  en: "Honiara|Gizo|Auki|Lata|Taro Island|Buala|Kirakira|Tigoa|Tulagi",
+  ja: "ホニアラ|ギゾ|アウキ|ラタ (サンタクルーズ諸島)|タロ島|ブアラ|キラキラ|ティゴア|",
+  native: "||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "122222222",
+  capitalOf: "SB|SB-WE|SB-ML|SB-TE|SB-CH|SB-IS|SB-MK|SB-RB|SB-CE",
+  sources: "000000000",
+  extra: [],
+};
 
 export { SB };

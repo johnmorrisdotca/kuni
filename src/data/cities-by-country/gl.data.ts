@@ -2,14 +2,26 @@
 // The 5 cities of Greenland (GL), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GL: readonly CityRow[] = [
-  [226,64.175,-51.7333,18326,2020,"GL","GL-SM","Nuuk","ヌーク",null,null,1,"GL",0],
-  [208098,66.9389,-53.6722,5582,2020,"GL","GL-QE","Sisimiut","シシミュート",null,null,2,"GL-QE",0],
-  [191047,69.2167,-51.1,4737,2022,"GL","GL-AV","Ilulissat","イルリサット",null,null,2,"GL-AV",0],
-  [211218,68.7097,-52.8694,3069,2020,"GL","GL-QT","Aasiaat","アシアート",null,null,2,"GL-QT",0],
-  [221203,60.7167,-46.0333,3050,2020,"GL","GL-KU","Qaqortoq","カコトック",null,null,2,"GL-KU",0],
-];
+const GL: CityColumns = {
+  id: "6a,4gki,43ev,4iz6,4qoj",
+  lat: [641750,669389,692167,687097,607167],
+  lon: [-517333,-536722,-511000,-528694,-460333],
+  population: [18326,5582,4737,3069,3050],
+  date: "2020,2020,2022,2020,2020",
+  country: "GLGLGLGLGL",
+  subdivisions: "SM,QE,AV,QT,KU",
+  subdivision: [0,1,2,3,4],
+  en: "Nuuk|Sisimiut|Ilulissat|Aasiaat|Qaqortoq",
+  ja: "ヌーク|シシミュート|イルリサット|アシアート|カコトック",
+  native: "||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1],
+  capital: "12222",
+  capitalOf: "GL|GL-QE|GL-AV|GL-QT|GL-KU",
+  sources: "00000",
+  extra: [],
+};
 
 export { GL };

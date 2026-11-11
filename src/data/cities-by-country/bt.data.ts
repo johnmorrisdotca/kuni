@@ -2,29 +2,26 @@
 // The 20 cities of Bhutan (BT), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BT: readonly CityRow[] = [
-  [9270,27.4714,89.6337,114551,2017,"BT","BT-15","Thimphu","ティンプー","ཐིམ་ཕུུུུ","dz",1,"BT",0],
-  [2582611,27.275,91.24,36383,2022,"BT","BT-42","Mongar",null,null,null,2,"BT-42",0],
-  [1715095,27.4667,89.9,6714,2005,"BT","BT-24","Wangdue Phodrang","ワンデュ・ポダン","ཝན་ཌུ་ ཕོཌར་ག","dz",2,"BT-24",0],
-  [826112,27.6167,89.8667,5000,null,"BT","BT-23","Punakha","プナカ","སྤུ་ན་ཁ་","dz",2,"BT-23",2],
-  [2315241,26.8667,89.1,4981,2005,"BT","BT-14","Samtse","サムツェ","ས་མ་ཛེ་ (བོད་ཀྱི་རྫོང་ཁག་གི་རྒྱལ་ས་)","dz",2,"BT-14",0],
-  [1019534,27.5168,90.5,2695,2005,"BT","BT-32","Trongsa","トンサ","ཀྲོང་གསར་","dz",2,"BT-32",0],
-  [862041,27.4333,89.4167,2362,2005,"BT","BT-11","Paro","パロ","སྤ་རོ་","dz",2,"BT-11",0],
-  [2597251,27.65,91.15,1935,2008,"BT","BT-44","Lhuntse","ルンツェ",null,null,2,"BT-44",0],
-  [2253073,27.0167,90.1,1666,2005,"BT","BT-21","Damphu","ダンプー",null,null,2,"BT-21",0],
-  [366969,26.8853,90.2667,null,null,"BT","BT-31","Sarpang",null,null,null,2,"BT-31",0],
-  [1149819,27.3333,91.5528,null,null,"BT","BT-41","Trashigang","タシガン","བཀྲིས་སྒང་","dz",2,"BT-41",0],
-  [2059058,27.3825,89.285,null,null,"BT","BT-13","Ha","ハ","ཧཱ / ཧས","dz",2,"BT-13",0],
-  [2158280,27.2333,90.65,null,null,"BT","BT-34","Zhemgang","シェムガン",null,null,2,"BT-34",0],
-  [2380103,26.7978,91.5043,null,null,"BT","BT-45","Samdrup Jongkhar","サムドゥプ・ジョンカル","བསམ་གྲུབ་ལྗོངས་མཁར་","dz",2,"BT-45",0],
-  [2468415,27.5592,90.7333,null,null,"BT","BT-33","Jakar","ジャカル",null,null,2,"BT-33",0],
-  [2487656,27.1186,89.8667,null,null,"BT","BT-22","Daga","ダガ","དར་དཀ","dz",2,"BT-22",0],
-  [2566021,27.5833,91.4667,null,null,"BT","BT-TY","Trashiyangtse","タシ・ヤンツェ",null,null,2,"BT-TY",0],
-  [2665353,27.0333,91.45,null,null,"BT","BT-43","Pemagatsel",null,"པེ་མཱག་ཛེལ་ (Bhutan གི་རྫོང་ཁག་གི་རྒྱལ་ས་)","dz",2,"BT-43",0],
-  [4134036,27.9038,89.7276,null,null,"BT",null,"Gasa Dzong","ガサ","མགར་ས་ བཀྲིས་མཐོང་སྨོན་རྫོང་།","dz",2,"BT-GA",0],
-  [4505681,26.96,89.54,null,null,"BT",null,"Tsimasham",null,null,null,2,"BT-12",0],
-];
+const BT: CityColumns = {
+  id: "75i,1jcr7,10rdj,hpfk,1dmg9,luoe,ih5l,1jo1v,1cahd,7v5l,on7f,184s2,1a9c8,1f0hz,1gwn3,1hbhk,1izyd,1l4ll,2gluc,2oklt",
+  lat: [274714,272750,274667,276167,268667,275168,274333,276500,270167,268853,273333,273825,272333,267978,275592,271186,275833,270333,279038,269600],
+  lon: [896337,912400,899000,898667,891000,905000,894167,911500,901000,902667,915528,892850,906500,915043,907333,898667,914667,914500,897276,895400],
+  population: [114551,36383,6714,5000,4981,2695,2362,1935,1666,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  date: "2017,2022,2005,,2005,2005,2005,2008,2005,,,,,,,,,,,",
+  country: "BTBTBTBTBTBTBTBTBTBTBTBTBTBTBTBTBTBTBTBT",
+  subdivisions: "15,42,24,23,14,32,11,44,21,31,41,13,34,45,33,22,TY,43",
+  subdivision: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,-1,-1],
+  en: "Thimphu|Mongar|Wangdue Phodrang|Punakha|Samtse|Trongsa|Paro|Lhuntse|Damphu|Sarpang|Trashigang|Ha|Zhemgang|Samdrup Jongkhar|Jakar|Daga|Trashiyangtse|Pemagatsel|Gasa Dzong|Tsimasham",
+  ja: "ティンプー||ワンデュ・ポダン|プナカ|サムツェ|トンサ|パロ|ルンツェ|ダンプー||タシガン|ハ|シェムガン|サムドゥプ・ジョンカル|ジャカル|ダガ|タシ・ヤンツェ||ガサ|",
+  native: "ཐིམ་ཕུུུུ||ཝན་ཌུ་ ཕོཌར་ག|སྤུ་ན་ཁ་|ས་མ་ཛེ་ (བོད་ཀྱི་རྫོང་ཁག་གི་རྒྱལ་ས་)|ཀྲོང་གསར་|སྤ་རོ་||||བཀྲིས་སྒང་|ཧཱ / ཧས||བསམ་གྲུབ་ལྗོངས་མཁར་||དར་དཀ||པེ་མཱག་ཛེལ་ (Bhutan གི་རྫོང་ཁག་གི་རྒྱལ་ས་)|མགར་ས་ བཀྲིས་མཐོང་སྨོན་རྫོང་།|",
+  languages: "dz",
+  language: [0,-1,0,0,0,0,0,-1,-1,-1,0,0,-1,0,-1,0,-1,0,0,-1],
+  capital: "12222222222222222222",
+  capitalOf: "BT|BT-42|BT-24|BT-23|BT-14|BT-32|BT-11|BT-44|BT-21|BT-31|BT-41|BT-13|BT-34|BT-45|BT-33|BT-22|BT-TY|BT-43|BT-GA|BT-12",
+  sources: "00020000000000000000",
+  extra: [],
+};
 
 export { BT };

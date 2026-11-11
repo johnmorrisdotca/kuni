@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sb: the 9 cities of Solomon Islands, every tier together, as a list.
 
 import { SB } from "../data/cities-by-country/sb.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SB"
  * ```
  */
-const CITIES: readonly City[] = expandCities(SB);
+const CITIES: readonly City[] = expandCities(rowsOf(SB));
 
 export default CITIES;
 export { CITIES };

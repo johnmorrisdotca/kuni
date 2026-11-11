@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/jp: the 1,058 cities of Japan, every tier together, as a list.
 
 import { JP } from "../data/cities-by-country/jp.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "JP"
  * ```
  */
-const CITIES: readonly City[] = expandCities(JP);
+const CITIES: readonly City[] = expandCities(rowsOf(JP));
 
 export default CITIES;
 export { CITIES };

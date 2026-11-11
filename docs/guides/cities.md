@@ -15,7 +15,7 @@ The cities come in tiers, so a page pays only for what it uses. `capitals` holds
 | `loadCities("15k")` | the cities of 15,000 or more, made from the countries' own files (all of them are fetched) |
 | `@johnmorrisdotca/kuni/cities/<code>` | one country's cities, every tier together (`/cities/jp`) |
 | `@johnmorrisdotca/kuni/cities` | the lookups: `citySet`, `loadCities`, `citiesOf`, `cityById` |
-| `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)` and `searchPlaces(text)`, for a chooser |
+| `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)`, `searchPlaces(text)` and `cityNamesOf(code)`, for a chooser |
 
 ## Join tiers and look things up
 
@@ -46,6 +46,8 @@ console.log(countriesOf("OC").length > 10, found[0].label);
 ## What a chooser asks
 
 `continents()` lists the seven continents with their names in English and Japanese, and `countriesOf("AS")` the countries of one, both from kuni's groupings. `searchPlaces(text, { lang, limit })` finds countries and cities by what somebody typed, in English, Japanese or the place's own language, with case, accents and kana folded, ranked by the whole name, the start of it, the start of a word, then anywhere, and by population among equals. By default it looks in the capitals and the cities of 100,000 or more; `tiers` names others (`"15k"` fetches every country's file) and `country` searches one country's cities, every tier, on their own. `lang` is the language of each hit's `label`. Kuni draws nothing: a page builds its own chooser on these.
+
+For a box that searches as somebody types, `searchPlaces(text, { match: "start" })` finds a name only from its start or the start of a word in it (Paris and New York for "york", not "ork"), and so fetches only the part of the capitals and of the 100k tier that holds such names: about 54 kB gzipped for a first search at the median and 122 kB at most, against 478 kB for the three whole tiers. Each part is an entry of its own, `/cities/capitals-<key>` and `/cities/100k-<key>`: a to z, `0`, a kana row (`kana-k`), or one of sixteen groups for kanji and other scripts. For a country, `cityNamesOf("US")` gives the light list first, each city's `id`, `name` and `major` (the capital and the first twenty), about half the country's full file; `cityById` fetches the rest of the one that is chosen.
 
 ## What a city holds
 

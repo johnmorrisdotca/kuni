@@ -2,10 +2,26 @@
 // The 1 cities of Isle of Man (IM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const IM: readonly CityRow[] = [
-  [18569,54.15,-4.4775,26677,2021,"IM",null,"Douglas","ダグラス","Doolish","gv",1,"IM",0],
-];
+const IM: CityColumns = {
+  id: "ebt",
+  lat: [541500],
+  lon: [-44775],
+  population: [26677],
+  date: "2021",
+  country: "IM",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Douglas",
+  ja: "ダグラス",
+  native: "Doolish",
+  languages: "gv",
+  language: [0],
+  capital: "1",
+  capitalOf: "IM",
+  sources: "0",
+  extra: [],
+};
 
 export { IM };

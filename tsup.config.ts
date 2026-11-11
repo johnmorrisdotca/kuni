@@ -9,7 +9,8 @@ import { defineConfig } from "tsup";
 const countryEntries: Record<string, string> = Object.fromEntries(
   ["subdivisions", "subdivision-facts", "cities"].flatMap((folder) =>
     readdirSync(`src/${folder}`)
-      .filter((file) => /^[a-z]{2}\.ts$/.test(file))
+      // A country's file; in /cities also its light list (names-<code>) and the parts of the split tiers (100k-<key>).
+      .filter((file) => /^[a-z]{2}\.ts$/.test(file) || (folder === "cities" && /^(names-[a-z]{2}|(capitals|100k)-[a-z0-9-]+)\.ts$/.test(file)))
       .map((file) => [`${folder}/${basename(file, ".ts")}`, `src/${folder}/${file}`]),
   ),
 );
@@ -22,7 +23,7 @@ const countryImports: Plugin = {
     const extension = build.initialOptions.format === "cjs" ? "cjs" : "js";
     build.onResolve({ filter: /^\.\/element\.js$/ }, () => ({ path: `./element.${extension}`, external: true }));
     build.onResolve({ filter: /^\.\/cities\/(capitals|1m|100k|15k|where)\.js$/ }, (args) => ({ path: `${args.path.slice(0, -3)}.${extension}`, external: true }));
-    build.onResolve({ filter: /^\.\.\/(subdivisions|subdivision-facts|cities)\/[a-z]{2}\.js$/ }, (args) => ({
+    build.onResolve({ filter: /^\.\.\/(subdivisions|subdivision-facts|cities)\/([a-z]{2}|names-[a-z]{2}|(capitals|100k)-[a-z0-9-]+)\.js$/ }, (args) => ({
       path: `./${args.path.split("/")[1]}/${basename(args.path, ".js")}.${extension}`,
       external: true,
     }));

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ag: the 7 cities of Antigua & Barbuda, every tier together, as a list.
 
 import { AG } from "../data/cities-by-country/ag.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AG);
+const CITIES: readonly City[] = expandCities(rowsOf(AG));
 
 export default CITIES;
 export { CITIES };

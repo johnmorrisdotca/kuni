@@ -2,10 +2,26 @@
 // The 1 cities of Guadeloupe (GP), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const GP: readonly CityRow[] = [
-  [167024,15.9969,-61.7328,9417,2023,"GP",null,"Basse-Terre","バステール",null,null,1,"GP",0],
-];
+const GP: CityColumns = {
+  id: "3kvk",
+  lat: [159969],
+  lon: [-617328],
+  population: [9417],
+  date: "2023",
+  country: "GP",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Basse-Terre",
+  ja: "バステール",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "GP",
+  sources: "0",
+  extra: [],
+};
 
 export { GP };

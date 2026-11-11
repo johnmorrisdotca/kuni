@@ -2,10 +2,26 @@
 // The 1 cities of Jersey (JE), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const JE: readonly CityRow[] = [
-  [147738,49.1858,-2.11,35822,2021,"JE",null,"Saint Helier","セント・ヘリア","Saint Hélyi","nrf-je",1,"JE",0],
-];
+const JE: CityColumns = {
+  id: "35zu",
+  lat: [491858],
+  lon: [-21100],
+  population: [35822],
+  date: "2021",
+  country: "JE",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Saint Helier",
+  ja: "セント・ヘリア",
+  native: "Saint Hélyi",
+  languages: "nrf-je",
+  language: [0],
+  capital: "1",
+  capitalOf: "JE",
+  sources: "0",
+  extra: [],
+};
 
 export { JE };

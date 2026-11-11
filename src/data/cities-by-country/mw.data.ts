@@ -2,42 +2,26 @@
 // The 33 cities of Malawi (MW), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MW: readonly CityRow[] = [
-  [3876,-13.9864,33.7681,989318,"2018-09-03","MW","MW-C","Lilongwe","リロングウェ",null,null,1,"MW",0],
-  [188693,-15.7861,35.0058,800264,2018,"MW","MW-S","Blantyre","ブランタイヤ",null,null,2,"MW-BL MW-S",0],
-  [502216,-11.45,34.0333,150100,2007,"MW","MW-N","Mzuzu","ムズズ",null,null,2,"MW-N",0],
-  [219117,-15.386,35.3188,101140,2008,"MW","MW-S","Zomba","ゾンバ",null,null,2,"MW-ZO",0],
-  [979028,-13.7778,34.45,71181,null,"MW","MW-C","Salima","サリマ",null,null,2,"MW-SA",2],
-  [135108615,-13.7103,35.0444,66914,2018,"MW","MW-S","Makanjila",null,null,null,0,null,0],
-  [1022510,-12.9167,34.3,59854,null,"MW","MW-C","Nkhotakota","コタコタ",null,null,2,"MW-NK",2],
-  [1890257,-14.4722,35.2639,51429,null,"MW","MW-S","Mangochi","マンゴチ",null,null,2,"MW-MG",0],
-  [1022512,-9.9333,33.9333,42555,null,"MW","MW-N","Karonga","カロンガ",null,null,2,"MW-KR",0],
-  [1377361,-15.0667,35.2333,36421,2018,"MW","MW-S","Liwonde","リウォンデ",null,null,0,null,0],
-  [1666876,-11.8986,33.5944,26224,null,"MW","MW-N","Mzimba","ムジンバ",null,null,2,"MW-MZ",0],
-  [5101966,-16.55,35.1333,25235,null,"MW",null,"Chiromo","チロモ",null,null,0,null,3],
-  [804607,-14.9833,34.9589,24000,2008,"MW","MW-S","Balaka Township","バラカ",null,null,2,"MW-BA",0],
-  [1370650,-11.6,34.3,22108,null,"MW","MW-N","Nkhata Bay","カタベイ",null,null,2,"MW-NB",2],
-  [1939876,-16.9167,35.2667,21774,null,"MW","MW-S","Nsanje","ンサンジェ",null,null,2,"MW-NS",2],
-  [1865092,-16.0316,35.5,20870,null,"MW","MW-S","Mulanje","ムランジェ",null,null,2,"MW-MU",0],
-  [136677021,-13.2333,33.7333,20000,2025,"MW","MW-C","Kasakula",null,null,null,0,null,0],
-  [1188150,-13.8,32.8833,18305,null,"MW","MW-C","Mchinji","ムチンジ",null,null,2,"MW-MC",2],
-  [1182266,-14.3833,34.3333,15608,null,"MW","MW-C","Dedza","デッザ",null,null,2,"MW-DE",2],
-  [1022517,-14.8167,34.6333,14642,2008,"MW","MW-C","Ntcheu","ンチェウ",null,null,2,"MW-NU",0],
-  [1074915,-9.7019,33.27,13412,null,"MW","MW-N","Chitipa","チティパ",null,null,2,"MW-CT",2],
-  [1416015,-15.6094,34.5234,11379,null,"MW","MW-S","Mwanza","ムワンザ",null,null,2,"MW-MW",2],
-  [2144010,-16.0667,35.1333,7029,2008,"MW","MW-S","Thyolo","チョロ",null,null,2,"MW-TH",0],
-  [136384994,-15.398,34.6534,2283,2018,"MW","MW-S","Neno","ネノ",null,null,2,"MW-NE",0],
-  [12810684,-15.1792,35.3,1833,2018,"MW","MW-S","Machinga","マチンガ",null,null,2,"MW-MH",0],
-  [1022529,-15.7167,35.2,1580,null,"MW","MW-S","Chiradzulu","チラズル",null,null,2,"MW-CR",2],
-  [195309,-13.0333,33.4847,null,null,"MW","MW-C","Kasungu","カスング",null,null,2,"MW-KS",0],
-  [912391,-13.3542,33.9208,null,null,"MW","MW-C","Ntchisi","ンチシ","Nchisi","ny",2,"MW-NI",0],
-  [1022535,-11.0172,33.8539,null,null,"MW","MW-N","Rumphi","ルンピ",null,null,2,"MW-RU",0],
-  [1022541,-16.035,34.801,null,null,"MW","MW-S","Chikwawa","チクワワ",null,null,2,"MW-CK",0],
-  [1253056,-13.6583,33.9333,null,null,"MW","MW-C","Dowa","ドーワ",null,null,2,"MW-DO",0],
-  [1975329,-15.8,35.65,null,null,"MW","MW-S","Phalombe","パロンベ",null,null,2,"MW-PH",0],
-  [2272455,-12.0667,34.7167,null,null,"MW","MW-N","Likoma","リコマ",null,null,2,"MW-LK",0],
-];
+const MW: CityColumns = {
+  id: "2zo,41lh,arig,4p2l,kzf8,28fuh3,lwz2,14ij5,lwz4,tis1,zq64,31cpa,h8u7,tdlm,15ktg,13z44,29dgnx,pgs6,pc8q,lwz9,n1er,uclr,19ybu,2977c2,7mksc,lwzl,46p9,jk07,lwzr,lwzx,quv4,16c69,1cpfr",
+  lat: [-139864,-157861,-114500,-153860,-137778,-137103,-129167,-144722,-99333,-150667,-118986,-165500,-149833,-116000,-169167,-160316,-132333,-138000,-143833,-148167,-97019,-156094,-160667,-153980,-151792,-157167,-130333,-133542,-110172,-160350,-136583,-158000,-120667],
+  lon: [337681,350058,340333,353188,344500,350444,343000,352639,339333,352333,335944,351333,349589,343000,352667,355000,337333,328833,343333,346333,332700,345234,351333,346534,353000,352000,334847,339208,338539,348010,339333,356500,347167],
+  population: [989318,800264,150100,101140,71181,66914,59854,51429,42555,36421,26224,25235,24000,22108,21774,20870,20000,18305,15608,14642,13412,11379,7029,2283,1833,1580,-1,-1,-1,-1,-1,-1,-1],
+  date: "2018-09-03,2018,2007,2008,,2018,,,,2018,,,2008,,,,2025,,,2008,,,2008,2018,2018,,,,,,,,",
+  country: "MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW",
+  subdivisions: "C,S,N",
+  subdivision: [0,1,2,1,0,1,0,1,2,1,2,-1,1,2,1,1,0,0,0,0,2,1,1,1,1,1,0,0,2,1,0,1,2],
+  en: "Lilongwe|Blantyre|Mzuzu|Zomba|Salima|Makanjila|Nkhotakota|Mangochi|Karonga|Liwonde|Mzimba|Chiromo|Balaka Township|Nkhata Bay|Nsanje|Mulanje|Kasakula|Mchinji|Dedza|Ntcheu|Chitipa|Mwanza|Thyolo|Neno|Machinga|Chiradzulu|Kasungu|Ntchisi|Rumphi|Chikwawa|Dowa|Phalombe|Likoma",
+  ja: "リロングウェ|ブランタイヤ|ムズズ|ゾンバ|サリマ||コタコタ|マンゴチ|カロンガ|リウォンデ|ムジンバ|チロモ|バラカ|カタベイ|ンサンジェ|ムランジェ||ムチンジ|デッザ|ンチェウ|チティパ|ムワンザ|チョロ|ネノ|マチンガ|チラズル|カスング|ンチシ|ルンピ|チクワワ|ドーワ|パロンベ|リコマ",
+  native: "|||||||||||||||||||||||||||Nchisi|||||",
+  languages: "ny",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1],
+  capital: "122220222020222202222222222222222",
+  capitalOf: "MW|MW-BL MW-S|MW-N|MW-ZO|MW-SA||MW-NK|MW-MG|MW-KR||MW-MZ||MW-BA|MW-NB|MW-NS|MW-MU||MW-MC|MW-DE|MW-NU|MW-CT|MW-MW|MW-TH|MW-NE|MW-MH|MW-CR|MW-KS|MW-NI|MW-RU|MW-CK|MW-DO|MW-PH|MW-LK",
+  sources: "000020200003022002202200020000000",
+  extra: [],
+};
 
 export { MW };

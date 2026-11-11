@@ -2,44 +2,26 @@
 // The 35 cities of Turkmenistan (TM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TM: readonly CityRow[] = [
-  [23438,37.95,58.3833,1030063,2022,"TM","TM-S","Ashgabat","アシガバート","Aşgabat","tk",1,"TM",0],
-  [487684,39.1,63.5667,230861,"2022-12-17","TM","TM-L","Türkmenabat","テュルクメナバート",null,null,2,"TM-L",0],
-  [487672,41.8167,59.9831,201142,2022,"TM","TM-D","Daşoguz","ダショグズ",null,null,2,"TM-D",0],
-  [5713,37.6,61.8333,167027,2022,"TM",null,"Mary","マル",null,null,2,"TM-M",0],
-  [199762,39.5119,54.365,123190,2022,"TM","TM-B","Balkanabat","バルカナバート",null,null,2,"TM-B",0],
-  [488987,40.0055,52.9933,91745,2022,"TM","TM-B","Türkmenbaşy","トルクメンバシ",null,null,0,null,0],
-  [1015618,38.9764,56.2758,89582,2009,"TM","TM-B","Gyzylarbat","セルダル",null,null,0,null,0],
-  [812715,37.6167,62.15,70376,2022,"TM","TM-M","Baýramaly","ベイラマリー",null,null,0,null,0],
-  [1983850,37.3801,60.4996,67488,2022,"TM","TM-A","Tejen","テジェン",null,null,0,null,0],
-  [1023619,37.8073,66.0569,44508,2022,"TM","TM-L","Magdanly","マグダンリー",null,null,0,null,0],
-  [304522,38.05,58.2167,42868,2010,"TM","TM-S","Abadan Etrap","アーバーダーン (トルクメニスタン)","Abadan","tk",0,null,0],
-  [938252,42.1276,59.6723,39582,2022,"TM","TM-D","Boldumsaz",null,null,null,0,null,0],
-  [2985985,37.3014,62.3586,37705,2009,"TM","TM-M","Ýolöten",null,null,null,0,null,0],
-  [48472,42.3261,59.1531,37176,2022,"TM","TM-D","Köneürgenç","クフナ・ウルゲンチ",null,null,0,null,0],
-  [782190,37.35,59.6,33315,2022,"TM","TM-A","Kaka","カカ",null,null,0,null,0],
-  [2357934,37.8408,65.2064,32489,2022,"TM","TM-L","Kerki","ケルキ",null,null,0,null,0],
-  [2588491,36.5167,61.2167,31269,2022,"TM","TM-A","Sarahs","セラフス",null,null,0,null,0],
-  [2661229,39.2024,54.5875,30884,2022,"TM","TM-B","Gumdag","グムダグ",null,null,0,null,0],
-  [844968,37.9,58.5,29606,2009,"TM","TM-A","Änew","アナウ",null,null,0,null,0],
-  [4152258,41.8741,59.6355,27455,2010,"TM","TM-D","Andalyp",null,null,null,0,null,0],
-  [2980062,38.4357,57.4368,24702,2009,"TM","TM-A","Bäherden","バハルリ",null,null,0,null,0],
-  [4131635,41.1875,61.4036,24251,2009,"TM","TM-L","Gazojak","ギャゾジャック",null,null,0,null,0],
-  [2578541,39.2444,55.5264,23697,2022,"TM","TM-B","Bereket","ベレケト",null,null,0,null,0],
-  [135298586,38.75,57.3167,21160,null,"TM","TM-A","Khodzhaolen",null,null,null,0,null,0],
-  [1873660,38.1578,57.9664,21154,2009,"TM","TM-A","Gökdepe","ギョクテペ",null,null,0,null,0],
-  [47045335,42.3833,58.8,20720,2022,"TM","TM-D","Saparmyrat Türkmenbaşy",null,null,null,0,null,0],
-  [5625912,37.9064,58.4694,18148,2022,"TM","TM-A","Gämi",null,null,null,0,null,0],
-  [7862481,37.4276,62.3367,16696,2022,"TM","TM-M","Türkmengala",null,null,null,0,null,0],
-  [864655,35.274,62.3254,16038,2022,"TM","TM-M","Serhetabat","クシカ",null,null,0,null,0],
-  [2450285,42.05,59.4,15580,2009,"TM","TM-D","Akdepe",null,null,null,0,null,0],
-  [17070452,37.7948,61.5521,15470,2022,"TM","TM-M","Çaşgyn",null,null,null,0,null,0],
-  [2996356,39.4036,53.126,15436,2022,"TM","TM-B","Hazar","チェレケン",null,null,0,null,1],
-  [4139824,38.4364,56.284,15386,2022,"TM","TM-B","Magtymguly",null,null,null,0,null,0],
-  [106610461,39.631,54.2376,15056,2022,"TM","TM-B","Jebel","ジェベル",null,null,0,null,0],
-  [115864157,38.0697,58.0678,567,2022,"TM","TM-A","Arkadag","アルカダグ",null,null,2,"TM-A",0],
-];
+const TM: CityColumns = {
+  id: "i32,agas,agag,4ep,4a4y,ahaz,lrnm,hf3f,16iqy,lxtv,6iyy,k3yk,1s001,11eg,grji,1eje6,1jhaj,1l1f1,i3zc,2gzwi,1rvfi,2gjzn,1j9m5,28jx22,145q4,s0cev,3ckzc,4oiq9,ij67,1ginh,a5vn8,1s804,2gqb4,1rh15p,1wzdct",
+  lat: [379500,391000,418167,376000,395119,400055,389764,376167,373801,378073,380500,421276,373014,423261,373500,378408,365167,392024,379000,418741,384357,411875,392444,387500,381578,423833,379064,374276,352740,420500,377948,394036,384364,396310,380697],
+  lon: [583833,635667,599831,618333,543650,529933,562758,621500,604996,660569,582167,596723,623586,591531,596000,652064,612167,545875,585000,596355,574368,614036,555264,573167,579664,588000,584694,623367,623254,594000,615521,531260,562840,542376,580678],
+  population: [1030063,230861,201142,167027,123190,91745,89582,70376,67488,44508,42868,39582,37705,37176,33315,32489,31269,30884,29606,27455,24702,24251,23697,21160,21154,20720,18148,16696,16038,15580,15470,15436,15386,15056,567],
+  date: "2022,2022-12-17,2022,2022,2022,2022,2009,2022,2022,2022,2010,2022,2009,2022,2022,2022,2022,2022,2009,2010,2009,2009,2022,,2009,2022,2022,2022,2022,2009,2022,2022,2022,2022,2022",
+  country: "TMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTMTM",
+  subdivisions: "S,L,D,B,M,A",
+  subdivision: [0,1,2,-1,3,3,3,4,5,1,0,2,4,2,5,1,5,3,5,2,5,1,3,5,5,2,5,4,4,2,4,3,3,3,5],
+  en: "Ashgabat|Türkmenabat|Daşoguz|Mary|Balkanabat|Türkmenbaşy|Gyzylarbat|Baýramaly|Tejen|Magdanly|Abadan Etrap|Boldumsaz|Ýolöten|Köneürgenç|Kaka|Kerki|Sarahs|Gumdag|Änew|Andalyp|Bäherden|Gazojak|Bereket|Khodzhaolen|Gökdepe|Saparmyrat Türkmenbaşy|Gämi|Türkmengala|Serhetabat|Akdepe|Çaşgyn|Hazar|Magtymguly|Jebel|Arkadag",
+  ja: "アシガバート|テュルクメナバート|ダショグズ|マル|バルカナバート|トルクメンバシ|セルダル|ベイラマリー|テジェン|マグダンリー|アーバーダーン (トルクメニスタン)|||クフナ・ウルゲンチ|カカ|ケルキ|セラフス|グムダグ|アナウ||バハルリ|ギャゾジャック|ベレケト||ギョクテペ||||クシカ|||チェレケン||ジェベル|アルカダグ",
+  native: "Aşgabat||||||||||Abadan||||||||||||||||||||||||",
+  languages: "tk",
+  language: [0,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "12222000000000000000000000000000002",
+  capitalOf: "TM|TM-L|TM-D|TM-M|TM-B||||||||||||||||||||||||||||||TM-A",
+  sources: "00000000000000000000000000000001000",
+  extra: [],
+};
 
 export { TM };

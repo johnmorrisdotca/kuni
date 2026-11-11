@@ -2,34 +2,26 @@
 // The 25 cities of Somalia (SO), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SO: readonly CityRow[] = [
-  [2449,2.0392,45.3419,2120000,2015,"SO","SO-BN","Mogadishu","モガディシュ","مقديشو","ar",1,"SO",0],
-  [331556,11.2833,49.1833,1067000,2021,"SO","SO-BR","Bosaso","ボサソ","بوصاصو","ar",2,"SO-BR",0],
-  [948448,9.5279,45.5345,350211,2015,"SO","SO-TO","Burao","ブラオ","برعو","ar",2,"SO-TO",0],
-  [191718,10.4395,45.0131,263000,2007,"SO",null,"Berbera","ベルベラ","بربرة","ar",0,null,0],
-  [657428,1.7156,44.7703,230100,2014,"SO","SO-SH","Merca","マルカ","مركا","ar",2,"SO-SH",0],
-  [1017154,0.0667,42.75,185270,null,"SO","SO-JH","Jamame","ジャマメ","جمامة","ar",0,null,2],
-  [270787,-0.3603,42.5489,166667,2017,"SO",null,"Kismayo","キスマヨ","كيسمايو","ar",2,"SO-JH",0],
-  [506578,3.1167,43.65,129839,null,"SO","SO-BY","Baidoa","バイドア","بيدوا","ar",2,"SO-BY",2],
-  [646574,2.7833,45.5,111308,null,"SO","SO-SD","Jowhar","ジョハール","جوهر","ar",2,"SO-SD",2],
-  [893092,9.9331,43.1817,68074,2013,"SO","SO-AW","Borama","ボラマ","بورمه","ar",2,"SO-AW",0],
-  [598676,4.6544,47.8575,65523,2005,"SO","SO-MU","Harardhere","ハラードヒヤー","حررطيري","ar",0,null,0],
-  [815370,4.736,45.204,62945,null,"SO","SO-HI","Beledweyne","ベレトウェイン","بلد وين","ar",2,"SO-HI",2],
-  [865586,6.7697,47.4308,61200,null,"SO","SO-MU","Galkayo","ガルカイヨ","جالكعيو","ar",2,"SO-MU",2],
-  [1017223,8.4756,47.3583,60100,null,"SO","SO-SO","Las Anod","ラス・アノド","لاس عانود","ar",2,"SO-SO",2],
-  [1509787,0.4942,42.7744,45000,2007,"SO","SO-JD","Jilib","ジリブ","جلب","ar",0,null,0],
-  [1017167,3.35,42.2667,43000,null,"SO","SO-GE","Garbahaareey","ガーバハレ","جربهاري","ar",2,"SO-GE",0],
-  [1878274,3.8167,42.55,33820,null,"SO","SO-GE","Luuq","ルーク","لوق","ar",0,null,2],
-  [613246,1.1133,44.0303,32800,null,"SO","SO-SH","Barawa","ブラバ","براوة","ar",0,null,0],
-  [1018270,2.8,44.0833,31267,null,"SO","SO-BY","Burhakaba","ブルカバ","بور حقبة","ar",0,null,2],
-  [1019060,7.9667,49.85,21700,null,"SO",null,"Eyl","エイル","ايل","ar",0,null,0],
-  [2737490,9.4942,50.8122,16700,2000,"SO","SO-BR","Bayla","ベイラ","بندر بيلا","ar",0,null,0],
-  [822679,8.4,48.4833,2568,null,"SO","SO-NU","Garowe","ガローウェ","غاروي","ar",2,"SO-NU",2],
-  [1017160,4.12,43.8878,1639,null,"SO","SO-BK","Hudur","フドゥール","حودر","ar",2,"SO-BK",2],
-  [997314,1.0833,42.5833,1490,null,"SO","SO-JD","Bu'ale","ブアレ","بوالي","ar",2,"SO-JD",2],
-  [634063,5.5375,46.3875,447,null,"SO","SO-GA","Dusmareb","ドゥサマレブ","طوس مريب","ar",2,"SO-GA",2],
-];
+const SO: CityColumns = {
+  id: "1w1,73tw,kbts,43xi,e39w,lsua,5sxv,auvm,duwe,j544,ctxw,hh56,ijw2,lsw7,wcyj,lsun,149aa,d56m,ltpa,lub8,1mo9e,hms7,lsug,ldj6,dl8v",
+  lat: [20392,112833,95279,104395,17156,667,-3603,31167,27833,99331,46544,47360,67697,84756,4942,33500,38167,11133,28000,79667,94942,84000,41200,10833,55375],
+  lon: [453419,491833,455345,450131,447703,427500,425489,436500,455000,431817,478575,452040,474308,473583,427744,422667,425500,440303,440833,498500,508122,484833,438878,425833,463875],
+  population: [2120000,1067000,350211,263000,230100,185270,166667,129839,111308,68074,65523,62945,61200,60100,45000,43000,33820,32800,31267,21700,16700,2568,1639,1490,447],
+  date: "2015,2021,2015,2007,2014,,2017,,,2013,2005,,,,2007,,,,,,2000,,,,",
+  country: "SOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSO",
+  subdivisions: "BN,BR,TO,SH,JH,BY,SD,AW,MU,HI,SO,JD,GE,NU,BK,GA",
+  subdivision: [0,1,2,-1,3,4,-1,5,6,7,8,9,8,10,11,12,12,3,5,-1,1,13,14,11,15],
+  en: "Mogadishu|Bosaso|Burao|Berbera|Merca|Jamame|Kismayo|Baidoa|Jowhar|Borama|Harardhere|Beledweyne|Galkayo|Las Anod|Jilib|Garbahaareey|Luuq|Barawa|Burhakaba|Eyl|Bayla|Garowe|Hudur|Bu'ale|Dusmareb",
+  ja: "モガディシュ|ボサソ|ブラオ|ベルベラ|マルカ|ジャマメ|キスマヨ|バイドア|ジョハール|ボラマ|ハラードヒヤー|ベレトウェイン|ガルカイヨ|ラス・アノド|ジリブ|ガーバハレ|ルーク|ブラバ|ブルカバ|エイル|ベイラ|ガローウェ|フドゥール|ブアレ|ドゥサマレブ",
+  native: "مقديشو|بوصاصو|برعو|بربرة|مركا|جمامة|كيسمايو|بيدوا|جوهر|بورمه|حررطيري|بلد وين|جالكعيو|لاس عانود|جلب|جربهاري|لوق|براوة|بور حقبة|ايل|بندر بيلا|غاروي|حودر|بوالي|طوس مريب",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  capital: "1220202222022202000002222",
+  capitalOf: "SO|SO-BR|SO-TO||SO-SH||SO-JH|SO-BY|SO-SD|SO-AW||SO-HI|SO-MU|SO-SO||SO-GE||||||SO-NU|SO-BK|SO-JD|SO-GA",
+  sources: "0000020220022200202002222",
+  extra: [],
+};
 
 export { SO };

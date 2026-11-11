@@ -2,17 +2,26 @@
 // The 8 cities of Bahrain (BH), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BH: readonly CityRow[] = [
-  [3882,26.2167,50.5833,297502,2012,"BH","BH-13","Manama","マナーマ","المنامة","ar",1,"BH",0],
-  [270500,26.2533,50.6083,176583,null,"BH","BH-15","Al-Muharraq","ムハッラク","المحرق","ar",2,"BH-15",0],
-  [2088687,26.1128,50.5139,133550,null,"BH","BH-17","Hamad Town","ハマド・タウン","مدينة حمد","ar",0,null,0],
-  [1771398,26.13,50.555,115495,2012,"BH","BH-14","Riffa","リファー","الرفاع","ar",0,null,0],
-  [2351767,26.1519,50.5256,100533,2012,"BH","BH-17","A'ali","アーリー","عالي","ar",0,null,0],
-  [1416753,26.1547,50.6206,72601,2012,"BH",null,"Sitra","シトラ","سترة","ar",0,null,0],
-  [1017673,26.1736,50.5478,61293,2012,"BH",null,"Isa Town","イーサ・タウン","مدينة عيسى","ar",0,null,0],
-  [737172,26.2186,50.4756,18000,2007,"BH","BH-17","Diraz",null,"الدراز","ar",0,null,0],
-];
+const BH: CityColumns = {
+  id: "2zu,5spw,18rn3,11yti,1eemv,ud69,lt8p,fst0",
+  lat: [262167,262533,261128,261300,261519,261547,261736,262186],
+  lon: [505833,506083,505139,505550,505256,506206,505478,504756],
+  population: [297502,176583,133550,115495,100533,72601,61293,18000],
+  date: "2012,,,2012,2012,2012,2012,2007",
+  country: "BHBHBHBHBHBHBHBH",
+  subdivisions: "13,15,17,14",
+  subdivision: [0,1,2,3,2,-1,-1,2],
+  en: "Manama|Al-Muharraq|Hamad Town|Riffa|A'ali|Sitra|Isa Town|Diraz",
+  ja: "マナーマ|ムハッラク|ハマド・タウン|リファー|アーリー|シトラ|イーサ・タウン|",
+  native: "المنامة|المحرق|مدينة حمد|الرفاع|عالي|سترة|مدينة عيسى|الدراز",
+  languages: "ar",
+  language: [0,0,0,0,0,0,0,0],
+  capital: "12000000",
+  capitalOf: "BH|BH-15||||||",
+  sources: "00000000",
+  extra: [],
+};
 
 export { BH };

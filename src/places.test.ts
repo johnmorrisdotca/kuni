@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { continents, countriesOf, searchPlaces } from "./places";
+import { cityNamesOf, continents, countriesOf, searchPlaces } from "./places";
+import { citiesOf, loadCities } from "./cities";
+import { START_KEYS, startKey, startKeys } from "./city-start";
+import { fold } from "./fold";
+import { CITY_START_LOADERS } from "./data/city-start-loaders.data";
 
 describe("continents", () => {
   it("lists the seven, with a name in English and in Japanese", () => {
@@ -130,3 +134,69 @@ describe("searchPlaces", () => {
     expect(await searchPlaces("osaka", { country: "XX" })).toEqual([]);
   });
 });
+
+describe("the tiers split by first letters", () => {
+  it("hold each city of the capitals and the 100k tier in the part of every word of its names, and no other", async () => {
+    for (const tier of ["capitals", "100k"] as const) {
+      const whole = (await loadCities(tier)).cities;
+      const parts = new Map<string, Set<string>>();
+      for (const key of START_KEYS) parts.set(key, new Set((await CITY_START_LOADERS[tier][key]!()).CITIES.map((city) => city.id)));
+      for (const city of whole) {
+        const keys = startKeys([city.name.en, city.name.ja, city.name.native].flatMap((name) => (name === undefined ? [] : [fold(name)])));
+        for (const key of START_KEYS) expect(parts.get(key)!.has(city.id), `${tier} ${city.name.en} ${key}`).toBe(keys.has(key));
+      }
+    }
+  });
+
+  it("key a word by its first letter, a kana by its row, and the rest in sixteen groups", () => {
+    expect(startKey("paris")).toBe("p");
+    expect(startKey("とうきょう")).toBe("kana-t");
+    expect(startKey("ぱり")).toBe("kana-h");
+    expect(startKey("2")).toBe("0");
+    expect(startKey("東京")).toMatch(/^x[0-9a-f]$/);
+    expect(startKey("")).toBeNull();
+    expect(START_KEYS).toHaveLength(26 + 1 + 10 + 16);
+  });
+});
+
+describe("searchPlaces from the start of a word", () => {
+  it("finds what the whole search finds at the start of a name or a word, from one part of the big tiers", async () => {
+    for (const text of ["paris", "york", "san", "とうきょう", "東京", "ソウル", "rio de", "m"]) {
+      const whole = await searchPlaces(text, { limit: 100 });
+      const start = await searchPlaces(text, { limit: 100, match: "start" });
+      const fromStart = whole.filter((hit) => {
+        const names = hit.kind === "city" ? [hit.city.name.en, hit.city.name.ja, hit.city.name.native] : [hit.country.name.en, hit.country.name.ja, hit.country.reading, hit.country.name.local, hit.country.alpha2, hit.country.alpha3];
+        return names.some((name) => name !== undefined && name !== null && ` ${fold(name)}`.includes(` ${fold(text)}`));
+      });
+      const id = (hit: (typeof whole)[number]): string => (hit.kind === "city" ? hit.city.id : hit.country.alpha2);
+      expect(start.map(id), text).toEqual(fromStart.map(id).slice(0, start.length));
+    }
+  });
+
+  it("finds a name from its start and not from its middle", async () => {
+    expect((await searchPlaces("york", { match: "start" })).some((hit) => hit.kind === "city" && hit.city.name.en === "New York City")).toBe(true);
+    expect((await searchPlaces("ork", { match: "start" })).some((hit) => hit.kind === "city" && hit.city.name.en === "New York City")).toBe(false);
+    expect((await searchPlaces("ork")).some((hit) => hit.kind === "city" && hit.city.name.en === "New York City")).toBe(true);
+  });
+});
+
+describe("cityNamesOf", () => {
+  it("lists a country's cities by id and names only, in citiesOf's order, with its capital and first twenty major", async () => {
+    const full = (await citiesOf("JP"))!;
+    const names = (await cityNamesOf("jp"))!;
+    expect(names.map((one) => one.id)).toEqual(full.map((city) => city.id));
+    expect(names.map((one) => one.name)).toEqual(full.map((city) => city.name));
+    expect(names.filter((one) => one.major).map((one) => one.id)).toEqual(full.slice(0, 20).map((city) => city.id));
+    expect(names[0]).toMatchObject({ id: "Q1490", name: { en: "Tokyo", ja: "東京都", jaShort: "東京" }, major: true });
+    expect(Object.isFrozen(names[0])).toBe(true);
+    const us = (await cityNamesOf("US"))!;
+    expect(us.find((one) => one.name.en === "Washington, D.C.")?.major).toBe(true);
+  });
+
+  it("is null for a code with no cities, or no code", async () => {
+    expect(await cityNamesOf("XX")).toBeNull();
+    expect(await cityNamesOf("constructor")).toBeNull();
+    expect(await cityNamesOf(undefined as unknown as string)).toBeNull();
+  });
+});
+

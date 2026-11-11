@@ -2,48 +2,26 @@
 // The 39 cities of Denmark (DK), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const DK: readonly CityRow[] = [
-  [1748,55.6761,12.5689,667099,2025,"DK","DK-84","Copenhagen","コペンハーゲン","København","da",1,"DK",0,"oecd:DK001F","København functional urban area",2294858,2025],
-  [25319,56.1564,10.2097,290598,2023,"DK","DK-82","Aarhus","オーフス",null,null,0,null,0,"oecd:DK002F","Århus functional urban area",556637,2025],
-  [25331,55.4,10.3833,185480,2025,"DK","DK-83","Odense","オーデンセ",null,null,0,null,0,"oecd:DK003F","Odense functional urban area",389126,2025],
-  [25410,57.05,9.9167,121878,2025,"DK","DK-81","Aalborg","オールボー",null,null,2,"DK-81",0,"oecd:DK004F","Aalborg functional urban area",330191,2025],
-  [26234,55.4708,8.4514,71554,2025,"DK","DK-83","Esbjerg","エスビャウ",null,null,0,null,0],
-  [27168,56.4569,10.0392,64674,2026,"DK","DK-82","Randers","ラナース",null,null,0,null,0],
-  [190235,55.8619,9.8519,64418,2025,"DK","DK-82","Horsens","ホーセンス",null,null,0,null,0],
-  [27119,55.4908,9.4722,63645,2025,"DK","DK-83","Kolding","コリング",null,null,0,null,0],
-  [27116,55.7083,9.5333,62011,2025,"DK","DK-83","Vejle","ヴァイレ",null,null,2,"DK-83",0],
-  [26563,55.6417,12.0808,53354,2025,"DK","DK-85","Roskilde","ロスキレ",null,null,0,null,0],
-  [27393,56.1361,8.9767,51312,2024,"DK","DK-82","Herning","ヘアニング",null,null,0,null,0],
-  [21180,56.1667,9.55,50866,2023,"DK","DK-82","Silkeborg","シルケボー",null,null,0,null,0],
-  [26881,56.036,12.6106,47364,2018,"DK","DK-84","Helsingør","ヘルシンゲル",null,null,0,null,0],
-  [21178,55.2333,11.7667,44996,2023,"DK","DK-85","Næstved","ネストヴェズ",null,null,0,null,0],
-  [21181,55.5644,9.7597,41243,2023,"DK","DK-83","Fredericia","フレゼリシア",null,null,0,null,0],
-  [21176,56.45,9.4,41079,2021,"DK","DK-82","Viborg","ヴィボー",null,null,2,"DK-82",0],
-  [21184,55.45,12.1833,38588,2023,"DK","DK-85","Køge","キューゲ",null,null,0,null,0],
-  [27678,56.3581,8.6175,37220,2024,"DK","DK-82","Holstebro","ホルステブロー",null,null,0,null,0],
-  [27425,55.9333,12.3,36043,2023,"DK","DK-84","Hillerød","ヒレレズ",null,null,2,"DK-84",0],
-  [21179,54.9114,9.7867,27595,2016,"DK","DK-83","Sønderborg","スナボー",null,null,0,null,0],
-  [28031,55.0597,10.61,27210,2019,"DK","DK-83","Svendborg","スヴェンボー",null,null,0,null,0],
-  [21185,57.46,9.9867,25917,2023,"DK","DK-81","Hjørring","ヨーリング",null,null,0,null,0],
-  [27452,57.4339,10.5361,23501,2017,"DK","DK-81","Frederikshavn","フレゼリクスハウン",null,null,0,null,0],
-  [29868,55.25,9.5,22182,2023,"DK","DK-83","Haderslev","ハザスレウ",null,null,0,null,0],
-  [1019470,56.5667,9.0269,20176,2023,"DK","DK-82","Skive","スキーベ (デンマーク)",null,null,0,null,0],
-  [503379,56.0333,9.9333,18659,2016,"DK","DK-82","Skanderborg",null,null,null,0,null,0],
-  [3530435,55.3097,10.7917,17415,2021,"DK","DK-83","Nyborg","ニュボー",null,null,0,null,0],
-  [656234,55.8708,12.356,16906,2019,"DK","DK-84","Lillerød",null,null,null,0,null,0],
-  [986435,54.7667,11.8833,16405,2010,"DK","DK-85","Nykøbing Falster","ニュクービン・ファルスタ",null,null,0,null,0],
-  [1021277,56.1356,9.1547,15979,2022,"DK","DK-82","Ikast","イカスト",null,null,0,null,0],
-  [154897,55.0447,9.4195,15967,2016,"DK","DK-83","Aabenraa","オーベンロー",null,null,0,null,0],
-  [27858,55.4366,11.5592,7167,null,"DK","DK-85","Sorø","ソレ",null,null,2,"DK-85",2],
-  [30096,55.6779,12.5327,105840,2025,"DK","DK-84","Frederiksberg","フレデリックスベル",null,null,0,null,0,1748],
-  [3255441,55.7517,12.5508,75805,2017,"DK","DK-84","Gentofte",null,null,null,0,null,0,1748],
-  [1932118,55.6614,12.5167,46000,null,"DK","DK-84","Valby","ヴァルビー",null,null,0,null,0,1748],
-  [20999,55.65,12.3,37231,2024,"DK","DK-84","Taastrup","トストルプ",null,null,0,null,0,1748],
-  [56884279,55.704,12.6276,35000,2070,"DK","DK-84","Lynetteholmen",null,null,null,0,null,0,1748],
-  [1860611,56.125,10.1611,31850,2025,"DK","DK-82","Viby",null,null,null,0,null,0,25319],
-  [3196979,55.6158,12.3514,20017,2015,"DK","DK-84","Ishøj","イースホイ",null,null,0,null,0,1748],
-];
+const DK: CityColumns = {
+  id: "1ck,jjb,jjn,jlu,k8q,kyo,42sb,kxb,kx8,khv,l4x,gcc,kqp,gca,gcd,gc8,gcg,lcu,l5t,gcb,lmn,gch,l6k,n1o,lumm,aser,23o3n,e2cq,l54z,lw0t,3bip,lhu,n80,1xrwx,15ety,g7b,xv86v,13vnn,1wisz",
+  lat: [556761,561564,554000,570500,554708,564569,558619,554908,557083,556417,561361,561667,560360,552333,555644,564500,554500,563581,559333,549114,550597,574600,574339,552500,565667,560333,553097,558708,547667,561356,550447,554366,556779,557517,556614,556500,557040,561250,556158],
+  lon: [125689,102097,103833,99167,84514,100392,98519,94722,95333,120808,89767,95500,126106,117667,97597,94000,121833,86175,123000,97867,106100,99867,105361,95000,90269,99333,107917,123560,118833,91547,94195,115592,125327,125508,125167,123000,126276,101611,123514],
+  population: [667099,290598,185480,121878,71554,64674,64418,63645,62011,53354,51312,50866,47364,44996,41243,41079,38588,37220,36043,27595,27210,25917,23501,22182,20176,18659,17415,16906,16405,15979,15967,7167,105840,75805,46000,37231,35000,31850,20017],
+  date: "2025,2023,2025,2025,2025,2026,2025,2025,2025,2025,2024,2023,2018,2023,2023,2021,2023,2024,2023,2016,2019,2023,2017,2023,2023,2016,2021,2019,2010,2022,2016,,2025,2017,,2024,2070,2025,2015",
+  country: "DKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDKDK",
+  subdivisions: "84,82,83,81,85",
+  subdivision: [0,1,2,3,2,1,1,2,2,4,1,1,0,4,2,1,4,1,0,2,2,3,3,2,1,1,2,0,4,1,2,4,0,0,0,0,0,1,0],
+  en: "Copenhagen|Aarhus|Odense|Aalborg|Esbjerg|Randers|Horsens|Kolding|Vejle|Roskilde|Herning|Silkeborg|Helsingør|Næstved|Fredericia|Viborg|Køge|Holstebro|Hillerød|Sønderborg|Svendborg|Hjørring|Frederikshavn|Haderslev|Skive|Skanderborg|Nyborg|Lillerød|Nykøbing Falster|Ikast|Aabenraa|Sorø|Frederiksberg|Gentofte|Valby|Taastrup|Lynetteholmen|Viby|Ishøj",
+  ja: "コペンハーゲン|オーフス|オーデンセ|オールボー|エスビャウ|ラナース|ホーセンス|コリング|ヴァイレ|ロスキレ|ヘアニング|シルケボー|ヘルシンゲル|ネストヴェズ|フレゼリシア|ヴィボー|キューゲ|ホルステブロー|ヒレレズ|スナボー|スヴェンボー|ヨーリング|フレゼリクスハウン|ハザスレウ|スキーベ (デンマーク)||ニュボー||ニュクービン・ファルスタ|イカスト|オーベンロー|ソレ|フレデリックスベル||ヴァルビー|トストルプ|||イースホイ",
+  native: "København||||||||||||||||||||||||||||||||||||||",
+  languages: "da",
+  language: [0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "100200002000000200200000000000020000000",
+  capitalOf: "DK|||DK-81|||||DK-83|||||||DK-82|||DK-84|||||||||||||DK-85|||||||",
+  sources: "000000000000000000000000000000020000000",
+  extra: [[0,"oecd:DK001F","København functional urban area",2294858,2025],[1,"oecd:DK002F","Århus functional urban area",556637,2025],[2,"oecd:DK003F","Odense functional urban area",389126,2025],[3,"oecd:DK004F","Aalborg functional urban area",330191,2025],[32,1748],[33,1748],[34,1748],[35,1748],[36,1748],[37,25319],[38,1748]],
+};
 
 export { DK };

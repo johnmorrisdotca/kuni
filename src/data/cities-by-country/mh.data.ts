@@ -2,10 +2,26 @@
 // The 1 cities of Marshall Islands (MH), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MH: readonly CityRow[] = [
-  [12919,7.0918,171.3802,30000,2008,"MH",null,"Majuro","マジュロ",null,null,1,"MH",0],
-];
+const MH: CityColumns = {
+  id: "9yv",
+  lat: [70918],
+  lon: [1713802],
+  population: [30000],
+  date: "2008",
+  country: "MH",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Majuro",
+  ja: "マジュロ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "MH",
+  sources: "0",
+  extra: [],
+};
 
 export { MH };

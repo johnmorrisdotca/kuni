@@ -2,15 +2,26 @@
 // The 6 cities of Vanuatu (VU), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const VU: readonly CityRow[] = [
-  [37806,-17.7333,168.3167,49034,2020,"VU","VU-SEE","Port Vila","ポートビラ",null,null,1,"VU",0],
-  [876557,-15.5128,167.1735,17719,2020,"VU","VU-SAM","Luganville","ルーガンビル",null,null,2,"VU-SAM",0],
-  [1070178,-19.55,169.2667,1437,2009,"VU","VU-TAE","Isangel","イサンゲル",null,null,2,"VU-TAE",0],
-  [1423143,-13.88,167.55,1065,2009,"VU","VU-TOB","Sola","ソラ (バヌアツ)",null,null,2,"VU-TOB",0],
-  [669361,-16.1069,167.4208,705,2009,"VU","VU-MAP","Lakatoro","ラカトロ",null,null,2,"VU-MAP",0],
-  [1980393,-15.2875,167.9903,null,null,"VU","VU-PAM","Saratamata",null,null,null,2,"VU-PAM",0],
-];
+const VU: CityColumns = {
+  id: "t66,isct,mxr6,ui3r,echd,16g2x",
+  lat: [-177333,-155128,-195500,-138800,-161069,-152875],
+  lon: [1683167,1671735,1692667,1675500,1674208,1679903],
+  population: [49034,17719,1437,1065,705,-1],
+  date: "2020,2020,2009,2009,2009,",
+  country: "VUVUVUVUVUVU",
+  subdivisions: "SEE,SAM,TAE,TOB,MAP,PAM",
+  subdivision: [0,1,2,3,4,5],
+  en: "Port Vila|Luganville|Isangel|Sola|Lakatoro|Saratamata",
+  ja: "ポートビラ|ルーガンビル|イサンゲル|ソラ (バヌアツ)|ラカトロ|",
+  native: "|||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1],
+  capital: "122222",
+  capitalOf: "VU|VU-SAM|VU-TAE|VU-TOB|VU-MAP|VU-PAM",
+  sources: "000000",
+  extra: [],
+};
 
 export { VU };

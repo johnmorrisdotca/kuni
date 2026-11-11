@@ -2,11 +2,26 @@
 // The 2 cities of Montserrat (MS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MS: readonly CityRow[] = [
-  [31006,16.7928,-62.2106,391,null,"MS",null,"Brades","ブレイズ",null,null,3,"MS",0],
-  [30990,16.7064,-62.2158,0,2016,"MS",null,"Plymouth","プリマス",null,null,1,"MS",0],
-];
+const MS: CityColumns = {
+  id: "nxa,nwu",
+  lat: [167928,167064],
+  lon: [-622106,-622158],
+  population: [391,0],
+  date: ",2016",
+  country: "MSMS",
+  subdivisions: "",
+  subdivision: [-1,-1],
+  en: "Brades|Plymouth",
+  ja: "ブレイズ|プリマス",
+  native: "|",
+  languages: "",
+  language: [-1,-1],
+  capital: "31",
+  capitalOf: "MS|MS",
+  sources: "00",
+  extra: [],
+};
 
 export { MS };

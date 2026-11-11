@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/al: the 19 cities of Albania, every tier together, as a list.
 
 import { AL } from "../data/cities-by-country/al.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AL);
+const CITIES: readonly City[] = expandCities(rowsOf(AL));
 
 export default CITIES;
 export { CITIES };

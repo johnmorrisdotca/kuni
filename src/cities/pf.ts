@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pf: the 1 cities of French Polynesia, every tier together, as a list.
 
 import { PF } from "../data/cities-by-country/pf.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(PF);
+const CITIES: readonly City[] = expandCities(rowsOf(PF));
 
 export default CITIES;
 export { CITIES };

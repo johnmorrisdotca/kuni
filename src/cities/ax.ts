@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ax: the 1 cities of Åland Islands, every tier together, as a list.
 
 import { AX } from "../data/cities-by-country/ax.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AX"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AX);
+const CITIES: readonly City[] = expandCities(rowsOf(AX));
 
 export default CITIES;
 export { CITIES };

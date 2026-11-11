@@ -2,20 +2,26 @@
 // The 11 cities of Suriname (SR), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const SR: readonly CityRow[] = [
-  [3001,5.8667,-55.1667,223757,2019,"SR","SR-PM","Paramaribo","パラマリボ",null,null,1,"SR",0],
-  [1376242,3.8542,-54.2281,29210,null,"SR","SR-SI","Cottica","コッティカ",null,null,0,null,2],
-  [935545,5.6967,-55.2167,19991,2012,"SR","SR-WA","Lelydorp","レリードルプ",null,null,2,"SR-WA",0],
-  [1757528,5.8083,-55.1778,17185,null,"SR","SR-PM","Beekhuizen",null,null,null,0,null,0],
-  [738313,5.9261,-56.9731,12818,"2012-08-13","SR","SR-NI","Nieuw Nickerie","ニウ・ニッケリー","Nieuw-Nickerie","nl",2,"SR-NI",0],
-  [762619,5.8833,-55.0833,5650,2012,"SR","SR-CM","Nieuw Amsterdam","ニウ・アムステルダム","Nieuw-Amsterdam","nl",2,"SR-CM",0],
-  [580016,5.5,-54.05,5247,"2012-08-13","SR","SR-MA","Albina","アルビーナ",null,null,2,"SR-MA",0],
-  [926060,5.0667,-54.9667,4482,2012,"SR","SR-BR","Brokopondo","ブロコポンド",null,null,2,"SR-BR",0],
-  [508935,5.7833,-55.4667,2818,null,"SR","SR-SA","Groningen","フローニンゲン",null,null,2,"SR-SA",0],
-  [1357920,5.8775,-56.3292,2150,"2012-08-13","SR","SR-CR","Totness","トトネス",null,null,2,"SR-CR",0],
-  [1861566,5.5931,-55.1939,2000,null,"SR","SR-PR","Onverwacht","オンフェルワハト",null,null,2,"SR-PR",0],
-];
+const SR: CityColumns = {
+  id: "2bd,thwy,k1vd,11o48,ftop,gcfv,cfjk,jujw,awp3,t3s0,13we6",
+  lat: [58667,38542,56967,58083,59261,58833,55000,50667,57833,58775,55931],
+  lon: [-551667,-542281,-552167,-551778,-569731,-550833,-540500,-549667,-554667,-563292,-551939],
+  population: [223757,29210,19991,17185,12818,5650,5247,4482,2818,2150,2000],
+  date: "2019,,2012,,2012-08-13,2012,2012-08-13,2012,,2012-08-13,",
+  country: "SRSRSRSRSRSRSRSRSRSRSR",
+  subdivisions: "PM,SI,WA,NI,CM,MA,BR,SA,CR,PR",
+  subdivision: [0,1,2,0,3,4,5,6,7,8,9],
+  en: "Paramaribo|Cottica|Lelydorp|Beekhuizen|Nieuw Nickerie|Nieuw Amsterdam|Albina|Brokopondo|Groningen|Totness|Onverwacht",
+  ja: "パラマリボ|コッティカ|レリードルプ||ニウ・ニッケリー|ニウ・アムステルダム|アルビーナ|ブロコポンド|フローニンゲン|トトネス|オンフェルワハト",
+  native: "||||Nieuw-Nickerie|Nieuw-Amsterdam|||||",
+  languages: "nl",
+  language: [-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1],
+  capital: "10202222222",
+  capitalOf: "SR||SR-WA||SR-NI|SR-CM|SR-MA|SR-BR|SR-SA|SR-CR|SR-PR",
+  sources: "02000000000",
+  extra: [],
+};
 
 export { SR };

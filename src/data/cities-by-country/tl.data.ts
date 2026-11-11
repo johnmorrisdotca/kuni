@@ -2,22 +2,26 @@
 // The 13 cities of Timor-Leste (TL), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const TL: readonly CityRow[] = [
-  [9310,-8.5536,125.5783,222323,2015,"TL","TL-DI","Dili","ディリ","Díli","pt",1,"TL",0],
-  [1020338,-8.9917,125.2197,15800,2010,"TL","TL-BO","Maliana","マリアナ",null,null,2,"TL-BO",0],
-  [811130,-8.4667,126.45,14961,2015,"TL","TL-BA","Baucau","バウカウ",null,null,2,"TL-BA",0],
-  [1017098,-8.5167,127.0333,12782,2022,"TL","TL-LA","Lospalos","ロスパロス",null,null,2,"TL-LA",0],
-  [1011873,-8.5167,126.0167,9022,2010,"TL","TL-MT","Manatuto","マナトゥト",null,null,2,"TL-MT",0],
-  [263005,-9.2,124.3833,8793,2015,"TL","TL-OE","Pante Macassar","パンテ・マカッサル",null,null,2,"TL-OE",0],
-  [582712,-9.3,125.25,8243,2010,"TL","TL-CO","Suai","スアイ",null,null,2,"TL-CO",0],
-  [1018872,-8.7228,125.4355,8133,2010,"TL","TL-ER","Gleno","グレノ",null,null,2,"TL-ER",0],
-  [1011863,-8.85,126.3667,6078,2010,"TL","TL-VI","Viqueque","ビケケ",null,null,2,"TL-VI",0],
-  [1026949,-8.9833,125.5,5448,2015,"TL","TL-AN","Ainaro","アイナロ",null,null,2,"TL-AN",0],
-  [946959,-8.5935,125.3273,5152,2010,"TL","TL-LI","Liquiçá","リキシャ",null,null,2,"TL-LI",0],
-  [405087,-8.7167,125.5667,2927,2010,"TL","TL-AL","Aileu","アイレウ",null,null,2,"TL-AL",0],
-  [932640,-9,125.65,2100,2000,"TL","TL-MF","Same","サメ (東ティモール)",null,null,2,"TL-MF",0],
-];
+const TL: CityColumns = {
+  id: "76m,lvaq,hdve,lssq,lorl,5mxp,chmg,lu60,lorb,m0ed,kaof,8okf,jzmo",
+  lat: [-85536,-89917,-84667,-85167,-85167,-92000,-93000,-87228,-88500,-89833,-85935,-87167,-90000],
+  lon: [1255783,1252197,1264500,1270333,1260167,1243833,1252500,1254355,1263667,1255000,1253273,1255667,1256500],
+  population: [222323,15800,14961,12782,9022,8793,8243,8133,6078,5448,5152,2927,2100],
+  date: "2015,2010,2015,2022,2010,2015,2010,2010,2010,2015,2010,2010,2000",
+  country: "TLTLTLTLTLTLTLTLTLTLTLTLTL",
+  subdivisions: "DI,BO,BA,LA,MT,OE,CO,ER,VI,AN,LI,AL,MF",
+  subdivision: [0,1,2,3,4,5,6,7,8,9,10,11,12],
+  en: "Dili|Maliana|Baucau|Lospalos|Manatuto|Pante Macassar|Suai|Gleno|Viqueque|Ainaro|Liquiçá|Aileu|Same",
+  ja: "ディリ|マリアナ|バウカウ|ロスパロス|マナトゥト|パンテ・マカッサル|スアイ|グレノ|ビケケ|アイナロ|リキシャ|アイレウ|サメ (東ティモール)",
+  native: "Díli||||||||||||",
+  languages: "pt",
+  language: [0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1222222222222",
+  capitalOf: "TL|TL-BO|TL-BA|TL-LA|TL-MT|TL-OE|TL-CO|TL-ER|TL-VI|TL-AN|TL-LI|TL-AL|TL-MF",
+  sources: "0000000000000",
+  extra: [],
+};
 
 export { TL };

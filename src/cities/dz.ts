@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/dz: the 77 cities of Algeria, every tier together, as a list.
 
 import { DZ } from "../data/cities-by-country/dz.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "DZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(DZ);
+const CITIES: readonly City[] = expandCities(rowsOf(DZ));
 
 export default CITIES;
 export { CITIES };

@@ -2,10 +2,26 @@
 // The 1 cities of Western Sahara (EH), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const EH: readonly CityRow[] = [
-  [614754,26.3519,-9.5672,500,null,"EH",null,"Bir Lehlou","ビル・ラフルー","البئر الحلو","ar",1,"EH",2],
-];
+const EH: CityColumns = {
+  id: "d6ci",
+  lat: [263519],
+  lon: [-95672],
+  population: [500],
+  date: "",
+  country: "EH",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Bir Lehlou",
+  ja: "ビル・ラフルー",
+  native: "البئر الحلو",
+  languages: "ar",
+  language: [0],
+  capital: "1",
+  capitalOf: "EH",
+  sources: "2",
+  extra: [],
+};
 
 export { EH };

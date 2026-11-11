@@ -2,12 +2,26 @@
 // The 3 cities of Nauru (NR), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NR: readonly CityRow[] = [
-  [31026,-0.5477,166.9209,747,2011,"NR","NR-14","Yaren District","ヤレン地区","Yaren","na",1,"NR",0],
-  [16530036,-0.5258,166.912,null,null,"NR","NR-08","Arijejen",null,null,null,2,"NR-08",0],
-  [49277171,-0.5084,166.9533,null,null,"NR","NR-02","Anabar",null,null,null,2,"NR-02",0],
-];
+const NR: CityColumns = {
+  id: "nxu,9uano,tc6ib",
+  lat: [-5477,-5258,-5084],
+  lon: [1669209,1669120,1669533],
+  population: [747,-1,-1],
+  date: "2011,,",
+  country: "NRNRNR",
+  subdivisions: "14,08,02",
+  subdivision: [0,1,2],
+  en: "Yaren District|Arijejen|Anabar",
+  ja: "ヤレン地区||",
+  native: "Yaren||",
+  languages: "na",
+  language: [0,-1,-1],
+  capital: "122",
+  capitalOf: "NR|NR-08|NR-02",
+  sources: "000",
+  extra: [],
+};
 
 export { NR };

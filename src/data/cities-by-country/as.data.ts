@@ -2,10 +2,26 @@
 // The 1 cities of American Samoa (AS), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const AS: readonly CityRow[] = [
-  [51678,-14.2794,-170.7006,3656,2010,"AS",null,"Pago Pago","パゴパゴ",null,null,1,"AS",0],
-];
+const AS: CityColumns = {
+  id: "13vi",
+  lat: [-142794],
+  lon: [-1707006],
+  population: [3656],
+  date: "2010",
+  country: "AS",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Pago Pago",
+  ja: "パゴパゴ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "AS",
+  sources: "0",
+  extra: [],
+};
 
 export { AS };

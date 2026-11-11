@@ -2,10 +2,26 @@
 // The 1 cities of Mayotte (YT), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const YT: readonly CityRow[] = [
-  [132676,-12.7814,45.2317,71437,2018,"YT",null,"Mamoudzou","マムズ",null,null,1,"YT",0],
-];
+const YT: CityColumns = {
+  id: "2udg",
+  lat: [-127814],
+  lon: [452317],
+  population: [71437],
+  date: "2018",
+  country: "YT",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Mamoudzou",
+  ja: "マムズ",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "YT",
+  sources: "0",
+  extra: [],
+};
 
 export { YT };

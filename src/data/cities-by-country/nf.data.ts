@@ -2,10 +2,26 @@
 // The 1 cities of Norfolk Island (NF), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const NF: readonly CityRow[] = [
-  [30963,-29.05,167.9667,null,null,"NF",null,"Kingston","キングストン",null,null,1,"NF",0],
-];
+const NF: CityColumns = {
+  id: "nw3",
+  lat: [-290500],
+  lon: [1679667],
+  population: [-1],
+  date: "",
+  country: "NF",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Kingston",
+  ja: "キングストン",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "NF",
+  sources: "0",
+  extra: [],
+};
 
 export { NF };

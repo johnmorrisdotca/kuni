@@ -2,30 +2,26 @@
 // The 21 cities of Honduras (HN), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const HN: readonly CityRow[] = [
-  [3238,14.1058,-87.2047,1055729,2013,"HN","HN-FM","Tegucigalpa","テグシガルパ",null,null,1,"HN",0],
-  [274584,15.5053,-88.0251,719064,2013,"HN","HN-CR","San Pedro Sula","サン・ペドロ・スーラ",null,null,2,"HN-CR",0],
-  [916536,15.7833,-86.7918,197267,2013,"HN","HN-AT","La Ceiba","ラ・セイバ",null,null,2,"HN-AT",0],
-  [1773148,13.3061,-87.1956,152519,2013,"HN","HN-CH","Choluteca","チョルテカ市",null,null,2,"HN-CH",0],
-  [679169,14.4528,-87.6379,144785,2013,"HN","HN-CM","Comayagua","コマヤグア",null,null,2,"HN-CM",0],
-  [773764,14.6672,-86.2196,124828,2013,"HN","HN-OL","Juticalpa","フティカルパ",null,null,2,"HN-OL",0],
-  [2561180,15.1379,-87.1249,86665,2013,"HN","HN-YO","Yoro","ヨロ",null,null,2,"HN-YO",0],
-  [954300,14.7675,-88.7781,61083,2013,"HN","HN-CP","Santa Rosa de Copán","サンタ・ロサ・デ・コパン",null,null,2,"HN-CP",0],
-  [992173,15.9179,-85.953,60558,2013,"HN","HN-CL","Trujillo","トルヒーリョ",null,null,2,"HN-CL",0],
-  [633929,13.5325,-87.4881,57345,2013,"HN","HN-VA","Nacaome","ナカオメ",null,null,2,"HN-VA",0],
-  [2561339,14.5889,-88.5805,47622,2013,"HN","HN-LE","Gracias","グラシアス",null,null,2,"HN-LE",0],
-  [2075665,15.2664,-83.7725,47528,2013,"HN","HN-GD","Puerto Lempira","プエルト・レンピラ",null,null,2,"HN-GD",0],
-  [2283725,14.3234,-87.6832,43980,2013,"HN","HN-LP","La Paz","ラパス",null,null,2,"HN-LP",0],
-  [1419813,16.3834,-86.4178,41831,2013,"HN","HN-IB","Roatán","ロアタン島",null,null,0,null,0],
-  [2396956,16.3167,-86.5375,41831,2013,"HN","HN-IB","Coxen Hole","コクスン・ホール","Roatán","es",2,"HN-IB",0],
-  [2283714,14.9216,-88.2364,41736,2013,"HN","HN-SB","Santa Bárbara","サンタ・バルバラ (ホンジュラス)",null,null,2,"HN-SB",0],
-  [3263949,15.4153,-88.1571,38780,2013,"HN","HN-CR","Cofradía",null,null,null,0,null,0],
-  [2182554,14.4355,-89.1845,23096,2013,"HN","HN-OC","Ocotepeque",null,null,null,2,"HN-OC",0],
-  [3626200,15.0648,-88.7461,21272,2013,"HN","HN-CP","La Entrada",null,null,null,0,null,0],
-  [1729098,13.9444,-86.8526,14144,2013,"HN","HN-EP","Yuscarán","ユスカラン",null,null,2,"HN-EP",0],
-  [2561304,14.3081,-88.1768,11631,2013,"HN","HN-IN","La Esperanza","ラ・エスペランサ",null,null,2,"HN-IN",0],
-];
+const HN: CityColumns = {
+  id: "2hy,5vvc,jn7c,12064,ek1t,gl1g,1iw7w,kgcc,l9kd,dl55,1iwcb,18hld,1cy4t,ufj9,1fdi4,1cy4i,1xyh9,1as2i,25pzs,1126i,1iwbc",
+  lat: [141058,155053,157833,133061,144528,146672,151379,147675,159179,135325,145889,152664,143234,163834,163167,149216,154153,144355,150648,139444,143081],
+  lon: [-872047,-880251,-867918,-871956,-876379,-862196,-871249,-887781,-859530,-874881,-885805,-837725,-876832,-864178,-865375,-882364,-881571,-891845,-887461,-868526,-881768],
+  population: [1055729,719064,197267,152519,144785,124828,86665,61083,60558,57345,47622,47528,43980,41831,41831,41736,38780,23096,21272,14144,11631],
+  date: "2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013",
+  country: "HNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHN",
+  subdivisions: "FM,CR,AT,CH,CM,OL,YO,CP,CL,VA,LE,GD,LP,IB,SB,OC,EP,IN",
+  subdivision: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,13,14,1,15,7,16,17],
+  en: "Tegucigalpa|San Pedro Sula|La Ceiba|Choluteca|Comayagua|Juticalpa|Yoro|Santa Rosa de Copán|Trujillo|Nacaome|Gracias|Puerto Lempira|La Paz|Roatán|Coxen Hole|Santa Bárbara|Cofradía|Ocotepeque|La Entrada|Yuscarán|La Esperanza",
+  ja: "テグシガルパ|サン・ペドロ・スーラ|ラ・セイバ|チョルテカ市|コマヤグア|フティカルパ|ヨロ|サンタ・ロサ・デ・コパン|トルヒーリョ|ナカオメ|グラシアス|プエルト・レンピラ|ラパス|ロアタン島|コクスン・ホール|サンタ・バルバラ (ホンジュラス)||||ユスカラン|ラ・エスペランサ",
+  native: "||||||||||||||Roatán||||||",
+  languages: "es",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1],
+  capital: "122222222222202202022",
+  capitalOf: "HN|HN-CR|HN-AT|HN-CH|HN-CM|HN-OL|HN-YO|HN-CP|HN-CL|HN-VA|HN-LE|HN-GD|HN-LP||HN-IB|HN-SB||HN-OC||HN-EP|HN-IN",
+  sources: "000000000000000000000",
+  extra: [],
+};
 
 export { HN };

@@ -2,37 +2,26 @@
 // The 28 cities of Estonia (EE), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const EE: readonly CityRow[] = [
-  [1770,59.4372,24.745,457572,2024,"EE","EE-37","Tallinn","タリン",null,null,1,"EE",0,"oecd:EE001F","Tallinn functional urban area",731191,2025],
-  [13972,58.38,26.7225,97759,2024,"EE","EE-79","Tartu","タルトゥ",null,null,2,"EE-79",0,"oecd:EE002F","Tartu functional urban area",188623,2025],
-  [102158,59.3792,28.2006,53360,2024,"EE","EE-45","Narva","ナルヴァ",null,null,0,null,0,"oecd:EE003F","Narva functional urban area",56734,2025],
-  [102365,58.3844,24.4989,41520,2024,"EE","EE-68","Pärnu","パルヌ",null,null,2,"EE-68",0],
-  [201391,59.4,27.2833,33434,2024,"EE","EE-45","Kohtla-Järve","コフトラ＝ヤルヴェ",null,null,0,null,0],
-  [44840,58.3633,25.5956,17255,2024,"EE","EE-84","Viljandi","ヴィリャンディ",null,null,2,"EE-84",0],
-  [206555,59.4781,25.0161,17017,2024,"EE","EE-37","Maardu","マールドゥ",null,null,0,null,0],
-  [191889,59.3506,26.3611,15695,2024,"EE","EE-60","Rakvere","ラクヴェレ",null,null,2,"EE-60",0],
-  [188179,58.2533,22.4861,13185,2024,"EE","EE-74","Kuressaare","クレサーレ",null,null,2,"EE-74",0],
-  [193905,57.7769,26.0311,12173,2024,"EE","EE-81","Valga","ヴァルガ",null,null,2,"EE-81",0],
-  [205271,57.8486,26.9928,12112,2024,"EE","EE-87","Võru","ヴォル",null,null,2,"EE-87",0],
-  [211059,59.3575,27.4122,10880,2024,"EE","EE-45","Jõhvi","ユフヴィ",null,null,2,"EE-251 EE-45",0],
-  [191106,58.9469,23.5369,9812,2023,"EE","EE-56","Haapsalu","ハープサル",null,null,2,"EE-56",0],
-  [45114,58.8833,25.5667,8073,2024,"EE","EE-52","Paide","パイデ",null,null,2,"EE-52",0],
-  [213071,58.2275,26.4158,5692,2024,"EE","EE-79","Elva",null,null,null,2,"EE-171",0],
-  [45100,58.0536,27.0556,5498,2024,"EE","EE-64","Põlva","ポルヴァ",null,null,2,"EE-64",0],
-  [215971,58.9944,24.8011,5355,2024,"EE","EE-71","Rapla","ラプラ",null,null,2,"EE-71",0],
-  [141796,58.8094,25.4292,5186,2024,"EE","EE-52","Türi",null,null,null,2,"EE-834",0],
-  [117513,58.7461,26.3956,5112,2024,"EE","EE-50","Jõgeva","ヨゲヴァ",null,null,2,"EE-247 EE-50",0],
-  [642660,58.6533,25.9722,4106,2024,"EE","EE-50","Põltsamaa","ポルツァマー",null,null,2,"EE-618",0],
-  [204091,59.35,24.05,4073,2024,"EE","EE-37","Paldiski","パルディスキ",null,null,2,"EE-431",0],
-  [155066,58.9944,22.75,2921,2024,"EE","EE-39","Kärdla","カルドラ",null,null,2,"EE-39",0],
-  [723372,59.4625,28.0419,2622,2024,"EE","EE-45","Narva-Jõesuu","ナルヴァ＝ヨエスー",null,null,2,"EE-514",0],
-  [375497,58.6878,23.8342,1250,2024,"EE","EE-68","Lihula","リフラ",null,null,2,"EE-430",0],
-  [154994,57.8292,26.5289,1211,2024,"EE","EE-87","Antsla",null,null,null,2,"EE-142",0],
-  [370242,58.5356,25.4667,1168,2024,"EE","EE-84","Suure-Jaani",null,null,null,2,"EE-615",0],
-  [2028864,59.0389,25.8808,983,"2021-12-31","EE","EE-52","Järva-Jaani","イェルヴァ・ヤーニ",null,null,2,"EE-255",0],
-  [122317,58.5997,27.1333,382,2019,"EE","EE-79","Alatskivi",null,null,null,2,"EE-586",0],
-];
+const EE: CityColumns = {
+  id: "1d6,as4,26tq,26zh,4be7,ylk,4fdn,4429,4177,45m9,4edz,4iur,43gi,yt6,4ken,yss,4mn7,31es,2io9,drvo,4dh7,3bne,fi5o,81qh,3ble,7xoi,17hhc,2mdp",
+  lat: [594372,583800,593792,583844,594000,583633,594781,593506,582533,577769,578486,593575,589469,588833,582275,580536,589944,588094,587461,586533,593500,589944,594625,586878,578292,585356,590389,585997],
+  lon: [247450,267225,282006,244989,272833,255956,250161,263611,224861,260311,269928,274122,235369,255667,264158,270556,248011,254292,263956,259722,240500,227500,280419,238342,265289,254667,258808,271333],
+  population: [457572,97759,53360,41520,33434,17255,17017,15695,13185,12173,12112,10880,9812,8073,5692,5498,5355,5186,5112,4106,4073,2921,2622,1250,1211,1168,983,382],
+  date: "2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2023,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2021-12-31,2019",
+  country: "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+  subdivisions: "37,79,45,68,84,60,74,81,87,56,52,64,71,50,39",
+  subdivision: [0,1,2,3,2,4,0,5,6,7,8,2,9,10,1,11,12,10,13,13,0,14,2,3,8,4,10,1],
+  en: "Tallinn|Tartu|Narva|Pärnu|Kohtla-Järve|Viljandi|Maardu|Rakvere|Kuressaare|Valga|Võru|Jõhvi|Haapsalu|Paide|Elva|Põlva|Rapla|Türi|Jõgeva|Põltsamaa|Paldiski|Kärdla|Narva-Jõesuu|Lihula|Antsla|Suure-Jaani|Järva-Jaani|Alatskivi",
+  ja: "タリン|タルトゥ|ナルヴァ|パルヌ|コフトラ＝ヤルヴェ|ヴィリャンディ|マールドゥ|ラクヴェレ|クレサーレ|ヴァルガ|ヴォル|ユフヴィ|ハープサル|パイデ||ポルヴァ|ラプラ||ヨゲヴァ|ポルツァマー|パルディスキ|カルドラ|ナルヴァ＝ヨエスー|リフラ|||イェルヴァ・ヤーニ|",
+  native: "|||||||||||||||||||||||||||",
+  languages: "",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+  capital: "1202020222222222222222222222",
+  capitalOf: "EE|EE-79||EE-68||EE-84||EE-60|EE-74|EE-81|EE-87|EE-251 EE-45|EE-56|EE-52|EE-171|EE-64|EE-71|EE-834|EE-247 EE-50|EE-618|EE-431|EE-39|EE-514|EE-430|EE-142|EE-615|EE-255|EE-586",
+  sources: "0000000000000000000000000000",
+  extra: [[0,"oecd:EE001F","Tallinn functional urban area",731191,2025],[1,"oecd:EE002F","Tartu functional urban area",188623,2025],[2,"oecd:EE003F","Narva functional urban area",56734,2025]],
+};
 
 export { EE };

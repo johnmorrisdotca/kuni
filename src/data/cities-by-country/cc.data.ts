@@ -2,10 +2,26 @@
 // The 1 cities of Cocos (Keeling) Islands (CC), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const CC: readonly CityRow[] = [
-  [48675,-12.1869,96.8283,147,"2021-08-10","CC",null,"West Island","ウェスト島",null,null,1,"CC",0],
-];
+const CC: CityColumns = {
+  id: "11k3",
+  lat: [-121869],
+  lon: [968283],
+  population: [147],
+  date: "2021-08-10",
+  country: "CC",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "West Island",
+  ja: "ウェスト島",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "CC",
+  sources: "0",
+  extra: [],
+};
 
 export { CC };

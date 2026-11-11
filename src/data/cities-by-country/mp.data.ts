@@ -2,10 +2,26 @@
 // The 1 cities of Northern Mariana Islands (MP), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const MP: readonly CityRow[] = [
-  [49755159,15.2123,145.7545,43385,2020,"MP",null,"Saipan",null,null,null,1,"MP",0],
-];
+const MP: CityColumns = {
+  id: "tmfbr",
+  lat: [152123],
+  lon: [1457545],
+  population: [43385],
+  date: "2020",
+  country: "MP",
+  subdivisions: "",
+  subdivision: [-1],
+  en: "Saipan",
+  ja: "",
+  native: "",
+  languages: "",
+  language: [-1],
+  capital: "1",
+  capitalOf: "MP",
+  sources: "0",
+  extra: [],
+};
 
 export { MP };

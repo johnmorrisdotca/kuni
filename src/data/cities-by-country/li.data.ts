@@ -2,11 +2,26 @@
 // The 2 cities of Liechtenstein (LI), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const LI: readonly CityRow[] = [
-  [1844,47.1406,9.5222,5668,"2019-06-30","LI","LI-11","Vaduz","ファドゥーツ",null,null,1,"LI",0],
-  [33714985,47.1743,9.524,null,null,"LI","LI-07","Schaan",null,null,null,2,"LI-07",0],
-];
+const LI: CityColumns = {
+  id: "1f8,k2mnd",
+  lat: [471406,471743],
+  lon: [95222,95240],
+  population: [5668,-1],
+  date: "2019-06-30,",
+  country: "LILI",
+  subdivisions: "11,07",
+  subdivision: [0,1],
+  en: "Vaduz|Schaan",
+  ja: "ファドゥーツ|",
+  native: "|",
+  languages: "",
+  language: [-1,-1],
+  capital: "12",
+  capitalOf: "LI|LI-07",
+  sources: "00",
+  extra: [],
+};
 
 export { LI };

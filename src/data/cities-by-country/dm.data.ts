@@ -2,12 +2,26 @@
 // The 3 cities of Dominica (DM), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const DM: readonly CityRow[] = [
-  [36281,15.3,-61.3833,16571,2025,"DM","DM-04","Roseau","ロゾー",null,null,1,"DM",0],
-  [595272,15.567,-61.317,null,null,"DM","DM-02","Wesley","ウェズリー",null,null,2,"DM-02",0],
-  [1021646,15.4335,-61.3969,null,null,"DM","DM-06","Saint Joseph","セント・ジョゼフ",null,null,2,"DM-06",0],
-];
+const DM: CityColumns = {
+  id: "rzt,crbc,lwb2",
+  lat: [153000,155670,154335],
+  lon: [-613833,-613170,-613969],
+  population: [16571,-1,-1],
+  date: "2025,,",
+  country: "DMDMDM",
+  subdivisions: "04,02,06",
+  subdivision: [0,1,2],
+  en: "Roseau|Wesley|Saint Joseph",
+  ja: "ロゾー|ウェズリー|セント・ジョゼフ",
+  native: "||",
+  languages: "",
+  language: [-1,-1,-1],
+  capital: "122",
+  capitalOf: "DM|DM-02|DM-06",
+  sources: "000",
+  extra: [],
+};
 
 export { DM };

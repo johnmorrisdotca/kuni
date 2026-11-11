@@ -2,15 +2,26 @@
 // The 6 cities of Djibouti (DJ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const DJ: readonly CityRow[] = [
-  [3604,11.595,43.1481,603900,2018,"DJ","DJ-DJ","Djibouti","ジブチ市","جيبوتي","ar",1,"DJ",0],
-  [842854,11.1558,42.7125,71230,2012,"DJ","DJ-AS","Ali Sabieh","アリ・サビエ","علي صبيح","ar",2,"DJ-AS",0],
-  [620625,11.1086,42.3667,35000,2012,"DJ","DJ-DI","Dikhil","ディキル","دخيل","ar",2,"DJ-DI",0],
-  [860179,11.9667,43.2833,21200,2012,"DJ","DJ-OB","Obock","オボック","أوبوك","ar",2,"DJ-OB",0],
-  [820972,11.7833,42.8833,14820,"2009-05-29","DJ","DJ-TA","Tadjoura","タジュラ","تاجورة","ar",2,"DJ-TA",0],
-  [705884,11.5219,42.84,null,null,"DJ","DJ-AR","Arta","アルタ","أرتا","ar",2,"DJ-AR",0],
-];
+const DJ: CityColumns = {
+  id: "2s4,i2cm,davl,ifpv,hlgs,f4nw",
+  lat: [115950,111558,111086,119667,117833,115219],
+  lon: [431481,427125,423667,432833,428833,428400],
+  population: [603900,71230,35000,21200,14820,-1],
+  date: "2018,2012,2012,2012,2009-05-29,",
+  country: "DJDJDJDJDJDJ",
+  subdivisions: "DJ,AS,DI,OB,TA,AR",
+  subdivision: [0,1,2,3,4,5],
+  en: "Djibouti|Ali Sabieh|Dikhil|Obock|Tadjoura|Arta",
+  ja: "ジブチ市|アリ・サビエ|ディキル|オボック|タジュラ|アルタ",
+  native: "جيبوتي|علي صبيح|دخيل|أوبوك|تاجورة|أرتا",
+  languages: "ar",
+  language: [0,0,0,0,0,0],
+  capital: "122222",
+  capitalOf: "DJ|DJ-AS|DJ-DI|DJ-OB|DJ-TA|DJ-AR",
+  sources: "000000",
+  extra: [],
+};
 
 export { DJ };

@@ -2,40 +2,26 @@
 // The 31 cities of Benin (BJ), every tier together, the most populous first. src/city-rows.ts says what the columns are.
 // Source: Wikidata (CC0) and Natural Earth (public domain), as src/data/cities-capitals.data.ts says
 
-import type { CityRow } from "../../city-rows";
+import type { CityColumns } from "../../city-rows";
 
-const BJ: readonly CityRow[] = [
-  [2200458,11.3,2.4333,867463,2013,"BJ","BJ-AL","Banikoara","バニコアラ",null,null,0,null,0],
-  [43595,6.3667,2.4167,780000,2025,"BJ","BJ-LI","Cotonou","コトヌー",null,null,3,"BJ BJ-LI",0],
-  [2473939,6.4486,2.3556,656358,null,"BJ","BJ-AQ","Abomey-Calavi","アボメ＝カラヴィ",null,null,0,null,0],
-  [2757920,6.3667,2.35,253262,2013,"BJ","BJ-AQ","Godomey","ゴドメ",null,null,0,null,0],
-  [868198,9.7,1.6667,237040,2009,"BJ","BJ-DO","Djougou","ジューグー",null,null,2,"BJ-DO",0],
-  [3799,6.4833,2.6167,234168,2025,"BJ","BJ-OU","Porto-Novo","ポルトノボ",null,null,1,"BJ",0],
-  [688324,9.35,2.6167,188853,null,"BJ","BJ-BO","Parakou","パラクー",null,null,2,"BJ-BO",2],
-  [845666,11.1286,2.9369,179290,2013,"BJ","BJ-AL","Kandi","カンディ",null,null,2,"BJ-AL",0],
-  [2336677,6.9333,1.6833,170069,2013,"BJ","BJ-KO","Aplahoué","アプラウエ",null,null,2,"BJ-KO",0],
-  [2337446,11.8667,3.3833,168641,2013,"BJ","BJ-AL","Malanville","マランヴィル",null,null,0,null,0],
-  [850031,6.3667,2.0833,162034,2013,"BJ","BJ-AQ","Ouidah","ウィダー",null,null,2,"BJ-AQ",0],
-  [2474638,7.3581,2.6075,157352,2013,"BJ","BJ-PL","Kétou","ケトゥ",null,null,0,null,0],
-  [1133661,8.4833,2.4333,142017,2013,"BJ","BJ-CO","Ouèssè","ウェセ",null,null,0,null,0],
-  [2449849,7.9736,2.24,124431,2013,"BJ","BJ-CO","Glazoué","グラズエ",null,null,0,null,0],
-  [583110,10.8386,2.8361,117523,2013,"BJ","BJ-AL","Gogounou","ゴグヌー",null,null,0,null,0],
-  [1115202,9.8608,2.7181,113604,2013,"BJ","BJ-BO","N’Dali",null,"N'Dali","fr",0,null,0],
-  [2609335,7.75,2.1833,112118,2013,"BJ","BJ-CO","Dassa-Zoumé","ダサ＝ズメ","Dassa-Zoumè","fr",2,"BJ-CO",0],
-  [2566827,6.8,1.7833,101870,2013,"BJ","BJ-KO","Dogbo-Tota",null,"Dogbo","fr",2,"BJ-KO",0],
-  [2609291,8.0333,2.4833,97309,2012,"BJ","BJ-CO","Savè","サベー",null,null,0,null,0],
-  [2202003,10.9278,3.6944,89081,2013,"BJ","BJ-AL","Ségbana","セグバナ","Segbana","fr",0,null,0],
-  [189685,7.1853,1.9914,82154,null,"BJ","BJ-ZO","Abomey","アボメイ",null,null,2,"BJ-ZO",2],
-  [994125,10.3,1.3667,80892,null,"BJ","BJ-AK","Natitingou","ナティティングー",null,null,2,"BJ-AK",2],
-  [219058,6.6333,1.7167,77065,2002,"BJ","BJ-MO","Lokossa","ロコッサ",null,null,2,"BJ-MO",0],
-  [1860831,12.0667,3.1833,66353,2013,"BJ","BJ-AL","Karimama","カリママ",null,null,0,null,0],
-  [1542478,6.2833,1.8333,57636,2013,"BJ","BJ-MO","Grand-Popo","グラン・ポポ",null,null,0,null,0],
-  [2682057,6.5833,1.6667,56483,2013,"BJ","BJ-MO","Athiémè","アティエメ","Athiémé","fr",0,null,0],
-  [2269248,11.0362,1.4176,54719,"2002-12-31","BJ","BJ-AK","Tanguiéta",null,null,null,0,null,0],
-  [21788686,6.98,2.665,49232,2013,"BJ","BJ-PL","Pobe",null,"Pobè","fr",0,null,0],
-  [544623,7.9307,1.9754,38162,2013,"BJ","BJ-CO","Savalou","サバルー",null,null,0,null,0],
-  [21788742,8.0342,2.4866,31444,2013,"BJ","BJ-CO","Savé",null,null,null,0,null,0],
-  [269353,6.9667,2.6833,null,null,"BJ","BJ-PL","Pobè","ポベ",null,null,2,"BJ-PL",0],
-];
+const BJ: CityColumns = {
+  id: "1b5vu,xmz,1h0wj,1n40w,ilwm,2xj,er44,i4iq,1e2zp,1e3l2,i7vz,1h1fy,oaql,1gibd,chxi,nwhu,1jxdj,1j0kr,1jxcb,1b72r,42d1,lb2l,4p0y,13vtr,x26m,1lhhl,1cmyo,cz09a,bo8f,cz0au,5ru1",
+  lat: [113000,63667,64486,63667,97000,64833,93500,111286,69333,118667,63667,73581,84833,79736,108386,98608,77500,68000,80333,109278,71853,103000,66333,120667,62833,65833,110362,69800,79307,80342,69667],
+  lon: [24333,24167,23556,23500,16667,26167,26167,29369,16833,33833,20833,26075,24333,22400,28361,27181,21833,17833,24833,36944,19914,13667,17167,31833,18333,16667,14176,26650,19754,24866,26833],
+  population: [867463,780000,656358,253262,237040,234168,188853,179290,170069,168641,162034,157352,142017,124431,117523,113604,112118,101870,97309,89081,82154,80892,77065,66353,57636,56483,54719,49232,38162,31444,-1],
+  date: "2013,2025,,2013,2009,2025,,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2012,2013,,,2002,2013,2013,2013,2002-12-31,2013,2013,2013,",
+  country: "BJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJBJ",
+  subdivisions: "AL,LI,AQ,DO,OU,BO,KO,PL,CO,ZO,AK,MO",
+  subdivision: [0,1,2,2,3,4,5,0,6,0,2,7,8,8,0,5,8,6,8,0,9,10,11,0,11,11,10,7,8,8,7],
+  en: "Banikoara|Cotonou|Abomey-Calavi|Godomey|Djougou|Porto-Novo|Parakou|Kandi|Aplahoué|Malanville|Ouidah|Kétou|Ouèssè|Glazoué|Gogounou|N’Dali|Dassa-Zoumé|Dogbo-Tota|Savè|Ségbana|Abomey|Natitingou|Lokossa|Karimama|Grand-Popo|Athiémè|Tanguiéta|Pobe|Savalou|Savé|Pobè",
+  ja: "バニコアラ|コトヌー|アボメ＝カラヴィ|ゴドメ|ジューグー|ポルトノボ|パラクー|カンディ|アプラウエ|マランヴィル|ウィダー|ケトゥ|ウェセ|グラズエ|ゴグヌー||ダサ＝ズメ||サベー|セグバナ|アボメイ|ナティティングー|ロコッサ|カリママ|グラン・ポポ|アティエメ|||サバルー||ポベ",
+  native: "|||||||||||||||N'Dali|Dassa-Zoumè|Dogbo||Segbana||||||Athiémé||Pobè|||",
+  languages: "fr",
+  language: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,-1,0,-1,-1,-1,-1,-1,0,-1,0,-1,-1,-1],
+  capital: "0300212220200000220022200000002",
+  capitalOf: "|BJ BJ-LI|||BJ-DO|BJ|BJ-BO|BJ-AL|BJ-KO||BJ-AQ||||||BJ-CO|BJ-KO|||BJ-ZO|BJ-AK|BJ-MO||||||||BJ-PL",
+  sources: "0000002000000000000022000000000",
+  extra: [],
+};
 
 export { BJ };

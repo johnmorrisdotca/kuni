@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/aw: the 2 cities of Aruba, every tier together, as a list.
 
 import { AW } from "../data/cities-by-country/aw.data";
-import { expandCities } from "../city-rows";
+import { expandCities, rowsOf } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(AW);
+const CITIES: readonly City[] = expandCities(rowsOf(AW));
 
 export default CITIES;
 export { CITIES };
