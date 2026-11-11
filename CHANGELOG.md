@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.7.1] - 2026-11-11
+
 ### Added
 
 - **A lighter download for a city picker.** `searchPlaces(text, { match: "start" })` finds a name from its start or the start of a word, and fetches only the part of the capitals and of the 100k tier that holds such names: each tier is also written in 53 parts, `/cities/capitals-<key>` and `/cities/100k-<key>` (a to z, a digit, a kana row, sixteen groups for other scripts). A first search fetches about 50 kB gzipped at the median and 120 kB at most, against 472 kB for the whole capitals, 1m and 100k tiers. `cityNamesOf(code)` in /places, and `/cities/names-<code>`, give a country's light list first: ids, names and `major` (the capital and the first twenty), about half the full file (United States 52 kB, not 115 kB; China 87 kB, not 147 kB). The default search, and every other call, answers as before.
