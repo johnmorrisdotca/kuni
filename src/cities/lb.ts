@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lb: the 17 cities of Lebanon, every tier together, as a list.
 
 import { LB } from "../data/cities-by-country/lb.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LB"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LB));
+const CITIES: readonly City[] = expandColumns(LB);
 
 export default CITIES;
 export { CITIES };

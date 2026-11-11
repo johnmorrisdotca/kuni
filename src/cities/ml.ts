@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ml: the 26 cities of Mali, every tier together, as a list.
 
 import { ML } from "../data/cities-by-country/ml.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ML"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(ML));
+const CITIES: readonly City[] = expandColumns(ML);
 
 export default CITIES;
 export { CITIES };

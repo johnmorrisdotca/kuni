@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lu: the 14 cities of Luxembourg, every tier together, as a list.
 
 import { LU } from "../data/cities-by-country/lu.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LU"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LU));
+const CITIES: readonly City[] = expandColumns(LU);
 
 export default CITIES;
 export { CITIES };

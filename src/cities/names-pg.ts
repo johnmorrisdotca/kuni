@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Port Moresby|Lae|Madang|Arawa|Mount Hagen|Popondetta|Mendi|Wewak|Goroka|Kavieng|Kimbe|Daru|Alotau|Vanimo|Kundiawa|Lorengau|Kerema|Wabag|Kokopo|Buka|Sohana",
   ja: "ポートモレスビー|ラエ|マダン|アラワ|マウントハーゲン|ポポンデッタ|メンディ|ウェワク|ゴロカ|カビエン|キンベ|ダル|アロタウ|ヴァニモ|クンディアワ|ローレンガウ|ケレマ|ワバック|ココポ|ブカ (パプアニューギニア)|",
   native: "Pot Mosbi||||Maun Hagen||||||||||||||||",
+  reading: "||||||||||||||||||||",
   major: "111111111111111111110",
 });
 

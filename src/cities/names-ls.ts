@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Maseru|Teyateyaneng|Mafeteng|Hlotse|Maputsoe|Qacha's Nek|Mohale's Hoek|Quthing|Butha-Buthe|Mokhotlong|Thaba-Tseka",
   ja: "マセル|テヤテヤネング|マフェテング|フロツェ|マプツォエ|クァクハスネック|モハレス・フーク|クティング|ブータ・ブーテ|モコトロング|ターバ・ツェーカ",
   native: "||||||||||",
+  reading: "||||||||||",
   major: "11111111111",
 });
 

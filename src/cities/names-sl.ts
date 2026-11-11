@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Freetown|Bo|Waterloo|Kenema|Makeni|Koidu|Port Loko",
   ja: "フリータウン|ボー|ウォータールー|ケネマ|マケニ|コイドゥ|ポート・ロコ",
   native: "||||||",
+  reading: "||||||",
   major: "1111111",
 });
 

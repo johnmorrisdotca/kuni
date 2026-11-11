@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sv: the 40 cities of El Salvador, every tier together, as a list.
 
 import { SV } from "../data/cities-by-country/sv.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SV"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(SV));
+const CITIES: readonly City[] = expandColumns(SV);
 
 export default CITIES;
 export { CITIES };

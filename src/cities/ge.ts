@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ge: the 20 cities of Georgia, every tier together, as a list.
 
 import { GE } from "../data/cities-by-country/ge.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GE));
+const CITIES: readonly City[] = expandColumns(GE);
 
 export default CITIES;
 export { CITIES };

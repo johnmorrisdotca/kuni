@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Monrovia|Buchanan|Sanniquellie|Gbarnga|Kakata|Harper|Voinjama|Zwedru|Greenville|Tubmanburg|Robertsport|Bensonville|Barclayville|River Cess|Fish Town|Bopolu",
   ja: "モンロビア|ブキャナン|サニケリエ|バルンガ|カカタ|ハーパー|ボインジャマ|ズウェドル|グリーンビル|タブマンバーグ|ロバーツポート|ベンソンビル|バークレービル|リバーセス|フィッシュタウン|ボポル",
   native: "|||||||||||||||",
+  reading: "|||||||||||||||",
   major: "1111111111111111",
 });
 

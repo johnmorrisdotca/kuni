@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lc: the 5 cities of St. Lucia, every tier together, as a list.
 
 import { LC } from "../data/cities-by-country/lc.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LC));
+const CITIES: readonly City[] = expandColumns(LC);
 
 export default CITIES;
 export { CITIES };

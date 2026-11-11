@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kuwait City|Al Jahra|Al Ahmadi|Mubarak Al-Kabeer|Hawally|Farwaniya",
   ja: "クウェート市|ジャハラー|アハマディ|ムバーラク・アル＝カビール (クウェート)|ハワッリー|ファルワーニーヤ",
   native: "مدينة الكويت|الجهراء|الأحمدي|مبارك الكبير|حولي|الفروانية",
+  reading: "|||||",
   major: "111111",
 });
 

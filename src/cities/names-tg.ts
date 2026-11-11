@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Lomé|Kara|Durum Town|Sokodé|Atakpamé|Kpalimé|Tsévié|Cinkassé|Notsé|Tabligbo|Tchamba|Mango|Bassar|Sotouboua|Aného|Niamtougou|Vogan|Bafilo|Guérin-Kouka, Dankpen|Hahotoe|Vogan|Gando",
   ja: "ロメ|カラ|ダパング|ソコデ|アタクパメ|パリメ|ツェビエ||||チャンバ|サンサネ＝マンゴ|バサッリ|ソトゥブア|アネホ|ニャムトゥーグー||||||",
   native: "||Dapaong||||||||||||||||Guérin-Kouka|||",
+  reading: "|||||||||||||||||||||",
   major: "1111111111111111111100",
 });
 

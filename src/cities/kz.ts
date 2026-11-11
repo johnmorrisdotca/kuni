@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kz: the 99 cities of Kazakhstan, every tier together, as a list.
 
 import { KZ } from "../data/cities-by-country/kz.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KZ));
+const CITIES: readonly City[] = expandColumns(KZ);
 
 export default CITIES;
 export { CITIES };

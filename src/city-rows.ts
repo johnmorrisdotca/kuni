@@ -2,6 +2,7 @@
 // the one function that makes the public City of it. Not an entry of its own; every tier entry and the core share it.
 
 import { CITY_CONTINENTS } from "./data/city-continents.data";
+import { readingOfName } from "./ja-reading";
 import { jaShortOf } from "./ja-short";
 import type { Continent } from "./types";
 
@@ -42,8 +43,12 @@ interface City {
    * Its name in English, and in Japanese and in its own language where a source has them: `ja` and `native` are left
    * out, never an English name copied in; `native` is also left out where it is the English name. `jaShort`, with `ja`,
    * is the Japanese name a map labels it by: 東京 for 東京都, 大阪 for 大阪市, the same as `ja` where nothing is dropped.
+   * `jaReading` is the reading of `ja` in hiragana, for sorting in Japanese order (とうきょうと, にゅーよーく): Wikidata's
+   * reading in kana (P1814) where `ja` is Wikidata's label, else for a city of Japan Japan Post's reading of the
+   * municipality, else `ja` itself where its words are kana (ゴヤ (アルゼンチン) is ごや; a last 市, 区, 郡, 県, 州 or 鎮 is
+   * read し, く, ぐん, けん, しゅう, ちん). Left out where none is so (a name of China written in kanji), never guessed.
    */
-  name: { en: string; ja?: string; jaShort?: string; native?: string };
+  name: { en: string; ja?: string; jaShort?: string; jaReading?: string; native?: string };
   /** The continent of its country, in the seven-continent model kuni's groupings use: "AF", "AN", "AS", "EU", "NA", "OC" or "SA". */
   continent: Continent;
   /** The ISO 3166-1 alpha-2 code of its country, two capital letters: "FR". */
@@ -140,6 +145,8 @@ interface CityColumns {
   capitalOf: string;
   /** Two hexadecimal digits for each city's source bits. */
   sources: string;
+  /** Each Japanese name's reading in hiragana, "|" between cities; empty for none. */
+  reading: string;
   /** Only for the cities that have one, by place: the metro [place, id, name, people, day], or the city whose area it lies in [place, id]. */
   extra: readonly (readonly [number, number | string, string, number, number | string | null] | readonly [number, number | string])[];
 }
@@ -185,14 +192,21 @@ const rowsOf = (columns: CityColumns): CityRow[] => {
   return rows;
 };
 
-const freezeCity = (row: CityRow): City => {
+/** A Japanese name's reading: the one the file keeps, else the name read where its words are kana (readingOfName). */
+const readingOf = (kept: string | null, ja: string): { jaReading?: string } => {
+  const reading = kept ?? readingOfName(ja);
+
+  return reading === null ? {} : { jaReading: reading };
+};
+
+const freezeCity = (row: CityRow, reading: string | null = null): City => {
   const [id, lat, lon, population, date, country, subdivision, en, ja, native, nativeLanguage, capital, capitalOf, sources] = row;
   const [metroId, metroName, metroPopulation, metroDate] = row.length > 15 ? (row.slice(14) as [number | string, string, number, number | string | null]) : [];
   const head = row.length === 15 ? row[14] : null;
 
   return Object.freeze({
     id: typeof id === "number" ? `Q${id}` : id,
-    name: Object.freeze({ en, ...(ja === null ? {} : { ja, jaShort: jaShortOf(ja) }), ...(native === null ? {} : { native }) }),
+    name: Object.freeze({ en, ...(ja === null ? {} : { ja, jaShort: jaShortOf(ja), ...readingOf(reading, ja) }), ...(native === null ? {} : { native }) }),
     continent: CITY_CONTINENTS[country] as Continent,
     country,
     lat,
@@ -241,14 +255,15 @@ interface CityName {
   /** The city's id, as `City.id`. */
   id: string;
   /** Its names, as `City.name`. */
-  name: { en: string; ja?: string; jaShort?: string; native?: string };
+  name: { en: string; ja?: string; jaShort?: string; jaReading?: string; native?: string };
   /** True for the country's national capital and its first twenty cities. */
   major: boolean;
 }
 
 /** A light list written as columns (the id and name columns of CityColumns, and one digit each for major). */
-const namesOf = (columns: Pick<CityColumns, "id" | "en" | "ja" | "native"> & { major: string }): readonly CityName[] => {
+const namesOf = (columns: Pick<CityColumns, "id" | "en" | "ja" | "native" | "reading"> & { major: string }): readonly CityName[] => {
   const en = columns.en.split("|");
+  const reading = columns.reading.split("|");
   const ja = columns.ja.split("|");
   const native = columns.native.split("|");
 
@@ -258,15 +273,22 @@ const namesOf = (columns: Pick<CityColumns, "id" | "en" | "ja" | "native"> & { m
 
       return Object.freeze({
         id: typeof raw === "number" ? `Q${raw}` : raw,
-        name: Object.freeze({ en: en[at]!, ...(ja[at] === "" ? {} : { ja: ja[at]!, jaShort: jaShortOf(ja[at]!) }), ...(native[at] === "" ? {} : { native: native[at]! }) }),
+        name: Object.freeze({ en: en[at]!, ...(ja[at] === "" ? {} : { ja: ja[at]!, jaShort: jaShortOf(ja[at]!), ...readingOf(reading[at] === "" || reading[at] === undefined ? null : reading[at]!, ja[at]!) }), ...(native[at] === "" ? {} : { native: native[at]! }) }),
         major: columns.major[at] === "1",
       });
     }),
   );
 };
 
-/** A tier's rows made into cities, frozen, in the order of the rows. */
-const expandCities = (rows: readonly CityRow[]): readonly City[] => Object.freeze(rows.map(freezeCity));
+/** A tier's rows made into cities, frozen, in the order of the rows, with each Japanese name's reading where there is one. */
+const expandCities = (rows: readonly CityRow[], readings: readonly (string | null)[] = []): readonly City[] => Object.freeze(rows.map((row, at) => freezeCity(row, readings[at] ?? null)));
 
-export { expandCities, namesOf, rowsOf };
+/** A list written as columns made into cities. */
+const expandColumns = (columns: CityColumns): readonly City[] =>
+  expandCities(
+    rowsOf(columns),
+    columns.reading.split("|").map((one) => (one === "" ? null : one)),
+  );
+
+export { expandCities, expandColumns, namesOf, rowsOf };
 export type { City, CityColumns, CityName, CityRow, CitySource };

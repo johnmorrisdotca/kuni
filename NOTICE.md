@@ -20,7 +20,7 @@ address, the day it was read and its SHA-256.
 | The IOC code of the Netherlands, and a few of the withdrawn countries' names | Written for this package, in `scripts/withdrawn-config.ts`, each with its reason | MIT |
 | Time zones | IANA time zone database 2026e, `zone.tab` | Public domain |
 | Country-code top-level domains | IANA's list of top-level domains (version 2026100900) | A list of facts, published by IANA |
-| The aliases ("Holland", "UK", 米国), the readings of country names written in kanji, Hokkaido's and Fukuoka's readings, and the Japanese words for kinds of place the build looks for | Written for this package, in `scripts/data-config.ts` | MIT |
+| The aliases ("Holland", "UK", 米国), the readings of country names written in kanji, Hokkaido's and Fukuoka's readings, the readings of twenty new towns and neighbourhoods of Japan that neither Wikidata nor Japan Post reads, and the Japanese words for kinds of place the build looks for | Written for this package, in `scripts/data-config.ts` | MIT |
 
 ## Unicode CLDR
 
@@ -103,7 +103,21 @@ or a subdivision, and the items Natural Earth's places name. For each, the Engli
 label, the coordinates, the country, the populations with their dates and the ISO 3166-2 codes of the places it is in.
 No Wikipedia text is used. A supplement on the same terms (`data-sources/wikidata-cities-extra-<day>.json`, read on
 2026-11-11, asked for by `scripts/fetch-cities-extra.ts`) adds the cities whose only class in Wikidata is no kind of
-settlement: the municipalities of the Netherlands, as Nijmegen is.
+settlement: the municipalities of the Netherlands, as Nijmegen is. A city's reading in hiragana (`name.jaReading`) is
+Wikidata's name in kana (P1814) where its Japanese name is Wikidata's label, from a fourth snapshot on the same terms
+(`data-sources/wikidata-city-readings-<day>.json`, read on 2026-11-11, asked for by `scripts/fetch-readings.ts`).
+
+## Japan Post, for the readings of Japan's municipalities
+
+Where Wikidata gives a city of Japan no reading, its reading is that of the municipality of the same name in its
+prefecture in Japan Post's postal-code data (`utf_ken_all.zip`), kept in
+`data-sources/japan-post-municipalities-<day>.json` (each municipality's local government code, prefecture, name and
+reading in katakana, nothing else) by `scripts/fetch-japan-post.ts`, and written in hiragana by the build. Japan Post's
+terms (https://www.post.japanpost.jp/service/search/zipcode/download/readme.html, read on 2026-11-11) say:
+
+> 郵便番号データに限っては日本郵便株式会社は著作権を主張しません。自由に配布していただいて結構です。
+>
+> (For the postal-code data alone, Japan Post Co., Ltd. claims no copyright; you are free to distribute it.)
 
 A city's metropolitan area (`metro` on each city) comes from a third Wikidata snapshot
 (`data-sources/wikidata-metros-<day>.json`), CC0 on the same terms (read on 2026-11-11), asked for by

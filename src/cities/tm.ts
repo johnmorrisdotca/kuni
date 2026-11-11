@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tm: the 35 cities of Turkmenistan, every tier together, as a list.
 
 import { TM } from "../data/cities-by-country/tm.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TM));
+const CITIES: readonly City[] = expandColumns(TM);
 
 export default CITIES;
 export { CITIES };

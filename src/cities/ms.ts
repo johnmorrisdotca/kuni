@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ms: the 2 cities of Montserrat, every tier together, as a list.
 
 import { MS } from "../data/cities-by-country/ms.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MS));
+const CITIES: readonly City[] = expandColumns(MS);
 
 export default CITIES;
 export { CITIES };

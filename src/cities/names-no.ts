@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Oslo|Bergen|Stavanger|Trondheim|Stavanger/Sandnes|Fredrikstad/Sarpsborg|Drammen|Porsgrunn/Skien|Kristiansand|Fredrikstad|Sarpsborg|Tønsberg|Sandnes|Skien|Tønsberg|Sarpsborg|Ålesund|Moss|Skien|Sandefjord|Haugesund|Arendal|Bodø|Tromsø|Arendal|Hamar|Gjøvik|Lillehammer|Larvik|Halden|Jessheim|Kongsberg|Ski|Molde|Lillehammer|Harstad|Horten|Korsvik|Mo i Rana|Kristiansund|Tromsdalen|Hønefoss|Alta|Elverum|Råholt|Stjørdalshalsen|Askim|Grimstad|Osøyro|Steinkjer|Vadsø|Longyearbyen|Sandvika|Gamle Oslo|Askøy",
   ja: "オスロ|ベルゲン|スタヴァンゲル|トロンハイム|||ドランメン||クリスチャンサン||サルプスボルグ|トンスベルグ|サンドネス|シーエン|||オーレスン|モス|||ハウゲスン||ボードー|トロムソ|アーレンダール|ハーマル|イェーヴィク|リレハンメル||ハルデン|イェスハイム|コングスベルグ||モルデ||ハーシュタ|||モー・イ・ラーナ|||ホネフォス|アルタ|||スチェルダールシャルセン||||スタインシャー||ロングイェールビーン|サンドヴィケン||",
   native: "|||||||||||||||||||||||||||||||||||||||||||||||||||||Bydel Gamle Oslo|",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000000",
 });
 

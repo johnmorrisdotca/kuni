@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tirana|Durrës|Elbasan|Vlorë|Kamëz|Shkodër|Fier-cifci|Fier|Korçë|Berat|Sarandë|Lushnjë|Pogradec|Kavajë|Gjirokastër|Kukës|Patos|Peshkopi|Lezhë",
   ja: "ティラナ|ドゥラス|エルバサン|ヴロラ|カムザ|シュコドラ||フィエル|コルチャ|ベラト|サランダ|ルシュニャ|ポグラデツ|カヴァヤ|ジロカストラ|クケス|パトス|ペシュコピ|レジャ",
   native: "|Durrësi|Elbasani|Vlora||Shkodra||||Berati|Saranda||Pogradeci|Kavaja|Gjirokastra|||Peshkopia|",
+  reading: "||||||||||||||||||",
   major: "1111111111111111111",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Maputo|Matola|Nampula|Beira|Quelimane|Chimoio|Nacala|Maxixe|Tete|Lichinga|Pemba|Mandimba|Xai-Xai|Inhambane|Dondo|Palma|Cuamba|Montepuez|Mocuba|Chokwe|Manhiça|Chibuto|Angoche|Moatize|Songo|Mocímboa da Praia|Namaacha|Macia|Mapai|Chinde",
   ja: "マプト|マトラ|ナンプラ|ベイラ|ケリマネ|シモイオ|ナカラ|マシーシェ|テテ (モザンビーク)|リシンガ|ペンバ||シャイシャイ|イニャンバネ市|ドンド|パルマ (モザンビーク)|クアンバ|モンテプエズ|モクバ||||アンゴシェ|モアティゼ||モスィンボア・ダ・プライア||マシア|マパイ|",
   native: "||||||Nacala Porto|||||||||||||Chócue|||||Songo (Moçambique)|||||",
+  reading: "|||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000",
 });
 

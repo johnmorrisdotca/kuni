@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Riga|Daugavpils|Liepāja|Jelgava|Jūrmala|Ventspils|Rēzekne|Valmiera|Ogre|Jēkabpils|Salaspils|Tukums|Cēsis|Sigulda|Kuldīga|Olaine|Bauska|Saldus|Talsi|Dobele|Ādaži|Ludza|Gulbene|Krāslava|Aizkraukle|Līvāni|Madona|Limbaži|Alūksne|Preiļi|Balvi|Saulkrasti|Smiltene|Ķekava|Valka|Ropaži|Varakļāni|Mārupe|Ulbroka|Grobiņa",
   ja: "リガ|ダウガフピルス|リエパーヤ|イェルガヴァ|ユールマラ|ヴェンツピルス|レーゼクネ|ヴァルミエラ|オグレ|イェーカブピルス|サラスピルス|トゥクムス|ツェーシス|スィグルダ|クルディーガ|オライネ|バウスカ|サルダス|タルシ|ドベレ|アーダジ|ルッザ|グルベネ|クラースラヴァ|アジクラウクレ|リーヴェンホフ|マドナ|リンバジ|アルークスネ|プレイリ|バルビ|サウルクラスティ|スミルテネ|キェッカヴァ|ヴァルカ||ヴァラクリャーニ|マールペ|ウルブロカ|グロビニャ",
   native: "Rīga|||||||||||||||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000",
 });
 

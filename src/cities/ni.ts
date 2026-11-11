@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ni: the 34 cities of Nicaragua, every tier together, as a list.
 
 import { NI } from "../data/cities-by-country/ni.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NI));
+const CITIES: readonly City[] = expandColumns(NI);
 
 export default CITIES;
 export { CITIES };

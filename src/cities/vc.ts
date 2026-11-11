@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/vc: the 6 cities of St. Vincent & Grenadines, every tier together, as a list.
 
 import { VC } from "../data/cities-by-country/vc.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "VC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(VC));
+const CITIES: readonly City[] = expandColumns(VC);
 
 export default CITIES;
 export { CITIES };

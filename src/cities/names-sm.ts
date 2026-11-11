@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "San Marino",
   ja: "サンマリノ市",
   native: "",
+  reading: "",
   major: "1",
 });
 

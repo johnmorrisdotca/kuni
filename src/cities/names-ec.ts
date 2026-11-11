@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Guayaquil|Quito|Cuenca|Santo Domingo|Machala|Manta|Portoviejo|Loja|Quevedo|Ambato|Riobamba|Daule|Milagro|Ibarra|Esmeraldas|La Libertad|Babahoyo|Latacunga|Samborondón|Monte Cristi|Pujilí|Pasaje|Santa Rosa|Tulcán|Huaquillas|Nueva Loja|Chone|Santa Elena|El Carmen|Cañar|Coca|General Villamil|Buena Fe|Jipijapa|Cayambe|Velasco Ibarra|Otavalo|Ventanas|La Troncal|Naranjal|Azogues|La Concordia|Salinas|Vinces|Naranjito|Puyo|Arenillas|La Maná|Guaranda|Tena|San Lorenzo|Jaramijó|Pedernales|Catamayo|El Guabo|Atuntaqui|Pedro Carbo|Machachi|Valencia|Yaguachi Nuevo|Macas|Bahía de Caráquez|Gualaquiza|San Antonio de Ibarra|Calceta|Chillanes|Picoazá|Atacames|Piñas|Zamora|Camilo Ponce Enríquez|San Miguel de Salcedo|Shushufindi|Montalvo|Puerto Baquerizo Moreno|Durán|Sangolquí",
   ja: "グアヤキル|キト|クエンカ|サント・ドミンゴ|マチャラ|マンタ|ポルトビエホ|ロハ|ケベド|アンバート|リオバンバ||ミラグロ|イバラ|エスメラルダス||ババオヨ|ラタクンガ|||||サンタ・ロサ|トゥルカン||ヌエバ・ロハ|チョネ (エクアドル)|サンタ・エレーナ|||プエルト・フランシスコ・デ・オレジャーナ|||ヒピハパ|カヤンベ|||ベンタナス|||アソゲス|ラ・コンコルディア|サリナス (エクアドル)|||プヨ||ラ・マナ|グアランダ|テナ|サン・ロレンソ (エクアドル)|||カタマヨ|||||バレンシア||マカス|バイーア・デ・カラケス|グアラキサ||||||ピーニャス|サモーラ (エクアドル)||||モンタルボ|プエルト・バケリソ・モレノ|ドゥラン|サンゴルキ",
   native: "|||||||||||||||||||Montecristi|||||||||||El Coca||||||||||||||||||||||||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000000000000000000000000000000000",
 });
 

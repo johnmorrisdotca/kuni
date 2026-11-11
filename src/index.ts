@@ -6,7 +6,7 @@
 
 import { COUNTRY_CODES, isCountryCode } from "./codes";
 import type { CountryCode } from "./codes";
-import { CONTINENT_NAMES, COUNTRY_ROWS, SUBREGION_NAMES } from "./data/countries.data";
+import { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, SUBREGION_NAMES } from "./data/countries.data";
 import { fold, foldKey } from "./fold";
 import { expandCountry } from "./rows";
 import { CONTINENTS, LANGUAGES } from "./types";
@@ -251,6 +251,23 @@ const continentName = (continent: Continent, language: Language = "en"): string 
 };
 
 /**
+ * A continent's Japanese name in hiragana, for sorting in Japanese order as `Country.reading` does a country: the name
+ * itself where it is written in kana, else its reading (南極, なんきょく).
+ *
+ * @param continent - One of the seven two-letter continents.
+ * @returns The reading; `null` for anything that is not one of the seven.
+ * @example
+ * ```ts
+ * import { continentReading } from "@johnmorrisdotca/kuni";
+ *
+ * console.log(continentReading("AN"));   // "なんきょく"
+ * console.log(continentReading("AS"));   // "あじあ"
+ * ```
+ */
+const continentReading = (continent: Continent): string | null =>
+  (CONTINENTS as readonly string[]).includes(continent) ? (CONTINENT_READINGS[continent] ?? null) : null;
+
+/**
  * A UN M49 subregion's name, from CLDR.
  *
  * @param subregion - Three digits, as `Country.subregion` gives it: "030".
@@ -270,6 +287,7 @@ const subregionName = (subregion: string, language: Language = "en"): string | n
 export {
   CONTINENTS,
   continentName,
+  continentReading,
   countries,
   country,
   countryByName,

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/jo: the 25 cities of Jordan, every tier together, as a list.
 
 import { JO } from "../data/cities-by-country/jo.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "JO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(JO));
+const CITIES: readonly City[] = expandColumns(JO);
 
 export default CITIES;
 export { CITIES };

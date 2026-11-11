@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Port Vila|Luganville|Isangel|Sola|Lakatoro|Saratamata",
   ja: "ポートビラ|ルーガンビル|イサンゲル|ソラ (バヌアツ)|ラカトロ|",
   native: "|||||",
+  reading: "|||||",
   major: "111111",
 });
 

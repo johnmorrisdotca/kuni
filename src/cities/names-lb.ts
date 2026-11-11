@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Beirut|Tripoli|Sidon|Tyre|Nabatieh|Zahlé|Baalbek|Kabelias|Batroun|Bint Jbeil|Jezzine|Baakleen|Ras Baalbek|Halba|Bourj Hammoud|Jounieh|Baabda",
   ja: "ベイルート|トリポリ|サイダ|ティルス|ナバティーエ|ザーレ|バールベック||バトルーン|||バクライン||ハルバ|ブルジュ・ハムード|ジュニーエ|バアブダー",
   native: "بيروت|طرابلس|صيدا|صور|النبطية|زحلة|بعلبك|قب الياس|البترون|بنت جبيل|جزين|بعقلين|راس بعلبك|حلبا|برج حمود|جونيه|بعبدا",
+  reading: "||||||||||||||||",
   major: "11111111111111111",
 });
 

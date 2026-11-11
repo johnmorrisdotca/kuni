@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Asmara|Keren|Assab|Massawa|Mendefera|Barentu",
   ja: "アスマラ|ケレン|アッサブ|マッサワ|メンデフェラ|バレンツ (エリトリア)",
   native: "أسمرة|كرن|عصب|مصوع|مندفرا|بارنتو",
+  reading: "|||||",
   major: "111111",
 });
 

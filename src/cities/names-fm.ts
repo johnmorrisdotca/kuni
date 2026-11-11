@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Palikir|Kolonia|Tofol|Colonia|Weno",
   ja: "パリキール|コロニア|トフォール|コロニア|ウェノ",
   native: "||||",
+  reading: "||||",
   major: "11111",
 });
 

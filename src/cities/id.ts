@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/id: the 215 cities of Indonesia, every tier together, as a list.
 
 import { ID } from "../data/cities-by-country/id.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ID"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(ID));
+const CITIES: readonly City[] = expandColumns(ID);
 
 export default CITIES;
 export { CITIES };

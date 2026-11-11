@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Marigot",
   ja: "マリゴ",
   native: "",
+  reading: "",
   major: "1",
 });
 

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/uy: the 38 cities of Uruguay, every tier together, as a list.
 
 import { UY } from "../data/cities-by-country/uy.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "UY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(UY));
+const CITIES: readonly City[] = expandColumns(UY);
 
 export default CITIES;
 export { CITIES };

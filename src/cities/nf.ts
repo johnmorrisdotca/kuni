@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/nf: the 1 cities of Norfolk Island, every tier together, as a list.
 
 import { NF } from "../data/cities-by-country/nf.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NF));
+const CITIES: readonly City[] = expandColumns(NF);
 
 export default CITIES;
 export { CITIES };

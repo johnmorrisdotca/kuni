@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ne: the 31 cities of Niger, every tier together, as a list.
 
 import { NE } from "../data/cities-by-country/ne.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NE));
+const CITIES: readonly City[] = expandColumns(NE);
 
 export default CITIES;
 export { CITIES };

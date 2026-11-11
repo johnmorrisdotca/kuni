@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sh: the 1 cities of St. Helena, every tier together, as a list.
 
 import { SH } from "../data/cities-by-country/sh.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(SH));
+const CITIES: readonly City[] = expandColumns(SH);
 
 export default CITIES;
 export { CITIES };

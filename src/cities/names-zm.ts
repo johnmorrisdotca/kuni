@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Lusaka|Kitwe|Ndola|Kabwe|Chingola|Mufulira|Livingstone|Kasama|Mongu|Luanshya|Chililabombwe|Chipata (Fort Jameson)|Mazabuka|Solwezi|Kafue|Kapiri Mposhi|Kansanshi|Kalulushi|Choma|Monze|Mansa|Nakonde|Mpika|Nchelenge|Petauke|Mpulungu|Kashikishi|Chambishi|Mbala|Mumbwa|Samfya|Kaoma|Mkushi|Chinsali|Katete|Serenje|Isoka|Mwense|Kawambwa|Lundazi|Mwinilunga|Mporokoso|Kalomo|Chilanga",
   ja: "ルサカ|キトウェ|ンドラ|カブウェ|チンゴラ|ムフリラ|リヴィングストン|カサマ|モング|ルアンシャ|チリラボンブウェ|チパタ|マザブカ|ソルウェジ|カフエ|カピリ・ムポシ||カルルシ|チョマ|モンゼ|マンサ|ナコンデ|ムピカ|ンチェレンゲ|ペタウケ|ムプルング|||ムバラ|ムンブワ|サムヒャ|カオマ|ムクシ|チンサリ|カテテ|セレンジェ|イソカ||カワンブワ|ルンダジ|ムウィニルンガ|ムポロコソ|カロモ|",
   native: "|||||||||||||||||||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000",
 });
 

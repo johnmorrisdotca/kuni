@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cu: the 77 cities of Cuba, every tier together, as a list.
 
 import { CU } from "../data/cities-by-country/cu.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CU"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CU));
+const CITIES: readonly City[] = expandColumns(CU);
 
 export default CITIES;
 export { CITIES };

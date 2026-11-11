@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Zagreb|Split|Rijeka|Osijek|Zadar|Pula|Slavonski Brod|Karlovac|Grad Karlovac|Varaždin|Šibenik|Dubrovnik|Sisak|Samobor|Bjelovar|Vinkovci|Koprivnica|Čakovec|Đakovo|Sinj|Vukovar|Požega|Petrinja|Kutina|Virovitica|Križevci|Dugo Selo|Poreč|Metković|Krapina|Pazin|Gospić|Trešnjevka – jug|Velika Gorica|Novi Zagreb – istok|Novi Zagreb – zapad|Peščenica – Žitnjak|Sesvete|Stenjevec|Podsused – Vrapče|Donji grad|Trnje|Črnomerec|Kaštela|Gornji Grad–Medveščak|Donja Dubrava|Gornja Dubrava|Solin|Zaprešić|Podsljeme|Sveta Nedelja|Gornji grad (Osijek)",
   ja: "ザグレブ|スプリト|リエカ|オシエク|ザダル|プーラ|スラヴォンスキ・ブロド|カルロヴァツ||ヴァラジュディン|シベニク|ドゥブロヴニク|シサク|サモボル|ビェロヴァル|ヴィンコヴツィ|コプリヴニツァ|チャコヴェツ|ジャコヴォ|シニ|ヴコヴァル|ポジェガ|ペトリニャ|クティナ|ヴィロヴィティツァ|クリジェヴツィ|ドゥゴ・セロ|ポレッチ|メトコヴィチ|クラピナ|パジン||トレシュニェヴカ＝ユグ|ヴェリカ・ゴリツァ|ノヴィ・ザグレブ＝イストク|ノヴィ・ザグレブ＝ザパド|ペシュツェニツァ＝ジティニャク|セスヴェテ|ステニェヴェツ|ポドスセド＝ヴラプチェ|ドニィ・グラード|トルニェ|チェルノメレツ|カシュテラ|ゴルニィ・グラード - メドヴェシュチャク|ドニャ・ドゥブロヴァ|ゴルニャ・ドゥブロヴァ|ソリン|ザプレシチ|ポドスリェメ||",
   native: "||||||||||||||||||||||||||||||||||||||||||||Gornji grad – Medveščak|||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000",
 });
 

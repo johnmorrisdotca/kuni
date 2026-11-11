@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/zm: the 44 cities of Zambia, every tier together, as a list.
 
 import { ZM } from "../data/cities-by-country/zm.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ZM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(ZM));
+const CITIES: readonly City[] = expandColumns(ZM);
 
 export default CITIES;
 export { CITIES };

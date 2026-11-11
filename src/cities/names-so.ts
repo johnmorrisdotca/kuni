@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Mogadishu|Hargeisa|Bosaso|Burao|Berbera|Merca|Jamame|Kismayo|Baidoa|Jowhar|Borama|Harardhere|Beledweyne|Galkayo|Las Anod|Jilib|Garbahaareey|Erigavo|Luuq|Barawa|Burhakaba|Maydh|Eyl|Bayla|Garowe|Hudur|Bu'ale|Dusmareb",
   ja: "モガディシュ|ハルゲイサ|ボサソ|ブラオ|ベルベラ|マルカ|ジャマメ|キスマヨ|バイドア|ジョハール|ボラマ|ハラードヒヤー|ベレトウェイン|ガルカイヨ|ラス・アノド|ジリブ|ガーバハレ|エリガボ|ルーク|ブラバ|ブルカバ|メイト (ソマリランド)|エイル|ベイラ|ガローウェ|フドゥール|ブアレ|ドゥサマレブ",
   native: "مقديشو|Hargeysa|بوصاصو|برعو|بربرة|مركا|جمامة|كيسمايو|بيدوا|جوهر|بورمه|حررطيري|بلد وين|جالكعيو|لاس عانود|جلب|جربهاري|Ceerigaabo|لوق|براوة|بور حقبة||ايل|بندر بيلا|غاروي|حودر|بوالي|طوس مريب",
+  reading: "|||||||||||||||||||||||||||",
   major: "1111111111111111111100000000",
 });
 

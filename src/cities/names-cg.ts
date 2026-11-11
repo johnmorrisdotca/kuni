@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Brazzaville|Pointe-Noire|Dolisie|Nkayi|Kayes|Ouésso|Impfondo|Madingou|Owando|Sibiti|Mossendjo|Gamboma|Mindouli|Makoua|Loudima|Kinkala|Ewo|Djambala|Loango, Republic of Congo",
   ja: "ブラザヴィル|ポワントノワール|ドリシー|ネイ (コンゴ共和国)|ケイズ|ウェッソ|アンフォンド|マディング|オワンド|シビティ|モセンジョ|ガンボマ||マクア||キンカラ|エウォ|ジャンバラ|ロアンゴ",
   native: "|||||Ouesso|||||||||||||Loango",
+  reading: "||||||||||||||||||",
   major: "1111111111111111111",
 });
 

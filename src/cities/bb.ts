@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bb: the 1 cities of Barbados, every tier together, as a list.
 
 import { BB } from "../data/cities-by-country/bb.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BB"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BB));
+const CITIES: readonly City[] = expandColumns(BB);
 
 export default CITIES;
 export { CITIES };

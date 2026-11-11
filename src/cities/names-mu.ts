@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Port Louis|Beau Bassin-Rose Hill|Quatre Bornes|Curepipe|Triolet|Quartier-Militaire|Goodlands|Saint Pierre|Centre de Flacq|Mahébourg|Bambous|Moka|Port Mathurin|Souillac|Tamarin|Poudre d'Or",
   ja: "ポートルイス|ボー・バッサン＝ローズ・ヒル|カトル・ボルヌ|キュールピップ|トリオレット|カルティエ・ミリテール|グッドランズ|サンピエール|サントル・ド・フラック|マエブール|バンブース|モカ|ポート・マチュリン|スイヤック (モーリシャス)|タマリン|",
   native: "Port-Louis|Beau-Bassin Rose-Hill||||quartier Militaire||Saint-Pierre|centre de Flacq|||||||",
+  reading: "|||||||||||||||",
   major: "1111111111111111",
 });
 

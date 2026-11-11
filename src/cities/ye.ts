@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ye: the 213 cities of Yemen, every tier together, as a list.
 
 import { YE } from "../data/cities-by-country/ye.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "YE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(YE));
+const CITIES: readonly City[] = expandColumns(YE);
 
 export default CITIES;
 export { CITIES };

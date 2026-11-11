@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Koror|Kloulklubed|Melekeok|Dongosaru|Ngerulmud|Hatohobei|Imeong|Ngeremasch|Mengellang|Ngetkib|Ngerkeai",
   ja: "コロール|クルルクベド|マルキョク|ドンゴサル|ンゲルルムッド|||ゲレマッシュ||ネゲキブ|",
   native: "コロール|クルルクベド|マルキョク|ドンゴサル|ンゲルルムッド|||ゲレマッシュ||ネゲキブ|",
+  reading: "||||||||||",
   major: "11111111111",
 });
 

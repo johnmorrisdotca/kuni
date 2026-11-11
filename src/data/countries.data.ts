@@ -274,6 +274,17 @@ const CONTINENT_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   SA: ["South America","南アメリカ"],
 };
 
+// Each continent's Japanese name in hiragana, for sorting in Japanese order.
+const CONTINENT_READINGS: Readonly<Record<string, string>> = {
+  AF: "あふりか",
+  AN: "なんきょく",
+  AS: "あじあ",
+  EU: "よーろっぱ",
+  NA: "きたあめりかたいりく",
+  OC: "おせあにあ",
+  SA: "みなみあめりか",
+};
+
 const SUBREGION_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   "005": ["South America","南アメリカ"],
   "011": ["Western Africa","西アフリカ"],
@@ -299,4 +310,4 @@ const SUBREGION_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   "155": ["Western Europe","西ヨーロッパ"],
 };
 
-export { CONTINENT_NAMES, COUNTRY_ROWS, SUBREGION_NAMES };
+export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, SUBREGION_NAMES };

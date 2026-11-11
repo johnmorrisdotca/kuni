@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ke: the 67 cities of Kenya, every tier together, as a list.
 
 import { KE } from "../data/cities-by-country/ke.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KE));
+const CITIES: readonly City[] = expandColumns(KE);
 
 export default CITIES;
 export { CITIES };

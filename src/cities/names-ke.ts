@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Nairobi|Mombasa|Murang'a|Kisumu|Nakuru|Eldoret|Lunga Lunga|Kitale|Juja|Rhamu|Kilifi|Machakos|Kisii|Mumias|Nyeri|Kakamega|Wajir|Ifo Refugee Camp|Lafey|Thika|Lodwar|Athi River|Chamagel|Garissa|Narok|Bungoma|Malindi|Isiolo|Meru|Iten|Embu|Voi|Homa Bay|Migori|Nanyuki|Maralal|Busia|Mandera|Kitui|Chogoria|Vihiga|Kajiado|Karatina|Siaya|Lamu|Kapsabet|Eldama Ravine|Mbale|Marsabit|Kwale|Nyamira|Hola|Rumuruti|Kericho|Kabarnet|Bomet|Kerugoya|Kapenguria|Mwatate|Ol Kalou|Wote|Kathwana|Nyali|Ongata Rongai|Mlolongo|Kiserian|Kiambu",
   ja: "ナイロビ|モンバサ|ムランガ|キスム|ナクル|エルドレット|ルンガ・ルンガ|キタレ|ジュジャ|ラム (ケニア北東州)|キリフィ|マチャコス|キシイ・タウン|ムミアス|ニエリ|カカメガ|ワジール|イフォ・キャンプ||シカ|ロドワル|マヴォコ|ソティック|ガリッサ|ナロク|ブンゴマ|マリンディ|イシオロ|メル|イテン|エンブ|ボイ|ホマ・ベイ|ミゴリ|ナンユキ|マララル|ブシア|マンデラ|キツイ|チョゴリア|ヴィヒガ|カジアド||シアヤ|ラム|カプサベット|エルダマ峡谷||マルサビット|クワレ|ニャミラ|オラ|ルムルチ|ケリチョ|カバネット|ボメット|ケルゴヤ|カペングリア|ムワタテ|オル・カロウ|ウォテ|カスワナ|ニャリ|オンガタ・ロンガイ|マロロンゴ|キセリアン|キアンブ",
   native: "|||City of Kisumu|||||||||||||||||||Chemagel||||||||||||||||||||||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000000000000000000",
 });
 

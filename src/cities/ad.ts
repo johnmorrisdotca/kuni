@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ad: the 7 cities of Andorra, every tier together, as a list.
 
 import { AD } from "../data/cities-by-country/ad.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(AD));
+const CITIES: readonly City[] = expandColumns(AD);
 
 export default CITIES;
 export { CITIES };

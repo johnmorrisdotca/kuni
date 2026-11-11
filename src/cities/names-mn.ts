@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Ulaanbaatar|Mörön|Erdenet|Darkhan|Ölgii|Choibalsan|Arvaikheer|Ulaangom|Bayankhongor|Khovd|Uliastai|Sükhbaatar|Tsetserleg|Sainshand|Dalanzadgad|Züünkharaa|Altai|Chinggis City|Zuunmod|Baruun-Urt|Bulgan|Choir|Mandalgovi|Selenge",
   ja: "ウランバートル|ムルン|エルデネト|ダルハン市|ウルギー|チョイバルサン市|アルバイヘール|オラーンゴム|バヤンホンゴル|ホブド|ウリヤスタイ|スフバートル市|ツェツェルレグ市|サインシャンド|ダルンザドガド|ズーンハラ|アルタイ (モンゴル)|チンギス|ゾーンモド|バルーン・ウルト|ボルガン|チョイル|マンダルゴビ|",
   native: "Улаанбаатар|Мөрөн|Эрдэнэт|Дархан хот|Өлгий|Чойбалсан|Арвайхээр|Улаангом|Баянхонгор|Ховд|Улиастай|Сүхбаатар|Цэцэрлэг хот|Сайншанд|Даланзадгад|Зүүнхараа|Алтай хот|Чингис|Зуунмод|Баруун-Урт|Булган|Чойр|Мандалговь|Сэлэнгэ сум",
+  reading: "|||||||||||||||||||||||",
   major: "111111111111111111110000",
 });
 

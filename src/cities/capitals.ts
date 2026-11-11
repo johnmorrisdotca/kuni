@@ -1,7 +1,7 @@
 // The entry @johnmorrisdotca/kuni/cities/capitals: every capital, of a country or of a subdivision, of any size. Written by scripts/build-data.ts. The core,
 // @johnmorrisdotca/kuni/cities, joins this tier with the others and answers the lookups.
 
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 import { CAPITAL_CITY_ROWS } from "../data/cities-capitals.data";
 
@@ -22,7 +22,7 @@ let table: readonly City[] | null = null;
  * ```
  */
 const capitalCities = (): readonly City[] => {
-  if (table === null) table = expandCities(rowsOf(CAPITAL_CITY_ROWS));
+  if (table === null) table = expandColumns(CAPITAL_CITY_ROWS);
 
   return table;
 };

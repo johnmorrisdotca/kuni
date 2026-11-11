@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Vaduz|Schaan",
   ja: "ファドゥーツ|",
   native: "|",
+  reading: "|",
   major: "11",
 });
 

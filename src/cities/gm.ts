@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gm: the 9 cities of Gambia, every tier together, as a list.
 
 import { GM } from "../data/cities-by-country/gm.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GM));
+const CITIES: readonly City[] = expandColumns(GM);
 
 export default CITIES;
 export { CITIES };

@@ -36,6 +36,13 @@
       "note": "IANA time zone database 2026e, country to zone table (public domain)"
     },
     {
+      "path": "japan-post-municipalities-2026-11-11.json",
+      "url": "https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip",
+      "read": "2026-11-11",
+      "sha256": "01ba3dc9e47794f77faa31c0debf43e8baa9240885e7bc4e39921168efe43f97",
+      "note": "Japan Post's postal-code data (utf_ken_all.zip): each municipality's code, prefecture, name and reading in katakana, once each"
+    },
+    {
       "path": "natural-earth-populated-places-5.1.2.json",
       "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson",
       "read": "2026-11-11",
@@ -76,6 +83,13 @@
       "read": "2026-11-11",
       "sha256": "f6f83ebc5d17ea4f37e7a186acf3dd807a555692a9e26562dfbe10dc75946a62",
       "note": "Wikidata SPARQL answers: the cities whose only class is no kind of human settlement (a municipality of the Netherlands), in the columns of the main cities snapshot; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-city-readings-2026-11-11.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-11",
+      "sha256": "52195b541dd7db14c8ee5b1263306d131e220bad6bfe714363671787a9378e83",
+      "note": "Wikidata SPARQL answers: the reading in kana (P1814) of each city with a Japanese label; the query is in the file (CC0)"
     },
     {
       "path": "wikidata-codes-2026-10-10.json",

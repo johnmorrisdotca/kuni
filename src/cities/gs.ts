@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gs: the 1 cities of South Georgia & South Sandwich Islands, every tier together, as a list.
 
 import { GS } from "../data/cities-by-country/gs.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GS));
+const CITIES: readonly City[] = expandColumns(GS);
 
 export default CITIES;
 export { CITIES };

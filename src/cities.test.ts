@@ -306,6 +306,28 @@ describe("what the data says of well-known places", () => {
     expect(sapporo.capitalOf).toContain("JP-01");
   });
 
+  it("reads every Japanese name of a city of Japan in hiragana, so Japan's cities sort in Japanese order", async () => {
+    const japan = (await citiesOf("JP"))!;
+    expect(japan.filter((one) => one.name.ja !== undefined && one.name.jaReading === undefined).map((one) => one.name.ja)).toEqual([]);
+    const reading = (en: string): string | undefined => japan.find((one) => one.name.en === en)?.name.jaReading;
+    // Wikidata reads none of these four; Japan Post does.
+    expect([reading("Yamaguchi"), reading("Osaki"), reading("Oshu"), reading("Tono")]).toEqual(["やまぐちし", "おおさきし", "おうしゅうし", "とおのし"]);
+    expect(reading("Tokyo")).toBe("とうきょうと");
+    const order = [...japan].sort((a, b) => (a.name.jaReading! < b.name.jaReading! ? -1 : a.name.jaReading! > b.name.jaReading! ? 1 : 0)).map((one) => one.name.en);
+    const places = ["Osaka", "Sapporo", "Tokyo", "Nagoya", "Yokohama"].map((en) => order.indexOf(en));
+    expect(places.every((at, index) => at >= 0 && (index === 0 || at > places[index - 1]!))).toBe(true);
+    expect(order.slice(0, 1).map((en) => reading(en)!.startsWith("あ"))).toEqual([true]);
+  });
+
+  it("reads a name written in kana, without its qualifier and with a last word of one reading, and leaves Chinese characters unread", async () => {
+    const all = [...((await citiesOf("AR")) ?? []), ...((await citiesOf("AE")) ?? []), ...((await citiesOf("CN")) ?? [])];
+    const byJa = (ja: string) => all.find((one) => one.name.ja === ja)?.name;
+    expect(byJa("ゴヤ (アルゼンチン)")?.jaReading).toBe("ごや");
+    expect(byJa("フジャイラ市")?.jaReading).toBe("ふじゃいらし");
+    expect(byJa("上海市")).toMatchObject({ ja: "上海市" });
+    expect(byJa("上海市")?.jaReading).toBeUndefined();
+  });
+
   it("finds Paris at the centre of Paris among every city of France, not an arrondissement or a ward", async () => {
     const france = citySet((await citiesOf("FR"))!);
     expect(france.nearest({ lat: 48.8566, lon: 2.3522 })?.city.name.en).toBe("Paris");

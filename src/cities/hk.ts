@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/hk: the 2 cities of Hong Kong SAR China, every tier together, as a list.
 
 import { HK } from "../data/cities-by-country/hk.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "HK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(HK));
+const CITIES: readonly City[] = expandColumns(HK);
 
 export default CITIES;
 export { CITIES };

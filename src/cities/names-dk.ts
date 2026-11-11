@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Copenhagen|Aarhus|Odense|Aalborg|Esbjerg|Randers|Horsens|Kolding|Vejle|Roskilde|Herning|Silkeborg|Helsingør|Næstved|Fredericia|Viborg|Køge|Holstebro|Hillerød|Sønderborg|Svendborg|Hjørring|Frederikshavn|Haderslev|Skive|Skanderborg|Nyborg|Lillerød|Nykøbing Falster|Ikast|Aabenraa|Sorø|Frederiksberg|Gentofte|Valby|Taastrup|Lynetteholmen|Viby|Ishøj",
   ja: "コペンハーゲン|オーフス|オーデンセ|オールボー|エスビャウ|ラナース|ホーセンス|コリング|ヴァイレ|ロスキレ|ヘアニング|シルケボー|ヘルシンゲル|ネストヴェズ|フレゼリシア|ヴィボー|キューゲ|ホルステブロー|ヒレレズ|スナボー|スヴェンボー|ヨーリング|フレゼリクスハウン|ハザスレウ|スキーベ (デンマーク)||ニュボー||ニュクービン・ファルスタ|イカスト|オーベンロー|ソレ|フレデリックスベル||ヴァルビー|トストルプ|||イースホイ",
   native: "København||||||||||||||||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000000",
 });
 

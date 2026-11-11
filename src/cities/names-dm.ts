@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Roseau|Wesley|Saint Joseph",
   ja: "ロゾー|ウェズリー|セント・ジョゼフ",
   native: "||",
+  reading: "||",
   major: "111",
 });
 

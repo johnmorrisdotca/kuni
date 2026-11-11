@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bt: the 20 cities of Bhutan, every tier together, as a list.
 
 import { BT } from "../data/cities-by-country/bt.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BT));
+const CITIES: readonly City[] = expandColumns(BT);
 
 export default CITIES;
 export { CITIES };

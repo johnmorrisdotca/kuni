@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Panama City|Colón City|Santiago de Veraguas|Tocumen|David|La Chorrera|Pacora|Vacamonte|Guna Yala|Penonomé|Puerto Armuelles|Bocas del Toro|Las Tablas|Chitré|La Palma|El Porvenir|Unión Chocó|Buäbti|Sieyic|Las Cumbres|Balboa",
   ja: "パナマ市|コロン|サンティアゴ・デ・ベラグアス|トクメン|ダビッド|ラ・チョレラ|パコラ||クナ・ヤラ自治区|ペノノメ|プエルトアルムエレス|ボカスデルトロ|ラス・タブラス|チトレ|ラ・パルマ (ダリエン県)|エル・ポルベニール (グナ・ヤラ)|ウニオン・チョコ||シーイク|ラス・クンブレス|バルボア",
   native: "Ciudad de Panamá|Ciudad de Colón||||||||||||||Gaigirgordub||Llano Tugrí|||",
+  reading: "||||||||||||||||||||",
   major: "111111111111111111110",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Lilongwe|Blantyre|Mzuzu|Zomba|Salima|Makanjila|Nkhotakota|Mangochi|Karonga|Liwonde|Mzimba|Chiromo|Balaka Township|Nkhata Bay|Nsanje|Mulanje|Kasakula|Mchinji|Dedza|Ntcheu|Chitipa|Mwanza|Thyolo|Neno|Machinga|Chiradzulu|Kasungu|Ntchisi|Rumphi|Chikwawa|Dowa|Phalombe|Likoma",
   ja: "リロングウェ|ブランタイヤ|ムズズ|ゾンバ|サリマ||コタコタ|マンゴチ|カロンガ|リウォンデ|ムジンバ|チロモ|バラカ|カタベイ|ンサンジェ|ムランジェ||ムチンジ|デッザ|ンチェウ|チティパ|ムワンザ|チョロ|ネノ|マチンガ|チラズル|カスング|ンチシ|ルンピ|チクワワ|ドーワ|パロンベ|リコマ",
   native: "|||||||||||||||||||||||||||Nchisi|||||",
+  reading: "||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000",
 });
 

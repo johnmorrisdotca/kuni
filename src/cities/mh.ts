@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mh: the 1 cities of Marshall Islands, every tier together, as a list.
 
 import { MH } from "../data/cities-by-country/mh.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MH));
+const CITIES: readonly City[] = expandColumns(MH);
 
 export default CITIES;
 export { CITIES };

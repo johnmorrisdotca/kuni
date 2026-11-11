@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "San Salvador|Santa Ana|San Miguel|Ahuachapán|Santa Tecla|San Juan Opico|Izalco|Chalchuapa|Sonsonate|Usulután|Ciudad Arce|Zacatecoluca|Metapán|Quezaltepeque|Nahuizalco|Acajutla|San Vicente|Cojutepeque|San Francisco Menéndez|La Unión|Coatepeque|Armenia|Sensuntepeque|Atiquizaya|San Antonio del Monte|Tacuba|Chalatenango|San Sebastián Salitrillo|Sonzacate|El Congo|Jujutla|Nueva Concepción|Juayúa|Candelaria de la Frontera|Suchitoto|Guaymango|San Francisco Gotera|San Julián|Texistepeque|San Pablo Tacachico",
   ja: "サンサルバドル|サンタ・アナ|サンミゲル|アワチャパン|サンタ・テクラ|サン・フアン・オピコ|イサルコ|チャルチュアーパ|ソンソナーテ|ウスルタン|アルセー市|サカテコルーカ|メタパン|ケサルテペケ|ナフイサルコ|アカフトラ|サン・ビセンテ|コフテペケ|サン・フランシスコ・メネンデス|ラ・ウニオン|コアテペケ (エル・サルバドル)|アルメニア (ソンソナーテ県)|センスンテペケ|アティキサヤ|サン・アントニオ・デル・モンテ|タクーバ|チャラテナンゴ|サン・サバスティアン・サリトリージョ|ソンサカテ|エル・コンゴ|フフトラ|ヌエバ・コンセプシオン|フアユア|カンデラリア・デ・ラ・フロンテーラ|スチトト|グアイマンゴ|サン・フランシスコ・ゴテラ|サン・ジュリアン (ソンソナーテ県)|テヒステペケ|サン・パブロ・タカチコ",
   native: "|||||||||||||||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000",
 });
 

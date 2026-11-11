@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Georgetown|New Amsterdam|Linden|Anna Regina|Bartica|Lethem|Mabaruma|Vreed en Hoop|Paradise",
   ja: "ジョージタウン|ニューアムステルダム|リンデン|アンナ・レジャイナ|バルティカ|レセム|マバルマ|ブリード・エン・ホープ|パラダイス",
   native: "||||||||",
+  reading: "||||||||",
   major: "111111111",
 });
 

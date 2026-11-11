@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Praia|Mindelo|Santa Maria|Assomada|São Filipe|Sal Rei|Tarrafal|Espargos|Ponta do Sol|Calheta de São Miguel|Porto Inglês|São Domingos|João Teves|Cova Figueira|Pombas|Cidade Velha|Picos|Nova Sintra|Mosteiros|Porto Novo|Tarrafal de São Nicolau|Ribeira Brava",
   ja: "プライア|ミンデロ|サンタ・マリア (カーボベルデ)|アソマダ|サン・フェリペ|サル・レイ|タラファル|エスパルゴス|ポンタ・ド・ソル|カリェタ・デ・サン・ミゲル|ヴィーラ・ド・マイオ|サン・ドミンゴス|ジョアン・テベス|コーヴァ・フィゲイラ|ポンバス|シダーデ・ヴェーリャ|ピコス|ノーヴァ・シントラ|モステイロス|ポルト・ノボ|タラファル・デ・サン・ニコラウ|リベイラ・ブラヴァ",
   native: "|Mindelu||||||||Kadjeta di San Migel|Vila do Maio||||Vila das Pombas|||||||",
+  reading: "|||||||||||||||||||||",
   major: "1111111111111111111100",
 });
 

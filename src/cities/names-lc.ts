@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Gros Islet|Castries|Anse La Raye|Vieux Fort|Choiseul",
   ja: "グロス・イスレット|カストリーズ|アンス・ラ・レイ|ヴューフォート (セントルシア)|ショアズール",
   native: "||||",
+  reading: "||||",
   major: "11111",
 });
 

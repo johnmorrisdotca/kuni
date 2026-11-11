@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Nassau|Freeport|Coopers Town|Marsh Harbour|High Rock|Fresh Creek|Clarence Town|Alice Town|Rock Sound|Matthew Town|Cockburn Town|Nicholls Town|Abraham's Bay|George Town|Governor's Harbour|Sandy Point|Eight Mile Rock",
   ja: "ナッソー|フリーポート|クーパーズ・タウン|マーシュ・ハーバー|ハイ・ロック|フレッシュ・クリーク|クラレンス・タウン|アリス・タウン|ロック・サウンド|マシュー・タウン|コックスバーン・タウン|ニコルズ・タウン||ジョージ・タウン (バハマ)|ガヴァナーズ・ハーバー|サンディー・ポイント|",
   native: "||||||||||||||||",
+  reading: "||||||||||||||||",
   major: "11111111111111111",
 });
 

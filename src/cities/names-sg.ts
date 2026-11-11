@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Singapore|Bukit Merah|Clementi|Bishan",
   ja: "シンガポール|紅山 (シンガポール)|クレメンティ地区|ビシャン (シンガポール)",
   native: "Singapura|||Bishan, Singapura",
+  reading: "|||",
   major: "1111",
 });
 

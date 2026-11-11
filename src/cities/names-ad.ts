@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Andorra la Vella|Canillo|Encamp|Les Escaldes|Sant Julià de Lòria|La Massana|Ordino",
   ja: "アンドラ・ラ・ベリャ|||レス・エスカルデス|||",
   native: "|||les Escaldes||la Massana|",
+  reading: "||||||",
   major: "1111111",
 });
 

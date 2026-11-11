@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Ouagadougou|Bobo-Dioulasso|Koudougou|Ouahigouya|Kaya|Banfora|Houndé|Fada N’Gourma|Dédougou|Djibo|Tenkodogo|Kongoussi|Léo|Titao|Dori|Koupéla|Gaoua|Garango|Gourcy|Yako|Zorgho|Réo|Niangoloko|Kombissiri|Nouna|Manga|Diapaga|Djibo|Orodara|Pô|Tougan|Boulsa|Diébougou|Solenzo|Bogandé|Gorom-Gorom|Sapouy|Sebba|Ziniaré Department|Boromo|Boussé|Dano|Gayéri|Sindou|Ouargaye|Pama|Batié|Toma",
   ja: "ワガドゥグー|ボボ・ディウラッソ|クドゥグ|ワヒグヤ|カヤ|バンフォラ|フンデ|ファダ・ングルマ|デドゥグ|ジボ空港|テンコドゴ|コングシ|レオ (ブルキナファソ,Léo)|チタオ|ドリ (ブルキナファソ)|クペラ|ガワ (ブルキナファソ)||グルシ|ヤコ|ゾルゴ|レオ (ブルキナファソ)|ニアンゴロコ|コンビシリ|ヌナ郡|マンガ|ディアパガ|ジボ|オロダラ|ポ|トゥガン|ブルサ (ブルキナファソ)|ディエブグ|ソランゾ|ボガンデ|ゴロム・ゴロム|サプイ|セバ|ジニアレ郡|ボロモ|ブセ|ダノ (ブルキナファソ)|ガイェリ|シンドゥ|オウアルガイエ|パマ (ブルキナファソ)|バティエ|トマ (ブルキナファソ)",
   native: "Waogdgo|Bobo Dioulasso||||||||||||||||||||||||||||||||Banwa (Solenzo)||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000000000000000",
 });
 

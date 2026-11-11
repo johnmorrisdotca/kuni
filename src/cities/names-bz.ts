@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Belize City|San Ignacio|Belmopan|San Pedro Town|Orange Walk Town|Dangriga|Corozal|Punta Gorda",
   ja: "ベリーズシティ|サン・イグナシオ|ベルモパン|サン・ペドロ|オレンジウォーク|ダンリガ|コロザル|プンタゴルタ",
   native: "|||||||",
+  reading: "|||||||",
   major: "11111111",
 });
 

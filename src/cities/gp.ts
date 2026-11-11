@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gp: the 1 cities of Guadeloupe, every tier together, as a list.
 
 import { GP } from "../data/cities-by-country/gp.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GP"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GP));
+const CITIES: readonly City[] = expandColumns(GP);
 
 export default CITIES;
 export { CITIES };

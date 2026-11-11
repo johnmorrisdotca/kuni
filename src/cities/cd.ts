@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cd: the 86 cities of Congo - Kinshasa, every tier together, as a list.
 
 import { CD } from "../data/cities-by-country/cd.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CD));
+const CITIES: readonly City[] = expandColumns(CD);
 
 export default CITIES;
 export { CITIES };

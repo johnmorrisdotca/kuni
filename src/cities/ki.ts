@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ki: the 4 cities of Kiribati, every tier together, as a list.
 
 import { KI } from "../data/cities-by-country/ki.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KI));
+const CITIES: readonly City[] = expandColumns(KI);
 
 export default CITIES;
 export { CITIES };

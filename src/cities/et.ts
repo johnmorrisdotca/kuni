@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/et: the 88 cities of Ethiopia, every tier together, as a list.
 
 import { ET } from "../data/cities-by-country/et.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ET"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(ET));
+const CITIES: readonly City[] = expandColumns(ET);
 
 export default CITIES;
 export { CITIES };

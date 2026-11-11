@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dar es Salaam|Zanzibar City|Mwanza|Mbeya|Morogoro|Arusha|Geita|Tabora|Songea|Bariadi|Kahama|Kasulu|Kigoma|Tanga|Dodoma|Mpanda|Iringa|Singida|Musoma|Sumbawanga|Bukoba|Moshi|Mtwara|Nyarugusu Camp|Shinyanga|Katumba Refugee Camp|Lindi|Kilosa|Uvinza|Mafinga|Babati|Korogwe|Tukuyu|Chake-Chake|Ifakara|Rujewa|Njombe|Madibira|Tunduma|Masasi|Bagamoyo|Biharamulo|Naberera|Kibiti|Mpwapwa|Sirari|Ipinda|Sikonge|Ivuna|Nzega|Wete|Kandaga, Uvinza|Kakonko|Kahe|Kamsamba|Kibaha|Haydom|Mbulumbulu|Ndago|Kyimo|Itigi|Endabash|Santilya|Soit-Sambu|Ngara|Same|Mikumi|Inyala|Karema|Kaliua|Nyahanga|Nainokanoka|Bububu|Kansay|Peramiho|Mkokotoni|Mkoani|Koani|Vwawa",
   ja: "ダルエスサラーム|ザンジバルシティ|ムワンザ|ムベヤ|モロゴロ|アルーシャ|ゲイタ|タボラ|ソンゲア|バリアディ|カハマ|カスル|キゴマ|タンガ|ドドマ|ムパンダ|イリンガ|シンギダ|ムソマ|スンバワンガ|ブコバ|モシ|ムトワラ||シニャンガ||リンディ|キロサ|ウビンザ||ババティ|コログウェ|トゥクユ|チャケ＝チャケ|イファカラ||ンジョンベ||トゥンドゥマ|マサシ|バガモヨ|ビハラムロ||キビティ|ムプワプワ|||シコンゲ||ヌゼガ|ウェテ||カコンコ|||キバハ|||||イティギ||||ンガラ|サメ|ミクミ||カレマ|カリウア|ニャハンガ||ブブブ|||ムココトニ|ムコアニ|コアニ|ヴワワ",
   native: "|Zanzibar||||||||||||Wilaya ya Tanga||||Singida Mjini||||||||Kambi ya Wakimbizi Katumba||||||||Chake Chake|||||||Bagamoyo (mji)||||Wilaya ya Mpwapwa||||||Wilaya ya Wete|Kandaga||||||||||||Soit Sambu||Same Mjini|||||||||||Wilaya ya Mkoani||",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000000000000000000000000000000",
 });
 

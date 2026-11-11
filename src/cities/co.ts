@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/co: the 83 cities of Colombia, every tier together, as a list.
 
 import { CO } from "../data/cities-by-country/co.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CO));
+const CITIES: readonly City[] = expandColumns(CO);
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ht: the 86 cities of Haiti, every tier together, as a list.
 
 import { HT } from "../data/cities-by-country/ht.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "HT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(HT));
+const CITIES: readonly City[] = expandColumns(HT);
 
 export default CITIES;
 export { CITIES };

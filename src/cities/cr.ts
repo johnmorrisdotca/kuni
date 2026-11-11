@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cr: the 14 cities of Costa Rica, every tier together, as a list.
 
 import { CR } from "../data/cities-by-country/cr.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CR));
+const CITIES: readonly City[] = expandColumns(CR);
 
 export default CITIES;
 export { CITIES };

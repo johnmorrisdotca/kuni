@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cf: the 23 cities of Central African Republic, every tier together, as a list.
 
 import { CF } from "../data/cities-by-country/cf.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CF));
+const CITIES: readonly City[] = expandColumns(CF);
 
 export default CITIES;
 export { CITIES };

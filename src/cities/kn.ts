@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kn: the 14 cities of St. Kitts & Nevis, every tier together, as a list.
 
 import { KN } from "../data/cities-by-country/kn.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KN));
+const CITIES: readonly City[] = expandColumns(KN);
 
 export default CITIES;
 export { CITIES };

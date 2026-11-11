@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/re: the 1 cities of Réunion, every tier together, as a list.
 
 import { RE } from "../data/cities-by-country/re.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "RE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(RE));
+const CITIES: readonly City[] = expandColumns(RE);
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tw: the 104 cities of Taiwan, every tier together, as a list.
 
 import { TW } from "../data/cities-by-country/tw.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TW));
+const CITIES: readonly City[] = expandColumns(TW);
 
 export default CITIES;
 export { CITIES };

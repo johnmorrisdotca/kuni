@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cg: the 19 cities of Congo - Brazzaville, every tier together, as a list.
 
 import { CG } from "../data/cities-by-country/cg.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CG));
+const CITIES: readonly City[] = expandColumns(CG);
 
 export default CITIES;
 export { CITIES };

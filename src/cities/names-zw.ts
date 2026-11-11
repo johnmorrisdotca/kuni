@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Harare|Masvingo|Bulawayo|Chitungwiza|Mutare|Ascot, Gweru Zimbabwe|Gweru|Kadoma|Kwekwe|Chinhoyi|Marondera|Bindura|Norton|Chegutu|Hwange|Beitbridge|Zvishavane|Victoria Falls|Redcliff|Chiredzi|Rusape|Kariba|Karoi|Ruwa|Gokwe centre|Chipinge|Shurugwi|Gwanda|Lupane|Epworth",
   ja: "ハラレ|マシンゴ|ブラワヨ|チトゥンギザ|ムタレ||グウェル|カドマ|クウェクウェ|チノイ|マロンデラ|ビンドゥラ|ノートン|チェグトゥ|ワンゲ|ベイトブリッジ|ズビシャバネ|ビクトリア・フォールズ|レッドクリフ|チレドジ|ルサペ|カリバ|カロイ|ルワ|ゴクウェ|チピンゲ|シュルグウィ|グワンダ|ルパネ|エプワース",
   native: "|||||||||||Bindura (guta)||||||||||||||||||Epworth, Zimbabwe",
+  reading: "|||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000",
 });
 

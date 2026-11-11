@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cv: the 22 cities of Cape Verde, every tier together, as a list.
 
 import { CV } from "../data/cities-by-country/cv.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CV"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CV));
+const CITIES: readonly City[] = expandColumns(CV);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Birkirkara|Mosta|Sliema|Qormi|Marsaskala|Naxxar|Żabbar|Msida|San Ġwann|St. Julian's|Żebbuġ|Valletta",
   ja: "ビルキルカラ|モスタ|スリーマ|オルミ|マルサスカラ|ナッシャー|ザッパール|イムシーダ|サンジュワン|センジュリアン|ゼブージ|バレッタ",
   native: "||Tas-Sliema|Ħal Qormi|Wied il-Għajn||Ħaż-Żabbar|L-Imsida||San Ġiljan|Ħaż-Żebbuġ|",
+  reading: "|||||||||||",
   major: "111111111111",
 });
 

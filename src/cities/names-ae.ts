@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dubai|Abu Dhabi|Sharjah|Al Ain|Ajman|Ras al-Khaimah|Fujairah|Kalba|Umm Al Quwain|Dibba Al-Fujairah|Khor Fakkan|Jebel Ali|Madinat Zayed|Dhaid|Hatta",
   ja: "ドバイ|アブダビ|シャールジャ|アル・アイン|アジュマーン|ラアス・アル＝ハイマ市|フジャイラ市|カルバ|ウンム・アル＝カイワイン市|ディバ・アル・フジャイラ|ホール・ファカン|ジュベル・アリ|ザイード・シティ||ハッタ (アラブ首長国連邦)",
   native: "دبي|أبو ظبي|الشارقة|العين|عجمان|رأس الخيمة|الفجيرة|كلباء|أم القيوين|دبا الفجيرة|خورفكان|جبل علي|مدينة زايد|الذيد|حتا، دبي",
+  reading: "||||||||||||||",
   major: "111111111111111",
 });
 

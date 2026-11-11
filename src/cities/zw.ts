@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/zw: the 30 cities of Zimbabwe, every tier together, as a list.
 
 import { ZW } from "../data/cities-by-country/zw.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "ZW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(ZW));
+const CITIES: readonly City[] = expandColumns(ZW);
 
 export default CITIES;
 export { CITIES };

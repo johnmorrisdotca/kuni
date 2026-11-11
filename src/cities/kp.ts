@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kp: the 36 cities of North Korea, every tier together, as a list.
 
 import { KP } from "../data/cities-by-country/kp.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KP"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KP));
+const CITIES: readonly City[] = expandColumns(KP);
 
 export default CITIES;
 export { CITIES };

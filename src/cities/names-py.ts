@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Asunción|Ciudad del Este|Luque|Capiatá|San Lorenzo|Coronel Oviedo|Pedro Juan Caballero|Lambaré|Fernando de la Mora|Encarnación|Itá|San Antonio|Areguá|Ypané|Horqueta|Caacupé|San Ignacio|Villa Hayes|Concepción|Villarrica|Saltos del Guairá|San Pedro de Ycuamandiyú|San Juan Bautista|Pilar|Yaguarón|Ypacaraí|Paraguarí|Caazapá|Tobatí|Abaí|Filadelfia|Pozo Colorado|Coronel Bogado|Bella Vista Norte|Mariscal Estigarribia|Hohenau|Fuerte Olimpo",
   ja: "アスンシオン|シウダー・デル・エステ|ルケ|カピアタ|サン・ロレンツォ|コロネル・オビエド|ペドロ・フアン・カバリェロ市|ランバレ|フェルナンド・デ・ラ・モラ|エンカルナシオン|イタ|サン・アントニオ|アレグア|イパネ|オルケタ|カアクペ|サン・イグナシオ|ビージャ・アイェス|コンセプシオン|ビジャリカ|サルト・デル・グアイラ|サン・ペドロ (パラグアイ)|サン・フアン・バウティスタ (パラグアイ)|ピラール (パラグアイ)|ヤグアロン|イパカライ|パラグアリ|カアサパ|トバティ|アバイ|フィラデルフィア (パラグアイ)|ポソコロラド|コロネルボガド|ベラビスタ|マリスカル・エスティガリビア|オエナウ|フエルテ・オリンポ",
   native: "||||||||||||||||San Ignacio Guazú||||||||||||||||||Mariscal José Félix Estigarribia||",
+  reading: "||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000",
 });
 

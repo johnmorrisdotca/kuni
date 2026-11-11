@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/it: the 324 cities of Italy, every tier together, as a list.
 
 import { IT } from "../data/cities-by-country/it.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IT"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(IT));
+const CITIES: readonly City[] = expandColumns(IT);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Belgrade|Novi Sad|Niš|Kragujevac|Subotica|Valjevo|Peja|Pančevo|Čačak|Mitrovica|Obrenovac|Zrenjanin|Kraljevo|Novi Pazar|Leskovac|Užice|Kruševac|Lipjan|Vranje|Sombor|Kikinda|Prijepolje|Jagodina|Bor|Vršac|Shtime|Priboj|Bajina Bašta|Bačka Palanka|Inđija|Vrbas|Senta|Loznica|Bečej|Ćuprija|Futog|Trstenik|Nova Pazova|Zaječar|Smederevo|Požarevac|Šabac|Sremska Mitrovica|Pirot|Prokuplje|Zemun|Zvezdara",
   ja: "ベオグラード|ノヴィ・サド|ニシュ|クラグイェヴァツ|スボティツァ|ヴァリェヴォ|ペヤ|パンチェヴォ|チャチャク|ミトロヴィツァ|オブレノヴァツ|ズレニャニン|クラリェヴォ|ノヴィ・パザル|レスコヴァツ|ウジツェ|クルシェヴァツ|リピャニ|ヴラニェ|ソンボル|キキンダ|プリイェポリェ|ヤゴディナ|ボル|ヴルシャツ|シュティメ|プリボイ|バイナ・バシュタ|バチュカ・パランカ|インジヤ|ヴルバス|センタ|ロズニツァ|ベチェイ|チュプリヤ|フトグ|トルステニク||ザイェチャル|スメデレヴォ|ポジャレヴァツ|シャバツ|スレムスカ・ミトロヴィツァ|ピロト|プロクプリェ|ゼムン|ズヴェズダラ",
   native: "Beograd||||||Пећ|||Косовска Митровица|Обреновац|||||||Липљан||||||||Штимље||||||||||Футог||Нова Пазова||||||||Земун|Звездара (Београд)",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "São Tomé|Santana|Trindade|São João dos Angolares|Guadalupe|Santo António|Neves",
   ja: "サントメ|サンタナ|トリンダージ|ドナ・エウゲニア|グアダルーペ|サント・アントニオ|ネヴィス",
   native: "||||||",
+  reading: "||||||",
   major: "1111111",
 });
 

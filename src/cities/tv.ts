@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tv: the 3 cities of Tuvalu, every tier together, as a list.
 
 import { TV } from "../data/cities-by-country/tv.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TV"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TV));
+const CITIES: readonly City[] = expandColumns(TV);
 
 export default CITIES;
 export { CITIES };

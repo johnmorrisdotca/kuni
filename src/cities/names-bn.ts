@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bandar Seri Begawan|Mukim Berakas 'B'|Mukim Gadong 'A'|Mukim Gadong 'B'|Mukim Sengkurong|Mukim Kuala Belait|Mukim Mentiri|Mukim Berakas 'A'|Mukim Kilanas|Mukim Seria|Seria|Mukim Serasa|Kuala Belait|Bangar Town|Tutong",
   ja: "バンダルスリブガワン|||||クアラ・ブライト郡||||セリア郡|セリア|セラサ郡|クアラブライト|バンガル|プカン・ツトン",
   native: "||||||||||Pekan Seria|||Pekan Bangar|Pekan Tutong",
+  reading: "||||||||||||||",
   major: "111111111111111",
 });
 

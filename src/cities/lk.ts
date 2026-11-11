@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lk: the 34 cities of Sri Lanka, every tier together, as a list.
 
 import { LK } from "../data/cities-by-country/lk.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LK));
+const CITIES: readonly City[] = expandColumns(LK);
 
 export default CITIES;
 export { CITIES };

@@ -352,5 +352,31 @@ const TYPE_RULES: [RegExp, string][] = [
 // .gb is delegated but has never been in general use.
 const TLD_EXCEPTIONS: Record<string, string> = { GB: "uk" };
 
-export { SHORT_NAME_FILLS };
+// Readings, in hiragana, for the places of Japan neither Wikidata (P1814) nor Japan Post reads: new towns and
+// neighbourhoods, by Wikidata id, each with the Japanese name it reads, so a renamed label stops the build rather than
+// keep a stale reading.
+const CITY_READING_FILLS: Readonly<Record<string, readonly [name: string, reading: string]>> = {
+  Q7450095: ["泉北ニュータウン", "せんぼくにゅーたうん"],
+  Q11405878: ["千葉ニュータウン", "ちばにゅーたうん"],
+  Q11406839: ["千里ニュータウン", "せんりにゅーたうん"],
+  Q11407548: ["南千住", "みなみせんじゅ"],
+  Q11481947: ["平井", "ひらい"],
+  Q11565312: ["滝野川", "たきのがわ"],
+  Q11359606: ["上溝", "かみみぞ"],
+  Q11635489: ["赤塚", "あかつか"],
+  Q11481474: ["常盤", "ときわ"],
+  Q11434227: ["芝", "しば"],
+  Q3815602: ["登戸", "のぼりと"],
+  Q17229558: ["新曽", "にいぞ"],
+  Q3108376: ["本郷", "ほんごう"],
+  Q11352358: ["一之江", "いちのえ"],
+  Q11433925: ["大塚", "おおつか"],
+  Q735384: ["下北沢", "しもきたざわ"],
+  Q21654254: ["東越谷", "ひがしこしがや"],
+  Q24867638: ["宮本", "みやもと"],
+  Q7849928: ["津田沼", "つだぬま"],
+  Q38276973: ["中丸子", "なかまるこ"],
+};
+
+export { CITY_READING_FILLS, SHORT_NAME_FILLS };
 export { CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };

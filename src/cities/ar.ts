@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ar: the 338 cities of Argentina, every tier together, as a list.
 
 import { AR } from "../data/cities-by-country/ar.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(AR));
+const CITIES: readonly City[] = expandColumns(AR);
 
 export default CITIES;
 export { CITIES };

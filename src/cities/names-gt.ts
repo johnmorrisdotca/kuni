@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Guatemala City|Mixco|Villa Nueva|Cobán|Quetzaltenango|Jalapa|Escuintla|Villa Canales|Jutiapa|Huehuetenango|Totonicapán|Chimaltenango|Puerto Barrios|Retalhuleu|Sololá|Santa Cruz del Quiché|La Libertad|Mazatenango|San Cristóbal Verapaz|Livingston|Chiquimula|San Luis|Salamá|San José|Zacapa|San Juan Ostuncalco|Antigua Guatemala|Esquipulas|El Frutal, Villa Nueva|San Marcos|Cuilapa|Flores|Santa Elena de la Cruz|Nuevo San Carlos|Ciudad Real|Villa Lobos|Melchor de Mencos|Ciudad Peronia, Villa Nueva, Guatemala|Guastatoya|Ciudad Tecún Umán|El Progreso|Puerto San José|La Democracia|Salcajá|Chuarrancho|Panajachel",
   ja: "グアテマラシティ|ミスコ|ビジャ・ヌエバ|コバン|ケツァルテナンゴ|ハラパ|エスクィントラ|ビジャ・カナレス|フティアパ|ウェウェテナンゴ|トトニカパン|チマルテナンゴ|プエルト・バリオス|レタルレウ|ソロラ|サンタ・クルス・デル・キチェ|ラ・リベルタード|マサテナンゴ||リビングストン (グアテマラ)|チキムーラ|サンルイス|サラマ||サカパ||アンティグア・グアテマラ|エスクイプラス||サン・マルコス|クイラパ|フローレス|||||メルチョル・デ・メンコス||グアスタトヤ||エル・プログレソ|プエルト・サンホセ|ラ・デモクラシア||チュアランチョ|",
   native: "Ciudad de Guatemala||||||||||||||||||||||||||||||||||Ciudad Real (Villa Nueva)|||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000",
 });
 

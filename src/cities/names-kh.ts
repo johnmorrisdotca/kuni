@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Phnom Penh|Siem Reap|Battambang|Kampong Cham|Sihanoukville|Kratié|Pursat|Takéo|Serei Saophoan|Kampong Chhnang|Kampot|Krong Kep|Koh Kong|Chbar Mon|Prey Veng|Kampong Thom|Stung Treng|Phnom Tbeng Meanchey|Svay Rieng|Pailin Municipality|Lumphat|Banlung|Senmonorom|Samraong|Suong|Ta Khmau",
   ja: "プノンペン|シェムリアップ|バタンバン|コンポンチャム|シアヌークビル|クラチエ|ポーサット|タケオ|シソポン|コンポンチュナン (市)|カンポット|ケップ|ココン|コンポンスプー (町)|プレイベン (市)|コンポントム (市)|ストゥントレン|プノン・タベン・ミエンチェイ|スヴァイリエン (町)|パイリン||バンルン|センモノロム|サムロン (町)|スオン|タクマウ",
   native: "ភ្នំពេញ|ក្រុងសៀមរាប|បាត់ដំបង|ក្រុងកំពង់ចាម|ក្រុងព្រះសីហនុ|ក្រចេះ|ពោធិសាត់|ក្រុងតាកែវ|ក្រុងសិរីសោភ័ណ|ក្រុងកំពង់ឆ្នាំង|ក្រុងកំពត|ក្រុងកែប|ក្រុងខេមរភូមិន្ទ|ក្រុងកំពង់ស្ពឺ|ព្រៃវែង|ក្រុងកំពង់ធំ||||ក្រុងប៉ៃលិន||ក្រុងបានលុង|សែនមនោរម្យ|ក្រុងសំរោង|ក្រុងសួង|ក្រុងតាខ្មៅ",
+  reading: "|||||||||||||||||||||||||",
   major: "11111111111111111111000000",
 });
 

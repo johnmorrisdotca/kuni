@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gn: the 105 cities of Guinea, every tier together, as a list.
 
 import { GN } from "../data/cities-by-country/gn.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GN));
+const CITIES: readonly City[] = expandColumns(GN);
 
 export default CITIES;
 export { CITIES };

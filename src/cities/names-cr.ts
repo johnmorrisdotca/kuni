@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "San José|Limón|Liberia|Quesada|San Isidro de El General|Alajuela|Puntarenas|Desamparados|San Juan|El Roble|Cañas|Cartago|Buenos Aires|Heredia",
   ja: "サンホセ|リモン|リベリア|ケサダ|サン・イシドロ・デ・エル・ヘネラル|アラフエラ|プンタレナス||ティバス||カーニャス|カルタゴ (コスタリカ)||エレディア",
   native: "|||||||||||||",
+  reading: "|||||||||||||",
   major: "11111111111111",
 });
 

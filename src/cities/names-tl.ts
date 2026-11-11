@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dili|Maliana|Baucau|Lospalos|Manatuto|Pante Macassar|Suai|Gleno|Viqueque|Ainaro|Liquiçá|Aileu|Same",
   ja: "ディリ|マリアナ|バウカウ|ロスパロス|マナトゥト|パンテ・マカッサル|スアイ|グレノ|ビケケ|アイナロ|リキシャ|アイレウ|サメ (東ティモール)",
   native: "Díli||||||||||||",
+  reading: "||||||||||||",
   major: "1111111111111",
 });
 

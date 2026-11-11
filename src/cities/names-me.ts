@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Podgorica|Nikšić|Herceg Novi|Pljevlja|Bijelo Polje|Old Royal Capital Cetinje|Cetinje|Plav|Bar|Budva|Ulcinj|Berane|Rožaje|Tivat|Kolašin|Danilovgrad|Mojkovac|Žabljak|Andrijevica|Kotor|Šavnik|Plužine|Tuzi|Golubovci|Gusinje|Petnjica",
   ja: "ポドゴリツァ|ニクシッチ|ヘルツェグ・ノヴィ|プリェヴリャ|ビイェロ・ポリェ|ツェティニェ|ツェティニェ|プラヴ|バール|ブドヴァ|ウルツィニ|ベラネ|ロジャイェ|ティヴァト|コラシン|ダニロヴグラード|モイコヴァツ|ジャブリャク (モンテネグロ)|アンドリイェヴィツァ|コトル|シャヴニク|プルジネ|トゥジ|ゴルボヴツィ|グシンジェ|ペトニツァ",
   native: "Подгорица||Херцег Нови|Пљевља||Пријестоница Цетиње|Цетиње||||||||||Мојковац|||Котор||Плужине||||",
+  reading: "|||||||||||||||||||||||||",
   major: "11111111111111111111000000",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Reykjavík|Keflavík|Akureyri|Selfoss|Akranes|Ísafjörður|Sauðárkrókur|Egilsstaðir|Borgarnes|Vogar|Reyðarfjörður|Grindavík|Hella|Hvammstangi|Skagaströnd|Hólmavík|Búðardalur|Súðavík|Norðurfjörður|Kópavogur|Hafnarfjörður|Garðabær",
   ja: "レイキャヴィーク|ケプラヴィーク|アークレイリ|セールフォス|アクラネース|イーサフィヨルズゥル|ソイザウルクロウクル|エイイルススタジル|ボルガルネース|ヴォーガル|レイザルフィヨルズル|グリンダヴィーク|ヘットラ||スカガストロンド||ブザルダールル|スーザヴィーク||コーパヴォグル|ハフナルフィヨルズゥル|ガルザバイル",
   native: "|||||||||||||||||||||",
+  reading: "|||||||||||||||||||||",
   major: "1111111111111111111100",
 });
 

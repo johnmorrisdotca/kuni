@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/xk: the 6 cities of Kosovo, every tier together, as a list.
 
 import { XK } from "../data/cities-by-country/xk.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "XK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(XK));
+const CITIES: readonly City[] = expandColumns(XK);
 
 export default CITIES;
 export { CITIES };

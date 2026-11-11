@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bn: the 15 cities of Brunei, every tier together, as a list.
 
 import { BN } from "../data/cities-by-country/bn.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BN));
+const CITIES: readonly City[] = expandColumns(BN);
 
 export default CITIES;
 export { CITIES };

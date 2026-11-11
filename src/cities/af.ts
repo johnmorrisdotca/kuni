@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/af: the 46 cities of Afghanistan, every tier together, as a list.
 
 import { AF } from "../data/cities-by-country/af.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(AF));
+const CITIES: readonly City[] = expandColumns(AF);
 
 export default CITIES;
 export { CITIES };

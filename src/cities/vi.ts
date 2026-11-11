@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/vi: the 1 cities of U.S. Virgin Islands, every tier together, as a list.
 
 import { VI } from "../data/cities-by-country/vi.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "VI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(VI));
+const CITIES: readonly City[] = expandColumns(VI);
 
 export default CITIES;
 export { CITIES };

@@ -5,7 +5,9 @@ import { describe, expect, it } from "vitest";
 
 import { COUNTRY_CODES as CODES_ENTRY, isCountryCode as isCodeFromCodes } from "./codes";
 import {
+  CONTINENTS,
   continentName,
+  continentReading,
   countries,
   country,
   countryByName,
@@ -222,6 +224,19 @@ describe("continentName and subregionName", () => {
     expect(subregionName("030", "ja")).toBe("東アジア");
     expect(subregionName("999")).toBeNull();
     for (const one of countries()) if (one.subregion !== undefined) expect(subregionName(one.subregion), one.alpha2).not.toBeNull();
+  });
+
+  it("read each continent's Japanese name in hiragana, so the seven sort in Japanese order", () => {
+    expect(CONTINENTS.map((one) => [one, continentReading(one)])).toEqual([
+      ["AF", "あふりか"],
+      ["AN", "なんきょく"],
+      ["AS", "あじあ"],
+      ["EU", "よーろっぱ"],
+      ["NA", "きたあめりかたいりく"],
+      ["OC", "おせあにあ"],
+      ["SA", "みなみあめりか"],
+    ]);
+    expect(continentReading("XX" as "AS")).toBeNull();
   });
 });
 

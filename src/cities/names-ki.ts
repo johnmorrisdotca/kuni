@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tarawa|South Tarawa|Kanton Island|Banana",
   ja: "タラワ|サウス・タラワ|カントン島|バナナ",
   native: "||Kanton|",
+  reading: "|||",
   major: "1111",
 });
 

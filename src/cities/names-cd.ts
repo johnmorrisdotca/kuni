@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kinshasa|Mbuji-Mayi|Kananga|Lubumbashi|Kisangani|Tshikapa|Goma|Bukavu|Kabinda|Mbandaka|Likasi|Kolwezi|Kikwit|Bunia|Matadi|Beni|Gemena|Mbanza-Ngungu|Mwene-Ditu|Boma|Kindu|Uvira|Isiro|Butembo|Kamakombe|Aketi|Kalemie|Wamba|Gandajika|Kamina|Bandundu|Kipushi|Ilebo|Kongolo|Bumba|Musumba|Moanda|Lisala|Kambove|Lodja|Kanyabayonga|Binga|Idiofa|Balamba|Basankusu|Mulongo|Mweka|Gbadolite|Kahemba|Bulungu|Buta|Manono|Tshela|Basoko|Lubao|Lusambo|Inongo|Masisi|Bukama|Mangai|Kampene|Kaniama|Yangambi|Aveluma|Businga|Mushie|Boende|Kasangulu|Kabalo|Luebo|Bolobo|Libenge|Watsa|Demba|Lusenda Camp|Kasongo Lunda|Bondo|Niangara|Zongo|Sake|Nyunzu|Walikale|Kenge|Lemba|Makiso|Gombe",
   ja: "キンシャサ|ムブジマイ|カナンガ|ルブンバシ|キサンガニ|ツィカパ|ゴマ|ブカヴ|カビンダ|ムバンダカ|リカシ|コルヴェジ|キクウィト|ブニア|マタディ|ベニ|ゲメナ|ムバンザ・ヌグング|ムワンヌ＝ディトゥ|ボーマ|キンドゥ|ウビラ|イシロ|ビュトンボ||アケティ|カレミ|ワンバ|ガンダジーカ|カミナ|バンドゥンドゥ|キプシ|イレボ|コンゴロ|ブンバ|ムスンバ|ムアンダ (コンゴ)|リサラ|カンボーヴ|ロジャ||ビンガ|イディオファ||バサンクス||ムヴェッカ|バドリテ|カヘンバ|ブルング|ブタ|マノノ|チェラ|バソコ|ルバオ|ルサンボ|イノンゴ|マシシ|ブカマ|マンガイ|カンペネ|カニャマ|ヤンガンビ||ブシンガ|ミュシー|ボエンデ|カザングル|カバロ|ルエボ|ボロボ|リベンゲ|ワツァ|デンバ||カソンゴ・ルンダ|ボンドー地方|ニャンガラ|ゾンゴ|サケ|ニュンズ||ケンゲ|レムバ||ラ・ゴンベ",
   native: "|Mbujimayi|||||||||||||||||||||||||||Ngandajika|||||||||||||||||||||||||||||||||KanIama|||||||||||||Camp de Lusenda|Kasongo-Lunda||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000000000000000000000000000000000000000000",
 });
 

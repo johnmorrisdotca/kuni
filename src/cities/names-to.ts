@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Nukuʻalofa|Neiafu|Pangai|ʻOhonua|Hihifo",
   ja: "ヌクアロファ|ネイアフ|パンガイ||ヒヒフォ",
   native: "||||",
+  reading: "||||",
   major: "11111",
 });
 

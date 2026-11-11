@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Funafuti|Kulia|Tokelau",
   ja: "フナフティ島||",
   native: "||",
+  reading: "||",
   major: "111",
 });
 

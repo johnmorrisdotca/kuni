@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Lisbon|Porto|Coimbra|Braga|Funchal|Aveiro|Faro|Ponta Delgada|Leiria|Setúbal|Viseu|Viana do Castelo|Oliveira de Azeméis|Santarém|Castelo Branco|Paços de Ferreira|Évora|Vila Real|Covilhã|Pombal|Portimão|Olhão|Ourém|Guarda|Marinha Grande|Silves|Beja|Bragança|Angra do Heroísmo|Torres Novas|Santiago do Cacém|Tavira|Tondela|Portalegre|Oliveira do Bairro|Seia|Mirandela|Rio Maior|Azeitão (São Lourenço e São Simão)|Barcelos|Oliveira do Hospital|Montemor-o-Novo|Ponte de Sor|São Pedro do Sul|Horta|Santarém|Beja|Évora|Castelo Branco|Bragança|Guarda|Vila Real|Agualva-Cacém|Queluz|Montijo|Faro (city)|Viana do Castelo|Viseu|Aveiro",
   ja: "リスボン|ポルト|コインブラ|ブラガ|フンシャル|アヴェイロ|ファロ|ポンタ・デルガダ|レイリア|セトゥーバル|ヴィゼウ|ヴィアナ・ド・カステロ||サンタレン|カステロ・ブランコ||エヴォラ|ヴィラ・レアル|クヴィリャン||ポルティマン|||グアルダ|||ベージャ|ブラガンサ|アングラ・ド・エロイズモ|||||ポルタレグレ|||||アゼイタン||||||オルタ|||||||||ケルシュ (ポルトガル)|||||",
   native: "Lisboa|||||||||||||||||||||||||||||||||||||||||||||||||||||||Faro|||",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000000000000000",
 });
 

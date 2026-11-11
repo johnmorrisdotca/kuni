@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tunis|Sidi Bouzid|Sfax|Sousse|Kairouan|Kebili|Bizerte|Gabès|Aryanah|Gafsa|Medenine|Béja|Kasserine|Tataouine|Monastir|Ben Arous|Zarzis|Ben Gardane|Mahdia|El Kef|Nabeul|Manouba|Jendouba|Tozeur|Siliana|Zaouiet Sousse|Zaghouan|El Ayoun",
   ja: "チュニス|シディ・ブジド|スファックス|スース|ケルアン|ケビリ|ビゼルト|ガベス|アリアナ|ガフサ|メドニン|ベジャ|カスリーヌ|タタウイヌ|モナスティル|ベンナラス|ザルジス|ベンカルダン|マーディア|ケフ (チュニジア)|ナブール|マヌーバ (チュニジア)|ジェンドゥーバ|トズール|シリアナ (チュニジア)||ザグアン|",
   native: "تونس|سيدي بوزيد|صفاقس|سوسة|القيروان|قبلي|بنزرت|قابس|أريانة|قفصة|مدنين|باجة|القصرين|تطاوين|المنستير|بن عروس|جرجيس|بنقردان|المهدية|الكاف|نابل|منوبة|جندوبة|توزر|سليانة|زاوية سوسة|زغوان|العيون",
+  reading: "|||||||||||||||||||||||||||",
   major: "1111111111111111111100000000",
 });
 

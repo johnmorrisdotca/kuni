@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Hong Kong|Kowloon",
   ja: "香港|九龍",
   native: "香港|九龙",
+  reading: "ほんこん|",
   major: "11",
 });
 

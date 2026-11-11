@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Banikoara|Cotonou|Abomey-Calavi|Godomey|Djougou|Porto-Novo|Parakou|Kandi|Aplahoué|Malanville|Ouidah|Kétou|Ouèssè|Glazoué|Gogounou|N’Dali|Dassa-Zoumé|Dogbo-Tota|Savè|Ségbana|Abomey|Natitingou|Lokossa|Karimama|Grand-Popo|Athiémè|Tanguiéta|Pobe|Savalou|Savé|Pobè",
   ja: "バニコアラ|コトヌー|アボメ＝カラヴィ|ゴドメ|ジューグー|ポルトノボ|パラクー|カンディ|アプラウエ|マランヴィル|ウィダー|ケトゥ|ウェセ|グラズエ|ゴグヌー||ダサ＝ズメ||サベー|セグバナ|アボメイ|ナティティングー|ロコッサ|カリママ|グラン・ポポ|アティエメ|||サバルー||ポベ",
   native: "|||||||||||||||N'Dali|Dassa-Zoumè|Dogbo||Segbana||||||Athiémé||Pobè|||",
+  reading: "||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000",
 });
 

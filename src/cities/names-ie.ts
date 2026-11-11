@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dublin|Cork|Limerick|Galway|Waterford|Drogheda|Dundalk|Tralee|Carlow|Ennis|Kilkenny|Balbriggan|Naas|Mullingar|Wexford|Letterkenny|Sligo|Clonmel|Ashbourne|Tullamore|Castlebar|Monaghan|Roscommon|Cavan|Navan|Carrick-on-Shannon|Longford|Wicklow|Port Laoise|Lifford|Nenagh|Dublin City|Swords|Blackrock|Dún Laoghaire|Cabra|Ballincollig|Leixlip",
   ja: "ダブリン|コーク|リムリック|ゴールウェイ|ウォーターフォード|ドロヘダ|ダンドーク|トラリー|カーロウ|エニス|キルケニー|バルブリガン|ナース|マリンガー|ウェックスフォード|レタケニー|スライゴ|クロンメル|アッシュボーン|タラモア|カスルバー|モナハン|ロスコモン|キャバン|ナヴァン|キャリック＝オン＝シャノン|ロングフォード|ウィックロー|ポート・レーイシュ|リフォード|ニナ||スウォーズ|ブラックロック|ダン・レアリー||バリンコリグ|リークスリップ",
   native: "Baile Átha Cliath|Corcaigh|Luimneach|Gaillimh|Port Láirge|Droichead Átha|Dún Dealgan|Trá Lí|Ceatharlach|Inis|Cill Chainnigh|Baile Brigín|An Nás|An Muileann gCearr|Loch Garman|Leitir Ceanainn|Sligeach|Cluain Meala|Cill Dhéagláin|Tulach Mhór|Caisleán an Bharraigh|Muineachán|Ros Comáin|An Cabhán|An Uaimh|Cora Droma Rúisc|An Longfort|Cill Mhantáin||Leifear|An tAonach|Cathair Átha Cliath|Sord|An Charraig Dhubh||an Chabrach|Baile an Chollaigh|Léim an Bhradáin",
+  reading: "|||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000",
 });
 

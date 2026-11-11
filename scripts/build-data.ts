@@ -21,6 +21,7 @@ import { refreshDataDocs, writeDocumentedFile } from "./data-docs.ts";
 
 import { CONTINENTS, SUBDIVISION_TYPES } from "../src/types.ts";
 import {
+  CITY_READING_FILLS,
   CODE_CHANGES,
   COUNTRY_ALIASES,
   EN_NAME_ACCEPTED,
@@ -49,6 +50,7 @@ import { readManifest, readSource, ROOT } from "./sources.ts";
 import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
 import { INSIDE_AREAS, INSIDE_SUBDIVISIONS, OECD_AREAS } from "./metro-links.ts";
+import { hiraganaOf, readingOfName } from "../src/ja-reading.ts";
 
 type Json = Record<string, unknown>;
 
@@ -711,6 +713,16 @@ const countryRow = (country: CountryRecord): string => {
 const CONTINENT_AREAS: Record<string, string> = { AF: "002", AN: "AQ", AS: "142", EU: "150", NA: "003", OC: "009", SA: "005" };
 const subregions = [...new Set(countries.map((country) => country.subregion).filter((area): area is string => area !== null))].sort(byText);
 const regionNames = (area: string): [string, string] => [tidy(territoriesEn[area]), tidy(territoriesJa[area])];
+// Each continent's Japanese name in hiragana, for sorting in Japanese order: a name in kana is its own reading; the ones
+// with kanji are read here, each against the name it reads, so a new CLDR name stops the build rather than keep a stale one.
+const CONTINENT_KANJI_READINGS: Record<string, string> = { 南極: "なんきょく", 北アメリカ大陸: "きたあめりかたいりく", 南アメリカ: "みなみあめりか" };
+const continentReading = (continent: string): string => {
+  const ja = regionNames(CONTINENT_AREAS[continent]!)[1];
+  const reading = CONTINENT_KANJI_READINGS[ja] ?? hiraganaOf(ja);
+  if (reading === null || reading === undefined) throw new Error(`The continent ${continent}'s Japanese name ${ja} has no reading: add it to CONTINENT_KANJI_READINGS.`);
+
+  return reading;
+};
 
 const writeCountries = (): void => {
   const codes = countries.map((country) => country.alpha2);
@@ -739,8 +751,12 @@ const writeCountries = (): void => {
       `const CONTINENT_NAMES: Readonly<Record<string, readonly [string, string]>> = {\n${Object.entries(CONTINENT_AREAS)
         .map(([continent, area]) => `  ${continent}: ${literal(regionNames(area))},`)
         .join("\n")}\n};\n\n` +
+      "// Each continent's Japanese name in hiragana, for sorting in Japanese order.\n" +
+      `const CONTINENT_READINGS: Readonly<Record<string, string>> = {\n${Object.keys(CONTINENT_AREAS)
+        .map((continent) => `  ${continent}: ${literal(continentReading(continent))},`)
+        .join("\n")}\n};\n\n` +
       `const SUBREGION_NAMES: Readonly<Record<string, readonly [string, string]>> = {\n${subregions.map((area) => `  ${literal(area)}: ${literal(regionNames(area))},`).join("\n")}\n};\n\n` +
-      "export { CONTINENT_NAMES, COUNTRY_ROWS, SUBREGION_NAMES };\n",
+      "export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, SUBREGION_NAMES };\n",
   );
 };
 
@@ -1008,6 +1024,39 @@ const writeCities = (): void => {
     capitalNames: new Map(countries.flatMap((country) => (country.capital === null ? [] : [[country.alpha2, country.capital] as [string, string]]))),
   });
   console.log(`Cities: ${report.withMetro} head an urban area, ${report.inMetroOf} lie inside another city's; ${report.areasUnmatched.length} official areas name no city kuni has${process.env.KUNI_AREAS === undefined ? "" : `: ${report.areasUnmatched.join("; ")}`}.`);
+  // Each Japanese name's reading in hiragana: Wikidata's reading in kana (P1814) where the name is Wikidata's own label
+  // (not Natural Earth's, bit 1, nor one written for this package, bit 8), else the name itself where its words are kana
+  // (readingOfName).
+  const readingsFile = manifest.files.find((file) => file.path.startsWith("wikidata-city-readings-"));
+  if (readingsFile === undefined) throw new Error("No city readings in data-sources/sources.json: run node scripts/fetch-readings.ts");
+  const kana = new Map((JSON.parse(readSource(manifest, readingsFile.path).text) as { readings: [number, string][] }).readings);
+  // Then, for a city of Japan, Japan Post's reading of the municipality of that name in its prefecture (the first two
+  // digits of the local government code are the prefecture's, as in JP-35); a town in a district (勇払郡安平町) is
+  // found by its own name too, read after the district's グン, where its prefecture has one town of that name.
+  const postFile = manifest.files.find((file) => file.path.startsWith("japan-post-municipalities-"));
+  if (postFile === undefined) throw new Error("No Japan Post municipalities in data-sources/sources.json: run node scripts/fetch-japan-post.ts");
+  const postReadings = new Map<string, string | null>();
+  const addPost = (key: string, reading: string | null): void => {
+    postReadings.set(key, postReadings.has(key) && postReadings.get(key) !== reading ? null : reading);
+  };
+  for (const [code, , name, katakana] of (JSON.parse(readSource(manifest, postFile.path).text) as { municipalities: [string, string, string, string][] }).municipalities) {
+    const prefecture = `JP-${code.slice(0, 2)}`;
+    addPost(`${prefecture} ${name}`, hiraganaOf(katakana));
+    const district = /^(.+?郡)(.+)$/u.exec(name);
+    const split = katakana.indexOf("グン");
+    if (district !== null && split > 0 && katakana.indexOf("グン", split + 1) < 0) addPost(`${prefecture} ${district[2]}`, hiraganaOf(katakana.slice(split + 2)));
+  }
+  const readings = new Map<number | string, string>();
+  for (const row of rows) {
+    if (row[8] === null) continue;
+    const fromWikidata = typeof row[0] === "number" && (row[13] & 9) === 0 ? kana.get(row[0]) : undefined;
+    const fromPost = row[5] === "JP" && row[6] !== null ? (postReadings.get(`${row[6]} ${row[8]}`) ?? null) : null;
+    const fill = CITY_READING_FILLS[typeof row[0] === "number" ? `Q${row[0]}` : row[0]];
+    if (fill !== undefined && fill[0] !== row[8]) throw new Error(`CITY_READING_FILLS reads Q${row[0]} as ${fill[0]}, but its Japanese name is now ${row[8]}`);
+    const reading = (fromWikidata === undefined ? null : hiraganaOf(fromWikidata)) ?? fromPost ?? fill?.[1] ?? readingOfName(row[8]);
+    if (reading !== null) readings.set(row[0], reading);
+  }
+  console.log(`Readings: ${readings.size} of ${rows.filter((row) => row[8] !== null).length} Japanese city names.`);
   // Ids never change between releases: every id a past release had is still a city's or is in the alias file.
   const current = new Set(rows.map((row) => (typeof row[0] === "number" ? `Q${row[0]}` : row[0])));
   const idsFile = join(ROOT, "data-sources", "city-ids.json");
@@ -1038,7 +1087,7 @@ const writeCities = (): void => {
       rmSync(join(ROOT, "src", "cities", `${tier}.ts`), { force: true });
       continue;
     }
-    const files = cityFiles(tier, tiers[tier], snapshot.read, naturalEarth.release);
+    const files = cityFiles(tier, tiers[tier], snapshot.read, naturalEarth.release, readings);
     writeDocumentedFile(join(OUT_DATA, `cities-${tier}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${tier}.ts`), files.entry);
   }
@@ -1056,13 +1105,13 @@ const writeCities = (): void => {
   const withCities = [...byCountryRows.keys()].sort(byText);
   for (const alpha2 of withCities) {
     const own = byCountryRows.get(alpha2)!.sort(byRank);
-    const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en);
+    const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en, readings);
     writeDocumentedFile(join(OUT_CITY_COUNTRIES, `${alpha2.toLowerCase()}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);
-    writeDocumentedFile(join(ROOT, "src", "cities", `names-${alpha2.toLowerCase()}.ts`), countryNames(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en));
+    writeDocumentedFile(join(ROOT, "src", "cities", `names-${alpha2.toLowerCase()}.ts`), countryNames(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en, readings));
   }
   // The capitals and the 100k tier again, in parts by the first letter of a word of a name, for a search from the start of a word.
-  for (const tier of SPLIT_TIERS) for (const part of startParts(tier, tiers[tier])) writeDocumentedFile(join(ROOT, "src", "cities", `${tier}-${part.key}.ts`), part.entry);
+  for (const tier of SPLIT_TIERS) for (const part of startParts(tier, tiers[tier], readings)) writeDocumentedFile(join(ROOT, "src", "cities", `${tier}-${part.key}.ts`), part.entry);
   writeDocumentedFile(join(OUT_DATA, "city-start-loaders.data.ts"), startLoaders(withCities.map((code) => code.toLowerCase())));
   writeDocumentedFile(join(OUT_DATA, "city-loaders.data.ts"), cityLoaders(withCities.map((code) => code.toLowerCase())));
   writeDocumentedFile(join(OUT_DATA, "city-index.data.ts"), cityIndex(rows));

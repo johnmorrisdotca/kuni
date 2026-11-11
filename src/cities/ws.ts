@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ws: the 5 cities of Samoa, every tier together, as a list.
 
 import { WS } from "../data/cities-by-country/ws.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "WS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(WS));
+const CITIES: readonly City[] = expandColumns(WS);
 
 export default CITIES;
 export { CITIES };

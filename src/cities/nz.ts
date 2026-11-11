@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/nz: the 42 cities of New Zealand, every tier together, as a list.
 
 import { NZ } from "../data/cities-by-country/nz.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NZ));
+const CITIES: readonly City[] = expandColumns(NZ);
 
 export default CITIES;
 export { CITIES };

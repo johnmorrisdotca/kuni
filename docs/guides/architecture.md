@@ -24,6 +24,7 @@ src/
 ├── city-rows.ts        turning a city's compact row into a City
 ├── rank.ts             the figure a city is ranked by: its urban area's people, else its own; after the others inside another's area
 ├── ja-short.ts         a city's short Japanese name for a map label: 東京, not 東京都
+├── ja-reading.ts       a Japanese name read in hiragana where its words are kana: ゴヤ (アルゼンチン), ごや
 ├── city-start.ts       which part of a split tier holds a city: the first letter of a word of a name
 ├── places.ts           the "/places" entry: the countries of a continent, and a search over countries and cities
 ├── fold.ts             folding what somebody typed: case, accents, width, kana

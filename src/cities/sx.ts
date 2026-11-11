@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sx: the 1 cities of Sint Maarten, every tier together, as a list.
 
 import { SX } from "../data/cities-by-country/sx.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SX"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(SX));
+const CITIES: readonly City[] = expandColumns(SX);
 
 export default CITIES;
 export { CITIES };

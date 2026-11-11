@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/kr: the 116 cities of South Korea, every tier together, as a list.
 
 import { KR } from "../data/cities-by-country/kr.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KR));
+const CITIES: readonly City[] = expandColumns(KR);
 
 export default CITIES;
 export { CITIES };

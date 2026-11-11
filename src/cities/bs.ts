@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bs: the 17 cities of Bahamas, every tier together, as a list.
 
 import { BS } from "../data/cities-by-country/bs.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BS));
+const CITIES: readonly City[] = expandColumns(BS);
 
 export default CITIES;
 export { CITIES };

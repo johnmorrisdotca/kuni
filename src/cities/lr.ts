@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/lr: the 16 cities of Liberia, every tier together, as a list.
 
 import { LR } from "../data/cities-by-country/lr.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LR));
+const CITIES: readonly City[] = expandColumns(LR);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tegucigalpa|San Pedro Sula|La Ceiba|Choluteca|Comayagua|Juticalpa|Yoro|Santa Rosa de Copán|Trujillo|Nacaome|Gracias|Puerto Lempira|La Paz|Roatán|Coxen Hole|Santa Bárbara|Cofradía|Ocotepeque|La Entrada|Yuscarán|La Esperanza",
   ja: "テグシガルパ|サン・ペドロ・スーラ|ラ・セイバ|チョルテカ市|コマヤグア|フティカルパ|ヨロ|サンタ・ロサ・デ・コパン|トルヒーリョ|ナカオメ|グラシアス|プエルト・レンピラ|ラパス|ロアタン島|コクスン・ホール|サンタ・バルバラ (ホンジュラス)||||ユスカラン|ラ・エスペランサ",
   native: "||||||||||||||Roatán||||||",
+  reading: "||||||||||||||||||||",
   major: "111111111111111111110",
 });
 
