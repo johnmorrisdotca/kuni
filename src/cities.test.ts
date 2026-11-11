@@ -459,7 +459,8 @@ describe("the top cities of a country", () => {
     expect(await top("IN", 10)).toEqual(["Mumbai", "Delhi", "Kolkata", "Chennai", "Bengaluru", "Hyderabad", "Ahmedabad", "Pune", "Surat", "Jaipur"]);
     expect((await citiesOf("CN"))!.filter((city) => /^Chongqing/.test(city.name.en))).toHaveLength(1);
     // Every other country by its cities' own figures, the suburbs and districts inside their city's area.
-    expect(await top("BR", 5)).toEqual(["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador"]);
+    // Brasília's Wikidata area (the federal district's development region) has no population: it ranks by its own.
+    expect(await top("BR", 8)).toEqual(["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador", "Brasília", "Fortaleza", "Belém"]);
     expect(await top("RU", 5)).toEqual(["Moscow", "Saint Petersburg", "Novosibirsk", "Yekaterinburg", "Kazan"]);
     expect(await top("TR", 5)).toEqual(["Istanbul", "Ankara", "İzmir", "Bursa", "Antalya"]);
     expect(await top("EG", 6)).toEqual(["Cairo", "Alexandria", "Port Said", "Suez", "Mansoura", "El Mahalla El Kubra"]);
@@ -467,12 +468,13 @@ describe("the top cities of a country", () => {
     // South Africa's metropolitan municipalities, set on their seats by name (scripts/metro-links.ts): Durban is eThekwini.
     expect(await top("ZA", 5)).toEqual(["Johannesburg", "Cape Town", "Durban", "Pretoria", "Gqeberha"]);
     expect(await top("PK", 5)).toEqual(["Karachi", "Lahore", "Faisalabad", "Rawalpindi", "Gujranwala"]);
-    expect(await top("BD", 6)).toEqual(["Dhaka", "Chittagong", "Khulna", "Sylhet", "Sirajganj", "Rajshahi"]);
+    expect(await top("BD", 8)).toEqual(["Dhaka", "Chittagong", "Khulna", "Sylhet", "Rajshahi", "Bogura", "Barishal", "Cumilla"]);
     expect(await top("ID", 6)).toEqual(["Jakarta", "Surabaya", "Bandung", "Medan", "Semarang", "Palembang"]);
     expect(await top("VN", 6)).toEqual(["Ho Chi Minh City", "Hanoi", "Cần Thơ", "Da Nang", "Haiphong", "Biên Hòa"]);
     expect(await top("PH", 5)).toEqual(["Manila", "Quezon City", "Cebu City", "Davao City", "Caloocan"]);
     // Hong Kong and Macau are under their own codes, not China's.
-    expect(await top("HK", 1)).toEqual(["Hong Kong"]);
+    expect(await top("HK", 3)).toEqual(["Hong Kong", "Kowloon"]);
+    expect(await top("MO", 3)).toEqual(["Macau", "Luhuan"]);
     expect((await citiesOf("CN"))!.some((city) => city.name.en === "Hong Kong")).toBe(false);
     expect(await top("TH", 4)).toEqual(["Bangkok", "Chiang Mai", "Hat Yai", "Nakhon Ratchasima"]);
     expect((await citiesOf("BR"))!.filter((city) => city.name.en === "Natal" || city.name.en === "Vila Velha")).toHaveLength(2);

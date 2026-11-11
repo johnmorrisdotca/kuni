@@ -129,6 +129,7 @@ const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
 // A population statement of Wikidata's that is wrong, left out: the item, the figure, and the reason.
 const WRONG_POPULATIONS: Readonly<Record<string, { value: number; why: string }>> = {
   Q165995: { value: 750, why: "Malatya, Turkey: a figure of 750 for 2020, the city's being some 400,000; the 2012 figure is used." },
+  Q2579193: { value: 450000, why: "Sirajganj, Bangladesh: a round 450,000 for 2020, the district town's; the town has some 170,000 people." },
 };
 const SEPARATE_CODES: Readonly<Record<string, string>> = { "CN-HK": "HK", "CN-MO": "MO", "CN-TW": "TW" };
 const NOT_CITIES: Readonly<Record<string, string>> = {
@@ -157,6 +158,8 @@ const NOT_CITIES: Readonly<Record<string, string>> = {
   Q951804: "Dairut, Egypt: a markaz, a district of the Asyut governorate, not a town.",
   Q38249350: "Kutupalong, Bangladesh: a refugee camp, not a city.",
   Q3349044: "Rony, Bangladesh: an upazila (a subdistrict) of Rangpur Division, not a town.",
+  Q1022918: "Kowloon Walled City, Hong Kong: demolished in 1993-94; its 1990 figure is a place that no longer stands.",
+  Q113131921: "Cheok Ka Village, Macau: a village of Macau, not a city.",
   Q207218: "London Borough of Ealing: a borough of London; Ealing, the town (Q83726), is the borough's seat.",
   Q5351808: "El Paso–Juárez: the area across the border, not a city; El Paso is Q16562.",
   "ne:1159148743": "Natal, Brazil: Natural Earth's second Natal, placed in Amazonas with 980,588 people; the city is Q131620.",
