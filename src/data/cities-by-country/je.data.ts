@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const JE: readonly CityRow[] = [
-  [147738,49.1858,-2.11,35822,2021,"JE",null,"Saint Helier","セント・ヘリア","Saint Hélyi","nrf-je",1,"JE",0,null],
+  [147738,49.1858,-2.11,35822,2021,"JE",null,"Saint Helier","セント・ヘリア","Saint Hélyi","nrf-je",1,"JE",16],
 ];
 
 export { JE };

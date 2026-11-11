@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/mt";
  *
  * console.log(cities.length);      // 12
- * console.log(cities[0].name.en);  // "Valletta"
+ * console.log(cities[0].name.en);  // "Birkirkara"
  * console.log(cities[0].country);  // "MT"
  * ```
  */

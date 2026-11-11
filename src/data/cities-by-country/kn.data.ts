@@ -5,20 +5,20 @@
 import type { CityRow } from "../../city-rows";
 
 const KN: readonly CityRow[] = [
-  [41295,17.2983,-62.7342,12920,2025,"KN","KN-K","Basseterre","バセテール",null,null,1,"KN",0,null],
-  [3316336,17.35,-62.7333,2500,2010,"KN","KN-K","Cayon","ケイオン",null,null,2,"KN-08",0,null],
-  [992311,17.1431,-62.6269,2204,2010,"KN","KN-N","Charlestown","チャールズタウン",null,null,2,"KN-10 KN-N",0,null],
-  [2835379,17.2,-62.5833,593,null,"KN","KN-N","Newcastle","ニューカッスル",null,null,2,"KN-05",0,null],
-  [3395174,17.3236,-62.725,592,2020,"KN","KN-K","Monkey Hill","モンキーヒル",null,null,2,"KN-11",0,null],
-  [3394446,17.1667,-62.6167,381,null,"KN","KN-N","Cotton Ground","コットン・グラウンド",null,null,2,"KN-12",0,null],
-  [1010810,17.4167,-62.8167,null,null,"KN","KN-K","Dieppe Bay Town","ディエップベイタウン",null,null,2,"KN-06",0,null],
-  [1972542,17.35,-62.8333,null,null,"KN","KN-K","Sandy Point Town","サンディ・ポイント",null,null,2,"KN-02",0,null],
-  [3394074,17.3233,-62.8036,null,null,"KN","KN-K","Middle Island","ミドルアイランド",null,null,2,"KN-13",0,null],
-  [3394454,17.381,-62.754,null,null,"KN","KN-K","Nichola Town","ニコラタウン",null,null,2,"KN-01",0,null],
-  [3395177,17.1208,-62.6017,null,null,"KN","KN-N","Figtree","フィグツリー",null,null,2,"KN-07",0,null],
-  [3398739,17.1318,-62.5711,null,null,"KN","KN-N","Market Shop","マーケット・ショップ",null,null,2,"KN-04",0,null],
-  [4490232,17.3986,-62.8239,null,null,"KN","KN-K","Saint Paul Capisterre","セントポール・カピステール",null,null,2,"KN-09",0,null],
-  [7842533,17.3,-62.7667,null,null,"KN","KN-K","Trinity","トリニティ (セントクリストファー・ネイビス)",null,null,2,"KN-15",0,null],
+  [41295,17.2983,-62.7342,12920,2025,"KN","KN-K","Basseterre","バセテール",null,null,1,"KN",16],
+  [3316336,17.35,-62.7333,2500,2010,"KN","KN-K","Cayon","ケイオン",null,null,2,"KN-08",16],
+  [992311,17.1431,-62.6269,2204,2010,"KN","KN-N","Charlestown","チャールズタウン",null,null,2,"KN-10 KN-N",16],
+  [2835379,17.2,-62.5833,593,null,"KN","KN-N","Newcastle","ニューカッスル",null,null,2,"KN-05",16],
+  [3395174,17.3236,-62.725,592,2020,"KN","KN-K","Monkey Hill","モンキーヒル",null,null,2,"KN-11",16],
+  [3394446,17.1667,-62.6167,381,null,"KN","KN-N","Cotton Ground","コットン・グラウンド",null,null,2,"KN-12",16],
+  [1010810,17.4167,-62.8167,null,null,"KN","KN-K","Dieppe Bay Town","ディエップベイタウン",null,null,2,"KN-06",16],
+  [1972542,17.35,-62.8333,null,null,"KN","KN-K","Sandy Point Town","サンディ・ポイント",null,null,2,"KN-02",16],
+  [3394074,17.3233,-62.8036,null,null,"KN","KN-K","Middle Island","ミドルアイランド",null,null,2,"KN-13",16],
+  [3394454,17.381,-62.754,null,null,"KN","KN-K","Nichola Town","ニコラタウン",null,null,2,"KN-01",16],
+  [3395177,17.1208,-62.6017,null,null,"KN","KN-N","Figtree","フィグツリー",null,null,2,"KN-07",16],
+  [3398739,17.1318,-62.5711,null,null,"KN","KN-N","Market Shop","マーケット・ショップ",null,null,2,"KN-04",16],
+  [4490232,17.3986,-62.8239,null,null,"KN","KN-K","Saint Paul Capisterre","セントポール・カピステール",null,null,2,"KN-09",16],
+  [7842533,17.3,-62.7667,null,null,"KN","KN-K","Trinity","トリニティ (セントクリストファー・ネイビス)",null,null,2,"KN-15",16],
 ];
 
 export { KN };

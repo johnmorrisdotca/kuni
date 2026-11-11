@@ -22,6 +22,7 @@
 
 import type { CityRow } from "../src/city-rows.ts";
 import { METRO_LINKS } from "./metro-links.ts";
+import { URBAN_FACTS } from "./urban-facts.ts";
 
 type TierName = "capitals" | "1m" | "100k" | "15k";
 
@@ -57,7 +58,7 @@ interface Report {
   withMetro: number;
   /** Cities inside another city's urban area (Mississauga, in Toronto's), ranked after every city that heads one. */
   inMetroOf: number;
-  /** Cities of a country ranked by GHSL with no urban figure, ranked after those with one. */
+  /** Cities of China and India with no census urban figure, ranked after the twenty with one. */
   withoutUrbanFigure: number;
   /** The urban areas of an official source that name no city kuni has. */
   areasUnmatched: string[];
@@ -119,6 +120,16 @@ const UNIT_WORD = /\s(County|Subdistrict|Sub-district|Microdistrict|microdistric
 // The states where a township is a civil unit of its county with cities inside it, rather than a municipality.
 const CIVIL_TOWNSHIP_STATES: ReadonlySet<string> = new Set(["US-IA", "US-IL", "US-IN", "US-KS", "US-MO", "US-ND", "US-NE", "US-SD"]);
 // Items that are no city though nothing in their name says so, each with its reason; left out like an area.
+// A city's common English name where Wikidata's label is its formal one, with the reason.
+const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
+  Q125293: { en: "Puebla", why: "Heroica Puebla de Zaragoza is the formal name; Puebla is the name in English." },
+  Q189128: { en: "León", why: "León de Los Aldama is the formal name; León is the name in English." },
+  Q209034: { en: "Toluca", why: "Toluca de Lerdo is the formal name; Toluca is the name in English." },
+};
+// A population statement of Wikidata's that is wrong, left out: the item, the figure, and the reason.
+const WRONG_POPULATIONS: Readonly<Record<string, { value: number; why: string }>> = {
+  Q165995: { value: 750, why: "Malatya, Turkey: a figure of 750 for 2020, the city's being some 400,000; the 2012 figure is used." },
+};
 const NOT_CITIES: Readonly<Record<string, string>> = {
   Q103927888: "Moro, Papua New Guinea: Wikidata gives it 6,310,129 people, most of the country's; no city there is near that size.",
   Q23157: "Somerset, England: the county (975,782 people), not a town; its county town is Taunton.",
@@ -136,6 +147,7 @@ const NOT_CITIES: Readonly<Record<string, string>> = {
   Q20148959: "San Pedro Zacachimalpa, Mexico: Wikidata gives the village 4,712,999 people, the Puebla area's.",
   Q7568013: "South Mumbai: a part of Mumbai (Q1156), not a city of its own.",
   Q31925679: "Valladolid city, Spain: a second item for Valladolid (Q8356).",
+  Q24843784: "Kota Semarang, Indonesia: a second item for Semarang (Q11025).",
   Q207218: "London Borough of Ealing: a borough of London; Ealing, the town (Q83726), is the borough's seat.",
   Q5351808: "El Paso–Juárez: the area across the border, not a city; El Paso is Q16562.",
   "ne:1159148743": "Natal, Brazil: Natural Earth's second Natal, placed in Amazonas with 980,588 people; the city is Q131620.",
@@ -184,8 +196,6 @@ interface UrbanSnapshot {
   statcan: { estimatesFor: string; estimates: [string, number][]; members: [string, string, string][] };
   census: { areas: [string, string, "MSA" | "μSA", number][] };
   oecd: { areas: [string, string, string, number, number][] };
-  /** data-sources/ghsl-ucdb-r2024a.json (scripts/fetch-ghsl.ts): [id, main name, other names, country, people 2025, lat, lon]. */
-  ghsl?: { centres: [number, string | null, string[], string, number, number, number][] };
 }
 // A census subdivision's DGUID holds its province's number: 2021A0005 35 21005 is in Ontario.
 const PROVINCE_NUMBERS: Readonly<Record<string, string>> = { "10": "CA-NL", "11": "CA-PE", "12": "CA-NS", "13": "CA-NB", "24": "CA-QC", "35": "CA-ON", "46": "CA-MB", "47": "CA-SK", "48": "CA-AB", "59": "CA-BC", "60": "CA-YT", "61": "CA-NT", "62": "CA-NU" };
@@ -232,16 +242,17 @@ const metroChooser = (
 
 // Which figure a country's cities are ranked by: one definition for each country, an official one where there is one.
 // Canada: Statistics Canada's census metropolitan areas and agglomerations; the United States: the Census Bureau's
-// metropolitan and micropolitan statistical areas; the other members of the OECD: its functional urban areas; every
-// other country: the GHSL Urban Centre Database (European Commission, JRC), one density-based definition for the world.
-type AreaSource = "statcan" | "census" | "oecd" | "ghsl" | "wikidata";
+// metropolitan and micropolitan statistical areas; the other members of the OECD: its functional urban areas; China and
+// India: the urban figures of their own censuses for their first twenty cities (URBAN_FACTS in scripts/urban-facts.ts);
+// every other country: each city's own figure, an estimate.
+type AreaSource = "statcan" | "census" | "oecd" | "facts" | "wikidata";
 const areaSourceOf = (country: string, urban: UrbanSnapshot | undefined): AreaSource => {
   if (urban === undefined) return "wikidata";
   if (country === "CA") return "statcan";
   if (country === "US") return "census";
   if (urban.oecd.areas.some((area) => area[2] === country)) return "oecd";
 
-  return urban.ghsl === undefined ? "wikidata" : "ghsl";
+  return URBAN_FACTS[country] === undefined ? "wikidata" : "facts";
 };
 
 // The names a city is known by, for matching an area's: "New York City" is the New York of the Census Bureau's
@@ -269,16 +280,14 @@ interface UrbanCity {
 }
 
 // The urban area each city heads, by its country's source (areaSourceOf), and the cities the source itself names inside
-// another city's area (the Census Bureau's "Dallas-Fort Worth-Arlington" holds Fort Worth; GHSL's Mumbai holds Thane).
-// An area belongs to the city its name names first, in its province or state (official sources) or within 60 km of
-// its centre (GHSL), the most populous where two share the name; OECD_AREAS sets those whose name is no city's.
+// another city's area (the Census Bureau's "Dallas-Fort Worth-Arlington" holds Fort Worth).
+// An area belongs to the city its name names first, in its province or state, the most populous where two share the
+// name; OECD_AREAS sets those whose name is no city's.
 const urbanAreas = <T extends UrbanCity>(
   cities: readonly T[],
   urban: UrbanSnapshot,
   statcan: StatcanSnapshot | undefined,
   oecdNames: Readonly<Record<string, number>>,
-  countryOfName: ReadonlyMap<string, string>,
-  ghslNames: Readonly<Record<number, number>> = {},
 ): { heads: Map<T, Metro>; named: Map<T, T>; unmatched: string[] } => {
   const heads = new Map<T, Metro>();
   const named = new Map<T, T>();
@@ -324,43 +333,10 @@ const urbanAreas = <T extends UrbanCity>(
     const city = set !== undefined ? byNumber.get(set) : pick(country, name.replace(/ \(Greater\)$/, "").replace(/^Greater /, ""), () => true);
     give(city, { id: `oecd:${code}`, en: name.replace(/ urban area$/, ""), population: people, date: year }, `${country} ${code} ${name}`);
   }
-  // GHSL's urban centres, everywhere else: the centre's main name, else the first of its other names a city has, within
-  // 60 km of its centre; the other names it holds are inside it.
-  const unclaimed: [number, string, string, number, number, number][] = [];
-  for (const [id, main, others, countryName, people, lat, lon] of urban.ghsl?.centres ?? []) {
-    const country = countryOfName.get(simple(countryName));
-    // Fourteen small centres have no name: nothing to match.
-    if (country === undefined || main === null || areaSourceOf(country, urban) !== "ghsl") continue;
-    const near = (city: T): boolean => km(city.point, [lat, lon]) <= 60;
-    let head: T | undefined = ghslNames[id] === undefined ? undefined : byNumber.get(ghslNames[id]!);
-    if (head === undefined) for (const name of [main, ...others]) {
-      head = pick(country, name, near);
-      if (head !== undefined) break;
-    }
-    if (head !== undefined && heads.has(head) && heads.get(head)!.population >= people) continue;
-    if (head === undefined) {
-      unclaimed.push([id, main, country, people, lat, lon]);
-      continue;
-    }
-    give(head, { id: `ghsl:${id}`, en: main, population: people, date: 2025 }, `${country} ghsl:${id} ${main}`);
-    for (const name of others) {
-      const city = pick(country, name, near);
-      if (city !== undefined && city !== head && !named.has(city)) named.set(city, head);
-    }
-  }
-
-  // A centre none of whose names a city has (GHSL often names a Chinese one for its district: Zunyi's is Honghuagang) is
-  // the most populous city's within 15 km of its centre that heads none and is not named inside another, where the centre
-  // holds 100,000 people or more.
-  const byCountry = new Map<string, T[]>();
-  for (const city of cities) byCountry.set(city.country, [...(byCountry.get(city.country) ?? []), city]);
-  for (const [id, main, country, people, lat, lon] of unclaimed) {
-    if (people < 100000) {
-      unmatched.push(`${country} ghsl:${id} ${main}`);
-      continue;
-    }
-    const city = (byCountry.get(country) ?? []).filter((one) => !heads.has(one) && !named.has(one) && km(one.point, [lat, lon]) <= 15).sort((a, b) => (b.population ?? 0) - (a.population ?? 0))[0];
-    give(city, { id: `ghsl:${id}`, en: main, population: people, date: 2025 }, `${country} ghsl:${id} ${main}`);
+  // China and India: their censuses' urban figures for their first twenty cities, set by the city's name.
+  for (const [country, set] of Object.entries(URBAN_FACTS)) {
+    if (areaSourceOf(country, urban) !== "facts") continue;
+    for (const fact of set.facts) give(pick(country, fact.city, () => true), { id: `${set.prefix}:${fact.area}`, en: fact.area, population: fact.population, date: set.date }, `${country} ${fact.area}`);
   }
 
   return { heads, named, unmatched };
@@ -436,7 +412,7 @@ interface Candidate {
   viaPlace: boolean;
 }
 
-const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot; urban?: UrbanSnapshot; oecdNames?: Readonly<Record<string, number>>; insideAreas?: Readonly<Record<string, number>>; countryOfName?: ReadonlyMap<string, string>; ghslNames?: Readonly<Record<number, number>> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
+const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot; urban?: UrbanSnapshot; oecdNames?: Readonly<Record<string, number>>; insideAreas?: Readonly<Record<string, number>>; insideSubdivisions?: Readonly<Record<string, number>> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
   const { snapshot, naturalEarth, levels, countries } = input;
   // Statistics Canada's areas come from urbanAreas where the official areas are given; the chooser is Wikidata's alone then.
   const metroOf = metroChooser(input.metros, snapshot, input.urban === undefined ? input.statcan : undefined);
@@ -519,7 +495,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   for (const item of snapshot.items) {
     const [number, enLabel, jaLabel, nativeLabel, nativeLanguage, wikidataPoint, wikidataCountry, pops, subs, capitalCodes] = item;
     const place = ne.get(`Q${number}`);
-    const en = enLabel ?? place?.[2] ?? place?.[1] ?? null;
+    const en = ENGLISH_NAMES[`Q${number}`]?.en ?? enLabel ?? place?.[2] ?? place?.[1] ?? null;
     if (en === null) {
       report.leftOut.noName += 1;
       continue;
@@ -539,7 +515,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       report.leftOut.area += 1;
       continue;
     }
-    const wikidataPopulation = populationOf(pops);
+    const wrong = WRONG_POPULATIONS[`Q${number}`];
+    const wikidataPopulation = populationOf(wrong === undefined ? pops : pops.filter(([value]) => value !== wrong.value));
     const population = wikidataPopulation?.value ?? place?.[6] ?? null;
     // Natural Earth's Japanese name is used only where it is not hiragana for a place outside Japan (うーんルワバ for Umm Ruwaba): a sign of a machine's guess.
     const neJa = place?.[3] != null && (country === "JP" || !/\p{Script=Hiragana}/u.test(place[3])) ? place[3] : null;
@@ -707,7 +684,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   const rows: CityRow[] = [];
   // The urban area each city heads, where its country has an official source (areaSourceOf).
   const urban = input.urban;
-  const owned = urban === undefined ? { heads: new Map<Candidate, Metro>(), named: new Map<Candidate, Candidate>(), unmatched: [] } : urbanAreas(kept, urban, input.statcan, input.oecdNames ?? {}, input.countryOfName ?? new Map(), input.ghslNames ?? {});
+  const owned = urban === undefined ? { heads: new Map<Candidate, Metro>(), named: new Map<Candidate, Candidate>(), unmatched: [] } : urbanAreas(kept, urban, input.statcan, input.oecdNames ?? {});
   report.areasUnmatched = owned.unmatched;
   const rowOf = new Map<Candidate, CityRow>();
   for (const one of kept) {
@@ -742,22 +719,28 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     // The national capital of a territory with a code of its own (Gibraltar, GI) is in that country, whatever Wikidata's P17 says (GB).
     const country = capital === 1 && !national.includes(one.country) ? national[0]! : one.country;
     const subdivisionOf = country === one.country ? one.subdivision : null;
-    const row: CityRow = [one.number, rounded(one.point[0]), rounded(one.point[1]), population, one.populationDate, country, subdivisionOf, one.en, one.ja, one.native, one.native === null ? null : one.nativeLanguage, capital, capitalOf.length === 0 ? null : [...new Set(capitalOf)].sort().join(" "), one.sources];
-    // The urban area the city heads, by its country's source; where it heads none, Wikidata's metro where it is bigger
-    // than the city (an estimate), else none.
-    const metro = owned.heads.get(one) ?? (typeof one.number === "number" ? metroOf(one.number, population, one.en, country, subdivisionOf) : null);
+    // The urban area the city heads, by its country's source; where it heads none in a country with official areas,
+    // Wikidata's metro where it is bigger than the city (an estimate); in a country with none, the city's own figure,
+    // an estimate too (bit 16).
+    const source = areaSourceOf(country, urban);
+    const wikidataMetro = urban === undefined || (source !== "wikidata" && source !== "facts");
+    const metro = owned.heads.get(one) ?? (wikidataMetro && typeof one.number === "number" ? metroOf(one.number, population, one.en, country, subdivisionOf) : null);
+    const ownEstimate = metro === null && urban !== undefined && (source === "wikidata" || source === "facts") ? 16 : 0;
+    const row: CityRow = [one.number, rounded(one.point[0]), rounded(one.point[1]), population, one.populationDate, country, subdivisionOf, one.en, one.ja, one.native, one.native === null ? null : one.nativeLanguage, capital, capitalOf.length === 0 ? null : [...new Set(capitalOf)].sort().join(" "), one.sources | ownEstimate];
     const full: CityRow = metro === null ? row : ([...row, metro.id, metro.en, metro.population, metro.date] as CityRow);
     if (metro !== null) report.withMetro += 1;
     rows.push(full);
     rowOf.set(one, full);
   }
   // A city that heads no area of its own but lies inside another city's is ranked after every city that heads one. It is
-  // inside: where the source names it in that city's area (Fort Worth in Dallas's; Thane in Mumbai's), unless it holds a
-  // third of the area's people or more (Shenzhen, in GHSL's Guangzhou); in Canada, where Statistics Canada lists it
-  // among the area's municipalities (Mississauga, Brampton); where INSIDE_AREAS sets it (Ipswich in Greater Brisbane);
-  // else where it lies within 10 km plus 5 km for each square root of a million people of a city whose area holds three
-  // times its own people or more (Newark, 15 km from New York City). A city of a million people or more is never put
-  // inside another's for being near it (Yokohama, Kobe, Kyoto rank by their own people). Its row holds that city's id.
+  // inside: where INSIDE_AREAS sets it (Ecatepec in Mexico City's, Niterói in Rio de Janeiro's, Thane in Mumbai's);
+  // where the Census Bureau names it in that city's area (Fort Worth in Dallas-Fort Worth-Arlington); in Canada, where
+  // Statistics Canada lists it among the area's municipalities (Mississauga, Brampton); else where it lies within 10 km
+  // plus 5 km for each square root of a million people of the nearest city whose area holds three times its own people
+  // or more (Newark, 15 km from New York City), or, in a country with no areas, whose own figure of a million or more
+  // does (Bangkok's districts). A city of a million people or more is
+  // never put inside another's for being near it (Yokohama, Kobe, Kyoto rank by their own). Its row holds that city's id.
+  // In China and India, a city with no census urban figure ranks after the twenty that have one; its row ends in null.
   if (urban !== undefined) {
     const headOfArea = new Map<string, Candidate>();
     for (const [one, metro] of owned.heads) headOfArea.set(String(metro.id), one);
@@ -767,36 +750,36 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     for (const [one, metro] of owned.heads) if (rowOf.has(one)) headsIn.set(one.country, [...(headsIn.get(one.country) ?? []), [one, metro]]);
     const byNumber = new Map(kept.map((one) => [one.number, one]));
     const indexOf = new Map(rows.map((row, at) => [row, at]));
+    // In a country with no areas, the cities of a million people or more by their own figure.
+    const bigIn = new Map<string, [Candidate, number][]>();
+    for (const [one, row] of rowOf) if ((row[3] ?? 0) >= 1e6) bigIn.set(one.country, [...(bigIn.get(one.country) ?? []), [one, row[3]!]]);
     for (const [one, row] of rowOf) {
-      if (owned.heads.has(one) || areaSourceOf(row[5], urban) === "wikidata") continue;
+      if (owned.heads.has(one)) continue;
+      const source = areaSourceOf(row[5], urban);
       const own = row[3] ?? 0;
-      const set = input.insideAreas?.[idOf(one)];
+      const set = input.insideAreas?.[idOf(one)] ?? (row[6] === null ? undefined : input.insideSubdivisions?.[row[6]]);
       let head: Candidate | undefined = set === undefined ? undefined : byNumber.get(set);
-      const listed = owned.named.get(one);
-      if (head === undefined && listed !== undefined && own < (owned.heads.get(listed)?.population ?? 0) / 3) head = listed;
+      if (head === undefined) head = owned.named.get(one);
       if (head === undefined && row[5] === "CA") {
         const area = [...nameKeys(one)].map((key) => memberOf.get(`${row[6] ?? ""} ${key}`)).find((found) => found !== undefined);
         head = area === undefined ? undefined : headOfArea.get(area);
       }
       if (head === undefined && own < 1e6) {
-        head = (headsIn.get(one.country) ?? [])
-          .filter(([other, metro]) => other !== one && metro.population >= 3 * own && km(other.point, one.point) <= 10 + 5 * Math.sqrt(metro.population / 1e6))
-          .sort((a, b) => b[1].population - a[1].population)[0]?.[0];
+        // The nearest city whose figure (its area's, or in a country with none its own of a million or more) is three
+        // times this one's, within 10 km plus 5 km for each square root of a million of it.
+        const pool = source === "wikidata" ? (bigIn.get(one.country) ?? []) : (headsIn.get(one.country) ?? []).map(([other, metro]): [Candidate, number] => [other, metro.population]);
+        head = pool
+          .filter(([other, figure]) => other !== one && figure >= 3 * own && km(other.point, one.point) <= 10 + 5 * Math.sqrt(figure / 1e6))
+          .sort((a, b) => km(a[0].point, one.point) - km(b[0].point, one.point))[0]?.[0];
       }
       if (head === undefined || head === one || !rowOf.has(head)) {
-        // In a country ranked by GHSL a city's own figure is often its whole municipality (Yantai's 7 million): one with
-        // no urban figure is ranked after every city with one, unless GHSL names it in another's area holding a third to
-        // a half of its people (Shenzhen, in Guangzhou's); more than half (Wuxi's 7.5 million beside Suzhou's 11.5) is a
-        // municipality's figure. Its row ends in null.
-        const share = listed === undefined ? 0 : own / (owned.heads.get(listed)?.population ?? Infinity);
-        if (areaSourceOf(row[5], urban) === "ghsl" && row.length === 14 && !(share >= 1 / 3 && share <= 0.5)) {
+        if (source === "facts" && row.length === 14) {
           rows[indexOf.get(row)!] = [...row, null] as unknown as CityRow;
           report.withoutUrbanFigure += 1;
         }
         continue;
       }
-      const at = indexOf.get(row)!;
-      rows[at] = [...row.slice(0, 14), head.number] as unknown as CityRow;
+      rows[indexOf.get(row)!] = [...row.slice(0, 14), head.number] as unknown as CityRow;
       report.inMetroOf += 1;
     }
   }
@@ -1027,8 +1010,8 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people). In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: every township is left out (${n(report.leftOut.township)}; Kaw Township, round Kansas City), each id answering with the city of its own name, else the nearest within 15 km of a quarter of its people or more; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept. Then a unit or a part of a city that Wikidata names as a settlement is left out: a name ending in County, District, Subdistrict, Microdistrict, Raion, Governorate, Territory, Region or Area (a capital, a name with a comma, and a name in brackets stay), a numbered or named part ("Zone 7 of Milan", "third sector of Marseille"), and a municipality with a town of its own name within 25 km (Kodad municipality); its id answers with that town, else the city it is part of, else a city within 3 km, else the biggest within 15 km of twice its people (Xətai raion, Baku), else none (${n(Object.values(report.townshipCities).length)} ids in all with the townships). Where Natural Earth names such a unit and no city stands apart, it is the town Natural Earth has (${n(report.unitTowns)}: Yishui County is Yishui), with the town's point and people, not the county's.`,
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
     "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
-    `- **Urban area** (\`metro\`, ${n(report.withMetro)} cities): the urban area a city heads, one source for each country. Canada: Statistics Canada's census metropolitan areas and census agglomerations, the estimate of 1 July 2025 (Table 17-10-0148-01), else the 2021 Census (Table 98-10-0005-01). The United States: the Census Bureau's metropolitan and micropolitan statistical areas on 1 July 2024. The other members of the OECD: its functional urban areas, the latest year it gives. Every other country: the GHSL Urban Centre Database R2024A (European Commission, JRC; CC BY 4.0), each urban centre's people in 2025, one density-based definition for the world (\`data-sources/ghsl-ucdb-r2024a.json\`). An area belongs to the city its name names first ("Ottawa - Gatineau" to Ottawa, "Dallas-Fort Worth-Arlington" to Dallas), in its province or state, or within 60 km of a GHSL centre, the most populous where two share the name; a GHSL centre none of whose names a city has (GHSL often names a Chinese one for its district) is the most populous city's within 15 km of its centre, where it holds 100,000 people or more; an area whose name is no city's is set by id in \`scripts/metro-links.ts\`, with the reason. ${n(report.areasUnmatched.length)} areas name no city kuni has (most are small: GHSL counts every centre of 50,000). The urban area's figure is the one a city is ranked by, even where it is below the city's own (Ulsan); where a city heads none, Wikidata's metropolitan area where it is bigger than the city, an estimate (\`metro.estimated\`), else the city's own figure.`,
-    `- **Inside another city's area** (\`inMetroOf\`, ${n(report.inMetroOf)} cities): a city that heads no area but lies inside another city's, ranked after every city that heads one. Where the source names it in that city's area (the Census Bureau's "Dallas-Fort Worth-Arlington" holds Fort Worth; GHSL's Mumbai holds Thane), unless it holds a third of the area's people or more (Shenzhen); in Canada, a municipality of Statistics Canada's list of the municipalities of each area (Table 98-10-0003-01: Mississauga and Brampton are in Toronto's); a few set by id in \`scripts/metro-links.ts\` (Ipswich in Greater Brisbane, New York City's boroughs); else a city within 10 km plus 5 km for each square root of a million people of a city whose area holds three times its own people or more. A city of a million people or more is never put inside another's for being near it (Yokohama, Kobe and Kyoto rank by their own). In a country ranked by GHSL, a city with no urban figure is ranked after every city with one (${n(report.withoutUrbanFigure)}): its own figure is often its whole municipality (Yantai's 7 million), unless GHSL names it in another's area holding a third to a half of its people (Shenzhen, in Guangzhou's).`,
+    `- **Urban area** (\`metro\`, ${n(report.withMetro)} cities): the urban area a city heads, one source for each country. Canada: Statistics Canada's census metropolitan areas and census agglomerations, the estimate of 1 July 2025 (Table 17-10-0148-01), else the 2021 Census (Table 98-10-0005-01). The United States: the Census Bureau's metropolitan and micropolitan statistical areas on 1 July 2024. The other members of the OECD: its functional urban areas, the latest year it gives. China and India, whose own figure for a city is its whole municipality: their censuses' urban figures for their first twenty cities, typed as facts with their source and date (\`scripts/urban-facts.ts\`: China's urban resident population of 2020, India's urban agglomerations of 2011). An area belongs to the city its name names first ("Ottawa - Gatineau" to Ottawa, "Dallas-Fort Worth-Arlington" to Dallas), in its province or state, the most populous where two share the name; an area whose name is no city's is set by id in \`scripts/metro-links.ts\`, with the reason. ${n(report.areasUnmatched.length)} areas name no city kuni has (most are small Canadian agglomerations named for a region). The area's figure ranks a city even where it is below the city's own (Ulsan). Where a city heads none in a country with official areas, Wikidata's metropolitan area where it is bigger than the city, an estimate (\`metro.estimated\`); in every other country a city is ranked by its own figure, an estimate too (\`rankEstimated\`).`,
+    `- **Inside another city's area** (\`inMetroOf\`, ${n(report.inMetroOf)} cities): a city that heads no area but lies inside another city's, ranked after every city that heads one. Set by id in \`scripts/metro-links.ts\` with the reason (Ecatepec in Mexico City's, Thane in Mumbai's, Giza in Cairo's, New York City's boroughs, every district of Bangkok); named in the Census Bureau's area (Fort Worth in Dallas-Fort Worth-Arlington); in Canada, a municipality of Statistics Canada's list of the municipalities of each area (Table 98-10-0003-01: Mississauga and Brampton are in Toronto's); else a city within 10 km plus 5 km for each square root of a million people of the nearest city whose area holds three times its own people or more, or in a country with no areas whose own figure of a million or more does. A city of a million people or more is never put inside another's for being near it (Yokohama, Kobe and Kyoto rank by their own). In China and India a city below the twenty with a census figure is ranked after them (\`urbanAreaUnknown\`, ${n(report.withoutUrbanFigure)} cities).`,
     "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label (always preferred: it is curated by people), else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up; the few written for this package (`JA_NAMES` in `scripts/cities.ts`, each with its reason: East Jerusalem is 東エルサレム, not the whole city's エルサレム) say `kuni` as their source. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
     "",
     "## What was left out",

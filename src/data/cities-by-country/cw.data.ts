@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const CW: readonly CityRow[] = [
-  [132679,12.108,-68.935,136660,2011,"CW",null,"Willemstad","ウィレムスタッド",null,null,1,"CW",0,"ghsl:26","Willemstad",162059,2025],
+  [132679,12.108,-68.935,136660,2011,"CW",null,"Willemstad","ウィレムスタッド",null,null,1,"CW",16],
 ];
 
 export { CW };

@@ -70,13 +70,14 @@ interface City {
    * The urban area the city heads, by one source for each country: a Canadian city's census metropolitan area or
    * agglomeration by Statistics Canada (the estimate of 1 July 2025, else the 2021 Census; id "statcan:<DGUID>"), a city
    * of the United States its metropolitan or micropolitan statistical area by the Census Bureau (1 July 2024,
-   * "census:<CBSA code>"), a city of another OECD member its functional urban area by the OECD ("oecd:<code>"), and a
-   * city of any other country its urban centre by the GHSL Urban Centre Database (2025, "ghsl:<id>"; European Commission,
-   * CC BY 4.0). Where a city heads none, the metropolitan area Wikidata names for it where that is bigger than the city
-   * (its item, "Q683705"; CC0), an estimate. Its id, its name as the source writes it ("Seattle-Tacoma-Bellevue, WA",
-   * "West Midlands"), people, the day the figure is for, and `estimated` (true for Wikidata's only). `null` where there is
-   * none. Every list ranks a city by this figure where there is one, even below its own `population`, else by its own;
-   * a tier still holds a city by its own `population`.
+   * "census:<CBSA code>"), a city of another OECD member its functional urban area by the OECD ("oecd:<code>"), and the
+   * first twenty cities of China and India the urban figure of their own census (China's urban resident population of
+   * 2020, "cn-census-2020:<area>"; India's urban agglomerations of 2011, "in-census-2011:<area>"). In a country with
+   * official areas, where a city heads none, the metropolitan area Wikidata names for it where that is bigger than the
+   * city (its item, "Q683705"; CC0), an estimate. Its id, its name as the source writes it ("Seattle-Tacoma-Bellevue,
+   * WA", "West Midlands"), people, the day the figure is for, and `estimated` (true for Wikidata's only). `null` where
+   * there is none. Every list ranks a city by this figure where there is one, even below its own `population`, else by
+   * its own; a tier still holds a city by its own `population`.
    */
   metro: { id: string; name: string; population: number; populationDate: string | null; estimated: boolean } | null;
   /**
@@ -86,16 +87,21 @@ interface City {
    */
   inMetroOf: string | null;
   /**
-   * True where the city's country is ranked by GHSL's urban centres (every country without official metropolitan
-   * statistics) and none was found for the city: its own figure is often its whole municipality (Yantai's 7 million), so
-   * it is ranked after every city with an urban figure. False for every other city.
+   * True for a city of China or India below the twenty its census gives an urban figure for: its own figure is its
+   * whole municipality (Yantai's 7 million), so it is ranked after the twenty. False for every other city.
    */
   urbanAreaUnknown: boolean;
+  /**
+   * True where the figure every list ranks the city by is an estimate: Wikidata's metropolitan area (`metro.estimated`),
+   * or the city's own figure in a country with no official urban areas (every country but Canada, the United States,
+   * the other members of the OECD, and China's and India's first twenty). False where it is an official urban area's.
+   */
+  rankEstimated: boolean;
 }
 
 // [item number (or "ne:<number>"), latitude, longitude, population, population date, country, subdivision, en, ja, native, native language,
 //  capital (0 none, 1 national, 2 subdivision, 3 alternate), capital of (space-separated), sources (bit 8: ja written for this package, bit 1: ja from Natural Earth, bit 2:
-//  population from Natural Earth, bit 4: point from Natural Earth), and only where the city has a metro: its item number, English name, population and population date,
+//  population from Natural Earth, bit 4: point from Natural Earth, bit 16: ranked by its own figure, an estimate), and only where the city has a metro: its item number, English name, population and population date,
 //  or only where it lies inside another city's urban area: that city's item number]
 type CityRow =
   | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number]
@@ -137,6 +143,7 @@ const freezeCity = (row: CityRow): City => {
           }),
     inMetroOf: head === null || head === undefined ? null : typeof head === "number" ? `Q${head}` : head,
     urbanAreaUnknown: row.length === 15 && head === null,
+    rankEstimated: (sources & 16) !== 0 || (metroId !== undefined && (typeof metroId === "number" || metroId.startsWith("ne:"))),
   } satisfies City);
 };
 

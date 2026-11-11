@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const SM: readonly CityRow[] = [
-  [1848,43.932,12.4485,4040,2018,"SM","SM-07","San Marino","サンマリノ市",null,null,1,"SM",0,null],
+  [1848,43.932,12.4485,4040,2018,"SM","SM-07","San Marino","サンマリノ市",null,null,1,"SM",16],
 ];
 
 export { SM };

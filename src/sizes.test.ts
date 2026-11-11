@@ -56,9 +56,7 @@ describe("the built entries", () => {
   it("keep the core of the cities small, with no city in it, and each tier and country in its own file", () => {
     expect(size("dist/cities.js")).toBeLessThan(24 * KB);
     expect(size("dist/cities/capitals.js")).toBeLessThan(650 * KB);
-    // Every city of a million now carries its urban area (GHSL's where no official one), 114 KB; the columns of the next
-    // release bring it back under 90.
-    expect(size("dist/cities/1m.js")).toBeLessThan(120 * KB);
+    expect(size("dist/cities/1m.js")).toBeLessThan(110 * KB);
     expect(size("dist/cities/100k.js")).toBeLessThan(800 * KB);
     const files = readdirSync("dist/cities").filter((file) => /^[a-z]{2}\.js$/.test(file));
     expect(files.length).toBeGreaterThan(190);

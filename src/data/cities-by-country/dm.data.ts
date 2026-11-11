@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const DM: readonly CityRow[] = [
-  [36281,15.3,-61.3833,16571,2025,"DM","DM-04","Roseau","ロゾー",null,null,1,"DM",0,null],
-  [595272,15.567,-61.317,null,null,"DM","DM-02","Wesley","ウェズリー",null,null,2,"DM-02",0,null],
-  [1021646,15.4335,-61.3969,null,null,"DM","DM-06","Saint Joseph","セント・ジョゼフ",null,null,2,"DM-06",0,null],
+  [36281,15.3,-61.3833,16571,2025,"DM","DM-04","Roseau","ロゾー",null,null,1,"DM",16],
+  [595272,15.567,-61.317,null,null,"DM","DM-02","Wesley","ウェズリー",null,null,2,"DM-02",16],
+  [1021646,15.4335,-61.3969,null,null,"DM","DM-06","Saint Joseph","セント・ジョゼフ",null,null,2,"DM-06",16],
 ];
 
 export { DM };

@@ -5,17 +5,17 @@
 import type { CityRow } from "../../city-rows";
 
 const SR: readonly CityRow[] = [
-  [3001,5.8667,-55.1667,223757,2019,"SR","SR-PM","Paramaribo","パラマリボ",null,null,1,"SR",0,"ghsl:34","Paramaribo",253626,2025],
-  [1376242,3.8542,-54.2281,29210,null,"SR","SR-SI","Cottica","コッティカ",null,null,0,null,2,null],
-  [935545,5.6967,-55.2167,19991,2012,"SR","SR-WA","Lelydorp","レリードルプ",null,null,2,"SR-WA",0,null],
-  [1757528,5.8083,-55.1778,17185,null,"SR","SR-PM","Beekhuizen",null,null,null,0,null,0,3001],
-  [738313,5.9261,-56.9731,12818,"2012-08-13","SR","SR-NI","Nieuw Nickerie","ニウ・ニッケリー","Nieuw-Nickerie","nl",2,"SR-NI",0,null],
-  [762619,5.8833,-55.0833,5650,2012,"SR","SR-CM","Nieuw Amsterdam","ニウ・アムステルダム","Nieuw-Amsterdam","nl",2,"SR-CM",0,3001],
-  [580016,5.5,-54.05,5247,"2012-08-13","SR","SR-MA","Albina","アルビーナ",null,null,2,"SR-MA",0,null],
-  [926060,5.0667,-54.9667,4482,2012,"SR","SR-BR","Brokopondo","ブロコポンド",null,null,2,"SR-BR",0,null],
-  [508935,5.7833,-55.4667,2818,null,"SR","SR-SA","Groningen","フローニンゲン",null,null,2,"SR-SA",0,null],
-  [1357920,5.8775,-56.3292,2150,"2012-08-13","SR","SR-CR","Totness","トトネス",null,null,2,"SR-CR",0,null],
-  [1861566,5.5931,-55.1939,2000,null,"SR","SR-PR","Onverwacht","オンフェルワハト",null,null,2,"SR-PR",0,null],
+  [3001,5.8667,-55.1667,223757,2019,"SR","SR-PM","Paramaribo","パラマリボ",null,null,1,"SR",16],
+  [1376242,3.8542,-54.2281,29210,null,"SR","SR-SI","Cottica","コッティカ",null,null,0,null,18],
+  [935545,5.6967,-55.2167,19991,2012,"SR","SR-WA","Lelydorp","レリードルプ",null,null,2,"SR-WA",16],
+  [1757528,5.8083,-55.1778,17185,null,"SR","SR-PM","Beekhuizen",null,null,null,0,null,16],
+  [738313,5.9261,-56.9731,12818,"2012-08-13","SR","SR-NI","Nieuw Nickerie","ニウ・ニッケリー","Nieuw-Nickerie","nl",2,"SR-NI",16],
+  [762619,5.8833,-55.0833,5650,2012,"SR","SR-CM","Nieuw Amsterdam","ニウ・アムステルダム","Nieuw-Amsterdam","nl",2,"SR-CM",16],
+  [580016,5.5,-54.05,5247,"2012-08-13","SR","SR-MA","Albina","アルビーナ",null,null,2,"SR-MA",16],
+  [926060,5.0667,-54.9667,4482,2012,"SR","SR-BR","Brokopondo","ブロコポンド",null,null,2,"SR-BR",16],
+  [508935,5.7833,-55.4667,2818,null,"SR","SR-SA","Groningen","フローニンゲン",null,null,2,"SR-SA",16],
+  [1357920,5.8775,-56.3292,2150,"2012-08-13","SR","SR-CR","Totness","トトネス",null,null,2,"SR-CR",16],
+  [1861566,5.5931,-55.1939,2000,null,"SR","SR-PR","Onverwacht","オンフェルワハト",null,null,2,"SR-PR",16],
 ];
 
 export { SR };

@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const TO: readonly CityRow[] = [
-  [38834,-21.1343,-175.2018,23221,2016,"TO",null,"Nukuʻalofa","ヌクアロファ",null,null,1,"TO",0,null],
-  [1025393,-18.6508,-173.9831,6000,2008,"TO","TO-05","Neiafu","ネイアフ",null,null,2,"TO-05",0,null],
-  [1027037,-19.8033,-174.3489,2000,2008,"TO",null,"Pangai","パンガイ",null,null,2,"TO-02",0,null],
-  [3711222,-21.3333,-174.95,1200,null,"TO",null,"ʻOhonua",null,null,null,2,"TO-01",0,null],
-  [2563164,-15.9528,-173.7956,null,null,"TO","TO-03","Hihifo","ヒヒフォ",null,null,2,"TO-03",0,null],
+  [38834,-21.1343,-175.2018,23221,2016,"TO",null,"Nukuʻalofa","ヌクアロファ",null,null,1,"TO",16],
+  [1025393,-18.6508,-173.9831,6000,2008,"TO","TO-05","Neiafu","ネイアフ",null,null,2,"TO-05",16],
+  [1027037,-19.8033,-174.3489,2000,2008,"TO",null,"Pangai","パンガイ",null,null,2,"TO-02",16],
+  [3711222,-21.3333,-174.95,1200,null,"TO",null,"ʻOhonua",null,null,null,2,"TO-01",16],
+  [2563164,-15.9528,-173.7956,null,null,"TO","TO-03","Hihifo","ヒヒフォ",null,null,2,"TO-03",16],
 ];
 
 export { TO };

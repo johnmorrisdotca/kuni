@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/er";
  *
  * console.log(cities.length);      // 6
- * console.log(cities[0].name.en);  // "Massawa"
+ * console.log(cities[0].name.en);  // "Asmara"
  * console.log(cities[0].country);  // "ER"
  * ```
  */

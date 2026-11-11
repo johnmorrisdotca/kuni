@@ -30,6 +30,7 @@ const make = (id: string, en: string, country: string, lat: number, lon: number,
     metro: null,
     inMetroOf: null,
     urbanAreaUnknown: false,
+    rankEstimated: false,
   });
 const PARIS = make("Q90", "Paris", "FR", 48.8567, 2.351, 2165423, "FR-IDF");
 const LYON = make("Q456", "Lyon", "FR", 45.76, 4.84, 522250, "FR-ARA");
@@ -450,13 +451,26 @@ describe("the top cities of a country", () => {
     expect(await top("AU", 10)).toEqual(["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle", "Canberra", "Geelong", "Wollongong"]);
     expect(await top("DE", 10)).toEqual(["Berlin", "Hamburg", "Munich", "Frankfurt", "Stuttgart", "Cologne", "Essen", "Düsseldorf", "Nuremberg", "Mannheim"]);
     expect(await top("FR", 10)).toEqual(["Paris", "Lyon", "Marseille", "Lille", "Toulouse", "Bordeaux", "Nantes", "Strasbourg", "Montpellier", "Rennes"]);
-    expect(await top("MX", 10)).toEqual(["Mexico City", "Guadalajara", "Monterrey", "Heroica Puebla de Zaragoza", "Toluca de Lerdo", "Tijuana", "Santiago de Querétaro", "León de Los Aldama", "Ecatepec de Morelos", "Mérida"]);
+    expect(await top("MX", 10)).toEqual(["Mexico City", "Guadalajara", "Monterrey", "Puebla", "Toluca", "Tijuana", "Santiago de Querétaro", "León", "Mérida", "Ciudad Juárez"]);
     expect(await top("KR", 10)).toEqual(["Seoul", "Busan", "Incheon", "Daegu", "Gwangju", "Daejeon", "Suwon", "Yongin", "Changwon", "Goyang"]);
-    // GHSL's urban centres (2025): China by its urban population, not the whole municipality (Chongqing seventh, not first at 32 million).
-    expect(await top("CN", 10)).toEqual(["Guangzhou", "Shanghai", "Beijing", "Shenzhen", "Suzhou", "Shantou", "Chongqing", "Wuhan", "Nanjing", "Tianjin"]);
-    expect(await top("IN", 10)).toEqual(["Delhi", "Kolkata", "Mumbai", "Bengaluru", "Chennai", "Muzaffarpur", "Hyderabad", "Ahmedabad", "Kozhikode", "Surat"]);
-    expect(await top("BR", 10)).toEqual(["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Fortaleza", "Salvador", "Porto Alegre", "Curitiba", "Goiânia", "Manaus"]);
+    // China's and India's censuses: China's urban resident population of 2020, not the municipality (Chongqing fourth at
+    // 16.3 million, not first at 32), once; India's urban agglomerations of 2011.
+    expect(await top("CN", 10)).toEqual(["Shanghai", "Beijing", "Shenzhen", "Chongqing", "Guangzhou", "Chengdu", "Tianjin", "Wuhan", "Dongguan", "Xi'an"]);
+    expect(await top("IN", 10)).toEqual(["Mumbai", "Delhi", "Kolkata", "Chennai", "Bengaluru", "Hyderabad", "Ahmedabad", "Pune", "Surat", "Jaipur"]);
     expect((await citiesOf("CN"))!.filter((city) => /^Chongqing/.test(city.name.en))).toHaveLength(1);
+    // Every other country by its cities' own figures, the suburbs and districts inside their city's area.
+    expect(await top("BR", 5)).toEqual(["São Paulo", "Rio de Janeiro", "Brasília", "Fortaleza", "Salvador"]);
+    expect(await top("RU", 5)).toEqual(["Moscow", "Saint Petersburg", "Novosibirsk", "Yekaterinburg", "Kazan"]);
+    expect(await top("TR", 5)).toEqual(["Istanbul", "Ankara", "İzmir", "Bursa", "Antalya"]);
+    expect(await top("EG", 4)).toEqual(["Cairo", "Alexandria", "Port Said", "Suez"]);
+    expect(await top("NG", 5)).toEqual(["Lagos", "Kano", "Port Harcourt", "Ibadan", "Benin City"]);
+    expect(await top("ZA", 5)).toEqual(["Johannesburg", "Cape Town", "Pietermaritzburg", "Pretoria", "Durban"]);
+    expect(await top("PK", 5)).toEqual(["Karachi", "Lahore", "Faisalabad", "Rawalpindi", "Gujranwala"]);
+    expect(await top("BD", 3)).toEqual(["Dhaka", "Chittagong", "Khulna"]);
+    expect(await top("ID", 3)).toEqual(["Jakarta", "Surabaya", "Bandung"]);
+    expect(await top("VN", 2)).toEqual(["Ho Chi Minh City", "Hanoi"]);
+    expect(await top("PH", 4)).toEqual(["Quezon City", "Manila", "Davao City", "Caloocan"]);
+    expect(await top("TH", 4)).toEqual(["Bangkok", "Chiang Mai", "Hat Yai", "Nakhon Ratchasima"]);
     expect((await citiesOf("BR"))!.filter((city) => city.name.en === "Natal" || city.name.en === "Vila Velha")).toHaveLength(2);
     // Somerset is a county, not a town; Taunton, its county town, stays.
     expect((await citiesOf("GB"))!.some((city) => city.name.en === "Somerset")).toBe(false);
@@ -472,25 +486,26 @@ describe("the top cities of a country", () => {
       expect(canada.indexOf(city), name).toBeGreaterThan(canada.findIndex((one) => one.name.en === "Kelowna"));
     }
     expect(await inside("CA", "Laval")).toBe("Q340");
-    // Named in the area by its source: Fort Worth in Dallas-Fort Worth-Arlington; Thane and Navi Mumbai in GHSL's Mumbai.
     expect(await inside("US", "Fort Worth")).toBe("Q16557");
     expect(await inside("US", "Long Beach")).toBe("Q65");
     expect(await inside("US", "Anaheim")).toBe("Q65");
     expect(await inside("US", "Brooklyn")).toBe("Q60");
+    expect(await inside("MX", "Ecatepec de Morelos")).toBe("Q1489");
+    expect(await inside("MX", "Zapopan")).toBe("Q9022");
+    expect(await inside("BR", "Niterói")).toBe("Q8678");
     expect(await inside("IN", "Thane")).toBe("Q1156");
     expect(await inside("IN", "Pimpri-Chinchwad")).toBe("Q1538");
+    expect(await inside("EG", "Giza")).toBe("Q85");
+    expect(await inside("TH", "Sai Mai")).toBe("Q1861");
     expect(await inside("AU", "Ipswich")).toBe("Q34932");
-    // A city of a million or more is never put inside another's for being near it; Shenzhen holds over a third of GHSL's Guangzhou.
-    for (const [code, name] of [["JP", "Yokohama"], ["JP", "Kobe"], ["JP", "Kyoto"], ["KR", "Incheon"], ["CN", "Shenzhen"]] as const) expect(await inside(code, name), name).toBeNull();
+    // A city of a million or more is never put inside another's for being near it.
+    for (const [code, name] of [["JP", "Yokohama"], ["JP", "Kobe"], ["JP", "Kyoto"], ["KR", "Incheon"], ["PK", "Rawalpindi"]] as const) expect(await inside(code, name), name).toBeNull();
     expect(await inside("CA", "Toronto")).toBeNull();
-    // A Chinese city GHSL finds no centre for comes after every city with an urban figure: its own is its municipality's.
+    // In China and India a city below the twenty with a census figure comes after them; its own is its municipality's.
     const china = (await citiesOf("CN"))!;
-    const unknown = china.filter((city) => city.urbanAreaUnknown);
-    expect(unknown.length).toBeGreaterThan(0);
-    for (const city of unknown) expect(city, city.name.en).toMatchObject({ inMetroOf: null, metro: null });
-    const lastWithFigure = china.map((city) => city.metro !== null && !city.metro.estimated).lastIndexOf(true);
-    expect(china.findIndex((city) => city.urbanAreaUnknown)).toBeGreaterThan(lastWithFigure);
-    expect(china.find((city) => city.name.en === "Shanghai")?.urbanAreaUnknown).toBe(false);
+    expect(china.find((city) => city.name.en === "Yantai")).toMatchObject({ inMetroOf: null, urbanAreaUnknown: true, metro: null, rankEstimated: true });
+    expect(china.findIndex((city) => city.urbanAreaUnknown)).toBe(20);
+    expect(china.find((city) => city.name.en === "Shanghai")).toMatchObject({ urbanAreaUnknown: false, rankEstimated: false });
   });
 
   it("keep each city's own figure beside its area's, show the area's own name, and say which figures are estimates", async () => {
@@ -499,14 +514,18 @@ describe("the top cities of a country", () => {
     expect(vancouver.metro).toMatchObject({ id: expect.stringMatching(/^statcan:/), name: "Vancouver", populationDate: "2025-07-01", estimated: false });
     expect((await citiesOf("US"))!.find((city) => city.name.en === "Seattle")?.metro).toMatchObject({ id: "census:42660", name: "Seattle-Tacoma-Bellevue, WA", populationDate: "2024-07-01", estimated: false });
     expect((await citiesOf("GB"))!.find((city) => city.name.en === "Birmingham")?.metro).toMatchObject({ id: "oecd:UK002F", name: "West Midlands", estimated: false });
-    expect((await citiesOf("BR"))!.find((city) => city.name.en === "Rio de Janeiro")?.metro).toMatchObject({ id: "ghsl:7799", name: "Rio de Janeiro", populationDate: "2025", estimated: false });
-    expect((await citiesOf("JP"))!.find((city) => city.name.en === "Kyoto")?.metro).toMatchObject({ estimated: true });
+    expect((await citiesOf("CN"))!.find((city) => city.name.en === "Chongqing")?.metro).toMatchObject({ population: 16344000, populationDate: "2020-11-01", estimated: false });
+    expect((await citiesOf("IN"))!.find((city) => city.name.en === "Mumbai")?.metro).toMatchObject({ name: "Greater Mumbai UA", population: 18394912, estimated: false });
+    expect((await citiesOf("JP"))!.find((city) => city.name.en === "Kyoto")).toMatchObject({ metro: { estimated: true }, rankEstimated: true });
+    // A country with no official areas ranks by the cities' own figures, marked as estimates.
+    expect((await citiesOf("RU"))!.find((city) => city.name.en === "Moscow")).toMatchObject({ metro: null, rankEstimated: true });
+    expect((await citiesOf("CA"))!.find((city) => city.name.en === "Toronto")?.rankEstimated).toBe(false);
     // An urban area's figure is used even below the city's own (Ulsan); no name ends in the kind of area.
     expect((await citiesOf("KR"))!.find((city) => city.name.en === "Ulsan")?.metro?.id).toBe("oecd:KOR07F");
     for (const code of ["CA", "GB", "US", "CN", "IN"]) for (const city of (await citiesOf(code))!) if (city.metro?.estimated === false) expect(city.metro.name, city.name.en).not.toMatch(/(functional )?urban area$|census (metropolitan area|agglomeration)$/);
-    // Wikidata's metro is an estimate, and only where it is bigger than the city.
-    for (const code of ["RU", "JP"])
-      for (const city of (await citiesOf(code))!) if (city.metro !== null && city.metro.estimated) expect(city.metro.population, city.name.en).toBeGreaterThan(city.population ?? 0);
+    // The common English name, not the formal one; no figure of 750 for Malatya.
+    expect((await citiesOf("MX"))!.some((city) => city.name.en === "Heroica Puebla de Zaragoza")).toBe(false);
+    expect((await citiesOf("TR"))!.find((city) => city.name.en === "Malatya")?.population).toBeGreaterThan(100000);
   });
 });
 

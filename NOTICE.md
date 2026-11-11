@@ -144,21 +144,15 @@ A city is ranked by the urban area it heads, with one source for each country, k
   Changes made: only the total population is kept, the latest year of each area; the area is joined to a city by its
   name, or by id where the name is no city's (`OECD_AREAS` in `scripts/metro-links.ts`). Anyone who takes the figures
   from this package must give the same credit.
-- Every other country: the GHSL Urban Centre Database R2024A (GHS-UCDB R2024A, release V1-2, theme General
-  Characteristics), kept in `data-sources/ghsl-ucdb-r2024a.json` by `scripts/fetch-ghsl.ts` (read on 2026-11-11):
-  © European Union, 1995-2026, licensed under the Creative Commons Attribution 4.0 International licence (CC BY 4.0,
-  https://creativecommons.org/licenses/by/4.0/), which allows reuse "provided appropriate credit is given and any
-  changes are indicated":
-
-  > Mari Rivero, I., Melchiorri, M., Florio, P., Schiavina, M., Goch, K., Politis, P., Uhl, J. H., Pesaresi, M.,
-  > Maffenini, L., Sulis, P., et al. (2024): GHS-UCDB R2024A - GHS Urban Centre Database 2025. European Commission,
-  > Joint Research Centre (JRC).
-
-  Changes made: each centre is cut to its id, names, country, population in 2025 and centroid, the centroid turned from
-  World Mollweide to degrees; a centre is joined to the city its names name within 60 km, else to the most populous
-  city within 15 km of its centroid, or by id (`GHSL_CENTRES` in `scripts/metro-links.ts`).
-- Where a city heads no area of its source: the metropolitan areas of the Wikidata snapshot above (CC0), where bigger
-  than the city, marked as estimates.
+- China and India: the urban figures of their own censuses for their first twenty cities, typed as facts in
+  `scripts/urban-facts.ts`, each with its source and date; only the city, the figure and its day are taken, and no
+  table is copied. China: the urban resident population (城区常住人口) of the Seventh National Population Census, 1
+  November 2020, by the National Bureau of Statistics of China (its release on the megacities of 22 September 2021,
+  and 中国人口普查分县资料：2020, China Statistics Press, 2022). India: the urban agglomerations of the Census of India
+  2011, table A-04, by the Office of the Registrar General & Census Commissioner, India.
+- In a country with official areas, where a city heads none: the metropolitan areas of the Wikidata snapshot above
+  (CC0), where bigger than the city, marked as estimates. In every other country a city is ranked by its own figure
+  from that snapshot, marked as an estimate.
 
 An area whose name is no city's ("West Midlands urban area") is set to its city by id in `scripts/metro-links.ts`, with
 the reason. Natural Earth's figures (below) no longer rank any city.

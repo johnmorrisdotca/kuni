@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GI: readonly CityRow[] = [
-  [1410,36.14,-5.35,34003,2020,"GI",null,"Gibraltar","ジブラルタル",null,null,1,"GI",0,null],
+  [1410,36.14,-5.35,34003,2020,"GI",null,"Gibraltar","ジブラルタル",null,null,1,"GI",16],
 ];
 
 export { GI };

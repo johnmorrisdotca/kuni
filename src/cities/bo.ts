@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/bo";
  *
  * console.log(cities.length);      // 50
- * console.log(cities[0].name.en);  // "La Paz"
+ * console.log(cities[0].name.en);  // "Santa Cruz de la Sierra"
  * console.log(cities[0].country);  // "BO"
  * ```
  */

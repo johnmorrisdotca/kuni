@@ -22,13 +22,6 @@
       "note": "Unicode CLDR 48.2, which subdivision codes are current and which deprecated (Unicode-3.0)"
     },
     {
-      "path": "ghsl-ucdb-r2024a.json",
-      "url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_THEME_GLOBE_R2024A/GHS_UCDB_THEME_GENERAL_CHARACTERISTICS_GLOBE_R2024A/V1-2/GHS_UCDB_THEME_GENERAL_CHARACTERISTICS_GLOBE_R2024A_V1_2.zip",
-      "read": "2026-11-11",
-      "sha256": "c1fee1908a37eeeff0dab81a8921d35cde7ec670512ca6c10c7639f067d8d8b1",
-      "note": "The GHSL Urban Centre Database R2024A (European Commission, JRC): each urban centre's names, country, 2025 population and centroid (CC BY 4.0)"
-    },
-    {
       "path": "iana/tlds-alpha-by-domain.txt",
       "url": "https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
       "read": "2026-10-09",

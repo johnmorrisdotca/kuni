@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const NF: readonly CityRow[] = [
-  [30963,-29.05,167.9667,null,null,"NF",null,"Kingston","キングストン",null,null,1,"NF",0,null],
+  [30963,-29.05,167.9667,null,null,"NF",null,"Kingston","キングストン",null,null,1,"NF",16],
 ];
 
 export { NF };

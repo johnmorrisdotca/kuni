@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/in";
  *
  * console.log(cities.length);      // 1191
- * console.log(cities[0].name.en);  // "Delhi"
+ * console.log(cities[0].name.en);  // "Mumbai"
  * console.log(cities[0].country);  // "IN"
  * ```
  */

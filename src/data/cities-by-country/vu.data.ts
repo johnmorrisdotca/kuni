@@ -5,12 +5,12 @@
 import type { CityRow } from "../../city-rows";
 
 const VU: readonly CityRow[] = [
-  [37806,-17.7333,168.3167,49034,2020,"VU","VU-SEE","Port Vila","ポートビラ",null,null,1,"VU",0,"ghsl:191","Port Vila",72613,2025],
-  [876557,-15.5128,167.1735,17719,2020,"VU","VU-SAM","Luganville","ルーガンビル",null,null,2,"VU-SAM",0,null],
-  [1070178,-19.55,169.2667,1437,2009,"VU","VU-TAE","Isangel","イサンゲル",null,null,2,"VU-TAE",0,null],
-  [1423143,-13.88,167.55,1065,2009,"VU","VU-TOB","Sola","ソラ (バヌアツ)",null,null,2,"VU-TOB",0,null],
-  [669361,-16.1069,167.4208,705,2009,"VU","VU-MAP","Lakatoro","ラカトロ",null,null,2,"VU-MAP",0,null],
-  [1980393,-15.2875,167.9903,null,null,"VU","VU-PAM","Saratamata",null,null,null,2,"VU-PAM",0,null],
+  [37806,-17.7333,168.3167,49034,2020,"VU","VU-SEE","Port Vila","ポートビラ",null,null,1,"VU",16],
+  [876557,-15.5128,167.1735,17719,2020,"VU","VU-SAM","Luganville","ルーガンビル",null,null,2,"VU-SAM",16],
+  [1070178,-19.55,169.2667,1437,2009,"VU","VU-TAE","Isangel","イサンゲル",null,null,2,"VU-TAE",16],
+  [1423143,-13.88,167.55,1065,2009,"VU","VU-TOB","Sola","ソラ (バヌアツ)",null,null,2,"VU-TOB",16],
+  [669361,-16.1069,167.4208,705,2009,"VU","VU-MAP","Lakatoro","ラカトロ",null,null,2,"VU-MAP",16],
+  [1980393,-15.2875,167.9903,null,null,"VU","VU-PAM","Saratamata",null,null,null,2,"VU-PAM",16],
 ];
 
 export { VU };

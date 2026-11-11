@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const WS: readonly CityRow[] = [
-  [36260,-13.8333,-171.8333,37708,2006,"WS","WS-TU","Apia","アピア",null,null,1,"WS",0,"ghsl:1","Apia",60042,2025],
-  [2038921,-13.8,-171.817,1998,2016,"WS","WS-TU","Afega","アフェガ",null,null,2,"WS-TU",0,36260],
-  [1944685,-13.8167,-171.9167,1184,2016,"WS","WS-AA","Leulumoega","レウルモエガ",null,null,2,"WS-AA",0,36260],
-  [741740,-13.8745,-171.5986,null,null,"WS","WS-AT","Lufilufi","ルフィルフィ",null,null,2,"WS-AT",0,null],
-  [2270858,-13.8333,-171.9833,null,null,"WS","WS-AL","Mulifanua","ムリファヌア村",null,null,2,"WS-AL",0,null],
+  [36260,-13.8333,-171.8333,37708,2006,"WS","WS-TU","Apia","アピア",null,null,1,"WS",16],
+  [2038921,-13.8,-171.817,1998,2016,"WS","WS-TU","Afega","アフェガ",null,null,2,"WS-TU",16],
+  [1944685,-13.8167,-171.9167,1184,2016,"WS","WS-AA","Leulumoega","レウルモエガ",null,null,2,"WS-AA",16],
+  [741740,-13.8745,-171.5986,null,null,"WS","WS-AT","Lufilufi","ルフィルフィ",null,null,2,"WS-AT",16],
+  [2270858,-13.8333,-171.9833,null,null,"WS","WS-AL","Mulifanua","ムリファヌア村",null,null,2,"WS-AL",16],
 ];
 
 export { WS };

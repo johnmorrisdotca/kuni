@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GU: readonly CityRow[] = [
-  [30988,13.4833,144.75,943,2020,"GU",null,"Hagåtña","ハガニア",null,null,1,"GU",0,null],
+  [30988,13.4833,144.75,943,2020,"GU",null,"Hagåtña","ハガニア",null,null,1,"GU",16],
 ];
 
 export { GU };

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const PM: readonly CityRow[] = [
-  [185678,46.7778,-56.1778,5282,2021,"PM",null,"Saint-Pierre","サン＝ピエール",null,null,1,"PM",0,null],
+  [185678,46.7778,-56.1778,5282,2021,"PM",null,"Saint-Pierre","サン＝ピエール",null,null,1,"PM",16],
 ];
 
 export { PM };

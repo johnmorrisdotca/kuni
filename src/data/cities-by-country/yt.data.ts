@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const YT: readonly CityRow[] = [
-  [132676,-12.7814,45.2317,71437,2018,"YT",null,"Mamoudzou","マムズ",null,null,1,"YT",0,null],
+  [132676,-12.7814,45.2317,71437,2018,"YT",null,"Mamoudzou","マムズ",null,null,1,"YT",16],
 ];
 
 export { YT };

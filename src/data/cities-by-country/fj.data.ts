@@ -5,19 +5,19 @@
 import type { CityRow } from "../../city-rows";
 
 const FJ: readonly CityRow[] = [
-  [38807,-18.1333,178.4333,88271,2009,"FJ","FJ-C","Suva","スバ",null,null,1,"FJ",0,"ghsl:355","Suva",242910,2025],
-  [856662,-17.6242,177.4528,52220,2007,"FJ","FJ-W","Lautoka","ラウトカ",null,null,2,"FJ-W",0,"ghsl:192","Lautoka",53550,2025],
-  [26715,-18.0667,178.5,87446,2007,"FJ","FJ-C","Nasinu","ナシヌー",null,null,0,null,0,null],
-  [619443,-17.8,177.4167,71048,2017,"FJ","FJ-W","Nadi","ナンディ",null,null,0,null,0,null],
-  [26707,-18.0244,178.5454,57882,null,"FJ","FJ-C","Nausori","ナウソリ",null,null,0,null,0,null],
-  [579556,-16.4333,179.3667,27949,null,"FJ","FJ-N","Labasa","ランバサ",null,null,2,"FJ-N",0,null],
-  [26703,-18.1167,178.4167,20529,2007,"FJ","FJ-C","Lami","ラミ",null,null,0,null,0,38807],
-  [26713,-17.5333,177.6833,18526,null,"FJ","FJ-W","Ba","バ",null,null,2,"FJ-01 FJ-04",0,null],
-  [26720,-18.15,177.5,9622,null,"FJ","FJ-W","Sigatoka","シンガトカ",null,null,2,"FJ-08",0,null],
-  [2705079,-17.3667,178.15,5078,2009,"FJ","FJ-W","Vaileka",null,null,null,2,"FJ-11",0,null],
-  [26692,-17.684,178.8401,null,null,"FJ","FJ-E","Levuka","レブカ",null,null,2,"FJ-06 FJ-E",0,null],
-  [1809825,-18.23,-178.8,null,null,"FJ","FJ-E","Tubou",null,null,null,2,"FJ-05",0,null],
-  [1950120,-12.5167,177.0333,null,null,"FJ","FJ-R","Motusa","モトゥサ",null,null,2,"FJ-R",0,null],
+  [38807,-18.1333,178.4333,88271,2009,"FJ","FJ-C","Suva","スバ",null,null,1,"FJ",16],
+  [26715,-18.0667,178.5,87446,2007,"FJ","FJ-C","Nasinu","ナシヌー",null,null,0,null,16],
+  [619443,-17.8,177.4167,71048,2017,"FJ","FJ-W","Nadi","ナンディ",null,null,0,null,16],
+  [26707,-18.0244,178.5454,57882,null,"FJ","FJ-C","Nausori","ナウソリ",null,null,0,null,16],
+  [856662,-17.6242,177.4528,52220,2007,"FJ","FJ-W","Lautoka","ラウトカ",null,null,2,"FJ-W",16],
+  [579556,-16.4333,179.3667,27949,null,"FJ","FJ-N","Labasa","ランバサ",null,null,2,"FJ-N",16],
+  [26703,-18.1167,178.4167,20529,2007,"FJ","FJ-C","Lami","ラミ",null,null,0,null,16],
+  [26713,-17.5333,177.6833,18526,null,"FJ","FJ-W","Ba","バ",null,null,2,"FJ-01 FJ-04",16],
+  [26720,-18.15,177.5,9622,null,"FJ","FJ-W","Sigatoka","シンガトカ",null,null,2,"FJ-08",16],
+  [2705079,-17.3667,178.15,5078,2009,"FJ","FJ-W","Vaileka",null,null,null,2,"FJ-11",16],
+  [26692,-17.684,178.8401,null,null,"FJ","FJ-E","Levuka","レブカ",null,null,2,"FJ-06 FJ-E",16],
+  [1809825,-18.23,-178.8,null,null,"FJ","FJ-E","Tubou",null,null,null,2,"FJ-05",16],
+  [1950120,-12.5167,177.0333,null,null,"FJ","FJ-R","Motusa","モトゥサ",null,null,2,"FJ-R",16],
 ];
 
 export { FJ };

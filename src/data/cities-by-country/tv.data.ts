@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const TV: readonly CityRow[] = [
-  [34126,-8.5048,179.1174,6025,2012,"TV","TV-FUN","Funafuti","フナフティ島",null,null,1,"TV",0,null],
-  [9018086,-6.1083,177.3414,224,null,"TV","TV-NIT","Kulia",null,null,null,2,"TV-NIT",0,null],
-  [7813539,-6.2911,176.3231,null,null,"TV",null,"Tokelau",null,null,null,2,"TV-NMG",0,null],
+  [34126,-8.5048,179.1174,6025,2012,"TV","TV-FUN","Funafuti","フナフティ島",null,null,1,"TV",16],
+  [9018086,-6.1083,177.3414,224,null,"TV","TV-NIT","Kulia",null,null,null,2,"TV-NIT",16],
+  [7813539,-6.2911,176.3231,null,null,"TV",null,"Tokelau",null,null,null,2,"TV-NMG",16],
 ];
 
 export { TV };

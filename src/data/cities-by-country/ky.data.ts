@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const KY: readonly CityRow[] = [
-  [172996,19.2964,-81.3817,27704,null,"KY",null,"George Town","ジョージタウン",null,null,1,"KY",0,null],
+  [172996,19.2964,-81.3817,27704,null,"KY",null,"George Town","ジョージタウン",null,null,1,"KY",16],
 ];
 
 export { KY };

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const TC: readonly CityRow[] = [
-  [34205,21.4603,-71.1414,4100,null,"TC",null,"Cockburn Town","コックバーンタウン",null,null,1,"TC",0,null],
+  [34205,21.4603,-71.1414,4100,null,"TC",null,"Cockburn Town","コックバーンタウン",null,null,1,"TC",16],
 ];
 
 export { TC };

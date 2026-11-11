@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GS: readonly CityRow[] = [
-  [393878,-54.2823,-36.4871,22,null,"GS",null,"King Edward Point","キング・エドワード・ポイント",null,null,1,"GS",0,null],
+  [393878,-54.2823,-36.4871,22,null,"GS",null,"King Edward Point","キング・エドワード・ポイント",null,null,1,"GS",16],
 ];
 
 export { GS };

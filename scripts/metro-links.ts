@@ -14,9 +14,9 @@ const OECD_AREAS: Readonly<Record<string, { city: number; why: string }>> = {
   BE001F: { city: 239, why: "Bruxelles: the French name of Brussels." },
   EL001F: { city: 1524, why: "Athina: Athens, in Greek written in Latin letters." },
   DK002F: { city: 25319, why: "Århus: the older spelling of Aarhus." },
-  MEX04F: { city: 125293, why: "Puebla: Heroica Puebla de Zaragoza." },
-  MEX05F: { city: 209034, why: "Toluca: Toluca de Lerdo." },
-  MEX07F: { city: 189128, why: "Leon: León de Los Aldama." },
+  MEX04F: { city: 125293, why: "Puebla: Wikidata's label is Heroica Puebla de Zaragoza." },
+  MEX05F: { city: 209034, why: "Toluca: Wikidata's label is Toluca de Lerdo." },
+  MEX07F: { city: 189128, why: "Leon: Wikidata's label is León de Los Aldama." },
   MEX08F: { city: 173121, why: "Queretaro: Santiago de Querétaro." },
   ISR17F: { city: 1218, why: "Jerusalem: Wikidata gives the city no single country, so it is set by its item." },
   MEX10F: { city: 26590, why: "Juarez: Ciudad Juárez." },
@@ -34,37 +34,35 @@ const INSIDE_AREAS: Readonly<Record<string, { head: number; why: string }>> = {
   Q11299: { head: 60, why: "Manhattan: a borough of New York City." },
   Q18426: { head: 60, why: "The Bronx: a borough of New York City." },
   Q18432: { head: 60, why: "Staten Island: a borough of New York City." },
+  Q8972: { head: 1489, why: "Ecatepec de Morelos: in the Valley of Mexico, Mexico City's functional urban area." },
+  Q210307: { head: 1489, why: "Ciudad Nezahualcóyotl: in the Valley of Mexico, Mexico City's functional urban area." },
+  Q147402: { head: 9022, why: "Zapopan: in Guadalajara's functional urban area." },
+  Q178725: { head: 8678, why: "Niterói: across the bay, in Rio de Janeiro's metropolitan region." },
+  Q217426: { head: 34647, why: "Soweto: a part of the City of Johannesburg." },
+  Q818106: { head: 34647, why: "Benoni: on the East Rand (Ekurhuleni), in Johannesburg's urban area." },
+  Q761408: { head: 34647, why: "Springs: on the East Rand (Ekurhuleni), in Johannesburg's urban area." },
+  Q1054450: { head: 3926, why: "Centurion: a part of the City of Tshwane, Pretoria's." },
+  Q207749: { head: 1156, why: "Thane: in the Census of India's Greater Mumbai urban agglomeration." },
+  Q61445: { head: 1156, why: "Navi Mumbai: in the Census of India's Greater Mumbai urban agglomeration." },
+  Q581999: { head: 1156, why: "Kalyan-Dombivli: in the Census of India's Greater Mumbai urban agglomeration." },
+  Q580876: { head: 1156, why: "Vasai-Virar: in the Census of India's Greater Mumbai urban agglomeration." },
+  Q1006343: { head: 1156, why: "Mira-Bhayandar: in the Census of India's Greater Mumbai urban agglomeration." },
+  Q119219: { head: 1538, why: "Pimpri-Chinchwad: in the Census of India's Pune urban agglomeration." },
+  Q81788: { head: 85, why: "Giza: across the Nile, in Greater Cairo." },
+  Q12191144: { head: 85, why: "New Cairo: in Greater Cairo." },
+  Q269960: { head: 85, why: "Shubra El Kheima: in Greater Cairo." },
+  Q10392: { head: 3630, why: "Bekasi: in Jabodetabek, Jakarta's metropolitan area." },
+  Q10396: { head: 3630, why: "Depok: in Jabodetabek, Jakarta's metropolitan area." },
+  Q10127: { head: 3630, why: "Tangerang: in Jabodetabek, Jakarta's metropolitan area." },
+  Q10128: { head: 3630, why: "South Tangerang: in Jabodetabek, Jakarta's metropolitan area." },
+  Q2460416: { head: 1354, why: "Gazipur: in Greater Dhaka." },
+  Q5617890: { head: 8660, why: "Gulshan Town: a town of Karachi." },
+  Q1580709: { head: 34647, why: "Thembisa: on the East Rand (Ekurhuleni), in Johannesburg's urban area." },
 };
 
-// A country's name as GHSL writes it (the UN's) where it is none of kuni's names for the country.
-// Three are written as GHSL's file has them, its UTF-8 read as Latin-1 ("CÃ´te d'Ivoire").
-const GHSL_COUNTRY_NAMES: Readonly<Record<string, string>> = {
-  "United States of America": "US",
-  "Russian Federation": "RU",
-  "Democratic Republic of the Congo": "CD",
-  "Iran (Islamic Republic of)": "IR",
-  "Republic of Korea": "KR",
-  "China, Taiwan Province of China": "TW",
-  "Venezuela (Bolivarian Republic of)": "VE",
-  "United Republic of Tanzania": "TZ",
-  "Dem. People's Republic of Korea": "KP",
-  "Syrian Arab Republic": "SY",
-  "CÃ´te d'Ivoire": "CI",
-  "Bolivia (Plurinational State of)": "BO",
-  "State of Palestine": "PS",
-  "Republic of Moldova": "MD",
-  "Kosovo (under UNSC res. 1244)": "XK",
-  "Bosnia and Herzegovina": "BA",
-  "RÃ©union": "RE",
-  "Lao People's Democratic Republic": "LA",
-  "CuraÃ§ao": "CW",
-  "Sao Tome and Principe": "ST",
-  "Brunei Darussalam": "BN",
+// A subdivision that is a city, every other city in it being one of its districts: subdivision, the city's item, reason.
+const INSIDE_SUBDIVISIONS: Readonly<Record<string, { head: number; why: string }>> = {
+  "TH-10": { head: 1861, why: "Bangkok: the province is the city, and Wikidata lists its districts (khet) as settlements of their own." },
 };
 
-// A GHSL urban centre whose first name a city has is not that city's: centre id, city item, reason.
-const GHSL_CENTRES: Readonly<Record<number, { city: number; why: string }>> = {
-  7963: { city: 1353, why: "Delhi's centre: GHSL names it New Delhi, the district; the city is Delhi." },
-};
-
-export { GHSL_CENTRES, GHSL_COUNTRY_NAMES, INSIDE_AREAS, METRO_LINKS, OECD_AREAS };
+export { INSIDE_AREAS, INSIDE_SUBDIVISIONS, METRO_LINKS, OECD_AREAS };

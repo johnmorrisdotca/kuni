@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const SZ: readonly CityRow[] = [
-  [495730,-26.4833,31.3667,110508,2005,"SZ","SZ-MA","Manzini","マンジニ",null,null,2,"SZ-MA",0,"ghsl:122","Manzini",93406,2025],
-  [101418,-26.4465,31.2064,114585,2025,"SZ","SZ-HH","Lobamba","ロバンバ",null,null,1,"SZ",0,null],
-  [3904,-26.3167,31.1333,76218,2025,"SZ","SZ-HH","Mbabane","ムババーネ","ÉMbábáne","ss",3,"SZ SZ-HH",0,null],
-  [2300140,-26.45,31.95,6381,null,"SZ","SZ-LU","Siteki","シテキ",null,null,2,"SZ-LU",0,null],
-  [2029702,-27.1167,31.2,null,null,"SZ","SZ-SH","Nhlangano","ンランガーノ",null,null,2,"SZ-SH",0,null],
+  [101418,-26.4465,31.2064,114585,2025,"SZ","SZ-HH","Lobamba","ロバンバ",null,null,1,"SZ",16],
+  [495730,-26.4833,31.3667,110508,2005,"SZ","SZ-MA","Manzini","マンジニ",null,null,2,"SZ-MA",16],
+  [3904,-26.3167,31.1333,76218,2025,"SZ","SZ-HH","Mbabane","ムババーネ","ÉMbábáne","ss",3,"SZ SZ-HH",16],
+  [2300140,-26.45,31.95,6381,null,"SZ","SZ-LU","Siteki","シテキ",null,null,2,"SZ-LU",16],
+  [2029702,-27.1167,31.2,null,null,"SZ","SZ-SH","Nhlangano","ンランガーノ",null,null,2,"SZ-SH",16],
 ];
 
 export { SZ };

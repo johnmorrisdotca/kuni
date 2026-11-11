@@ -5,10 +5,10 @@
 import type { CityRow } from "../../city-rows";
 
 const SG: readonly CityRow[] = [
-  [334,1.3,103.8,5866139,"2021-07-01","SG",null,"Singapore","シンガポール","Singapura","ms",1,"SG",0,"ghsl:178","Singapore",5117759,2025],
-  [4259064,1.3162,103.7649,91630,null,"SG",null,"Clementi","クレメンティ地区",null,null,0,null,0,"ghsl:345","Sembawang",960308,2025],
-  [4986926,1.2819,103.8239,151870,2018,"SG",null,"Bukit Merah","紅山 (シンガポール)",null,null,0,null,0,334],
-  [3249777,1.3508,103.851,88120,2023,"SG",null,"Bishan","ビシャン (シンガポール)","Bishan, Singapura","ms",0,null,0,334],
+  [334,1.3,103.8,5866139,"2021-07-01","SG",null,"Singapore","シンガポール","Singapura","ms",1,"SG",16],
+  [4986926,1.2819,103.8239,151870,2018,"SG",null,"Bukit Merah","紅山 (シンガポール)",null,null,0,null,16,334],
+  [4259064,1.3162,103.7649,91630,null,"SG",null,"Clementi","クレメンティ地区",null,null,0,null,16,334],
+  [3249777,1.3508,103.851,88120,2023,"SG",null,"Bishan","ビシャン (シンガポール)","Bishan, Singapura","ms",0,null,16,334],
 ];
 
 export { SG };

@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const NR: readonly CityRow[] = [
-  [31026,-0.5477,166.9209,747,2011,"NR","NR-14","Yaren District","ヤレン地区","Yaren","na",1,"NR",0,null],
-  [16530036,-0.5258,166.912,null,null,"NR","NR-08","Arijejen",null,null,null,2,"NR-08",0,null],
-  [49277171,-0.5084,166.9533,null,null,"NR","NR-02","Anabar",null,null,null,2,"NR-02",0,null],
+  [31026,-0.5477,166.9209,747,2011,"NR","NR-14","Yaren District","ヤレン地区","Yaren","na",1,"NR",16],
+  [16530036,-0.5258,166.912,null,null,"NR","NR-08","Arijejen",null,null,null,2,"NR-08",16],
+  [49277171,-0.5084,166.9533,null,null,"NR","NR-02","Anabar",null,null,null,2,"NR-02",16],
 ];
 
 export { NR };

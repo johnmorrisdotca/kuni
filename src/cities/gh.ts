@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/gh";
  *
  * console.log(cities.length);      // 52
- * console.log(cities[0].name.en);  // "Accra"
+ * console.log(cities[0].name.en);  // "Dagbon"
  * console.log(cities[0].country);  // "GH"
  * ```
  */

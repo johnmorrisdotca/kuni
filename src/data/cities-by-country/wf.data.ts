@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const WF: readonly CityRow[] = [
-  [31002,-13.2827,-176.1737,1029,2018,"WF",null,"Mata-Utu","マタウトゥ","Mata Utu","fr",1,"WF",0,null],
+  [31002,-13.2827,-176.1737,1029,2018,"WF",null,"Mata-Utu","マタウトゥ","Mata Utu","fr",1,"WF",16],
 ];
 
 export { WF };

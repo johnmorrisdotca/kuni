@@ -5,21 +5,21 @@
 import type { CityRow } from "../../city-rows";
 
 const BN: readonly CityRow[] = [
-  [9279,4.9167,114.9167,50000,2015,"BN","BN-BM","Bandar Seri Begawan","バンダルスリブガワン",null,null,1,"BN",0,"ghsl:183","Bandar Seri Begawan",77224,2025],
-  [2024412,4.9833,114.9167,40710,2016,"BN","BN-BM","Mukim Berakas 'B'",null,null,null,0,null,0,null],
-  [2364102,4.5262,114.6193,34049,2016,"BN","BN-BM","Mukim Gadong 'A'",null,null,null,0,null,0,null],
-  [3866969,4.5262,114.6193,33637,2016,"BN","BN-BM","Mukim Gadong 'B'",null,null,null,0,null,0,null],
-  [2490410,4.9358,114.8289,31493,2016,"BN","BN-BM","Mukim Sengkurong",null,null,null,0,null,0,null],
-  [1954622,4.5833,114.1833,31308,2016,"BN","BN-BE","Mukim Kuala Belait","クアラ・ブライト郡",null,null,0,null,0,null],
-  [2365615,4.962,115.023,30192,2016,"BN","BN-BM","Mukim Mentiri",null,null,null,0,null,0,null],
-  [1952924,4.9833,114.9167,27223,2016,"BN","BN-BM","Mukim Berakas 'A'",null,null,null,0,null,0,null],
-  [2365651,4.8492,114.8817,22492,2016,"BN","BN-BM","Mukim Kilanas",null,null,null,0,null,0,9279],
-  [1953067,4.6,114.3333,21214,2016,"BN","BN-BE","Mukim Seria","セリア郡",null,null,0,null,0,null],
-  [2159472,4.6142,114.3303,21082,null,"BN","BN-BE","Seria","セリア","Pekan Seria","ms",0,null,0,null],
-  [2490398,5.008,115.0525,16173,2016,"BN","BN-BM","Mukim Serasa","セラサ郡",null,null,0,null,0,null],
-  [588045,4.5828,114.1918,4259,2016,"BN","BN-BE","Kuala Belait","クアラブライト",null,null,2,"BN-BE",0,null],
-  [1125479,4.7086,115.0739,626,2016,"BN","BN-TE","Bangar Town","バンガル","Pekan Bangar","ms",2,"BN-TE",0,null],
-  [2299301,4.8067,114.6592,null,null,"BN","BN-TU","Tutong","プカン・ツトン","Pekan Tutong","ms",2,"BN-TU",0,null],
+  [9279,4.9167,114.9167,50000,2015,"BN","BN-BM","Bandar Seri Begawan","バンダルスリブガワン",null,null,1,"BN",16],
+  [2024412,4.9833,114.9167,40710,2016,"BN","BN-BM","Mukim Berakas 'B'",null,null,null,0,null,16],
+  [2364102,4.5262,114.6193,34049,2016,"BN","BN-BM","Mukim Gadong 'A'",null,null,null,0,null,16],
+  [3866969,4.5262,114.6193,33637,2016,"BN","BN-BM","Mukim Gadong 'B'",null,null,null,0,null,16],
+  [2490410,4.9358,114.8289,31493,2016,"BN","BN-BM","Mukim Sengkurong",null,null,null,0,null,16],
+  [1954622,4.5833,114.1833,31308,2016,"BN","BN-BE","Mukim Kuala Belait","クアラ・ブライト郡",null,null,0,null,16],
+  [2365615,4.962,115.023,30192,2016,"BN","BN-BM","Mukim Mentiri",null,null,null,0,null,16],
+  [1952924,4.9833,114.9167,27223,2016,"BN","BN-BM","Mukim Berakas 'A'",null,null,null,0,null,16],
+  [2365651,4.8492,114.8817,22492,2016,"BN","BN-BM","Mukim Kilanas",null,null,null,0,null,16],
+  [1953067,4.6,114.3333,21214,2016,"BN","BN-BE","Mukim Seria","セリア郡",null,null,0,null,16],
+  [2159472,4.6142,114.3303,21082,null,"BN","BN-BE","Seria","セリア","Pekan Seria","ms",0,null,16],
+  [2490398,5.008,115.0525,16173,2016,"BN","BN-BM","Mukim Serasa","セラサ郡",null,null,0,null,16],
+  [588045,4.5828,114.1918,4259,2016,"BN","BN-BE","Kuala Belait","クアラブライト",null,null,2,"BN-BE",16],
+  [1125479,4.7086,115.0739,626,2016,"BN","BN-TE","Bangar Town","バンガル","Pekan Bangar","ms",2,"BN-TE",16],
+  [2299301,4.8067,114.6592,null,null,"BN","BN-TU","Tutong","プカン・ツトン","Pekan Tutong","ms",2,"BN-TU",16],
 ];
 
 export { BN };

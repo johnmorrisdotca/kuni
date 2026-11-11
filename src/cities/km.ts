@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/km";
  *
  * console.log(cities.length);      // 4
- * console.log(cities[0].name.en);  // "Fomboni"
+ * console.log(cities[0].name.en);  // "Moroni"
  * console.log(cities[0].country);  // "KM"
  * ```
  */
