@@ -23,6 +23,7 @@ src/
 ├── cities.ts           the "/cities" entry: joining tiers of cities, and finding one by id, country or nearness
 ├── city-rows.ts        turning a city's compact row into a City
 ├── rank.ts             the figure a city is ranked by: its metro's people, else its own
+├── ja-short.ts         a city's short Japanese name for a map label: 東京, not 東京都
 ├── places.ts           the "/places" entry: the countries of a continent, and a search over countries and cities
 ├── fold.ts             folding what somebody typed: case, accents, width, kana
 ├── rows.ts             turning the data's compact rows into objects

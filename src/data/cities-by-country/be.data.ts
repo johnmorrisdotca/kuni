@@ -5,10 +5,10 @@
 import type { CityRow } from "../../city-rows";
 
 const BE: readonly CityRow[] = [
+  [239,50.8467,4.3517,195546,2024,"BE","BE-BRU","Brussels","ブリュッセル市","Brüssel","de",1,"BE",0,9005,"Brussels metropolitan area",3350969,2022],
   [12892,51.2211,4.3997,529247,2020,"BE","BE-VLG","Antwerp","アントウェルペン","Antwerpen","de",2,"BE-VAN",0,126325394,"Antwerp metropolitan area",1154047,2022],
   [1296,51.0536,3.7253,272657,2025,"BE","BE-VLG","Ghent","ヘント","Gent","de",2,"BE-VOV",0],
   [81046,50.4167,4.4442,204322,2024,"BE","BE-WAL","Charleroi","シャルルロワ","Chålerwè","wa",0,null,0],
-  [239,50.8467,4.3517,195546,2024,"BE","BE-BRU","Brussels","ブリュッセル市","Brüssel","de",1,"BE",0],
   [3992,50.6397,5.5706,195278,2022,"BE","BE-WAL","Liège","リエージュ","Lüttich","de",2,"BE-WLG",0],
   [12886,50.8392,4.3297,120887,2020,"BE","BE-BRU","Anderlecht","アンデルレヒト",null,null,0,null,0],
   [12994,51.2089,3.2242,118509,2022,"BE","BE-VLG","Bruges","ブルッヘ","Brügge","de",2,"BE-VWV",0],

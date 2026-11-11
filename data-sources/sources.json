@@ -81,7 +81,7 @@
       "path": "wikidata-metros-2026-11-11.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-11-11",
-      "sha256": "e1bc117698e553568dd588f0203aa78d64877231329a82ef7c82a4562dbdb3d7",
+      "sha256": "0d98ffae09b0404f79ce8f96b9ed503151f1bf2991b36730ceb2d6dc9f7921be",
       "note": "Wikidata SPARQL answers for the metropolitan and urban areas round the cities: the areas linked to each city, their English labels and populations with dates; the queries are in the file (CC0)"
     },
     {

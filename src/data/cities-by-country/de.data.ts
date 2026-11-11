@@ -7,8 +7,8 @@ import type { CityRow } from "../../city-rows";
 const DE: readonly CityRow[] = [
   [64,52.5167,13.3833,3700577,"2025-12-31","DE","DE-BE","Berlin","ベルリン",null,null,1,"DE",0,126208903,"Berlin metropolitan area",4979867,2021],
   [1055,53.55,10,1869473,"2025-12-31","DE","DE-HH","Hamburg","ハンブルク",null,null,0,null,0,126280958,"Hamburg metropolitan area",3421692,2021],
+  [1726,48.1375,11.575,1505036,"2025-12-31","DE","DE-BY","Munich","ミュンヘン","München","de",2,"DE-BY",0,126281350,"Munich metropolitan area",3016834,2021],
   [1794,50.1106,8.6822,760656,"2025-12-31","DE","DE-HE","Frankfurt","フランクフルト・アム・マイン","Frankfurt am Main","de",0,null,0,707278,"Frankfurt Rhine-Main Metropolitan Region",2437141,"2020-12-01"],
-  [1726,48.1375,11.575,1505036,"2025-12-31","DE","DE-BY","Munich","ミュンヘン","München","de",2,"DE-BY",0],
   [1718,51.2256,6.7767,619444,"2025-12-31","DE","DE-NW","Düsseldorf","デュッセルドルフ",null,null,2,"DE-NW",0,6173927,"Düsseldorf metropolitan area",1465513,2021],
   [2119,49.4878,8.4661,319536,"2025-12-31","DE","DE-BW","Mannheim","マンハイム",null,null,0,null,0,126281564,"Mannheim-Ludwigshafen metropolitan area",1321561,2021],
   [1715,52.3744,9.7386,522803,"2025-12-31","DE","DE-NI","Hanover","ハノーファー","Hannover","de",2,"DE-NI",0,126281506,"Hannover metropolitan area",1289320,2021],

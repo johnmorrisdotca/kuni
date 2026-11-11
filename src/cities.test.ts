@@ -445,6 +445,12 @@ describe("the top cities of a country", () => {
     expect((await top("JP", 1))[0]).toBe("Tokyo");
     expect((await top("US", 1))[0]).toBe("New York City");
     expect((await top("AU", 2)).sort()).toEqual(["Melbourne", "Sydney"]);
+    // Wikidata has these metros but links them to no city: set by name in scripts/metro-links.ts.
+    expect((await top("BE", 1))[0]).toBe("Brussels");
+    expect(await top("DE", 3)).toEqual(["Berlin", "Hamburg", "Munich"]);
+    expect(await top("GB", 3)).toEqual(["London", "Manchester", "Birmingham"]);
+    // Somerset is a county, not a town.
+    expect((await citiesOf("GB"))!.some((city) => city.name.en === "Somerset")).toBe(false);
   });
 
   it("keep each city's own figure beside its metro's, and give the metro only where it is bigger", async () => {

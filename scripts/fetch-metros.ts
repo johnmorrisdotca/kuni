@@ -11,6 +11,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { METRO_LINKS } from "./metro-links.ts";
 import { readManifest, recordFile, ROOT, sha256, SOURCES_DIR, writeManifest } from "./sources.ts";
 
 const ENDPOINT = "https://query.wikidata.org/sparql";
@@ -120,7 +121,8 @@ const main = async (): Promise<void> => {
     }
     if (at % 10 === 9) console.log(`  links: ${at + 1} of ${groups.length} groups of areas, ${links.size} so far`);
   }
-  const areaIds = [...new Set([...links.values()].map((link) => `Q${link[1]}`))];
+  // The areas set by name in scripts/metro-links.ts, whose populations are wanted too.
+  const areaIds = [...new Set([...[...links.values()].map((link) => `Q${link[1]}`), ...Object.values(METRO_LINKS).map((one) => `Q${one.area}`)])];
   console.log(`${links.size} links to ${areaIds.length} areas.`);
 
   const areas = new Map<number, { en: string | null; pops: [number, string | null][] }>();
