@@ -1,7 +1,9 @@
 // The words of the family's page frame on kuni's demo pages (kazoku-ui's page-frame), in one place: what each page is, in
 // English and Japanese, and the data's credit line with the link to NOTICE.md. scripts/site.mjs writes them into the
-// pages; the tests read the same table. The credit carries the two credits their terms ask for wherever the figures are
-// shown: Statistics Canada's ("Adapted from …", no endorsement) and the OECD's.
+// pages; the tests read the same table. The credit line names every source of the package's data, and carries word for
+// word the credits Statistics Canada's and the OECD's terms ask for, read from NOTICE.md so the two cannot disagree.
+
+import { readFileSync } from "node:fs";
 
 /** Where every credit is written in full. */
 export const NOTICE = "https://github.com/johnmorrisdotca/kuni/blob/main/NOTICE.md";
@@ -31,10 +33,28 @@ export const FRAME_TEXTS = {
   },
 };
 
-/** The data's credit line on every page, with the credits Statistics Canada's and the OECD's terms ask for. */
+/** NOTICE.md's quoted credits ("> " lines), each as one line, that begin with these words. */
+const quoted = (start) => {
+  const notice = readFileSync(new URL("../NOTICE.md", import.meta.url), "utf8");
+  const found = [...notice.matchAll(/((?:^[ \t]*> .*\n)+)/gm)]
+    .map((match) =>
+      match[1]
+        .trim()
+        .split("\n")
+        .map((line) => line.trim().replace(/^> /, ""))
+        .join(" "),
+    )
+    .filter((text) => text.startsWith(start));
+  if (found.length === 0) throw new Error(`NOTICE.md quotes no credit starting "${start}"`);
+  return found;
+};
+/** The credits the urban areas' terms ask for, word for word as NOTICE.md gives them. */
+const REQUIRED = [...quoted("Adapted from Statistics Canada"), ...quoted("OECD (2026)")].join(" ");
+
+/** The data's credit line on every page. */
 export const FRAME_CREDITS = {
-  en: "Names and codes from Unicode CLDR; facts, cities and readings from Wikidata (CC0), Natural Earth (public domain) and Japan Post. Urban areas: adapted from Statistics Canada (not an endorsement by Statistics Canada), the U.S. Census Bureau, and OECD (2026), Functional urban areas: population by age and sex, OECD Data Explorer.",
-  ja: "国名とコードはUnicode CLDR、データ・都市・読みはWikidata（CC0）、Natural Earth（パブリックドメイン）、日本郵便のものです。都市圏は、カナダ統計局（Statistics Canada）のデータを加工したもの（同局の承認を受けたものではありません）、アメリカ国勢調査局（U.S. Census Bureau）のもの、OECD (2026), Functional urban areas: population by age and sex, OECD Data Explorerによります。",
+  en: `Names and codes from Unicode CLDR; facts, cities and readings from Wikidata (CC0), Natural Earth (public domain) and Japan Post. Urban areas from the U.S. Census Bureau, the National Bureau of Statistics of China (2020 census) and the Census of India 2011, and: ${REQUIRED}`,
+  ja: `国名とコードはUnicode CLDR、データ・都市・読みはWikidata（CC0）、Natural Earth（パブリックドメイン）、日本郵便のものです。都市圏は、アメリカ国勢調査局（U.S. Census Bureau）、中国国家統計局（2020年の国勢調査）、インドの国勢調査（2011年）と、次の出典（原文のまま）によります：${REQUIRED}`,
 };
 
 /** The small credit line in the corner of the embed page. */

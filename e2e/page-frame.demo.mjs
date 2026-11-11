@@ -28,7 +28,6 @@ for (const lang of ["en", "ja"]) {
   for (const { path, ready } of PAGES) {
     test(`${path} in ${lang} says what it is, links home, and shows its credits`, async ({ page }) => {
       await serve(page);
-    await artwork(page);
       await artwork(page);
       await page.goto(`http://kuni.test/${path}?lang=${lang}`);
       await expect(page.locator(ready)).toHaveCount(1);
@@ -40,8 +39,12 @@ for (const lang of ["en", "ja"]) {
       await expect(page).toHaveTitle(lang === "ja" ? `${name}：${what}` : `${name}: ${what}`);
       const credits = page.locator("kazoku-page-credits");
       await expect(credits).toBeVisible();
-      await expect(credits).toContainText(lang === "ja" ? "カナダ統計局" : "Statistics Canada");
-      await expect(credits).toContainText("OECD (2026)");
+      await expect(credits).toContainText(
+        "This does not constitute an endorsement by Statistics Canada of this product.",
+      );
+      await expect(credits).toContainText(
+        "OECD (2026), Functional urban areas: population by age and sex, OECD Data Explorer, https://sdmx.oecd.org/public/rest/data/OECD.CFE.EDS,DSD_FUA_DEMO@DF_AGE_SEX (accessed on 2026-11-11).",
+      );
       await expect(credits.getByRole("link")).toHaveAttribute("href", NOTICE);
       // once the map has drawn, nothing runs off the side of the page
       await expect
