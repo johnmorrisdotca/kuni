@@ -55,8 +55,10 @@ const ask = async (query: string, tries = 4): Promise<Binding[]> => {
 };
 
 const main = async (): Promise<void> => {
-  // The first-level subdivisions kuni lists, from its build (pnpm build first).
-  const { allSubdivisions } = (await import("../dist/subdivisions.js")) as { allSubdivisions: () => readonly { code: string; level: number }[] };
+  // The first-level subdivisions kuni lists, from its build (pnpm build first). The path is a variable so the type
+  // check, which runs before the build, does not look for the built file.
+  const built = "../dist/subdivisions.js";
+  const { allSubdivisions } = (await import(built)) as { allSubdivisions: () => readonly { code: string; level: number }[] };
   const listed = allSubdivisions()
     .filter((one) => one.level === 1)
     .map((one) => one.code);
