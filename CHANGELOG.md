@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-11-11
+
 ### Changed
 
 - **Cities rank by urban areas, one source for each country.** `metro` is now the urban area a city heads, by name as its source writes it: Statistics Canada's census metropolitan areas and agglomerations in Canada (the estimate of 1 July 2025, Table 17-10-0148-01), the Census Bureau's metropolitan and micropolitan statistical areas in the United States (1 July 2024), the OECD's functional urban areas in its other members, and for the first cities of China and India their censuses' urban figures (China's twenty-one megacities, by urban resident population in 2020: Chongqing 16.3 million, not its municipality's 32; India's twenty largest urban agglomerations of 2011, on which Mumbai ranks ahead of Delhi, the larger today). Where a city heads none, Wikidata's metropolitan area where it is bigger than the city, marked `metro.estimated` and `rankEstimated`, unless a bigger official area within 60 km holds it (Kyoto and Kobe, in Osaka's); else its own figure. South Africa's metropolitan municipalities are set on their seats (Durban is eThekwini's: Johannesburg, Cape Town, Durban, Pretoria, Gqeberha). Hong Kong and Macau are listed under their own codes, not China's. The area's figure ranks a city even below its own (Ulsan). Canada's first five are Toronto, Montreal, Vancouver, Calgary and Ottawa; the United States' New York City, Los Angeles, Chicago, Dallas and Houston; China's Shanghai, Beijing, Shenzhen, Chongqing and Guangzhou; India's Mumbai, Delhi, Kolkata, Chennai and Bengaluru. The sources and their terms are in NOTICE.md.
