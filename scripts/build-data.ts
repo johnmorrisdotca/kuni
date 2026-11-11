@@ -862,7 +862,9 @@ const writeCities = (): void => {
   const idsFile = join(ROOT, "data-sources", "city-ids.json");
   const aliasFile = join(ROOT, "data-sources", "city-id-aliases.json");
   const released = existsSync(idsFile) ? (JSON.parse(readFileSync(idsFile, "utf8")) as { ids: (number | string)[] }).ids : [];
-  const aliases = existsSync(aliasFile) ? (JSON.parse(readFileSync(aliasFile, "utf8")) as { aliases: Record<string, string | null> }).aliases : {};
+  // A civil township left out answers with the city that holds most of its people, as the build decided it (report.townshipCities);
+  // an entry in the file wins.
+  const aliases = { ...report.townshipCities, ...(existsSync(aliasFile) ? (JSON.parse(readFileSync(aliasFile, "utf8")) as { aliases: Record<string, string | null> }).aliases : {}) };
   const unresolved = unresolvedIds(released, current, aliases);
   if (unresolved.length > 0) throw new Error(`${unresolved.length} city ids of an earlier release are in no tier now (${unresolved.slice(0, 12).join(", ")}...): add each to data-sources/city-id-aliases.json, with the id of the city it was merged into, or null if it was removed`);
   for (const [old, target] of Object.entries(aliases)) if (target !== null && !current.has(target)) throw new Error(`data-sources/city-id-aliases.json: ${old} answers with ${target}, which is not a city now`);

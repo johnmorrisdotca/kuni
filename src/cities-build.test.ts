@@ -44,7 +44,7 @@ describe("the tiers", () => {
       item(7, "Fine", null, [7, 7], "FR", [[50000, null]]),
     ]);
     expect(Object.values(tiers).flat().map((row) => row[7])).toEqual(["Fine"]);
-    expect(report.leftOut).toEqual({ noName: 1, noPoint: 1, noCountry: 2, noPopulation: 1, belowFloor: 1, area: 0, duplicate: 0 });
+    expect(report.leftOut).toEqual({ noName: 1, noPoint: 1, noCountry: 2, noPopulation: 1, belowFloor: 1, area: 0, duplicate: 0, township: 0 });
   });
 });
 
@@ -94,6 +94,28 @@ describe("areas that are not cities", () => {
     ]);
     expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual([...towns].sort());
     expect(report.leftOut.area).toBe(areas.length + 1);
+  });
+});
+
+describe("civil townships", () => {
+  it("leave out a township round a city that holds most of its people, in the states where townships are civil units, and keep a municipal township", () => {
+    const us = (number: number, en: string, state: string, point: [number, number], people: number) => item(number, en, null, point, "US", [[people, "2020-04-01"]], [state]);
+    const { tiers, report } = buildCities({
+      snapshot: snapshot([
+        us(9040893, "Kaw Township", "US-MO", [39.06, -94.55], 183073),
+        us(41819, "Kansas City", "US-MO", [39.1, -94.58], 508090),
+        us(2550281, "Clinton Township", "US-MI", [42.58, -82.92], 100513),
+        us(166000, "Sterling Heights", "US-MI", [42.58, -83.03], 134346),
+        us(1087213, "Toms River", "US-NJ", [39.95, -74.2], 95438),
+        us(7, "Quiet Township", "US-IL", [41, -89], 30000),
+      ]),
+      naturalEarth: natural([]),
+      levels: new Map([["US-MO", 1], ["US-MI", 1], ["US-NJ", 1], ["US-IL", 1]]),
+      countries: new Set(["US"]),
+    });
+    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Clinton Township", "Kansas City", "Quiet Township", "Sterling Heights", "Toms River"]);
+    expect(report.townshipCities).toEqual({ Q9040893: "Q41819" });
+    expect(report.leftOut.township).toBe(1);
   });
 });
 
