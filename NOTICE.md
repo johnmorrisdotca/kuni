@@ -117,6 +117,35 @@ Statistics Canada Open Licence (https://www.statcan.gc.ca/en/reference/licence, 
 > census metropolitan areas and census agglomerations, 2021 Census, reference date 2021-05-11. This does not constitute
 > an endorsement by Statistics Canada of this product.
 
+A city is ranked by the urban area it heads, with one source for each country, kept in
+`data-sources/urban-areas-<day>.json` by `scripts/fetch-urban.ts` (read on 2026-11-11), each section with its own terms:
+
+- Canada: the population of each census metropolitan area and census agglomeration on 1 July 2025 (Table 17-10-0148-01)
+  and the municipalities each holds (Table 98-10-0003-01, 2021 Census), under the Statistics Canada Open Licence:
+
+  > Adapted from Statistics Canada, Table 17-10-0148-01, Population estimates, July 1, by census metropolitan area and
+  > census agglomeration, 2021 boundary, and Table 98-10-0003-01, Population and dwelling counts: Census metropolitan
+  > areas, census agglomerations and census subdivisions (municipalities), 2021 Census. This does not constitute an
+  > endorsement by Statistics Canada of this product.
+
+- The United States: the population of each metropolitan and micropolitan statistical area on 1 July 2024, a work of
+  the United States government and in the public domain (17 U.S.C. 105). Source: U.S. Census Bureau, Population
+  Division, Annual Resident Population Estimates for Metropolitan and Micropolitan Statistical Areas, Vintage 2024.
+- The other members of the OECD: the population of each functional urban area, the latest year the OECD gives (2019 to
+  2025 by country), under the OECD Terms and Conditions, section 3 (Data: free to extract, copy, adapt and redistribute
+  for any purpose, with this credit kept in any sub-licence; https://www.oecd.org/en/about/terms-conditions.html, read
+  on 2026-11-11):
+
+  > OECD (2026), Functional urban areas: population by age and sex, OECD Data Explorer,
+  > https://sdmx.oecd.org/public/rest/data/OECD.CFE.EDS,DSD_FUA_DEMO@DF_AGE_SEX (accessed on 2026-11-11).
+
+- China: Natural Earth's figure for each populated place (`POP_MAX`, the people of its urban area; public domain, below),
+  not Wikidata's, which is the whole municipality.
+- Everywhere else: the metropolitan areas of the Wikidata snapshot above (CC0), marked as estimates.
+
+An area whose name is no city's ("West Midlands urban area") is set to its city by id in `scripts/metro-links.ts`, with
+the reason.
+
 The time zones (`/zones`, and `capitalZone` in `/facts`) are from IANA's tzdb zone.tab (public domain, below) and a
 fourth Wikidata snapshot (`data-sources/wikidata-zones-<day>.json`, CC0 on the same terms, read on 2026-11-11), asked for
 by `scripts/fetch-zones.ts`: the IANA ids (P6687) of the zones each first-level subdivision is in (P421).

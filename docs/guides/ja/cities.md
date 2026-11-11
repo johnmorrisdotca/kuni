@@ -58,6 +58,8 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 - `continent`（`"AS"`、`"EU"` など）、`country`（ISO 3166-1 alpha-2、大文字2文字）、`lat`、`lon`、`subdivision`（第1階層の行政区画のISO 3166-2コード。なければ `null`）。
 - `population` と `populationDate`（年または日付）。どの出どころにも数値がなければ `null`。
 - `capital`（`"national"`、`"alternate"`、`"subdivision"`、`null`）と `capitalOf`（その都市が首都である国や行政区画のコード。首都なら空ではありません）。
+- `metro`：その都市が中心となる都市圏（urban area）`{ id, name, population, populationDate, estimated }`、なければ `null`。出どころは国ごとに一つです。カナダはカナダ統計局（Statistics Canada）の国勢調査都市圏（2025年7月1日）、アメリカは国勢調査局（Census Bureau）の統計地域（2024年7月1日）、そのほかの OECD 加盟国は OECD の機能的都市圏（functional urban area）、中国は Natural Earth の都市部人口、それ以外は Wikidata の都市圏で、推計値です（`estimated: true`。Natural Earth の値も同じ）。どの一覧でも、都市圏があればその人口で、なければ都市自身の `population` で並べます。
+- `inMetroOf`：自分の都市圏を持たず、ほかの都市の都市圏の中にある都市なら、その都市の id（ミシサガとブランプトンはトロントの都市圏）。それ以外は `null`。こうした都市は都市圏の中心となる都市すべての後に並ぶので、国ごとの上位10〜20都市が主要都市になります。
 - `source`：地点、人口、日本語名のそれぞれの出どころ。`"wikidata"`、`"natural-earth"`、またはこのパッケージのために書いた少数の日本語名では `"kuni"`。日本語名はWikidataのものが常に優先され、Natural EarthのものはWikidataにない場合にだけ使われます。
 
 場所を保存するのに必要なのは `id`、`name`、`continent`、`country`、`lat`、`lon`、`population`、`capital` です。そのほかは、きれいに表示するためにあります。
