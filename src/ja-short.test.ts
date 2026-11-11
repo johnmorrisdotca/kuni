@@ -15,6 +15,14 @@ describe("a city's short Japanese name", () => {
     expect(jaShortOf("ブルックリン区")).toBe("ブルックリン");
   });
 
+  it("drops only the last 市 of a name that holds one already", () => {
+    expect(jaShortOf("四日市市")).toBe("四日市");
+    expect(jaShortOf("廿日市市")).toBe("廿日市");
+    expect(jaShortOf("野々市市")).toBe("野々市");
+    // Jinshi, China, is 津市.
+    expect(jaShortOf("津市市")).toBe("津市");
+  });
+
   it("drops Korea's special and metropolitan city suffixes whole", () => {
     expect(jaShortOf("ソウル特別市")).toBe("ソウル");
     expect(jaShortOf("釜山広域市")).toBe("釜山");
@@ -35,6 +43,14 @@ describe("a city's short Japanese name", () => {
     expect(jaShortOf("イーリング・ロンドン特別区")).toBe("イーリング・ロンドン特別区");
     expect(jaShortOf("森の京都")).toBe("森の京都");
     expect(jaShortOf("大町")).toBe("大町");
+    // A township is not its county; an autonomous region is not "autonomous".
+    expect(jaShortOf("ワシントン郡区")).toBe("ワシントン郡区");
+    expect(jaShortOf("クナ・ヤラ自治区")).toBe("クナ・ヤラ自治区");
+    // A short form that would mean something else.
+    expect(jaShortOf("中央市")).toBe("中央市");
+    expect(jaShortOf("南九州市")).toBe("南九州市");
+    expect(jaShortOf("雲南市")).toBe("雲南市");
+    expect(jaShortOf("ケソン市")).toBe("ケソン市");
   });
 
   it("is on every city that has a Japanese name, beside the full one", async () => {
