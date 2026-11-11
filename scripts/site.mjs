@@ -3,9 +3,11 @@
 // files only) beside it.
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 
+import { pageCreditsHtml, pageHeaderHtml, pageTitle } from "@johnmorrisdotca/kazoku-ui/page-frame";
 import { build } from "esbuild";
 
 import { API_CSS, apiPage } from "./api.mjs";
+import { BUILDER_DESCRIPTION, EMBED_CREDITS, FRAME_CREDITS, FRAME_TEXTS, INDEX_DESCRIPTION, NOTICE } from "./page-frame.mjs";
 import { FACT_GAPS } from "./facts-config.ts";
 import { FAMILY_SCRIPT, FAMILY_EMBED_BUILDER_WORDS, familyEmbedBuilder, familyFooter, familyHead, familyHeader, familyUnreviewed } from "./family-template.mjs";
 import { publishThumbnails, thumbnailHead } from "./family-thumbnail.mjs";
@@ -101,8 +103,8 @@ const pageParts = {
   thumbnail: thumbnailHead(JSON.parse(readFileSync("package.json", "utf8")), { alt: ALT }),
   head: familyHead({
     id,
-    title: "Kuni 国 — Countries, states and provinces",
-    description: "Look up any country and its states, provinces and prefectures by ISO 3166 code or by name, in English or Japanese, in your browser. A typed, zero-dependency dataset from Unicode CLDR and Wikidata. Free and open source.",
+    title: pageTitle(FRAME_TEXTS["index.html"].en),
+    description: INDEX_DESCRIPTION,
     ogTitle: "Kuni 国 — Countries, states and provinces",
     ogDescription: "Every country and its 5,050 ISO 3166-2 subdivisions, with names in English and Japanese, looked up by code or by what somebody typed. No dependencies.",
   }),
@@ -116,7 +118,13 @@ const pageParts = {
   footer: familyFooter({ id }),
   script: `<script>${FAMILY_SCRIPT}</script>\n    <script type="module" src="kazoku-parts.js"></script>`,
 };
-const page = readFileSync("demo/index.html", "utf8").replace(/<!-- family:([A-Za-z]+) -->/g, (_match, key) => pageParts[key]);
+// The family's page frame on each page (kazoku-ui's page-frame): one line saying what the page is, with a way home, and the
+// data's credit line above the footer; its words are scripts/page-frame.mjs.
+const FRAME_CREDITS_HTML = pageCreditsHtml(FRAME_CREDITS, { href: NOTICE });
+/** A page's <!--frame:header--> and <!--frame:credits--> filled with its frame. */
+const framed = (html, file) =>
+  html.replace("<!--frame:header-->", pageHeaderHtml(FRAME_TEXTS[file], { meta: true })).replace("<!--frame:credits-->", FRAME_CREDITS_HTML);
+const page = framed(readFileSync("demo/index.html", "utf8").replace(/<!-- ?family:([A-Za-z]+) ?-->/g, (_match, key) => pageParts[key]), "index.html");
 
 rmSync("site", { recursive: true, force: true });
 mkdirSync("site", { recursive: true });
@@ -128,7 +136,7 @@ writeFileSync("site/index.html", page);
 publishThumbnails(".", "site");
 // The family header's language picker and theme switch, as one small module for every page of the site (the demo, the builder, the API reference and the docs).
 await build({
-  stdin: { contents: 'import "@johnmorrisdotca/kazoku-ui/language-picker/define";\nimport "@johnmorrisdotca/kazoku-ui/theme-switch/define";\n', resolveDir: process.cwd() },
+  stdin: { contents: 'import "@johnmorrisdotca/kazoku-ui/language-picker/define";\nimport "@johnmorrisdotca/kazoku-ui/theme-switch/define";\nimport "@johnmorrisdotca/kazoku-ui/page-frame/define";\n', resolveDir: process.cwd() },
   outfile: "site/kazoku-parts.js",
   bundle: true,
   format: "esm",
@@ -188,10 +196,20 @@ console.log("site/ is ready: serve it, or let the Pages workflow publish it.");
 
 for (const file of ["builder.js", "builder.css"]) cpSync(`demo/${file}`, `site/${file}`);
 cpSync("demo/embed", "site/embed", { recursive: true });
+// The embed page's small credit line, in its corner, from the same words.
+writeFileSync("site/embed/index.html", readFileSync("site/embed/index.html", "utf8").replace("<!--frame:credits-->", pageCreditsHtml(EMBED_CREDITS, { href: NOTICE, embed: true })));
+await build({
+  stdin: { contents: 'import "@johnmorrisdotca/kazoku-ui/page-frame/define";\n', resolveDir: process.cwd() },
+  outfile: "site/kazoku-page-frame.js",
+  bundle: true,
+  format: "esm",
+  minify: true,
+  logLevel: "silent",
+});
 writeFileSync("site/family-embed-builder.js", `export const FAMILY_EMBED_BUILDER_WORDS = ${JSON.stringify(FAMILY_EMBED_BUILDER_WORDS)};\nexport ${familyEmbedBuilder.toString()};\n`);
 const builderParts = {
-  builderHead: familyHead({ id, title: "Kuni 国 — Countries, states and provinces · Build a country card", description: "Choose a country or subdivision, preview its card and copy the embed code." }),
+  head: familyHead({ id, title: pageTitle(FRAME_TEXTS["builder.html"].en), description: BUILDER_DESCRIPTION }),
   builderHeader: familyHeader({ id, links: [{ href: "./", say: "toGallery" }, { href: "docs/index.html", say: "pageDocs" }, { href: "api.html", say: "pageApi" }] }),
   unreviewed: familyUnreviewed({ id }), footer: familyFooter({ id }), script: `<script>${FAMILY_SCRIPT}</script>\n    <script type="module" src="kazoku-parts.js"></script>`,
 };
-writeFileSync("site/builder.html", readFileSync("demo/builder.html", "utf8").replace(/<!-- family:([A-Za-z]+) -->/g, (_match, key) => builderParts[key]));
+writeFileSync("site/builder.html", framed(readFileSync("demo/builder.html", "utf8").replace(/<!-- ?family:([A-Za-z]+) ?-->/g, (_match, key) => builderParts[key]), "builder.html"));

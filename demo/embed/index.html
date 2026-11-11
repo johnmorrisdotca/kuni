@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="color-scheme" content="light dark"><title>Kuni · country card</title>
-<style>html,body{margin:0;width:100%;height:100%;background:transparent;overflow:hidden}body{display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box}</style></head><body><script type="module">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="description" content="A country's card from Kuni for another site's iframe: its names, flag, map and facts; its address says which."><meta name="color-scheme" content="light dark"><title>Kuni · country card</title>
+<style>html,body{margin:0;width:100%;height:100%;background:transparent;overflow:hidden}kazoku-page-credits{position:fixed;right:4px;bottom:2px;max-width:calc(100% - 8px)}body{display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box}</style></head><body><script type="module">
 import { KUNI_CARD_FIELDS, readCardColors } from "../dist/element.js";
 import "../dist/element-define.js";
 const query = new URLSearchParams(location.search.length > 1 ? location.search : location.hash.slice(1));
@@ -17,4 +17,6 @@ if(query.has("label")&&query.get("label").length<=200)card.setAttribute("label",
 if(query.get("lang")==="ja")document.documentElement.lang="ja";
 for(const type of ["kuni-load","kuni-error"])card.addEventListener(type,event=>{if(parent!==window)parent.postMessage({type:event.type,detail:JSON.parse(JSON.stringify(event.detail))},"*");});
 document.body.append(card);
-</script></body></html>
+</script>
+<!--frame:credits-->
+<script type="module">import "../kazoku-page-frame.js";</script></body></html>

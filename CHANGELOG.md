@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- **Every demo page says what it is and credits its data** (kazoku-ui's page frame, check-standard 2026-11-11). The demo and the card builder each have a header line ("Kuni 国: country card builder", with a way home) and a credit line above the footer, in English and Japanese, with a title of their own made from the same words. The credit line names every source and carries the credits Statistics Canada's and the OECD's terms ask for wherever their urban-area figures are shown, with a link to `NOTICE.md`; the embed page has a small credit line in its corner.
+
 ## [1.8.0] - 2026-11-11
 
 ### Added
