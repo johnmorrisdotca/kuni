@@ -33,6 +33,30 @@
       "minified": 6620,
       "gzip": 2143
     },
+    "./cities": {
+      "minified": 8569642,
+      "gzip": 2508600
+    },
+    "./cities/capitals": {
+      "minified": 626127,
+      "gzip": 218092
+    },
+    "./cities/1m": {
+      "minified": 60317,
+      "gzip": 19986
+    },
+    "./cities/100k": {
+      "minified": 602428,
+      "gzip": 185998
+    },
+    "./cities/15k": {
+      "minified": 2982605,
+      "gzip": 940983
+    },
+    "./places": {
+      "minified": 8736316,
+      "gzip": 2553503
+    },
     "./element": {
       "minified": 844682,
       "gzip": 290282

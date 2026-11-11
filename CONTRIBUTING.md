@@ -92,12 +92,13 @@ pnpm data:report      # the coverage, and docs/ja-gaps.md
 pnpm data:fetch       # download the CLDR and IANA inputs again (network)
 pnpm data:wikidata    # take a new Wikidata snapshot of the names (network)
 pnpm data:facts       # take a new Wikidata snapshot of the facts and the bodies' dates (network)
+pnpm data:cities      # take a new Wikidata snapshot of the cities, and Natural Earth's populated places (network; by hand, one query at a time, about half an hour)
 pnpm docs:make        # rewrite docs/strings-ja.md after changing a word of the demo
 ```
 
 ### The data
 
-Every file under `src/data/`, `src/subdivisions/` and `src/subdivision-facts/` is written by
+Every file under `src/data/`, `src/subdivisions/`, `src/subdivision-facts/` and `src/cities/` (the tier and country entries) is written by
 `scripts/build-data.ts`; never edit one by hand. A wrong name or figure is fixed at its source (Unicode CLDR, or
 Wikidata, which takes edits from anyone) and comes in with the next snapshot, or, when it is something only this
 package says, in `scripts/data-config.ts`, `scripts/facts-config.ts` or `scripts/groupings-config.ts`, with the

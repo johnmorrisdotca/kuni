@@ -154,6 +154,83 @@
       },
       "default": "./dist/withdrawn.js"
     },
+    "./cities": {
+      "import": {
+        "types": "./dist/cities.d.ts",
+        "default": "./dist/cities.js"
+      },
+      "require": {
+        "types": "./dist/cities.d.cts",
+        "default": "./dist/cities.cjs"
+      },
+      "default": "./dist/cities.js"
+    },
+    "./cities/capitals": {
+      "import": {
+        "types": "./dist/cities/capitals.d.ts",
+        "default": "./dist/cities/capitals.js"
+      },
+      "require": {
+        "types": "./dist/cities/capitals.d.cts",
+        "default": "./dist/cities/capitals.cjs"
+      },
+      "default": "./dist/cities/capitals.js"
+    },
+    "./cities/1m": {
+      "import": {
+        "types": "./dist/cities/1m.d.ts",
+        "default": "./dist/cities/1m.js"
+      },
+      "require": {
+        "types": "./dist/cities/1m.d.cts",
+        "default": "./dist/cities/1m.cjs"
+      },
+      "default": "./dist/cities/1m.js"
+    },
+    "./cities/100k": {
+      "import": {
+        "types": "./dist/cities/100k.d.ts",
+        "default": "./dist/cities/100k.js"
+      },
+      "require": {
+        "types": "./dist/cities/100k.d.cts",
+        "default": "./dist/cities/100k.cjs"
+      },
+      "default": "./dist/cities/100k.js"
+    },
+    "./cities/15k": {
+      "import": {
+        "types": "./dist/cities/15k.d.ts",
+        "default": "./dist/cities/15k.js"
+      },
+      "require": {
+        "types": "./dist/cities/15k.d.cts",
+        "default": "./dist/cities/15k.cjs"
+      },
+      "default": "./dist/cities/15k.js"
+    },
+    "./cities/*": {
+      "import": {
+        "types": "./dist/cities/*.d.ts",
+        "default": "./dist/cities/*.js"
+      },
+      "require": {
+        "types": "./dist/cities/*.d.cts",
+        "default": "./dist/cities/*.cjs"
+      },
+      "default": "./dist/cities/*.js"
+    },
+    "./places": {
+      "import": {
+        "types": "./dist/places.d.ts",
+        "default": "./dist/places.js"
+      },
+      "require": {
+        "types": "./dist/places.d.cts",
+        "default": "./dist/places.cjs"
+      },
+      "default": "./dist/places.js"
+    },
     "./package.json": "./package.json",
     "./element": {
       "import": {
@@ -4602,6 +4679,7 @@
     "data:wikidata": "node scripts/fetch-wikidata.ts",
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
+    "data:cities": "node scripts/fetch-cities.ts",
     "site": "pnpm build && node scripts/site.mjs",
     "test:demo": "pnpm site && node scripts/docs-site.mjs build && playwright test",
     "screenshots:readme": "pnpm site && node scripts/readme-pictures.mjs",

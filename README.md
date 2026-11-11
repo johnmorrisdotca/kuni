@@ -99,6 +99,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
+- **Cities** (`/cities`): the world's cities in tiers, each its own entry so that a page pays only for what it uses: every capital of a country or a subdivision (`/cities/capitals`), then the other cities of a million people or more (`/cities/1m`), of 100,000 or more (`/cities/100k`) and of 15,000 or more (`/cities/15k`), and one country's cities at a time (`/cities/<code>`). Each city has its Wikidata id (stable between releases), its name in English, Japanese and its own language where a source has them, continent, country, latitude and longitude, population with its date, country, first-level subdivision, capital flags and where each fact came from; `citySet` finds one by id, lists a country's, and answers the city nearest to a point. Wikidata (CC0) with Natural Earth's populated places (public domain). [docs/cities.md](./docs/cities.md) counts what is in each tier and what is missing.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
 - **Small where it matters.** The countries and lookups are 21.4 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
@@ -147,6 +148,13 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 0.4–7.3 kB; Japan 2.4 kB |
 | `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 15.9 kB min+gzip |
 | `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 2.1 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 3.7 kB min+gzip |
+| `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)` and `searchPlaces(text, { lang, limit })`, for a place chooser | 50.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 218.1 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/1m` | The other cities of a million people or more | 20.0 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/100k` | The others of 100,000 or more | 186.0 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/15k` | The others of 15,000 or more | 941.0 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/<code>` | One country's cities, every tier together (`/cities/jp`) | 1.2–187 kB gzip; Japan 42 kB |
 
 ### 1. The countries
 
@@ -246,6 +254,27 @@ withdrawnCountries().length;         // 31
 ```
 
 The 31 are the entries of ISO 3166-3, whose codes, years and successors are the published list's, transcribed once and pinned whole by a test; their names in English and Japanese are Wikidata's (property P773). A successor is exactly the new code ISO lists, and may itself be withdrawn: Yugoslavia's is `CS`, which `withdrawn("CS")` answers as Serbia and Montenegro first and Czechoslovakia after. [docs/withdrawn.md](./docs/withdrawn.md) says how, and lists their Japanese names for review. They are a list of their own: `country("SU")` is still `null`, `isCountryCode("SU")` is still `false` and `countries()` never holds them. A lookup by a code answers every withdrawn country that held it, the last one first, and an empty list for anything else; a record whose alpha-2 code a current country holds now (`BY`, `AI`, `BQ`, `GE`, `SK`) says so in `reusedBy`.
+
+### 9. Cities
+
+```ts
+import { citySet, citiesOf, cityById } from "@johnmorrisdotca/kuni/cities";
+import { countriesOf, searchPlaces } from "@johnmorrisdotca/kuni/places";
+import { capitalCities } from "@johnmorrisdotca/kuni/cities/capitals";
+import { cities1m } from "@johnmorrisdotca/kuni/cities/1m";
+
+const world = citySet(capitalCities(), cities1m());   // tiers joined; each is its own import
+world.byId("Q90")?.name.ja;                           // "パリ"
+world.inCountry("JP").length;                         // the Japanese capitals and cities of a million or more
+world.nearest({ lat: 48.8566, lon: 2.3522 })?.city.name.en; // "Paris", for a "you are here" marker
+
+const japan = await citiesOf("JP");          // one country's cities, every tier, fetched when asked for
+const paris = await cityById("Q90");                  // one city by its id (tiers loaded until it is found)
+countriesOf("OC");                                    // the countries of a continent, from the groupings
+(await searchPlaces("パリ", { lang: "ja" }))[0].label; // "パリ": English, Japanese or native names, accents and kana folded
+```
+
+A city is in one tier only. `id` is the Wikidata item (`"Q90"`), or `"ne:<number>"` where only Natural Earth has the place, and never changes between releases: an id that was merged into another city still answers with it. `name.ja` and `name.native` are left out where no source has them, never an English name copied in. [Use the cities](./docs/guides/cities.md) has the rest.
 
 ### In a page, with no bundler
 
@@ -391,6 +420,13 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts`, and the types `SubdivisionFacts` and `LatLon` |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | the country's subdivision facts as the default export and as `SUBDIVISION_FACTS` |
 | `@johnmorrisdotca/kuni/withdrawn` | `withdrawn`, `withdrawnCountries`, `WITHDRAWN_READ` and the type `WithdrawnCountry` |
+| `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities`, `citiesOf`, `cityById`, `CITY_TIERS`, and the types `City`, `CityAt`, `CitySet`, `CitySource`, `CityTier` and `NearestOptions` |
+| `@johnmorrisdotca/kuni/places` | `continents`, `countriesOf`, `searchPlaces`, and the types `PlaceContinent`, `PlaceHit` and `SearchPlacesOptions` |
+| `@johnmorrisdotca/kuni/cities/capitals` | `capitalCities`, `CITIES_READ` |
+| `@johnmorrisdotca/kuni/cities/1m` | `cities1m`, `CITIES_READ` |
+| `@johnmorrisdotca/kuni/cities/100k` | `cities100k`, `CITIES_READ` |
+| `@johnmorrisdotca/kuni/cities/15k` | `cities15k`, `CITIES_READ` |
+| `@johnmorrisdotca/kuni/cities/<code>` | the country's cities as the default export and as `CITIES` |
 | `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
 
 A country:
@@ -503,7 +539,7 @@ None, on purpose: Kuni is data and lookups, with no colours, markup or styles, s
 | Groupings | 7 continents, 30 UN M49 areas, 23 bodies, 16 informal, 31 inside a country | `/groupings` |
 | Languages | English and Japanese | `LANGUAGES` |
 
-Not here: cities, postal codes, outlines, and names in other languages. CLDR marks nearly all of its Japanese subdivision names "provisional"; where Wikidata names a place differently, CLDR's name is kept and the difference listed in [docs/disagreements.md](./docs/disagreements.md) (226 of 4,313 compared) for review. CLDR's trailing brackets (セント・ポール (ドミニカ国), バリンゴ (カウンティ)) are taken off by a rule listed in [docs/name-rules.md](./docs/name-rules.md), and 56 Japanese names a reviewer found wrong or out of date are written by hand, with their reasons, in [docs/disagreements.md](./docs/disagreements.md). Every English name is checked against Wikidata's English label for the patterns that were found wrong in 1.0.0 (a name cut short, an adjective for a name, marks stripped, a name swapped with a neighbour's, an old place's name on a reused code); 32 are corrected by hand, with their reasons, in the same file. Where ISO 3166-2 has changed since CLDR's release (Norway's counties of 2024), the codes follow ISO.
+Not here: postal codes, outlines, and names in other languages. CLDR marks nearly all of its Japanese subdivision names "provisional"; where Wikidata names a place differently, CLDR's name is kept and the difference listed in [docs/disagreements.md](./docs/disagreements.md) (226 of 4,313 compared) for review. CLDR's trailing brackets (セント・ポール (ドミニカ国), バリンゴ (カウンティ)) are taken off by a rule listed in [docs/name-rules.md](./docs/name-rules.md), and 56 Japanese names a reviewer found wrong or out of date are written by hand, with their reasons, in [docs/disagreements.md](./docs/disagreements.md). Every English name is checked against Wikidata's English label for the patterns that were found wrong in 1.0.0 (a name cut short, an adjective for a name, marks stripped, a name swapped with a neighbour's, an old place's name on a reused code); 32 are corrected by hand, with their reasons, in the same file. Where ISO 3166-2 has changed since CLDR's release (Norway's counties of 2024), the codes follow ISO.
 
 ## Accessibility
 
@@ -555,6 +591,8 @@ The [architecture guide](docs/guides/architecture.md) retains the complete origi
 | First day of the week, measurement system, paper size, clock; UN M49; the UN's members | Unicode CLDR 48.2 (`cldr-core`) | Unicode-3.0 |
 | The bodies' members, the informal groupings and the regions inside a country | written for this package from each body's own list, on 2026-10-09 (`scripts/groupings-config.ts`) | MIT; lists of facts |
 | IOC codes, and the withdrawn countries' names | Wikidata, a snapshot of 2026-10-10 (`data-sources/wikidata-codes-2026-10-10.json`) | CC0 |
+| The cities: names, coordinates, populations with dates, countries, subdivisions, capitals | Wikidata, a snapshot of 2026-11-11 (`data-sources/wikidata-cities-2026-11-11.json`) | CC0 |
+| The cities: a Japanese name, a population or a point Wikidata lacks, capital classes, and the places Wikidata has no item for | Natural Earth 5.1.2 10m Populated Places, from its own release (`data-sources/natural-earth-populated-places-5.1.2.json`) | Public domain |
 | The withdrawn countries' codes, years and successors | ISO 3166-3's published list, transcribed once (`scripts/withdrawn-config.ts`) | A list of facts |
 | Aliases, a few readings and 46 corrected Japanese subdivision names | written for this package | MIT |
 

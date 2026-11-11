@@ -36,11 +36,25 @@
       "note": "IANA time zone database 2026e, country to zone table (public domain)"
     },
     {
+      "path": "natural-earth-populated-places-5.1.2.json",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson",
+      "read": "2026-11-11",
+      "sha256": "526faaedebcc02a11091eb77cb6264135636db7e2b6ffaf8735d985c8e67fee9",
+      "note": "Natural Earth 5.1.2, 10m Populated Places (public domain), cut down to the columns the build uses, \"Historic place\" left out; the SHA-256 of the whole file at the address is 9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
+    },
+    {
       "path": "wikidata-2026-10-09.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-10-09",
       "sha256": "5bdc89a3c4f9294fe7dc76c1e73467e673c6f302a00e5217288a6676216363f6",
       "note": "Wikidata SPARQL answers for ISO 3166-2 (P300) and ISO 3166-1 (P297) codes; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-cities-2026-11-11.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-11",
+      "sha256": "ffa043f6eb4b17fd64e69eecaae55ff830ceca7e8b260ee82cb3b03f5363e098",
+      "note": "Wikidata SPARQL answers for the cities: the items with 15,000 people or more that are a human settlement, every capital, and every item Natural Earth's populated places name; labels, native label, coordinates, country, populations with dates, ISO 3166-2 codes; the queries are in the file (CC0)"
     },
     {
       "path": "wikidata-codes-2026-10-10.json",

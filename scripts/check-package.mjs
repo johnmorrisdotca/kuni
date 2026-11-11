@@ -58,7 +58,10 @@ const countryFiles = [...inTarball].filter((file) => /^dist\/subdivisions\/[a-z]
 if (countryFiles.length !== 200) fail(`the tarball has ${countryFiles.length} country files, not 200`);
 const factFiles = [...inTarball].filter((file) => /^dist\/subdivision-facts\/[a-z]{2}\.js$/.test(file));
 if (factFiles.length !== 200) fail(`the tarball has ${factFiles.length} countries' subdivision facts, not 200`);
-console.log(`ok   everything in package.json's files is in the tarball, and the 200 countries' files`);
+const cityFiles = [...inTarball].filter((file) => /^dist\/cities\/[a-z]{2}\.js$/.test(file));
+if (cityFiles.length < 190) fail(`the tarball has ${cityFiles.length} countries' cities, not about 200`);
+for (const tier of ["capitals", "1m", "100k", "15k"]) if (!inTarball.has(`dist/cities/${tier}.js`)) fail(`the tarball has no dist/cities/${tier}.js`);
+console.log(`ok   everything in package.json's files is in the tarball, the 200 countries' files and ${cityFiles.length} countries' cities`);
 
 // 3. Install it into an empty project.
 const project = join(scratch, "project");
@@ -100,6 +103,9 @@ import { facts } from "${pkg.name}/facts";
 import { membersOf } from "${pkg.name}/groupings";
 import { withdrawn } from "${pkg.name}/withdrawn";
 import { loadSubdivisionFacts } from "${pkg.name}/subdivision-facts";
+import { citySet, loadCities, citiesOf } from "${pkg.name}/cities";
+import { capitalCities } from "${pkg.name}/cities/capitals";
+import japanCities from "${pkg.name}/cities/jp";
 ${probe}
 const all = [${entries.map((_, at) => `m${at}`).join(", ")}];
 const names = ${JSON.stringify(entries)};
@@ -111,6 +117,9 @@ if (facts("JP")?.drivingSide !== "left") throw new Error("facts(JP) gave " + JSO
 if (withdrawn("SU")[0]?.name.en !== "Soviet Union" || m0.country("DE")?.ioc !== "GER") throw new Error("withdrawn or ioc gave " + JSON.stringify(withdrawn("SU")));
 if (membersOf("g7")?.length !== 7) throw new Error("membersOf(g7) gave " + membersOf("g7"));
 if ((await loadSubdivisionFacts("JP"))?.[0].capital?.ja !== "札幌市") throw new Error("loadSubdivisionFacts(JP) did not load");
+if (citySet(capitalCities()).byId("Q90")?.name.en !== "Paris") throw new Error("the cities did not find Paris");
+if ((await citiesOf("JP")).length !== japanCities.length) throw new Error("citiesOf(JP) is not /cities/jp");
+if ((await loadCities("capitals")).cities.length !== capitalCities().length) throw new Error("loadCities(capitals) did not load");
 const canada = await loadSubdivisions("CA");
 if (canada.length !== 13) throw new Error("loadSubdivisions(CA) gave " + canada?.length);
 console.log(names.join(" "));
@@ -127,6 +136,10 @@ if (SUBDIVISIONS.length !== 47) throw new Error("subdivisions/jp by require gave
 if (require("${pkg.name}/facts").facts("US").measurement !== "US") throw new Error("facts by require");
 if (require("${pkg.name}/groupings").grouping("eu").members.length !== 27) throw new Error("groupings by require");
 if (require("${pkg.name}/withdrawn").withdrawn("YU")[0].successors.length !== 1) throw new Error("withdrawn by require");
+if (require("${pkg.name}/cities").citySet(require("${pkg.name}/cities/capitals").capitalCities()).byId("Q90")?.name.en !== "Paris") throw new Error("cities by require");
+require("${pkg.name}/cities").citiesOf("JP").then((list) => {
+  if (list.length !== require("${pkg.name}/cities/jp").CITIES.length) throw new Error("citiesOf by require gave " + list.length);
+});
 require("${pkg.name}/subdivision-facts").loadSubdivisionFacts("CA").then((list) => {
   if (list.length !== 13) throw new Error("loadSubdivisionFacts by require gave " + list.length);
 });
@@ -150,7 +163,14 @@ import { grouping, type Grouping } from "${pkg.name}/groupings";
 import { withdrawn, type WithdrawnCountry } from "${pkg.name}/withdrawn";
 import { loadSubdivisionFacts, type SubdivisionFacts } from "${pkg.name}/subdivision-facts";
 import japanFacts from "${pkg.name}/subdivision-facts/jp";
+import { citySet, citiesOf, type City, type CityTier } from "${pkg.name}/cities";
+import { capitalCities } from "${pkg.name}/cities/capitals";
+import japanCities from "${pkg.name}/cities/jp";
 
+const paris: City | null = citySet(capitalCities()).byId("Q90");
+const tier: CityTier = "1m";
+const inJapan: Promise<readonly City[] | null> = citiesOf("JP");
+const tokyo: City | undefined = japanCities[0];
 const fact: CountryFacts | null = facts("JP");
 const body: Grouping | null = grouping("eu");
 const old: readonly WithdrawnCountry[] = withdrawn("SU");
@@ -162,7 +182,7 @@ const known: boolean = isCountryCode("JP");
 const place: Subdivision | null = subdivision("JP-13") ?? subdivisionByName("Ontario");
 const first: Subdivision | undefined = japan[0];
 const later: Promise<readonly Subdivision[] | null> = loadSubdivisions("CA");
-export { old, body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
+export { inJapan, paris, tier, tokyo, old, body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
 `;
 writeFileSync(join(project, "types.mts"), typed);
 writeFileSync(join(project, "types.cts"), typed);

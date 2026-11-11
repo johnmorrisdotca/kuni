@@ -7,7 +7,7 @@ import { defineConfig } from "tsup";
 // Two entries for each country with subdivisions (src/subdivisions/<code>.ts and src/subdivision-facts/<code>.ts,
 // written by scripts/build-data.ts), beside the entries written by hand.
 const countryEntries: Record<string, string> = Object.fromEntries(
-  ["subdivisions", "subdivision-facts"].flatMap((folder) =>
+  ["subdivisions", "subdivision-facts", "cities"].flatMap((folder) =>
     readdirSync(`src/${folder}`)
       .filter((file) => /^[a-z]{2}\.ts$/.test(file))
       .map((file) => [`${folder}/${basename(file, ".ts")}`, `src/${folder}/${file}`]),
@@ -21,7 +21,8 @@ const countryImports: Plugin = {
   setup(build) {
     const extension = build.initialOptions.format === "cjs" ? "cjs" : "js";
     build.onResolve({ filter: /^\.\/element\.js$/ }, () => ({ path: `./element.${extension}`, external: true }));
-    build.onResolve({ filter: /^\.\.\/(subdivisions|subdivision-facts)\/[a-z]{2}\.js$/ }, (args) => ({
+    build.onResolve({ filter: /^\.\/cities\/(capitals|1m|100k|15k)\.js$/ }, (args) => ({ path: `${args.path.slice(0, -3)}.${extension}`, external: true }));
+    build.onResolve({ filter: /^\.\.\/(subdivisions|subdivision-facts|cities)\/[a-z]{2}\.js$/ }, (args) => ({
       path: `./${args.path.split("/")[1]}/${basename(args.path, ".js")}.${extension}`,
       external: true,
     }));
@@ -43,7 +44,7 @@ const shared = {
 export default defineConfig([
   {
     ...shared,
-entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts" },
+entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts", cities: "src/cities.ts", "cities/capitals": "src/cities/capitals.ts", "cities/1m": "src/cities/1m.ts", "cities/100k": "src/cities/100k.ts", "cities/15k": "src/cities/15k.ts", places: "src/places.ts" },
     // Japanese names stay as they are, rather than as \u escapes three times their size.
     esbuildOptions(options) {
       options.charset = "utf8";

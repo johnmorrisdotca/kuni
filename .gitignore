@@ -7,3 +7,4 @@ playwright-report/
 .readme-examples/
 .docs-examples/
 .usage/
+.cities-cache/

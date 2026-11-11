@@ -44,7 +44,7 @@ This repo is one of the family of John Morris's npm packages. The rules every pa
 | Repo | `johnmorrisdotca/kuni` |
 | Board | `modules` (Modules and misc; see the one-home table in spx-stats `docs/package-work.md`) |
 | Title prefix and `--area` | `kuni` |
-| Ports | none: the demo tests serve `site/` to the browser through routes, with no port; a server of your own asks John for a block first |
+| Ports | 8600 to 8699 (kuni's block): 8600 demo and dev, 8601 tests, 8602 and up worktrees and other servers. The demo tests serve `site/` to the browser through routes, with no port. |
 | Checks before a push | `pnpm check`, `pnpm test:usage`, `pnpm test:demo` (or the files you touched with `pnpm exec playwright test`) |
 | Release | `release.yml` (waits for CI to be green on the commit) → `reusable-release.yml`, with the GitHub release page; trusted publisher entry: `release.yml` |
 | Hand-off project | `kuni` |

@@ -1,0 +1,4 @@
+{
+  "note": "An id that is no longer a city's: the id of the city it was merged into, or null where it was removed",
+  "aliases": {}
+}

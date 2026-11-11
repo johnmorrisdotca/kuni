@@ -15,6 +15,9 @@ bytes are not the recorded ones.
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
+| `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
+| `natural-earth-populated-places-5.1.2.json` | https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson, cut down to the columns the build uses | the day it was read | Public domain |
+| `city-ids.json`, `city-id-aliases.json` | Written by `pnpm data` (every id a release has had) and by hand (an id that is no longer a city's, with the id it was merged into, or null) | | MIT |
 | `expected-ja-gaps.json` | Written by `pnpm data:report --accept`: the subdivisions with no Japanese name | | MIT |
 
 The CLDR files are from the release tag `release-48-2`, the same release as the `cldr-core` and
@@ -28,6 +31,7 @@ pnpm data:fetch       # the CLDR and IANA files, again, and their lines in sourc
 pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day; the old one is removed
 pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
 pnpm data:codes       # a new Wikidata snapshot of the IOC and withdrawn codes, named for the day; the old one is removed
+pnpm data:cities      # a new Wikidata snapshot of the cities and Natural Earth's populated places, named for the day; one query at a time, by hand
 pnpm data             # rebuild src/data/ from what is here
 pnpm data:report      # the coverage, and docs/ja-gaps.md
 ```
@@ -71,3 +75,25 @@ grouped by code, one line a code, each row's columns named in its `columns`:
 
 It also needs the land outlines of `@johnmorrisdotca/chizu` (an npm development dependency, pinned to 1.0.2, read
 from `node_modules` as CLDR is) to tell a land border from one at sea.
+
+## The cities snapshot
+
+`wikidata-cities-<day>.json` (`scripts/fetch-cities.ts`, `pnpm data:cities`) holds one line for each of the items the
+cities are made from, and the queries written in it. Wikidata's endpoint stops a query at 60 seconds, so the join over
+every item with a population is asked in steps, one query at a time with a pause between, never on a timer:
+
+- the classes of human settlement (Q486972 and everything below it through P279);
+- the items with a best-ranked population (P1082) of 15,000 or more and coordinates (P625), in bands of population;
+- what each is an instance of (P31), in chunks, keeping those that are a settlement;
+- the current capitals (P36) of every item with an ISO 3166-1 (P297) or ISO 3166-2 (P300) code;
+- for every kept item, every capital and every Natural Earth place that names a Wikidata item, in chunks: the English
+  and Japanese labels, the native label (P1705, else the label in the country's official language, P37 with P424),
+  the coordinates, the country's alpha-2 code, the best-ranked populations with their dates (P585) and the ISO 3166-2
+  codes (P300) of the item and the places it is in (P131, up to four steps up).
+
+Each answer is kept in `.cities-cache/` (git-ignored), so a run that stops carries on; `--fresh` empties it. The
+User-Agent names the package and its repository, and no person.
+
+`natural-earth-populated-places-5.1.2.json` is Natural Earth's 10m Populated Places (public domain), read from its own
+release, cut down to the name, English and Japanese names, point, population, class, country code and Natural Earth's
+number; the SHA-256 of the whole file at the address is in `sources.json`. Places it marks "Historic place" are left out.

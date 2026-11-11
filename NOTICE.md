@@ -94,6 +94,24 @@ side of the road it drives on, the countries it shares a border with and the int
 of. `scripts/facts.ts`, `scripts/subdivision-facts.ts` and `scripts/groupings.ts` say how each is chosen. Figures are
 kept as Wikidata gives them, rounded only for coordinates (two decimal places).
 
+## Wikidata, for the cities
+
+The cities (`/cities`) are made from a second Wikidata snapshot (`data-sources/wikidata-cities-<day>.json`), CC0 on the
+terms quoted above (read on 2026-11-11), asked for by `scripts/fetch-cities.ts`: the items that are an instance of a
+human settlement, have coordinates and a best-ranked population of 15,000 or more, every current capital of a country
+or a subdivision, and the items Natural Earth's places name. For each, the English and Japanese labels, the native
+label, the coordinates, the country, the populations with their dates and the ISO 3166-2 codes of the places it is in.
+No Wikipedia text is used.
+
+## Natural Earth's populated places
+
+Natural Earth's 10m Populated Places, version 5.1.2 (https://www.naturalearthdata.com/, public domain: "No permission
+is needed to use Natural Earth. Crediting the authors is unnecessary."), read from its own release on GitHub
+(nvkelso/natural-earth-vector, tag v5.1.2) on 2026-11-11, are the second input of the cities. They fill a Japanese name,
+a population or a point Wikidata has not got, add a capital where Wikidata names none, and give the cities Wikidata has
+no item for (ids that start `ne:`). Places it marks "Historic place" are left out. Each city's `source` field says which
+input a fact came from. It is credited here anyway.
+
 ## Natural Earth, through Chizu
 
 Natural Earth (https://www.naturalearthdata.com/) is in the public domain: "No permission is needed to use Natural

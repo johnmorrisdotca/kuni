@@ -10,6 +10,12 @@ import * as codes from "./codes.ts";
 import * as facts from "./facts.ts";
 import * as groupingsEntry from "./groupings.ts";
 import * as withdrawnEntry from "./withdrawn.ts";
+import * as citiesEntry from "./cities.ts";
+import * as placesEntry from "./places.ts";
+import * as capitalCitiesEntry from "./cities/capitals.ts";
+import * as cities1mEntry from "./cities/1m.ts";
+import * as cities100kEntry from "./cities/100k.ts";
+import * as cities15kEntry from "./cities/15k.ts";
 import * as main from "./index.ts";
 import * as load from "./load.ts";
 import * as subdivisionFacts from "./subdivision-facts.ts";
@@ -39,7 +45,7 @@ describe("the README", () => {
   it("names in its API table every runtime export of every entry", () => {
     const table = section("API");
     const rowOf = (entry) => table.split("\n").find((line) => line.startsWith(`| \`${entry}\``)) ?? "";
-    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry]]) {
+    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry], [`${pkg.name}/cities`, citiesEntry], [`${pkg.name}/places`, placesEntry], [`${pkg.name}/cities/capitals`, capitalCitiesEntry], [`${pkg.name}/cities/1m`, cities1mEntry], [`${pkg.name}/cities/100k`, cities100kEntry], [`${pkg.name}/cities/15k`, cities15kEntry]]) {
       const row = rowOf(entry);
       for (const name of Object.keys(module)) expect(row, `${name} is not in the API table's row for ${entry}`).toContain(`\`${name}\``);
     }
