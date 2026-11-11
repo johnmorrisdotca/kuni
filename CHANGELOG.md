@@ -6,13 +6,15 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
-## [1.6.2] - 2026-11-11
-
 ### Added
 
 - **Short Japanese city names for map labels**: `name.jaShort` beside `name.ja` on every city with a Japanese name: 東京 for 東京都, 大阪 for 大阪市, 新宿 for 新宿区, ソウル for ソウル特別市. A one-character name drops its 市 as maps print it (津市, 津); a name is kept whole where 区 would leave one character (中区), where the result would be a country's name (クウェート市) or would mean something else (中央市, 南九州市, 雲南市, ケソン市), or where the 区 belongs to the name (浦東新区, ワシントン郡区); 町, 村 and 郡 are never dropped.
 - **Four wrong Japanese names dropped**: Várzea Grande, Qods, Kiryat Tiv'on and one Jinhe Town carried Wikidata's Japanese label of a larger place (a state, a province, a district, a county); they now have none, until a right one is found.
 - **Brussels, Munich and Birmingham** rank by their metropolitan areas (3.35, 3.02 and 3.12 million): Wikidata has the areas but links them to no city, so `scripts/metro-links.ts` sets each by name with its reason. Somerset, a county, is no longer listed as a city.
+
+## [1.6.2] - 2026-11-11
+
+### Added
 
 - **Cities ranked by their metropolitan area.** Each city has `metro`: the metropolitan area round it where one is named for it (`{ id, name, population, populationDate }`, else `null`): a Canadian city's census metropolitan area or agglomeration by Statistics Canada (2021 Census, id `statcan:<DGUID>`), any other's from Wikidata (CC0). The tiers, each country's file and `searchPlaces` rank a city by its metro's people where it has one, else by its own: Canada's first three are Toronto, Montreal and Vancouver, the United States' New York City, France's Paris, the Philippines' Manila. A tier still holds a city by its own `population`.
 - **`@johnmorrisdotca/kuni/zones`**: `subdivisionTimeZone(code)`, the IANA zone of a first-level subdivision (Wikidata's where it names one of the country's zones alone, else estimated and said so), and `timeZoneAt(country, point)`, the zone at a point (the country's one zone, or the zone of the subdivision whose capital is nearest, estimated). kuni has no boundaries, so a point near the edge of a zone can be given its neighbour's.
