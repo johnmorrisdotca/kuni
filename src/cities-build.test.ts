@@ -70,6 +70,31 @@ describe("areas that are not cities", () => {
     expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Countyville", "Greater Sudbury", "Kept Province", "Named District"]);
     expect(report.leftOut.area).toBe(8);
   });
+
+  it("leaves out regions, corridors, planned zones and the units round a city, and keeps a town told apart by its region", () => {
+    const areas = [
+      "Metropolitan Toronto",
+      "Metro Manila",
+      "Metropolis of Lyon",
+      "Commune Mutimbuzi",
+      "Commune of Bwambarangwe",
+      "Sectorul Botanica",
+      "Regional Municipality of Peel",
+      "Øresund Region",
+      "Kurdistan Region of Iraq",
+      "North East State of Somalia",
+      "Podgorica Capital City",
+      "Front Range Urban Corridor",
+      "Binhai New Area",
+    ];
+    const towns = ["Paxtaobod, Andijan Region", "Metropolis", "Metrotown", "Regina", "Statesboro", "Capitol Heights"];
+    const { tiers, report } = build([
+      ...[...areas, ...towns].map((en, at) => item(at + 1, en, null, [at, at], "FR", [[200000, null]])),
+      item(103927888, "Moro", null, [50, 50], "FR", [[6310129, null]]),
+    ]);
+    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual([...towns].sort());
+    expect(report.leftOut.area).toBe(areas.length + 1);
+  });
 });
 
 describe("the capitals", () => {
@@ -247,6 +272,22 @@ describe("Natural Earth", () => {
     );
     expect(report.naturalEarthJoined).toBe(1);
     expect(report.naturalEarthMatchedByPlace).toBe(1);
+  });
+
+  it("moves a place that names an area to the city of its name beside it, and keeps the area's item where there is no such city", () => {
+    const { tiers, report } = build(
+      [
+        item(1, "Jamalpur District", null, [24.92, 89.96], "FR", [[2500000, null]]),
+        item(2, "Jamalpur", null, [24.9, 89.95], "FR", [[160000, null]]),
+        item(3, "Kristiansand Municipality", null, [58.15, 8], "FR", [[119000, null]]),
+      ],
+      [
+        place("Q1", "Jamalpur", null, 24.9, 89.95, 167900, "Admin-1 capital", "FR", 1),
+        place("Q3", "Kristiansand", null, 58.15, 8, 100000, "Populated place", "FR", 2),
+      ],
+    );
+    expect([...new Set(Object.values(tiers).flat().map((row) => row[0]))].sort()).toEqual([2, 3]);
+    expect(report.naturalEarthToArea).toBe(1);
   });
 
   it("makes a city of its own, id ne:<number>, of a place Wikidata does not have, where it is a capital or 15,000 or more", () => {

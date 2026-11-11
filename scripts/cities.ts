@@ -47,6 +47,7 @@ interface Report {
   wikidataItems: number;
   naturalEarthPlaces: number;
   naturalEarthJoined: number;
+  naturalEarthToArea: number;
   naturalEarthMatchedByPlace: number;
   naturalEarthOnly: number;
   naturalEarthLeftOut: { noItemNoMatch: number; noCountry: number; belowFloor: number };
@@ -69,7 +70,16 @@ const JA_NAMES: Readonly<Record<string, { ja: string; why: string }>> = {
 // no Natural Earth place stands behind, and whose English label names one of those, is not a city.
 const AREA_WORDS = /\b(metropolitan (area|region|municipality|statistical area)|urban (area|agglomeration|region)|agglomeration|conurbation|built-up area|micropolitan)\b/i;
 const AREA_UNIT = /\b(Province|County|Prefecture|Governorate|District|district|Regency|Oblast|Department|Municipality)$|^(County|Province|District|Municipality|City) of |^Greater (?!Sudbury$|Napanee$|Noida$)|\s(#|No\. )?\d{1,3}(, \d+)?$/;
-const AREA_NAME = { test: (name: string): boolean => AREA_WORDS.test(name) || AREA_UNIT.test(name) };
+// Regions, urban corridors, planned zones and the units round a city under a name of their own: "Metropolitan Toronto",
+// "Metro Manila", "Metropolis of Lyon", "Øresund Region", "Kurdistan Region of Iraq", "North East State of Somalia",
+// "Podgorica Capital City", "Commune Mutimbuzi", "Sectorul Botanica" (Chișinău), "Front Range Urban Corridor", "Binhai New Area". A name with a comma is a town told
+// apart by the region it is in ("Paxtaobod, Andijan Region") and stays.
+const AREA_REGION = /^(Metropolitan|Metro) |^Metropolis of |^Commune( of)? |^Sectorul |\bRegional Municipality\b|\bRegion( of [^,]+)?$|\bState of \b|\bCapital City$|\bUrban Corridor$|\bNew Area$/;
+const AREA_NAME = { test: (name: string): boolean => AREA_WORDS.test(name) || AREA_UNIT.test(name) || (!name.includes(",") && AREA_REGION.test(name)) };
+// Items that are no city though nothing in their name says so, each with its reason; left out like an area.
+const NOT_CITIES: Readonly<Record<string, string>> = {
+  Q103927888: "Moro, Papua New Guinea: Wikidata gives it 6,310,129 people, most of the country's; no city there is near that size.",
+};
 const RADIANS = Math.PI / 180;
 const km = (a: [number, number], b: [number, number]): number => {
   const half = Math.sin(((b[0] - a[0]) * RADIANS) / 2) ** 2 + Math.cos(a[0] * RADIANS) * Math.cos(b[0] * RADIANS) * Math.sin(((b[1] - a[1]) * RADIANS) / 2) ** 2;
@@ -125,6 +135,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     wikidataItems: snapshot.items.length,
     naturalEarthPlaces: naturalEarth.places.length,
     naturalEarthJoined: 0,
+    naturalEarthToArea: 0,
     naturalEarthMatchedByPlace: 0,
     naturalEarthOnly: 0,
     naturalEarthLeftOut: { noItemNoMatch: 0, noCountry: 0, belowFloor: 0 },
@@ -140,7 +151,29 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   const wikidata = new Map<string, WikidataItem>(snapshot.items.map((item) => [`Q${item[0]}`, item]));
   const ne = new Map<string, NePlace>();
   const unmatched: NePlace[] = [];
+  // The items of each country, and the one of them a place names by its own name within 15 km (not an area or a unit).
+  const byCountry = new Map<string, WikidataItem[]>();
+  for (const item of snapshot.items) if (item[6] !== null) byCountry.set(item[6], [...(byCountry.get(item[6]) ?? []), item]);
+  const sameCity = (place: NePlace, cityOnly: boolean): WikidataItem | undefined => {
+    const names = [place[1], place[2]].flatMap((name) => (name === null ? [] : [simple(name)]));
+
+    return (place[8] === null ? [] : (byCountry.get(place[8]) ?? [])).find(
+      (item) => item[5] !== null && km(item[5], [place[4], place[5]]) < 15 && [item[1], item[2]].some((name) => name !== null && names.includes(simple(name))) && !(cityOnly && item[1] !== null && AREA_NAME.test(item[1])),
+    );
+  };
   for (const place of naturalEarth.places) {
+    const item = place[0] === null ? undefined : wikidata.get(place[0]);
+    // A place whose item is an area or a unit (Jamalpur pointing at Jamalpur District) while the snapshot also holds the
+    // city of that name beside it is matched to the city, and the area is left out. Where there is no such city (Kristiansand
+    // Municipality is the only item for Kristiansand) the place keeps its item.
+    if (item !== undefined && item[9].length === 0 && item[1] !== null && AREA_NAME.test(item[1])) {
+      const city = sameCity(place, true);
+      if (city !== undefined && city !== item) {
+        unmatched.push(place);
+        report.naturalEarthToArea += 1;
+        continue;
+      }
+    }
     if (place[0] !== null && wikidata.has(place[0])) {
       // Two places naming one item: the more populous is kept.
       const other = ne.get(place[0]);
@@ -150,11 +183,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   }
   // The places with no item of Wikidata's: matched to a city of the same country, near and of the same name.
   const only: NePlace[] = [];
-  const byCountry = new Map<string, WikidataItem[]>();
-  for (const item of snapshot.items) if (item[6] !== null) byCountry.set(item[6], [...(byCountry.get(item[6]) ?? []), item]);
   for (const place of unmatched) {
-    const names = [place[1], place[2]].flatMap((name) => (name === null ? [] : [simple(name)]));
-    const found = (place[8] === null ? [] : (byCountry.get(place[8]) ?? [])).find((item) => item[5] !== null && km(item[5], [place[4], place[5]]) < 15 && [item[1], item[2]].some((name) => name !== null && names.includes(simple(name))));
+    const found = sameCity(place, false);
     if (found === undefined) only.push(place);
     else if (!ne.has(`Q${found[0]}`)) {
       ne.set(`Q${found[0]}`, place);
@@ -183,7 +213,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       continue;
     }
     // An item named for an area or a unit, with no capital or Natural Earth place behind it, is not a city.
-    if (place === undefined && capitalCodes.length === 0 && AREA_NAME.test(en)) {
+    if ((place === undefined && capitalCodes.length === 0 && AREA_NAME.test(en)) || NOT_CITIES[`Q${number}`] !== undefined) {
       report.leftOut.area += 1;
       continue;
     }
@@ -503,11 +533,11 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     "## How a city is chosen",
     "",
     `- **Wikidata**: the items that are an instance of a human settlement (Q486972 and every class below it through P279), have coordinates (P625) and a best-ranked population (P1082) of ${n(snapshot.floor)} or more: ${n(snapshot.counts.candidates ?? 0)} items with that population and coordinates, of which ${n(snapshot.counts.settlements ?? 0)} are a city, town or other settlement (${n(snapshot.counts.areas ?? 0)} more are only a metropolitan area, urban area or conurbation, and are left out; the rest are districts, counties and the like); every item that is the current capital (P36) of a country or a subdivision; and every item Natural Earth's places name. The queries are written in the snapshot file itself.`,
-    `- **Natural Earth**: ${n(report.naturalEarthPlaces)} places ("Historic place" left out). ${n(report.naturalEarthJoined)} name a Wikidata item (WIKIDATAID) that the snapshot holds; ${n(report.naturalEarthMatchedByPlace)} more were matched by position (within 15 km, same country, same name); the ${n(report.naturalEarthOnly + report.naturalEarthLeftOut.noCountry + report.naturalEarthLeftOut.belowFloor)} left have no Wikidata item here: ${n(report.naturalEarthOnly)} are cities of their own, with an id \`ne:<Natural Earth's number>\` (a capital, or 15,000 people or more); the others have no country, or are small and no capital, and are left out.`,
+    `- **Natural Earth**: ${n(report.naturalEarthPlaces)} places ("Historic place" left out). ${n(report.naturalEarthJoined)} name a Wikidata item (WIKIDATAID) that the snapshot holds; ${n(report.naturalEarthToArea)} name an item that is an area or a unit (Jamalpur naming Jamalpur District) and are matched again as if they named none; ${n(report.naturalEarthMatchedByPlace)} more were matched by position (within 15 km, same country, same name); the ${n(report.naturalEarthOnly + report.naturalEarthLeftOut.noCountry + report.naturalEarthLeftOut.belowFloor)} left have no Wikidata item here: ${n(report.naturalEarthOnly)} are cities of their own, with an id \`ne:<Natural Earth's number>\` (a capital, or 15,000 people or more); the others have no country, or are small and no capital, and are left out.`,
     "- **Which source wins**: Wikidata's label, point and population are kept where it has them. Natural Earth fills a Japanese name, a population or a point Wikidata does not have, and a capital where Wikidata names none; each city says which in its `source` field.",
     "- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's `POP_MAX` has no day.",
     "- **Subdivision**: the ISO 3166-2 code, from Wikidata's P300 on the city or the places it is in (P131), restricted to the first-level subdivisions kuni lists for its country; where there are several, the first in code order.",
-    "- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), unless it is a capital or Natural Earth names it. Some cities with such a name are lost; a city that Natural Earth names is kept.",
+    "- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people). Some cities with such a name are lost; a city that Natural Earth names is kept.",
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
     "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
     "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label (always preferred: it is curated by people), else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up; the few written for this package (`JA_NAMES` in `scripts/cities.ts`, each with its reason: East Jerusalem is 東エルサレム, not the whole city's エルサレム) say `kuni` as their source. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
