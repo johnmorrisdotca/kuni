@@ -5,7 +5,6 @@
 // that only names countries does not carry them.
 
 import { FACT_ROWS, FACTS_READ } from "./data/facts.data";
-import { ZONE_ROWS } from "./data/zones.data";
 import type { FactsRow } from "./rows";
 import type { CountryFacts, DrivingSide, HourCycle, LatLon, MeasurementSystem, PaperSize, WeekStart } from "./types";
 
@@ -115,48 +114,5 @@ const distanceKm = (from: LatLon, to: LatLon): number => {
   return 2 * EARTH_KM * Math.asin(Math.min(1, Math.sqrt(half)));
 };
 
-/**
- * The IANA time zone at a point in a country, and whether it is known or estimated.
- *
- * A country with one zone gives that zone, `estimated: false`. A country with several gives the zone whose principal
- * city (zone.tab's, and the capital for the capital's zone) is nearest the point, `estimated: true`: right for most of
- * a country, and possibly wrong near the edge between two zones, since kuni has no zone boundaries. Say so where it is
- * shown.
- *
- * @param code - The country the point is in, an ISO 3166-1 alpha-2 code in either case.
- * @param point - The point, `{ lat, lon }` in degrees.
- * @returns The zone and whether it was estimated; `null` for a code that is not a country or a country with no zone.
- * @example
- * ```ts
- * import { timeZoneAt } from "@johnmorrisdotca/kuni/facts";
- *
- * console.log(timeZoneAt("JP", { lat: 43.06, lon: 141.35 })); // { zone: "Asia/Tokyo", estimated: false }
- * console.log(timeZoneAt("US", { lat: 47.61, lon: -122.33 })?.zone); // "America/Los_Angeles"
- * ```
- */
-const timeZoneAt = (code: string, point: LatLon): { zone: string; estimated: boolean } | null => {
-  const wanted = typeof code === "string" ? code.trim().toUpperCase() : "";
-  if (point === null || typeof point !== "object" || !Number.isFinite(point.lat) || !Number.isFinite(point.lon)) return null;
-  const own: (readonly [string, number, number, string])[] = ZONE_ROWS.filter((row) => row[0] === wanted);
-  // The capital counts as a principal city of its own zone, checked by hand: Astana keeps Asia/Almaty, Kosovo's one zone
-  // is Europe/Belgrade though zone.tab lists none.
-  const country = facts(wanted);
-  if (country?.capitalPoint && country.capitalZone) own.push([wanted, country.capitalPoint.lat, country.capitalPoint.lon, country.capitalZone]);
-  const zones = new Set(own.map((row) => row[3]));
-  if (zones.size === 0) return null;
-  if (zones.size === 1) return Object.freeze({ zone: own[0]![3], estimated: false });
-  let best = own[0]!;
-  let bestKm = Infinity;
-  for (const row of own) {
-    const km = distanceKm(point, { lat: row[1], lon: row[2] });
-    if (km < bestKm) {
-      best = row;
-      bestKm = km;
-    }
-  }
-
-  return Object.freeze({ zone: best[3], estimated: true });
-};
-
-export { allFacts, distanceKm, facts, FACTS_READ, timeZoneAt };
+export { allFacts, distanceKm, facts, FACTS_READ };
 export type { CountryFacts, DrivingSide, HourCycle, LatLon, MeasurementSystem, PaperSize, WeekStart };

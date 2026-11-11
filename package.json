@@ -110,6 +110,17 @@
       },
       "default": "./dist/facts.js"
     },
+    "./zones": {
+      "import": {
+        "types": "./dist/zones.d.ts",
+        "default": "./dist/zones.js"
+      },
+      "require": {
+        "types": "./dist/zones.d.cts",
+        "default": "./dist/zones.cjs"
+      },
+      "default": "./dist/zones.js"
+    },
     "./subdivision-facts": {
       "import": {
         "types": "./dist/subdivision-facts.d.ts",

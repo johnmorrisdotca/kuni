@@ -44,7 +44,7 @@ const shared = {
 export default defineConfig([
   {
     ...shared,
-entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts", cities: "src/cities.ts", "cities/capitals": "src/cities/capitals.ts", "cities/1m": "src/cities/1m.ts", "cities/100k": "src/cities/100k.ts", "cities/where": "src/cities/where.ts", places: "src/places.ts" },
+entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", zones: "src/zones.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts", cities: "src/cities.ts", "cities/capitals": "src/cities/capitals.ts", "cities/1m": "src/cities/1m.ts", "cities/100k": "src/cities/100k.ts", "cities/where": "src/cities/where.ts", places: "src/places.ts" },
     // Japanese names stay as they are, rather than as \u escapes three times their size.
     esbuildOptions(options) {
       options.charset = "utf8";
