@@ -201,6 +201,18 @@ describe("the tiers", () => {
     expect(tiers.capitals.find((one) => one.name.en === "Yangon")?.capital).not.toBe("national");
   });
 
+  it("hold no area, no numbered district and no Greater ... among the cities", async () => {
+    const AREA = /\bmetropolitan (area|region|municipality|statistical area)\b|\burban (area|agglomeration|region)\b|agglomeration|conurbation|built-up area|^Greater (?!Sudbury$|Napanee$|Noida$)|\s(#|No\. )?\d{1,3}(, \d+)?$/i;
+    const everything = (await loadCities("capitals", "1m", "100k", "15k")).cities;
+    // A capital, or a place Natural Earth names, may carry such a name; every other city may not.
+    const found = everything.filter((one) => AREA.test(one.name.en) && one.capital === null && !one.id.startsWith("ne:")).map((one) => `${one.id} ${one.name.en}`);
+    expect(found.slice(0, 20)).toEqual([]);
+    const names = new Set(everything.map((one) => one.name.en));
+    for (const gone of ["Greater São Paulo", "Greater Mexico City", "Rhine-Ruhr Metropolitan Region", "Prague 5", "Prague 14", "Greater Buenos Aires"]) expect(names.has(gone), gone).toBe(false);
+    expect(names.has("Prague")).toBe(true);
+    expect(names.has("Greater Sudbury")).toBe(true);
+  });
+
   it("list each city once: Tokyo is one city", async () => {
     const japan = (await citiesOf("JP"))!;
     expect(japan.filter((one) => one.name.en === "Tokyo").length).toBe(1);

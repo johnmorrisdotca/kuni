@@ -151,8 +151,8 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 4.2 kB min+gzip (the docs site's figure counts every tier, which load on demand) |
 | `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)` and `searchPlaces(text, { lang, limit })`, for a place chooser | 51.2 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 192.1 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 33.4 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/100k` | The cities of 100,000 or more (capitals too) | 240.0 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 32.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/100k` | The cities of 100,000 or more (capitals too) | 238.9 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities/<code>` | One country's cities, every tier together (`/cities/jp`) | 1.2–187 kB gzip; Japan 37 kB |
 
 ### 1. The countries

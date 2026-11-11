@@ -1,8 +1,9 @@
 // The entry @johnmorrisdotca/kuni/cities: the way to ask questions of the world's cities, with no city data of its own.
-// The cities come in four tiers, each its own entry so that a page pays only for what it uses: /cities/capitals,
-// /cities/1m, /cities/100k and /cities/15k. A tier is a slice, not a bigger list: a city is in the first of these that
-// holds it (a capital of any size, then by population), so the tiers are joined with `citySet`, or loaded and joined
-// with `loadCities`. docs/cities.md says where each fact comes from and how many cities each tier holds.
+// The cities come in tiers, each loaded only when it is asked for: /cities/capitals (every capital, of any size), /cities/1m
+// and /cities/100k (every city of a million, and of 100,000 or more, capitals too), and the 15k tier (15,000 or more), which
+// has no file of its own and is made by `loadCities("15k")` from the countries' files, /cities/<code>. Tiers overlap (a capital
+// of a million people is in two), so they are joined with `citySet`, which keeps a city once, or loaded and joined with
+// `loadCities`. docs/cities.md says where each fact comes from and how many cities each tier holds.
 
 import { isCountryCode } from "./codes";
 import type { City, CitySource } from "./city-rows";

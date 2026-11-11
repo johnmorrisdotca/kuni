@@ -93,6 +93,7 @@ pnpm data:fetch       # download the CLDR and IANA inputs again (network)
 pnpm data:wikidata    # take a new Wikidata snapshot of the names (network)
 pnpm data:facts       # take a new Wikidata snapshot of the facts and the bodies' dates (network)
 pnpm data:cities      # take a new Wikidata snapshot of the cities, and Natural Earth's populated places (network; by hand, one query at a time, about half an hour)
+pnpm data:record-ids  # at a release: record every city id the release has, in data-sources/city-ids.json (commit it); the build then refuses a release that loses one without an alias in data-sources/city-id-aliases.json
 pnpm docs:make        # rewrite docs/strings-ja.md after changing a word of the demo
 ```
 
@@ -123,3 +124,10 @@ reason beside it.
 
 A change to what a lookup answers is a change to every page that asks it. A new answer to something that was
 `null` is a minor version; a different answer to something that was answered is a major one.
+
+### Releasing Kuni
+
+The family's release steps above, plus one for the cities: before the release commit, run `pnpm data:record-ids` and commit
+`data-sources/city-ids.json`, so that every city id the release has is recorded. From then on `pnpm data` refuses a build
+that loses one of them without an entry in `data-sources/city-id-aliases.json` (the id of the city it was merged into, or
+`null` where it was removed), and an id a page stored keeps answering.

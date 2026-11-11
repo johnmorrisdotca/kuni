@@ -59,11 +59,16 @@ describe("areas that are not cities", () => {
         item(5, "Kept Province", null, [5, 5], "FR", [[400000, null]], [], ["FR-IDF"]),
         item(6, "Named District", null, [6, 6], "FR", [[400000, null]]),
         item(7, "Countyville", null, [7, 7], "FR", [[400000, null]]),
+        item(8, "Greater São Paulo", null, [8, 8], "FR", [[20000000, null]]),
+        item(9, "Greater Sudbury", null, [9, 9], "FR", [[160000, null]]),
+        item(10, "Rhine-Ruhr Metropolitan Region", null, [10, 10], "FR", [[12000000, null]]),
+        item(11, "Prague 5", null, [11, 11], "FR", [[90000, null]]),
+        item(12, "Sector 3", null, [12, 12], "FR", [[400000, null]]),
       ],
       [place("Q6", "Named District", null, 6, 6, 1, "Populated place", "FR")],
     );
-    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Countyville", "Kept Province", "Named District"]);
-    expect(report.leftOut.area).toBe(4);
+    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Countyville", "Greater Sudbury", "Kept Province", "Named District"]);
+    expect(report.leftOut.area).toBe(8);
   });
 });
 
