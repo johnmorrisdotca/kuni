@@ -207,6 +207,13 @@ describe("the names", () => {
     expect(rows.Tsukuba![8]).toBe("つくば");
   });
 
+  it("write 東エルサレム for East Jerusalem over Wikidata's エルサレム, and say so in the source bits", () => {
+    const { rows } = build([item(212938, "East Jerusalem", "エルサレム", [31.78, 35.23], "FR", [[236000, null]])], [place("Q212938", "East Jerusalem", "東エルサレム", 31.78, 35.23, 236000, "Populated place", "FR")]);
+    expect(rows[0]![8]).toBe("東エルサレム");
+    expect(rows[0]![13] & 8).toBe(8);
+    expect(rows[0]![13] & 1).toBe(0);
+  });
+
   it("keep the native name only where it differs from the English one", () => {
     const { tiers } = build([item(1, "Munich", null, [1, 1], "FR", [[50000, null]], [], [], ["München", "de"]), item(2, "Paris", null, [2, 2], "FR", [[50000, null]], [], [], ["Paris", "fr"])]);
     const rows = Object.fromEntries(Object.values(tiers).flat().map((row) => [row[7], row]));

@@ -258,6 +258,26 @@ describe("what the data says of well-known places", () => {
     }
   });
 
+  it("calls East Jerusalem 東エルサレム and never plain エルサレム, and says the name is written for this package", async () => {
+    const palestine = (await citiesOf("PS"))!;
+    const east = palestine.find((one) => one.id === "Q212938")!;
+    expect(east.name.en).toBe("East Jerusalem");
+    expect(east.name.ja).toBe("東エルサレム");
+    expect(east.source.ja).toBe("kuni");
+    for (const city of (await loadCities("capitals", "1m", "100k", "15k")).cities) if (city.id === "Q212938") expect(city.name.ja).not.toBe("エルサレム");
+    expect(world.byId("Q1218")?.name.ja ?? "エルサレム").toBe("エルサレム");
+  });
+
+  it("prefers Wikidata's Japanese name to Natural Earth's, and uses Natural Earth's only where Wikidata has none", async () => {
+    const everything = (await loadCities("capitals", "1m", "100k", "15k")).cities;
+    for (const city of everything) {
+      if (city.name.ja === undefined) continue;
+      expect(["wikidata", "natural-earth", "kuni"], city.id).toContain(city.source.ja);
+    }
+    expect(everything.filter((one) => one.source.ja === "kuni").map((one) => one.id)).toEqual(["Q212938"]);
+    expect(everything.filter((one) => one.source.ja === "natural-earth").length).toBeGreaterThan(100);
+  });
+
   it("has Osaka in Osaka Prefecture, and Sapporo as the capital of Hokkaido", () => {
     const osaka = world.inCountry("JP").find((one) => one.name.en === "Osaka")!;
     expect(osaka.subdivision).toBe("JP-27");

@@ -60,6 +60,11 @@ interface Report {
 }
 
 const FLOOR = 15000;
+// Japanese names written for this package, each with its reason: a Wikidata label that names another place than the item is.
+// A city with one is marked in its row (source bit 8), so that its `source.ja` says "kuni".
+const JA_NAMES: Readonly<Record<string, { ja: string; why: string }>> = {
+  Q212938: { ja: "東エルサレム", why: "East Jerusalem: Wikidata's Japanese label is エルサレム, which names the whole city; the standard Japanese for the eastern part is 東エルサレム." },
+};
 // Wikidata's human settlements include the areas around cities and the units that hold them. An item that no capital and
 // no Natural Earth place stands behind, and whose English label names one of those, is not a city.
 const AREA_NAME = /\b(metropolitan (area|region|municipality|statistical area)|urban (area|agglomeration|region)|agglomeration|conurbation|built-up area|micropolitan)\b|\b(Province|County|Prefecture|Governorate|District|district|Regency|Oblast|Department|Municipality)$|^(County|Province|District|Municipality|City) of /;
@@ -184,11 +189,12 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     const population = wikidataPopulation?.value ?? place?.[6] ?? null;
     // Natural Earth's Japanese name is used only where it is not hiragana for a place outside Japan (うーんルワバ for Umm Ruwaba): a sign of a machine's guess.
     const neJa = place?.[3] != null && (country === "JP" || !/\p{Script=Hiragana}/u.test(place[3])) ? place[3] : null;
-    const ja = jaLabel ?? neJa;
+    const written = JA_NAMES[`Q${number}`]?.ja ?? null;
+    const ja = written ?? jaLabel ?? neJa;
     const native = nativeLabel !== null && nativeLabel !== en ? nativeLabel : null;
     const subdivision = [...new Set(subs)].filter((code) => code.startsWith(`${country}-`) && levels.has(code)).sort((a, b) => levels.get(a)! - levels.get(b)! || (a < b ? -1 : 1))[0] ?? null;
-    // Bit 1: the Japanese name is Natural Earth's; 2: the population is; 4: the point is.
-    const sources = (jaLabel === null && ja !== null ? 1 : 0) | (wikidataPopulation === null && population !== null ? 2 : 0) | (wikidataPoint === null ? 4 : 0);
+    // Bit 1: the Japanese name is Natural Earth's; 2: the population is; 4: the point is; 8: the Japanese name is written for this package (JA_NAMES).
+    const sources = (written !== null ? 8 : jaLabel === null && ja !== null ? 1 : 0) | (wikidataPopulation === null && population !== null ? 2 : 0) | (wikidataPoint === null ? 4 : 0);
     candidates.push({
       number,
       en,
@@ -502,7 +508,7 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     "- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of' or 'City of', unless it is a capital or Natural Earth names it. Some cities with such a name are lost; a city that Natural Earth names is kept.",
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
     "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
-    "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label, else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
+    "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label (always preferred: it is curated by people), else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up; the few written for this package (`JA_NAMES` in `scripts/cities.ts`, each with its reason: East Jerusalem is 東エルサレム, not the whole city's エルサレム) say `kuni` as their source. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
     "",
     "## What was left out",
     "",

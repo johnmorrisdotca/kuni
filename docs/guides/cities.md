@@ -58,7 +58,7 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 - `continent` (`"AS"`, `"EU"`, ...), `country` (ISO 3166-1 alpha-2, two capital letters), `lat`, `lon`, and `subdivision` (the ISO 3166-2 code of its first-level subdivision, or `null`).
 - `population` and `populationDate` (a year, or a day), `null` where no source has a figure.
 - `capital` (`"national"`, `"alternate"`, `"subdivision"` or `null`) and `capitalOf`, the codes it is the capital of (never empty for a capital).
-- `source`: which input each of the point, the population and the Japanese name came from, `"wikidata"` or `"natural-earth"`.
+- `source`: which input each of the point, the population and the Japanese name came from, `"wikidata"`, `"natural-earth"` or, for the few Japanese names written for this package, `"kuni"`. Wikidata's Japanese name is always preferred; Natural Earth's fills only where Wikidata has none.
 
 `id`, `name`, `continent`, `country`, `lat`, `lon`, `population` and `capital` are the fields a page needs to keep a place; everything else is there to draw it well.
 

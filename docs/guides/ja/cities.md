@@ -58,7 +58,7 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 - `continent`（`"AS"`、`"EU"` など）、`country`（ISO 3166-1 alpha-2、大文字2文字）、`lat`、`lon`、`subdivision`（第1階層の行政区画のISO 3166-2コード。なければ `null`）。
 - `population` と `populationDate`（年または日付）。どの出どころにも数値がなければ `null`。
 - `capital`（`"national"`、`"alternate"`、`"subdivision"`、`null`）と `capitalOf`（その都市が首都である国や行政区画のコード。首都なら空ではありません）。
-- `source`：地点、人口、日本語名のそれぞれの出どころ。`"wikidata"` または `"natural-earth"`。
+- `source`：地点、人口、日本語名のそれぞれの出どころ。`"wikidata"`、`"natural-earth"`、またはこのパッケージのために書いた少数の日本語名では `"kuni"`。日本語名はWikidataのものが常に優先され、Natural EarthのものはWikidataにない場合にだけ使われます。
 
 場所を保存するのに必要なのは `id`、`name`、`continent`、`country`、`lat`、`lon`、`population`、`capital` です。そのほかは、きれいに表示するためにあります。
 

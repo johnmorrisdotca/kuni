@@ -6,7 +6,8 @@ import type { Continent } from "./types";
 
 /**
  * Which input a fact in a city's record came from. Wikidata (CC0) is the first source; Natural Earth's populated
- * places (public domain) fill what Wikidata has not got.
+ * places (public domain) fill what Wikidata has not got; "kuni" is a name written for this package, with its reason in
+ * scripts/cities.ts (East Jerusalem is 東エルサレム).
  *
  * @example
  * ```ts
@@ -16,7 +17,7 @@ import type { Continent } from "./types";
  * console.log(value);
  * ```
  */
-type CitySource = "wikidata" | "natural-earth";
+type CitySource = "wikidata" | "natural-earth" | "kuni";
 
 /**
  * One city, as every tier hands it out (frozen): plain numbers and codes, `null` where no source has the fact.
@@ -63,7 +64,7 @@ interface City {
 }
 
 // [item number (or "ne:<number>"), latitude, longitude, population, population date, country, subdivision, en, ja, native, native language,
-//  capital (0 none, 1 national, 2 subdivision, 3 alternate), capital of (space-separated), sources (bit 1: ja from Natural Earth, bit 2:
+//  capital (0 none, 1 national, 2 subdivision, 3 alternate), capital of (space-separated), sources (bit 8: ja written for this package, bit 1: ja from Natural Earth, bit 2:
 //  population from Natural Earth, bit 4: point from Natural Earth)]
 type CityRow = readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number];
 
@@ -86,7 +87,7 @@ const freezeCity = (row: CityRow): City => {
     source: Object.freeze({
       point: sources & 4 ? "natural-earth" : "wikidata",
       population: population === null ? null : sources & 2 ? "natural-earth" : "wikidata",
-      ja: ja === null ? null : sources & 1 ? "natural-earth" : "wikidata",
+      ja: ja === null ? null : sources & 8 ? "kuni" : sources & 1 ? "natural-earth" : "wikidata",
     } as const),
   } satisfies City);
 };

@@ -34,24 +34,24 @@
       "gzip": 2143
     },
     "./cities": {
-      "minified": 5372949,
-      "gzip": 1521805
+      "minified": 5372978,
+      "gzip": 1521827
     },
     "./cities/capitals": {
-      "minified": 560666,
-      "gzip": 192070
+      "minified": 560683,
+      "gzip": 192085
     },
     "./cities/1m": {
-      "minified": 96579,
-      "gzip": 33372
+      "minified": 96590,
+      "gzip": 33382
     },
     "./cities/100k": {
-      "minified": 745375,
-      "gzip": 239969
+      "minified": 745392,
+      "gzip": 239981
     },
     "./places": {
-      "minified": 5539901,
-      "gzip": 1566801
+      "minified": 5539930,
+      "gzip": 1566821
     },
     "./element": {
       "minified": 844874,
