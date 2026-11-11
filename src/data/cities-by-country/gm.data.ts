@@ -5,15 +5,15 @@
 import type { CityRow } from "../../city-rows";
 
 const GM: readonly CityRow[] = [
-  [217568,13.445,-16.675,382096,2013,"GM",null,"Serekunda","セレクンダ",null,null,0,null,0],
-  [916988,13.2667,-16.65,81007,"2013-04-15","GM","GM-W","Brikama","ブリカマ",null,null,2,"GM-W",0],
-  [1200999,13.5667,-15.6,36000,null,"GM","GM-N","Farafenni","ファラフェニ",null,null,0,null,0],
-  [3726,13.4531,-16.5775,31356,2013,"GM","GM-B","Banjul","バンジュール",null,null,1,"GM",0],
-  [455163,13.3858,-16.6428,31133,2008,"GM","GM-W","Lamin, Western Division, Gambia",null,null,null,0,null,0],
-  [972281,13.4667,-15.55,18672,null,"GM","GM-L","Mansa Konko","マンサ・コンコ",null,null,2,"GM-L",2],
-  [153498,13.3167,-14.2167,14380,null,"GM","GM-U","Basse Santa Su","バセ・サンタ・ス",null,null,2,"GM-U",2],
-  [1002786,13.5341,-14.7662,3998,2013,"GM","GM-M","Janjanbureh","ジャンジャンブレア",null,null,2,"GM-M",0],
-  [1478583,13.5,-16.0833,3500,2013,"GM","GM-N","Kerewan","ケレワン",null,null,2,"GM-N",0],
+  [217568,13.445,-16.675,382096,2013,"GM",null,"Serekunda","セレクンダ",null,null,0,null,0,"ghsl:40","Serrekunda",1313465,2025],
+  [916988,13.2667,-16.65,81007,"2013-04-15","GM","GM-W","Brikama","ブリカマ",null,null,2,"GM-W",0,"ghsl:221","Brikama",213626,2025],
+  [153498,13.3167,-14.2167,14380,null,"GM","GM-U","Basse Santa Su","バセ・サンタ・ス",null,null,2,"GM-U",2,"ghsl:384","Basse Santa Su",64317,2025],
+  [1200999,13.5667,-15.6,36000,null,"GM","GM-N","Farafenni","ファラフェニ",null,null,0,null,0,null],
+  [3726,13.4531,-16.5775,31356,2013,"GM","GM-B","Banjul","バンジュール",null,null,1,"GM",0,217568],
+  [455163,13.3858,-16.6428,31133,2008,"GM","GM-W","Lamin, Western Division, Gambia",null,null,null,0,null,0,217568],
+  [972281,13.4667,-15.55,18672,null,"GM","GM-L","Mansa Konko","マンサ・コンコ",null,null,2,"GM-L",2,null],
+  [1002786,13.5341,-14.7662,3998,2013,"GM","GM-M","Janjanbureh","ジャンジャンブレア",null,null,2,"GM-M",0,null],
+  [1478583,13.5,-16.0833,3500,2013,"GM","GM-N","Kerewan","ケレワン",null,null,2,"GM-N",0,null],
 ];
 
 export { GM };

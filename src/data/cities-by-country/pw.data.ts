@@ -5,17 +5,17 @@
 import type { CityRow } from "../../city-rows";
 
 const PW: readonly CityRow[] = [
-  [527748,7.3433,134.4804,8744,2013,"PW","PW-150","Koror","コロール","コロール","ja",2,"PW-150",0],
-  [2560228,7.0333,134.25,520,2013,"PW","PW-350","Kloulklubed","クルルクベド","クルルクベド","ja",2,"PW-350",0],
-  [154002,7.4933,134.6342,299,2012,"PW","PW-212","Melekeok","マルキョク","マルキョク","ja",2,"PW-212",0],
-  [2868400,5.326,132.2199,42,2014,"PW","PW-370","Dongosaru","ドンゴサル","ドンゴサル","ja",2,"PW-370",0],
-  [515229,7.5006,134.6242,0,null,"PW",null,"Ngerulmud","ンゲルルムッド","ンゲルルムッド","ja",1,"PW",0],
-  [2456642,3.0042,131.122,null,null,"PW","PW-050","Hatohobei",null,null,null,2,"PW-050",0],
-  [2640394,7.5333,134.5333,null,null,"PW",null,"Imeong",null,null,null,2,"PW-227",0],
-  [2740497,6.9014,134.1294,null,null,"PW","PW-010","Ngeremasch","ゲレマッシュ","ゲレマッシュ","ja",2,"PW-010",0],
-  [3001462,7.7,134.6333,null,null,"PW",null,"Mengellang",null,null,null,2,"PW-218",0],
-  [7022290,7.3667,134.5167,null,null,"PW",null,"Ngetkib","ネゲキブ","ネゲキブ","ja",2,"PW-004",0],
-  [49278647,7.5546,134.6361,null,null,"PW",null,"Ngerkeai",null,null,null,2,"PW-228",0],
+  [527748,7.3433,134.4804,8744,2013,"PW","PW-150","Koror","コロール","コロール","ja",2,"PW-150",0,null],
+  [2560228,7.0333,134.25,520,2013,"PW","PW-350","Kloulklubed","クルルクベド","クルルクベド","ja",2,"PW-350",0,null],
+  [154002,7.4933,134.6342,299,2012,"PW","PW-212","Melekeok","マルキョク","マルキョク","ja",2,"PW-212",0,null],
+  [2868400,5.326,132.2199,42,2014,"PW","PW-370","Dongosaru","ドンゴサル","ドンゴサル","ja",2,"PW-370",0,null],
+  [515229,7.5006,134.6242,0,null,"PW",null,"Ngerulmud","ンゲルルムッド","ンゲルルムッド","ja",1,"PW",0,null],
+  [2456642,3.0042,131.122,null,null,"PW","PW-050","Hatohobei",null,null,null,2,"PW-050",0,null],
+  [2640394,7.5333,134.5333,null,null,"PW",null,"Imeong",null,null,null,2,"PW-227",0,null],
+  [2740497,6.9014,134.1294,null,null,"PW","PW-010","Ngeremasch","ゲレマッシュ","ゲレマッシュ","ja",2,"PW-010",0,null],
+  [3001462,7.7,134.6333,null,null,"PW",null,"Mengellang",null,null,null,2,"PW-218",0,null],
+  [7022290,7.3667,134.5167,null,null,"PW",null,"Ngetkib","ネゲキブ","ネゲキブ","ja",2,"PW-004",0,null],
+  [49278647,7.5546,134.6361,null,null,"PW",null,"Ngerkeai",null,null,null,2,"PW-228",0,null],
 ];
 
 export { PW };

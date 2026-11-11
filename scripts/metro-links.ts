@@ -19,6 +19,52 @@ const OECD_AREAS: Readonly<Record<string, { city: number; why: string }>> = {
   MEX07F: { city: 189128, why: "Leon: León de Los Aldama." },
   MEX08F: { city: 173121, why: "Queretaro: Santiago de Querétaro." },
   ISR17F: { city: 1218, why: "Jerusalem: Wikidata gives the city no single country, so it is set by its item." },
+  MEX10F: { city: 26590, why: "Juarez: Ciudad Juárez." },
+  MEX28F: { city: 8969, why: "Benito Juarez: the municipality of Cancún, not Ciudad Benito Juárez in Nuevo León." },
+  MEX43F: { city: 139242, why: "Guadalupe: the Zacatecas-Guadalupe area, named for Zacatecas, the state's capital; not Guadalupe in Nuevo León." },
+  ES008F: { city: 11974, why: "Las Palmas: Las Palmas de Gran Canaria." },
 };
 
-export { METRO_LINKS, OECD_AREAS };
+// A city inside another city's urban area that neither the source's list nor nearness finds: city item, the head's item, reason.
+const INSIDE_AREAS: Readonly<Record<string, { head: number; why: string }>> = {
+  Q1009253: { head: 34932, why: "Ipswich, Queensland: in Greater Brisbane (the ABS's Greater Capital City Statistical Area), 35 km from the centre." },
+  Q2944411: { head: 3130, why: "Central Coast, New South Wales: in Greater Sydney (the ABS's Greater Capital City Statistical Area)." },
+  Q18419: { head: 60, why: "Brooklyn: a borough of New York City." },
+  Q18424: { head: 60, why: "Queens: a borough of New York City." },
+  Q11299: { head: 60, why: "Manhattan: a borough of New York City." },
+  Q18426: { head: 60, why: "The Bronx: a borough of New York City." },
+  Q18432: { head: 60, why: "Staten Island: a borough of New York City." },
+};
+
+// A country's name as GHSL writes it (the UN's) where it is none of kuni's names for the country.
+// Three are written as GHSL's file has them, its UTF-8 read as Latin-1 ("CÃ´te d'Ivoire").
+const GHSL_COUNTRY_NAMES: Readonly<Record<string, string>> = {
+  "United States of America": "US",
+  "Russian Federation": "RU",
+  "Democratic Republic of the Congo": "CD",
+  "Iran (Islamic Republic of)": "IR",
+  "Republic of Korea": "KR",
+  "China, Taiwan Province of China": "TW",
+  "Venezuela (Bolivarian Republic of)": "VE",
+  "United Republic of Tanzania": "TZ",
+  "Dem. People's Republic of Korea": "KP",
+  "Syrian Arab Republic": "SY",
+  "CÃ´te d'Ivoire": "CI",
+  "Bolivia (Plurinational State of)": "BO",
+  "State of Palestine": "PS",
+  "Republic of Moldova": "MD",
+  "Kosovo (under UNSC res. 1244)": "XK",
+  "Bosnia and Herzegovina": "BA",
+  "RÃ©union": "RE",
+  "Lao People's Democratic Republic": "LA",
+  "CuraÃ§ao": "CW",
+  "Sao Tome and Principe": "ST",
+  "Brunei Darussalam": "BN",
+};
+
+// A GHSL urban centre whose first name a city has is not that city's: centre id, city item, reason.
+const GHSL_CENTRES: Readonly<Record<number, { city: number; why: string }>> = {
+  7963: { city: 1353, why: "Delhi's centre: GHSL names it New Delhi, the district; the city is Delhi." },
+};
+
+export { GHSL_CENTRES, GHSL_COUNTRY_NAMES, INSIDE_AREAS, METRO_LINKS, OECD_AREAS };

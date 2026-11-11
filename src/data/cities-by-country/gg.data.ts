@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GG: readonly CityRow[] = [
-  [174262,49.46,-2.5519,null,null,"GG",null,"Saint Peter Port","セント・ピーター・ポート","Saint-Pierre-Port","fr",1,"GG",0],
+  [174262,49.46,-2.5519,null,null,"GG",null,"Saint Peter Port","セント・ピーター・ポート","Saint-Pierre-Port","fr",1,"GG",0,null],
 ];
 
 export { GG };

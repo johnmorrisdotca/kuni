@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const LU: readonly CityRow[] = [
-  [1842,49.6114,6.13,137678,2026,"LU","LU-LU","Luxembourg","ルクセンブルク市","Luxemburg","de",1,"LU",0,"oecd:LU001F","Luxembourg functional urban area",602556,2022],
+  [1842,49.6114,6.13,137678,2026,"LU","LU-LU","Luxembourg","ルクセンブルク市","Luxemburg","de",1,"LU",0,"oecd:LU001F","Luxembourg",602556,2022],
   [16010,49.4969,5.9806,38275,2026,"LU","LU-ES","Esch-sur-Alzette","エシュ＝シュル＝アルゼット","Esch an der Alzette","de",2,"LU-ES",0],
   [20969331,49.4806,6.0875,21953,2023,"LU","LU-ES","Dudelange",null,"Düdelingen","de",0,null,0],
   [4844168,49.5242,5.8914,16968,2023,"LU","LU-ES","Differdange",null,null,null,0,null,0],

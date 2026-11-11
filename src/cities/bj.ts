@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/bj";
  *
  * console.log(cities.length);      // 31
- * console.log(cities[0].name.en);  // "Banikoara"
+ * console.log(cities[0].name.en);  // "Cotonou"
  * console.log(cities[0].country);  // "BJ"
  * ```
  */

@@ -5,13 +5,13 @@
 import type { CityRow } from "../../city-rows";
 
 const FI: readonly CityRow[] = [
-  [1757,60.1708,24.9375,694392,"2025-12-31","FI","FI-18","Helsinki","ヘルシンキ",null,null,1,"FI",0,"oecd:FI001F","Helsinki functional urban area",1773305,2024],
-  [40840,61.4981,23.76,255333,"2024-02-29","FI","FI-11","Tampere","タンペレ",null,null,2,"FI-11",0,"oecd:FI002F","Tampere functional urban area",477107,2024],
-  [38511,60.4517,22.2669,209633,"2025-12-31","FI","FI-19","Turku","トゥルク",null,null,2,"FI-19",0,"oecd:FI003F","Turku functional urban area",381936,2024],
-  [47048,65.0142,25.4719,217469,"2025-12-31","FI","FI-14","Oulu","オウル",null,null,2,"FI-14",0,"oecd:FI004F","Oulu functional urban area",276456,2024],
-  [134620,62.2403,25.7444,149895,"2025-12-31","FI","FI-08","Jyväskylä","ユヴァスキュラ",null,null,2,"FI-08",0,"oecd:FI009F","Jyväskylä functional urban area",192753,2024],
-  [28911,60.9804,25.655,121832,"2025-12-31","FI","FI-16","Lahti","ラハティ",null,null,2,"FI-16",0,"oecd:FI007F","Lahti functional urban area",189648,2024],
-  [162279,62.8925,27.6783,126572,"2025-12-31","FI","FI-15","Kuopio","クオピオ",null,null,2,"FI-15",0,"oecd:FI008F","Kuopio functional urban area",168826,2024],
+  [1757,60.1708,24.9375,694392,"2025-12-31","FI","FI-18","Helsinki","ヘルシンキ",null,null,1,"FI",0,"oecd:FI001F","Helsinki",1773305,2024],
+  [40840,61.4981,23.76,255333,"2024-02-29","FI","FI-11","Tampere","タンペレ",null,null,2,"FI-11",0,"oecd:FI002F","Tampere",477107,2024],
+  [38511,60.4517,22.2669,209633,"2025-12-31","FI","FI-19","Turku","トゥルク",null,null,2,"FI-19",0,"oecd:FI003F","Turku",381936,2024],
+  [47048,65.0142,25.4719,217469,"2025-12-31","FI","FI-14","Oulu","オウル",null,null,2,"FI-14",0,"oecd:FI004F","Oulu",276456,2024],
+  [134620,62.2403,25.7444,149895,"2025-12-31","FI","FI-08","Jyväskylä","ユヴァスキュラ",null,null,2,"FI-08",0,"oecd:FI009F","Jyväskylä",192753,2024],
+  [28911,60.9804,25.655,121832,"2025-12-31","FI","FI-16","Lahti","ラハティ",null,null,2,"FI-16",0,"oecd:FI007F","Lahti",189648,2024],
+  [162279,62.8925,27.6783,126572,"2025-12-31","FI","FI-15","Kuopio","クオピオ",null,null,2,"FI-15",0,"oecd:FI008F","Kuopio",168826,2024],
   [180233,61.4867,21.7975,83010,"2025-12-31","FI","FI-17","Pori","ポリ",null,null,2,"FI-17",0],
   [186237,62.6,29.7639,79129,"2025-12-31","FI","FI-13","Joensuu","ヨエンスー",null,null,2,"FI-13",0],
   [204382,60.8681,26.7042,78824,"2024-02-29","FI","FI-09","Kouvola","コウヴォラ",null,null,0,null,0],

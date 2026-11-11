@@ -5,10 +5,10 @@
 import type { CityRow } from "../../city-rows";
 
 const DK: readonly CityRow[] = [
-  [1748,55.6761,12.5689,667099,2025,"DK","DK-84","Copenhagen","コペンハーゲン","København","da",1,"DK",0,"oecd:DK001F","København functional urban area",2294858,2025],
-  [25319,56.1564,10.2097,290598,2023,"DK","DK-82","Aarhus","オーフス",null,null,0,null,0,"oecd:DK002F","Århus functional urban area",556637,2025],
-  [25331,55.4,10.3833,185480,2025,"DK","DK-83","Odense","オーデンセ",null,null,0,null,0,"oecd:DK003F","Odense functional urban area",389126,2025],
-  [25410,57.05,9.9167,121878,2025,"DK","DK-81","Aalborg","オールボー",null,null,2,"DK-81",0,"oecd:DK004F","Aalborg functional urban area",330191,2025],
+  [1748,55.6761,12.5689,667099,2025,"DK","DK-84","Copenhagen","コペンハーゲン","København","da",1,"DK",0,"oecd:DK001F","København",2294858,2025],
+  [25319,56.1564,10.2097,290598,2023,"DK","DK-82","Aarhus","オーフス",null,null,0,null,0,"oecd:DK002F","Århus",556637,2025],
+  [25331,55.4,10.3833,185480,2025,"DK","DK-83","Odense","オーデンセ",null,null,0,null,0,"oecd:DK003F","Odense",389126,2025],
+  [25410,57.05,9.9167,121878,2025,"DK","DK-81","Aalborg","オールボー",null,null,2,"DK-81",0,"oecd:DK004F","Aalborg",330191,2025],
   [26234,55.4708,8.4514,71554,2025,"DK","DK-83","Esbjerg","エスビャウ",null,null,0,null,0],
   [27168,56.4569,10.0392,64674,2026,"DK","DK-82","Randers","ラナース",null,null,0,null,0],
   [190235,55.8619,9.8519,64418,2025,"DK","DK-82","Horsens","ホーセンス",null,null,0,null,0],

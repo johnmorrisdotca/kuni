@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const FM: readonly CityRow[] = [
-  [42751,6.9178,158.185,6227,null,"FM","FM-PNI","Palikir","パリキール",null,null,1,"FM",0],
-  [514165,6.9639,158.2081,6074,2010,"FM","FM-PNI","Kolonia","コロニア",null,null,2,"FM-PNI",0],
-  [787588,5.3258,163.0086,2591,2000,"FM","FM-KSA","Tofol","トフォール",null,null,2,"FM-KSA",0],
-  [631152,9.5167,138.1333,null,null,"FM","FM-YAP","Colonia","コロニア",null,null,2,"FM-YAP",0],
-  [1009384,7.44,151.8689,null,null,"FM","FM-TRK","Weno","ウェノ",null,null,2,"FM-TRK",0],
+  [42751,6.9178,158.185,6227,null,"FM","FM-PNI","Palikir","パリキール",null,null,1,"FM",0,null],
+  [514165,6.9639,158.2081,6074,2010,"FM","FM-PNI","Kolonia","コロニア",null,null,2,"FM-PNI",0,null],
+  [787588,5.3258,163.0086,2591,2000,"FM","FM-KSA","Tofol","トフォール",null,null,2,"FM-KSA",0,null],
+  [631152,9.5167,138.1333,null,null,"FM","FM-YAP","Colonia","コロニア",null,null,2,"FM-YAP",0,null],
+  [1009384,7.44,151.8689,null,null,"FM","FM-TRK","Weno","ウェノ",null,null,2,"FM-TRK",0,null],
 ];
 
 export { FM };

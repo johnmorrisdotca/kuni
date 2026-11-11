@@ -48,7 +48,7 @@ import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
 import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
-import { OECD_AREAS } from "./metro-links.ts";
+import { GHSL_CENTRES, GHSL_COUNTRY_NAMES, INSIDE_AREAS, OECD_AREAS } from "./metro-links.ts";
 
 type Json = Record<string, unknown>;
 
@@ -974,6 +974,12 @@ const writeCities = (): void => {
   const urbanFile = manifest.files.find((file) => file.path.startsWith("urban-areas-"));
   if (urbanFile === undefined) throw new Error("No urban areas in data-sources/sources.json: run node scripts/fetch-urban.ts");
   const urban = JSON.parse(readSource(manifest, urbanFile.path).text) as UrbanSnapshot;
+  urban.ghsl = JSON.parse(readSource(manifest, "ghsl-ucdb-r2024a.json").text) as NonNullable<UrbanSnapshot["ghsl"]>;
+  // GHSL names a country by the UN's English name: matched to kuni's by its name, short name or aliases (folded).
+  const fold = (text: string): string => text.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+  const countryOfName = new Map<string, string>();
+  for (const country of countries) for (const name of [country.en, country.shortEn, ...country.aliases]) if (name !== null) countryOfName.set(fold(name), country.alpha2);
+  for (const [name, alpha2] of Object.entries(GHSL_COUNTRY_NAMES)) countryOfName.set(fold(name), alpha2);
   const { rows, tiers, report } = buildCities({
     snapshot,
     naturalEarth,
@@ -981,6 +987,9 @@ const writeCities = (): void => {
     statcan,
     urban,
     oecdNames: Object.fromEntries(Object.entries(OECD_AREAS).map(([code, { city }]) => [code, city])),
+    insideAreas: Object.fromEntries(Object.entries(INSIDE_AREAS).map(([city, { head }]) => [city, head])),
+    countryOfName,
+    ghslNames: Object.fromEntries(Object.entries(GHSL_CENTRES).map(([id, { city }]) => [Number(id), city])),
     levels: new Map(subdivisions.filter((record) => record.level === 1).map((record) => [record.code, record.level])),
     countries: new Set(countries.map((country) => country.alpha2)),
     subdivisions: new Set(subdivisions.map((record) => record.code)),

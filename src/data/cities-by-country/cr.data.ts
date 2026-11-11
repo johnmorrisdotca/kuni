@@ -5,20 +5,20 @@
 import type { CityRow } from "../../city-rows";
 
 const CR: readonly CityRow[] = [
-  [3070,9.9327,-84.0796,335007,2025,"CR","CR-SJ","San José","サンホセ",null,null,1,"CR",0,7414547,"Greater Metropolitan Area",2576374,2022],
-  [30620,10.0022,-83.084,71514,2022,"CR","CR-L","Limón","リモン",null,null,2,"CR-L",0],
-  [1387526,10.6296,-85.4383,65922,2022,"CR","CR-G","Liberia","リベリア",null,null,2,"CR-G",0],
-  [787675,10.3441,-84.4199,46975,2022,"CR","CR-A","Quesada","ケサダ",null,null,0,null,0],
-  [2518620,9.3403,-83.7338,45324,2022,"CR","CR-SJ","San Isidro de El General","サン・イシドロ・デ・エル・ヘネラル",null,null,0,null,0],
-  [37104,10.0165,-84.2139,44374,2022,"CR","CR-A","Alajuela","アラフエラ",null,null,2,"CR-A",0],
-  [30687,9.9773,-84.8346,41528,2011,"CR","CR-P","Puntarenas","プンタレナス",null,null,2,"CR-P",0],
-  [14108797,9.8967,-84.0706,31783,2022,"CR","CR-SJ","Desamparados",null,null,null,0,null,0],
-  [3947434,9.9609,-84.0731,25978,2022,"CR","CR-SJ","San Juan","ティバス",null,null,0,null,0],
-  [2412778,9.9771,-84.7443,23953,2022,"CR","CR-P","El Roble",null,null,null,0,null,0],
-  [1706524,10.4448,-85.104,23624,2022,"CR","CR-G","Cañas","カーニャス",null,null,0,null,1],
-  [30617,9.8643,-83.9207,22775,2022,"CR","CR-C","Cartago","カルタゴ (コスタリカ)",null,null,2,"CR-C",0],
-  [1001817,9.1985,-83.2816,22619,2022,"CR","CR-P","Buenos Aires",null,null,null,0,null,0],
-  [30616,9.9984,-84.1171,16686,2022,"CR","CR-H","Heredia","エレディア",null,null,2,"CR-H",0],
+  [3070,9.9327,-84.0796,335007,2025,"CR","CR-SJ","San José","サンホセ",null,null,1,"CR",0,"ghsl:363","San José",2272572,2025],
+  [30617,9.8643,-83.9207,22775,2022,"CR","CR-C","Cartago","カルタゴ (コスタリカ)",null,null,2,"CR-C",0,"ghsl:513","Cartago",189383,2025],
+  [2412778,9.9771,-84.7443,23953,2022,"CR","CR-P","El Roble",null,null,null,0,null,0,"ghsl:200","Barranca",65405,2025],
+  [1387526,10.6296,-85.4383,65922,2022,"CR","CR-G","Liberia","リベリア",null,null,2,"CR-G",0,"ghsl:12","Liberia",52864,2025],
+  [30620,10.0022,-83.084,71514,2022,"CR","CR-L","Limón","リモン",null,null,2,"CR-L",0,"ghsl:655","Limón",50579,2025],
+  [787675,10.3441,-84.4199,46975,2022,"CR","CR-A","Quesada","ケサダ",null,null,0,null,0,null],
+  [2518620,9.3403,-83.7338,45324,2022,"CR","CR-SJ","San Isidro de El General","サン・イシドロ・デ・エル・ヘネラル",null,null,0,null,0,null],
+  [37104,10.0165,-84.2139,44374,2022,"CR","CR-A","Alajuela","アラフエラ",null,null,2,"CR-A",0,3070],
+  [30687,9.9773,-84.8346,41528,2011,"CR","CR-P","Puntarenas","プンタレナス",null,null,2,"CR-P",0,null],
+  [14108797,9.8967,-84.0706,31783,2022,"CR","CR-SJ","Desamparados",null,null,null,0,null,0,3070],
+  [3947434,9.9609,-84.0731,25978,2022,"CR","CR-SJ","San Juan","ティバス",null,null,0,null,0,3070],
+  [1706524,10.4448,-85.104,23624,2022,"CR","CR-G","Cañas","カーニャス",null,null,0,null,1,null],
+  [1001817,9.1985,-83.2816,22619,2022,"CR","CR-P","Buenos Aires",null,null,null,0,null,0,null],
+  [30616,9.9984,-84.1171,16686,2022,"CR","CR-H","Heredia","エレディア",null,null,2,"CR-H",0,3070],
 ];
 
 export { CR };

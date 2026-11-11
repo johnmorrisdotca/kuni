@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const SX: readonly CityRow[] = [
-  [30958,18.0242,-63.0433,1338,2006,"SX",null,"Philipsburg","フィリップスブルフ",null,null,1,"SX",0],
+  [30958,18.0242,-63.0433,1338,2006,"SX",null,"Philipsburg","フィリップスブルフ",null,null,1,"SX",0,null],
 ];
 
 export { SX };

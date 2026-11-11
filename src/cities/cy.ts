@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/cy";
  *
  * console.log(cities.length);      // 21
- * console.log(cities[0].name.en);  // "Limassol"
+ * console.log(cities[0].name.en);  // "Lakatamia"
  * console.log(cities[0].country);  // "CY"
  * ```
  */

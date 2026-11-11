@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const FK: readonly CityRow[] = [
-  [12245,-51.6939,-57.8496,2538,2021,"FK",null,"Stanley","スタンリー",null,null,1,"FK",0],
+  [12245,-51.6939,-57.8496,2538,2021,"FK",null,"Stanley","スタンリー",null,null,1,"FK",0,null],
 ];
 
 export { FK };

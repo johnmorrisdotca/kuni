@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const RE: readonly CityRow[] = [
-  [47045,-20.8789,55.4481,155634,2023,"RE",null,"Saint-Denis","サン＝ドニ",null,null,1,"RE",0],
+  [47045,-20.8789,55.4481,155634,2023,"RE",null,"Saint-Denis","サン＝ドニ",null,null,1,"RE",0,"oecd:FR030F","Saint-Denis",323655,2022],
 ];
 
 export { RE };

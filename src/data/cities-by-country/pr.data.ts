@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const PR: readonly CityRow[] = [
-  [41211,18.4653,-66.1167,342259,"2020-04-01","PR",null,"San Juan","サン・フアン",null,null,1,"PR",0],
+  [41211,18.4653,-66.1167,342259,"2020-04-01","PR",null,"San Juan","サン・フアン",null,null,1,"PR",0,null],
 ];
 
 export { PR };

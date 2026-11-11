@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const GL: readonly CityRow[] = [
-  [226,64.175,-51.7333,18326,2020,"GL","GL-SM","Nuuk","ヌーク",null,null,1,"GL",0],
-  [208098,66.9389,-53.6722,5582,2020,"GL","GL-QE","Sisimiut","シシミュート",null,null,2,"GL-QE",0],
-  [191047,69.2167,-51.1,4737,2022,"GL","GL-AV","Ilulissat","イルリサット",null,null,2,"GL-AV",0],
-  [211218,68.7097,-52.8694,3069,2020,"GL","GL-QT","Aasiaat","アシアート",null,null,2,"GL-QT",0],
-  [221203,60.7167,-46.0333,3050,2020,"GL","GL-KU","Qaqortoq","カコトック",null,null,2,"GL-KU",0],
+  [226,64.175,-51.7333,18326,2020,"GL","GL-SM","Nuuk","ヌーク",null,null,1,"GL",0,null],
+  [208098,66.9389,-53.6722,5582,2020,"GL","GL-QE","Sisimiut","シシミュート",null,null,2,"GL-QE",0,null],
+  [191047,69.2167,-51.1,4737,2022,"GL","GL-AV","Ilulissat","イルリサット",null,null,2,"GL-AV",0,null],
+  [211218,68.7097,-52.8694,3069,2020,"GL","GL-QT","Aasiaat","アシアート",null,null,2,"GL-QT",0,null],
+  [221203,60.7167,-46.0333,3050,2020,"GL","GL-KU","Qaqortoq","カコトック",null,null,2,"GL-KU",0,null],
 ];
 
 export { GL };

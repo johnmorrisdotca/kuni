@@ -5,22 +5,22 @@
 import type { CityRow } from "../../city-rows";
 
 const LR: readonly CityRow[] = [
-  [3748,6.3106,-10.8047,1761032,2022,"LR","LR-MO","Monrovia","モンロビア",null,null,1,"LR",0],
-  [269222,5.8811,-10.0447,48315,null,"LR","LR-GB","Buchanan","ブキャナン",null,null,2,"LR-GB",2],
-  [1968465,7.3622,-8.7061,47129,2022,"LR","LR-NI","Sanniquellie","サニケリエ",null,null,2,"LR-NI",0],
-  [985291,7.0022,-9.4667,34046,2008,"LR","LR-BG","Gbarnga","バルンガ",null,null,2,"LR-BG",0],
-  [426891,6.53,-10.3517,33945,null,"LR","LR-MG","Kakata","カカタ",null,null,2,"LR-MG",2],
-  [1019486,4.3667,-7.7167,32661,null,"LR","LR-MY","Harper","ハーパー",null,null,2,"LR-MY",2],
-  [1024888,8.4167,-9.75,26594,null,"LR","LR-LO","Voinjama","ボインジャマ",null,null,2,"LR-LO",2],
-  [231884,6.0667,-8.1333,25678,null,"LR","LR-GG","Zwedru","ズウェドル",null,null,2,"LR-GG",2],
-  [1022899,5.0167,-9.0333,17574,2013,"LR","LR-SI","Greenville","グリーンビル",null,null,2,"LR-SI",0],
-  [1024906,6.8667,-10.8167,13360,2013,"LR","LR-BM","Tubmanburg","タブマンバーグ",null,null,2,"LR-BM",0],
-  [1024892,6.75,-11.3667,11969,null,"LR","LR-CM","Robertsport","ロバーツポート",null,null,2,"LR-CM",2],
-  [818201,6.4456,-10.6097,4089,2008,"LR","LR-MO","Bensonville","ベンソンビル",null,null,2,"LR-MO",0],
-  [807963,4.6797,-8.2339,2641,2013,"LR","LR-GK","Barclayville","バークレービル",null,null,2,"LR-GK",0],
-  [1057594,5.4697,-9.5817,2578,null,"LR","LR-RI","River Cess","リバーセス",null,null,2,"LR-RI",2],
-  [598740,5.1964,-7.8756,null,null,"LR","LR-RG","Fish Town","フィッシュタウン",null,null,2,"LR-RG",0],
-  [893242,7.0667,-10.4875,null,null,"LR","LR-GP","Bopolu","ボポル",null,null,2,"LR-GP",0],
+  [3748,6.3106,-10.8047,1761032,2022,"LR","LR-MO","Monrovia","モンロビア",null,null,1,"LR",0,"ghsl:50","Monrovia",2049818,2025],
+  [269222,5.8811,-10.0447,48315,null,"LR","LR-GB","Buchanan","ブキャナン",null,null,2,"LR-GB",2,"ghsl:676","Buchanan",79368,2025],
+  [426891,6.53,-10.3517,33945,null,"LR","LR-MG","Kakata","カカタ",null,null,2,"LR-MG",2,"ghsl:228","Kakata",78566,2025],
+  [985291,7.0022,-9.4667,34046,2008,"LR","LR-BG","Gbarnga","バルンガ",null,null,2,"LR-BG",0,"ghsl:935","Gbarnga",77865,2025],
+  [1024888,8.4167,-9.75,26594,null,"LR","LR-LO","Voinjama","ボインジャマ",null,null,2,"LR-LO",2,"ghsl:809","Voinjama",71959,2025],
+  [1968465,7.3622,-8.7061,47129,2022,"LR","LR-NI","Sanniquellie","サニケリエ",null,null,2,"LR-NI",0,null],
+  [1019486,4.3667,-7.7167,32661,null,"LR","LR-MY","Harper","ハーパー",null,null,2,"LR-MY",2,null],
+  [231884,6.0667,-8.1333,25678,null,"LR","LR-GG","Zwedru","ズウェドル",null,null,2,"LR-GG",2,null],
+  [1022899,5.0167,-9.0333,17574,2013,"LR","LR-SI","Greenville","グリーンビル",null,null,2,"LR-SI",0,null],
+  [1024906,6.8667,-10.8167,13360,2013,"LR","LR-BM","Tubmanburg","タブマンバーグ",null,null,2,"LR-BM",0,null],
+  [1024892,6.75,-11.3667,11969,null,"LR","LR-CM","Robertsport","ロバーツポート",null,null,2,"LR-CM",2,null],
+  [818201,6.4456,-10.6097,4089,2008,"LR","LR-MO","Bensonville","ベンソンビル",null,null,2,"LR-MO",0,null],
+  [807963,4.6797,-8.2339,2641,2013,"LR","LR-GK","Barclayville","バークレービル",null,null,2,"LR-GK",0,null],
+  [1057594,5.4697,-9.5817,2578,null,"LR","LR-RI","River Cess","リバーセス",null,null,2,"LR-RI",2,null],
+  [598740,5.1964,-7.8756,null,null,"LR","LR-RG","Fish Town","フィッシュタウン",null,null,2,"LR-RG",0,null],
+  [893242,7.0667,-10.4875,null,null,"LR","LR-GP","Bopolu","ボポル",null,null,2,"LR-GP",0,null],
 ];
 
 export { LR };

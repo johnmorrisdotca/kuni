@@ -5,12 +5,12 @@
 import type { CityRow } from "../../city-rows";
 
 const LT: readonly CityRow[] = [
-  [216,54.6872,25.28,619405,"2026-07-01","LT",null,"Vilnius","ヴィルニュス",null,null,1,"LT",0,"oecd:LT001F","Vilnius functional urban area",1039279,2025],
-  [4115712,54.9,23.9333,305120,2023,"LT",null,"Kaunas","カウナス",null,null,2,"LT-15 LT-16 LT-KU",0,"oecd:LT002F","Kaunas functional urban area",519221,2025],
-  [776965,55.7125,21.135,158420,2023,"LT",null,"Klaipėda","クライペダ",null,null,2,"LT-20 LT-KL",0,"oecd:LT005F","Klaipėda functional urban area",267661,2025],
-  [134712,55.9281,23.3167,104300,2023,"LT",null,"Šiauliai","シャウレイ",null,null,2,"LT-43 LT-44 LT-SA",0,"oecd:LT006F","Šiauliai functional urban area",152138,2025],
-  [1719466,55.725,24.3639,87913,2023,"LT",null,"Panevėžys","パネヴェジース",null,null,2,"LT-32 LT-33 LT-PN",0,"oecd:LT003F","Panevėžys functional urban area",121198,2025],
-  [450625,54.4,24.05,51856,2023,"LT",null,"Alytus","アリートゥス",null,null,2,"LT-02 LT-03 LT-AL",0,"oecd:LT004F","Alytus functional urban area",76120,2025],
+  [216,54.6872,25.28,619405,"2026-07-01","LT",null,"Vilnius","ヴィルニュス",null,null,1,"LT",0,"oecd:LT001F","Vilnius",1039279,2025],
+  [4115712,54.9,23.9333,305120,2023,"LT",null,"Kaunas","カウナス",null,null,2,"LT-15 LT-16 LT-KU",0,"oecd:LT002F","Kaunas",519221,2025],
+  [776965,55.7125,21.135,158420,2023,"LT",null,"Klaipėda","クライペダ",null,null,2,"LT-20 LT-KL",0,"oecd:LT005F","Klaipėda",267661,2025],
+  [134712,55.9281,23.3167,104300,2023,"LT",null,"Šiauliai","シャウレイ",null,null,2,"LT-43 LT-44 LT-SA",0,"oecd:LT006F","Šiauliai",152138,2025],
+  [1719466,55.725,24.3639,87913,2023,"LT",null,"Panevėžys","パネヴェジース",null,null,2,"LT-32 LT-33 LT-PN",0,"oecd:LT003F","Panevėžys",121198,2025],
+  [450625,54.4,24.05,51856,2023,"LT",null,"Alytus","アリートゥス",null,null,2,"LT-02 LT-03 LT-AL",0,"oecd:LT004F","Alytus",76120,2025],
   [1351046,54.5567,23.3544,36807,2023,"LT",null,"Marijampolė","マリヤーンポレ",null,null,2,"LT-25 LT-MR",0],
   [203675,56.3111,22.3361,33249,2023,"LT",null,"Mažeikiai","マジェイケイ",null,null,2,"LT-26",0],
   [743218,55.0722,24.2806,27134,2023,"LT",null,"Jonava","ヨナヴァ",null,null,2,"LT-10",0],

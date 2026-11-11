@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const IM: readonly CityRow[] = [
-  [18569,54.15,-4.4775,26677,2021,"IM",null,"Douglas","ダグラス","Doolish","gv",1,"IM",0],
+  [18569,54.15,-4.4775,26677,2021,"IM",null,"Douglas","ダグラス","Doolish","gv",1,"IM",0,null],
 ];
 
 export { IM };

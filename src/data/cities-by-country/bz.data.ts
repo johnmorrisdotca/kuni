@@ -5,14 +5,14 @@
 import type { CityRow } from "../../city-rows";
 
 const BZ: readonly CityRow[] = [
-  [108223,17.4986,-88.1886,63999,2022,"BZ","BZ-BZ","Belize City","ベリーズシティ",null,null,2,"BZ-BZ",0],
-  [724815,17.1588,-89.0696,26151,2018,"BZ","BZ-CY","San Ignacio","サン・イグナシオ",null,null,2,"BZ-CY",0],
-  [3043,17.25,-88.7675,20754,2022,"BZ","BZ-CY","Belmopan","ベルモパン",null,null,1,"BZ",0],
-  [677300,17.9214,-87.9611,15456,2022,"BZ","BZ-BZ","San Pedro Town","サン・ペドロ",null,null,0,null,0],
-  [882964,18.075,-88.5583,14553,2022,"BZ","BZ-OW","Orange Walk Town","オレンジウォーク",null,null,2,"BZ-OW",0],
-  [888300,16.9663,-88.2242,9927,2022,"BZ","BZ-SC","Dangriga","ダンリガ",null,null,2,"BZ-SC",0],
-  [882907,18.4,-88.4,9815,2022,"BZ","BZ-CZL","Corozal","コロザル",null,null,2,"BZ-CZL",0],
-  [883362,16.1,-88.8,5406,2022,"BZ","BZ-TOL","Punta Gorda","プンタゴルタ",null,null,2,"BZ-TOL",0],
+  [108223,17.4986,-88.1886,63999,2022,"BZ","BZ-BZ","Belize City","ベリーズシティ",null,null,2,"BZ-BZ",0,"ghsl:11","Belize City",76331,2025],
+  [724815,17.1588,-89.0696,26151,2018,"BZ","BZ-CY","San Ignacio","サン・イグナシオ",null,null,2,"BZ-CY",0,null],
+  [3043,17.25,-88.7675,20754,2022,"BZ","BZ-CY","Belmopan","ベルモパン",null,null,1,"BZ",0,null],
+  [677300,17.9214,-87.9611,15456,2022,"BZ","BZ-BZ","San Pedro Town","サン・ペドロ",null,null,0,null,0,null],
+  [882964,18.075,-88.5583,14553,2022,"BZ","BZ-OW","Orange Walk Town","オレンジウォーク",null,null,2,"BZ-OW",0,null],
+  [888300,16.9663,-88.2242,9927,2022,"BZ","BZ-SC","Dangriga","ダンリガ",null,null,2,"BZ-SC",0,null],
+  [882907,18.4,-88.4,9815,2022,"BZ","BZ-CZL","Corozal","コロザル",null,null,2,"BZ-CZL",0,null],
+  [883362,16.1,-88.8,5406,2022,"BZ","BZ-TOL","Punta Gorda","プンタゴルタ",null,null,2,"BZ-TOL",0,null],
 ];
 
 export { BZ };

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const AX: readonly CityRow[] = [
-  [48329,60.0986,19.9444,11957,"2025-12-31","AX",null,"Mariehamn","マリエハムン","Maarianhamina","fi",1,"AX",0],
+  [48329,60.0986,19.9444,11957,"2025-12-31","AX",null,"Mariehamn","マリエハムン","Maarianhamina","fi",1,"AX",0,null],
 ];
 
 export { AX };

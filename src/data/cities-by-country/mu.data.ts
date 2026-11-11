@@ -5,22 +5,22 @@
 import type { CityRow } from "../../city-rows";
 
 const MU: readonly CityRow[] = [
-  [3929,-20.1619,57.4989,149194,2012,"MU","MU-PL","Port Louis","ポートルイス","Port-Louis","fr",1,"MU",0],
-  [813337,-20.2333,57.4667,104973,null,"MU","MU-PW","Beau Bassin-Rose Hill","ボー・バッサン＝ローズ・ヒル","Beau-Bassin Rose-Hill","fr",2,"MU-PW",0],
-  [1341194,-20.25,57.4667,81773,2015,"MU","MU-PW","Quatre Bornes","カトル・ボルヌ",null,null,0,null,0],
-  [1002525,-20.3167,57.5167,77466,2011,"MU","MU-PW","Curepipe","キュールピップ",null,null,0,null,0],
-  [641130,-20.0547,57.5453,23386,2011,"MU","MU-PA","Triolet","トリオレット",null,null,2,"MU-PA",0],
-  [770184,-20.25,57.55,22745,null,"MU","MU-MO","Quartier-Militaire","カルティエ・ミリテール","quartier Militaire","fr",0,null,0],
-  [3110720,-20.035,57.6431,20712,2011,"MU","MU-RR","Goodlands","グッドランズ",null,null,0,null,0],
-  [1154985,-20.2225,57.5382,16025,2022,"MU","MU-MO","Saint Pierre","サンピエール","Saint-Pierre","fr",0,null,0],
-  [1054191,-20.2002,57.7177,15791,2011,"MU","MU-FL","Centre de Flacq","サントル・ド・フラック","centre de Flacq","fr",2,"MU-FL",0],
-  [1291379,-20.4,57.7,15753,2000,"MU","MU-GP","Mahébourg","マエブール",null,null,2,"MU-GP",0],
-  [431990,-20.26,57.4148,15345,2011,"MU","MU-BL","Bambous","バンブース",null,null,0,null,0],
-  [282908,-20.219,57.496,8845,null,"MU","MU-MO","Moka","モカ",null,null,2,"MU-MO",0],
-  [1021638,-19.6833,63.4211,5929,2008,"MU","MU-RO","Port Mathurin","ポート・マチュリン",null,null,2,"MU-RO",0],
-  [2215428,-20.5194,57.525,4154,2000,"MU","MU-SA","Souillac","スイヤック (モーリシャス)",null,null,2,"MU-SA",0],
-  [2322083,-20.3167,57.3833,3256,2000,"MU","MU-BL","Tamarin","タマリン",null,null,2,"MU-BL",0],
-  [3400179,-20.06,57.67,null,null,"MU","MU-RR","Poudre d'Or",null,null,null,2,"MU-RR",0],
+  [3929,-20.1619,57.4989,149194,2012,"MU","MU-PL","Port Louis","ポートルイス","Port-Louis","fr",1,"MU",0,"ghsl:159","Port Louis",557431,2025],
+  [813337,-20.2333,57.4667,104973,null,"MU","MU-PW","Beau Bassin-Rose Hill","ボー・バッサン＝ローズ・ヒル","Beau-Bassin Rose-Hill","fr",2,"MU-PW",0,3929],
+  [1341194,-20.25,57.4667,81773,2015,"MU","MU-PW","Quatre Bornes","カトル・ボルヌ",null,null,0,null,0,3929],
+  [1002525,-20.3167,57.5167,77466,2011,"MU","MU-PW","Curepipe","キュールピップ",null,null,0,null,0,3929],
+  [641130,-20.0547,57.5453,23386,2011,"MU","MU-PA","Triolet","トリオレット",null,null,2,"MU-PA",0,3929],
+  [770184,-20.25,57.55,22745,null,"MU","MU-MO","Quartier-Militaire","カルティエ・ミリテール","quartier Militaire","fr",0,null,0,3929],
+  [3110720,-20.035,57.6431,20712,2011,"MU","MU-RR","Goodlands","グッドランズ",null,null,0,null,0,null],
+  [1154985,-20.2225,57.5382,16025,2022,"MU","MU-MO","Saint Pierre","サンピエール","Saint-Pierre","fr",0,null,0,3929],
+  [1054191,-20.2002,57.7177,15791,2011,"MU","MU-FL","Centre de Flacq","サントル・ド・フラック","centre de Flacq","fr",2,"MU-FL",0,null],
+  [1291379,-20.4,57.7,15753,2000,"MU","MU-GP","Mahébourg","マエブール",null,null,2,"MU-GP",0,null],
+  [431990,-20.26,57.4148,15345,2011,"MU","MU-BL","Bambous","バンブース",null,null,0,null,0,null],
+  [282908,-20.219,57.496,8845,null,"MU","MU-MO","Moka","モカ",null,null,2,"MU-MO",0,3929],
+  [1021638,-19.6833,63.4211,5929,2008,"MU","MU-RO","Port Mathurin","ポート・マチュリン",null,null,2,"MU-RO",0,null],
+  [2215428,-20.5194,57.525,4154,2000,"MU","MU-SA","Souillac","スイヤック (モーリシャス)",null,null,2,"MU-SA",0,null],
+  [2322083,-20.3167,57.3833,3256,2000,"MU","MU-BL","Tamarin","タマリン",null,null,2,"MU-BL",0,null],
+  [3400179,-20.06,57.67,null,null,"MU","MU-RR","Poudre d'Or",null,null,null,2,"MU-RR",0,null],
 ];
 
 export { MU };

@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const SI: readonly CityRow[] = [
-  [437,46.0514,14.5061,284293,2022,"SI","SI-061","Ljubljana","リュブリャナ",null,null,1,"SI",0,"oecd:SI001F","Ljubljana functional urban area",920388,2025],
-  [1010,46.55,15.6333,114301,2025,"SI","SI-070","Maribor","マリボル",null,null,2,"SI-070",0,"oecd:SI002F","Maribor functional urban area",262050,2025],
+  [437,46.0514,14.5061,284293,2022,"SI","SI-061","Ljubljana","リュブリャナ",null,null,1,"SI",0,"oecd:SI001F","Ljubljana",920388,2025],
+  [1010,46.55,15.6333,114301,2025,"SI","SI-070","Maribor","マリボル",null,null,2,"SI-070",0,"oecd:SI002F","Maribor",262050,2025],
   [1021,46.2389,14.3556,37605,2022,"SI","SI-052","Kranj","クラーニ",null,null,2,"SI-052",0],
   [1012,46.2291,15.2641,37122,2022,"SI","SI-011","Celje","ツェリェ",null,null,2,"SI-011",0],
   [1015,45.5475,13.7307,25753,2020,"SI","SI-050","Koper","コペル",null,null,2,"SI-050",0],

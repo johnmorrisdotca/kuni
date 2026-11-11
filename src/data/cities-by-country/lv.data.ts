@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const LV: readonly CityRow[] = [
-  [1773,56.9475,24.1069,588911,2026,"LV","LV-RIX","Riga","リガ","Rīga","lv",1,"LV",0,"oecd:LV001F","Rīga functional urban area",1141385,2025],
-  [80021,55.8714,26.5161,77486,2026,"LV","LV-DGV","Daugavpils","ダウガフピルス",null,null,2,"LV-111",0,"oecd:LV004F","Daugavpils functional urban area",102153,2025],
-  [167668,56.5083,21.0111,66746,2026,"LV","LV-LPX","Liepāja","リエパーヤ",null,null,0,null,0,"oecd:LV002F","Liepāja functional urban area",100218,2025],
+  [1773,56.9475,24.1069,588911,2026,"LV","LV-RIX","Riga","リガ","Rīga","lv",1,"LV",0,"oecd:LV001F","Rīga",1141385,2025],
+  [80021,55.8714,26.5161,77486,2026,"LV","LV-DGV","Daugavpils","ダウガフピルス",null,null,2,"LV-111",0,"oecd:LV004F","Daugavpils",102153,2025],
+  [167668,56.5083,21.0111,66746,2026,"LV","LV-LPX","Liepāja","リエパーヤ",null,null,0,null,0,"oecd:LV002F","Liepāja",100218,2025],
   [179830,56.6522,23.7244,54408,2026,"LV","LV-JEL","Jelgava","イェルガヴァ",null,null,2,"LV-041",0],
   [178382,56.9665,23.7221,52926,2026,"LV","LV-JUR","Jūrmala","ユールマラ",null,null,0,null,0],
   [104036,57.3897,21.5644,32479,2026,"LV","LV-VEN","Ventspils","ヴェンツピルス",null,null,2,"LV-106",0],

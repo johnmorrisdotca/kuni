@@ -5,15 +5,15 @@
 import type { CityRow } from "../../city-rows";
 
 const GY: readonly CityRow[] = [
-  [10717,6.8058,-58.1508,235017,2024,"GY","GY-DE","Georgetown","ジョージタウン",null,null,1,"GY",0],
-  [923811,6.25,-57.5167,46874,null,"GY","GY-EB","New Amsterdam","ニューアムステルダム",null,null,2,"GY-EB",2],
-  [741134,6,-58.3,28674,"2012-09-15","GY","GY-UD","Linden","リンデン",null,null,2,"GY-UD",0],
-  [563067,7.25,-58.5167,12448,2002,"GY","GY-PM","Anna Regina","アンナ・レジャイナ",null,null,2,"GY-PM",0],
-  [809428,6.4,-58.6167,8532,null,"GY","GY-CU","Bartica","バルティカ",null,null,2,"GY-CU",0],
-  [1203781,3.3833,-59.8,3000,2002,"GY","GY-UT","Lethem","レセム",null,null,2,"GY-UT",0],
-  [597458,8.2,-59.7833,2972,null,"GY","GY-BA","Mabaruma","マバルマ",null,null,2,"GY-BA",2],
-  [1018877,6.8,-58.1833,null,null,"GY","GY-ES","Vreed en Hoop","ブリード・エン・ホープ",null,null,2,"GY-ES",0],
-  [2137017,6.75,-57.9833,null,null,"GY","GY-DE","Paradise","パラダイス",null,null,2,"GY-DE",0],
+  [10717,6.8058,-58.1508,235017,2024,"GY","GY-DE","Georgetown","ジョージタウン",null,null,1,"GY",0,"ghsl:33","Georgetown",130680,2025],
+  [2137017,6.75,-57.9833,null,null,"GY","GY-DE","Paradise","パラダイス",null,null,2,"GY-DE",0,"ghsl:216","Paradise",103152,2025],
+  [923811,6.25,-57.5167,46874,null,"GY","GY-EB","New Amsterdam","ニューアムステルダム",null,null,2,"GY-EB",2,null],
+  [741134,6,-58.3,28674,"2012-09-15","GY","GY-UD","Linden","リンデン",null,null,2,"GY-UD",0,null],
+  [563067,7.25,-58.5167,12448,2002,"GY","GY-PM","Anna Regina","アンナ・レジャイナ",null,null,2,"GY-PM",0,null],
+  [809428,6.4,-58.6167,8532,null,"GY","GY-CU","Bartica","バルティカ",null,null,2,"GY-CU",0,null],
+  [1203781,3.3833,-59.8,3000,2002,"GY","GY-UT","Lethem","レセム",null,null,2,"GY-UT",0,null],
+  [597458,8.2,-59.7833,2972,null,"GY","GY-BA","Mabaruma","マバルマ",null,null,2,"GY-BA",2,null],
+  [1018877,6.8,-58.1833,null,null,"GY","GY-ES","Vreed en Hoop","ブリード・エン・ホープ",null,null,2,"GY-ES",0,10717],
 ];
 
 export { GY };

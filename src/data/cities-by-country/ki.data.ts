@@ -5,10 +5,10 @@
 import type { CityRow } from "../../city-rows";
 
 const KI: readonly CityRow[] = [
-  [2486,1.4333,173,70090,2020,"KI","KI-G","Tarawa","タラワ",null,null,0,null,0],
-  [131233,1.3333,172.9667,63439,2020,"KI","KI-G","South Tarawa","サウス・タラワ",null,null,1,"KI",0],
-  [30895,-2.8106,-171.6756,41,2020,"KI","KI-P","Kanton Island","カントン島","Kanton","en",2,"KI-P",0],
-  [4853814,1.9833,-157.3653,null,null,"KI",null,"Banana","バナナ",null,null,2,"KI-L",0],
+  [2486,1.4333,173,70090,2020,"KI","KI-G","Tarawa","タラワ",null,null,0,null,0,null],
+  [131233,1.3333,172.9667,63439,2020,"KI","KI-G","South Tarawa","サウス・タラワ",null,null,1,"KI",0,null],
+  [30895,-2.8106,-171.6756,41,2020,"KI","KI-P","Kanton Island","カントン島","Kanton","en",2,"KI-P",0,null],
+  [4853814,1.9833,-157.3653,null,null,"KI",null,"Banana","バナナ",null,null,2,"KI-L",0,null],
 ];
 
 export { KI };

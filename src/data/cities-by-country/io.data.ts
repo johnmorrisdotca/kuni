@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const IO: readonly CityRow[] = [
-  [184851,-7.3133,72.4111,4202,null,"IO",null,"Diego Garcia","ディエゴガルシア島",null,null,1,"IO",0],
+  [184851,-7.3133,72.4111,4202,null,"IO",null,"Diego Garcia","ディエゴガルシア島",null,null,1,"IO",0,null],
 ];
 
 export { IO };

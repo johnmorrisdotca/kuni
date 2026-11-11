@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const AT: readonly CityRow[] = [
-  [1741,48.2083,16.3725,2028289,2025,"AT","AT-9","Vienna","ウィーン","Wien","de",1,"AT",0,"oecd:AT001F","Wien functional urban area",3231239,2025],
-  [13298,47.0708,15.4386,306971,2026,"AT","AT-6","Graz","グラーツ",null,null,2,"AT-6",0,"oecd:AT002F","Graz functional urban area",715785,2025],
-  [41329,48.3058,14.2864,211944,2024,"AT","AT-4","Linz","リンツ",null,null,2,"AT-4",0,"oecd:AT003F","Linz functional urban area",673653,2025],
-  [34713,47.8,13.045,155021,2020,"AT","AT-5","Salzburg","ザルツブルク",null,null,2,"AT-5",0,"oecd:AT004F","Salzburg functional urban area",383455,2025],
-  [1735,47.2683,11.3933,132499,2025,"AT","AT-7","Innsbruck","インスブルック",null,null,2,"AT-7",0,"oecd:AT005F","Innsbruck functional urban area",349140,2025],
+  [1741,48.2083,16.3725,2028289,2025,"AT","AT-9","Vienna","ウィーン","Wien","de",1,"AT",0,"oecd:AT001F","Wien",3231239,2025],
+  [13298,47.0708,15.4386,306971,2026,"AT","AT-6","Graz","グラーツ",null,null,2,"AT-6",0,"oecd:AT002F","Graz",715785,2025],
+  [41329,48.3058,14.2864,211944,2024,"AT","AT-4","Linz","リンツ",null,null,2,"AT-4",0,"oecd:AT003F","Linz",673653,2025],
+  [34713,47.8,13.045,155021,2020,"AT","AT-5","Salzburg","ザルツブルク",null,null,2,"AT-5",0,"oecd:AT004F","Salzburg",383455,2025],
+  [1735,47.2683,11.3933,132499,2025,"AT","AT-7","Innsbruck","インスブルック",null,null,2,"AT-7",0,"oecd:AT005F","Innsbruck",349140,2025],
   [41753,46.6167,14.3,101403,2020,"AT","AT-2","Klagenfurt am Wörthersee","クラーゲンフルト",null,null,2,"AT-2",0],
   [178582,48.15,14.0167,65303,2024,"AT","AT-4","Wels","ヴェルス",null,null,0,null,0],
   [483522,46.6167,13.8333,65127,2023,"AT","AT-2","Villach","フィラッハ",null,null,0,null,0],

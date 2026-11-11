@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GP: readonly CityRow[] = [
-  [167024,15.9969,-61.7328,9417,2023,"GP",null,"Basse-Terre","バステール",null,null,1,"GP",0],
+  [167024,15.9969,-61.7328,9417,2023,"GP",null,"Basse-Terre","バステール",null,null,1,"GP",0,null],
 ];
 
 export { GP };

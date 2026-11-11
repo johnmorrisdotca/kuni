@@ -5,12 +5,12 @@
 import type { CityRow } from "../../city-rows";
 
 const XK: readonly CityRow[] = [
-  [25270,42.6667,21.1667,227466,"2024-04-05","XK",null,"Pristina","プリシュティナ","Prishtina","sq",1,"XK",0],
-  [200061,42.23,20.74,186986,1996,"XK",null,"Prizren","プリズレン","Prizreni","sq",2,"RS-27",0],
-  [738901,42.37,21.155,180583,"2024-04-05","XK",null,"Ferizaj","フェリザイ",null,null,0,null,0],
-  [739808,42.4667,21.4667,82980,"2024-04-05","XK",null,"Gjilan","ジラニ","Gjilani","sq",2,"RS-29",0],
-  [474651,42.3825,20.4356,41809,2024,"XK",null,"Gjakova","ジャコヴァ",null,null,0,null,0],
-  [248378,42.2319,21.2594,33409,null,"XK",null,"Kaçanik","カチャニク","Kaçaniku","sq",0,null,0],
+  [25270,42.6667,21.1667,227466,"2024-04-05","XK",null,"Pristina","プリシュティナ","Prishtina","sq",1,"XK",0,"ghsl:717","Pristina",218971,2025],
+  [200061,42.23,20.74,186986,1996,"XK",null,"Prizren","プリズレン","Prizreni","sq",2,"RS-27",0,"ghsl:576","Prizren",111237,2025],
+  [738901,42.37,21.155,180583,"2024-04-05","XK",null,"Ferizaj","フェリザイ",null,null,0,null,0,"ghsl:847","Ferizaj",64848,2025],
+  [474651,42.3825,20.4356,41809,2024,"XK",null,"Gjakova","ジャコヴァ",null,null,0,null,0,"ghsl:277","Gjakova",51450,2025],
+  [739808,42.4667,21.4667,82980,"2024-04-05","XK",null,"Gjilan","ジラニ","Gjilani","sq",2,"RS-29",0,null],
+  [248378,42.2319,21.2594,33409,null,"XK",null,"Kaçanik","カチャニク","Kaçaniku","sq",0,null,0,null],
 ];
 
 export { XK };

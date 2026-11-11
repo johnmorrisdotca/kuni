@@ -5,12 +5,12 @@
 import type { CityRow } from "../../city-rows";
 
 const VC: readonly CityRow[] = [
-  [41474,13.1553,-61.2274,24518,2025,"VC","VC-04","Kingstown","キングスタウン",null,null,1,"VC",0],
-  [2630835,13.2033,-61.2686,6344,"2023-06-15","VC","VC-02","Layou","ラヨー",null,null,2,"VC-02",0],
-  [2995389,13.0111,-61.2344,847,2006,"VC","VC-06","Port Elizabeth","ポート・エリザベス (セントビンセント・グレナディーン)",null,null,2,"VC-06",0],
-  [672197,13.2883,-61.2403,741,2006,"VC","VC-03","Chateaubelair","チャトーベレア",null,null,2,"VC-03",0],
-  [2495209,13.2861,-61.1228,null,null,"VC","VC-01","Georgetown","ジョージタウン (セントビンセント・グレナディーン)",null,null,2,"VC-01",0],
-  [2885705,13.2358,-61.2719,null,null,"VC","VC-05","Barrouallie","バローアリー",null,null,2,"VC-05",0],
+  [41474,13.1553,-61.2274,24518,2025,"VC","VC-04","Kingstown","キングスタウン",null,null,1,"VC",0,null],
+  [2630835,13.2033,-61.2686,6344,"2023-06-15","VC","VC-02","Layou","ラヨー",null,null,2,"VC-02",0,null],
+  [2995389,13.0111,-61.2344,847,2006,"VC","VC-06","Port Elizabeth","ポート・エリザベス (セントビンセント・グレナディーン)",null,null,2,"VC-06",0,null],
+  [672197,13.2883,-61.2403,741,2006,"VC","VC-03","Chateaubelair","チャトーベレア",null,null,2,"VC-03",0,null],
+  [2495209,13.2861,-61.1228,null,null,"VC","VC-01","Georgetown","ジョージタウン (セントビンセント・グレナディーン)",null,null,2,"VC-01",0,null],
+  [2885705,13.2358,-61.2719,null,null,"VC","VC-05","Barrouallie","バローアリー",null,null,2,"VC-05",0,null],
 ];
 
 export { VC };

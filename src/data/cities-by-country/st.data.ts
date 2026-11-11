@@ -5,13 +5,13 @@
 import type { CityRow } from "../../city-rows";
 
 const ST: readonly CityRow[] = [
-  [3932,0.3375,6.7283,65468,2010,"ST","ST-01","São Tomé","サントメ",null,null,1,"ST",0],
-  [1552353,0.2531,6.7414,7496,2013,"ST","ST-02","Santana","サンタナ",null,null,2,"ST-02",0],
-  [1635802,0.3,6.6667,6636,2005,"ST","ST-06","Trindade","トリンダージ",null,null,2,"ST-06",0],
-  [2209215,0.1338,6.6483,6636,null,"ST","ST-03","São João dos Angolares","ドナ・エウゲニア",null,null,2,"ST-03",0],
-  [1552608,0.3667,6.6333,1734,2005,"ST","ST-05","Guadalupe","グアダルーペ",null,null,2,"ST-05",0],
-  [973656,1.6367,7.4178,1300,null,"ST","ST-P","Santo António","サント・アントニオ",null,null,2,"ST-P",0],
-  [612376,0.3592,6.5517,null,null,"ST","ST-04","Neves","ネヴィス",null,null,2,"ST-04",0],
+  [3932,0.3375,6.7283,65468,2010,"ST","ST-01","São Tomé","サントメ",null,null,1,"ST",0,"ghsl:71","São Tomé",154878,2025],
+  [1552353,0.2531,6.7414,7496,2013,"ST","ST-02","Santana","サンタナ",null,null,2,"ST-02",0,3932],
+  [1635802,0.3,6.6667,6636,2005,"ST","ST-06","Trindade","トリンダージ",null,null,2,"ST-06",0,3932],
+  [2209215,0.1338,6.6483,6636,null,"ST","ST-03","São João dos Angolares","ドナ・エウゲニア",null,null,2,"ST-03",0,null],
+  [1552608,0.3667,6.6333,1734,2005,"ST","ST-05","Guadalupe","グアダルーペ",null,null,2,"ST-05",0,3932],
+  [973656,1.6367,7.4178,1300,null,"ST","ST-P","Santo António","サント・アントニオ",null,null,2,"ST-P",0,null],
+  [612376,0.3592,6.5517,null,null,"ST","ST-04","Neves","ネヴィス",null,null,2,"ST-04",0,null],
 ];
 
 export { ST };

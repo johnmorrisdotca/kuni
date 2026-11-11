@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const BB: readonly CityRow[] = [
-  [36168,13.0975,-59.6167,98511,2025,"BB","BB-08","Bridgetown","ブリッジタウン",null,null,1,"BB",0],
+  [36168,13.0975,-59.6167,98511,2025,"BB","BB-08","Bridgetown","ブリッジタウン",null,null,1,"BB",0,"ghsl:32","Bridgetown",152912,2025],
 ];
 
 export { BB };

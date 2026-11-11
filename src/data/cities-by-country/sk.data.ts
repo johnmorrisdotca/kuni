@@ -5,13 +5,13 @@
 import type { CityRow } from "../../city-rows";
 
 const SK: readonly CityRow[] = [
-  [1780,48.1517,17.1093,480902,"2025-12-31","SK","SK-BL","Bratislava","ブラチスラヴァ",null,null,1,"SK",0,"oecd:SK001F","Bratislava functional urban area",1049696,2024],
-  [25409,48.7167,21.25,222286,"2025-12-31","SK","SK-KI","Košice","コシツェ",null,null,2,"SK-KI",0,"oecd:SK002F","Košice functional urban area",372203,2024],
-  [25797,49.2167,18.7333,79873,"2025-12-31","SK","SK-ZI","Žilina","ジリナ",null,null,2,"SK-ZI",0,"oecd:SK006F","Žilina functional urban area",224416,2024],
-  [26119,49,21.2333,81223,"2025-12-31","SK","SK-PV","Prešov","プレショフ",null,null,2,"SK-PV",0,"oecd:SK005F","Prešov functional urban area",175094,2024],
-  [26397,48.3147,18.0875,75301,"2025-12-31","SK","SK-NI","Nitra","ニトラ",null,null,2,"SK-NI",0,"oecd:SK004F","Nitra functional urban area",164698,2024],
-  [145002,48.8942,18.0406,54104,"2025-12-31","SK","SK-TC","Trenčín","トレンチーン",null,null,2,"SK-TC",0,"oecd:SK008F","Trenčín functional urban area",113216,2024],
-  [144983,48.7353,19.1453,73054,"2025-12-31","SK","SK-BC","Banská Bystrica","バンスカー・ビストリツァ",null,null,2,"SK-BC",0,"oecd:SK003F","Banská Bystrica functional urban area",106902,2024],
+  [1780,48.1517,17.1093,480902,"2025-12-31","SK","SK-BL","Bratislava","ブラチスラヴァ",null,null,1,"SK",0,"oecd:SK001F","Bratislava",1049696,2024],
+  [25409,48.7167,21.25,222286,"2025-12-31","SK","SK-KI","Košice","コシツェ",null,null,2,"SK-KI",0,"oecd:SK002F","Košice",372203,2024],
+  [25797,49.2167,18.7333,79873,"2025-12-31","SK","SK-ZI","Žilina","ジリナ",null,null,2,"SK-ZI",0,"oecd:SK006F","Žilina",224416,2024],
+  [26119,49,21.2333,81223,"2025-12-31","SK","SK-PV","Prešov","プレショフ",null,null,2,"SK-PV",0,"oecd:SK005F","Prešov",175094,2024],
+  [26397,48.3147,18.0875,75301,"2025-12-31","SK","SK-NI","Nitra","ニトラ",null,null,2,"SK-NI",0,"oecd:SK004F","Nitra",164698,2024],
+  [145002,48.8942,18.0406,54104,"2025-12-31","SK","SK-TC","Trenčín","トレンチーン",null,null,2,"SK-TC",0,"oecd:SK008F","Trenčín",113216,2024],
+  [144983,48.7353,19.1453,73054,"2025-12-31","SK","SK-BC","Banská Bystrica","バンスカー・ビストリツァ",null,null,2,"SK-BC",0,"oecd:SK003F","Banská Bystrica",106902,2024],
   [26175,48.3778,17.5862,63184,"2025-12-31","SK","SK-TA","Trnava","トルナヴァ",null,null,2,"SK-TA",0],
   [27001,49.0636,18.9214,50153,"2025-12-31","SK","SK-ZI","Martin","マルチン",null,null,0,null,0],
   [26393,49.05,20.3,48034,"2025-12-31","SK","SK-PV","Poprad","ポプラト",null,null,0,null,0],

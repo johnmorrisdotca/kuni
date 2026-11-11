@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const MS: readonly CityRow[] = [
-  [31006,16.7928,-62.2106,391,null,"MS",null,"Brades","ブレイズ",null,null,3,"MS",0],
-  [30990,16.7064,-62.2158,0,2016,"MS",null,"Plymouth","プリマス",null,null,1,"MS",0],
+  [31006,16.7928,-62.2106,391,null,"MS",null,"Brades","ブレイズ",null,null,3,"MS",0,null],
+  [30990,16.7064,-62.2158,0,2016,"MS",null,"Plymouth","プリマス",null,null,1,"MS",0,null],
 ];
 
 export { MS };

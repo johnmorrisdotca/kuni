@@ -5,15 +5,15 @@
 import type { CityRow } from "../../city-rows";
 
 const SB: readonly CityRow[] = [
-  [40921,-9.4333,159.95,84520,2017,"SB","SB-CT","Honiara","ホニアラ",null,null,1,"SB",0],
-  [1236908,-8.1,156.85,7177,2019,"SB","SB-WE","Gizo","ギゾ",null,null,2,"SB-WE",0],
-  [538476,-8.7683,160.6969,6811,2009,"SB","SB-ML","Auki","アウキ",null,null,2,"SB-ML",0],
-  [646756,-10.7233,165.7964,553,2007,"SB","SB-TE","Lata","ラタ (サンタクルーズ諸島)",null,null,2,"SB-TE",0],
-  [1440679,-6.7114,156.3964,440,null,"SB","SB-CH","Taro Island","タロ島",null,null,2,"SB-CH",0],
-  [574769,-8.1662,159.619,null,null,"SB","SB-IS","Buala","ブアラ",null,null,2,"SB-IS",0],
-  [713152,-10.4544,161.9204,null,null,"SB","SB-MK","Kirakira","キラキラ",null,null,2,"SB-MK",0],
-  [987011,-11.5583,160.0706,null,null,"SB","SB-RB","Tigoa","ティゴア",null,null,2,"SB-RB",0],
-  [139487651,-9.1031,160.1506,null,null,"SB","SB-CE","Tulagi",null,null,null,2,"SB-CE",0],
+  [40921,-9.4333,159.95,84520,2017,"SB","SB-CT","Honiara","ホニアラ",null,null,1,"SB",0,"ghsl:189","Honiara",137201,2025],
+  [1236908,-8.1,156.85,7177,2019,"SB","SB-WE","Gizo","ギゾ",null,null,2,"SB-WE",0,null],
+  [538476,-8.7683,160.6969,6811,2009,"SB","SB-ML","Auki","アウキ",null,null,2,"SB-ML",0,null],
+  [646756,-10.7233,165.7964,553,2007,"SB","SB-TE","Lata","ラタ (サンタクルーズ諸島)",null,null,2,"SB-TE",0,null],
+  [1440679,-6.7114,156.3964,440,null,"SB","SB-CH","Taro Island","タロ島",null,null,2,"SB-CH",0,null],
+  [574769,-8.1662,159.619,null,null,"SB","SB-IS","Buala","ブアラ",null,null,2,"SB-IS",0,null],
+  [713152,-10.4544,161.9204,null,null,"SB","SB-MK","Kirakira","キラキラ",null,null,2,"SB-MK",0,null],
+  [987011,-11.5583,160.0706,null,null,"SB","SB-RB","Tigoa","ティゴア",null,null,2,"SB-RB",0,null],
+  [139487651,-9.1031,160.1506,null,null,"SB","SB-CE","Tulagi",null,null,null,2,"SB-CE",0,null],
 ];
 
 export { SB };

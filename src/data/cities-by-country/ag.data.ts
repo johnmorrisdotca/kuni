@@ -5,13 +5,13 @@
 import type { CityRow } from "../../city-rows";
 
 const AG: readonly CityRow[] = [
-  [36262,17.1211,-61.8447,21394,2025,"AG","AG-04","Saint John's","セイント・ジョンズ","Saint John","es",1,"AG",0],
-  [1024679,17.6333,-61.8333,1252,1991,"AG","AG-10","Codrington","コドリントン",null,null,2,"AG-10",0],
-  [376195,17.1,-61.7667,null,null,"AG","AG-07","Parham","パーハム",null,null,2,"AG-07",0],
-  [1771701,17.0667,-61.8833,null,null,"AG","AG-05","Bolans","ボランス","Bolands","es",2,"AG-05",0],
-  [1771704,17.1167,-61.8,null,null,"AG","AG-03","Piggotts","ピゴッツ",null,null,2,"AG-03",0],
-  [1942963,17.05,-61.7,null,null,"AG","AG-08","Freetown","フリータウン",null,null,2,"AG-08",0],
-  [3299460,17.0167,-61.7833,null,null,"AG","AG-06","Falmouth","ファルマス",null,null,2,"AG-06",0],
+  [36262,17.1211,-61.8447,21394,2025,"AG","AG-04","Saint John's","セイント・ジョンズ","Saint John","es",1,"AG",0,null],
+  [1024679,17.6333,-61.8333,1252,1991,"AG","AG-10","Codrington","コドリントン",null,null,2,"AG-10",0,null],
+  [376195,17.1,-61.7667,null,null,"AG","AG-07","Parham","パーハム",null,null,2,"AG-07",0,null],
+  [1771701,17.0667,-61.8833,null,null,"AG","AG-05","Bolans","ボランス","Bolands","es",2,"AG-05",0,null],
+  [1771704,17.1167,-61.8,null,null,"AG","AG-03","Piggotts","ピゴッツ",null,null,2,"AG-03",0,null],
+  [1942963,17.05,-61.7,null,null,"AG","AG-08","Freetown","フリータウン",null,null,2,"AG-08",0,null],
+  [3299460,17.0167,-61.7833,null,null,"AG","AG-06","Falmouth","ファルマス",null,null,2,"AG-06",0,null],
 ];
 
 export { AG };

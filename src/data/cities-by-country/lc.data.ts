@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const LC: readonly CityRow[] = [
-  [3116994,14.081,-60.953,21660,null,"LC","LC-06","Gros Islet","グロス・イスレット",null,null,0,null,0],
-  [41699,14.0108,-60.9894,20000,2025,"LC","LC-02","Castries","カストリーズ",null,null,1,"LC",0],
-  [569439,13.94,-61.0425,1410,null,"LC","LC-01","Anse La Raye","アンス・ラ・レイ",null,null,2,"LC-01",0],
-  [3494579,13.728,-60.954,null,null,"LC","LC-11","Vieux Fort","ヴューフォート (セントルシア)",null,null,2,"LC-11",0],
-  [3556840,13.7744,-61.0505,null,null,"LC","LC-03","Choiseul","ショアズール",null,null,2,"LC-03",0],
+  [3116994,14.081,-60.953,21660,null,"LC","LC-06","Gros Islet","グロス・イスレット",null,null,0,null,0,null],
+  [41699,14.0108,-60.9894,20000,2025,"LC","LC-02","Castries","カストリーズ",null,null,1,"LC",0,null],
+  [569439,13.94,-61.0425,1410,null,"LC","LC-01","Anse La Raye","アンス・ラ・レイ",null,null,2,"LC-01",0,null],
+  [3494579,13.728,-60.954,null,null,"LC","LC-11","Vieux Fort","ヴューフォート (セントルシア)",null,null,2,"LC-11",0,null],
+  [3556840,13.7744,-61.0505,null,null,"LC","LC-03","Choiseul","ショアズール",null,null,2,"LC-03",0,null],
 ];
 
 export { LC };

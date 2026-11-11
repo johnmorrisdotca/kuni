@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const NU: readonly CityRow[] = [
-  [30966,-19.056,-169.921,575,2025,"NU",null,"Alofi","アロフィ",null,null,1,"NU",0],
+  [30966,-19.056,-169.921,575,2025,"NU",null,"Alofi","アロフィ",null,null,1,"NU",0,null],
 ];
 
 export { NU };

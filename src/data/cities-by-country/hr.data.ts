@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const HR: readonly CityRow[] = [
-  [1435,45.8131,15.9772,767131,"2021-08-31","HR","HR-21","Zagreb","ザグレブ",null,null,1,"HR",0,"oecd:HR001F","Zagreb functional urban area",1245546,2021],
-  [1663,43.51,16.44,160577,"2021-08-31","HR","HR-17","Split","スプリト",null,null,2,"HR-17",0,"oecd:HR005F","Split functional urban area",322022,2021],
-  [1647,45.3333,14.4333,107964,"2021-08-31","HR","HR-08","Rijeka","リエカ",null,null,2,"HR-08",0,"oecd:HR002F","Rijeka functional urban area",194880,2021],
-  [1640,45.5603,18.6703,96313,"2021-08-31","HR","HR-14","Osijek","オシエク",null,null,2,"HR-14",0,"oecd:HR004F","Osijek functional urban area",161411,2021],
-  [3370,44.1142,15.2275,70779,"2021-08-31","HR","HR-13","Zadar","ザダル",null,null,2,"HR-13",0,"oecd:HR007F","Zadar functional urban area",134664,2021],
+  [1435,45.8131,15.9772,767131,"2021-08-31","HR","HR-21","Zagreb","ザグレブ",null,null,1,"HR",0,"oecd:HR001F","Zagreb",1245546,2021],
+  [1663,43.51,16.44,160577,"2021-08-31","HR","HR-17","Split","スプリト",null,null,2,"HR-17",0,"oecd:HR005F","Split",322022,2021],
+  [1647,45.3333,14.4333,107964,"2021-08-31","HR","HR-08","Rijeka","リエカ",null,null,2,"HR-08",0,"oecd:HR002F","Rijeka",194880,2021],
+  [1640,45.5603,18.6703,96313,"2021-08-31","HR","HR-14","Osijek","オシエク",null,null,2,"HR-14",0,"oecd:HR004F","Osijek",161411,2021],
+  [3370,44.1142,15.2275,70779,"2021-08-31","HR","HR-13","Zadar","ザダル",null,null,2,"HR-13",0,"oecd:HR007F","Zadar",134664,2021],
   [4656,44.8703,13.8456,52220,"2021-08-31","HR","HR-18","Pula","プーラ",null,null,0,null,0],
   [4686,45.1553,18.0144,49891,"2021-08-31","HR","HR-12","Slavonski Brod","スラヴォンスキ・ブロド",null,null,2,"HR-12",0],
   [3617,45.4931,15.5558,49377,"2021-08-31","HR","HR-04","Karlovac","カルロヴァツ",null,null,2,"HR-04",0],

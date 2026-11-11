@@ -132,19 +132,36 @@ A city is ranked by the urban area it heads, with one source for each country, k
   the United States government and in the public domain (17 U.S.C. 105). Source: U.S. Census Bureau, Population
   Division, Annual Resident Population Estimates for Metropolitan and Micropolitan Statistical Areas, Vintage 2024.
 - The other members of the OECD: the population of each functional urban area, the latest year the OECD gives (2019 to
-  2025 by country), under the OECD Terms and Conditions, section 3 (Data: free to extract, copy, adapt and redistribute
-  for any purpose, with this credit kept in any sub-licence; https://www.oecd.org/en/about/terms-conditions.html, read
-  on 2026-11-11):
+  2025 by country). These are not under a Creative Commons licence: the OECD Terms and Conditions, section 3, Data
+  (https://www.oecd.org/en/about/terms-conditions.html, last updated 1 July 2024, read on 2026-11-11), let anyone
+  "extract from, download, copy, adapt, print, distribute, share and embed Data for any purpose, even for commercial
+  use", with the credit in the form "OECD (year), (dataset name),(data source) DOI or URL (accessed on (date))", and
+  ask that any sub-licence carry the same requirement. The credit:
 
   > OECD (2026), Functional urban areas: population by age and sex, OECD Data Explorer,
   > https://sdmx.oecd.org/public/rest/data/OECD.CFE.EDS,DSD_FUA_DEMO@DF_AGE_SEX (accessed on 2026-11-11).
 
-- China: Natural Earth's figure for each populated place (`POP_MAX`, the people of its urban area; public domain, below),
-  not Wikidata's, which is the whole municipality.
-- Everywhere else: the metropolitan areas of the Wikidata snapshot above (CC0), marked as estimates.
+  Changes made: only the total population is kept, the latest year of each area; the area is joined to a city by its
+  name, or by id where the name is no city's (`OECD_AREAS` in `scripts/metro-links.ts`). Anyone who takes the figures
+  from this package must give the same credit.
+- Every other country: the GHSL Urban Centre Database R2024A (GHS-UCDB R2024A, release V1-2, theme General
+  Characteristics), kept in `data-sources/ghsl-ucdb-r2024a.json` by `scripts/fetch-ghsl.ts` (read on 2026-11-11):
+  © European Union, 1995-2026, licensed under the Creative Commons Attribution 4.0 International licence (CC BY 4.0,
+  https://creativecommons.org/licenses/by/4.0/), which allows reuse "provided appropriate credit is given and any
+  changes are indicated":
+
+  > Mari Rivero, I., Melchiorri, M., Florio, P., Schiavina, M., Goch, K., Politis, P., Uhl, J. H., Pesaresi, M.,
+  > Maffenini, L., Sulis, P., et al. (2024): GHS-UCDB R2024A - GHS Urban Centre Database 2025. European Commission,
+  > Joint Research Centre (JRC).
+
+  Changes made: each centre is cut to its id, names, country, population in 2025 and centroid, the centroid turned from
+  World Mollweide to degrees; a centre is joined to the city its names name within 60 km, else to the most populous
+  city within 15 km of its centroid, or by id (`GHSL_CENTRES` in `scripts/metro-links.ts`).
+- Where a city heads no area of its source: the metropolitan areas of the Wikidata snapshot above (CC0), where bigger
+  than the city, marked as estimates.
 
 An area whose name is no city's ("West Midlands urban area") is set to its city by id in `scripts/metro-links.ts`, with
-the reason.
+the reason. Natural Earth's figures (below) no longer rank any city.
 
 The time zones (`/zones`, and `capitalZone` in `/facts`) are from IANA's tzdb zone.tab (public domain, below) and a
 fourth Wikidata snapshot (`data-sources/wikidata-zones-<day>.json`, CC0 on the same terms, read on 2026-11-11), asked for

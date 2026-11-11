@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GF: readonly CityRow[] = [
-  [44401,4.9386,-52.335,62675,2023,"GF",null,"Cayenne","カイエンヌ",null,null,1,"GF",0],
+  [44401,4.9386,-52.335,62675,2023,"GF",null,"Cayenne","カイエンヌ",null,null,1,"GF",0,"oecd:FR072F","Cayenne",152190,2022],
 ];
 
 export { GF };

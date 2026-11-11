@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const TF: readonly CityRow[] = [
-  [839559,-49.35,70.2167,null,null,"TF",null,"Port-aux-Français","ポルトーフランセ",null,null,1,"TF",0],
+  [839559,-49.35,70.2167,null,null,"TF",null,"Port-aux-Français","ポルトーフランセ",null,null,1,"TF",0,null],
 ];
 
 export { TF };

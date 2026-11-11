@@ -5,11 +5,11 @@
 import type { CityRow } from "../../city-rows";
 
 const IE: readonly CityRow[] = [
-  [1761,53.3497,-6.2603,592713,"2022-04-03","IE","IE-L","Dublin","ダブリン","Baile Átha Cliath","ga",1,"IE",0,"oecd:IE001F","Dublin functional urban area",2096412,2022],
-  [36647,51.9,-8.4731,222333,2022,"IE","IE-M","Cork","コーク","Corcaigh","ga",2,"IE-CO",0,"oecd:IE002F","Cork functional urban area",500578,2022],
-  [133315,52.6653,-8.6238,62702,"2022-04-03","IE","IE-M","Limerick","リムリック","Luimneach","ga",2,"IE-LK",0,"oecd:IE003F","Limerick functional urban area",251673,2022],
-  [129610,53.2719,-9.0488,83456,2022,"IE","IE-C","Galway","ゴールウェイ","Gaillimh","ga",2,"IE-G",0,"oecd:IE004F","Galway functional urban area",247882,2022],
-  [183551,52.2583,-7.119,48369,2016,"IE","IE-M","Waterford","ウォーターフォード","Port Láirge","ga",2,"IE-WD",0,"oecd:IE005F","Waterford functional urban area",116451,2022],
+  [1761,53.3497,-6.2603,592713,"2022-04-03","IE","IE-L","Dublin","ダブリン","Baile Átha Cliath","ga",1,"IE",0,"oecd:IE001F","Dublin",2096412,2022],
+  [36647,51.9,-8.4731,222333,2022,"IE","IE-M","Cork","コーク","Corcaigh","ga",2,"IE-CO",0,"oecd:IE002F","Cork",500578,2022],
+  [133315,52.6653,-8.6238,62702,"2022-04-03","IE","IE-M","Limerick","リムリック","Luimneach","ga",2,"IE-LK",0,"oecd:IE003F","Limerick",251673,2022],
+  [129610,53.2719,-9.0488,83456,2022,"IE","IE-C","Galway","ゴールウェイ","Gaillimh","ga",2,"IE-G",0,"oecd:IE004F","Galway",247882,2022],
+  [183551,52.2583,-7.119,48369,2016,"IE","IE-M","Waterford","ウォーターフォード","Port Láirge","ga",2,"IE-WD",0,"oecd:IE005F","Waterford",116451,2022],
   [207223,53.715,-6.3525,40956,2016,"IE","IE-L","Drogheda","ドロヘダ","Droichead Átha","ga",0,null,0],
   [204956,54.0044,-6.4003,39004,2016,"IE","IE-L","Dundalk","ダンドーク","Dún Dealgan","ga",2,"IE-LH",0],
   [213358,52.2721,-9.7026,26079,2022,"IE","IE-M","Tralee","トラリー","Trá Lí","ga",2,"IE-KY",0],
