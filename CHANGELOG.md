@@ -8,6 +8,7 @@ All notable changes to this project are written here. The format follows
 
 ### Changed
 
+- The must-have check is kazoku-ui's check-standard 2026-11-11b (`scripts/check-standard.mjs`, copied unchanged, its new hash recorded in `src/standard.test.js`). Its new item, `playwright-image`, holds CI's Playwright image to the version `pnpm-lock.yaml` pins for `@playwright/test`; here both are 1.64.0.
 - **Every demo page says what it is and credits its data** (kazoku-ui's page frame, check-standard 2026-11-11). The demo and the card builder each have a header line ("Kuni 国: country card builder", with a way home) and a credit line above the footer, in English and Japanese, with a title of their own made from the same words. The credit line names every source and carries the credits Statistics Canada's and the OECD's terms ask for wherever their urban-area figures are shown, with a link to `NOTICE.md`; the embed page has a small credit line in its corner.
 
 ## [1.8.0] - 2026-11-11
