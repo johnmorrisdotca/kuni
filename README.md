@@ -274,7 +274,7 @@ countriesOf("OC");                                    // the countries of a cont
 (await searchPlaces("パリ", { lang: "ja" }))[0].label; // "パリ": English, Japanese or native names, accents and kana folded
 ```
 
-A city is in one tier only. `id` is the Wikidata item (`"Q90"`), or `"ne:<number>"` where only Natural Earth has the place, and never changes between releases: an id that was merged into another city still answers with it. `name.ja` and `name.native` are left out where no source has them, never an English name copied in. [Use the cities](./docs/guides/cities.md) has the rest.
+A city is in one tier only. `id` is the Wikidata item (`"Q90"`), or `"ne:<number>"` where only Natural Earth has the place, and never changes between releases: an id that was merged into another city still answers with it. `name.ja` and `name.native` are left out where no source has them, never an English name copied in. `name.jaShort` is the short Japanese name a map labels a city by (東京 for 東京都, 大阪 for 大阪市), beside the full `name.ja`. [Use the cities](./docs/guides/cities.md) has the rest.
 
 ### In a page, with no bundler
 

@@ -23,7 +23,7 @@ describe("a city's short Japanese name", () => {
     expect(jaShortOf("津市市")).toBe("津市");
   });
 
-  it("drops 市 from a one-character city name, as maps print it (machine1's rule, 2026-11-11)", () => {
+  it("drops 市 from a one-character city name, as maps print it", () => {
     for (const [full, short] of [["津市", "津"], ["堺市", "堺"], ["呉市", "呉"], ["萩市", "萩"], ["柏市", "柏"], ["旭市", "旭"], ["光市", "光"], ["関市", "関"], ["燕市", "燕"], ["蕨市", "蕨"]])
       expect(jaShortOf(full)).toBe(short);
   });
@@ -55,6 +55,18 @@ describe("a city's short Japanese name", () => {
     expect(jaShortOf("南九州市")).toBe("南九州市");
     expect(jaShortOf("雲南市")).toBe("雲南市");
     expect(jaShortOf("ケソン市")).toBe("ケソン市");
+    // A short form that names something bigger: a region, mountains, a province, a sea, a prefecture.
+    for (const name of ["東海市", "南アルプス市", "吉林市", "北海市", "山梨市", "栃木市", "沖縄市"]) expect(jaShortOf(name)).toBe(name);
+  });
+
+  it("keeps 都市 where it is the word for a city in a longer name, and drops 市 from a name ending 都", () => {
+    expect(jaShortOf("関西文化学術研究都市")).toBe("関西文化学術研究都市");
+    expect(jaShortOf("松島国際都市")).toBe("松島国際都市");
+    expect(jaShortOf("ラアス・ラファーン工業都市")).toBe("ラアス・ラファーン工業都市");
+    expect(jaShortOf("京都市")).toBe("京都");
+    expect(jaShortOf("成都市")).toBe("成都");
+    expect(jaShortOf("宜都市")).toBe("宜都");
+    expect(jaShortOf("西都市")).toBe("西都");
   });
 
   it("is on every city that has a Japanese name, beside the full one", async () => {

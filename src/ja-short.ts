@@ -11,7 +11,8 @@ const PART_OF_NAME = /(地|特別|新|郡|自治|特)区$/;
 // Names whose short form would mean something else, kept whole: a common word (中央市, Chūō City, is not 中央,
 // "central"), a region (四国中央, 南九州), a Chinese province (雲南, 湖南, 海南, 河南), an old province (甲州, 奥州), a
 // province of the Philippines (ケソン市, Quezon City), or a translated district name that is no label alone (拡張区,
-// Eixample; 壁外区; 古町区).
+// Eixample; 壁外区; 古町区), or a name whose short form is something bigger: a region (東海), a range (南アルプス), a
+// province (吉林), a sea (北海, the North Sea) or a prefecture (山梨, 栃木, 沖縄).
 const KEEP_WHOLE: ReadonlySet<string> = new Set([
   "中央市",
   "四国中央市",
@@ -26,6 +27,13 @@ const KEEP_WHOLE: ReadonlySet<string> = new Set([
   "拡張区",
   "壁外区",
   "古町区",
+  "東海市",
+  "南アルプス市",
+  "吉林市",
+  "北海市",
+  "山梨市",
+  "栃木市",
+  "沖縄市",
 ]);
 
 /**
@@ -45,6 +53,8 @@ const jaShortOf = (ja: string): string => {
   for (const suffix of WHOLE) if (ja.endsWith(suffix) && [...ja].length - [...suffix].length >= 2) return ja.slice(0, -suffix.length);
   // 市 goes whatever is left (津市, 津; maps print the one character bare); 区 only where two or more are left, since a
   // one-character ward name is a direction or a position (中区, 北区) and no place name alone.
+  // 都市 is "city" as a word in a longer name (関西文化学術研究都市, 松島国際都市), kept; 京都市 is 京都.
+  if (ja.endsWith("都市") && [...ja].length > 3) return ja;
   if (ja.endsWith("市") && [...ja].length >= 2) return ja.slice(0, -1);
   if (ja.endsWith("区") && !PART_OF_NAME.test(ja) && [...ja].length >= 3) return ja.slice(0, -1);
 

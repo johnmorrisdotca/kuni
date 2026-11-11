@@ -8,8 +8,8 @@ All notable changes to this project are written here. The format follows
 
 ### Added
 
-- **Short Japanese city names for map labels**: `name.jaShort` beside `name.ja` on every city with a Japanese name: 東京 for 東京都, 大阪 for 大阪市, 新宿 for 新宿区, ソウル for ソウル特別市. A one-character name drops its 市 as maps print it (津市, 津); a name is kept whole where 区 would leave one character (中区), where the result would be a country's name (クウェート市) or would mean something else (中央市, 南九州市, 雲南市, ケソン市), or where the 区 belongs to the name (浦東新区, ワシントン郡区); 町, 村 and 郡 are never dropped.
-- **Four wrong Japanese names dropped**: Várzea Grande, Qods, Kiryat Tiv'on and one Jinhe Town carried Wikidata's Japanese label of a larger place (a state, a province, a district, a county); they now have none, until a right one is found.
+- **Short Japanese city names for map labels**: `name.jaShort` beside `name.ja` on every city with a Japanese name: 東京 for 東京都, 大阪 for 大阪市, 新宿 for 新宿区, ソウル for ソウル特別市. A one-character name drops its 市 as maps print it (津市, 津); a name is kept whole where 区 would leave one character (中区), where the result would be a country's name (クウェート市) or would mean something else (中央市, 南九州市, 雲南市, ケソン市) or something bigger (東海市, 吉林市, 北海市, 山梨市), where 都市 is the word for a city in a longer name (関西文化学術研究都市; 京都市 is 京都), or where the 区 belongs to the name (浦東新区, ワシントン郡区); 町, 村 and 郡 are never dropped.
+- **Seven wrong Japanese names dropped**: Várzea Grande, Qods, Kiryat Tiv'on and one Jinhe Town carried Wikidata's Japanese label of a larger place (a state, a province, a district, a county), and East Meadow, Pingdiquan Town and Ih Toli Gol that of another city (ニューヨーク市, 済寧, 玉林); they now have none, until a right one is found.
 - **Brussels, Munich and Birmingham** rank by their metropolitan areas (3.35, 3.02 and 3.12 million): Wikidata has the areas but links them to no city, so `scripts/metro-links.ts` sets each by name with its reason. Somerset, a county, is no longer listed as a city.
 
 ## [1.6.2] - 2026-11-11

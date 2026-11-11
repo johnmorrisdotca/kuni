@@ -1507,7 +1507,7 @@ const US: readonly CityRow[] = [
   [1762878,38.3019,-85.8214,37841,"2020-04-01","US","US-IN","New Albany","ニューオールバニ",null,null,0,null,0],
   [363310,39.4928,-74.5594,37813,"2020-04-01","US","US-NJ","Galloway Township","ギャロウェイ郡区","Municipio de Galloway","es",0,null,0],
   [182877,42.9631,-87.9958,37803,"2020-04-01","US","US-WI","Greenfield","グリーンフィールド",null,null,0,null,0],
-  [2026633,40.7136,-73.5558,37796,"2020-04-01","US","US-NY","East Meadow","ニューヨーク市",null,null,0,null,0],
+  [2026633,40.7136,-73.5558,37796,"2020-04-01","US","US-NY","East Meadow",null,null,null,0,null,0],
   [79509,32.4591,-86.4513,37781,"2020-04-01","US","US-AL","Prattville","プラットヴィル",null,null,0,null,0],
   [7017236,34.1842,-118.91,37775,2010,"US","US-CA","Newbury Park","ニューベリーパーク",null,null,0,null,0],
   [482842,40.3703,-111.7314,37726,"2020-04-01","US","US-UT","Pleasant Grove","プレザントグロウブ",null,null,0,null,0],

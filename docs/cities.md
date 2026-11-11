@@ -11,9 +11,9 @@ from the two inputs: the Wikidata snapshot of 2026-11-11 (CC0) and Natural Earth
 |---|---|---|---:|---:|---:|---:|
 | `capitals` | `@johnmorrisdotca/kuni/cities/capitals` | every capital, of a country or of a subdivision, of any size | 4,278 | 3,984 (93.1%) | 34 | 183 |
 | `1m` | `@johnmorrisdotca/kuni/cities/1m` | the cities of a million people or more (capitals too) | 689 | 680 (98.7%) | 6 | 8 |
-| `100k` | `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 to a million people (capitals too) | 4,913 | 4,433 (90.2%) | 50 | 159 |
-| `15k` | `loadCities("15k")` | the cities of 15,000 to 100,000 people (capitals too); from the countries' own files, not a file of its own | 22,969 | 14,578 (63.5%) | 387 | 306 |
-| every city once | | | 29,745 | 20,619 (69.3%) | 448 | 538 |
+| `100k` | `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 to a million people (capitals too) | 4,913 | 4,432 (90.2%) | 49 | 159 |
+| `15k` | `loadCities("15k")` | the cities of 15,000 to 100,000 people (capitals too); from the countries' own files, not a file of its own | 22,969 | 14,576 (63.5%) | 386 | 306 |
+| every city once | | | 29,745 | 20,616 (69.3%) | 446 | 538 |
 
 ## How a city is chosen
 
@@ -34,7 +34,7 @@ Of the 33,692 items in the snapshot: 693 had no English name (in Wikidata or Nat
 
 ## What is missing
 
-- **Japanese name**: 9,126 of 29,745 cities have none, in either source; the field is `null`.
+- **Japanese name**: 9,129 of 29,745 cities have none, in either source; the field is `null`.
 - **Native name**: 15,806 cities have none or it is the English name; the field is `null`.
 - **Subdivision**: 1,263 cities have none (Wikidata does not place them in a first-level subdivision kuni lists).
 

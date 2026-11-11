@@ -54,7 +54,7 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 ```
 
 - `id`: the Wikidata item (`"Q90"` for Paris), or `"ne:<number>"` for a place only Natural Earth has. It never changes between releases; an id that was merged into another city still answers, with that city.
-- `name`: `en`, and `ja` and `native` where a source has them. A missing one is absent, never an English name copied in. `nativeLanguage` is the code of `native`.
+- `name`: `en`, and `ja` and `native` where a source has them. A missing one is absent, never an English name copied in. `jaShort` is the short Japanese name for a map label (東京 for 東京都, 大阪 for 大阪市), wherever `ja` is. `nativeLanguage` is the code of `native`.
 - `continent` (`"AS"`, `"EU"`, ...), `country` (ISO 3166-1 alpha-2, two capital letters), `lat`, `lon`, and `subdivision` (the ISO 3166-2 code of its first-level subdivision, or `null`).
 - `population` and `populationDate` (a year, or a day), `null` where no source has a figure.
 - `capital` (`"national"`, `"alternate"`, `"subdivision"` or `null`) and `capitalOf`, the codes it is the capital of (never empty for a capital).

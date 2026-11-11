@@ -78,6 +78,9 @@ const JA_WRONG: Readonly<Record<string, string>> = {
   Q766974: "Qods, Iran: labelled テヘラン州, Tehran province.",
   Q1743479: "Kiryat Tiv'on, Israel: labelled ハイファ地区, the Haifa District.",
   Q14279699: "Jinhe Town, China: labelled 金平ミャオ族ヤオ族タイ族自治県, the Jinping Miao, Yao and Dai Autonomous County.",
+  Q2026633: "East Meadow, New York: labelled ニューヨーク市, New York City.",
+  Q11060772: "Pingdiquan Town, China: labelled 済寧, Jining.",
+  Q10884943: "Ih Toli Gol, China: labelled 玉林, Yulin.",
 };
 // Wikidata's human settlements include the areas around cities and the units that hold them. An item that no capital and
 // no Natural Earth place stands behind, and whose English label names one of those, is not a city.

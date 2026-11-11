@@ -106,7 +106,8 @@ No Wikipedia text is used.
 A city's metropolitan area (`metro` on each city) comes from a third Wikidata snapshot
 (`data-sources/wikidata-metros-<day>.json`), CC0 on the same terms (read on 2026-11-11), asked for by
 `scripts/fetch-metros.ts`: the items that are a metropolitan or urban area, the links between them and the cities, their
-English labels and their populations with dates.
+English labels and their populations with dates. Brussels, Munich and Birmingham are linked to their areas by name in
+`scripts/metro-links.ts`, from the same CC0 snapshot.
 
 A Canadian city's metropolitan area is Statistics Canada's census metropolitan area or census agglomeration, its 2021
 population from Table 98-10-0005-01, kept in `data-sources/statcan-cma-2021.json` by `scripts/fetch-statcan.ts`, under the
