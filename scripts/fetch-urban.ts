@@ -76,7 +76,7 @@ const statcan = async (folder: string): Promise<{ year: number; estimates: [stri
   const lines = createInterface({ input: createReadStream(join(folder, "17100148.csv"), "utf8"), crlfDelay: Infinity });
   let header: string[] | null = null;
   for await (const line of lines) {
-    const row = fields(line.replace(/^﻿/, ""));
+    const row = fields(line.replace(/^\uFEFF/, ""));
     if (header === null) {
       header = row;
       continue;
@@ -95,13 +95,13 @@ const statcan = async (folder: string): Promise<{ year: number; estimates: [stri
 
   // The members: the metadata names each place's parent, a municipality's being the area that holds it.
   await unzipped(STATCAN_MEMBERS, folder, ["98100003.csv", "98100003_MetaData.csv"]);
-  const meta = readFileSync(join(folder, "98100003_MetaData.csv"), "utf8").replace(/^﻿/, "").split(/\r?\n/);
+  const meta = readFileSync(join(folder, "98100003_MetaData.csv"), "utf8").replace(/^\uFEFF/, "").split(/\r?\n/);
   const parentOf = new Map<string, string>();
   for (const line of meta) {
     const row = fields(line);
     if (row[0] === "1" && /^\d+$/.test(row[3] ?? "")) parentOf.set(row[3]!, row[4] ?? "");
   }
-  const data = readFileSync(join(folder, "98100003.csv"), "utf8").replace(/^﻿/, "").split(/\r?\n/);
+  const data = readFileSync(join(folder, "98100003.csv"), "utf8").replace(/^\uFEFF/, "").split(/\r?\n/);
   const dguidOf = new Map<string, string>();
   const places: { name: string; dguid: string; member: string }[] = [];
   for (const line of data.slice(1)) {
@@ -142,7 +142,7 @@ const census = async (): Promise<[string, string, "MSA" | "μSA", number][]> => 
 };
 
 const oecd = async (): Promise<[string, string, string, number, number][]> => {
-  const text = (await download(OECD, "application/vnd.sdmx.data+csv; labels=both")).toString("utf8").replace(/^﻿/, "").split(/\r?\n/);
+  const text = (await download(OECD, "application/vnd.sdmx.data+csv; labels=both")).toString("utf8").replace(/^\uFEFF/, "").split(/\r?\n/);
   const header = fields(text[0]!);
   const area = header.findIndex((name) => name.startsWith("REF_AREA"));
   const time = header.findIndex((name) => name.startsWith("TIME_PERIOD"));

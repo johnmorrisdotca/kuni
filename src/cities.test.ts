@@ -28,6 +28,7 @@ const make = (id: string, en: string, country: string, lat: number, lon: number,
     capitalOf: Object.freeze([]),
     source: Object.freeze({ point: "wikidata", population: population === null ? null : "wikidata", ja: null } as const),
     metro: null,
+    inMetroOf: null,
   });
 const PARIS = make("Q90", "Paris", "FR", 48.8567, 2.351, 2165423, "FR-IDF");
 const LYON = make("Q456", "Lyon", "FR", 45.76, 4.84, 522250, "FR-ARA");
@@ -510,13 +511,13 @@ describe("what is no city", () => {
     const { allSubdivisions } = await import("./subdivisions");
     const { countries } = await import("./index");
     const set = await loadCities("capitals", "1m", "100k", "15k");
-    const units = new Map(allSubdivisions().filter((one) => one.name.ja !== undefined && /[州県省]$/.test(one.name.ja)).map((one) => [`${one.country} ${one.name.ja}`, one.code]));
+    const units = new Map(allSubdivisions().filter((one) => /[州県省]$/.test(one.name.ja ?? "")).map((one) => [`${one.country} ${one.name.ja}`, one.code]));
     // A town of a country's own name (Armenia, Colombia; Lebanon, Pennsylvania) rightly shares its Japanese name.
     const nations = new Map(countries().map((one) => [one.name.ja, one.name.en]));
     const wrong = set.cities.filter((city) => {
       if (city.name.ja === undefined) return false;
       const code = units.get(`${city.country} ${city.name.ja}`);
-      if (code !== undefined && !city.capitalOf.includes(code)) return true;
+      if (code !== undefined && code !== null && !city.capitalOf.includes(code)) return true;
       const nation = nations.get(city.name.ja);
       // Columbia, Taï and Chili sound as Colombia, Thailand and Chile do in Japanese, and are written so.
       return nation !== undefined && nation !== city.name.en && !["Q38453", "Q59670", "Q397905", "Q5675279", "Q3516529", "Q2412213"].includes(city.id);
