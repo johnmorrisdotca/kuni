@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.6.3] - 2026-11-11
+
 ### Added
 
 - **Short Japanese city names for map labels**: `name.jaShort` beside `name.ja` on every city with a Japanese name: 東京 for 東京都, 大阪 for 大阪市, 新宿 for 新宿区, ソウル for ソウル特別市. A one-character name drops its 市 as maps print it (津市, 津); a name is kept whole where 区 would leave one character (中区), where the result would be a country's name (クウェート市) or would mean something else (中央市, 南九州市, 雲南市, ケソン市) or something bigger (東海市, 吉林市, 北海市, 山梨市), where 都市 is the word for a city in a longer name (関西文化学術研究都市; 京都市 is 京都), or where the 区 belongs to the name (浦東新区, ワシントン郡区); 町, 村 and 郡 are never dropped.
