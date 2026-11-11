@@ -524,9 +524,11 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       continue;
     }
     // Hong Kong, Macau and Taiwan have codes of their own (HK, MO, TW): a place Wikidata puts in China but whose ISO
-    // 3166-2 code is CN-HK, CN-MO or CN-TW is in that country.
+    // 3166-2 code is CN-HK, CN-MO or CN-TW is in that country. Wikidata gives most Dutch municipalities no country
+    // (P17): the country of the ISO 3166-2 code it is in (NL-NB) is used then, else Natural Earth's.
     const ownCode = subs.map((code) => SEPARATE_CODES[code]).find((alpha2) => alpha2 !== undefined && countries.has(alpha2));
-    const country = ownCode ?? wikidataCountry ?? (place?.[8] != null && countries.has(place[8]) ? place[8] : null);
+    const codeCountry = subs.map((code) => code.split("-")[0]!).find((alpha2) => countries.has(alpha2)) ?? null;
+    const country = ownCode ?? wikidataCountry ?? codeCountry ?? (place?.[8] != null && countries.has(place[8]) ? place[8] : null);
     if (country === null || !countries.has(country)) {
       report.leftOut.noCountry += 1;
       continue;
