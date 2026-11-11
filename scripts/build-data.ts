@@ -38,7 +38,7 @@ import {
   TYPE_RULES,
 } from "./data-config.ts";
 import { englishSuspects } from "./en-names.ts";
-import { CAPITAL_ZONES } from "./facts-config.ts";
+import { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES } from "./facts-config.ts";
 import { buildFacts } from "./facts.ts";
 import { buildGroupings } from "./groupings.ts";
 import { buildWithdrawn, withdrawnDoc } from "./withdrawn.ts";
@@ -251,7 +251,7 @@ for (const [area, { _contains, _grouping }] of Object.entries(territoryContainme
 
 const zonesOf = new Map<string, string[]>();
 // Each zone's principal city, from zone.tab's ISO 6709 point (+DDMM+DDDMM, seconds where given).
-const zonePoints = new Map<string, { zone: string; at: [number, number] }[]>();
+const zonePoints = new Map<string, { zone: string; at: [number, number]; comment: string }[]>();
 const iso6709 = (text: string): [number, number] => {
   const parts = /^([+-])(\d{2})(\d{2})(\d{2})?([+-])(\d{3})(\d{2})(\d{2})?$/.exec(text);
   if (parts === null) throw new Error(`zone.tab: no point in ${text}`);
@@ -263,9 +263,9 @@ const iso6709 = (text: string): [number, number] => {
 };
 for (const line of zoneTab.split("\n")) {
   if (line.startsWith("#") || line.trim() === "") continue;
-  const [code, at, zone] = line.split("\t");
+  const [code, at, zone, comment] = line.split("\t");
   zonesOf.set(code, [...(zonesOf.get(code) ?? []), zone]);
-  zonePoints.set(code, [...(zonePoints.get(code) ?? []), { zone, at: iso6709(at) }]);
+  zonePoints.set(code, [...(zonePoints.get(code) ?? []), { zone, at: iso6709(at), comment: comment ?? "" }]);
 }
 // The zone a capital keeps: CAPITAL_ZONES where set (each with its reason), else the country's one zone, else the zone
 // whose principal city is nearest the capital. Every entry of CAPITAL_ZONES must be used.
@@ -799,65 +799,110 @@ const writeFacts = (): void => {
   ];
   writeDocumentedFile(join(DOCS, "facts.md"), [...facts.doc, ...zoneDoc].join("\n"));
   // The zone of each first-level subdivision of a country with several zones, for timeZoneAt and subdivisionTimeZone:
-  // [code, zone, how (0 Wikidata names it alone among the country's zones, 1 Wikidata names several and this is the one
-  // nearest the capital, 2 Wikidata names none and this is the zone.tab city nearest the capital, 3 there is no point to
-  // measure from and this is the country capital's zone), capital lat, lon (null for 3)].
+  // [code, zone, estimated (0: Wikidata names it alone, or a territory's own, and the subdivision is not split; 1: kuni
+  // chose it), capital lat, lon, middle lat, lon (null where there is no point)].
   const zonesFile = manifest.files.find((file) => file.path.startsWith("wikidata-zones-"));
   if (zonesFile === undefined) throw new Error("No zones snapshot in data-sources/sources.json: run node scripts/fetch-zones.ts");
   const wikidataZones = new Map((JSON.parse(readSource(manifest, zonesFile.path).text) as { zones: [string, string[]][] }).zones);
   const subdivisionZoneRows: string[] = [];
-  const zoneCounts = { named: 0, nearestOfNamed: 0, nearest: 0, capital: 0 };
+  const zoneCounts = { named: 0, chosen: 0, main: 0, byName: 0, territory: 0 };
+  const usedSubdivisionZones = new Set<string>();
+  const usedSplits = new Set<string>();
+  // A country's main zones: those zone.tab says cover "most" of a place, or a plain region with no carve-out ("Pacific",
+  // "Central Mexico"); not "Eastern - KY (Wayne)" or "Mountain - ID (south), OR (east)".
   for (const record of subdivisions.filter((one) => one.level === 1).sort((a, b) => byText(a.code, b.code))) {
     const own = zonePoints.get(record.country) ?? [];
     if (new Set(own.map((one) => one.zone)).size < 2) continue;
     // Measured from its capital, else from its own point (a city that is a subdivision, Moscow, has no capital of its own).
     const capital = subdivisionFacts.records.get(record.code)?.capitalPoint ?? subdivisionFacts.records.get(record.code)?.point ?? null;
-    // Wikidata's zones for it: one of the country's own, or a zone named another way ("US/Eastern" for Quebec), taken as
-    // the country's zones of the same UTC offset in January.
-    const given = wikidataZones.get(record.code) ?? [];
-    const named = [
-      ...new Set(
-        given.flatMap((zone) =>
-          own.some((one) => one.zone === zone) ? [zone] : own.filter((one) => offsetOf(one.zone) !== null && offsetOf(one.zone) === offsetOf(zone)).map((one) => one.zone),
-        ),
-      ),
-    ];
-    // With no point to measure from and no zone Wikidata names alone, the country capital's zone, estimated (how 3).
-    if (capital === null && named.length !== 1) {
-      const countryCapital = facts.records.find((one) => one.alpha2 === record.country)?.capitalPoint ?? null;
-      const fallback = capitalZoneOf(record.country, countryCapital === null ? null : { lat: countryCapital[0], lon: countryCapital[1] });
-      if (fallback !== null) {
-        subdivisionZoneRows.push(`  ${literal([record.code, fallback, 3, null, null])},`);
-        zoneCounts.capital += 1;
-      }
+    // The subdivision's own point too (its middle, by Wikidata), for timeZoneAt: Las Vegas is nearer Nevada's middle than
+    // Arizona's capital, though Phoenix is nearer than Carson City.
+    const middle = subdivisionFacts.records.get(record.code)?.point ?? null;
+    const row = (zone: string, estimated: boolean): string =>
+      `  ${literal([record.code, zone, estimated || SPLIT_ZONES[record.code] !== undefined ? 1 : 0, capital === null ? null : rounded4(capital[0]), capital === null ? null : rounded4(capital[1]), middle === null ? null : rounded4(middle[0]), middle === null ? null : rounded4(middle[1])])},`;
+    if (SPLIT_ZONES[record.code] !== undefined) usedSplits.add(record.code);
+    // 1. Set by name, with its reason.
+    const set = SUBDIVISION_ZONES[record.code];
+    if (set !== undefined) {
+      usedSubdivisionZones.add(record.code);
+      subdivisionZoneRows.push(row(set.zone, set.estimated === true));
+      zoneCounts.byName += 1;
       continue;
     }
-    const nearestOf = (list: { zone: string; at: [number, number] }[]): string => list.map((one) => ({ zone: one.zone, km: greatCircleKm(capital!, one.at) })).sort((a, b) => a.km - b.km)[0]!.zone;
-    let zone: string;
-    let how: 0 | 1 | 2;
-    if (named.length === 1) {
-      zone = named[0]!;
-      how = 0;
-      zoneCounts.named += 1;
-    } else if (named.length > 1) {
-      zone = nearestOf(own.filter((one) => named.includes(one.zone)));
-      how = 1;
-      zoneCounts.nearestOfNamed += 1;
-    } else {
-      zone = nearestOf(own);
-      how = 2;
-      zoneCounts.nearest += 1;
+    // 2. A territory with a country code of its own (US-GU is Guam) keeps that country's zone.
+    const territory = record.code.split("-")[1]!;
+    const territoryCountry = territory.length === 2 ? countries.find((one) => one.alpha2 === territory) : undefined;
+    const territoryZones = territoryCountry !== undefined && territoryCountry.en === record.en ? (zonePoints.get(territory) ?? []) : [];
+    if (territoryZones.length === 1) {
+      subdivisionZoneRows.push(row(territoryZones[0]!.zone, false));
+      zoneCounts.territory += 1;
+      continue;
     }
-    subdivisionZoneRows.push(`  ${literal([record.code, zone, how, capital === null ? null : rounded4(capital[0]), capital === null ? null : rounded4(capital[1])])},`);
+    // 3. The subdivision's offset, then the canonical zone of that offset. The offset is Wikidata's where it names zones
+    // (a zone named another way, "US/Eastern" for Quebec, is matched by its offset in January); of several offsets, the
+    // nearest general zone's; with none from Wikidata, the nearest zone.tab city's (Galápagos is far from Quito).
+    const given = wikidataZones.get(record.code) ?? [];
+    const direct = given.filter((zone) => own.some((one) => one.zone === zone));
+    const candidates = own.filter((one) => given.some((zone) => zone === one.zone || (offsetOf(one.zone) !== null && offsetOf(one.zone) === offsetOf(zone))));
+    const nearest = <T extends { at: [number, number] }>(list: readonly T[]): T =>
+      capital === null ? list[0]! : [...list].sort((a, b) => greatCircleKm(capital, a.at) - greatCircleKm(capital, b.at))[0]!;
+    // A country's general zone ("Eastern (most areas)", "Pacific", "most of Chile"), not a part of one ("Central - IN (Perry)").
+    const general = (one: { comment: string }): boolean => !one.comment.includes(" - ");
+    if (direct.length === 1 && new Set(candidates.map((one) => one.zone)).size <= 1) {
+      subdivisionZoneRows.push(row(direct[0]!, false));
+      zoneCounts.named += 1;
+      continue;
+    }
+    let offset: string | null;
+    if (candidates.length > 0) {
+      const offsets = new Set(candidates.map((one) => offsetOf(one.zone)));
+      const pool = offsets.size === 1 ? candidates : candidates.filter(general).length > 0 ? candidates.filter(general) : candidates;
+      offset = offsetOf(nearest(pool).zone);
+      zoneCounts.chosen += 1;
+    } else if (capital !== null) {
+      offset = offsetOf(nearest(own).zone);
+      zoneCounts.main += 1;
+    } else {
+      const countryCapital = facts.records.find((one) => one.alpha2 === record.country)?.capitalPoint ?? null;
+      const fallback = capitalZoneOf(record.country, countryCapital === null ? null : { lat: countryCapital[0], lon: countryCapital[1] });
+      if (fallback !== null) subdivisionZoneRows.push(row(fallback, true));
+      zoneCounts.main += 1;
+      continue;
+    }
+    // Within the offset: a zone zone.tab names for this subdivision's most areas (Eastern - MI (most areas) for
+    // Michigan), else one whose principal city is the capital (Hobart), else the country capital's zone (Mexico City,
+    // Madrid, São Paulo), else a general zone, else the nearest.
+    const group = own.filter((one) => offsetOf(one.zone) === offset);
+    const short = record.code.split("-")[1]!;
+    const forIt = group.filter((one) => new RegExp(`\\b${short}\\b`).test(one.comment) && /\bmost\b/.test(one.comment));
+    const countryCapital = facts.records.find((one) => one.alpha2 === record.country)?.capitalPoint ?? null;
+    const capitalZone = capitalZoneOf(record.country, countryCapital === null ? null : { lat: countryCapital[0], lon: countryCapital[1] });
+    // A zone whose principal city is the subdivision's capital, or within 30 km of it (Melbourne for Victoria).
+    const atCapital = capital === null ? [] : group.filter((one) => greatCircleKm(capital, one.at) <= 30);
+    const zone =
+      forIt.length > 0
+        ? nearest(forIt).zone
+        : atCapital.length > 0
+          ? nearest(atCapital).zone
+        : group.some((one) => one.zone === capitalZone)
+          ? capitalZone!
+          : group.some(general)
+            ? nearest(group.filter(general)).zone
+            : nearest(group).zone;
+    subdivisionZoneRows.push(row(zone, true));
   }
-  console.log(`Subdivision zones: ${zoneCounts.named} named by Wikidata, ${zoneCounts.nearestOfNamed} of several, ${zoneCounts.nearest} by the nearest zone.tab city, ${zoneCounts.capital} the country capital's.`);
+  const unusedSubdivisionZones = Object.keys(SUBDIVISION_ZONES).filter((code) => !usedSubdivisionZones.has(code));
+  if (unusedSubdivisionZones.length > 0) throw new Error(`SUBDIVISION_ZONES names no subdivision of a country with several zones: ${unusedSubdivisionZones.join(", ")}`);
+  const unusedSplits = Object.keys(SPLIT_ZONES).filter((code) => !usedSplits.has(code));
+  if (unusedSplits.length > 0) throw new Error(`SPLIT_ZONES names no subdivision of a country with several zones: ${unusedSplits.join(", ")}`);
+  console.log(`Subdivision zones: ${zoneCounts.named} named by Wikidata, ${zoneCounts.chosen} chosen of Wikidata's, ${zoneCounts.main} a main zone of the country, ${zoneCounts.byName} set by name, ${zoneCounts.territory} a territory's own.`);
   // The zones' principal cities, for timeZoneAt: [alpha2, lat, lon, zone], in zone.tab's order.
   const zoneRows = [...zonePoints.entries()].sort(([a], [b]) => byText(a, b)).flatMap(([code, list]) => list.map((one) => `  ${literal([code, rounded4(one.at[0]), rounded4(one.at[1]), one.zone])},`));
   writeDocumentedFile(
     join(OUT_DATA, "zones.data.ts"),
     header(`The principal city of each IANA time zone (${zoneRows.length}), for timeZoneAt in /facts.`, [IANA_SOURCE]) +
       `const ZONE_ROWS: readonly (readonly [string, number, number, string])[] = [\n${zoneRows.join("\n")}\n];\n\n` +
-      `// ${WIKIDATA_ZONES_SOURCE(zonesFile.path)}\nconst SUBDIVISION_ZONE_ROWS: readonly (readonly [string, string, 0 | 1 | 2 | 3, number | null, number | null])[] = [\n${subdivisionZoneRows.join("\n")}\n];\n\nexport { SUBDIVISION_ZONE_ROWS, ZONE_ROWS };\n`,
+      `// ${WIKIDATA_ZONES_SOURCE(zonesFile.path)}\nconst SUBDIVISION_ZONE_ROWS: readonly (readonly [string, string, 0 | 1, number | null, number | null, number | null, number | null])[] = [\n${subdivisionZoneRows.join("\n")}\n];\n\nexport { SUBDIVISION_ZONE_ROWS, ZONE_ROWS };\n`,
   );
 };
 

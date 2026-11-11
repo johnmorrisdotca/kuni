@@ -71,10 +71,14 @@ const subdivisionTimeZone = (code: string): ZoneAnswer | null => {
 /**
  * The IANA time zone at a point in a country, and whether it is known or estimated.
  *
- * A country with one zone gives that zone, `estimated: false`. A country with several gives the zone of the
- * subdivision whose capital is nearest the point (`subdivisionTimeZone`), `estimated: true`: kuni has no boundaries,
- * so a point near the edge of a state or province, or of a zone inside one, can be given its neighbour's. Say so where
- * it is shown; a map of regions that knows the region asks `subdivisionTimeZone` instead.
+ * A country with one zone gives that zone, `estimated: false`. In a country with several: a point within 30 km of a
+ * zone's principal city in IANA's zone.tab takes that zone (Ciudad Juárez, America/Ciudad_Juarez); any other takes the
+ * zone of the subdivision whose capital or middle is nearest (`subdivisionTimeZone`). Both are `estimated: true`.
+ *
+ * Limits, since kuni has no boundaries: a point near the edge of a state or province can be given its neighbour's
+ * zone; a subdivision split between zones gives its most-populous part's (East Tennessee is given Central time); and a
+ * place that keeps a different rule inside a subdivision is not known (the Navajo Nation keeps daylight saving time in
+ * Arizona). Say "estimated" where it is shown. A map of regions that knows the region asks `subdivisionTimeZone`.
  *
  * @param code - The country the point is in, an ISO 3166-1 alpha-2 code in either case.
  * @param point - The point, `{ lat, lon }` in degrees.
@@ -93,10 +97,15 @@ const timeZoneAt = (code: string, point: LatLon): ZoneAnswer | null => {
   const zones = zonesOf(wanted);
   if (zones.length === 0) return null;
   if (zones.length === 1) return Object.freeze({ zone: zones[0]!, estimated: false });
-  // The nearest subdivision capital; where the country has no subdivision with a capital, the nearest zone.tab city.
-  const places: readonly (readonly [string, number, number])[] = [
-    ...SUBDIVISION_ZONE_ROWS.filter((row) => row[0].startsWith(`${wanted}-`) && row[3] !== null && row[4] !== null).map((row) => [row[1], row[3]!, row[4]!] as const),
-  ];
+  // Near a zone's principal city: that zone.
+  for (const row of ZONE_ROWS) if (row[0] === wanted && distanceKm(point, { lat: row[1], lon: row[2] }) <= 30) return Object.freeze({ zone: row[3], estimated: true });
+  // Else the subdivision whose capital or middle is nearest; with none, the nearest principal city.
+  const places: (readonly [string, number, number])[] = [];
+  for (const row of SUBDIVISION_ZONE_ROWS) {
+    if (!row[0].startsWith(`${wanted}-`)) continue;
+    if (row[3] !== null && row[4] !== null) places.push([row[1], row[3], row[4]]);
+    if (row[5] !== null && row[6] !== null) places.push([row[1], row[5], row[6]]);
+  }
   const pool = places.length > 0 ? places : ZONE_ROWS.filter((row) => row[0] === wanted).map((row) => [row[3], row[1], row[2]] as const);
   let best = pool[0]!;
   let bestKm = Infinity;

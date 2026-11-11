@@ -130,4 +130,70 @@ const CAPITAL_ZONES: Readonly<Record<string, { zone: string; why: string }>> = {
   XK: { zone: "Europe/Belgrade", why: "zone.tab lists no zone for Kosovo; Pristina keeps Central European time, as Europe/Belgrade." },
 };
 
-export { CAPITAL_ZONES };
+// A first-level subdivision's zone where the rule in scripts/build-data.ts (Wikidata's zone, else a main zone of the
+// country) gives the wrong one, each with its reason; "estimated" where part of it keeps another zone.
+const SUBDIVISION_ZONES: Readonly<Record<string, { zone: string; why: string; estimated?: true }>> = {
+  "UA-43": { zone: "Europe/Simferopol", why: "Crimea keeps Moscow time under Russian occupation; zone.tab's Europe/Simferopol.", estimated: true },
+  "UA-40": { zone: "Europe/Simferopol", why: "Sevastopol, as Crimea.", estimated: true },
+  "RU-UD": { zone: "Europe/Samara", why: "Udmurtia keeps Samara time (zone.tab: MSK+01 - Samara, Udmurtia)." },
+  "ID-SL": { zone: "Asia/Makassar", why: "Sulawesi keeps central Indonesian time (zone.tab: Asia/Makassar, Sulawesi/Celebes)." },
+  "ID-NU": { zone: "Asia/Makassar", why: "Nusa Tenggara keeps central Indonesian time (zone.tab: Asia/Makassar, Nusa Tengarra)." },
+  "ID-ML": { zone: "Asia/Jayapura", why: "The Moluccas keep eastern Indonesian time (zone.tab: Asia/Jayapura, Malukus/Moluccas)." },
+  "CL-AI": { zone: "America/Coyhaique", why: "Aysén keeps its own zone (zone.tab: America/Coyhaique, Aysen Region)." },
+  "CL-MA": { zone: "America/Punta_Arenas", why: "Magallanes keeps its own zone (zone.tab: America/Punta_Arenas)." },
+  "MX-ROO": { zone: "America/Cancun", why: "Quintana Roo keeps Eastern time (zone.tab: America/Cancun)." },
+  "MX-DUR": { zone: "America/Mexico_City", why: "Durango keeps central time, the same as Mexico City's; zone.tab files it under Monterrey for its history." },
+  "MX-NAY": { zone: "America/Mazatlan", why: "Nayarit (most areas) keeps Pacific time (zone.tab: America/Mazatlan); Bahía de Banderas keeps central time.", estimated: true },
+  "CA-NT": { zone: "America/Edmonton", why: "The Northwest Territories keep Mountain time; zone.tab's America/Edmonton covers NT (east)." },
+  "CN-GS": { zone: "Asia/Shanghai", why: "China keeps one official time; Asia/Urumqi is Xinjiang's local time alone." },
+  "CN-QH": { zone: "Asia/Shanghai", why: "China keeps one official time; Asia/Urumqi is Xinjiang's local time alone." },
+  "CN-XZ": { zone: "Asia/Shanghai", why: "China keeps one official time; Asia/Urumqi is Xinjiang's local time alone." },
+  "CN-XJ": { zone: "Asia/Urumqi", why: "Xinjiang keeps its own local time beside Beijing's official one.", estimated: true },
+  "UA-09": { zone: "Europe/Kyiv", why: "Luhansk: Ukraine keeps Kyiv time; only Crimea and Sevastopol differ, though Simferopol's principal city is nearer.", estimated: true },
+  "UA-14": { zone: "Europe/Kyiv", why: "Donetsk: Ukraine keeps Kyiv time; only Crimea and Sevastopol differ, though Simferopol's principal city is nearer.", estimated: true },
+  "UA-23": { zone: "Europe/Kyiv", why: "Zaporizhzhia: Ukraine keeps Kyiv time; only Crimea and Sevastopol differ, though Simferopol's principal city is nearer.", estimated: true },
+  "UA-48": { zone: "Europe/Kyiv", why: "Mykolaiv: Ukraine keeps Kyiv time; only Crimea and Sevastopol differ, though Simferopol's principal city is nearer.", estimated: true },
+  "UA-51": { zone: "Europe/Kyiv", why: "Odesa: Ukraine keeps Kyiv time; only Crimea and Sevastopol differ, though Simferopol's principal city is nearer.", estimated: true },
+  "UA-65": { zone: "Europe/Kyiv", why: "Kherson: Ukraine keeps Kyiv time; only Crimea and Sevastopol differ, though Simferopol's principal city is nearer.", estimated: true },
+  "NZ-OTA": { zone: "Pacific/Auckland", why: "Otago keeps New Zealand time; the Chatham Islands' principal city is nearer to Dunedin than Auckland is." },
+  "PG-EBR": { zone: "Pacific/Port_Moresby", why: "East New Britain keeps Papua New Guinea time; only Bougainville keeps its own." },
+  "PG-NIK": { zone: "Pacific/Port_Moresby", why: "New Ireland keeps Papua New Guinea time; only Bougainville keeps its own." },
+  "US-TN": { zone: "America/Chicago", why: "Middle and West Tennessee, where most Tennesseans live, keep Central time; East Tennessee keeps Eastern.", estimated: true },
+  "US-OR": { zone: "America/Los_Angeles", why: "Oregon keeps Pacific time but for most of Malheur County, which keeps Mountain.", estimated: true },
+  "US-ID": { zone: "America/Boise", why: "Southern Idaho, where most Idahoans live, keeps Mountain time as America/Boise; the panhandle keeps Pacific.", estimated: true },
+};
+
+// The first-level subdivisions split between zones, whose one zone is the most-populous part's and so estimated: the
+// reason names the part that keeps another.
+const SPLIT_ZONES: Readonly<Record<string, string>> = {
+  "US-TX": "El Paso and Hudspeth keep Mountain time.",
+  "US-KS": "Four western counties keep Mountain time.",
+  "US-NE": "The western panhandle keeps Mountain time.",
+  "US-SD": "The west keeps Mountain time.",
+  "US-ND": "The southwest keeps Mountain time.",
+  "US-ID": "The panhandle keeps Pacific time.",
+  "US-NV": "West Wendover keeps Mountain time.",
+  "US-AK": "The western Aleutians keep Hawaii–Aleutian time.",
+  "US-OR": "Most of Malheur County keeps Mountain time.",
+  "US-FL": "The panhandle west of the Apalachicola keeps Central time.",
+  "US-KY": "The west keeps Central time.",
+  "US-TN": "East Tennessee keeps Eastern time.",
+  "US-IN": "The northwest and southwest corners keep Central time.",
+  "US-MI": "Four counties on the Wisconsin border keep Central time.",
+  "US-AZ": "The Navajo Nation keeps daylight saving time.",
+  "AU-NSW": "Broken Hill keeps Central time; Lord Howe Island its own.",
+  "AU-WA": "Eucla keeps its own zone.",
+  "BR-PE": "Fernando de Noronha keeps its own zone.",
+  "BR-AM": "The west of Amazonas keeps Acre time.",
+  "CA-BC": "The northeast and Creston keep Mountain time.",
+  "CA-ON": "The northwest keeps Central time.",
+  "CA-SK": "Lloydminster keeps Alberta's time.",
+  "CA-NU": "Nunavut spans three zones.",
+  "CA-QC": "The Lower North Shore keeps Atlantic time.",
+  "MX-CHH": "Ciudad Juárez keeps Mountain time (America/Ciudad_Juarez).",
+  "CL-VS": "Easter Island keeps its own zone.",
+  "ID-KA": "West and central Kalimantan keep western time, east and south central time.",
+};
+
+export { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES };
+

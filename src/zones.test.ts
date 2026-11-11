@@ -20,12 +20,66 @@ describe("the capital's zone", () => {
 describe("a subdivision's zone", () => {
   it("is Wikidata's where it names one of the country's zones alone, and estimated otherwise", () => {
     expect(subdivisionTimeZone("US-WA")).toEqual({ zone: "America/Los_Angeles", estimated: false });
-    expect(subdivisionTimeZone("au-wa")).toEqual({ zone: "Australia/Perth", estimated: false });
+    // Western Australia keeps one zone but for Eucla: estimated.
+    expect(subdivisionTimeZone("au-wa")).toEqual({ zone: "Australia/Perth", estimated: true });
     // Wikidata gives Quebec "US/Eastern": the Canadian zone of that offset nearest Quebec City.
     expect(subdivisionTimeZone("CA-QC")).toEqual({ zone: "America/Toronto", estimated: true });
     expect(subdivisionTimeZone("CA-BC")?.zone).toBe("America/Vancouver");
     expect(subdivisionTimeZone("JP-13")).toEqual({ zone: "Asia/Tokyo", estimated: false });
     expect(subdivisionTimeZone("CN-BJ")).toEqual({ zone: "Asia/Shanghai", estimated: true });
+  });
+
+  it("is right for every subdivision the review of 1.6.2 named", () => {
+    const want: Record<string, string> = {
+      "US-OR": "America/Los_Angeles",
+      "US-TN": "America/Chicago",
+      "US-FL": "America/New_York",
+      "US-GA": "America/New_York",
+      "US-NC": "America/New_York",
+      "US-SC": "America/New_York",
+      "US-OH": "America/New_York",
+      "US-WV": "America/New_York",
+      "US-KY": "America/New_York",
+      "MX-ROO": "America/Cancun",
+      "MX-DUR": "America/Mexico_City",
+      "MX-NAY": "America/Mazatlan",
+      "CA-NT": "America/Edmonton",
+      "UA-51": "Europe/Kyiv",
+      "UA-65": "Europe/Kyiv",
+      "UA-48": "Europe/Kyiv",
+      "UA-14": "Europe/Kyiv",
+      "UA-23": "Europe/Kyiv",
+      "UA-43": "Europe/Simferopol",
+      "UA-40": "Europe/Simferopol",
+      "RU-UD": "Europe/Samara",
+      "ID-SL": "Asia/Makassar",
+      "ID-NU": "Asia/Makassar",
+      "ID-ML": "Asia/Jayapura",
+      "CL-LL": "America/Santiago",
+      "CL-LR": "America/Santiago",
+      "US-GU": "Pacific/Guam",
+      "US-MP": "Pacific/Saipan",
+      "US-AS": "Pacific/Pago_Pago",
+      "US-PR": "America/Puerto_Rico",
+      "US-VI": "America/St_Thomas",
+      // And the canonical zone of an offset: the subdivision's own, else the country capital's.
+      "US-MI": "America/Detroit",
+      "US-IN": "America/Indiana/Indianapolis",
+      "AU-VIC": "Australia/Melbourne",
+      "AU-TAS": "Australia/Hobart",
+      "MX-CMX": "America/Mexico_City",
+      "ES-AN": "Europe/Madrid",
+      "PT-11": "Europe/Lisbon",
+      "BR-SP": "America/Sao_Paulo",
+      "EC-P": "America/Guayaquil",
+      "EC-W": "Pacific/Galapagos",
+    };
+    for (const [code, zone] of Object.entries(want)) expect(subdivisionTimeZone(code)?.zone, code).toBe(zone);
+  });
+
+  it("is estimated for a subdivision split between zones", () => {
+    for (const code of ["US-TX", "US-KS", "US-NE", "US-SD", "US-ND", "US-ID", "US-NV", "US-AK", "US-OR", "US-FL", "US-KY", "US-TN", "US-IN", "US-MI", "AU-NSW", "AU-WA", "BR-PE", "BR-AM", "CA-BC", "CA-ON", "CA-SK", "UA-43"])
+      expect(subdivisionTimeZone(code)?.estimated, code).toBe(true);
   });
 
   it("answers every first-level subdivision kuni lists, and nothing else", () => {
@@ -47,6 +101,12 @@ describe("the zone at a point", () => {
     expect(timeZoneAt("ca", { lat: 49.28, lon: -123.12 })?.zone).toBe("America/Vancouver");
     expect(timeZoneAt("AU", { lat: -31.95, lon: 115.86 })?.zone).toBe("Australia/Perth");
     expect(timeZoneAt("XK", { lat: 42.66, lon: 21.17 })).toEqual({ zone: "Europe/Belgrade", estimated: false });
+    // A territory's own zone; a point near a zone's principal city; Las Vegas by Nevada's middle, not Arizona's capital.
+    expect(timeZoneAt("US", { lat: 13.47, lon: 144.75 })?.zone).toBe("Pacific/Guam");
+    expect(timeZoneAt("MX", { lat: 31.69, lon: -106.42 })?.zone).toBe("America/Ciudad_Juarez");
+    expect(timeZoneAt("US", { lat: 36.17, lon: -115.14 })?.zone).toBe("America/Los_Angeles");
+    expect(timeZoneAt("US", { lat: 43.62, lon: -116.2 })?.zone).toBe("America/Boise");
+    expect(timeZoneAt("UA", { lat: 46.48, lon: 30.72 })?.zone).toBe("Europe/Kyiv");
   });
 
   it("is null for what is not a country or not a point", () => {
