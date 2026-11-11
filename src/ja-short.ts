@@ -31,7 +31,8 @@ const KEEP_WHOLE: ReadonlySet<string> = new Set([
 /**
  * The short Japanese name of a city, from its full one: Tokyo's 東京都 is 東京; a final 市 or 区 is dropped (大阪市 大阪,
  * 新宿区 新宿, ブルックリン区 ブルックリン); Korea's 特別市, 広域市 and 特別自治市 are dropped whole (ソウル). The name is
- * kept whole where dropping would leave one character (津市, 堺市, 中区), would give a country's name (クウェート市) or a
+ * kept whole where dropping 区 would leave one character (中区, 北区: a direction, not a name; 津市 is 津, as maps print
+ * it), would give a country's name (クウェート市) or a
  * word, region or province (中央市, 南九州市, 雲南市, ケソン市), or where the 区 belongs to the name (ヤレン地区, 浦東新区,
  * ワシントン郡区). 町, 村 and 郡 are never dropped.
  *
@@ -42,7 +43,10 @@ const jaShortOf = (ja: string): string => {
   if (ja === "東京都") return "東京";
   if (JA_SHORT_KEEP.has(ja) || KEEP_WHOLE.has(ja)) return ja;
   for (const suffix of WHOLE) if (ja.endsWith(suffix) && [...ja].length - [...suffix].length >= 2) return ja.slice(0, -suffix.length);
-  if ((ja.endsWith("市") || ja.endsWith("区")) && !PART_OF_NAME.test(ja) && [...ja].length >= 3) return ja.slice(0, -1);
+  // 市 goes whatever is left (津市, 津; maps print the one character bare); 区 only where two or more are left, since a
+  // one-character ward name is a direction or a position (中区, 北区) and no place name alone.
+  if (ja.endsWith("市") && [...ja].length >= 2) return ja.slice(0, -1);
+  if (ja.endsWith("区") && !PART_OF_NAME.test(ja) && [...ja].length >= 3) return ja.slice(0, -1);
 
   return ja;
 };

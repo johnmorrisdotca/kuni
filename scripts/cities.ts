@@ -71,6 +71,14 @@ const FLOOR = 15000;
 const JA_NAMES: Readonly<Record<string, { ja: string; why: string }>> = {
   Q212938: { ja: "東エルサレム", why: "East Jerusalem: Wikidata's Japanese label is エルサレム, which names the whole city; the standard Japanese for the eastern part is 東エルサレム." },
 };
+// Japanese labels Wikidata gives a city that name another, larger place, each with its reason: dropped, so the city has
+// no Japanese name until a right one is found, never one made up here.
+const JA_WRONG: Readonly<Record<string, string>> = {
+  Q983884: "Várzea Grande, Brazil: labelled マットグロッソ州, the state of Mato Grosso.",
+  Q766974: "Qods, Iran: labelled テヘラン州, Tehran province.",
+  Q1743479: "Kiryat Tiv'on, Israel: labelled ハイファ地区, the Haifa District.",
+  Q14279699: "Jinhe Town, China: labelled 金平ミャオ族ヤオ族タイ族自治県, the Jinping Miao, Yao and Dai Autonomous County.",
+};
 // Wikidata's human settlements include the areas around cities and the units that hold them. An item that no capital and
 // no Natural Earth place stands behind, and whose English label names one of those, is not a city.
 const AREA_WORDS = /\b(metropolitan (area|region|municipality|statistical area)|urban (area|agglomeration|region)|agglomeration|conurbation|built-up area|micropolitan)\b/i;
@@ -343,7 +351,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     // Natural Earth's Japanese name is used only where it is not hiragana for a place outside Japan (うーんルワバ for Umm Ruwaba): a sign of a machine's guess.
     const neJa = place?.[3] != null && (country === "JP" || !/\p{Script=Hiragana}/u.test(place[3])) ? place[3] : null;
     const written = JA_NAMES[`Q${number}`]?.ja ?? null;
-    const ja = written ?? jaLabel ?? neJa;
+    // A Japanese label that names another place is dropped, not replaced by a name of kuni's own (JA_WRONG).
+    const ja = JA_WRONG[`Q${number}`] !== undefined ? null : (written ?? jaLabel ?? neJa);
     const native = nativeLabel !== null && nativeLabel !== en ? nativeLabel : null;
     const subdivision = [...new Set(subs)].filter((code) => code.startsWith(`${country}-`) && levels.has(code)).sort((a, b) => levels.get(a)! - levels.get(b)! || (a < b ? -1 : 1))[0] ?? null;
     // Bit 1: the Japanese name is Natural Earth's; 2: the population is; 4: the point is; 8: the Japanese name is written for this package (JA_NAMES).

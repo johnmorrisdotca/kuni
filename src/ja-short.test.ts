@@ -23,6 +23,11 @@ describe("a city's short Japanese name", () => {
     expect(jaShortOf("津市市")).toBe("津市");
   });
 
+  it("drops 市 from a one-character city name, as maps print it (machine1's rule, 2026-11-11)", () => {
+    for (const [full, short] of [["津市", "津"], ["堺市", "堺"], ["呉市", "呉"], ["萩市", "萩"], ["柏市", "柏"], ["旭市", "旭"], ["光市", "光"], ["関市", "関"], ["燕市", "燕"], ["蕨市", "蕨"]])
+      expect(jaShortOf(full)).toBe(short);
+  });
+
   it("drops Korea's special and metropolitan city suffixes whole", () => {
     expect(jaShortOf("ソウル特別市")).toBe("ソウル");
     expect(jaShortOf("釜山広域市")).toBe("釜山");
@@ -30,10 +35,9 @@ describe("a city's short Japanese name", () => {
   });
 
   it("keeps a name whole where dropping would break or change it", () => {
-    // One character left.
-    expect(jaShortOf("津市")).toBe("津市");
-    expect(jaShortOf("堺市")).toBe("堺市");
+    // One character left: a ward's 区 stays (中区 is "middle ward", 中 alone no name).
     expect(jaShortOf("中区")).toBe("中区");
+    expect(jaShortOf("北区")).toBe("北区");
     // The country's name.
     expect(jaShortOf("クウェート市")).toBe("クウェート市");
     expect(jaShortOf("パナマ市")).toBe("パナマ市");
@@ -60,5 +64,14 @@ describe("a city's short Japanese name", () => {
     for (const city of japan) if (city.name.ja !== undefined) expect(city.name.jaShort, city.id).toBe(jaShortOf(city.name.ja));
     const nameless = japan.find((city) => city.name.ja === undefined);
     if (nameless !== undefined) expect(nameless.name.jaShort).toBeUndefined();
+  });
+
+  it("is absent where Wikidata's Japanese label names another place, dropped rather than made up", async () => {
+    const { cityById } = await import("./cities");
+    for (const id of ["Q983884", "Q766974", "Q1743479", "Q14279699"]) {
+      const city = await cityById(id);
+      expect(city?.name.ja, id).toBeUndefined();
+      expect(city?.name.jaShort, id).toBeUndefined();
+    }
   });
 });
