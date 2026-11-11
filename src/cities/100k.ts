@@ -8,7 +8,7 @@ import { CITY_100K_ROWS } from "../data/cities-100k.data";
 let table: readonly City[] | null = null;
 
 /**
- * The cities of the tier `100k`: the cities of 100,000 to a million people (capitals too). 4,872 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
+ * The cities of the tier `100k`: the cities of 100,000 to a million people (capitals too). 4,869 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
  *
  * @returns The list. Join it with other tiers through `citySet` in @johnmorrisdotca/kuni/cities.
  * @example

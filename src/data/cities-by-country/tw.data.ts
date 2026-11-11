@@ -5,10 +5,10 @@
 import type { CityRow } from "../../city-rows";
 
 const TW: readonly CityRow[] = [
+  [1867,25.0375,121.5625,2429429,"2026-04-01","TW","TW-TPE","Taipei","台北市","taihuku","pwn",1,"TW",16,712937,"Taipei–Keelung metropolitan area",8550000,2016],
   [244898,25.0125,121.465,4041149,"2026-04-01","TW","TW-NWT","New Taipei City","新北市","Sin-pak","szy",0,null,16],
   [245023,24.1439,120.6794,2868452,"2026-04-01","TW","TW-TXG","Taichung","台中市","Tay-cung","szy",0,null,16],
   [181557,22.615,120.2975,2713032,"2026-04-01","TW","TW-KHH","Kaohsiung","高雄市","Takaw","szy",0,null,16],
-  [1867,25.0375,121.5625,2429429,"2026-04-01","TW","TW-TPE","Taipei","台北市","taihuku","pwn",1,"TW",16],
   [115256,24.9913,121.3143,2356795,"2026-04-01","TW","TW-TAO","Taoyuan","桃園市","Taw-yen","szy",0,null,16],
   [140631,22.99,120.185,1849762,"2026-04-01","TW","TW-TNN","Tainan","台南市","Tay-nan","szy",0,null,16],
   [249994,24.8047,120.9714,455871,"2026-04-01","TW","TW-HSZ","Hsinchu City","新竹市","Sin-cu a tuse","szy",0,null,16],

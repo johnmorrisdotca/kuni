@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const CR: readonly CityRow[] = [
-  [3070,9.9327,-84.0796,335007,2025,"CR","CR-SJ","San José","サンホセ",null,null,1,"CR",16],
+  [3070,9.9327,-84.0796,335007,2025,"CR","CR-SJ","San José","サンホセ",null,null,1,"CR",16,7414547,"Greater Metropolitan Area",2576374,2022],
   [30620,10.0022,-83.084,71514,2022,"CR","CR-L","Limón","リモン",null,null,2,"CR-L",16],
   [1387526,10.6296,-85.4383,65922,2022,"CR","CR-G","Liberia","リベリア",null,null,2,"CR-G",16],
   [787675,10.3441,-84.4199,46975,2022,"CR","CR-A","Quesada","ケサダ",null,null,0,null,16],

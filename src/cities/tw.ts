@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/tw";
  *
  * console.log(cities.length);      // 104
- * console.log(cities[0].name.en);  // "New Taipei City"
+ * console.log(cities[0].name.en);  // "Taipei"
  * console.log(cities[0].country);  // "TW"
  * ```
  */

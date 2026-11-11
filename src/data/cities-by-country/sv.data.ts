@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const SV: readonly CityRow[] = [
-  [3110,13.6976,-89.1912,330543,2024,"SV","SV-SS","San Salvador","サンサルバドル",null,null,1,"SV",16],
+  [3110,13.6976,-89.1912,330543,2024,"SV","SV-SS","San Salvador","サンサルバドル",null,null,1,"SV",16,11112542,"Metropolitan Area of San Salvador",1711476,2024],
   [739664,13.9947,-89.5566,250760,2024,"SV","SV-SA","Santa Ana","サンタ・アナ",null,null,2,"SV-SA",16],
   [672458,13.4804,-88.1772,232887,2024,"SV","SV-SM","San Miguel","サンミゲル",null,null,2,"SV-SM",16],
   [186935,13.9234,-89.8463,127301,2024,"SV","SV-AH","Ahuachapán","アワチャパン",null,null,2,"SV-AH",16],

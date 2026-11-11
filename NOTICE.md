@@ -144,18 +144,21 @@ A city is ranked by the urban area it heads, with one source for each country, k
   Changes made: only the total population is kept, the latest year of each area; the area is joined to a city by its
   name, or by id where the name is no city's (`OECD_AREAS` in `scripts/metro-links.ts`). Anyone who takes the figures
   from this package must give the same credit.
-- China and India: the urban figures of their own censuses for their first twenty cities, typed as facts in
-  `scripts/urban-facts.ts`, each with its source and date; only the city, the figure and its day are taken, and no
-  table is copied. China: the urban resident population (城区常住人口) of the Seventh National Population Census, 1
-  November 2020, by the National Bureau of Statistics of China (its release on the megacities of 22 September 2021,
-  and 中国人口普查分县资料：2020, China Statistics Press, 2022). India: the urban agglomerations of the Census of India
-  2011, table A-04, by the Office of the Registrar General & Census Commissioner, India.
+- China: the urban resident population (城区常住人口) of its twenty-one megacities at the Seventh National Population
+  Census, 1 November 2020, by the National Bureau of Statistics of China (its release of 22 September 2021, and
+  中国人口普查分县资料：2020, China Statistics Press, 2022). Only facts are taken, each city's figure and its day, typed
+  in `scripts/urban-facts.ts` with the source; no table is copied.
+- India: the population of its twenty largest urban agglomerations at the Census of India 2011, table A-04, by the
+  Office of the Registrar General & Census Commissioner, India. Only facts are taken, each figure and its day, typed in
+  `scripts/urban-facts.ts` with the source; no table is copied. These are 2011's figures: on them Mumbai ranks ahead of
+  Delhi, which is the larger today.
 - In a country with official areas, where a city heads none: the metropolitan areas of the Wikidata snapshot above
   (CC0), where bigger than the city, marked as estimates. In every other country a city is ranked by its own figure
   from that snapshot, marked as an estimate.
 
 An area whose name is no city's ("West Midlands urban area") is set to its city by id in `scripts/metro-links.ts`, with
-the reason. Natural Earth's figures (below) no longer rank any city.
+the reason. Natural Earth (below) still gives the population of a city Wikidata has none for (Pietermaritzburg, Welkom),
+and that figure ranks the city.
 
 The time zones (`/zones`, and `capitalZone` in `/facts`) are from IANA's tzdb zone.tab (public domain, below) and a
 fourth Wikidata snapshot (`data-sources/wikidata-zones-<day>.json`, CC0 on the same terms, read on 2026-11-11), asked for

@@ -101,7 +101,7 @@ interface City {
 
 // [item number (or "ne:<number>"), latitude, longitude, population, population date, country, subdivision, en, ja, native, native language,
 //  capital (0 none, 1 national, 2 subdivision, 3 alternate), capital of (space-separated), sources (bit 8: ja written for this package, bit 1: ja from Natural Earth, bit 2:
-//  population from Natural Earth, bit 4: point from Natural Earth, bit 16: ranked by its own figure, an estimate), and only where the city has a metro: its item number, English name, population and population date,
+//  population from Natural Earth, bit 4: point from Natural Earth, bit 16: ranked by an estimate, bit 32: in China or India, below the census list), and only where the city has a metro: its item number, English name, population and population date,
 //  or only where it lies inside another city's urban area: that city's item number]
 type CityRow =
   | readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number]
@@ -142,7 +142,7 @@ const freezeCity = (row: CityRow): City => {
             estimated: typeof metroId === "number" || metroId.startsWith("ne:"),
           }),
     inMetroOf: head === null || head === undefined ? null : typeof head === "number" ? `Q${head}` : head,
-    urbanAreaUnknown: row.length === 15 && head === null,
+    urbanAreaUnknown: (sources & 32) !== 0,
     rankEstimated: (sources & 16) !== 0 || (metroId !== undefined && (typeof metroId === "number" || metroId.startsWith("ne:"))),
   } satisfies City);
 };

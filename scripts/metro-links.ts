@@ -6,6 +6,14 @@ const METRO_LINKS: Readonly<Record<string, { area: number; why: string }>> = {
   Q239: { area: 9005, why: "Brussels: the Brussels metropolitan area is linked to the Brussels-Capital Region, not to the City of Brussels." },
   Q1726: { area: 126281350, why: "Munich: the Munich metropolitan area (a functional urban area) is linked to no city." },
   Q2256: { area: 4916862, why: "Birmingham: the Birmingham metropolitan area is linked to no city; the West Midlands conurbation has no population." },
+  // South Africa's metropolitan municipalities name their seat by P36 only; Ekurhuleni, whose seat is no city of note, is left out.
+  Q34647: { area: 2346838, why: "Johannesburg: the City of Johannesburg Metropolitan Municipality, whose seat it is." },
+  Q5465: { area: 1185115, why: "Cape Town: the City of Cape Town, the metropolitan municipality." },
+  Q5468: { area: 311544, why: "Durban: the eThekwini Metropolitan Municipality, whose seat it is (Wikidata's Durban is the old city)." },
+  Q3926: { area: 1094207, why: "Pretoria: the City of Tshwane Metropolitan Municipality, whose seat it is." },
+  Q125434: { area: 1856565, why: "Gqeberha: the Nelson Mandela Bay Metropolitan Municipality, whose seat it is." },
+  Q209537: { area: 1002006, why: "East London: the Buffalo City Metropolitan Municipality, whose seat it is." },
+  Q37701: { area: 1159185, why: "Bloemfontein: the Mangaung Metropolitan Municipality, whose seat it is." },
 };
 
 // An OECD functional urban area whose name is no city's, and the city it is named for: OECD code, city item, reason.

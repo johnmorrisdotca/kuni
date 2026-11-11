@@ -5,15 +5,15 @@
 import type { CityRow } from "../../city-rows";
 
 const ZA: readonly CityRow[] = [
-  [34647,-26.2044,28.0416,4803262,2022,"ZA","ZA-GP","Johannesburg","ヨハネスブルグ",null,null,2,"ZA-GP",16],
+  [34647,-26.2044,28.0416,4803262,2022,"ZA","ZA-GP","Johannesburg","ヨハネスブルグ",null,null,2,"ZA-GP",16,2346838,"City of Johannesburg Metropolitan Municipality",4949347,"2016-03-06"],
   [5465,-33.9253,18.4239,3776313,2021,"ZA","ZA-WC","Cape Town","ケープタウン","Kaapstad","af",3,"ZA ZA-WC",16],
+  [5468,-29.8583,31.025,595061,2011,"ZA","ZA-KZN","Durban","ダーバン",null,null,0,null,16,311544,"eThekwini Metropolitan Municipality",3702231,"2016-03-06"],
+  [3926,-25.7464,28.1881,741651,2011,"ZA","ZA-GP","Pretoria","プレトリア",null,null,1,"ZA",16,1094207,"City of Tshwane Metropolitan Municipality",3275152,"2016-03-06"],
+  [125434,-33.9581,25.6,312392,2011,"ZA","ZA-EC","Gqeberha","ポート・エリザベス","Port Elizabeth","af",0,null,16,1856565,"Nelson Mandela Bay Metropolitan Municipality",1263051,"2016-03-06"],
+  [209537,-33.0175,27.9047,478676,null,"ZA","ZA-EC","East London","イースト・ロンドン","Oos-Londen","af",0,null,16,1002006,"Buffalo City Metropolitan Municipality",834997,"2016-03-06"],
+  [37701,-29.1,26.2167,256185,2011,"ZA","ZA-FS","Bloemfontein","ブルームフォンテーン",null,null,3,"ZA ZA-FS",16,1159185,"Mangaung Metropolitan Municipality",787803,"2016-03-06"],
   [185591,-29.6009,30.3796,750845,null,"ZA","ZA-KZN","Pietermaritzburg","ピーターマリッツバーグ",null,null,2,"ZA-KZN",18],
-  [3926,-25.7464,28.1881,741651,2011,"ZA","ZA-GP","Pretoria","プレトリア",null,null,1,"ZA",16],
-  [5468,-29.8583,31.025,595061,2011,"ZA","ZA-KZN","Durban","ダーバン",null,null,0,null,16],
-  [209537,-33.0175,27.9047,478676,null,"ZA","ZA-EC","East London","イースト・ロンドン","Oos-Londen","af",0,null,16],
   [1015631,-27.9831,26.7208,431944,null,"ZA","ZA-FS","Welkom","ウェルコム",null,null,0,null,18],
-  [125434,-33.9581,25.6,312392,2011,"ZA","ZA-EC","Gqeberha","ポート・エリザベス","Port Elizabeth","af",0,null,16],
-  [37701,-29.1,26.2167,256185,2011,"ZA","ZA-FS","Bloemfontein","ブルームフォンテーン",null,null,3,"ZA ZA-FS",16],
   [125905,-28.7383,24.7639,225160,2011,"ZA","ZA-NC","Kimberley","キンバリー",null,null,2,"ZA-NC",16],
   [131662,-23.9,29.45,220045,null,"ZA","ZA-LP","Polokwane","ポロクワネ",null,null,2,"ZA-LP",18],
   [1005268,-29.8128,30.6364,193058,2013,"ZA","ZA-KZN","Mpumalanga",null,null,null,0,null,16],

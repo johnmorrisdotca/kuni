@@ -1,4 +1,4 @@
-// The urban populations of the first twenty cities of the countries whose own figure for a city is a whole
+// The urban populations of the first cities (China's twenty-one megacities, India's twenty largest urban agglomerations) of the countries whose own figure for a city is a whole
 // administrative area (Chongqing's 32 million is its municipality's, most of it countryside), typed here as facts from
 // the national statistics, each with its source and date. Only the city, the figure and its day are taken: no table is
 // copied. scripts/cities.ts ranks these cities by them, and every other city of the country after them.
@@ -49,6 +49,7 @@ const URBAN_FACTS: Readonly<Record<string, UrbanFacts>> = {
       { city: "Harbin", area: "哈尔滨市城区", population: 5499300 },
       { city: "Zhengzhou", area: "郑州市城区", population: 5344800 },
       { city: "Kunming", area: "昆明市城区", population: 5340900 },
+      { city: "Dalian", area: "大连市城区", population: 5208300 },
     ],
   },
   // India: the urban agglomerations of the 2011 census (Office of the Registrar General & Census Commissioner, India,

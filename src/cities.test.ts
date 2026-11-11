@@ -444,10 +444,10 @@ describe("the top cities of a country", () => {
     // Statistics Canada's census metropolitan areas (1 July 2025) and the Census Bureau's statistical areas (1 July 2024).
     expect(await top("CA", 15)).toEqual(["Toronto", "Montreal", "Vancouver", "Calgary", "Ottawa", "Edmonton", "Winnipeg", "Quebec City", "Hamilton", "Kitchener", "London", "Halifax", "St. Catharines", "Oshawa", "Windsor"]);
     expect(await top("US", 15)).toEqual(["New York City", "Los Angeles", "Chicago", "Dallas", "Houston", "Miami", "Washington, D.C.", "Atlanta", "Philadelphia", "Phoenix", "Boston", "Riverside", "San Francisco", "Detroit", "Seattle"]);
-    // The OECD's functional urban areas; a city of a million or more that heads none ranks by its own (Yokohama), or by
-    // Wikidata's metro where that is bigger, an estimate (Kyoto, Kobe).
+    // The OECD's functional urban areas; a city of a million or more that heads none ranks by its own (Yokohama), and so
+    // does one whose Wikidata metro lies inside a bigger official area (Kobe, Kyoto, in Osaka's).
     expect(await top("GB", 10)).toEqual(["London", "Manchester", "Birmingham", "Leeds", "Glasgow", "Liverpool", "Newcastle upon Tyne", "Sheffield", "Bristol", "Leicester"]);
-    expect(await top("JP", 10)).toEqual(["Tokyo", "Osaka", "Nagoya", "Kyoto", "Yokohama", "Fukuoka", "Kobe", "Sapporo", "Sendai", "Kawasaki"]);
+    expect(await top("JP", 10)).toEqual(["Tokyo", "Osaka", "Nagoya", "Yokohama", "Fukuoka", "Sapporo", "Sendai", "Kawasaki", "Okayama", "Kobe"]);
     expect(await top("AU", 10)).toEqual(["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle", "Canberra", "Geelong", "Wollongong"]);
     expect(await top("DE", 10)).toEqual(["Berlin", "Hamburg", "Munich", "Frankfurt", "Stuttgart", "Cologne", "Essen", "Düsseldorf", "Nuremberg", "Mannheim"]);
     expect(await top("FR", 10)).toEqual(["Paris", "Lyon", "Marseille", "Lille", "Toulouse", "Bordeaux", "Nantes", "Strasbourg", "Montpellier", "Rennes"]);
@@ -459,17 +459,21 @@ describe("the top cities of a country", () => {
     expect(await top("IN", 10)).toEqual(["Mumbai", "Delhi", "Kolkata", "Chennai", "Bengaluru", "Hyderabad", "Ahmedabad", "Pune", "Surat", "Jaipur"]);
     expect((await citiesOf("CN"))!.filter((city) => /^Chongqing/.test(city.name.en))).toHaveLength(1);
     // Every other country by its cities' own figures, the suburbs and districts inside their city's area.
-    expect(await top("BR", 5)).toEqual(["São Paulo", "Rio de Janeiro", "Brasília", "Fortaleza", "Salvador"]);
+    expect(await top("BR", 5)).toEqual(["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador"]);
     expect(await top("RU", 5)).toEqual(["Moscow", "Saint Petersburg", "Novosibirsk", "Yekaterinburg", "Kazan"]);
     expect(await top("TR", 5)).toEqual(["Istanbul", "Ankara", "İzmir", "Bursa", "Antalya"]);
-    expect(await top("EG", 4)).toEqual(["Cairo", "Alexandria", "Port Said", "Suez"]);
+    expect(await top("EG", 6)).toEqual(["Cairo", "Alexandria", "Port Said", "Suez", "Mansoura", "El Mahalla El Kubra"]);
     expect(await top("NG", 5)).toEqual(["Lagos", "Kano", "Port Harcourt", "Ibadan", "Benin City"]);
-    expect(await top("ZA", 5)).toEqual(["Johannesburg", "Cape Town", "Pietermaritzburg", "Pretoria", "Durban"]);
+    // South Africa's metropolitan municipalities, set on their seats by name (scripts/metro-links.ts): Durban is eThekwini.
+    expect(await top("ZA", 5)).toEqual(["Johannesburg", "Cape Town", "Durban", "Pretoria", "Gqeberha"]);
     expect(await top("PK", 5)).toEqual(["Karachi", "Lahore", "Faisalabad", "Rawalpindi", "Gujranwala"]);
-    expect(await top("BD", 3)).toEqual(["Dhaka", "Chittagong", "Khulna"]);
-    expect(await top("ID", 3)).toEqual(["Jakarta", "Surabaya", "Bandung"]);
-    expect(await top("VN", 2)).toEqual(["Ho Chi Minh City", "Hanoi"]);
-    expect(await top("PH", 4)).toEqual(["Quezon City", "Manila", "Davao City", "Caloocan"]);
+    expect(await top("BD", 6)).toEqual(["Dhaka", "Chittagong", "Khulna", "Sylhet", "Sirajganj", "Rajshahi"]);
+    expect(await top("ID", 6)).toEqual(["Jakarta", "Surabaya", "Bandung", "Medan", "Semarang", "Palembang"]);
+    expect(await top("VN", 6)).toEqual(["Ho Chi Minh City", "Hanoi", "Cần Thơ", "Da Nang", "Haiphong", "Biên Hòa"]);
+    expect(await top("PH", 5)).toEqual(["Manila", "Quezon City", "Cebu City", "Davao City", "Caloocan"]);
+    // Hong Kong and Macau are under their own codes, not China's.
+    expect(await top("HK", 1)).toEqual(["Hong Kong"]);
+    expect((await citiesOf("CN"))!.some((city) => city.name.en === "Hong Kong")).toBe(false);
     expect(await top("TH", 4)).toEqual(["Bangkok", "Chiang Mai", "Hat Yai", "Nakhon Ratchasima"]);
     expect((await citiesOf("BR"))!.filter((city) => city.name.en === "Natal" || city.name.en === "Vila Velha")).toHaveLength(2);
     // Somerset is a county, not a town; Taunton, its county town, stays.
@@ -504,7 +508,8 @@ describe("the top cities of a country", () => {
     // In China and India a city below the twenty with a census figure comes after them; its own is its municipality's.
     const china = (await citiesOf("CN"))!;
     expect(china.find((city) => city.name.en === "Yantai")).toMatchObject({ inMetroOf: null, urbanAreaUnknown: true, metro: null, rankEstimated: true });
-    expect(china.findIndex((city) => city.urbanAreaUnknown)).toBe(20);
+    expect(china.findIndex((city) => city.urbanAreaUnknown)).toBe(21);
+    expect(china[20]?.name.en).toBe("Dalian");
     expect(china.find((city) => city.name.en === "Shanghai")).toMatchObject({ urbanAreaUnknown: false, rankEstimated: false });
   });
 
@@ -516,9 +521,11 @@ describe("the top cities of a country", () => {
     expect((await citiesOf("GB"))!.find((city) => city.name.en === "Birmingham")?.metro).toMatchObject({ id: "oecd:UK002F", name: "West Midlands", estimated: false });
     expect((await citiesOf("CN"))!.find((city) => city.name.en === "Chongqing")?.metro).toMatchObject({ population: 16344000, populationDate: "2020-11-01", estimated: false });
     expect((await citiesOf("IN"))!.find((city) => city.name.en === "Mumbai")?.metro).toMatchObject({ name: "Greater Mumbai UA", population: 18394912, estimated: false });
-    expect((await citiesOf("JP"))!.find((city) => city.name.en === "Kyoto")).toMatchObject({ metro: { estimated: true }, rankEstimated: true });
-    // A country with no official areas ranks by the cities' own figures, marked as estimates.
-    expect((await citiesOf("RU"))!.find((city) => city.name.en === "Moscow")).toMatchObject({ metro: null, rankEstimated: true });
+    expect((await citiesOf("JP"))!.find((city) => city.name.en === "Kyoto")).toMatchObject({ metro: null, rankEstimated: false });
+    expect((await citiesOf("ZA"))!.find((city) => city.name.en === "Durban")).toMatchObject({ metro: { id: "Q311544", estimated: true }, rankEstimated: true });
+    // A country with no official areas ranks by Wikidata's metro where bigger, else the city's own figure: estimates.
+    expect((await citiesOf("RU"))!.find((city) => city.name.en === "Moscow")).toMatchObject({ metro: { estimated: true }, rankEstimated: true });
+    expect((await citiesOf("RU"))!.find((city) => city.name.en === "Kazan")).toMatchObject({ rankEstimated: true });
     expect((await citiesOf("CA"))!.find((city) => city.name.en === "Toronto")?.rankEstimated).toBe(false);
     // An urban area's figure is used even below the city's own (Ulsan); no name ends in the kind of area.
     expect((await citiesOf("KR"))!.find((city) => city.name.en === "Ulsan")?.metro?.id).toBe("oecd:KOR07F");
