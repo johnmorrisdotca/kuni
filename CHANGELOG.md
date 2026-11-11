@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-11-11
+
 ### Fixed
 
 - **Areas left out of the cities.** Metropolitan Toronto was Canada's first city. Names that start Metropolitan, Metro, Metropolis of, Commune or Sectorul, name a regional municipality or a "State of", or end in Region, Region of …, Capital City, Urban Corridor or New Area are areas and units, not cities, and are left out (a name with a comma, a town told apart by its region, stays). A Natural Earth place whose Wikidata item is an area while the city of its name stands beside it now joins the city (Jamalpur, not Jamalpur District; Kristiansand, not Kristiansand Municipality). Moro, Papua New Guinea, given 6.3 million people, is left out by name. 30,616 cities (from 30,668). Ids never change: the 52 ids of 1.6.0 that are no city now answer through `cityById` and `byId` with the city they became (Metropolitan Toronto with Toronto, Metro Manila with Manila, Chișinău's sectors with Chișinău), or with `null` for a region that is no city.
