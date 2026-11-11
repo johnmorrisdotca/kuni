@@ -422,7 +422,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | the country's subdivision facts as the default export and as `SUBDIVISION_FACTS` |
 | `@johnmorrisdotca/kuni/withdrawn` | `withdrawn`, `withdrawnCountries`, `WITHDRAWN_READ` and the type `WithdrawnCountry` |
 | `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities`, `citiesOf`, `cityById`, `CITY_TIERS`, and the types `City`, `CityAt`, `CitySet`, `CitySource`, `CityTier` and `NearestOptions` |
-| `@johnmorrisdotca/kuni/places` | `continents`, `countriesOf`, `searchPlaces`, and the types `PlaceContinent`, `PlaceHit` and `SearchPlacesOptions` |
+| `@johnmorrisdotca/kuni/places` | `continents`, `countriesOf`, `searchPlaces`, `cityNamesOf`, and the types `CityName`, `PlaceContinent`, `PlaceHit` and `SearchPlacesOptions` |
 | `@johnmorrisdotca/kuni/cities/capitals` | `capitalCities`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/1m` | `cities1m`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/100k` | `cities100k`, `CITIES_READ` |
