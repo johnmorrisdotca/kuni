@@ -8,7 +8,7 @@ import { CAPITAL_CITY_ROWS } from "../data/cities-capitals.data";
 let table: readonly City[] | null = null;
 
 /**
- * The cities of the tier `capitals`: every capital, of a country or of a subdivision, of any size. 4,278 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
+ * The cities of the tier `capitals`: every capital, of a country or of a subdivision, of any size. 4,284 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
  *
  * @returns The list. Join it with other tiers through `citySet` in @johnmorrisdotca/kuni/cities.
  * @example

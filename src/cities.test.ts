@@ -448,7 +448,7 @@ describe("the top cities of a country", () => {
     // does one whose Wikidata metro lies inside a bigger official area (Kobe, Kyoto, in Osaka's).
     expect(await top("GB", 10)).toEqual(["London", "Manchester", "Birmingham", "Leeds", "Glasgow", "Liverpool", "Newcastle upon Tyne", "Sheffield", "Bristol", "Leicester"]);
     expect(await top("JP", 10)).toEqual(["Tokyo", "Osaka", "Nagoya", "Yokohama", "Fukuoka", "Sapporo", "Sendai", "Kawasaki", "Okayama", "Kobe"]);
-    expect(await top("AU", 10)).toEqual(["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle", "Canberra", "Geelong", "Wollongong"]);
+    expect(await top("AU", 10)).toEqual(["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle", "Canberra", "Geelong", "Sunshine Coast"]);
     expect(await top("DE", 10)).toEqual(["Berlin", "Hamburg", "Munich", "Frankfurt", "Stuttgart", "Cologne", "Essen", "Düsseldorf", "Nuremberg", "Mannheim"]);
     expect(await top("FR", 10)).toEqual(["Paris", "Lyon", "Marseille", "Lille", "Toulouse", "Bordeaux", "Nantes", "Strasbourg", "Montpellier", "Rennes"]);
     expect(await top("MX", 10)).toEqual(["Mexico City", "Guadalajara", "Monterrey", "Puebla", "Toluca", "Tijuana", "Santiago de Querétaro", "León", "Mérida", "Ciudad Juárez"]);
@@ -481,6 +481,13 @@ describe("the top cities of a country", () => {
     // Somerset is a county, not a town; Taunton, its county town, stays.
     expect((await citiesOf("GB"))!.some((city) => city.name.en === "Somerset")).toBe(false);
     expect((await citiesOf("GB"))!.some((city) => city.name.en === "Taunton")).toBe(true);
+    // The Netherlands: every city of 100,000 or more, with a country from its ISO code or from the municipalities' supplement.
+    const dutch = (await citiesOf("NL"))!.map((city) => city.name.en);
+    for (const name of ["Tilburg", "Almere", "Breda", "Nijmegen", "Amersfoort", "Apeldoorn", "Haarlem", "Enschede"]) expect(dutch, name).toContain(name);
+    expect(await top("NL", 6)).toEqual(["Amsterdam", "Rotterdam", "The Hague", "Utrecht", "Eindhoven", "Groningen"]);
+    expect((await citiesOf("NL"))!.find((city) => city.name.en === "Escamp")?.inMetroOf).toBe("Q36600");
+    // Sunshine Coast, by the council area that is the city.
+    expect((await citiesOf("AU"))!.find((city) => city.name.en === "Sunshine Coast")).toMatchObject({ id: "Q1065035", metro: { id: "oecd:AUS11F" } });
   });
 
   it("list a city inside another's area after every city that heads one, and say whose area it is in", async () => {

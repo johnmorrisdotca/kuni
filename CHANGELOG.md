@@ -6,6 +6,11 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- **The Netherlands' cities.** Wikidata gives most Dutch municipalities no country, and some of them (Nijmegen, Amersfoort, Haarlemmermeer) no class that is a kind of settlement, so the list held 14 cities. A city now takes its country from its ISO 3166-2 code where Wikidata names none, and a supplement of the municipalities of the Netherlands (`scripts/fetch-cities-extra.ts`) adds the rest: Tilburg, Almere, Breda, Nijmegen, Amersfoort and every other of 100,000 or more are listed, the districts of The Hague, Rotterdam and Groningen inside their city.
+- **Sunshine Coast** is a city of Australia again, under that name: Wikidata's only item for it is the council area (Sunshine Coast Region), as the City of Gold Coast is Gold Coast's.
+
 ## [1.7.0] - 2026-11-11
 
 ### Changed

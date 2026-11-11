@@ -16,6 +16,7 @@ bytes are not the recorded ones.
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
 | `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
+| `wikidata-cities-extra-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-cities-extra.ts`): the cities whose only class is no kind of settlement (a municipality of the Netherlands, as Nijmegen is), in the main snapshot's columns | the day it was read | CC0 |
 | `wikidata-metros-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-metros.ts`) | the day it was read | CC0 |
 | `wikidata-zones-<day>.json` | https://query.wikidata.org/sparql, the query written in the file (`node scripts/fetch-zones.ts`) | the day it was read | CC0 |
 | `urban-areas-<day>.json` | Statistics Canada Tables 17-10-0148-01 and 98-10-0003-01, the U.S. Census Bureau's `cbsa-est2024-alldata.csv`, and the OECD Data Explorer's `DSD_FUA_DEMO@DF_AGE_SEX`, cut to each area's code, name and latest population and Canada's municipalities by area (`node scripts/fetch-urban.ts`) | the day it was read | Statistics Canada Open Licence; public domain (U.S. government work); OECD Terms and Conditions, section 3: each credit is in the file and in NOTICE.md |

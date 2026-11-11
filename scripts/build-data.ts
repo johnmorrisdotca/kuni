@@ -964,6 +964,14 @@ const writeCities = (): void => {
   const neFile = manifest.files.find((file) => file.path.startsWith("natural-earth-populated-places-"));
   if (citiesFile === undefined || neFile === undefined) throw new Error("No cities snapshot in data-sources/sources.json: run pnpm data:cities");
   const snapshot = JSON.parse(readSource(manifest, citiesFile.path).text) as CitiesSnapshot;
+  // The cities the main query cannot see (a municipality of the Netherlands is no kind of settlement in Wikidata):
+  // added where the main snapshot has no item of that number (scripts/fetch-cities-extra.ts).
+  const extraFile = manifest.files.find((file) => file.path.startsWith("wikidata-cities-extra-"));
+  if (extraFile !== undefined) {
+    const known = new Set(snapshot.items.map((item) => item[0]));
+    const extra = (JSON.parse(readSource(manifest, extraFile.path).text) as CitiesSnapshot).items.filter((item) => !known.has(item[0]));
+    snapshot.items = [...snapshot.items, ...extra];
+  }
   const naturalEarth = JSON.parse(readSource(manifest, neFile.path).text) as NaturalEarthFile;
   // The metropolitan areas round the cities (scripts/fetch-metros.ts): which is a city's own is decided in buildCities.
   const metrosFile = manifest.files.find((file) => file.path.startsWith("wikidata-metros-"));

@@ -125,6 +125,7 @@ const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
   Q125293: { en: "Puebla", why: "Heroica Puebla de Zaragoza is the formal name; Puebla is the name in English." },
   Q189128: { en: "León", why: "León de Los Aldama is the formal name; León is the name in English." },
   Q209034: { en: "Toluca", why: "Toluca de Lerdo is the formal name; Toluca is the name in English." },
+  Q1065035: { en: "Sunshine Coast", why: "Sunshine Coast Region is the council area that is the city, as the City of Gold Coast is Gold Coast's; Wikidata has no item for the city alone." },
 };
 // A population statement of Wikidata's that is wrong, left out: the item, the figure, and the reason.
 const WRONG_POPULATIONS: Readonly<Record<string, { value: number; why: string }>> = {
@@ -610,7 +611,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   // Territory). A capital, a place Natural Earth names and a town told apart by a comma ("Paxtaobod, Andijan Region") stay.
   const unitGone = new Set<Candidate>();
   for (const one of candidates) {
-    if (gone.has(one) || one.codes.length > 0 || one.en.includes(",")) continue;
+    if (gone.has(one) || one.codes.length > 0 || one.en.includes(",") || ENGLISH_NAMES[idOf(one)] !== undefined) continue;
     const plain = one.en.replace(/\s*\([^)]*\)\s*/g, " ").trim();
     const partOf = /^(?:(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth) sector|Zone \d+|Municipality \d+|(?:North|South|East|West|Central) borough) of (.+)$/i.exec(plain)?.[1] ?? null;
     // "London Borough of Ealing" is a unit of London, as "Ealing Borough" would be.

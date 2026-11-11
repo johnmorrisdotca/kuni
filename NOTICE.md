@@ -101,7 +101,9 @@ terms quoted above (read on 2026-11-11), asked for by `scripts/fetch-cities.ts`:
 human settlement, have coordinates and a best-ranked population of 15,000 or more, every current capital of a country
 or a subdivision, and the items Natural Earth's places name. For each, the English and Japanese labels, the native
 label, the coordinates, the country, the populations with their dates and the ISO 3166-2 codes of the places it is in.
-No Wikipedia text is used.
+No Wikipedia text is used. A supplement on the same terms (`data-sources/wikidata-cities-extra-<day>.json`, read on
+2026-11-11, asked for by `scripts/fetch-cities-extra.ts`) adds the cities whose only class in Wikidata is no kind of
+settlement: the municipalities of the Netherlands, as Nijmegen is.
 
 A city's metropolitan area (`metro` on each city) comes from a third Wikidata snapshot
 (`data-sources/wikidata-metros-<day>.json`), CC0 on the same terms (read on 2026-11-11), asked for by
