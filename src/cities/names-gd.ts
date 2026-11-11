@@ -10,7 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "St. George's|Gouyave|Grenville|Victoria|Sauteurs|Hillsborough",
   ja: "セントジョージズ|グヤヴェ|グレンヴィル|ビクトリア|ソーターズ|ヒルズボロ",
   native: "|||||",
-  reading: "|||||ひるずばら",
+  reading: "|||||",
   major: "111111",
 });
 

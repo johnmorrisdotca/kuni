@@ -21,7 +21,7 @@ const GD: CityColumns = {
   capital: "122222",
   capitalOf: "GD|GD-04|GD-01|GD-05|GD-06|GD-10",
   sources: "101010101010",
-  reading: "|||||ひるずばら",
+  reading: "|||||",
   extra: [],
 };
 

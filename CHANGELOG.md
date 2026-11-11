@@ -6,17 +6,23 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Readings of Japanese names in hiragana.** `name.jaReading` reads a city's `ja` in hiragana, so a list sorts in Japanese order with a Japanese collation. A name in kana is read from itself (ゴヤ (アルゼンチン), ごや; コザン県, こざんけん). A name in kanji is read only from a source: Wikidata's reading in kana in any country (香港, ほんこん), Japan Post's for a municipality of Japan where Wikidata has none (山口市, やまぐちし), or, for twenty new towns and neighbourhoods neither reads, one written in `scripts/data-config.ts`. Every Japanese name of a place in Japan has one. A name in Chinese characters of China, Taiwan or Korea has none: no source with clear terms gives one, and none is made up. `searchPlaces` and the start parts find a city by its reading (とうきょう finds 東京都). `continentReading` reads the seven continents (南極, なんきょく). Five areas of Japan that are not towns (Woodland Kyoto, Kansai Science City, Otokuni, the castle town of Kagoshima, a group of Fukuoka's city blocks) are no longer cities; their ids are in `city-id-aliases.json` as removed.
+
 ### Changed
 
 - **The builder's code is in the family's embed panel** (kazoku-ui 0.38, family template 2026-11-11). The nine tabs, Copy, "Copy a link to this card" and "Start again" are all kept, and the panel adds a link that opens the embed page with the choices, the card guide in the page's language, and the credit for the names (Unicode CLDR) and the facts (Wikidata). The tab chosen stays in the address.
+
+### Fixed
+
+- **Kami-Mizo** (上溝, Sagamihara) is spelled as it is read, かみみぞ; Wikidata's English label had Kami-Mizu.
 
 ## [1.7.1] - 2026-11-11
 
 ### Added
 
 - **A lighter download for a city picker.** `searchPlaces(text, { match: "start" })` finds a name from its start or the start of a word, and fetches only the part of the capitals and of the 100k tier that holds such names: each tier is also written in 53 parts, `/cities/capitals-<key>` and `/cities/100k-<key>` (a to z, a digit, a kana row, sixteen groups for other scripts). A first search fetches about 50 kB gzipped at the median and 120 kB at most, against 472 kB for the whole capitals, 1m and 100k tiers. `cityNamesOf(code)` in /places, and `/cities/names-<code>`, give a country's light list first: ids, names and `major` (the capital and the first twenty), about half the full file (United States 52 kB, not 115 kB; China 87 kB, not 147 kB). The default search, and every other call, answers as before.
-
-- **Readings of Japanese names in hiragana.** `name.jaReading` reads a city's `ja` in hiragana, so a list sorts in Japanese order: Wikidata's reading in kana, Japan Post's reading for a municipality of Japan where Wikidata has none (山口市, やまぐちし), or the name itself where its words are kana (ゴヤ (アルゼンチン), ごや); twenty new towns and neighbourhoods neither source reads are read in `scripts/data-config.ts`. Every Japanese name of a place in Japan has one. A name in Chinese characters of China, Taiwan or Korea has none: no source with clear terms gives one, and none is made up. `searchPlaces` and the start parts find a city by its reading (とうきょう finds 東京都). `continentReading` reads the seven continents (南極, なんきょく). Five areas of Japan that are not towns (Woodland Kyoto, Kansai Science City, Otokuni, the castle town of Kagoshima, a group of Fukuoka's city blocks) are no longer cities; their ids are in `city-id-aliases.json` as removed.
 
 ### Changed
 
@@ -63,7 +69,6 @@ All notable changes to this project are written here. The format follows
 - **Units below a district are not cities**: upazilas, thanas, tehsils, talukas, municipal okrugs, subdistricts, wards, unions, arrondissements, county boroughs, regional councils, communes, the French métropoles and the Swiss cantons are left out (532 + 5 ids). Bangladesh's cities are now its 101 towns.
 - **Civil townships round a city are not cities**: in Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas, where a township is a civil unit of its county with cities inside it, every township is left out (Kaw Township, round Kansas City; Thornton Township, round South Holland and Harvey); elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays.
 - Every id that leaves answers through `cityById` and `byId` with the city it belongs to, or with `null`. The alias table is written small, so the core of `/cities` stays under 24 KB.
-
 
 ## [1.6.1] - 2026-11-11
 

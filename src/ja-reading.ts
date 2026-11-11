@@ -15,10 +15,13 @@ const hiraganaOf = (text: string): string | null => {
   const hiragana = [...plain].map((char) => {
     const code = char.codePointAt(0)!;
 
-    return code >= 0x30a1 && code <= 0x30f6 ? String.fromCodePoint(code - 0x60) : char;
+    if (code >= 0x30a1 && code <= 0x30f6) return String.fromCodePoint(code - 0x60);
+    // ヷ, ヸ, ヹ and ヺ have no hiragana of their own: わ, ゐ, ゑ and を with the voiced mark.
+    if (code >= 0x30f7 && code <= 0x30fa) return `${"わゐゑを"[code - 0x30f7]}\u3099`;
+    return char;
   });
 
-  return hiragana.length > 0 && hiragana.every((char) => /^[ぁ-ゖゝゞー]$/u.test(char)) ? hiragana.join("") : null;
+  return hiragana.length > 0 && hiragana.every((char) => /^[ぁ-ゖゝゞー]\u3099?$/u.test(char)) ? hiragana.join("") : null;
 };
 
 // The words a name in kana may end in that have one reading only: a city, a ward, a county, a prefecture, a state, a

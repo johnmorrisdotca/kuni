@@ -252,7 +252,8 @@ const continentName = (continent: Continent, language: Language = "en"): string 
 
 /**
  * A continent's Japanese name in hiragana, for sorting in Japanese order as `Country.reading` does a country: the name
- * itself where it is written in kana, else its reading (南極, なんきょく).
+ * itself where it is written in kana, else its reading (南極, なんきょく). It keeps the long-vowel mark (よーろっぱ), so
+ * sort with a collator for Japanese ("ja"), not by code point.
  *
  * @param continent - One of the seven two-letter continents.
  * @returns The reading; `null` for anything that is not one of the seven.

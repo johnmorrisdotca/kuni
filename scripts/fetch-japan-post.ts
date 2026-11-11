@@ -42,7 +42,10 @@ const main = async (): Promise<void> => {
     const cells = line.split(",").map((cell) => cell.replace(/^"|"$/g, ""));
     const [code, , , , cityKana, , prefecture, city] = cells;
     if (code === undefined || cityKana === undefined || prefecture === undefined || city === undefined) throw new Error(`A row this script does not read: ${line}`);
-    if (!municipalities.has(code)) municipalities.set(code, [code, prefecture, city, cityKana]);
+    // The reading in full-width katakana, nothing else: the build makes it hiragana and trusts it.
+    const katakana = cityKana.normalize("NFKC");
+    if (!/^[ァ-ヶー]+$/u.test(katakana)) throw new Error(`A municipality's reading that is not katakana alone: ${code} ${city} ${cityKana}`);
+    if (!municipalities.has(code)) municipalities.set(code, [code, prefecture, city, katakana]);
   }
   const read = new Date().toISOString().slice(0, 10);
   const text = `${JSON.stringify({

@@ -10,7 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Ashgabat|Türkmenabat|Daşoguz|Mary|Balkanabat|Türkmenbaşy|Gyzylarbat|Baýramaly|Tejen|Magdanly|Abadan Etrap|Boldumsaz|Ýolöten|Köneürgenç|Kaka|Kerki|Sarahs|Gumdag|Andalyp|Bäherden|Gazojak|Bereket|Khodzhaolen|Gökdepe|Saparmyrat Türkmenbaşy|Türkmengala|Serhetabat|Akdepe|Çaşgyn|Hazar|Magtymguly|Jebel|Arkadag|Änew|Gämi",
   ja: "アシガバート|テュルクメナバート|ダショグズ|マル|バルカナバート|トルクメンバシ|セルダル|ベイラマリー|テジェン|マグダンリー|アーバーダーン (トルクメニスタン)|||クフナ・ウルゲンチ|カカ|ケルキ|セラフス|グムダグ||バハルリ|ギャゾジャック|ベレケト||ギョクテペ|||クシカ|||チェレケン||ジェベル|アルカダグ|アナウ|",
   native: "Aşgabat||||||||||Abadan||||||||||||||||||||||||",
-  reading: "||だしゅおぐず|||とるくめんばしゅ|||||||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000",
 });
 

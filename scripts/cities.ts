@@ -128,6 +128,7 @@ const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
   Q125293: { en: "Puebla", why: "Heroica Puebla de Zaragoza is the formal name; Puebla is the name in English." },
   Q189128: { en: "León", why: "León de Los Aldama is the formal name; León is the name in English." },
   Q209034: { en: "Toluca", why: "Toluca de Lerdo is the formal name; Toluca is the name in English." },
+  Q11359606: { en: "Kami-Mizo", why: "上溝 in Sagamihara is read かみみぞ (Kamimizo); Wikidata's English label, Kami-Mizu, misreads 溝." },
   Q1614034: { en: "Centrum (The Hague)", why: "Centre: the centre district of The Hague, named so it is not read as a town called Centre." },
   Q1065035: { en: "Sunshine Coast", why: "Sunshine Coast Region is the council area that is the city, as the City of Gold Coast is Gold Coast's; Wikidata has no item for the city alone." },
 };

@@ -43,10 +43,12 @@ interface City {
    * Its name in English, and in Japanese and in its own language where a source has them: `ja` and `native` are left
    * out, never an English name copied in; `native` is also left out where it is the English name. `jaShort`, with `ja`,
    * is the Japanese name a map labels it by: 東京 for 東京都, 大阪 for 大阪市, the same as `ja` where nothing is dropped.
-   * `jaReading` is the reading of `ja` in hiragana, for sorting in Japanese order (とうきょうと, にゅーよーく): Wikidata's
-   * reading in kana (P1814) where `ja` is Wikidata's label, else for a city of Japan Japan Post's reading of the
-   * municipality, else `ja` itself where its words are kana (ゴヤ (アルゼンチン) is ごや; a last 市, 区, 郡, 県, 州 or 鎮 is
-   * read し, く, ぐん, けん, しゅう, ちん). Left out where none is so (a name of China written in kanji), never guessed.
+   * `jaReading` is the reading of `ja` in hiragana, for sorting in Japanese order (とうきょうと, にゅーよーく): `ja` itself
+   * where its words are kana (ゴヤ (アルゼンチン) is ごや; a last 市, 区, 郡, 県, 州 or 鎮 is read し, く, ぐん, けん,
+   * しゅう, ちん); for a name in kanji only a source's, Wikidata's reading in kana (P1814) where `ja` is Wikidata's
+   * label, else for a city of Japan Japan Post's reading of the municipality. Left out where none is so (a name of China
+   * written in kanji), never guessed. It keeps the long-vowel mark (にゅーよーく), so sort it with a collator for
+   * Japanese ("ja"), not by code point.
    */
   name: { en: string; ja?: string; jaShort?: string; jaReading?: string; native?: string };
   /** The continent of its country, in the seven-continent model kuni's groupings use: "AF", "AN", "AS", "EU", "NA", "OC" or "SA". */

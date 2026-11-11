@@ -1053,7 +1053,8 @@ const writeCities = (): void => {
     const fromPost = row[5] === "JP" && row[6] !== null ? (postReadings.get(`${row[6]} ${row[8]}`) ?? null) : null;
     const fill = CITY_READING_FILLS[typeof row[0] === "number" ? `Q${row[0]}` : row[0]];
     if (fill !== undefined && fill[0] !== row[8]) throw new Error(`CITY_READING_FILLS reads Q${row[0]} as ${fill[0]}, but its Japanese name is now ${row[8]}`);
-    const reading = (fromWikidata === undefined ? null : hiraganaOf(fromWikidata)) ?? fromPost ?? fill?.[1] ?? readingOfName(row[8]);
+    // A name in kana is read from itself, so a suffix is kept (コザン県, こざんけん); a name in kanji only from a source.
+    const reading = readingOfName(row[8]) ?? (fromWikidata === undefined ? null : hiraganaOf(fromWikidata)) ?? fromPost ?? fill?.[1] ?? null;
     if (reading !== null) readings.set(row[0], reading);
   }
   console.log(`Readings: ${readings.size} of ${rows.filter((row) => row[8] !== null).length} Japanese city names.`);

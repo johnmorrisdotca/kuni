@@ -313,7 +313,8 @@ describe("what the data says of well-known places", () => {
     // Wikidata reads none of these four; Japan Post does.
     expect([reading("Yamaguchi"), reading("Osaki"), reading("Oshu"), reading("Tono")]).toEqual(["やまぐちし", "おおさきし", "おうしゅうし", "とおのし"]);
     expect(reading("Tokyo")).toBe("とうきょうと");
-    const order = [...japan].sort((a, b) => (a.name.jaReading! < b.name.jaReading! ? -1 : a.name.jaReading! > b.name.jaReading! ? 1 : 0)).map((one) => one.name.en);
+    const collator = new Intl.Collator("ja");
+    const order = [...japan].sort((a, b) => collator.compare(a.name.jaReading!, b.name.jaReading!)).map((one) => one.name.en);
     const places = ["Osaka", "Sapporo", "Tokyo", "Nagoya", "Yokohama"].map((en) => order.indexOf(en));
     expect(places.every((at, index) => at >= 0 && (index === 0 || at > places[index - 1]!))).toBe(true);
     expect(order.slice(0, 1).map((en) => reading(en)!.startsWith("あ"))).toEqual([true]);
@@ -324,6 +325,10 @@ describe("what the data says of well-known places", () => {
     const byJa = (ja: string) => all.find((one) => one.name.ja === ja)?.name;
     expect(byJa("ゴヤ (アルゼンチン)")?.jaReading).toBe("ごや");
     expect(byJa("フジャイラ市")?.jaReading).toBe("ふじゃいらし");
+    // a name in kana keeps its last word, even where Wikidata reads the place without it
+    expect(((await citiesOf("TR")) ?? []).find((one) => one.name.ja === "コザン県")?.name.jaReading).toBe("こざんけん");
+    // a name in kanji outside Japan is read where Wikidata reads it
+    expect(((await citiesOf("HK")) ?? []).find((one) => one.name.ja === "香港")?.name.jaReading).toBe("ほんこん");
     expect(byJa("上海市")).toMatchObject({ ja: "上海市" });
     expect(byJa("上海市")?.jaReading).toBeUndefined();
   });
