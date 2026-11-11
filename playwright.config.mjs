@@ -4,6 +4,8 @@ import { defineConfig, devices } from "@playwright/test";
 const phone = { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true };
 
 export default defineConfig({
+  // One browser at a time on a machine: kazoku-ui's lock and queue, taken before the first test (nothing in CI).
+  globalSetup: "@johnmorrisdotca/kazoku-ui/testing/global-setup",
   testDir: "e2e",
   testMatch: "*.demo.mjs",
   fullyParallel: true,
