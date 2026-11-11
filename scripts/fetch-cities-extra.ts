@@ -16,9 +16,11 @@ const CLASSES: Readonly<Record<string, { country: string; language: string; why:
   Q2039348: { country: "NL", language: "nl", why: "municipality of the Netherlands: Nijmegen, Haarlemmermeer and Zaanstad have no other class" },
 };
 const FLOOR = 15000;
+const OLDEST = "2015-01-01";
 
 const QUERIES = {
-  items: `SELECT DISTINCT ?item WHERE { ?item wdt:P31 wd:$CLASS ; wdt:P625 ?coord ; wdt:P1082 ?pop . FILTER(?pop >= ${FLOOR}) }`,
+  // A municipality dissolved (P576: Zuilen, Kralingen, Nieuwer-Amstel) is no city now.
+  items: `SELECT DISTINCT ?item WHERE { ?item wdt:P31 wd:$CLASS ; wdt:P625 ?coord ; wdt:P1082 ?pop . FILTER(?pop >= ${FLOOR}) FILTER NOT EXISTS { ?item wdt:P576 ?end } }`,
   names: `SELECT ?item ?en ?ja ?nat ?coord WHERE {
   VALUES ?item { $ITEMS }
   OPTIONAL { ?item rdfs:label ?en . FILTER(LANG(?en) = "en") }
@@ -95,6 +97,8 @@ const main = async (): Promise<void> => {
     for (const row of await ask(QUERIES.subdivisions.replace("$ITEMS", list))) byId.get(qid(row.item!.value))![8].push(row.code!.value);
     for (const row of await ask(QUERIES.capitals.replace("$ITEMS", list))) byId.get(qid(row.item!.value))![9].push(row.code!.value);
     for (const one of byId.values()) {
+      // A figure older than 2015 is a municipality since merged away: left out with it.
+      if (!one[7].some(([, day]) => day !== null && day >= OLDEST)) continue;
       one[7].sort((a, b) => ((a[1] ?? "") < (b[1] ?? "") ? -1 : (a[1] ?? "") > (b[1] ?? "") ? 1 : a[0] - b[0]));
       one[8] = [...new Set(one[8])].sort();
       one[9] = [...new Set(one[9])].sort();

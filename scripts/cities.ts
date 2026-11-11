@@ -125,6 +125,7 @@ const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
   Q125293: { en: "Puebla", why: "Heroica Puebla de Zaragoza is the formal name; Puebla is the name in English." },
   Q189128: { en: "León", why: "León de Los Aldama is the formal name; León is the name in English." },
   Q209034: { en: "Toluca", why: "Toluca de Lerdo is the formal name; Toluca is the name in English." },
+  Q1614034: { en: "Centrum (The Hague)", why: "Centre: the centre district of The Hague, named so it is not read as a town called Centre." },
   Q1065035: { en: "Sunshine Coast", why: "Sunshine Coast Region is the council area that is the city, as the City of Gold Coast is Gold Coast's; Wikidata has no item for the city alone." },
 };
 // A population statement of Wikidata's that is wrong, left out: the item, the figure, and the reason.
@@ -132,7 +133,25 @@ const WRONG_POPULATIONS: Readonly<Record<string, { value: number; why: string }>
   Q165995: { value: 750, why: "Malatya, Turkey: a figure of 750 for 2020, the city's being some 400,000; the 2012 figure is used." },
   Q2579193: { value: 450000, why: "Sirajganj, Bangladesh: a round 450,000 for 2020, the district town's; the town has some 170,000 people." },
 };
-const SEPARATE_CODES: Readonly<Record<string, string>> = { "CN-HK": "HK", "CN-MO": "MO", "CN-TW": "TW" };
+// A subdivision code that is a country of its own: Hong Kong, Macau and Taiwan in China's list; the Caribbean
+// Netherlands, Aruba, Curaçao and Sint Maarten in the Netherlands'; Greenland and the Faroes in Denmark's.
+// A Dutch municipality made of several places and named for its region, not a town (Haarlemmermeer, Westland,
+// Súdwest-Fryslân): no city; its towns (Hoofddorp, Naaldwijk, Sneek) are cities where the snapshot has them.
+const STALE_BEFORE = "1996-01-01";
+const MERGED_MUNICIPALITY = "A merged municipality of the Netherlands named for its region, not a town; its towns are cities of their own.";
+const SEPARATE_CODES: Readonly<Record<string, string>> = {
+  "CN-HK": "HK",
+  "CN-MO": "MO",
+  "CN-TW": "TW",
+  "NL-BQ1": "BQ",
+  "NL-BQ2": "BQ",
+  "NL-BQ3": "BQ",
+  "NL-AW": "AW",
+  "NL-CW": "CW",
+  "NL-SX": "SX",
+  "DK-GL": "GL",
+  "DK-FO": "FO",
+};
 const NOT_CITIES: Readonly<Record<string, string>> = {
   Q103927888: "Moro, Papua New Guinea: Wikidata gives it 6,310,129 people, most of the country's; no city there is near that size.",
   Q23157: "Somerset, England: the county (975,782 people), not a town; its county town is Taunton.",
@@ -151,6 +170,52 @@ const NOT_CITIES: Readonly<Record<string, string>> = {
   Q7568013: "South Mumbai: a part of Mumbai (Q1156), not a city of its own.",
   Q31925679: "Valladolid city, Spain: a second item for Valladolid (Q8356).",
   Q24843784: "Kota Semarang, Indonesia: a second item for Semarang (Q11025).",
+  Q1653954: "IJsselmonde, the Netherlands: an island and a region of Rotterdam, not a town.",
+  Q7679994: "Tel al-Sultan, Gaza: a refugee camp, its one figure from 2006.",
+  Q1635867:
+    "Rothera, Antarctica: a research station, the British Antarctic Territory's seat, given that territory's code BQ of 1974-1979, which is now Caribbean Netherlands'.",
+  Q9924: MERGED_MUNICIPALITY, // Haarlemmermeer
+  Q9978: MERGED_MUNICIPALITY, // Zaanstad
+  Q26556: MERGED_MUNICIPALITY, // Westland
+  Q104758977: MERGED_MUNICIPALITY, // Dijk en Waard
+  Q1473276: MERGED_MUNICIPALITY, // Súdwest-Fryslân
+  Q56682979: MERGED_MUNICIPALITY, // Hoeksche Waard
+  Q14853527: MERGED_MUNICIPALITY, // Nissewaard
+  Q18655255: MERGED_MUNICIPALITY, // Meierijstad
+  Q112675: MERGED_MUNICIPALITY, // Leidschendam-Voorburg
+  Q106436626: MERGED_MUNICIPALITY, // Voorne aan Zee
+  Q10042: MERGED_MUNICIPALITY, // Stichtse Vecht
+  Q30011757: MERGED_MUNICIPALITY, // Westerkwartier
+  Q1144739: MERGED_MUNICIPALITY, // Lansingerland
+  Q23987486: MERGED_MUNICIPALITY, // Midden-Groningen
+  Q18335889: MERGED_MUNICIPALITY, // Gooise Meren
+  Q29032345: MERGED_MUNICIPALITY, // Vijfheerenlanden
+  Q15991891: MERGED_MUNICIPALITY, // Krimpenerwaard
+  Q28057171: MERGED_MUNICIPALITY, // Altena
+  Q507065: MERGED_MUNICIPALITY, // Smallingerland
+  Q281768: MERGED_MUNICIPALITY, // Pijnacker-Nootdorp
+  Q2114866: MERGED_MUNICIPALITY, // De Fryske Marren
+  Q30142059: MERGED_MUNICIPALITY, // West Betuwe
+  Q933459: MERGED_MUNICIPALITY, // Goeree-Overflakkee
+  Q10043: MERGED_MUNICIPALITY, // Utrechtse Heuvelrug
+  Q9936: MERGED_MUNICIPALITY, // Hollands Kroon
+  Q600871: MERGED_MUNICIPALITY, // Overbetuwe
+  Q27959423: MERGED_MUNICIPALITY, // Het Hogeland
+  Q69262: MERGED_MUNICIPALITY, // Noordoostpolder
+  Q952939: MERGED_MUNICIPALITY, // Lingewaard
+  Q27526271: MERGED_MUNICIPALITY, // Waadhoeke
+  Q9785: MERGED_MUNICIPALITY, // Peel en Maas
+  Q29509979: MERGED_MUNICIPALITY, // Noardeast-Fryslân
+  Q97055892: MERGED_MUNICIPALITY, // Eemsdelta
+  Q228673: MERGED_MUNICIPALITY, // Zuidplas
+  Q10036: MERGED_MUNICIPALITY, // De Ronde Venen
+  Q10022: MERGED_MUNICIPALITY, // Steenwijkerland
+  Q42115473: MERGED_MUNICIPALITY, // Molenlanden
+  Q47104: MERGED_MUNICIPALITY, // Berkelland
+  Q843899: MERGED_MUNICIPALITY, // Rheden
+  Q10035: MERGED_MUNICIPALITY, // De Bilt
+  Q9797: MERGED_MUNICIPALITY, // Horst aan de Maas
+  Q9835: MERGED_MUNICIPALITY, // Geldrop-Mierlo
   Q11080: "Jember, Indonesia: the regency, 2.4 million people, most of them outside the town.",
   Q12478970: "Cilacap, Indonesia: the regency, not the town.",
   Q33271: "Đồng Nai, Vietnam: the province (4.4 million people); its city is Biên Hòa (Q19316).",
@@ -528,8 +593,17 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     // 3166-2 code is CN-HK, CN-MO or CN-TW is in that country. Wikidata gives most Dutch municipalities no country
     // (P17): the country of the ISO 3166-2 code it is in (NL-NB) is used then, else Natural Earth's.
     const ownCode = subs.map((code) => SEPARATE_CODES[code]).find((alpha2) => alpha2 !== undefined && countries.has(alpha2));
-    const codeCountry = subs.map((code) => code.split("-")[0]!).find((alpha2) => countries.has(alpha2)) ?? null;
+    // The most specific code: one whose subdivision is another code's country ("DK-GL" beside "GL-AV") gives way to it.
+    const prefixes = new Set(subs.map((code) => code.split("-")[0]!));
+    const specific = subs.filter((code) => !prefixes.has(code.split("-")[1] ?? ""));
+    const codeCountry = specific.map((code) => code.split("-")[0]!).find((alpha2) => countries.has(alpha2)) ?? null;
     const country = ownCode ?? wikidataCountry ?? codeCountry ?? (place?.[8] != null && countries.has(place[8]) ? place[8] : null);
+    // A place given a country only by its code, whose figures are all dated more than 30 years ago, is a place of the
+    // past (Szczecin's Śródmieście district of 1955-1976, counted in 1961): left out. A figure with no date may be new.
+    if (ownCode === undefined && wikidataCountry === null && codeCountry !== null && country === codeCountry && pops.length > 0 && pops.every(([, day]) => day !== null && day < STALE_BEFORE)) {
+      report.leftOut.noCountry += 1;
+      continue;
+    }
     if (country === null || !countries.has(country)) {
       report.leftOut.noCountry += 1;
       continue;

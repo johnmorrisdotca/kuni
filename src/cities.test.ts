@@ -486,6 +486,19 @@ describe("the top cities of a country", () => {
     for (const name of ["Tilburg", "Almere", "Breda", "Nijmegen", "Amersfoort", "Apeldoorn", "Haarlem", "Enschede"]) expect(dutch, name).toContain(name);
     expect(await top("NL", 6)).toEqual(["Amsterdam", "Rotterdam", "The Hague", "Utrecht", "Eindhoven", "Groningen"]);
     expect((await citiesOf("NL"))!.find((city) => city.name.en === "Escamp")?.inMetroOf).toBe("Q36600");
+    // Each town once (the town, not the municipality of its name), no region named as a town, no district as a town.
+    const counts = new Map<string, number>();
+    for (const name of dutch) counts.set(name, (counts.get(name) ?? 0) + 1);
+    expect([...counts].filter(([, n]) => n > 1).map(([name]) => name)).toEqual([]);
+    for (const name of ["Haarlemmermeer", "Westland", "Súdwest-Fryslân", "IJsselmonde", "Centre", "Zuilen"]) expect(dutch, name).not.toContain(name);
+    expect(dutch).toContain("Centrum (The Hague)");
+    // The most specific code: Kralendijk is in the Caribbean Netherlands; Hargeisa is Somalia's by its code.
+    expect((await citiesOf("BQ"))!.map((city) => city.name.en)).toContain("Kralendijk");
+    expect(dutch).not.toContain("Kralendijk");
+    // Rothera, an Antarctic station given the British Antarctic Territory's old code BQ, is not a Caribbean town.
+    expect((await citiesOf("BQ"))!.map((city) => city.name.en)).toEqual(["Kralendijk", "Oranjestad", "The Bottom"]);
+    expect((await citiesOf("SO"))!.some((city) => city.name.en === "Hargeisa")).toBe(true);
+    expect((await citiesOf("PL"))!.some((city) => city.name.en.startsWith("Śródmieście (Szczecin"))).toBe(false);
     // Sunshine Coast, by the council area that is the city.
     expect((await citiesOf("AU"))!.find((city) => city.name.en === "Sunshine Coast")).toMatchObject({ id: "Q1065035", metro: { id: "oecd:AUS11F" } });
   });

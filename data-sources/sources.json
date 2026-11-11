@@ -74,7 +74,7 @@
       "path": "wikidata-cities-extra-2026-11-11.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-11-11",
-      "sha256": "48135a3f0731cbd00e644c3e68fddbb5c3c1f1c583be2616f589f49ae9fb5bb9",
+      "sha256": "f6f83ebc5d17ea4f37e7a186acf3dd807a555692a9e26562dfbe10dc75946a62",
       "note": "Wikidata SPARQL answers: the cities whose only class is no kind of human settlement (a municipality of the Netherlands), in the columns of the main cities snapshot; the queries are in the file (CC0)"
     },
     {

@@ -969,7 +969,18 @@ const writeCities = (): void => {
   const extraFile = manifest.files.find((file) => file.path.startsWith("wikidata-cities-extra-"));
   if (extraFile !== undefined) {
     const known = new Set(snapshot.items.map((item) => item[0]));
-    const extra = (JSON.parse(readSource(manifest, extraFile.path).text) as CitiesSnapshot).items.filter((item) => !known.has(item[0]));
+    // The town and the municipality of one name (Purmerend, Hoorn): the town of the main snapshot, within 25 km, is kept.
+    const plain = (text: string | null) => (text ?? "").normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase();
+    const byName = new Map<string, [number, number][]>();
+    for (const item of snapshot.items) if (item[1] !== null && item[5] !== null) byName.set(plain(item[1]), [...(byName.get(plain(item[1])) ?? []), item[5]]);
+    const near = (a: [number, number], b: [number, number]) => {
+      const rad = Math.PI / 180;
+      const h = Math.sin(((b[0] - a[0]) * rad) / 2) ** 2 + Math.cos(a[0] * rad) * Math.cos(b[0] * rad) * Math.sin(((b[1] - a[1]) * rad) / 2) ** 2;
+      return 12742 * Math.asin(Math.sqrt(h)) <= 25;
+    };
+    const extra = (JSON.parse(readSource(manifest, extraFile.path).text) as CitiesSnapshot).items.filter(
+      (item) => !known.has(item[0]) && !(item[5] !== null && (byName.get(plain(item[1])) ?? []).some((point) => near(point, item[5]!))),
+    );
     snapshot.items = [...snapshot.items, ...extra];
   }
   const naturalEarth = JSON.parse(readSource(manifest, neFile.path).text) as NaturalEarthFile;
