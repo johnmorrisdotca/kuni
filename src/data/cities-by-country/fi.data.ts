@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const FI: readonly CityRow[] = [
-  [1757,60.1708,24.9375,694392,"2025-12-31","FI","FI-18","Helsinki","ヘルシンキ",null,null,1,"FI",0],
+  [1757,60.1708,24.9375,694392,"2025-12-31","FI","FI-18","Helsinki","ヘルシンキ",null,null,1,"FI",0,673425,"Helsinki metropolitan area",1530000,2024],
   [47034,60.2056,24.6556,325716,"2025-12-31","FI","FI-18","Espoo","エスポー",null,null,0,null,0],
   [40840,61.4981,23.76,255333,"2024-02-29","FI","FI-11","Tampere","タンペレ",null,null,2,"FI-11",0],
   [127623,60.2944,25.0403,248199,"2024-02-29","FI","FI-18","Vantaa","ヴァンター",null,null,0,null,0],

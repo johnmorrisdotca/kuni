@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const PT: readonly CityRow[] = [
-  [597,38.708,-9.139,545796,2021,"PT","PT-11","Lisbon","リスボン","Lisboa","pt",1,"PT",0],
+  [597,38.708,-9.139,545796,2021,"PT","PT-11","Lisbon","リスボン","Lisboa","pt",1,"PT",0,126281580,"Lisbon metropolitan area",3049222,2023],
   [36433,41.15,-8.6108,231800,2021,"PT","PT-13","Porto","ポルト",null,null,0,null,0],
   [83247,41.5333,-8.4167,193324,2021,"PT","PT-03","Braga","ブラガ",null,null,0,null,0],
   [45412,40.2111,-8.4289,140816,2021,"PT","PT-06","Coimbra","コインブラ",null,null,0,null,0],

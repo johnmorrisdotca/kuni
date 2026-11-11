@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const HU: readonly CityRow[] = [
-  [1781,47.4983,19.0408,1675777,2026,"HU","HU-BU","Budapest","ブダペスト",null,null,1,"HU",0],
+  [1781,47.4983,19.0408,1675777,2026,"HU","HU-BU","Budapest","ブダペスト",null,null,1,"HU",0,339373,"Budapest metropolitan area",2500000,2024],
   [79880,47.53,21.6392,202331,2026,"HU","HU-DE","Debrecen","デブレツェン",null,null,2,"HU-HB",0],
   [81581,46.25,20.1667,157596,2026,"HU","HU-CS","Szeged","セゲド",null,null,2,"HU-CS",0],
   [102397,48.1,20.7833,139246,2026,"HU","HU-BZ","Miskolc","ミシュコルツ",null,null,2,"HU-BZ",0],

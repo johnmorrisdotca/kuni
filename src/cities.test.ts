@@ -8,6 +8,7 @@ import { capitalCities } from "./cities/capitals";
 import { COUNTRY_CODES } from "./codes";
 import { CITY_ALIASES } from "./data/city-aliases.data";
 import { CITY_INDEX } from "./data/city-index.data";
+import { rankingPopulation } from "./rank";
 import { CITY_LOADERS } from "./data/city-loaders.data";
 import { subdivision } from "./subdivisions";
 
@@ -26,6 +27,7 @@ const make = (id: string, en: string, country: string, lat: number, lon: number,
     capital: null,
     capitalOf: Object.freeze([]),
     source: Object.freeze({ point: "wikidata", population: population === null ? null : "wikidata", ja: null } as const),
+    metro: null,
   });
 const PARIS = make("Q90", "Paris", "FR", 48.8567, 2.351, 2165423, "FR-IDF");
 const LYON = make("Q456", "Lyon", "FR", 45.76, 4.84, 522250, "FR-ARA");
@@ -143,7 +145,8 @@ describe("the tiers", () => {
   });
 
   it("list the most populous first", () => {
-    for (const list of Object.values(tiers)) for (let at = 1; at < list.length; at += 1) expect(list[at - 1]!.population ?? 0, list[at]!.id).toBeGreaterThanOrEqual(list[at]!.population ?? 0);
+    // By the metropolitan area's people where a city has one, else its own.
+    for (const list of Object.values(tiers)) for (let at = 1; at < list.length; at += 1) expect(rankingPopulation(list[at - 1]!), list[at]!.id).toBeGreaterThanOrEqual(rankingPopulation(list[at]!));
   });
 
   it("give every city a name in English, a country kuni lists, a point on the earth and a source for each fact", () => {
@@ -334,7 +337,7 @@ describe("loading", () => {
     const set = await loadCities("capitals", "1m", "100k", "15k");
     expect(japan.length).toBe(set.inCountry("JP").length);
     expect(new Set(japan.map((one) => one.id))).toEqual(new Set(set.inCountry("JP").map((one) => one.id)));
-    for (let at = 1; at < japan.length; at += 1) expect(japan[at - 1]!.population ?? 0).toBeGreaterThanOrEqual(japan[at]!.population ?? 0);
+    for (let at = 1; at < japan.length; at += 1) expect(rankingPopulation(japan[at - 1]!)).toBeGreaterThanOrEqual(rankingPopulation(japan[at]!));
     expect(Object.isFrozen(japan)).toBe(true);
   });
 
@@ -355,7 +358,8 @@ describe("cityById", () => {
   it("finds a city in any tier by its id, in either case, and an id that is nobody's gives null", async () => {
     expect((await cityById("Q90"))?.name.en).toBe("Paris");
     expect((await cityById(" q1490 "))?.country).toBe("JP");
-    const small = (await loadCities("15k")).cities[0]!;
+    // A town only the 15k tier holds: not a capital, which the capitals tier holds too.
+    const small = (await loadCities("15k")).cities.find((one) => one.capital === null)!;
     expect(await cityById(small.id)).toBe(small);
     expect(await cityById("Q0")).toBeNull();
     expect(await cityById("")).toBeNull();
@@ -428,3 +432,27 @@ describe("ids that never change", () => {
     expect(everything.byId("Q90")?.id).toBe("Q90");
   });
 });
+
+describe("the top cities of a country", () => {
+  const top = async (code: string, count: number): Promise<string[]> =>
+    [...(await citiesOf(code))!].sort((a, b) => rankingPopulation(b) - rankingPopulation(a)).slice(0, count).map((city) => city.name.en);
+
+  it("rank by the metropolitan area where Wikidata names one, so Vancouver is Canada's third", async () => {
+    expect(await top("CA", 3)).toEqual(["Toronto", "Montreal", "Vancouver"]);
+    expect((await top("FR", 1))[0]).toBe("Paris");
+    // Manila is Metro Manila's capital, so the region's figure is Manila's and it is first; Quezon City, larger within its own limits, comes after.
+    expect((await top("PH", 1))[0]).toBe("Manila");
+    expect((await top("JP", 1))[0]).toBe("Tokyo");
+    expect((await top("US", 1))[0]).toBe("New York City");
+    expect((await top("AU", 2)).sort()).toEqual(["Melbourne", "Sydney"]);
+  });
+
+  it("keep each city's own figure beside its metro's, and give the metro only where it is bigger", async () => {
+    const vancouver = (await citiesOf("CA"))!.find((city) => city.name.en === "Vancouver")!;
+    expect(vancouver.population).toBeLessThan(1000000);
+    expect(vancouver.metro?.population).toBeGreaterThan(2000000);
+    for (const code of ["CA", "FR", "JP", "US"])
+      for (const city of (await citiesOf(code))!) if (city.metro !== null) expect(city.metro.population, city.name.en).toBeGreaterThan(city.population ?? 0);
+  });
+});
+

@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const ES: readonly CityRow[] = [
-  [2807,40.4169,-3.7033,3506730,2025,"ES","ES-MD","Madrid","マドリード",null,null,1,"ES",0],
+  [2807,40.4169,-3.7033,3506730,2025,"ES","ES-MD","Madrid","マドリード",null,null,1,"ES",0,959356,"Madrid Metropolitan Area",5682111,2024],
+  [1492,41.3825,2.1769,1731649,2025,"ES","ES-CT","Barcelona","バルセロナ",null,null,2,"ES-B ES-CT",0,249489,"Barcelona metropolitan area",5093585,2022],
   [116170766,40.4084,-3.6876,3332035,2024,"ES","ES-MD","Madrid city",null,"Ciudad de Madrid","es",0,null,0],
-  [1492,41.3825,2.1769,1731649,2025,"ES","ES-CT","Barcelona","バルセロナ",null,null,2,"ES-B ES-CT",0],
   [8818,39.47,-0.3764,840792,2025,"ES","ES-VC","Valencia","バレンシア",null,null,2,"ES-V ES-VC",0],
   [10305,41.65,-0.8833,693091,2025,"ES","ES-AR","Zaragoza","サラゴサ",null,null,2,"ES-AR",0],
   [8717,37.3886,-5.995,689423,2025,"ES","ES-AN","Seville","セビリア","Sevilla","es",2,"ES-AN ES-SE",0],
@@ -15,7 +15,9 @@ const ES: readonly CityRow[] = [
   [8851,36.7167,-4.4167,599063,2025,"ES","ES-AN","Málaga","マラガ",null,null,2,"ES-MA",0],
   [116450968,36.7203,-4.42,543392,2024,"ES","ES-AN","Málaga City",null,"ciudad de Málaga","es",0,null,0],
   [12225,37.9833,-1.1303,479405,2025,"ES","ES-MC","Murcia","ムルシア",null,null,0,null,0],
+  [14328,28.4667,-16.25,211957,2025,"ES","ES-CN","Santa Cruz de Tenerife","サンタ・クルス・デ・テネリフェ",null,null,2,"ES-CN",0,3500363,"Santa Cruz de Tenerife metropolitan area",448689,2022],
   [8826,39.5667,2.6497,434786,2025,"ES","ES-IB","Palma","パルマ・デ・マヨルカ","Palma de Mallorca","es",2,"ES-IB ES-PM",0],
+  [8757,43.3711,-8.3961,251543,2025,"ES","ES-GA","A Coruña","ア・コルーニャ","La Coruña","es",2,"ES-C",0,11705545,"A Coruña metropolitan area",415746,null],
   [11974,28.1272,-15.4314,381868,2025,"ES","ES-CN","Las Palmas de Gran Canaria","ラス・パルマス・デ・グラン・カナリア",null,null,2,"ES-CN ES-GC",0],
   [11959,38.3453,-0.4831,366221,2025,"ES","ES-VC","Alicante","アリカンテ",null,null,2,"ES-A",0],
   [8692,43.2631,-2.935,351124,2025,"ES","ES-PV","Bilbao","ビルバオ",null,null,2,"ES-BI",0],
@@ -29,7 +31,6 @@ const ES: readonly CityRow[] = [
   [1001991,40.3837,-3.728,262339,2023,"ES","ES-MD","Carabanchel","カラバンチェル",null,null,0,null,0],
   [14318,42.8467,-2.6731,260699,2025,"ES","ES-PV","Vitoria-Gasteiz","ビトリア＝ガステイス","Vitoria","es",2,"ES-PV ES-VI",0],
   [80349557,43.545,-5.6621,255070,2024,"ES","ES-AS","Xixón City",null,"Gijón","es",0,null,0],
-  [8757,43.3711,-8.3961,251543,2025,"ES","ES-GA","A Coruña","ア・コルーニャ","La Coruña","es",2,"ES-C",0],
   [656196,40.4786,-3.7097,248443,2023,"ES","ES-MD","Fuencarral-El Pardo","フエンカラル＝エル・パルド",null,null,0,null,0],
   [794954,40.4025,-3.7413,241672,2023,"ES","ES-MD","Latina","ラティーナ",null,null,0,null,0],
   [2003054,40.3982,-3.6691,241603,2023,"ES","ES-MD","Puente de Vallecas","プエンテ・デ・バリェカス",null,null,0,null,0],
@@ -43,7 +44,6 @@ const ES: readonly CityRow[] = [
   [162615,37.6019,-0.9842,220704,2025,"ES","ES-MC","Cartagena","カルタヘナ",null,null,0,null,0],
   [1763694,40.45,-3.65,220345,2023,"ES","ES-MD","Ciudad Lineal","シウダー・リネアル",null,null,0,null,0],
   [187826,40.3333,-3.8667,214817,2025,"ES","ES-MD","Móstoles","モストレス",null,null,0,null,0],
-  [14328,28.4667,-16.25,211957,2025,"ES","ES-CN","Santa Cruz de Tenerife","サンタ・クルス・デ・テネリフェ",null,null,2,"ES-CN",0],
   [10282,42.8167,-1.65,209094,2025,"ES","ES-NC","Pamplona","パンプローナ",null,null,2,"ES-NC",0],
   [10400,36.8417,-2.4639,205468,2025,"ES","ES-AN","Almería","アルメリア",null,null,2,"ES-AL",0],
   [23990454,42.2328,-8.7226,199550,2024,"ES","ES-GA","Vigo City",null,"Ciudad de Vigo","es",0,null,0],

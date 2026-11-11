@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const LV: readonly CityRow[] = [
-  [1773,56.9475,24.1069,588911,2026,"LV","LV-RIX","Riga","リガ","Rīga","lv",1,"LV",0],
+  [1773,56.9475,24.1069,588911,2026,"LV","LV-RIX","Riga","リガ","Rīga","lv",1,"LV",0,109469845,"Riga metropolitan area",1070201,2017],
   [80021,55.8714,26.5161,77486,2026,"LV","LV-DGV","Daugavpils","ダウガフピルス",null,null,2,"LV-111",0],
   [167668,56.5083,21.0111,66746,2026,"LV","LV-LPX","Liepāja","リエパーヤ",null,null,0,null,0],
   [179830,56.6522,23.7244,54408,2026,"LV","LV-JEL","Jelgava","イェルガヴァ",null,null,2,"LV-041",0],

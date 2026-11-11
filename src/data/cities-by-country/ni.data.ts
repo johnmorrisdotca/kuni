@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const NI: readonly CityRow[] = [
-  [3274,12.1547,-86.2737,937489,2005,"NI","NI-MN","Managua","マナグア",null,null,1,"NI",0],
+  [3274,12.1547,-86.2737,937489,2005,"NI","NI-MN","Managua","マナグア",null,null,1,"NI",0,6173978,"Metropolitan Area of Managua",2415203,2023],
   [208151,12.4348,-86.8788,174051,2005,"NI","NI-LE","León","レオン",null,null,0,null,0],
   [1001914,11.9736,-86.0961,139582,2005,"NI","NI-MS","Masaya","マサヤ",null,null,0,null,0],
   [596688,12.9284,-85.9184,133416,2005,"NI","NI-MT","Matagalpa","マタガルパ",null,null,0,null,0],

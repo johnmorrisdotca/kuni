@@ -52,6 +52,8 @@ interface Report {
   naturalEarthOnly: number;
   naturalEarthLeftOut: { noItemNoMatch: number; noCountry: number; belowFloor: number };
   leftOut: { noName: number; noPoint: number; noCountry: number; noPopulation: number; belowFloor: number; area: number; duplicate: number; township: number };
+  /** The cities that have a metropolitan area (CityRow's metro columns). */
+  withMetro: number;
   /** Each civil township left out, by its id, and the city that holds most of its people, which its id answers with. */
   townshipCities: Record<string, string>;
   capitals: { national: number; alternate: number; subdivision: number; droppedWithoutCode: number };
@@ -76,7 +78,7 @@ const AREA_UNIT = /\b(Province|County|Prefecture|Governorate|District|district|R
 // "Metro Manila", "Metropolis of Lyon", "Øresund Region", "Kurdistan Region of Iraq", "North East State of Somalia",
 // "Podgorica Capital City", "Commune Mutimbuzi", "Sectorul Botanica" (Chișinău), "Front Range Urban Corridor", "Binhai New Area". A name with a comma is a town told
 // apart by the region it is in ("Paxtaobod, Andijan Region") and stays.
-const AREA_REGION = /^(Metropolitan|Metro) |^Metropolis of |^Commune( of)? |^Sectorul |\bRegional Municipality\b|\bRegion( of [^,]+)?$|\bState of \b|\bCapital City$|\bUrban Corridor$|\bNew Area$/;
+const AREA_REGION = /^(Metropolitan|Metro) |^Metropolis of |^Métropole |\sMétropole$|^Canton of |^Commune( of)? |^Sectorul |\bRegional Municipality\b|\bRegion( of [^,]+)?$|\bState of \b|\bCapital City$|\bUrban Corridor$|\bNew Area$/;
 // The units below a district in South Asia, Russia, China, Kenya and West Africa, and a few above: "Gazipur Sadar Upazila",
 // "Pattan Tehsil", "Porokhovye Municipal Okrug", "Tengyue Subdistrict", "Kangemi Ward", "Bangabari Union", "Yeumbeul
 // Arrondissement", "Wrexham County Borough", "Shomron Regional Council". A word alone ("Union", New Jersey) is a town's
@@ -114,6 +116,99 @@ const dateOf = (day: string | null): number | string | null => {
   return day.endsWith("-01-01") ? Number(day.slice(0, 4)) : day;
 };
 
+// The metropolitan areas round the cities: data-sources/wikidata-metros-<day>.json (scripts/fetch-metros.ts).
+interface MetrosSnapshot {
+  read: string;
+  links: [number, number, string][];
+  areas: [number, string | null, [number, string | null][]][];
+}
+
+// Statistics Canada's census metropolitan areas and agglomerations: data-sources/statcan-cma-2021.json (scripts/fetch-statcan.ts).
+interface StatcanSnapshot {
+  read: string;
+  places: [string, string, string, "CMA" | "CA", number][];
+}
+const PROVINCES: Readonly<Record<string, string>> = {
+  "Newfoundland and Labrador": "CA-NL", "Prince Edward Island": "CA-PE", "Nova Scotia": "CA-NS", "New Brunswick": "CA-NB", Quebec: "CA-QC", Ontario: "CA-ON", Manitoba: "CA-MB",
+  Saskatchewan: "CA-SK", Alberta: "CA-AB", "British Columbia": "CA-BC", Yukon: "CA-YT", "Northwest Territories": "CA-NT", Nunavut: "CA-NU",
+};
+
+// The figure a row is ranked by (its metro's people where it has one, else its own), most first, then its id.
+const rankOf = (row: CityRow): number => (row.length > 14 ? (row[16] as number) : (row[3] ?? 0));
+const byRank = (a: CityRow, b: CityRow): number => rankOf(b) - rankOf(a) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true });
+
+// A city's metropolitan area: an area Wikidata links to it (scripts/fetch-metros.ts says how) whose English name holds the
+// city's ("Metro Vancouver", "Paris metropolitan area", "Atlanta-Sandy Springs-Roswell metropolitan area"), or that is named
+// after it (P138). An area that holds the names of several of its cities belongs to the one named first ("Dallas–Fort
+// Worth" to Dallas). A statistical area (P8138) comes first, else the most populous; it must have more people than the
+// city itself. Rhine-Ruhr names no city of its own, so it is nobody's metro.
+type Metro = { id: number | string; en: string; population: number; date: number | string | null };
+const metroChooser = (
+  metros: MetrosSnapshot | undefined,
+  snapshot: CitiesSnapshot,
+  statcan: StatcanSnapshot | undefined,
+): ((city: number, population: number | null, en: string, country: string, subdivision: string | null) => Metro | null) => {
+  const fromWikidata = wikidataMetros(metros, snapshot);
+  // A Canadian city takes its census metropolitan area, else its census agglomeration, by Statistics Canada: the first
+  // name of one ("Ottawa - Gatineau" is Ottawa's) the city's, in its province. Wikidata has no figure for Toronto's.
+  const census = new Map<string, Metro>();
+  for (const [name, province, dguid, kind, people] of statcan?.places ?? []) {
+    const key = `${PROVINCES[province] ?? ""} ${simple(name.split(" - ")[0]!)}`;
+    if (census.has(key) && kind === "CA") continue;
+    census.set(key, { id: `statcan:${dguid}`, en: `${name} ${kind === "CMA" ? "census metropolitan area" : "census agglomeration"}`, population: people, date: "2021-05-11" });
+  }
+
+  return (city, population, en, country, subdivision) => {
+    if (country === "CA" && subdivision !== null) {
+      const found = census.get(`${subdivision} ${simple(en)}`);
+      if (found !== undefined && found.population > (population ?? 0)) return found;
+    }
+
+    return fromWikidata(city, population);
+  };
+};
+
+const wikidataMetros = (metros: MetrosSnapshot | undefined, snapshot: CitiesSnapshot): ((city: number, population: number | null) => Metro | null) => {
+  if (metros === undefined) return () => null;
+  const label = new Map(snapshot.items.map((item) => [item[0], item[1]]));
+  const areas = new Map(metros.areas.map(([id, en, pops]) => [id, { en, people: populationOf(pops) }]));
+  // Where a city's name stands in an area's, as whole words (dashes, slashes and commas read as spaces); -1 where it does not.
+  const words = (text: string): string => ` ${text.toLowerCase().replace(/[-–—/,()]/g, " ").replace(/\s+/g, " ").trim()} `;
+  const position = (area: string, city: string): number => words(area).indexOf(words(city));
+  // Which of an area's linked cities it belongs to: the one whose name comes first in the area's name.
+  const citiesOfArea = new Map<number, Set<number>>();
+  for (const [city, area] of metros.links) citiesOfArea.set(area, (citiesOfArea.get(area) ?? new Set()).add(city));
+  const owner = new Map<number, number>();
+  for (const [area, cities] of citiesOfArea) {
+    const en = areas.get(area)?.en;
+    if (en === null || en === undefined) continue;
+    let best: { city: number; at: number } | null = null;
+    for (const city of cities) {
+      const name = label.get(city);
+      if (name === null || name === undefined) continue;
+      // "New York City" is the New York of "New York metropolitan area".
+      const at = [name, name.replace(/ City$/, "")].map((one) => position(en, one)).filter((one) => one >= 0).sort((a, b) => a - b)[0] ?? -1;
+      if (at >= 0 && (best === null || at < best.at)) best = { city, at };
+    }
+    if (best !== null) owner.set(area, best.city);
+  }
+  const namedAfter = new Map<number, number>();
+  for (const [, area, how] of metros.links) if (how === "P138") namedAfter.set(area, (namedAfter.get(area) ?? 0) + 1);
+  const byCity = new Map<number, { area: number; how: string }[]>();
+  for (const [city, area, how] of metros.links) byCity.set(city, [...(byCity.get(city) ?? []), { area, how }]);
+
+  return (city, population) => {
+    // Named after the city alone: Keihanshin is named after Kyoto, Osaka and Kobe, and belongs to none of them.
+    const choices = (byCity.get(city) ?? []).filter(({ area, how }) => owner.get(area) === city || (how === "P138" && !owner.has(area) && (namedAfter.get(area) ?? 0) === 1));
+    const best = choices
+      .map(({ area, how }) => ({ area, how, en: areas.get(area)?.en ?? null, people: areas.get(area)?.people ?? null }))
+      .filter((one): one is { area: number; how: string; en: string; people: { value: number; day: string | null } } => one.en !== null && one.people !== null && one.people.value > (population ?? 0))
+      .sort((a, b) => Number(b.how === "P8138") - Number(a.how === "P8138") || b.people.value - a.people.value || a.area - b.area)[0];
+
+    return best === undefined ? null : { id: best.area, en: best.en, population: best.people.value, date: dateOf(best.people.day) };
+  };
+};
+
 interface Candidate {
   number: number | string;
   en: string;
@@ -131,8 +226,9 @@ interface Candidate {
   viaPlace: boolean;
 }
 
-const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
+const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
   const { snapshot, naturalEarth, levels, countries } = input;
+  const metroOf = metroChooser(input.metros, snapshot, input.statcan);
   // Every ISO 3166-2 code kuni lists, at any level, for the codes a capital is the capital of.
   const known = input.subdivisions ?? new Set(levels.keys());
   const emptyStats = () => ({ cities: 0, ja: 0, jaFromNaturalEarth: 0, populationFromNaturalEarth: 0 });
@@ -150,6 +246,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     naturalEarthLeftOut: { noItemNoMatch: 0, noCountry: 0, belowFloor: 0 },
     leftOut: { noName: 0, noPoint: 0, noCountry: 0, noPopulation: 0, belowFloor: 0, area: 0, duplicate: 0, township: 0 },
     townshipCities: {},
+    withMetro: 0,
     capitals: { national: 0, alternate: 0, subdivision: 0, droppedWithoutCode: 0 },
     jaFromNaturalEarth: 0,
     populationFromNaturalEarth: 0,
@@ -373,10 +470,16 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     // The national capital of a territory with a code of its own (Gibraltar, GI) is in that country, whatever Wikidata's P17 says (GB).
     const country = capital === 1 && !national.includes(one.country) ? national[0]! : one.country;
     const subdivisionOf = country === one.country ? one.subdivision : null;
-    rows.push([one.number, rounded(one.point[0]), rounded(one.point[1]), population, one.populationDate, country, subdivisionOf, one.en, one.ja, one.native, one.native === null ? null : one.nativeLanguage, capital, capitalOf.length === 0 ? null : [...new Set(capitalOf)].sort().join(" "), one.sources]);
+    const row: CityRow = [one.number, rounded(one.point[0]), rounded(one.point[1]), population, one.populationDate, country, subdivisionOf, one.en, one.ja, one.native, one.native === null ? null : one.nativeLanguage, capital, capitalOf.length === 0 ? null : [...new Set(capitalOf)].sort().join(" "), one.sources];
+    const metro = typeof one.number === "number" ? metroOf(one.number, population, one.en, country, subdivisionOf) : null;
+    if (metro === null) rows.push(row);
+    else {
+      rows.push([...row, metro.id, metro.en, metro.population, metro.date] as CityRow);
+      report.withMetro += 1;
+    }
   }
   report.naturalEarthOnly = rows.filter((row) => typeof row[0] === "string").length;
-  rows.sort((a, b) => (b[3] ?? 0) - (a[3] ?? 0) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true }));
+  rows.sort(byRank);
 
   // 4. The tiers: every capital of any size; and by population, every city (capitals included) in the range.
   const tiers: Record<TierName, CityRow[]> = { capitals: [], "1m": [], "100k": [], "15k": [] };
@@ -602,6 +705,7 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people). In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: one is left out where a city that is not a township holds at least half its people within 15 km (Kaw Township, round Kansas City), ${n(report.leftOut.township)} of them, each id answering with that city; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept.`,
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
     "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
+    `- **Metropolitan area** (\`metro\`, ${n(report.withMetro)} cities): a Canadian city's census metropolitan area, else its census agglomeration, by Statistics Canada (2021 Census, Table 98-10-0005-01), the first name of one ("Ottawa - Gatineau" is Ottawa's) being the city's, in its province; any other city's from Wikidata (\`data-sources/wikidata-metros-<day>.json\`): an item that is a metropolitan area (Q1907114, a metropolitan statistical area or a functional urban area, and the classes below them) linked to the city (its P8138 or P361, or the area's P150, P527, P36, P138 or P131), whose English name holds the city's (with "City" taken off: New York City's is the New York metropolitan area) or that is named after the city alone; an area that names several of its cities belongs to the one named first (Dallas–Fort Worth to Dallas), a statistical area comes first, else the most populous, and it must have more people than the city. The tiers and every list rank a city by its metro's people where it has one; a tier holds a city by its own.`,
     "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label (always preferred: it is curated by people), else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up; the few written for this package (`JA_NAMES` in `scripts/cities.ts`, each with its reason: East Jerusalem is 東エルサレム, not the whole city's エルサレム) say `kuni` as their source. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
     "",
     "## What was left out",
@@ -633,16 +737,24 @@ const unresolvedIds = (released: readonly (number | string)[], current: Readonly
 const cityAliases = (aliases: Record<string, string | null>, current: ReadonlySet<string>): string => {
   const pairs = Object.entries(aliases).filter(([, target]) => target !== null && current.has(target)).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true }));
 
+  // Written small, as the core of /cities carries it: "Q2415" is "1v3" (the number in base 36), anything else ("ne:12")
+  // is written as it is after a "!"; pairs are old=new, with commas between (an "ne:" id has a colon of its own).
+  const short = (id: string): string => (/^Q\d+$/.test(id) ? Number(id.slice(1)).toString(36) : `!${id}`);
+
   return `// Generated by scripts/build-data.ts. Do not edit by hand: the aliases are in data-sources/city-id-aliases.json.
 // The ids that were a city's in an earlier release and now answer with another city (merged), so that an id a page stored keeps working.
+// Written small: each pair is old=new, an item number in base 36 ("1v3" is Q2415) or "!" and the id as it is.
 
-const CITY_ALIASES: Readonly<Record<string, string>> = {
-${pairs.map(([old, target]) => `  ${JSON.stringify(old)}: ${JSON.stringify(target)},`).join("\n")}
-};
+const PAIRS: string = ${JSON.stringify(pairs.map(([old, target]) => `${short(old)}=${short(target as string)}`).join(","))};
+const long = (text: string): string => (text.startsWith("!") ? text.slice(1) : \`Q\${Number.parseInt(text, 36)}\`);
+
+const CITY_ALIASES: Readonly<Record<string, string>> = Object.freeze(
+  Object.fromEntries(PAIRS === "" ? [] : PAIRS.split(",").map((pair) => pair.split("=").map(long) as [string, string])),
+);
 
 export { CITY_ALIASES };
 `;
 };
 
-export { buildCities, cityAliases, cityIndex, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
-export type { CitiesSnapshot, NaturalEarthFile, Report, TierName };
+export { buildCities, byRank, cityAliases, cityIndex, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
+export type { MetrosSnapshot, StatcanSnapshot, CitiesSnapshot, NaturalEarthFile, Report, TierName };

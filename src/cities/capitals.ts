@@ -16,9 +16,9 @@ let table: readonly City[] | null = null;
  * import { capitalCities } from "@johnmorrisdotca/kuni/cities/capitals";
  *
  * console.log(capitalCities().length > 0);          // true
- * console.log(capitalCities()[0].name.en);          // "Beijing"
- * console.log(capitalCities()[0].id);               // "Q956"
- * console.log(capitalCities()[0].country);          // "CN"
+ * console.log(capitalCities()[0].name.en);          // "Tokyo"
+ * console.log(capitalCities()[0].id);               // "Q1490"
+ * console.log(capitalCities()[0].country);          // "JP"
  * ```
  */
 const capitalCities = (): readonly City[] => {

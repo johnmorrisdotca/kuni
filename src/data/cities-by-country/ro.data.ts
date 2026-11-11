@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const RO: readonly CityRow[] = [
-  [19660,44.4134,26.0978,1716961,"2021-12-01","RO","RO-B","Bucharest","ブカレスト","București","ro",1,"RO",0],
+  [19660,44.4134,26.0978,1716961,"2021-12-01","RO","RO-B","Bucharest","ブカレスト","București","ro",1,"RO",0,4982664,"Bucharest metropolitan area",2200000,2024],
   [100188,46.7689,23.5907,286598,"2021-12-01","RO","RO-CJ","Cluj-Napoca","クルジュ＝ナポカ",null,null,2,"RO-CJ",0],
   [46852,47.1622,27.5889,271692,"2021-12-01","RO","RO-IS","Iași","ヤシ",null,null,2,"RO-IS",0],
   [79808,44.1767,28.6508,263707,"2021-12-01","RO","RO-CT","Constanța","コンスタンツァ",null,null,2,"RO-CT",0],

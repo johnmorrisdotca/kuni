@@ -8,7 +8,7 @@ import { CITY_100K_ROWS } from "../data/cities-100k.data";
 let table: readonly City[] | null = null;
 
 /**
- * The cities of the tier `100k`: the cities of 100,000 to a million people (capitals too). 4,925 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
+ * The cities of the tier `100k`: the cities of 100,000 to a million people (capitals too). 4,921 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
  *
  * @returns The list. Join it with other tiers through `citySet` in @johnmorrisdotca/kuni/cities.
  * @example
@@ -16,9 +16,9 @@ let table: readonly City[] | null = null;
  * import { cities100k } from "@johnmorrisdotca/kuni/cities/100k";
  *
  * console.log(cities100k().length > 0);          // true
- * console.log(cities100k()[0].name.en);          // "Liaoyuan"
- * console.log(cities100k()[0].id);               // "Q92311"
- * console.log(cities100k()[0].country);          // "CN"
+ * console.log(cities100k()[0].name.en);          // "San Francisco"
+ * console.log(cities100k()[0].id);               // "Q62"
+ * console.log(cities100k()[0].country);          // "US"
  * ```
  */
 const cities100k = (): readonly City[] => {

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const DK: readonly CityRow[] = [
-  [1748,55.6761,12.5689,667099,2025,"DK","DK-84","Copenhagen","コペンハーゲン","København","da",1,"DK",0],
+  [1748,55.6761,12.5689,667099,2025,"DK","DK-84","Copenhagen","コペンハーゲン","København","da",1,"DK",0,833754,"Copenhagen metropolitan area",1770000,2024],
   [25319,56.1564,10.2097,290598,2023,"DK","DK-82","Aarhus","オーフス",null,null,0,null,0],
   [25331,55.4,10.3833,185480,2025,"DK","DK-83","Odense","オーデンセ",null,null,0,null,0],
   [25410,57.05,9.9167,121878,2025,"DK","DK-81","Aalborg","オールボー",null,null,2,"DK-81",0],

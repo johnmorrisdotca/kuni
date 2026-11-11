@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const SK: readonly CityRow[] = [
-  [1780,48.1517,17.1093,480902,"2025-12-31","SK","SK-BL","Bratislava","ブラチスラヴァ",null,null,1,"SK",0],
+  [1780,48.1517,17.1093,480902,"2025-12-31","SK","SK-BL","Bratislava","ブラチスラヴァ",null,null,1,"SK",0,126112694,"Bratislava metropolitan area",723714,2022],
   [25409,48.7167,21.25,222286,"2025-12-31","SK","SK-KI","Košice","コシツェ",null,null,2,"SK-KI",0],
   [1013328,48.1333,17.1167,112118,"2025-12-31","SK","SK-BL","Petržalka",null,null,null,0,null,0],
   [934473,48.1436,17.1942,84233,"2025-12-31","SK","SK-BL","Ružinov","ルジノフ区",null,null,0,null,0],

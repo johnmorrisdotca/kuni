@@ -5,13 +5,13 @@
 import type { CityRow } from "../../city-rows";
 
 const PE: readonly CityRow[] = [
-  [2868,-12.06,-77.0375,9943800,2022,"PE","PE-LIM","Lima","リマ",null,null,1,"PE",0],
+  [2868,-12.06,-77.0375,9943800,2022,"PE","PE-LIM","Lima","リマ",null,null,1,"PE",0,3773144,"Lima metropolitan area",10740153,2020],
   [159273,-16.3989,-71.5369,1008290,2017,"PE","PE-ARE","Arequipa","アレキパ",null,null,2,"PE-ARE",0],
   [214173,-8.1119,-79.0289,919899,2017,"PE","PE-LAL","Trujillo","トルヒーリョ",null,null,2,"PE-LAL",0],
   [26823312,-12.0249,-76.9223,599196,2017,"PE","PE-LIM","Vitarte",null,null,null,0,null,0],
+  [223966,-5.2008,-80.6253,473025,2017,"PE","PE-PIU","Piura","ピウラ","Piwra","ay",2,"PE-PIU",0,15736045,"Piura metropolitan area",560345,2017],
   [260911,-6.7717,-79.8383,552508,2017,"PE","PE-LAM","Chiclayo","チクラーヨ","Chiklayu","ay",2,"PE-LAM",0],
   [105037,-12.0522,-77.1392,537377,2023,"PE","PE-CAL","Callao","カヤオ","Kallao","ay",2,"PE-CAL",0],
-  [223966,-5.2008,-80.6253,473025,2017,"PE","PE-PIU","Piura","ピウラ","Piwra","ay",2,"PE-PIU",0],
   [5582862,-13.5169,-71.9786,428450,2017,"PE","PE-CUS","Cusco","クスコ","Qusqu","ay",2,"PE-CUS",0],
   [518431,-9.0745,-78.5936,395100,"2022-06-30","PE","PE-ANC","Chimbote","チンボテ","Chimputi","ay",0,null,0],
   [468782,-12.0667,-75.2167,378203,"2017-10-22","PE","PE-JUN","Huancayo","ワンカヨ","Wankayu","ay",2,"PE-JUN",0],

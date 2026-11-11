@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const IE: readonly CityRow[] = [
-  [1761,53.3497,-6.2603,592713,"2022-04-03","IE","IE-L","Dublin","ダブリン","Baile Átha Cliath","ga",1,"IE",0],
+  [1761,53.3497,-6.2603,592713,"2022-04-03","IE","IE-L","Dublin","ダブリン","Baile Átha Cliath","ga",1,"IE",0,889862,"Greater Dublin Area",2149909,2021],
   [4169280,53.3551,-6.2492,506211,2006,"IE","IE-L","Dublin City",null,"Cathair Átha Cliath","ga",0,null,0],
   [36647,51.9,-8.4731,222333,2022,"IE","IE-M","Cork","コーク","Corcaigh","ga",2,"IE-CO",0],
   [129610,53.2719,-9.0488,83456,2022,"IE","IE-C","Galway","ゴールウェイ","Gaillimh","ga",2,"IE-G",0],

@@ -111,7 +111,8 @@ describe("searchPlaces", () => {
 
   it("looks in the capitals and the million-city tier by default, and in other tiers when asked", async () => {
     const { loadCities } = await import("./cities");
-    const small = (await loadCities("15k")).cities[0]!;
+    // A town only the 15k tier holds: not a capital, which the capitals tier holds too.
+    const small = (await loadCities("15k")).cities.find((one) => one.capital === null)!;
     expect((await searchPlaces(small.name.en)).some((one) => one.kind === "city" && one.city.id === small.id)).toBe(false);
     expect((await searchPlaces(small.name.en, { tiers: ["15k"] })).some((one) => one.kind === "city" && one.city.id === small.id)).toBe(true);
     // The cities of 100,000 or more are in the default search.

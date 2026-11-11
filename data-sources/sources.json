@@ -43,6 +43,13 @@
       "note": "Natural Earth 5.1.2, 10m Populated Places (public domain), cut down to the columns the build uses, \"Historic place\" left out; the SHA-256 of the whole file at the address is 9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
     },
     {
+      "path": "statcan-cma-2021.json",
+      "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100005-eng.zip",
+      "read": "2026-11-11",
+      "sha256": "cec193c3c32f6944e91076e3773da82a30b957a18b670090cadfc1490284c364",
+      "note": "Statistics Canada, Table 98-10-0005-01 (2021 Census): the population of each census metropolitan area and census agglomeration (Statistics Canada Open Licence)"
+    },
+    {
       "path": "wikidata-2026-10-09.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-10-09",
@@ -69,6 +76,20 @@
       "read": "2026-10-09",
       "sha256": "8ce099337ef7d851f27a3067c722d35dac2fc3ec12429a5ac8c7cd24fbef6a77",
       "note": "Wikidata SPARQL answers for each ISO 3166-1 (P297) country and ISO 3166-2 (P300) subdivision: capital, population, area, coordinates, and for countries driving side, borders and memberships; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-metros-2026-11-11.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-11",
+      "sha256": "e1bc117698e553568dd588f0203aa78d64877231329a82ef7c82a4562dbdb3d7",
+      "note": "Wikidata SPARQL answers for the metropolitan and urban areas round the cities: the areas linked to each city, their English labels and populations with dates; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-zones-2026-11-11.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-11",
+      "sha256": "9c09e4f70c04f6e9fd0f1985e852727cc44541a1d5f304e4d1c84ec685a2d58a",
+      "note": "Wikidata SPARQL answers: the IANA ids of the time zones of each first-level subdivision; the query is in the file (CC0)"
     }
   ]
 }

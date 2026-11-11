@@ -46,8 +46,8 @@ import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
-import { buildCities, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
-import type { CitiesSnapshot, NaturalEarthFile, TierName } from "./cities.ts";
+import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
+import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName } from "./cities.ts";
 
 type Json = Record<string, unknown>;
 
@@ -285,6 +285,22 @@ const capitalZoneOf = (alpha2: string, capital: { lat: number; lon: number } | n
   return list.map((one) => ({ zone: one.zone, km: greatCircleKm(here, one.at) })).sort((a, b) => a.km - b.km)[0]!.zone;
 };
 const rounded4 = (value: number): number => Math.round(value * 10000) / 10000;
+// A zone's UTC offset on 15 January 2026, as Node's own time zone data gives it ("GMT-5"); null for a name it does not know.
+const offsets = new Map<string, string | null>();
+const offsetOf = (zone: string): string | null => {
+  if (!offsets.has(zone)) {
+    let offset: string | null = null;
+    try {
+      offset = new Intl.DateTimeFormat("en-US", { timeZone: zone, timeZoneName: "shortOffset" }).formatToParts(new Date(Date.UTC(2026, 0, 15, 12))).find((part) => part.type === "timeZoneName")?.value ?? null;
+    } catch {
+      offset = null;
+    }
+    offsets.set(zone, offset);
+  }
+
+  return offsets.get(zone)!;
+};
+const WIKIDATA_ZONES_SOURCE = (path: string): string => `Source: Wikidata (CC0), the snapshot data-sources/${path}: each subdivision's zones (P421) and their IANA ids (P6687)`;
 const greatCircleKm = (a: [number, number], b: [number, number]): number => {
   const radians = Math.PI / 180;
   const half = Math.sin(((b[0] - a[0]) * radians) / 2) ** 2 + Math.cos(a[0] * radians) * Math.cos(b[0] * radians) * Math.sin(((b[1] - a[1]) * radians) / 2) ** 2;
@@ -782,12 +798,66 @@ const writeFacts = (): void => {
     ...Object.entries(CAPITAL_ZONES).map(([code, { zone, why }]) => `| ${code} | ${zone} | ${why} |`),
   ];
   writeDocumentedFile(join(DOCS, "facts.md"), [...facts.doc, ...zoneDoc].join("\n"));
+  // The zone of each first-level subdivision of a country with several zones, for timeZoneAt and subdivisionTimeZone:
+  // [code, zone, how (0 Wikidata names it alone among the country's zones, 1 Wikidata names several and this is the one
+  // nearest the capital, 2 Wikidata names none and this is the zone.tab city nearest the capital, 3 there is no point to
+  // measure from and this is the country capital's zone), capital lat, lon (null for 3)].
+  const zonesFile = manifest.files.find((file) => file.path.startsWith("wikidata-zones-"));
+  if (zonesFile === undefined) throw new Error("No zones snapshot in data-sources/sources.json: run node scripts/fetch-zones.ts");
+  const wikidataZones = new Map((JSON.parse(readSource(manifest, zonesFile.path).text) as { zones: [string, string[]][] }).zones);
+  const subdivisionZoneRows: string[] = [];
+  const zoneCounts = { named: 0, nearestOfNamed: 0, nearest: 0, capital: 0 };
+  for (const record of subdivisions.filter((one) => one.level === 1).sort((a, b) => byText(a.code, b.code))) {
+    const own = zonePoints.get(record.country) ?? [];
+    if (new Set(own.map((one) => one.zone)).size < 2) continue;
+    // Measured from its capital, else from its own point (a city that is a subdivision, Moscow, has no capital of its own).
+    const capital = subdivisionFacts.records.get(record.code)?.capitalPoint ?? subdivisionFacts.records.get(record.code)?.point ?? null;
+    // Wikidata's zones for it: one of the country's own, or a zone named another way ("US/Eastern" for Quebec), taken as
+    // the country's zones of the same UTC offset in January.
+    const given = wikidataZones.get(record.code) ?? [];
+    const named = [
+      ...new Set(
+        given.flatMap((zone) =>
+          own.some((one) => one.zone === zone) ? [zone] : own.filter((one) => offsetOf(one.zone) !== null && offsetOf(one.zone) === offsetOf(zone)).map((one) => one.zone),
+        ),
+      ),
+    ];
+    // With no point to measure from and no zone Wikidata names alone, the country capital's zone, estimated (how 3).
+    if (capital === null && named.length !== 1) {
+      const countryCapital = facts.records.find((one) => one.alpha2 === record.country)?.capitalPoint ?? null;
+      const fallback = capitalZoneOf(record.country, countryCapital === null ? null : { lat: countryCapital[0], lon: countryCapital[1] });
+      if (fallback !== null) {
+        subdivisionZoneRows.push(`  ${literal([record.code, fallback, 3, null, null])},`);
+        zoneCounts.capital += 1;
+      }
+      continue;
+    }
+    const nearestOf = (list: { zone: string; at: [number, number] }[]): string => list.map((one) => ({ zone: one.zone, km: greatCircleKm(capital!, one.at) })).sort((a, b) => a.km - b.km)[0]!.zone;
+    let zone: string;
+    let how: 0 | 1 | 2;
+    if (named.length === 1) {
+      zone = named[0]!;
+      how = 0;
+      zoneCounts.named += 1;
+    } else if (named.length > 1) {
+      zone = nearestOf(own.filter((one) => named.includes(one.zone)));
+      how = 1;
+      zoneCounts.nearestOfNamed += 1;
+    } else {
+      zone = nearestOf(own);
+      how = 2;
+      zoneCounts.nearest += 1;
+    }
+    subdivisionZoneRows.push(`  ${literal([record.code, zone, how, capital === null ? null : rounded4(capital[0]), capital === null ? null : rounded4(capital[1])])},`);
+  }
+  console.log(`Subdivision zones: ${zoneCounts.named} named by Wikidata, ${zoneCounts.nearestOfNamed} of several, ${zoneCounts.nearest} by the nearest zone.tab city, ${zoneCounts.capital} the country capital's.`);
   // The zones' principal cities, for timeZoneAt: [alpha2, lat, lon, zone], in zone.tab's order.
   const zoneRows = [...zonePoints.entries()].sort(([a], [b]) => byText(a, b)).flatMap(([code, list]) => list.map((one) => `  ${literal([code, rounded4(one.at[0]), rounded4(one.at[1]), one.zone])},`));
   writeDocumentedFile(
     join(OUT_DATA, "zones.data.ts"),
     header(`The principal city of each IANA time zone (${zoneRows.length}), for timeZoneAt in /facts.`, [IANA_SOURCE]) +
-      `const ZONE_ROWS: readonly (readonly [string, number, number, string])[] = [\n${zoneRows.join("\n")}\n];\n\nexport { ZONE_ROWS };\n`,
+      `const ZONE_ROWS: readonly (readonly [string, number, number, string])[] = [\n${zoneRows.join("\n")}\n];\n\n` +
+      `// ${WIKIDATA_ZONES_SOURCE(zonesFile.path)}\nconst SUBDIVISION_ZONE_ROWS: readonly (readonly [string, string, 0 | 1 | 2 | 3, number | null, number | null])[] = [\n${subdivisionZoneRows.join("\n")}\n];\n\nexport { SUBDIVISION_ZONE_ROWS, ZONE_ROWS };\n`,
   );
 };
 
@@ -849,9 +919,16 @@ const writeCities = (): void => {
   if (citiesFile === undefined || neFile === undefined) throw new Error("No cities snapshot in data-sources/sources.json: run pnpm data:cities");
   const snapshot = JSON.parse(readSource(manifest, citiesFile.path).text) as CitiesSnapshot;
   const naturalEarth = JSON.parse(readSource(manifest, neFile.path).text) as NaturalEarthFile;
+  // The metropolitan areas round the cities (scripts/fetch-metros.ts): which is a city's own is decided in buildCities.
+  const metrosFile = manifest.files.find((file) => file.path.startsWith("wikidata-metros-"));
+  if (metrosFile === undefined) throw new Error("No metros snapshot in data-sources/sources.json: run node scripts/fetch-metros.ts");
+  const metros = JSON.parse(readSource(manifest, metrosFile.path).text) as MetrosSnapshot;
+  const statcan = JSON.parse(readSource(manifest, "statcan-cma-2021.json").text) as StatcanSnapshot;
   const { rows, tiers, report } = buildCities({
     snapshot,
     naturalEarth,
+    metros,
+    statcan,
     levels: new Map(subdivisions.filter((record) => record.level === 1).map((record) => [record.code, record.level])),
     countries: new Set(countries.map((country) => country.alpha2)),
     subdivisions: new Set(subdivisions.map((record) => record.code)),
@@ -904,7 +981,7 @@ const writeCities = (): void => {
   }
   const withCities = [...byCountryRows.keys()].sort(byText);
   for (const alpha2 of withCities) {
-    const own = byCountryRows.get(alpha2)!.sort((a, b) => (b[3] ?? 0) - (a[3] ?? 0) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true }));
+    const own = byCountryRows.get(alpha2)!.sort(byRank);
     const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en);
     writeDocumentedFile(join(OUT_CITY_COUNTRIES, `${alpha2.toLowerCase()}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);

@@ -97,6 +97,59 @@ describe("areas that are not cities", () => {
   });
 });
 
+describe("metropolitan areas", () => {
+  it("give a city the metro that carries its name or is named after it, the first city named in a shared one, and rank by it", () => {
+    const { tiers, report } = buildCities({
+      snapshot: snapshot([
+        item(1, "Vancouver", null, [49.26, -123.11], "FR", [[662248, "2021-01-01"]]),
+        item(2, "Surrey", null, [49.19, -122.85], "FR", [[568322, "2021-01-01"]]),
+        item(3, "Calgary", null, [51.05, -114.07], "FR", [[1306784, "2021-01-01"]]),
+        item(4, "Dallas", null, [32.78, -96.8], "FR", [[1304379, "2020-04-01"]]),
+        item(5, "Fort Worth", null, [32.75, -97.33], "FR", [[918915, "2020-04-01"]]),
+        item(6, "Düsseldorf", null, [51.23, 6.78], "FR", [[629047, "2022-12-31"]]),
+        item(7, "Smallton", null, [10, 10], "FR", [[200000, null]]),
+      ]),
+      naturalEarth: natural([]),
+      levels,
+      countries,
+      metros: {
+        read: "2026-11-11",
+        links: [
+          [1, 101, "P150"],
+          [2, 101, "P150"],
+          [4, 102, "P8138"],
+          [5, 102, "P8138"],
+          [6, 103, "P361"],
+          [7, 104, "P138"],
+        ],
+        areas: [
+          [101, "Metro Vancouver Regional District", [[2463431, "2021-01-01"]]],
+          [102, "Dallas–Fort Worth metroplex", [[7637387, "2020-04-01"]]],
+          [103, "Rhine-Ruhr Metropolitan Region", [[10000000, null]]],
+          [104, "Lake Region", [[150000, null]]],
+        ],
+      },
+    });
+    const rows = Object.values(tiers).flat();
+    const metroOf = (en: string) => {
+      const row = rows.find((one) => one[7] === en)!;
+
+      return row.length > 14 ? [row[14], row[15], row[16]] : null;
+    };
+    expect(metroOf("Vancouver")).toEqual([101, "Metro Vancouver Regional District", 2463431]);
+    expect(metroOf("Surrey")).toBeNull();
+    expect(metroOf("Dallas")).toEqual([102, "Dallas–Fort Worth metroplex", 7637387]);
+    expect(metroOf("Fort Worth")).toBeNull();
+    expect(metroOf("Düsseldorf")).toBeNull();
+    // Named after the city, but smaller than it: no metro.
+    expect(metroOf("Smallton")).toBeNull();
+    expect(report.withMetro).toBe(2);
+    // The order of a tier: the metro's people where there is one, else the city's own.
+    expect(tiers["100k"].map((row) => row[7])).toEqual(["Vancouver", "Fort Worth", "Düsseldorf", "Surrey", "Smallton"]);
+    expect(tiers["1m"].map((row) => row[7])).toEqual(["Dallas", "Calgary"]);
+  });
+});
+
 describe("civil townships", () => {
   it("leave out a township round a city that holds most of its people, in the states where townships are civil units, and keep a municipal township", () => {
     const us = (number: number, en: string, state: string, point: [number, number], people: number) => item(number, en, null, point, "US", [[people, "2020-04-01"]], [state]);
@@ -341,9 +394,12 @@ describe("ids that never change", () => {
   });
 
   it("writes the aliases that answer with a city of this release, and no others", () => {
-    const text = cityAliases({ Q2: "Q3", Q9: null, Q8: "Q404" }, new Set(["Q3"]));
-    expect(text).toContain('"Q2": "Q3"');
-    expect(text).not.toContain("Q9");
-    expect(text).not.toContain("Q404");
+    const text = cityAliases({ Q2: "Q3", Q9: null, Q8: "Q404", Q1000: "ne:7" }, new Set(["Q3", "ne:7"]));
+    // Written small: item numbers in base 36, any other id after "!".
+    expect(text).toContain('const PAIRS: string = "2=3,rs=!ne:7";');
+    // And read back as it was.
+    const PAIRS = /const PAIRS: string = (".*");/.exec(text)![1]!;
+    const long = (part: string): string => (part.startsWith("!") ? part.slice(1) : `Q${Number.parseInt(part, 36)}`);
+    expect(Object.fromEntries((JSON.parse(PAIRS) as string).split(",").map((pair) => pair.split("=").map(long)))).toEqual({ Q2: "Q3", Q1000: "ne:7" });
   });
 });

@@ -3,6 +3,7 @@
 // Japanese or the place's own language. It draws nothing: a page builds its own chooser on these.
 
 import { citiesOf, citySet, loadCities } from "./cities";
+import { rankingPopulation } from "./rank";
 import type { City, CityTier } from "./cities";
 import { CONTINENTS } from "./types";
 import type { Continent, Country } from "./types";
@@ -176,7 +177,8 @@ const searchPlaces = async (text: string, options: SearchPlacesOptions = {}): Pr
   if (inCountry === null) {
     for (const one of countries()) consider({ kind: "country", label: one.name[lang] ?? one.name.en, country: one }, [one.name.en, one.name.ja, one.reading, one.name.local, one.alpha2, one.alpha3], facts(one.alpha2)?.population ?? null, (order += 1));
   }
-  for (const city of cities) consider({ kind: "city", label: city.name[lang] ?? city.name.en, city }, [city.name.en, city.name.ja, city.name.native], city.population, (order += 1));
+  // A city ranks by its metropolitan area's people where it has one: Vancouver before Surrey.
+  for (const city of cities) consider({ kind: "city", label: city.name[lang] ?? city.name.en, city }, [city.name.en, city.name.ja, city.name.native], rankingPopulation(city), (order += 1));
   scored.sort((a, b) => a.score - b.score || b.population - a.population || a.length - b.length || a.order - b.order);
 
   return scored.slice(0, limit).map((one) => one.hit);

@@ -5,16 +5,16 @@
 import type { CityRow } from "../../city-rows";
 
 const MX: readonly CityRow[] = [
-  [1489,19.3538,-99.1359,9209944,2020,"MX","MX-CMX","Mexico City","メキシコシティ","Ciudad de México","es",1,"MX",0],
+  [1489,19.3538,-99.1359,9209944,2020,"MX","MX-CMX","Mexico City","メキシコシティ","Ciudad de México","es",1,"MX",0,665894,"Greater Mexico City",21905000,2022],
+  [9022,20.6764,-103.3422,1385621,"2020-03-15","MX","MX-JAL","Guadalajara","グアダラハラ",null,null,2,"MX-JAL",0,2357258,"Guadalajara metropolitan area",5350000,2016],
+  [81033,25.6844,-100.3181,1142952,"2020-03-15","MX","MX-NLE","Monterrey","モンテレイ",null,null,2,"MX-NLE",0,2243000,"Monterrey metropolitan area",5341171,2016],
   [20148959,18.9428,-98.1561,4712999,"2020-03-15","MX","MX-PUE","San Pedro Zacachimalpa",null,null,null,0,null,0],
-  [124739,32.5364,-117.0372,1810645,"2020-03-15","MX","MX-BCN","Tijuana","ティフアナ",null,null,0,null,0],
+  [189128,21.1219,-101.6833,1579803,"2020-03-15","MX","MX-GUA","León de Los Aldama","レオン",null,null,0,null,0,6825331,"Metropolitan area of León",3924771,null],
+  [124739,32.5364,-117.0372,1810645,"2020-03-15","MX","MX-BCN","Tijuana","ティフアナ",null,null,0,null,0,3197333,"Tijuana metropolitan area",2157853,null],
   [8972,19.5991,-99.0492,1655015,2010,"MX","MX-MEX","Ecatepec de Morelos","エカテペック",null,null,0,null,0],
-  [189128,21.1219,-101.6833,1579803,"2020-03-15","MX","MX-GUA","León de Los Aldama","レオン",null,null,0,null,0],
   [125293,19.0514,-98.2178,1542232,"2020-03-15","MX","MX-PUE","Heroica Puebla de Zaragoza","プエブラ",null,null,2,"MX-PUE",0],
   [26590,31.6685,-106.42,1501551,"2020-03-15","MX","MX-CHH","Ciudad Juárez","シウダー・フアレス",null,null,0,null,0],
-  [9022,20.6764,-103.3422,1385621,"2020-03-15","MX","MX-JAL","Guadalajara","グアダラハラ",null,null,2,"MX-JAL",0],
   [147402,20.7208,-103.3911,1257547,"2020-03-15","MX","MX-JAL","Zapopan","サポパン",null,null,0,null,0],
-  [81033,25.6844,-100.3181,1142952,"2020-03-15","MX","MX-NLE","Monterrey","モンテレイ",null,null,2,"MX-NLE",0],
   [210307,19.4006,-99.0148,1072676,"2020-03-15","MX","MX-MEX","Ciudad Nezahualcóyotl","ネツァワルコヨトル",null,null,0,null,0],
   [200805,21.8808,-102.2961,934424,2012,"MX","MX-AGU","Aguascalientes City","アグアスカリエンテス","Aguascalientes","es",2,"MX-AGU",0],
   [61302,28.6369,-106.0769,925762,"2020-03-15","MX","MX-CHH","Chihuahua City","チワワ","Chihuahua","es",2,"MX-CHH",0],

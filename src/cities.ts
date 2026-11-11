@@ -7,6 +7,7 @@
 
 import { isCountryCode } from "./codes";
 import type { City, CitySource } from "./city-rows";
+import { rankingPopulation } from "./rank";
 import { CITY_ALIASES } from "./data/city-aliases.data";
 import { CITY_LOADERS } from "./data/city-loaders.data";
 import type { LatLon } from "./types";
@@ -238,7 +239,7 @@ const citySet = (...lists: readonly (readonly City[])[]): CitySet => {
 const fromCountries = async (least: number, below: number): Promise<readonly City[]> => {
   const lists = await Promise.all(Object.values(CITY_LOADERS).map(async (load) => (await load()).CITIES));
 
-  return Object.freeze(lists.flatMap((list) => list.filter((city) => (city.population ?? 0) >= least && (city.population ?? 0) < below)).sort((a, b) => (b.population ?? 0) - (a.population ?? 0) || (a.id < b.id ? -1 : 1)));
+  return Object.freeze(lists.flatMap((list) => list.filter((city) => (city.population ?? 0) >= least && (city.population ?? 0) < below)).sort((a, b) => rankingPopulation(b) - rankingPopulation(a) || (a.id < b.id ? -1 : 1)));
 };
 
 const TIER_LOADERS: Readonly<Record<CityTier, () => Promise<readonly City[]>>> = {

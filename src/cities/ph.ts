@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/ph";
  *
  * console.log(cities.length);      // 1466
- * console.log(cities[0].name.en);  // "Quezon City"
+ * console.log(cities[0].name.en);  // "Manila"
  * console.log(cities[0].country);  // "PH"
  * ```
  */

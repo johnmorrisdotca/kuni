@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const PY: readonly CityRow[] = [
+  [192235,-25.5167,-54.6167,350000,2024,"PY","PY-10","Ciudad del Este","シウダー・デル・エステ",null,null,2,"PY-10",0,37735,"Gran Ciudad del Este",578920,2022],
   [2933,-25.28,-57.6344,462241,2022,"PY","PY-ASU","Asunción","アスンシオン",null,null,1,"PY",0],
-  [192235,-25.5167,-54.6167,350000,2024,"PY","PY-10","Ciudad del Este","シウダー・デル・エステ",null,null,2,"PY-10",0],
   [946497,-25.27,-57.4872,259705,2022,"PY","PY-11","Luque","ルケ",null,null,0,null,0],
   [723811,-25.35,-57.42,236999,2022,"PY","PY-11","Capiatá","カピアタ",null,null,0,null,0],
   [938739,-25.3431,-57.5094,225395,2022,"PY","PY-11","San Lorenzo","サン・ロレンツォ",null,null,0,null,0],
