@@ -984,7 +984,7 @@ const writeCities = (): void => {
   const idsFile = join(ROOT, "data-sources", "city-ids.json");
   const aliasFile = join(ROOT, "data-sources", "city-id-aliases.json");
   const released = existsSync(idsFile) ? (JSON.parse(readFileSync(idsFile, "utf8")) as { ids: (number | string)[] }).ids : [];
-  // A civil township left out answers with the city that holds most of its people, as the build decided it (report.townshipCities);
+  // A civil township left out answers with the city the build chose for it, or with none (report.townshipCities);
   // an entry in the file wins.
   const aliases = { ...report.townshipCities, ...(existsSync(aliasFile) ? (JSON.parse(readFileSync(aliasFile, "utf8")) as { aliases: Record<string, string | null> }).aliases : {}) };
   const unresolved = unresolvedIds(released, current, aliases);

@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/py";
  *
  * console.log(cities.length);      // 37
- * console.log(cities[0].name.en);  // "Ciudad del Este"
+ * console.log(cities[0].name.en);  // "Asunción"
  * console.log(cities[0].country);  // "PY"
  * ```
  */

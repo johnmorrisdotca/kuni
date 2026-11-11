@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const AT: readonly CityRow[] = [
-  [1741,48.2083,16.3725,2028289,2025,"AT","AT-9","Vienna","ウィーン","Wien","de",1,"AT",0,117100762,"Vienna-Bratislava metropolitan region",3368000,2007],
+  [1741,48.2083,16.3725,2028289,2025,"AT","AT-9","Vienna","ウィーン","Wien","de",1,"AT",0,6174064,"Vienna metropolitan area",3041304,2022],
   [13298,47.0708,15.4386,306971,2026,"AT","AT-6","Graz","グラーツ",null,null,2,"AT-6",0],
   [258333,48.2181,16.4831,220794,2024,"AT","AT-9","Donaustadt","ドナウシュタット",null,null,0,null,0],
   [697548,48.1578,16.3592,220324,2024,"AT","AT-9","Favoriten","ファヴォリーテン",null,null,0,null,0],

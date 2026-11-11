@@ -54,8 +54,8 @@ interface Report {
   leftOut: { noName: number; noPoint: number; noCountry: number; noPopulation: number; belowFloor: number; area: number; duplicate: number; township: number };
   /** The cities that have a metropolitan area (CityRow's metro columns). */
   withMetro: number;
-  /** Each civil township left out, by its id, and the city that holds most of its people, which its id answers with. */
-  townshipCities: Record<string, string>;
+  /** Each civil township left out, by its id, and the city its id answers with (null for none). */
+  townshipCities: Record<string, string | null>;
   capitals: { national: number; alternate: number; subdivision: number; droppedWithoutCode: number };
   jaFromNaturalEarth: number;
   populationFromNaturalEarth: number;
@@ -78,7 +78,7 @@ const AREA_UNIT = /\b(Province|County|Prefecture|Governorate|District|district|R
 // "Metro Manila", "Metropolis of Lyon", "Øresund Region", "Kurdistan Region of Iraq", "North East State of Somalia",
 // "Podgorica Capital City", "Commune Mutimbuzi", "Sectorul Botanica" (Chișinău), "Front Range Urban Corridor", "Binhai New Area". A name with a comma is a town told
 // apart by the region it is in ("Paxtaobod, Andijan Region") and stays.
-const AREA_REGION = /^(Metropolitan|Metro) |^Metropolis of |^Métropole |\sMétropole$|^Canton of |^Commune( of)? |^Sectorul |\bRegional Municipality\b|\bRegion( of [^,]+)?$|\bState of \b|\bCapital City$|\bUrban Corridor$|\bNew Area$/;
+const AREA_REGION = /^(Metropolitan|Metro) |^(Euro)?[Mm]etropolis of |^Métropole |\sMétropole$|^Canton of |^Commune( of)? |^Sectorul |\bRegional Municipality\b|\bRegion( of [^,]+)?$|\bState of \b|\bCapital City$|\bUrban Corridor$|\bNew Area$/;
 // The units below a district in South Asia, Russia, China, Kenya and West Africa, and a few above: "Gazipur Sadar Upazila",
 // "Pattan Tehsil", "Porokhovye Municipal Okrug", "Tengyue Subdistrict", "Kangemi Ward", "Bangabari Union", "Yeumbeul
 // Arrondissement", "Wrexham County Borough", "Shomron Regional Council". A word alone ("Union", New Jersey) is a town's
@@ -175,6 +175,9 @@ const wikidataMetros = (metros: MetrosSnapshot | undefined, snapshot: CitiesSnap
   // Where a city's name stands in an area's, as whole words (dashes, slashes and commas read as spaces); -1 where it does not.
   const words = (text: string): string => ` ${text.toLowerCase().replace(/[-–—/,()]/g, " ").replace(/\s+/g, " ").trim()} `;
   const position = (area: string, city: string): number => words(area).indexOf(words(city));
+  // An area's name without the words that come before its city's: "Metro Vancouver", "Greater Tokyo Area".
+  const joined = (area: string): boolean => /[-–—/]/.test(lead(area).split(/ (metropolitan|urban|metro|area|region|agglomeration)/i)[0] ?? "");
+  const lead = (area: string): string => area.replace(/^(the |greater |metro |metropolitan |metropolis of |eurometropolis of |agglomeration of |urban agglomeration of )+/i, "");
   // Which of an area's linked cities it belongs to: the one whose name comes first in the area's name.
   const citiesOfArea = new Map<number, Set<number>>();
   for (const [city, area] of metros.links) citiesOfArea.set(area, (citiesOfArea.get(area) ?? new Set()).add(city));
@@ -186,8 +189,9 @@ const wikidataMetros = (metros: MetrosSnapshot | undefined, snapshot: CitiesSnap
     for (const city of cities) {
       const name = label.get(city);
       if (name === null || name === undefined) continue;
-      // "New York City" is the New York of "New York metropolitan area".
-      const at = [name, name.replace(/ City$/, "")].map((one) => position(en, one)).filter((one) => one >= 0).sort((a, b) => a - b)[0] ?? -1;
+      // "New York City" is the New York of "New York metropolitan area". The city must be the first place the area's name
+      // names, after a word such as Greater or Metro: Milan's metro is not Como's.
+      const at = [name, name.replace(/ City$/, "")].map((one) => position(lead(en), one)).filter((one) => one === 0)[0] ?? -1;
       if (at >= 0 && (best === null || at < best.at)) best = { city, at };
     }
     if (best !== null) owner.set(area, best.city);
@@ -203,7 +207,9 @@ const wikidataMetros = (metros: MetrosSnapshot | undefined, snapshot: CitiesSnap
     const best = choices
       .map(({ area, how }) => ({ area, how, en: areas.get(area)?.en ?? null, people: areas.get(area)?.people ?? null }))
       .filter((one): one is { area: number; how: string; en: string; people: { value: number; day: string | null } } => one.en !== null && one.people !== null && one.people.value > (population ?? 0))
-      .sort((a, b) => Number(b.how === "P8138") - Number(a.how === "P8138") || b.people.value - a.people.value || a.area - b.area)[0];
+      // A statistical area first (Atlanta-Sandy Springs-Roswell); then one named for this city alone, not joined to
+      // another (Katowice's own, before Katowice-Ostrava); then the most populous.
+      .sort((a, b) => Number(b.how === "P8138") - Number(a.how === "P8138") || Number(joined(a.en)) - Number(joined(b.en)) || b.people.value - a.people.value || a.area - b.area)[0];
 
     return best === undefined ? null : { id: best.area, en: best.en, population: best.people.value, date: dateOf(best.people.day) };
   };
@@ -361,22 +367,23 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     candidates.push({ number: `ne:${neId}`, en: nameEn ?? name, ja: nameJa, native: null, nativeLanguage: null, point: [lat, lon], country: iso, population: pop, populationDate: null, subdivision: null, codes: [], neKind: kind, sources: (nameJa === null ? 0 : 1) | (pop === null ? 0 : 2) | 4, viaPlace: true });
   }
 
-  // 1b. A civil township round a city is no city of its own. In the states where townships are units of a county that
-  // incorporated cities lie inside (CIVIL_TOWNSHIP_STATES), a township is left out when a city that is not a township holds
-  // at least half its people within 15 km: Kaw Township (Missouri), round Kansas City. Its id answers with that city, the
-  // one of its own name where there is one (Rockford Township, Rockford), else the nearest in its state. Elsewhere a
-  // township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays.
+  // 1b. A civil township is no city of its own. In the states where townships are units of a county with cities inside
+  // them (CIVIL_TOWNSHIP_STATES), every township is left out: Kaw Township is round Kansas City, Thornton Township holds
+  // South Holland, Harvey and more. Its id answers with the city of its own name in its state where there is one
+  // (Liberty Township, Liberty; Lawrence Township, Lawrence), else the nearest city in its state within 15 km of a
+  // quarter of its people or more, else with none. Elsewhere a township is the municipality people live in (Toms River,
+  // New Jersey; Clinton Township, Michigan) and stays.
   const idOf = (one: Candidate): string => (typeof one.number === "number" ? `Q${one.number}` : one.number);
   const townships = candidates.filter((one) => one.country === "US" && one.codes.length === 0 && / Township$/.test(one.en) && one.subdivision !== null && CIVIL_TOWNSHIP_STATES.has(one.subdivision));
-  const gone = new Set<Candidate>();
+  const gone = new Set<Candidate>(townships);
   for (const township of townships) {
     const people = township.population ?? 0;
-    const near = candidates.filter((one) => one !== township && one.subdivision === township.subdivision && !/ Township$/.test(one.en) && (one.population ?? 0) >= people * 0.5 && km(one.point, township.point) < 15);
-    if (near.length === 0) continue;
+    const inState = candidates.filter((one) => !gone.has(one) && one.subdivision === township.subdivision && !/ Township$/.test(one.en));
     const base = simple(township.en.replace(/ (City )?Township$/, ""));
-    const city = near.find((one) => simple(one.en) === base) ?? near.sort((a, b) => km(a.point, township.point) - km(b.point, township.point))[0]!;
-    gone.add(township);
-    report.townshipCities[idOf(township)] = idOf(city);
+    const named = inState.filter((one) => simple(one.en) === base).sort((a, b) => km(a.point, township.point) - km(b.point, township.point))[0];
+    const near = inState.filter((one) => (one.population ?? 0) >= people * 0.25 && km(one.point, township.point) < 15).sort((a, b) => km(a.point, township.point) - km(b.point, township.point))[0];
+    const city = named ?? near;
+    report.townshipCities[idOf(township)] = city === undefined ? null : idOf(city);
   }
   report.leftOut.township = gone.size;
   for (let at = candidates.length - 1; at >= 0; at -= 1) if (gone.has(candidates[at]!)) candidates.splice(at, 1);
@@ -702,7 +709,7 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     "- **Which source wins**: Wikidata's label, point and population are kept where it has them. Natural Earth fills a Japanese name, a population or a point Wikidata does not have, and a capital where Wikidata names none; each city says which in its `source` field.",
     "- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's `POP_MAX` has no day.",
     "- **Subdivision**: the ISO 3166-2 code, from Wikidata's P300 on the city or the places it is in (P131), restricted to the first-level subdivisions kuni lists for its country; where there are several, the first in code order.",
-    `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people). In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: one is left out where a city that is not a township holds at least half its people within 15 km (Kaw Township, round Kansas City), ${n(report.leftOut.township)} of them, each id answering with that city; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept.`,
+    `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people). In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: every township is left out (${n(report.leftOut.township)}; Kaw Township, round Kansas City), each id answering with the city of its own name, else the nearest within 15 km of a quarter of its people or more; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept.`,
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
     "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
     `- **Metropolitan area** (\`metro\`, ${n(report.withMetro)} cities): a Canadian city's census metropolitan area, else its census agglomeration, by Statistics Canada (2021 Census, Table 98-10-0005-01), the first name of one ("Ottawa - Gatineau" is Ottawa's) being the city's, in its province; any other city's from Wikidata (\`data-sources/wikidata-metros-<day>.json\`): an item that is a metropolitan area (Q1907114, a metropolitan statistical area or a functional urban area, and the classes below them) linked to the city (its P8138 or P361, or the area's P150, P527, P36, P138 or P131), whose English name holds the city's (with "City" taken off: New York City's is the New York metropolitan area) or that is named after the city alone; an area that names several of its cities belongs to the one named first (Dallas–Fort Worth to Dallas), a statistical area comes first, else the most populous, and it must have more people than the city. The tiers and every list rank a city by its metro's people where it has one; a tier holds a city by its own.`,

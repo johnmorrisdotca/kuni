@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const PL: readonly CityRow[] = [
-  [588,50.25,19,278090,"2024-06-30","PL","PL-24","Katowice","カトヴィツェ",null,null,2,"PL-24",0,3495359,"Katowice-Ostrava metropolitan area",5008000,2015],
   [270,52.23,21.0111,1862402,"2024-06-30","PL","PL-14","Warsaw","ワルシャワ","Warszawa","pl",1,"PL",0,3502537,"Warsaw metropolitan area",3082399,2020],
+  [588,50.25,19,278090,"2024-06-30","PL","PL-24","Katowice","カトヴィツェ",null,null,2,"PL-24",0,125563738,"Upper Silesian metropolitan area",2469891,2021],
   [31487,50.0614,19.9372,804237,"2023-06-30","PL","PL-12","Kraków","クラクフ",null,null,2,"PL-12",0,3320855,"Kraków metropolitan area",1428363,2021],
   [268,52.4083,16.9336,546859,"2021-03-31","PL","PL-30","Poznań","ポズナン",null,null,2,"PL-30",0,3889578,"Poznań metropolitan area",1051414,2021],
   [580,51.75,19.4667,648711,"2024-06-30","PL","PL-10","Łódź","ウッチ",null,null,2,"PL-10",0,24943867,"Łódź metropolitan area",895084,2021],

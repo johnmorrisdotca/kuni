@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const DE: readonly CityRow[] = [
-  [64,52.5167,13.3833,3700577,"2025-12-31","DE","DE-BE","Berlin","ベルリン",null,null,1,"DE",0,648102,"Berlin-Brandenburg Metropolitan Region",5892069,"2014-06-30"],
+  [64,52.5167,13.3833,3700577,"2025-12-31","DE","DE-BE","Berlin","ベルリン",null,null,1,"DE",0,126208903,"Berlin metropolitan area",4979867,2021],
   [1055,53.55,10,1869473,"2025-12-31","DE","DE-HH","Hamburg","ハンブルク",null,null,0,null,0,126280958,"Hamburg metropolitan area",3421692,2021],
   [1794,50.1106,8.6822,760656,"2025-12-31","DE","DE-HE","Frankfurt","フランクフルト・アム・マイン","Frankfurt am Main","de",0,null,0,707278,"Frankfurt Rhine-Main Metropolitan Region",2437141,"2020-12-01"],
   [1726,48.1375,11.575,1505036,"2025-12-31","DE","DE-BY","Munich","ミュンヘン","München","de",2,"DE-BY",0],

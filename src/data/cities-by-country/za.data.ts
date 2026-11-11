@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const ZA: readonly CityRow[] = [
-  [34647,-26.2044,28.0416,4803262,2022,"ZA","ZA-GP","Johannesburg","ヨハネスブルグ",null,null,2,"ZA-GP",0,2346838,"City of Johannesburg Metropolitan Municipality",4949347,"2016-03-06"],
+  [34647,-26.2044,28.0416,4803262,2022,"ZA","ZA-GP","Johannesburg","ヨハネスブルグ",null,null,2,"ZA-GP",0],
   [5465,-33.9253,18.4239,3776313,2021,"ZA","ZA-WC","Cape Town","ケープタウン","Kaapstad","af",3,"ZA ZA-WC",0],
   [217426,-26.2678,27.8586,1271628,2011,"ZA","ZA-GP","Soweto","ソウェト",null,null,0,null,0],
   [2612280,-26.3333,28.15,797031,null,"ZA","ZA-GP","Katlehong",null,null,null,0,null,0],

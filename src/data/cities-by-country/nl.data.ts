@@ -8,7 +8,7 @@ const NL: readonly CityRow[] = [
   [34370,51.92,4.48,664311,2023,"NL","NL-ZH","Rotterdam","ロッテルダム",null,null,0,null,0,6174024,"Rotterdam The Hague metropolitan area",3400000,2024],
   [727,52.3667,4.8833,921468,2023,"NL","NL-NH","Amsterdam","アムステルダム",null,null,1,"NL",0,1028418,"Metropolitan Region Amsterdam",2915114,2022],
   [36600,52.08,4.31,548320,2021,"NL","NL-ZH","The Hague","デン・ハーグ","'s-Gravenhage","nl",2,"NL-ZH",0,126325418,"The Hague metropolitan area",1132975,2021],
-  [803,52.0908,5.1217,359370,2021,"NL","NL-UT","Utrecht","ユトレヒト",null,null,2,"NL-UT",0,120843009,"Metropoolregio Utrecht",895000,2022],
+  [803,52.0908,5.1217,359370,2021,"NL","NL-UT","Utrecht","ユトレヒト",null,null,2,"NL-UT",0],
   [9832,51.4344,5.4842,243730,2023,"NL","NL-NB","Eindhoven","アイントホーフェン",null,null,0,null,0],
   [749,53.2189,6.5675,238147,2023,"NL","NL-GR","Groningen","フローニンゲン",null,null,2,"NL-GR",0],
   [1310,51.9833,5.9167,164096,"2022-01-31","NL","NL-GE","Arnhem","アーネム","Torres Colón","es",2,"NL-GE",0],

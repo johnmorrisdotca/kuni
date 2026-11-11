@@ -151,7 +151,7 @@ describe("metropolitan areas", () => {
 });
 
 describe("civil townships", () => {
-  it("leave out a township round a city that holds most of its people, in the states where townships are civil units, and keep a municipal township", () => {
+  it("leave out every township of the states where townships are civil units, and keep a municipal township", () => {
     const us = (number: number, en: string, state: string, point: [number, number], people: number) => item(number, en, null, point, "US", [[people, "2020-04-01"]], [state]);
     const { tiers, report } = buildCities({
       snapshot: snapshot([
@@ -166,9 +166,10 @@ describe("civil townships", () => {
       levels: new Map([["US-MO", 1], ["US-MI", 1], ["US-NJ", 1], ["US-IL", 1]]),
       countries: new Set(["US"]),
     });
-    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Clinton Township", "Kansas City", "Quiet Township", "Sterling Heights", "Toms River"]);
-    expect(report.townshipCities).toEqual({ Q9040893: "Q41819" });
-    expect(report.leftOut.township).toBe(1);
+    // Every township of a civil-township state goes, one with no city near too (its id answers with none).
+    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Clinton Township", "Kansas City", "Sterling Heights", "Toms River"]);
+    expect(report.townshipCities).toEqual({ Q9040893: "Q41819", Q7: null });
+    expect(report.leftOut.township).toBe(2);
   });
 });
 
