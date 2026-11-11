@@ -334,7 +334,7 @@ const cityById = async (id: string): Promise<City | null> => {
 let smallCities: ReadonlyMap<string, string> | null = null;
 const countryOfSmallCity = async (id: string): Promise<string | null> => {
   if (smallCities === null) {
-    const { CITY_INDEX } = await import("./data/city-index.data.js");
+    const { CITY_INDEX } = await import("./cities/where.js");
     const index = new Map<string, string>();
     for (const [code, list] of Object.entries(CITY_INDEX)) {
       let number = 0;

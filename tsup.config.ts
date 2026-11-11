@@ -21,7 +21,7 @@ const countryImports: Plugin = {
   setup(build) {
     const extension = build.initialOptions.format === "cjs" ? "cjs" : "js";
     build.onResolve({ filter: /^\.\/element\.js$/ }, () => ({ path: `./element.${extension}`, external: true }));
-    build.onResolve({ filter: /^\.\/cities\/(capitals|1m|100k|15k)\.js$/ }, (args) => ({ path: `${args.path.slice(0, -3)}.${extension}`, external: true }));
+    build.onResolve({ filter: /^\.\/cities\/(capitals|1m|100k|15k|where)\.js$/ }, (args) => ({ path: `${args.path.slice(0, -3)}.${extension}`, external: true }));
     build.onResolve({ filter: /^\.\.\/(subdivisions|subdivision-facts|cities)\/[a-z]{2}\.js$/ }, (args) => ({
       path: `./${args.path.split("/")[1]}/${basename(args.path, ".js")}.${extension}`,
       external: true,
@@ -44,7 +44,7 @@ const shared = {
 export default defineConfig([
   {
     ...shared,
-entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts", cities: "src/cities.ts", "cities/capitals": "src/cities/capitals.ts", "cities/1m": "src/cities/1m.ts", "cities/100k": "src/cities/100k.ts", places: "src/places.ts" },
+entry: { element: "src/element.ts", "element-define": "src/element-define.ts", index: "src/index.ts", codes: "src/codes.ts", subdivisions: "src/subdivisions.ts", load: "src/load.ts", facts: "src/facts.ts", "subdivision-facts": "src/subdivision-facts.ts", groupings: "src/groupings.ts", withdrawn: "src/withdrawn.ts", cities: "src/cities.ts", "cities/capitals": "src/cities/capitals.ts", "cities/1m": "src/cities/1m.ts", "cities/100k": "src/cities/100k.ts", "cities/where": "src/cities/where.ts", places: "src/places.ts" },
     // Japanese names stay as they are, rather than as \u escapes three times their size.
     esbuildOptions(options) {
       options.charset = "utf8";

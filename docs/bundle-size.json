@@ -34,8 +34,8 @@
       "gzip": 2143
     },
     "./cities": {
-      "minified": 5416488,
-      "gzip": 1568919
+      "minified": 5416522,
+      "gzip": 1568937
     },
     "./cities/capitals": {
       "minified": 560826,
