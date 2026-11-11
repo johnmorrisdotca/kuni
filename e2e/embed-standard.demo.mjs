@@ -15,8 +15,8 @@ test("the shared card builder composes Hata and Chizu and writes every host form
   await expect(card.locator(".flag svg")).toBeVisible();
   await expect(card.locator(".map svg")).toBeVisible();
   for (const format of ["element", "iframe", "module", "react", "vue", "svelte", "angular", "html", "url"]) {
-    await page.locator(`#bld-formats [data-format="${format}"]`).click();
-    await expect(page.locator("#bld-code")).not.toHaveText("");
+    await page.locator(`[data-testid="bld-embed"] button[data-kind="${format}"]`).click();
+    await expect(page.locator('[data-testid="bld-embed"] [part="code"]')).not.toHaveText("");
   }
   expect(requests.some((url) => url.includes("hata@1"))).toBe(true);
   expect(requests.some((url) => url.includes("chizu@1"))).toBe(true);
@@ -95,8 +95,8 @@ test("copied iframe code fits a narrow article without inner scrolling", async (
   await serve(page); await artwork(page);
   await page.goto("http://kuni.test/builder.html?lang=en");
   await expect(page.locator("#bld-stage kuni-card")).toHaveAttribute("data-ready", "true");
-  await page.locator('#bld-formats [data-format="iframe"]').click();
-  const code = (await page.locator("#bld-code").textContent()).replaceAll("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/").replace('loading="lazy"', '');
+  await page.locator('[data-testid="bld-embed"] button[data-kind="iframe"]').click();
+  const code = (await page.locator('[data-testid="bld-embed"] [part="code"]').textContent()).replaceAll("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/").replace('loading="lazy"', '');
   await page.route("http://article.test/", (route) => route.fulfill({ contentType: "text/html", body: `<style>body{margin:0;width:320px}</style>${code}` }));
   await page.goto("http://article.test/");
   await expect(page.frameLocator("iframe").locator("kuni-card")).toHaveAttribute("data-ready", "true");
@@ -132,8 +132,8 @@ test("card colours and capital markers restore from builder links and frame code
   await page.goto(page.url());
   await expect(page.locator("#opt-colors")).toHaveValue("JP:#2f6b4f");
   await expect(page.locator("#opt-capital")).toHaveAttribute("aria-pressed", "false");
-  await page.locator('#bld-formats [data-format="url"]').click();
-  const frame = (await page.locator("#bld-code").textContent()).replace("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/");
+  await page.locator('[data-testid="bld-embed"] button[data-kind="url"]').click();
+  const frame = (await page.locator('[data-testid="bld-embed"] [part="code"]').textContent()).replace("https://johnmorrisdotca.github.io/kuni/", "http://kuni.test/");
   await page.goto(frame);
   const embedded = page.locator("kuni-card");
   await expect(embedded).toHaveAttribute("data-ready", "true");

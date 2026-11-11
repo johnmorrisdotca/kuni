@@ -135,6 +135,15 @@ await build({
   minify: true,
   logLevel: "silent",
 });
+// kazoku-ui's embed panel, for the builder's code section only.
+await build({
+  stdin: { contents: 'import "@johnmorrisdotca/kazoku-ui/embed-panel/define";\n', resolveDir: process.cwd() },
+  outfile: "site/kazoku-embed-panel.js",
+  bundle: true,
+  format: "esm",
+  minify: true,
+  logLevel: "silent",
+});
 
 // Chizu's map of each country alone, for the country page's outline: one small module a country, imported when it is
 // wanted. Chizu is a development dependency of this repository, for the demo; the package does not depend on it.

@@ -27,8 +27,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       '@johnmorrisdotca/kazoku-ui':
-        specifier: ^0.37.0
-        version: 0.37.0
+        specifier: ^0.38.0
+        version: 0.38.0
       '@playwright/test':
         specifier: ^1.64.0
         version: 1.64.0
@@ -537,8 +537,8 @@ packages:
     resolution: {integrity: sha512-tlfHQ9bL0Sim3SNuDRw7YNAjdnlrmWDzFZve9DIF9SNngHN3KQQj7r+zsSI0xAAzQ+dyOiZSbHHZ1jM15ZkoDA==}
     engines: {node: '>=22'}
 
-  '@johnmorrisdotca/kazoku-ui@0.37.0':
-    resolution: {integrity: sha512-kaXd/yB+psI9IqvbZ6giQQ9c6ohvhZgwkWXNJNQfTrP4I2nw9YIzOmUFBiEipEl+VRyQObJ6eAppoWbsYHalbg==}
+  '@johnmorrisdotca/kazoku-ui@0.38.0':
+    resolution: {integrity: sha512-VjrzekFLnD21tD2jTBfPhJhc9uNtgrkfNDXr61VUVndpa51V68xKBAdsdQK82J932gBCl7qrnjGVTOcVtXdmbg==}
     engines: {node: '>=22'}
     hasBin: true
     peerDependencies:
@@ -2392,7 +2392,7 @@ snapshots:
 
   '@johnmorrisdotca/chizu@1.4.0': {}
 
-  '@johnmorrisdotca/kazoku-ui@0.37.0': {}
+  '@johnmorrisdotca/kazoku-ui@0.38.0': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
