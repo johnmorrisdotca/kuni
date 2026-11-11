@@ -300,9 +300,9 @@ const citiesOf = async (countryCode: string): Promise<readonly City[] | null> =>
 
 /**
  * One city, by its id: a Wikidata item ("Q90") or "ne:<number>", in either case; an id that was merged into another
- * city answers with the city it became. The tiers are loaded one at a time, the capitals first, until the city is
- * found, so an id of a great city loads little and an id that is nobody's loads every tier; where the country is
- * known, `citiesOf(country)` and `citySet(...).byId` are cheaper.
+ * city answers with the city it became. The capitals, 1m and 100k tiers are loaded one at a time until the city is
+ * found; a smaller city is looked up in a small index of which country each is in, and only that country's file is
+ * fetched. An id that is nobody's loads the three tiers and the index, never every country.
  *
  * @param id - The city's id.
  * @returns The city, frozen; `null` where no tier has it.
@@ -320,12 +320,37 @@ const cityById = async (id: string): Promise<City | null> => {
   if (typeof id !== "string") return null;
   const key = normalId(id)!;
   const wanted = CITY_ALIASES[key] ?? key;
-  for (const tier of CITY_TIERS) {
+  for (const tier of ["capitals", "1m", "100k"] as const) {
     const found = (await TIER_LOADERS[tier]()).find((city) => city.id === wanted);
     if (found !== undefined) return found;
   }
+  const country = await countryOfSmallCity(wanted);
+  if (country === null) return null;
 
-  return null;
+  return (await citiesOf(country))?.find((city) => city.id === wanted) ?? null;
+};
+
+// The country of each city no tier file holds, read from its index the first time a small city is asked for.
+let smallCities: ReadonlyMap<string, string> | null = null;
+const countryOfSmallCity = async (id: string): Promise<string | null> => {
+  if (smallCities === null) {
+    const { CITY_INDEX } = await import("./data/city-index.data.js");
+    const index = new Map<string, string>();
+    for (const [code, list] of Object.entries(CITY_INDEX)) {
+      let number = 0;
+      for (const part of list.split(",")) {
+        if (part === "") continue;
+        if (part.startsWith("~")) index.set(`ne:${Number.parseInt(part.slice(1), 36)}`, code.toUpperCase());
+        else {
+          number += Number.parseInt(part, 36);
+          index.set(`Q${number}`, code.toUpperCase());
+        }
+      }
+    }
+    smallCities = index;
+  }
+
+  return smallCities.get(id) ?? null;
 };
 
 export { CITY_TIERS, citiesOf, citySet, cityById, loadCities };

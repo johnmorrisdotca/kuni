@@ -45,7 +45,7 @@ import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
-import { buildCities, citiesDoc, cityAliases, cityFiles, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
+import { buildCities, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, NaturalEarthFile, TierName } from "./cities.ts";
 
 type Json = Record<string, unknown>;
@@ -851,6 +851,7 @@ const writeCities = (): void => {
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);
   }
   writeDocumentedFile(join(OUT_DATA, "city-loaders.data.ts"), cityLoaders(withCities.map((code) => code.toLowerCase())));
+  writeDocumentedFile(join(OUT_DATA, "city-index.data.ts"), cityIndex(rows));
   writeDocumentedFile(join(DOCS, "cities.md"), citiesDoc(report, snapshot, naturalEarth).join("\n"));
 };
 

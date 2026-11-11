@@ -7,6 +7,7 @@ import { cities1m } from "./cities/1m";
 import { capitalCities } from "./cities/capitals";
 import { COUNTRY_CODES } from "./codes";
 import { CITY_ALIASES } from "./data/city-aliases.data";
+import { CITY_INDEX } from "./data/city-index.data";
 import { CITY_LOADERS } from "./data/city-loaders.data";
 import { subdivision } from "./subdivisions";
 
@@ -364,11 +365,32 @@ describe("cityById", () => {
   it("follows an alias to the city an id was merged into", async () => {
     for (const [old, target] of Object.entries(CITY_ALIASES)) expect((await cityById(old))?.id, old).toBe(target);
   });
+
+  it("knows the country of every city no tier file holds, and of no other, so a small city fetches one country's file", async () => {
+    const inTiers = new Set([...capitalCities(), ...cities1m(), ...cities100k()].map((city) => city.id));
+    const small = new Map<string, string>();
+    for (const code of Object.keys(CITY_LOADERS))
+      for (const city of (await citiesOf(code))!) if (!inTiers.has(city.id)) small.set(city.id, city.country);
+    const index = new Map<string, string>();
+    for (const [code, list] of Object.entries(CITY_INDEX)) {
+      let number = 0;
+      for (const part of list.split(",")) {
+        if (part.startsWith("~")) index.set(`ne:${Number.parseInt(part.slice(1), 36)}`, code.toUpperCase());
+        else index.set(`Q${(number += Number.parseInt(part, 36))}`, code.toUpperCase());
+      }
+    }
+    expect(index.size).toBe(small.size);
+    for (const [id, country] of small) expect(index.get(id), id).toBe(country);
+    const ne = [...small.keys()].find((id) => id.startsWith("ne:"));
+    if (ne !== undefined) expect((await cityById(ne))?.id).toBe(ne);
+    for (const id of [...small.keys()].filter((_, at) => at % 997 === 0)) expect((await cityById(id))?.id, id).toBe(id);
+  });
 });
 
 describe("the same id, the same answer", () => {
   it("is found by cityById and byId alike, in any case, and an alias answers in both", async () => {
-    const set = await loadCities("capitals", "1m", "100k");
+    // Every tier: an alias may answer with a town under 100,000 people (Sandnes Municipality with Sandnes).
+    const set = await loadCities("capitals", "1m", "100k", "15k");
     for (const id of ["Q90", "q90", " Q1490 ", "Q0", "", "ne:1"]) expect((await cityById(id))?.id ?? null, id).toBe(set.byId(id)?.id ?? null);
     for (const old of Object.keys(CITY_ALIASES)) expect(set.byId(old)?.id ?? null, old).toBe((await cityById(old))?.id ?? null);
   });
