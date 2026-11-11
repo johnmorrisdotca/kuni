@@ -122,3 +122,12 @@ const FACT_GAPS: Record<"population" | "capital" | "capitalPoint" | "drivingSide
 };
 
 export { AREA_CHOICES, BORDERS_ADDED, CAPITAL_ITEMS, CAPITAL_JA_OVERRIDES, COUNTRY_ITEMS, FACT_GAPS, POPULATION_PARTS };
+
+// The capital's IANA zone where the nearest principal city in zone.tab is not it, or zone.tab lists none, each with its reason.
+// scripts/build-data.ts takes every other capital's zone from zone.tab and fails on an entry here that is not used.
+const CAPITAL_ZONES: Readonly<Record<string, { zone: string; why: string }>> = {
+  KZ: { zone: "Asia/Almaty", why: "Astana keeps Asia/Almaty, zone.tab's zone for most of Kazakhstan; the nearest principal city to it is Qostanay's, 580 km away." },
+  XK: { zone: "Europe/Belgrade", why: "zone.tab lists no zone for Kosovo; Pristina keeps Central European time, as Europe/Belgrade." },
+};
+
+export { CAPITAL_ZONES };

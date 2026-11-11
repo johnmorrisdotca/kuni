@@ -297,6 +297,12 @@ interface CountryFacts {
   point: LatLon | null;
   /** The capital's coordinates; null where there is no capital */
   capitalPoint: LatLon | null;
+  /**
+   * The IANA time zone the capital keeps, "Asia/Tokyo": of a country with one zone in IANA's zone.tab, that zone; of one
+   * with several, the zone whose principal city is nearest the capital, checked by hand for each (docs/facts.md lists
+   * the few set by name, with the reason: Astana keeps Asia/Almaty). Null where there is no capital or no zone.
+   */
+  capitalZone: string | null;
   /** Alpha-2 codes of the countries it shares a land border with; [] for an island */
   borders: readonly string[];
   /** null where there are no public roads */

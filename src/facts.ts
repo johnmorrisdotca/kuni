@@ -17,7 +17,7 @@ const pointOf = (lat: unknown, lon: unknown): LatLon | null => (typeof lat === "
 const numberOr = (value: unknown): number | null => (typeof value === "number" ? value : null);
 
 const expandFacts = (row: FactsRow): CountryFacts => {
-  const [alpha2, population, populationYear, area, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders, side, conventions] = row;
+  const [alpha2, population, populationYear, area, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders, side, conventions, zone] = row;
   const given = typeof conventions === "string" ? conventions.split(" ") : [];
   const pick = <T extends string>(choices: readonly T[], fallback: T): T => choices.find((choice) => given.includes(choice)) ?? fallback;
   const areaKm2 = numberOr(area);
@@ -31,6 +31,7 @@ const expandFacts = (row: FactsRow): CountryFacts => {
     areaOf: areaKm2 === null ? null : areaOf === "L" ? "land" : "whole",
     point: pointOf(lat, lon),
     capitalPoint: pointOf(capitalLat, capitalLon),
+    capitalZone: typeof zone === "string" ? zone : null,
     borders: Object.freeze(typeof borders === "string" ? borders.split(" ") : []),
     drivingSide: side === "L" ? "left" : side === "R" ? "right" : null,
     weekStart: pick(WEEK_STARTS, "mon"),

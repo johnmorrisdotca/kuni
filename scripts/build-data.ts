@@ -38,6 +38,7 @@ import {
   TYPE_RULES,
 } from "./data-config.ts";
 import { englishSuspects } from "./en-names.ts";
+import { CAPITAL_ZONES } from "./facts-config.ts";
 import { buildFacts } from "./facts.ts";
 import { buildGroupings } from "./groupings.ts";
 import { buildWithdrawn, withdrawnDoc } from "./withdrawn.ts";
@@ -249,11 +250,46 @@ for (const [area, { _contains, _grouping }] of Object.entries(territoryContainme
 }
 
 const zonesOf = new Map<string, string[]>();
+// Each zone's principal city, from zone.tab's ISO 6709 point (+DDMM+DDDMM, seconds where given).
+const zonePoints = new Map<string, { zone: string; at: [number, number] }[]>();
+const iso6709 = (text: string): [number, number] => {
+  const parts = /^([+-])(\d{2})(\d{2})(\d{2})?([+-])(\d{3})(\d{2})(\d{2})?$/.exec(text);
+  if (parts === null) throw new Error(`zone.tab: no point in ${text}`);
+  const [, latSign, latD, latM, latS, lonSign, lonD, lonM, lonS] = parts;
+  const lat = (Number(latD) + Number(latM) / 60 + Number(latS ?? 0) / 3600) * (latSign === "-" ? -1 : 1);
+  const lon = (Number(lonD) + Number(lonM) / 60 + Number(lonS ?? 0) / 3600) * (lonSign === "-" ? -1 : 1);
+
+  return [lat, lon];
+};
 for (const line of zoneTab.split("\n")) {
   if (line.startsWith("#") || line.trim() === "") continue;
-  const [code, , zone] = line.split("\t");
+  const [code, at, zone] = line.split("\t");
   zonesOf.set(code, [...(zonesOf.get(code) ?? []), zone]);
+  zonePoints.set(code, [...(zonePoints.get(code) ?? []), { zone, at: iso6709(at) }]);
 }
+// The zone a capital keeps: CAPITAL_ZONES where set (each with its reason), else the country's one zone, else the zone
+// whose principal city is nearest the capital. Every entry of CAPITAL_ZONES must be used.
+const usedCapitalZones = new Set<string>();
+const capitalZoneOf = (alpha2: string, capital: { lat: number; lon: number } | null): string | null => {
+  if (capital === null) return null;
+  const set = CAPITAL_ZONES[alpha2];
+  if (set !== undefined) {
+    usedCapitalZones.add(alpha2);
+
+    return set.zone;
+  }
+  const list = zonePoints.get(alpha2) ?? [];
+  if (list.length <= 1) return list[0]?.zone ?? null;
+  const here: [number, number] = [capital.lat, capital.lon];
+
+  return list.map((one) => ({ zone: one.zone, km: greatCircleKm(here, one.at) })).sort((a, b) => a.km - b.km)[0]!.zone;
+};
+const greatCircleKm = (a: [number, number], b: [number, number]): number => {
+  const radians = Math.PI / 180;
+  const half = Math.sin(((b[0] - a[0]) * radians) / 2) ** 2 + Math.cos(a[0] * radians) * Math.cos(b[0] * radians) * Math.sin(((b[1] - a[1]) * radians) / 2) ** 2;
+
+  return 2 * 6371.0088 * Math.asin(Math.min(1, Math.sqrt(half)));
+};
 
 // Wikidata's items for a code, without those it marks as former, historical or dissolved by their type.
 const currentItems = (items: WikidataItem[] | undefined): WikidataItem[] =>
@@ -714,6 +750,7 @@ const writeFacts = (): void => {
       joined(record.borders, " "),
       record.drivingSide === null ? null : record.drivingSide === "left" ? "L" : "R",
       joined(conventions, " "),
+      capitalZoneOf(record.alpha2, record.capitalPoint === null ? null : { lat: record.capitalPoint[0], lon: record.capitalPoint[1] }),
     ];
     while (row.length > 1 && row[row.length - 1] === null) row.pop();
 
@@ -731,7 +768,19 @@ const writeFacts = (): void => {
       `const FACT_ROWS: readonly FactsRow[] = [\n${rows.join("\n")}\n];\n\n` +
       "export { FACT_ROWS, FACTS_READ };\n",
   );
-  writeDocumentedFile(join(DOCS, "facts.md"), facts.doc.join("\n"));
+  const unusedZones = Object.keys(CAPITAL_ZONES).filter((code) => !usedCapitalZones.has(code));
+  if (unusedZones.length > 0) throw new Error(`CAPITAL_ZONES names a country with no capital: ${unusedZones.join(", ")}`);
+  const zoneDoc = [
+    "",
+    "## The capital's time zone",
+    "",
+    `\`capitalZone\` is the IANA zone the capital keeps, from IANA tzdb's zone.tab (public domain): a country's one zone, or, where it has several, the zone whose principal city is nearest the capital, checked by hand for each such country. These are set by name instead (\`CAPITAL_ZONES\` in scripts/facts-config.ts):`,
+    "",
+    "| Country | Zone | Why |",
+    "|---|---|---|",
+    ...Object.entries(CAPITAL_ZONES).map(([code, { zone, why }]) => `| ${code} | ${zone} | ${why} |`),
+  ];
+  writeDocumentedFile(join(DOCS, "facts.md"), [...facts.doc, ...zoneDoc].join("\n"));
 };
 
 const lower = (alpha2: string): string => alpha2.toLowerCase();
