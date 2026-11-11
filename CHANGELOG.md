@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.6.2] - 2026-11-11
+
 ### Added
 
 - **Cities ranked by their metropolitan area.** Each city has `metro`: the metropolitan area round it where one is named for it (`{ id, name, population, populationDate }`, else `null`): a Canadian city's census metropolitan area or agglomeration by Statistics Canada (2021 Census, id `statcan:<DGUID>`), any other's from Wikidata (CC0). The tiers, each country's file and `searchPlaces` rank a city by its metro's people where it has one, else by its own: Canada's first three are Toronto, Montreal and Vancouver, the United States' New York City, France's Paris, the Philippines' Manila. A tier still holds a city by its own `population`.
