@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const IS: readonly CityRow[] = [
-  [1764,64.1475,-21.935,138772,2025,"IS","IS-1","Reykjavík","レイキャヴィーク",null,null,1,"IS IS-1",0],
+  [1764,64.1475,-21.935,138772,2025,"IS","IS-1","Reykjavík","レイキャヴィーク",null,null,1,"IS",0],
   [163852,64.1119,-21.9,40040,2025,"IS","IS-1","Kópavogur","コーパヴォグル",null,null,0,null,0],
   [103725,64.0671,-21.9377,31525,2025,"IS","IS-1","Hafnarfjörður","ハフナルフィヨルズゥル",null,null,0,null,0],
   [170693,64.0011,-22.5533,23329,"2023-12-31","IS","IS-2","Keflavík","ケプラヴィーク",null,null,2,"IS-2",0],

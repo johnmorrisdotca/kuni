@@ -13,7 +13,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
   <a href="./LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-2f5d4a"></a>
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-0-2f5d4a">
   <img alt="TypeScript" src="https://img.shields.io/badge/types-TypeScript-3178c6">
-  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="21.4 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-21.4%20kB-2f5d4a"></a>
+  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="21.6 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-21.6%20kB-2f5d4a"></a>
   <a href="https://www.npmjs.com/package/@johnmorrisdotca/kuni#provenance"><img alt="Published with npm provenance" src="https://img.shields.io/badge/npm-provenance-2f5d4a"></a>
 </p>
 
@@ -99,10 +99,10 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
-- **Cities** (`/cities`): the world's cities in tiers, each its own entry so that a page pays only for what it uses: every capital of a country or a subdivision (`/cities/capitals`), then the other cities of a million people or more (`/cities/1m`), of 100,000 or more (`/cities/100k`) and of 15,000 or more (`/cities/15k`), and one country's cities at a time (`/cities/<code>`). Each city has its Wikidata id (stable between releases), its name in English, Japanese and its own language where a source has them, continent, country, latitude and longitude, population with its date, country, first-level subdivision, capital flags and where each fact came from; `citySet` finds one by id, lists a country's, and answers the city nearest to a point. Wikidata (CC0) with Natural Earth's populated places (public domain). [docs/cities.md](./docs/cities.md) counts what is in each tier and what is missing.
+- **Cities** (`/cities`): the world's cities in tiers, each its own entry so that a page pays only for what it uses: every capital of a country or a subdivision (`/cities/capitals`), the cities of a million people or more (`/cities/1m`) and of 100,000 or more (`/cities/100k`), capitals included, the cities of 15,000 or more through `loadCities("15k")` (made from the countries' own files), and one country's cities at a time (`/cities/<code>`). Each city has its Wikidata id (stable between releases), its name in English, Japanese and its own language where a source has them, continent, country, latitude and longitude, population with its date, country, first-level subdivision, capital flags and where each fact came from; `citySet` finds one by id, lists a country's, and answers the city nearest to a point. Wikidata (CC0) with Natural Earth's populated places (public domain). [docs/cities.md](./docs/cities.md) counts what is in each tier and what is missing.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
-- **Small where it matters.** The countries and lookups are 21.4 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
+- **Small where it matters.** The countries and lookups are 21.6 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
@@ -136,7 +136,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 
 | Entry | What it carries | Size (minified + gzip) |
 | --- | --- | --- |
-| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 21.4 kB min+gzip |
+| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 21.6 kB min+gzip |
 | `@johnmorrisdotca/kuni/element` | `KuniCard`, `defineCard`, `KUNI_CARD_FIELDS`, `KUNI_CARD_OPTION_KEYS`, `readCardColors`; `KuniCardOptions` | 290.5 kB min+gzip |
 | `@johnmorrisdotca/kuni/element/define` | registers the tag and re-exports the element API | 290.5 kB min+gzip |
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 0.6 kB min+gzip |
@@ -148,13 +148,12 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 0.4–7.3 kB; Japan 2.4 kB |
 | `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 15.9 kB min+gzip |
 | `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 2.1 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 3.7 kB min+gzip |
-| `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)` and `searchPlaces(text, { lang, limit })`, for a place chooser | 50.6 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 218.1 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/1m` | The other cities of a million people or more | 20.0 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/100k` | The others of 100,000 or more | 186.0 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/15k` | The others of 15,000 or more | 941.0 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/<code>` | One country's cities, every tier together (`/cities/jp`) | 1.2–187 kB gzip; Japan 42 kB |
+| `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 4.2 kB min+gzip (the docs site's figure counts every tier, which load on demand) |
+| `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)` and `searchPlaces(text, { lang, limit })`, for a place chooser | 51.2 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 192.1 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 33.4 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/100k` | The cities of 100,000 or more (capitals too) | 240.0 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/<code>` | One country's cities, every tier together (`/cities/jp`) | 1.2–187 kB gzip; Japan 37 kB |
 
 ### 1. The countries
 
@@ -425,7 +424,6 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/cities/capitals` | `capitalCities`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/1m` | `cities1m`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/100k` | `cities100k`, `CITIES_READ` |
-| `@johnmorrisdotca/kuni/cities/15k` | `cities15k`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/<code>` | the country's cities as the default export and as `CITIES` |
 | `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
 

@@ -116,20 +116,21 @@ interface SearchPlacesOptions {
   lang?: "en" | "ja";
   /** The most hits to return; 20 by default, at most 100. */
   limit?: number;
-  /** The tiers of cities to search: the capitals and the cities of a million or more by default. Every tier is a download. */
+  /** The tiers of cities to search: the capitals, the cities of a million or more and of 100,000 or more by default. `"15k"` fetches every country's file. */
   tiers?: readonly CityTier[];
   /** Search the cities of this country only (every tier, loaded on its own), and no countries. */
   country?: string;
 }
 
 const LIMIT = 20;
+const DEFAULT_TIERS: readonly CityTier[] = Object.freeze(["capitals", "1m", "100k"] as const);
 
 /**
  * What a person typed, found among countries and cities, best first. Names are compared folded (case, accents, width and
  * kana set aside, as `fold` does) over the English, Japanese and native names, and over a country's reading in kana; a city's
  * Japanese name is found as it is written (パリ, 東京), since no source gives a city's reading. A match is ranked: the whole name, then the
  * start of the name, then the start of a word in it, then anywhere in it; among equal matches the more populous place
- * comes first. Only the tiers asked for are loaded (by default the capitals and the cities of a million or more); with
+ * comes first. Only the tiers asked for are loaded (by default the capitals and the cities of 100,000 or more); with
  * `country`, that country's cities, every tier, and no countries.
  *
  * @param text - What somebody typed; empty or all punctuation finds nothing.
@@ -150,9 +151,9 @@ const searchPlaces = async (text: string, options: SearchPlacesOptions = {}): Pr
   const wanted = fold(typeof text === "string" ? text : "");
   if (wanted === "") return [];
   const lang = options.lang === "ja" ? "ja" : "en";
-  const limit = Math.max(1, Math.min(100, Math.floor(options.limit ?? LIMIT)));
+  const limit = Number.isFinite(options.limit) ? Math.max(1, Math.min(100, Math.floor(options.limit!))) : LIMIT;
   const inCountry = typeof options.country === "string" ? options.country : null;
-  const cities: readonly City[] = inCountry !== null ? ((await citiesOf(inCountry)) ?? []) : citySet(...(await Promise.all((options.tiers ?? ["capitals", "1m"]).map(async (tier) => (await loadCities(tier)).cities)))).cities;
+  const cities: readonly City[] = inCountry !== null ? ((await citiesOf(inCountry)) ?? []) : citySet(...(await Promise.all((options.tiers ?? DEFAULT_TIERS).map(async (tier) => (await loadCities(tier)).cities)))).cities;
 
   const scored: { hit: PlaceHit; score: number; population: number; length: number; order: number }[] = [];
   const consider = (hit: PlaceHit, names: readonly (string | undefined)[], population: number | null, order: number): void => {

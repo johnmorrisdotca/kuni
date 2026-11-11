@@ -102,6 +102,10 @@ interface CitySet {
 const EARTH_KM = 6371.0088;
 const RADIANS = Math.PI / 180;
 const EMPTY: readonly City[] = Object.freeze([]);
+const EMPTY_AT: readonly CityAt[] = Object.freeze([]);
+
+// An id as it is kept ("Q90", "ne:123"), whatever case or spaces it came in; null for what is not text.
+const normalId = (id: string): string | null => (typeof id === "string" ? id.trim().replace(/^NE:/i, "ne:").replace(/^q/, "Q") : null);
 
 const unit = (lat: number, lon: number): [number, number, number] => {
   const cosine = Math.cos(lat * RADIANS);
@@ -109,12 +113,14 @@ const unit = (lat: number, lon: number): [number, number, number] => {
   return [cosine * Math.cos(lon * RADIANS), cosine * Math.sin(lon * RADIANS), Math.sin(lat * RADIANS)];
 };
 
-// The great-circle distance between the unit vectors of two points, from the angle between them.
-const kmBetween = (a: ArrayLike<number>, b: ArrayLike<number>): number => {
-  const cross = Math.hypot(a[1]! * b[2]! - a[2]! * b[1]!, a[2]! * b[0]! - a[0]! * b[2]!, a[0]! * b[1]! - a[1]! * b[0]!);
-  const dot = a[0]! * b[0]! + a[1]! * b[1]! + a[2]! * b[2]!;
+// The great-circle distance between a point's unit vector and the unit vector kept at an offset of a flat array, from the angle between them.
+const kmAt = (here: readonly number[], vectors: Float64Array, offset: number): number => {
+  const x = vectors[offset]!;
+  const y = vectors[offset + 1]!;
+  const z = vectors[offset + 2]!;
+  const cross = Math.hypot(here[1]! * z - here[2]! * y, here[2]! * x - here[0]! * z, here[0]! * y - here[1]! * x);
 
-  return EARTH_KM * Math.atan2(cross, dot);
+  return EARTH_KM * Math.atan2(cross, here[0]! * x + here[1]! * y + here[2]! * z);
 };
 
 const isPoint = (point: LatLon): boolean => typeof point === "object" && point !== null && Number.isFinite(point.lat) && Number.isFinite(point.lon) && Math.abs(point.lat) <= 90;
@@ -147,68 +153,105 @@ const citySet = (...lists: readonly (readonly City[])[]): CitySet => {
       cities.push(city);
     }
   }
-  const ids = new Map(cities.map((city) => [city.id, city]));
-  const group = (key: (city: City) => string | null): Map<string, City[]> => {
-    const groups = new Map<string, City[]>();
-    for (const city of cities) {
-      const name = key(city);
-      if (name !== null) groups.set(name, [...(groups.get(name) ?? []), city]);
-    }
-
-    return groups;
+  const ids = new Map<string, City>();
+  const countries = new Map<string, City[]>();
+  const subdivisions = new Map<string, City[]>();
+  const add = (groups: Map<string, City[]>, key: string | null, city: City): void => {
+    if (key === null) return;
+    const list = groups.get(key);
+    if (list === undefined) groups.set(key, [city]);
+    else list.push(city);
   };
-  const countries = group((city) => city.country);
-  const subdivisions = group((city) => city.subdivision);
-  // The unit vectors of every city, laid out flat, so that a search is a pass over one array.
+  for (const city of cities) {
+    ids.set(city.id, city);
+    add(countries, city.country, city);
+    add(subdivisions, city.subdivision, city);
+  }
+  // The unit vectors of every city, laid out flat, so that a search is one pass over one array.
   const vectors = new Float64Array(cities.length * 3);
   cities.forEach((city, at) => vectors.set(unit(city.lat, city.lon), at * 3));
 
-  const search = (point: LatLon, options: NearestOptions | undefined, limit: number): CityAt[] => {
-    if (!isPoint(point)) return [];
+  // The cities a search may look at: the country and the population options; the distance is the search's own.
+  const allowed = (city: City, country: string | null, minPopulation: number): boolean => (country === null || city.country === country) && (minPopulation <= 0 || (city.population ?? 0) >= minPopulation);
+  const countryOf = (options: NearestOptions | undefined): string | null => (typeof options?.country === "string" ? options.country.trim().toUpperCase() : null);
+  const populationOf = (options: NearestOptions | undefined): number => (Number.isFinite(options?.minPopulation) ? options!.minPopulation! : 0);
+
+  const nearest = (point: LatLon, options?: NearestOptions): CityAt | null => {
+    if (!isPoint(point)) return null;
     const here = unit(point.lat, point.lon);
-    const country = typeof options?.country === "string" ? options.country.trim().toUpperCase() : null;
-    const maxKm = options?.maxKm ?? Infinity;
-    const minPopulation = options?.minPopulation ?? 0;
+    const country = countryOf(options);
+    const minPopulation = populationOf(options);
+    const maxKm = Number.isFinite(options?.maxKm) ? options!.maxKm! : Infinity;
+    // The nearest has the largest dot product with the point: one pass, nothing kept but the best.
+    let best = -Infinity;
+    let at = -1;
+    for (let index = 0; index < cities.length; index += 1) {
+      const offset = index * 3;
+      const dot = here[0]! * vectors[offset]! + here[1]! * vectors[offset + 1]! + here[2]! * vectors[offset + 2]!;
+      if (dot > best && allowed(cities[index]!, country, minPopulation)) {
+        best = dot;
+        at = index;
+      }
+    }
+    if (at < 0) return null;
+    const km = kmAt(here, vectors, at * 3);
+
+    return km > maxKm ? null : { city: cities[at]!, km };
+  };
+
+  const within = (point: LatLon, km: number, options?: NearestOptions): readonly CityAt[] => {
+    if (!isPoint(point) || !(km >= 0)) return EMPTY_AT;
+    const here = unit(point.lat, point.lon);
+    const country = countryOf(options);
+    const minPopulation = populationOf(options);
+    const limit = Math.min(km, Number.isFinite(options?.maxKm) ? options!.maxKm! : Infinity);
+    const least = Math.cos(Math.min(limit / EARTH_KM, Math.PI));
     const found: CityAt[] = [];
-    for (let at = 0; at < cities.length; at += 1) {
-      const city = cities[at]!;
-      if (country !== null && city.country !== country) continue;
-      if (minPopulation > 0 && (city.population ?? 0) < minPopulation) continue;
-      const km = kmBetween(here, vectors.subarray(at * 3, at * 3 + 3));
-      if (km > maxKm) continue;
-      found.push({ city, km });
+    for (let index = 0; index < cities.length; index += 1) {
+      const offset = index * 3;
+      const dot = here[0]! * vectors[offset]! + here[1]! * vectors[offset + 1]! + here[2]! * vectors[offset + 2]!;
+      if (dot < least - 1e-12 || !allowed(cities[index]!, country, minPopulation)) continue;
+      const away = kmAt(here, vectors, offset);
+      if (away <= limit) found.push({ city: cities[index]!, km: away });
     }
     found.sort((a, b) => a.km - b.km);
 
-    return limit < found.length ? found.slice(0, limit) : found;
+    return Object.freeze(found);
   };
 
   return Object.freeze({
     cities: Object.freeze(cities),
     byId: (id: string) => {
-      if (typeof id !== "string") return null;
-      const key = id.trim().replace(/^NE:/i, "ne:").replace(/^q/, "Q");
+      const key = normalId(id);
 
-      return ids.get(key) ?? ids.get(CITY_ALIASES[key] ?? "") ?? null;
+      return key === null ? null : (ids.get(CITY_ALIASES[key] ?? key) ?? null);
     },
     inCountry: (code: string) => (typeof code === "string" ? (countries.get(code.trim().toUpperCase()) ?? EMPTY) : EMPTY),
     inSubdivision: (code: string) => (typeof code === "string" ? (subdivisions.get(code.trim().toUpperCase()) ?? EMPTY) : EMPTY),
-    nearest: (point: LatLon, options?: NearestOptions) => search(point, options, 1)[0] ?? null,
-    within: (point: LatLon, km: number, options?: NearestOptions) => Object.freeze(search(point, { ...options, maxKm: Math.min(km, options?.maxKm ?? Infinity) }, Infinity)),
+    nearest,
+    within,
   } satisfies CitySet);
+};
+
+// The cities of a range of population from the countries' own files: all of them are fetched, as the tier has no file of its own.
+const fromCountries = async (least: number, below: number): Promise<readonly City[]> => {
+  const lists = await Promise.all(Object.values(CITY_LOADERS).map(async (load) => (await load()).CITIES));
+
+  return Object.freeze(lists.flatMap((list) => list.filter((city) => (city.population ?? 0) >= least && (city.population ?? 0) < below)).sort((a, b) => (b.population ?? 0) - (a.population ?? 0) || (a.id < b.id ? -1 : 1)));
 };
 
 const TIER_LOADERS: Readonly<Record<CityTier, () => Promise<readonly City[]>>> = {
   capitals: async () => (await import("./cities/capitals.js")).capitalCities(),
   "1m": async () => (await import("./cities/1m.js")).cities1m(),
   "100k": async () => (await import("./cities/100k.js")).cities100k(),
-  "15k": async () => (await import("./cities/15k.js")).cities15k(),
+  "15k": () => fromCountries(15000, 100000),
 };
 
 /**
  * The cities of the tiers asked for, fetched with a dynamic import (a bundler makes a chunk of each tier) and joined
  * into one set. A page that shows the capitals first and the great cities when it is zoomed in awaits each when it
- * needs it.
+ * needs it. `capitals`, `1m` and `100k` are files of their own; `15k` is made from the countries' own files (all of them
+ * are fetched), so it is the dearest.
  *
  * @param tiers - The tiers wanted, `"capitals"`, `"1m"`, `"100k"` or `"15k"`; none gives an empty set.
  * @returns The set, as `citySet` makes it; a name that is not a tier throws a `RangeError`.
@@ -274,7 +317,7 @@ const citiesOf = async (countryCode: string): Promise<readonly City[] | null> =>
  */
 const cityById = async (id: string): Promise<City | null> => {
   if (typeof id !== "string") return null;
-  const key = id.trim().replace(/^NE:/i, "ne:").replace(/^q/, "Q");
+  const key = normalId(id)!;
   const wanted = CITY_ALIASES[key] ?? key;
   for (const tier of CITY_TIERS) {
     const found = (await TIER_LOADERS[tier]()).find((city) => city.id === wanted);

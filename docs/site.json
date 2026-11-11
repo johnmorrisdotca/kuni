@@ -43,28 +43,24 @@
       "ja": "廃止された国のコード"
     },
     "./cities": {
-      "en": "Cities: lookups and loading",
-      "ja": "都市の検索と読み込み"
+      "en": "Cities: lookups and loading (the tiers load on demand; the size counts every tier)",
+      "ja": "都市の検索と読み込み（段階は必要なときに読み込まれ、サイズはすべての段階を含みます）"
     },
     "./cities/capitals": {
       "en": "Capital cities",
       "ja": "首都"
     },
     "./cities/1m": {
-      "en": "Cities of a million or more",
-      "ja": "人口100万人以上の都市"
+      "en": "Cities of a million or more (capitals too)",
+      "ja": "人口100万人以上の都市（首都を含む）"
     },
     "./cities/100k": {
-      "en": "Cities of 100,000 or more",
-      "ja": "人口10万人以上の都市"
-    },
-    "./cities/15k": {
-      "en": "Cities of 15,000 or more",
-      "ja": "人口1万5千人以上の都市"
+      "en": "Cities of 100,000 or more (capitals too)",
+      "ja": "人口10万人以上の都市（首都を含む）"
     },
     "./places": {
-      "en": "Places: countries of a continent, and search",
-      "ja": "場所：大陸の国と検索"
+      "en": "Places: countries of a continent, and search (the size counts every tier)",
+      "ja": "場所：大陸の国と検索（サイズはすべての段階を含みます）"
     },
     "./element": {
       "en": "Country card element",

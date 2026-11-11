@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const BN: readonly CityRow[] = [
-  [9279,4.9167,114.9167,50000,2015,"BN","BN-BM","Bandar Seri Begawan","バンダルスリブガワン",null,null,1,"BN BN-BM",0],
+  [9279,4.9167,114.9167,50000,2015,"BN","BN-BM","Bandar Seri Begawan","バンダルスリブガワン",null,null,1,"BN",0],
   [2024412,4.9833,114.9167,40710,2016,"BN","BN-BM","Mukim Berakas 'B'",null,null,null,0,null,0],
   [2364102,4.5262,114.6193,34049,2016,"BN","BN-BM","Mukim Gadong 'A'",null,null,null,0,null,0],
   [3866969,4.5262,114.6193,33637,2016,"BN","BN-BM","Mukim Gadong 'B'",null,null,null,0,null,0],
@@ -17,7 +17,7 @@ const BN: readonly CityRow[] = [
   [1953067,4.6,114.3333,21214,2016,"BN","BN-BE","Mukim Seria","セリア郡",null,null,0,null,0],
   [2159472,4.6142,114.3303,21082,null,"BN","BN-BE","Seria","セリア","Pekan Seria","ms",0,null,0],
   [2490398,5.008,115.0525,16173,2016,"BN","BN-BM","Mukim Serasa","セラサ郡",null,null,0,null,0],
-  [588045,4.5828,114.1918,4259,2016,"BN","BN-BE","Kuala Belait","クアラブライト","Pekan Kuala Belait","ms",2,"BN-BE",0],
+  [588045,4.5828,114.1918,4259,2016,"BN","BN-BE","Kuala Belait","クアラブライト",null,null,2,"BN-BE",0],
   [1125479,4.7086,115.0739,626,2016,"BN","BN-TE","Bangar Town","バンガル","Pekan Bangar","ms",2,"BN-TE",0],
   [2299301,4.8067,114.6592,null,null,"BN","BN-TU","Tutong","プカン・ツトン","Pekan Tutong","ms",2,"BN-TU",0],
 ];

@@ -5,15 +5,15 @@
 import type { CityRow } from "../../city-rows";
 
 const BI: readonly CityRow[] = [
-  [3854,-3.3825,29.3611,658859,2014,"BI","BI-BM","Bujumbura","ブジュンブラ",null,null,1,"BI-BM",0],
-  [167551,-3.4283,29.925,135467,2020,"BI","BI-GI","Gitega","ギテガ",null,null,1,"BI BI-GI",0],
+  [3854,-3.3825,29.3611,658859,2014,"BI","BI-BM","Bujumbura","ブジュンブラ","Bujumbura-Mairie","fr",2,"BI-BM",0],
+  [167551,-3.4283,29.925,135467,2020,"BI","BI-GI","Gitega","ギテガ",null,null,1,"BI",0],
   [14823669,-3.293,29.325,69525,2008,"BI",null,"Commune Mutimbuzi",null,null,null,0,null,0],
   [4453823,-2.5525,30.3408,66816,2008,"BI",null,"Commune of Bwambarangwe",null,"Commune de Bwambarangwe","fr",0,null,0],
   [929689,-2.9075,29.8306,39884,2008,"BI",null,"Ngozi","ンゴジ",null,null,2,"BI-NG",0],
   [5154000,-3.3064,30.2142,39178,2008,"BI",null,"Commune of Butezi",null,"Commune de Butezi","fr",0,null,0],
   [3110231,-3.9667,29.4333,35931,2008,"BI",null,"Rumonge","ルモンゲ",null,null,2,"BI-RM",0],
   [746329,-2.8883,29.1197,23885,2008,"BI",null,"Cibitoke","チビトケ",null,null,2,"BI-CI",0],
-  [2305839,-2.9167,29.6167,21767,2008,"BI",null,"Kayanza","カヤンザ",null,null,2,"BI-KY",0],
+  [2305839,-2.9167,29.6167,21767,2008,"BI",null,"Kayanza","カヤンザ","Commune de Kayanza","fr",2,"BI-KY",0],
   [2020432,-3.0833,29.4,20031,2008,"BI",null,"Bubanza","ブバンザ",null,null,2,"BI-BB",0],
   [684152,-3.1,30.1667,10317,2008,"BI","BI-GI","Karuzi","カルジ",null,null,2,"BI-KR",0],
   [2640808,-2.5833,30.1,10024,2008,"BI",null,"Kirundo","キルンド",null,null,2,"BI-KI",0],

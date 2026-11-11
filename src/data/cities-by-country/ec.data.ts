@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const EC: readonly CityRow[] = [
-  [43509,-2.19,-79.8875,2650288,2022,"EC","EC-G","Guayaquil","グアヤキル","Santiago de Guayaquil","es",2,"EC-G",0],
-  [2900,-0.22,-78.5125,1763275,2022,"EC","EC-P","Quito","キト",null,null,1,"EC EC-P",0],
+  [43509,-2.19,-79.8875,2650288,2022,"EC","EC-G","Guayaquil","グアヤキル",null,null,2,"EC-G",0],
+  [2900,-0.22,-78.5125,1763275,2022,"EC","EC-P","Quito","キト",null,null,1,"EC",0],
   [54886,-2.8974,-79.0045,361524,2022,"EC","EC-A","Cuenca","クエンカ",null,null,2,"EC-A",0],
   [1015654,-0.2542,-79.1719,334826,2022,"EC","EC-SD","Santo Domingo","サント・ドミンゴ",null,null,2,"EC-SD",0],
   [1120810,-2.1733,-79.8311,295211,2022,"EC","EC-G","Durán","ドゥラン",null,null,0,null,0],

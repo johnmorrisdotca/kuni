@@ -1,4 +1,4 @@
-// The entry @johnmorrisdotca/kuni/cities/1m: the cities of a million people or more that are not capitals. Written by scripts/build-data.ts. The core,
+// The entry @johnmorrisdotca/kuni/cities/1m: the cities of a million people or more (capitals too). Written by scripts/build-data.ts. The core,
 // @johnmorrisdotca/kuni/cities, joins this tier with the others and answers the lookups.
 
 import { expandCities } from "../city-rows";
@@ -8,7 +8,7 @@ import { CITY_1M_ROWS } from "../data/cities-1m.data";
 let table: readonly City[] | null = null;
 
 /**
- * The cities of the tier `1m`: the cities of a million people or more that are not capitals. 441 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
+ * The cities of the tier `1m`: the cities of a million people or more (capitals too). 721 of them, the most populous first, each a frozen object; the list is made on the first call and shared.
  *
  * @returns The list. Join it with other tiers through `citySet` in @johnmorrisdotca/kuni/cities.
  * @example
@@ -16,9 +16,9 @@ let table: readonly City[] | null = null;
  * import { cities1m } from "@johnmorrisdotca/kuni/cities/1m";
  *
  * console.log(cities1m().length > 0);          // true
- * console.log(cities1m()[0].name.en);          // "Delhi"
- * console.log(cities1m()[0].id);               // "Q1353"
- * console.log(cities1m()[0].country);          // "IN"
+ * console.log(cities1m()[0].name.en);          // "Chongqing"
+ * console.log(cities1m()[0].id);               // "Q11725"
+ * console.log(cities1m()[0].country);          // "CN"
  * ```
  */
 const cities1m = (): readonly City[] => {

@@ -5,14 +5,14 @@ order: 18
 description: Load the world's cities in tiers, look one up by id, list a country's, and find the city nearest to a point.
 ---
 
-The cities come in tiers, each its own import, so a page pays only for what it uses. A city is in one tier only: a capital of any size is in `capitals`; every other city is in `1m` (a million people or more), `100k` (100,000 or more) or `15k` (15,000 or more) by its population. `docs/cities.md` counts what is in each tier and what is missing, and the README's entry table gives each size.
+The cities come in tiers, so a page pays only for what it uses. `capitals` holds every capital of any size; `1m` (a million people or more), `100k` (100,000 or more) and `15k` (15,000 or more) hold every city of that many people, capitals too, so a capital can be in two tiers; `citySet` keeps a city once. A country has exactly one national capital; another seat of government (Cape Town, Kyoto) is `"alternate"`, and the capital of a subdivision is `"subdivision"`. `docs/cities.md` counts what is in each tier and what is missing, and the README's entry table gives each size.
 
 | Import | Holds |
 | --- | --- |
 | `@johnmorrisdotca/kuni/cities/capitals` | every capital, of a country or of a subdivision |
-| `@johnmorrisdotca/kuni/cities/1m` | the other cities of a million people or more |
-| `@johnmorrisdotca/kuni/cities/100k` | the others of 100,000 or more |
-| `@johnmorrisdotca/kuni/cities/15k` | the others of 15,000 or more |
+| `@johnmorrisdotca/kuni/cities/1m` | the cities of a million people or more |
+| `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 or more |
+| `loadCities("15k")` | the cities of 15,000 or more, made from the countries' own files (all of them are fetched) |
 | `@johnmorrisdotca/kuni/cities/<code>` | one country's cities, every tier together (`/cities/jp`) |
 | `@johnmorrisdotca/kuni/cities` | the lookups: `citySet`, `loadCities`, `citiesOf`, `cityById` |
 | `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)` and `searchPlaces(text)`, for a chooser |
@@ -45,7 +45,7 @@ console.log(countriesOf("OC").length > 10, found[0].label);
 
 ## What a chooser asks
 
-`continents()` lists the seven continents with their names in English and Japanese, and `countriesOf("AS")` the countries of one, both from kuni's groupings. `searchPlaces(text, { lang, limit })` finds countries and cities by what somebody typed, in English, Japanese or the place's own language, with case, accents and kana folded, ranked by the whole name, the start of it, the start of a word, then anywhere, and by population among equals. By default it looks in the capitals and the cities of a million or more; `tiers` names others (each is a download) and `country` searches one country's cities, every tier, on their own. `lang` is the language of each hit's `label`. Kuni draws nothing: a page builds its own chooser on these.
+`continents()` lists the seven continents with their names in English and Japanese, and `countriesOf("AS")` the countries of one, both from kuni's groupings. `searchPlaces(text, { lang, limit })` finds countries and cities by what somebody typed, in English, Japanese or the place's own language, with case, accents and kana folded, ranked by the whole name, the start of it, the start of a word, then anywhere, and by population among equals. By default it looks in the capitals and the cities of 100,000 or more; `tiers` names others (`"15k"` fetches every country's file) and `country` searches one country's cities, every tier, on their own. `lang` is the language of each hit's `label`. Kuni draws nothing: a page builds its own chooser on these.
 
 ## What a city holds
 
@@ -57,7 +57,7 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 - `name`: `en`, and `ja` and `native` where a source has them. A missing one is absent, never an English name copied in. `nativeLanguage` is the code of `native`.
 - `continent` (`"AS"`, `"EU"`, ...), `country` (ISO 3166-1 alpha-2, two capital letters), `lat`, `lon`, and `subdivision` (the ISO 3166-2 code of its first-level subdivision, or `null`).
 - `population` and `populationDate` (a year, or a day), `null` where no source has a figure.
-- `capital` (`"national"`, `"subdivision"` or `null`) and `capitalOf`, the codes Wikidata says it is the capital of.
+- `capital` (`"national"`, `"alternate"`, `"subdivision"` or `null`) and `capitalOf`, the codes it is the capital of (never empty for a capital).
 - `source`: which input each of the point, the population and the Japanese name came from, `"wikidata"` or `"natural-earth"`.
 
 `id`, `name`, `continent`, `country`, `lat`, `lon`, `population` and `capital` are the fields a page needs to keep a place; everything else is there to draw it well.

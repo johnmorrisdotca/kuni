@@ -10,11 +10,15 @@
 //   - The population is the best-ranked statement of the latest day; of statements with no day, the largest.
 //   - The subdivision is the first-level one (kuni's own list of ISO 3166-2 codes) among the codes of the places the
 //     city is in; the others, and codes kuni does not list, are not kept.
-//   - Tiers: a capital of any size is in `capitals`; every other city of 15,000 people or more is in `1m`, `100k` or
-//     `15k` by its population. A city with no population that is not a capital is left out.
+//   - Capitals: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a
+//     capital of it, else the most populous Wikidata names); the others, and Natural Earth's "Admin-0 capital alt", are
+//     alternates. A capital of a subdivision needs an ISO 3166-2 code kuni lists. Every capital says what it is the capital of.
+//   - One city once: two items of one name within 15 km, one of them of 100,000 people or more, are one city.
+//   - Tiers: `capitals` holds every capital of any size; `1m`, `100k` and `15k` hold every city (capitals too) of that
+//     many people. A city with no population that is not a capital is left out.
 //   - Names: English is Wikidata's label, else Natural Earth's English name. A city with neither is left out.
-//   - The native name is Wikidata's native label (P1705), else its label in the country's official language; it is
-//     `null` where it is the English name.
+//   - The native name is the label in the country's official language (P37), with Wikidata's native label (P1705) only
+//     as the fallback (scripts/fetch-cities.ts chooses it); it is `null` where it is the English name.
 
 import type { CityRow } from "../src/city-rows.ts";
 
@@ -46,7 +50,10 @@ interface Report {
   naturalEarthMatchedByPlace: number;
   naturalEarthOnly: number;
   naturalEarthLeftOut: { noItemNoMatch: number; noCountry: number; belowFloor: number };
-  leftOut: { noName: number; noPoint: number; noCountry: number; noPopulation: number; belowFloor: number; area: number };
+  leftOut: { noName: number; noPoint: number; noCountry: number; noPopulation: number; belowFloor: number; area: number; duplicate: number };
+  capitals: { national: number; alternate: number; subdivision: number; droppedWithoutCode: number };
+  jaFromNaturalEarth: number;
+  populationFromNaturalEarth: number;
   withoutJa: number;
   withoutNative: number;
   withoutSubdivision: number;
@@ -55,7 +62,7 @@ interface Report {
 const FLOOR = 15000;
 // Wikidata's human settlements include the areas around cities and the units that hold them. An item that no capital and
 // no Natural Earth place stands behind, and whose English label names one of those, is not a city.
-const AREA_NAME = /\b(metropolitan (area|region|municipality|statistical area)|urban (area|agglomeration|region)|agglomeration|conurbation|built-up area|micropolitan)\b|\b(Province|County|Prefecture|Governorate|District|district|Regency|Oblast|Department)$|^(County|Province|District|Municipality|City) of /;
+const AREA_NAME = /\b(metropolitan (area|region|municipality|statistical area)|urban (area|agglomeration|region)|agglomeration|conurbation|built-up area|micropolitan)\b|\b(Province|County|Prefecture|Governorate|District|district|Regency|Oblast|Department|Municipality)$|^(County|Province|District|Municipality|City) of /;
 const RADIANS = Math.PI / 180;
 const km = (a: [number, number], b: [number, number]): number => {
   const half = Math.sin(((b[0] - a[0]) * RADIANS) / 2) ** 2 + Math.cos(a[0] * RADIANS) * Math.cos(b[0] * RADIANS) * Math.sin(((b[1] - a[1]) * RADIANS) / 2) ** 2;
@@ -81,12 +88,32 @@ const dateOf = (day: string | null): number | string | null => {
   return day.endsWith("-01-01") ? Number(day.slice(0, 4)) : day;
 };
 
-const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string> }): { tiers: Record<TierName, CityRow[]>; report: Report } => {
+interface Candidate {
+  number: number | string;
+  en: string;
+  ja: string | null;
+  native: string | null;
+  nativeLanguage: string | null;
+  point: [number, number];
+  country: string;
+  population: number | null;
+  populationDate: number | string | null;
+  subdivision: string | null;
+  codes: string[];
+  neKind: string | null;
+  sources: number;
+  viaPlace: boolean;
+}
+
+const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
   const { snapshot, naturalEarth, levels, countries } = input;
+  // Every ISO 3166-2 code kuni lists, at any level, for the codes a capital is the capital of.
+  const known = input.subdivisions ?? new Set(levels.keys());
+  const emptyStats = () => ({ cities: 0, ja: 0, jaFromNaturalEarth: 0, populationFromNaturalEarth: 0 });
   const report: Report = {
     read: snapshot.read,
     neRelease: naturalEarth.release,
-    tiers: { capitals: { cities: 0, ja: 0, jaFromNaturalEarth: 0, populationFromNaturalEarth: 0 }, "1m": { cities: 0, ja: 0, jaFromNaturalEarth: 0, populationFromNaturalEarth: 0 }, "100k": { cities: 0, ja: 0, jaFromNaturalEarth: 0, populationFromNaturalEarth: 0 }, "15k": { cities: 0, ja: 0, jaFromNaturalEarth: 0, populationFromNaturalEarth: 0 } },
+    tiers: { capitals: emptyStats(), "1m": emptyStats(), "100k": emptyStats(), "15k": emptyStats() },
     total: 0,
     wikidataItems: snapshot.items.length,
     naturalEarthPlaces: naturalEarth.places.length,
@@ -94,7 +121,10 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     naturalEarthMatchedByPlace: 0,
     naturalEarthOnly: 0,
     naturalEarthLeftOut: { noItemNoMatch: 0, noCountry: 0, belowFloor: 0 },
-    leftOut: { noName: 0, noPoint: 0, noCountry: 0, noPopulation: 0, belowFloor: 0, area: 0 },
+    leftOut: { noName: 0, noPoint: 0, noCountry: 0, noPopulation: 0, belowFloor: 0, area: 0, duplicate: 0 },
+    capitals: { national: 0, alternate: 0, subdivision: 0, droppedWithoutCode: 0 },
+    jaFromNaturalEarth: 0,
+    populationFromNaturalEarth: 0,
     withoutJa: 0,
     withoutNative: 0,
     withoutSubdivision: 0,
@@ -103,7 +133,6 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   const wikidata = new Map<string, WikidataItem>(snapshot.items.map((item) => [`Q${item[0]}`, item]));
   const ne = new Map<string, NePlace>();
   const unmatched: NePlace[] = [];
-  const only: NePlace[] = [];
   for (const place of naturalEarth.places) {
     if (place[0] !== null && wikidata.has(place[0])) {
       // Two places naming one item: the more populous is kept.
@@ -113,6 +142,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     } else unmatched.push(place);
   }
   // The places with no item of Wikidata's: matched to a city of the same country, near and of the same name.
+  const only: NePlace[] = [];
   const byCountry = new Map<string, WikidataItem[]>();
   for (const item of snapshot.items) if (item[6] !== null) byCountry.set(item[6], [...(byCountry.get(item[6]) ?? []), item]);
   for (const place of unmatched) {
@@ -125,17 +155,14 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     }
   }
 
-  const tiers: Record<TierName, CityRow[]> = { capitals: [], "1m": [], "100k": [], "15k": [] };
+  // 1. Every item that could be a city, with what the tiers and the capitals are decided from.
+  const candidates: Candidate[] = [];
   for (const item of snapshot.items) {
     const [number, enLabel, jaLabel, nativeLabel, nativeLanguage, wikidataPoint, wikidataCountry, pops, subs, capitalCodes] = item;
     const place = ne.get(`Q${number}`);
     const en = enLabel ?? place?.[2] ?? place?.[1] ?? null;
     if (en === null) {
       report.leftOut.noName += 1;
-      continue;
-    }
-    if (place === undefined && capitalCodes.length === 0 && AREA_NAME.test(en)) {
-      report.leftOut.area += 1;
       continue;
     }
     const point = wikidataPoint ?? (place === undefined ? null : ([place[4], place[5]] as [number, number]));
@@ -148,34 +175,36 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       report.leftOut.noCountry += 1;
       continue;
     }
-    const wikidataPopulation = populationOf(pops);
-    const population = wikidataPopulation?.value ?? place?.[6] ?? null;
-    const populationDate = wikidataPopulation === null ? null : dateOf(wikidataPopulation.day);
-    const nationalCapital = capitalCodes.some((code) => !code.includes("-")) || place?.[7] === "Admin-0 capital" || place?.[7] === "Admin-0 capital alt";
-    const subdivisionCapital = capitalCodes.some((code) => code.includes("-")) || (place !== undefined && /^Admin-[01] (region )?capital$/.test(place[7]) && place[7] !== "Admin-0 capital");
-    const capital = nationalCapital ? 1 : subdivisionCapital ? 2 : 0;
-    const tier: TierName | null = capital !== 0 ? "capitals" : population === null ? null : population >= 1000000 ? "1m" : population >= 100000 ? "100k" : population >= FLOOR ? "15k" : null;
-    if (tier === null) {
-      if (population === null) report.leftOut.noPopulation += 1;
-      else report.leftOut.belowFloor += 1;
+    // An item named for an area or a unit, with no capital or Natural Earth place behind it, is not a city.
+    if (place === undefined && capitalCodes.length === 0 && AREA_NAME.test(en)) {
+      report.leftOut.area += 1;
       continue;
     }
-    const ja = jaLabel ?? place?.[3] ?? null;
+    const wikidataPopulation = populationOf(pops);
+    const population = wikidataPopulation?.value ?? place?.[6] ?? null;
+    // Natural Earth's Japanese name is used only where it is not hiragana for a place outside Japan (うーんルワバ for Umm Ruwaba): a sign of a machine's guess.
+    const neJa = place?.[3] != null && (country === "JP" || !/\p{Script=Hiragana}/u.test(place[3])) ? place[3] : null;
+    const ja = jaLabel ?? neJa;
     const native = nativeLabel !== null && nativeLabel !== en ? nativeLabel : null;
     const subdivision = [...new Set(subs)].filter((code) => code.startsWith(`${country}-`) && levels.has(code)).sort((a, b) => levels.get(a)! - levels.get(b)! || (a < b ? -1 : 1))[0] ?? null;
     // Bit 1: the Japanese name is Natural Earth's; 2: the population is; 4: the point is.
     const sources = (jaLabel === null && ja !== null ? 1 : 0) | (wikidataPopulation === null && population !== null ? 2 : 0) | (wikidataPoint === null ? 4 : 0);
-    tiers[tier].push([number, rounded(point[0]), rounded(point[1]), population, populationDate, country, subdivision, en, ja, native, native === null ? null : nativeLanguage, capital, capitalCodes.length === 0 ? null : capitalCodes.join(" "), sources]);
-
-    const stats = report.tiers[tier];
-    stats.cities += 1;
-    report.total += 1;
-    if (ja !== null) stats.ja += 1;
-    if (sources & 1) stats.jaFromNaturalEarth += 1;
-    if (sources & 2) stats.populationFromNaturalEarth += 1;
-    if (ja === null) report.withoutJa += 1;
-    if (native === null) report.withoutNative += 1;
-    if (subdivision === null) report.withoutSubdivision += 1;
+    candidates.push({
+      number,
+      en,
+      ja,
+      native,
+      nativeLanguage: native === null ? null : nativeLanguage,
+      point,
+      country,
+      population,
+      populationDate: wikidataPopulation === null ? null : dateOf(wikidataPopulation.day),
+      subdivision,
+      codes: capitalCodes.filter((code) => (code.includes("-") ? known.has(code) : countries.has(code))),
+      neKind: place?.[7] ?? null,
+      sources,
+      viaPlace: place !== undefined,
+    });
   }
   // The places only Natural Earth has: a city of its own, with an id that starts "ne:" and Natural Earth's own number.
   for (const place of only) {
@@ -184,40 +213,134 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       report.naturalEarthLeftOut.noCountry += 1;
       continue;
     }
-    const capital = kind === "Admin-0 capital" || kind === "Admin-0 capital alt" ? 1 : /^Admin-[01] (region )?capital$/.test(kind) ? 2 : 0;
-    const tier: TierName | null = capital !== 0 ? "capitals" : pop === null ? null : pop >= 1000000 ? "1m" : pop >= 100000 ? "100k" : pop >= FLOOR ? "15k" : null;
-    if (tier === null) {
-      report.naturalEarthLeftOut.belowFloor += 1;
+    candidates.push({ number: `ne:${neId}`, en: nameEn ?? name, ja: nameJa, native: null, nativeLanguage: null, point: [lat, lon], country: iso, population: pop, populationDate: null, subdivision: null, codes: [], neKind: kind, sources: (nameJa === null ? 0 : 1) | (pop === null ? 0 : 2) | 4, viaPlace: true });
+  }
+
+  // 2. The same city under two items (Tokyo is Q1490 and Q7473516): one name, one country, within 15 km, one of them big. The
+  // one kept is the one with a capital behind it, else Natural Earth's, else the most populous, else the lowest number.
+  const rank = (one: Candidate): number[] => [one.codes.some((code) => !code.includes("-")) || one.neKind === "Admin-0 capital" ? 0 : 1, one.viaPlace ? 0 : 1, -(one.population ?? 0), typeof one.number === "number" ? one.number : Infinity];
+  const better = (a: Candidate, b: Candidate): boolean => {
+    const x = rank(a);
+    const y = rank(b);
+    for (let at = 0; at < x.length; at += 1) if (x[at] !== y[at]) return x[at]! < y[at]!;
+
+    return false;
+  };
+  const dropped = new Set<Candidate>();
+  const groups = new Map<string, Candidate[]>();
+  for (const one of candidates) {
+    const key = `${one.country}|${simple(one.en)}`;
+    groups.set(key, [...(groups.get(key) ?? []), one]);
+  }
+  for (const group of groups.values()) {
+    if (group.length < 2) continue;
+    for (const one of group) {
+      for (const other of group) {
+        if (one === other || dropped.has(one) || dropped.has(other) || km(one.point, other.point) >= 15 || Math.max(one.population ?? 0, other.population ?? 0) < 100000) continue;
+        dropped.add(better(one, other) ? other : one);
+      }
+    }
+  }
+  report.leftOut.duplicate = dropped.size;
+  const kept = candidates.filter((one) => !dropped.has(one));
+
+  // 3. The capitals. A country has one national capital. The items Wikidata names as its capital (P36 of the country) are the
+  // candidates, but not an item that is the capital of its own country (Djibouti is not the capital of Anguilla, though a
+  // former country that held the code AI said so); only where Wikidata names none are Natural Earth's capitals of the country
+  // the candidates. Among them the one is chosen that kuni's own list of countries names as the capital, else Natural Earth's
+  // "Admin-0 capital", else the most populous. The other candidates are alternates. A capital of a subdivision needs the code of
+  // one kuni lists. Every capital says what it is the capital of.
+  const viaWikidata = new Map<string, Candidate[]>();
+  const viaNaturalEarth = new Map<string, Candidate[]>();
+  for (const one of kept) {
+    for (const code of new Set(one.codes.filter((code) => !code.includes("-")))) viaWikidata.set(code, [...(viaWikidata.get(code) ?? []), one]);
+    if (one.neKind === "Admin-0 capital" || one.neKind === "Admin-0 capital alt") viaNaturalEarth.set(one.country, [...(viaNaturalEarth.get(one.country) ?? []), one]);
+  }
+  const ownCapital = (one: Candidate): boolean => (viaWikidata.get(one.country) ?? []).includes(one);
+  const nationalOf = new Map<string, Candidate>();
+  const alternates = new Map<Candidate, Set<string>>();
+  for (const code of new Set([...viaWikidata.keys(), ...viaNaturalEarth.keys()])) {
+    let list = (viaWikidata.get(code) ?? []).filter((one) => one.country === code || !ownCapital(one));
+    if (list.length === 0) list = viaNaturalEarth.get(code) ?? [];
+    if (list.length === 0) continue;
+    const name = input.capitalNames?.get(code);
+    const named = name === undefined ? [] : list.filter((one) => simple(one.en) === simple(name));
+    const main = list.filter((one) => one.neKind === "Admin-0 capital");
+    const pool = named.length > 0 ? named : main.length > 0 ? main : list;
+    const chosen = [...pool].sort((a, b) => (b.population ?? 0) - (a.population ?? 0) || (typeof a.number === "number" ? a.number : Infinity) - (typeof b.number === "number" ? b.number : Infinity))[0]!;
+    nationalOf.set(code, chosen);
+    for (const one of list) if (one !== chosen) alternates.set(one, new Set([...(alternates.get(one) ?? []), code]));
+  }
+
+  const rows: CityRow[] = [];
+  for (const one of kept) {
+    const national = [...nationalOf].filter(([, chosen]) => chosen === one).map(([code]) => code);
+    const alternate = [...(alternates.get(one) ?? [])].filter((code) => nationalOf.get(code) !== one);
+    const subdivisionCodes = one.codes.filter((code) => code.includes("-"));
+    const subdivisionCapital = subdivisionCodes.length > 0 ? subdivisionCodes : [];
+    let capital: 0 | 1 | 2 | 3 = 0;
+    let capitalOf: string[] = [];
+    if (national.length > 0) {
+      capital = 1;
+      capitalOf = national;
+      report.capitals.national += 1;
+    } else if (alternate.length > 0) {
+      capital = 3;
+      capitalOf = [...alternate, ...subdivisionCapital];
+      report.capitals.alternate += 1;
+    } else if (subdivisionCapital.length > 0) {
+      capital = 2;
+      capitalOf = subdivisionCapital;
+      report.capitals.subdivision += 1;
+    } else if (one.neKind !== null && /^Admin-1 (region )?capital$|^Admin-0 region capital$/.test(one.neKind)) {
+      // Natural Earth calls it the capital of a subdivision but names none kuni lists: not a capital here.
+      report.capitals.droppedWithoutCode += 1;
+    }
+    const population = one.population;
+    if (capital === 0 && (population === null || population < FLOOR)) {
+      if (population === null) report.leftOut.noPopulation += 1;
+      else report.leftOut.belowFloor += 1;
       continue;
     }
-    // Bit 1: the Japanese name is Natural Earth's, 2: the population is, 4: the point is; here all three are.
-    tiers[tier].push([`ne:${neId}`, rounded(lat), rounded(lon), pop, null, iso, null, nameEn ?? name, nameJa, null, null, capital, null, (nameJa === null ? 0 : 1) | (pop === null ? 0 : 2) | 4]);
-    const stats = report.tiers[tier];
-    stats.cities += 1;
-    report.total += 1;
-    report.naturalEarthOnly += 1;
-    if (nameJa !== null) {
-      stats.ja += 1;
-      stats.jaFromNaturalEarth += 1;
-    } else report.withoutJa += 1;
-    if (pop !== null) stats.populationFromNaturalEarth += 1;
-    report.withoutNative += 1;
-    report.withoutSubdivision += 1;
+    // The national capital of a territory with a code of its own (Gibraltar, GI) is in that country, whatever Wikidata's P17 says (GB).
+    const country = capital === 1 && !national.includes(one.country) ? national[0]! : one.country;
+    const subdivisionOf = country === one.country ? one.subdivision : null;
+    rows.push([one.number, rounded(one.point[0]), rounded(one.point[1]), population, one.populationDate, country, subdivisionOf, one.en, one.ja, one.native, one.native === null ? null : one.nativeLanguage, capital, capitalOf.length === 0 ? null : [...new Set(capitalOf)].sort().join(" "), one.sources]);
   }
-  for (const rows of Object.values(tiers)) rows.sort((a, b) => (b[3] ?? 0) - (a[3] ?? 0) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true }));
+  report.naturalEarthOnly = rows.filter((row) => typeof row[0] === "string").length;
+  rows.sort((a, b) => (b[3] ?? 0) - (a[3] ?? 0) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true }));
 
-  return { tiers, report };
+  // 4. The tiers: every capital of any size; and by population, every city (capitals included) in the range.
+  const tiers: Record<TierName, CityRow[]> = { capitals: [], "1m": [], "100k": [], "15k": [] };
+  for (const row of rows) {
+    const population = row[3] ?? 0;
+    const names: TierName[] = [...(row[11] !== 0 ? (["capitals"] as const) : []), ...(population >= 1000000 ? (["1m"] as const) : population >= 100000 ? (["100k"] as const) : population >= FLOOR ? (["15k"] as const) : [])];
+    for (const name of names) {
+      tiers[name].push(row);
+      const stats = report.tiers[name];
+      stats.cities += 1;
+      if (row[8] !== null) stats.ja += 1;
+      if (row[13] & 1) stats.jaFromNaturalEarth += 1;
+      if (row[13] & 2) stats.populationFromNaturalEarth += 1;
+    }
+    report.total += 1;
+    if (row[13] & 1) report.jaFromNaturalEarth += 1;
+    if (row[13] & 2) report.populationFromNaturalEarth += 1;
+    if (row[8] === null) report.withoutJa += 1;
+    if (row[9] === null) report.withoutNative += 1;
+    if (row[6] === null) report.withoutSubdivision += 1;
+  }
+
+  return { rows, tiers, report };
 };
-
-export type { CitiesSnapshot, NaturalEarthFile, Report, TierName };
 
 // ----- Writing -----------------------------------------------------------------------------------------
 
-const TIER_FILES: Record<TierName, { fn: string; constant: string; what: string }> = {
-  capitals: { fn: "capitalCities", constant: "CAPITAL_CITY_ROWS", what: "every capital, of a country or of a subdivision, of any size" },
-  "1m": { fn: "cities1m", constant: "CITY_1M_ROWS", what: "the cities of a million people or more that are not capitals" },
-  "100k": { fn: "cities100k", constant: "CITY_100K_ROWS", what: "the cities of 100,000 to a million people that are not capitals" },
-  "15k": { fn: "cities15k", constant: "CITY_15K_ROWS", what: "the cities of 15,000 to 100,000 people that are not capitals" },
+const TIER_FILES: Record<TierName, { fn: string; constant: string; what: string; file: boolean }> = {
+  capitals: { fn: "capitalCities", constant: "CAPITAL_CITY_ROWS", what: "every capital, of a country or of a subdivision, of any size", file: true },
+  "1m": { fn: "cities1m", constant: "CITY_1M_ROWS", what: "the cities of a million people or more (capitals too)", file: true },
+  "100k": { fn: "cities100k", constant: "CITY_100K_ROWS", what: "the cities of 100,000 to a million people (capitals too)", file: true },
+  "15k": { fn: "cities15k", constant: "CITY_15K_ROWS", what: "the cities of 15,000 to 100,000 people (capitals too); from the countries' own files, not a file of its own", file: false },
 };
 
 // The files of one tier: the data (src/data/cities-<tier>.data.ts) and the entry (src/cities/<tier>.ts).
@@ -358,16 +481,16 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     "",
     "## The tiers",
     "",
-    "A city is in one tier only: a capital of any size is in `capitals`; every other city is in the tier its population names.",
+    "`capitals` holds every capital of any size; `1m`, `100k` and `15k` hold every city of that many people, capitals included, so a city can be in `capitals` and in one of the others. `citySet` keeps a city once.",
     "",
     "| Tier | Entry | Holds | Cities | With a Japanese name | Japanese name from Natural Earth | Population from Natural Earth |",
     "|---|---|---|---:|---:|---:|---:|",
     ...names.map((name) => {
       const stats = report.tiers[name];
 
-      return `| \`${name}\` | \`@johnmorrisdotca/kuni/cities/${name}\` | ${TIER_FILES[name].what} | ${n(stats.cities)} | ${n(stats.ja)} (${percent(stats.ja, stats.cities)}) | ${n(stats.jaFromNaturalEarth)} | ${n(stats.populationFromNaturalEarth)} |`;
+      return `| \`${name}\` | ${TIER_FILES[name].file ? `\`@johnmorrisdotca/kuni/cities/${name}\`` : "`loadCities(\"15k\")`"} | ${TIER_FILES[name].what} | ${n(stats.cities)} | ${n(stats.ja)} (${percent(stats.ja, stats.cities)}) | ${n(stats.jaFromNaturalEarth)} | ${n(stats.populationFromNaturalEarth)} |`;
     }),
-    `| all | | | ${n(report.total)} | ${n(report.total - report.withoutJa)} (${percent(report.total - report.withoutJa, report.total)}) | ${n(names.reduce((sum, name) => sum + report.tiers[name].jaFromNaturalEarth, 0))} | ${n(names.reduce((sum, name) => sum + report.tiers[name].populationFromNaturalEarth, 0))} |`,
+    `| every city once | | | ${n(report.total)} | ${n(report.total - report.withoutJa)} (${percent(report.total - report.withoutJa, report.total)}) | ${n(report.jaFromNaturalEarth)} | ${n(report.populationFromNaturalEarth)} |`,
     "",
     "## How a city is chosen",
     "",
@@ -377,11 +500,13 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     "- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's `POP_MAX` has no day.",
     "- **Subdivision**: the ISO 3166-2 code, from Wikidata's P300 on the city or the places it is in (P131), restricted to the first-level subdivisions kuni lists for its country; where there are several, the first in code order.",
     "- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of' or 'City of', unless it is a capital or Natural Earth names it. Some cities with such a name are lost; a city that Natural Earth names is kept.",
-    "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label, else Natural Earth's, else `null`: never an English name copied in, and never made up. The native name is Wikidata's native label (P1705), else its label in the country's official language (P37, language code P424), and `null` where it is the English name.",
+    `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
+    "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
+    "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label, else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
     "",
     "## What was left out",
     "",
-    `Of the ${n(report.wikidataItems)} items in the snapshot: ${n(report.leftOut.noName)} had no English name (in Wikidata or Natural Earth), ${n(report.leftOut.noPoint)} no coordinates, ${n(report.leftOut.noCountry)} no country, ${n(report.leftOut.noPopulation)} no population and were no capital, ${n(report.leftOut.area)} had an English name of an area or an administrative unit (a metropolitan area, an urban area, a province, a county, a district) and no capital or Natural Earth place behind them, and ${n(report.leftOut.belowFloor)} fell below ${n(snapshot.floor)} people by the figure used (they were in because another statement was above it, or Natural Earth names them).`,
+    `Of the ${n(report.wikidataItems)} items in the snapshot: ${n(report.leftOut.noName)} had no English name (in Wikidata or Natural Earth), ${n(report.leftOut.noPoint)} no coordinates, ${n(report.leftOut.noCountry)} no country, ${n(report.leftOut.noPopulation)} no population and were no capital, ${n(report.leftOut.area)} had an English name of an area or an administrative unit (a metropolitan area, an urban area, a province, a county, a district) and no capital or Natural Earth place behind them, ${n(report.leftOut.duplicate)} were the same city as another item (Tokyo is two), and ${n(report.leftOut.belowFloor)} fell below ${n(snapshot.floor)} people by the figure used (they were in because another statement was above it, or Natural Earth names them).`,
     "",
     "## What is missing",
     "",
@@ -420,3 +545,4 @@ export { CITY_ALIASES };
 };
 
 export { buildCities, cityAliases, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
+export type { CitiesSnapshot, NaturalEarthFile, Report, TierName };

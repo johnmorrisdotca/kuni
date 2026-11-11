@@ -53,7 +53,7 @@
       "path": "wikidata-cities-2026-11-11.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-11-11",
-      "sha256": "ffa043f6eb4b17fd64e69eecaae55ff830ceca7e8b260ee82cb3b03f5363e098",
+      "sha256": "8c48028441767c7c8fa08e1b038ad0c3f45bb0ac980b05ae4c43a94d5f803f78",
       "note": "Wikidata SPARQL answers for the cities: the items with 15,000 people or more that are a human settlement, every capital, and every item Natural Earth's populated places name; labels, native label, coordinates, country, populations with dates, ISO 3166-2 codes; the queries are in the file (CC0)"
     },
     {

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const AW: readonly CityRow[] = [
-  [131243,12.5186,-70.0358,28658,2020,"AW",null,"Oranjestad","オラニエスタッド","Playa","pap",1,"AW NL-AW",0],
+  [131243,12.5186,-70.0358,28658,2020,"AW",null,"Oranjestad","オラニエスタッド",null,null,1,"AW",0],
   [7683552,12.5418,-70.022,21495,2010,"AW",null,"Tanki Lender",null,"Tanki Leendert","nl",0,null,0],
 ];
 

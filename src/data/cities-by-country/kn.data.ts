@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const KN: readonly CityRow[] = [
-  [41295,17.2983,-62.7342,12920,2025,"KN","KN-K","Basseterre","バセテール",null,null,1,"KN KN-03 KN-K",0],
+  [41295,17.2983,-62.7342,12920,2025,"KN","KN-K","Basseterre","バセテール",null,null,1,"KN",0],
   [3316336,17.35,-62.7333,2500,2010,"KN","KN-K","Cayon","ケイオン",null,null,2,"KN-08",0],
   [992311,17.1431,-62.6269,2204,2010,"KN","KN-N","Charlestown","チャールズタウン",null,null,2,"KN-10 KN-N",0],
   [2835379,17.2,-62.5833,593,null,"KN","KN-N","Newcastle","ニューカッスル",null,null,2,"KN-05",0],

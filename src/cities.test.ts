@@ -3,7 +3,6 @@ import { describe, expect, it } from "vitest";
 import { CITY_TIERS, citiesOf, citySet, cityById, loadCities } from "./cities";
 import type { City } from "./cities";
 import { cities100k } from "./cities/100k";
-import { cities15k } from "./cities/15k";
 import { cities1m } from "./cities/1m";
 import { capitalCities } from "./cities/capitals";
 import { COUNTRY_CODES } from "./codes";
@@ -111,26 +110,35 @@ describe("citySet", () => {
 });
 
 describe("the tiers", () => {
-  const tiers = { capitals: capitalCities(), "1m": cities1m(), "100k": cities100k(), "15k": cities15k() };
-  const all = Object.values(tiers).flat();
+  const tiers = { capitals: capitalCities(), "1m": cities1m(), "100k": cities100k() };
+  const everyone = citySet(...Object.values(tiers)).cities;
 
-  it("hold every city once, with an id that is a Wikidata item or a Natural Earth number", () => {
-    expect(new Set(all.map((one) => one.id)).size).toBe(all.length);
-    for (const city of all) expect(city.id, city.id).toMatch(/^(Q[1-9]\d*|ne:[1-9]\d*)$/);
+  it("hold each city once in a tier, with an id that is a Wikidata item or a Natural Earth number", () => {
+    for (const list of Object.values(tiers)) expect(new Set(list.map((one) => one.id)).size).toBe(list.length);
+    for (const city of everyone) expect(city.id, city.id).toMatch(/^(Q[1-9]\d*|ne:[1-9]\d*)$/);
   });
 
-  it("put a capital of any size in capitals and the rest by population", () => {
+  it("hold every capital in capitals, and every city of the size in the others, capitals too", () => {
     for (const city of tiers.capitals) expect(city.capital, city.id).not.toBeNull();
-    for (const city of [...tiers["1m"], ...tiers["100k"], ...tiers["15k"]]) expect(city.capital, city.id).toBeNull();
     for (const city of tiers["1m"]) expect(city.population, city.id).toBeGreaterThanOrEqual(1000000);
     for (const city of tiers["100k"]) {
       expect(city.population, city.id).toBeGreaterThanOrEqual(100000);
       expect(city.population, city.id).toBeLessThan(1000000);
     }
-    for (const city of tiers["15k"]) {
+    // A capital of a million people is in both capitals and 1m.
+    const tokyo = tiers.capitals.find((one) => one.name.en === "Tokyo")!;
+    expect(tiers["1m"].some((one) => one.id === tokyo.id)).toBe(true);
+  });
+
+  it("hold in 15k, made from the countries' files, the cities of 15,000 to 100,000 people, capitals too", async () => {
+    const small = (await loadCities("15k")).cities;
+    expect(small.length).toBeGreaterThan(10000);
+    for (const city of small) {
       expect(city.population, city.id).toBeGreaterThanOrEqual(15000);
       expect(city.population, city.id).toBeLessThan(100000);
     }
+    const national = small.filter((one) => one.capital === "national");
+    expect(national.length).toBeGreaterThan(10);
   });
 
   it("list the most populous first", () => {
@@ -138,7 +146,7 @@ describe("the tiers", () => {
   });
 
   it("give every city a name in English, a country kuni lists, a point on the earth and a source for each fact", () => {
-    for (const city of all) {
+    for (const city of everyone) {
       expect(city.name.en.length, city.id).toBeGreaterThan(0);
       expect(COUNTRY_CODES as readonly string[], city.id).toContain(city.country);
       expect(Math.abs(city.lat), city.id).toBeLessThanOrEqual(90);
@@ -150,7 +158,7 @@ describe("the tiers", () => {
   });
 
   it("never copy an English name into the Japanese or the native one", () => {
-    for (const city of all) {
+    for (const city of everyone) {
       if (city.name.ja !== undefined) expect(city.name.ja.trim().length, city.id).toBeGreaterThan(0);
       if (city.name.native !== undefined) {
         expect(city.name.native, city.id).not.toBe(city.name.en);
@@ -160,19 +168,61 @@ describe("the tiers", () => {
   });
 
   it("name a first-level subdivision of the city's own country, or none", () => {
-    for (const city of all) if (city.subdivision !== null) expect(subdivision(city.subdivision)?.country, city.id).toBe(city.country);
+    for (const city of everyone) if (city.subdivision !== null) expect(subdivision(city.subdivision)?.country, city.id).toBe(city.country);
   });
 
-  it("say what each is the capital of", () => {
-    for (const city of tiers.capitals) {
+  it("say what each capital is the capital of, and nothing for any other city", () => {
+    for (const city of everyone) {
+      expect(city.capital !== null, city.id).toBe(city.capitalOf.length > 0);
       for (const code of city.capitalOf) expect(code, city.id).toMatch(/^[A-Z]{2}(-[A-Z0-9]{1,3})?$/);
+      if (city.capital === "national" || city.capital === "alternate") expect(city.capitalOf.some((code) => !code.includes("-")), city.id).toBe(true);
+      if (city.capital === "subdivision") expect(city.capitalOf.every((code) => code.includes("-")), city.id).toBe(true);
     }
   });
 
-  it("hold the capital of every country that has one in the data", () => {
-    const nations = new Set(capitalCities().filter((one) => one.capital === "national").map((one) => one.country));
-    expect(nations.size).toBeGreaterThan(190);
-    for (const code of ["JP", "FR", "DE", "US", "BR", "AU", "ZA", "IN"]) expect(nations.has(code), code).toBe(true);
+  it("give each country one national capital at most, and the right one where it matters", () => {
+    const nationals = new Map<string, string[]>();
+    for (const city of tiers.capitals) if (city.capital === "national") nationals.set(city.country, [...(nationals.get(city.country) ?? []), city.name.en]);
+    for (const [code, names] of nationals) expect(names.length, `${code}: ${names.join(", ")}`).toBe(1);
+    expect(nationals.size).toBeGreaterThan(190);
+    expect(nationals.get("JP")).toEqual(["Tokyo"]);
+    expect(nationals.get("NG")).toEqual(["Abuja"]);
+    expect(nationals.get("ZA")).toEqual(["Pretoria"]);
+    expect(nationals.get("TZ")?.[0]).toBe("Dodoma");
+    expect(nationals.get("MM")?.[0]).toMatch(/Naypyidaw|Nay Pyi Taw/);
+    for (const code of ["FR", "DE", "US", "BR", "AU", "IN", "CA"]) expect(nationals.has(code), code).toBe(true);
+    // The old seats are alternates, not capitals of the country.
+    const alternates = new Map(tiers.capitals.filter((one) => one.capital === "alternate").map((one) => [one.name.en, one]));
+    expect(alternates.get("Cape Town")?.capitalOf).toContain("ZA");
+    expect(alternates.get("Bloemfontein")?.capitalOf).toContain("ZA");
+    expect(tiers.capitals.find((one) => one.name.en === "Kyoto")?.capital).not.toBe("national");
+    expect(tiers.capitals.find((one) => one.name.en === "Lagos")?.capital).not.toBe("national");
+    expect(tiers.capitals.find((one) => one.name.en === "Dar es Salaam")?.capital).not.toBe("national");
+    expect(tiers.capitals.find((one) => one.name.en === "Yangon")?.capital).not.toBe("national");
+  });
+
+  it("list each city once: Tokyo is one city", async () => {
+    const japan = (await citiesOf("JP"))!;
+    expect(japan.filter((one) => one.name.en === "Tokyo").length).toBe(1);
+    const seen = new Set<string>();
+    for (const city of japan) {
+      expect(seen.has(city.id), city.id).toBe(false);
+      seen.add(city.id);
+    }
+  });
+
+  it("name each city's official-language name, not a regional one", () => {
+    const set = citySet(...Object.values(tiers));
+    const native = (en: string, country: string) => set.inCountry(country).find((one) => one.name.en === en)?.name.native;
+    expect(native("Cologne", "DE")).toBe("Köln");
+    expect(native("Genoa", "IT")).toBe("Genova");
+    expect(native("Munich", "DE")).toBe("München");
+    expect(native("Vienna", "AT")).toBe("Wien");
+    expect(native("Prague", "CZ")).toBe("Praha");
+    // Johannesburg is Johannesburg in the first official language with a label (Afrikaans): nothing to add to the English name.
+    expect(native("Johannesburg", "ZA")).toBeUndefined();
+    expect(set.inCountry("ZA").find((one) => one.name.en === "Johannesburg")?.name.native).not.toBe("eGoli");
+    expect(set.inCountry("CA").find((one) => one.name.en === "Montreal")?.name.native).not.toBe("Mooniyang");
   });
 
   it("freeze every city and share the list between calls", () => {
@@ -217,6 +267,15 @@ describe("what the data says of well-known places", () => {
     expect(sapporo.capitalOf).toContain("JP-01");
   });
 
+  it("finds Paris at the centre of Paris among every city of France, not an arrondissement or a ward", async () => {
+    const france = citySet((await citiesOf("FR"))!);
+    expect(france.nearest({ lat: 48.8566, lon: 2.3522 })?.city.name.en).toBe("Paris");
+    for (const city of france.cities) expect(city.name.en, city.id).not.toMatch(/arrondissement/i);
+    const japan = citySet((await citiesOf("JP"))!);
+    expect(japan.cities.filter((one) => /\bWard$/.test(one.name.en) && one.capital === null).length).toBe(0);
+    expect(japan.nearest({ lat: 34.6937, lon: 135.5023 })?.city.name.en).toBe("Osaka");
+  });
+
   it("finds the city nearest to a point in a city", () => {
     expect(world.nearest({ lat: 52.52, lon: 13.405 })?.city.name.en).toBe("Berlin");
     expect(world.nearest({ lat: -33.87, lon: 151.21 })?.city.name.en).toBe("Sydney");
@@ -226,7 +285,9 @@ describe("what the data says of well-known places", () => {
 describe("loading", () => {
   it("joins the tiers asked for, once each, and none gives an empty set", async () => {
     const some = await loadCities("capitals", "1m", "capitals");
-    expect(some.cities.length).toBe(capitalCities().length + cities1m().length);
+    // A capital of a million people is in both tiers and once in the set.
+    expect(some.cities.length).toBe(new Set([...capitalCities(), ...cities1m()].map((one) => one.id)).size);
+    expect(some.cities.length).toBeLessThan(capitalCities().length + cities1m().length);
     expect((await loadCities()).cities).toEqual([]);
   });
 
@@ -237,7 +298,7 @@ describe("loading", () => {
 
   it("loads one country's cities, every tier, the most populous first", async () => {
     const japan = (await citiesOf(" jp "))!;
-    const set = citySet(...[capitalCities(), cities1m(), cities100k(), cities15k()]);
+    const set = await loadCities("capitals", "1m", "100k", "15k");
     expect(japan.length).toBe(set.inCountry("JP").length);
     expect(new Set(japan.map((one) => one.id))).toEqual(new Set(set.inCountry("JP").map((one) => one.id)));
     for (let at = 1; at < japan.length; at += 1) expect(japan[at - 1]!.population ?? 0).toBeGreaterThanOrEqual(japan[at]!.population ?? 0);
@@ -251,8 +312,8 @@ describe("loading", () => {
     expect(await citiesOf(undefined as unknown as string)).toBeNull();
   });
 
-  it("has a file for every country that holds a city, and no other", () => {
-    const withCities = new Set([...capitalCities(), ...cities1m(), ...cities100k(), ...cities15k()].map((one) => one.country.toLowerCase()));
+  it("has a file for every country that holds a city, and no other", async () => {
+    const withCities = new Set((await loadCities("capitals", "1m", "100k", "15k")).cities.map((one) => one.country.toLowerCase()));
     expect(Object.keys(CITY_LOADERS).sort()).toEqual([...withCities].sort());
   });
 });
@@ -261,7 +322,7 @@ describe("cityById", () => {
   it("finds a city in any tier by its id, in either case, and an id that is nobody's gives null", async () => {
     expect((await cityById("Q90"))?.name.en).toBe("Paris");
     expect((await cityById(" q1490 "))?.country).toBe("JP");
-    const small = cities15k()[0]!;
+    const small = (await loadCities("15k")).cities[0]!;
     expect(await cityById(small.id)).toBe(small);
     expect(await cityById("Q0")).toBeNull();
     expect(await cityById("")).toBeNull();
@@ -273,9 +334,42 @@ describe("cityById", () => {
   });
 });
 
+describe("the same id, the same answer", () => {
+  it("is found by cityById and byId alike, in any case, and an alias answers in both", async () => {
+    const set = await loadCities("capitals", "1m", "100k");
+    for (const id of ["Q90", "q90", " Q1490 ", "Q0", "", "ne:1"]) expect((await cityById(id))?.id ?? null, id).toBe(set.byId(id)?.id ?? null);
+    for (const old of Object.keys(CITY_ALIASES)) expect(set.byId(old)?.id ?? null, old).toBe((await cityById(old))?.id ?? null);
+  });
+});
+
+describe("limits and options that are not numbers", () => {
+  const set = citySet([PARIS, LYON]);
+
+  it("treat a maxKm or minPopulation that is not a finite number as no limit", () => {
+    expect(set.nearest({ lat: 0, lon: 0 }, { maxKm: NaN })?.city).toBeDefined();
+    expect(set.nearest({ lat: 48.9, lon: 2.4 }, { minPopulation: NaN })?.city).toBe(PARIS);
+    expect(set.within({ lat: 46, lon: 3 }, NaN)).toEqual([]);
+    expect(set.within({ lat: 46, lon: 3 }, -5)).toEqual([]);
+    expect(set.within({ lat: 46, lon: 3 }, Infinity).length).toBe(2);
+  });
+
+  it("keep an answer to itself: within gives a frozen list", () => {
+    expect(Object.isFrozen(set.within({ lat: 46, lon: 3 }, 1000))).toBe(true);
+  });
+
+  it("finds the nearest of a large set in good time", () => {
+    const many = Array.from({ length: 40000 }, (_, at) => make(`Q${at + 10}`, `City ${at}`, "FR", ((at * 7919) % 18000) / 100 - 90, ((at * 104729) % 36000) / 100 - 180, at));
+    const started = performance.now();
+    const big = citySet(many);
+    for (let at = 0; at < 200; at += 1) big.nearest({ lat: (at * 0.9) % 90, lon: (at * 1.7) % 180 });
+    expect(performance.now() - started).toBeLessThan(2000);
+    expect(big.inCountry("FR").length).toBe(40000);
+  });
+});
+
 describe("ids that never change", () => {
-  it("answer, through byId, with the city an old id was merged into", () => {
-    const everything = citySet(capitalCities(), cities1m(), cities100k(), cities15k());
+  it("answer, through byId, with the city an old id was merged into", async () => {
+    const everything = await loadCities("capitals", "1m", "100k", "15k");
     for (const [old, target] of Object.entries(CITY_ALIASES)) expect(everything.byId(old)?.id, old).toBe(target);
     expect(everything.byId("Q90")?.id).toBe("Q90");
   });

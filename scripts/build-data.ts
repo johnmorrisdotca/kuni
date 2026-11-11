@@ -45,7 +45,7 @@ import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
-import { buildCities, citiesDoc, cityAliases, cityFiles, cityLoaders, countryCityFiles, unresolvedIds } from "./cities.ts";
+import { buildCities, citiesDoc, cityAliases, cityFiles, cityLoaders, countryCityFiles, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, NaturalEarthFile, TierName } from "./cities.ts";
 
 type Json = Record<string, unknown>;
@@ -792,14 +792,16 @@ const writeCities = (): void => {
   if (citiesFile === undefined || neFile === undefined) throw new Error("No cities snapshot in data-sources/sources.json: run pnpm data:cities");
   const snapshot = JSON.parse(readSource(manifest, citiesFile.path).text) as CitiesSnapshot;
   const naturalEarth = JSON.parse(readSource(manifest, neFile.path).text) as NaturalEarthFile;
-  const { tiers, report } = buildCities({
+  const { rows, tiers, report } = buildCities({
     snapshot,
     naturalEarth,
     levels: new Map(subdivisions.filter((record) => record.level === 1).map((record) => [record.code, record.level])),
     countries: new Set(countries.map((country) => country.alpha2)),
+    subdivisions: new Set(subdivisions.map((record) => record.code)),
+    capitalNames: new Map(countries.flatMap((country) => (country.capital === null ? [] : [[country.alpha2, country.capital] as [string, string]]))),
   });
   // Ids never change between releases: every id a past release had is still a city's or is in the alias file.
-  const current = new Set(Object.values(tiers).flatMap((rows) => rows.map((row) => (typeof row[0] === "number" ? `Q${row[0]}` : row[0]))));
+  const current = new Set(rows.map((row) => (typeof row[0] === "number" ? `Q${row[0]}` : row[0])));
   const idsFile = join(ROOT, "data-sources", "city-ids.json");
   const aliasFile = join(ROOT, "data-sources", "city-id-aliases.json");
   const released = existsSync(idsFile) ? (JSON.parse(readFileSync(idsFile, "utf8")) as { ids: (number | string)[] }).ids : [];
@@ -807,9 +809,12 @@ const writeCities = (): void => {
   const unresolved = unresolvedIds(released, current, aliases);
   if (unresolved.length > 0) throw new Error(`${unresolved.length} city ids of an earlier release are in no tier now (${unresolved.slice(0, 12).join(", ")}...): add each to data-sources/city-id-aliases.json, with the id of the city it was merged into, or null if it was removed`);
   for (const [old, target] of Object.entries(aliases)) if (target !== null && !current.has(target)) throw new Error(`data-sources/city-id-aliases.json: ${old} answers with ${target}, which is not a city now`);
-  const everything = [...new Set([...released.map((id) => (typeof id === "number" ? id : id)), ...[...current].map((id) => (id.startsWith("Q") ? Number(id.slice(1)) : id))])];
-  everything.sort((a, b) => (typeof a === "number" && typeof b === "number" ? a - b : typeof a === "number" ? -1 : typeof b === "number" ? 1 : String(a).localeCompare(String(b), "en", { numeric: true })));
-  writeFileSync(idsFile, `${JSON.stringify({ note: "Every city id any release has had; scripts/build-data.ts refuses a release that loses one without an entry in city-id-aliases.json", ids: everything })}\n`);
+  // The ids of a release are recorded only when asked (`pnpm data:record-ids`, at the release), so that an id nobody has used yet can still go.
+  if (args.includes("--record-ids")) {
+    const everything = [...new Set([...released, ...[...current].map((id) => (id.startsWith("Q") ? Number(id.slice(1)) : id))])];
+    everything.sort((a, b) => (typeof a === "number" && typeof b === "number" ? a - b : typeof a === "number" ? -1 : typeof b === "number" ? 1 : String(a).localeCompare(String(b), "en", { numeric: true })));
+    writeFileSync(idsFile, `${JSON.stringify({ note: "Every city id a release has had; scripts/build-data.ts refuses a build that loses one without an entry in city-id-aliases.json. Written by pnpm data:record-ids at a release.", ids: everything })}\n`);
+  }
   if (!existsSync(aliasFile)) writeFileSync(aliasFile, `${JSON.stringify({ note: "An id that is no longer a city's: the id of the city it was merged into, or null where it was removed", aliases: {} }, null, 2)}\n`);
   writeDocumentedFile(join(OUT_DATA, "city-aliases.data.ts"), cityAliases(aliases, current));
   writeDocumentedFile(
@@ -818,6 +823,11 @@ const writeCities = (): void => {
   );
   mkdirSync(join(ROOT, "src", "cities"), { recursive: true });
   for (const tier of Object.keys(tiers) as TierName[]) {
+    if (!TIER_FILES[tier].file) {
+      rmSync(join(OUT_DATA, `cities-${tier}.data.ts`), { force: true });
+      rmSync(join(ROOT, "src", "cities", `${tier}.ts`), { force: true });
+      continue;
+    }
     const files = cityFiles(tier, tiers[tier], snapshot.read, naturalEarth.release);
     writeDocumentedFile(join(OUT_DATA, `cities-${tier}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${tier}.ts`), files.entry);
@@ -827,12 +837,16 @@ const writeCities = (): void => {
   rmSync(OUT_CITY_COUNTRIES, { recursive: true, force: true });
   mkdirSync(OUT_CITY_COUNTRIES, { recursive: true });
   for (const file of readdirSync(join(ROOT, "src", "cities"))) if (/^[a-z]{2}\.ts$/.test(file)) rmSync(join(ROOT, "src", "cities", file));
-  const byCountryRows = new Map<string, (typeof tiers)[TierName]>();
-  for (const rows of Object.values(tiers)) for (const row of rows) byCountryRows.set(row[5], [...(byCountryRows.get(row[5]) ?? []), row]);
+  const byCountryRows = new Map<string, typeof rows>();
+  for (const row of rows) {
+    const list = byCountryRows.get(row[5]) ?? [];
+    list.push(row);
+    byCountryRows.set(row[5], list);
+  }
   const withCities = [...byCountryRows.keys()].sort(byText);
   for (const alpha2 of withCities) {
-    const rows = byCountryRows.get(alpha2)!.sort((a, b) => (b[3] ?? 0) - (a[3] ?? 0) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true }));
-    const files = countryCityFiles(alpha2, rows, countries.find((country) => country.alpha2 === alpha2)!.en);
+    const own = byCountryRows.get(alpha2)!.sort((a, b) => (b[3] ?? 0) - (a[3] ?? 0) || String(a[0]).localeCompare(String(b[0]), "en", { numeric: true }));
+    const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en);
     writeDocumentedFile(join(OUT_CITY_COUNTRIES, `${alpha2.toLowerCase()}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);
   }

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const EE: readonly CityRow[] = [
-  [1770,59.4372,24.745,457572,2024,"EE","EE-37","Tallinn","タリン",null,null,1,"EE EE-37",0],
+  [1770,59.4372,24.745,457572,2024,"EE","EE-37","Tallinn","タリン",null,null,1,"EE",0],
   [13972,58.38,26.7225,97759,2024,"EE","EE-79","Tartu","タルトゥ",null,null,2,"EE-79",0],
   [102158,59.3792,28.2006,53360,2024,"EE","EE-45","Narva","ナルヴァ",null,null,0,null,0],
   [102365,58.3844,24.4989,41520,2024,"EE","EE-68","Pärnu","パルヌ",null,null,2,"EE-68",0],

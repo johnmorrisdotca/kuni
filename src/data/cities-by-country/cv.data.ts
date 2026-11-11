@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const CV: readonly CityRow[] = [
-  [3751,14.9177,-23.5092,159050,2017,"CV","CV-S","Praia","プライア",null,null,1,"CV CV-PR",0],
-  [495547,16.8914,-24.988,70468,"2010-06-16","CV","CV-B","Mindelo","ミンデロ","Mindel","kea",2,"CV-SV",0],
+  [3751,14.9177,-23.5092,159050,2017,"CV","CV-S","Praia","プライア",null,null,1,"CV",0],
+  [495547,16.8914,-24.988,70468,"2010-06-16","CV","CV-B","Mindelo","ミンデロ","Mindelu","kea",2,"CV-SV",0],
   [497445,16.6,-22.9042,25779,2010,"CV","CV-B","Santa Maria","サンタ・マリア (カーボベルデ)",null,null,0,null,0],
   [490573,15.0949,-23.6654,12026,"2010-06-16","CV","CV-S","Assomada","アソマダ",null,null,2,"CV-CA",0],
   [13957085,14.8966,-24.4955,8122,2010,"CV","CV-S","São Filipe","サン・フェリペ",null,null,2,"CV-SF",0],
@@ -14,7 +14,7 @@ const CV: readonly CityRow[] = [
   [2311253,15.2667,-23.75,6272,null,"CV","CV-S","Tarrafal","タラファル",null,null,2,"CV-TA",0],
   [498968,16.7546,-22.9453,6173,2005,"CV","CV-B","Espargos","エスパルゴス",null,null,2,"CV-SL",0],
   [768314,17.2018,-25.0915,4738,null,"CV","CV-B","Ponta do Sol","ポンタ・ド・ソル",null,null,2,"CV-RG",0],
-  [2539817,15.1875,-23.5917,4123,null,"CV","CV-S","Calheta de São Miguel","カリェタ・デ・サン・ミゲル",null,null,2,"CV-SM",0],
+  [2539817,15.1875,-23.5917,4123,null,"CV","CV-S","Calheta de São Miguel","カリェタ・デ・サン・ミゲル","Kadjeta di San Migel","kea",2,"CV-SM",0],
   [489776,15.1375,-23.2083,3056,2012,"CV","CV-S","Porto Inglês","ヴィーラ・ド・マイオ","Vila do Maio","pt",2,"CV-MA",0],
   [2718745,15.025,-23.5625,2818,2010,"CV","CV-S","São Domingos","サン・ドミンゴス",null,null,2,"CV-SD",0],
   [3077671,15.0667,-23.5917,1699,null,"CV","CV-S","João Teves","ジョアン・テベス",null,null,2,"CV-SO",0],

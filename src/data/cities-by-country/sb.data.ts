@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const SB: readonly CityRow[] = [
-  [40921,-9.4333,159.95,84520,2017,"SB","SB-CT","Honiara","ホニアラ",null,null,1,"SB SB-GU",0],
+  [40921,-9.4333,159.95,84520,2017,"SB","SB-CT","Honiara","ホニアラ",null,null,1,"SB",0],
   [1236908,-8.1,156.85,7177,2019,"SB","SB-WE","Gizo","ギゾ",null,null,2,"SB-WE",0],
   [538476,-8.7683,160.6969,6811,2009,"SB","SB-ML","Auki","アウキ",null,null,2,"SB-ML",0],
   [646756,-10.7233,165.7964,553,2007,"SB","SB-TE","Lata","ラタ (サンタクルーズ諸島)",null,null,2,"SB-TE",0],

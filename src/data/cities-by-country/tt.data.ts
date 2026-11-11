@@ -17,7 +17,7 @@ const TT: readonly CityRow[] = [
   [966660,11.1833,-60.7333,17000,2000,"TT","TT-SGE","Scarborough","スカボロー",null,null,2,"TT-TOB",0],
   [1976992,10.65,-61.45,13797,2000,"TT","TT-SJL","San Juan","サン・フアン (トリニダード・トバゴ)",null,null,2,"TT-SJL",0],
   [3493381,10.1333,-61.5,10254,null,"TT","TT-SIP","Siparia","シパリア",null,null,2,"TT-SIP",0],
-  [514272,10.3042,-61.1708,3821,2011,"TT","TT-MRC","Rio Claro","リオ・クラロ (トリニダード・トバゴ)",null,null,2,"TT-MRC TT-RCM",0],
+  [514272,10.3042,-61.1708,3821,2011,"TT","TT-MRC","Rio Claro","リオ・クラロ (トリニダード・トバゴ)",null,null,2,"TT-MRC",0],
   [1011576,10.2667,-61.3833,null,null,"TT","TT-PRT","Princes Town","プリンセス・タウン",null,null,2,"TT-PRT",0],
   [1220518,10.708,-61.5581,null,null,"TT","TT-DMN","Diego Martin","ディエゴ・マーティン",null,null,2,"TT-DMN",0],
   [2510034,10.1678,-61.4544,null,null,"TT","TT-PED","Penal","ペナル (町)",null,null,2,"TT-PED",0],

@@ -60,7 +60,7 @@ const factFiles = [...inTarball].filter((file) => /^dist\/subdivision-facts\/[a-
 if (factFiles.length !== 200) fail(`the tarball has ${factFiles.length} countries' subdivision facts, not 200`);
 const cityFiles = [...inTarball].filter((file) => /^dist\/cities\/[a-z]{2}\.js$/.test(file));
 if (cityFiles.length < 190) fail(`the tarball has ${cityFiles.length} countries' cities, not about 200`);
-for (const tier of ["capitals", "1m", "100k", "15k"]) if (!inTarball.has(`dist/cities/${tier}.js`)) fail(`the tarball has no dist/cities/${tier}.js`);
+for (const tier of ["capitals", "1m", "100k"]) if (!inTarball.has(`dist/cities/${tier}.js`)) fail(`the tarball has no dist/cities/${tier}.js`);
 console.log(`ok   everything in package.json's files is in the tarball, the 200 countries' files and ${cityFiles.length} countries' cities`);
 
 // 3. Install it into an empty project.

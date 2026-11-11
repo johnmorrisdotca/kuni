@@ -5,12 +5,12 @@
 import type { CityRow } from "../../city-rows";
 
 const TG: readonly CityRow[] = [
-  [3792,6.13,1.2158,2188376,2023,"TG","TG-M","Lomé","ロメ",null,null,1,"TG TG-M",0],
+  [3792,6.13,1.2158,2188376,2023,"TG","TG-M","Lomé","ロメ",null,null,1,"TG",0],
   [860729,9.5489,1.1906,158090,2023,"TG","TG-K","Kara","カラ",null,null,2,"TG-K",0],
   [970904,10.8667,0.2,117675,2022,"TG","TG-S","Durum Town","ダパング","Dapaong","fr",2,"TG-S",0],
   [845097,8.9833,1.1333,115442,2022,"TG","TG-C","Sokodé","ソコデ",null,null,2,"TG-C",0],
   [126124,7.5269,1.1267,98193,2022,"TG","TG-P","Atakpamé","アタクパメ",null,null,2,"TG-P",0],
-  [995413,6.91,0.6281,87478,2022,"TG","TG-P","Kpalimé","パリメ",null,null,2,null,0],
+  [995413,6.91,0.6281,87478,2022,"TG","TG-P","Kpalimé","パリメ",null,null,0,null,0],
   [2060202,6.4333,1.2167,76861,2022,"TG","TG-M","Tsévié","ツェビエ",null,null,0,null,0],
   [136652117,10.9142,0.3114,66577,"2022-11-01","TG","TG-S","Tône 4",null,null,null,0,null,0],
   [136649381,10.7039,0.1094,64175,2022,"TG","TG-S","Tandjouaré 2",null,null,null,0,null,0],
@@ -21,8 +21,8 @@ const TG: readonly CityRow[] = [
   [2528080,6.5833,1.5,36961,2022,"TG","TG-M","Tabligbo",null,null,null,0,null,0],
   [2711981,9.0333,1.4167,36173,2022,"TG","TG-C","Tchamba","チャンバ",null,null,0,null,0],
   [1392195,10.3556,0.4756,34791,2022,"TG","TG-S","Mango","サンサネ＝マンゴ",null,null,0,null,0],
-  [810474,9.25,0.7833,33156,2022,"TG","TG-K","Bassar","バサッリ",null,null,2,null,1],
-  [1120978,8.5667,0.9833,32464,2022,"TG","TG-C","Sotouboua","ソトゥブア",null,null,2,null,1],
+  [810474,9.25,0.7833,33156,2022,"TG","TG-K","Bassar","バサッリ",null,null,0,null,1],
+  [1120978,8.5667,0.9833,32464,2022,"TG","TG-C","Sotouboua","ソトゥブア",null,null,0,null,1],
   [1018574,6.2289,1.5931,28238,2022,"TG","TG-M","Aného","アネホ",null,null,0,null,0],
   [201342,9.7667,1.1,27132,2023,"TG","TG-K","Niamtougou","ニャムトゥーグー",null,null,0,null,0],
   [118366291,7.1959,0.6919,25820,null,"TG","TG-P","Danyi 1",null,null,null,0,null,0],

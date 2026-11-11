@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const AD: readonly CityRow[] = [
-  [1863,42.5072,1.5222,24042,2023,"AD","AD-07","Andorra la Vella","アンドラ・ラ・ベリャ",null,null,1,"AD AD-07",0],
+  [1863,42.5072,1.5222,24042,2023,"AD","AD-07","Andorra la Vella","アンドラ・ラ・ベリャ",null,null,1,"AD",0],
   [386802,42.5667,1.6,null,null,"AD","AD-02","Canillo",null,null,null,2,"AD-02",0],
   [989558,42.5347,1.5801,null,null,"AD","AD-03","Encamp",null,null,null,2,"AD-03",0],
   [1050185,42.5092,1.5398,null,null,"AD","AD-08","Les Escaldes","レス・エスカルデス","les Escaldes","ca",2,"AD-08",0],

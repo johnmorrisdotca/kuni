@@ -17,7 +17,7 @@ bytes are not the recorded ones.
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
 | `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
 | `natural-earth-populated-places-5.1.2.json` | https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson, cut down to the columns the build uses | the day it was read | Public domain |
-| `city-ids.json`, `city-id-aliases.json` | Written by `pnpm data` (every id a release has had) and by hand (an id that is no longer a city's, with the id it was merged into, or null) | | MIT |
+| `city-ids.json`, `city-id-aliases.json` | `city-ids.json` is written by `pnpm data:record-ids`, at a release, and holds every id a release has had; `city-id-aliases.json` is written by hand: an id that is no longer a city's, with the id it was merged into, or null | | MIT |
 | `expected-ja-gaps.json` | Written by `pnpm data:report --accept`: the subdivisions with no Japanese name | | MIT |
 
 The CLDR files are from the release tag `release-48-2`, the same release as the `cldr-core` and
@@ -87,9 +87,11 @@ every item with a population is asked in steps, one query at a time with a pause
 - what each is an instance of (P31), in chunks, keeping those that are a settlement;
 - the current capitals (P36) of every item with an ISO 3166-1 (P297) or ISO 3166-2 (P300) code;
 - for every kept item, every capital and every Natural Earth place that names a Wikidata item, in chunks: the English
-  and Japanese labels, the native label (P1705, else the label in the country's official language, P37 with P424),
+  and Japanese labels, the native name (the label in the country's official language, P37 with P424; the native label P1705, which often names a regional language, only where there is none),
   the coordinates, the country's alpha-2 code, the best-ranked populations with their dates (P585) and the ISO 3166-2
   codes (P300) of the item and the places it is in (P131, up to four steps up).
+
+Items whose every settlement class is an area or a part of a city (a metropolitan or urban area, a municipal arrondissement, a ward of Japan, a city district, a neighbourhood, a metropolitan city of Italy, a district of Turkey, Moscow or Taiwan, and the others `AREAS` lists in `scripts/fetch-cities.ts`) are left out of the snapshot, unless they are a capital or Natural Earth names them; Tokyo's special wards are kept.
 
 Each answer is kept in `.cities-cache/` (git-ignored), so a run that stops carries on; `--fresh` empties it. The
 User-Agent names the package and its repository, and no person.

@@ -17,7 +17,7 @@ const BW: readonly CityRow[] = [
   [170730,-24.9833,25.35,46831,null,"BW","BW-SO","Kanye","カニエ",null,null,2,"BW-SO",2],
   [615877,-24.4167,26.15,44339,2011,"BW","BW-KL","Mochudi","モチュディ",null,null,2,"BW-KL",0],
   [170711,-22.55,27.1333,36211,2011,"BW","BW-CE","Palapye","パラピエ",null,null,0,null,0],
-  [165768,-25.2167,25.6667,26900,2020,"BW","BW-LO","Lobatse","ロバツェ",null,null,2,null,0],
+  [165768,-25.2167,25.6667,26900,2020,"BW","BW-LO","Lobatse","ロバツェ",null,null,0,null,0],
   [165988,-21.9655,28.4363,21216,2022,"BW","BW-CE","Bobonong",null,null,null,0,null,0],
   [38855,-24.6667,25.7822,20018,2022,"BW","BW-KW","Gabane",null,null,null,0,null,0],
   [170727,-26.02,22.4056,9679,null,"BW","BW-KG","Tshabong","ツァボン",null,null,2,"BW-KG",2],

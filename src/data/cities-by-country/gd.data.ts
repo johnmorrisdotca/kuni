@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GD: readonly CityRow[] = [
-  [41547,12.0525,-61.7531,33734,2025,"GD","GD-03","St. George's","セントジョージズ",null,null,1,"GD GD-03",0],
+  [41547,12.0525,-61.7531,33734,2025,"GD","GD-03","St. George's","セントジョージズ",null,null,1,"GD",0],
   [375507,12.1664,-61.73,3378,2008,"GD","GD-04","Gouyave","グヤヴェ",null,null,2,"GD-04",0],
   [3116519,12.1192,-61.6264,2476,2004,"GD","GD-01","Grenville","グレンヴィル",null,null,2,"GD-01",0],
   [12874663,12.1953,-61.7039,2000,null,"GD","GD-05","Victoria","ビクトリア",null,null,2,"GD-05",0],

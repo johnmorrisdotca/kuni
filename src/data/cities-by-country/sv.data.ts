@@ -5,13 +5,13 @@
 import type { CityRow } from "../../city-rows";
 
 const SV: readonly CityRow[] = [
-  [3110,13.6976,-89.1912,330543,2024,"SV","SV-SS","San Salvador","サンサルバドル",null,null,1,"SV SV-SS",0],
+  [3110,13.6976,-89.1912,330543,2024,"SV","SV-SS","San Salvador","サンサルバドル",null,null,1,"SV",0],
   [739664,13.9947,-89.5566,250760,2024,"SV","SV-SA","Santa Ana","サンタ・アナ",null,null,2,"SV-SA",0],
   [672458,13.4804,-88.1772,232887,2024,"SV","SV-SM","San Miguel","サンミゲル",null,null,2,"SV-SM",0],
   [186935,13.9234,-89.8463,127301,2024,"SV","SV-AH","Ahuachapán","アワチャパン",null,null,2,"SV-AH",0],
   [723246,13.6737,-89.2886,125532,2024,"SV","SV-LI","Santa Tecla","サンタ・テクラ",null,null,2,"SV-LI",0],
   [2003995,13.8764,-89.3585,97210,2024,"SV","SV-LI","San Juan Opico","サン・フアン・オピコ",null,null,0,null,0],
-  [682226,13.7462,-89.6756,77529,2024,"SV","SV-SO","Izalco","イサルコ","Ijtzalku","nah",0,null,0],
+  [682226,13.7462,-89.6756,77529,2024,"SV","SV-SO","Izalco","イサルコ",null,null,0,null,0],
   [2565837,13.9853,-89.6802,74025,2024,"SV","SV-SA","Chalchuapa","チャルチュアーパ",null,null,0,null,0],
   [1014248,13.7206,-89.7275,72233,2024,"SV","SV-SO","Sonsonate","ソンソナーテ",null,null,2,"SV-SO",0],
   [1018092,13.3438,-88.4382,66125,2024,"SV","SV-US","Usulután","ウスルタン",null,null,2,"SV-US",0],

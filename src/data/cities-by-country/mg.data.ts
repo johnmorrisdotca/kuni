@@ -5,9 +5,9 @@
 import type { CityRow } from "../../city-rows";
 
 const MG: readonly CityRow[] = [
-  [3915,-18.91,47.525,1275207,2018,"MG",null,"Antananarivo","アンタナナリボ","Tananarive","fr",1,"MG MG-T",0],
+  [3915,-18.91,47.525,1275207,2018,"MG",null,"Antananarivo","アンタナナリボ",null,null,1,"MG",0],
   [583184,-19.8667,47.0333,265018,2018,"MG",null,"Antsirabe","アンツィラベ",null,null,0,null,0],
-  [178067,-18.155,49.41,225116,2010,"MG","MG-A","Toamasina","トゥアマシナ",null,null,2,"MG-A",0],
+  [178067,-18.155,49.41,225116,2010,"MG","MG-A","Toamasina","トゥアマシナ","Tamatave","fr",2,"MG-A",0],
   [527441,-21.4333,47.0833,184184,null,"MG",null,"Fianarantsoa","フィアナランツォア",null,null,2,"MG-F",2],
   [218753,-15.7167,46.3167,166384,2010,"MG",null,"Mahajanga","マジュンガ",null,null,2,"MG-M",0],
   [824043,-23.35,43.6667,115319,null,"MG",null,"Toliara","トゥリアラ","Urbaine Toliara","mg",2,"MG-U",2],

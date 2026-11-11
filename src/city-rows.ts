@@ -54,18 +54,18 @@ interface City {
   populationDate: string | null;
   /** The ISO 3166-2 code of its first-level subdivision, "FR-IDF"; `null` where Wikidata does not say or kuni lists none. */
   subdivision: string | null;
-  /** "national" for the capital of a country, "subdivision" for the capital of a subdivision; `null` for neither. */
-  capital: "national" | "subdivision" | null;
-  /** The codes it is the capital of (alpha-2 for a country, ISO 3166-2 for a subdivision), as Wikidata says; empty where only Natural Earth calls it a capital. */
+  /** "national" for the capital of a country (one only for each country), "alternate" for another seat of a country's government (Cape Town, Kyoto), "subdivision" for the capital of a subdivision; `null` for none. */
+  capital: "national" | "alternate" | "subdivision" | null;
+  /** The codes it is the capital of (alpha-2 for a country, ISO 3166-2 for a subdivision): never empty for a capital, always empty for a city that is not one. */
   capitalOf: readonly string[];
   /** Where each fact came from; a fact no source gave is `null`. */
   source: { point: CitySource; population: CitySource | null; ja: CitySource | null };
 }
 
 // [item number (or "ne:<number>"), latitude, longitude, population, population date, country, subdivision, en, ja, native, native language,
-//  capital (0 none, 1 national, 2 subdivision), capital of (space-separated), sources (bit 1: ja from Natural Earth, bit 2:
+//  capital (0 none, 1 national, 2 subdivision, 3 alternate), capital of (space-separated), sources (bit 1: ja from Natural Earth, bit 2:
 //  population from Natural Earth, bit 4: point from Natural Earth)]
-type CityRow = readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2, string | null, number];
+type CityRow = readonly [number | string, number, number, number | null, number | string | null, string, string | null, string, string | null, string | null, string | null, 0 | 1 | 2 | 3, string | null, number];
 
 const freezeCity = (row: CityRow): City => {
   const [id, lat, lon, population, date, country, subdivision, en, ja, native, nativeLanguage, capital, capitalOf, sources] = row;
@@ -81,7 +81,7 @@ const freezeCity = (row: CityRow): City => {
     population,
     populationDate: date === null ? null : String(date),
     subdivision,
-    capital: capital === 1 ? "national" : capital === 2 ? "subdivision" : null,
+    capital: capital === 1 ? "national" : capital === 2 ? "subdivision" : capital === 3 ? "alternate" : null,
     capitalOf: Object.freeze(capitalOf === null ? [] : capitalOf.split(" ")),
     source: Object.freeze({
       point: sources & 4 ? "natural-earth" : "wikidata",

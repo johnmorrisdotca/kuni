@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const GT: readonly CityRow[] = [
-  [1555,14.6417,-90.5133,994938,2025,"GT","GT-01","Guatemala City","グアテマラシティ","Ciudad de Guatemala","es",1,"GT GT-01",0],
+  [1555,14.6417,-90.5133,994938,2025,"GT","GT-01","Guatemala City","グアテマラシティ","Ciudad de Guatemala","es",1,"GT",0],
   [948953,14.6338,-90.6146,527828,"2023-06-30","GT","GT-01","Mixco","ミスコ",null,null,0,null,0],
   [1018584,14.5314,-90.5964,492480,"2023-06-30","GT","GT-01","Villa Nueva","ビジャ・ヌエバ",null,null,0,null,0],
   [867077,15.4833,-90.3667,228664,2021,"GT","GT-16","Cobán","コバン",null,null,2,"GT-16",0],
@@ -45,7 +45,7 @@ const GT: readonly CityRow[] = [
   [73164050,14.5693,-90.6043,30000,null,"GT","GT-01","Ciudad Peronia, Villa Nueva, Guatemala",null,null,null,0,null,0],
   [615633,14.8539,-90.0686,27407,2022,"GT","GT-02","Guastatoya","グアスタトヤ",null,null,2,"GT-02",0],
   [2689111,14.6774,-92.1404,27365,null,"GT","GT-12","Ciudad Tecún Umán",null,null,null,0,null,0],
-  [686756,14.35,-89.85,25839,2022,"GT","GT-22","El Progreso","エル・プログレソ",null,null,2,null,0],
+  [686756,14.35,-89.85,25839,2022,"GT","GT-22","El Progreso","エル・プログレソ",null,null,0,null,0],
   [1266746,13.9333,-90.8167,23887,2018,"GT","GT-05","Puerto San José","プエルト・サンホセ",null,null,0,null,0],
   [129369,14.2308,-90.9472,22884,null,"GT","GT-05","La Democracia","ラ・デモクラシア",null,null,0,null,0],
   [2717997,14.8833,-91.45,21577,2022,"GT","GT-09","Salcajá",null,null,null,0,null,0],

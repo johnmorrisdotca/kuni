@@ -5,8 +5,8 @@
 import type { CityRow } from "../../city-rows";
 
 const MU: readonly CityRow[] = [
-  [3929,-20.1619,57.4989,149194,2012,"MU","MU-PL","Port Louis","ポートルイス","Port-Louis","fr",1,"MU MU-PL",0],
-  [813337,-20.2333,57.4667,104973,null,"MU","MU-PW","Beau Bassin-Rose Hill","ボー・バッサン＝ローズ・ヒル",null,null,2,"MU-PW",0],
+  [3929,-20.1619,57.4989,149194,2012,"MU","MU-PL","Port Louis","ポートルイス","Port-Louis","fr",1,"MU",0],
+  [813337,-20.2333,57.4667,104973,null,"MU","MU-PW","Beau Bassin-Rose Hill","ボー・バッサン＝ローズ・ヒル","Beau-Bassin Rose-Hill","fr",2,"MU-PW",0],
   [1341194,-20.25,57.4667,81773,2015,"MU","MU-PW","Quatre Bornes","カトル・ボルヌ",null,null,0,null,0],
   [1002525,-20.3167,57.5167,77466,2011,"MU","MU-PW","Curepipe","キュールピップ",null,null,0,null,0],
   [641130,-20.0547,57.5453,23386,2011,"MU","MU-PA","Triolet","トリオレット",null,null,2,"MU-PA",0],

@@ -5,17 +5,17 @@
 import type { CityRow } from "../../city-rows";
 
 const GQ: readonly CityRow[] = [
-  [3818,3.7521,8.7737,297000,2018,"GQ","GQ-I","Malabo","マラボ",null,null,1,"GQ-BN GQ-I",0],
+  [3818,3.7521,8.7737,297000,2018,"GQ","GQ-I","Malabo","マラボ",null,null,2,"GQ-BN GQ-I",0],
   [320792,1.865,9.77,290000,2015,"GQ","GQ-C","Bata","バタ",null,null,2,"GQ-C GQ-LI",0],
   [2550461,1.85,10.25,41084,2014,"GQ","GQ-C","Niefang","ニエファング",null,null,0,null,0],
-  [911358,2.15,11.3167,36565,2012,"GQ","GQ-C","Ebibeyin","エベビイン",null,null,2,"GQ-KN",0],
+  [911358,2.15,11.3167,36565,2012,"GQ","GQ-C","Ebibeyin","エベビイン","Ebibeyín","es",2,"GQ-KN",0],
   [2720938,1.8656,10.7689,16626,2012,"GQ","GQ-C","Añisok","アニソク",null,null,0,null,0],
   [2604898,1.6931,11.0342,15644,2012,"GQ","GQ-C","Mengomeyén","モンゴメイェン",null,null,0,null,0],
   [1988320,1.45,10.5667,9155,2012,"GQ","GQ-C","Evinayong","エヴィナヨング","Evínayong","es",2,"GQ-CS",0],
   [985548,3.45,8.55,7739,2012,"GQ","GQ-I","Luba","ルバ",null,null,2,"GQ-BS",0],
   [526539,1.6287,11.3168,7251,2012,"GQ","GQ-C","Mongomo","モンゴモ",null,null,2,"GQ-WN",0],
   [1001897,-1.4043,5.6322,5008,2001,"GQ","GQ-I","San Antonio de Palé","サンアントニオ・デ・パレ",null,null,2,"GQ-AN",0],
-  [1140136,1.5917,10.8222,2000,2022,"GQ","GQ-C","Ciudad de la Paz","ラパス",null,null,1,"GQ GQ-DJ",0],
+  [1140136,1.5917,10.8222,2000,2022,"GQ","GQ-C","Ciudad de la Paz","ラパス",null,null,1,"GQ",0],
 ];
 
 export { GQ };

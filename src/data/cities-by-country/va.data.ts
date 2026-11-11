@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const VA: readonly CityRow[] = [
-  [237,41.904,12.453,949,"2024-12-31","VA",null,"Vatican City","バチカン","Civitas Vaticana","la",1,"VA",0],
+  [237,41.904,12.453,949,"2024-12-31","VA",null,"Vatican City","バチカン","Città del Vaticano","it",1,"VA",0],
 ];
 
 export { VA };

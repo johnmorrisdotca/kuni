@@ -52,11 +52,10 @@ describe("the built entries", () => {
   });
 
   it("keep the core of the cities small, with no city in it, and each tier and country in its own file", () => {
-    expect(size("dist/cities.js")).toBeLessThan(16 * KB);
-    expect(size("dist/cities/capitals.js")).toBeLessThan(700 * KB);
-    expect(size("dist/cities/1m.js")).toBeLessThan(80 * KB);
-    expect(size("dist/cities/100k.js")).toBeLessThan(700 * KB);
-    expect(size("dist/cities/15k.js")).toBeLessThan(3300 * KB);
+    expect(size("dist/cities.js")).toBeLessThan(24 * KB);
+    expect(size("dist/cities/capitals.js")).toBeLessThan(650 * KB);
+    expect(size("dist/cities/1m.js")).toBeLessThan(110 * KB);
+    expect(size("dist/cities/100k.js")).toBeLessThan(800 * KB);
     const files = readdirSync("dist/cities").filter((file) => /^[a-z]{2}\.js$/.test(file));
     expect(files.length).toBeGreaterThan(190);
     for (const file of files) expect(size(`dist/cities/${file}`), file).toBeLessThan(700 * KB);

@@ -198,17 +198,6 @@
       },
       "default": "./dist/cities/100k.js"
     },
-    "./cities/15k": {
-      "import": {
-        "types": "./dist/cities/15k.d.ts",
-        "default": "./dist/cities/15k.js"
-      },
-      "require": {
-        "types": "./dist/cities/15k.d.cts",
-        "default": "./dist/cities/15k.cjs"
-      },
-      "default": "./dist/cities/15k.js"
-    },
     "./cities/*": {
       "import": {
         "types": "./dist/cities/*.d.ts",
@@ -4680,6 +4669,7 @@
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
     "data:cities": "node scripts/fetch-cities.ts",
+    "data:record-ids": "node scripts/build-data.ts --record-ids",
     "site": "pnpm build && node scripts/site.mjs",
     "test:demo": "pnpm site && node scripts/docs-site.mjs build && playwright test",
     "screenshots:readme": "pnpm site && node scripts/readme-pictures.mjs",

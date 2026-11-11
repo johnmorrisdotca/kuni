@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const FJ: readonly CityRow[] = [
-  [38807,-18.1333,178.4333,88271,2009,"FJ","FJ-C","Suva","スバ","सुवा","hif",1,"FJ FJ-C",0],
+  [38807,-18.1333,178.4333,88271,2009,"FJ","FJ-C","Suva","スバ",null,null,1,"FJ",0],
   [26715,-18.0667,178.5,87446,2007,"FJ","FJ-C","Nasinu","ナシヌー",null,null,0,null,0],
   [619443,-17.8,177.4167,71048,2017,"FJ","FJ-W","Nadi","ナンディ",null,null,0,null,0],
   [26707,-18.0244,178.5454,57882,null,"FJ","FJ-C","Nausori","ナウソリ",null,null,0,null,0],

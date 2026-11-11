@@ -83,19 +83,40 @@ describe("searchPlaces", () => {
     expect(sydney[0]).toMatchObject({ kind: "city", city: { country: "AU" } });
   });
 
+  it("folds the letters that do not decompose: Lodz finds Łódź, Strasse finds Straße", async () => {
+    const lodz = await searchPlaces("Lodz");
+    expect(lodz.some((one) => one.kind === "city" && one.city.country === "PL" && /Ł|Lodz|Łódź/.test(one.city.name.native ?? one.city.name.en))).toBe(true);
+    expect(lodz[0]).toMatchObject({ kind: "city", city: { country: "PL" } });
+    const strasse = await searchPlaces("Strasse", { country: "DE" });
+    expect(strasse.every((one) => one.kind === "city")).toBe(true);
+    expect((await searchPlaces("Gdansk", { tiers: ["capitals", "1m", "100k"] })).some((one) => one.kind === "city" && one.city.country === "PL")).toBe(true);
+  });
+
+  it("finds a city by its native name: genova finds Genoa, koln and köln find Cologne", async () => {
+    expect((await searchPlaces("genova"))[0]).toMatchObject({ kind: "city", city: { name: { en: "Genoa" } } });
+    expect((await searchPlaces("koln"))[0]).toMatchObject({ kind: "city", city: { name: { en: "Cologne", native: "Köln" } } });
+    expect((await searchPlaces("Köln"))[0]).toMatchObject({ kind: "city", city: { name: { en: "Cologne" } } });
+  });
+
   it("answers at most the limit, and nothing for empty text", async () => {
     expect((await searchPlaces("a", { limit: 5 })).length).toBe(5);
     expect((await searchPlaces("a", { limit: 0 })).length).toBe(1);
     expect((await searchPlaces("a", { limit: 5000 })).length).toBeLessThanOrEqual(100);
+    expect((await searchPlaces("a", { limit: NaN })).length).toBe(20);
+    expect((await searchPlaces("a", { limit: "7" as unknown as number })).length).toBe(20);
     expect(await searchPlaces("")).toEqual([]);
     expect(await searchPlaces("  !! ")).toEqual([]);
     expect(await searchPlaces(undefined as unknown as string)).toEqual([]);
   });
 
   it("looks in the capitals and the million-city tier by default, and in other tiers when asked", async () => {
-    const small = (await import("./cities/15k")).cities15k()[0]!;
+    const { loadCities } = await import("./cities");
+    const small = (await loadCities("15k")).cities[0]!;
     expect((await searchPlaces(small.name.en)).some((one) => one.kind === "city" && one.city.id === small.id)).toBe(false);
     expect((await searchPlaces(small.name.en, { tiers: ["15k"] })).some((one) => one.kind === "city" && one.city.id === small.id)).toBe(true);
+    // The cities of 100,000 or more are in the default search.
+    const middling = (await loadCities("100k")).cities.find((one) => one.capital === null)!;
+    expect((await searchPlaces(middling.name.en)).some((one) => one.kind === "city" && one.city.id === middling.id)).toBe(true);
   });
 
   it("searches one country's cities only, with no countries", async () => {

@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const VE: readonly CityRow[] = [
-  [1533,10.5061,-66.9144,2245744,2017,"VE","VE-A","Caracas","カラカス",null,null,1,"VE VE-A",0],
+  [1533,10.5061,-66.9144,2245744,2017,"VE","VE-A","Caracas","カラカス",null,null,1,"VE",0],
   [171632,10.6333,-71.6333,1551539,2011,"VE","VE-V","Maracaibo","マラカイボ",null,null,2,"VE-V",0],
   [54880,10.1667,-68,1484430,2011,"VE","VE-G","Valencia","バレンシア",null,null,2,"VE-G",0],
   [333928,10.2469,-67.5958,1102088,2011,"VE","VE-D","Maracay","マラカイ",null,null,2,"VE-D",0],
@@ -101,7 +101,7 @@ const VE: readonly CityRow[] = [
   [1324653,9.7822,-69.7931,41327,2001,"VE","VE-K","El Tocuyo","エル・トクヨ",null,null,0,null,0],
   [2919041,10.574,-62.2983,40000,null,"VE","VE-R","Güiria","グイリア",null,null,0,null,0],
   [742128,7.7828,-68.2269,38523,2013,"VE","VE-C","Achaguas",null,null,null,0,null,0],
-  [3472617,10.1819,-67.5025,38316,2013,"VE","VE-D","Santa Cruz",null,null,null,0,null,0],
+  [3472617,10.1819,-67.5025,38316,2013,"VE","VE-D","Santa Cruz",null,"Santa Cruz de Aragua","es",0,null,0],
   [1020535,9.3667,-70.4331,38110,null,"VE","VE-T","Trujillo","トルヒーヨ",null,null,2,"VE-T",0],
   [592609,10.1889,-64.6951,36450,2021,"VE","VE-B","Lechería",null,null,null,0,null,0],
   [2859442,9.4575,-64.8261,33464,2013,"VE","VE-B","Aragua de Barcelona",null,null,null,0,null,0],

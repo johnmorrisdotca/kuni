@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const PA: readonly CityRow[] = [
-  [3306,8.9711,-79.5347,1540000,2026,"PA","PA-8","Panama City","パナマ市","Panamá","es",1,"PA PA-8",0],
+  [3306,8.9711,-79.5347,1540000,2026,"PA","PA-8","Panama City","パナマ市","Ciudad de Panamá","es",1,"PA",0],
   [12825018,9.3598,-79.9004,241817,2016,"PA","PA-3","Colón City","コロン","Ciudad de Colón","es",2,"PA-3",0],
   [3916792,9.08,-79.53,127440,null,"PA","PA-8","Las Cumbres","ラス・クンブレス",null,null,0,null,0],
   [685509,8.1057,-80.9711,109605,2023,"PA",null,"Santiago de Veraguas","サンティアゴ・デ・ベラグアス",null,null,2,"PA-9",0],

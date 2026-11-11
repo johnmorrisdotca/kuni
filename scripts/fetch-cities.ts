@@ -14,7 +14,7 @@
 //   3. what each of those items is an instance of (P31), in chunks, keeping those that are a settlement;
 //   4. the capitals: the current P36 of every item with an ISO 3166-1 (P297) or ISO 3166-2 (P300) code;
 //   5. for every kept item, and every Natural Earth place that names a Wikidata item, in chunks: its English and
-//      Japanese labels, its native label (P1705, else its label in the country's official language, P37 with P424),
+//      Japanese labels, its native name (its label in the country's official language, P37 with P424; P1705 only where there is none),
 //      its coordinates, its country's alpha-2 code, its best-ranked populations with their dates (P585), and the
 //      ISO 3166-2 codes (P300) of itself and of the places it is in (P131, up to four steps).
 //
@@ -35,9 +35,17 @@ const CACHE = join(ROOT, ".cities-cache");
 const FLOOR = 15000;
 const BANDS = [FLOOR, 20000, 30000, 50000, 100000, 300000, 1000000, 1e9];
 const PAUSE = 3;
-// Classes that name an area made of cities, not a city: a metropolitan area, an urban area, a conurbation, an urban
-// agglomeration, a built-up area. An item that is only one of these is not a city; one that is also a city stays.
-const AREAS = new Set(["Q702492", "Q159313", "Q245260", "Q1907114", "Q111739159", "Q453909", "Q20752426", "Q2342385", "Q124250988"]);
+// Classes that name an area made of cities, or a part of a city, or a unit that holds cities, not a city: a metropolitan or
+// urban area, a conurbation, a municipal arrondissement, a ward of Japan (Tokyo's special wards, Q5327704, are kept), a
+// city district, a neighbourhood, a metropolitan city of Italy, the districts of Turkey, Moscow, Taiwan and the like. An item
+// whose every settlement class is one of these is not a city; one that is also a city or a town stays, and so does every
+// capital and every place Natural Earth names.
+const AREAS = new Set([
+  "Q702492", "Q159313", "Q245260", "Q1907114", "Q111739159", "Q453909", "Q20752426", "Q2342385", "Q124250988", "Q1768043", "Q5951278",
+  "Q702842", "Q137773", "Q4286337", "Q15195406", "Q705296", "Q4389092", "Q18559008", "Q851110", "Q856976", "Q3565075", "Q1147395",
+  "Q3976659", "Q149621", "Q986065", "Q2367508", "Q123705", "Q188509", "Q10267336", "Q17051044", "Q61089180", "Q15921247", "Q7897276",
+  "Q1115575", "Q2755753", "Q211690", "Q192287", "Q56061", "Q15110",
+]);
 
 const QUERIES = {
   classes: "SELECT ?t WHERE { ?t wdt:P279* wd:Q486972 }",
@@ -301,10 +309,10 @@ const main = async (): Promise<void> => {
       one.point ??= point(row.coord?.value);
       one.country ??= row.code?.value ?? null;
     }
-    // The label in the country's official language(s), for those with no native label of their own (P1705).
+    // The label in the country's official language(s), English left out (it is the English label), for every item with a country.
     const pairs = chunk.flatMap((id) => {
       const one = records.get(id)!;
-      if (one.nat !== null || one.country === null) return [];
+      if (one.country === null) return [];
 
       return (languages.get(one.country) ?? []).filter((lang) => lang !== "en").map((lang) => `(wd:${id} "${lang}")`);
     });
@@ -313,11 +321,20 @@ const main = async (): Promise<void> => {
     for (const row of await ask(fill(QUERIES.subdivisions, { ITEMS: ids }))) records.get(qid(row.item!.value))!.subs.push(row.code!.value);
     if ((at + 1) % 10 === 0) console.log(`  ${Math.min((at + 1) * 400, everyone.length)} of ${everyone.length}.`);
   }
-  for (const row of natives) {
-    const one = records.get(qid(row.item!.value))!;
-    if (one.nat === null) {
-      one.nat = row.label!.value;
-      one.natLang = row.lang!.value;
+  // The native name is the label in the country's official language: the first language in code order that has one. Only where the
+  // country has an official language other than English and none of them has a label is Wikidata's native label (P1705) the
+  // fallback; where English is the only official language, the English name is the native one and there is none to give.
+  const officialLabels = new Map<string, [string, string][]>();
+  for (const row of natives) officialLabels.set(qid(row.item!.value), [...(officialLabels.get(qid(row.item!.value)) ?? []), [row.lang!.value, row.label!.value]]);
+  for (const [id, one] of records) {
+    const others = one.country === null ? [] : (languages.get(one.country) ?? []).filter((lang) => lang !== "en");
+    const found = (officialLabels.get(id) ?? []).sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))[0];
+    if (found !== undefined) {
+      one.nat = found[1];
+      one.natLang = found[0];
+    } else if (others.length === 0 && one.country !== null && languages.has(one.country)) {
+      one.nat = null;
+      one.natLang = null;
     }
   }
 

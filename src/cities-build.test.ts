@@ -10,10 +10,10 @@ const place = (id: string | null, name: string, ja: string | null, lat: number, 
 const natural = (places: NaturalEarthFile["places"]): NaturalEarthFile => ({ release: "5.1.2", places });
 const levels = new Map([["JP-13", 1], ["JP-27", 1], ["FR-IDF", 1], ["FR-75", 2]]);
 const countries = new Set(["JP", "FR", "BR"]);
-const build = (items: CitiesSnapshot["items"], places: NaturalEarthFile["places"] = []) => buildCities({ snapshot: snapshot(items), naturalEarth: natural(places), levels, countries });
+const build = (items: CitiesSnapshot["items"], places: NaturalEarthFile["places"] = [], capitalNames?: Map<string, string>) => buildCities({ snapshot: snapshot(items), naturalEarth: natural(places), levels, countries, capitalNames });
 
 describe("the tiers", () => {
-  it("put a capital in capitals at any size and the rest by population, at the thresholds", () => {
+  it("hold every capital in capitals, at any size, and every city by population in the others, capitals too, at the thresholds", () => {
     const { tiers } = build([
       item(1, "Capital", null, [1, 1], "FR", [[900, "2020-01-01"]], [], ["FR"]),
       item(2, "Million", null, [2, 2], "FR", [[1000000, "2020-01-01"]]),
@@ -23,11 +23,12 @@ describe("the tiers", () => {
       item(6, "Small", null, [6, 6], "FR", [[14999, "2020-01-01"]]),
       item(7, "NoFigure", null, [7, 7], "FR", []),
       item(8, "SubCapital", null, [8, 8], "FR", [[5000, null]], [], ["FR-IDF"]),
+      item(9, "BigSubCapital", null, [9, 9], "FR", [[3000000, null]], [], ["FR-IDF"]),
     ]);
-    // Most populous first: the subdivision's capital of 5,000 comes before the country's of 900.
-    expect(tiers.capitals.map((row) => row[7])).toEqual(["SubCapital", "Capital"]);
-    expect(tiers.capitals.map((row) => row[11])).toEqual([2, 1]);
-    expect(tiers["1m"].map((row) => row[7])).toEqual(["Million"]);
+    // Most populous first.
+    expect(tiers.capitals.map((row) => row[7])).toEqual(["BigSubCapital", "SubCapital", "Capital"]);
+    expect(tiers.capitals.map((row) => row[11])).toEqual([2, 2, 1]);
+    expect(tiers["1m"].map((row) => row[7])).toEqual(["BigSubCapital", "Million"]);
     expect(tiers["100k"].map((row) => row[7])).toEqual(["AlmostMillion", "Hundred"]);
     expect(tiers["15k"].map((row) => row[7])).toEqual(["Fifteen"]);
   });
@@ -43,7 +44,7 @@ describe("the tiers", () => {
       item(7, "Fine", null, [7, 7], "FR", [[50000, null]]),
     ]);
     expect(Object.values(tiers).flat().map((row) => row[7])).toEqual(["Fine"]);
-    expect(report.leftOut).toEqual({ noName: 1, noPoint: 1, noCountry: 2, noPopulation: 1, belowFloor: 1, area: 0 });
+    expect(report.leftOut).toEqual({ noName: 1, noPoint: 1, noCountry: 2, noPopulation: 1, belowFloor: 1, area: 0, duplicate: 0 });
   });
 });
 
@@ -61,8 +62,98 @@ describe("areas that are not cities", () => {
       ],
       [place("Q6", "Named District", null, 6, 6, 1, "Populated place", "FR")],
     );
-    expect(Object.values(tiers).flat().map((row) => row[7]).sort()).toEqual(["Countyville", "Kept Province", "Named District"]);
+    expect([...new Set(Object.values(tiers).flat().map((row) => row[7]))].sort()).toEqual(["Countyville", "Kept Province", "Named District"]);
     expect(report.leftOut.area).toBe(4);
+  });
+});
+
+describe("the capitals", () => {
+  it("allow one national capital a country: kuni's own capital among those Wikidata names, the others alternates", () => {
+    const { rows, report } = build(
+      [
+        item(1, "Pretoria", null, [1, 1], "FR", [[700000, null]], [], ["FR"]),
+        item(2, "Cape Town", null, [2, 2], "FR", [[4000000, null]], [], ["FR", "FR-IDF"]),
+        item(3, "Bloemfontein", null, [3, 3], "FR", [[500000, null]], [], ["FR"]),
+        item(4, "Kyoto", null, [4, 4], "JP", [[1400000, null]], ["JP-13"]),
+        item(5, "Tokyo", null, [5, 5], "JP", [[14000000, null]], ["JP-13"], ["JP"]),
+        item(6, "Lagos", null, [6, 6], "BR", [[9000000, null]]),
+        item(7, "Abuja", null, [7, 7], "BR", [[3000000, null]]),
+      ],
+      [
+        place("Q1", "Pretoria", null, 1, 1, 700000, "Admin-0 capital", "FR", 11),
+        place("Q4", "Kyoto", null, 4, 4, 1400000, "Admin-0 capital alt", "JP", 12),
+        place("Q6", "Lagos", null, 6, 6, 9000000, "Admin-0 capital alt", "BR", 13),
+        place("Q7", "Abuja", null, 7, 7, 3000000, "Admin-0 capital", "BR", 14),
+      ],
+    );
+    const of = (name: string) => rows.find((row) => row[7] === name)!;
+    expect([of("Pretoria")[11], of("Pretoria")[12]]).toEqual([1, "FR"]);
+    // Cape Town is the legislative capital: an alternate of the country, and a subdivision's capital too.
+    expect([of("Cape Town")[11], of("Cape Town")[12]]).toEqual([3, "FR FR-IDF"]);
+    expect([of("Bloemfontein")[11], of("Bloemfontein")[12]]).toEqual([3, "FR"]);
+    // Natural Earth's "alt" is not enough where Wikidata names a capital of the country: Kyoto is only a city.
+    expect([of("Kyoto")[11], of("Kyoto")[12]]).toEqual([0, null]);
+    expect([of("Tokyo")[11], of("Tokyo")[12]]).toEqual([1, "JP"]);
+    expect([of("Lagos")[11], of("Lagos")[12]]).toEqual([3, "BR"]);
+    expect([of("Abuja")[11], of("Abuja")[12]]).toEqual([1, "BR"]);
+    for (const code of ["FR", "JP", "BR"]) expect(rows.filter((row) => row[5] === code && row[11] === 1).length, code).toBe(1);
+    expect(report.capitals).toMatchObject({ national: 3, alternate: 3 });
+  });
+
+  it("put the national capital of a territory with a code of its own in that country, whatever the item's country says", () => {
+    const { rows } = build([item(1, "Gibraltar", null, [36, -5], "FR", [[30000, null]], [], ["BR"])]);
+    expect([rows[0]![5], rows[0]![11], rows[0]![12]]).toEqual(["BR", 1, "BR"]);
+  });
+
+  it("choose the capital kuni's own list of countries names, then Natural Earth's, then the most populous", () => {
+    const items: CitiesSnapshot["items"] = [item(1, "Pretoria", null, [1, 1], "FR", [[700000, null]], [], ["FR"]), item(2, "Cape Town", null, [2, 2], "FR", [[4000000, null]], [], ["FR"]), item(3, "Johannesburg", null, [3, 3], "FR", [[5000000, null]])];
+    const places = [place("Q3", "Johannesburg", null, 3, 3, 5000000, "Admin-0 capital", "FR", 3)];
+    const national = (names?: Map<string, string>) => build(items, places, names).rows.filter((row) => row[11] === 1).map((row) => row[7]);
+    expect(national(new Map([["FR", "Pretoria"]]))).toEqual(["Pretoria"]);
+    expect(national(new Map([["FR", "Cape Town"]]))).toEqual(["Cape Town"]);
+    // With no name to go by, the most populous Wikidata names. Natural Earth's Johannesburg is no candidate: Wikidata names others.
+    expect(national()).toEqual(["Cape Town"]);
+  });
+
+  it("is not taken in by a former country's code: Djibouti is not the capital of Anguilla", () => {
+    const { rows } = build([item(1, "Djibouti", null, [11, 43], "BR", [[600000, null]], [], ["BR", "FR"]), item(2, "The Valley", null, [18, -63], "FR", [[1000, null]], [], ["FR"])]);
+    const national = Object.fromEntries(rows.filter((row) => row[11] === 1).map((row) => [row[5], row[7]]));
+    expect(national).toEqual({ BR: "Djibouti", FR: "The Valley" });
+  });
+
+  it("make the most populous the national capital where Natural Earth names none", () => {
+    const { rows } = build([item(1, "Small", null, [1, 1], "FR", [[10000, null]], [], ["FR"]), item(2, "Large", null, [2, 2], "FR", [[900000, null]], [], ["FR"])]);
+    expect(rows.filter((row) => row[11] === 1).map((row) => row[7])).toEqual(["Large"]);
+    expect(rows.find((row) => row[7] === "Small")![11]).toBe(3);
+  });
+
+  it("give every capital something it is the capital of, and no other city anything", () => {
+    const { rows, report } = build(
+      [item(1, "Seat", null, [1, 1], "FR", [[900000, null]]), item(2, "Plain", null, [2, 2], "FR", [[900000, null]]), item(3, "Unlisted", null, [3, 3], "FR", [[900000, null]], [], ["FR-ZZ"])],
+      [place("Q1", "Seat", null, 1, 1, 900000, "Admin-1 capital", "FR", 1), place("Q3", "Unlisted", null, 3, 3, 900000, "Admin-1 capital", "FR", 3)],
+    );
+    for (const row of rows) expect(row[11] !== 0, String(row[7])).toBe(row[12] !== null);
+    // Natural Earth's word is not enough for a capital of a subdivision: no code kuni lists, no capital.
+    expect(rows.find((row) => row[7] === "Seat")![11]).toBe(0);
+    expect(rows.find((row) => row[7] === "Unlisted")![11]).toBe(0);
+    expect(report.capitals.droppedWithoutCode).toBe(2);
+  });
+
+  it("keep the nearer of one name in one country as one city: the capital's item, else Natural Earth's, else the more populous", () => {
+    const { rows, report } = build([
+      item(1, "Tokyo", "東京都", [35.69, 139.69], "JP", [[14000000, null]], ["JP-13"], ["JP"]),
+      item(2, "Tokyo", "東京", [35.68, 139.74], "JP", [[9000000, null]], ["JP-13"]),
+      item(3, "Twin", null, [10, 10], "FR", [[500000, null]]),
+      item(4, "Twin", null, [10.05, 10.05], "FR", [[800000, null]]),
+      item(5, "Twin", null, [30, 30], "FR", [[600000, null]]),
+      item(6, "Tiny", null, [20, 20], "FR", [[20000, null]]),
+      item(7, "Tiny", null, [20.01, 20.01], "FR", [[20000, null]]),
+    ]);
+    expect(rows.filter((row) => row[7] === "Tokyo").map((row) => row[0])).toEqual([1]);
+    expect(rows.filter((row) => row[7] === "Twin").map((row) => row[0])).toEqual([4, 5]);
+    // Two small places of one name are two places: only where one is 100,000 or more are they taken for one.
+    expect(rows.filter((row) => row[7] === "Tiny").length).toBe(2);
+    expect(report.leftOut.duplicate).toBe(2);
   });
 });
 
@@ -106,6 +197,16 @@ describe("the names", () => {
     expect(report.tiers["15k"].jaFromNaturalEarth).toBe(1);
   });
 
+  it("leave out a Natural Earth Japanese name written in hiragana for a place outside Japan, and keep one for a place in Japan", () => {
+    const { tiers } = build(
+      [item(1, "Umm Ruwaba", null, [1, 1], "FR", [[50000, null]]), item(2, "Tsukuba", null, [2, 2], "JP", [[50000, null]])],
+      [place("Q1", "Umm Ruwaba", "うーんルワバ", 1, 1, 5, "Populated place", "FR"), place("Q2", "Tsukuba", "つくば", 2, 2, 5, "Populated place", "JP")],
+    );
+    const rows = Object.fromEntries(Object.values(tiers).flat().map((row) => [row[7], row]));
+    expect(rows["Umm Ruwaba"]![8]).toBeNull();
+    expect(rows.Tsukuba![8]).toBe("つくば");
+  });
+
   it("keep the native name only where it differs from the English one", () => {
     const { tiers } = build([item(1, "Munich", null, [1, 1], "FR", [[50000, null]], [], [], ["München", "de"]), item(2, "Paris", null, [2, 2], "FR", [[50000, null]], [], [], ["Paris", "fr"])]);
     const rows = Object.fromEntries(Object.values(tiers).flat().map((row) => [row[7], row]));
@@ -144,15 +245,16 @@ describe("Natural Earth", () => {
       place(null, "Nowhere", null, 8, 8, 900000, "Populated place", null, 80),
     ]);
     expect(tiers["15k"].map((row) => row[0])).toEqual(["ne:77"]);
-    expect(tiers.capitals.map((row) => [row[0], row[11]])).toEqual([["ne:79", 2]]);
+    // A subdivision capital needs a code kuni lists, which only Wikidata gives: Natural Earth's word alone is not enough.
+    expect(tiers.capitals).toEqual([]);
     expect(tiers["15k"][0]![13]).toBe(1 | 2 | 4);
-    expect(report.naturalEarthOnly).toBe(2);
+    expect(report.naturalEarthOnly).toBe(1);
   });
 
   it("adds a capital Wikidata names none of", () => {
     const { tiers } = build([item(1, "Capitalia", null, [1, 1], "FR", [[900000, null]])], [place("Q1", "Capitalia", null, 1, 1, 900000, "Admin-0 capital", "FR")]);
     expect(tiers.capitals[0]![11]).toBe(1);
-    expect(tiers.capitals[0]![12]).toBeNull();
+    expect(tiers.capitals[0]![12]).toBe("FR");
   });
 });
 

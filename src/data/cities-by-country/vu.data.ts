@@ -5,7 +5,7 @@
 import type { CityRow } from "../../city-rows";
 
 const VU: readonly CityRow[] = [
-  [37806,-17.7333,168.3167,49034,2020,"VU","VU-SEE","Port Vila","ポートビラ",null,null,1,"NH VU VU-SEE",0],
+  [37806,-17.7333,168.3167,49034,2020,"VU","VU-SEE","Port Vila","ポートビラ",null,null,1,"VU",0],
   [876557,-15.5128,167.1735,17719,2020,"VU","VU-SAM","Luganville","ルーガンビル",null,null,2,"VU-SAM",0],
   [1070178,-19.55,169.2667,1437,2009,"VU","VU-TAE","Isangel","イサンゲル",null,null,2,"VU-TAE",0],
   [1423143,-13.88,167.55,1065,2009,"VU","VU-TOB","Sola","ソラ (バヌアツ)",null,null,2,"VU-TOB",0],
