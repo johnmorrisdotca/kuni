@@ -2,6 +2,7 @@
 // the one function that makes the public City of it. Not an entry of its own; every tier entry and the core share it.
 
 import { CITY_CONTINENTS } from "./data/city-continents.data";
+import { jaShortOf } from "./ja-short";
 import type { Continent } from "./types";
 
 /**
@@ -37,8 +38,12 @@ type CitySource = "wikidata" | "natural-earth" | "kuni";
 interface City {
   /** Stable, the same in every tier and every release: the Wikidata item, "Q90" for Paris, or "ne:<number>" for a place only Natural Earth has. An id that stops being a city's (merged, or removed) is still answered by `citySet(...).byId`, with the record it was merged into. */
   id: string;
-  /** Its name in English, and in Japanese and in its own language where a source has them: `ja` and `native` are left out, never an English name copied in; `native` is also left out where it is the English name. */
-  name: { en: string; ja?: string; native?: string };
+  /**
+   * Its name in English, and in Japanese and in its own language where a source has them: `ja` and `native` are left
+   * out, never an English name copied in; `native` is also left out where it is the English name. `jaShort`, with `ja`,
+   * is the Japanese name a map labels it by: 東京 for 東京都, 大阪 for 大阪市, the same as `ja` where nothing is dropped.
+   */
+  name: { en: string; ja?: string; jaShort?: string; native?: string };
   /** The continent of its country, in the seven-continent model kuni's groupings use: "AF", "AN", "AS", "EU", "NA", "OC" or "SA". */
   continent: Continent;
   /** The ISO 3166-1 alpha-2 code of its country, two capital letters: "FR". */
@@ -83,7 +88,7 @@ const freezeCity = (row: CityRow): City => {
 
   return Object.freeze({
     id: typeof id === "number" ? `Q${id}` : id,
-    name: Object.freeze({ en, ...(ja === null ? {} : { ja }), ...(native === null ? {} : { native }) }),
+    name: Object.freeze({ en, ...(ja === null ? {} : { ja, jaShort: jaShortOf(ja) }), ...(native === null ? {} : { native }) }),
     continent: CITY_CONTINENTS[country] as Continent,
     country,
     lat,
