@@ -55,7 +55,7 @@ test("the code section is the embed panel, with every item it had and the guide,
   await expect(panel(page).locator("[part=note]")).toHaveText("初期値と異なる選択だけがコードに含まれます。");
   await expect(panel(page).getByTestId("bld-link")).toHaveText("このカードへのリンクをコピー");
   await expect(panel(page).locator("[part=docs]")).toHaveAttribute("href", "docs/ja/guides/country-card-and-embeds.html");
-  await expect(panel(page).locator("[part=credits]")).toContainText("国名は Unicode CLDR");
+  await expect(panel(page).locator("[part=credits]")).toContainText("国名はUnicode CLDR、データはWikidata（CC0）のものです。");
   expect(errors).toEqual([]);
 });
 
@@ -82,5 +82,5 @@ test("a page opened in Japanese gives the panel its Japanese tabs, note, buttons
   await expect(panel(page).locator("[part=note]")).toHaveText("初期値と異なる選択だけがコードに含まれます。");
   await expect(panel(page).getByTestId("bld-link")).toHaveText("このカードへのリンクをコピー");
   await expect(panel(page).locator("[part=docs]")).toHaveAttribute("href", "docs/ja/guides/country-card-and-embeds.html");
-  await expect(panel(page).locator("[part=credits]")).toContainText("国名は Unicode CLDR");
+  await expect(panel(page).locator("[part=credits]")).toContainText("国名はUnicode CLDR、データはWikidata（CC0）のものです。");
 });
