@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Niamey|Maradi|Zinder|Illéla|Madaoua|Tahoua|Agadez|Guidan Roumdji|Loga|Tchintabaraden|Arlit|Gouré|Madarounfa|Dogondoutchi|Téra|Yélou|Birni-N'Konni|Dosso|Diffa|Dioundiou|Tillabéri|Sambéra|N'Guigmi|Gaya|Kirtachi|Ayérou|Fakara|Bengou|Bana|Guidan Roumdji|Balleyara",
   ja: "ニアメ|マラディ|ザンデール|イェラ|マダウワ|タウア|アガデス|||チン・タバラディーヌ|アーリット|グレー||ドゴンドゥチ|テラ||ビルニ・ンコニ|ドッソ|ディファ||ティラベリ||ンギグミ|ガヤ||アヨル|||||",
   native: "|||Illéla (gari)||||Guidan-Roumdji (gari)|Loga (gari)|Tchintabaraden (gari)||Gure|Madarounfa (gari)||Tera (gari)|Yelou|Birnin-Konni|||Dioudiou||Sambera|N'guigmi|||Ayourou||||Guidan Roilumdji|Balléyara",
+  reading: "||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000",
 });
 

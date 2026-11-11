@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mw: the 33 cities of Malawi, every tier together, as a list.
 
 import { MW } from "../data/cities-by-country/mw.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MW));
+const CITIES: readonly City[] = expandColumns(MW);
 
 export default CITIES;
 export { CITIES };

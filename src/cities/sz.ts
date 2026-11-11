@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/sz: the 5 cities of Eswatini, every tier together, as a list.
 
 import { SZ } from "../data/cities-by-country/sz.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(SZ));
+const CITIES: readonly City[] = expandColumns(SZ);
 
 export default CITIES;
 export { CITIES };

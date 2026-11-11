@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/by: the 61 cities of Belarus, every tier together, as a list.
 
 import { BY } from "../data/cities-by-country/by.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BY));
+const CITIES: readonly City[] = expandColumns(BY);
 
 export default CITIES;
 export { CITIES };

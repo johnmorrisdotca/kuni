@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Amman|Irbid|Zarqa|Ajloun|Aqaba|Salt|Zaatari refugee camp|Azraq|Jerash|Ma'an|Kufr 'Awan|Tafilah|Al-Karak|Mafraq|Madaba|Russeifa|Ar Ramtha|Wadi Al-Seer|Aydoun|Al Husn|Al-Turra|al-Shajara|Der Abi Saeed|Bushra|Kafr Al-Maa",
   ja: "アンマン|イルビド|ザルカ|アジュルン|アカバ|サルト|ザータリ難民キャンプ|アズラック|ジェラシュ|マアーン||タフィラ|カラク|マフラク|マダバ|ルセイファ|アル・ラムサ|ワディ・アル・シール|||||||",
   native: "عَمَّان|إربد|الزرقاء|عجلون|العقبة|السلط|مخيم الزعتري|الأزرق|جرش|معان|كفرعوان|الطفيلة|الكرك|المفرق|مادبا|الرصيفة|الرمثا|وادي السير|ايدون|الحصن|الطرة|الشجرة|دير أبي سعيد|بشرى|كفرالماء",
+  reading: "||||||||||||||||||||||||",
   major: "1111111111111111111100000",
 });
 

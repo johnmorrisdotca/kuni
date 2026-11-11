@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Basseterre|Cayon|Charlestown|Newcastle|Monkey Hill|Cotton Ground|Dieppe Bay Town|Sandy Point Town|Middle Island|Nichola Town|Figtree|Market Shop|Saint Paul Capisterre|Trinity",
   ja: "バセテール|ケイオン|チャールズタウン|ニューカッスル|モンキーヒル|コットン・グラウンド|ディエップベイタウン|サンディ・ポイント|ミドルアイランド|ニコラタウン|フィグツリー|マーケット・ショップ|セントポール・カピステール|トリニティ (セントクリストファー・ネイビス)",
   native: "|||||||||||||",
+  reading: "|||||||||||||",
   major: "11111111111111",
 });
 

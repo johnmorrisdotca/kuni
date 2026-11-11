@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/km: the 4 cities of Comoros, every tier together, as a list.
 
 import { KM } from "../data/cities-by-country/km.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "KM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(KM));
+const CITIES: readonly City[] = expandColumns(KM);
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/cw: the 1 cities of Curaçao, every tier together, as a list.
 
 import { CW } from "../data/cities-by-country/cw.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CW));
+const CITIES: readonly City[] = expandColumns(CW);
 
 export default CITIES;
 export { CITIES };

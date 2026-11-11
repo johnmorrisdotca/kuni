@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Muscat|Seeb|Bawshar|Salalah|Sohar|Sur|Ibri|Nizwa|'Alayat Sama’il|Khasab|Mirbat|Rustaq|Haima|Ibra|Muttrah",
   ja: "マスカット|スィーブ|バウシャル|サラーラ|ソハール|スール|イブリー|ニズワ|アラヤットサマイル|ハサブ|ミルバト|ルスタク|ハイマー|イブラー|ムトラ",
   native: "مسقط|ولاية السيب|بوشر|صلالة|ولاية صحار|ولاية صور|عبري|ولاية نزوى||ولاية خصب|ولاية مرباط|ولاية الرستاق|ولاية هيما|ولاية إبراء|مطرح",
+  reading: "||||||||||||||",
   major: "111111111111111",
 });
 

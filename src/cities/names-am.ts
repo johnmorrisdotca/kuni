@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Yerevan|Gyumri|Vanadzor|Hrazdan|Vagharshapat|Armavir|Kapan|Ashtarak|Artashat|Charentsavan|Ararat|Artik|Sevan|Ijevan|Gavar|Goris|Dilijan|Yeghegnadzor|Abovyan|Masis",
   ja: "イェレヴァン|ギュムリ|ヴァナゾル|フラズダン|エチミアジン|アルマヴィル|カパン|アシュタラク|アルタシャト||アララト|アルティク||イジェヴァン|ガバル|ゴリス|ディリジャン|イェゲグナゾル|アボヴィアン|",
   native: "Երևան|Գյումրի|Վանաձոր|Հրազդան|Վաղարշապատ|Արմավիր|Կապան|Աշտարակ|Արտաշատ|Չարենցավան|Արարատ|Արթիկ|Սևան|Իջևան|Գավառ|Գորիս|Դիլիջան|Եղեգնաձոր|Աբովյան|Մասիս",
+  reading: "|||||||||||||||||||",
   major: "11111111111111111111",
 });
 

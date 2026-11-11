@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Saint-Pierre",
   ja: "サン＝ピエール",
   native: "",
+  reading: "",
   major: "1",
 });
 

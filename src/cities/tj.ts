@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tj: the 55 cities of Tajikistan, every tier together, as a list.
 
 import { TJ } from "../data/cities-by-country/tj.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TJ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TJ));
+const CITIES: readonly City[] = expandColumns(TJ);
 
 export default CITIES;
 export { CITIES };

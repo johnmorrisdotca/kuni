@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/fo: the 1 cities of Faroe Islands, every tier together, as a list.
 
 import { FO } from "../data/cities-by-country/fo.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "FO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(FO));
+const CITIES: readonly City[] = expandColumns(FO);
 
 export default CITIES;
 export { CITIES };

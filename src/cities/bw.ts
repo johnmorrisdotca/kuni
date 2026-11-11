@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bw: the 19 cities of Botswana, every tier together, as a list.
 
 import { BW } from "../data/cities-by-country/bw.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BW"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BW));
+const CITIES: readonly City[] = expandColumns(BW);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Managua|León|Masaya|Matagalpa|Chinandega|Estelí|Granada|Jinotega|Puerto Cabezas|Juigalpa|Boaco|Bluefields|Jinotepe|Rivas|San Carlos|Bilwi|Ocotal|Somoto|Nandaime|Sébaco|Villa Reconciliación|Villa Venezuela|Sutiava|San Carlos (City)|Rivas|Ocotal|Somoto|Bluefields|Jinotega|Boaco|Juigalpa|Granada (City)|Chinandega (city)|Jinotepe (City)",
   ja: "マナグア|レオン|マサヤ|マタガルパ|チナンデガ|エステリ|グラナダ|ヒノテガ|プエルト・カベサス|フイガルパ|ボアコ|ブルーフィールズ|Jinotepe|リバス|サン・カルロス||オコタル|ソモト|ナンダイメ||ビジャ・レコンシリアシオン|ビジャ・ベネズエラ||サン・カルロス（市）||オコタル (都市)||ブルーフィールズ||ボアコ||グラナダ（都市）||Jinotepe (市)",
   native: "|||||||||||||||||||||||||||||||Granada (Ciudad)||Jinotepe (Ciudad)",
+  reading: "|||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000",
 });
 

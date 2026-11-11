@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Chaguanas|San Fernando|Port of Spain|Couva|Arouca|Morvant|Laventille|Barataria|Tunapuna|Scarborough|San Juan|Siparia|Rio Claro|Princes Town|Diego Martin|Penal|Sangre Grande",
   ja: "チャグアナス|サンフェルナンド|ポートオブスペイン|クーヴァ|アルーカ|モーヴァント|ラヴェンティル|バラタリア|トゥナプナ|スカボロー|サン・フアン (トリニダード・トバゴ)|シパリア|リオ・クラロ (トリニダード・トバゴ)|プリンセス・タウン|ディエゴ・マーティン|ペナル (町)|サングレ・グランデ",
   native: "||||||||||||||||",
+  reading: "||||||||||||||||",
   major: "11111111111111111",
 });
 

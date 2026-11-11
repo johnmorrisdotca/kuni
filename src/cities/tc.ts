@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tc: the 1 cities of Turks & Caicos Islands, every tier together, as a list.
 
 import { TC } from "../data/cities-by-country/tc.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TC));
+const CITIES: readonly City[] = expandColumns(TC);
 
 export default CITIES;
 export { CITIES };

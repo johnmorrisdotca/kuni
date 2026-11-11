@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/im: the 1 cities of Isle of Man, every tier together, as a list.
 
 import { IM } from "../data/cities-by-country/im.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(IM));
+const CITIES: readonly City[] = expandColumns(IM);
 
 export default CITIES;
 export { CITIES };

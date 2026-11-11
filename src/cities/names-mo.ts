@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Macau|Luhuan",
   ja: "マカオ|",
   native: "澳门|",
+  reading: "|",
   major: "11",
 });
 

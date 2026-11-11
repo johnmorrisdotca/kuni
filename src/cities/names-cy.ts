@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Limassol|Limassol Municipality|North Nicosia|Larnaca|Nicosia|Nicosia Municipality|Larnaca Municipality|Famagusta|Famagusta Municipality|Lakatamia|Paphos|Kyrenia|Paphos Municipality|Agios Vasileios|Aradhippou|Chryseleousa|Gioneli|Agios Nikolaos|Ayios Theodoros|Archangelos - Anthoupoli|Agia Paraskevi|Kyrenia Municipality",
   ja: "リマソール||北ニコシア|ラルナカ|ニコシア|||ファマグスタ||ラカタミア|パフォス|キレニア|||アラディプ||キオネリ|||||",
   native: "Λεμεσός|Δήμος Λεμεσού|Βόρεια Λευκωσία|Λάρνακα|Λευκωσία|Δήμος Λευκωσίας|Δήμος Λάρνακας|Αμμόχωστος|Δήμος Αμμοχώστου|Λακατάμια|Πάφος|Κερύνεια|Δήμος Πάφου|Άγιος Βασίλειος|Αραδίππου|Χρυσελεούσα|Gönyeli|Άγιος Νικόλαος|Άγιος Θεόδωρος|Αρχάγγελος-Ανθούπολη|Αγία Παρασκευή|Δήμος Κερύνειας",
+  reading: "|||||||||||||||||||||",
   major: "1111111111111111111100",
 });
 

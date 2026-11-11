@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "King Edward Point",
   ja: "キング・エドワード・ポイント",
   native: "",
+  reading: "",
   major: "1",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bishkek|Osh|Manas|Karakol|Balykchy|Tokmok|Kyzyl-Kiya|Özgön|Bazar-Korgon|Kara-Balta|Naryn|Talas|Batken|Suzak|Kant|Oytal|Gülchö|Kazarman|Belovodskoye|Arstanbap|Yangi-Naukat|Kurshab|Kara-Suu|Mailuu-Suu|Ması|Tash-Kömür|Karaköl|Razzakov|Toktogul|Ivanovka|Lebedinovka|Novopavlovka",
   ja: "ビシュケク|オシ|ジャララバード|カラコル|バルイクチ|トクマク|キジル＝キヤ|ウズゲン||カラバルタ|ナルン|タラス|バトケン||カント (キルギス)|オイタル||カザルマン||アルスランボブ|||カラスウ (キルギス)|マイリ・スウ|マッシ|タッシュコムール||ラザコフ|トクトグル|||",
   native: "Бишкек|Ош|Манас|Каракол|Балыкчы шаары|Токмок|Кызыл-Кыя шаары|Өзгөн|Базар-Коргон|Кара-Балта|Нарын|Талас шаары|Баткен|Сузак|Кант|Ой-Тал|Гүлчө|Казарман|Беловодск|Арстанбап|Жаңы-Ноокат|Куршаб|Кара-Суу шаары|Майлы-Суу|Масы|Таш-Көмүр|Кара-Көл|Раззаков|Токтогул шаарчасы|Ивановка, Ысык-Ата району|Лебединовка|Новопавловка",
+  reading: "|||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000",
 });
 

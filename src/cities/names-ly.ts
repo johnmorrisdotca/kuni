@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tripoli|Benghazi|Ajdabiya|Misrata|Al Bayda|Al Khums|Zawiya|Derna|Tobruk|Gharyan|Sabratha|Surman|Sabha|Zuwara|Sirte|Yafran|Al Qubbah|encampment of Al Marj|Bani Walid|Murzuk|Shahhat|Brak|Nalut|Mizda|Zintan|Tawergha|Ghat|Hun|Al Jawf|Zaltan|‘Aziziya|Ubari|Tajura",
   ja: "トリポリ|ベンガジ|アジュダービヤー|ミスラタ|アルバイダ|フムス|ザーウィヤ|デルナ|トブルク|ガリヤン|サブラタ||セブハ|ズワーラ|スルト||アル＝クバ|マルジュ|バニワリード|ムルズク|シャハト|ブラーク|ナールート|ミズダ|ジンタン||ガート|フーン|ジャウフ||アジージーヤ|ウバリ|タジュラ",
   native: "طرابلس|بنغازي|أجدابيا|مصراتة|البيضاء|الخمس|الزاوية|درنة|طبرق|غريان|صبراتة|صرمان|سبها|زوارة|سرت|يفرن|القبة|المرج|بني وليد|مرزق|شحات|براك|نالوت|مزدة|الزنتان|تاورغاء|غات|هون|الكفرة|زلطن|العزيزية|أوباري|تاجوراء",
+  reading: "||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000",
 });
 

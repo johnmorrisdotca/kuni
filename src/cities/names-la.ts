@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Vientiane|Kaysone Phomvihane|Pāksē|Thakhèk|Champasak|Luang Prabang|Xam Neua|Phōnsavan|Lūang Namthā|Vang Vieng|Attapư̄|Ban Houayxay|Sainyabūlī|Phongsālī|Sālavan|Sekong|Pakxan|Mư̄ang Sai|Phōnhōng",
   ja: "ヴィエンチャン|カイソーン・ポムウィハーン郡|パークセー郡|ターケーク郡|チャンパーサック|ルアンパバーン郡|サムヌア|ポーンサワン郡|ルアンナムター郡|ヴァンヴィエン|アッタプー|フアイサーイ郡|サイニャブーリー郡 (ラオス)|ポンサーリー郡|サーラワン|セコン|パークサン郡|サイ郡|ポンホーン郡",
   native: "ວຽງຈັນ|ເມືອງໄກສອນ ພົມວິຫານ|ເມືອງປາກເຊ|ທ່າແຂກ|ຈຳປາສັກ|ນະຄອນຫຼວງພະບາງ|ຊຳ ເໜືອ|ໂພນສະຫວັນ|ເມືອງຫຼວງນໍ້າທາ|ວັງວຽງ|ອັດຕະປື|ຫ້ວຍຊາຍ|ເມືອງໄຊຍະບູລີ|ເມືອງຜົ້ງສາລີ|ເມືອງສາລະວັນ|ເຊກອງ|ປາກຊັນ|ເມືອງໄຊ|ໂພນໂຮງ",
+  reading: "||||||||||||||||||",
   major: "1111111111111111111",
 });
 

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pr: the 1 cities of Puerto Rico, every tier together, as a list.
 
 import { PR } from "../data/cities-by-country/pr.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(PR));
+const CITIES: readonly City[] = expandColumns(PR);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Serekunda|Brikama|Farafenni|Banjul|Lamin, Western Division, Gambia|Mansa Konko|Basse Santa Su|Janjanbureh|Kerewan",
   ja: "セレクンダ|ブリカマ|ファラフェニ|バンジュール||マンサ・コンコ|バセ・サンタ・ス|ジャンジャンブレア|ケレワン",
   native: "||||||||",
+  reading: "||||||||",
   major: "111111111",
 });
 

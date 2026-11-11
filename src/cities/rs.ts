@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/rs: the 47 cities of Serbia, every tier together, as a list.
 
 import { RS } from "../data/cities-by-country/rs.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "RS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(RS));
+const CITIES: readonly City[] = expandColumns(RS);
 
 export default CITIES;
 export { CITIES };

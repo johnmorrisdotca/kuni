@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bj: the 31 cities of Benin, every tier together, as a list.
 
 import { BJ } from "../data/cities-by-country/bj.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BJ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BJ));
+const CITIES: readonly City[] = expandColumns(BJ);
 
 export default CITIES;
 export { CITIES };

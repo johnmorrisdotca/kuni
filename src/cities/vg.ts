@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/vg: the 1 cities of British Virgin Islands, every tier together, as a list.
 
 import { VG } from "../data/cities-by-country/vg.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "VG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(VG));
+const CITIES: readonly City[] = expandColumns(VG);
 
 export default CITIES;
 export { CITIES };

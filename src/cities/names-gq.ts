@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Malabo|Bata|Niefang|Ebibeyin|Añisok|Mengomeyén|Evinayong|Luba|Mongomo|San Antonio de Palé|Ciudad de la Paz",
   ja: "マラボ|バタ|ニエファング|エベビイン|アニソク|モンゴメイェン|エヴィナヨング|ルバ|モンゴモ|サンアントニオ・デ・パレ|ラパス",
   native: "|||Ebibeyín|||Evínayong||||",
+  reading: "||||||||||",
   major: "11111111111",
 });
 

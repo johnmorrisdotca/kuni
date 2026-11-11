@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kabul|Kandahar|Herat|Mazar-i-Sharif|Kunduz|Jalalabad|Taloqan|Lashkar Gah|Sheberghan|Charikar|Khost|Ghazni|Pul-e Khomri|Maymana|Baghlan|Balkh|Gardez|Tarinkot|Farah|Sar-e Pol|Zaranj|Fayzabad|Andkhoy|Aybak|Maidan Shar|Aqcha|Kholm|Chah Ab|Khan Abad|Bazarak|Pol-e Alam|Baraki Barak|Rostaq|Qalʻah-ye Zāl|Karukh|Mihtarlam|Asadabad|Firuzkoh|Bamyan|Qalat|Mahmude Raqi|Qala e Naw|Parun|Sharana|Nili|Paghman",
   ja: "カーブル|カンダハール|ヘラート|マザーリ・シャリーフ|クンドゥズ|ジャラーラーバード|タールカーン|ラシュカルガー|シェベルガーン|チャーリーカール|ホースト (アフガニスタン)|ガズニー|プリ・フムリー|マイーマナ|バグラーン|バルフ|ガルデーズ|タリーン・コート|フラダ|サーレポル|ザランジ|ファイザーバード|アンドフボイ|サマンガーン|マイダーンシャー|アクチャ|ホルム|||バザラック|プリアラム|バラキバラク|||カロク|メフタルラーム|アサダーバード|チャグチャラーン|バーミヤーン|カラート|マームディラキ|カラエナウ|パールーン|シャラナ|ニリ|パグマン",
   native: "كابل|قندهار|هراة|مزار شريف|قندوز|جلال آباد|تالقان|لشكر غاه|شبرغان|شاريكار|خوست|غزنة|بل خمري|میمنه|بغلان|بلخ|غرديز|ترين كوت|فراه|ساريبول|زرنج|فيض آباد|أندخوي|سمنكان|ميدان شهر|Aqcha (Afgʻoniston)|خلم، افغانستان|||بازارك|بل علم|بره کی برک|رستاق||كرخ|مهترلام|اسعدآباد|فيروزكوه|باميان|قلات غلجي|محمود الراقي|قلعه نو|بارون|شرنه|نيلي|بغمان",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000",
 });
 

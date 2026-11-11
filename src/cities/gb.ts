@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gb: the 834 cities of United Kingdom, every tier together, as a list.
 
 import { GB } from "../data/cities-by-country/gb.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GB"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GB));
+const CITIES: readonly City[] = expandColumns(GB);
 
 export default CITIES;
 export { CITIES };

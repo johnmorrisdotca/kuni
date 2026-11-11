@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Manama|Al-Muharraq|Hamad Town|Riffa|A'ali|Sitra|Isa Town|Diraz",
   ja: "マナーマ|ムハッラク|ハマド・タウン|リファー|アーリー|シトラ|イーサ・タウン|",
   native: "المنامة|المحرق|مدينة حمد|الرفاع|عالي|سترة|مدينة عيسى|الدراز",
+  reading: "|||||||",
   major: "11111111",
 });
 

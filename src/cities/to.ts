@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/to: the 5 cities of Tonga, every tier together, as a list.
 
 import { TO } from "../data/cities-by-country/to.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TO));
+const CITIES: readonly City[] = expandColumns(TO);
 
 export default CITIES;
 export { CITIES };

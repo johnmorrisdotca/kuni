@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Djibouti|Ali Sabieh|Dikhil|Obock|Tadjoura|Arta",
   ja: "ジブチ市|アリ・サビエ|ディキル|オボック|タジュラ|アルタ",
   native: "جيبوتي|علي صبيح|دخيل|أوبوك|تاجورة|أرتا",
+  reading: "|||||",
   major: "111111",
 });
 

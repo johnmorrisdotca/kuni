@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ly: the 33 cities of Libya, every tier together, as a list.
 
 import { LY } from "../data/cities-by-country/ly.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LY"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LY));
+const CITIES: readonly City[] = expandColumns(LY);
 
 export default CITIES;
 export { CITIES };

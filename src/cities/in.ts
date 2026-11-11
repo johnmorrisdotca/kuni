@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/in: the 1,191 cities of India, every tier together, as a list.
 
 import { IN } from "../data/cities-by-country/in.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IN"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(IN));
+const CITIES: readonly City[] = expandColumns(IN);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dakar|Pikine|Touba|Thiès|Rufisque|M'Bour|Saint-Louis|Keur Massar Nord|Ziguinchor|Kaolack|Rufisque Nord|Sangalkam|Keur Massar Sud|Tivaouane|Diourbel|Nguer Malal|Rufisque Est|Rufisque Ouest|Tambacounda|Jaxaay-Parcelles|Bargny|Kolda|Joal-Fadiouth|Malika|Wouro Sidy|Nguékhokh|Diamniadio|Sébikotane|Saly|Jaxaay-Parcelles-Niakoul Rab|Mboro|Fatick|Kayar|Sédhiou|Kédougou|Pout|Bignona|Meckhe|Karang Poste|Ouarkhokh|Sokone|Khombole|Thiadiaye|Passy|Pakour|Goudomp|Rosso|Linguère|Matam|Kaffrine|Yeumbeul Nord|Grand Yoff|Parcelles Assainies|Yoff|Yeumbeul Sud|Ouakam|Hann Bel-Air|Médina|Biscuiterie|Cambérène|Gueule Tapée-Fass-Colobane|Grand Dakar|Patte d'Oie|HLM|Sicap-Liberté|Dieuppeul-Derklé|Mermoz-Sacré-Cœur|N'diareme limamoulaye|Dakar-Plateau|Fann-Point E-Amitié|Ngor",
   ja: "ダカール|ピキン|トゥーバ|ティエス|リュフィスク|ンブール|サン＝ルイ||ジガンショール|カオラック||||ティバワン|ジュルベル|ルーガ (都市)|||タンバクンダ||バーグニー|コルダ|ジョアル||||ディアムニアディオ|||||ファティック||セディウ|ケドゥグ||ビニョナ|||||||||グドンプ|ロッソ|リンゲール|マタム|カフリン|||パルセル・アセニー|ヨフ||ワカム区||||カンベレン|||||||||プラトー||ニョール (ダカール)",
   native: "|||||M'bour||||||||||Louga|||||||||||||Saly Portudal|||||||||||communauté rurale d'Ouarkhokh|||||communauté rurale de Pakour||||||||Les Parcelles Assainies|||||||||||||||Ndiarème Limamoulaye|||",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000000000000000000000000000",
 });
 

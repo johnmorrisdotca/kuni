@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/np: the 64 cities of Nepal, every tier together, as a list.
 
 import { NP } from "../data/cities-by-country/np.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NP"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NP));
+const CITIES: readonly City[] = expandColumns(NP);
 
 export default CITIES;
 export { CITIES };

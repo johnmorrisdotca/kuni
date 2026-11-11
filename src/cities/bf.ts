@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bf: the 48 cities of Burkina Faso, every tier together, as a list.
 
 import { BF } from "../data/cities-by-country/bf.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BF));
+const CITIES: readonly City[] = expandColumns(BF);
 
 export default CITIES;
 export { CITIES };

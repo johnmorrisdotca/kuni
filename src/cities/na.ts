@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/na: the 25 cities of Namibia, every tier together, as a list.
 
 import { NA } from "../data/cities-by-country/na.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NA"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NA));
+const CITIES: readonly City[] = expandColumns(NA);
 
 export default CITIES;
 export { CITIES };

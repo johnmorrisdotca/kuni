@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Santa Cruz de la Sierra|El Alto|La Paz|Cochabamba|Sucre|Oruro|Warnes|Potosí|Tarija|Sacaba|Quillacollo|Montero|Trinidad|San Joaquín|Yacuiba|Cobija|Riberalta|Villa Tunari|Caranavi|Tiquipaya|Sipe Sipe|El Torno|Vinto|Colcapirhua|Puerto Villarroel|Tupiza|Villamontes|Guayaramerín|Viacha|Camiri|San Ignacio de Velasco|Uyuni|Bermejo|Llallaguita|Villazón|Mizque|San Borja|Independencia|Cliza|Chimoré|Rurrenabaque|Batallas|Puerto Suárez|Punata|Capinota|Ascención de Guarayos|San José de Chiquitos|Puerto Quijarro|Portachuelo|San Matías",
   ja: "サンタ・クルス・デ・ラ・シエラ|エル・アルト|ラパス|コチャバンバ|スクレ|オルロ||ポトシ|タリハ|サカバ|キヤコヨ|モンテロ|トリニダ|サン・ホアキン (ボリビア)|ヤクイバ|コビハ|リベラルタ||カラナビ||||ビント|コルカピルウア|プエルト・ビリャロエル|トゥピサ|ビヤモンテス|グアヤラメリン|ビアチャ|カミリ|サン・イグナシオ・デ・ベラスコ|ウユニ|ベルメホ (ボリビア)|リャリャグア|ビリャソン|ミスケ|サン・ボルハ (ボリビア)|アヨパヤ|クリサ|チモレ|ルレナバケ||プエルト・スアーレス|プナタ||アセンシオン・デ・グアライオス|サン・ホセ・デ・チキトス|プエルトキハロ|ポルタチュエロ|サンマティアス",
   native: "Santa Krus|Altu pata|Chuqiyapu|Quchapampa|Sukri|Ururu||Putusi|Tarixa|||||||Kuwixa||||||El Torno, santa cruz||||Tupisa|||Wiyacha|||||Llallawa|Willasun||||||||||Villa Capinota|Ascensión de Guarayos||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000000",
 });
 

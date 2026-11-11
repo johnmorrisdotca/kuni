@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ck: the 1 cities of Cook Islands, every tier together, as a list.
 
 import { CK } from "../data/cities-by-country/ck.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CK));
+const CITIES: readonly City[] = expandColumns(CK);
 
 export default CITIES;
 export { CITIES };

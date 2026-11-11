@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Flying Fish Cove",
   ja: "フライング・フィッシュ・コーブ",
   native: "",
+  reading: "",
   major: "1",
 });
 

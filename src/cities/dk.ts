@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/dk: the 39 cities of Denmark, every tier together, as a list.
 
 import { DK } from "../data/cities-by-country/dk.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "DK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(DK));
+const CITIES: readonly City[] = expandColumns(DK);
 
 export default CITIES;
 export { CITIES };

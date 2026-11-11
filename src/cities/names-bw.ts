@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Gaborone|Francistown|Mogoditshane|Maun|Molepolole|Tlokweng|Mahalapye|Selebi-Phikwe|Serowe|Kanye|Mochudi|Palapye|Lobatse|Bobonong|Gabane|Tshabong|Kasane|Ghanzi|Ramotswa",
   ja: "ハボローネ|フランシスタウン|モホディツァネ|マウン|モレポロレ||マハラピエ|セレビ・ピクウェ|セロウェ|カニエ|モチュディ|パラピエ|ロバツェ|||ツァボン|カサネ|ハンツィ|ラモッツァ",
   native: "||||||||||||||||||",
+  reading: "||||||||||||||||||",
   major: "1111111111111111111",
 });
 

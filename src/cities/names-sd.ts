@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Khartoum|Omdurman|Port Sudan|El-Obeid|Kassala|Kosti|Nyala|Al Qadarif|Wad Madani|Al-Fashir|Kurmuk|Ad-Damazin|Geneina|Abu Shouk IDP camp|Shendi|Kaduqli|Sengs|Atbarah|Gereida|Umm Badr|Ad-Damir|El Manaqil|Kalma IDP Camp|Ed Dueim|En Nahud|Tokar|Umm Ruwaba|Mellit|Abu Hamad|AlBauga|Abu Suruj|Suakin|Kebkabiya|Mujlad|Ar Rahad|Al Salaam IDP Camp|Kutum|Babanusa|Al Mina Al Bari IDP camp|Zalingei|Dongola|Berber|Al Aylafun|Hayya|Wadi Halfa|ALdinigila wad dhahi|Singa|Ed Daein|Al-Fulah|Rabak|Khartoum North",
   ja: "ハルツーム|オムドゥルマン|ポートスーダン|オベイド|カッサラ|コスティー|ニャラ|ガダーレフ|ワドメダニ|エル＝ファーシル|クルムク|ダマジン|ジュナイナ||シェンディ|カードゥクリー|センナール|アトバラ|||ダーマル|エルマナキル|カルマ (スーダン)|アル・デアイン|ナフド|トカール|||アブー・ハマド|||スアキン|カブカビヤ|ムグラッド|||クトゥム|ババヌサ||ザリンゲイ|ドンゴラ|ベルベル||ハイヤ|ワジハルファ||シンガ|ダイーン|フラーフ|ラバク|アル・ハルツーム・バフリ",
   native: "الخرطوم|أم درمان|بورتسودان|الأبيض|كسلا|كوستي|نيالا|القضارف|ود مدني|الفاشر|الكرمك|الدمازين|الجنينة|مخيم ابوشوك للنازحين|شندي|كادوقلي|سنار|عطبرة|قريضة (بلدة)|أم بادر|الدامر|المناقل|معسكر كلمة للنازحين|الدويم|النهود|طوكر|أم روابة|مليط|أبو حمد|الباوقة|أبو سروج|سواكن|كبكابية|المجلد|الرهد|مخيم السلام للنازحين|كتم|بابنوسة||زالنجي|دنقلا|بربر|العيلفون|هيا|وادي حلفا|الدنيقيلة ود ضاحي|سنجة|الضعين|الفولة|ربك|الخرطوم بحري",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000000000000000000",
 });
 

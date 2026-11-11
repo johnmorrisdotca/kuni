@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Nuuk|Sisimiut|Ilulissat|Aasiaat|Qaqortoq",
   ja: "ヌーク|シシミュート|イルリサット|アシアート|カコトック",
   native: "||||",
+  reading: "||||",
   major: "11111",
 });
 

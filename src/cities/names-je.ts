@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Saint Helier",
   ja: "セント・ヘリア",
   native: "Saint Hélyi",
+  reading: "",
   major: "1",
 });
 

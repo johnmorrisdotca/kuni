@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Windhoek|Rundu|Walvis Bay|Swakopmund|Oshakati|Otjiwarongo|Katima Mulilo|Okahandja|Rehoboth|Tsumeb|Ongwediva|Gobabis|Ondangwa|Helao Nafidi|Grootfontein|Keetmanshoop|Mariental|Eenhana|Lüderitz|Outjo|Onayena|Outapi|Opuwo|Nkurenkuru|Omuthiya",
   ja: "ウィントフック|ルンドゥ|ウォルビスベイ|スワコプムント|オシャカティ|オティワロンゴ|カティマ・ムリロ|オカハンジャ|レホボス|ツメブ|オンウェディバ|ゴバビス|オンダングワ||グルートフォンテイン|ケートマンスフープ|マリエンタール|エーンハナ|リューデリッツ|オウチョ||アウタピ|オプウォ|ンクレンクル|オムシーヤ",
   native: "||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||",
   major: "1111111111111111111100000",
 });
 

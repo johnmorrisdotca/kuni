@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Antananarivo|Antsirabe|Toamasina|Fianarantsoa|Mahajanga|Toliara|Antsiranana|Tôlanaro|Morondava|Andoany|Ambatondrazaka|Maroantsetra|Mananjary|Sambava|Antalaha|Marovoay|Ambanja|Farafangana|Antsohihy|Miandrivazo|Ihosy|Morombe|Vohemar",
   ja: "アンタナナリボ|アンツィラベ|トゥアマシナ|フィアナランツォア|マジュンガ|トゥリアラ|アンツィラナナ|トラニャロ|モロンダバ|アンドゥアニ|アンバトンドザカ|マルアンツェトラ|マナンジャリー|サンバヴァ|アンタラハ|マルブエー|アンバンジャ|ファラファンガナ|アンツヒヒ|ミアンドリバズ|イフシ|ムルンベ|ヴォヒマル",
   native: "||Tamatave|||Urbaine Toliara||||Hell-Ville|||||||||||||",
+  reading: "||||||||||||||||||||||",
   major: "11111111111111111111000",
 });
 

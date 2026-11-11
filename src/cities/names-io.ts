@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Diego Garcia",
   ja: "ディエゴガルシア島",
   native: "",
+  reading: "",
   major: "1",
 });
 

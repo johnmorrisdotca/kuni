@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/is: the 22 cities of Iceland, every tier together, as a list.
 
 import { IS } from "../data/cities-by-country/is.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(IS));
+const CITIES: readonly City[] = expandColumns(IS);
 
 export default CITIES;
 export { CITIES };

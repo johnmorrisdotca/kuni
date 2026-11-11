@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/de: the 1,209 cities of Germany, every tier together, as a list.
 
 import { DE } from "../data/cities-by-country/de.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "DE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(DE));
+const CITIES: readonly City[] = expandColumns(DE);
 
 export default CITIES;
 export { CITIES };

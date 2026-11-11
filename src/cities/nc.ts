@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/nc: the 1 cities of New Caledonia, every tier together, as a list.
 
 import { NC } from "../data/cities-by-country/nc.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NC"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NC));
+const CITIES: readonly City[] = expandColumns(NC);
 
 export default CITIES;
 export { CITIES };

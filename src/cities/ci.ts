@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ci: the 396 cities of Côte d’Ivoire, every tier together, as a list.
 
 import { CI } from "../data/cities-by-country/ci.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "CI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(CI));
+const CITIES: readonly City[] = expandColumns(CI);
 
 export default CITIES;
 export { CITIES };

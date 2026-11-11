@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ls: the 11 cities of Lesotho, every tier together, as a list.
 
 import { LS } from "../data/cities-by-country/ls.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "LS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(LS));
+const CITIES: readonly City[] = expandColumns(LS);
 
 export default CITIES;
 export { CITIES };

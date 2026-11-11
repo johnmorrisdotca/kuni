@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gu: the 1 cities of Guam, every tier together, as a list.
 
 import { GU } from "../data/cities-by-country/gu.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GU"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GU));
+const CITIES: readonly City[] = expandColumns(GU);
 
 export default CITIES;
 export { CITIES };

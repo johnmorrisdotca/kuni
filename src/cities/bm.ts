@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bm: the 1 cities of Bermuda, every tier together, as a list.
 
 import { BM } from "../data/cities-by-country/bm.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BM));
+const CITIES: readonly City[] = expandColumns(BM);
 
 export default CITIES;
 export { CITIES };

@@ -66,6 +66,9 @@ describe("searchPlaces", () => {
     expect((await searchPlaces("パリ", { lang: "ja" }))[0]).toMatchObject({ kind: "city", label: "パリ", city: { id: "Q90" } });
     expect((await searchPlaces("paris", { lang: "ja" }))[0]!.label).toBe("パリ");
     expect((await searchPlaces("paris"))[0]!.label).toBe("Paris");
+    // A name in kanji, by its reading: in the whole search and from the start.
+    expect((await searchPlaces("とうきょう", { lang: "ja" })).find((one) => one.kind === "city")).toMatchObject({ label: "東京都" });
+    expect((await searchPlaces("やまぐち", { lang: "ja", match: "start" })).some((one) => one.kind === "city" && one.label === "山口市")).toBe(true);
   });
 
   it("finds by the place's own language", async () => {
@@ -136,13 +139,13 @@ describe("searchPlaces", () => {
 });
 
 describe("the tiers split by first letters", () => {
-  it("hold each city of the capitals and the 100k tier in the part of every word of its names, and no other", async () => {
+  it("hold each city of the capitals and the 100k tier in the part of every word of its names and its reading, and no other", async () => {
     for (const tier of ["capitals", "100k"] as const) {
       const whole = (await loadCities(tier)).cities;
       const parts = new Map<string, Set<string>>();
       for (const key of START_KEYS) parts.set(key, new Set((await CITY_START_LOADERS[tier][key]!()).CITIES.map((city) => city.id)));
       for (const city of whole) {
-        const keys = startKeys([city.name.en, city.name.ja, city.name.native].flatMap((name) => (name === undefined ? [] : [fold(name)])));
+        const keys = startKeys([city.name.en, city.name.ja, city.name.native, city.name.jaReading].flatMap((name) => (name === undefined ? [] : [fold(name)])));
         for (const key of START_KEYS) expect(parts.get(key)!.has(city.id), `${tier} ${city.name.en} ${key}`).toBe(keys.has(key));
       }
     }
@@ -165,7 +168,7 @@ describe("searchPlaces from the start of a word", () => {
       const whole = await searchPlaces(text, { limit: 100 });
       const start = await searchPlaces(text, { limit: 100, match: "start" });
       const fromStart = whole.filter((hit) => {
-        const names = hit.kind === "city" ? [hit.city.name.en, hit.city.name.ja, hit.city.name.native] : [hit.country.name.en, hit.country.name.ja, hit.country.reading, hit.country.name.local, hit.country.alpha2, hit.country.alpha3];
+        const names = hit.kind === "city" ? [hit.city.name.en, hit.city.name.ja, hit.city.name.jaReading, hit.city.name.native] : [hit.country.name.en, hit.country.name.ja, hit.country.reading, hit.country.name.local, hit.country.alpha2, hit.country.alpha3];
         return names.some((name) => name !== undefined && name !== null && ` ${fold(name)}`.includes(` ${fold(text)}`));
       });
       const id = (hit: (typeof whole)[number]): string => (hit.kind === "city" ? hit.city.id : hit.country.alpha2);

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kingstown|Layou|Port Elizabeth|Chateaubelair|Georgetown|Barrouallie",
   ja: "キングスタウン|ラヨー|ポート・エリザベス (セントビンセント・グレナディーン)|チャトーベレア|ジョージタウン (セントビンセント・グレナディーン)|バローアリー",
   native: "|||||",
+  reading: "|||||",
   major: "111111",
 });
 

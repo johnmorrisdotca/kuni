@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/no: the 55 cities of Norway, every tier together, as a list.
 
 import { NO } from "../data/cities-by-country/no.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NO));
+const CITIES: readonly City[] = expandColumns(NO);
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/nu: the 1 cities of Niue, every tier together, as a list.
 
 import { NU } from "../data/cities-by-country/nu.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "NU"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(NU));
+const CITIES: readonly City[] = expandColumns(NU);
 
 export default CITIES;
 export { CITIES };

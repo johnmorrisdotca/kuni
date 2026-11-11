@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Juba|Wau|Bor|Yei|Malakal|Yambio|Maridi|Imvepi Refugee Settlement|Gogrial|Nasir|Aweil|Rumbek|Torit|Leer|Tonj|Bentiu|Kuajok",
   ja: "ジュバ|ワーウ|ボー|イェイ|マラカル|ヤンビオ|マリーディー||ゴグリアル|ナシル|アウェル|ルンベク|トリット (南スーダン)|リーア|トンジ|ベンティーウ|クアジョク",
   native: "||||||||||||||||",
+  reading: "||||||||||||||||",
   major: "11111111111111111",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Santo Domingo|Santiago de los Caballeros|Santo Domingo Este|Luperon pto pta|La Vega|Higüey|San Cristóbal|San Pedro de Macorís|San Francisco de Macorís|San Juan de la Maguana|Bonao|Baní|La Romana|Punta Cana|Samaná|Azua|Sabaneta|Moca|Santa Cruz de Barahona|Cotuí|Nagua|Mao|Santa Cruz del Seibo|Hato Mayor del Rey|San José de Ocoa|Monte Plata|Salcedo|Neiba|Dajabón|Comendador|Monte Cristi|Pedernales|Piedra Blanca|Pimentel|Jimaní",
   ja: "サント・ドミンゴ|サンティアゴ・デ・ロス・カバリェロス|サント・ドミンゴ・エステ|プエルト・プラタ|コンセプシオン・デ・ラ・ベガ|イグエイ|サン・クリストバル|サンペドロ・デ・マコリス|サン・フランシスコ・デ・マコリス|サン・フアン・デ・ラ・マグアーナ|ボナオ|バニ|ラ・ロマーナ|プンタ・カナ|サマナ|アスア (ドミニカ共和国)|サバネタ|モカ (ドミニカ共和国)|バラオナ|コトゥイ|ナグア|マオ|エル・セイボ|アト・マジョール・デル・レイ|サン・ホセ・デ・オコア|モンテ・プラタ|サルセド|ネイバ|ダハボン|コメンダドル|モンテ・クリスティ (ドミニカ共和国)|ペデルナレス|ピエドラ・ブランカ|ピメンテル (ドミニカ共和国)|ヒマニ",
   native: "|||Puerto Plata||||||San Juan||||||Municipio de Azua|San Ignacio de Sabaneta||||||El Seibo|Hato Mayor||||||||||Pimentel (República Dominicana)|",
+  reading: "||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000",
 });
 

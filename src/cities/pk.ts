@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/pk: the 196 cities of Pakistan, every tier together, as a list.
 
 import { PK } from "../data/cities-by-country/pk.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "PK"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(PK));
+const CITIES: readonly City[] = expandColumns(PK);
 
 export default CITIES;
 export { CITIES };

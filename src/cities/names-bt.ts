@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Thimphu|Mongar|Wangdue Phodrang|Punakha|Samtse|Trongsa|Paro|Lhuntse|Damphu|Sarpang|Trashigang|Ha|Zhemgang|Samdrup Jongkhar|Jakar|Daga|Trashiyangtse|Pemagatsel|Gasa Dzong|Tsimasham",
   ja: "ティンプー||ワンデュ・ポダン|プナカ|サムツェ|トンサ|パロ|ルンツェ|ダンプー||タシガン|ハ|シェムガン|サムドゥプ・ジョンカル|ジャカル|ダガ|タシ・ヤンツェ||ガサ|",
   native: "ཐིམ་ཕུུུུ||ཝན་ཌུ་ ཕོཌར་ག|སྤུ་ན་ཁ་|ས་མ་ཛེ་ (བོད་ཀྱི་རྫོང་ཁག་གི་རྒྱལ་ས་)|ཀྲོང་གསར་|སྤ་རོ་||||བཀྲིས་སྒང་|ཧཱ / ཧས||བསམ་གྲུབ་ལྗོངས་མཁར་||དར་དཀ||པེ་མཱག་ཛེལ་ (Bhutan གི་རྫོང་ཁག་གི་རྒྱལ་ས་)|མགར་ས་ བཀྲིས་མཐོང་སྨོན་རྫོང་།|",
+  reading: "|||||||||||||||||||",
   major: "11111111111111111111",
 });
 

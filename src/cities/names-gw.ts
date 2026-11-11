@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bissau|Farim|Gabu|Quinhamel|Bafatá|Bissorã|Buba|Cacheu|Catió|Bolama",
   ja: "ビサウ|ファリン|ガブ|キニャーメウ|バファタ|ビソラン|ブバ|カシェウ|カチオ|ボラマ",
   native: "|||||||||",
+  reading: "|||||||||",
   major: "1111111111",
 });
 

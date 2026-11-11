@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Moroni|Mutsamudu|Domoni|Fomboni",
   ja: "モロニ|ムツァムドゥ|ドモニ|フォンボニ",
   native: "موروني|موتسامودو|دوموني|فومبوني",
+  reading: "|||",
   major: "1111",
 });
 

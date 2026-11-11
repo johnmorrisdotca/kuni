@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kigali|Muhanga|Ruhengeri|Gisenyi|Nyundo, Rubavu|Byumba hospital|Juru|Cyangugu|Murambi|Kibeho|Nyanza|Buyoga|Butare|Rwamagana|Nyamata|Ruhango|Gikongoro|Kibuye|Rutongo|Kabuga",
   ja: "キガリ|ギタラマ|ルヘンゲリ|ギセニ||ビュンバ||チャンググ|||ニャンザ||ブタレ|ルワマガナ|ニャマタ||ギコンゴロ|キブエ||",
   native: "|||La ville de Rubavu|Nyundo|Byumba|Umurenge wa Juru|||||Umurenge wa Buyoga|Huye|||||||",
+  reading: "|||||||||||||||||||",
   major: "11111111111111111111",
 });
 

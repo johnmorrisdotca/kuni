@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Paramaribo|Cottica|Lelydorp|Beekhuizen|Nieuw Nickerie|Nieuw Amsterdam|Albina|Brokopondo|Groningen|Totness|Onverwacht",
   ja: "パラマリボ|コッティカ|レリードルプ||ニウ・ニッケリー|ニウ・アムステルダム|アルビーナ|ブロコポンド|フローニンゲン|トトネス|オンフェルワハト",
   native: "||||Nieuw-Nickerie|Nieuw-Amsterdam|||||",
+  reading: "||||||||||",
   major: "11111111111",
 });
 

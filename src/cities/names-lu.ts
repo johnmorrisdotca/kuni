@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Luxembourg|Esch-sur-Alzette|Dudelange|Differdange|Mersch|Wiltz|Diekirch|Clervaux|Echternach|Grevenmacher|Remich|Vianden|Redange-sur-Attert|Capellen",
   ja: "ルクセンブルク市|エシュ＝シュル＝アルゼット|||メルシュ|ヴィルツ|ディーキルヒ|クレルヴォー|エヒタナハ||レーミヒ|ヴェイアネン||カペレン",
   native: "Luxemburg|Esch an der Alzette|Düdelingen|||||Clerf|||||Réiden|",
+  reading: "|||||||||||||",
   major: "11111111111111",
 });
 

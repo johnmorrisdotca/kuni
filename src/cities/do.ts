@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/do: the 35 cities of Dominican Republic, every tier together, as a list.
 
 import { DO } from "../data/cities-by-country/do.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "DO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(DO));
+const CITIES: readonly City[] = expandColumns(DO);
 
 export default CITIES;
 export { CITIES };

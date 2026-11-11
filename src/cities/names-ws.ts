@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Apia|Afega|Leulumoega|Lufilufi|Mulifanua",
   ja: "アピア|アフェガ|レウルモエガ|ルフィルフィ|ムリファヌア村",
   native: "||||",
+  reading: "||||",
   major: "11111",
 });
 

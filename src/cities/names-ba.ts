@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Sarajevo|Banja Luka|Tuzla|Mostar|Prijedor|Zenica|Doboj|Cazin|Bihać|Travnik|Bijeljina|Visoko|Brčko|Srebrenik|Kakanj|Žepče|Trebinje|Čapljina|Vitez|Konjic|Hadžići|Banovići|Sanski Most|Živinice|Bugojno",
   ja: "サラエヴォ|バニャ・ルカ|トゥズラ|モスタル|プリイェドル|ゼニツァ|ドボイ|ツァジン|ビハチ|トラヴニク|ビイェリナ|ヴィソコ|ブルチコ|スレブレニク|カカニ|ジェプチェ|トレビニェ|チャプリナ|ビテツ|コニツ|ハジチ|バノヴィチ|サンスキ・モスト|ジヴィニツェ|ブゴイノ",
   native: "||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||",
   major: "1111111111111111111100000",
 });
 

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/tg: the 22 cities of Togo, every tier together, as a list.
 
 import { TG } from "../data/cities-by-country/tg.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TG));
+const CITIES: readonly City[] = expandColumns(TG);
 
 export default CITIES;
 export { CITIES };

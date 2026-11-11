@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bl: the 1 cities of St. Barthélemy, every tier together, as a list.
 
 import { BL } from "../data/cities-by-country/bl.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BL"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BL));
+const CITIES: readonly City[] = expandColumns(BL);
 
 export default CITIES;
 export { CITIES };

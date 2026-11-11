@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ro: the 169 cities of Romania, every tier together, as a list.
 
 import { RO } from "../data/cities-by-country/ro.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "RO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(RO));
+const CITIES: readonly City[] = expandColumns(RO);
 
 export default CITIES;
 export { CITIES };

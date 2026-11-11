@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Montevideo|Salto|Ciudad de la Costa|Maldonado|Rivera|Paysandú|Las Piedras|Tacuarembó|Melo|Artigas|Mercedes|Durazno|Minas|San José de Mayo|Ciudad del Plata|Barros Blancos|Florida|Colonia del Sacramento|Pando|San Carlos|Rocha|Fray Bentos|Treinta y Tres|Canelones|Trinidad|18 de Mayo|Lomas de Solymar|Solymar|Carmelo|La Paz|Dolores|Río Branco|Paso Carrasco|Young|Santa Lucía|Bella Unión|Fraccionamiento Camino Maldonado|La Unión",
   ja: "モンテビデオ|サルト|シウダ・デ・ラ・コスタ|マルドナド|リベラ|パイサンドゥー|ラス・ピエドラス|タクアレンボー|メロ|アルティガス|メルセデス|ドゥラスノ|ミナス|サン・ホセ・デ・マジョ|シウダー・デル・プラタ|バロス・ブランコス|フロリダ|コロニア・デル・サクラメント|パンド (ウルグアイ)|サン・カルロス|ロチャ|フライ・ベントス|トレインタ・イ・トレス|カネローネス|トリニダ||||カルメロ (ウルグアイ)|ラ・パス|ドローレス (ウルグアイ)|リオ・ブランコ (ウルグアイ)|パソ・デ・カラスコ|ヨウング|サンタ・ルシア|ベジャ・ウニオン||ウニオン",
   native: "San Felipe y Santiago de Montevideo|||||||||||San Pedro del Durazno||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000",
 });
 

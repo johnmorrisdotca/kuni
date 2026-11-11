@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kuala Lumpur|Klang|Ipoh|Seberang Perai|Johor Bahru|George Town|Kuantan|Kota Bharu|Malacca|Kota Kinabalu|Seremban|Sandakan|Sungai Petani|Muar|Kuching|Chukai|Kuala Terengganu|Sibu|Taiping|Miri|Pasir Mas|Alor Setar|Lahad Datu|Kluang|Temerloh|Kulim|Batu Pahat|Bintulu|Tawau|Teluk Intan|Ranau|Marudi|Butterworth|Victoria|Cyberjaya|Kangar|Raub|Kuala Kangsar|Semporna|Arau|Kuala Lipis|Subang Jaya|Petaling Jaya|Shah Alam|Ampang Jaya|Putrajaya",
   ja: "クアラルンプール|クラン|イポー|スブランプライ|ジョホールバル|ジョージタウン|クアンタン|コタバル|マラッカ|コタキナバル|スレンバン|サンダカン|スンガイ・プタニ|ムアル|クチン|チュカイ|クアラトレンガヌ|シブ|タイピン|ミリ|パシール・マス|アロースター|ラハダトゥ|クルアン|テメルロー|クリム|バトゥ・パハ|ビントゥル|タワウ|トゥルッ・インタン|ラナウ|マルディ郡|バターワース|ビクトリア (ラブアン連邦直轄領)|サイバージャヤ|カンガー|ラウブ|クアラカンサル|センポルナ||クアラリピス|スバン・ジャヤ|ペタリン・ジャヤ|シャー・アラム|アンパン・ジャヤ|プトラジャヤ",
   native: "||||||||Bandaraya Melaka||||||||||Bandar Taiping||Bandar Pasir Mas|||Bandar Kluang||||||||||Bandar Victoria||||||Mukim Arau|||||Ampang, Selangor|",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Libreville|Port-Gentil|Franceville|Owendo|Oyem|Moanda|Ntoum|Lambaréné|Mouila|Akanda|Tchibanga|Bitam|Koulamoutou|Makokou",
   ja: "リーブルヴィル|ポールジャンティ|フランスヴィル|オウェンド|オイェム|モアンダ|ントゥム|ランバレネ|ムイラ|アカンダ|チバンガ|ビタム|クラムトゥ|マコクー",
   native: "|||||||||||||",
+  reading: "|||||||||||||",
   major: "11111111111111",
 });
 

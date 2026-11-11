@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/md: the 36 cities of Moldova, every tier together, as a list.
 
 import { MD } from "../data/cities-by-country/md.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MD));
+const CITIES: readonly City[] = expandColumns(MD);
 
 export default CITIES;
 export { CITIES };

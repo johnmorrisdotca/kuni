@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gi: the 1 cities of Gibraltar, every tier together, as a list.
 
 import { GI } from "../data/cities-by-country/gi.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GI"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GI));
+const CITIES: readonly City[] = expandColumns(GI);
 
 export default CITIES;
 export { CITIES };

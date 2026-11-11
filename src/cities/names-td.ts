@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "N'Djamena|Moundou|Sarh|Kélo|Léré|Abéché|Goundi|Goz Beïda|Baktchoro|Binder|Aboutengué refugee camp|Amdjarass|Fianga|Pala|Koumra|Am Timan|Chokoyan|Ngondong|Am Harazé|Doba|Am Dam|Bébédjia|Bongor|Mongo|Abou-Deïa|Oum Hadjer|Bénoye|Kalait|Béssada|Ati|Bitkine|Laï|Matadjana|Massaguet|Mao|Baïbokoum|Moussoro|Salal|Massakory|Bokoro|Kaoura|Kirdimi|Faya-Largeau|Bol|Biltine|Massenya|Fada|Bardaï",
   ja: "ンジャメナ|ムンドゥ|サール|ケロ|レレー|アベシェ||ゴゾ・ベイダ||||アムジャラス|フィアンガ|パラ|クムラ|アム・ティマン|||ハラゼ|ドバ|アム・ダム|バビジア|ボンゴル|モンゴ|アブ・デイア|ウムハジェル|ベノエ|カライト||アティ|ビトキン|ライ||マサゲ|マオ|バイブークム|ムソロ|サラル|マッサコリ|ボコロ|カウラ||ファヤ・ラルジョー|ボル|ビルティーヌ|マセニャ|ファダ|バルダイ",
   native: "انجمينا|موندو|سار|كيلو|ليري|أبشي||قوز بيضة||||أم جرس|فيانكا|بالا|قمرة|أم تيمان||Ngodon|أم حراز|دوبا|أم دام||بونقور|مونقو|أبو ديا|أم هاجر|Benoye|Kalaït||أتي|بتكين|لادي|متاجانا|مساقط|ماو|بيبوكمم|موسورو|سالل|ماساكوري|بوكورو||كيرديمي|فايا لارجو|بول|بلتن|ماسينيا|فادا|برداي",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000000000000000",
 });
 

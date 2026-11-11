@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mz: the 30 cities of Mozambique, every tier together, as a list.
 
 import { MZ } from "../data/cities-by-country/mz.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MZ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MZ));
+const CITIES: readonly City[] = expandColumns(MZ);
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/so: the 28 cities of Somalia, every tier together, as a list.
 
 import { SO } from "../data/cities-by-country/so.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(SO));
+const CITIES: readonly City[] = expandColumns(SO);
 
 export default CITIES;
 export { CITIES };

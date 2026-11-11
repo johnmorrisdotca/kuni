@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gf: the 1 cities of French Guiana, every tier together, as a list.
 
 import { GF } from "../data/cities-by-country/gf.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GF));
+const CITIES: readonly City[] = expandColumns(GF);
 
 export default CITIES;
 export { CITIES };

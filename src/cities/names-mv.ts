@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Malé|Kulhudhuffushi|Naifaru|Kudahuvadhoo|Dhiddhoo|Eydhafushi|Thulusdhoo|Magoodhoo|Hithadhoo|Villingili|Rasdhoo|Fuvahmulah|Thinadhoo|Muli|Veymandoo|Manadhoo|Ungoofaaru|Mahibadhoo|Fonadhoo|Felidhoo|Funadhoo",
   ja: "マレ|||||||||||フヴァンムラ環礁||ムリ (モルディブ)||マナドゥー||マヒバドホー||フェリドゥー|",
   native: "މާލެ|ކުޅުދުއްފުށި|ނައިފަރު|ކުޑަހުވަދޫ|ދިއްދޫ (ހއ. އަތޮޅު)|އޭދަފުށި|ތުލުސްދޫ|މަގޫދޫ|ހިތަދޫ|ވިލިނގިލި||ފުވައްމުލައް|ތިނަދޫ||ވޭމަންޑޫ|މަނަދޫ|އުނގޫފާރު|މަހިބަދޫ|ފޮނަދޫ|ފެލިދޫ|ފުނަދޫ(ށ. އަތޮޅު)",
+  reading: "||||||||||||||||||||",
   major: "111111111111111111110",
 });
 

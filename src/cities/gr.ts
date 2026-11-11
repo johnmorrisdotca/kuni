@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/gr: the 123 cities of Greece, every tier together, as a list.
 
 import { GR } from "../data/cities-by-country/gr.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "GR"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(GR));
+const CITIES: readonly City[] = expandColumns(GR);
 
 export default CITIES;
 export { CITIES };

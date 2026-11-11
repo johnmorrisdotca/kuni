@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dagbon|Kumasi|Accra|Tamale|Sekondi-Takoradi|Takwa|Ashaiman|Cape Coast|Obuasi|Tema|Koforidua|Ho|Wa|Atebubu|Akyem Kotoku|Saboba|Breman Asikuma|Bolgatanga|Bolgatanga|Sunyani|Techiman|Aflao|Nkawkaw|Bawku|Dome|Hohoe|Winneba|Agona Swedru|Yendi|Kintampo|Berekum|Mampong|Agogo|Tarkwa|Savelugu|Bimbilla|Lashibi|Princes Town|Odumase dynasty|Dambai|Keta|Goaso|Lamashegu|Choggu Mmanaayili|Nyohini|Kalpohini|Karaga|Damongo|Nalerigu|Wiawso|Teshie|Madina",
   ja: "ダグボン王国|クマシ|アクラ|タマレ|セコンディ・タコラディ||アシャマン|ケープ・コースト|オブアシ|テマ|コフォリドゥア|ホ|ワ|アテブブ||||ボルガタンガ|ボルガタンガ|スンヤニ|テチマン|アフラオ|ンカウカウ|バウク|ドーム|ホホエ|ウィネバ|アゴナ・スウェドゥル|イェンディ|キンタンポ|ベレクム|マンポン|アゴゴ|タークワ|サベルグ||ラシビ|プリンス・タウン||ダンバイ|ケタ|ゴアソ||||||ダモンゴ|ナレリグ|ウィアソー|テシ|マディナ",
   native: "|||||||||||||||||||||||||||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000",
 });
 

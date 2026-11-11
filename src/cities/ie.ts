@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ie: the 38 cities of Ireland, every tier together, as a list.
 
 import { IE } from "../data/cities-by-country/ie.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "IE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(IE));
+const CITIES: readonly City[] = expandColumns(IE);
 
 export default CITIES;
 export { CITIES };

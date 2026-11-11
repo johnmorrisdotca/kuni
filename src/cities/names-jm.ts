@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Kingston|Portmore|May Pen|Spanish Town|Montego Bay|Half Way Tree|Mandeville|Old Harbour|Linstead|Savanna-la-Mar|Ocho Rios|Port Antonio|Saint Ann's Bay|Morant Bay|Port Maria La luz|Falmouth|Lucea|Black River",
   ja: "キングストン|ポートモア|メイ・ペン|スパニッシュ・タウン|モンテゴ・ベイ|ハーフ・ウェイ・ツリー|マンデヴィル|オールド・ハーバー|リンステッド|サバナラマル|オーチョ・リオス|ポート・アントニオ|聖アン湾|モラント湾|マリア港|ファルマウス|ルセア|ブラック・リバー",
   native: "Kinston|Puotmuor|Mie Pen|Panish Tong|Mantigo Bie|Aafwe Chrii|Mandivl|||Savlamaar||Puot Antuoni|Sint Anz Bie|Morant Bie|Puot Maraya|Falmot|Luusi|Blak Riva",
+  reading: "|||||||||||||||||",
   major: "111111111111111111",
 });
 

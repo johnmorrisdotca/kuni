@@ -56,7 +56,7 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 ```
 
 - `id`: the Wikidata item (`"Q90"` for Paris), or `"ne:<number>"` for a place only Natural Earth has. It never changes between releases; an id that was merged into another city still answers, with that city.
-- `name`: `en`, and `ja` and `native` where a source has them. A missing one is absent, never an English name copied in. `jaShort` is the short Japanese name for a map label (東京 for 東京都, 大阪 for 大阪市), wherever `ja` is. `nativeLanguage` is the code of `native`.
+- `name`: `en`, and `ja` and `native` where a source has them. A missing one is absent, never an English name copied in. `jaShort` is the short Japanese name for a map label (東京 for 東京都, 大阪 for 大阪市), wherever `ja` is. `jaReading` is `ja` read in hiragana, to sort a list in Japanese order (とうきょうと for 東京都): Wikidata's reading, Japan Post's for a municipality of Japan, or the name itself where it is written in kana. Readings cover Japanese names of places in Japan and names written in kana only: a name of China, Taiwan or Korea written in Chinese characters (上海市) has none, since no source with clear terms gives one and a reading is never made up from the characters. `nativeLanguage` is the code of `native`.
 - `continent` (`"AS"`, `"EU"`, ...), `country` (ISO 3166-1 alpha-2, two capital letters), `lat`, `lon`, and `subdivision` (the ISO 3166-2 code of its first-level subdivision, or `null`).
 - `population` and `populationDate` (a year, or a day), `null` where no source has a figure.
 - `capital` (`"national"`, `"alternate"`, `"subdivision"` or `null`) and `capitalOf`, the codes it is the capital of (never empty for a capital).
@@ -68,4 +68,4 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 
 ## Where it comes from
 
-Wikidata (CC0) is the first source, asked by hand with `pnpm data:cities` and never on a timer; the day it was read is `CITIES_READ` in every tier. Natural Earth's populated places (public domain) fill a Japanese name, a population or a point Wikidata has not got, and give the cities Wikidata has no item for. Neither asks for credit; both are credited in `NOTICE.md`. No Wikipedia text is used, and no share-alike data.
+Wikidata (CC0) is the first source, asked by hand with `pnpm data:cities` and never on a timer; the day it was read is `CITIES_READ` in every tier. Natural Earth's populated places (public domain) fill a Japanese name, a population or a point Wikidata has not got, and give the cities Wikidata has no item for. Neither asks for credit; both are credited in `NOTICE.md`. The readings of Japan's municipalities that Wikidata lacks are from Japan Post's postal-code data, on which Japan Post claims no copyright (`NOTICE.md` quotes its terms). No Wikipedia text is used, and no share-alike data.

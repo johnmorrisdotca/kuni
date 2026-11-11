@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Suva|Nasinu|Nadi|Nausori|Lautoka|Labasa|Lami|Ba|Sigatoka|Vaileka|Levuka|Tubou|Motusa",
   ja: "スバ|ナシヌー|ナンディ|ナウソリ|ラウトカ|ランバサ|ラミ|バ|シンガトカ||レブカ||モトゥサ",
   native: "||||||||||||",
+  reading: "||||||||||||",
   major: "1111111111111",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Yaren District|Arijejen|Anabar",
   ja: "ヤレン地区||",
   native: "Yaren||",
+  reading: "||",
   major: "111",
 });
 

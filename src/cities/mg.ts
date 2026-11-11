@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mg: the 23 cities of Madagascar, every tier together, as a list.
 
 import { MG } from "../data/cities-by-country/mg.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MG"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MG));
+const CITIES: readonly City[] = expandColumns(MG);
 
 export default CITIES;
 export { CITIES };

@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bd: the 99 cities of Bangladesh, every tier together, as a list.
 
 import { BD } from "../data/cities-by-country/bd.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BD"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BD));
+const CITIES: readonly City[] = expandColumns(BD);
 
 export default CITIES;
 export { CITIES };

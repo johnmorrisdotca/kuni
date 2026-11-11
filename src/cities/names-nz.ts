@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Auckland|Christchurch|Wellington|Manukau City|Hamilton|Tauranga|Dunedin|Lower Hutt|Palmerston North|Whangārei|Nelson|New Plymouth|Hastings|Rotorua|Napier|Hibiscus Coast|Porirua|Invercargill|Upper Hutt|Whanganui|Gisborne|Paraparaumu|Queenstown|Timaru|Blenheim|Pukekohe|Taupō|Rolleston|Masterton|Cambridge|Ashburton|Rangiora|Levin|Feilding|Whakatāne|Greymouth|Stratford|Waitangi|Waitakere City|North Shore|Mount Roskill|Richmond",
   ja: "オークランド|クライストチャーチ|ウェリントン|マヌカウシティ|ハミルトン|タウランガ|ダニーデン|ローワーハット|パーマストン・ノース|ファンガレイ|ネルソン|ニュー・プリマス|ヘイスティングズ|ロトルア|ネーピア|ハイビスカス・コースト|ポリルア市|インヴァーカーギル|アッパーハット|ワンガヌイ|ギズボーン|パラパラウム|クイーンズタウン|ティマルー|ブレナム (ニュージーランド)|プケコへ|タウポ|ロルストン (ニュージーランド)|マスタートン|ケンブリッジ|アシュバートン (ニュージーランド)|ランギオラ|レヴィン|フィールディング (ニュージーランド)|ファカタネ|グレイマウス|ストラトフォード|ワイタンギ|ワイタケレ|ノースショア|マウント・ロスキル|リッチモンド (ニュージーランド)",
   native: "Tāmaki-makau-rau|Ōtautahi|Te Whanga-nui-a-Tara||Kirikiriroa|Tauranga-moana|Ōtepoti|Awakairangi|Te Papa-i-oea|Whangārei-terenga-paraoa|Whakatū|Ngāmotu|Heretaunga|Rotorua-nui-a-Kahu|Ahuriri||Pari-ā-Rua|Waihōpai|Whakatiki||Tūranga-nui-a-Kiwa||Tāhuna|Te Tihi-o-Maru|Waiharakeke||Taupō-nui-a-Tia|Tauwharekākaho|Whakaoriori|Kemureti|Hakatere||Taitoko|Aorangi||Māwhera|Whakaahurangi|||Te Raki Paewhenua||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000000000",
 });
 

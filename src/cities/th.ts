@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/th: the 246 cities of Thailand, every tier together, as a list.
 
 import { TH } from "../data/cities-by-country/th.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "TH"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(TH));
+const CITIES: readonly City[] = expandColumns(TH);
 
 export default CITIES;
 export { CITIES };

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Pyongyang|Hamhung|Chongjin|Sunchon|Nampo|Wonsan|Sinuiju|Tanchon|Kaechon|Kaesong|Sariwon|Haeju|Kanggye|Anju|Tokchon|Pyongsong|Kimchaek|Rason|Kusong|Hyesan|Chongju|Huichon|Hoeryong|Sinpo|Songrim|Munchon|Manpo|Kilchu|Musan|Ongjin|Changyon|Yodok concentration camp|Anbyon|Samjiyon|Hwasong concentration camp|Sin-Ni",
   ja: "平壌市|咸興市|清津市|順川市|南浦特別市|元山市|新義州市|端川市|价川市|開城特別市|沙里院市|海州市|江界市|安州市|徳川市|平城市|金策市|羅先特別市|亀城市|恵山市|定州市|熙川市|会寧市|新浦市|松林市|文川市|満浦市||茂山|甕津|長淵|耀徳強制収容所|安辺|三池淵市|化城強制収容所|シンニ",
   native: "평양시|함흥시|청진시|순천시|남포시|원산시|신의주시|단천시|개천시|개성시|사리원시|해주시|강계시|안주시|덕천시|평성시|김책시|라선시|구성시|혜산시|정주시|희천시|회령시|신포시|송림시|문천시|만포시|||||요덕 정치범수용소||삼지연시|화성 정치범수용소|",
+  reading: "|||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bujumbura|Gitega|Ngozi|Rumonge|Cibitoke|Kayanza|Bubanza|Karuzi|Kirundo|Muyinga|Makamba|Ruyigi|Rutana|Muramvya|Bururi|Cankuzo|Mwaro|Isale",
   ja: "ブジュンブラ|ギテガ|ンゴジ|ルモンゲ|チビトケ|カヤンザ|ブバンザ|カルジ|キルンド|ムインガ|マカンバ|ルイギ|ルタナ|ムランヴィヤ|ブルリ|カンクゾ|ムワロ|",
   native: "Bujumbura-Mairie|||||Commune de Kayanza||||||||||||",
+  reading: "|||||||||||||||||",
   major: "111111111111111111",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Saint John's|Codrington|Parham|Bolans|Piggotts|Freetown|Falmouth",
   ja: "セイント・ジョンズ|コドリントン|パーハム|ボランス|ピゴッツ|フリータウン|ファルマス",
   native: "Saint John|||Bolands|||",
+  reading: "||||||",
   major: "1111111",
 });
 

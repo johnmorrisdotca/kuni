@@ -56,7 +56,7 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 ```
 
 - `id`：Wikidata の項目（パリは `"Q90"`）。Natural Earth にしかない場所は `"ne:<番号>"`。リリースをまたいでも変わりません。ほかの都市に統合されたIDは、その都市を返し続けます。
-- `name`：`en`、そして元データにあれば `ja` と `native`。ない言語は省かれ、英語名が代わりに入ることはありません。`nativeLanguage` は `native` の言語コードです。
+- `name`：`en`、そして元データにあれば `ja` と `native`。ない言語は省かれ、英語名が代わりに入ることはありません。`jaShort` は地図のラベル用の短い日本語名（東京都なら東京、大阪市なら大阪）で、`ja` があれば必ずあります。`jaReading` は `ja` のひらがなの読み（東京都なら「とうきょうと」）で、日本語の順に並べるためのものです。Wikidata の読み、日本の市区町村なら日本郵便の読み、またはかなで書かれた名前そのものから作ります。読みがあるのは日本の地名と、かなで書かれた名前だけです。中国・台湾・韓国の漢字の名前（上海市など）には、条件のはっきりした出どころがなく、漢字から読みを作ることもしないため、読みはありません。`nativeLanguage` は `native` の言語コードです。
 - `continent`（`"AS"`、`"EU"` など）、`country`（ISO 3166-1 alpha-2、大文字2文字）、`lat`、`lon`、`subdivision`（第1階層の行政区画のISO 3166-2コード。なければ `null`）。
 - `population` と `populationDate`（年または日付）。どの出どころにも数値がなければ `null`。
 - `capital`（`"national"`、`"alternate"`、`"subdivision"`、`null`）と `capitalOf`（その都市が首都である国や行政区画のコード。首都なら空ではありません）。
@@ -68,4 +68,4 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 
 ## データの出どころ
 
-第一の出どころは Wikidata（CC0）です。`pnpm data:cities` で手作業で取得し、タイマーでの自動実行はしません。取得した日は、各段階の `CITIES_READ` にあります。Natural Earth の Populated Places（パブリックドメイン）は、Wikidata にない日本語名・人口・位置を補い、Wikidata に項目がない都市を加えます。どちらもクレジットの表記は求められていませんが、`NOTICE.md` に記しています。Wikipedia の文章や、継承条件つきのデータは使っていません。
+第一の出どころは Wikidata（CC0）です。`pnpm data:cities` で手作業で取得し、タイマーでの自動実行はしません。取得した日は、各段階の `CITIES_READ` にあります。Natural Earth の Populated Places（パブリックドメイン）は、Wikidata にない日本語名・人口・位置を補い、Wikidata に項目がない都市を加えます。どちらもクレジットの表記は求められていませんが、`NOTICE.md` に記しています。Wikidata にない日本の市区町村の読みは日本郵便の郵便番号データからで、日本郵便はこのデータの著作権を主張していません（`NOTICE.md` にその条件を引用しています）。Wikipedia の文章や、継承条件つきのデータは使っていません。

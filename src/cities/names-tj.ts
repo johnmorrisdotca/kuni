@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Dushanbe|Khujand|Bokhtar|Kulob|Istaravshan|Isfara|Konibodom|Oqkurgan|Tursunzoda|Guliston|Panjakent|Vahdat|Yovon|Kuktosh|Zainabobod|Chorkuh jamoat|Isfisor|Vorukh|Chorkuh|Chorteppa|Chorbogh|Khorugh|Yova|Buston|Farkhar|Qaratogh|Mirzo Tursunzoda|Mirzo Rizo|Danghara|Bozorboy Burunov|Mujum|Gulkhona|Hisor|Sharora Jamoat|Somoniyon|Sardorov Karakhan|Lohur|Sharipov|Navkat|Norak|Unji|Ghafurov|Zafarobod|Miskinobod Jamoat|Qadiob|Balkh|Levakant|Shaydon|Shaartuz|Shahristan|Mu'minobod|Mehrobod|Kalai Surkh|Sharora|Rudaki",
   ja: "ドゥシャンベ|ホジェンド|ボクタール|クリャーブ|イスタラフシャン|イスファラ|カニバダム||トゥルスンゾダ||パンジケント|ヴァフダート||ククトシュ||||ヴォルフ||||ホログ||チカロフスク(タジキスタン)|パルハル|カラタグ|||ダンガラ||||ギッサール||ソモニヨン|||シャリポフ||ヌレーク||ガフロフ|ザファロボド|||コルホーザバード|レヴァカント||||||||",
   native: "Душанбе|Хуҷанд|Бохтар|Кӯлоб|Истаравшан|Исфара|Конибодом|Ҷамоати Оққӯрғон|Турсунзода|Ҷамоати Гулистон|Панҷакент|Ваҳдат|Ёвон|деҳоти Чоргултеппа|Ҷамоати Зайнабобод|деҳоти Чоркӯҳ|Исфисор|Ворух|Чоркӯҳ|деҳоти Чортеппа|Ҷамоати Чорбоғ|Хоруғ|Ҷамоати Ёва|Бӯстон|Фархор|Қаратоғ|Мирзо Турсунзода (шаҳрак, н. Рӯдакӣ)|деҳоти Мирзо Ризо|Данғара|деҳоти Бозорбой Бурунов|Деҳоти Муҷун|Гулхона|Ҳисор|Шарора|Сомониён|Ҷамоати Сардоров Отахон|Ҷамоати Лоҳур|Ҷамоати Э. Шарипов|Навкат|Норак|Унҷӣ|Ғафуров|Зафаробод|Деҳоти Мискинобод|деҳоти Қадиоб|Балх (шаҳрак)|Леваканд|Шайдон|Шаартуз|Шаҳристон|Муъминобод|Меҳробод|деҳоти Қалъаи Сурх|Шарора|деҳоти Рӯдакӣ",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000000",
 });
 

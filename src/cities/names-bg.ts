@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Sofia|Plovdiv|Varna|Burgas|Ruse|Pleven|Stara Zagora|Shumen|Pazardzhik|Sliven|Haskovo|Veliko Tarnovo|Dobrich|Pernik|Blagoevgrad|Yambol|Vratsa|Asenovgrad|Gabrovo|Kardzhali|Kazanlak|Montana|Kyustendil|Vidin|Targovishte|Dimitrovgrad|Razgrad|Lovech|Silistra|Dupnitsa|Petrich|Smolyan|Samokov|Sandanski|Velingrad|Karlovo|Botevgrad|Nesebar|Gotse Delchev|Harmanli|Aytos|Svishtov|Sevlievo|Troyan|Svilengrad|Nova Zagora|Lom|Vladislav Varnenchik|Gorna Oryahovitsa",
   ja: "ソフィア|プロヴディフ|ヴァルナ|ブルガス|ルセ|プレヴェン|スタラ・ザゴラ|シュメン|パザルジク|スリヴェン|ハスコヴォ|ヴェリコ・タルノヴォ|ドブリチ|ペルニク|ブラゴエヴグラト|ヤンボル|ヴラツァ|アセノヴグラト|ガブロヴォ|クルジャリ|カザンラク|モンタナ|キュステンディル|ヴィディン|トゥルゴヴィシテ|ディミトロヴグラト|ラズグラト|ロヴェチ|シリストラ|ドゥプニツァ|ペトリチ|スモリャン|サモコフ|サンダンスキ|ヴェリングラト|カルロヴォ|ボテヴグラト|ネセバル|ゴツェ・デルチェフ|ハルマンリ|アイトス|スヴィシュトフ|セヴリエヴォ|トロヤン|スピレングラード|ノヴァ・ザゴラ|ロム|ヴラディスラフ・ヴァルネンチク|ゴルナ・オリャホヴィツァ",
   native: "София|Пловдив|Варна|Бургас|Русе|Плевен|Стара Загора|Шумен|Пазарджик|Сливен|Хасково|Велико Търново|Добрич|Перник|Благоевград|Ямбол|Враца|Асеновград|Габрово|Кърджали|Казанлък|Монтана|Кюстендил|Видин|Търговище|Димитровград|Разград|Ловеч|Силистра|Дупница|Петрич|Смолян|Самоков|Сандански|Велинград|Карлово|Ботевград|Несебър|Гоце Делчев|Харманли|Айтос|Свищов|Севлиево|Троян|Свиленград|Нова Загора|Лом|Владислав Варненчик|Горна Оряховица",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000",
 });
 

@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Pristina|Prizren|Ferizaj|Gjilan|Gjakova|Kaçanik",
   ja: "プリシュティナ|プリズレン|フェリザイ|ジラニ|ジャコヴァ|カチャニク",
   native: "Prishtina|Prizreni||Gjilani||Kaçaniku",
+  reading: "|||||",
   major: "111111",
 });
 

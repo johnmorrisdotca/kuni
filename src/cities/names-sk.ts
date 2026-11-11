@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bratislava|Košice|Žilina|Prešov|Nitra|Trenčín|Banská Bystrica|Trnava|Martin|Poprad|Prievidza|Zvolen|Považská Bystrica|Nové Zámky|Michalovce|Spišská Nová Ves|Komárno|Levice|Liptovský Mikuláš|Bardejov|Humenné|Ružomberok|Piešťany|Lučenec|Pezinok|Topoľčany|Dunajská Streda|Trebišov|Čadca|Rimavská Sobota|Senec|Partizánske|Vranov nad Topľou|Brezno|Šaľa|Hlohovec|Nové Mesto nad Váhom|Senica|Malacky|Snina|Dolný Kubín|Rožňava|Púchov|Žiar nad Hronom|Bánovce nad Bebravou|Stará Ľubovňa|Galanta|Handlová|Petržalka|Ružinov|Old Town of Bratislava|Nové Mesto|Západ|Dúbravka|Karlova Ves|Rača|Dargovských hrdinov|Podunajské Biskupice|Nad jazerom|Sídlisko KVP|Dubnica nad Váhom|Košice-Juh|Old Town|Vrakuňa|Sídlisko Ťahanovce|Košice-Sever|Devínska Nová Ves",
   ja: "ブラチスラヴァ|コシツェ|ジリナ|プレショフ|ニトラ|トレンチーン|バンスカー・ビストリツァ|トルナヴァ|マルチン|ポプラト|プリエヴィドザ|ズヴォレン|ポヴァシュスカ・ビストリツァ|ノヴェー・ザームキ|ミハロブツェ|スピシュスカー・ノヴァー・ヴェス|コマールノ|レビツェ|リプトフスキー・ミクラーシュ|バルデヨフ|ホモンナイ|ルジョムベロク|ピエシュチャニ|ルチェネツ|ペジノク|トポリュチャニ市|ドゥナイスカー・ストレダ|トレビショフ|チャドツァ|リマフスカー・ソボタ|セネツ|パルチザンスケ|ヴラノフ・ナド・トプリュ|ブレズノ|サラ (スロバキア)|フロホヴェック|ノヴェー・メスト・ナド・ヴァフォーム|セニツァ|マラツキ市|スニナ|ドルニー・クビーン|ロジュナヴァ|プーホウ|ジアル・ナト・フロノム市|バーノフツェ・ナド・ベブラヴォウ|スタラー・ルボヴナ|ガランタ|ハンドロヴァー||ルジノフ区|ブラチスラヴァ旧市街||||||||||ドゥブニカ・ナド・ヴァフォーム||コシツェ旧市街||||",
   native: "||||||||||||||||||||||||||||||||||||||||||||||||||Staré Mesto|||||||||||Juh|Staré Mesto|||Sever|",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000000000000000000000000000000000",
 });
 

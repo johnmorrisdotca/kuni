@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bir Lehlou",
   ja: "ビル・ラフルー",
   native: "البئر الحلو",
+  reading: "",
   major: "1",
 });
 

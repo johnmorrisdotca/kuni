@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mf: the 1 cities of St. Martin, every tier together, as a list.
 
 import { MF } from "../data/cities-by-country/mf.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MF"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MF));
+const CITIES: readonly City[] = expandColumns(MF);
 
 export default CITIES;
 export { CITIES };

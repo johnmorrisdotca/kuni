@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/dm: the 3 cities of Dominica, every tier together, as a list.
 
 import { DM } from "../data/cities-by-country/dm.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "DM"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(DM));
+const CITIES: readonly City[] = expandColumns(DM);
 
 export default CITIES;
 export { CITIES };

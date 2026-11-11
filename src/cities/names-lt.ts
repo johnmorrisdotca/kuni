@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Vilnius|Kaunas|Klaipėda|Šiauliai|Panevėžys|Alytus|Marijampolė|Mažeikiai|Jonava|Utena|Kėdainiai|Telšiai|Ukmergė|Tauragė|Visaginas|Palanga|Plungė|Kretinga|Šilutė|Gargždai|Radviliškis|Druskininkai|Elektrėnai|Rokiškis|Jurbarkas|Biržai|Vilkaviškis|Raseiniai|Prienai|Anykščiai|Kaišiadorys|Joniškis|Naujoji Akmenė|Varėna|Kelmė|Šalčininkai|Pasvalys|Kupiškis|Zarasai|Trakai|Širvintos|Molėtai|Kazlų Rūda|Šakiai|Skuodas|Ignalina|Šilalė|Pakruojis|Švenčionys|Kalvarija|Neringa|Lazdijai|Rietavas|Birštonas|Pagėgiai|Antakalnis|Gričiupis|Gytariai|Šančiai",
   ja: "ヴィルニュス|カウナス|クライペダ|シャウレイ|パネヴェジース|アリートゥス|マリヤーンポレ|マジェイケイ|ヨナヴァ|ウテナ|ケダイネイ|テルシェイ|ウクメルゲ|タウラゲ|ヴィサギナス|パランガ|プルンゲ|クレティンガ|シルテ|ガルグジュダイ|ラドヴィリシュキス|ドルスキニンカイ|エレクトレナイ|ロキシュキス|ユルバルカス|ビルジャイ|ヴィルカヴィシュキス|ラセイニアイ|プリエナイ||カイシェドリース|ヨニシュキス||ヴァレナ|ケルメ|シャルチニンカイ|パスヴァリース|クピシュキス|ザラサイ|トラカイ||モレタイ|カズルー・ルーダ|シャケイ||イグナリナ|シラレ|パクルオイス|シュヴェンチョニース|カルヴァリヤ|ネリンガ|ラズディヤイ|リエタヴァス|ビルシュトナス|パゲゲイ||||",
   native: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+  reading: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000000000000000000000000000",
 });
 

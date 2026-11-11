@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Nouakchott|Nouadhibou|Kiffa|Rosso|Zouérat|Mbera|Atar|Néma|Aleg|Kaédi|Tidjikja|Akjoujt|Ayoun el Atrous|Sélibaby|Arafat|Dar Naim|Tevragh Zeina",
   ja: "ヌアクショット|ヌアディブ|キファ|ロッソ|ズエラット||アタール|ネマ|アレグ|カエディ|ティジクジャ|アクジュジト|アヨウン・エル・アトロウス|セリバビ|アラファト (ヌアクショット)|ダル＝ナイム|テヴラ＝ゼイナ",
   native: "نواكشوط|نواذيبو|كيفة|روصو|الزويرات|M’berra|أطار|النعمة|ألاك|كيهيدي|تجكجة|أكجوجت|العيون|سليبابي|عرفات|دار النعيم|تفرغ زينة",
+  reading: "||||||||||||||||",
   major: "11111111111111111",
 });
 

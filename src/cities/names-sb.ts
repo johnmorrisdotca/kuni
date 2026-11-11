@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Honiara|Gizo|Auki|Lata|Taro Island|Buala|Kirakira|Tigoa|Tulagi",
   ja: "ホニアラ|ギゾ|アウキ|ラタ (サンタクルーズ諸島)|タロ島|ブアラ|キラキラ|ティゴア|",
   native: "||||||||",
+  reading: "||||||||",
   major: "111111111",
 });
 

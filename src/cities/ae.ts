@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ae: the 15 cities of United Arab Emirates, every tier together, as a list.
 
 import { AE } from "../data/cities-by-country/ae.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "AE"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(AE));
+const CITIES: readonly City[] = expandColumns(AE);
 
 export default CITIES;
 export { CITIES };

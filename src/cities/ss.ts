@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/ss: the 17 cities of South Sudan, every tier together, as a list.
 
 import { SS } from "../data/cities-by-country/ss.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "SS"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(SS));
+const CITIES: readonly City[] = expandColumns(SS);
 
 export default CITIES;
 export { CITIES };

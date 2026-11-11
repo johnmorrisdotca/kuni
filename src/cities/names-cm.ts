@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Douala|Yaoundé|Garoua|Bafoussam|Bamenda|Maroua|Ngaoundéré|Kumba|Nkongsamba|Buea|Kumbo|Kousséri|Bogo|Foumban|Bertoua|Guider|Limbe|Mbalmayo|Meiganga|Tiko|Ebolowa|Dschang|Edéa|Tibati|Bafia|Wum|Kribi|Mbouda|Loum|Mokolo|Bafou|Mamfe|Batouri|Bafang|Kalfou|Bélabo|Éséka",
   ja: "ドゥアラ|ヤウンデ|ガルア|バフーサム|バメンダ|マルア|ヌガウンデレ|クンバ|ンコングサンバ|ブエア|クンボ|クッセリ|ボゴ|フーンバン|ベルトゥア|ギデ|リンベ|ムバルマヨ|メイガンガ|チコ (カメルーン)|エボロワ|ジャング|エデア|ティバティ|バフィア|ウム|クリビ|ムブーダ||モコロ||マンフェ|バトゥーリ|バファン|カルフー|ベラボ|エセカ",
   native: "|||||||||Buéa|||||||Limbé||||||Édéa|||||||||Mamfé|||||",
+  reading: "||||||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000000",
 });
 

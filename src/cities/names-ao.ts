@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Luanda|Quilamba Quiaxi|Lubango|Viana|Huambo|Cabinda|Malanje|Uíge|Benguela|Kuito|Lobito|Saurimo|Menongue|Belas|Cubal|Luena|Bailundo|Sumbe|Moçâmedes|Soyo|Chibia|Dundo|Quibala|N'dalatando|Quipungo|Luau|Lucapa|M'banza-Kongo|Dande|Porto Amboim|Ondjiva|Gabela|Baía Farta|Cazombo|Cafunfo|Waku-Kungo|Capenda-Camulemba|Caxito|Ambaca|Ícolo e Bengo|Tômbwa|Cuito Cuanavale|Buco-Zau|Mavinga|Camacupa|Ambriz|Cazenga|Sambizanga",
   ja: "ルアンダ|キランバ・キアシェ|ルバンゴ|ビアナ|ウアンボ|カビンダ|マランジェ|ウイジェ|ベンゲラ|クイト|ロビト|サウリモ|メノングエ|ベラス|クバル|ルエナ||スンベ|モザメデス|サント・アントーニオ・ド・ザイレ|シビア|ドゥンド|キバラ|ヌダラタンド|キプンゴ|ルアウ|ルカパ|ンバンザ＝コンゴ||ポルト・アンボイム|オンジヴァ|||カゾンボ|カフンフォー|ウアク・クンゴ|カペンダ-カムレンバ|カシート|アンバカ|イコロ＝ベンゴ|トンブア|クイト・クアナバリ||マヴィンガ|カマクパ|アンブリス|カゼンガ|サンビザンガ",
   native: "|||||||||Cuíto||||||||||||||||||M'banza Congo||||||||Uaco Cungo|||||Tômbua|||||||",
+  reading: "|||||||||||||||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000000000000000",
 });
 

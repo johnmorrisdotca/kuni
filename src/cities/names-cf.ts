@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bangui|Bimbo|Berbérati|Carnot|Bambari|Bouar|Bossangoa|Bria|Bangassou|Nola|Kaga-Bandoro|Sibut|Mbaïki|Bozoum|Paoua|Batangafo|Kabo|Bocaranga|Ippy|N'Délé|Obo|Mobaye|Birao",
   ja: "バンギ|ビンボ (中央アフリカ共和国)|ベルベラティ|カルノ|バンバリ|ブワル|ボサンゴア|ブリア|バンガスー|ノラ|ガガ＝バンドロ|シブート|ムバイキ|ボズム|パウア (中央アフリカ共和国)|バタンガフォ|カボ|ボカランガ|イッピー|ンデレ|オボ|モバイエ|ビラオ",
   native: "|||||||||||||||||||Ndélé|||",
+  reading: "||||||||||||||||||||||",
   major: "11111111111111111111000",
 });
 

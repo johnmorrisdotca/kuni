@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Chișinău|Tiraspol|Bălți|Bender|Ungheni|Durlești|Dubăsari|Cahul|Orhei|Soroca|Comrat|Codru|Ialoveni|Strășeni|Căușeni|Drochia|Edineț|Hîncești|Florești|Taraclia|Sîngerei|Călărași|Rezina|Nisporeni|Cimișlia|Leova|Basarabeasca|Dondușeni|Criuleni|Briceni|Telenești|Ștefan Vodă|Ocnița|Șoldănești|Cocieri|Cantemir",
   ja: "キシナウ|ティラスポリ|バルツィ|ベンデル|ウンゲニ||ドゥベサリ|カグル|オルヘイ|ソロカ|コムラト||ヤロベニ|ストラセニ|カウシェニ|ドロキア|エディネツ|フンチェシュティ|フロレシュティ|タラクリア|シンジェレイ|カララシ|レジナ|ニスポレニ|チミシリア|レオバ|バサラベアスカ|ドンドゥセニ|クリウレニ|ブリチェニ|テレネシュティ|シュテファン・ボーダ|オクニツァ|ソルダネシュティ|コシエリ|カンテミール",
   native: "|||Tighina||||||||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||||||||||",
   major: "111111111111111111110000000000000000",
 });
 

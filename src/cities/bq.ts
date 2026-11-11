@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/bq: the 3 cities of Caribbean Netherlands, every tier together, as a list.
 
 import { BQ } from "../data/cities-by-country/bq.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "BQ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(BQ));
+const CITIES: readonly City[] = expandColumns(BQ);
 
 export default CITIES;
 export { CITIES };

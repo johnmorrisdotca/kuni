@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Colombo|Moratuwa|Gampaha|Beruwala|Negombo|Kandy|Sri Jayawardenepura Kotte|Kilinochchi|Trincomalee|Batticaloa|Galle|Dambulla|Kalmunai|Jaffna|Vavuniya|Matara|Kalpitiya|Anuradhapura|Buttala|Ratnapura|Puttalam|Badulla|Mullaitivu(මූලදීපය)|Matale|Mannar|Point Pedro|Gampola|Nuwara Eliya|Vakarai|Valvettithurai|Kegalle|Hambantota|Polonnaruwa|Kurunegala",
   ja: "コロンボ|モラトゥワ|ガンパハ|ベルワラ|ニゴンボ|キャンディ|スリジャヤワルダナプラコッテ|キリノッチ|トリンコマリー|バッティカロア|ゴール|ダンブッラ|カルムナイ|ジャフナ|バブニヤ|マータラ|カルピティヤ|アヌラダープラ||ラトゥナプラ|プッタラム|バドゥッラ|ムッライッティーヴー|マータレー|マンナール|ポイント・ペドロ|ガンポラ|ヌワラ・エリヤ||ヴェリヴチットフライ|ケーガッラ|ハンバントタ|ポロンナルワ|クルネーガラ",
   native: "කොළඹ|මොරටුව|ගම්පහ|බේරුවල|මීගමුව|මහනුවර|ශ්රී ජයවර්ධනපුර කෝට්ටේ|කිලිනොච්චිය|ත්රිකුණාමලය|මඩකලපුව|ගාල්ල|දඹුල්ල|කල්මුනේ|යාපනය|වවුනියාව|මාතර|කල්පිටිය|අනුරාධපුර පෞරාණික නගරය|බුත්තල|රත්නපුර|පුත්තලම|බදුල්ල|මුලතිව්|මාතලේ|මන්නාරම|පේදුරු තුඩුව|ගම්පොල|නුවරඑළිය|வாகரை|වැල්වැටිතුරෙයි|කෑගල්ල|හම්බන්තොට|පොළොන්නරු යුගය|කුරුණෑගල",
+  reading: "|||||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000000",
 });
 

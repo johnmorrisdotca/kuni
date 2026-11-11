@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tbilisi|Batumi|Kutaisi|Rustavi|Sokhumi|Gori|Zugdidi|Poti|Tskhinval|Khashuri|Marneuli|Samtredia|Senaki|Zestaponi|Telavi|Akhaltsikhe|Kobuleti|Ozurgeti|Ambrolauri|Mtskheta",
   ja: "トビリシ|バトゥミ|クタイシ|ルスタヴィ|スフミ|ゴリ|ズグディディ|ポティ|ツヒンヴァリ|ハシュリ|マルネウリ|サムトレディア|セナキ|ゼスタポニ|テラヴィ|アハルツィヘ|コブレチ|オズルゲティ|アンブロラウリ|ムツヘタ",
   native: "თბილისი|ბათუმი|ქუთაისი|რუსთავი|სოხუმი|გორი|ზუგდიდი|ფოთი|ცხინვალი|ხაშური|მარნეული|სამტრედია|სენაკი|ზესტაფონი|თელავი|ახალციხე|ქობულეთი|ოზურგეთი|ამბროლაური|მცხეთა",
+  reading: "|||||||||||||||||||",
   major: "11111111111111111111",
 });
 

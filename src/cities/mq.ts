@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mq: the 1 cities of Martinique, every tier together, as a list.
 
 import { MQ } from "../data/cities-by-country/mq.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MQ"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MQ));
+const CITIES: readonly City[] = expandColumns(MQ);
 
 export default CITIES;
 export { CITIES };

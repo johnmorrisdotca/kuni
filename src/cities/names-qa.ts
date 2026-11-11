@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Doha|Al Khor|Ras Laffan Industrial City|Umm Salal Mohammed|Al-Shahaniya|Al Wakrah|Ar Rayyan",
   ja: "ドーハ|アル・ホール|ラアス・ラファーン工業都市|ウンム・サラール・ムハンマド|シャハーニーヤ市|アル＝ワクラ市|ライヤーン",
   native: "الدوحة|الخور|رأس لفان|أم صلال|الشحانية|الوكرة|الريان",
+  reading: "||||||",
   major: "1111111",
 });
 

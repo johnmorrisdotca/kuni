@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Tallinn|Tartu|Narva|Pärnu|Kohtla-Järve|Viljandi|Maardu|Rakvere|Kuressaare|Valga|Võru|Jõhvi|Haapsalu|Paide|Elva|Põlva|Rapla|Türi|Jõgeva|Põltsamaa|Paldiski|Kärdla|Narva-Jõesuu|Lihula|Antsla|Suure-Jaani|Järva-Jaani|Alatskivi",
   ja: "タリン|タルトゥ|ナルヴァ|パルヌ|コフトラ＝ヤルヴェ|ヴィリャンディ|マールドゥ|ラクヴェレ|クレサーレ|ヴァルガ|ヴォル|ユフヴィ|ハープサル|パイデ||ポルヴァ|ラプラ||ヨゲヴァ|ポルツァマー|パルディスキ|カルドラ|ナルヴァ＝ヨエスー|リフラ|||イェルヴァ・ヤーニ|",
   native: "|||||||||||||||||||||||||||",
+  reading: "|||||||||||||||||||||||||||",
   major: "1111111111111111111100000000",
 });
 

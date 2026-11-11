@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Lobamba|Manzini|Mbabane|Siteki|Nhlangano",
   ja: "ロバンバ|マンジニ|ムババーネ|シテキ|ンランガーノ",
   native: "||ÉMbábáne||",
+  reading: "||||",
   major: "11111",
 });
 

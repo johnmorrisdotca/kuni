@@ -2,7 +2,7 @@
 // The entry @johnmorrisdotca/kuni/cities/mo: the 2 cities of Macao SAR China, every tier together, as a list.
 
 import { MO } from "../data/cities-by-country/mo.data";
-import { expandCities, rowsOf } from "../city-rows";
+import { expandColumns } from "../city-rows";
 import type { City } from "../city-rows";
 
 /**
@@ -17,7 +17,7 @@ import type { City } from "../city-rows";
  * console.log(cities[0].country);  // "MO"
  * ```
  */
-const CITIES: readonly City[] = expandCities(rowsOf(MO));
+const CITIES: readonly City[] = expandColumns(MO);
 
 export default CITIES;
 export { CITIES };

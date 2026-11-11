@@ -10,6 +10,7 @@ const CITY_NAMES: readonly CityName[] = namesOf({
   en: "Bamako|Sikasso|Ségou|Mopti|Koutiala|Kayes|Markala|Gao|Kita|Koulikoro|San|Bougouni|Timbuktu|Yanfolila|Djenné|Banamba|Bourem|Bafoulabé|Bandiagara|Ménaka|Simbi|Nara|Kangaba|Kidal|Taoudenni|Kati",
   ja: "バマコ|シカソ|セグー|モプティ|クティアラ|カイ|マルカラ|ガオ|キタ|クリコロ|サン|ブグニ|トンブクトゥ|ヤンフォリラ|ジェンネ|バナンバ|ブーレム|バフーラベ|バンディアガラ|メナカ||ナラ|カンガバ|キダル|タウデニ|カティ",
   native: "Bamakɔ|Sikaso|Segu|||Kayi||||Kulikɔrɔ||Buguni|||Djenne|||||||||||",
+  reading: "|||||||||||||||||||||||||",
   major: "11111111111111111111000000",
 });
 
