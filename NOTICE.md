@@ -19,6 +19,8 @@ address, the day it was read and its SHA-256.
 | The withdrawn countries' four-letter codes, alpha-3 and numeric codes, the years each code was in force and the codes that replaced them | ISO 3166-3's published list (ISO's Online Browsing Platform), transcribed once in `scripts/withdrawn-config.ts` and pinned whole by `src/withdrawn.test.ts` | A list of facts |
 | The IOC code of the Netherlands, and a few of the withdrawn countries' names | Written for this package, in `scripts/withdrawn-config.ts`, each with its reason | MIT |
 | Time zones | IANA time zone database 2026e, `zone.tab` | Public domain |
+| Each city's time zone | Natural Earth 5.1.2 10m Populated Places, its TIMEZONE for the place (`data-sources/natural-earth-timezones-5.1.2.json`), read on 2026-11-13; else IANA's `zone.tab` and Wikidata's subdivision zones as `/zones` has them | Public domain (Natural Earth, IANA); CC0 (Wikidata) |
+| Each city's elevation | Wikidata, the snapshot `data-sources/wikidata-city-elevations-2026-11-13.json` (P2044) | CC0, below |
 | Country-code top-level domains | IANA's list of top-level domains (version 2026100900) | A list of facts, published by IANA |
 | The aliases ("Holland", "UK", 米国), the readings of country names written in kanji, Hokkaido's and Fukuoka's readings, the readings of twenty new towns and neighbourhoods of Japan that neither Wikidata nor Japan Post reads, and the Japanese words for kinds of place the build looks for | Written for this package, in `scripts/data-config.ts` | MIT |
 
@@ -180,6 +182,15 @@ The time zones (`/zones`, and `capitalZone` in `/facts`) are from IANA's tzdb zo
 fourth Wikidata snapshot (`data-sources/wikidata-zones-<day>.json`, CC0 on the same terms, read on 2026-11-11), asked for
 by `scripts/fetch-zones.ts`: the IANA ids (P6687) of the zones each first-level subdivision is in (P421).
 
+Each city's elevation (`elevation`) is from a fifth Wikidata snapshot (`data-sources/wikidata-city-elevations-<day>.json`,
+CC0 on the same terms, read on 2026-11-13, when Wikidata's licensing page (https://www.wikidata.org/wiki/Wikidata:Licensing)
+was read again: "All structured data ... is released into the public domain under Creative Commons Zero"), asked for by
+`scripts/fetch-city-elevations.ts`: the best-ranked P2044 values of each city item, in metres as Wikidata normalises
+them. Kuni keeps the middle of several values only where they lie within 50 m of each other, and none where they differ
+more or lie outside what land has (`scripts/city-facts.ts`). No elevation model and no other source is used, and none
+is made up. A time zone was asked for in the same way (P421 with the IANA id, P6687) and left out: a city's zone in
+Wikidata is the "Pacific Time Zone" item, which names no IANA zone (4 of the first 4,500 items had an id).
+
 ## Natural Earth's populated places
 
 Natural Earth's 10m Populated Places, version 5.1.2 (https://www.naturalearthdata.com/, public domain: "No permission
@@ -188,6 +199,14 @@ is needed to use Natural Earth. Crediting the authors is unnecessary."), read fr
 a population or a point Wikidata has not got, add a capital where Wikidata names none, and give the cities Wikidata has
 no item for (ids that start `ne:`). Places it marks "Historic place" are left out. Each city's `source` field says which
 input a fact came from. It is credited here anyway.
+
+Natural Earth's terms (https://www.naturalearthdata.com/about/terms-of-use/, read again on 2026-11-13): "All versions of
+Natural Earth raster + vector map data found on this website are in the public domain. ... No permission is needed to use
+Natural Earth. Crediting the authors is unnecessary." The same release file also gives each city's time zone: its
+TIMEZONE column, cut by `scripts/fetch-city-zones.ts` into `data-sources/natural-earth-timezones-5.1.2.json` (the SHA-256
+of the whole release file is in `sources.json`) and used for a city only where it is a zone IANA's zone.tab lists for the
+city's country, after reading the names tzdb has made links (Asia/Rangoon is Asia/Yangon) as the zones they are now. The
+column's own sources are not stated on Natural Earth's pages; kuni relies on the release's public-domain terms.
 
 ## Natural Earth, through Chizu
 

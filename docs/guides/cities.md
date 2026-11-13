@@ -20,6 +20,7 @@ The cities come in tiers, so a page pays only for what it uses. `capitals` holds
 ## Join tiers and look things up
 
 ```js
+import { country } from "@johnmorrisdotca/kuni";
 import { citySet, citiesOf } from "@johnmorrisdotca/kuni/cities";
 import { countriesOf, searchPlaces } from "@johnmorrisdotca/kuni/places";
 import { capitalCities } from "@johnmorrisdotca/kuni/cities/capitals";
@@ -37,6 +38,10 @@ console.log(japan.length > 100, citySet(japan).byId("Q1490")?.country);
 // What a chooser asks: the countries of a continent, and what somebody typed, in Japanese if they like.
 const found = await searchPlaces("パリ", { lang: "ja" });
 console.log(countriesOf("OC").length > 10, found[0].label);
+
+// What a city card shows: the zone to give a date formatter, whether it is an estimate, the height in metres, and the language of its country.
+const tokyo = citySet(japan).byId("Q1490");
+console.log(tokyo.timeZone, tokyo.timeZoneEstimated, tokyo.elevation, country(tokyo.country).languages.join());
 ```
 
 `citySet` takes any lists of cities and builds the lookups once: `byId`, `inCountry`, `inSubdivision`, `nearest(point)` and `within(point, km)`. A point is any `{ lat, lon }`, a city included. `nearest` answers the city and how far it is, in kilometres on a sphere of the earth's mean radius; `maxKm`, `minPopulation` and `country` narrow it. For a "you are here" marker, give `nearest` the position and a `minPopulation`, so a village does not win over the town beside it.
@@ -59,12 +64,15 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 - `name`: `en`, and `ja` and `native` where a source has them. A missing one is absent, never an English name copied in. `jaShort` is the short Japanese name for a map label (東京 for 東京都, 大阪 for 大阪市), wherever `ja` is. `jaReading` is `ja` read in hiragana, to sort a list in Japanese order (とうきょうと for 東京都); sort it with a Japanese collation (`new Intl.Collator("ja")`), as it keeps the long-vowel mark. A name written in kana is read from itself. A name in kanji is read only from a source: Wikidata's reading, in any country (香港, ほんこん), Japan Post's for a municipality of Japan, or one written for this package for twenty new towns and neighbourhoods of Japan. A name of China, Taiwan or Korea in Chinese characters with none of these (上海市) has no reading, since no source with clear terms of use gives one and a reading is never made up from the characters. `nativeLanguage` is the code of `native`.
 - `continent` (`"AS"`, `"EU"`, ...), `country` (ISO 3166-1 alpha-2, two capital letters), `lat`, `lon`, and `subdivision` (the ISO 3166-2 code of its first-level subdivision, or `null`).
 - `population` and `populationDate` (a year, or a day), `null` where no source has a figure.
+- `timeZone`: the IANA zone the city keeps, `"Asia/Tokyo"`, to give a date formatter as its `timeZone` so a page shows the time there (`new Intl.DateTimeFormat("en", { timeStyle: "short", timeZone: city.timeZone })`). `timeZoneEstimated` is false where a source names it: Natural Earth's zone for the place, a country's one zone, or the one zone Wikidata names for the city's subdivision. It is true where kuni worked it out (the zone of the nearest city of the same subdivision that has one, else the zone of the subdivision or of the nearest zone.tab city), and kuni has no boundaries, so a town near the edge of a zone can be given its neighbour's: say "estimated" where it is shown. [docs/cities.md](../cities.md) counts each way, and how often the estimate gives the same clock as Natural Earth's own zone where both are known.
+- `elevation`: the height above sea level in whole metres (negative below it), Wikidata's best-ranked value (CC0), `null` where it has none, or has several that are more than 50 m apart. Never from a model of the ground.
+- The language is the country's, which kuni already holds: `country(city.country).languages` (ISO 639-1 codes, the most used first: `["en", "fr"]` for Canada). `nativeLanguage` is the language of `name.native`.
 - `capital` (`"national"`, `"alternate"`, `"subdivision"` or `null`) and `capitalOf`, the codes it is the capital of (never empty for a capital).
 - `metro`: the urban area the city heads, `{ id, name, population, populationDate, estimated }`, or `null`. One source for each country: Statistics Canada's census metropolitan areas in Canada (1 July 2025), the Census Bureau's statistical areas in the United States (1 July 2024), the OECD's functional urban areas in its other members, and for the first cities of China and India their censuses' urban figures (2020 and 2011; on India's of 2011 Mumbai is ahead of Delhi, the larger today). Where a city heads none in a country with official areas, Wikidata's metropolitan area where it is bigger than the city (`estimated: true`). Every list ranks a city by this figure where it has one, else by its own `population`; `rankEstimated` is true where that figure is an estimate (in every country with no official areas).
 - `inMetroOf`: the id of the city whose area this one lies inside, where it heads none (Mississauga and Brampton are in Toronto's, Fort Worth in Dallas's, Thane in Mumbai's), else `null`. A city of a million people or more is never put inside another's for being near it (Yokohama). Such a city comes after every city that heads an area, so the first ten or twenty of a country are its major cities. `urbanAreaUnknown` is true for a city of China or India below the census list: its own figure is its whole municipality, so it comes after them.
 - `source`: which input each of the point, the population and the Japanese name came from, `"wikidata"`, `"natural-earth"` or, for the few Japanese names written for this package, `"kuni"`. Wikidata's Japanese name is always preferred; Natural Earth's fills only where Wikidata has none.
 
-`id`, `name`, `continent`, `country`, `lat`, `lon`, `population` and `capital` are the fields a page needs to keep a place; everything else is there to draw it well.
+`id`, `name`, `continent`, `country`, `lat`, `lon`, `population` and `capital` are the fields a page needs to keep a place; everything else is there to draw it well. `timeZone`, `timeZoneEstimated` and `elevation` are what a city card adds to them; they are columns of the same files, so no further request is made (about 1 percent more for Japan's file, 7 percent for the United States').
 
 ## Where it comes from
 

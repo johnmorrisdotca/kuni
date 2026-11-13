@@ -156,7 +156,7 @@ await step("cities", () => {
     cwd: usage,
     encoding: "utf8",
   }).trim();
-  if (out !== "Paris FR true\ntrue JP\ntrue パリ") throw new Error(`unexpected output: ${out}`);
+  if (out !== "Paris FR true\ntrue JP\ntrue パリ\nAsia/Tokyo false 6 ja") throw new Error(`unexpected output: ${out}`);
 });
 
 await step("typescript", () => {

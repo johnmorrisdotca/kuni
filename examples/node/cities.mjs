@@ -1,3 +1,4 @@
+import { country } from "@johnmorrisdotca/kuni";
 import { citySet, citiesOf } from "@johnmorrisdotca/kuni/cities";
 import { countriesOf, searchPlaces } from "@johnmorrisdotca/kuni/places";
 import { capitalCities } from "@johnmorrisdotca/kuni/cities/capitals";
@@ -15,3 +16,7 @@ console.log(japan.length > 100, citySet(japan).byId("Q1490")?.country);
 // What a chooser asks: the countries of a continent, and what somebody typed, in Japanese if they like.
 const found = await searchPlaces("パリ", { lang: "ja" });
 console.log(countriesOf("OC").length > 10, found[0].label);
+
+// What a city card shows: the zone to give a date formatter, whether it is an estimate, the height in metres, and the language of its country.
+const tokyo = citySet(japan).byId("Q1490");
+console.log(tokyo.timeZone, tokyo.timeZoneEstimated, tokyo.elevation, country(tokyo.country).languages.join());

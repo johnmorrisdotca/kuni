@@ -21,6 +21,8 @@ bytes are not the recorded ones.
 | `japan-post-municipalities-<day>.json` | https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip (`node scripts/fetch-japan-post.ts`): each municipality of Japan once, its local government code, prefecture, name and reading in katakana | the day it was read | No copyright claimed (NOTICE.md) |
 | `wikidata-metros-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-metros.ts`) | the day it was read | CC0 |
 | `wikidata-zones-<day>.json` | https://query.wikidata.org/sparql, the query written in the file (`node scripts/fetch-zones.ts`) | the day it was read | CC0 |
+| `wikidata-city-elevations-<day>.json` | https://query.wikidata.org/sparql, the query written in the file (`node scripts/fetch-city-elevations.ts`): the elevation above sea level (P2044, best rank, in metres) of each city item | the day it was read | CC0 |
+| `natural-earth-timezones-5.1.2.json` | https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson (`node scripts/fetch-city-zones.ts`): the TIMEZONE of each place that has one, by NE_ID; the same release file as `natural-earth-populated-places-5.1.2.json` | 2026-11-13 | Public domain |
 | `urban-areas-<day>.json` | Statistics Canada Tables 17-10-0148-01 and 98-10-0003-01, the U.S. Census Bureau's `cbsa-est2024-alldata.csv`, and the OECD Data Explorer's `DSD_FUA_DEMO@DF_AGE_SEX`, cut to each area's code, name and latest population and Canada's municipalities by area (`node scripts/fetch-urban.ts`) | the day it was read | Statistics Canada Open Licence; public domain (U.S. government work); OECD Terms and Conditions, section 3: each credit is in the file and in NOTICE.md |
 | `statcan-cma-2021.json` | https://www150.statcan.gc.ca/n1/tbl/csv/98100005-eng.zip, Statistics Canada Table 98-10-0005-01, cut to name, province, DGUID, kind and 2021 population (`node scripts/fetch-statcan.ts`) | 2026-11-11 | Statistics Canada Open Licence; the credit is in the file and in NOTICE.md |
 | `natural-earth-populated-places-5.1.2.json` | https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson, cut down to the columns the build uses | the day it was read | Public domain |
@@ -39,6 +41,8 @@ pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day;
 pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
 pnpm data:codes       # a new Wikidata snapshot of the IOC and withdrawn codes, named for the day; the old one is removed
 pnpm data:cities      # a new Wikidata snapshot of the cities and Natural Earth's populated places, named for the day; one query at a time, by hand
+pnpm data:elevations  # a new Wikidata snapshot of the cities' elevations (P2044), named for the day; about 140 queries, one at a time, by hand
+pnpm data:city-zones  # Natural Earth's TIMEZONE of each place, from the release file the cities snapshot read (no Wikidata)
 pnpm data             # rebuild src/data/ from what is here
 pnpm data:report      # the coverage, and docs/ja-gaps.md
 ```

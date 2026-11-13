@@ -20,6 +20,7 @@ description: 世界の都市を段階ごとに読み込み、IDで引き、国�
 ## 段階を組み合わせて検索する
 
 ```js
+import { country } from "@johnmorrisdotca/kuni";
 import { citySet, citiesOf } from "@johnmorrisdotca/kuni/cities";
 import { countriesOf, searchPlaces } from "@johnmorrisdotca/kuni/places";
 import { capitalCities } from "@johnmorrisdotca/kuni/cities/capitals";
@@ -37,6 +38,10 @@ console.log(japan.length > 100, citySet(japan).byId("Q1490")?.country);
 // What a chooser asks: the countries of a continent, and what somebody typed, in Japanese if they like.
 const found = await searchPlaces("パリ", { lang: "ja" });
 console.log(countriesOf("OC").length > 10, found[0].label);
+
+// What a city card shows: the zone to give a date formatter, whether it is an estimate, the height in metres, and the language of its country.
+const tokyo = citySet(japan).byId("Q1490");
+console.log(tokyo.timeZone, tokyo.timeZoneEstimated, tokyo.elevation, country(tokyo.country).languages.join());
 ```
 
 `citySet` は都市のリストをいくつでも受け取り、検索の仕組みを一度だけ作ります。`byId`、`inCountry`、`inSubdivision`、`nearest(point)`、`within(point, km)` が使えます。地点は `{ lat, lon }` であればよく、都市そのものも地点として渡せます。`nearest` は最も近い都市と、そこまでの距離（キロメートル、地球の平均半径の球面上）を返します。`maxKm`、`minPopulation`、`country` で絞り込めます。「現在地」の印には、`nearest` に位置と `minPopulation` を渡すと、すぐ隣の町ではなく小さな村が選ばれてしまうのを防げます。
@@ -59,12 +64,15 @@ import type { City } from "@johnmorrisdotca/kuni/cities";
 - `name`：`en`、そして元データにあれば `ja` と `native`。ない言語は省かれ、英語名が代わりに入ることはありません。`jaShort` は地図のラベル用の短い日本語名（東京都なら東京、大阪市なら大阪）で、`ja` があれば必ずあります。`jaReading` は `ja` のひらがなの読み（東京都なら「とうきょうと」）で、日本語の順に並べるためのものです。長音符を残すので、並べるときは日本語の照合順序（`new Intl.Collator("ja")`）を使います。かなで書かれた名前は、名前そのものから読みます。漢字の名前は、出どころのある読みだけを使います。Wikidata の読み（どの国でも。香港なら「ほんこん」）、日本の市区町村なら日本郵便の読み、または日本のニュータウンと地区の20か所についてこのパッケージで書いた読みです。中国・台湾・韓国の漢字の名前（上海市など）でこのどれもないものには、利用条件のはっきりした出どころがなく、漢字から読みを作ることもしないため、読みはありません。`nativeLanguage` は `native` の言語コードです。
 - `continent`（`"AS"`、`"EU"` など）、`country`（ISO 3166-1 alpha-2、大文字2文字）、`lat`、`lon`、`subdivision`（第1階層の行政区画のISO 3166-2コード。なければ `null`）。
 - `population` と `populationDate`（年または日付）。どの出どころにも数値がなければ `null`。
+- `timeZone`：その都市が使うIANAタイムゾーン（`"Asia/Tokyo"`）。日付フォーマッターの `timeZone` に渡すと、ページにそこでの時刻を表示できます（`new Intl.DateTimeFormat("ja", { timeStyle: "short", timeZone: city.timeZone })`）。`timeZoneEstimated` は、ゾーンが出どころに明記されている場合に false です。つまり、Natural Earth のその場所のゾーン、国にタイムゾーンが1つしかない場合のそのゾーン、または Wikidata が都市の行政区画について示す唯一のゾーンのいずれかを使ったときです。kuni が算出した場合は true です（同じ行政区画でゾーンを持つ最も近い都市のゾーン。なければ行政区画のゾーン、または zone.tab の最も近い都市のゾーン）。kuni はゾーンの境界データを持たないため、ゾーンの境目に近い町には、隣のゾーンが割り当てられることがあります。表示するときは「推定」と添えてください。各方法の件数と、Natural Earth 自身のゾーンがある都市で推定が同じ時刻になる割合は [docs/cities.md](../../cities.md) にあります。
+- `elevation`：標高（メートル、整数、海面より低ければ負）。Wikidata（CC0）でランクが最も高い値。値がない場合、または値が複数あって互いに50 m を超えて離れている場合は `null`。標高データ（DEM）から求めることはありません。
+- 都市の言語は、その都市がある国の言語です。kuni がすでに持っているので、`country(city.country).languages` を使います（ISO 639-1コード、よく使われる順。カナダは `["en", "fr"]`）。`nativeLanguage` は `name.native` の言語です。
 - `capital`（`"national"`、`"alternate"`、`"subdivision"`、`null`）と `capitalOf`（その都市が首都である国や行政区画のコード。首都なら空ではありません）。
 - `metro`：その都市が中心となる都市圏（urban area）`{ id, name, population, populationDate, estimated }`、なければ `null`。出どころは国ごとに一つです。カナダはカナダ統計局（Statistics Canada）の国勢調査都市圏（2025年7月1日）、アメリカは国勢調査局（Census Bureau）の統計地域（2024年7月1日）、そのほかの OECD 加盟国は OECD の機能的都市圏（functional urban area）、中国とインドは上位の都市について自国の国勢調査の都市部人口（2020年と2011年。インドの2011年の値ではムンバイがデリーより上ですが、現在はデリーの方が大きい都市です）です。公式の都市圏がある国で、中心となる都市圏がない都市は、都市より大きければ Wikidata の都市圏を使い、推計値とします（`estimated: true`）。どの一覧でも、都市圏があればその人口で、なければ都市自身の `population` で並べます。その数値が推計値なら `rankEstimated` は true です（公式の都市圏がない国では常に true）。
 - `inMetroOf`：自分の都市圏を持たず、ほかの都市の都市圏の中にある都市なら、その都市の id（ミシサガとブランプトンはトロントの都市圏、フォートワースはダラスの都市圏、ターネーはムンバイの都市圏）。それ以外は `null`。人口100万人以上の都市は、近いという理由だけでほかの都市圏に入れません（横浜）。こうした都市は都市圏の中心となる都市すべての後に並ぶので、国ごとの上位10〜20都市が主要都市になります。`urbanAreaUnknown` は、中国とインドで国勢調査の都市部人口の一覧に入らない都市で true です。その都市自身の人口は行政区域全体の値なので、一覧の都市の後に並びます。
 - `source`：地点、人口、日本語名のそれぞれの出どころ。`"wikidata"`、`"natural-earth"`、またはこのパッケージのために書いた少数の日本語名では `"kuni"`。日本語名はWikidataのものが常に優先され、Natural EarthのものはWikidataにない場合にだけ使われます。
 
-場所を保存するのに必要なのは `id`、`name`、`continent`、`country`、`lat`、`lon`、`population`、`capital` です。そのほかは、きれいに表示するためにあります。
+場所を保存するのに必要なのは `id`、`name`、`continent`、`country`、`lat`、`lon`、`population`、`capital` です。そのほかは、きれいに表示するためにあります。`timeZone`、`timeZoneEstimated`、`elevation` は、都市カードが追加で使う項目です。同じファイルの列なので、追加のリクエストはありません（ファイルの大きさは、日本で約1%、アメリカで約7%増えます）。
 
 ## データの出どころ
 

@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Each city has a time zone and an elevation, for a city card.** `City.timeZone` is the IANA zone the city keeps (`"Asia/Tokyo"`), to give a date formatter so a page shows the time there, and `City.timeZoneEstimated` says whether kuni worked it out (true) or a source names it (false): Natural Earth's zone for the place (public domain), a country's one zone, or the one zone Wikidata names for the city's subdivision. Where it is worked out it is the zone of the nearest city of the same subdivision that has one, else the subdivision's, else the nearest zone.tab city's; `docs/cities.md` counts each way and says how often the estimate gives the same clock as Natural Earth's own zone for the cities that have both (98 percent). `City.elevation` is the height above sea level in whole metres from Wikidata (CC0), `null` where it has none or several values more than 50 m apart. Every city has a zone; 17,208 of 29,982 have an elevation. They are columns of the same files, so no new entry or request: the gzipped country files grow by about 1 percent for Japan and 7 percent for the United States, `/cities/capitals` and `/cities/100k` by about 8 percent. A city's languages need nothing new: `country(city.country).languages` has them. New inputs: `data-sources/natural-earth-timezones-5.1.2.json` (`pnpm data:city-zones`) and `data-sources/wikidata-city-elevations-2026-11-13.json` (`pnpm data:elevations`), with their licences in `NOTICE.md`. The `City` type gains the three fields (a city made by hand for a test needs them).
+
 ### Changed
 
 - The must-have check is kazoku-ui's check-standard 2026-11-11b (`scripts/check-standard.mjs`, copied unchanged, its new hash recorded in `src/standard.test.js`). Its new item, `playwright-image`, holds CI's Playwright image to the version `pnpm-lock.yaml` pins for `@playwright/test`; here both are 1.64.0.
