@@ -241,7 +241,7 @@ describe("the rules that choose a zone", () => {
 describe("the rules that choose an elevation", () => {
   // Cities in a flat country, a few kilometres apart, so that each has the others for neighbours.
   const flat = (values: (number | null)[]): CityRow[] => values.map((_, at) => row(100 + at, 10 + at * 0.05, 20, "AA", null, `Town ${at}`));
-  const of = (values: (number | null)[], extra: [number, number[]][] = []): Map<number | string, { elevation: number | null }> =>
+  const elevationsOf = (values: (number | null)[], extra: [number, number[]][] = []): Map<number | string, { elevation: number | null }> =>
     buildCityFacts(input(flat(values), [...values.flatMap((value, at) => (value === null ? [] : [[100 + at, [value]] as [number, number[]]])), ...extra])).facts;
 
   it("keep the one value a city has, whole, and the middle of several within 50 m", () => {
@@ -260,24 +260,24 @@ describe("the rules that choose an elevation", () => {
   });
 
   it("drop a value more than 500 m from the cities round it when three or more of them agree within 150 m", () => {
-    const made = of([20, 25, 30, 40, 1667]);
+    const made = elevationsOf([20, 25, 30, 40, 1667]);
     expect(made.get(104)?.elevation).toBeNull();
     for (const at of [100, 101, 102, 103]) expect(made.get(at)?.elevation, `${at}`).not.toBeNull();
   });
 
   it("keep it with fewer than three cities round it, or where they do not agree: a mountain town above its valley", () => {
     // Two neighbours only.
-    expect(of([20, 25, 1667]).get(102)?.elevation).toBe(1667);
+    expect(elevationsOf([20, 25, 1667]).get(102)?.elevation).toBe(1667);
     // Four neighbours 300 m apart.
-    expect(of([20, 150, 320, 40, 1667]).get(104)?.elevation).toBe(1667);
+    expect(elevationsOf([20, 150, 320, 40, 1667]).get(104)?.elevation).toBe(1667);
   });
 
   it("never drop a value below sea level, however far it is from the cities round it (Jericho beside Jerusalem)", () => {
-    expect(of([750, 775, 790, 810, -258]).get(104)?.elevation).toBe(-258);
+    expect(elevationsOf([750, 775, 790, 810, -258]).get(104)?.elevation).toBe(-258);
   });
 
   it("do not count the highest and the lowest of six or more neighbours, which may be bad values too", () => {
-    const made = of([10, 189, 16, 20, 26, 27, 30, 2286]);
+    const made = elevationsOf([10, 189, 16, 20, 26, 27, 30, 2286]);
     expect(made.get(107)?.elevation).toBeNull();
     // Two of the six agree with nobody but themselves: one bad value, but the others keep theirs.
     expect(made.get(101)?.elevation).toBe(189);
