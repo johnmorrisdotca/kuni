@@ -22,6 +22,9 @@ const SR: CityColumns = {
   capitalOf: "SR||SR-WA||SR-NI|SR-CM|SR-MA|SR-BR|SR-SA|SR-CR|SR-PR",
   sources: "1012101010101010101010",
   reading: "||||||||||",
+  zones: "America/Paramaribo",
+  zone: [0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "3,104,9,,0,0,5,72,9,0,10",
   extra: [],
 };
 

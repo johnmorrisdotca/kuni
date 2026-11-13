@@ -22,6 +22,9 @@ const LR: CityColumns = {
   capitalOf: "LR|LR-GB|LR-NI|LR-BG|LR-MG|LR-MY|LR-LO|LR-GG|LR-SI|LR-BM|LR-CM|LR-MO|LR-GK|LR-RI|LR-RG|LR-GP",
   sources: "10121010121212121010121010121010",
   reading: "|||||||||||||||",
+  zones: "Africa/Monrovia",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: ",77,769,250,,0,,,0,114,500,90,95,,,",
   extra: [],
 };
 

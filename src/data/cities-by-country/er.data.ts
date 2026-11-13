@@ -22,6 +22,9 @@ const ER: CityColumns = {
   capitalOf: "ER|ER-AN|ER-DK|ER-SK|ER-DU|ER-GB",
   sources: "101010101010",
   reading: "|||||",
+  zones: "Africa/Asmara",
+  zone: [0,0,0,0,0,0],
+  elevation: "2325,1590,16,6,1972,1012",
   extra: [],
 };
 

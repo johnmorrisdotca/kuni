@@ -22,6 +22,9 @@ const SZ: CityColumns = {
   capitalOf: "SZ|SZ-MA|SZ SZ-HH|SZ-LU|SZ-SH",
   sources: "1010101010",
   reading: "||||",
+  zones: "Africa/Mbabane",
+  zone: [0,0,0,0,0],
+  elevation: "694,686,1243,619,1050",
   extra: [],
 };
 

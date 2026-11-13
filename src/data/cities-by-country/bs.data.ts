@@ -22,6 +22,9 @@ const BS: CityColumns = {
   capitalOf: "BS||BS-NO|BS-CO|BS-EG|BS-CS|BS-LI|BS-BI|BS-SE|BS-IN|BS-SS|BS-NS|BS-MG|BS-EX|BS-CE|BS-SO|BS-WG",
   sources: "1010101010101010101010101010101010",
   reading: "||||||||||||||||",
+  zones: "America/Nassau",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "34,9,0,4,,,,1,,11,,,,,,,",
   extra: [],
 };
 

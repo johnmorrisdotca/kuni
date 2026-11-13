@@ -22,6 +22,9 @@ const MV: CityColumns = {
   capitalOf: "MV|MV-23|MV-03|MV-17|MV-07|MV-20|MV-26|MV-14|MV-01|MV-27|MV-02|MV-29|MV-28|MV-12|MV-08|MV-25|MV-13|MV-00|MV-05|MV-04|MV-24",
   sources: "101010101010101010101010101010101010101010",
   reading: "||||||||||||||||||||",
+  zones: "Indian/Maldives",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "2,6,,9,8,7,,,6,,,9,,,,,,,7,8,9",
   extra: [],
 };
 

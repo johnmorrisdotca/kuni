@@ -22,6 +22,9 @@ const YT: CityColumns = {
   capitalOf: "YT",
   sources: "10",
   reading: "",
+  zones: "Indian/Mayotte",
+  zone: [0],
+  elevation: "23",
   extra: [],
 };
 

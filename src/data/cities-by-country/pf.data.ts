@@ -22,6 +22,9 @@ const PF: CityColumns = {
   capitalOf: "PF",
   sources: "10",
   reading: "",
+  zones: "Pacific/Tahiti",
+  zone: [0],
+  elevation: "9",
   extra: [],
 };
 

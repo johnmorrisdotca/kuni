@@ -22,6 +22,9 @@ const WF: CityColumns = {
   capitalOf: "WF",
   sources: "10",
   reading: "",
+  zones: "Pacific/Wallis",
+  zone: [0],
+  elevation: "6",
   extra: [],
 };
 

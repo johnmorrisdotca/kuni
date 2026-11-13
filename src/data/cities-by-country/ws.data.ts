@@ -22,6 +22,9 @@ const WS: CityColumns = {
   capitalOf: "WS|WS-TU|WS-AA|WS-AT|WS-AL",
   sources: "1010101010",
   reading: "||||",
+  zones: "Pacific/Apia",
+  zone: [0,0,0,0,0],
+  elevation: "2,11,11,20,13",
   extra: [],
 };
 

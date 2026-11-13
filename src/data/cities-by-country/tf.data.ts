@@ -22,6 +22,9 @@ const TF: CityColumns = {
   capitalOf: "TF",
   sources: "10",
   reading: "",
+  zones: "Indian/Kerguelen",
+  zone: [0],
+  elevation: "12",
   extra: [],
 };
 

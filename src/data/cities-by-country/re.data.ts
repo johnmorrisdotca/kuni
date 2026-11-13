@@ -22,6 +22,9 @@ const RE: CityColumns = {
   capitalOf: "RE",
   sources: "00",
   reading: "",
+  zones: "Indian/Reunion",
+  zone: [0],
+  elevation: "23",
   extra: [[0,"oecd:FR030F","Saint-Denis",323655,2022]],
 };
 

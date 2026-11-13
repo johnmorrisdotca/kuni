@@ -22,6 +22,9 @@ const CX: CityColumns = {
   capitalOf: "CX",
   sources: "10",
   reading: "",
+  zones: "Indian/Christmas",
+  zone: [0],
+  elevation: "135",
   extra: [],
 };
 

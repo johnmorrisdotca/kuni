@@ -22,6 +22,9 @@ const GW: CityColumns = {
   capitalOf: "GW|GW-OI|GW-GA GW-L|GW-BM|GW-BA|GW-N|GW-QU GW-S|GW-CA|GW-TO|GW-BL",
   sources: "10101010101010101010",
   reading: "|||||||||",
+  zones: "Africa/Bissau",
+  zone: [0,0,0,0,0,0,0,0,0,0],
+  elevation: "0,2,39,0,10,7,3,44,1,0",
   extra: [],
 };
 

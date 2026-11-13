@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "CN-LN|MM-06|KZ-35|RU-LIP|JP-03|UA-09|JP-05|KZ-43|KZ-39|BD-15|BD-16|UA-07|KZ-61|GR-E|CY-02|ET-GA|KZ-19|CY-03|CY|CY-01|CY-03|LK-9 LK-91|GR-H|BG-11|AM-TV|LA-BK|BT-14|MV-07|MK-704|TO-01|MK-105|LA-BL|BT-43|GE-MM",
   sources: "00101010001000101010101010001010101010101012000010101010101010101010",
   reading: "||||もりおかし||あきたし|||||||||||||||||||||||||||",
+  zones: "Asia/Shanghai,Asia/Yangon,Asia/Almaty,Europe/Moscow,Asia/Tokyo,Asia/Aqtobe,Asia/Dhaka,Europe/Kyiv,Asia/Qyzylorda,Europe/Athens,Asia/Nicosia,Africa/Addis_Ababa,Asia/Colombo,Europe/Sofia,Asia/Yerevan,Asia/Vientiane,Asia/Thimphu,Indian/Maldives,Europe/Skopje,Pacific/Tongatapu,Asia/Tbilisi",
+  zone: [0,2,4,6,8,7,8,10,10,12,12,14,16,18,21,22,4,20,20,21,21,24,18,26,28,30,32,34,36,38,36,30,32,40],
+  elevation: "55,15,553,160,,105,,128,156,,,174,,85,,526,,26,220,,,130,67,200,755,398,417,8,441,25,324,153,1207,460",
   extra: [[0,"cn-census-2020:沈阳市城区","沈阳市城区",7067200,"2020-11-01"],[4,"oecd:JPN37F","Morioka",457552,2020],[6,"oecd:JPN43F","Akita",383233,2020],[33,994]],
 };
 

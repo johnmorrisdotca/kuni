@@ -22,6 +22,9 @@ const VI: CityColumns = {
   capitalOf: "VI",
   sources: "10",
   reading: "",
+  zones: "America/St_Thomas",
+  zone: [0],
+  elevation: "0",
   extra: [],
 };
 

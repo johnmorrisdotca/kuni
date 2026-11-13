@@ -22,6 +22,9 @@ const SM: CityColumns = {
   capitalOf: "SM",
   sources: "10",
   reading: "",
+  zones: "Europe/San_Marino",
+  zone: [0],
+  elevation: "675",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const CF: CityColumns = {
   capitalOf: "CF|CF-MP|CF-HS||CF-UK|CF-NM|CF-AC|CF-HK|CF-MB|CF-SE|CF-KB|CF-KG|CF-LB|CF-OP||||||CF-BB|CF-HM|CF-BK|CF-VK",
   sources: "1010101010101010101010101010101010101010101010",
   reading: "||||||||||||||||||||||",
+  zones: "Africa/Bangui",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "369,338,589,,465,1046,465,553,457,,416,410,607,664,609,431,421,1072,596,452,639,388,468",
   extra: [],
 };
 

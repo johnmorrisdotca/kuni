@@ -22,6 +22,9 @@ const PR: CityColumns = {
   capitalOf: "PR",
   sources: "10",
   reading: "",
+  zones: "America/Puerto_Rico",
+  zone: [0],
+  elevation: "34",
   extra: [],
 };
 

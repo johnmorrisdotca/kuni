@@ -22,6 +22,9 @@ const PM: CityColumns = {
   capitalOf: "PM",
   sources: "10",
   reading: "",
+  zones: "America/Miquelon",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

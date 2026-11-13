@@ -22,6 +22,9 @@ const IO: CityColumns = {
   capitalOf: "IO",
   sources: "10",
   reading: "",
+  zones: "Indian/Chagos",
+  zone: [0],
+  elevation: "7",
   extra: [],
 };
 

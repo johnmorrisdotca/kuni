@@ -22,6 +22,9 @@ const LC: CityColumns = {
   capitalOf: "|LC|LC-01|LC-11|LC-03",
   sources: "1010101010",
   reading: "||||",
+  zones: "America/St_Lucia",
+  zone: [0,0,0,0,0],
+  elevation: "2,2,,5,58",
   extra: [],
 };
 

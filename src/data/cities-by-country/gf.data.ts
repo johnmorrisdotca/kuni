@@ -22,6 +22,9 @@ const GF: CityColumns = {
   capitalOf: "GF",
   sources: "00",
   reading: "",
+  zones: "America/Cayenne",
+  zone: [0],
+  elevation: "143",
   extra: [[0,"oecd:FR072F","Cayenne",152190,2022]],
 };
 

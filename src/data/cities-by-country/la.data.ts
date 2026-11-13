@@ -22,6 +22,9 @@ const LA: CityColumns = {
   capitalOf: "LA|LA-SV|LA-CH|LA-KH||LA-LP|LA-HO|LA-XI|LA-LM||LA-AT|LA-BK|LA-XA|LA-PH|LA-SL|LA-XE|LA-BL|LA-OU|LA-VI",
   sources: "10101010101012101010101012101210101010",
   reading: "||||||||||||||||||",
+  zones: "Asia/Vientiane",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "174,144,,,,305,1200,1100,,,93,398,,1430,,,153,,",
   extra: [],
 };
 

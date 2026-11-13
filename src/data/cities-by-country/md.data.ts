@@ -22,6 +22,9 @@ const MD: CityColumns = {
   capitalOf: "MD||MD-BA|MD-BD|MD-UN|||MD-CA|MD-OR|MD-SO|MD-GA||MD-IA|MD-ST|MD-CS|MD-DR|MD-ED|MD-HI|MD-FL|MD-TA|MD-SI|MD-CL|MD-RE|MD-NI|MD-CM|MD-LE|MD-BS|MD-DO|MD-CR|MD-BR|MD-TE|MD-SV|MD-OC|MD-SD|MD-DU|MD-CT",
   sources: "101010101010101010101010101010101010101010101010101010101010101010101010",
   reading: "|||||||||||||||||||||||||||||||||||",
+  zones: "Europe/Chisinau",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "85,26,102,15,62,,38,119,68,45,52,126,,236,7,226,231,,88,76,,,,99,,45,39,218,19,39,96,141,274,145,,51",
   extra: [],
 };
 

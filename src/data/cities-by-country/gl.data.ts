@@ -22,6 +22,9 @@ const GL: CityColumns = {
   capitalOf: "GL|GL-QE|GL-AV|GL-QT|GL-KU",
   sources: "1010101010",
   reading: "||||",
+  zones: "America/Nuuk",
+  zone: [0,0,0,1,0],
+  elevation: "5,,2010,1,16",
   extra: [],
 };
 

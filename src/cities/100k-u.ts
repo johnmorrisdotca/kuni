@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "GB-NET|NL-UT|JP-09||IR-02 IR-04|GB-KHL|RU-ULY|AO-UIG||RU-BU|NG-AK|NG-AB|||SE-C||BO-O|BD-05||TR-64|||||||||UZ-XO||||TH-41|||||UA-21|MG-U|||||||||||||||||||||||||||",
   sources: "000000101000101000101010100000101010101000100010121000001010101010100010101012101010101010103030003030303000001000300030001000301000",
   reading: "||うつのみやし||||||||||||||||||うべし||うじし|||||うえだし|||||||||||||||||||||||||||||うらやすし||うらわく|||||||うらそえし",
+  zones: "Europe/London,Europe/Amsterdam,Asia/Tokyo,America/Sao_Paulo,Asia/Tehran,Europe/Volgograd,Africa/Luanda,Europe/Berlin,Asia/Irkutsk,Africa/Lagos,America/Mexico_City,Europe/Stockholm,America/La_Paz,Asia/Dhaka,Asia/Riyadh,Europe/Istanbul,Asia/Vladivostok,Africa/Lubumbashi,Asia/Yekaterinburg,Asia/Samarkand,Asia/Manila,Asia/Karachi,Asia/Bangkok,Africa/Johannesburg,Europe/Kyiv,Indian/Antananarivo,Africa/Khartoum,Asia/Baghdad,Europe/Moscow,Asia/Kolkata,Asia/Seoul,Asia/Shanghai,America/New_York,Europe/Madrid",
+  zone: [0,2,4,6,8,0,10,12,14,16,18,18,6,20,22,7,24,26,28,30,4,18,4,32,34,36,22,4,38,40,42,18,44,30,4,46,6,48,50,52,54,36,57,57,46,6,58,58,60,58,62,58,58,65,65,57,4,58,4,58,60,57,67,58,57,4],
+  elevation: "30,5,,837,1332,,150,825,481,500,64,,823,,15,430,3710,,678,890,,,51,33,746,160,,,91,50,17,,,10,204,848,66,169,,692,9,40,,,103,338,490,19,,578,,3,1,,,,,39,,,,,,68,,",
   extra: [[0,"oecd:UK013F","Newcastle upon Tyne",1221203,2024],[1,"oecd:NL042F","Utrecht",970860,2025],[2,"oecd:JPN16F","Utsunomiya",877771,2020],[5,"oecd:UK026F","Kingston upon Hull",631285,2024],[8,"oecd:DE110F","Ulm",481850,2025],[14,"oecd:SE006F","Uppsala",326796,2024],[15,10358740,"Greater Umuarama",314678,2020],[20,"oecd:JPN55F","Ube",222896,2020],[48,8684],[53,60],[54,60],[55,649],[56,1490],[58,1490],[59,1348],[60,8684],[61,649],[62,2807],[64,656],[65,181966]],
 };
 

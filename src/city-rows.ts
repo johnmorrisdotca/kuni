@@ -67,6 +67,17 @@ interface City {
   populationDate: string | null;
   /** The ISO 3166-2 code of its first-level subdivision, "FR-IDF"; `null` where Wikidata does not say or kuni lists none. */
   subdivision: string | null;
+  /**
+   * The IANA time zone it keeps, "Asia/Tokyo", so that a page can show the time there (give it as the `timeZone`
+   * of a date formatter); `null` where its country has no zone in IANA's zone.tab. Natural Earth's zone for the place where it has one
+   * that is the country's; else a country's one zone, or the one zone Wikidata names for the city's subdivision; else an
+   * estimate (`timeZoneEstimated`). docs/cities.md counts each.
+   */
+  timeZone: string | null;
+  /** True where `timeZone` is an estimate (the zone whose principal city is nearest, or the zone of the nearest subdivision); false where a source names it, and for a city with no zone. */
+  timeZoneEstimated: boolean;
+  /** Its height above sea level in whole metres, from Wikidata (CC0); `null` where Wikidata has none, or several values far apart, or one no land has. Negative below sea level. */
+  elevation: number | null;
   /** "national" for the capital of a country (one only for each country), "alternate" for another seat of a country's government (Cape Town, Kyoto), "subdivision" for the capital of a subdivision; `null` for none. */
   capital: "national" | "alternate" | "subdivision" | null;
   /** The codes it is the capital of (alpha-2 for a country, ISO 3166-2 for a subdivision): never empty for a capital, always empty for a city that is not one. */
@@ -145,6 +156,11 @@ interface CityColumns {
   capital: string;
   /** What each is the capital of, "|" between cities, a space between codes; empty for none. */
   capitalOf: string;
+  /** The time zones the list uses, comma-separated, and each city's place in them times two, plus one where its zone is an estimate (-1 for none). */
+  zones: string;
+  zone: readonly number[];
+  /** Each city's elevation in whole metres, comma-separated; empty for none. */
+  elevation: string;
   /** Two hexadecimal digits for each city's source bits. */
   sources: string;
   /** Each Japanese name's reading in hiragana, "|" between cities; empty for none. */
@@ -201,7 +217,16 @@ const readingOf = (kept: string | null, ja: string): { jaReading?: string } => {
   return reading === null ? {} : { jaReading: reading };
 };
 
-const freezeCity = (row: CityRow, reading: string | null = null): City => {
+/** A city's time zone and elevation, as the columns keep them. */
+interface CityPlaceFacts {
+  timeZone: string | null;
+  timeZoneEstimated: boolean;
+  elevation: number | null;
+}
+
+const NO_FACTS: CityPlaceFacts = { timeZone: null, timeZoneEstimated: false, elevation: null };
+
+const freezeCity = (row: CityRow, reading: string | null = null, place: CityPlaceFacts = NO_FACTS): City => {
   const [id, lat, lon, population, date, country, subdivision, en, ja, native, nativeLanguage, capital, capitalOf, sources] = row;
   const [metroId, metroName, metroPopulation, metroDate] = row.length > 15 ? (row.slice(14) as [number | string, string, number, number | string | null]) : [];
   const head = row.length === 15 ? row[14] : null;
@@ -217,6 +242,9 @@ const freezeCity = (row: CityRow, reading: string | null = null): City => {
     population,
     populationDate: date === null ? null : String(date),
     subdivision,
+    timeZone: place.timeZone,
+    timeZoneEstimated: place.timeZoneEstimated,
+    elevation: place.elevation,
     capital: capital === 1 ? "national" : capital === 2 ? "subdivision" : capital === 3 ? "alternate" : null,
     capitalOf: Object.freeze(capitalOf === null ? [] : capitalOf.split(" ")),
     source: Object.freeze({
@@ -283,13 +311,26 @@ const namesOf = (columns: Pick<CityColumns, "id" | "en" | "ja" | "native" | "rea
 };
 
 /** A tier's rows made into cities, frozen, in the order of the rows, with each Japanese name's reading where there is one. */
-const expandCities = (rows: readonly CityRow[], readings: readonly (string | null)[] = []): readonly City[] => Object.freeze(rows.map((row, at) => freezeCity(row, readings[at] ?? null)));
+const expandCities = (rows: readonly CityRow[], readings: readonly (string | null)[] = [], places: readonly CityPlaceFacts[] = []): readonly City[] => Object.freeze(rows.map((row, at) => freezeCity(row, readings[at] ?? null, places[at])));
+
+/** Each city's time zone and elevation, from the columns that keep them. */
+const placeFactsOf = (columns: CityColumns): readonly CityPlaceFacts[] => {
+  const zones = columns.zones === "" ? [] : columns.zones.split(",");
+  const metres = columns.elevation.split(",");
+
+  return columns.zone.map((at, index): CityPlaceFacts => ({
+    timeZone: at < 0 ? null : zones[at >> 1]!,
+    timeZoneEstimated: at >= 0 && (at & 1) === 1,
+    elevation: metres[index] === "" || metres[index] === undefined ? null : Number(metres[index]),
+  }));
+};
 
 /** A list written as columns made into cities. */
 const expandColumns = (columns: CityColumns): readonly City[] =>
   expandCities(
     rowsOf(columns),
     columns.reading.split("|").map((one) => (one === "" ? null : one)),
+    placeFactsOf(columns),
   );
 
 export { expandCities, expandColumns, namesOf, rowsOf };

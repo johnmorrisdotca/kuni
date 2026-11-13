@@ -22,6 +22,9 @@ const KI: CityColumns = {
   capitalOf: "|KI|KI-P|KI-L",
   sources: "10101010",
   reading: "|||",
+  zones: "Pacific/Tarawa,Pacific/Kanton,Pacific/Kiritimati",
+  zone: [1,0,3,5],
+  elevation: "2,3,,",
   extra: [],
 };
 

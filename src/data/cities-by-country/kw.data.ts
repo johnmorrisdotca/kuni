@@ -22,6 +22,9 @@ const KW: CityColumns = {
   capitalOf: "KW|KW-JA|KW-AH|KW-MU|KW-HA|KW-FA",
   sources: "101010101210",
   reading: "|||||",
+  zones: "Asia/Kuwait",
+  zone: [0,0,0,0,0,0],
+  elevation: "16,,109,,,",
   extra: [[4,35178],[5,35178]],
 };
 

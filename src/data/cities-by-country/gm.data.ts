@@ -22,6 +22,9 @@ const GM: CityColumns = {
   capitalOf: "|GM-W||GM||GM-L|GM-U|GM-M|GM-N",
   sources: "101010101012121010",
   reading: "||||||||",
+  zones: "Africa/Banjul",
+  zone: [0,0,0,0,0,0,0,0,0],
+  elevation: "10,25,26,0,,,,,",
   extra: [],
 };
 

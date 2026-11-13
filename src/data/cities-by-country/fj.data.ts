@@ -22,6 +22,9 @@ const FJ: CityColumns = {
   capitalOf: "FJ||||FJ-W|FJ-N||FJ-01 FJ-04|FJ-08|FJ-11|FJ-06 FJ-E|FJ-05|FJ-R",
   sources: "10101010101010101010101010",
   reading: "||||||||||||",
+  zones: "Pacific/Fiji",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "0,,10,,,,,,,,,,",
   extra: [],
 };
 

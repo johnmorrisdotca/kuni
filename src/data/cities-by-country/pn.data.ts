@@ -22,6 +22,9 @@ const PN: CityColumns = {
   capitalOf: "PN",
   sources: "10",
   reading: "",
+  zones: "Pacific/Pitcairn",
+  zone: [0],
+  elevation: "330",
   extra: [],
 };
 

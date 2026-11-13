@@ -22,6 +22,9 @@ const MC: CityColumns = {
   capitalOf: "MC",
   sources: "10",
   reading: "",
+  zones: "Europe/Monaco",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

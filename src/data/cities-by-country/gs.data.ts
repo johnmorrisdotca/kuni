@@ -22,6 +22,9 @@ const GS: CityColumns = {
   capitalOf: "GS",
   sources: "10",
   reading: "",
+  zones: "Atlantic/South_Georgia",
+  zone: [0],
+  elevation: "106",
   extra: [],
 };
 

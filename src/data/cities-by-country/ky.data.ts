@@ -22,6 +22,9 @@ const KY: CityColumns = {
   capitalOf: "KY",
   sources: "10",
   reading: "",
+  zones: "America/Cayman",
+  zone: [0],
+  elevation: "10",
   extra: [],
 };
 

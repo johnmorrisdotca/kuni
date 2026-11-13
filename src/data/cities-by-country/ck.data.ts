@@ -22,6 +22,9 @@ const CK: CityColumns = {
   capitalOf: "CK",
   sources: "10",
   reading: "",
+  zones: "Pacific/Rarotonga",
+  zone: [0],
+  elevation: "653",
   extra: [],
 };
 

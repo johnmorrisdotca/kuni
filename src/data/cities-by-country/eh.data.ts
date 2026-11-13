@@ -22,6 +22,9 @@ const EH: CityColumns = {
   capitalOf: "EH",
   sources: "12",
   reading: "",
+  zones: "Africa/El_Aaiun",
+  zone: [0],
+  elevation: "475",
   extra: [],
 };
 

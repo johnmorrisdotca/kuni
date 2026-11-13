@@ -22,6 +22,9 @@ const SX: CityColumns = {
   capitalOf: "SX",
   sources: "10",
   reading: "",
+  zones: "America/Lower_Princes",
+  zone: [0],
+  elevation: "8",
   extra: [],
 };
 

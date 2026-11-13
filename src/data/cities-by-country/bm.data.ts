@@ -22,6 +22,9 @@ const BM: CityColumns = {
   capitalOf: "BM",
   sources: "10",
   reading: "",
+  zones: "Atlantic/Bermuda",
+  zone: [0],
+  elevation: "18",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const MH: CityColumns = {
   capitalOf: "MH",
   sources: "10",
   reading: "",
+  zones: "Pacific/Majuro",
+  zone: [0],
+  elevation: "3",
   extra: [],
 };
 

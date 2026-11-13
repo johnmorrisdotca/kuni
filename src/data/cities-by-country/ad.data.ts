@@ -22,6 +22,9 @@ const AD: CityColumns = {
   capitalOf: "AD|AD-02|AD-03|AD-08|AD-06|AD-04|AD-05",
   sources: "10101010101010",
   reading: "||||||",
+  zones: "Europe/Andorra",
+  zone: [0,0,0,0,0,0,0],
+  elevation: "1022,1561,1257,1751,921,1230,1296",
   extra: [],
 };
 

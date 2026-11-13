@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "CN-SN|MX-VER|VN-44|MZ-G|VN-58|AZ-XAC|LA-HO|MX-TLA|AZ-XIZ|AZ-XVD|AZ-XCI|VN-07|CN-QH|TW-TXG|TW-TPE|AZ-ABS",
   sources: "00001010101012001010101030101010",
   reading: "|||||||||||||||",
+  zones: "Asia/Shanghai,America/Mexico_City,Asia/Ho_Chi_Minh,Africa/Maputo,Asia/Baku,Asia/Vientiane,Asia/Taipei",
+  zone: [0,2,4,6,4,8,10,3,8,8,8,4,0,12,12,8],
+  elevation: "405,,8,9,90,42,1200,2239,745,390,582,33,2275,127,44,50",
   extra: [[0,"cn-census-2020:西安市城区","西安市城区",9283700,"2020-11-01"],[1,"oecd:MEX26F","Xalapa",829055,2020],[13,245023],[14,1867],[15,9248]],
 };
 

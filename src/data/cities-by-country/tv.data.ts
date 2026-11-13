@@ -22,6 +22,9 @@ const TV: CityColumns = {
   capitalOf: "TV|TV-NIT|TV-NMG",
   sources: "101010",
   reading: "||",
+  zones: "Pacific/Funafuti",
+  zone: [0,0,0],
+  elevation: ",,",
   extra: [],
 };
 

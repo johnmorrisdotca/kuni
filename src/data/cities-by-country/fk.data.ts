@@ -22,6 +22,9 @@ const FK: CityColumns = {
   capitalOf: "FK",
   sources: "10",
   reading: "",
+  zones: "Atlantic/Stanley",
+  zone: [0],
+  elevation: "51",
   extra: [],
 };
 

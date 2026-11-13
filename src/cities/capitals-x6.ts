@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "CN-HB|CN-YN|MR|BD-27 BD-D|SD-DS|SA-10|UA-18|BD-14|PS-NBS|MR-08|KZ-62|OM-DA|TN-21|BD-29|KH-15|LK-8 LK-81|GE-SZ|KH-14|LY-NL|MN-073|ET-SW|ME-06|JM-06|MV-23|AF-BDG|BT-23|BT-14|MV-17|MK-605|BT-11|MK-313|BT-41|BT-45|BT-43|AF-DAY|BT-GA|BD-62|BD-57|NP-P5|CN-NX|IN-JK|IN-AS|IN-UK|IN-MZ|IN|IN-HP|IN-ML|IN-AP|IN-AN|IN-DH",
   sources: "0000101010101010101010101010121010101010101010101012101010101010101010101010103030303030303030303032",
   reading: "|||||||||||||||||||||||||||||||||||||||||||||||||",
+  zones: "Asia/Shanghai,Africa/Nouakchott,Asia/Dhaka,Africa/Khartoum,Asia/Riyadh,Europe/Kyiv,Asia/Gaza,Asia/Qyzylorda,Asia/Muscat,Africa/Tunis,Asia/Phnom_Penh,Asia/Colombo,Asia/Tbilisi,Africa/Tripoli,Asia/Ulaanbaatar,Africa/Addis_Ababa,Europe/Podgorica,America/Jamaica,Indian/Maldives,Asia/Kabul,Asia/Thimphu,Europe/Skopje,Asia/Kathmandu,Asia/Kolkata",
+  zone: [0,0,2,4,6,8,10,4,12,2,14,16,18,4,20,22,24,20,26,28,30,32,34,36,38,40,40,36,42,40,42,40,40,40,38,40,4,4,44,0,46,46,46,46,46,46,46,46,46,46],
+  elevation: "37,1892,7,9,673,1293,221,,550,16,300,492,4,,17,680,100,7,616,1691,1714,650,,6,967,1242,417,9,448,2266,738,1174,171,1207,2022,2850,,,,1100,1585,55,435,1132,216,2205,1525,,17,5",
   extra: [[0,"cn-census-2020:武汉市城区","武汉市城区",9953000,"2020-11-01"],[1,"cn-census-2020:昆明市城区","昆明市城区",5340900,"2020-11-01"],[44,1353]],
 };
 

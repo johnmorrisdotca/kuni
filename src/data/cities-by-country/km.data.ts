@@ -22,6 +22,9 @@ const KM: CityColumns = {
   capitalOf: "KM|KM-A||KM-M",
   sources: "10101010",
   reading: "|||",
+  zones: "Indian/Comoro",
+  zone: [0,0,0,0],
+  elevation: "29,,,",
   extra: [],
 };
 

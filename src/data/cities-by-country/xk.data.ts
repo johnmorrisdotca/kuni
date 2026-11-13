@@ -22,6 +22,9 @@ const XK: CityColumns = {
   capitalOf: "XK|RS-27||RS-29||",
   sources: "101010101010",
   reading: "|||||",
+  zones: "Europe/Belgrade",
+  zone: [0,0,0,0,0,0],
+  elevation: "652,450,,508,360,671",
   extra: [],
 };
 

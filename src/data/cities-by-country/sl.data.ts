@@ -22,6 +22,9 @@ const SL: CityColumns = {
   capitalOf: "SL|SL-S||SL-E|SL-N||",
   sources: "10101010101210",
   reading: "||||||",
+  zones: "Africa/Freetown",
+  zone: [0,0,0,0,0,0,0],
+  elevation: "26,15,,26,,,",
   extra: [],
 };
 

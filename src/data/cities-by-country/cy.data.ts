@@ -22,6 +22,9 @@ const CY: CityColumns = {
   capitalOf: "|CY-02||CY-03|CY|CY-01|CY-03||CY-04||||CY-05|||||||||CY-06",
   sources: "10101010101010101010101010101010101010101010",
   reading: "|||||||||||||||||||||",
+  zones: "Asia/Nicosia,Asia/Famagusta",
+  zone: [0,1,1,0,0,1,1,0,3,1,0,0,1,1,1,1,1,1,1,1,1,1],
+  elevation: ",,148,26,220,,,21,,,72,0,,,,,134,,,,,",
   extra: [],
 };
 

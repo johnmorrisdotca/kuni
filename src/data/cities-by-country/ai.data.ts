@@ -22,6 +22,9 @@ const AI: CityColumns = {
   capitalOf: "AI",
   sources: "10",
   reading: "",
+  zones: "America/Anguilla",
+  zone: [0],
+  elevation: "9",
   extra: [],
 };
 

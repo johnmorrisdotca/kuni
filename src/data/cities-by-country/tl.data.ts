@@ -22,6 +22,9 @@ const TL: CityColumns = {
   capitalOf: "TL|TL-BO|TL-BA|TL-LA|TL-MT|TL-OE|TL-CO|TL-ER|TL-VI|TL-AN|TL-LI|TL-AL|TL-MF",
   sources: "10101010101010101010101010",
   reading: "||||||||||||",
+  zones: "Asia/Dili",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "11,402,336,346,0,0,13,707,140,831,87,1182,368",
   extra: [],
 };
 

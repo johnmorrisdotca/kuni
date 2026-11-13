@@ -22,6 +22,9 @@ const BZ: CityColumns = {
   capitalOf: "BZ-BZ|BZ-CY|BZ||BZ-OW|BZ-SC|BZ-CZL|BZ-TOL",
   sources: "1010101010101010",
   reading: "|||||||",
+  zones: "America/Belize",
+  zone: [0,0,0,0,0,0,0,0],
+  elevation: "0,76,76,2,33,0,0,9",
   extra: [],
 };
 

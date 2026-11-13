@@ -22,6 +22,9 @@ const GG: CityColumns = {
   capitalOf: "GG",
   sources: "10",
   reading: "",
+  zones: "Europe/Guernsey",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

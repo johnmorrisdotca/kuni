@@ -22,6 +22,9 @@ const MF: CityColumns = {
   capitalOf: "MF",
   sources: "10",
   reading: "",
+  zones: "America/Marigot",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

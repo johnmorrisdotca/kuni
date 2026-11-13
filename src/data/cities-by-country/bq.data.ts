@@ -22,6 +22,9 @@ const BQ: CityColumns = {
   capitalOf: "BQ-BO NL-BQ1|BQ-SE NL-BQ3|BQ-SA NL-BQ2",
   sources: "101010",
   reading: "||",
+  zones: "America/Kralendijk",
+  zone: [0,0,0],
+  elevation: "4,100,7",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const MQ: CityColumns = {
   capitalOf: "MQ",
   sources: "00",
   reading: "",
+  zones: "America/Martinique",
+  zone: [0],
+  elevation: "0",
   extra: [[0,"oecd:FR046F","Fort-de-France",346937,2022]],
 };
 

@@ -22,6 +22,9 @@ const MP: CityColumns = {
   capitalOf: "MP",
   sources: "10",
   reading: "",
+  zones: "Pacific/Saipan",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

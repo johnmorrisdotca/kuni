@@ -22,6 +22,9 @@ const DJ: CityColumns = {
   capitalOf: "DJ|DJ-AS|DJ-DI|DJ-OB|DJ-TA|DJ-AR",
   sources: "101010101010",
   reading: "|||||",
+  zones: "Africa/Djibouti",
+  zone: [0,0,0,0,0,0],
+  elevation: "14,756,507,13,0,755",
   extra: [],
 };
 

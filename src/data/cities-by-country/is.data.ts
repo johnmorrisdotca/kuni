@@ -22,6 +22,9 @@ const IS: CityColumns = {
   capitalOf: "IS|IS-2|IS-6|IS-8|IS-AKN|IS-4|IS-5 IS-SKR|IS-7|IS-3|IS-SVG|IS-FJD|IS-GRN|IS-ASA|IS-HUV|IS-SSS|IS-STR|IS-DAB|IS-SDV|IS-ARN|||",
   sources: "00000000000000000000000000000000000000000000",
   reading: "|||||||||||||||||||||",
+  zones: "Atlantic/Reykjavik",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "8,5,40,9,9,0,,32,,,,,,,,,,,,8,,",
   extra: [[0,"oecd:IS001F","Reykjavík",251555,2025],[19,1764],[20,1764],[21,1764]],
 };
 

@@ -22,6 +22,9 @@ const BH: CityColumns = {
   capitalOf: "BH|BH-15||||||",
   sources: "1010101010101010",
   reading: "|||||||",
+  zones: "Asia/Bahrain",
+  zone: [0,0,0,0,0,0,0,0],
+  elevation: ",7,35,43,,5,9,",
   extra: [],
 };
 

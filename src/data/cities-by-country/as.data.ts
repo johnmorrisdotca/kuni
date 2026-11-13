@@ -22,6 +22,9 @@ const AS: CityColumns = {
   capitalOf: "AS",
   sources: "10",
   reading: "",
+  zones: "Pacific/Pago_Pago",
+  zone: [0],
+  elevation: "9",
   extra: [],
 };
 

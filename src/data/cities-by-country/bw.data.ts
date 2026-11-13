@@ -22,6 +22,9 @@ const BW: CityColumns = {
   capitalOf: "BW|BW-NE||BW-NW|BW-KW||||BW-CE|BW-SO|BW-KL|||||BW-KG|BW-CH|BW-GH|BW-SE",
   sources: "10121010101012101012101010101012121210",
   reading: "||||||||||||||||||",
+  zones: "Africa/Gaborone",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "1014,1001,1022,927,1189,1002,1009,878,1140,1306,938,919,1188,728,,962,970,1156,1009",
   extra: [],
 };
 

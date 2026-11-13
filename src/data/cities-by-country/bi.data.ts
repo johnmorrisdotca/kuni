@@ -22,6 +22,9 @@ const BI: CityColumns = {
   capitalOf: "BI-BM|BI|BI-NG|BI-RM|BI-CI|BI-KY|BI-BB|BI-KR|BI-KI|BI-MY|BI-MA|BI-RY|BI-RT|BI-MU|BI-BR|BI-CA|BI-MW|BI-BL",
   sources: "101010101010101010101010101010101010",
   reading: "|||||||||||||||||",
+  zones: "Africa/Bujumbura",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "774,1504,1820,790,915,1918,1200,,1383,1731,1472,1842,1719,,1836,,,",
   extra: [],
 };
 

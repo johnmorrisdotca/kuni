@@ -22,6 +22,9 @@ const QA: CityColumns = {
   capitalOf: "QA|QA-KH||QA-US|QA-SH||QA-RA",
   sources: "10101010101010",
   reading: "||||||",
+  zones: "Asia/Qatar",
+  zone: [0,0,0,0,0,0,0],
+  elevation: "0,10,,23,,9,23",
   extra: [[5,3861],[6,3861]],
 };
 

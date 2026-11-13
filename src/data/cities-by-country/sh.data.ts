@@ -22,6 +22,9 @@ const SH: CityColumns = {
   capitalOf: "SH",
   sources: "10",
   reading: "",
+  zones: "Atlantic/St_Helena",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

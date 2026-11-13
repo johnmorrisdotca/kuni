@@ -22,6 +22,9 @@ const JM: CityColumns = {
   capitalOf: "JM||JM-13|JM-14|JM-08|JM-02|JM-12|||JM-10||JM-04|JM-06|JM-03|JM-05|JM-07|JM-09|JM-11",
   sources: "101012101012101010101010101012121010",
   reading: "|||||||||||||||||",
+  zones: "America/Jamaica",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "9,,,,,,628,,125,,,20,,,,,,",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const GY: CityColumns = {
   capitalOf: "GY|GY-EB|GY-UD|GY-PM|GY-CU|GY-UT|GY-BA|GY-ES|GY-DE",
   sources: "101210101010121010",
   reading: "||||||||",
+  zones: "America/Guyana",
+  zone: [0,0,0,0,0,0,0,0,0],
+  elevation: "0,5,48,56,4,85,44,,",
   extra: [],
 };
 

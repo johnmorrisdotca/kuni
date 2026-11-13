@@ -22,6 +22,9 @@ const SS: CityColumns = {
   capitalOf: "SS|SS-BW|SS-JG||SS-NU|SS-EW|||||SS-BN|SS-LK|SS-EE|||SS-UY|SS-WR",
   sources: "1010101210101010121010121010101010",
   reading: "||||||||||||||||",
+  zones: "Africa/Juba",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "550,438,431,,385,647,737,,414,281,472,420,617,397,438,399,428",
   extra: [],
 };
 

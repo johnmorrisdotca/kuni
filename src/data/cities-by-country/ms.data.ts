@@ -22,6 +22,9 @@ const MS: CityColumns = {
   capitalOf: "MS|MS",
   sources: "1010",
   reading: "|",
+  zones: "America/Montserrat",
+  zone: [0,0],
+  elevation: "52,",
   extra: [],
 };
 

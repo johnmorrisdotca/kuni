@@ -22,6 +22,9 @@ const GU: CityColumns = {
   capitalOf: "GU",
   sources: "10",
   reading: "",
+  zones: "Pacific/Guam",
+  zone: [0],
+  elevation: "0",
   extra: [],
 };
 

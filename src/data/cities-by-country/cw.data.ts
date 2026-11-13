@@ -22,6 +22,9 @@ const CW: CityColumns = {
   capitalOf: "CW",
   sources: "10",
   reading: "",
+  zones: "America/Curacao",
+  zone: [0],
+  elevation: "37",
   extra: [],
 };
 

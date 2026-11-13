@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "CN-ZJ|JP-23|CN-HA|JP-01|SY-HL|IN-MP|RU-NVS|RU-NIZ|RU-ROS|KR-48|KR-43|SY-HI|SY-HM|KP-09|SA-06|RU-KB|RU-NGR|BD-23|CF-MP|TH-54|MN-035|RU-KL|LK-5 LK-53|KR-44|SN-LG|TW-KEE|YE-HJ|KG-N|RU-NEN|ME-08|LA-AT|GE-GU|MK-106|MK-108|YE-SU|TH-73|BT-24|MK-408|SO-BK|MK-507|MK-706|LB-AK|BD-07|NI-NS|NI-GR|CN-GS|IN-OD|CN-CQ|JP-10|KW-HA|KR-11",
   sources: "000000001000101010000010101010101010101010101000121010101010101010101010101012101010101010303030001200",
   reading: "|なごやし||さっぽろし|||||||||||||||||||||||||||||||||||||||||||||まえばしし||",
+  zones: "Asia/Shanghai,Asia/Tokyo,Asia/Damascus,Asia/Kolkata,Asia/Novosibirsk,Europe/Moscow,Asia/Seoul,Asia/Pyongyang,Asia/Riyadh,Asia/Dhaka,Africa/Bangui,Asia/Bangkok,Asia/Ulaanbaatar,Asia/Colombo,Africa/Dakar,Asia/Taipei,Asia/Aden,Asia/Bishkek,Europe/Podgorica,Asia/Vientiane,Asia/Tbilisi,Europe/Skopje,Asia/Thimphu,Africa/Mogadishu,Asia/Beirut,America/Managua,Asia/Kuwait",
+  zone: [0,2,0,2,4,6,8,10,10,12,12,4,4,14,16,10,11,18,20,22,24,10,26,12,28,30,32,34,10,36,38,40,42,42,32,22,44,42,46,42,42,48,18,50,50,0,6,1,2,52,12],
+  elevation: "19,,,5,379,,153,200,70,2,39,511,289,,992,512,25,,338,299,1280,120,8,,44,36,1800,2044,64,40,93,80,155,300,13,,1273,239,,576,427,167,,611,,1572,45,,100,,",
   extra: [[0,"cn-census-2020:杭州市城区","杭州市城区",8741700,"2020-11-01"],[1,"oecd:JPN03F","Nagoya",8685436,2020],[2,"cn-census-2020:郑州市城区","郑州市城区",5344800,"2020-11-01"],[3,"oecd:JPN05F","Sapporo",2232726,2020],[5,"in-census-2011:Bhopal UA","Bhopal UA",1886100,"2011-03-01"],[9,"oecd:KOR06F","Changwon",1069241,2023],[10,"oecd:KOR08F","Cheongju",889673,2023],[47,11725],[48,336438],[49,35178],[50,8684]],
 };
 

@@ -22,6 +22,9 @@ const BB: CityColumns = {
   capitalOf: "BB",
   sources: "10",
   reading: "",
+  zones: "America/Barbados",
+  zone: [0],
+  elevation: "1",
   extra: [],
 };
 

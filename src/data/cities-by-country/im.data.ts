@@ -22,6 +22,9 @@ const IM: CityColumns = {
   capitalOf: "IM",
   sources: "10",
   reading: "",
+  zones: "Europe/Isle_of_Man",
+  zone: [0],
+  elevation: "31",
   extra: [],
 };
 

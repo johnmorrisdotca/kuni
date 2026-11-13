@@ -22,6 +22,9 @@ const LU: CityColumns = {
   capitalOf: "LU|LU-ES|||LU-ME|LU-WI|LU-DI|LU-CL|LU-EC|LU-GR|LU-RM|LU-VD|LU-RD|LU-CA",
   sources: "0000000000000000000000000000",
   reading: "|||||||||||||",
+  zones: "Europe/Luxembourg",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "300,279,295,304,219,477,396,521,168,,160,228,,",
   extra: [[0,"oecd:LU001F","Luxembourg",602556,2022],[13,1842]],
 };
 

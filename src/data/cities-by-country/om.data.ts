@@ -22,6 +22,9 @@ const OM: CityColumns = {
   capitalOf: "OM|||OM-ZU|OM-BS|OM-SJ|OM-ZA|OM-DA||OM-MU||OM-BJ|OM-WU|OM-SS|",
   sources: "101010101010101017101010101010",
   reading: "||||||||||||||",
+  zones: "Asia/Muscat",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "69,8,,18,4,,200,492,,3,,,,440,",
   extra: [[14,3826]],
 };
 

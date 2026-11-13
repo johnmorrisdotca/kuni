@@ -22,6 +22,9 @@ const TO: CityColumns = {
   capitalOf: "TO|TO-05|TO-02|TO-01|TO-03",
   sources: "1010101010",
   reading: "||||",
+  zones: "Pacific/Tongatapu",
+  zone: [0,0,0,0,0],
+  elevation: "3,,,25,",
   extra: [],
 };
 

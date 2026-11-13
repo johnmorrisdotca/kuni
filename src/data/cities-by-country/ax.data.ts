@@ -22,6 +22,9 @@ const AX: CityColumns = {
   capitalOf: "AX",
   sources: "10",
   reading: "",
+  zones: "Europe/Mariehamn",
+  zone: [0],
+  elevation: "20",
   extra: [],
 };
 

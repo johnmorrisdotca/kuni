@@ -22,6 +22,9 @@ const MW: CityColumns = {
   capitalOf: "MW|MW-BL MW-S|MW-N|MW-ZO|MW-SA||MW-NK|MW-MG|MW-KR||MW-MZ||MW-BA|MW-NB|MW-NS|MW-MU||MW-MC|MW-DE|MW-NU|MW-CT|MW-MW|MW-TH|MW-NE|MW-MH|MW-CR|MW-KS|MW-NI|MW-RU|MW-CK|MW-DO|MW-PH|MW-LK",
   sources: "101010101210121010101013101212101012121012121010101210101010101010",
   reading: "||||||||||||||||||||||||||||||||",
+  zones: "Africa/Blantyre",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "1050,1039,1254,949,538,490,472,470,748,,,,,471,,609,,1181,1608,1342,1286,,,,,1118,1051,,,106,1361,757,",
   extra: [],
 };
 

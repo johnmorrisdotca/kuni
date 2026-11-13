@@ -50,6 +50,13 @@
       "note": "Natural Earth 5.1.2, 10m Populated Places (public domain), cut down to the columns the build uses, \"Historic place\" left out; the SHA-256 of the whole file at the address is 9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
     },
     {
+      "path": "natural-earth-timezones-5.1.2.json",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson",
+      "read": "2026-11-13",
+      "sha256": "3cbe4edda9399e7f26de4002da163a4f1b9f0213a090867ead97973685405bd0",
+      "note": "Natural Earth 5.1.2, 10m Populated Places (public domain): the TIMEZONE of each place that has one, by NE_ID; the SHA-256 of the whole file at the address is 9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
+    },
+    {
       "path": "statcan-cma-2021.json",
       "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100005-eng.zip",
       "read": "2026-11-11",
@@ -83,6 +90,13 @@
       "read": "2026-11-11",
       "sha256": "f6f83ebc5d17ea4f37e7a186acf3dd807a555692a9e26562dfbe10dc75946a62",
       "note": "Wikidata SPARQL answers: the cities whose only class is no kind of human settlement (a municipality of the Netherlands), in the columns of the main cities snapshot; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-city-elevations-2026-11-13.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-13",
+      "sha256": "2f1a92f84ec83d27e01174c85590d69b433da89aae32c1bbd52e41cbd28be3dc",
+      "note": "Wikidata SPARQL answers: the elevations (P2044) of the city items; the queries are in the file"
     },
     {
       "path": "wikidata-city-readings-2026-11-11.json",

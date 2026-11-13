@@ -22,6 +22,9 @@ const FO: CityColumns = {
   capitalOf: "FO",
   sources: "10",
   reading: "",
+  zones: "Atlantic/Faroe",
+  zone: [0],
+  elevation: "24",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const GP: CityColumns = {
   capitalOf: "GP",
   sources: "10",
   reading: "",
+  zones: "America/Guadeloupe",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

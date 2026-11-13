@@ -22,6 +22,9 @@ const GD: CityColumns = {
   capitalOf: "GD|GD-04|GD-01|GD-05|GD-06|GD-10",
   sources: "101010101010",
   reading: "|||||",
+  zones: "America/Grenada",
+  zone: [0,0,0,0,0,0],
+  elevation: "30,82,0,155,87,6",
   extra: [],
 };
 

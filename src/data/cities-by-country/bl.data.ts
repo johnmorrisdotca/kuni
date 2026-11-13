@@ -22,6 +22,9 @@ const BL: CityColumns = {
   capitalOf: "BL",
   sources: "10",
   reading: "",
+  zones: "America/St_Barthelemy",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

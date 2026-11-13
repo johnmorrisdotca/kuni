@@ -22,6 +22,9 @@ const VA: CityColumns = {
   capitalOf: "VA",
   sources: "10",
   reading: "",
+  zones: "Europe/Vatican",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

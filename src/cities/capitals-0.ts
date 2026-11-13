@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "",
   sources: "",
   reading: "",
+  zones: "",
+  zone: [],
+  elevation: "",
   extra: [],
 };
 

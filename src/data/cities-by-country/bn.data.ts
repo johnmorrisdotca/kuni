@@ -22,6 +22,9 @@ const BN: CityColumns = {
   capitalOf: "BN||||||||||||BN-BE|BN-TE|BN-TU",
   sources: "101010101010101010101010101010",
   reading: "||||||||||||||",
+  zones: "Asia/Brunei",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "14,,,,,,,,,,,,5,,",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const NC: CityColumns = {
   capitalOf: "NC",
   sources: "10",
   reading: "",
+  zones: "Pacific/Noumea",
+  zone: [0],
+  elevation: "7",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const PA: CityColumns = {
   capitalOf: "PA|PA-3|PA-9||PA-4|PA-10||||PA-2||PA-1|PA-7|PA-6|PA-5|PA-KY|PA-EM|PA-NB|PA-NT||",
   sources: "101010101010101010101112101010121010101012",
   reading: "||||||||||||||||||||",
+  zones: "America/Panama",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "20,9,101,,6,,,,,70,,10,42,24,4,,,,,,",
   extra: [[19,3306],[20,3306]],
 };
 

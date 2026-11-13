@@ -22,6 +22,9 @@ const GA: CityColumns = {
   capitalOf: "GA|GA-8|GA-2||GA-9|||GA-3|GA-4|GA-1|GA-5||GA-7|GA-6",
   sources: "1010101010101010101010101010",
   reading: "|||||||||||||",
+  zones: "Africa/Libreville",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "13,,,1,914,,,26,,,,,,308",
   extra: [],
 };
 

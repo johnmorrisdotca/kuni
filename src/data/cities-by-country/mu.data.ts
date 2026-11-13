@@ -22,6 +22,9 @@ const MU: CityColumns = {
   capitalOf: "MU|MU-PW|||MU-PA||||MU-FL|MU-GP||MU-MO|MU-RO|MU-SA|MU-BL|MU-RR",
   sources: "10101010101010101010101010101010",
   reading: "|||||||||||||||",
+  zones: "Indian/Mauritius",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "134,164,313,554,,,49,,53,20,122,203,,,,16",
   extra: [],
 };
 

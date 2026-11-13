@@ -22,6 +22,9 @@ const MT: CityColumns = {
   capitalOf: "|||||||||||MT",
   sources: "101010101010101010101010",
   reading: "|||||||||||",
+  zones: "Europe/Malta",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "40,,41,35,12,36,,0,,0,102,56",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "|||",
   sources: "10100000",
   reading: "|||",
+  zones: "Africa/Cairo,Europe/Berlin,Europe/Rome",
+  zone: [0,0,3,4],
+  elevation: "111,170,,",
   extra: [[3,490]],
 };
 

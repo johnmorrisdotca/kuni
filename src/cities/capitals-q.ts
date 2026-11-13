@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "MX-QUE|EC|IR-25 IR-26|PK-BA|CA-QC|BO-C|PE-CUS|IR-26 IR-28|SD-GD|MZ-Q|VN-30 VN-31|UZ-QA|VN-29|EG-KN|FR-29|GT-09|PE-CAJ|CO-CHO|GT-14|KZ-19|PE-PAS|AE-UQ|GW-BM|PS-QQA|AZ-QAZ|LS-H|AZ-QBA|AZ-QUS|LS-G|AZ-QAB|AF-ZAB|AZ-QAX|AZ-QOB|AZ-KAN|AZ-QBI|AF-BDG|GL-KU|SY-QU|VN-HN",
   sources: "001010100010101010101010101000101000101010101010101210101010121010101010101010",
   reading: "||||||||||||||||||||||||||||||||||||||",
+  zones: "America/Mexico_City,America/Guayaquil,Asia/Tehran,Asia/Karachi,America/Toronto,America/La_Paz,America/Lima,Africa/Khartoum,Africa/Maputo,Asia/Ho_Chi_Minh,Asia/Samarkand,Africa/Cairo,Europe/Paris,America/Guatemala,America/Bogota,Asia/Almaty,Asia/Dubai,Africa/Bissau,Asia/Hebron,Asia/Baku,Africa/Maseru,Asia/Kabul,America/Nuuk,Asia/Damascus",
+  zone: [0,2,4,6,8,10,12,4,14,16,18,20,18,22,24,26,12,28,26,30,12,32,34,37,38,40,38,38,40,38,42,38,38,38,38,42,44,46,18],
+  elevation: "1820,2850,935,1680,98,2558,3399,1302,634,1,7,374,13,80,,2433,2750,43,2021,,4330,,0,,381,,11,667,1500,783,1550,596,771,915,477,967,16,942,12",
   extra: [[0,"oecd:MEX08F","Queretaro",1848293,2020],[4,"statcan:2021S0503421","Québec",903607,"2025-07-01"],[14,"oecd:FR070F","Quimper",245095,2022],[17,"oecd:COL36F","Quibdó",130042,2019],[38,1858]],
 };
 

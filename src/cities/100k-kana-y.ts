@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "SE-O||NL-UT|RU-YAR|RO-IS|IR-21 IR-25|JP-06|NG-AD|||CI|RU-SA||RU-ME||GB-YOR|JP-35|FI-08|RU-SAK|CO-CAS||IR-17 IR-18|TR-77|SS-EW||TR-66|SE-F||||||||",
   sources: "0000001000100010000010101010000000001000101010100010000000000000001030",
   reading: "|よっかいちし|||||やまがたし||よこすかし||||||よなごし||やまぐちし||||||||やつしろし|||やおし|やまとし||やちよし|やいづし|||",
+  zones: "Europe/Stockholm,Asia/Tokyo,Europe/Amsterdam,Europe/Moscow,Europe/Bucharest,Asia/Tehran,Africa/Lagos,America/Los_Angeles,Africa/Abidjan,Asia/Yakutsk,Asia/Riyadh,Europe/London,Europe/Helsinki,Asia/Sakhalin,America/Bogota,America/Caracas,Europe/Istanbul,Africa/Juba,America/New_York,Asia/Jerusalem,Africa/Dakar,Asia/Kolkata",
+  zone: [0,2,4,6,8,10,2,12,2,14,16,18,20,6,2,22,2,24,26,28,30,10,32,34,2,32,0,2,2,37,2,2,38,40,42],
+  elevation: "12,,5,100,66,1216,,599,,131,214,95,,100,,25,,90,50,350,340,1870,30,647,,1406,104,,,25,,,20,21,445",
   extra: [[0,"oecd:SE002F","Göteborg",1097407,2024],[1,"oecd:JPN12F","Yokkaichi",1051314,2020],[2,"oecd:NL042F","Utrecht",970860,2025],[4,"oecd:RO024F","Iași",543752,2021],[6,"oecd:JPN41F","Yamagata",411146,2020],[9,"census:21660","Eugene-Springfield, OR",382396,"2024-07-01"],[14,"oecd:JPN56F","Yonago",225526,2020],[15,"oecd:UK533F","York",209301,2024],[17,"oecd:FI009F","Jyväskylä",192753,2024],[19,"oecd:COL40F","Yopal",173610,2019],[27,35765],[28,1490],[29,60],[30,1490],[31,734432],[32,33935],[33,3718]],
 };
 

@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "MM-06|ZA-GP|JP-14|CM|SE-O|NL-UT|RU-YAR|RO-IS|IR-21 IR-25|JP-06|NG-AD|CI|RU-SA|RU-ME|GB-YOR|JP-35|FI-08|RU-SAK|CO-CAS|GR-D|IR-17 IR-18|TR-77|SS-EW|TR-66|SE-F|HN-YO|FI-13|MA-YUS|RO-AB|TH-95|BG-28|FR-85|BF-PAS|RS-13|LT-10|TH-35|MD-IA|HN-EP|EE-251 EE-45|LT-12|LT-11|AZ-YAR|EE-247 EE-50|MA-MOU|EE-514|EE-255|NR|PA-KY|UG-313|BT-TY|CZ-512",
   sources: "101000100000100010001010101000000010000010101010001000100010000010100011101000000010001000001012101000",
   reading: "||よこはまし|||||||やまがたし||||||やまぐちし|||||||||||||||||||||||||||||||||||",
+  zones: "Asia/Yangon,Africa/Johannesburg,Asia/Tokyo,Africa/Douala,Europe/Stockholm,Europe/Amsterdam,Europe/Moscow,Europe/Bucharest,Asia/Tehran,Africa/Lagos,Africa/Abidjan,Asia/Yakutsk,Europe/London,Europe/Helsinki,Asia/Sakhalin,America/Bogota,Europe/Athens,Europe/Istanbul,Africa/Juba,America/Tegucigalpa,Africa/Casablanca,Asia/Bangkok,Europe/Sofia,Europe/Paris,Africa/Ouagadougou,Europe/Belgrade,Europe/Vilnius,Europe/Chisinau,Europe/Tallinn,Asia/Baku,Pacific/Nauru,America/Panama,Africa/Kampala,Asia/Thimphu,Europe/Prague",
+  zone: [0,2,4,6,8,10,12,14,16,4,18,20,22,12,24,4,26,28,30,32,16,34,36,34,8,38,26,40,14,42,44,46,48,50,52,42,54,38,56,52,52,58,56,40,56,56,60,62,64,66,68],
+  elevation: "15,1753,24,764,12,5,100,66,1216,,599,214,95,100,25,,90,50,350,490,1870,30,647,1406,104,660,,298,230,31,114,,301,111,65,,,1007,,29,51,1068,,,,,25,,1080,1788,518",
   extra: [[1,2346838,"City of Johannesburg Metropolitan Municipality",4949347,"2016-03-06"],[4,"oecd:SE002F","Göteborg",1097407,2024],[5,"oecd:NL042F","Utrecht",970860,2025],[7,"oecd:RO024F","Iași",543752,2021],[9,"oecd:JPN41F","Yamagata",411146,2020],[14,"oecd:UK533F","York",209301,2024],[16,"oecd:FI009F","Jyväskylä",192753,2024],[18,"oecd:COL40F","Yopal",173610,2019],[19,"oecd:EL007F","Ioannina",146758,2021],[50,146351]],
 };
 

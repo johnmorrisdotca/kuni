@@ -22,6 +22,9 @@ const VG: CityColumns = {
   capitalOf: "VG",
   sources: "10",
   reading: "",
+  zones: "America/Tortola",
+  zone: [0],
+  elevation: "10",
   extra: [],
 };
 

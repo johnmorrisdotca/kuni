@@ -22,6 +22,9 @@ const JE: CityColumns = {
   capitalOf: "JE",
   sources: "10",
   reading: "",
+  zones: "Europe/Jersey",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

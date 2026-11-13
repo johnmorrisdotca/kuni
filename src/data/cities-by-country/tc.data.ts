@@ -22,6 +22,9 @@ const TC: CityColumns = {
   capitalOf: "TC",
   sources: "10",
   reading: "",
+  zones: "America/Grand_Turk",
+  zone: [0],
+  elevation: "8",
   extra: [],
 };
 

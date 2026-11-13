@@ -22,6 +22,9 @@ const PG: CityColumns = {
   capitalOf: "PG|PG-MPL|PG-MPM|PG-NSB|PG-WHM|PG-NPP|PG-SHM|PG-ESW|PG-EHG|PG-NIK|PG-WBK|PG-WPD|PG-MBA|PG-SAN|PG-CPK|PG-MRL|PG-GPK|PG-EPW|PG-EBR|PG-NSB|PG-NSB",
   sources: "101012101012121210101210121212121212101010",
   reading: "||||||||||||||||||||",
+  zones: "Pacific/Port_Moresby",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1],
+  elevation: "74,8,3,22,1677,85,1620,5,1546,10,4,3,6,3,1524,40,6,1830,4,,",
   extra: [],
 };
 

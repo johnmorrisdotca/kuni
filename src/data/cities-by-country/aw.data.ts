@@ -22,6 +22,9 @@ const AW: CityColumns = {
   capitalOf: "AW|",
   sources: "1010",
   reading: "|",
+  zones: "America/Aruba",
+  zone: [0,0],
+  elevation: "4,22",
   extra: [],
 };
 

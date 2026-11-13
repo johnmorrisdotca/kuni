@@ -22,6 +22,9 @@ const LI: CityColumns = {
   capitalOf: "LI|LI-07",
   sources: "1010",
   reading: "|",
+  zones: "Europe/Vaduz",
+  zone: [0,0],
+  elevation: "455,",
   extra: [],
 };
 

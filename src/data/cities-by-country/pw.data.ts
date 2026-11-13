@@ -22,6 +22,9 @@ const PW: CityColumns = {
   capitalOf: "PW-150|PW-350|PW-212|PW-370|PW|PW-050|PW-227|PW-010|PW-218|PW-004|PW-228",
   sources: "1010101010101010101010",
   reading: "||||||||||",
+  zones: "Pacific/Palau",
+  zone: [0,0,0,0,0,0,0,0,0,0,0],
+  elevation: ",,61,,,,,,,,",
   extra: [],
 };
 

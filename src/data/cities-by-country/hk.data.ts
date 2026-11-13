@@ -22,6 +22,9 @@ const HK: CityColumns = {
   capitalOf: "|",
   sources: "1010",
   reading: "ほんこん|",
+  zones: "Asia/Hong_Kong",
+  zone: [0,0],
+  elevation: "7,5",
   extra: [],
 };
 

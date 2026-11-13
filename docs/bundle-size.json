@@ -3,7 +3,7 @@
   "entries": {
     ".": {
       "minified": 67871,
-      "gzip": 21632
+      "gzip": 21647
     },
     "./codes": {
       "minified": 1356,
@@ -19,11 +19,11 @@
     },
     "./facts": {
       "minified": 25423,
-      "gzip": 10693
+      "gzip": 10624
     },
     "./zones": {
       "minified": 75233,
-      "gzip": 26920
+      "gzip": 27017
     },
     "./subdivision-facts": {
       "minified": 415427,
@@ -38,32 +38,32 @@
       "gzip": 2143
     },
     "./cities": {
-      "minified": 4374667,
-      "gzip": 1403163
+      "minified": 4597775,
+      "gzip": 1472647
     },
     "./cities/capitals": {
-      "minified": 493657,
-      "gzip": 173733
+      "minified": 528159,
+      "gzip": 188062
     },
     "./cities/1m": {
-      "minified": 83647,
-      "gzip": 31874
+      "minified": 90089,
+      "gzip": 34731
     },
     "./cities/100k": {
-      "minified": 575876,
-      "gzip": 197546
+      "minified": 611298,
+      "gzip": 210304
     },
     "./places": {
-      "minified": 9431753,
-      "gzip": 3105479
+      "minified": 9928881,
+      "gzip": 3306092
     },
     "./element": {
       "minified": 849814,
-      "gzip": 292508
+      "gzip": 292259
     },
     "./element/define": {
       "minified": 849817,
-      "gzip": 292515
+      "gzip": 292265
     },
     "./subdivisions/ad": {
       "minified": 1172,

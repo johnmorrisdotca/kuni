@@ -22,6 +22,9 @@ const VC: CityColumns = {
   capitalOf: "VC|VC-02|VC-06|VC-03|VC-01|VC-05",
   sources: "101010101010",
   reading: "|||||",
+  zones: "America/St_Vincent",
+  zone: [0,0,0,0,0,0],
+  elevation: "1,68,10,102,12,76",
   extra: [],
 };
 

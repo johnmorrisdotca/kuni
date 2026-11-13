@@ -22,6 +22,9 @@ const CC: CityColumns = {
   capitalOf: "CC",
   sources: "10",
   reading: "",
+  zones: "Indian/Cocos",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

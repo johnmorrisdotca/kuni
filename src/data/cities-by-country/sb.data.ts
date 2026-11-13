@@ -22,6 +22,9 @@ const SB: CityColumns = {
   capitalOf: "SB|SB-WE|SB-ML|SB-TE|SB-CH|SB-IS|SB-MK|SB-RB|SB-CE",
   sources: "101010101010101010",
   reading: "||||||||",
+  zones: "Pacific/Guadalcanal",
+  zone: [0,0,0,0,0,0,0,0,0],
+  elevation: "29,,157,0,25,0,152,18,",
   extra: [],
 };
 

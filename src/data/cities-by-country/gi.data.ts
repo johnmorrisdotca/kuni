@@ -22,6 +22,9 @@ const GI: CityColumns = {
   capitalOf: "GI",
   sources: "10",
   reading: "",
+  zones: "Europe/Gibraltar",
+  zone: [0],
+  elevation: "11",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const MO: CityColumns = {
   capitalOf: "|",
   sources: "1010",
   reading: "|",
+  zones: "Asia/Macau",
+  zone: [0,0],
+  elevation: "22,",
   extra: [],
 };
 

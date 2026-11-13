@@ -22,6 +22,9 @@ const AG: CityColumns = {
   capitalOf: "AG|AG-10|AG-07|AG-05|AG-03|AG-08|AG-06",
   sources: "10101010101010",
   reading: "||||||",
+  zones: "America/Antigua",
+  zone: [0,0,0,0,0,0,0],
+  elevation: "0,6,18,11,11,65,25",
   extra: [],
 };
 

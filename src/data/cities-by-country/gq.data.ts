@@ -22,6 +22,9 @@ const GQ: CityColumns = {
   capitalOf: "GQ-BN GQ-I|GQ-C GQ-LI||GQ-KN|||GQ-CS|GQ-BS|GQ-WN|GQ-AN|GQ",
   sources: "1010101010101010101010",
   reading: "||||||||||",
+  zones: "Africa/Malabo",
+  zone: [0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "0,5,,390,,,631,181,,0,454",
   extra: [],
 };
 

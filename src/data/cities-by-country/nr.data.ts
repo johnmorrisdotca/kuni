@@ -22,6 +22,9 @@ const NR: CityColumns = {
   capitalOf: "NR|NR-08|NR-02",
   sources: "101010",
   reading: "||",
+  zones: "Pacific/Nauru",
+  zone: [0,0,0],
+  elevation: "25,,",
   extra: [],
 };
 

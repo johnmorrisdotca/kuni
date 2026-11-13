@@ -22,6 +22,9 @@ const GE: CityColumns = {
   capitalOf: "GE|GE-AJ|GE-IM|GE-KK|GE-AB|GE-SK|GE-SZ||||||||GE-KA|GE-SJ||GE-GU|GE-RL|GE-MM",
   sources: "1010101010101010101010101010101010101010",
   reading: "|||||||||||||||||||",
+  zones: "Asia/Tbilisi",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "575,3,120,350,20,588,100,0,860,700,420,25,28,160,722,1029,10,80,550,460",
   extra: [[19,994]],
 };
 

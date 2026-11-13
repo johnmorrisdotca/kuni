@@ -22,6 +22,9 @@ const KN: CityColumns = {
   capitalOf: "KN|KN-08|KN-10 KN-N|KN-05|KN-11|KN-12|KN-06|KN-02|KN-13|KN-01|KN-07|KN-04|KN-09|KN-15",
   sources: "1010101010101010101010101010",
   reading: "|||||||||||||",
+  zones: "America/St_Kitts",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "15,,15,,148,,,,,,,,103,0",
   extra: [],
 };
 

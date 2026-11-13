@@ -22,6 +22,9 @@ const NU: CityColumns = {
   capitalOf: "NU",
   sources: "10",
   reading: "",
+  zones: "Pacific/Niue",
+  zone: [0],
+  elevation: "21",
   extra: [],
 };
 

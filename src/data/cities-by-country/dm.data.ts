@@ -22,6 +22,9 @@ const DM: CityColumns = {
   capitalOf: "DM|DM-02|DM-06",
   sources: "101010",
   reading: "||",
+  zones: "America/Dominica",
+  zone: [0,0,0],
+  elevation: "43,90,4",
   extra: [],
 };
 

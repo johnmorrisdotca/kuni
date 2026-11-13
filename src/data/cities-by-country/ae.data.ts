@@ -22,6 +22,9 @@ const AE: CityColumns = {
   capitalOf: "AE-DU|AE|AE-SH||AE-AJ|AE-RK|AE-FU||AE-UQ||||||",
   sources: "101010101010101010101010101010",
   reading: "||||||||||||||",
+  zones: "Asia/Dubai",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "0,14,6,292,14,714,,30,,16,20,,,114,335",
   extra: [],
 };
 

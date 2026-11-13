@@ -22,6 +22,9 @@ const CR: CityColumns = {
   capitalOf: "CR|CR-L|CR-G|||CR-A|CR-P|||||CR-C||CR-H",
   sources: "1010101010101010101011101010",
   reading: "|||||||||||||",
+  zones: "America/Costa_Rica",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "1161,3,144,656,702,952,0,1148,1151,4,64,1435,361,1150",
   extra: [[0,7414547,"Greater Metropolitan Area",2576374,2022]],
 };
 

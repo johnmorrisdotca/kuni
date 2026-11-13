@@ -22,6 +22,9 @@ const ST: CityColumns = {
   capitalOf: "ST|ST-02|ST-06|ST-03|ST-05|ST-P|ST-04",
   sources: "10101010101010",
   reading: "||||||",
+  zones: "Africa/Sao_Tome",
+  zone: [0,0,0,0,0,0,0],
+  elevation: "137,177,254,143,,204,0",
   extra: [],
 };
 

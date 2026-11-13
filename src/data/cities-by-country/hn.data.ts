@@ -22,6 +22,9 @@ const HN: CityColumns = {
   capitalOf: "HN|HN-CR|HN-AT|HN-CH|HN-CM|HN-OL|HN-YO|HN-CP|HN-CL|HN-VA|HN-LE|HN-GD|HN-LP||HN-IB|HN-SB||HN-OC||HN-EP|HN-IN",
   sources: "101010101010101010101010101010101010101010",
   reading: "||||||||||||||||||||",
+  zones: "America/Tegucigalpa",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "990,83,3,40,594,410,660,1168,15,44,800,0,687,,0,312,,819,,1007,1700",
   extra: [],
 };
 

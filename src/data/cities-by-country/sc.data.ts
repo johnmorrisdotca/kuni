@@ -22,6 +22,9 @@ const SC: CityColumns = {
   capitalOf: "SC",
   sources: "10",
   reading: "",
+  zones: "Indian/Mahe",
+  zone: [0],
+  elevation: "",
   extra: [],
 };
 

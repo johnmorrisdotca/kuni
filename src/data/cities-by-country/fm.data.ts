@@ -22,6 +22,9 @@ const FM: CityColumns = {
   capitalOf: "FM|FM-PNI|FM-KSA|FM-YAP|FM-TRK",
   sources: "1010101010",
   reading: "||||",
+  zones: "Pacific/Pohnpei,Pacific/Kosrae,Pacific/Chuuk",
+  zone: [1,1,3,5,5],
+  elevation: "80,23,,,",
   extra: [],
 };
 

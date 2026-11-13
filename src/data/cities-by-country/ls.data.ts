@@ -22,6 +22,9 @@ const LS: CityColumns = {
   capitalOf: "LS|LS-D|LS-E|LS-C||LS-H|LS-F|LS-G|LS-B|LS-J|LS-K",
   sources: "1010101210121010101010",
   reading: "||||||||||",
+  zones: "Africa/Maseru",
+  zone: [0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "1600,,,,,,,1500,,,2200",
   extra: [],
 };
 

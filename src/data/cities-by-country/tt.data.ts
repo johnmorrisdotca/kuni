@@ -22,6 +22,9 @@ const TT: CityColumns = {
   capitalOf: "||TT|TT-CTT|||||TT-TUP|TT-TOB|TT-SJL|TT-SIP|TT-MRC|TT-PRT|TT-DMN|TT-PED|TT-SGE",
   sources: "1010101010101010101010101010101010",
   reading: "||||||||||||||||",
+  zones: "America/Port_of_Spain",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "0,34,3,47,,,,,,400,,73,,,,,",
   extra: [],
 };
 

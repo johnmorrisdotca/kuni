@@ -22,6 +22,9 @@ const NF: CityColumns = {
   capitalOf: "NF",
   sources: "10",
   reading: "",
+  zones: "Pacific/Norfolk",
+  zone: [0],
+  elevation: "20",
   extra: [],
 };
 

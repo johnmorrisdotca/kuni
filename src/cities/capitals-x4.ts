@@ -22,6 +22,9 @@ const COLUMNS: CityColumns = {
   capitalOf: "PK-PB|IR-07|KR-41|MM|RU-ROS|UA-12|TJ|UA-14|KR-45|JP-08|AF-BAL|KP-05|EG-MNF|AF-HEL|IR-08 IR-14|AF-JOW|AF-PAR|KH-2|CY-02|MN-037|BG-08|LK-7 LK-71|SO-SO|CY-01|CY-03|MA-CHE|LK-62|CY-04|MA-CHI|AF-WAR|CY-05|GR-J|TD-TA|MN-053|MK-303|TD-BO|LK-33|MK-203|CY-06|MK-103|MK-502|MK-503|KR-46|LK-72|AF-PKA|BT-43|CN-GZ|IN-KL|CN-SH|IL-Z|PS-BTH",
   sources: "101000101010101000001010101010101010101000101210101012101010100010101012101010101010001010103030300010",
   reading: "|||||||||みとし|||||||||||||||||||||||||||||||||||||||||",
+  zones: "Asia/Karachi,Asia/Tehran,Asia/Seoul,Asia/Yangon,Europe/Moscow,Europe/Kyiv,Asia/Dushanbe,Asia/Tokyo,Asia/Kabul,Asia/Pyongyang,Africa/Cairo,Asia/Phnom_Penh,Asia/Nicosia,Asia/Ulaanbaatar,Europe/Sofia,Asia/Colombo,Africa/Mogadishu,Africa/Casablanca,Asia/Famagusta,Europe/Athens,Africa/Ndjamena,Europe/Skopje,Asia/Thimphu,Asia/Shanghai,Asia/Kolkata,Asia/Jerusalem,Asia/Hebron",
+  zone: [0,2,4,6,8,10,12,10,4,14,16,18,20,16,2,16,16,22,25,27,28,30,32,25,25,34,30,37,34,16,25,38,40,26,42,40,30,42,25,42,42,42,4,30,16,44,46,48,47,50,53],
+  elevation: "217,1545,66,115,70,155,706,169,50,,380,,23,773,2070,360,1600,39,,665,225,81,0,,,564,8,,322,2206,,655,361,1470,625,245,1,575,,202,643,622,,,2154,1207,1275,10,,430,775",
   extra: [[8,"oecd:KOR09F","Jeonju",740554,2023],[9,"oecd:JPN21F","Mito",696312,2020],[48,8686],[49,430776],[50,1218]],
 };
 

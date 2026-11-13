@@ -22,6 +22,9 @@ const SO: CityColumns = {
   capitalOf: "SO|SO-WO|SO-BR|SO-TO||SO-SH||SO-JH|SO-BY|SO-SD|SO-AW||SO-HI|SO-MU|SO-SO||SO-GE|SO-SA|||||||SO-NU|SO-BK|SO-JD|SO-GA",
   sources: "10101010101012101212101012121210101012101212101012121212",
   reading: "|||||||||||||||||||||||||||",
+  zones: "Africa/Mogadishu",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "9,1260,15,1037,3,0,10,0,446,100,,210,182,297,0,,93,,144,20,196,,50,29,460,,,197",
   extra: [],
 };
 

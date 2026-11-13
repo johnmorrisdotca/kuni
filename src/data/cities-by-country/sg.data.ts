@@ -22,6 +22,9 @@ const SG: CityColumns = {
   capitalOf: "SG|||",
   sources: "10101010",
   reading: "|||",
+  zones: "Asia/Singapore",
+  zone: [0,0,0,0],
+  elevation: ",29,,",
   extra: [[1,334],[2,334],[3,334]],
 };
 

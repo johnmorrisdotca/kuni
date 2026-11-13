@@ -4680,6 +4680,8 @@
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
     "data:cities": "node scripts/fetch-cities.ts",
+    "data:elevations": "node scripts/fetch-city-elevations.ts",
+    "data:city-zones": "node scripts/fetch-city-zones.ts",
     "data:record-ids": "node scripts/build-data.ts --record-ids",
     "site": "pnpm build && node scripts/site.mjs",
     "test:demo": "pnpm site && node scripts/docs-site.mjs build && playwright test",

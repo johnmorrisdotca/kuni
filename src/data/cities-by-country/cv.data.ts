@@ -22,6 +22,9 @@ const CV: CityColumns = {
   capitalOf: "CV|CV-SV||CV-CA|CV-SF|CV-BV|CV-TA|CV-SL|CV-RG|CV-SM|CV-MA|CV-SD|CV-SO|CV-CF|CV-PA|CV-RS|CV-SS|CV-BR|CV-MO|CV-PN|CV-TS|CV-RB",
   sources: "10101010101010101010101010101010101010101010",
   reading: "|||||||||||||||||||||",
+  zones: "Atlantic/Cape_Verde",
+  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  elevation: "1,61,12,337,40,0,464,53,49,0,4,327,262,0,0,1,432,520,193,8,,142",
   extra: [],
 };
 

@@ -22,6 +22,9 @@ const VU: CityColumns = {
   capitalOf: "VU|VU-SAM|VU-TAE|VU-TOB|VU-MAP|VU-PAM",
   sources: "101010101010",
   reading: "|||||",
+  zones: "Pacific/Efate",
+  zone: [0,0,0,0,0,0],
+  elevation: "59,8,64,124,10,",
   extra: [],
 };
 
