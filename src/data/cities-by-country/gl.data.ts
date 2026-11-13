@@ -24,7 +24,7 @@ const GL: CityColumns = {
   reading: "||||",
   zones: "America/Nuuk",
   zone: [0,1,1,1,1],
-  elevation: "5,,2010,1,16",
+  elevation: "5,,,1,16",
   extra: [],
 };
 

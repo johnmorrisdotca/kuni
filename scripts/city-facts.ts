@@ -17,7 +17,8 @@
 //     differ by more than that is giving a range (a city on a slope) or has a mistaken value. Outside the range Earth's dry
 //     land has (ELEVATION_MIN to ELEVATION_MAX) is a mistake and is left out. A value that is above sea level and more than
 //     OUTLIER_METRES from the middle of the values of three or more cities within OUTLIER_KM , where they agree within OUTLIER_AGREE metres (not counting the highest and the lowest, where there are six or more), is a mistake and is left out (a town of Kentucky at 1,667 m); a value below sea level is never
-//     left out (Jericho, Tiberias). Never made up, never from a model of the ground.
+//     left out (Jericho, Tiberias); and five values known to be wrong that the rule cannot catch are left out by id
+//     (CITY_ELEVATION_DROPPED). Never made up, never from a model of the ground.
 
 import type { CityRow } from "../src/city-rows.ts";
 
@@ -36,6 +37,16 @@ const CITY_ZONES: Readonly<Record<string, { zone: string; why: string }>> = {
   Q22060342: { zone: "America/Eirunepe", why: "Tabatinga, Amazonas, on the Colombian border, keeps the western zone zone.tab lists as Eirunepe (UTC-5), not Manaus's" },
   Q6025: { zone: "Asia/Barnaul", why: "Gorno-Altaysk, the Altai Republic, keeps Barnaul's zone (UTC+7), the zone tzdb names for the Altai" },
   Q16562: { zone: "America/Denver", why: "El Paso, Texas, keeps Mountain time, the zone tzdb gives its county; the rest of Texas is Central" },
+};
+
+// Cities whose Wikidata elevation is known to be wrong and which the outlier rule cannot catch (too few cities round them, or round
+// them that disagree), left out by id with the reason; each must be a city with an elevation.
+const CITY_ELEVATION_DROPPED: Readonly<Record<string, string>> = {
+  Q694545: "Bowling Green, Kentucky: 1,667 m, on a plain whose cities are all a few hundred metres at most",
+  Q191047: "Ilulissat, Greenland: 2,010 m, for a town on the coast",
+  Q577511: "Carbondale, Illinois: 1,265 m, on a plain whose cities are all a few hundred metres at most",
+  Q755102: "Severna Park, Maryland: 1,200 m, on the coastal plain",
+  Q100928375: "Dimtu, Ethiopia: 1 m, for a town in the highlands whose neighbours are near 2,000 m",
 };
 
 interface CityFact {
@@ -71,6 +82,8 @@ interface CityFactsInput {
   distanceKm: (a: [number, number], b: [number, number]) => number;
   /** Cities whose zone is set by id (CITY_ZONES in the build); none by default. */
   overrides?: Readonly<Record<string, { zone: string; why: string }>>;
+  /** Cities whose elevation is left out by id (CITY_ELEVATION_DROPPED in the build); none by default. */
+  droppedElevations?: Readonly<Record<string, string>>;
 }
 
 interface CityFactsReport {
@@ -92,6 +105,8 @@ interface CityFactsReport {
   elevationDroppedSpread: number;
   elevationDroppedRange: number;
   elevationDroppedOutlier: number;
+  /** Left out by id, in CITY_ELEVATION_DROPPED. */
+  elevationDroppedById: number;
 }
 
 const idNumber = (id: number | string): number | null => (typeof id === "number" ? id : null);
@@ -115,8 +130,11 @@ const buildCityFacts = (input: CityFactsInput): { facts: Map<number | string, Ci
     elevationDroppedSpread: 0,
     elevationDroppedRange: 0,
     elevationDroppedOutlier: 0,
+    elevationDroppedById: 0,
   };
   const overrides = input.overrides ?? {};
+  const dropped = input.droppedElevations ?? {};
+  const usedDrops = new Set<string>();
   const usedOverrides = new Set<string>();
   // The elevation each city has before the neighbours are asked, by place in rows.
   const candidates: (number | null)[] = [];
@@ -182,7 +200,11 @@ const buildCityFacts = (input: CityFactsInput): { facts: Map<number | string, Ci
     let elevation: number | null = null;
     const item = idNumber(id);
     const values = item === null ? undefined : input.elevations.get(item);
-    if (values !== undefined && values.length > 0) {
+    if (item !== null && dropped[`Q${item}`] !== undefined) {
+      if (values === undefined || values.length === 0) throw new Error(`CITY_ELEVATION_DROPPED names Q${item}, which has no elevation`);
+      usedDrops.add(`Q${item}`);
+      report.elevationDroppedById += 1;
+    } else if (values !== undefined && values.length > 0) {
       const sorted = [...values].sort((a, b) => a - b);
       if (sorted.length > 1) report.elevationManyValues += 1;
       if (sorted[sorted.length - 1]! - sorted[0]! > ELEVATION_SPREAD) {
@@ -196,6 +218,7 @@ const buildCityFacts = (input: CityFactsInput): { facts: Map<number | string, Ci
     candidates.push(elevation);
     facts.set(id, { zone, guessed, basis, elevation });
   }
+  for (const id of Object.keys(dropped)) if (!usedDrops.has(id)) throw new Error(`CITY_ELEVATION_DROPPED names ${id}, which is no city`);
   for (const id of Object.keys(overrides)) if (!usedOverrides.has(id)) throw new Error(`CITY_ZONES names ${id}, which is no city`);
   // A value far from the cities round it, where those agree with one another, is a mistake.
   const cell = (lat: number, lon: number): string => `${Math.floor(lat)},${Math.floor(((lon % 360) + 540) % 360)}`;
@@ -242,5 +265,5 @@ const buildCityFacts = (input: CityFactsInput): { facts: Map<number | string, Ci
   return { facts, report };
 };
 
-export { buildCityFacts, CITY_ZONES, ELEVATION_MAX, ELEVATION_MIN, ELEVATION_SPREAD, NEAR_KM, OUTLIER_AGREE, OUTLIER_KM, OUTLIER_METRES, OUTLIER_MINIMUM };
+export { buildCityFacts, CITY_ELEVATION_DROPPED, CITY_ZONES, ELEVATION_MAX, ELEVATION_MIN, ELEVATION_SPREAD, NEAR_KM, OUTLIER_AGREE, OUTLIER_KM, OUTLIER_METRES, OUTLIER_MINIMUM };
 export type { CityFact, CityFactsInput, CityFactsReport, SubdivisionZone };

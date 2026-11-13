@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { buildCityFacts, CITY_ZONES } from "../scripts/city-facts.ts";
+import { buildCityFacts, CITY_ELEVATION_DROPPED, CITY_ZONES } from "../scripts/city-facts.ts";
 import type { CityFactsInput } from "../scripts/city-facts.ts";
 import { citiesOf } from "./cities";
 import type { City } from "./cities";
@@ -283,6 +283,22 @@ describe("the rules that choose an elevation", () => {
     expect(made.get(101)?.elevation).toBe(189);
   });
 
+  it("leave out by id a value known to be wrong, and refuse an id that has none", () => {
+    const rows = [row(100, 10, 20, "AA", null, "Town"), row(101, 10.05, 20, "AA", null, "Other")];
+    const made = buildCityFacts(input(rows, [[100, [1667]], [101, [200]]], { droppedElevations: { Q100: "a reason" } }));
+    expect(made.facts.get(100)?.elevation).toBeNull();
+    expect(made.facts.get(101)?.elevation).toBe(200);
+    expect(made.report.elevationDroppedById).toBe(1);
+    expect(() => buildCityFacts(input(rows, [[101, [200]]], { droppedElevations: { Q100: "a reason" } }))).toThrow(/no elevation/);
+    expect(() => buildCityFacts(input(rows, [[100, [5]]], { droppedElevations: { Q999: "a reason" } }))).toThrow(/no city/);
+    expect(Object.keys(CITY_ELEVATION_DROPPED)).toHaveLength(5);
+  });
+
+  it("leave out the five known-wrong values the rule cannot catch", async () => {
+    const find = async (code: string, id: string): Promise<City | undefined> => (await of(code)).find((one) => one.id === id);
+    for (const [code, id] of [["US", "Q694545"], ["GL", "Q191047"], ["US", "Q577511"], ["US", "Q755102"], ["ET", "Q100928375"]] as const) expect((await find(code, id))?.elevation, id).toBeUndefined();
+  });
+
   it("drop the single bad values of the cities a review found, in the data, and keep the real ones below sea level", async () => {
     const find = (list: readonly City[], id: string): City | undefined => list.find((one) => one.id === id);
     const us = await citiesOf("US");
@@ -308,7 +324,7 @@ describe("a city's elevation", () => {
     const list = await all();
     for (const city of list.filter((one) => one.id.startsWith("ne:"))) expect(city.elevation, city.id).toBeUndefined();
     // Pinned: how many cities have one.
-    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17188);
+    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17183);
   });
 
   it("keeps to what land has", async () => {

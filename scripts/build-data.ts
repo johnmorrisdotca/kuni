@@ -47,7 +47,7 @@ import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
-import { buildCityFacts, CITY_ZONES } from "./city-facts.ts";
+import { buildCityFacts, CITY_ELEVATION_DROPPED, CITY_ZONES } from "./city-facts.ts";
 import type { SubdivisionZone } from "./city-facts.ts";
 import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
@@ -1089,12 +1089,13 @@ const writeCities = (): void => {
     subdivisionZones: subdivisionZoneMap,
     distanceKm: greatCircleKm,
     overrides: CITY_ZONES,
+    droppedElevations: CITY_ELEVATION_DROPPED,
   });
   const factsReport = cityFacts.report;
   console.log(
     `City zones: ${factsReport.zoneOfOneZoneCountry} a country's one zone, ${factsReport.zoneOfSubdivision} a subdivision's, ${factsReport.zoneAtZoneTabCity} at a zone.tab city, ${factsReport.zoneNamed} set by id, ${factsReport.zoneEstimated} estimated (${factsReport.zoneEstimatedBySubdivision} by the zone kuni chose for the subdivision, of which ${factsReport.zoneEstimatedInSplitSubdivision} in a subdivision split between zones; ${factsReport.zoneEstimatedWithoutSubdivision} by the nearest zone.tab city, in no subdivision), ${factsReport.zoneNone} none, of ${factsReport.cities}.`,
   );
-  console.log(`City elevations: ${factsReport.elevation} of ${factsReport.cities} (${factsReport.elevationManyValues} had several values, ${factsReport.elevationDroppedSpread} left out for spread, ${factsReport.elevationDroppedRange} for range, ${factsReport.elevationDroppedOutlier} for standing out from the cities round them).`);
+  console.log(`City elevations: ${factsReport.elevation} of ${factsReport.cities} (${factsReport.elevationManyValues} had several values, ${factsReport.elevationDroppedSpread} left out for spread, ${factsReport.elevationDroppedRange} for range, ${factsReport.elevationDroppedOutlier} for standing out from the cities round them, ${factsReport.elevationDroppedById} by id).`);
   // Ids never change between releases: every id a past release had is still a city's or is in the alias file.
   const current = new Set(rows.map((row) => (typeof row[0] === "number" ? `Q${row[0]}` : row[0])));
   const idsFile = join(ROOT, "data-sources", "city-ids.json");
