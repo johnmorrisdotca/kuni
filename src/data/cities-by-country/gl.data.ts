@@ -23,7 +23,7 @@ const GL: CityColumns = {
   sources: "1010101010",
   reading: "||||",
   zones: "America/Nuuk",
-  zone: [0,0,0,1,0],
+  zone: [0,1,1,1,1],
   elevation: "5,,2010,1,16",
   extra: [],
 };

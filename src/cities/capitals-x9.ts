@@ -22,8 +22,8 @@ const COLUMNS: CityColumns = {
   capitalOf: "PK-SD|IN-TS|JO|IL-TA|KP|IR-30|JP-04|MM-04|YE YE-AD|PK-BA|IR-05 IR-17|JP-22|IR-08 IR-15|AE-AJ|KZ-63|KP-06|MM-15|BD-05|DZ-23|MM-11|KP-02|TW-HSQ|IL-D|JO-AJ|SA-08|KR-47|GR-D|MV|MM-03|OM-ZA|YE-AM|TN-13|NP-P3|DZ-46|ER-DK|DJ-AS|SO-SO|LA-LP|MN-071|AF-LOG|YE-SH|DZ-52|DZ-54|KR-46|DZ-44|BD-20|MV-14|MV-25|MV-00|NP-P5|CN-XZ|MR-15|TW-TNN",
   sources: "1000100010100010101010001010101010101010101000101000001012101010101010101210101010101000101010101010301010",
   reading: "||||||せんだいし|||||しずおかし|||||||||||||||||||||||||||||||||||||||||",
-  zones: "Asia/Karachi,Asia/Kolkata,Asia/Amman,Asia/Jerusalem,Asia/Pyongyang,Asia/Tehran,Asia/Tokyo,Asia/Yangon,Asia/Aden,Asia/Dubai,Asia/Almaty,Asia/Dhaka,Africa/Algiers,Asia/Taipei,Asia/Riyadh,Asia/Seoul,Europe/Athens,Indian/Maldives,Asia/Muscat,Africa/Tunis,Asia/Kathmandu,Africa/Asmara,Africa/Djibouti,Africa/Mogadishu,Asia/Vientiane,Asia/Ulaanbaatar,Asia/Kabul,Asia/Shanghai,Africa/Nouakchott",
-  zone: [0,2,4,6,8,10,12,14,16,0,10,12,10,18,20,8,14,22,24,14,8,26,6,4,28,30,32,34,14,36,16,38,40,24,42,44,46,48,50,52,16,24,24,30,24,22,34,34,34,40,54,56,26],
+  zones: "Asia/Karachi,Asia/Kolkata,Asia/Amman,Asia/Jerusalem,Asia/Pyongyang,Asia/Tehran,Asia/Tokyo,Asia/Yangon,Asia/Aden,Asia/Dubai,Asia/Almaty,Asia/Dhaka,Africa/Algiers,Asia/Taipei,Asia/Riyadh,Asia/Seoul,Europe/Athens,Indian/Maldives,Asia/Muscat,Africa/Tunis,Asia/Kathmandu,Africa/Asmara,Africa/Djibouti,Africa/Mogadishu,Asia/Vientiane,Asia/Hovd,Asia/Kabul,Asia/Shanghai,Africa/Nouakchott",
+  zone: [0,2,4,6,8,10,12,14,16,0,10,12,10,18,21,8,14,22,24,14,8,26,6,4,28,30,32,34,14,36,16,38,40,24,42,44,46,48,51,52,16,24,24,30,24,22,34,34,34,40,54,56,26],
   elevation: "8,564,776,5,38,1341,57,22,6,1680,1392,12,1760,14,283,,,,3,144,,24,260,719,536,139,490,2,,200,2239,,345,296,16,756,0,305,1710,1922,1146,483,400,,280,,,,,,,3,2",
   extra: [[1,"in-census-2011:Hyderabad UA","Hyderabad UA",7677018,"2011-03-01"],[3,"oecd:ISR10F","Tel Aviv - Yafo",3232010,2021],[6,"oecd:JPN06F","Sendai",1574959,2020],[11,"oecd:JPN22F","Shizuoka",693389,2020],[26,"oecd:EL007F","Ioannina",146758,2021],[51,3688],[52,140631]],
 };

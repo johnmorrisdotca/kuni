@@ -22,8 +22,8 @@ const COLUMNS: CityColumns = {
   capitalOf: "IN-MH|CN-SD|PK-KP|JP-28|RU-OMS|UA-51|JP-38|RU-ORE|JP-45|KG-O|IR-15 IR-20|RU-ORL|RU-ME|BD-34 BD-H|KZ-27|PS-KYS|JP-32|MA-KHO|RU-SAK|AF-KHO|BD-47|LA-SV|MA-KHN|AF-BGL|DZ-40|AM-LO|BD-33|MK-310|OM-MU|BD-39|BD-37|BD-35|KR-26",
   sources: "000010001010001000101010101010100010101010101010101010101010101000",
   reading: "|||こうべし|||まつやまし||みやざきし||||||||まつえし||||||||||||||||",
-  zones: "Asia/Kolkata,Asia/Shanghai,Asia/Karachi,Asia/Tokyo,Asia/Omsk,Europe/Simferopol,Asia/Yekaterinburg,Asia/Bishkek,Asia/Tehran,Europe/Moscow,Asia/Dhaka,Asia/Oral,Asia/Gaza,Africa/Casablanca,Asia/Sakhalin,Asia/Kabul,Asia/Vientiane,Africa/Algiers,Asia/Yerevan,Europe/Skopje,Asia/Muscat,Asia/Seoul",
-  zone: [0,2,4,6,8,10,6,12,6,14,16,18,18,20,22,25,6,26,28,30,20,32,26,30,34,36,20,38,40,20,20,20,42],
+  zones: "Asia/Kolkata,Asia/Shanghai,Asia/Karachi,Asia/Tokyo,Asia/Omsk,Europe/Kyiv,Asia/Yekaterinburg,Asia/Bishkek,Asia/Tehran,Europe/Moscow,Asia/Dhaka,Asia/Oral,Asia/Gaza,Africa/Casablanca,Asia/Sakhalin,Asia/Kabul,Asia/Vientiane,Africa/Algiers,Asia/Yerevan,Europe/Skopje,Asia/Muscat,Asia/Seoul",
+  zone: [0,3,4,6,8,11,6,12,6,14,16,19,19,20,22,25,6,26,28,30,20,32,26,30,34,36,20,38,40,20,20,20,42],
   elevation: "14,23,359,,90,40,,150,,963,1147,170,100,19,35,,,786,50,1225,,144,860,920,1128,1350,,700,3,,,,",
   extra: [[0,"in-census-2011:Greater Mumbai UA","Greater Mumbai UA",18394912,"2011-03-01"],[1,"cn-census-2020:济南市城区","济南市城区",5878000,"2020-11-01"],[6,"oecd:JPN25F","Matsuyama",630338,2020],[8,"oecd:JPN36F","Miyazaki",491767,2020],[31,1354],[32,16520]],
 };

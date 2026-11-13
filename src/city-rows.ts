@@ -68,16 +68,17 @@ interface City {
   /** The ISO 3166-2 code of its first-level subdivision, "FR-IDF"; `null` where Wikidata does not say or kuni lists none. */
   subdivision: string | null;
   /**
-   * The IANA time zone it keeps, "Asia/Tokyo", so that a page can show the time there (give it as the `timeZone`
-   * of a date formatter); `null` where its country has no zone in IANA's zone.tab. Natural Earth's zone for the place where it has one
-   * that is the country's; else a country's one zone, or the one zone Wikidata names for the city's subdivision; else an
-   * estimate (`timeZoneEstimated`). docs/cities.md counts each.
+   * The IANA time zone it keeps, "Asia/Tokyo", so that a page can show the time there (give it as the `timeZone` of a date
+   * formatter). From IANA's zone.tab and Wikidata's subdivision zones: a country's one zone; else the zone Wikidata names
+   * for the city's subdivision alone; else the zone of the nearest city zone.tab lists for the country
+   * (`timeZoneEstimated` says whether that is an estimate). Left out only for a city of a country with no zone in zone.tab.
+   * docs/cities.md counts each way.
    */
-  timeZone: string | null;
-  /** True where `timeZone` is an estimate (the zone whose principal city is nearest, or the zone of the nearest subdivision); false where a source names it, and for a city with no zone. */
-  timeZoneEstimated: boolean;
-  /** Its height above sea level in whole metres, from Wikidata (CC0); `null` where Wikidata has none, or several values far apart, or one no land has. Negative below sea level. */
-  elevation: number | null;
+  timeZone?: string;
+  /** Present with `timeZone`: true where the zone is an estimate (the nearest zone.tab city's, the city being neither at its point nor that city), false where a source names it or the city is that zone.tab city. Kuni has no boundaries, so a town near a zone's edge can be given its neighbour's: say "estimated" where it is shown. */
+  timeZoneEstimated?: boolean;
+  /** Its height above sea level in whole metres (negative below it), from Wikidata (CC0); left out where Wikidata has none, or several values far apart, or one no land has or one that stands out from the cities round it (a single bad value). */
+  elevation?: number;
   /** "national" for the capital of a country (one only for each country), "alternate" for another seat of a country's government (Cape Town, Kyoto), "subdivision" for the capital of a subdivision; `null` for none. */
   capital: "national" | "alternate" | "subdivision" | null;
   /** The codes it is the capital of (alpha-2 for a country, ISO 3166-2 for a subdivision): never empty for a capital, always empty for a city that is not one. */
@@ -242,9 +243,8 @@ const freezeCity = (row: CityRow, reading: string | null = null, place: CityPlac
     population,
     populationDate: date === null ? null : String(date),
     subdivision,
-    timeZone: place.timeZone,
-    timeZoneEstimated: place.timeZoneEstimated,
-    elevation: place.elevation,
+    ...(place.timeZone === null ? {} : { timeZone: place.timeZone, timeZoneEstimated: place.timeZoneEstimated }),
+    ...(place.elevation === null ? {} : { elevation: place.elevation }),
     capital: capital === 1 ? "national" : capital === 2 ? "subdivision" : capital === 3 ? "alternate" : null,
     capitalOf: Object.freeze(capitalOf === null ? [] : capitalOf.split(" ")),
     source: Object.freeze({

@@ -151,10 +151,10 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 2.1 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 4.2 kB min+gzip (the docs site's figure counts every tier, which load on demand) |
 | `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)`, `searchPlaces(text, { lang, limit, match })` and `cityNamesOf(code)`, for a place chooser | 51.2 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 186.6 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 34.0 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/100k` | The cities of 100,000 or more (capitals too) | 207.4 kB min+gzip |
-| `@johnmorrisdotca/kuni/cities/<code>` | One country's cities, every tier together (`/cities/jp`) | 1.2–187 kB gzip; Japan 37 kB |
+| `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 188.2 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 34.7 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/100k` | The cities of 100,000 or more (capitals too) | 210.4 kB min+gzip |
+| `@johnmorrisdotca/kuni/cities/<code>` | One country's cities, every tier together (`/cities/jp`) | 3.1–150 kB gzip (China the largest, then the United States, 124 kB); Japan 37 kB |
 
 ### 1. The countries
 
@@ -274,7 +274,7 @@ countriesOf("OC");                                    // the countries of a cont
 (await searchPlaces("パリ", { lang: "ja" }))[0].label; // "パリ": English, Japanese or native names, accents and kana folded
 ```
 
-A city is in one tier only. `id` is the Wikidata item (`"Q90"`), or `"ne:<number>"` where only Natural Earth has the place, and never changes between releases: an id that was merged into another city still answers with it. `name.ja` and `name.native` are left out where no source has them, never an English name copied in. `name.jaShort` is the short Japanese name a map labels a city by (東京 for 東京都, 大阪 for 大阪市), beside the full `name.ja`. `timeZone` is the IANA zone a page gives a date formatter to show the time there (`timeZoneEstimated` is true where it is worked out, not named by a source); `elevation` is the height above sea level in whole metres, `null` where Wikidata has none; a city's languages are its country's, `country(city.country).languages`. [Use the cities](./docs/guides/cities.md) has the rest.
+A city is in one tier only. `id` is the Wikidata item (`"Q90"`), or `"ne:<number>"` where only Natural Earth has the place, and never changes between releases: an id that was merged into another city still answers with it. `name.ja` and `name.native` are left out where no source has them, never an English name copied in. `name.jaShort` is the short Japanese name a map labels a city by (東京 for 東京都, 大阪 for 大阪市), beside the full `name.ja`. `timeZone` is the IANA zone a page gives a date formatter to show the time there (`timeZoneEstimated` is true where it is the nearest zone.tab city's or the subdivision's choice, not named by a source); `elevation` is the height above sea level in whole metres, left out where Wikidata has none; a city's languages are its country's, `country(city.country).languages`. [Use the cities](./docs/guides/cities.md) has the rest.
 
 ### In a page, with no bundler
 
@@ -593,7 +593,7 @@ The [architecture guide](docs/guides/architecture.md) retains the complete origi
 | IOC codes, and the withdrawn countries' names | Wikidata, a snapshot of 2026-10-10 (`data-sources/wikidata-codes-2026-10-10.json`) | CC0 |
 | The cities: names, coordinates, populations with dates, countries, subdivisions, capitals | Wikidata, a snapshot of 2026-11-11 (`data-sources/wikidata-cities-2026-11-11.json`) | CC0 |
 | The cities: a Japanese name, a population or a point Wikidata lacks, capital classes, and the places Wikidata has no item for | Natural Earth 5.1.2 10m Populated Places, from its own release (`data-sources/natural-earth-populated-places-5.1.2.json`) | Public domain |
-| The cities' time zones | Natural Earth 5.1.2 10m Populated Places' TIMEZONE, from the same release file (`data-sources/natural-earth-timezones-5.1.2.json`); else IANA's zone.tab and Wikidata's subdivision zones, as `/zones` has them | Public domain |
+| The cities' time zones | IANA's tzdb 2026e `zone.tab` and Wikidata's zones of the subdivisions, as `/zones` has them (not Natural Earth's TIMEZONE column) | Public domain; CC0 |
 | The cities' elevations | Wikidata, a snapshot of 2026-11-13 (`data-sources/wikidata-city-elevations-2026-11-13.json`) | CC0 |
 | The withdrawn countries' codes, years and successors | ISO 3166-3's published list, transcribed once (`scripts/withdrawn-config.ts`) | A list of facts |
 | Aliases, a few readings and 46 corrected Japanese subdivision names | written for this package | MIT |

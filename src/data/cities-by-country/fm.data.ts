@@ -23,7 +23,7 @@ const FM: CityColumns = {
   sources: "1010101010",
   reading: "||||",
   zones: "Pacific/Pohnpei,Pacific/Kosrae,Pacific/Chuuk",
-  zone: [1,1,3,5,5],
+  zone: [0,0,2,5,4],
   elevation: "80,23,,,",
   extra: [],
 };

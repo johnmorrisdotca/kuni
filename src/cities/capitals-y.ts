@@ -23,7 +23,7 @@ const COLUMNS: CityColumns = {
   sources: "10001010101010101000101010101010001000100010101010101010101010000010101210000011101010101010101010303000",
   reading: "|よこはまし||||||||やまがたし|||||||||やまぐちし|||||||||||||||||||||||||||||||||",
   zones: "Asia/Yangon,Asia/Tokyo,Africa/Douala,Asia/Yekaterinburg,America/Montevideo,Asia/Yerevan,Europe/Moscow,Asia/Tehran,Asia/Jakarta,Africa/Lagos,Africa/Abidjan,Asia/Yakutsk,Africa/Dar_es_Salaam,Europe/London,Asia/Gaza,Asia/Sakhalin,America/Bogota,Europe/Istanbul,Africa/Juba,Asia/Ho_Chi_Minh,Asia/Taipei,America/Tegucigalpa,Africa/Casablanca,Asia/Bangkok,Asia/Baku,Europe/Sofia,Europe/Paris,Africa/Ouagadougou,America/Asuncion,America/Edmonton,Pacific/Nauru,Africa/Kampala,Asia/Shanghai,Asia/Seoul",
-  zone: [0,2,4,6,8,10,12,14,16,2,18,18,20,22,12,24,26,29,2,30,32,14,34,36,34,38,40,42,44,46,48,50,52,54,56,24,8,58,26,46,42,10,48,44,60,38,38,24,62,64,65,66],
+  zone: [0,2,4,6,8,10,13,14,17,2,18,18,20,22,13,24,26,29,2,30,32,14,34,36,34,38,40,42,44,46,48,50,52,54,56,24,8,58,26,46,42,10,48,44,60,38,38,24,62,65,65,66],
   elevation: "15,24,764,237,41,987,100,1216,113,,599,,214,95,100,,25,,,50,350,1870,30,647,1406,65,6,660,298,31,17,114,,301,64,,54,190,,,1007,1194,1068,,25,11,11,,1080,1100,,",
   extra: [[9,"oecd:JPN41F","Yamagata",411146,2020],[16,"oecd:UK533F","York",209301,2024],[20,"oecd:COL40F","Yopal",173610,2019],[37,"statcan:2021S0504995","Yellowknife",23826,"2025-07-01"],[50,11725],[51,16520]],
 };

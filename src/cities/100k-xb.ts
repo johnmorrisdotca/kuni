@@ -22,8 +22,8 @@ const COLUMNS: CityColumns = {
   capitalOf: "||KZ-35|RU-LIP|JP-03|UA-09|JP-05||||KZ-43|KZ-39||BD-15|BD-16|UA-07||KZ-61|GR-E|||||||||CY-02|||||||||||||||||||||||||||||||",
   sources: "0000101000100000001010100010101000100000000012001210101030303000003030323000103000303000303030323030303030303030303000",
   reading: "よっかいちし|ひめじし|||もりおかし||あきたし||はちのへし||||しものせきし||||とまこまいし|||いさはやし|やつしろし|こうのすし||かけがわし||||||||はちおうじし||||||やおし|||やちよし|||たちかわし|||||||||||||||",
-  zones: "Asia/Tokyo,Asia/Almaty,Europe/Moscow,Asia/Seoul,Asia/Pyongyang,Asia/Aqtobe,Asia/Dhaka,Europe/Kyiv,Asia/Qyzylorda,Europe/Athens,Africa/Addis_Ababa,Asia/Yangon,Asia/Nicosia,Europe/Minsk,Asia/Shanghai,Asia/Urumqi,Asia/Kolkata,Asia/Jerusalem",
-  zone: [0,0,2,4,0,5,0,6,0,8,10,10,0,12,12,14,0,16,18,0,0,0,20,0,22,24,26,25,29,28,29,0,6,31,28,32,32,0,5,29,0,32,29,0,29,29,29,32,32,29,29,29,29,28,29,29,29,29,34],
+  zones: "Asia/Tokyo,Asia/Almaty,Europe/Moscow,Europe/Volgograd,Asia/Seoul,Asia/Pyongyang,Asia/Qyzylorda,Asia/Qostanay,Asia/Dhaka,Europe/Kyiv,Europe/Athens,Africa/Addis_Ababa,Asia/Yangon,Asia/Nicosia,Europe/Minsk,Asia/Shanghai,Asia/Urumqi,Asia/Kolkata,Asia/Jerusalem",
+  zone: [0,0,3,5,0,7,0,8,0,10,12,14,0,16,16,19,0,3,20,0,0,0,22,0,24,27,28,27,31,31,31,0,8,33,31,34,34,0,5,31,0,34,31,0,31,31,31,34,34,31,31,31,31,30,31,31,31,31,36],
   elevation: ",,553,160,,105,,66,,489,128,156,,,,174,,,85,,,,2008,,65,,144,,,,,,,354,756,163,,,130,,,675,,,,,11,110,97,,,48,,,,,,,30",
   extra: [[0,"oecd:JPN12F","Yokkaichi",1051314,2020],[1,"oecd:JPN20F","Himeji",707867,2020],[4,"oecd:JPN37F","Morioka",457552,2020],[6,"oecd:JPN43F","Akita",383233,2020],[7,"oecd:KOR15F","Jinju",341074,2023],[8,"oecd:JPN49F","Hachinohe",309126,2020],[12,"oecd:JPN52F","Shimonoseki",255051,2020],[16,"oecd:JPN61F","Tomakomai",170113,2020],[31,1490],[32,8684],[37,35765],[38,649],[40,1490],[42,59218],[43,1490],[58,33935]],
 };

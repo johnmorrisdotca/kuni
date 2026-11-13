@@ -22,8 +22,8 @@ const COLUMNS: CityColumns = {
   capitalOf: "MX-QUE|CA-QC|BO-C|||PE-CUS|IR-26 IR-28|SD-GD|MZ-Q|VN-30 VN-31|UZ-QA|VN-29|EG-KN|||GT-09||PE-CAJ||||||||||CO-CHO||||||||||||||||||||||||",
   sources: "00001010101010101010101010101010101010101010101000101000101010101010101210303010101030303010303030303000",
   reading: "|||||||||||||||||||||||||||||||||||||||||||||||||||",
-  zones: "America/Mexico_City,America/Toronto,America/La_Paz,Africa/Cairo,Asia/Aden,America/Lima,Asia/Tehran,Africa/Khartoum,Africa/Maputo,Asia/Ho_Chi_Minh,Asia/Samarkand,Asia/Tashkent,America/Guatemala,Asia/Damascus,America/Guayaquil,Africa/Luanda,Asia/Baghdad,America/Santiago,America/Sao_Paulo,America/Bogota,Asia/Riyadh,Asia/Manila,America/Caracas,Africa/Johannesburg,Asia/Shanghai,Asia/Karachi,America/Argentina/Buenos_Aires,America/New_York",
-  zone: [0,2,4,6,8,10,12,14,16,18,20,18,6,22,12,24,12,10,26,29,30,30,6,32,35,37,4,38,32,40,40,42,44,32,6,46,12,48,49,50,12,53,49,49,49,6,49,48,49,49,49,55],
+  zones: "America/Mexico_City,America/Toronto,America/La_Paz,Africa/Cairo,Asia/Aden,America/Lima,Asia/Tehran,Africa/Khartoum,Africa/Maputo,Asia/Ho_Chi_Minh,Asia/Tashkent,America/Guatemala,Asia/Damascus,America/Guayaquil,Africa/Luanda,Asia/Baghdad,America/Santiago,America/Sao_Paulo,America/Bogota,Asia/Riyadh,Asia/Manila,America/Caracas,Africa/Johannesburg,Asia/Shanghai,Asia/Karachi,America/Argentina/Buenos_Aires,America/New_York",
+  zone: [1,3,4,6,8,10,12,14,16,18,21,18,6,21,12,22,12,10,24,27,28,28,6,30,33,35,4,36,30,38,38,40,42,30,6,44,12,47,47,48,12,51,47,47,47,6,47,46,47,47,47,53],
   elevation: "1820,98,2558,20,2242,3399,1302,634,1,7,374,13,80,409,963,2433,58,2750,455,74,1375,,77,175,141,29,2425,43,4,,,319,695,9,54,1081,1313,209,,,1181,17,,,,22,,,,,,9",
   extra: [[0,"oecd:MEX08F","Queretaro",1848293,2020],[1,"statcan:2021S0503421","Québec",903607,"2025-07-01"],[27,"oecd:COL36F","Quibdó",130042,2019],[39,8660],[40,36529],[41,1486],[45,269960],[51,100]],
 };

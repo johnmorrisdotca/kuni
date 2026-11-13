@@ -22,8 +22,8 @@ const COLUMNS: CityColumns = {
   capitalOf: "MX-VER|VN-44|||MZ-G|||||||||||TW-TXG||TW-TPE||||||||||||||||AZ-ABS|",
   sources: "0010000010103030303037300030301030100030000030300030300030303030301030",
   reading: "||||||||||||||||||||||||||||||||||",
-  zones: "America/Mexico_City,Asia/Ho_Chi_Minh,Europe/Madrid,Europe/Rome,Africa/Maputo,Asia/Samarkand,Asia/Shanghai,Asia/Taipei,Asia/Baku",
-  zone: [0,2,5,6,8,10,13,12,13,13,12,13,1,12,13,14,13,14,6,13,6,6,13,13,6,13,13,6,13,13,13,13,13,16,13],
+  zones: "America/Mexico_City,Asia/Ho_Chi_Minh,Europe/Madrid,Europe/Rome,Africa/Maputo,Asia/Tashkent,Asia/Shanghai,Asia/Taipei,Asia/Baku",
+  zone: [1,2,5,6,8,11,13,13,13,13,13,13,1,13,13,14,13,14,6,13,6,6,13,13,6,13,13,6,13,13,13,13,13,16,13],
   elevation: ",8,7,,9,109,,1542,,,,,2235,997,,127,,44,,,,,,,,,,,,,,,,50,691",
   extra: [[0,"oecd:MEX26F","Xalapa",829055,2020],[11,59218],[12,1489],[15,245023],[16,34412],[17,1867],[18,220],[20,220],[21,220],[24,220],[27,220],[33,9248]],
 };

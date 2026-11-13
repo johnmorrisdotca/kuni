@@ -1,13 +1,17 @@
 import { describe, expect, it } from "vitest";
 
+import { buildCityFacts, CITY_ZONES } from "../scripts/city-facts.ts";
+import type { CityFactsInput } from "../scripts/city-facts.ts";
 import { citiesOf } from "./cities";
 import type { City } from "./cities";
+import type { CityRow } from "./city-rows";
 import { capitalCities } from "./cities/capitals";
 import { cities1m } from "./cities/1m";
-import { COUNTRY_CODES, country } from "./index";
+import { country } from "./index";
 import { CITY_LOADERS } from "./data/city-loaders.data";
-import { facts } from "./facts";
 import { ZONE_ROWS } from "./data/zones.data";
+import { distanceKm, facts } from "./facts";
+import { subdivisionTimeZone } from "./zones";
 
 const of = async (code: string): Promise<readonly City[]> => (await citiesOf(code)) ?? [];
 const all = async (): Promise<City[]> => (await Promise.all(Object.values(CITY_LOADERS).map(async (load) => (await load()).CITIES))).flat();
@@ -21,35 +25,37 @@ const named = (list: readonly City[], id: string): City => {
 
 // The hour on the clock of a zone at one instant, as the card shows it.
 const hourIn = (zone: string, instant: string): number => Number(new Intl.DateTimeFormat("en-GB", { timeZone: zone, hour: "2-digit", hourCycle: "h23" }).format(new Date(instant)));
+// A zone's clock for the year: its UTC offset in January and in July of 2026. Two zones with one clock agree on the time all year.
+const clockOf = (zone: string): string => {
+  const at = (month: number): string => new Intl.DateTimeFormat("en-US", { timeZone: zone, timeZoneName: "shortOffset" }).formatToParts(new Date(Date.UTC(2026, month, 15, 12))).find((part) => part.type === "timeZoneName")!.value;
+
+  return `${at(0)} ${at(6)}`;
+};
 
 describe("a city's time zone", () => {
   it("is the IANA zone a page can give a date formatter, with the clock to show for it", async () => {
-    const japan = await of("JP");
-    const tokyo = named(japan, "Q1490");
+    const tokyo = named(await of("JP"), "Q1490");
     expect(tokyo.timeZone).toBe("Asia/Tokyo");
     expect(tokyo.timeZoneEstimated).toBe(false);
-    const us = await of("US");
-    const seattle = named(us, "Q5083");
+    const seattle = named(await of("US"), "Q5083");
     expect(seattle.timeZone).toBe("America/Los_Angeles");
     // 12:00 UTC on 15 January 2026 is 21:00 in Tokyo and 04:00 in Seattle.
     expect(hourIn(tokyo.timeZone!, "2026-01-15T12:00:00Z")).toBe(21);
     expect(hourIn(seattle.timeZone!, "2026-01-15T12:00:00Z")).toBe(4);
   });
 
-  it("is a zone of the city's country (or of the territory it is in): every city's, in every country", async () => {
+  it("is a zone of the city's country (or of the territory it is in), and one the runtime accepts: every city's", async () => {
     const wrong: string[] = [];
+    const zones = new Set<string>();
     for (const city of await all()) {
-      if (city.timeZone === null) continue;
+      if (city.timeZone === undefined) continue;
+      zones.add(city.timeZone);
       // A territory with a country code of its own (US-PR, Puerto Rico) keeps that country's zone.
       const territory = city.subdivision?.split("-")[1];
-      const zones = new Set([...(country(city.country)?.zones ?? []), facts(city.country)?.capitalZone ?? "", ...(territory?.length === 2 ? (country(territory)?.zones ?? []) : [])]);
-      if (!zones.has(city.timeZone)) wrong.push(`${city.id} ${city.name.en} (${city.country}): ${city.timeZone}`);
+      const listed = new Set([...(country(city.country)?.zones ?? []), facts(city.country)?.capitalZone ?? "", ...(territory?.length === 2 ? (country(territory)?.zones ?? []) : [])]);
+      if (!listed.has(city.timeZone)) wrong.push(`${city.id} ${city.name.en} (${city.country}): ${city.timeZone}`);
     }
     expect(wrong).toEqual([]);
-  });
-
-  it("is a zone the runtime knows, so that no page asks a date formatter for a name it rejects", async () => {
-    const zones = new Set((await all()).map((city) => city.timeZone).filter((zone): zone is string => zone !== null));
     expect(zones.size).toBeGreaterThan(300);
     for (const zone of zones) expect(() => new Intl.DateTimeFormat("en", { timeZone: zone }), zone).not.toThrow();
   });
@@ -66,47 +72,68 @@ describe("a city's time zone", () => {
     expect((await of("JP")).every((city) => city.timeZone === "Asia/Tokyo" && !city.timeZoneEstimated)).toBe(true);
   });
 
-  it("is told apart in a country with several, by the place's own zone where a source names it", async () => {
+  // The cities a review found given the wrong clock when a coarse zone from another source overrode a finer one.
+  it.each([
+    ["Odesa", "UA", "Q1874", "Europe/Kyiv"],
+    ["Kherson", "UA", "Q156732", "Europe/Kyiv"],
+    ["Mykolaiv", "UA", "Q41572", "Europe/Kyiv"],
+    ["Saratov", "RU", "Q5332", "Europe/Saratov"],
+    ["Ulyanovsk", "RU", "Q5627", "Europe/Ulyanovsk"],
+    ["Astrakhan", "RU", "Q3927", "Europe/Astrakhan"],
+    ["Barnaul", "RU", "Q6014", "Asia/Barnaul"],
+    ["Gorno-Altaysk", "RU", "Q6025", "Asia/Barnaul"],
+    ["Denpasar", "ID", "Q11506", "Asia/Makassar"],
+    ["Mataram", "ID", "Q14126", "Asia/Makassar"],
+    ["Banjarmasin", "ID", "Q14182", "Asia/Makassar"],
+    ["Khovd", "MN", "Q731256", "Asia/Hovd"],
+    ["Eirunepé", "BR", "Q1646910", "America/Eirunepe"],
+    ["Tabatinga", "BR", "Q22060342", "America/Eirunepe"],
+    ["Sena Madureira", "BR", "Q1754389", "America/Rio_Branco"],
+    ["Punta Arenas", "CL", "Q51599", "America/Punta_Arenas"],
+    ["Coyhaique", "CL", "Q3810", "America/Coyhaique"],
+    ["Heroica Matamoros", "MX", "Q738353", "America/Matamoros"],
+    ["Ciudad Juárez", "MX", "Q26590", "America/Ciudad_Juarez"],
+    ["Ojinaga", "MX", "Q1971351", "America/Ojinaga"],
+    ["Waitangi", "NZ", "Q1809774", "Pacific/Chatham"],
+    ["Arawa", "PG", "Q626729", "Pacific/Bougainville"],
+    ["Coffs Harbour", "AU", "Q604283", "Australia/Sydney"],
+    ["Shigatse", "CN", "Q1211183", "Asia/Shanghai"],
+    ["Jiayuguan", "CN", "Q532560", "Asia/Shanghai"],
+    ["Vincennes", "US", "Q585857", "America/Indiana/Vincennes"],
+    ["Jasper", "US", "Q941441", "America/Indiana/Indianapolis"],
+    ["Anchorage", "US", "Q39450", "America/Anchorage"],
+    ["Fairbanks", "US", "Q79638", "America/Anchorage"],
+    ["El Paso", "US", "Q16562", "America/Denver"],
+    ["Astana", "KZ", "Q1520", "Asia/Almaty"],
+    ["Atyrau", "KZ", "Q486913", "Asia/Atyrau"],
+    ["Kyzylorda", "KZ", "Q491123", "Asia/Qyzylorda"],
+    ["Kostanay", "KZ", "Q488990", "Asia/Qostanay"],
+  ])("gives %s (%s, %s) %s", async (_name, code, id, zone) => {
+    expect(named(await of(code), id).timeZone).toBe(zone);
+  });
+
+  it("gives Puerto Vallarta the clock of Bahía de Banderas, which is Mexico City's now", async () => {
+    const city = named(await of("MX"), "Q853258");
+    expect(clockOf(city.timeZone!)).toBe(clockOf("America/Bahia_Banderas"));
+  });
+
+  it("is told apart in a country with several zones", async () => {
     const us = await of("US");
     expect(named(us, "Q18094").timeZone).toBe("Pacific/Honolulu");
     // Arizona keeps no daylight saving time; Indianapolis and Louisville have zones of their own.
     expect(named(us, "Q16556").timeZone).toBe("America/Phoenix");
     expect(named(us, "Q6346").timeZone).toBe("America/Indiana/Indianapolis");
     expect(named(us, "Q43668").timeZone).toBe("America/Kentucky/Louisville");
-    // El Paso is on Mountain time though Texas is mostly Central.
-    expect(named(us, "Q16562").timeZone).toBe("America/Denver");
     const canada = await of("CA");
     expect(named(canada, "Q172").timeZone).toBe("America/Toronto");
     expect(named(canada, "Q2123").timeZone).toBe("America/Regina");
     expect(named(canada, "Q2141").timeZone).toBe("America/Halifax");
-    // Western Australia's Perth, and Nepal's quarter-hour offset.
     expect(named(await of("AU"), "Q3183").timeZone).toBe("Australia/Perth");
     const kathmandu = named(await of("NP"), "Q3037");
     expect(kathmandu.timeZone).toBe("Asia/Kathmandu");
     expect(hourIn(kathmandu.timeZone!, "2026-01-15T12:00:00Z")).toBe(17);
-  });
-
-  it("reads the names tzdb has made links as the zones they are now", async () => {
-    // Natural Earth still writes Asia/Chongqing, Europe/Kiev and Asia/Rangoon.
-    const zones = new Set((await all()).map((city) => city.timeZone));
-    for (const old of ["Asia/Chongqing", "Asia/Harbin", "Asia/Rangoon", "Europe/Kiev", "America/Montreal", "America/Godthab"]) expect(zones.has(old), old).toBe(false);
-    expect(named(await of("UA"), "Q1899").timeZone).toBe("Europe/Kyiv");
-    expect(named(await of("CN"), "Q956").timeZone).toBe("Asia/Shanghai");
-    // Sudan keeps Khartoum, South Sudan has Juba.
     expect(named(await of("SD"), "Q1963").timeZone).toBe("Africa/Khartoum");
     expect(named(await of("SS"), "Q1947").timeZone).toBe("Africa/Juba");
-  });
-
-  it("is an estimate only where no source names it, and says so", async () => {
-    const list = await all();
-    const estimated = list.filter((city) => city.timeZoneEstimated);
-    expect(estimated.length).toBeGreaterThan(5000);
-    expect(estimated.length).toBeLessThan(list.length * 0.5);
-    // Denver has no zone in Natural Earth: its zone is worked out, from the nearest city of the same state that has one.
-    const denver = named(await of("US"), "Q16554");
-    expect(denver.timeZone).toBe("America/Denver");
-    expect(denver.timeZoneEstimated).toBe(true);
-    for (const city of estimated) expect(city.timeZone, city.name.en).not.toBeNull();
   });
 
   it("is the same in every tier and every country's file", async () => {
@@ -121,39 +148,180 @@ describe("a city's time zone", () => {
       }
     }
   });
+
+  // The correctness check: no city that says its zone is not an estimate has a different clock, all year, from the zone of its
+  // subdivision where one source names it alone, or from the zone.tab city it is within 15 km of.
+  it("keeps the clock of its subdivision and of the zone.tab city beside it, where it is not an estimate", async () => {
+    const wrong: string[] = [];
+    let checkedSubdivision = 0;
+    let checkedCity = 0;
+    for (const city of await all()) {
+      if (city.timeZone === undefined || city.timeZoneEstimated !== false) continue;
+      const own = city.subdivision === null ? null : subdivisionTimeZone(city.subdivision);
+      if (own !== null && !own.estimated) {
+        checkedSubdivision += 1;
+        if (clockOf(own.zone) !== clockOf(city.timeZone)) wrong.push(`${city.id} ${city.name.en} ${city.timeZone} against its subdivision ${own.zone}`);
+      }
+      const beside = ZONE_ROWS.filter((row) => row[0] === city.country && distanceKm(city, { lat: row[1], lon: row[2] }) <= 15);
+      for (const row of beside) {
+        checkedCity += 1;
+        if (clockOf(row[3]) !== clockOf(city.timeZone)) wrong.push(`${city.id} ${city.name.en} ${city.timeZone} against the zone.tab city beside it, ${row[3]}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+    expect(checkedSubdivision).toBeGreaterThan(1000);
+    expect(checkedCity).toBeGreaterThan(300);
+  });
+
+  it("pins the counts: how many cities are given a zone by each way, and how many are estimates", async () => {
+    const list = await all();
+    const withZone = list.filter((city) => city.timeZone !== undefined);
+    expect(list).toHaveLength(29982);
+    expect(withZone).toHaveLength(29982);
+    expect(withZone.filter((city) => city.timeZoneEstimated).length).toBe(13563);
+    expect(withZone.filter((city) => !city.timeZoneEstimated).length).toBe(16419);
+    // An estimate is only ever made for a city of a country with several zones.
+    for (const city of withZone.filter((one) => one.timeZoneEstimated)) {
+      const zones = new Set([...(country(city.country)?.zones ?? [])]);
+      expect(zones.size, `${city.name.en} ${city.country}`).toBeGreaterThan(1);
+    }
+    expect(Object.keys(CITY_ZONES)).toHaveLength(3);
+  });
+});
+
+// Made-up cities for the rules, not the data: [item, lat, lon, population, date, country, subdivision, en, ja, native, language, capital, capitalOf, sources].
+const row = (item: number, lat: number, lon: number, country: string, subdivision: string | null, en: string): CityRow => [item, lat, lon, 100000, null, country, subdivision, en, null, null, null, 0, null, 0];
+const input = (rows: readonly CityRow[], elevations: [number, number[]][] = [], extra: Partial<CityFactsInput> = {}): CityFactsInput => ({
+  rows,
+  elevations: new Map(elevations),
+  countryZones: (code) => (code === "AA" ? ["Test/One"] : code === "BB" ? ["Test/West", "Test/East"] : []),
+  principal: new Map([["BB", [{ zone: "Test/West", at: [10, 0] }, { zone: "Test/East", at: [10, 10] }]]]),
+  subdivisionZones: new Map([
+    ["BB-N", { zone: "Test/West", guessed: false, split: false, capital: null, middle: null }],
+    ["BB-S", { zone: "Test/East", guessed: true, split: true, capital: null, middle: null }],
+  ]),
+  distanceKm: (a, b) => distanceKm({ lat: a[0], lon: a[1] }, { lat: b[0], lon: b[1] }),
+  ...extra,
+});
+
+describe("the rules that choose a zone", () => {
+  it("take a country's one zone, then a subdivision one source names, then a zone.tab city the city is at, then the subdivision's choice, then the nearest", () => {
+    const rows = [
+      row(1, 0, 0, "AA", null, "Alone"),
+      row(2, 50, 50, "BB", "BB-N", "Named"),
+      row(3, 10.05, 9.95, "BB", "BB-S", "Beside"),
+      row(4, 10, 4, "BB", "BB-S", "Chosen"),
+      row(5, 10, 6, "BB", null, "Nearest"),
+      row(6, 10, 1, "BB", null, "Westish"),
+    ];
+    const { facts: made, report } = buildCityFacts(input(rows));
+    expect(made.get(1)).toMatchObject({ zone: "Test/One", guessed: false, basis: "country" });
+    // A subdivision one source names alone wins over a zone.tab city beside it.
+    expect(made.get(2)).toMatchObject({ zone: "Test/West", guessed: false, basis: "subdivision" });
+    // Within 15 km of a zone.tab city of the country: that city's zone, not an estimate, whatever the subdivision's choice.
+    expect(made.get(3)).toMatchObject({ zone: "Test/East", guessed: false, basis: "near-city" });
+    expect(made.get(4)).toMatchObject({ zone: "Test/East", guessed: true, basis: "subdivision-choice" });
+    expect(made.get(5)).toMatchObject({ zone: "Test/East", guessed: true, basis: "nearest" });
+    expect(made.get(6)).toMatchObject({ zone: "Test/West", guessed: true });
+    expect(report).toMatchObject({ zoneOfOneZoneCountry: 1, zoneOfSubdivision: 1, zoneAtZoneTabCity: 1, zoneEstimated: 3, zoneEstimatedBySubdivision: 1, zoneEstimatedInSplitSubdivision: 1, zoneEstimatedWithoutSubdivision: 2 });
+  });
+
+  it("take the zone of the zone.tab city a city is called, however far", () => {
+    const { facts: made } = buildCityFacts(input([row(1, 40, 40, "BB", null, "East")], [], { principal: new Map([["BB", [{ zone: "Test/West", at: [10, 0] }, { zone: "Test/East", at: [10, 10] }]]]) }));
+    expect(made.get(1)).toMatchObject({ zone: "Test/East", guessed: false, basis: "near-city" });
+  });
+
+  it("give none to a country with no zone", () => {
+    const { facts: made, report } = buildCityFacts(input([row(1, 0, 0, "CC", null, "Nowhere")]));
+    expect(made.get(1)).toMatchObject({ zone: null, guessed: false });
+    expect(report.zoneNone).toBe(1);
+  });
+});
+
+describe("the rules that choose an elevation", () => {
+  // Cities in a flat country, a few kilometres apart, so that each has the others for neighbours.
+  const flat = (values: (number | null)[]): CityRow[] => values.map((_, at) => row(100 + at, 10 + at * 0.05, 20, "AA", null, `Town ${at}`));
+  const of = (values: (number | null)[], extra: [number, number[]][] = []): Map<number | string, { elevation: number | null }> =>
+    buildCityFacts(input(flat(values), [...values.flatMap((value, at) => (value === null ? [] : [[100 + at, [value]] as [number, number[]]])), ...extra])).facts;
+
+  it("keep the one value a city has, whole, and the middle of several within 50 m", () => {
+    const made = buildCityFacts(input(flat([null, null, null]), [[100, [20.4]], [101, [10, 30, 50]], [102, [0, 100]]])).facts;
+    expect(made.get(100)?.elevation).toBe(20);
+    expect(made.get(101)?.elevation).toBe(30);
+    // 100 m between two values: a range or a mistake, so none.
+    expect(made.get(102)?.elevation).toBeNull();
+  });
+
+  it("leave out a value no land has, and keep one below sea level", () => {
+    const made = buildCityFacts(input(flat([null, null, null]), [[100, [-500]], [101, [6000]], [102, [-258]]])).facts;
+    expect(made.get(100)?.elevation).toBeNull();
+    expect(made.get(101)?.elevation).toBeNull();
+    expect(made.get(102)?.elevation).toBe(-258);
+  });
+
+  it("drop a value more than 500 m from the cities round it when three or more of them agree within 150 m", () => {
+    const made = of([20, 25, 30, 40, 1667]);
+    expect(made.get(104)?.elevation).toBeNull();
+    for (const at of [100, 101, 102, 103]) expect(made.get(at)?.elevation, `${at}`).not.toBeNull();
+  });
+
+  it("keep it with fewer than three cities round it, or where they do not agree: a mountain town above its valley", () => {
+    // Two neighbours only.
+    expect(of([20, 25, 1667]).get(102)?.elevation).toBe(1667);
+    // Four neighbours 300 m apart.
+    expect(of([20, 150, 320, 40, 1667]).get(104)?.elevation).toBe(1667);
+  });
+
+  it("never drop a value below sea level, however far it is from the cities round it (Jericho beside Jerusalem)", () => {
+    expect(of([750, 775, 790, 810, -258]).get(104)?.elevation).toBe(-258);
+  });
+
+  it("do not count the highest and the lowest of six or more neighbours, which may be bad values too", () => {
+    const made = of([10, 189, 16, 20, 26, 27, 30, 2286]);
+    expect(made.get(107)?.elevation).toBeNull();
+    // Two of the six agree with nobody but themselves: one bad value, but the others keep theirs.
+    expect(made.get(101)?.elevation).toBe(189);
+  });
+
+  it("drop the single bad values of the cities a review found, in the data, and keep the real ones below sea level", async () => {
+    const find = (list: readonly City[], id: string): City | undefined => list.find((one) => one.id === id);
+    const us = await citiesOf("US");
+    for (const id of ["Q2153666", "Q2110162", "Q3098591", "Q953543", "Q260282"]) expect(find(us!, id)?.elevation, id).toBeUndefined();
+    expect(find((await citiesOf("KR"))!, "Q42071")?.elevation).toBeUndefined();
+    expect(find((await citiesOf("PS"))!, "Q5687")?.elevation).toBe(-275);
+    expect(find((await citiesOf("IL"))!, "Q151920")?.elevation).toBe(-200);
+    expect(find((await citiesOf("AZ"))!, "Q9248")?.elevation).toBe(-28);
+  });
 });
 
 describe("a city's elevation", () => {
   it("is Wikidata's height above sea level in whole metres, where it has one", async () => {
-    const mexico = named(await of("MX"), "Q1489");
-    expect(mexico.elevation).toBe(2240);
+    expect(named(await of("MX"), "Q1489").elevation).toBe(2240);
     const us = await of("US");
     expect(named(us, "Q16554").elevation).toBe(1609);
     expect(named(us, "Q5083").elevation).toBe(40);
     expect(named(await of("NP"), "Q3037").elevation).toBe(1300);
-    for (const city of await all()) if (city.elevation !== null) expect(Number.isInteger(city.elevation), city.name.en).toBe(true);
+    for (const city of await all()) if (city.elevation !== undefined) expect(Number.isInteger(city.elevation), city.name.en).toBe(true);
   });
 
-  it("is `null`, not made up, where Wikidata has none, and for a place only Natural Earth has", async () => {
+  it("is left out, not made up, where Wikidata has none, and for a place only Natural Earth has", async () => {
     const list = await all();
-    expect(list.filter((city) => city.elevation === null).length).toBeGreaterThan(8000);
-    for (const city of list.filter((one) => one.id.startsWith("ne:"))) expect(city.elevation, city.id).toBeNull();
-    expect(list.filter((city) => city.elevation !== null).length).toBeGreaterThan(15000);
+    for (const city of list.filter((one) => one.id.startsWith("ne:"))) expect(city.elevation, city.id).toBeUndefined();
+    // Pinned: how many cities have one.
+    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17188);
   });
 
-  it("keeps to what land has: none below the Dead Sea's shore or above the highest town", async () => {
-    for (const city of await all()) if (city.elevation !== null) expect(city.elevation, `${city.name.en} ${city.country}`).toBeGreaterThanOrEqual(-430);
-    for (const city of await all()) if (city.elevation !== null) expect(city.elevation, `${city.name.en} ${city.country}`).toBeLessThanOrEqual(5500);
-    // Some cities are below sea level (Baku, Amsterdam's region, Salton Sea towns).
-    expect((await all()).some((city) => (city.elevation ?? 0) < 0)).toBe(true);
+  it("keeps to what land has", async () => {
+    const list = await all();
+    for (const city of list) if (city.elevation !== undefined) expect(city.elevation, `${city.name.en} ${city.country}`).toBeGreaterThanOrEqual(-430);
+    for (const city of list) if (city.elevation !== undefined) expect(city.elevation, `${city.name.en} ${city.country}`).toBeLessThanOrEqual(5500);
+    expect(list.some((city) => (city.elevation ?? 0) < 0)).toBe(true);
   });
 });
 
 describe("a city's language", () => {
-  it("is its country's, which kuni already holds, in the order the speakers are most", () => {
+  it("is its country's, which kuni already holds", () => {
     expect(country("JP")?.languages).toEqual(["ja"]);
     expect(country("CA")?.languages).toEqual(expect.arrayContaining(["en", "fr"]));
-    // Where the city's own name is in a language, that is `nativeLanguage`.
-    expect(COUNTRY_CODES.every((code) => country(code)?.languages === undefined || Array.isArray(country(code)?.languages))).toBe(true);
   });
 });

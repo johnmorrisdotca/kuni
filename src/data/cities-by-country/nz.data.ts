@@ -22,8 +22,8 @@ const NZ: CityColumns = {
   capitalOf: "|NZ-CAN|NZ||NZ-WKO||NZ-OTA||NZ-MWT|NZ-NTL|NZ-NSN|NZ-TKI|||NZ-HKB|||NZ-STL|||NZ-GIS||||NZ-MBH||||||||||NZ-BOP|NZ-WTC|NZ-TKI|NZ-CIT||||NZ-TAS",
   sources: "000000020000000000000000000000000000000000000000000000000000000000000000000002000000",
   reading: "|||||||||||||||||||||||||||||||||||||||||",
-  zones: "Pacific/Auckland",
-  zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,1,0,0,0,1,1],
+  zones: "Pacific/Auckland,Pacific/Chatham",
+  zone: [0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,0,0,0,1],
   elevation: "196,20,0,,40,0,,0,46,,0,0,11,280,,,,0,,,,77,,,,,360,50,111,67,,,38,70,,53,,,,,,126",
   extra: [[0,"oecd:NZL01F","Auckland",1774810,2024],[1,"oecd:NZL02F","Christchurch",550210,2024],[2,"oecd:NZL03F","Wellington",442750,2024],[4,"oecd:NZL04F","Hamilton",232270,2024],[5,"oecd:NZL05F","Tauranga",183350,2024],[6,"oecd:NZL06F","Dunedin",132160,2024],[8,"oecd:NZL07F","Palmerston North",98280,2024],[9,"oecd:NZL10F","Whangārei",94860,2024],[10,"oecd:NZL09F","Nelson",89360,2024],[11,"oecd:NZL08F","New Plymouth",88560,2024],[12,"oecd:NZL11F","Hastings",82380,2024],[13,"oecd:NZL12F","Rotorua",71450,2024],[14,"oecd:NZL13F","Napier",69260,2024],[17,"oecd:NZL14F","Invercargill",58570,2024],[38,37100],[39,37100],[40,37100],[41,206687]],
 };

@@ -47,7 +47,7 @@ import type { CodesSnapshot } from "./withdrawn.ts";
 import { buildSubdivisionFacts, SUBDIVISION_CAPITALS } from "./subdivision-facts.ts";
 import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
-import { buildCityFacts } from "./city-facts.ts";
+import { buildCityFacts, CITY_ZONES } from "./city-facts.ts";
 import type { SubdivisionZone } from "./city-facts.ts";
 import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
@@ -840,7 +840,7 @@ const writeFacts = (): void => {
     // Arizona's capital, though Phoenix is nearer than Carson City.
     const middle = subdivisionFacts.records.get(record.code)?.point ?? null;
     const row = (zone: string, estimated: boolean): string => {
-      subdivisionZoneMap.set(record.code, { zone, guessed: estimated || SPLIT_ZONES[record.code] !== undefined, capital: capital === null ? null : [rounded4(capital[0]), rounded4(capital[1])], middle: middle === null ? null : [rounded4(middle[0]), rounded4(middle[1])] });
+      subdivisionZoneMap.set(record.code, { zone, guessed: estimated || SPLIT_ZONES[record.code] !== undefined, split: SPLIT_ZONES[record.code] !== undefined, capital: capital === null ? null : [rounded4(capital[0]), rounded4(capital[1])], middle: middle === null ? null : [rounded4(middle[0]), rounded4(middle[1])] });
 
       return `  ${literal([record.code, zone, estimated || SPLIT_ZONES[record.code] !== undefined ? 1 : 0, capital === null ? null : rounded4(capital[0]), capital === null ? null : rounded4(capital[1]), middle === null ? null : rounded4(middle[0]), middle === null ? null : rounded4(middle[1])])},`;
     };
@@ -1065,14 +1065,10 @@ const writeCities = (): void => {
     if (reading !== null) readings.set(row[0], reading);
   }
   console.log(`Readings: ${readings.size} of ${rows.filter((row) => row[8] !== null).length} Japanese city names.`);
-  // Each city's time zone (Natural Earth's, else from its country or subdivision, else an estimate) and elevation (Wikidata's):
-  // scripts/city-facts.ts says how each is chosen.
-  const neZonesFile = manifest.files.find((file) => file.path.startsWith("natural-earth-timezones-"));
-  if (neZonesFile === undefined) throw new Error("No Natural Earth time zones in data-sources/sources.json: run node scripts/fetch-city-zones.ts");
+  // Each city's time zone (from zone.tab and Wikidata's subdivision zones) and elevation (Wikidata's): scripts/city-facts.ts says
+  // how each is chosen.
   const elevationsFile = manifest.files.find((file) => file.path.startsWith("wikidata-city-elevations-"));
   if (elevationsFile === undefined) throw new Error("No city elevations in data-sources/sources.json: run node scripts/fetch-city-elevations.ts");
-  const neIds = new Map<number, number>();
-  for (const place of naturalEarth.places) if (place[0] !== null && place[9] !== null) neIds.set(Number(place[0].slice(1)), place[9]);
   const countryZoneLists = new Map<string, string[]>();
   const countryZones = (alpha2: string): readonly string[] => {
     if (!countryZoneLists.has(alpha2)) {
@@ -1085,49 +1081,20 @@ const writeCities = (): void => {
 
     return countryZoneLists.get(alpha2)!;
   };
-  const cityFactsInput = {
+  const cityFacts = buildCityFacts({
     rows,
-    neZones: new Map((JSON.parse(readSource(manifest, neZonesFile.path).text) as { zones: [number, string][] }).zones),
-    neIds,
     elevations: new Map((JSON.parse(readSource(manifest, elevationsFile.path).text) as { elevations: [number, number[]][] }).elevations),
     countryZones,
     principal: zonePoints,
     subdivisionZones: subdivisionZoneMap,
     distanceKm: greatCircleKm,
-  };
-  const cityFacts = buildCityFacts(cityFactsInput);
+    overrides: CITY_ZONES,
+  });
   const factsReport = cityFacts.report;
-  // How good the estimate is: the same build with Natural Earth's zones taken away, against Natural Earth's zone for each
-  // city that has one, by how the estimate was made.
-  // A zone's UTC offset in January and in July of 2026, the two together: two zones with the same pair keep the same clock all year now.
-  const clocks = new Map<string, string>();
-  const clockOf = (zone: string): string => {
-    if (!clocks.has(zone)) {
-      const at = (month: number): string => new Intl.DateTimeFormat("en-US", { timeZone: zone, timeZoneName: "shortOffset" }).formatToParts(new Date(Date.UTC(2026, month, 15, 12))).find((part) => part.type === "timeZoneName")?.value ?? "?";
-      clocks.set(zone, `${at(0)} ${at(6)}`);
-    }
-
-    return clocks.get(zone)!;
-  };
-  const withoutNaturalEarth = buildCityFacts({ ...cityFactsInput, ignoreOwnZone: true });
-  for (const row of rows) {
-    const known = cityFacts.facts.get(row[0])!;
-    if (known.basis !== "natural-earth") continue;
-    const estimate = withoutNaturalEarth.facts.get(row[0])!;
-    const key = estimate.basis ?? "none";
-    const entry = factsReport.estimateChecks.get(key) ?? { checked: 0, agreed: 0, sameClock: 0 };
-    entry.checked += 1;
-    if (estimate.zone === known.zone) entry.agreed += 1;
-    if (estimate.zone !== null && known.zone !== null && clockOf(estimate.zone) === clockOf(known.zone)) entry.sameClock += 1;
-    else if (process.env.KUNI_ZONES !== undefined && key !== "nearest") console.log(`  differs: ${row[7]} (${row[5]} ${row[6] ?? "-"}) Natural Earth ${known.zone}, estimate ${estimate.zone} by ${key}`);
-    factsReport.estimateChecks.set(key, entry);
-  }
   console.log(
-    `City zones: ${factsReport.zoneFromNaturalEarth} Natural Earth's, ${factsReport.zoneOfOneZoneCountry} a country's one zone, ${factsReport.zoneOfSubdivision} a subdivision's, ${factsReport.zoneEstimated} estimated, ${factsReport.zoneNone} none, of ${factsReport.cities}; ${[...factsReport.naturalEarthZonesDropped.values()].reduce((sum, count) => sum + count, 0)} Natural Earth zones not the country's, left out.`,
+    `City zones: ${factsReport.zoneOfOneZoneCountry} a country's one zone, ${factsReport.zoneOfSubdivision} a subdivision's, ${factsReport.zoneAtZoneTabCity} at a zone.tab city, ${factsReport.zoneNamed} set by id, ${factsReport.zoneEstimated} estimated (${factsReport.zoneEstimatedBySubdivision} by the zone kuni chose for the subdivision, of which ${factsReport.zoneEstimatedInSplitSubdivision} in a subdivision split between zones; ${factsReport.zoneEstimatedWithoutSubdivision} by the nearest zone.tab city, in no subdivision), ${factsReport.zoneNone} none, of ${factsReport.cities}.`,
   );
-  console.log(`City elevations: ${factsReport.elevation} of ${factsReport.cities} (${factsReport.elevationManyValues} had several values, ${factsReport.elevationDroppedSpread} left out for spread, ${factsReport.elevationDroppedRange} for range).`);
-  for (const [how, { checked, agreed, sameClock }] of factsReport.estimateChecks) console.log(`  estimate by ${how}: ${agreed} of ${checked} give Natural Earth's zone, ${sameClock} its clock`);
-  if (process.env.KUNI_ZONES !== undefined) for (const [what, count] of [...factsReport.naturalEarthZonesDropped].sort((a, b) => b[1] - a[1])) console.log(`  Natural Earth zone left out: ${what} (${count})`);
+  console.log(`City elevations: ${factsReport.elevation} of ${factsReport.cities} (${factsReport.elevationManyValues} had several values, ${factsReport.elevationDroppedSpread} left out for spread, ${factsReport.elevationDroppedRange} for range, ${factsReport.elevationDroppedOutlier} for standing out from the cities round them).`);
   // Ids never change between releases: every id a past release had is still a city's or is in the alias file.
   const current = new Set(rows.map((row) => (typeof row[0] === "number" ? `Q${row[0]}` : row[0])));
   const idsFile = join(ROOT, "data-sources", "city-ids.json");

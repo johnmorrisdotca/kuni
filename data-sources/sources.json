@@ -50,13 +50,6 @@
       "note": "Natural Earth 5.1.2, 10m Populated Places (public domain), cut down to the columns the build uses, \"Historic place\" left out; the SHA-256 of the whole file at the address is 9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
     },
     {
-      "path": "natural-earth-timezones-5.1.2.json",
-      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson",
-      "read": "2026-11-13",
-      "sha256": "3cbe4edda9399e7f26de4002da163a4f1b9f0213a090867ead97973685405bd0",
-      "note": "Natural Earth 5.1.2, 10m Populated Places (public domain): the TIMEZONE of each place that has one, by NE_ID; the SHA-256 of the whole file at the address is 9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
-    },
-    {
       "path": "statcan-cma-2021.json",
       "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100005-eng.zip",
       "read": "2026-11-11",

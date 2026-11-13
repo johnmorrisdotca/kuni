@@ -19,7 +19,7 @@ address, the day it was read and its SHA-256.
 | The withdrawn countries' four-letter codes, alpha-3 and numeric codes, the years each code was in force and the codes that replaced them | ISO 3166-3's published list (ISO's Online Browsing Platform), transcribed once in `scripts/withdrawn-config.ts` and pinned whole by `src/withdrawn.test.ts` | A list of facts |
 | The IOC code of the Netherlands, and a few of the withdrawn countries' names | Written for this package, in `scripts/withdrawn-config.ts`, each with its reason | MIT |
 | Time zones | IANA time zone database 2026e, `zone.tab` | Public domain |
-| Each city's time zone | Natural Earth 5.1.2 10m Populated Places, its TIMEZONE for the place (`data-sources/natural-earth-timezones-5.1.2.json`), read on 2026-11-13; else IANA's `zone.tab` and Wikidata's subdivision zones as `/zones` has them | Public domain (Natural Earth, IANA); CC0 (Wikidata) |
+| Each city's time zone | IANA time zone database 2026e, `zone.tab` (the zones of a country and the point of each zone's principal city), and Wikidata's zones of the subdivisions as `/zones` has them; a few cities set by id in `scripts/city-facts.ts`, each with its reason | Public domain (IANA); CC0 (Wikidata); not Natural Earth's TIMEZONE column, which kuni does not use (below) |
 | Each city's elevation | Wikidata, the snapshot `data-sources/wikidata-city-elevations-2026-11-13.json` (P2044) | CC0, below |
 | Country-code top-level domains | IANA's list of top-level domains (version 2026100900) | A list of facts, published by IANA |
 | The aliases ("Holland", "UK", 米国), the readings of country names written in kanji, Hokkaido's and Fukuoka's readings, the readings of twenty new towns and neighbourhoods of Japan that neither Wikidata nor Japan Post reads, and the Japanese words for kinds of place the build looks for | Written for this package, in `scripts/data-config.ts` | MIT |
@@ -200,13 +200,12 @@ a population or a point Wikidata has not got, add a capital where Wikidata names
 no item for (ids that start `ne:`). Places it marks "Historic place" are left out. Each city's `source` field says which
 input a fact came from. It is credited here anyway.
 
-Natural Earth's terms (https://www.naturalearthdata.com/about/terms-of-use/, read again on 2026-11-13): "All versions of
-Natural Earth raster + vector map data found on this website are in the public domain. ... No permission is needed to use
-Natural Earth. Crediting the authors is unnecessary." The same release file also gives each city's time zone: its
-TIMEZONE column, cut by `scripts/fetch-city-zones.ts` into `data-sources/natural-earth-timezones-5.1.2.json` (the SHA-256
-of the whole release file is in `sources.json`) and used for a city only where it is a zone IANA's zone.tab lists for the
-city's country, after reading the names tzdb has made links (Asia/Rangoon is Asia/Yangon) as the zones they are now. The
-column's own sources are not stated on Natural Earth's pages; kuni relies on the release's public-domain terms.
+Natural Earth's terms (https://www.naturalearthdata.com/about/terms-of-use/, read again on 2026-11-13) say its populated
+places are in the public domain, which is why the places and their populations above are used. They also say its time zone
+data came from International Mapping Associates for the sole purpose of creating a world base map, and they do not say
+where the populated places' own TIMEZONE column comes from. Kuni therefore does **not** use that column, as of
+2026-11-13: no city's time zone is read from Natural Earth, and `scripts/fetch-city-zones.ts` and its snapshot were
+removed.
 
 ## Natural Earth, through Chizu
 
@@ -247,7 +246,8 @@ are used as they are (from 1.1.0 the continent is UN M49's, from CLDR); its call
 
 ## IANA
 
-`zone.tab` is from the IANA time zone database, which is in the public domain. The list of top-level domains is
+`zone.tab` is from the IANA time zone database (version 2026e), which is in the public domain. Each city's time zone is chosen from
+it: a country's one zone, the zone of the zone.tab city the city is at or nearest, or the zone of its subdivision (`/zones`). The list of top-level domains is
 published by IANA at https://data.iana.org/TLD/tlds-alpha-by-domain.txt; only which two-letter domains exist is
 read from it.
 
