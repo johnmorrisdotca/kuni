@@ -205,6 +205,35 @@ test("the quiz: a seed gives the same questions, a right answer adds to the stre
   expect(errors).toEqual([]);
 });
 
+test("the quiz asks eleven more kinds of question, each from the seed, with a right answer among the choices", async ({ page }) => {
+  const errors = await view(page, "quiz/country/4242");
+  const question = page.locator(at("quiz-question"));
+  const choices = page.locator(at("quiz-choices")).locator("button");
+  await expect(page.locator(at("quiz-kinds")).locator("button")).toHaveCount(14);
+  const kinds = { country: 4, "state-capital": 4, domain: 4, currency: 4, language: 4, "largest-city": 4, borders: 4, continent: 4, driving: 2, population: 2, area: 2 };
+  for (const [kind, count] of Object.entries(kinds)) {
+    await page.locator(at("quiz-kinds")).locator(`[data-kind="${kind}"]`).click();
+    await expect(page).toHaveURL(new RegExp(`#/quiz/${kind}/4242$`));
+    await page.waitForSelector('main[data-view-ready="true"]');
+    await expect(page.locator(at("quiz-kinds")).locator(`[data-kind="${kind}"]`)).toHaveAttribute("aria-pressed", "true");
+    await expect(choices).toHaveCount(count);
+    for (const text of await choices.allTextContents()) expect(text.trim(), kind).not.toBe("");
+    const answer = await question.getAttribute("data-answer");
+    await page.locator(at("quiz-choices")).locator(`[data-code="${answer}"]`).click();
+    await expect(page.locator(at("quiz-feedback"))).toContainText("Right!");
+    await expect(page.locator(at("quiz-streak"))).toHaveText("1");
+  }
+  // Which of two shows the figures once it is answered.
+  await expect(page.locator(at("quiz-feedback"))).toContainText("km²");
+  // The same link asks the same question in Japanese, in Japanese words.
+  const asked = await question.getAttribute("data-answer");
+  await page.goto("http://kuni.test/?lang=ja#/quiz/driving/4242");
+  await page.waitForSelector('main[data-view-ready="true"]');
+  expect((await choices.allTextContents()).map((text) => text.trim()).sort()).toEqual(["右側", "左側"]);
+  expect(asked).not.toBeNull();
+  expect(errors).toEqual([]);
+});
+
 test("the form widget: a country feeds its regions, in either language, a typed name picks the country, and the code is there to copy", async ({ page }) => {
   const errors = await view(page, "form/JP");
   await expect(page.locator(at("form-region")).locator("option")).toHaveCount(47);
