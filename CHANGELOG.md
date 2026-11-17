@@ -10,6 +10,15 @@ All notable changes to this project are written here. The format follows
 
 - Country names in nine more languages (MODULES-1435), each its own entry so a page pays for one (about 4 kB gzip): `@johnmorrisdotca/kuni/names/fr`, `/es`, `/de`, `/zh-Hans`, `/zh-Hant`, `/ko`, `/pt`, `/ar` and `/ru`. Each exports `names` (also the default) with `countryName(code, { short })`, `countryVariants(code)`, `countryByName(text)`, `countries({ order })` and `fold(text)`. The names, short forms and variants are Unicode CLDR 48.2's, from `cldr-localenames-full` already in the build, so nothing is downloaded; all 250 countries have a name in each language, and a name CLDR does not have would be `null`, never copied in or machine-translated. Search folds as each language is typed: the leading article in French, Spanish, Portuguese and German, the marks, hamza forms, ya, ta marbuta and tatweel in Arabic, plus `Oesterreich` for German. Countries only for now; the entries are shaped to take subdivisions later without a change to these functions. The guide "Country names in more languages" is in English and Japanese. `pnpm data:names` rebuilds them (`pnpm data` runs it too).
 
+### Changed
+
+- `/cities` holds each city's own figure and a territory's towns under the territory's code (MODULES-1464). The list held a kingdom, region-sized and estimated figures, and territories' towns under the parent country's code.
+  - **Territories.** A town whose ISO 3166-2 code is a territory's own (US-GU, US-PR, FR-971 to FR-976, FR-PF, NO-21, FI-01 and the rest) is under that territory's code, and a town of MA-11 or MA-12 south of 27°40′ N is in Western Sahara: 39 cities moved (Dededo to GU, Bayamón and 17 more to PR, Laayoune and 5 more to EH, Saint-Paul to RE).
+  - **Classes.** The extra snapshot also asks for communes of France and of French Polynesia, local councils of Malta and districts of the Turks and Caicos: 516 cities added (Les Abymes, Faʻaʻā, St. Paul's Bay, Providenciales; 483 communes of France).
+  - **Figures.** A new snapshot (`pnpm data:populations`) holds what each figure rests on. A figure whose every reference is a site's own estimate (World Population Review, Demographia, ...) is left out for the next one (56 cities: Lobamba, Mbabane, Kuala Lumpur), and so is one above its country's or about its subdivision's, of a town that is neither. Census figures are set by hand where Wikidata has none for the city itself (`scripts/city-populations.ts`, 8: Kumasi, Khartoum, Banikoara), with the source "kuni".
+  - **Not cities.** Dagbon; an atoll, and an island with a capital or a town of its name on it (11: Tarawa, Saint Thomas), each id answering with the town; Gros Islet's figure is its quarter's.
+  - **Tests.** They pin the examples and that no city outnumbers its country.
+
 ## [1.9.0] - 2026-11-13
 
 ### Added
