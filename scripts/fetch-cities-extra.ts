@@ -1,6 +1,7 @@
 // Fetches, from Wikidata (CC0), the cities the main snapshot's query cannot see because Wikidata gives them only a class
 // that is not a kind of human settlement: a municipality of the Netherlands (Q2039348) is Nijmegen's only class, so the
-// main snapshot (scripts/fetch-cities.ts) has no Nijmegen. Kept in data-sources/wikidata-cities-extra-<day>.json, in the
+// main snapshot (scripts/fetch-cities.ts) has no Nijmegen; a commune of France (Q484170) is Les Abymes', so Guadeloupe had
+// only its capital. Kept in data-sources/wikidata-cities-extra-<day>.json, in the
 // main snapshot's columns, recorded in sources.json with its SHA-256; scripts/build-data.ts adds its items to the main
 // snapshot's where the main one has no item of that number. Run by hand (`node scripts/fetch-cities-extra.ts`).
 
@@ -11,9 +12,15 @@ import { readManifest, recordFile, sha256, SOURCES_DIR, writeManifest } from "./
 
 const ENDPOINT = "https://query.wikidata.org/sparql";
 const USER_AGENT = "kuni-data/0.1 (https://github.com/johnmorrisdotca/kuni; a hand-run data refresh, one query at a time)";
-// The classes, each with the country whose official language names its places.
-const CLASSES: Readonly<Record<string, { country: string; language: string; why: string }>> = {
+// The classes, each with the country whose official language names its places. The country is the item's unless one of
+// its ISO 3166-2 codes is a country's of its own (FR-971 is Guadeloupe, GP: scripts/cities.ts, SEPARATE_CODES).
+// `undated` keeps an item whose figures have no day (a district's figure as the census of the islands gives it).
+const CLASSES: Readonly<Record<string, { country: string; language: string; why: string; undated?: true }>> = {
   Q2039348: { country: "NL", language: "nl", why: "municipality of the Netherlands: Nijmegen, Haarlemmermeer and Zaanstad have no other class" },
+  Q484170: { country: "FR", language: "fr", why: "commune of France: Les Abymes, Guadeloupe's largest, and most of France's towns have no other class" },
+  Q84598477: { country: "PF", language: "fr", why: "commune of French Polynesia: Faʻaʻā, the largest, has no other class" },
+  Q719592: { country: "MT", language: "mt", why: "local council of Malta: St. Paul's Bay, the largest, has no other class" },
+  Q2487479: { country: "TC", language: "en", why: "district of the Turks and Caicos Islands: Providenciales, the largest, is a district and an island", undated: true },
 };
 const FLOOR = 15000;
 const OLDEST = "2015-01-01";
@@ -77,7 +84,7 @@ type Item = [number, string | null, string | null, string | null, string | null,
 
 const main = async (): Promise<void> => {
   const items: Item[] = [];
-  for (const [klass, { country, language }] of Object.entries(CLASSES)) {
+  for (const [klass, { country, language, undated }] of Object.entries(CLASSES)) {
     const ids = (await ask(QUERIES.items.replace("$CLASS", klass))).map((row) => qid(row.item!.value));
     const list = ids.map((id) => `wd:${id}`).join(" ");
     const byId = new Map<string, Item>(ids.map((id) => [id, [Number(id.slice(1)), null, null, null, null, null, country, [], [], []]]));
@@ -98,7 +105,7 @@ const main = async (): Promise<void> => {
     for (const row of await ask(QUERIES.capitals.replace("$ITEMS", list))) byId.get(qid(row.item!.value))![9].push(row.code!.value);
     for (const one of byId.values()) {
       // A figure older than 2015 is a municipality since merged away: left out with it.
-      if (!one[7].some(([, day]) => day !== null && day >= OLDEST)) continue;
+      if (!one[7].some(([, day]) => (day === null ? undated === true : day >= OLDEST))) continue;
       one[7].sort((a, b) => ((a[1] ?? "") < (b[1] ?? "") ? -1 : (a[1] ?? "") > (b[1] ?? "") ? 1 : a[0] - b[0]));
       one[8] = [...new Set(one[8])].sort();
       one[9] = [...new Set(one[9])].sort();

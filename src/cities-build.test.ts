@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 
 import { buildCities, cityAliases, columnsText, unresolvedIds } from "../scripts/cities.ts";
-import { rowsOf } from "./city-rows";
+import { expandCities, rowsOf } from "./city-rows";
 import type { CityColumns, CityRow } from "./city-rows";
-import type { CitiesSnapshot, NaturalEarthFile } from "../scripts/cities.ts";
+import type { CitiesSnapshot, NaturalEarthFile, PopulationsSnapshot, PopulationStatement } from "../scripts/cities.ts";
 
 // A snapshot of a few made-up cities, for the rules that choose and join, not for the data.
 const item = (number: number, en: string | null, ja: string | null, point: [number, number] | null, country: string | null, pops: [number, string | null][], subs: string[] = [], capitals: string[] = [], native: [string, string] | null = null): CitiesSnapshot["items"][number] => [number, en, ja, native?.[0] ?? null, native?.[1] ?? null, point, country, pops, subs, capitals];
@@ -286,6 +286,102 @@ describe("the population", () => {
     expect(row[3]).toBe(80000);
     expect(row[13] & 2).toBe(2);
     expect(report.tiers["15k"].populationFromNaturalEarth).toBe(1);
+  });
+});
+
+describe("a figure that is not the city's own", () => {
+  // The people of the countries and first-level subdivisions, and what each figure of a city rests on.
+  const areas = new Map([
+    ["FR", { en: "France", population: 68000000, items: ["Q90000"] }],
+    ["FR-IDF", { en: "Île-de-France", population: 900000, items: ["Q6"] }],
+  ]);
+  const statements = (list: [number, PopulationStatement[]][], land: PopulationsSnapshot["land"] = {}): PopulationsSnapshot => ({ read: "2026-11-17", land, statements: list });
+  const figures = (items: CitiesSnapshot["items"], populations: PopulationsSnapshot, cityPopulations = {}) =>
+    buildCities({ snapshot: snapshot(items), naturalEarth: natural([]), levels, countries, populations, areas, cityPopulations });
+  const byName = (rows: CityRow[]) => Object.fromEntries(rows.map((row) => [row[7], row]));
+
+  it("leaves out a web site's own estimate and takes the next figure, or none", () => {
+    const { rows, report } = figures(
+      [item(1, "Lobamba", null, [1, 1], "FR", [[114585, "2025-01-01"]], [], ["FR"]), item(2, "Kumasi", null, [2, 2], "FR", [[3903480, "2024-01-01"]]), item(3, "Mbabane", null, [3, 3], "FR", [[76218, "2025-01-01"]])],
+      statements([
+        [1, [[5800, "2003-01-01", 1, null, []], [114585, "2025-01-01", 2, "estimate", ["worldpopulationreview.com"]]]],
+        // Called a census, but World Population Review's: the site decides.
+        [2, [[3903480, "2024-01-01", 1, "census", ["worldpopulationreview.com"]]]],
+        [3, [[60691, "2017-05-11", 1, "census", ["citypopulation.de"]], [76218, "2025-01-01", 2, "estimate", ["worldpopulationreview.com"]]]],
+      ]),
+    );
+    const found = byName(rows);
+    expect(found.Lobamba![3]).toBe(5800);
+    expect(found.Lobamba![4]).toBe(2003);
+    expect(found.Kumasi).toBeUndefined();
+    expect(found.Mbabane![3]).toBe(60691);
+    expect(found.Mbabane![4]).toBe("2017-05-11");
+    expect(report.figures.estimateSite).toEqual(["Q1", "Q2", "Q3"]);
+  });
+
+  it("leaves out a subdivision's figure on a town that is not its capital, but keeps a capital's and a city's that is its subdivision", () => {
+    const { rows, report } = figures(
+      [
+        item(1, "Banikoara", null, [1, 1], "FR", [[867463, "2013-01-01"]], ["FR-IDF"]),
+        item(2, "Kandi", null, [2, 2], "FR", [[880000, "2013-01-01"]], ["FR-IDF"], ["FR-IDF"]),
+        item(3, "Île-de-France", null, [3, 3], "FR", [[890000, "2013-01-01"]], ["FR-IDF"]),
+        item(4, "Dagbon", null, [4, 4], "FR", [[70000000, null]]),
+        item(5, "Town", null, [5, 5], "FR", [[400000, "2013-01-01"]], ["FR-IDF"]),
+        item(6, "Paris", null, [6, 6], "FR", [[880000, "2013-01-01"]], ["FR-IDF"]),
+        item(7, "Stray", null, [7, 7], "FR", [[1800000, "2013-01-01"]], ["FR-IDF"]),
+        item(90000, "Monaco", null, [8, 8], "FR", [[69000000, "2013-01-01"]]),
+      ],
+      statements([]),
+    );
+    // Paris is the subdivision's own item; Stray's figure is twice the subdivision's, so its code is a stray one.
+    expect(Object.keys(byName(rows)).sort()).toEqual(["Kandi", "Monaco", "Paris", "Stray", "Town", "Île-de-France"]);
+    expect(report.figures.areaFigure).toEqual(["Q1", "Q4"]);
+  });
+
+  it("uses a census figure set by hand, says kuni gave it, and stops when Wikidata's figure is no longer the one it replaces", () => {
+    const hand = { Q1: { wikidata: 3903480, population: 443981, date: "2021-06-27", source: "the census", why: "a site's estimate" } };
+    const { rows } = figures([item(1, "Kumasi", null, [1, 1], "FR", [[3903480, "2024-01-01"]])], statements([]), hand);
+    expect(rows[0]![3]).toBe(443981);
+    expect(rows[0]![4]).toBe("2021-06-27");
+    expect(rows[0]![13] & 64).toBe(64);
+    expect(expandCities(rows)[0]!.source.population).toBe("kuni");
+    expect(() => figures([item(1, "Kumasi", null, [1, 1], "FR", [[4000000, "2025-01-01"]])], statements([]), hand)).toThrow(/CITY_POPULATIONS/);
+  });
+
+  it("leaves out an atoll, and an island with a town on it, each id answering with the town", () => {
+    const { rows, report } = figures(
+      [
+        item(1, "Tarawa", null, [1.43, 173], "FR", [[70090, "2020-01-01"]]),
+        item(2, "South Tarawa", null, [1.33, 172.97], "FR", [[63439, "2020-01-01"]], [], ["FR"]),
+        item(3, "Saint Thomas", null, [18.34, -64.93], "FR", [[42261, "2020-01-01"]]),
+        item(4, "Charlotte Amalie", null, [18.34, -64.94], "FR", [[14477, "2020-01-01"]], [], ["FR-IDF"]),
+        item(5, "Providenciales", null, [21.78, -72.26], "FR", [[32118, null]]),
+      ],
+      statements([], { Q42523: [1], Q23442: [3, 5] }),
+    );
+    expect(Object.keys(byName(rows)).sort()).toEqual(["Charlotte Amalie", "Providenciales", "South Tarawa"]);
+    expect(report.figures.land).toEqual(["Q1", "Q3"]);
+    expect(report.townshipCities).toEqual({ Q1: "Q2", Q3: "Q4" });
+  });
+});
+
+describe("a territory's own code", () => {
+  const territories = new Set(["US", "GU", "FR", "RE", "MA", "EH"]);
+  const levelsHere = new Map([["US-GU", 1], ["FR-974", 1], ["MA-11", 1]]);
+  it("puts a town of a territory with a code of its own under that code, whatever Wikidata's country, and Western Sahara's south of 27°40′ N", () => {
+    const { rows, report } = buildCities({
+      snapshot: snapshot([
+        item(1182147, "Dededo", null, [13.52, 144.84], "US", [[44908, "2020-01-01"]], ["US-GU"]),
+        item(316887, "Saint-Paul", null, [-21.01, 55.27], "FR", [[108088, "2023-01-01"]], ["FR-974"]),
+        item(47837, "Laayoune", null, [27.15, -13.2], "MA", [[262791, "2024-01-01"]], ["MA-11"]),
+        item(5, "Tarfaya", null, [27.94, -12.93], "MA", [[20000, "2024-01-01"]], ["MA-11"]),
+      ]),
+      naturalEarth: natural([]),
+      levels: levelsHere,
+      countries: territories,
+    });
+    expect(Object.fromEntries(rows.map((row) => [row[7], row[5]]))).toEqual({ Dededo: "GU", "Saint-Paul": "RE", Laayoune: "EH", Tarfaya: "MA" });
+    expect(report.ownCountry).toEqual({ "US GU": 1, "FR RE": 1, "MA EH": 1 });
   });
 });
 

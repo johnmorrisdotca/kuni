@@ -26,6 +26,7 @@ import { readingOfName } from "../src/ja-reading.ts";
 import { START_KEYS, startKeys } from "../src/city-start.ts";
 import type { CityFact, CityFactsReport } from "./city-facts.ts";
 import { ELEVATION_MAX, ELEVATION_MIN, ELEVATION_SPREAD, NEAR_KM, OUTLIER_AGREE, OUTLIER_KM, OUTLIER_METRES, OUTLIER_MINIMUM } from "./city-facts.ts";
+import type { CityPopulation } from "./city-populations.ts";
 import { METRO_LINKS } from "./metro-links.ts";
 import { URBAN_FACTS } from "./urban-facts.ts";
 
@@ -38,6 +39,15 @@ interface CitiesSnapshot {
   floor: number;
   counts: Record<string, number>;
   items: WikidataItem[];
+}
+// What each population figure rests on: data-sources/wikidata-city-populations-<day>.json (scripts/fetch-city-populations.ts).
+// [value, day, rank (2 preferred, 1 normal), method (P459: "census", "estimate", "register", else the item), [reference hosts]]
+type PopulationStatement = [number, string | null, 1 | 2, string | null, string[]];
+interface PopulationsSnapshot {
+  read: string;
+  /** The items that are an island, an atoll, a reef island or an archipelago (P31), by class. */
+  land: Record<string, number[]>;
+  statements: [number, PopulationStatement[]][];
 }
 // [item, NAME, NAME_EN, NAME_JA, latitude, longitude, POP_MAX, FEATURECLA, ISO_A2, NE_ID]
 type NePlace = [string | null, string, string | null, string | null, number, number, number | null, string, string | null, number | null];
@@ -59,6 +69,14 @@ interface Report {
   naturalEarthOnly: number;
   naturalEarthLeftOut: { noItemNoMatch: number; noCountry: number; belowFloor: number };
   leftOut: { noName: number; noPoint: number; noCountry: number; noPopulation: number; belowFloor: number; area: number; duplicate: number; township: number };
+  /**
+   * The figures not used as a city's own (scripts/cities.ts, "The figure"), each by the item's id: a web site's estimate,
+   * a larger area's figure; those set by hand (CITY_POPULATIONS); and the items that
+   * are land with a town on it (an island) or no town at all (an atoll).
+   */
+  figures: { estimateSite: string[]; areaFigure: string[]; setByHand: string[]; land: string[] };
+  /** The cities placed in a country with a code of its own rather than its parent's (Dededo in GU, not US), by the pair of codes. */
+  ownCountry: Record<string, number>;
   /** The cities that have a metropolitan area (CityRow's metro columns). */
   withMetro: number;
   /** Cities inside another city's urban area (Mississauga, in Toronto's), ranked after every city that heads one. */
@@ -104,6 +122,7 @@ const JA_WRONG: Readonly<Record<string, string>> = {
   Q1002638: "Rubio, Venezuela: labelled ベネズエラ, the country.",
   Q54154: "Revere, Massachusetts: labelled リビア, Libya.",
   Q482822: "Murray, Utah: labelled マリ, Mali.",
+  Q227795: "Cesson-Sévigné, France: labelled イル＝エ＝ヴィレーヌ県, the department of Ille-et-Vilaine.",
 };
 // Wikidata's human settlements include the areas around cities and the units that hold them. An item that no capital and
 // no Natural Earth place stands behind, and whose English label names one of those, is not a city.
@@ -138,9 +157,28 @@ const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
 const WRONG_POPULATIONS: Readonly<Record<string, { value: number; why: string }>> = {
   Q165995: { value: 750, why: "Malatya, Turkey: a figure of 750 for 2020, the city's being some 400,000; the 2012 figure is used." },
   Q2579193: { value: 450000, why: "Sirajganj, Bangladesh: a round 450,000 for 2020, the district town's; the town has some 170,000 people." },
+  Q3116994: { value: 21660, why: "Gros Islet, Saint Lucia: the Gros Islet Quarter's figure (20,872 in 2010), with no day; the town's own is far smaller." },
 };
+// Web sites that publish estimates or models of their own of a city's people (often of the urban area round it), not a
+// count: a figure whose every reference is one of them is not the city's own (Kumasi's 3,903,480 and Lobamba's 114,585
+// are World Population Review's, Khartoum's 5,345,000 Demographia's). Statistical offices, and sites that copy a census
+// (citypopulation.de), are not here.
+const ESTIMATE_SITES: ReadonlySet<string> = new Set(["worldpopulationreview.com", "demographia.com", "populationstat.com", "macrotrends.net", "worldometers.info", "population.city"]);
+// A figure within these shares of a first-level subdivision's figure, of a town that is neither that subdivision nor its
+// capital, is the subdivision's: Banikoara's 867,463 is the Alibori department's, Gros Islet's 21,660 the Gros Islet
+// Quarter's 20,872. A city that is a subdivision of its own (Prague, Mexico City, Gwangju) is its item, and keeps its
+// figure; one twice its subdivision's is in another (a stray code), not that subdivision's figure.
+const AREA_SHARE = [0.95, 1.1] as const;
+// The classes of land, not towns (scripts/fetch-city-populations.ts asks for them): an atoll, a reef island or an
+// archipelago is no town (Tarawa, Kiribati, is the atoll; South Tarawa is the town); an island is none where a capital, or
+// a town of its name, stands within 15 km of it (Saint Thomas, in the U.S. Virgin Islands, is the island of Charlotte Amalie).
+const ISLAND = "Q23442";
+const LAND_KM = 15;
 // A subdivision code that is a country of its own: Hong Kong, Macau and Taiwan in China's list; the Caribbean
-// Netherlands, Aruba, Curaçao and Sint Maarten in the Netherlands'; Greenland and the Faroes in Denmark's.
+// Netherlands, Aruba, Curaçao and Sint Maarten in the Netherlands'; Greenland and the Faroes in Denmark's; Puerto Rico,
+// Guam and the other territories in the United States'; the overseas departments and collectivities in France's;
+// Svalbard and Jan Mayen in Norway's; Åland in Finland's. Wikidata gives their towns the parent's country (P17), so
+// without this Dededo, Guam's largest, would be a city of the United States and Guam would list only its capital.
 // A Dutch municipality made of several places and named for its region, not a town (Haarlemmermeer, Westland,
 // Súdwest-Fryslân): no city; its towns (Hoofddorp, Naaldwijk, Sneek) are cities where the snapshot has them.
 const STALE_BEFORE = "1996-01-01";
@@ -157,9 +195,35 @@ const SEPARATE_CODES: Readonly<Record<string, string>> = {
   "NL-SX": "SX",
   "DK-GL": "GL",
   "DK-FO": "FO",
+  "US-AS": "AS",
+  "US-GU": "GU",
+  "US-MP": "MP",
+  "US-PR": "PR",
+  "US-UM": "UM",
+  "US-VI": "VI",
+  "FR-971": "GP",
+  "FR-972": "MQ",
+  "FR-973": "GF",
+  "FR-974": "RE",
+  "FR-976": "YT",
+  "FR-BL": "BL",
+  "FR-MF": "MF",
+  "FR-NC": "NC",
+  "FR-PF": "PF",
+  "FR-PM": "PM",
+  "FR-TF": "TF",
+  "FR-WF": "WF",
+  "NO-21": "SJ",
+  "NO-22": "SJ",
+  "FI-01": "AX",
 };
+// Western Sahara (EH) has a code of its own and no subdivisions; Wikidata puts its towns in Morocco's regions of
+// Laâyoune-Sakia El Hamra (MA-11) and Dakhla-Oued Ed-Dahab (MA-12). Those regions reach north of the territory (Tarfaya,
+// in Morocco), whose northern border is the parallel of 27°40′ N: a town of the two regions south of it is in EH.
+const WESTERN_SAHARA = { codes: new Set(["MA-11", "MA-12"]), north: 27 + 40 / 60 };
 const NOT_CITIES: Readonly<Record<string, string>> = {
   Q103927888: "Moro, Papua New Guinea: Wikidata gives it 6,310,129 people, most of the country's; no city there is near that size.",
+  Q24697413: "Dagbon, Ghana: a traditional kingdom of the north, with 4,000,000 people and no day; not a city. Its seat is Yendi. Wikidata calls it only a human settlement, so no class can tell.",
   Q23157: "Somerset, England: the county (975,782 people), not a town; its county town is Taunton.",
   Q391980: "The Free Territory of Trieste: a state of 1947 to 1954, not a city; Trieste is Q546.",
   Q36576: "Kiên Giang, Vietnam: the province (キエンザン省), not a town; its capital is Rạch Giá.",
@@ -507,7 +571,7 @@ interface Candidate {
   viaPlace: boolean;
 }
 
-const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot; urban?: UrbanSnapshot; oecdNames?: Readonly<Record<string, number>>; insideAreas?: Readonly<Record<string, number>>; insideSubdivisions?: Readonly<Record<string, number>> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
+const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEarthFile; levels: ReadonlyMap<string, number>; countries: ReadonlySet<string>; subdivisions?: ReadonlySet<string>; capitalNames?: ReadonlyMap<string, string>; metros?: MetrosSnapshot; statcan?: StatcanSnapshot; urban?: UrbanSnapshot; oecdNames?: Readonly<Record<string, number>>; insideAreas?: Readonly<Record<string, number>>; insideSubdivisions?: Readonly<Record<string, number>>; populations?: PopulationsSnapshot; areas?: ReadonlyMap<string, { en: string; population: number | null; items: readonly string[] }>; cityPopulations?: Readonly<Record<string, CityPopulation>> }): { rows: CityRow[]; tiers: Record<TierName, CityRow[]>; report: Report } => {
   const { snapshot, naturalEarth, levels, countries } = input;
   // Statistics Canada's areas come from urbanAreas where the official areas are given; the chooser is Wikidata's alone then.
   const metroOf = metroChooser(input.metros, snapshot, input.urban === undefined ? input.statcan : undefined);
@@ -527,6 +591,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     naturalEarthOnly: 0,
     naturalEarthLeftOut: { noItemNoMatch: 0, noCountry: 0, belowFloor: 0 },
     leftOut: { noName: 0, noPoint: 0, noCountry: 0, noPopulation: 0, belowFloor: 0, area: 0, duplicate: 0, township: 0 },
+    figures: { estimateSite: [], areaFigure: [], setByHand: [], land: [] },
+    ownCountry: {},
     townshipCities: {},
     unitTowns: 0,
     withMetro: 0,
@@ -585,6 +651,68 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     }
   }
 
+  // The figure of a city: Wikidata's best-ranked of the latest day (populationOf), but not one that is no count of the
+  // city's own. A figure whose every reference is a web site's estimate (ESTIMATE_SITES), or that is its country's or more,
+  // or within 95 % to 110 % of a first-level subdivision's where the city is neither that subdivision nor its capital nor of
+  // its name (AREA_SHARE), is left out, and the next figure of the best rank is used, else the latest of Wikidata's other
+  // figures that is none of those (Mbabane's census figure of 2017, where the best-ranked is World Population Review's). A
+  // figure set by hand (CITY_POPULATIONS, a census figure where Wikidata has none) comes before all of these. Wikidata's
+  // method (P459) is not trusted to choose: World Population Review's figures are often called a census (Kumasi's), and
+  // a city's census figures include its parts' (Riyadh's districts), so preferring a census figure over a later one took
+  // a part's or an old figure for most of the 70 cities it would have changed.
+  const statementsOf = new Map(input.populations?.statements ?? []);
+  const fromSite = (one: PopulationStatement): boolean => one[4].length > 0 && one[4].every((host) => ESTIMATE_SITES.has(host));
+  const figureOf = (id: string, pops: [number, string | null][], subs: string[], capitalCodes: string[], country: string, en: string): { value: number; day: string | null; hand: boolean } | null => {
+    const wrong = WRONG_POPULATIONS[id];
+    const best = wrong === undefined ? pops : pops.filter(([value]) => value !== wrong.value);
+    const hand = input.cityPopulations?.[id];
+    if (hand !== undefined) {
+      const given = populationOf(pops)?.value ?? null;
+      if (given !== hand.wikidata) throw new Error(`CITY_POPULATIONS (scripts/city-populations.ts): ${id} replaces Wikidata's ${hand.wikidata}, but Wikidata's figure is now ${given}; look at it again`);
+      report.figures.setByHand.push(id);
+
+      return { value: hand.population, day: hand.date, hand: true };
+    }
+    const statements = statementsOf.get(Number(id.slice(1))) ?? [];
+    // A city-state (Monaco, Vatican City) is its country's item.
+    const nation = input.areas?.get(country);
+    const countryPeople = nation === undefined || nation.items.includes(id) ? null : nation.population;
+    const regions = subs
+      .filter((code) => code.startsWith(`${country}-`) && levels.has(code) && !capitalCodes.includes(code))
+      .flatMap((code) => {
+        const area = input.areas?.get(code);
+
+        return area === undefined || area.population === null || area.items.includes(id) || simple(area.en) === simple(en) ? [] : [area.population];
+      });
+    const tooBig = (value: number): boolean => (countryPeople !== null && value > countryPeople) || regions.some((people) => value >= AREA_SHARE[0] * people && value <= AREA_SHARE[1] * people);
+    const matching = (value: number, day: string | null): PopulationStatement[] => statements.filter((one) => one[0] === value && one[1] === day);
+    let reason: "estimateSite" | "areaFigure" | null = null;
+    const kept = best.filter(([value, day]) => {
+      const found = matching(value, day);
+      if (found.length > 0 && found.every(fromSite)) {
+        reason ??= "estimateSite";
+
+        return false;
+      }
+      if (tooBig(value)) {
+        reason ??= "areaFigure";
+
+        return false;
+      }
+
+      return true;
+    });
+    let pick = populationOf(kept);
+    // Set inside the filter above, which the compiler does not follow.
+    const left = reason as "estimateSite" | "areaFigure" | null;
+    if (left !== null) {
+      report.figures[left].push(id);
+      pick ??= populationOf(statements.filter((one) => !fromSite(one) && !tooBig(one[0]) && one[0] !== wrong?.value).map((one): [number, string | null] => [one[0], one[1]]));
+    }
+
+    return pick === null ? null : { ...pick, hand: false };
+  };
+
   // 1. Every item that could be a city, with what the tiers and the capitals are decided from.
   const candidates: Candidate[] = [];
   for (const item of snapshot.items) {
@@ -603,7 +731,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     // Hong Kong, Macau and Taiwan have codes of their own (HK, MO, TW): a place Wikidata puts in China but whose ISO
     // 3166-2 code is CN-HK, CN-MO or CN-TW is in that country. Wikidata gives most Dutch municipalities no country
     // (P17): the country of the ISO 3166-2 code it is in (NL-NB) is used then, else Natural Earth's.
-    const ownCode = subs.map((code) => SEPARATE_CODES[code]).find((alpha2) => alpha2 !== undefined && countries.has(alpha2));
+    const westernSahara = point !== null && point[0] < WESTERN_SAHARA.north && subs.some((code) => WESTERN_SAHARA.codes.has(code)) && countries.has("EH") ? "EH" : undefined;
+    const ownCode = westernSahara ?? subs.map((code) => SEPARATE_CODES[code]).find((alpha2) => alpha2 !== undefined && countries.has(alpha2));
     // The most specific code: one whose subdivision is another code's country ("DK-GL" beside "GL-AV") gives way to it.
     const prefixes = new Set(subs.map((code) => code.split("-")[0]!));
     const specific = subs.filter((code) => !prefixes.has(code.split("-")[1] ?? ""));
@@ -624,8 +753,8 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
       report.leftOut.area += 1;
       continue;
     }
-    const wrong = WRONG_POPULATIONS[`Q${number}`];
-    const wikidataPopulation = populationOf(wrong === undefined ? pops : pops.filter(([value]) => value !== wrong.value));
+    if (ownCode !== undefined && wikidataCountry !== null && wikidataCountry !== ownCode) report.ownCountry[`${wikidataCountry} ${ownCode}`] = (report.ownCountry[`${wikidataCountry} ${ownCode}`] ?? 0) + 1;
+    const wikidataPopulation = figureOf(`Q${number}`, pops, subs, capitalCodes, country, en);
     const population = wikidataPopulation?.value ?? place?.[6] ?? null;
     // Natural Earth's Japanese name is used only where it is not hiragana for a place outside Japan (うーんルワバ for Umm Ruwaba): a sign of a machine's guess.
     const neJa = place?.[3] != null && (country === "JP" || !/\p{Script=Hiragana}/u.test(place[3])) ? place[3] : null;
@@ -634,8 +763,9 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     const ja = JA_WRONG[`Q${number}`] !== undefined ? null : (written ?? jaLabel ?? neJa);
     const native = nativeLabel !== null && nativeLabel !== en ? nativeLabel : null;
     const subdivision = [...new Set(subs)].filter((code) => code.startsWith(`${country}-`) && levels.has(code)).sort((a, b) => levels.get(a)! - levels.get(b)! || (a < b ? -1 : 1))[0] ?? null;
-    // Bit 1: the Japanese name is Natural Earth's; 2: the population is; 4: the point is; 8: the Japanese name is written for this package (JA_NAMES).
-    const sources = (written !== null ? 8 : jaLabel === null && ja !== null ? 1 : 0) | (wikidataPopulation === null && population !== null ? 2 : 0) | (wikidataPoint === null ? 4 : 0);
+    // Bit 1: the Japanese name is Natural Earth's; 2: the population is; 4: the point is; 8: the Japanese name is written for this package (JA_NAMES);
+    // 64: the population is set by hand from the census (CITY_POPULATIONS).
+    const sources = (written !== null ? 8 : jaLabel === null && ja !== null ? 1 : 0) | (wikidataPopulation === null && population !== null ? 2 : 0) | (wikidataPoint === null ? 4 : 0) | (wikidataPopulation?.hand === true ? 64 : 0);
     candidates.push({
       number,
       en,
@@ -732,6 +862,26 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   }
   report.leftOut.area += unitGone.size;
   for (let at = candidates.length - 1; at >= 0; at -= 1) if (unitGone.has(candidates[at]!)) candidates.splice(at, 1);
+  // 1d. Land, not a town (ISLAND, LAND_KM): an atoll, a reef island or an archipelago that is no capital is left out; so is
+  // an island where a capital, or a town of its name that is a city here, stands within 15 km. Its id answers with that
+  // town, else the nearest capital within 15 km, else none. An island with no town on it (Providenciales, the Turks and Caicos' largest) stays.
+  const landOf = new Map<number, string>();
+  for (const [klass, list] of Object.entries(input.populations?.land ?? {})) for (const number of list) if (klass !== ISLAND || !landOf.has(number)) landOf.set(number, klass);
+  const landGone = new Set<Candidate>();
+  for (const one of candidates) {
+    const klass = typeof one.number === "number" ? landOf.get(one.number) : undefined;
+    if (klass === undefined || one.codes.length > 0) continue;
+    const towns = candidates
+      .filter((other) => other !== one && other.country === one.country && !(typeof other.number === "number" && landOf.has(other.number)) && (other.codes.length > 0 || (other.population ?? 0) >= FLOOR) && km(other.point, one.point) < LAND_KM)
+      .sort((a, b) => km(a.point, one.point) - km(b.point, one.point));
+    const town = towns.find((other) => simple(other.en) === simple(one.en)) ?? towns.find((other) => other.codes.length > 0);
+    if (klass === ISLAND && town === undefined) continue;
+    landGone.add(one);
+    report.figures.land.push(idOf(one));
+    report.townshipCities[idOf(one)] = town === undefined ? null : idOf(town);
+  }
+  report.leftOut.area += landGone.size;
+  for (let at = candidates.length - 1; at >= 0; at -= 1) if (landGone.has(candidates[at]!)) candidates.splice(at, 1);
   for (let at = candidates.length - 1; at >= 0; at -= 1) if (gone.has(candidates[at]!)) candidates.splice(at, 1);
 
   // 2. The same city under two items (Tokyo is Q1490 and Q7473516): one name, one country, within 15 km, one of them big. The
@@ -1239,12 +1389,13 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     `- **Wikidata**: the items that are an instance of a human settlement (Q486972 and every class below it through P279), have coordinates (P625) and a best-ranked population (P1082) of ${n(snapshot.floor)} or more: ${n(snapshot.counts.candidates ?? 0)} items with that population and coordinates, of which ${n(snapshot.counts.settlements ?? 0)} are a city, town or other settlement (${n(snapshot.counts.areas ?? 0)} more are only a metropolitan area, urban area or conurbation, and are left out; the rest are districts, counties and the like); every item that is the current capital (P36) of a country or a subdivision; and every item Natural Earth's places name. The queries are written in the snapshot file itself.`,
     `- **Natural Earth**: ${n(report.naturalEarthPlaces)} places ("Historic place" left out). ${n(report.naturalEarthJoined)} name a Wikidata item (WIKIDATAID) that the snapshot holds; ${n(report.naturalEarthToArea)} name an item that is an area or a unit (Jamalpur naming Jamalpur District) and are matched again as if they named none; ${n(report.naturalEarthMatchedByPlace)} more were matched by position (within 15 km, same country, same name); the ${n(report.naturalEarthOnly + report.naturalEarthLeftOut.noCountry + report.naturalEarthLeftOut.belowFloor)} left have no Wikidata item here: ${n(report.naturalEarthOnly)} are cities of their own, with an id \`ne:<Natural Earth's number>\` (a capital, or 15,000 people or more); the others have no country, or are small and no capital, and are left out.`,
     "- **Which source wins**: Wikidata's label, point and population are kept where it has them. Natural Earth fills a Japanese name, a population or a point Wikidata does not have, and a capital where Wikidata names none; each city says which in its `source` field.",
-    "- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's `POP_MAX` has no day.",
+    `- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's \`POP_MAX\` has no day. A figure that is not a count of the city's own is not used, and the next is (\`scripts/fetch-city-populations.ts\` reads, for each figure, its rank, its day, how it was found, P459, and the sites its references name, P854): a figure whose every reference is a web site's own estimate, World Population Review's or Demographia's (${n(report.figures.estimateSite.length)}: Lobamba's 114,585); a figure above its country's people, or within 95% to 110% of a first-level subdivision's where the city is neither that subdivision (Prague) nor its capital, which is that subdivision's (${n(report.figures.areaFigure.length)}; Gros Islet's 21,660, the Gros Islet Quarter's, is left out by id, the quarter having the town's name). Wikidata's own word for how a figure was found (P459) does not choose: World Population Review's figures are often called a census. Where Wikidata has no figure for the city itself, the census's is set by hand, with its source and day (${n(report.figures.setByHand.length)}, \`scripts/city-populations.ts\`: Kumasi's 443,981 of 2021, not World Population Review's 3,903,480 for the urban area), and the city's \`source.population\` says \`kuni\`.`,
     "- **Subdivision**: the ISO 3166-2 code, from Wikidata's P300 on the city or the places it is in (P131), restricted to the first-level subdivisions kuni lists for its country; where there are several, the first in code order.",
-    `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people). In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: every township is left out (${n(report.leftOut.township)}; Kaw Township, round Kansas City), each id answering with the city of its own name, else the nearest within 15 km of a quarter of its people or more; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept. Then a unit or a part of a city that Wikidata names as a settlement is left out: a name ending in County, District, Subdistrict, Microdistrict, Raion, Governorate, Territory, Region or Area (a capital, a name with a comma, and a name in brackets stay), a numbered or named part ("Zone 7 of Milan", "third sector of Marseille"), and a municipality with a town of its own name within 25 km (Kodad municipality); its id answers with that town, else the city it is part of, else a city within 3 km, else the biggest within 15 km of twice its people (Xətai raion, Baku), else none (${n(Object.values(report.townshipCities).length)} ids in all with the townships). Where Natural Earth names such a unit and no city stands apart, it is the town Natural Earth has (${n(report.unitTowns)}: Yishui County is Yishui), with the town's point and people, not the county's.`,
+    `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people; Dagbon, a traditional kingdom of Ghana, at 4 million). Land is no town (${n(report.figures.land.length)}): an atoll, a reef island or an archipelago that is no capital (Tarawa, Kiribati: the town is South Tarawa), and an island where a capital or a town of its name stands within ${LAND_KM} km (Saint Thomas, the island of Charlotte Amalie); its id answers with that town. In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: every township is left out (${n(report.leftOut.township)}; Kaw Township, round Kansas City), each id answering with the city of its own name, else the nearest within 15 km of a quarter of its people or more; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept. Then a unit or a part of a city that Wikidata names as a settlement is left out: a name ending in County, District, Subdistrict, Microdistrict, Raion, Governorate, Territory, Region or Area (a capital, a name with a comma, and a name in brackets stay), a numbered or named part ("Zone 7 of Milan", "third sector of Marseille"), and a municipality with a town of its own name within 25 km (Kodad municipality); its id answers with that town, else the city it is part of, else a city within 3 km, else the biggest within 15 km of twice its people (Xətai raion, Baku), else none (${n(Object.values(report.townshipCities).length)} ids in all with the townships). Where Natural Earth names such a unit and no city stands apart, it is the town Natural Earth has (${n(report.unitTowns)}: Yishui County is Yishui), with the town's point and people, not the county's.`,
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
     "- **One city once**: two items with one name in one country within 15 km, one of them of 100,000 people or more, are one city; the one with a capital behind it, else Natural Earth's, else the more populous, is kept.",
     `- **Urban area** (\`metro\`, ${n(report.withMetro)} cities): the urban area a city heads, one source for each country. Canada: Statistics Canada's census metropolitan areas and census agglomerations, the estimate of 1 July 2025 (Table 17-10-0148-01), else the 2021 Census (Table 98-10-0005-01). The United States: the Census Bureau's metropolitan and micropolitan statistical areas on 1 July 2024. The other members of the OECD: its functional urban areas, the latest year it gives. China and India, whose own figure for a city is its whole municipality: their censuses' urban figures for their first cities, typed as facts with their source and date (\`scripts/urban-facts.ts\`: the urban resident population of China's twenty-one megacities in 2020; India's twenty largest urban agglomerations in 2011, on which Mumbai ranks ahead of Delhi, the larger today); their other cities rank after these, by Wikidata's metro where bigger, else their own figure. An area belongs to the city its name names first ("Ottawa - Gatineau" to Ottawa, "Dallas-Fort Worth-Arlington" to Dallas), in its province or state, the most populous where two share the name; an area whose name is no city's is set by id in \`scripts/metro-links.ts\`, with the reason. ${n(report.areasUnmatched.length)} areas name no city kuni has (most are small Canadian agglomerations named for a region). The area's figure ranks a city even where it is below the city's own (Ulsan). Where a city heads none, Wikidata's metropolitan area where it is bigger than the city, an estimate (\`metro.estimated\`, \`rankEstimated\`), unless a bigger official area lies within 60 km, which holds it (Kyoto and Kobe, in Osaka's): then, and where there is none, the city's own figure (an estimate too in a country with no official areas). South Africa's metropolitan municipalities are set on their seats by name in \`scripts/metro-links.ts\` (eThekwini on Durban). Hong Kong, Macau and Taiwan are under their own codes, whatever Wikidata's country.`,
+    `- **A territory's own code**: a town in a territory with an ISO 3166-1 code of its own is under that code, not its parent's, though Wikidata's country (P17) is the parent's: its ISO 3166-2 code is the territory's (US-GU is Guam, FR-974 Réunion, NO-21 Svalbard, FI-01 Åland: \`SEPARATE_CODES\` in \`scripts/cities.ts\`), so Dededo is Guam's and Bayamón Puerto Rico's (${n(Object.values(report.ownCountry).reduce((sum, one) => sum + one, 0))} cities: ${Object.entries(report.ownCountry).sort(([a], [b]) => a.localeCompare(b, "en")).map(([pair, count]) => `${pair.replace(" ", " to ")} ${count}`).join(", ")}). Western Sahara (EH) has no subdivisions: a town Wikidata places in Morocco's regions of Laâyoune-Sakia El Hamra or Dakhla-Oued Ed-Dahab south of 27°40′ N, the territory's northern border, is in EH (Laayoune). Wikidata gives some towns only a class that is no kind of settlement (a commune of France, as Les Abymes is; a municipality of the Netherlands; a local council of Malta; a commune of French Polynesia; a district of the Turks and Caicos Islands): \`scripts/fetch-cities-extra.ts\` asks for them by class.`,
     `- **Inside another city's area** (\`inMetroOf\`, ${n(report.inMetroOf)} cities): a city that heads no area but lies inside another city's, ranked after every city that heads one. Set by id in \`scripts/metro-links.ts\` with the reason (Ecatepec in Mexico City's, Thane in Mumbai's, Giza in Cairo's, New York City's boroughs, every district of Bangkok); named in the Census Bureau's area (Fort Worth in Dallas-Fort Worth-Arlington); in Canada, a municipality of Statistics Canada's list of the municipalities of each area (Table 98-10-0003-01: Mississauga and Brampton are in Toronto's); else a city within 10 km plus 5 km for each square root of a million people of the nearest city whose area holds three times its own people or more, or in a country with no areas whose own figure of a million or more does. A city of a million people or more is never put inside another's for being near it (Yokohama, Kobe and Kyoto rank by their own). In China and India a city below the census list is ranked after it (\`urbanAreaUnknown\`, ${n(report.withoutUrbanFigure)} cities).`,
     "- **Names**: English is Wikidata's label, else Natural Earth's; a city with neither is left out. Japanese is Wikidata's label (always preferred: it is curated by people), else Natural Earth's (not where it is written in hiragana for a place outside Japan, which marks a machine's guess), else `null`: never an English name copied in, and never made up; the few written for this package (`JA_NAMES` in `scripts/cities.ts`, each with its reason: East Jerusalem is 東エルサレム, not the whole city's エルサレム) say `kuni` as their source. The native name is the label in the country's official language (P37, language code P424; the first in code order that has a label, English left out), and Wikidata's native label (P1705, which often names a regional language: Kölle for Köln) only where there is none; it is `null` where it is the English name.",
     `- **Time zone** (\`timeZone\`, \`timeZoneEstimated\`): the IANA zone the city keeps, for a page that shows the time there, from IANA's tzdb 2026e \`zone.tab\` (public domain) and Wikidata's zones of the subdivisions (CC0), and from no other source (Natural Earth's TIMEZONE column is not used: NOTICE.md says why). In order: a country with one zone gives it (${n(placeFacts.zoneOfOneZoneCountry)} cities); else the zone Wikidata names for the city's first-level subdivision alone (${n(placeFacts.zoneOfSubdivision)}); else the zone of a city zone.tab lists for the country that this one is within ${NEAR_KM} km of, or is (${n(placeFacts.zoneAtZoneTabCity)}), and ${n(placeFacts.zoneNamed)} are set by id with the reason in \`scripts/city-facts.ts\` (Tabatinga, Gorno-Altaysk, El Paso). Those are not estimates. The other ${n(placeFacts.zoneEstimated)} cities have \`timeZoneEstimated\` true: ${n(placeFacts.zoneEstimatedBySubdivision)} take the zone kuni chose for their subdivision (\`/zones\`'s \`subdivisionTimeZone\`, where it chose among Wikidata's or the subdivision lies in more than one zone: ${n(placeFacts.zoneEstimatedInSplitSubdivision)} are in a subdivision known to be split, a state such as Texas or Indiana), and ${n(placeFacts.zoneEstimatedWithoutSubdivision)} the zone of the nearest zone.tab city, having no subdivision here (Indonesia's cities). Kuni has no boundaries, so a town near the edge of a zone can be given its neighbour's. ${n(placeFacts.zoneNone)} cities are in a country with no zone in zone.tab and have none.`,
@@ -1300,4 +1451,4 @@ export { CITY_ALIASES };
 };
 
 export { buildCities, byRank, columnsText, countryNames, SPLIT_TIERS, startLoaders, startParts, cityAliases, cityIndex, unresolvedIds, citiesDoc, cityFiles, cityLoaders, countryCityFiles, TIER_FILES };
-export type { MetrosSnapshot, StatcanSnapshot, CitiesSnapshot, NaturalEarthFile, Report, TierName, UrbanSnapshot };
+export type { MetrosSnapshot, StatcanSnapshot, CitiesSnapshot, NaturalEarthFile, PopulationsSnapshot, PopulationStatement, Report, TierName, UrbanSnapshot };
