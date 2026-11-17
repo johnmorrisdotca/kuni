@@ -6,11 +6,11 @@
 
 import { COUNTRY_CODES, isCountryCode } from "./codes";
 import type { CountryCode } from "./codes";
-import { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, SUBREGION_NAMES } from "./data/countries.data";
+import { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, STATUS_ROWS, STATUS_TYPES, SUBREGION_NAMES } from "./data/countries.data";
 import { fold, foldKey } from "./fold";
-import { expandCountry } from "./rows";
-import { CONTINENTS, LANGUAGES } from "./types";
-import type { Continent, Country, Language } from "./types";
+import { expandCountry, expandStandings } from "./rows";
+import { CONTINENTS, COUNTRY_STATUSES, LANGUAGES } from "./types";
+import type { Continent, Country, CountryStatus, Language } from "./types";
 import { VERSION } from "./version";
 
 /** The order `countries()` lists them in: "code" (alpha-2), "en" (by English name) or "ja" (by Japanese name, in kana).
@@ -31,13 +31,15 @@ type CountryOrder = "code" | "en" | "ja";
  * ```ts
  * import type { CountriesOptions } from "@johnmorrisdotca/kuni";
  *
- * const value: CountriesOptions = {order:"ja"};
+ * const value: CountriesOptions = {order:"ja",status:"un-member"};
  * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
  * ```
  */
 interface CountriesOptions {
   /** "code" (the default) is alpha-2 order; "en" and "ja" are by name, as `countries` says. */
   order?: CountryOrder;
+  /** Only the countries of this status: "un-member" for the 193 members of the United Nations, "territory" and so on. */
+  status?: CountryStatus;
 }
 
 /** What `countryName()` may be asked.
@@ -59,7 +61,7 @@ interface Tables {
   list: readonly Country[];
   byCode: ReadonlyMap<string, Country>;
   byName: ReadonlyMap<string, Country>;
-  ordered: Map<CountryOrder, readonly Country[]>;
+  ordered: Map<string, readonly Country[]>;
 }
 
 const LEADING_THE = /^the /;
@@ -78,7 +80,8 @@ const deepFreeze = <T>(value: T): T => {
 let tables: Tables | null = null;
 
 const build = (): Tables => {
-  const list = deepFreeze(COUNTRY_ROWS.map(expandCountry));
+  const standings = expandStandings(STATUS_ROWS, STATUS_TYPES);
+  const list = deepFreeze(COUNTRY_ROWS.map((row) => expandCountry(row, standings.get(row[0]))));
   const byCode = new Map<string, Country>();
   const byName = new Map<string, Country>();
   for (const country of list) {
@@ -136,10 +139,12 @@ const compare = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
 /**
  * Every country: the 249 ISO 3166-1 codes and Kosovo (XK). `order: "en"` sorts by the English name folded
  * (accents and case set aside); `order: "ja"` by the Japanese name in kana, its reading where it is written in
- * kanji, in plain kana order (not a full Japanese collation).
+ * kanji, in plain kana order (not a full Japanese collation). `status` keeps only the countries of one status:
+ * "un-member" is the 193 members of the United Nations, and with the two of "un-observer" the 195 that lists of
+ * the world's countries count.
  *
- * @param options - `order`: "code" (the default), "en" or "ja".
- * @returns The 250 countries, the list and its objects frozen and shared.
+ * @param options - `order`: "code" (the default), "en" or "ja"; `status`: one of `COUNTRY_STATUSES`.
+ * @returns The 250 countries, or those of the status asked for, the list and its objects frozen and shared.
  * @example
  * ```ts
  * import { countries } from "@johnmorrisdotca/kuni";
@@ -147,18 +152,43 @@ const compare = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
  * console.log(countries().length);                          // 250
  * console.log(countries({ order: "en" })[0].name.en);       // "Afghanistan"
  * console.log(countries({ order: "ja" })[0].name.ja);       // "アイスランド"
+ * console.log(countries({ status: "un-member" }).length);   // 193
+ * console.log(countries({ status: "special-region" }).map((one) => one.alpha2)); // ["HK", "MO"]
  * ```
  */
 const countries = (options: CountriesOptions = {}): readonly Country[] => {
   const order = options.order ?? "code";
+  const { status } = options;
   const { list, ordered } = getTables();
-  const found = ordered.get(order);
+  const key = status === undefined ? order : `${order} ${status}`;
+  const found = ordered.get(key);
   if (found !== undefined) return found;
   const sortKey = (one: Country): string => (order === "ja" ? fold(one.reading ?? one.name.ja) : fold(one.name.en));
-  const sorted = Object.freeze([...list].sort((a, b) => compare(sortKey(a), sortKey(b)) || compare(a.alpha2, b.alpha2)));
-  ordered.set(order, sorted);
+  const kept = status === undefined ? [...list] : list.filter((one) => one.status === status);
+  const sorted = Object.freeze(order === "code" ? kept : kept.sort((a, b) => compare(sortKey(a), sortKey(b)) || compare(a.alpha2, b.alpha2)));
+  ordered.set(key, sorted);
 
   return sorted;
+};
+
+/**
+ * The places that belong to a state: every country code whose `sovereign` is that state, in alpha-2 order.
+ *
+ * @param code - The state's code: alpha-2 ("GB", "gb"), alpha-3 ("GBR") or numeric ("826").
+ * @returns The places, frozen; an empty list for a state with none and for anything that is not a country code.
+ * @example
+ * ```ts
+ * import { dependenciesOf } from "@johnmorrisdotca/kuni";
+ *
+ * console.log(dependenciesOf("DK").map((one) => one.alpha2)); // ["FO", "GL"]
+ * console.log(dependenciesOf("GB").length);                   // 15
+ * console.log(dependenciesOf("JP").length);                   // 0
+ * ```
+ */
+const dependenciesOf = (code: string): readonly Country[] => {
+  const state = country(code);
+
+  return Object.freeze(state === null ? [] : getTables().list.filter((one) => one.sovereign === state.alpha2));
 };
 
 /**
@@ -294,6 +324,8 @@ export {
   countryByName,
   countryName,
   COUNTRY_CODES,
+  COUNTRY_STATUSES,
+  dependenciesOf,
   flag,
   fold,
   isCountryCode,
@@ -301,5 +333,5 @@ export {
   subregionName,
   VERSION,
 };
-export type { Continent, CountriesOptions, Country, CountryCode, CountryNameOptions, CountryOrder, Language };
+export type { Continent, CountriesOptions, Country, CountryCode, CountryNameOptions, CountryOrder, CountryStatus, Language };
 export type { Subdivision, SubdivisionType } from "./types";

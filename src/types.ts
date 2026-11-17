@@ -74,6 +74,20 @@ const SUBDIVISION_TYPES = [
  */
 const LANGUAGES = ["en", "ja"] as const;
 
+/**
+ * What a holder of a country code is, in kebab case: a member of the United Nations, a non-member observer state
+ * there, a territory of another state, a special administrative region, a place whose sovereignty is disputed, or
+ * a place where nobody lives for good.
+ *
+ * @example
+ * ```ts
+ * import { COUNTRY_STATUSES, countries } from "@johnmorrisdotca/kuni";
+ *
+ * console.log(COUNTRY_STATUSES.map((status) => countries({ status }).length)); // [193, 2, 46, 2, 3, 4]
+ * ```
+ */
+const COUNTRY_STATUSES = ["un-member", "un-observer", "territory", "special-region", "disputed", "uninhabited"] as const;
+
 /** A continent's two letters: "AF", "AN", "AS", "EU", "NA", "OC" or "SA".
  *
  * @example
@@ -109,6 +123,18 @@ type SubdivisionType = (typeof SUBDIVISION_TYPES)[number];
  * ```
  */
 type Language = (typeof LANGUAGES)[number];
+/** What a holder of a country code is: "un-member", "un-observer", "territory", "special-region", "disputed" or "uninhabited".
+ *
+ * @example
+ * ```ts
+ * import type { CountryStatus } from "@johnmorrisdotca/kuni";
+ * import { country } from "@johnmorrisdotca/kuni";
+ *
+ * const value: CountryStatus = country("BM")!.status;
+ * console.log(typeof value === "object" ? Object.keys(value).slice(0,6) : value);
+ * ```
+ */
+type CountryStatus = (typeof COUNTRY_STATUSES)[number];
 
 /** A country, or a territory with an ISO 3166-1 code of its own, as the lookups hand it out (frozen).
  *
@@ -164,6 +190,21 @@ interface Country {
    * Olympic Committee.
    */
   ioc?: string;
+  /**
+   * What it is: "un-member" for the 193 members of the United Nations, "un-observer" for its two non-member observer
+   * states, "territory" for a place that belongs to another state, "special-region" for Hong Kong and Macao,
+   * "disputed" where no sovereign can be given without taking a side, and "uninhabited" where nobody lives for good.
+   * docs/status.md lists every one that is not a member, with the reason.
+   */
+  status: CountryStatus;
+  /** The alpha-2 code of the state it belongs to: "GB" for Bermuda, "DK" for Greenland. Absent for a state, and where the sources name none. */
+  sovereign?: string;
+  /**
+   * What kind of place it is, in the words of Wikidata's class for it: "British Overseas Territory" and
+   * イギリスの海外領土. Absent for the members and observers of the United Nations; ja is null where Wikidata has no
+   * Japanese word.
+   */
+  type?: { en: string; ja: string | null };
 }
 
 /** A subdivision of a country (a state, a province, a prefecture), with its ISO 3166-2 code, as the lookups hand it out (frozen).
@@ -384,5 +425,5 @@ type GroupingKind = (typeof GROUPING_KINDS)[number];
  */
 type GroupingStatus = "candidate" | "associate" | "observer" | "suspended";
 
-export { CONTINENTS, GROUPING_KINDS, LANGUAGES, SUBDIVISION_TYPES };
-export type { Continent, Country, CountryFacts, GroupingKind, GroupingStatus, DrivingSide, HourCycle, Language, LatLon, MeasurementSystem, PaperSize, Subdivision, SubdivisionFacts, SubdivisionType, WeekStart };
+export { CONTINENTS, COUNTRY_STATUSES, GROUPING_KINDS, LANGUAGES, SUBDIVISION_TYPES };
+export type { Continent, Country, CountryFacts, CountryStatus, GroupingKind, GroupingStatus, DrivingSide, HourCycle, Language, LatLon, MeasurementSystem, PaperSize, Subdivision, SubdivisionFacts, SubdivisionType, WeekStart };

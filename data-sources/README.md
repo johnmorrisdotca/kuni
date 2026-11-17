@@ -15,6 +15,7 @@ bytes are not the recorded ones.
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
+| `wikidata-status-2026-11-17.json` | https://query.wikidata.org/sparql, the queries written in the file (`pnpm data:status`): what each ISO 3166-1 code's item is an instance of (P31), the country it is in (P17) and who claims it (P1336) | 2026-11-17 | CC0 |
 | `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
 | `wikidata-cities-extra-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-cities-extra.ts`): the cities whose only class is no kind of settlement (a municipality of the Netherlands, as Nijmegen is), in the main snapshot's columns | the day it was read | CC0 |
 | `wikidata-city-readings-<day>.json` | https://query.wikidata.org/sparql, the query written in the file (`node scripts/fetch-readings.ts`): each city's name in kana (P1814, best rank), for the cities with a Japanese label | the day it was read | CC0 |
@@ -39,6 +40,7 @@ pnpm data:fetch       # the CLDR and IANA files, again, and their lines in sourc
 pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day; the old one is removed
 pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
 pnpm data:codes       # a new Wikidata snapshot of the IOC and withdrawn codes, named for the day; the old one is removed
+pnpm data:status      # a new Wikidata snapshot of what each country code is and whose, named for the day; the old one is removed
 pnpm data:cities      # a new Wikidata snapshot of the cities and Natural Earth's populated places, named for the day; one query at a time, by hand
 pnpm data:elevations  # a new Wikidata snapshot of the cities' elevations (P2044), named for the day; about 140 queries, one at a time, by hand
 pnpm data             # rebuild src/data/ from what is here
@@ -68,6 +70,10 @@ Wikidata's structured data is CC0 (https://www.wikidata.org/wiki/Wikidata:Licens
 - for every item with an ISO 3166-3 code (P773): its English and Japanese labels (used for the names), and, kept in the snapshot but not used to make records, when it began (P571) and ended (P576), every alpha-2 (P297), alpha-3 (P298) and numeric (P299) code it held with the rank, start and end of each statement, and the items that replaced it (P1366) or followed it (P156).
 
 `scripts/withdrawn.ts` turns them into the `/withdrawn` entry and the `ioc` field and stops with every problem listed when a record cannot be stood behind; `scripts/withdrawn-config.ts` holds ISO 3166-3's table (the withdrawn countries' codes, years and successors, which are not Wikidata's) and the few name fixes, each with its reason, and `docs/withdrawn.md` lists them.
+
+## The Wikidata status snapshot
+
+`wikidata-status-<day>.json` (`scripts/fetch-wikidata-status.ts`) holds the answers to the three queries written in it, grouped by code, one line a code, each row's columns named in its `columns`: for every ISO 3166-1 alpha-2 code (P297, deprecated statements left out), what the item is an instance of (P31) with the class's English and Japanese labels, the country it is in (P17) with the alpha-2 code that country holds, and who claims it (P1336), each with the statement's rank and end. `scripts/status.ts` turns the first two into `status`, `sovereign` and `type` and stops with every problem listed when one cannot be stood behind; `scripts/status-config.ts` holds the rules and the few choices, each with its reason, and `docs/status.md` lists them. The claims are kept in the snapshot and make no record.
 
 ## The Wikidata facts snapshot
 

@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Every country says what it is, and whose.** `Country.status` is one of `COUNTRY_STATUSES`: `"un-member"` (the 193 members of the United Nations), `"un-observer"` (the Holy See and Palestine), `"territory"` (46), `"special-region"` (Hong Kong and Macao), `"disputed"` (Western Sahara, Taiwan and Kosovo) or `"uninhabited"` (Antarctica, Bouvet Island, Heard and McDonald Islands, South Georgia). `Country.sovereign` is the alpha-2 code of the state a place belongs to ("GB" for Bermuda, "US" for Puerto Rico, "DK" for Greenland and the Faroe Islands, "NL" for Aruba, Curaçao and Sint Maarten, "CN" for Hong Kong and Macao), and `Country.type` its kind in English and Japanese, in the words of Wikidata's class ("British Overseas Territory", イギリスの海外領土). `countries({ status })` keeps the countries of one status, so a site can set the 195 apart from the other entities, and `dependenciesOf("GB")` lists the places that belong to a state. No side is taken where sovereignty is disputed: those three have no `sovereign`, and `docs/status.md` says what the sources record. From the UN's members in Unicode CLDR, the UN's list of non-member observer states and Wikidata (P31 and P17, CC0); the rules and the few choices are in `scripts/status-config.ts`, each with its reason. Niue has no `sovereign` (Wikidata names none), the Caribbean Netherlands and Antarctica no `type`. Not compared with the UN's list of Non-Self-Governing Territories, whose page refused an automated read. New input: `data-sources/wikidata-status-2026-11-17.json` (`pnpm data:status`), with its licence in `NOTICE.md`. The main entry grows by 3.1 kB before minifying. An addition: a minor version.
+
 ## [1.9.0] - 2026-11-13
 
 ### Added

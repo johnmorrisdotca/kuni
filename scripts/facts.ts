@@ -77,7 +77,7 @@ const naturalEarthNeighbours = (folder: string): Map<string, string[]> => {
   return out;
 };
 
-const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[] } => {
+const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[]; itemOf: ReadonlyMap<string, string> } => {
   const { snapshot, countries, cldr } = inputs;
   const answers = snapshot.answers;
   const codes = new Set(countries.map((one) => one.alpha2));
@@ -298,7 +298,7 @@ const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[]
     "",
   );
 
-  return { records, doc };
+  return { records, doc, itemOf };
 };
 
 export { buildFacts };

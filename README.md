@@ -13,7 +13,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
   <a href="./LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-2f5d4a"></a>
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-0-2f5d4a">
   <img alt="TypeScript" src="https://img.shields.io/badge/types-TypeScript-3178c6">
-  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="21.6 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-21.6%20kB-2f5d4a"></a>
+  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="22.7 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-22.7%20kB-2f5d4a"></a>
   <a href="https://www.npmjs.com/package/@johnmorrisdotca/kuni#provenance"><img alt="Published with npm provenance" src="https://img.shields.io/badge/npm-provenance-2f5d4a"></a>
 </p>
 
@@ -100,9 +100,10 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
 - **Cities** (`/cities`): the world's cities in tiers, each its own entry so that a page pays only for what it uses: every capital of a country or a subdivision (`/cities/capitals`), the cities of a million people or more (`/cities/1m`) and of 100,000 or more (`/cities/100k`), capitals included, the cities of 15,000 or more through `loadCities("15k")` (made from the countries' own files), and one country's cities at a time (`/cities/<code>`). Each city has its Wikidata id (stable between releases), its name in English, Japanese and its own language where a source has them, continent, country, latitude and longitude, population with its date, country, first-level subdivision, capital flags, the IANA time zone it keeps and its elevation where Wikidata has one, and where each fact came from; `citySet` finds one by id, lists a country's, and answers the city nearest to a point. Wikidata (CC0) with Natural Earth's populated places (public domain). [docs/cities.md](./docs/cities.md) counts what is in each tier and what is missing.
+- **What each country is**: `country(code).status` says whether it is a member of the United Nations (193), an observer there (2), a territory of another state (46), a special administrative region (2), disputed (3) or uninhabited (4); `sovereign` is the state a territory belongs to ("GB" for Bermuda, "DK" for Greenland) and `type` its kind in both languages ("British Overseas Territory", イギリスの海外領土). `countries({ status: "un-member" })` and `dependenciesOf("GB")` list them. No side is taken where sovereignty is disputed: Western Sahara, Taiwan and Kosovo have no `sovereign`. [docs/status.md](docs/status.md) lists every one with its reason.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
-- **Small where it matters.** The countries and lookups are 21.6 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
+- **Small where it matters.** The countries and lookups are 22.7 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
@@ -136,7 +137,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 
 | Entry | What it carries | Size (minified + gzip) |
 | --- | --- | --- |
-| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 21.6 kB min+gzip |
+| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 22.7 kB min+gzip |
 | `@johnmorrisdotca/kuni/element` | `KuniCard`, `defineCard`, `KUNI_CARD_FIELDS`, `KUNI_CARD_OPTION_KEYS`, `readCardColors`; `KuniCardOptions` | 290.5 kB min+gzip |
 | `@johnmorrisdotca/kuni/element/define` | registers the tag and re-exports the element API | 290.5 kB min+gzip |
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 0.6 kB min+gzip |
@@ -159,12 +160,15 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 ### 1. The countries
 
 ```ts
-import { countries, country, countryByName } from "@johnmorrisdotca/kuni";
+import { countries, country, countryByName, dependenciesOf } from "@johnmorrisdotca/kuni";
 
 country("jp");                      // alpha-2 in either case, "JPN" or "392" too
 countryByName("cote d'ivoire");     // Côte d'Ivoire, CI
 countries({ order: "ja" });         // in Japanese order, by reading where a name is in kanji
 country("DE")?.ioc;                 // "GER", the Olympic committee's code (absent where Wikidata gives none)
+countries({ status: "un-member" }); // the 193 members of the United Nations
+country("BM")?.sovereign;           // "GB"; its type.en is "British Overseas Territory"
+dependenciesOf("DK");               // the Faroe Islands and Greenland
 ```
 
 ### 2. One country's subdivisions
@@ -411,7 +415,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 
 | Entry | Exports |
 | --- | --- |
-| `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
+| `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `dependenciesOf`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `COUNTRY_STATUSES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `CountryStatus`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
 | `@johnmorrisdotca/kuni/codes` | `COUNTRY_CODES`, `isCountryCode` and the type `CountryCode` |
 | `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionTypeLabel`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions` and `SubdivisionByNameOptions` |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | the country's list as the default export and as `SUBDIVISIONS` |
@@ -535,6 +539,7 @@ None, on purpose: Kuni is data and lookups, with no colours, markup or styles, s
 | Coordinates | 250 of 250 countries, 245 capitals; 4,780 of 5,050 subdivisions | `point`, `capitalPoint` |
 | Land borders | 327 pairs; 166 countries have one or more, 84 (islands, and Antarctica) none | `borders` |
 | Olympic codes | 209 of 250 countries | `ioc` |
+| Status | 250 of 250 countries; a sovereign for 51 of the 55 that are no state, a type for 53 | `status`, `sovereign`, `type` |
 | Withdrawn countries | the 31 of ISO 3166-3, each with a successor | `/withdrawn` |
 | Groupings | 7 continents, 30 UN M49 areas, 23 bodies, 16 informal, 31 inside a country | `/groupings` |
 | Languages | English and Japanese | `LANGUAGES` |
@@ -591,6 +596,7 @@ The [architecture guide](docs/guides/architecture.md) retains the complete origi
 | First day of the week, measurement system, paper size, clock; UN M49; the UN's members | Unicode CLDR 48.2 (`cldr-core`) | Unicode-3.0 |
 | The bodies' members, the informal groupings and the regions inside a country | written for this package from each body's own list, on 2026-10-09 (`scripts/groupings-config.ts`) | MIT; lists of facts |
 | IOC codes, and the withdrawn countries' names | Wikidata, a snapshot of 2026-10-10 (`data-sources/wikidata-codes-2026-10-10.json`) | CC0 |
+| What each country is, its sovereign and its type | The UN's members (Unicode CLDR 48.2), the UN's list of non-member observer states, and Wikidata, a snapshot of 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`) | Unicode-3.0; a list of facts; CC0 |
 | The cities: names, coordinates, populations with dates, countries, subdivisions, capitals | Wikidata, a snapshot of 2026-11-11 (`data-sources/wikidata-cities-2026-11-11.json`) | CC0 |
 | The cities: a Japanese name, a population or a point Wikidata lacks, capital classes, and the places Wikidata has no item for | Natural Earth 5.1.2 10m Populated Places, from its own release (`data-sources/natural-earth-populated-places-5.1.2.json`) | Public domain |
 | The cities' time zones | IANA's tzdb 2026e `zone.tab` and Wikidata's zones of the subdivisions, as `/zones` has them (not Natural Earth's TIMEZONE column) | Public domain; CC0 |
