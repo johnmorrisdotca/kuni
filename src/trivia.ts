@@ -32,8 +32,10 @@ interface CountryTrivia {
    */
   officialLanguages: readonly string[];
   /**
-   * The city kuni ranks first in the country, by its urban area's people where one is known: its id in /cities and
-   * its name. `null` for a country with no city of 15,000 people.
+   * The city with the most people in the city itself (its city proper: the municipality or district that is the
+   * city, as its census counts it), not the urban area round it: Rome for Italy, not Milan. Its id in /cities and its
+   * name. `null` for a country with no city of 15,000 people in kuni, or whose largest place kuni does not have
+   * under its code (Guam's Dededo). docs/trivia.md lists the figures set by hand and every gap.
    */
   largestCity: { id: string; name: { en: string; ja: string | null } } | null;
 }
@@ -93,7 +95,7 @@ const trivia = (code: string): CountryTrivia | null => {
  * import { allTrivia } from "@johnmorrisdotca/kuni/trivia";
  *
  * console.log(allTrivia().length);                                              // 250
- * console.log(allTrivia().filter((one) => one.largestCity !== null).length);    // 245
+ * console.log(allTrivia().filter((one) => one.largestCity !== null).length);    // 228
  * ```
  */
 const allTrivia = (): readonly CountryTrivia[] => getTable().list;

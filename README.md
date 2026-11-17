@@ -101,6 +101,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Kinds of place**: prefecture, state, province, region and some thirty more, read from Wikidata, with the Japanese word for each (県, 州, 省) where a country's names agree on one.
 - **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,968 of 5,050), with readings in kana for Japan's prefectural capitals (さっぽろし).
 - **Facts with their dates** (`/facts`): population (one year, 2025) and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
+- **Trivia** (`/trivia`): when each country began as Wikidata has it (224 of 250, an inception and not always independence), the languages CLDR records as official there (`["en", "fr"]` for Canada, apart from the languages people speak) and its largest city by the people of the city itself, not its urban area (Sydney, Toronto, Istanbul; Rome, not Milan), with the city's id in `/cities`. [docs/trivia.md](docs/trivia.md) lists what is missing: there is no national day, because no open source gives one cleanly.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Capitals with a role** (`/capitals`): for the nine countries that have more than one capital city or a capital that `capital` does not name alone (Benin, Bolivia, Burundi, Côte d'Ivoire, Malaysia, the Netherlands, South Africa, Sri Lanka, Tanzania), each city with its role (official, administrative, legislative, judicial, seat, political or economic) as the country's own government or law gives it (`docs/capitals.md` has the page and the line); `null` for every other country.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
@@ -151,6 +152,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 89.0 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivision-reforms` | `subdivisionReforms`: a dated note of a rearrangement, over the current codes | 1.4 kB min+gzip |
 | `@johnmorrisdotca/kuni/facts` | Every country's population, area, coordinates, borders, driving side and conventions | 8.6 kB min+gzip |
+| `@johnmorrisdotca/kuni/trivia` | `trivia(code)`: when a country began, its official languages, its largest city | 7.3 kB min+gzip |
 | `@johnmorrisdotca/kuni/zones` | A subdivision's IANA time zone, and the zone at a point in a country | 26.9 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 161.1 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 0.4–7.3 kB; Japan 2.4 kB |
@@ -566,6 +568,7 @@ None, on purpose: Kuni is data and lookups, with no colours, markup or styles, s
 | Area | 250 of 250 countries; 4,371 of 5,050 subdivisions | `areaKm2` |
 | Coordinates | 250 of 250 countries, 245 capitals; 4,780 of 5,050 subdivisions | `point`, `capitalPoint` |
 | Land borders | 327 pairs; 166 countries have one or more, 84 (islands, and Antarctica) none | `borders` |
+| Trivia | an inception for 224 of 250 countries, official languages for 246, a largest city for 228 | `/trivia` |
 | Olympic codes | 209 of 250 countries | `ioc` |
 | Withdrawn countries | the 31 of ISO 3166-3, each with a successor | `/withdrawn` |
 | Places outside ISO 3166-1 | 14: 7 reserved codes, 3 user-assigned, 4 de-facto; 14 named in Japanese, 12 with a parent | `/reserved` |
