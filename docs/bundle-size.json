@@ -45,6 +45,10 @@
       "minified": 2307,
       "gzip": 1029
     },
+    "./reserved": {
+      "minified": 6193,
+      "gzip": 1542
+    },
     "./cities": {
       "minified": 4652883,
       "gzip": 1491065

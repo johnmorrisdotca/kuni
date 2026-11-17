@@ -1,0 +1,90 @@
+{
+  "source": "https://query.wikidata.org/sparql",
+  "licence": "CC0-1.0 (Wikidata's structured data, https://www.wikidata.org/wiki/Wikidata:Licensing)",
+  "read": "2026-11-17",
+  "queries": {"labels":"SELECT ?item ?en ?ja WHERE {\n  VALUES ?item { wd:Q46197 wd:Q161258 wd:Q3405693 wd:Q184851 wd:Q5823 wd:Q5831 wd:Q5813 wd:Q220982 wd:Q31354462 wd:Q23681 wd:Q23427 wd:Q244165 wd:Q40362 wd:Q34754 wd:Q907112 }\n  OPTIONAL { ?item rdfs:label ?en . FILTER(LANG(?en) = \"en\") }\n  OPTIONAL { ?item rdfs:label ?ja . FILTER(LANG(?ja) = \"ja\") }\n}","classes":"SELECT ?item ?class ?en ?rank ?end WHERE {\n  VALUES ?item { wd:Q46197 wd:Q161258 wd:Q3405693 wd:Q184851 wd:Q5823 wd:Q5831 wd:Q5813 wd:Q220982 wd:Q31354462 wd:Q23681 wd:Q23427 wd:Q244165 wd:Q40362 wd:Q34754 wd:Q907112 }\n  ?item p:P31 ?statement .\n  ?statement ps:P31 ?class ; wikibase:rank ?rank .\n  FILTER(?rank != wikibase:DeprecatedRank)\n  OPTIONAL { ?statement pq:P582 ?end }\n  OPTIONAL { ?class rdfs:label ?en . FILTER(LANG(?en) = \"en\") }\n}","countries":"SELECT ?item ?country ?countryCode ?en ?rank ?end WHERE {\n  VALUES ?item { wd:Q46197 wd:Q161258 wd:Q3405693 wd:Q184851 wd:Q5823 wd:Q5831 wd:Q5813 wd:Q220982 wd:Q31354462 wd:Q23681 wd:Q23427 wd:Q244165 wd:Q40362 wd:Q34754 wd:Q907112 }\n  ?item p:P17 ?statement .\n  ?statement ps:P17 ?country ; wikibase:rank ?rank .\n  FILTER(?rank != wikibase:DeprecatedRank)\n  OPTIONAL { ?statement pq:P582 ?end }\n  OPTIONAL {\n    ?country p:P297 ?countryStatement .\n    ?countryStatement ps:P297 ?countryCode ; wikibase:rank ?countryRank .\n    FILTER(?countryRank != wikibase:DeprecatedRank)\n  }\n  OPTIONAL { ?country rdfs:label ?en . FILTER(LANG(?en) = \"en\") }\n}","claims":"SELECT ?item ?claimant ?claimantCode ?en ?rank ?end WHERE {\n  VALUES ?item { wd:Q46197 wd:Q161258 wd:Q3405693 wd:Q184851 wd:Q5823 wd:Q5831 wd:Q5813 wd:Q220982 wd:Q31354462 wd:Q23681 wd:Q23427 wd:Q244165 wd:Q40362 wd:Q34754 wd:Q907112 }\n  ?item p:P1336 ?statement .\n  ?statement ps:P1336 ?claimant ; wikibase:rank ?rank .\n  FILTER(?rank != wikibase:DeprecatedRank)\n  OPTIONAL { ?statement pq:P582 ?end }\n  OPTIONAL {\n    ?claimant p:P297 ?claimantStatement .\n    ?claimantStatement ps:P297 ?claimantCode ; wikibase:rank ?claimantRank .\n    FILTER(?claimantRank != wikibase:DeprecatedRank)\n  }\n  OPTIONAL { ?claimant rdfs:label ?en . FILTER(LANG(?en) = \"en\") }\n}","subdivisions":"SELECT ?item ?code ?rank ?end WHERE {\n  VALUES ?item { wd:Q46197 wd:Q161258 wd:Q3405693 wd:Q184851 wd:Q5823 wd:Q5831 wd:Q5813 wd:Q220982 wd:Q31354462 wd:Q23681 wd:Q23427 wd:Q244165 wd:Q40362 wd:Q34754 wd:Q907112 }\n  ?item p:P300 ?statement .\n  ?statement ps:P300 ?code ; wikibase:rank ?rank .\n  FILTER(?rank != wikibase:DeprecatedRank)\n  OPTIONAL { ?statement pq:P582 ?end }\n}","facts":"SELECT ?item ?population ?when ?dissolved WHERE {\n  VALUES ?item { wd:Q46197 wd:Q161258 wd:Q3405693 wd:Q184851 wd:Q5823 wd:Q5831 wd:Q5813 wd:Q220982 wd:Q31354462 wd:Q23681 wd:Q23427 wd:Q244165 wd:Q40362 wd:Q34754 wd:Q907112 }\n  OPTIONAL {\n    ?item p:P1082 ?statement .\n    ?statement a wikibase:BestRank ; ps:P1082 ?population .\n    OPTIONAL { ?statement pq:P585 ?when }\n  }\n  OPTIONAL { ?item wdt:P576 ?dissolved }\n}"},
+  "columns": {
+    "labels": ["English", "Japanese"],
+    "classes": ["class", "class label in English", "rank", "end"],
+    "countries": ["country", "alpha2 the country holds, or null", "country label in English", "rank", "end"],
+    "claims": ["claimant", "alpha2 the claimant holds, or null", "claimant label in English", "rank", "end"],
+    "subdivisions": ["ISO 3166-2 code", "rank", "end"],
+    "facts": ["population", "the day it is for", "dissolved"]
+  },
+  "labels": {
+    "Q161258": [["Clipperton Island","クリッパートン島"]],
+    "Q184851": [["Diego Garcia","ディエゴガルシア島"]],
+    "Q220982": [["Tristan da Cunha","トリスタンダクーニャ"]],
+    "Q23427": [["South Ossetia","南オセチア"]],
+    "Q23681": [["Northern Cyprus","北キプロス・トルコ共和国"]],
+    "Q244165": [["Republic of Artsakh","アルツァフ共和国"]],
+    "Q31354462": [["Republic of Abkhazia","アブハジア共和国"]],
+    "Q3405693": [["Sark","サーク島"]],
+    "Q34754": [["Somaliland","ソマリランド"]],
+    "Q40362": [["Sahrawi Arab Democratic Republic","サハラ・アラブ民主共和国"]],
+    "Q46197": [["Ascension Island","アセンション島"]],
+    "Q5813": [["Canary Islands","カナリア諸島"]],
+    "Q5823": [["Ceuta","セウタ"]],
+    "Q5831": [["Melilla","メリリャ"]],
+    "Q907112": [["Transnistria","沿ドニエストル共和国"]]
+  },
+  "classes": {
+    "Q161258": [["Q161243","dependent territory","normal",null],["Q23442","island","normal",null],["Q42523","atoll","normal",null],["Q6617741","WWF ecoregion","normal",null]],
+    "Q184851": [["Q23442","island","normal",null]],
+    "Q220982": [["Q1402592","island group","normal",null]],
+    "Q23427": [["Q10711424","state with limited recognition","normal",null],["Q1179466","de facto regime","normal",null],["Q15239622","disputed territory","normal",null],["Q208164","puppet state","normal",null],["Q2577883","occupied territory","normal",null]],
+    "Q23681": [["Q10711424","state with limited recognition","normal",null],["Q112099","island country","normal",null],["Q1179466","de facto regime","normal",null],["Q15239622","disputed territory","normal",null],["Q208164","puppet state","normal",null],["Q6256","country","normal",null]],
+    "Q244165": [["Q10711424","state with limited recognition","normal",null],["Q1179466","de facto regime","normal",null],["Q3024240","historical country","preferred",null]],
+    "Q31354462": [["Q10711424","state with limited recognition","normal",null],["Q1179466","de facto regime","normal",null],["Q15239622","disputed territory","normal",null],["Q208164","puppet state","normal",null]],
+    "Q3405693": [["Q23442","island","normal",null],["Q64953083","car-free place","normal",null]],
+    "Q34754": [["Q10711424","state with limited recognition","normal",null],["Q1179466","de facto regime","normal",null],["Q6256","country","normal",null],["Q7270","republic","normal",null]],
+    "Q40362": [["Q10711424","state with limited recognition","preferred",null],["Q1179466","de facto regime","normal",null],["Q6256","country","normal",null]],
+    "Q46197": [["Q23442","island","normal",null],["Q717478","administrative territorial entity of the United Kingdom","normal",null]],
+    "Q5813": [["Q104117291","region of Spain","normal",null],["Q10742","autonomous community of Spain","preferred",null],["Q26934845","integral overseas territory","normal",null],["Q2736168","historical nationality","normal",null],["Q3502482","cultural region","normal",null],["Q406957","NUTS 1 statistical territorial entity","normal",null]],
+    "Q5823": [["Q15239622","disputed territory","normal",null],["Q16532593","autonomous city of Spain","preferred",null],["Q2074737","municipality of Spain","normal",null],["Q2264924","port city","normal",null],["Q26934845","integral overseas territory","normal",null],["Q515","city","normal",null],["Q902814","border city","normal",null],["Q933394","exclave","normal",null]],
+    "Q5831": [["Q15239622","disputed territory","normal",null],["Q16532593","autonomous city of Spain","normal",null],["Q2074737","municipality of Spain","normal",null],["Q2264924","port city","normal",null],["Q902814","border city","normal",null],["Q933394","exclave","normal",null]],
+    "Q907112": [["Q10711424","state with limited recognition","normal",null],["Q1179466","de facto regime","normal",null],["Q123480","landlocked country","normal",null],["Q179164","unitary state","normal",null],["Q188686","military occupation","normal",null],["Q2577883","occupied territory","normal",null],["Q619610","social state","normal",null],["Q859563","secular state","normal",null]]
+  },
+  "countries": {
+    "Q161258": [["Q142","FR","France","normal",null]],
+    "Q184851": [["Q145","GB","United Kingdom","normal",null]],
+    "Q220982": [["Q124653007",null,"realm of the United Kingdom","normal",null]],
+    "Q23427": [["Q230","GE","Georgia","normal",null],["Q23427",null,"South Ossetia","normal",null]],
+    "Q23681": [["Q23681",null,"Northern Cyprus","normal",null]],
+    "Q31354462": [["Q230","GE","Georgia","normal",null],["Q31354462",null,"Republic of Abkhazia","preferred",null]],
+    "Q3405693": [["Q145","GB","United Kingdom","normal",null]],
+    "Q34754": [["Q1045","SO","Somalia","normal",null]],
+    "Q40362": [["Q40362",null,"Sahrawi Arab Democratic Republic","normal",null]],
+    "Q46197": [["Q124653007",null,"realm of the United Kingdom","normal",null]],
+    "Q5813": [["Q29","ES","Spain","normal",null]],
+    "Q5823": [["Q29","ES","Spain","normal",null]],
+    "Q5831": [["Q29","ES","Spain","normal",null]],
+    "Q907112": [["Q217","MD","Moldova","normal",null]]
+  },
+  "claims": {
+    "Q23681": [["Q229","CY","Cyprus","normal",null]]
+  },
+  "subdivisions": {
+    "Q161258": [["FR-CP","normal",null]],
+    "Q5813": [["ES-CN","normal",null]],
+    "Q5823": [["ES-CE","normal",null]],
+    "Q5831": [["ES-ML","normal",null]]
+  },
+  "facts": {
+    "Q161258": [[0,"2016-01-01",null],[0,"2025-01-01",null]],
+    "Q184851": [[4202,null,null]],
+    "Q220982": [[246,"2019-01-01",null]],
+    "Q23427": [[56520,"2022-01-01",null]],
+    "Q23681": [[489308,"2024-01-01",null]],
+    "Q244165": [[146600,"2012-01-01","2023-01-01"]],
+    "Q31354462": [[244000,"2025-01-01",null]],
+    "Q3405693": [[562,"2022-04-27",null]],
+    "Q34754": [[6500000,"2024-01-01",null]],
+    "Q40362": [[607292,"2021-01-01",null]],
+    "Q46197": [[806,"2016-02-01",null]],
+    "Q5813": [[2228862,"2024-01-01",null]],
+    "Q5823": [[83595,"2025-01-01",null]],
+    "Q5831": [[86780,"2025-01-01",null]],
+    "Q907112": [[367776,"2024-03-31",null]]
+  }
+}

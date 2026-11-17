@@ -23,6 +23,7 @@ src/
 ├── grouping-days.ts    whether a body's period covers a day: a member, not one, or unknown (a year-only day counts from its end)
 ├── capitals.ts         the "/capitals" entry: the capitals with a role, for the countries that have more than one capital city
 ├── withdrawn.ts        the "/withdrawn" entry: the countries ISO 3166-3 lists as withdrawn, and the codes they held
+├── reserved.ts         the "/reserved" entry: the places with a code or a flag in common use that are no country of ISO 3166-1
 ├── cities.ts           the "/cities" entry: joining tiers of cities, and finding one by id, country or nearness
 ├── city-rows.ts        turning a city's compact row into a City
 ├── rank.ts             the figure a city is ranked by: its urban area's people, else its own; after the others inside another's area

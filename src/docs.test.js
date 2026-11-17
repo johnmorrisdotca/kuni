@@ -11,6 +11,7 @@ import * as codes from "./codes.ts";
 import * as facts from "./facts.ts";
 import * as groupingsEntry from "./groupings.ts";
 import * as withdrawnEntry from "./withdrawn.ts";
+import * as reservedEntry from "./reserved.ts";
 import * as citiesEntry from "./cities.ts";
 import * as placesEntry from "./places.ts";
 import * as capitalCitiesEntry from "./cities/capitals.ts";
@@ -46,7 +47,7 @@ describe("the README", () => {
   it("names in its API table every runtime export of every entry", () => {
     const table = section("API");
     const rowOf = (entry) => table.split("\n").find((line) => line.startsWith(`| \`${entry}\``)) ?? "";
-    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/subdivision-reforms`, subdivisionReformsEntry], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry], [`${pkg.name}/capitals`, capitalsEntry], [`${pkg.name}/cities`, citiesEntry], [`${pkg.name}/places`, placesEntry], [`${pkg.name}/cities/capitals`, capitalCitiesEntry], [`${pkg.name}/cities/1m`, cities1mEntry], [`${pkg.name}/cities/100k`, cities100kEntry]]) {
+    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/subdivision-reforms`, subdivisionReformsEntry], [`${pkg.name}/reserved`, reservedEntry], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry], [`${pkg.name}/capitals`, capitalsEntry], [`${pkg.name}/cities`, citiesEntry], [`${pkg.name}/places`, placesEntry], [`${pkg.name}/cities/capitals`, capitalCitiesEntry], [`${pkg.name}/cities/1m`, cities1mEntry], [`${pkg.name}/cities/100k`, cities100kEntry]]) {
       const row = rowOf(entry);
       for (const name of Object.keys(module)) expect(row, `${name} is not in the API table's row for ${entry}`).toContain(`\`${name}\``);
     }

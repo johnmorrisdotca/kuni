@@ -187,6 +187,17 @@
       },
       "default": "./dist/capitals.js"
     },
+    "./reserved": {
+      "import": {
+        "types": "./dist/reserved.d.ts",
+        "default": "./dist/reserved.js"
+      },
+      "require": {
+        "types": "./dist/reserved.d.cts",
+        "default": "./dist/reserved.cjs"
+      },
+      "default": "./dist/reserved.js"
+    },
     "./cities": {
       "import": {
         "types": "./dist/cities.d.ts",
@@ -4847,6 +4858,7 @@
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
     "data:status": "node scripts/fetch-wikidata-status.ts",
+    "data:reserved": "node scripts/fetch-reserved.ts",
     "data:cities": "node scripts/fetch-cities.ts",
     "data:elevations": "node scripts/fetch-city-elevations.ts",
     "data:populations": "node scripts/fetch-city-populations.ts",

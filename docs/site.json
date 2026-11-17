@@ -42,6 +42,10 @@
       "en": "Withdrawn country codes",
       "ja": "廃止された国のコード"
     },
+    "./reserved": {
+      "en": "Places outside ISO 3166-1",
+      "ja": "ISO 3166-1にない地域"
+    },
     "./cities": {
       "en": "Cities: lookups and loading (the tiers load on demand; the size counts every tier)",
       "ja": "都市の検索と読み込み（段階は必要なときに読み込まれ、サイズはすべての段階を含みます）"
