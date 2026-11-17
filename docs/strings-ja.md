@@ -179,17 +179,41 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `status_observer` | observer | オブザーバー |
 | `status_suspended` | suspended | 資格停止中 |
 | `title_quiz` | Quiz | クイズ |
-| `blurb_quiz` | Capitals, the country a state or prefecture is in, and calling codes. Each round comes from a seed: share the link and a friend gets the same questions. | 首都、州や県の所属国、国番号のクイズです。問題はシード値から作るので、リンクを送れば友だちにも同じ問題が出ます。 |
+| `blurb_quiz` | Capitals, states and their capitals, calling codes, domains, currencies, languages, largest cities, neighbours, continents, the side of the road, and which of two countries is bigger. Each round comes from a seed: share the link and a friend gets the same questions. | 首都、州や県とその州都、国番号、ドメイン、通貨、言語、最大の都市、隣の国、大陸、車が走る側、2つの国の大きさ比べのクイズです。問題はシード値から作るので、リンクを送れば友だちにも同じ問題が出ます。 |
 | `help_quiz` | Choose what to be asked. | 出題の種類を選びます。 |
 | `help_quiz_seed` | Start a new round, or copy the link to this one. | 新しく始めるか、このラウンドへのリンクをコピーします。 |
 | `quiz_kind` | Ask | 出題 |
 | `quiz_capital` | Capitals | 首都 |
 | `quiz_subdivision` | Which country? | どこの国？ |
 | `quiz_calling` | Calling codes | 国番号 |
+| `quiz_country` | Whose capital? | どこの首都？ |
+| `quiz_state_capital` | State capitals | 州都・県庁所在地 |
+| `quiz_domain` | Domains | ドメイン |
+| `quiz_currency` | Currencies | 通貨 |
+| `quiz_language` | Languages | 言語 |
+| `quiz_largest_city` | Largest cities | 最大の都市 |
+| `quiz_borders` | Neighbours | 隣の国 |
+| `quiz_continent` | Continents | 大陸 |
+| `quiz_driving` | Driving side | 車が走る側 |
+| `quiz_population` | More people | 人口が多いのは |
+| `quiz_area` | More land | 面積が広いのは |
 | `quiz_new` | New round | 新しく始める |
 | `quiz_capital_q` | What is the capital of {name}? | {name}の首都は？ |
 | `quiz_subdivision_q` | Which country is {name} in? | {name}はどの国にある？ |
 | `quiz_calling_q` | Whose calling code is {code}? | 国番号 {code} の国は？ |
+| `quiz_country_q` | {name} is the capital of which country? | {name}はどの国の首都？ |
+| `quiz_state_capital_q` | What is the capital of {name}, {country}? | {country}の{name}の州都・県庁所在地は？ |
+| `quiz_domain_q` | Whose internet domain is {code}? | ドメイン {code} はどの国？ |
+| `quiz_currency_q` | Which currency does {name} use? | {name}の通貨は？ |
+| `quiz_language_q` | Which of these is an official language of {name}? | {name}の公用語はどれ？ |
+| `quiz_largest_city_q` | What is the largest city of {name}? | {name}で最大の都市は？ |
+| `quiz_borders_q` | Which of these borders {name}? | {name}と国境を接しているのは？ |
+| `quiz_continent_q` | Which continent is {name} in? | {name}はどの大陸にある？ |
+| `quiz_driving_q` | Which side of the road does {name} drive on? | {name}では車は道路のどちら側を走る？ |
+| `quiz_population_q` | Which has more people? | 人口が多いのはどちら？ |
+| `quiz_area_q` | Which has more land? | 面積が広いのはどちら？ |
+| `quiz_left` | The left | 左側 |
+| `quiz_right_side` | The right | 右側 |
 | `quiz_number` | Question {number} · seed {seed} | 第{number}問 ・ シード {seed} |
 | `quiz_choices` | The choices | 選択肢 |
 | `quiz_right` | Right! | 正解！ |
