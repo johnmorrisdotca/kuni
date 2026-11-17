@@ -19,7 +19,7 @@ address, the day it was read and its SHA-256.
 | The places outside ISO 3166-1 (`/reserved`): which two-letter codes are reserved for a place | IANA Language Subtag Registry, File-Date 2026-09-17 (https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry), cut down to its two-letter region subtags in `data-sources/iana/language-subtag-regions.json`; RFC 5646, section 2.2.4, says they are the codes ISO 3166-1 reserves exceptionally | A registry of facts, published by IANA for use |
 | The places outside ISO 3166-1: the reserved codes' names and three-letter codes; the other places' names, the state each is in or is claimed by, their ISO 3166-2 codes, populations and the year one was dissolved | Unicode CLDR 48.2; Wikidata, the snapshot `data-sources/wikidata-reserved-2026-11-17.json` | Unicode-3.0; CC0, below |
 | The places outside ISO 3166-1: that XA, XC and XO are in use for Abkhazia, Northern Cyprus and South Ossetia | The README of country-flag-icons 1.6.20 (https://unpkg.com/country-flag-icons@1.6.20/README.md, read 2026-11-17); only the three assignments are taken, no file of the package | MIT; facts |
-| The trivia (`/trivia`): when each country began (P571); the languages official in each; its largest city | Wikidata, the snapshot `data-sources/wikidata-trivia-2026-11-17.json`; Unicode CLDR 48.2 (`cldr-core`: territoryInfo, the languages with the status official or de_facto_official); the cities of `/cities`, whose sources are listed above | CC0, below; Unicode-3.0 |
+| The trivia (`/trivia`): when each country began (P571); the languages official in each; its largest city | Wikidata, the snapshot `data-sources/wikidata-trivia-2026-11-17.json`; Unicode CLDR 48.2 (`cldr-core`: territoryInfo, the languages with the status official or de_facto_official); the cities of `/cities`, whose sources are listed above, and for fourteen cities the census figures typed in `scripts/largest-city.ts`, each with its source (the national censuses of Benin, Ghana, Sudan, Eswatini and Equatorial Guinea) | CC0, below; Unicode-3.0 |
 | The International Olympic Committee's country codes; the names in English and Japanese of the countries ISO 3166-3 lists as withdrawn | Wikidata, the snapshot `data-sources/wikidata-codes-2026-10-10.json` | CC0, below |
 | The withdrawn countries' four-letter codes, alpha-3 and numeric codes, the years each code was in force and the codes that replaced them | ISO 3166-3's published list (ISO's Online Browsing Platform), transcribed once in `scripts/withdrawn-config.ts` and pinned whole by `src/withdrawn.test.ts` | A list of facts |
 | The IOC code of the Netherlands, and a few of the withdrawn countries' names | Written for this package, in `scripts/withdrawn-config.ts`, each with its reason | MIT |
@@ -182,6 +182,14 @@ A city is ranked by the urban area it heads, with one source for each country, k
 An area whose name is no city's ("West Midlands urban area") is set to its city by id in `scripts/metro-links.ts`, with
 the reason. Natural Earth (below) still gives the population of a city Wikidata has none for (Pietermaritzburg, Welkom),
 and that figure ranks the city.
+
+The largest city of `/trivia` is ranked by the city's own figure. For fourteen cities whose Wikidata figure is not the
+city's own, the figure of the city at its national census is typed in `scripts/largest-city.ts`, each with its source
+and day: INSAE's 2013 census of Benin, the Ghana Statistical Service's 2021 census, Sudan's 2008 census (Central Bureau
+of Statistics), Eswatini's 2017 census (Central Statistical Office), and the 2015 census of Equatorial Guinea as
+citypopulation.de (Thomas Brinkhoff) calculates the city's figure from it. Only facts are taken, each city's figure and
+its day; no table is copied. They were checked against each country's Wikipedia infobox on 2026-11-17, and nothing
+from Wikipedia is carried.
 
 The time zones (`/zones`, and `capitalZone` in `/facts`) are from IANA's tzdb zone.tab (public domain, below) and a
 fourth Wikidata snapshot (`data-sources/wikidata-zones-<day>.json`, CC0 on the same terms, read on 2026-11-11), asked for

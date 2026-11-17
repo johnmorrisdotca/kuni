@@ -22,8 +22,8 @@
       "gzip": 10624
     },
     "./trivia": {
-      "minified": 20753,
-      "gzip": 7564
+      "minified": 19812,
+      "gzip": 7276
     },
     "./zones": {
       "minified": 75233,

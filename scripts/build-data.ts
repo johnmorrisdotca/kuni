@@ -44,7 +44,8 @@ import { buildFacts } from "./facts.ts";
 import { buildStatus } from "./status.ts";
 import { buildReserved } from "./reserved.ts";
 import { buildTrivia } from "./trivia.ts";
-import type { TriviaSnapshot } from "./trivia.ts";
+import type { TriviaCity, TriviaSnapshot } from "./trivia.ts";
+import { URBAN_FACTS } from "./urban-facts.ts";
 import type { RegistrySnapshot, ReservedSnapshot } from "./reserved.ts";
 import type { StatusSnapshot } from "./status.ts";
 import { buildGroupings } from "./groupings.ts";
@@ -1058,10 +1059,10 @@ const writeWithdrawn = (): void => {
 };
 
 // The /trivia entry's table, a row a country, and docs/trivia.md: scripts/trivia.ts says how. The largest cities are
-// the first of each country's own, as writeCities ranks them, so this is written after the cities.
+// chosen from each country's own, in the order writeCities ranks them, so this is written after the cities.
 // Row: [alpha2, inception year, inception day, official languages, largest city's id, its English name, its Japanese
 // name]; the languages are one string with spaces between; trailing nulls are left off.
-const largestCities = new Map<string, { id: string; en: string; ja: string | null }>();
+const triviaCities = new Map<string, TriviaCity[]>();
 const triviaFile = manifest.files.find((file) => file.path.startsWith("wikidata-trivia-"));
 if (triviaFile === undefined) throw new Error("No trivia snapshot in data-sources/sources.json: run pnpm data:trivia");
 const writeTrivia = (): void => {
@@ -1070,7 +1071,8 @@ const writeTrivia = (): void => {
     countries: countries.map((country) => ({ alpha2: country.alpha2, en: country.en })),
     itemOf: facts.itemOf,
     territoryInfo: dig(readJson("cldr-core/supplemental/territoryInfo.json"), ["supplemental", "territoryInfo"]) as Parameters<typeof buildTrivia>[0]["territoryInfo"],
-    largestCity: largestCities,
+    cities: triviaCities,
+    censusRanked: new Set(Object.keys(URBAN_FACTS)),
   });
   const rows = records.map((record) => {
     const row: unknown[] = [record.alpha2, record.year, record.day, joined(record.officialLanguages, " "), record.largestCity?.id ?? null, record.largestCity?.en ?? null, record.largestCity?.ja ?? null];
@@ -1083,7 +1085,7 @@ const writeTrivia = (): void => {
     header(`The trivia about every country (${records.length}), one row each; src/trivia.ts says what the columns are.`, [
       `Wikidata (CC0), the snapshot data-sources/${triviaFile.path}: when each began`,
       `${CLDR_SOURCE}: official languages (territoryInfo)`,
-      "The cities of /cities, as scripts/build-data.ts ranks them: the largest city",
+      "The cities of /cities, by the people of the city itself, with the census figures of scripts/largest-city.ts: the largest city",
     ]) +
       'import type { TriviaRow } from "../rows";\n\n' +
       `const TRIVIA_ROWS: readonly TriviaRow[] = [\n${rows.join("\n")}\n];\n\n` +
@@ -1256,7 +1258,7 @@ const writeCities = (): void => {
   const withCities = [...byCountryRows.keys()].sort(byText);
   for (const alpha2 of withCities) {
     const own = byCountryRows.get(alpha2)!.sort(byRank);
-    largestCities.set(alpha2, { id: typeof own[0][0] === "number" ? `Q${own[0][0]}` : own[0][0], en: own[0][7], ja: own[0][8] });
+    triviaCities.set(alpha2, own.map((row) => ({ id: typeof row[0] === "number" ? `Q${row[0]}` : row[0], en: row[7], ja: row[8], population: row[3] })));
     const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en, readings, cityFacts.facts);
     writeDocumentedFile(join(OUT_CITY_COUNTRIES, `${alpha2.toLowerCase()}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);

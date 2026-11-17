@@ -44,21 +44,54 @@ describe("the trivia", () => {
 
   it("names the largest city in both languages", () => {
     expect(trivia("AU")?.largestCity).toEqual({ id: "Q3130", name: { en: "Sydney", ja: "シドニー" } });
-    expect(trivia("CA")?.largestCity?.name.en).toBe("Toronto");
-    expect(trivia("TR")?.largestCity?.name.en).toBe("Istanbul");
-    expect(trivia("BR")?.largestCity?.name.en).toBe("São Paulo");
+    expect(trivia("IT")?.largestCity).toEqual({ id: "Q220", name: { en: "Rome", ja: "ローマ" } });
     expect(trivia("AQ")?.largestCity).toBeNull();
-    expect(allTrivia().filter((one) => one.largestCity !== null)).toHaveLength(244);
+    expect(allTrivia().filter((one) => one.largestCity !== null)).toHaveLength(228);
+  });
+
+  // The city proper, not the urban area (docs/trivia.md): the capitals people take for the largest city, the cities an
+  // urban area would put first, and the countries whose Wikidata figures needed the census's (scripts/largest-city.ts).
+  const LARGEST: Readonly<Record<string, string>> = {
+    // Not the capital.
+    CA: "Toronto", AU: "Sydney", TR: "Istanbul", BR: "São Paulo", US: "New York City", CH: "Zurich", NZ: "Auckland", NG: "Lagos",
+    PK: "Karachi", MA: "Casablanca", KZ: "Almaty", VN: "Ho Chi Minh City", AE: "Dubai", ZA: "Johannesburg", CM: "Douala", EC: "Guayaquil",
+    BO: "Santa Cruz de la Sierra", TZ: "Dar es Salaam", MM: "Yangon", TT: "Chaguanas",
+    // China and India, by their censuses: not Chongqing's municipality, not Delhi's territory.
+    CN: "Shanghai", IN: "Mumbai",
+    // The city itself, where its urban area would give another.
+    IT: "Rome", IL: "Jerusalem", PH: "Quezon City", TW: "New Taipei City", BE: "Antwerp", CY: "Limassol", GH: "Kumasi", SD: "Omdurman",
+    // Wikidata's figure set right: a kingdom, a department, an atoll, a district, and estimates of another year.
+    BJ: "Cotonou", SZ: "Mbabane", GQ: "Bata", KI: "South Tarawa", LC: "Castries",
+    // The capital is the largest.
+    JP: "Tokyo", FR: "Paris", GB: "London", CL: "Santiago", EG: "Cairo",
+  };
+
+  it("names the city proper for the countries that are easy to get wrong", () => {
+    expect(Object.keys(LARGEST).length).toBeGreaterThanOrEqual(20);
+    for (const [code, city] of Object.entries(LARGEST)) expect(trivia(code)?.largestCity?.name.en, code).toBe(city);
+  });
+
+  it("names none rather than a wrong city where kuni lacks the largest place", () => {
+    // Guam's Dededo (under US in /cities), Liechtenstein's Schaan, San Marino's Dogana, Faʼaʼā, St. Paul's Bay, Providenciales.
+    for (const code of ["GU", "LI", "SM", "PF", "MT", "TC", "AS", "EH"]) expect(trivia(code)?.largestCity, code).toBeNull();
+    const wrong = new Set(["Q24697413", "Q2200458", "Q101418", "Q2486", "Q3116994", "Q30988", "Q1844", "Q1848"]); // Dagbon, Banikoara, Lobamba, Tarawa, Gros Islet, Hagåtña, Vaduz, San Marino
+    for (const one of allTrivia()) expect(wrong.has(one.largestCity?.id ?? ""), one.alpha2).toBe(false);
   });
 
   it("names as largest a city of the country, found in the country's own cities", async () => {
     const { citiesOf } = await import("./cities");
-    for (const code of ["JP", "FR", "NZ", "KE"]) {
+    for (const code of ["JP", "FR", "NZ", "KE", ...Object.keys(LARGEST)]) {
       const cities = (await citiesOf(code))!;
       const largest = trivia(code)!.largestCity!;
-      expect(cities[0].id, code).toBe(largest.id);
-      expect(cities[0].name.en, code).toBe(largest.name.en);
-      expect(country(cities[0].country)?.alpha2).toBe(code);
+      const found = cities.find((one) => one.id === largest.id);
+      expect(found?.name.en, code).toBe(largest.name.en);
+      expect(country(found!.country)?.alpha2, code).toBe(code);
+      // No city of the country has more people of its own, but where a census figure was set (Ghana, Sudan,
+      // Eswatini, ...) or the census ranks (China, India).
+      if (!["CN", "IN", "GH", "SD", "SZ", "BJ", "GQ", "KI", "LC"].includes(code)) {
+        const most = Math.max(...cities.map((one) => one.population ?? 0));
+        expect(found!.population, code).toBe(most);
+      }
     }
   });
 
