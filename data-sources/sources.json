@@ -22,6 +22,13 @@
       "note": "Unicode CLDR 48.2, which subdivision codes are current and which deprecated (Unicode-3.0)"
     },
     {
+      "path": "iana/language-subtag-regions.json",
+      "url": "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+      "read": "2026-11-17",
+      "sha256": "e91ec3125b788ed402563c126dd17e558c8bf169be9c2851191155e26710b97d",
+      "note": "IANA Language Subtag Registry, File-Date 2026-09-17, cut down to its two-letter region subtags (subtag, description, added, deprecated); the SHA-256 of the whole file at the address is 755fad43283be7b41ebe3c89ad054b6eaf928f404f9c0edb74799e0eab74beb1"
+    },
+    {
       "path": "iana/tlds-alpha-by-domain.txt",
       "url": "https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
       "read": "2026-10-09",
@@ -118,6 +125,13 @@
       "read": "2026-11-11",
       "sha256": "0d98ffae09b0404f79ce8f96b9ed503151f1bf2991b36730ceb2d6dc9f7921be",
       "note": "Wikidata SPARQL answers for the metropolitan and urban areas round the cities: the areas linked to each city, their English labels and populations with dates; the queries are in the file (CC0)"
+    },
+    {
+      "path": "wikidata-reserved-2026-11-17.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-17",
+      "sha256": "65df51cd2fb1c46569f084dfbfd93850619a78303ea99e43d38c43e14778b6e9",
+      "note": "Wikidata SPARQL answers for the places of the /reserved entry (the items scripts/reserved-config.ts names): labels, classes (P31), countries (P17), claimants (P1336), ISO 3166-2 codes (P300), populations (P1082) and the day dissolved (P576); the queries are in the file (CC0)"
     },
     {
       "path": "wikidata-status-2026-11-17.json",

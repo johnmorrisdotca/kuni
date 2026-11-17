@@ -40,6 +40,10 @@ describe("the built entries", () => {
     expect(size("dist/withdrawn.js")).toBeLessThan(12 * KB);
   });
 
+  it("keep the places outside ISO 3166-1 under 8 KB, out of the main entry", () => {
+    expect(size("dist/reserved.js")).toBeLessThan(8 * KB);
+  });
+
   it("keep the facts about every country under 30 KB, out of the main entry", () => {
     expect(size("dist/facts.js")).toBeLessThan(30 * KB);
     // The zones: zone.tab's principal cities and each subdivision's zone, apart from /facts.

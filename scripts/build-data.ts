@@ -42,6 +42,8 @@ import { englishSuspects } from "./en-names.ts";
 import { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES } from "./facts-config.ts";
 import { buildFacts } from "./facts.ts";
 import { buildStatus } from "./status.ts";
+import { buildReserved } from "./reserved.ts";
+import type { RegistrySnapshot, ReservedSnapshot } from "./reserved.ts";
 import type { StatusSnapshot } from "./status.ts";
 import { buildGroupings } from "./groupings.ts";
 import { buildWithdrawn, withdrawnDoc } from "./withdrawn.ts";
@@ -1004,6 +1006,37 @@ const writeGroupings = (): void => {
   writeDocumentedFile(join(DOCS, "groupings.md"), doc.join("\n"));
 };
 
+// The /reserved entry's table, one object a line, and docs/reserved.md: scripts/reserved.ts says how.
+const reservedFile = manifest.files.find((file) => file.path.startsWith("wikidata-reserved-"));
+if (reservedFile === undefined) throw new Error("No reserved snapshot in data-sources/sources.json: run pnpm data:reserved");
+const registryFile = readSource(manifest, "iana/language-subtag-regions.json");
+const writeReserved = (): void => {
+  const registry = JSON.parse(registryFile.text) as RegistrySnapshot;
+  const { records, doc } = buildReserved({
+    registry,
+    snapshot: JSON.parse(readSource(manifest, reservedFile.path).text) as ReservedSnapshot,
+    countryCodes: new Set(countries.map((country) => country.alpha2)),
+    unMembers: new Set(territoryContainment.UN._contains),
+    cldr: { en: territoriesEn, ja: territoriesJa, alpha3: codeMappings, subdivisionAlias: subdivisionAliases },
+    subdivisions: subdivisions.map((record) => ({ code: record.code, en: record.en })),
+    tidy,
+  });
+  writeDocumentedFile(
+    join(OUT_DATA, "reserved.data.ts"),
+    header(`The ${records.length} places outside ISO 3166-1, one object each.`, [
+      `IANA Language Subtag Registry, File-Date ${registry.fileDate} (${sourceLine(manifest, "iana/language-subtag-regions.json")}): which codes are reserved`,
+      `${CLDR_SOURCE}: the reserved codes' names and alpha-3 codes`,
+      `Wikidata (CC0), the snapshot data-sources/${reservedFile.path}: the other names, parents, subdivisions and years`,
+      "scripts/reserved-config.ts (MIT): the items, and the user-assigned codes with the flag set that uses them",
+    ]) +
+      'import type { ReservedRow } from "../rows";\n\n' +
+      `const RESERVED_ROWS: readonly ReservedRow[] = [\n${records.map((row) => `  ${literal(row)},`).join("\n")}\n];\n\n` +
+      `/**\n * The day the Wikidata snapshot of the places outside ISO 3166-1 was read.\n *\n * @example\n * \`\`\`ts\n * import { RESERVED_READ } from "@johnmorrisdotca/kuni/reserved";\n *\n * RESERVED_READ; // "${reservedFile.read}"\n * \`\`\`\n */\nconst RESERVED_READ = ${literal(reservedFile.read)};\n\n` +
+      "export { RESERVED_READ, RESERVED_ROWS };\n",
+  );
+  writeDocumentedFile(join(DOCS, "reserved.md"), doc.join("\n"));
+};
+
 // The /withdrawn entry's table, one object a line, and docs/withdrawn.md.
 const writeWithdrawn = (): void => {
   const { records } = withdrawn;
@@ -1551,6 +1584,7 @@ if (REPORT) {
   writeSubdivisionFacts();
   writeGroupings();
   writeWithdrawn();
+  writeReserved();
   writeCities();
   console.log(`Wrote ${countries.length} countries and ${subdivisions.length} subdivisions of ${byCountry.size} countries.`);
 }
