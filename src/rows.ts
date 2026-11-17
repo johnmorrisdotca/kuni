@@ -203,5 +203,20 @@ interface WithdrawnRow {
   reusedBy: string | null;
 }
 
+// A place outside ISO 3166-1 as scripts/build-data.ts writes it (src/reserved.ts makes the public object).
+interface ReservedRow {
+  id: string;
+  code: string | null;
+  alpha3: string | null;
+  kind: "iso-reserved" | "user-assigned" | "de-facto";
+  en: string;
+  ja: string | null;
+  status: "territory" | "disputed" | "uninhabited";
+  parent: string | null;
+  subdivisions: readonly string[];
+  until: string | null;
+  source: readonly [string, string];
+}
+
 export { expandCountry, expandSubdivisionFacts, expandSubdivisions, flagOf };
-export type { CapitalsRow, CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable, WithdrawnRow };
+export type { CapitalsRow, CountryRow, FactsRow, GroupingRow, ReservedRow, SubdivisionFactsTable, SubdivisionTable, WithdrawnRow };

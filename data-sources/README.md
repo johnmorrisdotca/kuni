@@ -15,6 +15,8 @@ bytes are not the recorded ones.
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
+| `iana/language-subtag-regions.json` | https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry (File-Date 2026-09-17), cut down to its two-letter region subtags: subtag, description, added, deprecated (`pnpm data:reserved`) | 2026-11-17 | IANA, a registry of facts |
+| `wikidata-reserved-2026-11-17.json` | https://query.wikidata.org/sparql, the queries written in the file (`pnpm data:reserved`): the places of the `/reserved` entry | 2026-11-17 | CC0 |
 | `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
 | `wikidata-cities-extra-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-cities-extra.ts`): the cities whose only class is no kind of settlement (a municipality of the Netherlands, as Nijmegen is; a commune of France, as Les Abymes is; a local council of Malta; a commune of French Polynesia; a district of the Turks and Caicos Islands), in the main snapshot's columns | the day it was read | CC0 |
 | `wikidata-city-populations-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`pnpm data:populations`): each city item's population statements (P1082) that are not deprecated, with rank, day (P585), method (P459) and the hosts of the reference URLs (P854), and the items that are an island, an atoll, a reef island or an archipelago (P31) | the day it was read | CC0 |
@@ -40,6 +42,7 @@ pnpm data:fetch       # the CLDR and IANA files, again, and their lines in sourc
 pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day; the old one is removed
 pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
 pnpm data:codes       # a new Wikidata snapshot of the IOC and withdrawn codes, named for the day; the old one is removed
+pnpm data:reserved    # IANA's region subtags again and a new Wikidata snapshot of the places outside ISO 3166-1, named for the day; the old one is removed
 pnpm data:cities      # a new Wikidata snapshot of the cities and Natural Earth's populated places, named for the day; one query at a time, by hand
 pnpm data:elevations  # a new Wikidata snapshot of the cities' elevations (P2044), named for the day; about 140 queries, one at a time, by hand
 pnpm data:populations # a new Wikidata snapshot of what each city's population figures rest on, named for the day; about 140 queries, one at a time, by hand
@@ -70,6 +73,10 @@ Wikidata's structured data is CC0 (https://www.wikidata.org/wiki/Wikidata:Licens
 - for every item with an ISO 3166-3 code (P773): its English and Japanese labels (used for the names), and, kept in the snapshot but not used to make records, when it began (P571) and ended (P576), every alpha-2 (P297), alpha-3 (P298) and numeric (P299) code it held with the rank, start and end of each statement, and the items that replaced it (P1366) or followed it (P156).
 
 `scripts/withdrawn.ts` turns them into the `/withdrawn` entry and the `ioc` field and stops with every problem listed when a record cannot be stood behind; `scripts/withdrawn-config.ts` holds ISO 3166-3's table (the withdrawn countries' codes, years and successors, which are not Wikidata's) and the few name fixes, each with its reason, and `docs/withdrawn.md` lists them.
+
+## The reserved places
+
+`iana/language-subtag-regions.json` and `wikidata-reserved-<day>.json` (`scripts/fetch-reserved.ts`) are the inputs of the `/reserved` entry. The first is IANA's Language Subtag Registry cut down to its two-letter region subtags; the SHA-256 of the whole file at the address is in `sources.json`. The second holds the answers to the six queries written in it, for the items `scripts/reserved-config.ts` names: labels, classes (P31), countries (P17), claimants (P1336), ISO 3166-2 codes (P300), populations (P1082) and the day dissolved (P576). `scripts/reserved.ts` turns them into the records and stops with every problem listed; `docs/reserved.md` lists the places and the choices.
 
 ## The Wikidata facts snapshot
 
