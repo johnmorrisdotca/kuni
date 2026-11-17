@@ -16,6 +16,7 @@ src/
 ├── subdivisions.ts     the "/subdivisions" entry: every subdivision and its lookups
 ├── load.ts             the "/load" entry: one country's subdivisions by dynamic import
 ├── facts.ts            the "/facts" entry: population, area, coordinates, borders and conventions
+├── trivia.ts           the "/trivia" entry: when a country began, its official languages and its largest city
 ├── zones.ts            the "/zones" entry: a subdivision's time zone, and the zone at a point
 ├── subdivision-facts.ts  the "/subdivision-facts" entry: one country's subdivision facts by dynamic import
 ├── groupings.ts        the "/groupings" entry: continents, UN M49, bodies, informal groupings, regions

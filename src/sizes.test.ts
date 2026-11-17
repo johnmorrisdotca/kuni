@@ -40,6 +40,10 @@ describe("the built entries", () => {
     expect(size("dist/withdrawn.js")).toBeLessThan(12 * KB);
   });
 
+  it("keep the trivia about every country under 24 KB, out of the main entry and out of /facts", () => {
+    expect(size("dist/trivia.js")).toBeLessThan(24 * KB);
+  });
+
   it("keep the places outside ISO 3166-1 under 8 KB, out of the main entry", () => {
     expect(size("dist/reserved.js")).toBeLessThan(8 * KB);
   });

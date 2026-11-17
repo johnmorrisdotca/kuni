@@ -30,6 +30,10 @@
       "en": "Country facts",
       "ja": "国の情報"
     },
+    "./trivia": {
+      "en": "Country trivia",
+      "ja": "国の豆知識"
+    },
     "./subdivision-facts": {
       "en": "Subdivision facts",
       "ja": "行政区画の情報"

@@ -43,6 +43,8 @@ import { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES } from "./facts-config.ts
 import { buildFacts } from "./facts.ts";
 import { buildStatus } from "./status.ts";
 import { buildReserved } from "./reserved.ts";
+import { buildTrivia } from "./trivia.ts";
+import type { TriviaSnapshot } from "./trivia.ts";
 import type { RegistrySnapshot, ReservedSnapshot } from "./reserved.ts";
 import type { StatusSnapshot } from "./status.ts";
 import { buildGroupings } from "./groupings.ts";
@@ -1055,6 +1057,42 @@ const writeWithdrawn = (): void => {
   writeDocumentedFile(join(DOCS, "withdrawn.md"), withdrawnDoc(records, codesSnapshot, withdrawn.ioc.size).join("\n"));
 };
 
+// The /trivia entry's table, a row a country, and docs/trivia.md: scripts/trivia.ts says how. The largest cities are
+// the first of each country's own, as writeCities ranks them, so this is written after the cities.
+// Row: [alpha2, inception year, inception day, official languages, largest city's id, its English name, its Japanese
+// name]; the languages are one string with spaces between; trailing nulls are left off.
+const largestCities = new Map<string, { id: string; en: string; ja: string | null }>();
+const triviaFile = manifest.files.find((file) => file.path.startsWith("wikidata-trivia-"));
+if (triviaFile === undefined) throw new Error("No trivia snapshot in data-sources/sources.json: run pnpm data:trivia");
+const writeTrivia = (): void => {
+  const { records, doc } = buildTrivia({
+    snapshot: JSON.parse(readSource(manifest, triviaFile.path).text) as TriviaSnapshot,
+    countries: countries.map((country) => ({ alpha2: country.alpha2, en: country.en })),
+    itemOf: facts.itemOf,
+    territoryInfo: dig(readJson("cldr-core/supplemental/territoryInfo.json"), ["supplemental", "territoryInfo"]) as Parameters<typeof buildTrivia>[0]["territoryInfo"],
+    largestCity: largestCities,
+  });
+  const rows = records.map((record) => {
+    const row: unknown[] = [record.alpha2, record.year, record.day, joined(record.officialLanguages, " "), record.largestCity?.id ?? null, record.largestCity?.en ?? null, record.largestCity?.ja ?? null];
+    while (row[row.length - 1] === null) row.pop();
+
+    return `  ${literal(row)},`;
+  });
+  writeDocumentedFile(
+    join(OUT_DATA, "trivia.data.ts"),
+    header(`The trivia about every country (${records.length}), one row each; src/trivia.ts says what the columns are.`, [
+      `Wikidata (CC0), the snapshot data-sources/${triviaFile.path}: when each began`,
+      `${CLDR_SOURCE}: official languages (territoryInfo)`,
+      "The cities of /cities, as scripts/build-data.ts ranks them: the largest city",
+    ]) +
+      'import type { TriviaRow } from "../rows";\n\n' +
+      `const TRIVIA_ROWS: readonly TriviaRow[] = [\n${rows.join("\n")}\n];\n\n` +
+      `/**\n * The day the Wikidata snapshot of the trivia was read.\n *\n * @example\n * \`\`\`ts\n * import { TRIVIA_READ } from "@johnmorrisdotca/kuni/trivia";\n *\n * TRIVIA_READ; // "${triviaFile.read}"\n * \`\`\`\n */\nconst TRIVIA_READ = ${literal(triviaFile.read)};\n\n` +
+      "export { TRIVIA_READ, TRIVIA_ROWS };\n",
+  );
+  writeDocumentedFile(join(DOCS, "trivia.md"), doc.join("\n"));
+};
+
 // The four tiers of /cities (src/data/cities-<tier>.data.ts, src/cities/<tier>.ts) and docs/cities.md.
 const writeCities = (): void => {
   const citiesFile = manifest.files.find((file) => file.path.startsWith("wikidata-cities-"));
@@ -1218,6 +1256,7 @@ const writeCities = (): void => {
   const withCities = [...byCountryRows.keys()].sort(byText);
   for (const alpha2 of withCities) {
     const own = byCountryRows.get(alpha2)!.sort(byRank);
+    largestCities.set(alpha2, { id: typeof own[0][0] === "number" ? `Q${own[0][0]}` : own[0][0], en: own[0][7], ja: own[0][8] });
     const files = countryCityFiles(alpha2, own, countries.find((country) => country.alpha2 === alpha2)!.en, readings, cityFacts.facts);
     writeDocumentedFile(join(OUT_CITY_COUNTRIES, `${alpha2.toLowerCase()}.data.ts`), files.data);
     writeDocumentedFile(join(ROOT, "src", "cities", `${alpha2.toLowerCase()}.ts`), files.entry);
@@ -1586,5 +1625,6 @@ if (REPORT) {
   writeWithdrawn();
   writeReserved();
   writeCities();
+  writeTrivia();
   console.log(`Wrote ${countries.length} countries and ${subdivisions.length} subdivisions of ${byCountry.size} countries.`);
 }
