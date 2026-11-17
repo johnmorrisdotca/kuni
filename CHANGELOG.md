@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Every country says what it is, and whose** (MODULES-1433). `Country.status` is a member of the United Nations, a non-member observer, a territory, a special region, disputed, or uninhabited. `Country.sovereign` is the state a territory belongs to. Niue is in free association with New Zealand. Taiwan and Kosovo keep the names they have and are given no new type. The rules are in `scripts/status-config.ts`.
+
 ## [1.17.2] - 2026-11-26
 
 ### Changed

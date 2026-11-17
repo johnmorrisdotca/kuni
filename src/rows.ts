@@ -2,7 +2,7 @@
 // that a page importing one country's subdivisions carries a couple of kilobytes and not five. These turn a
 // row back into the object the lookups hand out. Pure: the same row always makes an equal object.
 
-import type { Continent, Country, GroupingKind, GroupingStatus, LatLon, Subdivision, SubdivisionFacts, SubdivisionType } from "./types";
+import type { Continent, Country, CountryStatus, GroupingKind, GroupingStatus, LatLon, Subdivision, SubdivisionFacts, SubdivisionType } from "./types";
 
 // [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, callingCode,
 //  currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, ioc, kind]
@@ -57,7 +57,30 @@ const flagOf = (alpha2: string): string =>
 const listOf = (text: string | null, separator: string): string[] | undefined =>
   text === null ? undefined : text.split(separator);
 
-const expandCountry = (row: CountryRow): Country => {
+// What a code that is not a member of the United Nations is: its status, its sovereign and its type, as
+// scripts/build-data.ts writes them in STATUS_ROWS (alpha2|letter|sovereign|type index, trailing empties left off).
+interface CountryStanding {
+  status: CountryStatus;
+  sovereign?: string;
+  type?: { en: string; ja: string | null };
+}
+
+const STATUS_LETTERS: Readonly<Record<string, CountryStatus>> = { o: "un-observer", t: "territory", s: "special-region", d: "disputed", u: "uninhabited" };
+
+const expandStandings = (rows: string, types: readonly (readonly [string, string | null])[]): Map<string, CountryStanding> => {
+  const out = new Map<string, CountryStanding>();
+  for (const line of rows.split(LINE)) {
+    const [alpha2, letter, sovereign = "", type = ""] = line.split(FIELD);
+    const standing: CountryStanding = { status: STATUS_LETTERS[letter] };
+    if (sovereign !== "") standing.sovereign = sovereign;
+    if (type !== "") standing.type = { en: types[Number(type)][0], ja: types[Number(type)][1] };
+    out.set(alpha2, standing);
+  }
+
+  return out;
+};
+
+const expandCountry = (row: CountryRow, standing?: CountryStanding): Country => {
   const [alpha2, alpha3, numeric, en, ja, local, shortEn, shortJa, reading, continent, subregion, calling] = row;
   const [, , , , , , , , , , , , currencies, tld, capital, capitalJa, zones, languages, subdivisionType, aliases, ioc, kind] = row;
   const country: Country = {
@@ -68,6 +91,7 @@ const expandCountry = (row: CountryRow): Country => {
     name: local === null ? { en, ja } : { en, ja, local },
     flag: flagOf(alpha2),
     continent,
+    status: standing?.status ?? "un-member",
   };
   if (shortEn !== null || shortJa !== null) {
     country.shortName = {};
@@ -85,6 +109,8 @@ const expandCountry = (row: CountryRow): Country => {
   if (subdivisionType !== null) country.subdivisionType = subdivisionType;
   if (aliases !== null) country.aliases = listOf(aliases, "|");
   if (ioc !== null) country.ioc = ioc;
+  if (standing?.sovereign !== undefined) country.sovereign = standing.sovereign;
+  if (standing?.type !== undefined) country.type = standing.type;
 
   return country;
 };
@@ -208,5 +234,5 @@ interface WithdrawnRow {
   reusedBy: string | null;
 }
 
-export { expandCountry, expandSubdivisionFacts, expandSubdivisions, flagOf };
+export { expandCountry, expandStandings, expandSubdivisionFacts, expandSubdivisions, flagOf };
 export type { CapitalsRow, CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable, WithdrawnRow };

@@ -47,6 +47,8 @@ import { CAPITALS, CAPITALS_READ } from "./capitals-config.ts";
 import { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES } from "./facts-config.ts";
 import { buildFacts } from "./facts.ts";
 import { parseWorldBank } from "./world-bank.ts";
+import { buildStatus } from "./status.ts";
+import type { StatusSnapshot } from "./status.ts";
 import { buildGroupings } from "./groupings.ts";
 import { buildWithdrawn, withdrawnDoc } from "./withdrawn.ts";
 import type { CodesSnapshot } from "./withdrawn.ts";
@@ -508,6 +510,20 @@ for (const country of countries) {
   country.capitalJa = record.capitalJa;
 }
 
+// ----- Status ---------------------------------------------------------------------------------------------
+
+// What each code is (a member of the United Nations, an observer, a territory...) and whose; scripts/status.ts says
+// how, scripts/status-config.ts lists the exceptions.
+const statusFile = manifest.files.find((file) => file.path.startsWith("wikidata-status-"));
+if (statusFile === undefined) throw new Error("No status snapshot in data-sources/sources.json: run pnpm data:status");
+const statuses = buildStatus({
+  snapshot: JSON.parse(readSource(manifest, statusFile.path).text) as StatusSnapshot,
+  countries: countries.map((country) => ({ alpha2: country.alpha2, en: country.en })),
+  itemOf: facts.itemOf,
+  unMembers: new Set(territoryContainment.UN._contains),
+  populationOf: new Map(facts.records.map((record) => [record.alpha2, record.population])),
+});
+
 // ----- Subdivisions -------------------------------------------------------------------------------------
 
 const namesEn = subdivisionNames(cldrEn);
@@ -842,6 +858,23 @@ const continentReading = (continent: string): string => {
   return reading;
 };
 
+// The statuses as src/rows.ts reads them: the types once each, in the order they are first met, and a line for each
+// code that is not a member of the United Nations.
+const STATUS_LETTERS = { "un-observer": "o", territory: "t", "special-region": "s", disputed: "d", uninhabited: "u" } as const;
+const statusTypes: [string, string | null][] = [];
+const statusRows = statuses.records.flatMap((record) => {
+  if (record.status === "un-member") return [];
+  let type = "";
+  if (record.type !== null) {
+    const { en, ja } = record.type;
+    let index = statusTypes.findIndex((one) => one[0] === en && one[1] === ja);
+    if (index === -1) index = statusTypes.push([en, ja]) - 1;
+    type = String(index);
+  }
+
+  return [[record.alpha2, STATUS_LETTERS[record.status], record.sovereign ?? "", type].join("|").replace(/\|+$/, "")];
+});
+
 const writeCountries = (): void => {
   const codes = countries.map((country) => country.alpha2);
   writeDocumentedFile(
@@ -862,6 +895,7 @@ const writeCountries = (): void => {
       `${CLDR_SOURCE}: continents, from UN M49`,
       `Wikidata (CC0), the snapshot data-sources/${factsFile.path}: capitals' Japanese names`,
       IANA_SOURCE,
+      `${CLDR_SOURCE} (the UN's members), the United Nations' list of non-member observer states and Wikidata (CC0), the snapshot data-sources/${statusFile.path}: statuses, sovereigns, types (docs/status.md)`,
     ]) +
       'import type { CountryRow } from "../rows";\n\n' +
       `const COUNTRY_ROWS: readonly CountryRow[] = [\n${countries.map(countryRow).join("\n")}\n];\n\n` +
@@ -874,8 +908,15 @@ const writeCountries = (): void => {
         .map((continent) => `  ${continent}: ${literal(continentReading(continent))},`)
         .join("\n")}\n};\n\n` +
       `const SUBREGION_NAMES: Readonly<Record<string, readonly [string, string]>> = {\n${subregions.map((area) => `  ${literal(area)}: ${literal(regionNames(area))},`).join("\n")}\n};\n\n` +
-      "export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, SUBREGION_NAMES };\n",
+      "// What each code that is not a member of the United Nations is, a line each: alpha2|status|sovereign|type, where\n" +
+      "// status is a letter (o an observer, t a territory, s a special region, d disputed, u uninhabited), sovereign an\n" +
+      "// alpha-2 code and type an index into STATUS_TYPES; an absent value is empty. src/rows.ts reads them.\n" +
+      `const STATUS_ROWS = ${literal(statusRows.join("\n"))};\n\n` +
+      "// The types, each in English and Japanese (null where Wikidata has no Japanese label for the class).\n" +
+      `const STATUS_TYPES: readonly (readonly [string, string | null])[] = [\n${statusTypes.map((type) => `  ${literal(type)},`).join("\n")}\n];\n\n` +
+      "export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, STATUS_ROWS, STATUS_TYPES, SUBREGION_NAMES };\n",
   );
+  writeDocumentedFile(join(DOCS, "status.md"), statuses.doc.join("\n"));
 };
 
 // The /facts entry's table: one row a country, and the record of what was decided (docs/facts.md).

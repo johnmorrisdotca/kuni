@@ -7,6 +7,7 @@
 // Source: Unicode CLDR 48.2.0 (Unicode-3.0), cldr-localenames-full and cldr-core 48.2.0 on npm: continents, from UN M49
 // Source: Wikidata (CC0), the snapshot data-sources/wikidata-facts-2026-11-17.json: capitals' Japanese names
 // Source: IANA tzdb 2026e zone.tab (public domain) and the TLD list, Version 2026100900, Last Updated Fri Oct  9 07:07:01 2026 UTC
+// Source: Unicode CLDR 48.2.0 (Unicode-3.0), cldr-localenames-full and cldr-core 48.2.0 on npm (the UN's members), the United Nations' list of non-member observer states and Wikidata (CC0), the snapshot data-sources/wikidata-status-2026-11-17.json: statuses, sovereigns, types (docs/status.md)
 
 import type { CountryRow } from "../rows";
 
@@ -310,4 +311,30 @@ const SUBREGION_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   "155": ["Western Europe","西ヨーロッパ"],
 };
 
-export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, SUBREGION_NAMES };
+// What each code that is not a member of the United Nations is, a line each: alpha2|status|sovereign|type, where
+// status is a letter (o an observer, t a territory, s a special region, d disputed, u uninhabited), sovereign an
+// alpha-2 code and type an index into STATUS_TYPES; an absent value is empty. src/rows.ts reads them.
+const STATUS_ROWS = "AI|t|GB|0\nAQ|u\nAS|t|US|1\nAW|t|NL|2\nAX|t|FI|3\nBL|t|FR|4\nBM|t|GB|0\nBQ|t|NL\nBV|u|NO|5\nCC|t|AU|6\nCK|t|NZ|7\nCW|t|NL|2\nCX|t|AU|6\nEH|d||8\nFK|t|GB|0\nFO|t|DK|9\nGF|t|FR|10\nGG|t|GB|11\nGI|t|GB|0\nGL|t|DK|9\nGP|t|FR|10\nGS|u|GB|0\nGU|t|US|1\nHK|s|CN|12\nHM|u|AU|6\nIM|t|GB|11\nIO|t|GB|0\nJE|t|GB|11\nKY|t|GB|0\nMF|t|FR|4\nMO|s|CN|12\nMP|t|US|1\nMQ|t|FR|10\nMS|t|GB|0\nNC|t|FR|4\nNF|t|AU|6\nNU|t|NZ|13\nPF|t|FR|4\nPM|t|FR|4\nPN|t|GB|0\nPR|t|US|1\nPS|o\nRE|t|FR|10\nSH|t|GB|0\nSJ|t|NO|14\nSX|t|NL|2\nTC|t|GB|0\nTF|t|FR|15\nTK|t|NZ|15\nTW|d\nUM|t|US|16\nVA|o\nVG|t|GB|0\nVI|t|US|1\nWF|t|FR|4\nXK|d\nYT|t|FR|10";
+
+// The types, each in English and Japanese (null where Wikidata has no Japanese label for the class).
+const STATUS_TYPES: readonly (readonly [string, string | null])[] = [
+  ["British Overseas Territory","イギリスの海外領土"],
+  ["unincorporated territory of the United States","アメリカ合衆国の未編入領域"],
+  ["constituent country of the Kingdom of the Netherlands","オランダ王国の国"],
+  ["autonomous region","自治区"],
+  ["overseas collectivity of France","海外共同体"],
+  ["dependency of Norway",null],
+  ["external territory of Australia","オーストラリアの海外領土"],
+  ["associated state","自由連合"],
+  ["disputed territory","係争中の領域"],
+  ["autonomous country within the Kingdom of Denmark","デンマーク王国自治領"],
+  ["overseas department and region of France","海外県"],
+  ["Crown Dependency","イギリスの王室属領"],
+  ["special administrative region of China","特別行政区"],
+  ["in free association with New Zealand","ニュージーランドとの自由連合"],
+  ["statistical territorial entity","統計上の区画"],
+  ["dependent territory","属領"],
+  ["insular area of the United States","島嶼地域"],
+];
+
+export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, STATUS_ROWS, STATUS_TYPES, SUBREGION_NAMES };
