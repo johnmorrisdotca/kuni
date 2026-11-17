@@ -9,6 +9,7 @@ All notable changes to this project are written here. The format follows
 ### Added
 
 - Trivia for each country (MODULES-1436): when it began, its official languages and its largest city, in `@johnmorrisdotca/kuni/trivia`.
+- The demo quiz asks fourteen kinds of question. The new English labels are in the demo. Japanese labels stay as they were.
 
 ## [1.17.1] - 2026-11-23
 
