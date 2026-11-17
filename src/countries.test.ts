@@ -74,6 +74,7 @@ describe("the countries", () => {
       name: { en: "Japan", ja: "日本", local: "日本" },
       flag: "\u{1f1ef}\u{1f1f5}",
       continent: "AS",
+      status: "un-member",
       reading: "にほん",
       subregion: "030",
       callingCode: "+81",

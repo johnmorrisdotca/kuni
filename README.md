@@ -13,7 +13,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
   <a href="./LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-2f5d4a"></a>
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-0-2f5d4a">
   <img alt="TypeScript" src="https://img.shields.io/badge/types-TypeScript-3178c6">
-  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="21.6 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-21.6%20kB-2f5d4a"></a>
+  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="22.7 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-22.7%20kB-2f5d4a"></a>
   <a href="https://www.npmjs.com/package/@johnmorrisdotca/kuni#provenance"><img alt="Published with npm provenance" src="https://img.shields.io/badge/npm-provenance-2f5d4a"></a>
 </p>
 
@@ -107,7 +107,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Cities** (`/cities`): the world's cities in tiers, each its own entry so that a page pays only for what it uses: every capital of a country or a subdivision (`/cities/capitals`), the cities of a million people or more (`/cities/1m`) and of 100,000 or more (`/cities/100k`), capitals included, the cities of 15,000 or more through `loadCities("15k")` (made from the countries' own files), and one country's cities at a time (`/cities/<code>`). Each city has its Wikidata id (stable between releases), its name in English, Japanese and its own language where a source has them, continent, country, latitude and longitude, population with its date, country, first-level subdivision, capital flags, the IANA time zone it keeps and its elevation where Wikidata has one, and where each fact came from; `citySet` finds one by id, lists a country's, and answers the city nearest to a point. Wikidata (CC0) with Natural Earth's populated places (public domain). [docs/cities.md](./docs/cities.md) counts what is in each tier and what is missing.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
-- **Small where it matters.** The countries and lookups are 21.6 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
+- **Small where it matters.** The countries and lookups are 22.7 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, three seeded quizzes, a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.
@@ -141,7 +141,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 
 | Entry | What it carries | Size (minified + gzip) |
 | --- | --- | --- |
-| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 21.6 kB min+gzip |
+| `@johnmorrisdotca/kuni` | The 250 countries and the country lookups | 22.7 kB min+gzip |
 | `@johnmorrisdotca/kuni/element` | `KuniCard`, `defineCard`, `KUNI_CARD_FIELDS`, `KUNI_CARD_OPTION_KEYS`, `readCardColors`; `KuniCardOptions` | 290.5 kB min+gzip |
 | `@johnmorrisdotca/kuni/element/define` | registers the tag and re-exports the element API | 290.5 kB min+gzip |
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 0.6 kB min+gzip |
@@ -434,7 +434,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 
 | Entry | Exports |
 | --- | --- |
-| `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
+| `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `dependenciesOf`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `COUNTRY_STATUSES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `CountryStatus`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
 | `@johnmorrisdotca/kuni/codes` | `COUNTRY_CODES`, `isCountryCode` and the type `CountryCode` |
 | `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionByFormerCode`, `subdivisionsByFormerCode`, `subdivisionTypeLabel`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions` and `SubdivisionByNameOptions` |
 | `@johnmorrisdotca/kuni/subdivision-reforms` | `subdivisionReforms`, and the types `SubdivisionReform` and `SubdivisionReformUnit` |
