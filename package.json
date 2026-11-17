@@ -121,6 +121,17 @@
       },
       "default": "./dist/facts.js"
     },
+    "./trivia": {
+      "import": {
+        "types": "./dist/trivia.d.ts",
+        "default": "./dist/trivia.js"
+      },
+      "require": {
+        "types": "./dist/trivia.d.cts",
+        "default": "./dist/trivia.cjs"
+      },
+      "default": "./dist/trivia.js"
+    },
     "./zones": {
       "import": {
         "types": "./dist/zones.d.ts",
@@ -4846,6 +4857,7 @@
     "data:more-languages": "node scripts/fetch-more-languages.ts",
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
+    "data:trivia": "node scripts/build-data.ts",
     "data:cities": "node scripts/fetch-cities.ts",
     "data:elevations": "node scripts/fetch-city-elevations.ts",
     "data:populations": "node scripts/fetch-city-populations.ts",

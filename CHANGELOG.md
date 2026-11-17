@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Trivia for each country (MODULES-1436): when it began, its official languages and its largest city, in `@johnmorrisdotca/kuni/trivia`.
+
 ## [1.17.1] - 2026-11-23
 
 ### Changed

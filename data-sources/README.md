@@ -15,6 +15,7 @@ bytes are not the recorded ones.
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
+| `wikidata-trivia-2026-11-17.json` | the snapshot already in the repository: when each ISO 3166-1 code's item began (P571, best rank). Not fetched again | 2026-11-17 | CC0 |
 | `wikidata-cities-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file | the day it was read | CC0 |
 | `wikidata-cities-extra-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`node scripts/fetch-cities-extra.ts`): the cities whose only class is no kind of settlement (a municipality of the Netherlands, as Nijmegen is; a commune of France, as Les Abymes is; a local council of Malta; a commune of French Polynesia; a district of the Turks and Caicos Islands), in the main snapshot's columns | the day it was read | CC0 |
 | `wikidata-city-populations-<day>.json` | https://query.wikidata.org/sparql, the queries written in the file (`pnpm data:populations`): each city item's population statements (P1082) that are not deprecated, with rank, day (P585), method (P459) and the hosts of the reference URLs (P854), and the items that are an island, an atoll, a reef island or an archipelago (P31) | the day it was read | CC0 |
@@ -41,6 +42,7 @@ pnpm data:fetch       # the CLDR and IANA files, again, and their lines in sourc
 pnpm data:wikidata    # a new Wikidata snapshot of the names, named for the day; the old one is removed
 pnpm data:facts       # a new Wikidata snapshot of the facts, named for the day; the old one is removed
 pnpm data:codes       # a new Wikidata snapshot of the IOC and withdrawn codes, named for the day; the old one is removed
+pnpm data:trivia      # rebuilds /trivia from the snapshot already in the repository; it does not ask Wikidata
 pnpm data:cities      # a new Wikidata snapshot of the cities and Natural Earth's populated places, named for the day; one query at a time, by hand
 pnpm data:elevations  # a new Wikidata snapshot of the cities' elevations (P2044), named for the day; about 140 queries, one at a time, by hand
 pnpm data:populations # a new Wikidata snapshot of what each city's population figures rest on, named for the day; about 140 queries, one at a time, by hand

@@ -208,5 +208,9 @@ interface WithdrawnRow {
   reusedBy: string | null;
 }
 
+// [alpha2, inception year, inception day, official languages, largest city's id, its English name, its Japanese name],
+// written by scripts/build-data.ts. The languages are one string with spaces between; trailing nulls are left off.
+type TriviaRow = readonly [string, ...(string | number | null)[]];
+
 export { expandCountry, expandSubdivisionFacts, expandSubdivisions, flagOf };
-export type { CapitalsRow, CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable, WithdrawnRow };
+export type { CapitalsRow, CountryRow, FactsRow, GroupingRow, SubdivisionFactsTable, SubdivisionTable, TriviaRow, WithdrawnRow };

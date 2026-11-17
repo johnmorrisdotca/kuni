@@ -63,6 +63,12 @@ describe("the built entries", () => {
     expect(readFileSync("dist/facts.js", "utf8")).not.toContain("Bloemfontein");
   });
 
+  it("keep the trivia about every country under 24 KB, out of the main entry and out of /facts", () => {
+    expect(size("dist/trivia.js")).toBeLessThan(24 * KB);
+    expect(readFileSync("dist/index.js", "utf8")).not.toContain("officialLanguages");
+    expect(readFileSync("dist/facts.js", "utf8")).not.toContain("officialLanguages");
+  });
+
   it("keep the facts about every country under 30 KB, out of the main entry", () => {
     expect(size("dist/facts.js")).toBeLessThan(30 * KB);
     // The zones: zone.tab's principal cities and each subdivision's zone, apart from /facts.
