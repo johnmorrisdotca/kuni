@@ -231,6 +231,105 @@
       },
       "default": "./dist/places.js"
     },
+    "./names/fr": {
+      "import": {
+        "types": "./dist/names/fr.d.ts",
+        "default": "./dist/names/fr.js"
+      },
+      "require": {
+        "types": "./dist/names/fr.d.cts",
+        "default": "./dist/names/fr.cjs"
+      },
+      "default": "./dist/names/fr.js"
+    },
+    "./names/es": {
+      "import": {
+        "types": "./dist/names/es.d.ts",
+        "default": "./dist/names/es.js"
+      },
+      "require": {
+        "types": "./dist/names/es.d.cts",
+        "default": "./dist/names/es.cjs"
+      },
+      "default": "./dist/names/es.js"
+    },
+    "./names/de": {
+      "import": {
+        "types": "./dist/names/de.d.ts",
+        "default": "./dist/names/de.js"
+      },
+      "require": {
+        "types": "./dist/names/de.d.cts",
+        "default": "./dist/names/de.cjs"
+      },
+      "default": "./dist/names/de.js"
+    },
+    "./names/zh-Hans": {
+      "import": {
+        "types": "./dist/names/zh-Hans.d.ts",
+        "default": "./dist/names/zh-Hans.js"
+      },
+      "require": {
+        "types": "./dist/names/zh-Hans.d.cts",
+        "default": "./dist/names/zh-Hans.cjs"
+      },
+      "default": "./dist/names/zh-Hans.js"
+    },
+    "./names/zh-Hant": {
+      "import": {
+        "types": "./dist/names/zh-Hant.d.ts",
+        "default": "./dist/names/zh-Hant.js"
+      },
+      "require": {
+        "types": "./dist/names/zh-Hant.d.cts",
+        "default": "./dist/names/zh-Hant.cjs"
+      },
+      "default": "./dist/names/zh-Hant.js"
+    },
+    "./names/ko": {
+      "import": {
+        "types": "./dist/names/ko.d.ts",
+        "default": "./dist/names/ko.js"
+      },
+      "require": {
+        "types": "./dist/names/ko.d.cts",
+        "default": "./dist/names/ko.cjs"
+      },
+      "default": "./dist/names/ko.js"
+    },
+    "./names/pt": {
+      "import": {
+        "types": "./dist/names/pt.d.ts",
+        "default": "./dist/names/pt.js"
+      },
+      "require": {
+        "types": "./dist/names/pt.d.cts",
+        "default": "./dist/names/pt.cjs"
+      },
+      "default": "./dist/names/pt.js"
+    },
+    "./names/ar": {
+      "import": {
+        "types": "./dist/names/ar.d.ts",
+        "default": "./dist/names/ar.js"
+      },
+      "require": {
+        "types": "./dist/names/ar.d.cts",
+        "default": "./dist/names/ar.cjs"
+      },
+      "default": "./dist/names/ar.js"
+    },
+    "./names/ru": {
+      "import": {
+        "types": "./dist/names/ru.d.ts",
+        "default": "./dist/names/ru.js"
+      },
+      "require": {
+        "types": "./dist/names/ru.d.cts",
+        "default": "./dist/names/ru.cjs"
+      },
+      "default": "./dist/names/ru.js"
+    },
     "./package.json": "./package.json",
     "./element": {
       "import": {
@@ -4673,7 +4772,7 @@
     "test:package": "pnpm build && node scripts/check-package.mjs",
     "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test && node scripts/check-package.mjs",
     "prepublishOnly": "pnpm check",
-    "data": "node scripts/build-data.ts",
+    "data": "node scripts/build-data.ts && node scripts/build-names.ts",
     "data:report": "node scripts/build-data.ts --report",
     "data:fetch": "node scripts/fetch-sources.ts",
     "data:wikidata": "node scripts/fetch-wikidata.ts",
@@ -4690,7 +4789,8 @@
     "docs:check": "pnpm build && node scripts/docs-site.mjs check",
     "size": "node scripts/docs-site.mjs size",
     "test:usage": "pnpm site && node scripts/check-usage.ts",
-    "check:standard": "node scripts/check-standard.mjs"
+    "check:standard": "node scripts/check-standard.mjs",
+    "data:names": "node scripts/build-names.ts"
   },
   "devDependencies": {
     "@angular/common": "^22.2.4",

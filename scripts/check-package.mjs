@@ -109,6 +109,8 @@ import { capitalCities } from "${pkg.name}/cities/capitals";
 import japanCities from "${pkg.name}/cities/jp";
 import japanNames from "${pkg.name}/cities/names-jp";
 import { searchPlaces, cityNamesOf } from "${pkg.name}/places";
+import frenchNames from "${pkg.name}/names/fr";
+import { names as chineseNames } from "${pkg.name}/names/zh-Hans";
 ${probe}
 const all = [${entries.map((_, at) => `m${at}`).join(", ")}];
 const names = ${JSON.stringify(entries)};
@@ -128,6 +130,7 @@ if ((await citiesOf("JP")).length !== japanCities.length) throw new Error("citie
 if ((await loadCities("capitals")).cities.length !== capitalCities().length) throw new Error("loadCities(capitals) did not load");
 const canada = await loadSubdivisions("CA");
 if (canada.length !== 13) throw new Error("loadSubdivisions(CA) gave " + canada?.length);
+if (frenchNames.countryName("JP") !== "Japon" || frenchNames.countryByName("allemagne") !== "DE" || chineseNames.countryName("JP") !== "日本") throw new Error("names/fr or names/zh-Hans gave " + frenchNames.countryName("JP"));
 console.log(names.join(" "));
 `,
 );
@@ -137,6 +140,7 @@ writeFileSync(
 ${probe}
 for (const name of names) { const m = require(name); if (Object.keys(m).length === 0) throw new Error(name + " exports nothing"); }
 if (JSON.stringify(answers(require(${JSON.stringify(pkg.name)}), require("${pkg.name}/subdivisions"))) !== wanted) throw new Error("the package answered differently by require");
+if (require("${pkg.name}/names/fr").names.countryName("JP") !== "Japon" || require("${pkg.name}/names/ar").default.countryByName("اليابان") !== "JP") throw new Error("names by require");
 const { SUBDIVISIONS } = require("${pkg.name}/subdivisions/jp");
 if (SUBDIVISIONS.length !== 47) throw new Error("subdivisions/jp by require gave " + SUBDIVISIONS.length);
 if (require("${pkg.name}/facts").facts("US").measurement !== "US") throw new Error("facts by require");
@@ -172,7 +176,10 @@ import japanFacts from "${pkg.name}/subdivision-facts/jp";
 import { citySet, citiesOf, type City, type CityTier } from "${pkg.name}/cities";
 import { capitalCities } from "${pkg.name}/cities/capitals";
 import japanCities from "${pkg.name}/cities/jp";
+import frenchNames, { type Names, type NamesLanguage } from "${pkg.name}/names/fr";
 
+const frenchLanguage: NamesLanguage = frenchNames.language;
+const allNames: Names = frenchNames;
 const paris: City | null = citySet(capitalCities()).byId("Q90");
 const tier: CityTier = "1m";
 const inJapan: Promise<readonly City[] | null> = citiesOf("JP");
@@ -188,7 +195,7 @@ const known: boolean = isCountryCode("JP");
 const place: Subdivision | null = subdivision("JP-13") ?? subdivisionByName("Ontario");
 const first: Subdivision | undefined = japan[0];
 const later: Promise<readonly Subdivision[] | null> = loadSubdivisions("CA");
-export { inJapan, paris, tier, tokyo, old, body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
+export { allNames, frenchLanguage, inJapan, paris, tier, tokyo, old, body, code, fact, first, firstFact, known, later, one, place, prefectureFacts, countryByName };
 `;
 writeFileSync(join(project, "types.mts"), typed);
 writeFileSync(join(project, "types.cts"), typed);
