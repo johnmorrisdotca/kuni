@@ -183,6 +183,13 @@
       "note": "Wikidata SPARQL answers for the places of the /reserved entry (the items scripts/reserved-config.ts names): labels, classes (P31), countries (P17), claimants (P1336), ISO 3166-2 codes (P300), populations (P1082) and the day dissolved (P576); the queries are in the file (CC0)"
     },
     {
+      "path": "wikidata-trivia-2026-11-17.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-17",
+      "sha256": "1cf03494619d5705890e4b664587a025de0abf5d7dca64f5955346fce496f23e",
+      "note": "Wikidata snapshot already on disk: when each ISO 3166-1 code's item began (P571, best rank, with the date's precision) (CC0). Not fetched again."
+    },
+    {
       "path": "wikidata-zones-2026-11-11.json",
       "url": "https://query.wikidata.org/sparql",
       "read": "2026-11-11",
