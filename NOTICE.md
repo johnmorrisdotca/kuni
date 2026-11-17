@@ -8,6 +8,7 @@ address, the day it was read and its SHA-256.
 | What | Made from | Terms |
 | --- | --- | --- |
 | Country names in English and Japanese, their short and variant forms, alpha-3 and numeric codes, currencies, UN M49 continents and subregions | Unicode CLDR 48.2 (`cldr-localenames-full` and `cldr-core` 48.2.0 on npm) | Unicode-3.0, below |
+| Country names in French, Spanish, German, Simplified and Traditional Chinese, Korean, Portuguese, Arabic and Russian, with their short and variant forms (`/names/<language>`) | Unicode CLDR 48.2 (`cldr-localenames-full` 48.2.0 on npm, `main/<language>/territories.json`); a few search aliases are written by hand in `scripts/names-config.ts` | Unicode-3.0, below |
 | Subdivision codes, English and Japanese names, the levels they are at and what they are inside | Unicode CLDR 48.2 (`common/subdivisions/en.xml`, `ja.xml`, `common/validity/subdivision.xml` at the tag `release-48-2`, and `cldr-core`'s `subdivisionContainment.json` and `aliases.json`) | Unicode-3.0, below |
 | Japanese names of the subdivisions CLDR has none for, the kana readings of Japan's prefectures, calling codes, and what kind of place each subdivision is | Wikidata, the snapshot `data-sources/wikidata-2026-10-09.json` | CC0, below |
 | Each country's own name, capital and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |

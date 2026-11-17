@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Country names in nine more languages (MODULES-1435), each its own entry so a page pays for one (about 4 kB gzip): `@johnmorrisdotca/kuni/names/fr`, `/es`, `/de`, `/zh-Hans`, `/zh-Hant`, `/ko`, `/pt`, `/ar` and `/ru`. Each exports `names` (also the default) with `countryName(code, { short })`, `countryVariants(code)`, `countryByName(text)`, `countries({ order })` and `fold(text)`. The names, short forms and variants are Unicode CLDR 48.2's, from `cldr-localenames-full` already in the build, so nothing is downloaded; all 250 countries have a name in each language, and a name CLDR does not have would be `null`, never copied in or machine-translated. Search folds as each language is typed: the leading article in French, Spanish, Portuguese and German, the marks, hamza forms, ya, ta marbuta and tatweel in Arabic, plus `Oesterreich` for German. Countries only for now; the entries are shaped to take subdivisions later without a change to these functions. The guide "Country names in more languages" is in English and Japanese. `pnpm data:names` rebuilds them (`pnpm data` runs it too).
+
 ## [1.9.0] - 2026-11-13
 
 ### Added
