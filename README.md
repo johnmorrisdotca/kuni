@@ -13,7 +13,7 @@ A typed, zero-dependency dataset from Unicode CLDR and Wikidata, loaded one coun
   <a href="./LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-2f5d4a"></a>
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-0-2f5d4a">
   <img alt="TypeScript" src="https://img.shields.io/badge/types-TypeScript-3178c6">
-  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="22.7 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-22.7%20kB-2f5d4a"></a>
+  <a href="https://johnmorrisdotca.github.io/kuni/docs/api/main/index.html"><img alt="22.8 kB minified and gzipped" src="https://img.shields.io/badge/min%2Bgzip-22.8%20kB-2f5d4a"></a>
   <a href="https://www.npmjs.com/package/@johnmorrisdotca/kuni#provenance"><img alt="Published with npm provenance" src="https://img.shields.io/badge/npm-provenance-2f5d4a"></a>
 </p>
 
@@ -105,7 +105,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **What each country is**: `country(code).status` says whether it is a member of the United Nations (193), an observer there (2), a territory of another state (46), a special administrative region (2), disputed (3) or uninhabited (4); `sovereign` is the state a territory belongs to ("GB" for Bermuda, "DK" for Greenland) and `type` its kind in both languages ("British Overseas Territory", イギリスの海外領土). `countries({ status: "un-member" })` and `dependenciesOf("GB")` list them. No side is taken where sovereignty is disputed: Western Sahara, Taiwan and Kosovo have no `sovereign`. [docs/status.md](docs/status.md) lists every one with its reason.
 - **Olympic codes**: `country(code).ioc` is the International Olympic Committee's three-letter code ("JPN", "GER" for Germany, "SUI" for Switzerland) for the 209 countries that have one.
 - **Groupings** (`/groupings`): the seven continents, the 30 UN M49 areas, 23 international bodies (the UN, the EU, the euro area, Schengen, NATO, the G7 and G20, ASEAN and more) with the days members joined and left, 16 informal groupings (the Middle East, the Balkans, Scandinavia, the Sahel) each with the definition it follows, and regions inside a country (Japan's 地方, the US Census regions, Canada's regions).
-- **Small where it matters.** The countries and lookups are 22.7 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
+- **Small where it matters.** The countries and lookups are 22.8 kB minified and gzipped; one country's subdivisions are their own entry (Japan's 47, measured separately) or a dynamic import.
 - **Typed, frozen, pure and the same everywhere.** ESM and CommonJS, types for both, no dependencies, no network and no `Intl`. Every export carries a doc comment with a runnable example, which an editor shows on hover and the tests run.
 - **A demo to use, not just to read.** A page for each country, two countries compared, every country in a sortable table, the groupings explorer, fourteen seeded quizzes (capitals, state capitals, currencies, languages, largest cities, neighbours and more), a country and region form widget with its code to copy, and the data's quality in the open, each at an address of its own and downloadable as CSV, JSON, text, a Markdown table or SQL: [the demo](https://johnmorrisdotca.github.io/kuni/).
 - **Never a guess.** A value no source gives is `null`, with the reason written down (`docs/facts.md`, `docs/subdivision-facts.md`, `docs/ja-gaps.md`), never a plausible filler.

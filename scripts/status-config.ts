@@ -77,19 +77,19 @@ const TYPE_CLASSES: { item: string; en?: string; ja?: string | null; why?: strin
   { item: "Q46395", en: "British Overseas Territory", why: "Wikidata labels the class in the plural, British Overseas Territories." },
   { item: "Q185086", en: "Crown Dependency", why: "Wikidata labels the class in the plural, Crown Dependencies." },
   { item: "Q783733" }, // unincorporated territory of the United States
-  { item: "Q15304003", en: "constituent country of the Kingdom of the Netherlands", why: "Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term." },
-  { item: "Q66724388" }, // autonomous country within the Kingdom of Denmark
+  { item: "Q15304003", en: "constituent country of the Kingdom of the Netherlands", ja: "オランダ王国の構成国", why: "Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term. Its Japanese label, オランダ王国の国, is reworded likewise to 構成国, the usual Japanese term." },
+  { item: "Q66724388", ja: "デンマーク王国の自治領", why: "Wikidata's Japanese label, デンマーク王国自治領, lacks the の that the other types have." },
   { item: "Q779415" }, // special administrative region of China
-  { item: "Q202216" }, // overseas department and region of France
-  { item: "Q719487" }, // overseas collectivity of France
+  { item: "Q202216", ja: "フランスの海外県", why: "Wikidata's Japanese label, 海外県, leaves out whose it is, which the English label says." },
+  { item: "Q719487", ja: "フランスの海外共同体", why: "Wikidata's Japanese label, 海外共同体, leaves out whose it is, which the English label says." },
   { item: "Q11687019" }, // external territory of Australia
   { item: "Q5260616", ja: null, why: "Wikidata's Japanese label, ノルウェーの南極領, says Norway's Antarctic territory, which Bouvet Island is not." },
-  { item: "Q1138279" }, // associated state
-  { item: "Q782614" }, // autonomous region
+  { item: "Q1138279", ja: "自由連合国", why: "Wikidata's Japanese label, 自由連合, names the arrangement and not the state in it." },
+  { item: "Q782614", ja: "自治地域", why: "Wikidata's Japanese label, 自治区, is the name of China's autonomous regions and reads as one of them." },
   { item: "Q10711424" }, // state with limited recognition
   { item: "Q15239622" }, // disputed territory
   { item: "Q161243" }, // dependent territory
-  { item: "Q462778" }, // insular area of the United States
+  { item: "Q462778", ja: "アメリカ合衆国の島嶼地域", why: "Wikidata's Japanese label, 島嶼地域, leaves out whose it is, which the English label says." },
   { item: "Q15042037" }, // statistical territorial entity
 ];
 

@@ -320,21 +320,21 @@ const STATUS_ROWS = "AI|t|GB|0\nAQ|u\nAS|t|US|1\nAW|t|NL|2\nAX|t|FI|3\nBL|t|FR|4
 const STATUS_TYPES: readonly (readonly [string, string | null])[] = [
   ["British Overseas Territory","イギリスの海外領土"],
   ["unincorporated territory of the United States","アメリカ合衆国の未編入領域"],
-  ["constituent country of the Kingdom of the Netherlands","オランダ王国の国"],
-  ["autonomous region","自治区"],
-  ["overseas collectivity of France","海外共同体"],
+  ["constituent country of the Kingdom of the Netherlands","オランダ王国の構成国"],
+  ["autonomous region","自治地域"],
+  ["overseas collectivity of France","フランスの海外共同体"],
   ["dependency of Norway",null],
   ["external territory of Australia","オーストラリアの海外領土"],
-  ["associated state","自由連合"],
+  ["associated state","自由連合国"],
   ["disputed territory","係争中の領域"],
-  ["autonomous country within the Kingdom of Denmark","デンマーク王国自治領"],
-  ["overseas department and region of France","海外県"],
+  ["autonomous country within the Kingdom of Denmark","デンマーク王国の自治領"],
+  ["overseas department and region of France","フランスの海外県"],
   ["Crown Dependency","イギリスの王室属領"],
   ["special administrative region of China","特別行政区"],
   ["statistical territorial entity","統計上の区画"],
   ["dependent territory","属領"],
   ["state with limited recognition","限定的に承認されている国家"],
-  ["insular area of the United States","島嶼地域"],
+  ["insular area of the United States","アメリカ合衆国の島嶼地域"],
 ];
 
 export { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, STATUS_ROWS, STATUS_TYPES, SUBREGION_NAMES };
