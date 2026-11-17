@@ -9,7 +9,7 @@ import { join, resolve } from "node:path";
 const ROOT = resolve(import.meta.dirname, "..");
 const SOURCES_DIR = join(ROOT, "data-sources");
 const MANIFEST_PATH = join(SOURCES_DIR, "sources.json");
-const USER_AGENT = "kuni-data/0.1 (https://github.com/johnmorrisdotca/kuni; john@johnmorris.ca)";
+const USER_AGENT = "kuni-data/0.1 (https://github.com/johnmorrisdotca/kuni)";
 
 interface SourceFile {
   path: string; // Relative to data-sources/
