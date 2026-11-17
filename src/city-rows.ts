@@ -9,7 +9,8 @@ import type { Continent } from "./types";
 /**
  * Which input a fact in a city's record came from. Wikidata (CC0) is the first source; Natural Earth's populated
  * places (public domain) fill what Wikidata has not got; "kuni" is a name written for this package, with its reason in
- * scripts/cities.ts (East Jerusalem is 東エルサレム).
+ * scripts/cities.ts (East Jerusalem is 東エルサレム), or a population taken by hand from the country's census where
+ * Wikidata has none for the city itself, with its source in scripts/city-populations.ts (Kumasi's 443,981 of 2021).
  *
  * @example
  * ```ts
@@ -249,7 +250,7 @@ const freezeCity = (row: CityRow, reading: string | null = null, place: CityPlac
     capitalOf: Object.freeze(capitalOf === null ? [] : capitalOf.split(" ")),
     source: Object.freeze({
       point: sources & 4 ? "natural-earth" : "wikidata",
-      population: population === null ? null : sources & 2 ? "natural-earth" : "wikidata",
+      population: population === null ? null : sources & 64 ? "kuni" : sources & 2 ? "natural-earth" : "wikidata",
       ja: ja === null ? null : sources & 8 ? "kuni" : sources & 1 ? "natural-earth" : "wikidata",
     } as const),
     metro:

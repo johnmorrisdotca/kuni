@@ -78,10 +78,10 @@
       "note": "Wikidata SPARQL answers for the cities: the items with 15,000 people or more that are a human settlement, every capital, and every item Natural Earth's populated places name; labels, native label, coordinates, country, populations with dates, ISO 3166-2 codes; the queries are in the file (CC0)"
     },
     {
-      "path": "wikidata-cities-extra-2026-11-11.json",
+      "path": "wikidata-cities-extra-2026-11-17.json",
       "url": "https://query.wikidata.org/sparql",
-      "read": "2026-11-11",
-      "sha256": "f6f83ebc5d17ea4f37e7a186acf3dd807a555692a9e26562dfbe10dc75946a62",
+      "read": "2026-11-17",
+      "sha256": "7e8430e08ddbb3031927bf85e8750bee7424e494b266a9f349de0fcb9309123e",
       "note": "Wikidata SPARQL answers: the cities whose only class is no kind of human settlement (a municipality of the Netherlands), in the columns of the main cities snapshot; the queries are in the file (CC0)"
     },
     {
@@ -90,6 +90,13 @@
       "read": "2026-11-13",
       "sha256": "2f1a92f84ec83d27e01174c85590d69b433da89aae32c1bbd52e41cbd28be3dc",
       "note": "Wikidata SPARQL answers: the elevations (P2044) of the city items; the queries are in the file"
+    },
+    {
+      "path": "wikidata-city-populations-2026-11-17.json",
+      "url": "https://query.wikidata.org/sparql",
+      "read": "2026-11-17",
+      "sha256": "6479c8b5b0183a742f5f0cb8d60d6cccbf3e9431fda47e3b68b9067f59cc0b57",
+      "note": "Wikidata SPARQL answers: the population statements (P1082) of the city items with their rank, day, method and reference hosts, and the items that are land (an island, an atoll); the queries are in the file"
     },
     {
       "path": "wikidata-city-readings-2026-11-11.json",

@@ -21,6 +21,8 @@ address, the day it was read and its SHA-256.
 | Time zones | IANA time zone database 2026e, `zone.tab` | Public domain |
 | Each city's time zone | IANA time zone database 2026e, `zone.tab` (the zones of a country and the point of each zone's principal city), and Wikidata's zones of the subdivisions as `/zones` has them; a few cities set by id in `scripts/city-facts.ts`, each with its reason | Public domain (IANA); CC0 (Wikidata); not Natural Earth's TIMEZONE column, which kuni does not use (below) |
 | Each city's elevation | Wikidata, the snapshot `data-sources/wikidata-city-elevations-2026-11-13.json` (P2044) | CC0, below |
+| What each city's population figure rests on (its rank, day, method and reference sites), and which items are islands or atolls | Wikidata, the snapshot `data-sources/wikidata-city-populations-2026-11-17.json` (P1082, P31) | CC0, below |
+| The census population of eight cities Wikidata has no figure of their own for (Kumasi, Accra, Tamale, Sekondi-Takoradi, Khartoum, Omdurman, Banikoara, Manzini) | The national censuses of Ghana (2021), Sudan (2008), Benin (2013) and Eswatini (2017), each named in `scripts/city-populations.ts`; only the figures and their days are typed, no table is copied | Facts |
 | Country-code top-level domains | IANA's list of top-level domains (version 2026100900) | A list of facts, published by IANA |
 | The aliases ("Holland", "UK", 米国), the readings of country names written in kanji, Hokkaido's and Fukuoka's readings, the readings of twenty new towns and neighbourhoods of Japan that neither Wikidata nor Japan Post reads, and the Japanese words for kinds of place the build looks for | Written for this package, in `scripts/data-config.ts` | MIT |
 
@@ -190,6 +192,13 @@ them. Kuni keeps the middle of several values only where they lie within 50 m of
 more or lie outside what land has (`scripts/city-facts.ts`). No elevation model and no other source is used, and none
 is made up. A time zone was asked for in the same way (P421 with the IANA id, P6687) and left out: a city's zone in
 Wikidata is the "Pacific Time Zone" item, which names no IANA zone (4 of the first 4,500 items had an id).
+
+What each city's population figure rests on is from a sixth Wikidata snapshot (`data-sources/wikidata-city-populations-<day>.json`,
+CC0 on the same terms, read on 2026-11-17), asked for by `scripts/fetch-city-populations.ts`: every population statement
+(P1082) of each city item that is not deprecated, with its rank, day (P585), method (P459) and the hosts of its reference
+URLs (P854), and the items that are an island, an atoll, a reef island or an archipelago (P31). Kuni uses it to leave out a
+figure that is not a count of the city's own (`scripts/cities.ts`); the hosts are only compared with a list of sites that
+publish estimates, and nothing is read from those sites.
 
 ## Natural Earth's populated places
 
