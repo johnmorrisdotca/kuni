@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Four calling codes carried an area written after the country's code (MODULES-1640). Curaçao's was `+5999`, an area inside `+599`; it is `+599`, which it shares with Bonaire, Sint Eustatius and Saba. Cocos (Keeling) Islands' was `+61891`; it is `+61`, as Christmas Island's is. Norfolk Island's was `+6723`; it is `+672`, as the Antarctic's is. Svalbard and Jan Mayen's was `+4779`; it is `+47`, Norway's, as the ITU lists no code of its own for it. The source is the ITU's "List of Recommendation ITU-T E.164 assigned country codes" (Operational Bulletin No. 1114): note c for +599, note i for +61, note g for +672. Each is set in `CALLING_CODE_OVERRIDES` with its reason, the build stops on any code longer than three digits that has no entry, and the shared-code test lists the four codes that are now shared.
+
 ## [1.11.0] - 2026-11-18
 
 ### Changed

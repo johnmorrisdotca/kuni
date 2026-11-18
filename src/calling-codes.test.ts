@@ -21,12 +21,16 @@ const SHARED: Record<string, { countries: string[]; why: string }> = {
     why: "ITU lists +44 for the United Kingdom of Great Britain and Northern Ireland and lists no code of its own for Guernsey, the Isle of Man or Jersey.",
   },
   "+47": {
-    countries: ["BV", "NO"],
-    why: "ITU lists +47 for Norway and no code of its own for Bouvet Island.",
+    countries: ["BV", "NO", "SJ"],
+    why: "ITU lists +47 for Norway and no code of its own for Bouvet Island or Svalbard and Jan Mayen.",
   },
   "+61": {
-    countries: ["AU", "CX", "HM"],
+    countries: ["AU", "CC", "CX", "HM"],
     why: "ITU lists +61 for Australia, footnote i: including Christmas Island and Cocos (Keeling) Islands. It lists no code of its own for Heard Island and McDonald Islands.",
+  },
+  "+599": {
+    countries: ["BQ", "CW"],
+    why: "ITU lists +599 for Bonaire, Sint Eustatius and Saba and for Curaçao, note c: code shared between Curaçao and Bonaire, Sint Eustatius and Saba.",
   },
   "+64": {
     countries: ["NZ", "PN"],
@@ -39,6 +43,10 @@ const SHARED: Record<string, { countries: string[]; why: string }> = {
   "+262": {
     countries: ["RE", "TF", "YT"],
     why: "ITU lists +262 for the French Departments and Territories in the Indian Ocean, footnote j: Reunion, the Southern and Antarctic territories and other islands (Mayotte is not listed on its own).",
+  },
+  "+672": {
+    countries: ["AQ", "NF"],
+    why: "ITU lists +672 for the Australian External Territories, note g: including the Australian Antarctic Territory and Norfolk Island.",
   },
   "+358": {
     countries: ["AX", "FI"],
@@ -77,6 +85,16 @@ describe("calling codes", () => {
       expect(entry.countries.length, code).toBeGreaterThan(1);
       expect(entry.why, code).toMatch(/^ITU lists /);
     }
+  });
+
+  it("are the ITU's country code alone, with no area written after it", () => {
+    for (const one of countries()) {
+      if (one.callingCode !== undefined) expect(one.callingCode, one.alpha2).toMatch(/^\+\d{1,3}$/);
+    }
+    expect(country("CW")?.callingCode).toBe("+599");
+    expect(country("CC")?.callingCode).toBe("+61");
+    expect(country("NF")?.callingCode).toBe("+672");
+    expect(country("SJ")?.callingCode).toBe("+47");
   });
 
   it("give Türkiye +90 and Hungary +36, as the ITU assigns them, and Saint Helena +290", () => {
