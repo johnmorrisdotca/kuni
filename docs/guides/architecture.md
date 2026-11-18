@@ -20,6 +20,7 @@ src/
 ├── subdivision-facts.ts  the "/subdivision-facts" entry: one country's subdivision facts by dynamic import
 ├── groupings.ts        the "/groupings" entry: continents, UN M49, bodies, informal groupings, regions
 ├── grouping-days.ts    whether a body's period covers a day: a member, not one, or unknown (a year-only day counts from its end)
+├── capitals.ts         the "/capitals" entry: the capitals with a role, for the countries that have more than one capital city
 ├── withdrawn.ts        the "/withdrawn" entry: the countries ISO 3166-3 lists as withdrawn, and the codes they held
 ├── cities.ts           the "/cities" entry: joining tiers of cities, and finding one by id, country or nearness
 ├── city-rows.ts        turning a city's compact row into a City
@@ -40,7 +41,7 @@ src/
 └── cities/             written by scripts/build-data.ts: the "/cities/<tier>", "/cities/<code>", "/cities/names-<code>" and "/cities/<tier>-<key>" entries
 ```
 
-`scripts/build-names.ts` (`pnpm data:names`, also run by `pnpm data`) makes the nine names entries and their rows from `cldr-localenames-full` alone; `scripts/names-config.ts` holds the few search aliases written by hand. `scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
+`scripts/build-names.ts` (`pnpm data:names`, also run by `pnpm data`) makes the nine names entries and their rows from `cldr-localenames-full` alone; `scripts/names-config.ts` holds the few search aliases written by hand. `scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts`, `scripts/capitals-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
 
 
 ## Documentation generation
