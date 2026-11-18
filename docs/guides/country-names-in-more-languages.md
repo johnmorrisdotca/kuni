@@ -47,6 +47,6 @@ Every name, short form and variant is Unicode CLDR 48.2's (`cldr-localenames-ful
 | Arabic | 250 | 0 | 3 | 8 |
 | Russian | 250 | 0 | 5 | 8 |
 
-## Countries now, subdivisions later
+## Countries here, subdivisions in their own entry
 
-These entries cover countries only. A language's subdivision names (states, provinces, prefectures) are planned in the same entry, as further functions beside these; nothing above will change when they arrive.
+These entries cover countries only. A language's subdivision names (states, provinces, prefectures) are in a second entry beside them, `subdivision-names/<language>`, so that a page that needs only the countries pays nothing for the 5,000 subdivisions. See [Subdivision names in more languages](subdivision-names-in-more-languages.md).

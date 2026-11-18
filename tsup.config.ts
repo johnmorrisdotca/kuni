@@ -7,10 +7,10 @@ import { defineConfig } from "tsup";
 // Two entries for each country with subdivisions (src/subdivisions/<code>.ts and src/subdivision-facts/<code>.ts,
 // written by scripts/build-data.ts), beside the entries written by hand.
 const countryEntries: Record<string, string> = Object.fromEntries(
-  ["subdivisions", "subdivision-facts", "cities", "names"].flatMap((folder) =>
+  ["subdivisions", "subdivision-facts", "cities", "names", "subdivision-names"].flatMap((folder) =>
     readdirSync(`src/${folder}`)
       // A country's file; in /cities also its light list (names-<code>) and the parts of the split tiers (100k-<key>).
-      .filter((file) => (folder === "names" ? /^[a-z]{2}(-[A-Z][a-z]{3})?\.ts$/ : /^[a-z]{2}\.ts$/).test(file) || (folder === "cities" && /^(names-[a-z]{2}|(capitals|100k)-[a-z0-9-]+)\.ts$/.test(file)))
+      .filter((file) => (folder === "names" || folder === "subdivision-names" ? /^[a-z]{2}(-[A-Z][a-z]{3})?\.ts$/ : /^[a-z]{2}\.ts$/).test(file) || (folder === "cities" && /^(names-[a-z]{2}|(capitals|100k)-[a-z0-9-]+)\.ts$/.test(file)))
       .map((file) => [`${folder}/${basename(file, ".ts")}`, `src/${folder}/${file}`]),
   ),
 );

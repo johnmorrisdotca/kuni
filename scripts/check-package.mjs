@@ -112,6 +112,8 @@ import japanNames from "${pkg.name}/cities/names-jp";
 import { searchPlaces, cityNamesOf } from "${pkg.name}/places";
 import frenchNames from "${pkg.name}/names/fr";
 import { names as chineseNames } from "${pkg.name}/names/zh-Hans";
+import spanishSubdivisions from "${pkg.name}/subdivision-names/es";
+import { names as germanSubdivisions } from "${pkg.name}/subdivision-names/de";
 ${probe}
 const all = [${entries.map((_, at) => `m${at}`).join(", ")}];
 const names = ${JSON.stringify(entries)};
@@ -133,6 +135,7 @@ if ((await loadCities("capitals")).cities.length !== capitalCities().length) thr
 const canada = await loadSubdivisions("CA");
 if (canada.length !== 13) throw new Error("loadSubdivisions(CA) gave " + canada?.length);
 if (frenchNames.countryName("JP") !== "Japon" || frenchNames.countryByName("allemagne") !== "DE" || chineseNames.countryName("JP") !== "日本") throw new Error("names/fr or names/zh-Hans gave " + frenchNames.countryName("JP"));
+if (spanishSubdivisions.subdivisionName("JP-13") !== "Tokio" || germanSubdivisions.subdivisionName("DE-BY") !== "Bayern") throw new Error("subdivision-names gave " + spanishSubdivisions.subdivisionName("JP-13"));
 console.log(names.join(" "));
 `,
 );
