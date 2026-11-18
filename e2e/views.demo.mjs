@@ -149,6 +149,33 @@ test("groupings: a body's members now and on a day in the past, the candidates a
   expect(errors).toEqual([]);
 });
 
+test("groupings: a day lists the members whose joining day is unknown apart from the members, and none when all are known", async ({ page }) => {
+  const errors = await view(page, "groupings/brics");
+  const day = async (value) => {
+    await page.locator(at("grouping-day")).fill(value);
+    await page.locator(at("grouping-day")).dispatchEvent("change");
+  };
+  await expect(page.locator(at("grouping-unknown"))).toHaveCount(0);
+  await day("2025-06-30");
+  await expect(page.locator(at("grouping-unknown"))).toContainText("Joining day unknown on this date (1)");
+  await expect(page.locator(at("grouping-unknown-list"))).toContainText("Indonesia");
+  await expect(page.locator(at("grouping-members"))).not.toContainText("Indonesia");
+  await expect(page.locator(at("grouping-members"))).toContainText("Egypt");
+  await expect(page.locator(at("grouping-count"))).toContainText("9 members on 2025-06-30");
+  await page.getByRole("button", { name: "Today" }).click();
+  await expect(page.locator(at("grouping-unknown"))).toHaveCount(0);
+  await page.locator(at("grouping-pick")).selectOption("eu");
+  await day("2019-06-30");
+  await expect(page.locator(at("grouping-members")).locator("tbody tr")).toHaveCount(28);
+  await expect(page.locator(at("grouping-unknown"))).toHaveCount(0);
+  await page.goto("http://kuni.test/?lang=ja#/groupings/brics");
+  await page.waitForSelector('main[data-view-ready="true"]');
+  await day("2025-06-30");
+  await expect(page.locator(at("grouping-unknown"))).toContainText("この日の加盟は不明（1）");
+  await expect(page.locator(at("grouping-unknown-list"))).toContainText("インドネシア");
+  expect(errors).toEqual([]);
+});
+
 test("the quiz: a seed gives the same questions, a right answer adds to the streak and a wrong one ends it", async ({ page }) => {
   const errors = await view(page, "quiz/capital/4242");
   const question = page.locator(at("quiz-question"));

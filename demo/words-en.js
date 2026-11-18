@@ -175,6 +175,8 @@ export const EN = {
   members_now: "{count} members now.",
   members_on: "{count} members on {day}.",
   others: "Not members",
+  unknown_on: "Joining day unknown on this date ({count})",
+  unknown_hint: "Not counted above: no source gives these members' joining day, or only the year.",
   former: "Former memberships",
   status_candidate: "candidate",
   status_associate: "associate",

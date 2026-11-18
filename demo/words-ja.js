@@ -175,6 +175,8 @@ export const JA = {
   members_now: "現在のメンバー数：{count}",
   members_on: "{day}時点のメンバー数：{count}",
   others: "加盟国以外",
+  unknown_on: "この日の加盟は不明（{count}）",
+  unknown_hint: "上の人数には含めていません。加盟日が分からない、または年だけが分かっている加盟国です。",
   former: "過去の加盟",
   status_candidate: "加盟候補国",
   status_associate: "準加盟国",

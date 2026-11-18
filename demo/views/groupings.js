@@ -2,7 +2,7 @@
 // inside a country) and read its members with their flags and names, its definition, its source and its notes; for
 // an international body, its members on any day since 1945. Downloads give the members on show.
 import { country } from "../dist/index.js";
-import { grouping, groupings, membersOf } from "../dist/groupings.js";
+import { grouping, groupings, membersOf, unknownMembersOf } from "../dist/groupings.js";
 import { subdivision } from "../dist/subdivisions.js";
 import { $, downloads, el, flagged, helpRow, lang, ruby, say } from "../shared.js";
 
@@ -35,6 +35,7 @@ export function render(asked) {
   const body = one.periods !== undefined;
   const dated = el("input", { id: "grouping-day", class: "fam-field", type: "date", "data-testid": "grouping-day", value: day, min: "1945-01-01", max: one.asOf, disabled: !body, onchange: () => ((day = dated.value), render()) });
   const members = (membersOf(id, day === "" ? {} : { on: day }) ?? []).map(member);
+  const unknown = day === "" ? [] : (unknownMembersOf(id, { on: day }) ?? []).map(member);
   const periods = new Map((one.periods ?? []).filter((period) => period.until === null).map((period) => [period.code, period.since]));
   const left = (one.periods ?? []).filter((period) => period.until !== null);
 
@@ -73,6 +74,16 @@ export function render(asked) {
     ),
   );
 
+  const unknownList =
+    unknown.length === 0
+      ? ""
+      : el(
+          "div",
+          { class: "others", "data-testid": "grouping-unknown" },
+          el("h3", { class: "sub" }, say("unknown_on", { count: unknown.length })),
+          el("p", { class: "fam-fine" }, say("unknown_hint")),
+          el("p", { class: "chips", "data-testid": "grouping-unknown-list" }, unknown.map((row) => el("span", { class: "fam-chip" }, flagged(row.code), ` · ${row.code}`))),
+        );
   const others = (one.others ?? []).length === 0 ? "" : el("div", { class: "others" }, el("h3", { class: "sub" }, say("others")), el("p", { class: "chips", "data-testid": "grouping-others" }, one.others.map((other) => el("span", { class: "fam-chip" }, flagged(other.code), ` · ${say(`status_${other.status}`)}`))));
   const former = left.length === 0 ? "" : el("div", {}, el("h3", { class: "sub" }, say("former")), el("ul", { class: "former", "data-testid": "grouping-former" }, left.map((period) => el("li", {}, flagged(period.code, { link: true }), ` ${period.since ?? "?"} – ${period.until}`))));
 
@@ -82,6 +93,7 @@ export function render(asked) {
     head,
     el("p", { class: "summary", "data-testid": "grouping-count", "aria-live": "polite" }, say(day === "" ? "members_now" : "members_on", { count: members.length, day })),
     table,
+    unknownList,
     others,
     former,
     downloads(() => `kuni-${id}${day === "" ? "" : `-${day}`}`, () => members.map((row) => ({ grouping: id, code: row.code, name: row.name, since: periods.get(row.code) ?? null })), () => ["grouping", "code", "name", "since"], "grouping-downloads", "grouping_members"),
