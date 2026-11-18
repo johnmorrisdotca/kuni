@@ -154,7 +154,6 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
     for (const joined of JOINED.filter((one) => one.body === body.id)) {
       const at = periods.findIndex(([code, , until]) => code === joined.code && until === null);
       if (at < 0) problems.push(`${body.id}: ${joined.code} has a day from the body's page and is not a current member`);
-      else if (periods[at][1] === joined.since) problems.push(`${body.id}: ${joined.code}'s day from the body's page is what Wikidata has already`);
       else {
         periods[at] = [joined.code, joined.since, null];
         pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);

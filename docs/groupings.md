@@ -50,6 +50,11 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 
 Where Wikidata gives a member no day, or a day that is a placeholder, the body's own page is read (on 2026-11-18, each page by itself); the day and the line it rests on are in `scripts/groupings-config.ts` (`JOINED`).
 
+- **EU** BE: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/belgium_en: "EU Member State: since 1 January 1958"
+- **EU** DE: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/germany_en: "EU Member State: since 1 January 1958"
+- **EU** FR: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/france_en: "EU Member State: since 1 January 1958"
+- **EU** IT: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/italy_en: "EU Member State: since 1 January 1958"
+- **EU** LU: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/luxembourg_en: "EU Member State: since 1 January 1958"
 - **EU** NL: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en: "EU Member State: since 1 January 1958"
 - **Eurozone** AT: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/austria_en: "Euro area: member since 1 January 1999"
 - **Eurozone** BE: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/belgium_en: "Euro area: member since 1 January 1999"

@@ -227,6 +227,16 @@ describe("the international bodies", () => {
     expect(membersOf("commonwealth")).toContain("CM");
   });
 
+  it("hold the EU's six founders to one joining day", () => {
+    const since = (code: string) => grouping("eu")?.periods?.find((period) => period.code === code && period.until === null)?.since;
+    for (const code of ["BE", "DE", "FR", "IT", "LU", "NL"]) expect(since(code), code).toBe("1958-01-01");
+    expect(membersOf("eu", { on: "1957-12-31" })).toEqual([]);
+    expect(unknownMembersOf("eu", { on: "1957-12-31" })).toEqual([]);
+    expect(membersOf("eu", { on: "1958-01-01" })).toEqual(["BE", "DE", "FR", "IT", "LU", "NL"]);
+    expect(membersOf("eu", { on: "1973-01-01" })).toEqual(expect.arrayContaining(["DK", "IE", "GB"]));
+    expect(grouping("eu")?.note).toMatch(/25 March 1957/);
+  });
+
   it("list no country twice in overlapping periods", () => {
     for (const one of groupings({ kind: "membership" })) {
       const periods = one.periods ?? [];
