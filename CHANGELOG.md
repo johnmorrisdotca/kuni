@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.11.0] - 2026-11-18
+
 ### Changed
 
 - `membersOf(id, { on })` and `groupingsOf(code, { on })` no longer count a member with no joining day as a member on every date (MODULES-1625). Before, `membersOf("brics", { on: "2015-01-01" })` included AE, EG, ET, ID and IR, which joined in 2024 and 2025, and `membersOf("nato", { on: "1940-01-01" })` included DK and NL. A member whose `since` is `null` is now unknown on that date, not a member. The answer to a call with a day can therefore differ from before; a call with no `on` is unchanged. `GroupingMember.since` says so in its type documentation.
