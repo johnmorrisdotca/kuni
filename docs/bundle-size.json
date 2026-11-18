@@ -39,7 +39,7 @@
     },
     "./capitals": {
       "minified": 2307,
-      "gzip": 1040
+      "gzip": 1030
     },
     "./cities": {
       "minified": 4654072,
