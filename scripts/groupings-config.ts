@@ -330,8 +330,8 @@ const MEMBERSHIPS_LEFT_OUT: Record<string, string> = {
 };
 
 // The day a member joined a body, read from the body's own page where Wikidata has none (or has a placeholder), each with
-// the page and the line it rests on. `since: null` replaces a day that is wrong with "unknown": the page gives a year
-// only. A member in no row, and with no day in Wikidata, has a null `since`, which `membersOf(id, { on })` treats as
+// the page and the line it rests on. A year alone ("1975") is used only where the page gives no more; `since: null`
+// replaces a day that is wrong with "unknown". A member in no row, and with no day in Wikidata, has a null `since`, which `membersOf(id, { on })` treats as
 // unknown, not as a member. Read on DATES_READ; each page by itself, with nothing taken from a cache or a PDF.
 const DATES_READ = "2026-11-18";
 
@@ -369,7 +369,7 @@ const JOINED: JoinedConfig[] = [
   ...euro({ AT: "1999-01-01", BE: "1999-01-01", DE: "1999-01-01", ES: "1999-01-01", FI: "1999-01-01", FR: "1999-01-01", IE: "1999-01-01", IT: "1999-01-01", LU: "1999-01-01", NL: "1999-01-01", PT: "1999-01-01", GR: "2001-01-01", SI: "2007-01-01", CY: "2008-01-01", MT: "2008-01-01", SK: "2009-01-01", EE: "2011-01-01", LV: "2014-01-01", LT: "2015-01-01", HR: "2023-01-01", BG: "2026-01-01" }),
   { body: "usmca", code: "CA", since: "2020-07-01", url: "https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement", line: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020." },
   { body: "usmca", code: "US", since: "2020-07-01", url: "https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement", line: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020." },
-  // The AU's list gives each state's "date of joining the AU or its predecessor the OAU". Mauritius (August 1968), Namibia (June 1990) and Morocco ("1963/31 January 2017", a gap between) give no single day, and stay null.
+  // The AU's list gives each state's "date of joining the AU or its predecessor the OAU". Mauritius (August 1968) and Namibia (June 1990) give a month and a year, below as the year; Morocco ("1963/31 January 2017", a gap between) gives no single day, and stays null.
   ...au([
     ["BF", "Burkina Faso", "1963-05-25"], ["BJ", "Republic of Benin", "1963-05-25"], ["CD", "Democratic Republic of Congo", "1963-05-25"], ["CF", "Central African Republic", "1963-05-25"],
     ["CG", "Republic of the Congo", "1963-05-25"], ["CI", "Republic of Côte d'Ivoire", "1963-05-25"], ["CM", "Republic of Cameroon", "1963-05-25"], ["CV", "Republic of Cabo Verde", "1975-07-18"],
@@ -384,14 +384,19 @@ const JOINED: JoinedConfig[] = [
     ["UG", "Republic of Uganda", "1963-05-25"], ["ZM", "Republic of Zambia", "1964-12-16"], ["ZW", "Republic of Zimbabwe", "1980-06-18"],
   ]),
   // Guinea had 1963-01-01, a placeholder; the page gives 25 May 1963 (the row above replaces it).
-  // The G7's pages give years only (the first summit in 1975, "Canada was invited to join in 1976"), so the 1977-01-01 Wikidata gives six members is wrong and is no day at all.
-  ...["CA", "DE", "FR", "GB", "IT", "JP"].map((code) => ({
+  // The G7's pages give a year only (the first summit in 1975 with six members, Canada's admission in 1976), so the year stands: 1977-01-01, which Wikidata gave six members, is no day a page gives.
+  ...["DE", "FR", "GB", "IT", "JP", "US"].map((code) => ({
     body: "g7",
     code,
-    since: null,
-    url: "https://www.g7germany.de/g7-en/g7-summit/g7-history",
-    line: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976.",
+    since: "1975",
+    url: "https://www.g7italy.it/en/about-g7/",
+    line: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy.",
   })),
+  { body: "g7", code: "CA", since: "1976", url: "https://www.g7italy.it/en/about-g7/", line: "In 1976, with the admission of Canada, the G7 took its current configuration." },
+  // Pages that give a year, or a month and a year, only: the year stands.
+  { body: "commonwealth", code: "GB", since: "1926", url: "https://thecommonwealth.org/our-member-countries/united-kingdom", line: "Joined the Commonwealth: 1926, on founding the British Commonwealth of Nations." },
+  { body: "african-union", code: "MU", since: "1968", url: AU_URL, line: "Republic of Mauritius: August 1968" },
+  { body: "african-union", code: "NA", since: "1990", url: AU_URL, line: "Republic of Namibia: June 1990" },
 ];
 
 const INFORMAL: InformalConfig[] = [

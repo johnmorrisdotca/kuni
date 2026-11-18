@@ -28,14 +28,14 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 | Schengen Area | 29 | NL | – | 29 |
 | EEA | 30 | AT BG CY CZ DK ES FI FR HR IE IT LT LV MT NL PL RO SE SI | – | 1 |
 | NATO | 32 | DK NL | – | 32 |
-| G7 | 7 | – | – | 0 |
+| G7 | 7 | – | – | 7 |
 | G20 | 19 | – | – | 6 |
 | OECD | 38 | DK NL | – | 15 |
 | ASEAN | 11 | – | AU | 11 |
-| AU | 55 | EH | – | 52 |
+| AU | 55 | EH | – | 54 |
 | Arab League | 22 | – | – | 21 |
 | GCC | 6 | AE KW QA | – | 2 |
-| Commonwealth | 56 | GB | – | 55 |
+| Commonwealth | 56 | GB | – | 56 |
 | OPEC | 12 | – | AO | 12 |
 | BRICS | 10 | – | – | 9 |
 | Mercosur | 5 | – | MX | 0 |
@@ -75,12 +75,13 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **Schengen Area** NL: 1995-03-26: https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en: "Schengen: member since 26 March 1995"
 - **NATO** DK: 1949-04-04: https://www.nato.int/cps/en/natohq/topics_52044.htm: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States."
 - **NATO** NL: 1949-04-04: https://www.nato.int/cps/en/natohq/topics_52044.htm: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States."
-- **G7** CA: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
-- **G7** DE: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
-- **G7** FR: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
-- **G7** GB: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
-- **G7** IT: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
-- **G7** JP: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **G7** DE: 1975 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
+- **G7** FR: 1975 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
+- **G7** GB: 1975 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
+- **G7** IT: 1975 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
+- **G7** JP: 1975 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
+- **G7** US: 1975 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
+- **G7** CA: 1976 (the page gives the year only): https://www.g7italy.it/en/about-g7/: "In 1976, with the admission of Canada, the G7 took its current configuration."
 - **AU** BF: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Burkina Faso: 25 May 1963"
 - **AU** BJ: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Benin: 25 May 1963"
 - **AU** CD: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Democratic Republic of Congo: 25 May 1963"
@@ -124,6 +125,9 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **AU** UG: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Uganda: 25 May 1963"
 - **AU** ZM: 1964-12-16: https://au.int/en/member_states/countryprofiles2: "Republic of Zambia: 16 December 1964"
 - **AU** ZW: 1980-06-18: https://au.int/en/member_states/countryprofiles2: "Republic of Zimbabwe: 18 June 1980"
+- **AU** MU: 1968 (the page gives the year only): https://au.int/en/member_states/countryprofiles2: "Republic of Mauritius: August 1968"
+- **AU** NA: 1990 (the page gives the year only): https://au.int/en/member_states/countryprofiles2: "Republic of Namibia: June 1990"
+- **Commonwealth** GB: 1926 (the page gives the year only): https://thecommonwealth.org/our-member-countries/united-kingdom: "Joined the Commonwealth: 1926, on founding the British Commonwealth of Nations."
 - **BRICS** AE: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
 - **BRICS** EG: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
 - **BRICS** ET: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
@@ -141,14 +145,14 @@ No source gives these a day, so a call for a day (`membersOf(id, { on })`) does 
 - **Schengen Area** (0): none
 - **EEA** (29): AT BE BG CY CZ DE DK EE ES FI FR GR HR HU IE IT LI LT LU LV MT NL NO PL PT RO SE SI SK
 - **NATO** (0): none
-- **G7** (7): CA DE FR GB IT JP US
+- **G7** (0): none
 - **G20** (13): AR AU BR CA CN ID IN IT JP KR MX US ZA
 - **OECD** (23): AT AU BE CA CH CL CZ DK EE ES IE IS JP LU MX NL NO NZ SE SI SK TR US
 - **ASEAN** (0): none
-- **AU** (3): MA MU NA
+- **AU** (1): MA
 - **Arab League** (1): PS
 - **GCC** (4): AE BH KW QA
-- **Commonwealth** (1): GB
+- **Commonwealth** (0): none
 - **OPEC** (0): none
 - **BRICS** (1): ID
 - **Mercosur** (5): AR BO BR PY UY
