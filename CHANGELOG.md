@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- The demo's groupings page lists, when a day is chosen, the members whose membership on that day is unknown (`unknownMembersOf`) in a list of their own, "Joining day unknown on this date (N)" (「この日の加盟は不明（N）」), beside the members. Before, they were left out of the members without a word since `membersOf(id, { on })` stopped counting a member with no joining day (MODULES-1641). With no day chosen the page is unchanged.
+
 ## [1.11.0] - 2026-11-18
 
 ### Changed
