@@ -30,8 +30,8 @@
       "gzip": 160561
     },
     "./groupings": {
-      "minified": 86179,
-      "gzip": 16589
+      "minified": 86474,
+      "gzip": 16703
     },
     "./withdrawn": {
       "minified": 6620,
@@ -54,8 +54,8 @@
       "gzip": 210544
     },
     "./places": {
-      "minified": 10018139,
-      "gzip": 3329021
+      "minified": 10018434,
+      "gzip": 3329132
     },
     "./names/fr": {
       "minified": 10106,

@@ -26,7 +26,7 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 | EU | 27 | NL | – | 27 |
 | Eurozone | 21 | AT BE BG CY EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK | – | 21 |
 | Schengen Area | 29 | NL | – | 29 |
-| EEA | 30 | AT BG CY CZ DK ES FI FR HR IE IT LT LV MT NL PL RO SE SI | – | 1 |
+| EEA | 30 | AT BG CY CZ DK ES FI FR HR IE IT LT LV MT NL PL RO SE SI | – | 2 |
 | NATO | 32 | DK NL | – | 32 |
 | G7 | 7 | – | – | 7 |
 | G20 | 19 | – | – | 6 |
@@ -42,7 +42,7 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 | USMCA | 3 | CA US | – | 3 |
 | APEC | 21 | – | – | 21 |
 | CARICOM | 15 | – | – | 15 |
-| PIF | 18 | CK FJ FM KI MH NC NR NU NZ PF PG PW SB TO TV VU WS | – | 0 |
+| PIF | 18 | CK FJ FM KI MH NC NR NU NZ PF PG PW SB TO TV VU WS | – | 18 |
 | Nordic Council | 8 | – | – | 2 |
 | Benelux | 3 | – | – | 0 |
 
@@ -79,6 +79,7 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **Eurozone** BG: 2026-01-01 (filled): https://european-union.europa.eu/principles-countries-history/eu-countries/bulgaria_en: "Euro area: member since 1 January 2026"
 - **Schengen Area** NL: 1995-03-26 (filled): https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en: "Schengen: member since 26 March 1995"
 - **Schengen Area** RO: 2024-03-31 (filled): https://european-union.europa.eu/principles-countries-history/eu-countries/romania_en: "Schengen: member since 31 March 2024"
+- **EEA** LI: 1995 (the page gives the year only) (filled): https://www.efta.int/about-efta/history: "Liechtenstein becomes a full participant in the EEA, together with Iceland and Norway."
 - **NATO** DK: 1949-04-04 (filled): https://www.nato.int/cps/en/natohq/topics_52044.htm: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States."
 - **NATO** NL: 1949-04-04 (filled): https://www.nato.int/cps/en/natohq/topics_52044.htm: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States."
 - **G7** DE: 1975 (the page gives the year only) (filled): https://www.g7italy.it/en/about-g7/: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy."
@@ -181,6 +182,24 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **BRICS** IR: 2024-01-01 (filled): https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
 - **USMCA** CA: 2020-07-01 (filled): https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020."
 - **USMCA** US: 2020-07-01 (filled): https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020."
+- **PIF** AU: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** CK: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** FJ: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** NR: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** NZ: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** TO: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** WS: 1971 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"
+- **PIF** PG: 1974 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Papua New Guinea joins the Forum as a full member."
+- **PIF** NU: 1975 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Niue joins the Forum as a full member"
+- **PIF** KI: 1977 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Kiribati (formerly Gilbert Islands) joins the Forum"
+- **PIF** SB: 1978 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Solomon Islands and Tuvalu joins the Forum."
+- **PIF** TV: 1978 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Solomon Islands and Tuvalu joins the Forum."
+- **PIF** VU: 1980 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Vanuatu (formerly New Hebrides) joins the Forum as a full member."
+- **PIF** FM: 1987 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Federated States of Micronesia and Republic of Marshall Islands joins the Forum as Full Members."
+- **PIF** MH: 1987 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Federated States of Micronesia and Republic of Marshall Islands joins the Forum as Full Members."
+- **PIF** PW: 1995 (the page gives the year only) (filled): https://forumsec.org/timeline-major-forum-events: "Palau joins the Forum"
+- **PIF** NC: 2016-09-07 (filled): https://forumsec.org/timeline-major-forum-events: "New Caledonia and French Polynesia admitted as Full Forum Members (7 September 2016)"
+- **PIF** PF: 2016-09-07 (filled): https://forumsec.org/timeline-major-forum-events: "New Caledonia and French Polynesia admitted as Full Forum Members (7 September 2016)"
 
 ### Members with no day
 
@@ -190,7 +209,7 @@ No source gives these a day, so a call for a day (`membersOf(id, { on })`) does 
 - **EU** (0): none
 - **Eurozone** (0): none
 - **Schengen Area** (0): none
-- **EEA** (29): AT BE BG CY CZ DE DK EE ES FI FR GR HR HU IE IT LI LT LU LV MT NL NO PL PT RO SE SI SK
+- **EEA** (28): AT BE BG CY CZ DE DK EE ES FI FR GR HR HU IE IT LT LU LV MT NL NO PL PT RO SE SI SK
 - **NATO** (0): none
 - **G7** (0): none
 - **G20** (13): AR AU BR CA CN ID IN IT JP KR MX US ZA
@@ -206,7 +225,7 @@ No source gives these a day, so a call for a day (`membersOf(id, { on })`) does 
 - **USMCA** (0): none
 - **APEC** (0): none
 - **CARICOM** (0): none
-- **PIF** (18): AU CK FJ FM KI MH NC NR NU NZ PF PG PW SB TO TV VU WS
+- **PIF** (0): none
 - **Nordic Council** (6): AX DK FO GL IS NO
 - **Benelux** (3): BE LU NL
 
