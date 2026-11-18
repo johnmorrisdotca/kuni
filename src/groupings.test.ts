@@ -189,13 +189,45 @@ describe("the international bodies", () => {
     expect(membersOf("nato", { on: "1949-04-04" })).toContain("DK");
   });
 
+  it("hold Schengen's Bulgaria and Romania to one rule", () => {
+    const stage = (code: string) => grouping("schengen")?.periods?.find((period) => period.code === code && period.until === null);
+    expect(stage("BG")?.since).toBe("2024-03-31");
+    expect(stage("RO")?.since).toBe(stage("BG")?.since);
+    expect(membersOf("schengen", { on: "2024-03-30" })).not.toEqual(expect.arrayContaining(["BG"]));
+    expect(membersOf("schengen", { on: "2024-03-30" })).not.toEqual(expect.arrayContaining(["RO"]));
+    expect(membersOf("schengen", { on: "2024-03-31" })).toEqual(expect.arrayContaining(["BG", "RO"]));
+    expect(grouping("schengen")?.note).toMatch(/1 January 2025/);
+  });
+
+  it("give the Commonwealth's joining years as years, not as 1 January", () => {
+    const current = (grouping("commonwealth")?.periods ?? []).filter((period) => period.until === null);
+    for (const period of current) {
+      // Eswatini's page could not be read, and Nigeria's page gives no year for its return.
+      if (["SZ", "NG"].includes(period.code)) continue;
+      expect(period.since, period.code).not.toMatch(/-01-01$/);
+    }
+    const since = (code: string) => current.find((period) => period.code === code)?.since;
+    expect(since("AU")).toBe("1931");
+    expect(since("JM")).toBe("1962");
+    expect(since("PK")).toBe("1989");
+    // A year alone: unknown inside the year, a member from its last day.
+    expect(membersOf("commonwealth", { on: "1957-12-30" })).not.toContain("GH");
+    expect(unknownMembersOf("commonwealth", { on: "1957-12-30" })).toContain("GH");
+    expect(membersOf("commonwealth", { on: "1957-12-31" })).toContain("GH");
+    expect(membersOf("commonwealth", { on: "1956-12-31" })).not.toContain("GH");
+    expect(unknownMembersOf("commonwealth", { on: "1956-12-31" })).not.toContain("GH");
+  });
+
   it("list no country twice in overlapping periods", () => {
     for (const one of groupings({ kind: "membership" })) {
       const periods = one.periods ?? [];
       for (const [at, period] of periods.entries()) {
         for (const other of periods.slice(at + 1)) {
           if (period.code !== other.code || period.since === null || other.since === null) continue;
-          const overlap = period.since < (other.until ?? "9999") && other.since < (period.until ?? "9999");
+          // A year alone counts from its end as `since`, and up to its start as `until`.
+          const from = (day: string): string => (/^\d{4}$/.test(day) ? `${day}-12-31` : day);
+          const to = (day: string | null): string => (day === null ? "9999" : /^\d{4}$/.test(day) ? `${day}-01-01` : day);
+          const overlap = from(period.since) < to(other.until) && from(other.since) < to(period.until);
           expect(overlap, `${one.id} ${period.code} ${JSON.stringify(period)} ${JSON.stringify(other)}`).toBe(false);
         }
       }
