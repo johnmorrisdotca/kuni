@@ -21,6 +21,7 @@ import { refreshDataDocs, writeDocumentedFile } from "./data-docs.ts";
 
 import { CONTINENTS, SUBDIVISION_TYPES } from "../src/types.ts";
 import {
+  CALLING_CODE_OVERRIDES,
   CITY_READING_FILLS,
   CODE_CHANGES,
   COUNTRY_ALIASES,
@@ -322,15 +323,31 @@ const currentItems = (items: WikidataItem[] | undefined): WikidataItem[] =>
 
 // A calling code as the ITU writes it. Members of the North American plan share +1 and are told apart by
 // area code, which Wikidata writes after it ("+1264"); the country code is +1.
+const countryCode = (value: string): string => (/^\+1\d{3}$/.test(value) ? "+1" : value);
+
+// Where Wikidata's item gives several values that differ as country codes, the first is not necessarily the
+// country's (Türkiye's Q43 lists +36, Hungary's, before +90): the ITU's code is set in CALLING_CODE_OVERRIDES,
+// and a country with several and no entry stops the build.
 const callingOf = (alpha2: string): string | null => {
   const items = wikidata.countries[alpha2] ?? [];
   const own = items.find((item) => (item.calling ?? []).length > 0) ?? null;
-  const values = (own?.calling ?? []).map((value) => value.replace(/[\s-]/g, ""));
+  const values = (own?.calling ?? []).map((value) => countryCode(value.replace(/[\s-]/g, "")));
+  const override = CALLING_CODE_OVERRIDES[alpha2];
+  if (override !== undefined) {
+    if (!values.includes(override.calling)) {
+      throw new Error(`CALLING_CODE_OVERRIDES[${alpha2}] is ${override.calling}, which Wikidata's values (${values.join(", ")}) do not include`);
+    }
+
+    return override.calling;
+  }
+  const distinct = [...new Set(values)];
+  if (distinct.length > 1) {
+    throw new Error(`${alpha2}: Wikidata gives calling codes ${distinct.join(", ")}; choose one in CALLING_CODE_OVERRIDES with the ITU as its source`);
+  }
   const fallback = (countriesList[alpha2]?.phone ?? []).map((value) => `+${value}`);
   const first = values[0] ?? fallback[0] ?? null;
-  if (first === null) return null;
 
-  return /^\+1\d{3}$/.test(first) ? "+1" : first;
+  return first === null ? null : countryCode(first);
 };
 
 const currenciesOf = (alpha2: string): string[] =>

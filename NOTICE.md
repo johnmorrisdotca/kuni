@@ -11,6 +11,7 @@ address, the day it was read and its SHA-256.
 | Country names in French, Spanish, German, Simplified and Traditional Chinese, Korean, Portuguese, Arabic and Russian, with their short and variant forms (`/names/<language>`) | Unicode CLDR 48.2 (`cldr-localenames-full` 48.2.0 on npm, `main/<language>/territories.json`); a few search aliases are written by hand in `scripts/names-config.ts` | Unicode-3.0, below |
 | Subdivision codes, English and Japanese names, the levels they are at and what they are inside | Unicode CLDR 48.2 (`common/subdivisions/en.xml`, `ja.xml`, `common/validity/subdivision.xml` at the tag `release-48-2`, and `cldr-core`'s `subdivisionContainment.json` and `aliases.json`) | Unicode-3.0, below |
 | Japanese names of the subdivisions CLDR has none for, the kana readings of Japan's prefectures, calling codes, and what kind of place each subdivision is | Wikidata, the snapshot `data-sources/wikidata-2026-10-09.json` | CC0, below |
+| Which calling code a country has where Wikidata's item gives several (`CALLING_CODE_OVERRIDES` in `scripts/data-config.ts`: Türkiye, Saint Helena) | The ITU's "List of Recommendation ITU-T E.164 assigned country codes", Annex to ITU Operational Bulletin No. 1114 (15 December 2016), read; the list is not copied or shipped | ITU, below |
 | Each country's own name, capital and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |
 | Each country's capital in Japanese and its coordinates, population, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the snapshot `data-sources/wikidata-facts-2026-10-09.json` | CC0, below |
 | Which land borders are real (two outlines touch) | Natural Earth 5.1.2 admin-0 countries at 1:50m, as drawn by `@johnmorrisdotca/chizu` 1.0.2 (a development dependency of the build; the package does not depend on it) | Public domain (Natural Earth); MIT (Chizu), below |
@@ -260,6 +261,14 @@ are used as they are (from 1.1.0 the continent is UN M49's, from CLDR); its call
 it: a country's one zone, the zone of the zone.tab city the city is at or nearest, or the zone of its subdivision (`/zones`). The list of top-level domains is
 published by IANA at https://data.iana.org/TLD/tlds-alpha-by-domain.txt; only which two-letter domains exist is
 read from it.
+
+## ITU
+
+The calling codes kuni chooses by hand, where Wikidata's item for a country gives several that differ (Türkiye: +36 and +90; Saint Helena:
++247, +27 and +290), are the ones the ITU assigns, read in the "List of Recommendation ITU-T E.164 assigned country codes" (Annex to ITU
+Operational Bulletin No. 1114, 15 December 2016; https://www.itu.int/pub/T-SP-E.164D). Only which code is assigned to whom is used, as a
+fact; the list itself is not copied into the package. Each choice has its reason beside it in `scripts/data-config.ts`, and the calling codes
+that more than one country has are listed, each with the ITU's line, in `src/calling-codes.test.ts`.
 
 ## Not carried
 

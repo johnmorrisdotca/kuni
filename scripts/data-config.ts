@@ -235,6 +235,23 @@ const SHORT_NAME_FILLS: Record<string, { en?: string; ja?: string }> = {
   MM: { ja: "ミャンマー" },
 };
 
+// A country's calling code where Wikidata's item gives several that differ and the first is not the country's.
+// The snapshot holds the values of P474 that Wikidata's own ranking returns (the preferred rank, else the normal
+// one) and carries no rank of its own, so two values of the same rank cannot be told apart from it. Each entry
+// is the code the ITU assigns, read in "List of Recommendation ITU-T E.164 assigned country codes" (Annex to
+// ITU Operational Bulletin No. 1114, 15 December 2016, https://www.itu.int/pub/T-SP-E.164D). The build stops on
+// a country with several differing values and no entry here.
+const CALLING_CODE_OVERRIDES: Record<string, { calling: string; why: string }> = {
+  TR: {
+    calling: "+90",
+    why: "Wikidata's Q43 lists +36 and +90. The ITU assigns +36 to Hungary and +90 to Turkey.",
+  },
+  SH: {
+    calling: "+290",
+    why: "Wikidata's Q192184 lists +247, +27 and +290. The ITU's note a: Ascension uses +247, Saint Helena and Tristan da Cunha +290; +27 is South Africa's.",
+  },
+};
+
 // English subdivision names where CLDR's is wrong: cut short, an adjective where a name is wanted, out of date, a
 // city's and a county's names swapped, or its letters stripped of their marks. Found by checking every English name
 // against Wikidata's English label (scripts/en-names.ts lists the patterns), each one read and decided here.
@@ -379,4 +396,4 @@ const CITY_READING_FILLS: Readonly<Record<string, readonly [name: string, readin
 };
 
 export { CITY_READING_FILLS, SHORT_NAME_FILLS };
-export { CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };
+export { CALLING_CODE_OVERRIDES, CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };
