@@ -17,7 +17,7 @@ Spanish, German and Chinese (Simplified and Traditional) names for the subdivisi
 ## How the data is fetched
 
 - CLDR: four raw files from `unicode-org/cldr` at `release-48-2`, fetched by `scripts/fetch-more-languages.ts` with a pause of at least 1.2 seconds between requests, robots.txt read first, a descriptive User-Agent, the files cached outside the repository (`~/.cache/kuni-data`), their SHA-256 in `data-sources/sources.json`, and every request in `data-sources/requests-<day>.log`.
-- Wikidata: `query.wikidata.org/robots.txt` disallows `/sparql` and `www.wikidata.org/robots.txt` disallows `/w/` and `/api/`, so neither is called. The labels are read from Wikimedia's truthy dump (`dumps.wikimedia.org`, one file, no robots disallow) by `scripts/extract-wikidata-labels.ts`, which streams the dump through `bzip2 -dc` and a fixed-string `rg` of the 5,494 items' label lines. One download, then no more requests.
+- Wikidata: `query.wikidata.org/robots.txt` disallows `/sparql` and `www.wikidata.org/robots.txt` disallows `/w/` and `/api/`, so neither is called. The truthy dump (`dumps.wikimedia.org`, one file, no robots disallow) is about 40 GB compressed, so it is never stored: `scripts/extract-dump-subset.ts` streams it (curl, with a Range request to resume) through `bzip2 -dc` into a filter that keeps every triple of the 11,550 items kuni already holds, in `~/.cache/kuni-data/dump-subset-<day>.nt`. `scripts/extract-wikidata-labels.ts` then reads the es, de and zh labels from that subset. The same subset is what MODULES-1599 rebuilds the 2026-10 snapshots from, so the dump is read once for both.
 
 ## What a native reader should check
 
