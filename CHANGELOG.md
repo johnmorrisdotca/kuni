@@ -8,7 +8,7 @@ All notable changes to this project are written here. The format follows
 
 ### Fixed
 
-- Türkiye's calling code is `+90`, not `+36` (MODULES-1624). `+36` is Hungary's: Wikidata's item for Türkiye lists both, and the build took the first. Saint Helena's is `+290`, not `+247` (Ascension's; Wikidata lists +247, +27 and +290). The ITU's "List of Recommendation ITU-T E.164 assigned country codes" (Operational Bulletin No. 1114) assigns them: +36 Hungary, +90 Turkey, and its note a gives Ascension +247 and Saint Helena and Tristan da Cunha +290. The snapshot carries no statement ranks, so the choice is set by country in `CALLING_CODE_OVERRIDES` with its reason, and the build now stops on any country whose item lists several differing codes and has no entry. A different answer to something that was answered: a major version.
+- Türkiye's calling code was `+36` (Hungary's); it is `+90`. Saint Helena's was `+247` (Ascension's); it is `+290` (MODULES-1624). Source: the ITU's "List of Recommendation ITU-T E.164 assigned country codes" (Operational Bulletin No. 1114): +36 Hungary, +90 Turkey, and its note a gives Ascension +247 and Saint Helena and Tristan da Cunha +290. Wikidata's items list several codes for both, and the build took the first. The snapshot carries no statement ranks, so the choice is set by country in `CALLING_CODE_OVERRIDES` with its reason, and the build now stops on any country whose item lists several differing codes and has no entry.
 - A test holds the calling codes that more than one country has to a written list (`+1`, `+7`, `+44`, `+47`, `+61`, `+64`, `+212`, `+262`, `+358`, `+500`, `+590`), each with the ITU's line, so a second country with Türkiye's code fails it by name.
 
 ## [1.10.0] - 2026-11-17
