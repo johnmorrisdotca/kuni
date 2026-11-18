@@ -23,11 +23,11 @@ FACTS_READ identifies the stored Wikidata snapshot. Population and area retain t
 ```ts
 import { capitalsOf,CAPITALS_READ } from "@johnmorrisdotca/kuni/capitals";
 console.log(capitalsOf("ZA")?.map((one)=>`${one.name.en} ${one.role}`));
-console.log(capitalsOf("NL")?.[1]?.name.ja,CAPITALS_READ);
+console.log(capitalsOf("BI")?.[1]?.name.ja,CAPITALS_READ);
 console.log(capitalsOf("JP"));
 ```
 
-The roles are official, administrative, legislative, judicial and seat (of government). Each is what the country's own government or law says, and the [capitals](../capitals.md) page names the page and the line for every entry. A country with no entry returns null, and its capital is the one `capital` names. The `capital` field itself has not changed. Israel and the Palestinian Territories have no entry, because a disputed capital is left to the maintainer.
+The roles are official, administrative, legislative, judicial, seat (of government), political and economic; a source's "commercial" capital is economic. Each is what the country's own government or law says, and the [capitals](../capitals.md) page names the page and the line for every entry. A country with no entry returns null, and its capital is the one `capital` names. The `capital` field itself has not changed. Israel and the Palestinian Territories have no entry, because a disputed capital is left to the maintainer.
 
 ## Preserve subdivision uncertainty
 

@@ -1,8 +1,17 @@
 # Capitals with a role
 
-Written by scripts/build-data.ts from scripts/capitals-config.ts; do not edit by hand. The 8 countries below have more than one capital city, or a capital kuni's `capital` does not name alone. For each city: the role, and the page of the country's own government or law that says so, with the line quoted, read on 2026-11-18. `capital` is unchanged; `capitalsOf(code)` in `/facts` is the table, `null` for a country with no entry here.
+Written by scripts/build-data.ts from scripts/capitals-config.ts; do not edit by hand. The 9 countries below have more than one capital city, or a capital kuni's `capital` does not name alone. For each city: the role, and the page of the country's own government or law that says so, with the line quoted, read on 2026-11-18. `capital` is unchanged; `capitalsOf(code)` in `/facts` is the table, `null` for a country with no entry here.
 
-The roles are `official`, `administrative`, `legislative`, `judicial` and `seat` (of government). Where a source's own word is another (political, constitutional, commercial, economic), the role is the nearest of the five and the source's word is in the note; a city a source calls the commercial or economic capital, and nothing else, is in the note of its country's entry.
+The roles are `official`, `administrative`, `legislative`, `judicial`, `seat` (of government), `political` and `economic`. A source's "commercial" capital is `economic`, and the source's word is in the note; where a source's word is another (constitutional), the role is the nearest and the word is in the note. A role needs a line that says it: a city a page only says houses the government is in a note, not in the list.
+
+## BI Burundi
+
+`capital` is Gitega.
+
+| City | 日本語 | Role | Note | Source | Line |
+|---|---|---|---|---|---|
+| Gitega | ギテガ | political |  | [Ministère des Affaires Etrangères du Burundi: Géographie](https://www.mae.gov.bi/geographie/) | "Gitega est la capitale politique de la République du Burundi depuis le 04 février 2019." |
+| Bujumbura | ブジュンブラ | economic |  | [Ministère des Affaires Etrangères du Burundi: Géographie](https://www.mae.gov.bi/geographie/) | "Bujumbura, la capitale économique de la République du Burundi, est située à l'Ouest du pays" |
 
 ## BJ Benin
 
@@ -11,7 +20,7 @@ The roles are `official`, `administrative`, `legislative`, `judicial` and `seat`
 | City | 日本語 | Role | Note | Source | Line |
 |---|---|---|---|---|---|
 | Porto-Novo | ポルトノボ | official |  | [Gouvernement de la République du Bénin: Allons, Ensemble , à la découverte des communes du Bénin](https://www.gouv.bj/article/935/allons--ensemble-decouverte-communes-benin/) | "Porto-Novo est sa capitale bien que Cotonou soit la principale métropole." |
-| Cotonou | コトヌー | seat | The government's page does not call Cotonou a capital; it says the city houses the Presidency. | [Gouvernement de la République du Bénin: Destination Bénin : Cotonou, poumon économique, pôle cosmopolite et vitrine du Bénin](https://www.gouv.bj/article/1066/destination-benin---cotonou--poumon-economique--pole-cosmopolite-vitrine-benin/) | "Cette mégalopole abrite la tête du pouvoir politique, la Présidence de la République" |
+| Cotonou | コトヌー | economic | The government's page calls it the capitale économique; another page of the same site says it houses the Presidency. | [Gouvernement de la République du Bénin: Cité ministérielle de Cotonou : Le nouveau symbole d'une administration moderne et intégrée](https://www.gouv.bj/article/3321/cite-ministerielle-cotonou-nouveau-symbole-administration-moderne-integree/) | "Érigé au cœur de la capitale économique du Bénin" |
 
 ## BO Bolivia
 
@@ -19,8 +28,8 @@ The roles are `official`, `administrative`, `legislative`, `judicial` and `seat`
 
 | City | 日本語 | Role | Note | Source | Line |
 |---|---|---|---|---|---|
-| Sucre | スクレ | official | The Ministry of Foreign Affairs calls it the capital constitucional (the constitutional capital). | [Ministerio de Relaciones Exteriores de Bolivia: Más de un centenar de autoridades y representantes internacionales acompañan a Bolivia en la conmemoración del Bicentenario de su Independencia](https://cancilleria.gob.bo/mre/2025/08/06/22320/) | "La ciudad de Sucre, capital constitucional del Estado Plurinacional de Bolivia y cuna de la libertad americana" |
-| La Paz | ラパス | seat | The Ministry of Productive Development's page says this of the department of La Paz: sede del Gobierno central (the seat of the central government). | [Ministerio de Desarrollo Productivo y Economía Plural de Bolivia: La Paz Ciudad de Progreso y Modernidad](https://siip.produccion.gob.bo/repSIIP2/documento.php?n=1817) | "La paz es uno de los nueve departamentos que conforman el Estado Plurinacional de Bolivia, sede del Gobierno central." |
+| Sucre | スクレ | official | The Ministry of Foreign Affairs calls it the capital constitucional (the constitutional capital). | [Ministerio de Relaciones Exteriores de Bolivia: Más de un centenar de autoridades y representantes internacionales acompañan a Bolivia en la conmemoración del Bicentenario de su Independencia](https://cancilleria.gob.bo/mre/2025/08/06/22320/)<br>[Ministerio de Educación de Bolivia: Boletín Informativo Avanzamos N° 07 - 2023](https://www.minedu.gob.bo/index.php?Itemid=889&id=1014%3Aboletin-informativo-avanzamos-n-07-2023&option=com_k2&view=item) | "La ciudad de Sucre, capital constitucional del Estado Plurinacional de Bolivia y cuna de la libertad americana"<br>"su capital oficial es Sucre" |
+| La Paz | ラパス | seat |  | [Ministerio de Educación de Bolivia: Boletín Informativo Avanzamos N° 07 - 2023](https://www.minedu.gob.bo/index.php?Itemid=889&id=1014%3Aboletin-informativo-avanzamos-n-07-2023&option=com_k2&view=item) | "la Sede de Gobierno es la ciudad de La Paz." |
 
 ## CI Côte d’Ivoire
 
@@ -28,7 +37,8 @@ The roles are `official`, `administrative`, `legislative`, `judicial` and `seat`
 
 | City | 日本語 | Role | Note | Source | Line |
 |---|---|---|---|---|---|
-| Yamoussoukro | ヤムスクロ | administrative | The Presidency calls it the political and administrative capital; Abidjan remains the economic capital. | [Presidency of the Ivory Coast: Our heritage](https://www.presidence.ci/en/our-heritage/) | "The political and administrative capital of Côte d’Ivoire is Yamoussoukro (Abidjan remains the economic capital)" |
+| Yamoussoukro | ヤムスクロ | administrative | The Presidency calls it the political and administrative capital. | [Presidency of the Ivory Coast: Our heritage](https://www.presidence.ci/en/our-heritage/) | "The political and administrative capital of Côte d’Ivoire is Yamoussoukro (Abidjan remains the economic capital)" |
+| Abidjan | アビジャン | economic |  | [Presidency of the Ivory Coast: Our heritage](https://www.presidence.ci/en/our-heritage/) | "The political and administrative capital of Côte d’Ivoire is Yamoussoukro (Abidjan remains the economic capital)" |
 
 ## LK Sri Lanka
 
@@ -36,7 +46,8 @@ The roles are `official`, `administrative`, `legislative`, `judicial` and `seat`
 
 | City | 日本語 | Role | Note | Source | Line |
 |---|---|---|---|---|---|
-| Sri Jayawardenepura Kotte | スリジャヤワルダナプラコッテ | administrative | Colombo, the largest city, is called the commercial capital. | [Ministry of Foreign Affairs, Foreign Employment & Tourism, Sri Lanka: National Profile & Geography](https://www.mfa.gov.lk/en/national-profile-and-geography)<br>[Embassy of Sri Lanka in Lebanon: Why Visit Sri Lanka](https://www.emb-beirut.gov.lk/en/why-visit-sri-lanka) | "Capital: Sri Jayawardenepura Kotte (administrative); Largest city: Colombo."<br>"Sri Jayawardenepura Kotte is the administrative capital; Colombo is the commercial capital." |
+| Sri Jayawardenepura Kotte | スリジャヤワルダナプラコッテ | administrative |  | [Ministry of Foreign Affairs, Foreign Employment & Tourism, Sri Lanka: National Profile & Geography](https://www.mfa.gov.lk/en/national-profile-and-geography)<br>[Embassy of Sri Lanka in Lebanon: Why Visit Sri Lanka](https://www.emb-beirut.gov.lk/en/why-visit-sri-lanka) | "Capital: Sri Jayawardenepura Kotte (administrative); Largest city: Colombo."<br>"Sri Jayawardenepura Kotte is the administrative capital; Colombo is the commercial capital." |
+| Colombo | コロンボ | economic | The source's word is commercial capital. | [Embassy of Sri Lanka in Lebanon: Why Visit Sri Lanka](https://www.emb-beirut.gov.lk/en/why-visit-sri-lanka) | "Sri Jayawardenepura Kotte is the administrative capital; Colombo is the commercial capital." |
 
 ## MY Malaysia
 
@@ -53,8 +64,7 @@ The roles are `official`, `administrative`, `legislative`, `judicial` and `seat`
 
 | City | 日本語 | Role | Note | Source | Line |
 |---|---|---|---|---|---|
-| Amsterdam | アムステルダム | official | The Constitution (Grondwet, article 32) calls it the hoofdstad, the capital. | [Overheid.nl: Grondwet, artikel 32](https://wetten.overheid.nl/BWBR0001840/2023-02-22) | "wordt hij zodra mogelijk beëdigd en ingehuldigd in de hoofdstad Amsterdam" |
-| The Hague | デン・ハーグ | seat | The government's page says central government is concentrated in and around The Hague; it does not use the words seat of government. | [Overheid.nl: Central government](https://www.overheid.nl/english/about-the-dutch-government/what-government-consists-of/central-government) | "Central government is concentrated in and around The Hague." |
+| Amsterdam | アムステルダム | official | The Constitution (Grondwet, article 32) calls it the hoofdstad, the capital. The Hague is not listed: the government's page says only that central government is concentrated in and around The Hague. | [Overheid.nl: Grondwet, artikel 32](https://wetten.overheid.nl/BWBR0001840/2023-02-22) | "wordt hij zodra mogelijk beëdigd en ingehuldigd in de hoofdstad Amsterdam" |
 
 ## TZ Tanzania
 
@@ -62,7 +72,8 @@ The roles are `official`, `administrative`, `legislative`, `judicial` and `seat`
 
 | City | 日本語 | Role | Note | Source | Line |
 |---|---|---|---|---|---|
-| Dodoma | ドドマ | official | Dar es Salaam is called the commercial capital and major seaport for Tanzania Mainland. | [Embassy of Tanzania in Vienna: About Tanzania](https://www.at.tzembassy.go.tz/tanzania/about-tanzania) | "Dodoma is the capital city" |
+| Dodoma | ドドマ | official |  | [Embassy of Tanzania in Vienna: About Tanzania](https://www.at.tzembassy.go.tz/tanzania/about-tanzania) | "Dodoma is the capital city" |
+| Dar es Salaam | ダルエスサラーム | economic | The source's word is commercial capital. | [Embassy of Tanzania in Vienna: About Tanzania](https://www.at.tzembassy.go.tz/tanzania/about-tanzania) | "Dar es Salaam is the commercial capital and major seaport for Tanzania Mainland" |
 
 ## ZA South Africa
 

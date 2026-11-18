@@ -36,7 +36,7 @@ let table: ReadonlyMap<string, readonly CountryCapital[]> | null = null;
  * import { capitalsOf } from "@johnmorrisdotca/kuni/capitals";
  *
  * console.log(capitalsOf("ZA")?.map((one) => `${one.name.en} ${one.role}`)); // ["Pretoria administrative", "Cape Town legislative", "Bloemfontein judicial"]
- * console.log(capitalsOf("NL")?.[1]?.name.ja);                               // "デン・ハーグ"
+ * console.log(capitalsOf("BI")?.map((one) => `${one.name.ja} ${one.role}`));  // ["ギテガ political", "ブジュンブラ economic"]
  * console.log(capitalsOf("JP"));                                             // null
  * ```
  */

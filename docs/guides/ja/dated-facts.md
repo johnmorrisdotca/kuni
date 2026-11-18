@@ -23,11 +23,11 @@ FACTS_READは保存したWikidataの資料の日付です。人口と面積に�
 ```ts
 import { capitalsOf,CAPITALS_READ } from "@johnmorrisdotca/kuni/capitals";
 console.log(capitalsOf("ZA")?.map((one)=>`${one.name.en} ${one.role}`));
-console.log(capitalsOf("NL")?.[1]?.name.ja,CAPITALS_READ);
+console.log(capitalsOf("BI")?.[1]?.name.ja,CAPITALS_READ);
 console.log(capitalsOf("JP"));
 ```
 
-役割はofficial（正式な首都）、administrative（行政）、legislative（立法）、judicial（司法）、seat（政府の所在地）です。どれもその国の政府や法律が述べていることで、[首都の一覧](../../capitals.md)に各項目の資料のページと引用した行があります。項目のない国はnullを返し、その首都は`capital`が示す一つです。`capital`の項目そのものは変わっていません。イスラエルとパレスチナ自治区は、争いのある首都の扱いが管理者の判断のため、項目がありません。
+役割はofficial（正式な首都）、administrative（行政）、legislative（立法）、judicial（司法）、seat（政府の所在地）、political（政治）、economic（経済）です。資料が「商業の首都」と言う場合はeconomicとします。どれもその国の政府や法律が述べていることで、[首都の一覧](../../capitals.md)に各項目の資料のページと引用した行があります。項目のない国はnullを返し、その首都は`capital`が示す一つです。`capital`の項目そのものは変わっていません。イスラエルとパレスチナ自治区は、争いのある首都の扱いが管理者の判断のため、項目がありません。
 
 ## 行政区画の不確かさを保つ
 

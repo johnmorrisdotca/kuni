@@ -4,16 +4,16 @@
 // page and the line quoted from it, read on the day in CAPITALS_READ. No name or role here comes from memory or from
 // a reference work: a country no official page in reach settles is left out (docs/capitals.md lists them).
 //
-// `role` is the nearest of the five words kuni has to the word the source uses; the source's own word stays in the
-// quote and, where it differs, in `note`. A city the source calls the commercial or economic capital, and nothing
-// else, is in a `note`, not in the list: kuni has no role for it.
+// `role` is the nearest of the seven words kuni has to the word the source uses (a source's "commercial" is `economic`);
+// the source's own word stays in the quote and, where it differs, in `note`. A role needs a line that says the role:
+// where a page only says a city houses the government, the city is in a `note`, not in the list.
 //
 // Every Japanese name is the one kuni already has for that city (the country's `capital.ja`, or the city's name in
 // /cities); scripts/build-data.ts fails if one of them is not.
 //
 // Israel and the Palestinian Territories are not here: a disputed capital is a decision for the maintainer, not this table.
 
-type CapitalRole = "official" | "administrative" | "legislative" | "judicial" | "seat";
+type CapitalRole = "official" | "administrative" | "legislative" | "judicial" | "seat" | "political" | "economic";
 
 interface CapitalSource {
   /** Who published the page. */
@@ -44,6 +44,20 @@ const ZA_SOURCE: CapitalSource = {
 };
 
 const CAPITALS: Record<string, CapitalEntry[]> = {
+  BI: [
+    {
+      en: "Gitega",
+      ja: "ギテガ",
+      role: "political",
+      sources: [{ by: "Ministère des Affaires Etrangères du Burundi", title: "Géographie", url: "https://www.mae.gov.bi/geographie/", quote: "Gitega est la capitale politique de la République du Burundi depuis le 04 février 2019." }],
+    },
+    {
+      en: "Bujumbura",
+      ja: "ブジュンブラ",
+      role: "economic",
+      sources: [{ by: "Ministère des Affaires Etrangères du Burundi", title: "Géographie", url: "https://www.mae.gov.bi/geographie/", quote: "Bujumbura, la capitale économique de la République du Burundi, est située à l'Ouest du pays" }],
+    },
+  ],
   BJ: [
     {
       en: "Porto-Novo",
@@ -54,9 +68,9 @@ const CAPITALS: Record<string, CapitalEntry[]> = {
     {
       en: "Cotonou",
       ja: "コトヌー",
-      role: "seat",
-      note: "The government's page does not call Cotonou a capital; it says the city houses the Presidency.",
-      sources: [{ by: "Gouvernement de la République du Bénin", title: "Destination Bénin : Cotonou, poumon économique, pôle cosmopolite et vitrine du Bénin", url: "https://www.gouv.bj/article/1066/destination-benin---cotonou--poumon-economique--pole-cosmopolite-vitrine-benin/", quote: "Cette mégalopole abrite la tête du pouvoir politique, la Présidence de la République" }],
+      role: "economic",
+      note: "The government's page calls it the capitale économique; another page of the same site says it houses the Presidency.",
+      sources: [{ by: "Gouvernement de la République du Bénin", title: "Cité ministérielle de Cotonou : Le nouveau symbole d'une administration moderne et intégrée", url: "https://www.gouv.bj/article/3321/cite-ministerielle-cotonou-nouveau-symbole-administration-moderne-integree/", quote: "Érigé au cœur de la capitale économique du Bénin" }],
     },
   ],
   BO: [
@@ -65,14 +79,16 @@ const CAPITALS: Record<string, CapitalEntry[]> = {
       ja: "スクレ",
       role: "official",
       note: "The Ministry of Foreign Affairs calls it the capital constitucional (the constitutional capital).",
-      sources: [{ by: "Ministerio de Relaciones Exteriores de Bolivia", title: "Más de un centenar de autoridades y representantes internacionales acompañan a Bolivia en la conmemoración del Bicentenario de su Independencia", url: "https://cancilleria.gob.bo/mre/2025/08/06/22320/", quote: "La ciudad de Sucre, capital constitucional del Estado Plurinacional de Bolivia y cuna de la libertad americana" }],
+      sources: [
+        { by: "Ministerio de Relaciones Exteriores de Bolivia", title: "Más de un centenar de autoridades y representantes internacionales acompañan a Bolivia en la conmemoración del Bicentenario de su Independencia", url: "https://cancilleria.gob.bo/mre/2025/08/06/22320/", quote: "La ciudad de Sucre, capital constitucional del Estado Plurinacional de Bolivia y cuna de la libertad americana" },
+        { by: "Ministerio de Educación de Bolivia", title: "Boletín Informativo Avanzamos N° 07 - 2023", url: "https://www.minedu.gob.bo/index.php?Itemid=889&id=1014%3Aboletin-informativo-avanzamos-n-07-2023&option=com_k2&view=item", quote: "su capital oficial es Sucre" },
+      ],
     },
     {
       en: "La Paz",
       ja: "ラパス",
       role: "seat",
-      note: "The Ministry of Productive Development's page says this of the department of La Paz: sede del Gobierno central (the seat of the central government).",
-      sources: [{ by: "Ministerio de Desarrollo Productivo y Economía Plural de Bolivia", title: "La Paz Ciudad de Progreso y Modernidad", url: "https://siip.produccion.gob.bo/repSIIP2/documento.php?n=1817", quote: "La paz es uno de los nueve departamentos que conforman el Estado Plurinacional de Bolivia, sede del Gobierno central." }],
+      sources: [{ by: "Ministerio de Educación de Bolivia", title: "Boletín Informativo Avanzamos N° 07 - 2023", url: "https://www.minedu.gob.bo/index.php?Itemid=889&id=1014%3Aboletin-informativo-avanzamos-n-07-2023&option=com_k2&view=item", quote: "la Sede de Gobierno es la ciudad de La Paz." }],
     },
   ],
   CI: [
@@ -80,7 +96,13 @@ const CAPITALS: Record<string, CapitalEntry[]> = {
       en: "Yamoussoukro",
       ja: "ヤムスクロ",
       role: "administrative",
-      note: "The Presidency calls it the political and administrative capital; Abidjan remains the economic capital.",
+      note: "The Presidency calls it the political and administrative capital.",
+      sources: [{ by: "Presidency of the Ivory Coast", title: "Our heritage", url: "https://www.presidence.ci/en/our-heritage/", quote: "The political and administrative capital of Côte d’Ivoire is Yamoussoukro (Abidjan remains the economic capital)" }],
+    },
+    {
+      en: "Abidjan",
+      ja: "アビジャン",
+      role: "economic",
       sources: [{ by: "Presidency of the Ivory Coast", title: "Our heritage", url: "https://www.presidence.ci/en/our-heritage/", quote: "The political and administrative capital of Côte d’Ivoire is Yamoussoukro (Abidjan remains the economic capital)" }],
     },
   ],
@@ -89,11 +111,17 @@ const CAPITALS: Record<string, CapitalEntry[]> = {
       en: "Sri Jayawardenepura Kotte",
       ja: "スリジャヤワルダナプラコッテ",
       role: "administrative",
-      note: "Colombo, the largest city, is called the commercial capital.",
       sources: [
         { by: "Ministry of Foreign Affairs, Foreign Employment & Tourism, Sri Lanka", title: "National Profile & Geography", url: "https://www.mfa.gov.lk/en/national-profile-and-geography", quote: "Capital: Sri Jayawardenepura Kotte (administrative); Largest city: Colombo." },
         { by: "Embassy of Sri Lanka in Lebanon", title: "Why Visit Sri Lanka", url: "https://www.emb-beirut.gov.lk/en/why-visit-sri-lanka", quote: "Sri Jayawardenepura Kotte is the administrative capital; Colombo is the commercial capital." },
       ],
+    },
+    {
+      en: "Colombo",
+      ja: "コロンボ",
+      role: "economic",
+      note: "The source's word is commercial capital.",
+      sources: [{ by: "Embassy of Sri Lanka in Lebanon", title: "Why Visit Sri Lanka", url: "https://www.emb-beirut.gov.lk/en/why-visit-sri-lanka", quote: "Sri Jayawardenepura Kotte is the administrative capital; Colombo is the commercial capital." }],
     },
   ],
   MY: [
@@ -116,15 +144,8 @@ const CAPITALS: Record<string, CapitalEntry[]> = {
       en: "Amsterdam",
       ja: "アムステルダム",
       role: "official",
-      note: "The Constitution (Grondwet, article 32) calls it the hoofdstad, the capital.",
+      note: "The Constitution (Grondwet, article 32) calls it the hoofdstad, the capital. The Hague is not listed: the government's page says only that central government is concentrated in and around The Hague.",
       sources: [{ by: "Overheid.nl", title: "Grondwet, artikel 32", url: "https://wetten.overheid.nl/BWBR0001840/2023-02-22", quote: "wordt hij zodra mogelijk beëdigd en ingehuldigd in de hoofdstad Amsterdam" }],
-    },
-    {
-      en: "The Hague",
-      ja: "デン・ハーグ",
-      role: "seat",
-      note: "The government's page says central government is concentrated in and around The Hague; it does not use the words seat of government.",
-      sources: [{ by: "Overheid.nl", title: "Central government", url: "https://www.overheid.nl/english/about-the-dutch-government/what-government-consists-of/central-government", quote: "Central government is concentrated in and around The Hague." }],
     },
   ],
   TZ: [
@@ -132,8 +153,14 @@ const CAPITALS: Record<string, CapitalEntry[]> = {
       en: "Dodoma",
       ja: "ドドマ",
       role: "official",
-      note: "Dar es Salaam is called the commercial capital and major seaport for Tanzania Mainland.",
       sources: [{ by: "Embassy of Tanzania in Vienna", title: "About Tanzania", url: "https://www.at.tzembassy.go.tz/tanzania/about-tanzania", quote: "Dodoma is the capital city" }],
+    },
+    {
+      en: "Dar es Salaam",
+      ja: "ダルエスサラーム",
+      role: "economic",
+      note: "The source's word is commercial capital.",
+      sources: [{ by: "Embassy of Tanzania in Vienna", title: "About Tanzania", url: "https://www.at.tzembassy.go.tz/tanzania/about-tanzania", quote: "Dar es Salaam is the commercial capital and major seaport for Tanzania Mainland" }],
     },
   ],
   ZA: [

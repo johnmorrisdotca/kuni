@@ -8,17 +8,18 @@ import { describe, expect, it } from "vitest";
 import { CAPITALS_READ, capitalsOf } from "./capitals";
 import { countries } from "./index";
 
-const ROLES = ["official", "administrative", "legislative", "judicial", "seat"];
+const ROLES = ["official", "administrative", "legislative", "judicial", "seat", "political", "economic"];
 
 // The role of each city, by country, as docs/capitals.md says and the sources were read.
 const EXPECTED: Record<string, [string, string | null, string][]> = {
-  BJ: [["Porto-Novo", "ポルトノボ", "official"], ["Cotonou", "コトヌー", "seat"]],
+  BI: [["Gitega", "ギテガ", "political"], ["Bujumbura", "ブジュンブラ", "economic"]],
+  BJ: [["Porto-Novo", "ポルトノボ", "official"], ["Cotonou", "コトヌー", "economic"]],
   BO: [["Sucre", "スクレ", "official"], ["La Paz", "ラパス", "seat"]],
-  CI: [["Yamoussoukro", "ヤムスクロ", "administrative"]],
-  LK: [["Sri Jayawardenepura Kotte", "スリジャヤワルダナプラコッテ", "administrative"]],
+  CI: [["Yamoussoukro", "ヤムスクロ", "administrative"], ["Abidjan", "アビジャン", "economic"]],
+  LK: [["Sri Jayawardenepura Kotte", "スリジャヤワルダナプラコッテ", "administrative"], ["Colombo", "コロンボ", "economic"]],
   MY: [["Kuala Lumpur", "クアラルンプール", "official"], ["Putrajaya", "プトラジャヤ", "administrative"]],
-  NL: [["Amsterdam", "アムステルダム", "official"], ["The Hague", "デン・ハーグ", "seat"]],
-  TZ: [["Dodoma", "ドドマ", "official"]],
+  NL: [["Amsterdam", "アムステルダム", "official"]],
+  TZ: [["Dodoma", "ドドマ", "official"], ["Dar es Salaam", "ダルエスサラーム", "economic"]],
   ZA: [["Pretoria", "プレトリア", "administrative"], ["Cape Town", "ケープタウン", "legislative"], ["Bloemfontein", "ブルームフォンテーン", "judicial"]],
 };
 
@@ -30,6 +31,28 @@ describe("capitalsOf", () => {
     }
   });
 
+  it("has the political and economic roles where an official page says them", () => {
+    const rolesOf = (code: string): string[] => capitalsOf(code)!.map((one) => one.role);
+    expect(rolesOf("BI")).toEqual(["political", "economic"]);
+    expect(capitalsOf("BI")![0]!.name.en).toBe("Gitega");
+    // Abidjan, Dar es Salaam, Colombo and Cotonou are economic where a page read says commercial or economic capital.
+    for (const [code, city] of [["CI", "Abidjan"], ["TZ", "Dar es Salaam"], ["LK", "Colombo"], ["BJ", "Cotonou"]] as const) {
+      expect(capitalsOf(code)!.find((one) => one.name.en === city)?.role, `${code} ${city}`).toBe("economic");
+    }
+    // A source's "commercial" is economic, and its word stays in the note.
+    expect(capitalsOf("LK")![1]!.note).toContain("commercial");
+    expect(capitalsOf("TZ")![1]!.note).toContain("commercial");
+  });
+
+  it("gives the seat role only where a page says seat of government outright", () => {
+    const seats = Object.keys(EXPECTED).flatMap((code) => capitalsOf(code)!.filter((one) => one.role === "seat").map((one) => `${code} ${one.name.en}`));
+    // La Paz: the Ministry of Education's "la Sede de Gobierno es la ciudad de La Paz". Not The Hague (NL) nor Cotonou (BJ):
+    // the pages read say only that the government is concentrated in or the Presidency is in the city.
+    expect(seats).toEqual(["BO La Paz"]);
+    expect(capitalsOf("NL")!.map((one) => one.name.en)).toEqual(["Amsterdam"]);
+    expect(capitalsOf("NL")![0]!.note).toContain("The Hague");
+  });
+
   it("reads a code in either case and answers null for what is not a code", () => {
     expect(capitalsOf("za")).toBe(capitalsOf("ZA"));
     expect(capitalsOf(" nl ")).toBe(capitalsOf("NL"));
@@ -37,7 +60,7 @@ describe("capitalsOf", () => {
     expect(capitalsOf(undefined as unknown as string)).toBeNull();
   });
 
-  it("uses only the five roles, a Japanese name for every city, and a note that is not empty", () => {
+  it("uses only the seven roles, a Japanese name for every city, and a note that is not empty", () => {
     for (const code of Object.keys(EXPECTED)) {
       for (const one of capitalsOf(code)!) {
         expect(ROLES, `${code} ${one.name.en}`).toContain(one.role);

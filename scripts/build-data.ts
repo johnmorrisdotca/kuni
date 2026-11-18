@@ -1253,7 +1253,7 @@ const writeCapitals = (): void => {
     "",
     `Written by scripts/build-data.ts from scripts/capitals-config.ts; do not edit by hand. The ${rows.length} countries below have more than one capital city, or a capital kuni's \`capital\` does not name alone. For each city: the role, and the page of the country's own government or law that says so, with the line quoted, read on ${CAPITALS_READ}. \`capital\` is unchanged; \`capitalsOf(code)\` in \`/facts\` is the table, \`null\` for a country with no entry here.`,
     "",
-    "The roles are `official`, `administrative`, `legislative`, `judicial` and `seat` (of government). Where a source's own word is another (political, constitutional, commercial, economic), the role is the nearest of the five and the source's word is in the note; a city a source calls the commercial or economic capital, and nothing else, is in the note of its country's entry.",
+    "The roles are `official`, `administrative`, `legislative`, `judicial`, `seat` (of government), `political` and `economic`. A source's \"commercial\" capital is `economic`, and the source's word is in the note; where a source's word is another (constitutional), the role is the nearest and the word is in the note. A role needs a line that says it: a city a page only says houses the government is in a note, not in the list.",
     "",
   ];
   for (const [alpha2, entries] of Object.entries(CAPITALS).sort(([a], [b]) => byText(a, b))) {

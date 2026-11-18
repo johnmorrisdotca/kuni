@@ -269,7 +269,7 @@ interface LatLon {
   lon: number;
 }
 
-/** What a capital city is the capital for. `official` is the capital the country's own law or government calls its capital; `administrative`, `legislative` and `judicial` are the seats of that branch of government, in the word the source uses; `seat` is the seat of government where the source does not say which branch. Where a source's own word is another (political, constitutional), the role is the nearest of these five and the word is in the note.
+/** What a capital city is the capital for. `official` is the capital the country's own law or government calls its capital; `administrative`, `legislative` and `judicial` are the seats of that branch of government, in the word the source uses; `seat` is the seat of government where the source does not say which branch; `political` and `economic` are the capital the source calls the political capital (Burundi's Gitega) or the economic capital (Bujumbura, Abidjan), and a source's "commercial" capital is `economic`. Where a source's own word is another (constitutional, commercial), the role is the nearest of these seven and the word is in the note.
  *
  * @example
  * ```ts
@@ -279,7 +279,7 @@ interface LatLon {
  * console.log(value); // "legislative"
  * ```
  */
-type CapitalRole = "official" | "administrative" | "legislative" | "judicial" | "seat";
+type CapitalRole = "official" | "administrative" | "legislative" | "judicial" | "seat" | "political" | "economic";
 
 /** One capital city of a country that has more than one, or whose capital is not the one `capital` names alone, from `capitalsOf` in the /capitals entry.
  *
