@@ -332,10 +332,11 @@ const callingOf = (alpha2: string): string | null => {
   const items = wikidata.countries[alpha2] ?? [];
   const own = items.find((item) => (item.calling ?? []).length > 0) ?? null;
   const values = (own?.calling ?? []).map((value) => countryCode(value.replace(/[\s-]/g, "")));
+  const fallback = (countriesList[alpha2]?.phone ?? []).map((value) => `+${value}`);
   const override = CALLING_CODE_OVERRIDES[alpha2];
   if (override !== undefined) {
-    if (!values.includes(override.calling)) {
-      throw new Error(`CALLING_CODE_OVERRIDES[${alpha2}] is ${override.calling}, which Wikidata's values (${values.join(", ")}) do not include`);
+    if (![...values, ...fallback].some((value) => value.startsWith(override.calling))) {
+      throw new Error(`CALLING_CODE_OVERRIDES[${alpha2}] is ${override.calling}, which none of the values Wikidata and countries-list give (${[...values, ...fallback].join(", ")}) starts with`);
     }
 
     return override.calling;
@@ -344,10 +345,14 @@ const callingOf = (alpha2: string): string | null => {
   if (distinct.length > 1) {
     throw new Error(`${alpha2}: Wikidata gives calling codes ${distinct.join(", ")}; choose one in CALLING_CODE_OVERRIDES with the ITU as its source`);
   }
-  const fallback = (countriesList[alpha2]?.phone ?? []).map((value) => `+${value}`);
   const first = values[0] ?? fallback[0] ?? null;
 
-  return first === null ? null : countryCode(first);
+  const code = first === null ? null : countryCode(first);
+  if (code !== null && code.length > 4) {
+    throw new Error(`${alpha2}: ${code} is longer than an ITU country code (at most three digits); set the ITU's code in CALLING_CODE_OVERRIDES`);
+  }
+
+  return code;
 };
 
 const currenciesOf = (alpha2: string): string[] =>

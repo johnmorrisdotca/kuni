@@ -235,16 +235,33 @@ const SHORT_NAME_FILLS: Record<string, { en?: string; ja?: string }> = {
   MM: { ja: "ミャンマー" },
 };
 
-// A country's calling code where Wikidata's item gives several that differ and the first is not the country's.
+// A country's calling code where Wikidata's item gives several that differ and the first is not the country's, or
+// gives one with an area written after it that the ITU's code for the country does not have (+61891 for +61).
 // The snapshot holds the values of P474 that Wikidata's own ranking returns (the preferred rank, else the normal
 // one) and carries no rank of its own, so two values of the same rank cannot be told apart from it. Each entry
 // is the code the ITU assigns, read in "List of Recommendation ITU-T E.164 assigned country codes" (Annex to
 // ITU Operational Bulletin No. 1114, 15 December 2016, https://www.itu.int/pub/T-SP-E.164D). The build stops on
-// a country with several differing values and no entry here.
+// a country with several differing values, or a code longer than the ITU's three digits, and no entry here.
 const CALLING_CODE_OVERRIDES: Record<string, { calling: string; why: string }> = {
   TR: {
     calling: "+90",
     why: "Wikidata's Q43 lists +36 and +90. The ITU assigns +36 to Hungary and +90 to Turkey.",
+  },
+  SJ: {
+    calling: "+47",
+    why: "Wikidata's +4779 is Svalbard's area inside Norway's plan. The ITU lists +47 for Norway and no code of its own for Svalbard.",
+  },
+  CW: {
+    calling: "+599",
+    why: "Wikidata's +5999 is an area inside +599. The ITU lists +599 for Curaçao, note c: shared between Curaçao and Bonaire, Sint Eustatius and Saba.",
+  },
+  CC: {
+    calling: "+61",
+    why: "Wikidata's +61891 is an area inside Australia's plan. The ITU lists +61 for Australia, note i: including Christmas Island and Cocos (Keeling) Islands.",
+  },
+  NF: {
+    calling: "+672",
+    why: "Wikidata's +6723 is an area inside +672. The ITU lists +672 for the Australian External Territories, note g: including the Australian Antarctic Territory and Norfolk Island.",
   },
   SH: {
     calling: "+290",
