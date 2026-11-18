@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+
 import { describe, expect, it } from "vitest";
 
 import { CITY_TIERS, citiesOf, citySet, cityById, loadCities } from "./cities";
@@ -427,6 +429,50 @@ describe("the same id, the same answer", () => {
     const set = await loadCities("capitals", "1m", "100k", "15k");
     for (const id of ["Q90", "q90", " Q1490 ", "Q0", "", "ne:1"]) expect((await cityById(id))?.id ?? null, id).toBe(set.byId(id)?.id ?? null);
     for (const old of Object.keys(CITY_ALIASES)) expect(set.byId(old)?.id ?? null, old).toBe((await cityById(old))?.id ?? null);
+  });
+});
+
+describe("ids that left the tier lists", () => {
+  // Cities merged into another (Mactan into Cebu City) or removed (Dagbon): the id stays in the alias table, so a lookup by id
+  // answers with the successor, or null. A plain search of a tier array does not find it; cityById and loadCities().byId do.
+  const MERGED: Record<string, string> = {
+    Q685318: "Q1467", // Mactan -> Cebu City
+    Q65082202: "Q587085", // Tanke -> Ilorin
+    Q2486: "Q131233", // Tarawa
+    Q463937: "Q51681", // Saint Thomas
+    Q51679: "Q49755159",
+    Q160483: "Q748832",
+    Q187027: "Q568212",
+    Q1020168: "Q1757",
+    Q1416753: "Q3882",
+    Q1419813: "Q2396956",
+    Q12205404: "Q81788",
+  };
+  const REMOVED = ["Q24697413", "Q992747", "Q3116994"]; // Dagbon, Mampong, Gros Islet
+
+  it("answers with the successor, in cityById and in byId alike, and not from a tier's list", async () => {
+    const set = await loadCities("capitals", "1m", "100k", "15k");
+    for (const [old, target] of Object.entries(MERGED)) {
+      expect(CITY_ALIASES[old], old).toBe(target);
+      expect((await cityById(old))?.id, old).toBe(target);
+      expect(set.byId(old)?.id, old).toBe(target);
+      expect(set.byId(target)?.id, target).toBe(target);
+    }
+  });
+
+  it("answers null for a removed id, in cityById and in byId alike", async () => {
+    const set = await loadCities("capitals", "1m", "100k", "15k");
+    for (const old of REMOVED) {
+      expect(CITY_ALIASES[old], old).toBeUndefined(); // the table holds successors only
+      expect(await cityById(old), old).toBeNull();
+      expect(set.byId(old), old).toBeNull();
+    }
+  });
+
+  it("agrees with data-sources/city-id-aliases.json, where the file holds the id", async () => {
+    const file = JSON.parse(readFileSync("data-sources/city-id-aliases.json", "utf8")) as { aliases: Record<string, string | null> };
+    for (const [old, target] of Object.entries(file.aliases)) expect(CITY_ALIASES[old], old).toBe(target ?? undefined);
+    for (const [old, target] of Object.entries({ ...MERGED, ...Object.fromEntries(REMOVED.map((id) => [id, null])) })) if (old in file.aliases) expect(file.aliases[old], old).toBe(target);
   });
 });
 
