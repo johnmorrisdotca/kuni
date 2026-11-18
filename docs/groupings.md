@@ -23,28 +23,141 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 
 | Body | Members | Not current in Wikidata | In Wikidata, not the body's list | With a start date |
 | --- | --- | --- | --- | --- |
-| EU | 27 | NL | – | 26 |
-| Eurozone | 21 | AT BE BG CY EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK | – | 0 |
-| Schengen Area | 29 | NL | – | 28 |
+| EU | 27 | NL | – | 27 |
+| Eurozone | 21 | AT BE BG CY EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK | – | 21 |
+| Schengen Area | 29 | NL | – | 29 |
 | EEA | 30 | AT BG CY CZ DK ES FI FR HR IE IT LT LV MT NL PL RO SE SI | – | 1 |
-| NATO | 32 | DK NL | – | 30 |
-| G7 | 7 | – | – | 6 |
+| NATO | 32 | DK NL | – | 32 |
+| G7 | 7 | – | – | 0 |
 | G20 | 19 | – | – | 6 |
 | OECD | 38 | DK NL | – | 15 |
 | ASEAN | 11 | – | AU | 11 |
-| AU | 55 | EH | – | 10 |
+| AU | 55 | EH | – | 52 |
 | Arab League | 22 | – | – | 21 |
 | GCC | 6 | AE KW QA | – | 2 |
 | Commonwealth | 56 | GB | – | 55 |
 | OPEC | 12 | – | AO | 12 |
-| BRICS | 10 | – | – | 5 |
+| BRICS | 10 | – | – | 9 |
 | Mercosur | 5 | – | MX | 0 |
-| USMCA | 3 | CA US | – | 1 |
+| USMCA | 3 | CA US | – | 3 |
 | APEC | 21 | – | – | 21 |
 | CARICOM | 15 | – | – | 15 |
 | PIF | 18 | CK FJ FM KI MH NC NR NU NZ PF PG PW SB TO TV VU WS | – | 0 |
 | Nordic Council | 8 | – | – | 2 |
 | Benelux | 3 | – | – | 0 |
+
+### Days read from the body's own page
+
+Where Wikidata gives a member no day, or a day that is a placeholder, the body's own page is read (on 2026-11-18, each page by itself); the day and the line it rests on are in `scripts/groupings-config.ts` (`JOINED`).
+
+- **EU** NL: 1958-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en: "EU Member State: since 1 January 1958"
+- **Eurozone** AT: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/austria_en: "Euro area: member since 1 January 1999"
+- **Eurozone** BE: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/belgium_en: "Euro area: member since 1 January 1999"
+- **Eurozone** DE: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/germany_en: "Euro area: member since 1 January 1999"
+- **Eurozone** ES: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/spain_en: "Euro area: member since 1 January 1999"
+- **Eurozone** FI: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/finland_en: "Euro area: member since 1 January 1999"
+- **Eurozone** FR: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/france_en: "Euro area: member since 1 January 1999"
+- **Eurozone** IE: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/ireland_en: "Euro area: member since 1 January 1999"
+- **Eurozone** IT: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/italy_en: "Euro area: member since 1 January 1999"
+- **Eurozone** LU: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/luxembourg_en: "Euro area: member since 1 January 1999"
+- **Eurozone** NL: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en: "Euro area: member since 1 January 1999"
+- **Eurozone** PT: 1999-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/portugal_en: "Euro area: member since 1 January 1999"
+- **Eurozone** GR: 2001-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/greece_en: "Euro area: member since 1 January 2001"
+- **Eurozone** SI: 2007-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/slovenia_en: "Euro area: member since 1 January 2007"
+- **Eurozone** CY: 2008-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/cyprus_en: "Euro area: member since 1 January 2008"
+- **Eurozone** MT: 2008-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/malta_en: "Euro area: member since 1 January 2008"
+- **Eurozone** SK: 2009-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en: "Euro area: member since 1 January 2009"
+- **Eurozone** EE: 2011-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/estonia_en: "Euro area: member since 1 January 2011"
+- **Eurozone** LV: 2014-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/latvia_en: "Euro area: member since 1 January 2014"
+- **Eurozone** LT: 2015-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/lithuania_en: "Euro area: member since 1 January 2015"
+- **Eurozone** HR: 2023-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/croatia_en: "Euro area: member since 1 January 2023"
+- **Eurozone** BG: 2026-01-01: https://european-union.europa.eu/principles-countries-history/eu-countries/bulgaria_en: "Euro area: member since 1 January 2026"
+- **Schengen Area** NL: 1995-03-26: https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en: "Schengen: member since 26 March 1995"
+- **NATO** DK: 1949-04-04: https://www.nato.int/cps/en/natohq/topics_52044.htm: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States."
+- **NATO** NL: 1949-04-04: https://www.nato.int/cps/en/natohq/topics_52044.htm: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States."
+- **G7** CA: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **G7** DE: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **G7** FR: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **G7** GB: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **G7** IT: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **G7** JP: no day (the page gives a year only): https://www.g7germany.de/g7-en/g7-summit/g7-history: "The first World Economic Summit was hosted by French President Giscard d'Estaing and Federal Chancellor Schmidt in 1975. Canada was invited to join in 1976."
+- **AU** BF: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Burkina Faso: 25 May 1963"
+- **AU** BJ: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Benin: 25 May 1963"
+- **AU** CD: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Democratic Republic of Congo: 25 May 1963"
+- **AU** CF: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Central African Republic: 25 May 1963"
+- **AU** CG: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of the Congo: 25 May 1963"
+- **AU** CI: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Côte d'Ivoire: 25 May 1963"
+- **AU** CM: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Cameroon: 25 May 1963"
+- **AU** CV: 1975-07-18: https://au.int/en/member_states/countryprofiles2: "Republic of Cabo Verde: 18 July 1975"
+- **AU** DJ: 1977-06-27: https://au.int/en/member_states/countryprofiles2: "Republic of Djibouti: 27 June 1977"
+- **AU** EH: 1982-02-22: https://au.int/en/member_states/countryprofiles2: "Sahrawi Arab Democratic Republic: 22 February 1982"
+- **AU** ER: 1993-05-24: https://au.int/en/member_states/countryprofiles2: "State of Eritrea: 24 May 1993"
+- **AU** ET: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Federal Democratic Republic of Ethiopia: 25 May 1963"
+- **AU** GA: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Gabonese Republic: 25 May 1963"
+- **AU** GH: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Ghana: 25 May 1963"
+- **AU** GM: 1965-03-09: https://au.int/en/member_states/countryprofiles2: "Republic of the Gambia: 9 March 1965"
+- **AU** GN: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Guinea: 25 May 1963"
+- **AU** GQ: 1968-10-12: https://au.int/en/member_states/countryprofiles2: "Republic of Equatorial Guinea: 12 October 1968"
+- **AU** GW: 1973-11-19: https://au.int/en/member_states/countryprofiles2: "Republic of Guinea-Bissau: 19 November 1973"
+- **AU** KM: 1975-07-18: https://au.int/en/member_states/countryprofiles2: "Union of the Comoros: 18 July 1975"
+- **AU** LR: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Liberia: 25 May 1963"
+- **AU** LS: 1966-10-31: https://au.int/en/member_states/countryprofiles2: "Kingdom of Lesotho: 31 October 1966"
+- **AU** LY: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Libya: 25 May 1963"
+- **AU** MG: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Madagascar: 25 May 1963"
+- **AU** ML: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Mali: 25 May 1963"
+- **AU** MW: 1964-07-13: https://au.int/en/member_states/countryprofiles2: "Republic of Malawi: 13 July 1964"
+- **AU** MZ: 1975-07-18: https://au.int/en/member_states/countryprofiles2: "Republic of Mozambique: 18 July 1975"
+- **AU** NE: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Niger: 25 May 1963"
+- **AU** NG: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Federal Republic of Nigeria: 25 May 1963"
+- **AU** RW: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Rwanda: 25 May 1963"
+- **AU** SC: 1976-06-29: https://au.int/en/member_states/countryprofiles2: "Republic of Seychelles: 29 June 1976"
+- **AU** SD: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of the Sudan: 25 May 1963"
+- **AU** SL: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Sierra Leone: 25 May 1963"
+- **AU** SN: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Senegal: 25 May 1963"
+- **AU** SO: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Federal Republic of Somalia: 25 May 1963"
+- **AU** SS: 2011-07-27: https://au.int/en/member_states/countryprofiles2: "Republic of South Sudan: 27 July 2011"
+- **AU** ST: 1975-07-18: https://au.int/en/member_states/countryprofiles2: "Democratic Republic of São Tomé and Príncipe: 18 July 1975"
+- **AU** SZ: 1968-09-24: https://au.int/en/member_states/countryprofiles2: "Kingdom of Eswatini: 24 September 1968"
+- **AU** TD: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Chad: 25 May 1963"
+- **AU** TG: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Togolese Republic: 25 May 1963"
+- **AU** TN: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Tunisia: 25 May 1963"
+- **AU** UG: 1963-05-25: https://au.int/en/member_states/countryprofiles2: "Republic of Uganda: 25 May 1963"
+- **AU** ZM: 1964-12-16: https://au.int/en/member_states/countryprofiles2: "Republic of Zambia: 16 December 1964"
+- **AU** ZW: 1980-06-18: https://au.int/en/member_states/countryprofiles2: "Republic of Zimbabwe: 18 June 1980"
+- **BRICS** AE: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
+- **BRICS** EG: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
+- **BRICS** ET: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
+- **BRICS** IR: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
+- **USMCA** CA: 2020-07-01: https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020."
+- **USMCA** US: 2020-07-01: https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020."
+
+### Members with no day
+
+No source gives these a day, so a call for a day (`membersOf(id, { on })`) does not count them; `unknownMembersOf` lists them.
+
+- **UN** (1): DK
+- **EU** (0): none
+- **Eurozone** (0): none
+- **Schengen Area** (0): none
+- **EEA** (29): AT BE BG CY CZ DE DK EE ES FI FR GR HR HU IE IT LI LT LU LV MT NL NO PL PT RO SE SI SK
+- **NATO** (0): none
+- **G7** (7): CA DE FR GB IT JP US
+- **G20** (13): AR AU BR CA CN ID IN IT JP KR MX US ZA
+- **OECD** (23): AT AU BE CA CH CL CZ DK EE ES IE IS JP LU MX NL NO NZ SE SI SK TR US
+- **ASEAN** (0): none
+- **AU** (3): MA MU NA
+- **Arab League** (1): PS
+- **GCC** (4): AE BH KW QA
+- **Commonwealth** (1): GB
+- **OPEC** (0): none
+- **BRICS** (1): ID
+- **Mercosur** (5): AR BO BR PY UY
+- **USMCA** (0): none
+- **APEC** (0): none
+- **CARICOM** (0): none
+- **PIF** (18): AU CK FJ FM KI MH NC NR NU NZ PF PG PW SB TO TV VU WS
+- **Nordic Council** (6): AX DK FO GL IS NO
+- **Benelux** (3): BE LU NL
 
 Left out on purpose:
 

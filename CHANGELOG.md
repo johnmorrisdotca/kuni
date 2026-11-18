@@ -6,6 +6,23 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- `membersOf(id, { on })` and `groupingsOf(code, { on })` no longer count a member with no joining day as a member on every date (MODULES-1625). Before, `membersOf("brics", { on: "2015-01-01" })` included AE, EG, ET, ID and IR, which joined in 2024 and 2025, and `membersOf("nato", { on: "1940-01-01" })` included DK and NL. A member whose `since` is `null` is now unknown on that date, not a member. The answer to a call with a day can therefore differ from before; a call with no `on` is unchanged. `GroupingMember.since` says so in its type documentation.
+- New `unknownMembersOf(id, { on })` lists the members whose membership on that day is unknown (those with a `null` `since`), so a gap is visible and not read as a non-member. It answers `[]` with no day and for a grouping that is not a body, and `null` for an id that is not a grouping.
+
+### Fixed
+
+- Wikidata states some memberships twice with the same days (Taiwan's seat at the UN); `periods` now holds each once.
+- Joining days read from each body's own page, where Wikidata had none (`JOINED` in `scripts/groupings-config.ts`, each with its page and the line it rests on; the list is in `docs/groupings.md`):
+  - NATO: Denmark and the Netherlands, 4 April 1949 (nato.int, "NATO was created by 12 countries ... on 4 April 1949", with the founders named).
+  - BRICS: the United Arab Emirates, Egypt, Ethiopia and Iran, 1 January 2024 (the South African Presidency's statement of the 2023 chair, "The membership will take effect from 1 January 2024"). Indonesia has no day on a page that could be read, and stays unknown.
+  - African Union: 42 members that had none, and Guinea's, from the AU's member-states list ("date of joining the AU or its predecessor the OAU", au.int); Guinea's placeholder 1963-01-01 becomes 25 May 1963. Mauritius ("August 1968"), Namibia ("June 1990") and Morocco ("1963/31 January 2017") give no single day and stay unknown.
+  - Euro area: 21 members, each from its own page on european-union.europa.eu ("Euro area: member since ..."); the EU and Schengen days of the Netherlands from the same page.
+  - USMCA: Canada and the United States, 1 July 2020 (ustr.gov, "entered into force on July 1, 2020").
+  - G7: the 1977-01-01 Wikidata gave six members is not a day any page gives (the pages say 1975, and 1976 for Canada), so they are unknown.
+- Still unknown, because no official page that could be read gives a day: 115 current members of 14 bodies, listed in `docs/groupings.md` (the EEA, G20, OECD, Pacific Islands Forum, Nordic Council, Mercosur, GCC, Benelux, Arab League, Commonwealth's United Kingdom, Denmark in the UN, and the rest).
+
 ## [1.10.0] - 2026-11-17
 
 ### Added
