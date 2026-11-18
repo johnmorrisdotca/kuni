@@ -66,7 +66,7 @@ facts("FR")?.borders;                    // ["AD", "BE", "BR", "CH", "DE", "ES",
 membersOf("eu", { on: "2019-06-30" });   // the 28, the United Kingdom among them
 ```
 
-A day answers only for members whose joining day a source gives: `membersOf("brics", { on: "2015-01-01" })` leaves out Egypt, Ethiopia, Iran and the United Arab Emirates (2024) and Indonesia (no day given), and `unknownMembersOf` lists the members whose day is not known (see 7. Groupings).
+A day answers only for members whose joining day a source gives: `membersOf("brics", { on: "2015-01-01" })` leaves out Egypt, Ethiopia, Iran and the United Arab Emirates (2024) and Indonesia (no day given), and `unknownMembersOf` lists the members whose day is not known (see 7. Groupings). Where an official page gives a joining year only (the G7's 1975), the year stands as `"1975"`: it counts from 31 December of that year, and days inside it are unknown.
 
 One country's subdivisions are an entry of their own, so a page that needs Japan's prefectures carries Japan's and no other:
 
@@ -239,6 +239,9 @@ grouping("eu")?.others?.filter((one) => one.status === "candidate").length; // 9
 membersOf("eu", { on: "2019-06-30" })?.includes("GB");     // true
 membersOf("brics", { on: "2015-01-01" })?.includes("EG");  // false: Egypt joined in 2024
 unknownMembersOf("brics", { on: "2015-01-01" });          // ["ID"]: no day is given for Indonesia; not counted as a member
+membersOf("g7", { on: "1975-06-01" });                    // []: the page gives 1975 only, so the six are unknown that day
+unknownMembersOf("g7", { on: "1975-06-01" });             // ["DE", "FR", "GB", "IT", "JP", "US"]
+membersOf("g7", { on: "1975-12-31" })?.includes("DE");    // true: a year counts from its end
 groupingsOf("NO", { kind: "membership" }).map((one) => one.id); // ["un", "schengen", "eea", "nato", "oecd", "nordic-council"]
 membersOf("jp-kanto");                                    // ["JP-08", ..., "JP-14"]
 groupings({ kind: "informal" }).map((one) => one.id);     // ["middle-east", "latin-america", ...]

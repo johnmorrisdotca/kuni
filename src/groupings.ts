@@ -5,6 +5,7 @@
 // and regions inside a country (Japan's eight 地方, the US Census regions). docs/groupings.md says what each follows.
 
 import { GROUPING_ROWS } from "./data/groupings.data";
+import { standing } from "./grouping-days";
 import type { GroupingRow } from "./rows";
 import { GROUPING_KINDS } from "./types";
 import type { GroupingKind, GroupingStatus } from "./types";
@@ -23,12 +24,18 @@ interface GroupingMember {
   /** The member's alpha-2 code: "DE". */
   code: string;
   /**
-   * The day it joined, "1958-01-01", from the body's own page or, where that gives none, Wikidata; `null` where no
-   * source gives the day. A `null` is unknown, not "always": `membersOf(id, { on })` leaves such a member out, and
-   * `unknownMembersOf(id, { on })` lists it.
+   * The day it joined, "1958-01-01", from the body's own page or, where that gives none, Wikidata. Where the official
+   * page gives only the year, the year alone: "1975". A year counts from its end: on 1975-12-31 the member is counted,
+   * on earlier days of 1975 it is unknown (`unknownMembersOf` lists it), and before 1975 it is not a member. `null`
+   * where no source gives even the year; that is unknown, not "always": `membersOf(id, { on })` leaves such a member
+   * out and `unknownMembersOf(id, { on })` lists it.
    */
   since: string | null;
-  /** The day it left, "2020-01-31"; `null` while it is a member. */
+  /**
+   * The day it left, "2020-01-31"; `null` while it is a member. Where the page gives only the year, the year alone:
+   * "2020". The member counts through the last day of the year before; the days of that year are unknown, and
+   * after it the member is not one.
+   */
   until: string | null;
 }
 
@@ -167,7 +174,8 @@ interface GroupingsOptions {
 interface GroupingDateOptions {
   /**
    * A day, "2015-06-30": an international body's members on that day rather than now. A member whose start no source
-   * gives (`since: null`) is not counted: its membership on that day is unknown, and `unknownMembersOf` lists it.
+   * gives (`since: null`), or gives as a year only on a day inside that year, is not counted: its membership on that
+   * day is unknown, and `unknownMembersOf` lists it.
    * Groupings that are not bodies have no dates, and the day changes nothing.
    */
   on?: string;
@@ -213,20 +221,20 @@ const getTable = (): NonNullable<typeof table> => {
 
 const DAY = /^\d{4}-\d\d-\d\d$/;
 
-// The members of a grouping on a day: for a body, those whose period is known to cover the day (a period with no start
-// day is unknown, not "always"); for anything else, the members.
+// The members of a grouping on a day: for a body, those with a period that is known to cover the day; for anything else,
+// the members.
 const membersOn = (one: Grouping, on: string | undefined): readonly string[] => {
   if (on === undefined || one.periods === undefined) return one.members;
 
-  return [...new Set(one.periods.filter((period) => period.since !== null && period.since <= on && (period.until === null || on < period.until)).map((period) => period.code))].sort();
+  return [...new Set(one.periods.filter((period) => standing(period.since, period.until, on) === "yes").map((period) => period.code))].sort();
 };
 
-// The codes a body may have had on a day but has no start day for, and that no known period puts there.
+// The codes a body may have had on a day but has no known period for: the day is inside a year-only day, or there is no day.
 const unknownOn = (one: Grouping, on: string | undefined): readonly string[] => {
   if (on === undefined || one.periods === undefined) return [];
   const known = new Set(membersOn(one, on));
 
-  return [...new Set(one.periods.filter((period) => period.since === null && (period.until === null || on < period.until) && !known.has(period.code)).map((period) => period.code))].sort();
+  return [...new Set(one.periods.filter((period) => standing(period.since, period.until, on) === "unknown" && !known.has(period.code)).map((period) => period.code))].sort();
 };
 
 /**
@@ -316,7 +324,8 @@ const membersOf = (id: string, options: GroupingDateOptions = {}): readonly stri
 
 /**
  * The members of an international body on a day whose membership on that day is unknown: those with no joining day in
- * any source, that `membersOf(id, { on })` leaves out. Without `on`, or for a grouping that is not a body, none.
+ * any source, and those whose joining (or leaving) year is the day's year and no day is given; `membersOf(id, { on })`
+ * leaves them out. Without `on`, or for a grouping that is not a body, none.
  *
  * @param id - The grouping's id.
  * @param options - `on`, a day such as "2015-01-01".
@@ -327,6 +336,8 @@ const membersOf = (id: string, options: GroupingDateOptions = {}): readonly stri
  *
  * console.log(membersOf("g20", { on: "2015-01-01" })?.includes("AR"));        // false when no source gives Argentina's day
  * console.log(unknownMembersOf("g20", { on: "2015-01-01" })?.includes("AR")); // true: unknown, not a non-member
+ * console.log(unknownMembersOf("g7", { on: "1975-06-01" })?.includes("DE")); // true: the page gives 1975 only
+ * console.log(membersOf("g7", { on: "1976-12-31" })?.includes("CA"));          // true: 1976 counts from its end
  * console.log(unknownMembersOf("g20"));                                       // []
  * ```
  */
