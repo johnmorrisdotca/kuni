@@ -155,8 +155,10 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       const at = periods.findIndex(([code, , until]) => code === joined.code && until === null);
       if (at < 0) problems.push(`${body.id}: ${joined.code} has a day from the body's page and is not a current member`);
       else {
+        // a day the page gives that Wikidata already had is confirmed by the page, not filled from it
+        const confirmed = joined.since !== null && periods[at][1] === joined.since;
         periods[at] = [joined.code, joined.since, null];
-        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
+        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}${confirmed ? " (confirmed: Wikidata has the same day)" : " (filled)"}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
       }
     }
     for (const code of members) {
