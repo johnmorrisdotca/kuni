@@ -66,6 +66,8 @@ facts("FR")?.borders;                    // ["AD", "BE", "BR", "CH", "DE", "ES",
 membersOf("eu", { on: "2019-06-30" });   // the 28, the United Kingdom among them
 ```
 
+A day answers only for members whose joining day a source gives: `membersOf("brics", { on: "2015-01-01" })` leaves out Egypt, Ethiopia, Iran and the United Arab Emirates (2024) and Indonesia (no day given), and `unknownMembersOf` lists the members whose day is not known (see 7. Groupings).
+
 One country's subdivisions are an entry of their own, so a page that needs Japan's prefectures carries Japan's and no other:
 
 ```ts
@@ -230,11 +232,13 @@ prefectures[12].population; // 14264798, for 2022
 ### 7. Groupings
 
 ```ts
-import { grouping, groupings, groupingsOf, membersOf } from "@johnmorrisdotca/kuni/groupings";
+import { grouping, groupings, groupingsOf, membersOf, unknownMembersOf } from "@johnmorrisdotca/kuni/groupings";
 
 grouping("eu")?.name.ja;                                  // "欧州連合"
 grouping("eu")?.others?.filter((one) => one.status === "candidate").length; // 9
 membersOf("eu", { on: "2019-06-30" })?.includes("GB");     // true
+membersOf("brics", { on: "2015-01-01" })?.includes("EG");  // false: Egypt joined in 2024
+unknownMembersOf("brics", { on: "2015-01-01" });          // ["ID"]: no day is given for Indonesia; not counted as a member
 groupingsOf("NO", { kind: "membership" }).map((one) => one.id); // ["un", "schengen", "eea", "nato", "oecd", "nordic-council"]
 membersOf("jp-kanto");                                    // ["JP-08", ..., "JP-14"]
 groupings({ kind: "informal" }).map((one) => one.id);     // ["middle-east", "latin-america", ...]
@@ -430,7 +434,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/cities/1m` | `cities1m`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/100k` | `cities100k`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/<code>` | the country's cities as the default export and as `CITIES` |
-| `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
+| `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `unknownMembersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
 
 A country:
 

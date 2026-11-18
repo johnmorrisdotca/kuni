@@ -22,7 +22,11 @@ import type { GroupingKind, GroupingStatus } from "./types";
 interface GroupingMember {
   /** The member's alpha-2 code: "DE". */
   code: string;
-  /** The day it joined, "1958-01-01", from Wikidata; `null` where Wikidata does not give the day. */
+  /**
+   * The day it joined, "1958-01-01", from the body's own page or, where that gives none, Wikidata; `null` where no
+   * source gives the day. A `null` is unknown, not "always": `membersOf(id, { on })` leaves such a member out, and
+   * `unknownMembersOf(id, { on })` lists it.
+   */
   since: string | null;
   /** The day it left, "2020-01-31"; `null` while it is a member. */
   until: string | null;
@@ -162,8 +166,9 @@ interface GroupingsOptions {
  */
 interface GroupingDateOptions {
   /**
-   * A day, "2015-06-30": an international body's members on that day rather than now. A member whose start Wikidata
-   * does not give counts from the start. Groupings that are not bodies have no dates, and the day changes nothing.
+   * A day, "2015-06-30": an international body's members on that day rather than now. A member whose start no source
+   * gives (`since: null`) is not counted: its membership on that day is unknown, and `unknownMembersOf` lists it.
+   * Groupings that are not bodies have no dates, and the day changes nothing.
    */
   on?: string;
   /** Only groupings of this kind (for `groupingsOf`). */
@@ -208,11 +213,20 @@ const getTable = (): NonNullable<typeof table> => {
 
 const DAY = /^\d{4}-\d\d-\d\d$/;
 
-// The members of a grouping on a day: for a body, those whose period covers the day; for anything else, the members.
+// The members of a grouping on a day: for a body, those whose period is known to cover the day (a period with no start
+// day is unknown, not "always"); for anything else, the members.
 const membersOn = (one: Grouping, on: string | undefined): readonly string[] => {
   if (on === undefined || one.periods === undefined) return one.members;
 
-  return [...new Set(one.periods.filter((period) => (period.since === null || period.since <= on) && (period.until === null || on < period.until)).map((period) => period.code))].sort();
+  return [...new Set(one.periods.filter((period) => period.since !== null && period.since <= on && (period.until === null || on < period.until)).map((period) => period.code))].sort();
+};
+
+// The codes a body may have had on a day but has no start day for, and that no known period puts there.
+const unknownOn = (one: Grouping, on: string | undefined): readonly string[] => {
+  if (on === undefined || one.periods === undefined) return [];
+  const known = new Set(membersOn(one, on));
+
+  return [...new Set(one.periods.filter((period) => period.since === null && (period.until === null || on < period.until) && !known.has(period.code)).map((period) => period.code))].sort();
 };
 
 /**
@@ -276,7 +290,8 @@ const groupingsOf = (code: string, options: GroupingDateOptions = {}): readonly 
 };
 
 /**
- * The members of a grouping: now, or on a given day for an international body.
+ * The members of a grouping: now, or on a given day for an international body. On a day, a member whose joining day
+ * no source gives is not counted; `unknownMembersOf` lists those.
  *
  * @param id - The grouping's id.
  * @param options - `on`, a day such as "2019-06-30".
@@ -287,6 +302,7 @@ const groupingsOf = (code: string, options: GroupingDateOptions = {}): readonly 
  *
  * console.log(membersOf("eu")?.includes("GB"));                       // false
  * console.log(membersOf("eu", { on: "2019-06-30" })?.includes("GB")); // true
+ * console.log(membersOf("brics", { on: "2015-01-01" })?.includes("EG")); // false: Egypt joined in 2024
  * console.log(membersOf("us-pacific"));                               // ["US-AK", "US-CA", "US-HI", "US-OR", "US-WA"]
  * ```
  */
@@ -298,5 +314,29 @@ const membersOf = (id: string, options: GroupingDateOptions = {}): readonly stri
   return Object.freeze([...membersOn(found, on)]);
 };
 
-export { GROUPING_KINDS, grouping, groupings, groupingsOf, membersOf };
+/**
+ * The members of an international body on a day whose membership on that day is unknown: those with no joining day in
+ * any source, that `membersOf(id, { on })` leaves out. Without `on`, or for a grouping that is not a body, none.
+ *
+ * @param id - The grouping's id.
+ * @param options - `on`, a day such as "2015-01-01".
+ * @returns The codes, frozen, in order; `null` for an id that is not a grouping.
+ * @example
+ * ```ts
+ * import { membersOf, unknownMembersOf } from "@johnmorrisdotca/kuni/groupings";
+ *
+ * console.log(membersOf("g20", { on: "2015-01-01" })?.includes("AR"));        // false when no source gives Argentina's day
+ * console.log(unknownMembersOf("g20", { on: "2015-01-01" })?.includes("AR")); // true: unknown, not a non-member
+ * console.log(unknownMembersOf("g20"));                                       // []
+ * ```
+ */
+const unknownMembersOf = (id: string, options: GroupingDateOptions = {}): readonly string[] | null => {
+  const found = grouping(id);
+  if (found === null) return null;
+  const on = options.on !== undefined && DAY.test(options.on) ? options.on : undefined;
+
+  return Object.freeze([...unknownOn(found, on)]);
+};
+
+export { GROUPING_KINDS, grouping, groupings, groupingsOf, membersOf, unknownMembersOf };
 export type { Grouping, GroupingDateOptions, GroupingKind, GroupingMember, GroupingName, GroupingOther, GroupingsOptions, GroupingSource, GroupingStatus };

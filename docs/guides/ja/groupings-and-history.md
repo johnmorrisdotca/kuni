@@ -8,13 +8,14 @@ description: 定義、加盟の日付、過去のコードの記録を保ちま�
 ## 標準のAPIを使う
 
 ```ts
-import { grouping,membersOf,groupingsOf } from "@johnmorrisdotca/kuni/groupings";
+import { grouping,membersOf,unknownMembersOf,groupingsOf } from "@johnmorrisdotca/kuni/groupings";
 import { withdrawn } from "@johnmorrisdotca/kuni/withdrawn";
 console.log(grouping("eu")?.asOf,membersOf("eu",{on:"2015-06-30"})?.includes("GB"),groupingsOf("JP").length);
+console.log(membersOf("brics",{on:"2015-01-01"})?.includes("EG"),unknownMembersOf("brics",{on:"2015-01-01"}));
 console.log(withdrawn("SU").map(record=>record.code));
 ```
 
-まとまりには、種類、定義、資料とライセンス、asOfの日付があります。非公式の地域は説明した定義に従い、全世界で同じ加盟の一覧ではありません。国際機関の日付の検索は記録した期間を使い、開始の日付が不明な場合は、説明した最初からの規則に従います。国と行政区画のまとまりでは、コードの形が異なります。
+まとまりには、種類、定義、資料とライセンス、asOfの日付があります。非公式の地域は説明した定義に従い、全世界で同じ加盟の一覧ではありません。国際機関の日付の検索は記録した期間を使い、開始の日付が不明な加盟国は、指定した日の加盟国には数えません。`membersOf(id, { on })`は除外し、`unknownMembersOf(id, { on })`が一覧にするので、「いつでも加盟していた」と誤って読まれません。国と行政区画のまとまりでは、コードの形が異なります。
 
 ## 過去のコードを保つ
 
