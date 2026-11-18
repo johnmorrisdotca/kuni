@@ -98,7 +98,7 @@ const MEMBERSHIPS: MembershipConfig[] = [
     reading: "しぇんげんけん",
     members: "AT BE BG CH CZ DE DK EE ES FI FR GR HR HU IS IT LI LT LU LV MT NL NO PL PT RO SE SI SK",
     source: { name: "European Commission, Schengen Area", url: "https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en" },
-    note: "Bulgaria and Romania in full from 1 January 2025. Cyprus and Ireland are EU members outside it.",
+    note: "Bulgaria and Romania joined in two stages, air and sea borders on 31 March 2024 and land borders on 1 January 2025, and one rule counts both from 31 March 2024: the europa.eu country pages say \"Schengen: member since 31 March 2024\" for each, as they give every member's own day. The Commission's Schengen page says the two were \"the last countries to join on 1 January 2025\", the day checks at their land borders ended. Cyprus and Ireland are EU members outside it.",
   },
   {
     id: "eea",
@@ -354,6 +354,12 @@ const AU_URL = "https://au.int/en/member_states/countryprofiles2";
 const au = (rows: [string, string, string][]): JoinedConfig[] =>
   rows.map(([code, name, said]) => ({ body: "african-union", code, since: said.length === 0 ? null : said, url: AU_URL, line: `${name}: ${spoken(said)}` }));
 
+const CW = "https://thecommonwealth.org/our-member-countries";
+// The Commonwealth's page for each country says, under "Joined the Commonwealth", a year and no day: the year stands.
+// Wikidata's 1 January is a placeholder for it. Eswatini's page could not be read (404), and Nigeria's ("1960 ...; membership suspended 1995-99") gives no year for its return, so both stay as they were.
+const commonwealth = (rows: [string, string, string, string][]): JoinedConfig[] =>
+  rows.map(([code, since, slug, said]) => ({ body: "commonwealth", code, since, url: `${CW}/${slug}`, line: `Joined the Commonwealth: ${said}` }));
+
 const JOINED: JoinedConfig[] = [
   { body: "nato", code: "DK", since: "1949-04-04", url: "https://www.nato.int/cps/en/natohq/topics_52044.htm", line: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States." },
   { body: "nato", code: "NL", since: "1949-04-04", url: "https://www.nato.int/cps/en/natohq/topics_52044.htm", line: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States." },
@@ -397,6 +403,31 @@ const JOINED: JoinedConfig[] = [
   { body: "commonwealth", code: "GB", since: "1926", url: "https://thecommonwealth.org/our-member-countries/united-kingdom", line: "Joined the Commonwealth: 1926, on founding the British Commonwealth of Nations." },
   { body: "african-union", code: "MU", since: "1968", url: AU_URL, line: "Republic of Mauritius: August 1968" },
   { body: "african-union", code: "NA", since: "1990", url: AU_URL, line: "Republic of Namibia: June 1990" },
+  ...commonwealth([
+    ["AG", "1981", "antigua-and-barbuda", "1981, following independence from Britain"], ["AU", "1931", "australia", "1931, under the Statute of Westminster"],
+    ["BB", "1966", "barbados", "1966, following independence from Britain"], ["BN", "1984", "brunei-darussalam", "1984, following independence from Britain"],
+    ["BS", "1973", "bahamas", "1973, following independence from Britain"], ["BW", "1966", "botswana", "1966, following independence from Britain"],
+    ["BZ", "1981", "belize", "1981, following independence from Britain"], ["CA", "1931", "canada", "1931, under the Statute of Westminster."],
+    ["CM", "1960", "cameroon", "1960, following independence from Britain"], ["CY", "1961", "cyprus", "1961, a year after independence from Britain."],
+    ["DM", "1978", "dominica", "1978, following independence from Britain"], ["GD", "1974", "grenada", "1974, following independence from Britain"],
+    ["GH", "1957", "ghana", "1957, following independence from Britain"], ["GY", "1966", "guyana", "1966, following independence from Britain"],
+    ["JM", "1962", "jamaica", "1962, following independence from Britain"], ["KN", "1983", "st-kitts-and-nevis", "1983, following independence from Britain"],
+    ["LC", "1979", "saint-lucia", "1979, following independence from Britain"], ["LS", "1966", "lesotho", "1966, following independence from Britain"],
+    ["LK", "1948", "sri-lanka", "1948, following independence from Britain."],
+    ["MT", "1964", "malta", "1964, following independence from Britain."], ["MU", "1968", "mauritius", "1968, following independence from Britain."],
+    ["MW", "1964", "malawi", "1964, following independence from Britain"], ["MY", "1957", "malaysia", "1957, following the Federation of Malaya’s independence from Britain"],
+    ["MZ", "1995", "mozambique", "1995, following its first democratic elections"], ["NA", "1990", "namibia", "1990, after independence from South Africa"],
+    ["NR", "1999", "nauru", "1968, as an associate member on attaining full independence (former UN trust territory); full member since 1999"],
+    ["NZ", "1931", "new-zealand", "1931, under the Statute of Westminster"], ["PG", "1975", "papua-new-guinea", "1975, following independence from Australia-administered UN trusteeship"],
+    ["PK", "1989", "pakistan", "1947, on partition from India; left in 1972, rejoined in 1989"], ["SB", "1978", "solomon-islands", "1978, following independence from Britain"],
+    ["SC", "1976", "seychelles", "1976, following independence from Britain."], ["SG", "1965", "singapore", "1965, on leaving the Federation of Malaysia and becoming an independent state"],
+    ["SL", "1961", "sierra-leone", "1961, following independence from Britain"], ["TO", "1970", "tonga", "1970, on withdrawing from British protectorate"],
+    ["TT", "1962", "trinidad-and-tobago", "1962, following independence from Britain"], ["TV", "1978", "tuvalu", "1978."],
+    ["UG", "1962", "uganda", "1962, following independence from Britain."], ["VC", "1979", "st-vincent-and-grenadines", "1979, following independence from Britain"],
+    ["VU", "1980", "vanuatu", "1980, following ending of administration Anglo-French condominium"], ["WS", "1970", "samoa", "1970, following administration by New Zealand"],
+    ["ZM", "1964", "zambia", "1964, following independence from Britain"],
+  ]),
+  { body: "schengen", code: "RO", since: "2024-03-31", url: "https://european-union.europa.eu/principles-countries-history/eu-countries/romania_en", line: "Schengen: member since 31 March 2024" },
 ];
 
 const INFORMAL: InformalConfig[] = [

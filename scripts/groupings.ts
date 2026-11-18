@@ -166,7 +166,10 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
     }
     for (const [at, [code, since, until]] of periods.entries()) {
       for (const [other, otherSince, otherUntil] of periods.slice(at + 1)) {
-        if (code === other && since !== null && otherSince !== null && since < (otherUntil ?? "9999") && otherSince < (until ?? "9999")) problems.push(`${body.id}: ${code} is in two overlapping periods`);
+        // A year alone is read as the day (a joining year from its end, a leaving year up to its start) that makes it surely a member.
+        const from = (day: string | null): string | null => (day !== null && /^\d{4}$/.test(day) ? `${day}-12-31` : day);
+        const to = (day: string | null): string | null => (day !== null && /^\d{4}$/.test(day) ? `${day}-01-01` : day);
+        if (code === other && from(since) !== null && from(otherSince) !== null && from(since)! < (to(otherUntil) ?? "9999") && from(otherSince)! < (to(until) ?? "9999")) problems.push(`${body.id}: ${code} is in two overlapping periods`);
       }
     }
     periods.sort((a, b) => byText(a[0], b[0]) || byText(a[1] ?? "", b[1] ?? ""));
