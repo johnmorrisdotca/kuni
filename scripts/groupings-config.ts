@@ -320,6 +320,7 @@ const MEMBERSHIPS: MembershipConfig[] = [
     shortEn: "Benelux",
     members: "BE LU NL",
     source: { name: "Benelux Union", url: "https://www.benelux.int/en/" },
+    note: "No joining day is given for the three: the Benelux page names two starts, a customs agreement the three signed in 1944 and the Benelux Treaty establishing the Benelux Economic Union, signed in 1958, and no rule says which one is joining.",
   },
 ];
 
@@ -441,6 +442,19 @@ const JOINED: JoinedConfig[] = [
     line: "Joined the Commonwealth: 1960, following independence from Britain",
     note: "Unknown on purpose. The page's wording looks like the site's template for a country that became independent from Britain; Cameroon became independent from France in 1960, and its Commonwealth date is commonly given as 1995, but no official page read says so. 1995 is not stored; 1960 is not either.",
   },
+  // The Forum's timeline (forumsec.org) dates each arrival; the year stands, except for the two territories admitted as full members, where the page gives the day.
+  ...[
+    ["AU", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"], ["CK", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"],
+    ["FJ", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"], ["NR", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"],
+    ["NZ", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"], ["TO", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"],
+    ["WS", "1971", "Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa"],
+    ["PG", "1974", "Papua New Guinea joins the Forum as a full member."], ["NU", "1975", "Niue joins the Forum as a full member"], ["KI", "1977", "Kiribati (formerly Gilbert Islands) joins the Forum"],
+    ["SB", "1978", "Solomon Islands and Tuvalu joins the Forum."], ["TV", "1978", "Solomon Islands and Tuvalu joins the Forum."], ["VU", "1980", "Vanuatu (formerly New Hebrides) joins the Forum as a full member."],
+    ["FM", "1987", "Federated States of Micronesia and Republic of Marshall Islands joins the Forum as Full Members."], ["MH", "1987", "Federated States of Micronesia and Republic of Marshall Islands joins the Forum as Full Members."],
+    ["PW", "1995", "Palau joins the Forum"],
+    ["NC", "2016-09-07", "New Caledonia and French Polynesia admitted as Full Forum Members (7 September 2016)"], ["PF", "2016-09-07", "New Caledonia and French Polynesia admitted as Full Forum Members (7 September 2016)"],
+  ].map(([code, since, line]) => ({ body: "pacific-islands-forum", code, since, url: "https://forumsec.org/timeline-major-forum-events", line })),
+  { body: "eea", code: "LI", since: "1995", url: "https://www.efta.int/about-efta/history", line: "Liechtenstein becomes a full participant in the EEA, together with Iceland and Norway." },
   { body: "schengen", code: "RO", since: "2024-03-31", url: "https://european-union.europa.eu/principles-countries-history/eu-countries/romania_en", line: "Schengen: member since 31 March 2024" },
 ];
 

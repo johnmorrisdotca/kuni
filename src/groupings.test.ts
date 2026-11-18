@@ -113,7 +113,7 @@ describe("the international bodies", () => {
     const body = groupings({ kind: "membership" }).find((one) => one.periods?.some((period) => period.since === null && period.until === null));
     expect(body).toBeDefined();
     const undated = (body?.periods ?? []).filter((period) => period.since === null && period.until === null).map((period) => period.code);
-    for (const id of ["mercosur", "pacific-islands-forum", "oecd"]) {
+    for (const id of ["mercosur", "gcc", "oecd"]) {
       const on = "2015-01-01";
       const found = grouping(id)?.periods?.filter((period) => period.since === null && period.until === null).map((period) => period.code) ?? [];
       expect(found.length, id).toBeGreaterThan(0);
