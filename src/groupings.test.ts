@@ -204,7 +204,7 @@ describe("the international bodies", () => {
     for (const period of current) {
       // Eswatini's page could not be read, and Nigeria's page gives no year for its return.
       if (["SZ", "NG"].includes(period.code)) continue;
-      expect(period.since, period.code).not.toMatch(/-01-01$/);
+      expect(period.since ?? "", period.code).not.toMatch(/-01-01$/);
     }
     const since = (code: string) => current.find((period) => period.code === code)?.since;
     expect(since("AU")).toBe("1931");
@@ -216,6 +216,15 @@ describe("the international bodies", () => {
     expect(membersOf("commonwealth", { on: "1957-12-31" })).toContain("GH");
     expect(membersOf("commonwealth", { on: "1956-12-31" })).not.toContain("GH");
     expect(unknownMembersOf("commonwealth", { on: "1956-12-31" })).not.toContain("GH");
+  });
+
+  it("keep Cameroon's Commonwealth day unknown", () => {
+    expect(membersOf("commonwealth", { on: "1980-01-01" })).not.toContain("CM");
+    expect(unknownMembersOf("commonwealth", { on: "1980-01-01" })).toContain("CM");
+    expect(membersOf("commonwealth", { on: "2020-01-01" })).not.toContain("CM");
+    expect(unknownMembersOf("commonwealth", { on: "2020-01-01" })).toContain("CM");
+    expect(grouping("commonwealth")?.periods?.find((period) => period.code === "CM")?.since).toBeNull();
+    expect(membersOf("commonwealth")).toContain("CM");
   });
 
   it("list no country twice in overlapping periods", () => {

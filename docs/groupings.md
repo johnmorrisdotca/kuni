@@ -35,7 +35,7 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 | AU | 55 | EH | – | 54 |
 | Arab League | 22 | – | – | 21 |
 | GCC | 6 | AE KW QA | – | 2 |
-| Commonwealth | 56 | GB | – | 56 |
+| Commonwealth | 56 | GB | – | 55 |
 | OPEC | 12 | – | AO | 12 |
 | BRICS | 10 | – | – | 9 |
 | Mercosur | 5 | – | MX | 0 |
@@ -137,7 +137,6 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **Commonwealth** BW: 1966 (the page gives the year only): https://thecommonwealth.org/our-member-countries/botswana: "Joined the Commonwealth: 1966, following independence from Britain"
 - **Commonwealth** BZ: 1981 (the page gives the year only): https://thecommonwealth.org/our-member-countries/belize: "Joined the Commonwealth: 1981, following independence from Britain"
 - **Commonwealth** CA: 1931 (the page gives the year only): https://thecommonwealth.org/our-member-countries/canada: "Joined the Commonwealth: 1931, under the Statute of Westminster."
-- **Commonwealth** CM: 1960 (the page gives the year only): https://thecommonwealth.org/our-member-countries/cameroon: "Joined the Commonwealth: 1960, following independence from Britain"
 - **Commonwealth** CY: 1961 (the page gives the year only): https://thecommonwealth.org/our-member-countries/cyprus: "Joined the Commonwealth: 1961, a year after independence from Britain."
 - **Commonwealth** DM: 1978 (the page gives the year only): https://thecommonwealth.org/our-member-countries/dominica: "Joined the Commonwealth: 1978, following independence from Britain"
 - **Commonwealth** GD: 1974 (the page gives the year only): https://thecommonwealth.org/our-member-countries/grenada: "Joined the Commonwealth: 1974, following independence from Britain"
@@ -170,6 +169,7 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **Commonwealth** VU: 1980 (the page gives the year only): https://thecommonwealth.org/our-member-countries/vanuatu: "Joined the Commonwealth: 1980, following ending of administration Anglo-French condominium"
 - **Commonwealth** WS: 1970 (the page gives the year only): https://thecommonwealth.org/our-member-countries/samoa: "Joined the Commonwealth: 1970, following administration by New Zealand"
 - **Commonwealth** ZM: 1964 (the page gives the year only): https://thecommonwealth.org/our-member-countries/zambia: "Joined the Commonwealth: 1964, following independence from Britain"
+- **Commonwealth** CM: unknown: https://thecommonwealth.org/our-member-countries/cameroon: "Joined the Commonwealth: 1960, following independence from Britain" (Unknown on purpose. The page's wording looks like the site's template for a country that became independent from Britain; Cameroon became independent from France in 1960, and its Commonwealth date is commonly given as 1995, but no official page read says so. 1995 is not stored; 1960 is not either.)
 - **BRICS** AE: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
 - **BRICS** EG: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
 - **BRICS** ET: 2024-01-01: https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024."
@@ -194,7 +194,7 @@ No source gives these a day, so a call for a day (`membersOf(id, { on })`) does 
 - **AU** (1): MA
 - **Arab League** (1): PS
 - **GCC** (4): AE BH KW QA
-- **Commonwealth** (0): none
+- **Commonwealth** (1): CM
 - **OPEC** (0): none
 - **BRICS** (1): ID
 - **Mercosur** (5): AR BO BR PY UY

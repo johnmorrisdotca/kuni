@@ -341,6 +341,7 @@ interface JoinedConfig {
   since: string | null;
   url: string; // The body's own page
   line: string; // What the page says, as it says it
+  note?: string; // Why the day is what it is, where the page is not taken at its word
 }
 
 const EU_COUNTRY = "https://european-union.europa.eu/principles-countries-history/eu-countries";
@@ -408,7 +409,7 @@ const JOINED: JoinedConfig[] = [
     ["BB", "1966", "barbados", "1966, following independence from Britain"], ["BN", "1984", "brunei-darussalam", "1984, following independence from Britain"],
     ["BS", "1973", "bahamas", "1973, following independence from Britain"], ["BW", "1966", "botswana", "1966, following independence from Britain"],
     ["BZ", "1981", "belize", "1981, following independence from Britain"], ["CA", "1931", "canada", "1931, under the Statute of Westminster."],
-    ["CM", "1960", "cameroon", "1960, following independence from Britain"], ["CY", "1961", "cyprus", "1961, a year after independence from Britain."],
+    ["CY", "1961", "cyprus", "1961, a year after independence from Britain."],
     ["DM", "1978", "dominica", "1978, following independence from Britain"], ["GD", "1974", "grenada", "1974, following independence from Britain"],
     ["GH", "1957", "ghana", "1957, following independence from Britain"], ["GY", "1966", "guyana", "1966, following independence from Britain"],
     ["JM", "1962", "jamaica", "1962, following independence from Britain"], ["KN", "1983", "st-kitts-and-nevis", "1983, following independence from Britain"],
@@ -427,6 +428,14 @@ const JOINED: JoinedConfig[] = [
     ["VU", "1980", "vanuatu", "1980, following ending of administration Anglo-French condominium"], ["WS", "1970", "samoa", "1970, following administration by New Zealand"],
     ["ZM", "1964", "zambia", "1964, following independence from Britain"],
   ]),
+  {
+    body: "commonwealth",
+    code: "CM",
+    since: null,
+    url: `${CW}/cameroon`,
+    line: "Joined the Commonwealth: 1960, following independence from Britain",
+    note: "Unknown on purpose. The page's wording looks like the site's template for a country that became independent from Britain; Cameroon became independent from France in 1960, and its Commonwealth date is commonly given as 1995, but no official page read says so. 1995 is not stored; 1960 is not either.",
+  },
   { body: "schengen", code: "RO", since: "2024-03-31", url: "https://european-union.europa.eu/principles-countries-history/eu-countries/romania_en", line: "Schengen: member since 31 March 2024" },
 ];
 

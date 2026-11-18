@@ -157,7 +157,7 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       else if (periods[at][1] === joined.since) problems.push(`${body.id}: ${joined.code}'s day from the body's page is what Wikidata has already`);
       else {
         periods[at] = [joined.code, joined.since, null];
-        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}: ${joined.url}: "${joined.line}"`);
+        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
       }
     }
     for (const code of members) {
