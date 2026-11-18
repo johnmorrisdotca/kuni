@@ -286,6 +286,50 @@
       },
       "default": "./dist/names/zh-Hant.js"
     },
+    "./subdivision-names/es": {
+      "import": {
+        "types": "./dist/subdivision-names/es.d.ts",
+        "default": "./dist/subdivision-names/es.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/es.d.cts",
+        "default": "./dist/subdivision-names/es.cjs"
+      },
+      "default": "./dist/subdivision-names/es.js"
+    },
+    "./subdivision-names/de": {
+      "import": {
+        "types": "./dist/subdivision-names/de.d.ts",
+        "default": "./dist/subdivision-names/de.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/de.d.cts",
+        "default": "./dist/subdivision-names/de.cjs"
+      },
+      "default": "./dist/subdivision-names/de.js"
+    },
+    "./subdivision-names/zh-Hans": {
+      "import": {
+        "types": "./dist/subdivision-names/zh-Hans.d.ts",
+        "default": "./dist/subdivision-names/zh-Hans.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/zh-Hans.d.cts",
+        "default": "./dist/subdivision-names/zh-Hans.cjs"
+      },
+      "default": "./dist/subdivision-names/zh-Hans.js"
+    },
+    "./subdivision-names/zh-Hant": {
+      "import": {
+        "types": "./dist/subdivision-names/zh-Hant.d.ts",
+        "default": "./dist/subdivision-names/zh-Hant.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/zh-Hant.d.cts",
+        "default": "./dist/subdivision-names/zh-Hant.cjs"
+      },
+      "default": "./dist/subdivision-names/zh-Hant.js"
+    },
     "./names/ko": {
       "import": {
         "types": "./dist/names/ko.d.ts",
@@ -4776,6 +4820,8 @@
     "data:report": "node scripts/build-data.ts --report",
     "data:fetch": "node scripts/fetch-sources.ts",
     "data:wikidata": "node scripts/fetch-wikidata.ts",
+    "data:subdivision-names": "node scripts/build-subdivision-names.ts",
+    "data:more-languages": "node scripts/fetch-more-languages.ts",
     "data:facts": "node scripts/fetch-wikidata-facts.ts",
     "data:codes": "node scripts/fetch-wikidata-codes.ts",
     "data:cities": "node scripts/fetch-cities.ts",

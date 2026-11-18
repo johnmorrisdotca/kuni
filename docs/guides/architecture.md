@@ -28,6 +28,7 @@ src/
 ├── city-start.ts       which part of a split tier holds a city: the first letter of a word of a name
 ├── places.ts           the "/places" entry: the countries of a continent, and a search over countries and cities
 ├── names.ts            the shared part of the "/names/<language>" entries: one language's country names, their search folding and lookups
+├── subdivision-names.ts the shared part of the "/subdivision-names/<language>" entries: one language's subdivision names, where each came from, and their lookups
 ├── fold.ts             folding what somebody typed: case, accents, width, kana
 ├── rows.ts             turning the data's compact rows into objects
 ├── types.ts            the shapes of a country and a subdivision, and the kinds of place
@@ -36,10 +37,11 @@ src/
 ├── subdivisions/       written by scripts/build-data.ts: the "/subdivisions/<code>" entries
 ├── subdivision-facts/  written by scripts/build-data.ts: the "/subdivision-facts/<code>" entries
 ├── names/              written by scripts/build-names.ts: the "/names/<language>" entries, one language each
+├── subdivision-names/  written by scripts/build-subdivision-names.ts: the "/subdivision-names/<language>" entries, one language each
 └── cities/             written by scripts/build-data.ts: the "/cities/<tier>", "/cities/<code>", "/cities/names-<code>" and "/cities/<tier>-<key>" entries
 ```
 
-`scripts/build-names.ts` (`pnpm data:names`, also run by `pnpm data`) makes the nine names entries and their rows from `cldr-localenames-full` alone; `scripts/names-config.ts` holds the few search aliases written by hand. `scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
+`scripts/build-names.ts` (`pnpm data:names`, also run by `pnpm data`) makes the nine names entries and their rows from `cldr-localenames-full` alone; `scripts/names-config.ts` holds the few search aliases written by hand. `scripts/build-subdivision-names.ts` (`pnpm data:subdivision-names`) makes the four subdivision-names entries and their rows from the CLDR subdivision files in `data-sources/cldr/` and, when `data-sources/wikidata-labels-<day>.json` exists, Wikidata's labels (read from Wikimedia's dump by `scripts/extract-wikidata-labels.ts`, never from the query service or the API, which their robots.txt disallows); `scripts/subdivision-names-config.ts` holds the rules a name must pass. `scripts/build-data.ts` (`pnpm data`) makes `src/data/` from the inputs in `data-sources/` and three npm packages, with no network, and checks every input's SHA-256 first; run twice, it leaves the tree as it was. `scripts/data-config.ts`, `scripts/facts-config.ts`, `scripts/groupings-config.ts` and `scripts/withdrawn-config.ts` hold the few things written by hand, each with its reason; `scripts/facts.ts`, `scripts/subdivision-facts.ts`, `scripts/groupings.ts` and `scripts/withdrawn.ts` apply the rules written at their tops. Tests sit beside the code (`*.test.ts`). `scripts/` also builds the demo and its API page and checks the package as npm packs it; `demo/` is the page and `e2e/` its browser tests.
 
 
 ## Documentation generation

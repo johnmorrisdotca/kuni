@@ -77,6 +77,22 @@
       "minified": 12950,
       "gzip": 4147
     },
+    "./subdivision-names/es": {
+      "minified": 109513,
+      "gzip": 43088
+    },
+    "./subdivision-names/de": {
+      "minified": 102274,
+      "gzip": 43765
+    },
+    "./subdivision-names/zh-Hans": {
+      "minified": 90891,
+      "gzip": 27726
+    },
+    "./subdivision-names/zh-Hant": {
+      "minified": 2175,
+      "gzip": 1112
+    },
     "./names/ko": {
       "minified": 13836,
       "gzip": 4126

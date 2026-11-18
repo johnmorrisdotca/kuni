@@ -1,6 +1,13 @@
 {
   "files": [
     {
+      "path": "cldr/release-48-2/subdivisions-de.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/de.xml",
+      "read": "2026-11-18",
+      "sha256": "7cb92c1ba2bcc2a8f14210c4adc4534260637aacdeeeb7a821fe5a989842b178",
+      "note": "Unicode CLDR 48.2, German names of subdivisions (Unicode-3.0)"
+    },
+    {
       "path": "cldr/release-48-2/subdivisions-en.xml",
       "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/en.xml",
       "read": "2026-10-09",
@@ -8,11 +15,32 @@
       "note": "Unicode CLDR 48.2, English names of subdivisions (Unicode-3.0)"
     },
     {
+      "path": "cldr/release-48-2/subdivisions-es.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/es.xml",
+      "read": "2026-11-18",
+      "sha256": "287bde26d858e1564090f4fce680844fa7ef8644ae62030022fe165be9315ddf",
+      "note": "Unicode CLDR 48.2, Spanish names of subdivisions (Unicode-3.0)"
+    },
+    {
       "path": "cldr/release-48-2/subdivisions-ja.xml",
       "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/ja.xml",
       "read": "2026-10-09",
       "sha256": "3e220ad56170802ec067d4d2836e1f98e62479293c19ee6dcbb451852eda4fe0",
       "note": "Unicode CLDR 48.2, Japanese names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/subdivisions-zh.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/zh.xml",
+      "read": "2026-11-18",
+      "sha256": "4f875ffc235cba7c97092c95e4ccebb9805457bec159e37e0ef4b64abeda4cb8",
+      "note": "Unicode CLDR 48.2, Simplified Chinese names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/subdivisions-zh_Hant.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/zh_Hant.xml",
+      "read": "2026-11-18",
+      "sha256": "26ff9a8c99719666c2cac5d4843f400a7b544f5fc6f449fea6842773b73b68b4",
+      "note": "Unicode CLDR 48.2, Traditional Chinese names of subdivisions (Unicode-3.0)"
     },
     {
       "path": "cldr/release-48-2/validity-subdivision.xml",

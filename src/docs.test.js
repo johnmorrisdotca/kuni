@@ -38,7 +38,7 @@ describe("the README", () => {
     for (const entry of exported) expect(documented, entry).toContain(`\`${entry}\``);
     // Any other entry the README names is one country's: /subdivisions/jp, /subdivisions/us.
     const named = [...readme.matchAll(/`(@johnmorrisdotca\/kuni\/[\w<>/-]+)`/g)].map((match) => match[1]);
-    for (const entry of named) if (!exported.includes(entry)) expect(entry).toMatch(/^@johnmorrisdotca\/kuni\/((subdivisions|subdivision-facts)\/[a-z]{2}|names\/<language>)$/);
+    for (const entry of named) if (!exported.includes(entry)) expect(entry).toMatch(/^@johnmorrisdotca\/kuni\/((subdivisions|subdivision-facts)\/[a-z]{2}|names\/<language>|subdivision-names\/<language>)$/);
   });
 
   it("names in its API table every runtime export of every entry", () => {
