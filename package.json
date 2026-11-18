@@ -165,6 +165,17 @@
       },
       "default": "./dist/withdrawn.js"
     },
+    "./capitals": {
+      "import": {
+        "types": "./dist/capitals.d.ts",
+        "default": "./dist/capitals.js"
+      },
+      "require": {
+        "types": "./dist/capitals.d.cts",
+        "default": "./dist/capitals.cjs"
+      },
+      "default": "./dist/capitals.js"
+    },
     "./cities": {
       "import": {
         "types": "./dist/cities.d.ts",

@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `capitalsOf(code)` in a new `/capitals` entry gives the capitals of a country that has more than one capital city, or a capital that `capital` does not name alone, each with its role: `{ name: { en, ja }, role, note? }`, the role one of `official`, `administrative`, `legislative`, `judicial` or `seat` (MODULES-1627). Benin, Bolivia, Côte d'Ivoire, Malaysia, the Netherlands, South Africa (Pretoria administrative, Cape Town legislative, Bloemfontein judicial), Sri Lanka and Tanzania have an entry; every other country answers `null`. Each role is what the country's own government or law says, with the page and the quoted line in `docs/capitals.md`. The types `CapitalRole` and `CountryCapital`, and `CAPITALS_READ`, are exported from `/capitals`. The entry is separate because `/facts` is within 200 bytes of its size limit. `capital` is unchanged for every country. Israel and the Palestinian Territories have no entry: a disputed capital is left to the maintainer. Eswatini is not in yet: no official page in reach settles it.
+
 ## [1.11.0] - 2026-11-18
 
 ### Changed

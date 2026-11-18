@@ -269,6 +269,40 @@ interface LatLon {
   lon: number;
 }
 
+/** What a capital city is the capital for. `official` is the capital the country's own law or government calls its capital; `administrative`, `legislative` and `judicial` are the seats of that branch of government, in the word the source uses; `seat` is the seat of government where the source does not say which branch. Where a source's own word is another (political, constitutional), the role is the nearest of these five and the word is in the note.
+ *
+ * @example
+ * ```ts
+ * import type { CapitalRole } from "@johnmorrisdotca/kuni/capitals";
+ *
+ * const value: CapitalRole = "legislative";
+ * console.log(value); // "legislative"
+ * ```
+ */
+type CapitalRole = "official" | "administrative" | "legislative" | "judicial" | "seat";
+
+/** One capital city of a country that has more than one, or whose capital is not the one `capital` names alone, from `capitalsOf` in the /capitals entry.
+ *
+ * @example
+ * ```ts
+ * import type { CountryCapital } from "@johnmorrisdotca/kuni/capitals";
+ * import { capitalsOf } from "@johnmorrisdotca/kuni/capitals";
+ *
+ * const value: CountryCapital = capitalsOf("ZA")![1];
+ * console.log(value.name.en, value.role); // "Cape Town" "legislative"
+ * ```
+ */
+interface CountryCapital {
+  /** The city's name: kuni's own, in English and Japanese; `ja` is null where kuni has no Japanese name for it. */
+  name: { en: string; ja: string | null };
+  /** What it is the capital for. */
+  role: CapitalRole;
+  /** Present and `true` where the country's capital is disputed. No entry has it yet: a disputed capital is a decision for the maintainer, so Israel and the Palestinian Territories have no entry. */
+  disputed?: boolean;
+  /** Where the source's word for the role is not one of the five, the word, and what the source says of the country's other cities; absent where there is nothing to add. */
+  note?: string;
+}
+
 /** The facts about one country, from the /facts entry: plain numbers and codes, `null` where a source has none.
  *
  * @example
@@ -385,4 +419,4 @@ type GroupingKind = (typeof GROUPING_KINDS)[number];
 type GroupingStatus = "candidate" | "associate" | "observer" | "suspended";
 
 export { CONTINENTS, GROUPING_KINDS, LANGUAGES, SUBDIVISION_TYPES };
-export type { Continent, Country, CountryFacts, GroupingKind, GroupingStatus, DrivingSide, HourCycle, Language, LatLon, MeasurementSystem, PaperSize, Subdivision, SubdivisionFacts, SubdivisionType, WeekStart };
+export type { CapitalRole, Continent, Country, CountryCapital, CountryFacts, GroupingKind, GroupingStatus, DrivingSide, HourCycle, Language, LatLon, MeasurementSystem, PaperSize, Subdivision, SubdivisionFacts, SubdivisionType, WeekStart };

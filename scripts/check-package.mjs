@@ -103,6 +103,7 @@ import { facts } from "${pkg.name}/facts";
 import { subdivisionTimeZone, timeZoneAt } from "${pkg.name}/zones";
 import { membersOf } from "${pkg.name}/groupings";
 import { withdrawn } from "${pkg.name}/withdrawn";
+import { capitalsOf } from "${pkg.name}/capitals";
 import { loadSubdivisionFacts } from "${pkg.name}/subdivision-facts";
 import { citySet, loadCities, citiesOf } from "${pkg.name}/cities";
 import { capitalCities } from "${pkg.name}/cities/capitals";
@@ -121,6 +122,7 @@ if (japan.length !== 47 || japan[12].code !== "JP-13") throw new Error("subdivis
 if (facts("JP")?.drivingSide !== "left") throw new Error("facts(JP) gave " + JSON.stringify(facts("JP")));
 if (subdivisionTimeZone("US-WA")?.zone !== "America/Los_Angeles" || timeZoneAt("US", { lat: 13.47, lon: 144.75 })?.zone !== "Pacific/Guam") throw new Error("the zones gave " + JSON.stringify(subdivisionTimeZone("US-WA")));
 if (withdrawn("SU")[0]?.name.en !== "Soviet Union" || m0.country("DE")?.ioc !== "GER") throw new Error("withdrawn or ioc gave " + JSON.stringify(withdrawn("SU")));
+if (capitalsOf("ZA")?.map((one) => one.role).join() !== "administrative,legislative,judicial" || capitalsOf("JP") !== null) throw new Error("capitalsOf gave " + JSON.stringify(capitalsOf("ZA")));
 if (membersOf("g7")?.length !== 7) throw new Error("membersOf(g7) gave " + membersOf("g7"));
 if ((await loadSubdivisionFacts("JP"))?.[0].capital?.ja !== "札幌市") throw new Error("loadSubdivisionFacts(JP) did not load");
 if (citySet(capitalCities()).byId("Q90")?.name.en !== "Paris") throw new Error("the cities did not find Paris");
