@@ -6,10 +6,27 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- `membersOf(id, { on })` and `groupingsOf(code, { on })` no longer count a member with no joining day as a member on every date (MODULES-1625). Before, `membersOf("brics", { on: "2015-01-01" })` included AE, EG, ET, ID and IR, which joined in 2024 and 2025, and `membersOf("nato", { on: "1940-01-01" })` included DK and NL. A member whose `since` is `null` is now unknown on that date, not a member. The answer to a call with a day can therefore differ from before; a call with no `on` is unchanged. `GroupingMember.since` says so in its type documentation.
+- New `unknownMembersOf(id, { on })` lists the members whose membership on that day is unknown (those with a `null` `since`), so a gap is visible and not read as a non-member. It answers `[]` with no day and for a grouping that is not a body, and `null` for an id that is not a grouping.
+
+- A joining or leaving year without a day is now allowed in `GroupingMember.since` and `until` (`"1975"`), used only where the body's own page gives the year and no more. A joining year counts from the end of that year: `membersOf(id, { on })` counts the member on 31 December and not on earlier days of the year, which `unknownMembersOf` reports as unknown; a leaving year counts the member up to the end of the year before, and its days are unknown. `groupingsOf(code, { on })` follows the same rules. Full days work as before.
+
 ### Fixed
 
 - Türkiye's calling code was `+36` (Hungary's); it is `+90`. Saint Helena's was `+247` (Ascension's); it is `+290` (MODULES-1624). Source: the ITU's "List of Recommendation ITU-T E.164 assigned country codes" (Operational Bulletin No. 1114): +36 Hungary, +90 Turkey, and its note a gives Ascension +247 and Saint Helena and Tristan da Cunha +290. Wikidata's items list several codes for both, and the build took the first. The snapshot carries no statement ranks, so the choice is set by country in `CALLING_CODE_OVERRIDES` with its reason, and the build now stops on any country whose item lists several differing codes and has no entry.
 - A test holds the calling codes that more than one country has to a written list (`+1`, `+7`, `+44`, `+47`, `+61`, `+64`, `+212`, `+262`, `+358`, `+500`, `+590`), each with the ITU's line, so a second country with Türkiye's code fails it by name.
+- Wikidata states some memberships twice with the same days (Taiwan's seat at the UN); `periods` now holds each once.
+- Joining days read from each body's own page, where Wikidata had none (`JOINED` in `scripts/groupings-config.ts`, each with its page and the line it rests on; the list is in `docs/groupings.md`):
+  - NATO: Denmark and the Netherlands, 4 April 1949 (nato.int, "NATO was created by 12 countries ... on 4 April 1949", with the founders named).
+  - BRICS: the United Arab Emirates, Egypt, Ethiopia and Iran, 1 January 2024 (the South African Presidency's statement of the 2023 chair, "The membership will take effect from 1 January 2024"). Indonesia has no day on a page that could be read, and stays unknown.
+  - African Union: 42 members that had none, and Guinea's, from the AU's member-states list ("date of joining the AU or its predecessor the OAU", au.int); Guinea's placeholder 1963-01-01 becomes 25 May 1963. Morocco ("1963/31 January 2017") gives no single day and stays unknown.
+  - Euro area: 21 members, each from its own page on european-union.europa.eu ("Euro area: member since ..."); the EU and Schengen days of the Netherlands from the same page.
+  - USMCA: Canada and the United States, 1 July 2020 (ustr.gov, "entered into force on July 1, 2020").
+  - G7: the 1977-01-01 Wikidata gave six members is not a day any page gives. The Italian presidency's page (g7italy.it) says the first summit in 1975 included France, the United States, the United Kingdom, Germany, Japan and Italy, and "In 1976, with the admission of Canada, the G7 took its current configuration": the years `"1975"` (DE, FR, GB, IT, JP, US) and `"1976"` (CA). So `membersOf("g7", { on: "2020-01-01" })` has all seven, and on 1975-06-01 the six are unknown.
+  - Year only, from pages already read: the United Kingdom in the Commonwealth, `"1926"` (thecommonwealth.org, "1926, on founding the British Commonwealth of Nations"); Mauritius, `"1968"` ("August 1968"), and Namibia, `"1990"` ("June 1990"), in the African Union (au.int).
+- Still unknown, because no official page that could be read gives a day or a year: 105 current members of 12 bodies, listed in `docs/groupings.md` (the EEA, G20, OECD, Pacific Islands Forum, Nordic Council, Mercosur, GCC, Benelux, Arab League, Denmark in the UN, Morocco in the AU, Indonesia in BRICS and the rest).
 
 ## [1.10.0] - 2026-11-17
 

@@ -19,6 +19,7 @@ src/
 ├── zones.ts            the "/zones" entry: a subdivision's time zone, and the zone at a point
 ├── subdivision-facts.ts  the "/subdivision-facts" entry: one country's subdivision facts by dynamic import
 ├── groupings.ts        the "/groupings" entry: continents, UN M49, bodies, informal groupings, regions
+├── grouping-days.ts    whether a body's period covers a day: a member, not one, or unknown (a year-only day counts from its end)
 ├── withdrawn.ts        the "/withdrawn" entry: the countries ISO 3166-3 lists as withdrawn, and the codes they held
 ├── cities.ts           the "/cities" entry: joining tiers of cities, and finding one by id, country or nearness
 ├── city-rows.ts        turning a city's compact row into a City

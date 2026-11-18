@@ -8,13 +8,14 @@ description: Retain definitions, membership dates and historical code records.
 ## Use the native API
 
 ```ts
-import { grouping,membersOf,groupingsOf } from "@johnmorrisdotca/kuni/groupings";
+import { grouping,membersOf,unknownMembersOf,groupingsOf } from "@johnmorrisdotca/kuni/groupings";
 import { withdrawn } from "@johnmorrisdotca/kuni/withdrawn";
 console.log(grouping("eu")?.asOf,membersOf("eu",{on:"2015-06-30"})?.includes("GB"),groupingsOf("JP").length);
+console.log(membersOf("brics",{on:"2015-01-01"})?.includes("EG"),unknownMembersOf("brics",{on:"2015-01-01"}));
 console.log(withdrawn("SU").map(record=>record.code));
 ```
 
-A grouping includes its kind, definition, source/licence and asOf date. Informal regions follow their stated definition, not a universal membership list. Dated international-body lookups use recorded membership periods; unknown start dates follow the documented from-the-start rule. Country and subdivision groupings use different code shapes.
+A grouping includes its kind, definition, source/licence and asOf date. Informal regions follow their stated definition, not a universal membership list. Dated international-body lookups use recorded membership periods; a member with no known start date is not counted on a given day: `membersOf(id, { on })` leaves it out, and `unknownMembersOf(id, { on })` lists it, so a gap is visible rather than read as "always a member". Where an official page gives only the year, `since` and `until` hold the year (`"1975"`): a joining year counts from its last day (31 December), a leaving year up to its first day, and the days inside that year are unknown, so `membersOf` never names a member that was not one and `unknownMembersOf` lists the ones that may have been. Country and subdivision groupings use different code shapes.
 
 ## Preserve historical codes
 

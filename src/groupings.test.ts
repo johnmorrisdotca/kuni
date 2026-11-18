@@ -4,7 +4,8 @@
 import { describe, expect, it } from "vitest";
 
 import { MEMBERSHIPS_LEFT_OUT } from "../scripts/groupings-config";
-import { GROUPING_KINDS, grouping, groupings, groupingsOf, membersOf } from "./groupings";
+import { GROUPING_KINDS, grouping, groupings, groupingsOf, membersOf, unknownMembersOf } from "./groupings";
+import { standing } from "./grouping-days";
 import { countries, COUNTRY_CODES } from "./index";
 import { subdivision, subdivisions } from "./subdivisions";
 
@@ -93,6 +94,114 @@ describe("the international bodies", () => {
     expect(membersOf("opec", { on: "2020-06-30" })).toContain("AO");
     expect(groupingsOf("GB", { kind: "membership", on: "2015-01-01" }).map((one) => one.id)).toContain("eu");
     expect(membersOf("eu", { on: "not a day" })).toEqual(membersOf("eu"));
+  });
+
+  it("do not count BRICS' later members in 2015", () => {
+    const in2015 = membersOf("brics", { on: "2015-01-01" }) ?? [];
+    for (const code of ["AE", "EG", "ET", "ID", "IR"]) expect(in2015, code).not.toContain(code);
+    expect(in2015).toEqual(["BR", "CN", "IN", "RU", "ZA"]);
+    expect(membersOf("brics", { on: "2024-06-30" })).toEqual(expect.arrayContaining(["AE", "EG", "ET", "IR"]));
+  });
+
+  it("have no NATO in 1940", () => {
+    expect(membersOf("nato", { on: "1940-01-01" })).toEqual([]);
+    expect(unknownMembersOf("nato", { on: "1940-01-01" })).toEqual([]);
+    expect(membersOf("nato", { on: "1950-01-01" })).toEqual(expect.arrayContaining(["DK", "NL", "US"]));
+  });
+
+  it("report a member with no joining day as unknown on a day, and not as a member", () => {
+    const body = groupings({ kind: "membership" }).find((one) => one.periods?.some((period) => period.since === null && period.until === null));
+    expect(body).toBeDefined();
+    const undated = (body?.periods ?? []).filter((period) => period.since === null && period.until === null).map((period) => period.code);
+    for (const id of ["mercosur", "pacific-islands-forum", "oecd"]) {
+      const on = "2015-01-01";
+      const found = grouping(id)?.periods?.filter((period) => period.since === null && period.until === null).map((period) => period.code) ?? [];
+      expect(found.length, id).toBeGreaterThan(0);
+      for (const code of found) {
+        expect(membersOf(id, { on }), `${id} ${code}`).not.toContain(code);
+        expect(unknownMembersOf(id, { on }), `${id} ${code}`).toContain(code);
+        expect(groupingsOf(code, { kind: "membership", on }).map((one) => one.id), `${id} ${code}`).not.toContain(id);
+      }
+    }
+    expect(undated.length).toBeGreaterThan(0);
+    // Nothing is both, and with no day (or a body with no dates) nothing is unknown.
+    for (const one of groupings({ kind: "membership" })) {
+      const members = membersOf(one.id, { on: "2015-01-01" }) ?? [];
+      for (const code of unknownMembersOf(one.id, { on: "2015-01-01" }) ?? []) expect(members, `${one.id} ${code}`).not.toContain(code);
+    }
+    expect(unknownMembersOf("mercosur")).toEqual([]);
+    expect(unknownMembersOf("jp-kanto", { on: "2015-01-01" })).toEqual([]);
+    expect(unknownMembersOf("atlantis", { on: "2015-01-01" })).toBeNull();
+    expect(unknownMembersOf("brics", { on: "2015-01-01" })).toEqual(["ID"]);
+    expect(unknownMembersOf("brics", { on: "2030-01-01" })).toEqual(["ID"]);
+  });
+
+  it("count the G7 on a day in 2020, and in 1975 only as unknown", () => {
+    expect(membersOf("g7", { on: "2020-01-01" })).toEqual(["CA", "DE", "FR", "GB", "IT", "JP", "US"]);
+    const first = ["DE", "FR", "GB", "IT", "JP", "US"];
+    const in1975 = membersOf("g7", { on: "1975-06-01" }) ?? [];
+    for (const code of first) expect(in1975, code).not.toContain(code);
+    expect(unknownMembersOf("g7", { on: "1975-06-01" })).toEqual(first);
+    expect(groupingsOf("DE", { kind: "membership", on: "1975-06-01" }).map((one) => one.id)).not.toContain("g7");
+    expect(membersOf("g7", { on: "1974-12-31" })).toEqual([]);
+    expect(unknownMembersOf("g7", { on: "1974-12-31" })).toEqual([]);
+    // Canada's page says 1976.
+    expect(unknownMembersOf("g7", { on: "1976-06-01" })).toEqual(["CA"]);
+    expect(membersOf("g7", { on: "1976-06-01" })).toEqual(first);
+    expect(membersOf("g7", { on: "1975-12-31" })).toEqual(first);
+  });
+
+  it("count a year-only joining day from the end of that year", () => {
+    expect(membersOf("g7", { on: "1975-12-31" })).toContain("DE");
+    expect(membersOf("g7", { on: "1975-12-30" })).not.toContain("DE");
+    expect(unknownMembersOf("g7", { on: "1975-12-30" })).toContain("DE");
+    expect(unknownMembersOf("g7", { on: "1975-12-31" })).not.toContain("DE");
+    expect(groupingsOf("DE", { kind: "membership", on: "1975-12-31" }).map((one) => one.id)).toContain("g7");
+    expect(groupingsOf("DE", { kind: "membership", on: "1975-12-30" }).map((one) => one.id)).not.toContain("g7");
+    // The pages that give a month and a year, or a year, only.
+    expect(unknownMembersOf("african-union", { on: "1968-06-01" })).toContain("MU");
+    expect(membersOf("african-union", { on: "1968-12-31" })).toContain("MU");
+    expect(unknownMembersOf("african-union", { on: "1990-03-21" })).toContain("NA");
+    expect(unknownMembersOf("commonwealth", { on: "1926-06-01" })).toContain("GB");
+    expect(membersOf("commonwealth", { on: "1926-12-31" })).toContain("GB");
+  });
+
+  it("read a year-only leaving day as a member to the end of the year before, unknown inside the year", () => {
+    expect(standing("1950-01-01", "2020", "2019-12-31")).toBe("yes");
+    expect(standing("1950-01-01", "2020", "2020-01-01")).toBe("unknown");
+    expect(standing("1950-01-01", "2020", "2020-12-31")).toBe("unknown");
+    expect(standing("1950-01-01", "2020", "2021-01-01")).toBe("no");
+    expect(standing("1950-01-01", "2020", "1949-12-31")).toBe("no");
+    expect(standing("1950", "2020", "1950-12-30")).toBe("unknown");
+    expect(standing("1950", "2020", "1950-12-31")).toBe("yes");
+  });
+
+  it("keep the rules for a full day", () => {
+    expect(standing("1958-01-01", null, "1957-12-31")).toBe("no");
+    expect(standing("1958-01-01", null, "1958-01-01")).toBe("yes");
+    expect(standing("1973-01-01", "2020-01-31", "2020-01-30")).toBe("yes");
+    expect(standing("1973-01-01", "2020-01-31", "2020-01-31")).toBe("no");
+    expect(standing(null, null, "2015-01-01")).toBe("unknown");
+    expect(standing(null, "2020-01-31", "2020-01-31")).toBe("no");
+    expect(membersOf("eu", { on: "2020-01-30" })).toContain("GB");
+    expect(membersOf("eu", { on: "2020-01-31" })).not.toContain("GB");
+    expect(membersOf("nato", { on: "1949-04-03" })).toEqual([]);
+    expect(membersOf("nato", { on: "1949-04-04" })).toContain("DK");
+  });
+
+  it("list no country twice in overlapping periods", () => {
+    for (const one of groupings({ kind: "membership" })) {
+      const periods = one.periods ?? [];
+      for (const [at, period] of periods.entries()) {
+        for (const other of periods.slice(at + 1)) {
+          if (period.code !== other.code || period.since === null || other.since === null) continue;
+          const overlap = period.since < (other.until ?? "9999") && other.since < (period.until ?? "9999");
+          expect(overlap, `${one.id} ${period.code} ${JSON.stringify(period)} ${JSON.stringify(other)}`).toBe(false);
+        }
+      }
+      const current = periods.filter((period) => period.until === null).map((period) => period.code);
+      expect(new Set(current).size, `${one.id} lists a member twice`).toBe(current.length);
+    }
   });
 
   it("leave out on purpose only with a reason", () => {

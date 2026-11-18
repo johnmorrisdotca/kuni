@@ -329,6 +329,76 @@ const MEMBERSHIPS_LEFT_OUT: Record<string, string> = {
     "Organisation internationale de la Francophonie: its members come in three tiers (members, associates, observers), Burkina Faso, Mali and Niger announced their withdrawal in 2025, and the list could not be checked against the organisation's own on the day this was written. Left for a later version rather than shipped with a doubt.",
 };
 
+// The day a member joined a body, read from the body's own page where Wikidata has none (or has a placeholder), each with
+// the page and the line it rests on. A year alone ("1975") is used only where the page gives no more; `since: null`
+// replaces a day that is wrong with "unknown". A member in no row, and with no day in Wikidata, has a null `since`, which `membersOf(id, { on })` treats as
+// unknown, not as a member. Read on DATES_READ; each page by itself, with nothing taken from a cache or a PDF.
+const DATES_READ = "2026-11-18";
+
+interface JoinedConfig {
+  body: string; // The body's id
+  code: string;
+  since: string | null;
+  url: string; // The body's own page
+  line: string; // What the page says, as it says it
+}
+
+const EU_COUNTRY = "https://european-union.europa.eu/principles-countries-history/eu-countries";
+const EU_SLUGS: Record<string, string> = { AT: "austria", BE: "belgium", BG: "bulgaria", CY: "cyprus", DE: "germany", EE: "estonia", ES: "spain", FI: "finland", FR: "france", GR: "greece", HR: "croatia", IE: "ireland", IT: "italy", LT: "lithuania", LU: "luxembourg", LV: "latvia", MT: "malta", NL: "netherlands", PT: "portugal", SI: "slovenia", SK: "slovakia" };
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const spoken = (day: string): string => `${Number(day.slice(8))} ${MONTHS[Number(day.slice(5, 7)) - 1]} ${day.slice(0, 4)}`;
+const euro = (days: Record<string, string>): JoinedConfig[] =>
+  Object.entries(days).map(([code, since]) => ({ body: "eurozone", code, since, url: `${EU_COUNTRY}/${EU_SLUGS[code]}_en`, line: `Euro area: member since ${spoken(since)}` }));
+
+const AU_URL = "https://au.int/en/member_states/countryprofiles2";
+const au = (rows: [string, string, string][]): JoinedConfig[] =>
+  rows.map(([code, name, said]) => ({ body: "african-union", code, since: said.length === 0 ? null : said, url: AU_URL, line: `${name}: ${spoken(said)}` }));
+
+const JOINED: JoinedConfig[] = [
+  { body: "nato", code: "DK", since: "1949-04-04", url: "https://www.nato.int/cps/en/natohq/topics_52044.htm", line: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States." },
+  { body: "nato", code: "NL", since: "1949-04-04", url: "https://www.nato.int/cps/en/natohq/topics_52044.htm", line: "NATO was created by 12 countries from Europe and North America on 4 April 1949. NATO's founding member countries were: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, the Netherlands, Norway, Portugal, the United Kingdom and the United States." },
+  ...["AE", "EG", "ET", "IR"].map((code) => ({
+    body: "brics",
+    code,
+    since: "2024-01-01",
+    url: "https://thepresidency.gov.za/media-briefing-remarks-brics-chair-president-cyril-ramaphosa-announcing-outcomes-xv-brics-summit",
+    line: "We have decided to invite the Argentine Republic, the Arab Republic of Egypt, the Federal Democratic Republic of Ethiopia, the Islamic Republic of Iran, the Kingdom of Saudi Arabia and the United Arab Emirates to become full members of BRICS. The membership will take effect from 1 January 2024.",
+  })),
+  { body: "eu", code: "NL", since: "1958-01-01", url: `${EU_COUNTRY}/netherlands_en`, line: "EU Member State: since 1 January 1958" },
+  { body: "schengen", code: "NL", since: "1995-03-26", url: `${EU_COUNTRY}/netherlands_en`, line: "Schengen: member since 26 March 1995" },
+  ...euro({ AT: "1999-01-01", BE: "1999-01-01", DE: "1999-01-01", ES: "1999-01-01", FI: "1999-01-01", FR: "1999-01-01", IE: "1999-01-01", IT: "1999-01-01", LU: "1999-01-01", NL: "1999-01-01", PT: "1999-01-01", GR: "2001-01-01", SI: "2007-01-01", CY: "2008-01-01", MT: "2008-01-01", SK: "2009-01-01", EE: "2011-01-01", LV: "2014-01-01", LT: "2015-01-01", HR: "2023-01-01", BG: "2026-01-01" }),
+  { body: "usmca", code: "CA", since: "2020-07-01", url: "https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement", line: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020." },
+  { body: "usmca", code: "US", since: "2020-07-01", url: "https://www.ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement", line: "The United States-Mexico-Canada Agreement (USMCA) entered into force on July 1, 2020." },
+  // The AU's list gives each state's "date of joining the AU or its predecessor the OAU". Mauritius (August 1968) and Namibia (June 1990) give a month and a year, below as the year; Morocco ("1963/31 January 2017", a gap between) gives no single day, and stays null.
+  ...au([
+    ["BF", "Burkina Faso", "1963-05-25"], ["BJ", "Republic of Benin", "1963-05-25"], ["CD", "Democratic Republic of Congo", "1963-05-25"], ["CF", "Central African Republic", "1963-05-25"],
+    ["CG", "Republic of the Congo", "1963-05-25"], ["CI", "Republic of Côte d'Ivoire", "1963-05-25"], ["CM", "Republic of Cameroon", "1963-05-25"], ["CV", "Republic of Cabo Verde", "1975-07-18"],
+    ["DJ", "Republic of Djibouti", "1977-06-27"], ["EH", "Sahrawi Arab Democratic Republic", "1982-02-22"], ["ER", "State of Eritrea", "1993-05-24"], ["ET", "Federal Democratic Republic of Ethiopia", "1963-05-25"],
+    ["GA", "Gabonese Republic", "1963-05-25"], ["GH", "Republic of Ghana", "1963-05-25"], ["GM", "Republic of the Gambia", "1965-03-09"], ["GN", "Republic of Guinea", "1963-05-25"],
+    ["GQ", "Republic of Equatorial Guinea", "1968-10-12"], ["GW", "Republic of Guinea-Bissau", "1973-11-19"], ["KM", "Union of the Comoros", "1975-07-18"], ["LR", "Republic of Liberia", "1963-05-25"],
+    ["LS", "Kingdom of Lesotho", "1966-10-31"], ["LY", "Libya", "1963-05-25"], ["MG", "Republic of Madagascar", "1963-05-25"], ["ML", "Republic of Mali", "1963-05-25"],
+    ["MW", "Republic of Malawi", "1964-07-13"], ["MZ", "Republic of Mozambique", "1975-07-18"], ["NE", "Republic of Niger", "1963-05-25"], ["NG", "Federal Republic of Nigeria", "1963-05-25"],
+    ["RW", "Republic of Rwanda", "1963-05-25"], ["SC", "Republic of Seychelles", "1976-06-29"], ["SD", "Republic of the Sudan", "1963-05-25"], ["SL", "Republic of Sierra Leone", "1963-05-25"],
+    ["SN", "Republic of Senegal", "1963-05-25"], ["SO", "Federal Republic of Somalia", "1963-05-25"], ["SS", "Republic of South Sudan", "2011-07-27"], ["ST", "Democratic Republic of São Tomé and Príncipe", "1975-07-18"],
+    ["SZ", "Kingdom of Eswatini", "1968-09-24"], ["TD", "Republic of Chad", "1963-05-25"], ["TG", "Togolese Republic", "1963-05-25"], ["TN", "Republic of Tunisia", "1963-05-25"],
+    ["UG", "Republic of Uganda", "1963-05-25"], ["ZM", "Republic of Zambia", "1964-12-16"], ["ZW", "Republic of Zimbabwe", "1980-06-18"],
+  ]),
+  // Guinea had 1963-01-01, a placeholder; the page gives 25 May 1963 (the row above replaces it).
+  // The G7's pages give a year only (the first summit in 1975 with six members, Canada's admission in 1976), so the year stands: 1977-01-01, which Wikidata gave six members, is no day a page gives.
+  ...["DE", "FR", "GB", "IT", "JP", "US"].map((code) => ({
+    body: "g7",
+    code,
+    since: "1975",
+    url: "https://www.g7italy.it/en/about-g7/",
+    line: "The first Summit of Heads of State and Government was held in 1975 in Rambouillet, France. It included France, the United States of America, the United Kingdom, Germany, Japan, and Italy.",
+  })),
+  { body: "g7", code: "CA", since: "1976", url: "https://www.g7italy.it/en/about-g7/", line: "In 1976, with the admission of Canada, the G7 took its current configuration." },
+  // Pages that give a year, or a month and a year, only: the year stands.
+  { body: "commonwealth", code: "GB", since: "1926", url: "https://thecommonwealth.org/our-member-countries/united-kingdom", line: "Joined the Commonwealth: 1926, on founding the British Commonwealth of Nations." },
+  { body: "african-union", code: "MU", since: "1968", url: AU_URL, line: "Republic of Mauritius: August 1968" },
+  { body: "african-union", code: "NA", since: "1990", url: AU_URL, line: "Republic of Namibia: June 1990" },
+];
+
 const INFORMAL: InformalConfig[] = [
   {
     id: "middle-east",
@@ -551,5 +621,5 @@ const M49_READINGS: Record<string, string> = {
   "155": "にしよーろっぱ",
 };
 
-export { AS_OF, CONTINENT_READINGS, M49_READINGS, INFORMAL, MEMBERSHIPS, MEMBERSHIPS_LEFT_OUT, SUBDIVISION_GROUPINGS };
-export type { InformalConfig, MembershipConfig, Status, SubdivisionGroupingConfig };
+export { AS_OF, CONTINENT_READINGS, DATES_READ, JOINED, M49_READINGS, INFORMAL, MEMBERSHIPS, MEMBERSHIPS_LEFT_OUT, SUBDIVISION_GROUPINGS };
+export type { InformalConfig, JoinedConfig, MembershipConfig, Status, SubdivisionGroupingConfig };
