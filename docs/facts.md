@@ -7,12 +7,26 @@ Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules a
 
 - Capitals: 245 of 250, every one named in Japanese (13 found by hand, 17 Japanese name written by hand)
 - Capitals' coordinates: 245 of 250
-- Population: 249 of 250, 247 with the year it is for
+- Population: 249 of 250, 247 with the year it is for; 216 are the World Bank's for 2025, 33 Wikidata's (below)
 - Area: 250 of 250 (4 for the whole, 244 with no part named, 2 for the land only: UM, VI), 16 with a year
 - Coordinates: 250 of 250
 - Land borders: 327 pairs; 166 countries have one or more, 84 have none
 - Driving side: 247 of 250 (76 left, 171 right)
 - First day of the week, measurement system, paper size and clock: all 250, from CLDR (every region has one, by CLDR's own rule of falling back to the area that holds it)
+
+## Population
+
+Every population is the World Bank's SP.POP.TOTL (Population, total, CC BY 4.0) for 2025, so that the countries can be compared. A country the series does not give keeps Wikidata's best-ranked figure with its own year, marked `Wikidata` in the row's source (`populationSource`).
+
+### Wikidata's figure kept, 34
+
+AI (19,079, 2023), AQ (none), AX (30,836, 2025), BL (10,124, 2018), BQ (29,418, 2023), BV (0, no year), CC (602, 2021), CK (14,222, 2023), CX (1,692, 2021), EH (612,000, 2021), FK (4,550, 2018), GF (293,996, 2023), GG (67,787, 2024), GP (384,160, 2023), GS (35, 2019), HM (0, no year), IO (3,000, 2018), JE (103,267, 2021), MQ (360,630, 2023), MS (5,440, 2023), NF (2,188, 2021), NU (1,821, 2025), PM (5,974, 2019), PN (50, 2019), RE (889,679, 2023), SH (5,633, 2016), SJ (2,905, 2022), TF (196, 2012), TK (1,499, 2016), TW (23,262,544, 2026), UM (190, 2010), VA (882, 2024), WF (11,558, 2018), YT (320,901, 2024)
+
+### The World Bank's rows that are not a kuni country, 50
+
+Its regions, income groups and the world, and the Channel Islands, which ISO 3166-1 has no code for, are left out.
+
+AFE, AFW, ARB, CSS, CEB, EAR, EAS, EAP, TEA, EMU, ECS, ECA, TEC, EUU, FCV, HPC, IBD, IBT, IDB, IDX, IDA, LTE, LCN, LAC, TLA, LDC, LMY, MEA, MNA, TMN, MIC, NAC, OED, OSS, PSS, PST, PRE, SST, SAS, TSA, SSF, SSA, TSS, WLD, CHI, (High income), (Low income), (Lower middle income), (Not classified), (Upper middle income)
 
 ## Gaps
 

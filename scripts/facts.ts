@@ -6,6 +6,8 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import type { WorldBankPopulation } from "./world-bank.ts";
+import { WORLD_BANK_ALPHA3 } from "./world-bank.ts";
 import { AREA_CHOICES, BORDERS_ADDED, CAPITAL_ITEMS, CAPITAL_JA_OVERRIDES, COUNTRY_ITEMS, FACT_GAPS, POPULATION_PARTS } from "./facts-config.ts";
 
 type Row = unknown[];
@@ -22,6 +24,7 @@ interface FactRecord {
   capitalPoint: Point | null;
   population: number | null;
   populationYear: number | null;
+  populationSource: "World Bank SP.POP.TOTL" | "Wikidata" | null;
   area: number | null;
   areaYear: number | null;
   areaPart: "whole" | "none" | "land" | null;
@@ -36,7 +39,9 @@ interface FactRecord {
 
 interface FactsInputs {
   snapshot: FactsSnapshot;
-  countries: { alpha2: string; capital: string | null }[];
+  countries: { alpha2: string; alpha3: string; capital: string | null }[];
+  worldBank: WorldBankPopulation; // one year of the World Bank's SP.POP.TOTL: every country's population comes from it
+
   cldr: { weekData: Json; measurementData: Json; timeData: Json; territoryContainment: Record<string, { _contains: string[]; _grouping?: string }> };
   chizuCountries: string; // node_modules/@johnmorrisdotca/chizu/dist/data/countries
 }
@@ -78,7 +83,7 @@ const naturalEarthNeighbours = (folder: string): Map<string, string[]> => {
 };
 
 const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[] } => {
-  const { snapshot, countries, cldr } = inputs;
+  const { snapshot, countries, cldr, worldBank } = inputs;
   const answers = snapshot.answers;
   const codes = new Set(countries.map((one) => one.alpha2));
   const problems: string[] = [];
@@ -163,7 +168,9 @@ const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[]
     if (capitalJa !== null && (!JAPANESE.test(capitalJa) || /[()（）]/.test(capitalJa))) problems.push(`${alpha2}: the capital's Japanese label ${capitalJa} is not a plain Japanese name`);
     if (capitalEn !== null && capitalJa === null) problems.push(`${alpha2}: the capital ${capitalEn} has no Japanese name`);
 
-    // The population: the best-ranked figures for the whole (or a part listed as the whole), the latest first.
+    // The population: the World Bank's figure for its one year; where it has none for the country, the best-ranked
+    // Wikidata figure for the whole (or a part listed as the whole), the latest first, marked as Wikidata's.
+    const bank = worldBank.byIso3.get(WORLD_BANK_ALPHA3[alpha2 as keyof typeof WORLD_BANK_ALPHA3] ?? countries.find((one) => one.alpha2 === alpha2)!.alpha3);
     const people = rowsOf("population", alpha2)
       .filter((row) => row[3] === null || (row[3] as string) in POPULATION_PARTS)
       .sort((a, b) => byText(String(b[2] ?? ""), String(a[2] ?? "")));
@@ -197,8 +204,9 @@ const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[]
       capitalEn,
       capitalJa,
       capitalPoint,
-      population: population === null ? null : (population[1] as number),
-      populationYear: population === null ? null : yearOf(population[2]),
+      population: bank !== undefined ? bank : population === null ? null : (population[1] as number),
+      populationYear: bank !== undefined ? worldBank.year : population === null ? null : yearOf(population[2]),
+      populationSource: bank !== undefined ? ("World Bank SP.POP.TOTL" as const) : population === null ? null : ("Wikidata" as const),
       area: area === null ? null : round(area[1] as number, 2),
       areaYear: area === null ? null : yearOf(area[3]),
       areaPart: area === null ? null : areaPart,
@@ -233,6 +241,9 @@ const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[]
   if (problems.length > 0) throw new Error(`The facts cannot be made:\n  ${problems.join("\n  ")}`);
 
   // ----- The record of what was decided ----------------------------------------------------------------------
+  const fallbacks = records.filter((record) => record.populationSource !== "World Bank SP.POP.TOTL");
+  const used = new Set(countries.map((one) => (one.alpha2 in WORLD_BANK_ALPHA3 ? WORLD_BANK_ALPHA3[one.alpha2 as keyof typeof WORLD_BANK_ALPHA3] : one.alpha3)));
+  const notCountries = [...worldBank.byIso3.keys()].filter((code) => !used.has(code));
   const count = (test: (record: FactRecord) => boolean): number => records.filter(test).length;
   const doc = [
     "# The facts: what was decided",
@@ -244,12 +255,26 @@ const buildFacts = (inputs: FactsInputs): { records: FactRecord[]; doc: string[]
     "",
     `- Capitals: ${count((record) => record.capitalEn !== null)} of ${records.length}, every one named in Japanese (${count((record) => record.alpha2 in CAPITAL_ITEMS)} found by hand, ${Object.keys(CAPITAL_JA_OVERRIDES).length} Japanese name written by hand)`,
     `- Capitals' coordinates: ${count((record) => record.capitalPoint !== null)} of ${records.length}`,
-    `- Population: ${count((record) => record.population !== null)} of ${records.length}, ${count((record) => record.populationYear !== null)} with the year it is for`,
+    `- Population: ${count((record) => record.population !== null)} of ${records.length}, ${count((record) => record.populationYear !== null)} with the year it is for; ${count((record) => record.populationSource === "World Bank SP.POP.TOTL")} are the World Bank's for ${worldBank.year}, ${count((record) => record.populationSource === "Wikidata")} Wikidata's (below)`,
     `- Area: ${count((record) => record.area !== null)} of ${records.length} (${count((record) => record.areaPart === "whole")} for the whole, ${count((record) => record.areaPart === "none")} with no part named, ${count((record) => record.areaPart === "land")} for the land only: ${records.filter((record) => record.areaPart === "land").map((record) => record.alpha2).join(", ") || "none"}), ${count((record) => record.areaYear !== null)} with a year`,
     `- Coordinates: ${count((record) => record.point !== null)} of ${records.length}`,
     `- Land borders: ${borders.size} pairs; ${count((record) => record.borders.length > 0)} countries have one or more, ${count((record) => record.borders.length === 0)} have none`,
     `- Driving side: ${count((record) => record.drivingSide !== null)} of ${records.length} (${count((record) => record.drivingSide === "left")} left, ${count((record) => record.drivingSide === "right")} right)`,
     `- First day of the week, measurement system, paper size and clock: all ${records.length}, from CLDR (every region has one, by CLDR's own rule of falling back to the area that holds it)`,
+    "",
+    "## Population",
+    "",
+    `Every population is the World Bank's SP.POP.TOTL (Population, total, CC BY 4.0) for ${worldBank.year}, so that the countries can be compared. A country the series does not give keeps Wikidata's best-ranked figure with its own year, marked \`Wikidata\` in the row's source (\`populationSource\`).`,
+    "",
+    `### Wikidata's figure kept, ${fallbacks.length}`,
+    "",
+    fallbacks.map((record) => `${record.alpha2} (${record.population === null ? "none" : `${record.population.toLocaleString("en-US")}, ${record.populationYear ?? "no year"}`})`).join(", ") || "None.",
+    "",
+    `### The World Bank's rows that are not a kuni country, ${notCountries.length + worldBank.unkeyed.length}`,
+    "",
+    "Its regions, income groups and the world, and the Channel Islands, which ISO 3166-1 has no code for, are left out.",
+    "",
+    [...notCountries, ...worldBank.unkeyed.map((name) => `(${name})`)].join(", "),
     "",
     "## Gaps",
     "",

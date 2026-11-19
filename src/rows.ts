@@ -117,8 +117,8 @@ const expandSubdivisions = (table: SubdivisionTable): readonly Subdivision[] => 
   return Object.freeze(list);
 };
 
-// [alpha2, population, populationYear, areaKm2, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders,
-//  drivingSide, conventions], written by scripts/build-data.ts. Trailing nulls are left off. areaOf is "L" for a
+// [alpha2, population, populationYear (0 for the World Bank's year, which /facts names once; Wikidata's own year otherwise), areaKm2, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders,
+//  drivingSide, conventions, capitalZone], written by scripts/build-data.ts. Trailing nulls are left off. areaOf is "L" for a
 // figure for the land alone; borders is one string of codes with spaces between; drivingSide is "L" or "R";
 // conventions lists, with spaces between, only the CLDR values that are not the world's default (mon, metric, A4, h23).
 type FactsRow = readonly [string, ...(string | number | null)[]];

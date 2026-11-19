@@ -3,11 +3,13 @@
 // file against that hash before it reads it, so the normal build never touches the network and makes
 // the same data from the same files every time.
 //
-//   pnpm data:fetch
+//   pnpm data:fetch                 every input below
+//   pnpm data:fetch world-bank      only the inputs whose path holds the word (here the World Bank's population)
 //
 // The CLDR files are read from the release tag that matches the cldr-core and cldr-localenames-full
 // versions in package.json; the time-zone table from a tagged tzdb release. Only the TLD list has no
-// release: IANA keeps one current file, whose first line names its version.
+// release: IANA keeps one current file, whose first line names its version. The World Bank's population is one
+// response of its API for one year, saved as it came (CC BY 4.0; the credit is in NOTICE.md).
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -16,6 +18,7 @@ import { MANIFEST_PATH, readManifest, recordFile, sha256, SOURCES_DIR, USER_AGEN
 
 const CLDR_TAG = "release-48-2";
 const TZDB_RELEASE = "2026e";
+const WORLD_BANK_YEAR = 2025;
 
 const DOWNLOADS: { path: string; url: string; note: string }[] = [
   {
@@ -43,12 +46,20 @@ const DOWNLOADS: { path: string; url: string; note: string }[] = [
     url: "https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
     note: "IANA root zone, the list of top-level domains",
   },
+  {
+    path: `world-bank-sp-pop-totl-${WORLD_BANK_YEAR}.json`,
+    url: `https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=${WORLD_BANK_YEAR}&format=json&per_page=20000`,
+    note: `World Bank, Population, total (SP.POP.TOTL), every country and aggregate for ${WORLD_BANK_YEAR}, as the API v2 answered (CC BY 4.0)`,
+  },
 ];
 
 const main = async (): Promise<void> => {
   let manifest = readManifest();
   const today = new Date().toISOString().slice(0, 10);
-  for (const download of DOWNLOADS) {
+  const only = process.argv.slice(2);
+  const chosen = DOWNLOADS.filter((download) => only.length === 0 || only.some((word) => download.path.includes(word)));
+  if (chosen.length === 0) throw new Error(`No input has a path holding ${only.join(" or ")}`);
+  for (const download of chosen) {
     console.log(`Downloading ${download.url}`);
     const response = await fetch(download.url, { headers: { "user-agent": USER_AGENT } });
     if (!response.ok) throw new Error(`${download.url} answered ${response.status}`);
@@ -59,7 +70,7 @@ const main = async (): Promise<void> => {
     manifest = recordFile(manifest, { path: download.path, url: download.url, read: today, sha256: sha256(bytes), note: download.note });
   }
   writeManifest(manifest);
-  console.log(`Wrote ${DOWNLOADS.length} files and ${MANIFEST_PATH}`);
+  console.log(`Wrote ${chosen.length} files and ${MANIFEST_PATH}`);
 };
 
 main().catch((error: unknown) => {

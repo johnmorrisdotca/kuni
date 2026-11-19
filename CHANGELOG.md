@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- `/facts` populations are one comparable year (MODULES-1626): the World Bank's SP.POP.TOTL (Population, total, CC BY 4.0) for 2025, in place of Wikidata's figures of 2005 to 2026. The most populous country is India, ahead of China, as the UN has it since 2023; 213 countries' figures change, and Japan is 123,366,734 for 2025. New `populationSource` on each country says where it is from: `"World Bank SP.POP.TOTL"`, or `"Wikidata"` for the 33 countries and territories the series does not give (Taiwan, Guadeloupe, Réunion and other territories, listed in docs/facts.md), which keep Wikidata's figure and year. Area is unchanged and still Wikidata's. The input is `data-sources/world-bank-sp-pop-totl-2025.json`; `pnpm data:fetch world-bank` fetches only it.
+
 ## [1.14.0] - 2026-11-19
 
 ### Fixed

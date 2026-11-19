@@ -18,12 +18,12 @@
       "gzip": 97633
     },
     "./facts": {
-      "minified": 25423,
-      "gzip": 10624
+      "minified": 24884,
+      "gzip": 10592
     },
     "./zones": {
-      "minified": 75233,
-      "gzip": 27017
+      "minified": 74690,
+      "gzip": 26838
     },
     "./subdivision-facts": {
       "minified": 415427,
@@ -58,8 +58,8 @@
       "gzip": 212138
     },
     "./places": {
-      "minified": 10016694,
-      "gzip": 3328070
+      "minified": 10016151,
+      "gzip": 3327930
     },
     "./names/fr": {
       "minified": 10106,
@@ -98,12 +98,12 @@
       "gzip": 4297
     },
     "./element": {
-      "minified": 849807,
-      "gzip": 292497
+      "minified": 849264,
+      "gzip": 292362
     },
     "./element/define": {
-      "minified": 849810,
-      "gzip": 292504
+      "minified": 849267,
+      "gzip": 292369
     },
     "./subdivisions/ad": {
       "minified": 1172,

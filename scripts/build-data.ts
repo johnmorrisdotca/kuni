@@ -43,6 +43,7 @@ import { englishSuspects } from "./en-names.ts";
 import { CAPITALS, CAPITALS_READ } from "./capitals-config.ts";
 import { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES } from "./facts-config.ts";
 import { buildFacts } from "./facts.ts";
+import { parseWorldBank } from "./world-bank.ts";
 import { buildGroupings } from "./groupings.ts";
 import { buildWithdrawn, withdrawnDoc } from "./withdrawn.ts";
 import type { CodesSnapshot } from "./withdrawn.ts";
@@ -469,9 +470,13 @@ for (const country of countries) {
 
 // The capital's Japanese name and the /facts entry's figures; scripts/facts.ts says how, scripts/facts-config.ts
 // lists the exceptions. Where the facts replace countries-list's capital (it moved), the country takes the new one.
+const worldBankFile = manifest.files.find((file) => file.path.startsWith("world-bank-sp-pop-totl-"));
+if (worldBankFile === undefined) throw new Error("No World Bank population in data-sources/sources.json: run pnpm data:fetch world-bank");
+const worldBankYear = Number(/-(\d{4})\.json$/.exec(worldBankFile.path)?.[1]);
 const facts = buildFacts({
   snapshot: factsSnapshot,
-  countries: countries.map((country) => ({ alpha2: country.alpha2, capital: country.capital })),
+  countries: countries.map((country) => ({ alpha2: country.alpha2, alpha3: country.alpha3, capital: country.capital })),
+  worldBank: parseWorldBank(readSource(manifest, worldBankFile.path).text, worldBankYear),
   cldr: {
     weekData: dig(readJson("cldr-core/supplemental/weekData.json"), ["supplemental", "weekData"]),
     measurementData: dig(readJson("cldr-core/supplemental/measurementData.json"), ["supplemental", "measurementData"]),
@@ -801,7 +806,7 @@ const writeFacts = (): void => {
     const row: unknown[] = [
       record.alpha2,
       record.population,
-      record.populationYear,
+      record.populationSource === "World Bank SP.POP.TOTL" ? 0 : record.populationYear,
       record.area,
       record.areaYear,
       record.areaPart === "land" ? "L" : null,
@@ -821,14 +826,16 @@ const writeFacts = (): void => {
   writeDocumentedFile(
     join(OUT_DATA, "facts.data.ts"),
     header(`The facts about every country (${facts.records.length}), one row each; src/facts.ts says what the columns are.`, [
-      `${FACTS_SOURCE}: population, area, coordinates, capitals' coordinates, driving side, borders`,
+      `World Bank SP.POP.TOTL ${worldBankYear} (CC BY 4.0), data-sources/${worldBankFile.path}: population; Wikidata's where it has none`,
+      `${FACTS_SOURCE}: area, coordinates, capitals' coordinates, driving side, borders`,
       `Natural Earth 5.1.2 admin-0 1:50m (public domain), as drawn by @johnmorrisdotca/chizu ${versions.chizu} (MIT): land borders confirmed`,
       `${CLDR_SOURCE}: first day of the week, measurement system, paper size, clock`,
     ]) +
       'import type { FactsRow } from "../rows";\n\n' +
-      `/**\n * The day the Wikidata snapshot was read: every figure in /facts is as Wikidata gave it on this day.\n *\n * @example\n * \`\`\`ts\n * import { FACTS_READ, facts } from "@johnmorrisdotca/kuni/facts";\n *\n * console.log(\`\${facts("JP")?.population} people in \${facts("JP")?.populationYear}, as Wikidata gave it on \${FACTS_READ}\`);\n * \`\`\`\n */\nconst FACTS_READ = ${literal(factsFile.read)};\n\n` +
+      `/**\n * The day the Wikidata snapshot was read: every figure in /facts but the populations (the World Bank's) is as Wikidata gave it on this day.\n *\n * @example\n * \`\`\`ts\n * import { FACTS_READ, facts } from "@johnmorrisdotca/kuni/facts";\n *\n * console.log(\`\${facts("JP")?.population} people in \${facts("JP")?.populationYear}, as Wikidata gave it on \${FACTS_READ}\`);\n * \`\`\`\n */\nconst FACTS_READ = ${literal(factsFile.read)};\n\n` +
+      `/** The year of every population that is the World Bank's, written 0 in the row; a row with another year has Wikidata's. */\nconst POPULATION_YEAR = ${worldBankYear};\n\n` +
       `const FACT_ROWS: readonly FactsRow[] = [\n${rows.join("\n")}\n];\n\n` +
-      "export { FACT_ROWS, FACTS_READ };\n",
+      "export { FACT_ROWS, FACTS_READ, POPULATION_YEAR };\n",
   );
   const unusedZones = Object.keys(CAPITAL_ZONES).filter((code) => !usedCapitalZones.has(code));
   if (unusedZones.length > 0) throw new Error(`CAPITAL_ZONES names a country with no capital: ${unusedZones.join(", ")}`);
