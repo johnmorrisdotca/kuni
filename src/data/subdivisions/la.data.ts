@@ -26,7 +26,7 @@ VT|Vientiane|ヴィエンチャン都|0
 XA|Sainyabuli|サイニャブーリー県|0
 XE|Sekong|セーコーン県|0
 XI|Xiangkhouang|シエンクワーン県|0
-XS|Xaisomboun|サイソムブーン県|0`,
+XS|Xaisomboun|サイソムブーン県|0|||XN`,
 };
 
 export { LA };

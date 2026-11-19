@@ -13,7 +13,7 @@ const TT: SubdivisionTable = {
 CHA|Chaguanas|チャグアナス|1
 CTT|Couva-Tabaquite-Talparo|クーバ＝タバキテ＝タルパロ地域自治体
 DMN|Diego Martin|ディエゴ・マーティン地域自治体
-MRC|Mayaro-Rio Claro|リオ・クラロー＝マヤロ
+MRC|Mayaro-Rio Claro|リオ・クラロー＝マヤロ||||RCM
 PED|Penal-Debe|ペナル＝デベ地域自治体
 POS|Port of Spain|ポートオブスペイン|1
 PRT|Princes Town|プリンセス・タウン地域自治体
@@ -22,7 +22,7 @@ SFO|San Fernando|サンフェルナンド|1
 SGE|Sangre Grande|サングレ・グランド地域自治体
 SIP|Siparia|シパリア地域自治体
 SJL|San Juan-Laventille|サン・ファン＝ラヴェンティル地域自治体
-TOB|Tobago|トバゴ島
+TOB|Tobago|トバゴ島||||ETO WTO
 TUP|Tunapuna-Piarco|マコヤ`,
 };
 

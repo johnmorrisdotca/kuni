@@ -9,40 +9,40 @@ const CN: SubdivisionTable = {
   country: "CN",
   types: ["autonomous-region","city","province","special-administrative-region"],
   typesJa: ["自治区","市","省",null],
-  rows: `AH|Anhui|安徽省|2
-BJ|Beijing|北京市
-CQ|Chongqing|重慶市|1
-FJ|Fujian|福建省|2
-GD|Guangdong|広東省|2
-GS|Gansu|甘粛省|2
-GX|Guangxi|広西チワン族自治区|0
-GZ|Guizhou|貴州省|2
-HA|Henan|河南省|2
-HB|Hubei|湖北省|2
-HE|Hebei|河北省|2
-HI|Hainan|海南省|2
+  rows: `AH|Anhui|安徽省|2|||34
+BJ|Beijing|北京市||||11
+CQ|Chongqing|重慶市|1|||50
+FJ|Fujian|福建省|2|||35
+GD|Guangdong|広東省|2|||44
+GS|Gansu|甘粛省|2|||62
+GX|Guangxi|広西チワン族自治区|0|||45
+GZ|Guizhou|貴州省|2|||52
+HA|Henan|河南省|2|||41
+HB|Hubei|湖北省|2|||42
+HE|Hebei|河北省|2|||13
+HI|Hainan|海南省|2|||46
 HK|Hong Kong|香港|3
-HL|Heilongjiang|黒竜江省|2
-HN|Hunan|湖南省|2
-JL|Jilin|吉林省|2
-JS|Jiangsu|江蘇省|2
-JX|Jiangxi|江西省|2
-LN|Liaoning|遼寧省|2
+HL|Heilongjiang|黒竜江省|2|||23
+HN|Hunan|湖南省|2|||43
+JL|Jilin|吉林省|2|||22
+JS|Jiangsu|江蘇省|2|||32
+JX|Jiangxi|江西省|2|||36
+LN|Liaoning|遼寧省|2|||21
 MO|Macau|マカオ|3
-NM|Inner Mongolia|内モンゴル自治区|0
-NX|Ningxia|寧夏回族自治区|0
-QH|Qinghai|青海省|2
-SC|Sichuan|四川省|2
-SD|Shandong|山東省|2
-SH|Shanghai|上海市|1
-SN|Shaanxi|陝西省|2
-SX|Shanxi|山西省|2
-TJ|Tianjin|天津市|1
+NM|Inner Mongolia|内モンゴル自治区|0|||15
+NX|Ningxia|寧夏回族自治区|0|||64
+QH|Qinghai|青海省|2|||63
+SC|Sichuan|四川省|2|||51
+SD|Shandong|山東省|2|||37
+SH|Shanghai|上海市|1|||31
+SN|Shaanxi|陝西省|2|||61
+SX|Shanxi|山西省|2|||14
+TJ|Tianjin|天津市|1|||12
 TW|Taiwan|台湾省|2
-XJ|Xinjiang|新疆ウイグル自治区|0
-XZ|Tibet|チベット自治区|0
-YN|Yunnan|雲南省|2
-ZJ|Zhejiang|浙江省|2`,
+XJ|Xinjiang|新疆ウイグル自治区|0|||65
+XZ|Tibet|チベット自治区|0|||54
+YN|Yunnan|雲南省|2|||53
+ZJ|Zhejiang|浙江省|2|||33`,
 };
 
 export { CN };

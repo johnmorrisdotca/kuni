@@ -113,22 +113,22 @@ const FR: SubdivisionTable = {
 973|Guyane (française)|フランス領ギアナ|2
 974|La Réunion|レユニオン|2
 976|Mayotte|マヨット|2
-ARA|Auvergne-Rhône-Alpes|オーヴェルニュ＝ローヌ＝アルプ地域圏|2
-BFC|Burgundy-Franche-Comté|ブルゴーニュ＝フランシュ＝コンテ地域圏|2
+ARA|Auvergne-Rhône-Alpes|オーヴェルニュ＝ローヌ＝アルプ地域圏|2|||C V
+BFC|Burgundy-Franche-Comté|ブルゴーニュ＝フランシュ＝コンテ地域圏|2|||D I
 BL|St. Barthélemy|サン・バルテルミー|3
-BRE|Brittany|ブルターニュ地域圏|2
+BRE|Brittany|ブルターニュ地域圏|2|||E
 CP|Clipperton Island|クリッパートン島|3
-CVL|Centre-Val de Loire|サントル＝ヴァル・ド・ロワール地域圏|2
-GES|Grand-Est|グラン・テスト地域圏|2
-HDF|Hauts-de-France|オー＝ド＝フランス地域圏|2
-IDF|Île-de-France|イル＝ド＝フランス地域圏|2
+CVL|Centre-Val de Loire|サントル＝ヴァル・ド・ロワール地域圏|2|||F
+GES|Grand-Est|グラン・テスト地域圏|2|||A G M
+HDF|Hauts-de-France|オー＝ド＝フランス地域圏|2|||O S
+IDF|Île-de-France|イル＝ド＝フランス地域圏|2|||J
 MF|St. Martin|サン・マルタン|3
-NAQ|Nouvelle-Aquitaine|ヌーヴェル＝アキテーヌ地域圏|2
+NAQ|Nouvelle-Aquitaine|ヌーヴェル＝アキテーヌ地域圏|2|||B L T
 NC|New Caledonia|ニューカレドニア|3
-NOR|Normandie|ノルマンディー地域圏|2
-OCC|Occitanie|オクシタニー地域圏|2
-PAC|Provence-Alpes-Côte-d’Azur|プロヴァンス＝アルプ＝コート・ダジュール地域圏|2
-PDL|Pays-de-la-Loire|ペイ・ド・ラ・ロワール地域圏|2
+NOR|Normandie|ノルマンディー地域圏|2|||P Q
+OCC|Occitanie|オクシタニー地域圏|2|||K N
+PAC|Provence-Alpes-Côte-d’Azur|プロヴァンス＝アルプ＝コート・ダジュール地域圏|2|||U
+PDL|Pays-de-la-Loire|ペイ・ド・ラ・ロワール地域圏|2|||R
 PF|French Polynesia|仏領ポリネシア|3
 PM|St. Pierre & Miquelon|サンピエール島・ミクロン島|3
 TF|French Southern Territories|仏領極南諸島|3

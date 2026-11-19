@@ -21,9 +21,9 @@ const MR: SubdivisionTable = {
 10|Guidimaka|ギディマカ州|0
 11|Tiris Zemmour|ティリス・ゼムール州|0
 12|Inchiri|インシリ州|0
-13|Nouakchott Ouest|ヌアクショット西|0
-14|Nouakchott Nord|ヌアクショット北|0
-15|Nouakchott Sud|ヌアクショット南|0`,
+13|Nouakchott Ouest|ヌアクショット西|0|||NKC
+14|Nouakchott Nord|ヌアクショット北|0|||NKC
+15|Nouakchott Sud|ヌアクショット南|0|||NKC`,
 };
 
 export { MR };

@@ -194,6 +194,16 @@ interface Subdivision {
   name: { en: string; ja: string | null };
   /** The name in hiragana, for Japan's prefectures: "とうきょうと" */
   reading?: string;
+  /**
+   * The codes CLDR has retired for this subdivision, in code order: "FR-A", "FR-G" and "FR-M" for "FR-GES". Present
+   * only where there are some. A retired code of a split is on each of its successors.
+   */
+  formerCodes?: readonly string[];
+  /**
+   * The names of the counties this one was made from again, where a retired code was divided: "Viken" for "NO-31",
+   * "NO-32" and "NO-33". Present only where there are some, and searched by `subdivisionsByName`.
+   */
+  formerNames?: readonly string[];
 }
 
 /** The side of the road a country drives on.

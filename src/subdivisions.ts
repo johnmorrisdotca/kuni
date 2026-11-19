@@ -60,6 +60,7 @@ interface Tables {
   byCode: ReadonlyMap<string, Subdivision>;
   byCountry: ReadonlyMap<string, readonly Subdivision[]>;
   byName: ReadonlyMap<string, readonly Subdivision[]>;
+  byFormerCode: ReadonlyMap<string, readonly Subdivision[]>;
   tableOf: ReadonlyMap<string, SubdivisionTable>;
 }
 
@@ -82,6 +83,7 @@ const build = (): Tables => {
   const byCode = new Map<string, Subdivision>();
   const byCountry = new Map<string, readonly Subdivision[]>();
   const byName = new Map<string, Subdivision[]>();
+  const byFormerCode = new Map<string, Subdivision[]>();
   const tableOf = new Map<string, SubdivisionTable>();
   const list: Subdivision[] = [];
   const index = (name: string | undefined | null, subdivision: Subdivision): void => {
@@ -98,9 +100,11 @@ const build = (): Tables => {
     for (const one of expanded) {
       list.push(one);
       byCode.set(one.code, one);
+      for (const former of one.formerCodes ?? []) byFormerCode.set(former, [...(byFormerCode.get(former) ?? []), one]);
       index(one.name.en, one);
       index(one.name.ja, one);
       index(one.reading, one);
+      for (const old of one.formerNames ?? []) index(old, one);
       // The name without its kind: オンタリオ for オンタリオ州, 東京 for 東京都.
       const word = typeWordJa(table, one.type);
       if (one.name.ja !== null && word !== null && one.name.ja.endsWith(word) && one.name.ja.length - word.length >= 2) {
@@ -109,7 +113,7 @@ const build = (): Tables => {
     }
   }
 
-  return { list: freeze(list), byCode, byCountry, byName, tableOf };
+  return { list: freeze(list), byCode, byCountry, byName, byFormerCode, tableOf };
 };
 
 const getTables = (): Tables => {
@@ -202,7 +206,7 @@ const subdivisionByShortCode = (countryCode: string, shortCode: string): Subdivi
 
 /**
  * Every subdivision a typed name could be, in code order: its English or Japanese name, its Japanese name without
- * the word for its kind (オンタリオ, 東京), a prefecture's reading, or its full code. Folded as `fold` folds, so
+ * the word for its kind (オンタリオ, 東京), a prefecture's reading, the name of a county it was divided from (Viken for NO-31), or its full code. Folded as `fold` folds, so
  * case, accents, width and kana do not matter.
  *
  * @param text - What was typed.
@@ -252,6 +256,48 @@ const subdivisionByName = (text: string, options: SubdivisionByNameOptions = {})
   const atTop = found.filter((one) => one.level === top);
 
   return atTop.length === 1 ? atTop[0] : null;
+};
+
+/**
+ * The subdivisions a retired code now stands for, from CLDR's aliases for codes ISO 3166-2 has replaced: FR-A
+ * (Alsace) is now FR-GES, and NZ-N (the North Island) is ten regions. The list is in code order.
+ *
+ * @param code - The retired code, either case: "FR-A", "nz-n".
+ * @returns The successors, frozen: one where the place was renamed or merged into another, several where it was
+ * split; an empty list for a code that is not retired, a current code among them.
+ * @example
+ * ```ts
+ * import { subdivisionsByFormerCode } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * console.log(subdivisionsByFormerCode("FR-A").map((one) => one.code));    // ["FR-GES"]
+ * console.log(subdivisionsByFormerCode("LU-D").map((one) => one.code));    // ["LU-CL", "LU-DI", "LU-RD", "LU-VD", "LU-WI"]
+ * console.log(subdivisionsByFormerCode("FR-GES"));                         // []
+ * ```
+ */
+const subdivisionsByFormerCode = (code: string): readonly Subdivision[] => {
+  if (typeof code !== "string") return freeze([]);
+
+  return freeze([...(getTables().byFormerCode.get(code.trim().toUpperCase()) ?? [])]);
+};
+
+/**
+ * The one subdivision a retired code now stands for.
+ *
+ * @param code - The retired code, either case: "FR-A", "pl-ds".
+ * @returns The subdivision, frozen; `null` when the code is not retired, or when it was split and so has several
+ * successors (ask `subdivisionsByFormerCode`).
+ * @example
+ * ```ts
+ * import { subdivisionByFormerCode } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * console.log(subdivisionByFormerCode("FR-A")?.name.en);   // "Grand-Est"
+ * console.log(subdivisionByFormerCode("LU-D"));            // null (five successors)
+ * ```
+ */
+const subdivisionByFormerCode = (code: string): Subdivision | null => {
+  const found = subdivisionsByFormerCode(code);
+
+  return found.length === 1 ? found[0] : null;
 };
 
 // The kind most of a country's first-level subdivisions are.
@@ -305,9 +351,11 @@ const subdivisionTypeLabel = (code: string, language: Language = "en"): string |
 export {
   allSubdivisions,
   subdivision,
+  subdivisionByFormerCode,
   subdivisionByName,
   subdivisionByShortCode,
   subdivisions,
+  subdivisionsByFormerCode,
   subdivisionsByName,
   SUBDIVISION_TYPES,
   subdivisionTypeLabel,

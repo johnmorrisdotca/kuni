@@ -9,23 +9,23 @@ const NZ: SubdivisionTable = {
   country: "NZ",
   types: ["island","region"],
   typesJa: [null,"地方"],
-  rows: `AUK|Auckland|オークランド地方|1
-BOP|Bay of Plenty|ベイ・オブ・プレンティ地方|1
-CAN|Canterbury|カンタベリー地方|1
+  rows: `AUK|Auckland|オークランド地方|1|||N
+BOP|Bay of Plenty|ベイ・オブ・プレンティ地方|1|||N
+CAN|Canterbury|カンタベリー地方|1|||S
 CIT|Chatham Islands|チャタム諸島|0
-GIS|Gisborne|ギズボーン地方|1
-HKB|Hawke’s Bay|ホークス・ベイ地方|1
-MBH|Marlborough|マールボロ地方|1
-MWT|Manawatu-Wanganui|マナワツ・ワンガヌイ地方|1
-NSN|Nelson|ネルソン地方|1
-NTL|Northland|ノースランド地方|1
-OTA|Otago|オタゴ地方|1
-STL|Southland|サウスランド地方|1
-TAS|Tasman|タスマン地方|1
-TKI|Taranaki|タラナキ地方|1
-WGN|Wellington|ウェリントン地方|1
-WKO|Waikato|ワイカト地方|1
-WTC|West Coast|ウェスト・コースト地方|1`,
+GIS|Gisborne|ギズボーン地方|1|||N
+HKB|Hawke’s Bay|ホークス・ベイ地方|1|||N
+MBH|Marlborough|マールボロ地方|1|||S
+MWT|Manawatu-Wanganui|マナワツ・ワンガヌイ地方|1|||N
+NSN|Nelson|ネルソン地方|1|||S
+NTL|Northland|ノースランド地方|1|||N
+OTA|Otago|オタゴ地方|1|||S
+STL|Southland|サウスランド地方|1|||S
+TAS|Tasman|タスマン地方|1|||S
+TKI|Taranaki|タラナキ地方|1|||N
+WGN|Wellington|ウェリントン地方|1|||N
+WKO|Waikato|ワイカト地方|1|||N
+WTC|West Coast|ウェスト・コースト地方|1|||S`,
 };
 
 export { NZ };
