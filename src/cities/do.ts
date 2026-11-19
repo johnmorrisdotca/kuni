@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/do";
  *
  * console.log(cities.length);      // 35
- * console.log(cities[0].name.en);  // "Santiago de los Caballeros"
+ * console.log(cities[0].name.en);  // "Santo Domingo"
  * console.log(cities[0].country);  // "DO"
  * ```
  */

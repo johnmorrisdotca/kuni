@@ -10,8 +10,8 @@ from the two inputs: the Wikidata snapshot of 2026-11-11 (CC0) and Natural Earth
 | Tier | Entry | Holds | Cities | With a Japanese name | Japanese name from Natural Earth | Population from Natural Earth |
 |---|---|---|---:|---:|---:|---:|
 | `capitals` | `@johnmorrisdotca/kuni/cities/capitals` | every capital, of a country or of a subdivision, of any size | 4,283 | 3,989 (93.1%) | 34 | 188 |
-| `1m` | `@johnmorrisdotca/kuni/cities/1m` | the cities of a million people or more (capitals too) | 668 | 666 (99.7%) | 4 | 7 |
-| `100k` | `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 to a million people (capitals too) | 4,885 | 4,409 (90.3%) | 44 | 170 |
+| `1m` | `@johnmorrisdotca/kuni/cities/1m` | the cities of a million people or more (capitals too) | 667 | 665 (99.7%) | 4 | 7 |
+| `100k` | `@johnmorrisdotca/kuni/cities/100k` | the cities of 100,000 to a million people (capitals too) | 4,886 | 4,410 (90.3%) | 44 | 170 |
 | `15k` | `loadCities("15k")` | the cities of 15,000 to 100,000 people (capitals too); from the countries' own files, not a file of its own | 23,749 | 15,221 (64.1%) | 383 | 315 |
 | every city once | | | 30,482 | 21,229 (69.6%) | 436 | 556 |
 

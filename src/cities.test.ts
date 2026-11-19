@@ -617,6 +617,9 @@ describe("each city's own figure, in its own country", () => {
 
       return [city.population, city.populationDate];
     };
+    expect(await figure("Q42763")).toEqual([691262, "2010"]); // Santiago de los Caballeros: not 1,343,423 (2021) above Santiago Province's 1,000,087 (2023), nor an unsourced 1,142,947 (2017, WRONG_POPULATIONS)
+    // The Dominican Republic's largest city is Santo Domingo again, not Santiago.
+    expect([...(await citiesOf("DO"))!].sort((a, b) => (b.population ?? 0) - (a.population ?? 0))[0]!.name.en).toBe("Santo Domingo");
     expect(await figure("Q3820")).toEqual([433249, "2017"]); // Beirut, not the 2,421,354 of its urban area, above Beirut Governorate's 433,249
     expect(await figure("Q1563")).toEqual([2141652, "2010"]); // Havana, not 2,492,618 (2022), 17% above Havana Province's 2,137,847 (2022)
     expect(await figure("Q2021983")).toEqual([34540, "2010"]); // Sabaneta, not an unsourced 98,453

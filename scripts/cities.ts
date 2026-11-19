@@ -157,6 +157,7 @@ const ENGLISH_NAMES: Readonly<Record<string, { en: string; why: string }>> = {
 const WRONG_POPULATIONS: Readonly<Record<string, { value: number; why: string }>> = {
   Q165995: { value: 750, why: "Malatya, Turkey: a figure of 750 for 2020, the city's being some 400,000; the 2012 figure is used." },
   Q2579193: { value: 450000, why: "Sirajganj, Bangladesh: a round 450,000 for 2020, the district town's; the town has some 170,000 people." },
+  Q42763: { value: 1142947, why: "Santiago de los Caballeros, Dominican Republic: an unsourced 1,142,947 for 2017, above both of Santiago Province's later figures (1,074,684 in 2022, 1,000,087 in 2023); the 2010 census figure, 691,262 (one.gob.do), is used." },
   Q3116994: { value: 21660, why: "Gros Islet, Saint Lucia: the Gros Islet Quarter's figure (20,872 in 2010), with no day; the town's own is far smaller." },
 };
 // A figure above the people of a subdivision the city lies in (of any level, not only the first) is not the city's own:

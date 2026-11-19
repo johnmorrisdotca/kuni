@@ -42,24 +42,24 @@
       "gzip": 1030
     },
     "./cities": {
-      "minified": 4653407,
-      "gzip": 1493817
+      "minified": 4653405,
+      "gzip": 1493775
     },
     "./cities/capitals": {
-      "minified": 528222,
-      "gzip": 188276
+      "minified": 528221,
+      "gzip": 188271
     },
     "./cities/1m": {
-      "minified": 89549,
-      "gzip": 34289
+      "minified": 89355,
+      "gzip": 34228
     },
     "./cities/100k": {
-      "minified": 611484,
-      "gzip": 212244
+      "minified": 611678,
+      "gzip": 212275
     },
     "./places": {
-      "minified": 10016516,
-      "gzip": 3328250
+      "minified": 10018041,
+      "gzip": 3328675
     },
     "./names/fr": {
       "minified": 10106,
