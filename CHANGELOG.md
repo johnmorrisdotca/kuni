@@ -8,7 +8,7 @@ All notable changes to this project are written here. The format follows
 
 ### Changed
 
-- OPEC's earlier periods for Ecuador and Gabon, from OPEC's own member-countries page (MODULES-1644). Ecuador joined in 1973 and suspended its membership in December 1992, then rejoined in October 2007 (the stored 1 January 2007 was the page's October) and left effective 1 January 2020. Gabon joined in 1975, terminated its membership in January 1995, and rejoined in July 2016. A year or a month the page gives without a day stays a year or a month: the days inside it are unknown, not a chosen day. Gabon stays a current member. The current ISO codes are unchanged.
+- OPEC's earlier periods for Ecuador and Gabon come from the membership table on Wikipedia's OPEC article (MODULES-1644). The table gives years and no day: Ecuador 1973-1992 and 2007-2020, Gabon 1975-1995 and since 2016. A year stays a year, so the days inside it are unknown. These periods are to be checked against Wikidata's P463 (member of) start and end qualifiers for OPEC when that extract lands. Gabon stays a current member. The current ISO codes are unchanged.
 
 ## [1.15.0] - 2026-11-19
 
