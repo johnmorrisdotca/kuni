@@ -8,6 +8,8 @@
 // list here disagree, the list here is kept and docs/groupings.md shows the difference.
 
 const AS_OF = "2026-10-09";
+// Ecuador's and Gabon's periods cite this article's membership table. The table gives years and no day. The article's text is not stored.
+const OPEC_TABLE = "https://en.wikipedia.org/wiki/OPEC";
 
 type Status = "candidate" | "associate" | "observer" | "suspended";
 
@@ -21,7 +23,7 @@ interface MembershipConfig {
   shortJa?: string;
   members: string; // Alpha-2 codes, with spaces between
   others?: Record<string, Status>; // Candidates, associates, observers and suspended members, not counted as members
-  former?: { code: string; since: string | null; until: string; why: string }[]; // Left, where Wikidata does not say so
+  former?: { code: string; since: string | null; until: string; why: string; url?: string; line?: string }[]; // A closed period Wikidata does not have. A current member may have one that ended before they rejoined.
   source: { name: string; url: string };
   note?: string;
 }
@@ -228,7 +230,9 @@ const MEMBERSHIPS: MembershipConfig[] = [
     former: [
       { code: "AO", since: "2007-01-01", until: "2024-01-01", why: "Angola left OPEC on 1 January 2024." },
       { code: "QA", since: "1961-01-01", until: "2019-01-01", why: "Qatar left OPEC on 1 January 2019." },
-      { code: "EC", since: "2007-01-01", until: "2020-01-01", why: "Ecuador left OPEC on 1 January 2020, for the second time." },
+      { code: "EC", since: "1973", until: "1992", why: "Ecuador: member 1973-1992 (Wikipedia's OPEC article, membership table).", url: OPEC_TABLE, line: "Ecuador: member 1973-1992 (dates from the membership table on Wikipedia's OPEC article)." },
+      { code: "EC", since: "2007", until: "2020", why: "Ecuador: member 2007-2020 (Wikipedia's OPEC article, membership table).", url: OPEC_TABLE, line: "Ecuador: member 2007-2020 (dates from the membership table on Wikipedia's OPEC article)." },
+      { code: "GA", since: "1975", until: "1995", why: "Gabon: member 1975-1995 (Wikipedia's OPEC article, membership table).", url: OPEC_TABLE, line: "Gabon: member 1975-1995 (dates from the membership table on Wikipedia's OPEC article)." },
     ],
     source: { name: "OPEC, Member Countries", url: "https://www.opec.org/opec_web/en/about_us/25.htm" },
     note: "OPEC+ (Russia and others) is an agreement beside OPEC, not membership of it.",
@@ -464,6 +468,8 @@ const JOINED: JoinedConfig[] = [
   { body: "commonwealth", code: "NR", since: "1968", until: "1999", match: { since: "1968-01-01", until: "1999-01-01" }, url: `${CW}/nauru`, line: "Joined the Commonwealth: 1968, as an associate member on attaining full independence (former UN trust territory); full member since 1999" },
   { body: "commonwealth", code: "PK", since: "1947", until: "1972", match: { since: "1947-01-01", until: "1972-01-01" }, url: `${CW}/pakistan`, line: "Joined the Commonwealth: 1947, on partition from India; left in 1972, rejoined in 1989" },
   { body: "schengen", code: "RO", since: "2024-03-31", url: "https://european-union.europa.eu/principles-countries-history/eu-countries/romania_en", line: "Schengen: member since 31 March 2024" },
+  // Wikipedia's OPEC article, membership table, read 2026-11-19. The table says Gabon since 2016 and gives no day. Wikidata's current period starts on 1 July 2016; that day is not kept. To be checked against Wikidata P463 when that extract lands.
+  { body: "opec", code: "GA", since: "2016", match: { since: "2016-07-01", until: null }, url: OPEC_TABLE, line: "Gabon: member since 2016 (dates from the membership table on Wikipedia's OPEC article).", note: "Read 2026-11-19. The table gives the year 2016 and no day. To be checked against Wikidata P463 when that extract lands." },
 ];
 
 const INFORMAL: InformalConfig[] = [

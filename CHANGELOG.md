@@ -9,6 +9,9 @@ All notable changes to this project are written here. The format follows
 ### Added
 
 - `subdivisionReforms("VN")` records Resolution 202/2025/QH15: which of the current 63 ISO 3166-2 codes form each unit the resolution names (MODULES-1629). The codes themselves are unchanged. Article 2 clause 1 takes effect on the day it was passed, 12 June 2025. Article 2 clause 2: the new provincial governments officially operate from 1 July 2025. Japanese is kuni's existing name for a kept code, and is empty where the resolution's name is not that current name (Huế; the current code is still Thừa Thiên–Huế). It is its own entry, `@johnmorrisdotca/kuni/subdivision-reforms`, so `/subdivisions` does not carry the note.
+### Changed
+
+- OPEC's earlier periods for Ecuador and Gabon come from the membership table on Wikipedia's OPEC article (MODULES-1644). The table gives years and no day: Ecuador 1973-1992 and 2007-2020, Gabon 1975-1995 and since 2016. A year stays a year, so the days inside it are unknown. These periods are to be checked against Wikidata's P463 (member of) start and end qualifiers for OPEC when that extract lands. Gabon stays a current member. The current ISO codes are unchanged.
 
 ## [1.15.0] - 2026-11-19
 

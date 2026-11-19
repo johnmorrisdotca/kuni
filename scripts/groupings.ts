@@ -3,6 +3,7 @@
 // the dates Wikidata gives; the informal groupings, each with the definition it follows; and the regions inside a
 // country. Members are alpha-2 codes, or ISO 3166-2 codes for a grouping inside a country.
 
+import { sureFrom, sureTo } from "../src/grouping-days.ts";
 import { AS_OF, CONTINENT_READINGS, DATES_READ, INFORMAL, JOINED, M49_READINGS, MEMBERSHIPS, MEMBERSHIPS_LEFT_OUT, SUBDIVISION_GROUPINGS } from "./groupings-config.ts";
 import type { Status } from "./groupings-config.ts";
 
@@ -120,6 +121,7 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
   const crossCheck: string[] = [];
   const pageDays: string[] = [];
   const noDay: string[] = [];
+  const partial = (day: string | null | undefined): string => (day !== null && day !== undefined && /^\d{4}$/.test(day) ? " (the page gives the year only)" : day !== null && day !== undefined && /^\d{4}-\d{2}$/.test(day) ? " (the page gives the month only)" : "");
   for (const body of MEMBERSHIPS) {
     const members = body.id === "un" ? unMembers : codesOf(body.members).sort(byText);
     check(body.id, members);
@@ -139,9 +141,10 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       periods.push([code, starts.length === 1 ? starts[0] : null, null]);
     }
     for (const one of stated) if (one.end !== null) periods.push([one.code, one.start, one.end]);
+    // A current member may have a closed earlier period (they left and rejoined). One that covers the same days fails below.
     for (const left of body.former ?? []) {
-      if (members.includes(left.code)) problems.push(`${body.id}: ${left.code} is a member and also listed as former`);
       if (!periods.some(([code, , until]) => code === left.code && until === left.until)) periods.push([left.code, left.since, left.until]);
+      if (left.url !== undefined && left.line !== undefined) pageDays.push(`- **${body.shortEn ?? body.en}** ${left.code}: ${left.since ?? "unknown"} to ${left.until}${partial(left.since)}${partial(left.until)}: ${left.url}: "${left.line}"`);
     }
     // Wikidata states some memberships twice, the same days over: one is kept.
     const distinct = new Set<string>();
@@ -163,8 +166,7 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
         const until = joined.until === undefined ? periods[at][2] : joined.until;
         const confirmed = joined.since !== null && periods[at][1] === joined.since && periods[at][2] === until;
         periods[at] = [joined.code, joined.since, until];
-        const years = (day: string | null | undefined): boolean => day !== null && day !== undefined && /^\d{4}$/.test(day);
-        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${wanted === undefined ? "" : ` to ${until ?? "now"}`}${years(joined.since) || years(joined.until) ? " (the page gives the year only)" : ""}${confirmed ? " (confirmed: Wikidata has the same day)" : " (filled)"}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
+        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${wanted === undefined ? "" : ` to ${until ?? "now"}`}${partial(joined.since)}${partial(joined.until)}${confirmed ? " (confirmed: Wikidata has the same day)" : " (filled)"}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
       }
     }
     for (const code of members) {
@@ -173,10 +175,8 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
     }
     for (const [at, [code, since, until]] of periods.entries()) {
       for (const [other, otherSince, otherUntil] of periods.slice(at + 1)) {
-        // A year alone is read as the day (a joining year from its end, a leaving year up to its start) that makes it surely a member.
-        const from = (day: string | null): string | null => (day !== null && /^\d{4}$/.test(day) ? `${day}-12-31` : day);
-        const to = (day: string | null): string | null => (day !== null && /^\d{4}$/.test(day) ? `${day}-01-01` : day);
-        if (code === other && from(since) !== null && from(otherSince) !== null && from(since)! < (to(otherUntil) ?? "9999") && from(otherSince)! < (to(until) ?? "9999")) problems.push(`${body.id}: ${code} is in two overlapping periods`);
+        // A year or a month alone counts from the day that makes it surely a member (joining from its end, leaving up to its start).
+        if (code === other && sureFrom(since) !== null && sureFrom(otherSince) !== null && sureFrom(since)! < (sureTo(otherUntil) ?? "9999") && sureFrom(otherSince)! < (sureTo(until) ?? "9999")) problems.push(`${body.id}: ${code} is in two overlapping periods`);
       }
     }
     periods.sort((a, b) => byText(a[0], b[0]) || byText(a[1] ?? "", b[1] ?? ""));

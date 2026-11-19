@@ -324,7 +324,7 @@ const membersOf = (id: string, options: GroupingDateOptions = {}): readonly stri
 
 /**
  * The members of an international body on a day whose membership on that day is unknown: those with no joining day in
- * any source, and those whose joining (or leaving) year is the day's year and no day is given; `membersOf(id, { on })`
+ * any source, and those whose joining or leaving year or month is the day's and no day is given; `membersOf(id, { on })`
  * leaves them out. Without `on`, or for a grouping that is not a body, none.
  *
  * @param id - The grouping's id.
