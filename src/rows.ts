@@ -33,9 +33,9 @@ type CountryRow = readonly [
   "user"?,
 ];
 
-// One country's subdivisions as text, a line each: shortCode|en|ja|type|parent|reading|former, where type is an
+// One country's subdivisions as text, a line each: shortCode|en|ja|type|parent|reading|former|formerNames, where type is an
 // index into the table's types, parent is the shortCode of the subdivision it is inside, former is the
-// shortCodes CLDR has retired for it with spaces between, and an absent value is empty (trailing ones are left off). Text rather than arrays because it is a third smaller, and Japan's
+// shortCodes CLDR has retired for it with spaces between, formerNames is its old names with ";" between, and an absent value is empty (trailing ones are left off). Text rather than arrays because it is a third smaller, and Japan's
 // 47 prefectures then fit in under 3 KB with the code that reads them.
 interface SubdivisionTable {
   country: string;
@@ -91,31 +91,34 @@ const expandCountry = (row: CountryRow): Country => {
 
 // Frozen, list and objects alike: the lists are shared by every caller, so none may change them.
 const expandSubdivisions = (table: SubdivisionTable): readonly Subdivision[] => {
+  const freeze = Object.freeze;
+  const { country } = table;
   const rows = table.rows.split(LINE).map((line) => line.split(FIELD));
   const parents = new Map<string, string>(rows.map((row) => [row[0], row[4] ?? ""]));
   const levelOf = (shortCode: string): 1 | 2 | 3 => {
     const parent = parents.get(shortCode) ?? "";
-    if (parent === "") return 1;
+    if (!parent) return 1;
 
-    return (parents.get(parent) ?? "") === "" ? 2 : 3;
+    return parents.get(parent) ? 3 : 2;
   };
-  const list = rows.map(([shortCode, en, ja = "", type = "", parent = "", reading = "", former = ""]) => {
+  const list = rows.map(([shortCode, en, ja, type, parent, reading, former, formerNames]) => {
     const subdivision: Subdivision = {
-      code: `${table.country}-${shortCode}`,
-      country: table.country,
+      code: `${country}-${shortCode}`,
+      country: country,
       shortCode,
-      type: type === "" ? null : table.types[Number(type)],
+      type: type ? table.types[Number(type)] : null,
       level: levelOf(shortCode),
-      name: Object.freeze({ en, ja: ja === "" ? null : ja }),
+      name: freeze({ en, ja: ja || null }),
     };
-    if (parent !== "") subdivision.parent = `${table.country}-${parent}`;
-    if (reading !== "") subdivision.reading = reading;
-    if (former !== "") subdivision.formerCodes = Object.freeze(former.split(" ").map((short) => `${table.country}-${short}`));
+    if (parent) subdivision.parent = `${country}-${parent}`;
+    if (reading) subdivision.reading = reading;
+    if (former) subdivision.formerCodes = freeze(former.split(" ").map((short) => `${country}-${short}`));
+    if (formerNames) subdivision.formerNames = freeze(formerNames.split(";"));
 
-    return Object.freeze(subdivision);
+    return freeze(subdivision);
   });
 
-  return Object.freeze(list);
+  return freeze(list);
 };
 
 // [alpha2, population, populationYear, areaKm2, areaYear, areaOf, lat, lon, capitalLat, capitalLon, borders,

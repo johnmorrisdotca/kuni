@@ -27,6 +27,7 @@ import {
   COUNTRY_ALIASES,
   EN_NAME_ACCEPTED,
   EN_NAME_OVERRIDES,
+  FORMER_FROM_CODE_CHANGES,
   FORMER_NOT_KEPT,
   FORMER_SUCCESSOR_FIXES,
   JA_BRACKET_COUNTRY_NAMES,
@@ -642,6 +643,8 @@ for (const code of Object.keys(CODE_CHANGES.removed)) if (!reached.has(code.repl
 // Every successor has to be a subdivision in the data, and no retired code may also be a current one.
 const FORMER_REASON = "deprecated";
 const formerOf = new Map<string, string[]>();
+const formerNamesOf = new Map<string, string[]>();
+const cldrSuccessors = new Map<string, string[]>();
 const formerKept = { aliases: 0, pairs: 0 };
 {
   const current = new Set(subdivisions.map((record) => record.code));
@@ -667,8 +670,31 @@ const formerKept = { aliases: 0, pairs: 0 };
     const missing = successors.filter((successor) => !current.has(successor));
     if (missing.length > 0) throw new Error(`CLDR retires ${former} for ${missing.join(", ")}, which is not a subdivision here: fix it or leave it out in FORMER_SUCCESSOR_FIXES or FORMER_NOT_KEPT (scripts/data-config.ts)`);
     for (const successor of successors) formerOf.set(successor, [...(formerOf.get(successor) ?? []), former]);
+    cldrSuccessors.set(former, successors);
     formerKept.aliases += 1;
     formerKept.pairs += successors.length;
+  }
+  // Norway's counties divided again (CODE_CHANGES), by hand. The old name is what CODE_CHANGES calls the county, and the names CLDR
+  // still has for the code, in English and Japanese; all of them are search names of each successor.
+  for (const [former, successors] of Object.entries(FORMER_FROM_CODE_CHANGES)) {
+    const text = CODE_CHANGES.removed[former];
+    if (text === undefined) throw new Error(`FORMER_FROM_CODE_CHANGES: ${former} is not a row of CODE_CHANGES.removed`);
+    const fromCldr = cldrSuccessors.get(former);
+    if (fromCldr !== undefined && [...fromCldr].sort().join() !== [...successors].sort().join()) throw new Error(`CLDR and CODE_CHANGES disagree on ${former}: ${fromCldr.join(" ")} and ${successors.join(" ")}`);
+    const oldName = /^(.+?) was divided/.exec(text)?.[1];
+    if (oldName === undefined) throw new Error(`FORMER_FROM_CODE_CHANGES: the row of ${former} does not say which county was divided`);
+    const id = former.replace("-", "").toLowerCase();
+    const names = [...new Set([oldName, namesEn.get(id), namesJa.get(id)].filter((name): name is string => name !== undefined))];
+    if (names.some((name) => name.includes(";"))) throw new Error(`FORMER_FROM_CODE_CHANGES: a name of ${former} has a semicolon`);
+    for (const successor of successors) {
+      if (!text.includes(successor)) throw new Error(`FORMER_FROM_CODE_CHANGES: the row of ${former} does not name ${successor}`);
+      if (!(successor in CODE_CHANGES.added) || !CODE_CHANGES.added[successor].why.includes(oldName)) throw new Error(`FORMER_FROM_CODE_CHANGES: ${successor} is not a row of CODE_CHANGES.added for ${oldName}`);
+      if (!current.has(successor)) throw new Error(`FORMER_FROM_CODE_CHANGES: ${former} to ${successor}, which is not a subdivision here`);
+      if (fromCldr === undefined) formerOf.set(successor, [...(formerOf.get(successor) ?? []), former]);
+      formerNamesOf.set(successor, [...new Set([...(formerNamesOf.get(successor) ?? []), ...names])]);
+      if (fromCldr === undefined) formerKept.pairs += 1;
+    }
+    if (fromCldr === undefined) formerKept.aliases += 1;
   }
   const unusedNotKept = Object.keys(FORMER_NOT_KEPT).filter((code) => !usedNotKept.has(code));
   if (unusedNotKept.length > 0) throw new Error(`FORMER_NOT_KEPT names no retired code: ${unusedNotKept.join(", ")}`);
@@ -1439,7 +1465,7 @@ const writeSubdivisions = (): void => {
     const types = [...new Set(records.map((record) => record.type).filter((type): type is string => type !== null))].sort(byText);
     const typesJa = types.map((type) => typeWordJa(records.filter((record) => record.type === type)));
     const rows = records.map((record) => {
-      const fields = [record.shortCode, record.en, record.ja ?? "", record.type === null ? "" : String(types.indexOf(record.type)), record.parent === null ? "" : record.parent.slice(3), record.reading ?? "", (formerOf.get(record.code) ?? []).map((code) => code.slice(3)).sort(byText).join(" ")];
+      const fields = [record.shortCode, record.en, record.ja ?? "", record.type === null ? "" : String(types.indexOf(record.type)), record.parent === null ? "" : record.parent.slice(3), record.reading ?? "", (formerOf.get(record.code) ?? []).map((code) => code.slice(3)).sort(byText).join(" "), (formerNamesOf.get(record.code) ?? []).join(";")];
       for (const field of fields) if (/[|\n`\\]|\$\{/.test(field)) throw new Error(`${record.code}: "${field}" cannot be written in a row`);
       while (fields.length > 2 && fields[fields.length - 1] === "") fields.pop();
 

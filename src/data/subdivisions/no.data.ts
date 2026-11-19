@@ -15,17 +15,17 @@ const NO: SubdivisionTable = {
 18|Nordland|ヌールラン県|1
 21|Svalbard|スヴァールバル諸島|2
 22|Jan Mayen|ヤンマイエン島|1
-31|Østfold|エストフォル県|1
-32|Akershus|アーケシュフース県|1
-33|Buskerud|ブスケルー県|1
+31|Østfold|エストフォル県|1|||30|Viken;ヴィッケン県
+32|Akershus|アーケシュフース県|1|||30|Viken;ヴィッケン県
+33|Buskerud|ブスケルー県|1|||30|Viken;ヴィッケン県
 34|Innlandet|インラント県|1
-39|Vestfold|ヴェストフォル県|1
-40|Telemark|テレマルク県|1
+39|Vestfold|ヴェストフォル県|1|||38|Vestfold og Telemark;ヴェストフォル・オ・テレマルク県
+40|Telemark|テレマルク県|1|||38|Vestfold og Telemark;ヴェストフォル・オ・テレマルク県
 42|Agder|アグデル|1
 46|Vestland|ヴェストラン県|1
 50|Trøndelag|トロンデラーグ|1|||23
-55|Troms|トロムス県|1
-56|Finnmark|フィンマルク県|1`,
+55|Troms|トロムス県|1|||54|Troms og Finnmark;Tromssan ja Finmarkun;トロムス・オ・フィンマルク県
+56|Finnmark|フィンマルク県|1|||54|Troms og Finnmark;Tromssan ja Finmarkun;トロムス・オ・フィンマルク県`,
 };
 
 export { NO };

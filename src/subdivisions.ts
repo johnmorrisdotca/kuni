@@ -104,6 +104,7 @@ const build = (): Tables => {
       index(one.name.en, one);
       index(one.name.ja, one);
       index(one.reading, one);
+      for (const old of one.formerNames ?? []) index(old, one);
       // The name without its kind: オンタリオ for オンタリオ州, 東京 for 東京都.
       const word = typeWordJa(table, one.type);
       if (one.name.ja !== null && word !== null && one.name.ja.endsWith(word) && one.name.ja.length - word.length >= 2) {
@@ -205,7 +206,7 @@ const subdivisionByShortCode = (countryCode: string, shortCode: string): Subdivi
 
 /**
  * Every subdivision a typed name could be, in code order: its English or Japanese name, its Japanese name without
- * the word for its kind (オンタリオ, 東京), a prefecture's reading, or its full code. Folded as `fold` folds, so
+ * the word for its kind (オンタリオ, 東京), a prefecture's reading, the name of a county it was divided from (Viken for NO-31), or its full code. Folded as `fold` folds, so
  * case, accents, width and kana do not matter.
  *
  * @param text - What was typed.

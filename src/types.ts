@@ -199,6 +199,11 @@ interface Subdivision {
    * only where there are some. A retired code of a split is on each of its successors.
    */
   formerCodes?: readonly string[];
+  /**
+   * The names of the counties this one was made from again, where a retired code was divided: "Viken" for "NO-31",
+   * "NO-32" and "NO-33". Present only where there are some, and searched by `subdivisionsByName`.
+   */
+  formerNames?: readonly string[];
 }
 
 /** The side of the road a country drives on.

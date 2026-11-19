@@ -357,6 +357,17 @@ const FORMER_NOT_KEPT: Record<string, string> = {
   "FR-H": "CLDR's successor is FR-COR, which ISO 3166-2 has since the collectivity of Corsica, and this package carries Corse as FR-20R.",
 };
 
+// Norway's counties whose code kuni has left out because ISO divided them again (CODE_CHANGES.removed), each with the codes
+// that took their place: the retired code answers with all of them, and the old name finds them in a search. Written by
+// hand from CODE_CHANGES alone; the build checks every entry against its rows: the code is a row of `removed`, whose
+// text names each successor, and each successor is a row of `added`. CLDR has no alias for these three, and if it ever
+// gives one the same, the two are one entry (a different one stops the build).
+const FORMER_FROM_CODE_CHANGES: Record<string, string[]> = {
+  "NO-30": ["NO-31", "NO-32", "NO-33"],
+  "NO-38": ["NO-39", "NO-40"],
+  "NO-54": ["NO-55", "NO-56"],
+};
+
 // A successor CLDR writes with a code that ISO 3166-2 does not use, and the code it is: CLDR's alias for Inner Mongolia's
 // old number CN-15 is "cnmn", ISO's code for the region is CN-NM (the one this package has).
 const FORMER_SUCCESSOR_FIXES: Record<string, Record<string, string>> = {
@@ -436,4 +447,4 @@ const CITY_READING_FILLS: Readonly<Record<string, readonly [name: string, readin
 };
 
 export { CITY_READING_FILLS, SHORT_NAME_FILLS };
-export { CALLING_CODE_OVERRIDES, CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, FORMER_NOT_KEPT, FORMER_SUCCESSOR_FIXES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };
+export { CALLING_CODE_OVERRIDES, CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, FORMER_FROM_CODE_CHANGES, FORMER_NOT_KEPT, FORMER_SUCCESSOR_FIXES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };

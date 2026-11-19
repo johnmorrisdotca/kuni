@@ -255,9 +255,9 @@ describe("the retired codes", () => {
     expect(subdivision("US-PR")).not.toBeNull();
   });
 
-  it("keep 109 of CLDR's 120 deprecated aliases, in 136 successor pairs, and no code that is also current", () => {
-    expect(retired.size).toBe(109);
-    expect([...retired.values()].reduce((sum, list) => sum + list.length, 0)).toBe(136);
+  it("keep 109 of CLDR's 120 deprecated aliases and 3 of kuni's own Norwegian ones, 112 retired codes in 143 successor pairs, none also a current code", () => {
+    expect(retired.size).toBe(112);
+    expect([...retired.values()].reduce((sum, list) => sum + list.length, 0)).toBe(143);
     for (const former of retired.keys()) expect(subdivision(former), former).toBeNull();
   });
 
@@ -271,6 +271,28 @@ describe("the retired codes", () => {
       }
       expect(subdivisionsByFormerCode(former).map((one) => one.code)).toEqual([...successors].sort());
     }
+  });
+
+  it("send each Norwegian county CODE_CHANGES records as divided to the counties that took its place", () => {
+    const divided: Record<string, string[]> = { "NO-30": ["NO-31", "NO-32", "NO-33"], "NO-38": ["NO-39", "NO-40"], "NO-54": ["NO-55", "NO-56"] };
+    for (const [former, successors] of Object.entries(divided)) {
+      expect(subdivisionsByFormerCode(former).map((one) => one.code), former).toEqual(successors);
+      expect(subdivisionByFormerCode(former), former).toBeNull();
+      for (const code of successors) expect(subdivision(code)?.formerCodes, code).toEqual([former]);
+    }
+    expect(subdivision("NO-34")).not.toHaveProperty("formerCodes");
+    expect(aliases.no30).toBeUndefined();
+  });
+
+  it("find the counties that were divided by their old names, in English and Japanese", () => {
+    expect(subdivisionsByName("Viken").map((one) => one.code)).toEqual(["NO-31", "NO-32", "NO-33"]);
+    expect(subdivisionsByName("ヴィッケン県").map((one) => one.code)).toEqual(["NO-31", "NO-32", "NO-33"]);
+    expect(subdivisionsByName("vestfold og telemark").map((one) => one.code)).toEqual(["NO-39", "NO-40"]);
+    expect(subdivisionsByName("Troms og Finnmark", { country: "NO" }).map((one) => one.code)).toEqual(["NO-55", "NO-56"]);
+    expect(subdivisionsByName("Tromssan ja Finmarkun").map((one) => one.code)).toEqual(["NO-55", "NO-56"]);
+    expect(subdivisionByName("Viken")).toBeNull();
+    expect(subdivision("NO-31")?.formerNames).toEqual(["Viken", "ヴィッケン県"]);
+    expect(subdivisionByName("Troms")?.code).toBe("NO-55");
   });
 
   it("say CN-15 is CN-NM, where CLDR writes a code ISO does not use", () => {
