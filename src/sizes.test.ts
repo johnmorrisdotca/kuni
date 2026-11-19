@@ -1,6 +1,6 @@
 // What a page pays for each entry, measured on the built files (pnpm check builds before it tests). The main
 // entry is the countries and their lookups; one country's subdivisions are a small file of their own.
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
@@ -23,6 +23,13 @@ describe("the built entries", () => {
     for (const file of files) expect(size(`dist/subdivisions/${file}`), file).toBeLessThan(14 * KB);
   });
 
+  it("keep each language's country names under 16 KB, out of the main entry", () => {
+    const files = readdirSync("dist/names").filter((file) => file.endsWith(".js"));
+    expect(files).toHaveLength(9);
+    for (const file of files) expect(size(`dist/names/${file}`), file).toBeLessThan(16 * KB);
+    expect(readFileSync("dist/index.js", "utf8")).not.toContain("Japon");
+  });
+
   it("keep the codes alone under 3 KB", () => {
     expect(size("dist/codes.js")).toBeLessThan(3 * KB);
   });
@@ -40,6 +47,12 @@ describe("the built entries", () => {
     expect(size("dist/withdrawn.js")).toBeLessThan(12 * KB);
   });
 
+  it("keep the capitals with a role under 8 KB, out of the main entry and out of /facts", () => {
+    expect(size("dist/capitals.js")).toBeLessThan(8 * KB);
+    expect(readFileSync("dist/index.js", "utf8")).not.toContain("Bloemfontein");
+    expect(readFileSync("dist/facts.js", "utf8")).not.toContain("Bloemfontein");
+  });
+
   it("keep the facts about every country under 30 KB, out of the main entry", () => {
     expect(size("dist/facts.js")).toBeLessThan(30 * KB);
     // The zones: zone.tab's principal cities and each subdivision's zone, apart from /facts.
@@ -54,7 +67,7 @@ describe("the built entries", () => {
   });
 
   it("keep the core of the cities small, with no city in it, and each tier and country in its own file", () => {
-    expect(size("dist/cities.js")).toBeLessThan(24 * KB);
+    expect(size("dist/cities.js")).toBeLessThan(25 * KB);
     expect(size("dist/cities/capitals.js")).toBeLessThan(650 * KB);
     expect(size("dist/cities/1m.js")).toBeLessThan(110 * KB);
     expect(size("dist/cities/100k.js")).toBeLessThan(800 * KB);

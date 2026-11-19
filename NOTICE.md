@@ -8,8 +8,10 @@ address, the day it was read and its SHA-256.
 | What | Made from | Terms |
 | --- | --- | --- |
 | Country names in English and Japanese, their short and variant forms, alpha-3 and numeric codes, currencies, UN M49 continents and subregions | Unicode CLDR 48.2 (`cldr-localenames-full` and `cldr-core` 48.2.0 on npm) | Unicode-3.0, below |
+| Country names in French, Spanish, German, Simplified and Traditional Chinese, Korean, Portuguese, Arabic and Russian, with their short and variant forms (`/names/<language>`) | Unicode CLDR 48.2 (`cldr-localenames-full` 48.2.0 on npm, `main/<language>/territories.json`); a few search aliases are written by hand in `scripts/names-config.ts` | Unicode-3.0, below |
 | Subdivision codes, English and Japanese names, the levels they are at and what they are inside | Unicode CLDR 48.2 (`common/subdivisions/en.xml`, `ja.xml`, `common/validity/subdivision.xml` at the tag `release-48-2`, and `cldr-core`'s `subdivisionContainment.json` and `aliases.json`) | Unicode-3.0, below |
 | Japanese names of the subdivisions CLDR has none for, the kana readings of Japan's prefectures, calling codes, and what kind of place each subdivision is | Wikidata, the snapshot `data-sources/wikidata-2026-10-09.json` | CC0, below |
+| Which calling code a country has where Wikidata's item gives several (`CALLING_CODE_OVERRIDES` in `scripts/data-config.ts`: Türkiye, Saint Helena) | The ITU's "List of Recommendation ITU-T E.164 assigned country codes", Annex to ITU Operational Bulletin No. 1114 (15 December 2016), read; the list is not copied or shipped | ITU, below |
 | Each country's own name, capital and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |
 | Each country's capital in Japanese and its coordinates, population, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the snapshot `data-sources/wikidata-facts-2026-10-09.json` | CC0, below |
 | Which land borders are real (two outlines touch) | Natural Earth 5.1.2 admin-0 countries at 1:50m, as drawn by `@johnmorrisdotca/chizu` 1.0.2 (a development dependency of the build; the package does not depend on it) | Public domain (Natural Earth); MIT (Chizu), below |
@@ -22,7 +24,10 @@ address, the day it was read and its SHA-256.
 | Time zones | IANA time zone database 2026e, `zone.tab` | Public domain |
 | Each city's time zone | IANA time zone database 2026e, `zone.tab` (the zones of a country and the point of each zone's principal city), and Wikidata's zones of the subdivisions as `/zones` has them; a few cities set by id in `scripts/city-facts.ts`, each with its reason | Public domain (IANA); CC0 (Wikidata); not Natural Earth's TIMEZONE column, which kuni does not use (below) |
 | Each city's elevation | Wikidata, the snapshot `data-sources/wikidata-city-elevations-2026-11-13.json` (P2044) | CC0, below |
+| What each city's population figure rests on (its rank, day, method and reference sites), and which items are islands or atolls | Wikidata, the snapshot `data-sources/wikidata-city-populations-2026-11-17.json` (P1082, P31) | CC0, below |
+| The census population of eight cities Wikidata has no figure of their own for (Kumasi, Accra, Tamale, Sekondi-Takoradi, Khartoum, Omdurman, Banikoara, Manzini) | The national censuses of Ghana (2021), Sudan (2008), Benin (2013) and Eswatini (2017), each named in `scripts/city-populations.ts`; only the figures and their days are typed, no table is copied | Facts |
 | Country-code top-level domains | IANA's list of top-level domains (version 2026100900) | A list of facts, published by IANA |
+| The capitals with a role (`capitalsOf`, `docs/capitals.md`): which cities are a country's capitals, and the role each has | The country's own government or law, page by page, each address and the line quoted in `scripts/capitals-config.ts` and `docs/capitals.md`: South Africa's government (gov.za), Sri Lanka's Ministry of Foreign Affairs and its embassy in Lebanon, Bolivia's Ministry of Foreign Affairs and Ministry of Education, Burundi's Ministry of Foreign Affairs, Côte d'Ivoire's Presidency, Benin's government (gouv.bj), Malaysia's Dewan Bandaraya Kuala Lumpur and Perbadanan Putrajaya, the Netherlands' overheid.nl and the Grondwet, Tanzania's embassy in Vienna; read on 2026-11-18. The Japanese names are kuni's own | MIT; lists of facts; the lines are quoted, not copied |
 | The aliases ("Holland", "UK", 米国), the readings of country names written in kanji, Hokkaido's and Fukuoka's readings, the readings of twenty new towns and neighbourhoods of Japan that neither Wikidata nor Japan Post reads, and the Japanese words for kinds of place the build looks for | Written for this package, in `scripts/data-config.ts` | MIT |
 
 ## Unicode CLDR
@@ -192,6 +197,13 @@ more or lie outside what land has (`scripts/city-facts.ts`). No elevation model 
 is made up. A time zone was asked for in the same way (P421 with the IANA id, P6687) and left out: a city's zone in
 Wikidata is the "Pacific Time Zone" item, which names no IANA zone (4 of the first 4,500 items had an id).
 
+What each city's population figure rests on is from a sixth Wikidata snapshot (`data-sources/wikidata-city-populations-<day>.json`,
+CC0 on the same terms, read on 2026-11-17), asked for by `scripts/fetch-city-populations.ts`: every population statement
+(P1082) of each city item that is not deprecated, with its rank, day (P585), method (P459) and the hosts of its reference
+URLs (P854), and the items that are an island, an atoll, a reef island or an archipelago (P31). Kuni uses it to leave out a
+figure that is not a count of the city's own (`scripts/cities.ts`); the hosts are only compared with a list of sites that
+publish estimates, and nothing is read from those sites.
+
 ## Natural Earth's populated places
 
 Natural Earth's 10m Populated Places, version 5.1.2 (https://www.naturalearthdata.com/, public domain: "No permission
@@ -251,6 +263,14 @@ are used as they are (from 1.1.0 the continent is UN M49's, from CLDR); its call
 it: a country's one zone, the zone of the zone.tab city the city is at or nearest, or the zone of its subdivision (`/zones`). The list of top-level domains is
 published by IANA at https://data.iana.org/TLD/tlds-alpha-by-domain.txt; only which two-letter domains exist is
 read from it.
+
+## ITU
+
+The calling codes kuni chooses by hand, where Wikidata's item for a country gives several that differ (Türkiye: +36 and +90; Saint Helena:
++247, +27 and +290), are the ones the ITU assigns, read in the "List of Recommendation ITU-T E.164 assigned country codes" (Annex to ITU
+Operational Bulletin No. 1114, 15 December 2016; https://www.itu.int/pub/T-SP-E.164D). Only which code is assigned to whom is used, as a
+fact; the list itself is not copied into the package. Each choice has its reason beside it in `scripts/data-config.ts`, and the calling codes
+that more than one country has are listed, each with the ITU's line, in `src/calling-codes.test.ts`.
 
 ## Not carried
 

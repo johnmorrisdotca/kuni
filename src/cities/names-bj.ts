@@ -6,9 +6,9 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Benin, ids and names only, in the order of /cities/bj; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "1b5vu,xmz,1h0wj,1n40w,ilwm,2xj,er44,i4iq,1e2zp,1e3l2,i7vz,1h1fy,oaql,1gibd,chxi,nwhu,1jxdj,1j0kr,1jxcb,1b72r,42d1,lb2l,4p0y,13vtr,x26m,1lhhl,1cmyo,cz09a,bo8f,cz0au,5ru1",
-  en: "Banikoara|Cotonou|Abomey-Calavi|Godomey|Djougou|Porto-Novo|Parakou|Kandi|Aplahoué|Malanville|Ouidah|Kétou|Ouèssè|Glazoué|Gogounou|N’Dali|Dassa-Zoumé|Dogbo-Tota|Savè|Ségbana|Abomey|Natitingou|Lokossa|Karimama|Grand-Popo|Athiémè|Tanguiéta|Pobe|Savalou|Savé|Pobè",
-  ja: "バニコアラ|コトヌー|アボメ＝カラヴィ|ゴドメ|ジューグー|ポルトノボ|パラクー|カンディ|アプラウエ|マランヴィル|ウィダー|ケトゥ|ウェセ|グラズエ|ゴグヌー||ダサ＝ズメ||サベー|セグバナ|アボメイ|ナティティングー|ロコッサ|カリママ|グラン・ポポ|アティエメ|||サバルー||ポベ",
+  id: "xmz,1h0wj,2xj,1n40w,1b5vu,ilwm,er44,i4iq,1e2zp,1e3l2,i7vz,1h1fy,oaql,1gibd,chxi,nwhu,1jxdj,1j0kr,1jxcb,1b72r,42d1,lb2l,4p0y,13vtr,x26m,1lhhl,1cmyo,cz09a,bo8f,cz0au,5ru1",
+  en: "Cotonou|Abomey-Calavi|Porto-Novo|Godomey|Banikoara|Djougou|Parakou|Kandi|Aplahoué|Malanville|Ouidah|Kétou|Ouèssè|Glazoué|Gogounou|N’Dali|Dassa-Zoumé|Dogbo-Tota|Savè|Ségbana|Abomey|Natitingou|Lokossa|Karimama|Grand-Popo|Athiémè|Tanguiéta|Pobe|Savalou|Savé|Pobè",
+  ja: "コトヌー|アボメ＝カラヴィ|ポルトノボ|ゴドメ|バニコアラ|ジューグー|パラクー|カンディ|アプラウエ|マランヴィル|ウィダー|ケトゥ|ウェセ|グラズエ|ゴグヌー||ダサ＝ズメ||サベー|セグバナ|アボメイ|ナティティングー|ロコッサ|カリママ|グラン・ポポ|アティエメ|||サバルー||ポベ",
   native: "|||||||||||||||N'Dali|Dassa-Zoumè|Dogbo||Segbana||||||Athiémé||Pobè|||",
   reading: "||||||||||||||||||||||||||||||",
   major: "1111111111111111111100000000000",

@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/sd";
  *
  * console.log(cities.length);      // 51
- * console.log(cities[0].name.en);  // "Khartoum"
+ * console.log(cities[0].name.en);  // "Omdurman"
  * console.log(cities[0].country);  // "SD"
  * ```
  */

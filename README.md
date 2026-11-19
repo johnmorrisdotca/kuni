@@ -66,6 +66,8 @@ facts("FR")?.borders;                    // ["AD", "BE", "BR", "CH", "DE", "ES",
 membersOf("eu", { on: "2019-06-30" });   // the 28, the United Kingdom among them
 ```
 
+A day answers only for members whose joining day a source gives: `membersOf("brics", { on: "2015-01-01" })` leaves out Egypt, Ethiopia, Iran and the United Arab Emirates (2024) and Indonesia (no day given), and `unknownMembersOf` lists the members whose day is not known (see 7. Groupings). Where an official page gives a joining year only (the G7's 1975), the year stands as `"1975"`: it counts from 31 December of that year, and days inside it are unknown.
+
 One country's subdivisions are an entry of their own, so a page that needs Japan's prefectures carries Japan's and no other:
 
 ```ts
@@ -93,11 +95,13 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Every country.** The 249 ISO 3166-1 codes and Kosovo (XK, user-assigned), each with alpha-2, alpha-3 and numeric codes, its flag, continent, UN M49 subregion, calling code, currencies, top-level domain, capital, time zones and languages.
 - **Every subdivision.** 5,050 ISO 3166-2 codes in 200 countries: 3,594 at the first level and 1,456 below it (France's departments in its regions, England's councils in England), each with its level and parent.
 - **English and Japanese names** from Unicode CLDR 48.2, with CLDR's short forms (UK, アメリカ) and variants (Ivory Coast, 象牙海岸). Japanese names for 3,527 of the 3,594 first-level subdivisions, and `null` for the rest, never a guess.
+- **Country names in nine more languages** (`/names/<language>`): French, Spanish, German, Simplified and Traditional Chinese, Korean, Portuguese, Arabic and Russian, from CLDR, each its own small entry so a page pays for one language (about 4 kB gzip). Names, short forms, variants and search that folds the way each language is typed; all 250 countries have a name in each. Countries only for now. [Country names in more languages](./docs/guides/country-names-in-more-languages.md).
 - **Found by what somebody typed.** Case, accents, full-width letters, half-width kana and hiragana or katakana are folded away, and the aliases people use (Holland, UK, Burma, 米国) are known.
 - **Kinds of place**: prefecture, state, province, region and some thirty more, read from Wikidata, with the Japanese word for each (県, 州, 省) where a country's names agree on one.
 - **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,968 of 5,050), with readings in kana for Japan's prefectural capitals (さっぽろし).
 - **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
+- **Capitals with a role** (`/capitals`): for the nine countries that have more than one capital city or a capital that `capital` does not name alone (Benin, Bolivia, Burundi, Côte d'Ivoire, Malaysia, the Netherlands, South Africa, Sri Lanka, Tanzania), each city with its role (official, administrative, legislative, judicial, seat, political or economic) as the country's own government or law gives it (`docs/capitals.md` has the page and the line); `null` for every other country.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
 - **Cities** (`/cities`): the world's cities in tiers, each its own entry so that a page pays only for what it uses: every capital of a country or a subdivision (`/cities/capitals`), the cities of a million people or more (`/cities/1m`) and of 100,000 or more (`/cities/100k`), capitals included, the cities of 15,000 or more through `loadCities("15k")` (made from the countries' own files), and one country's cities at a time (`/cities/<code>`). Each city has its Wikidata id (stable between releases), its name in English, Japanese and its own language where a source has them, continent, country, latitude and longitude, population with its date, country, first-level subdivision, capital flags, the IANA time zone it keeps and its elevation where Wikidata has one, and where each fact came from; `citySet` finds one by id, lists a country's, and answers the city nearest to a point. Wikidata (CC0) with Natural Earth's populated places (public domain). [docs/cities.md](./docs/cities.md) counts what is in each tier and what is missing.
 - **What each country is**: `country(code).status` says whether it is a member of the United Nations (193), an observer there (2), a territory of another state (46), a special administrative region (2), disputed (3) or uninhabited (4); `sovereign` is the state a territory belongs to ("GB" for Bermuda, "DK" for Greenland) and `type` its kind in both languages ("British Overseas Territory", イギリスの海外領土). `countries({ status: "un-member" })` and `dependenciesOf("GB")` list them. No side is taken where sovereignty is disputed: Western Sahara, Taiwan and Kosovo have no `sovereign`. [docs/status.md](docs/status.md) lists every one with its reason.
@@ -150,7 +154,9 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | One country's subdivision facts (`/subdivision-facts/jp`) | 0.4–7.3 kB; Japan 2.4 kB |
 | `@johnmorrisdotca/kuni/groupings` | The 107 groupings and their lookups | 15.9 kB min+gzip |
 | `@johnmorrisdotca/kuni/withdrawn` | The 31 withdrawn countries (ISO 3166-3) and `withdrawn(code)` | 2.1 kB min+gzip |
+| `@johnmorrisdotca/kuni/capitals` | `capitalsOf(code)`: the capitals, each with its role, of the countries that have more than one capital city | 1.0 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 4.2 kB min+gzip (the docs site's figure counts every tier, which load on demand) |
+| `@johnmorrisdotca/kuni/names/<language>` | The countries' names in one more language, from CLDR: French, Spanish, German, Simplified and Traditional Chinese, Korean, Portuguese, Arabic or Russian (`/names/fr`, `/names/zh-Hans`) | 4.0–4.4 kB gzip each |
 | `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)`, `searchPlaces(text, { lang, limit, match })` and `cityNamesOf(code)`, for a place chooser | 51.2 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 188.2 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 34.7 kB min+gzip |
@@ -218,6 +224,15 @@ FACTS_READ;           // "2026-10-09", the day Wikidata was read
 
 Every figure is Wikidata's, as it stood on the day in `FACTS_READ`. A country with no permanent population (Antarctica) has `population: null`, and an island `borders: []`; `docs/facts.md` lists every gap with its reason.
 
+A few countries have more than one capital city. `capital` stays one name; `capitalsOf` (the `/capitals` entry) gives each city and its role (`political` and `economic` as well as `official`, `administrative`, `legislative`, `judicial` and `seat`), as the country's own government or law says (the page and the line are in `docs/capitals.md`), and `null` for every country without an entry:
+
+```ts
+import { capitalsOf } from "@johnmorrisdotca/kuni/capitals";
+
+capitalsOf("ZA")?.map((one) => `${one.name.en} ${one.role}`); // ["Pretoria administrative", "Cape Town legislative", "Bloemfontein judicial"]
+capitalsOf("JP");                                            // null
+```
+
 ### 6. The facts about subdivisions
 
 ```ts
@@ -232,11 +247,16 @@ prefectures[12].population; // 14264798, for 2022
 ### 7. Groupings
 
 ```ts
-import { grouping, groupings, groupingsOf, membersOf } from "@johnmorrisdotca/kuni/groupings";
+import { grouping, groupings, groupingsOf, membersOf, unknownMembersOf } from "@johnmorrisdotca/kuni/groupings";
 
 grouping("eu")?.name.ja;                                  // "欧州連合"
 grouping("eu")?.others?.filter((one) => one.status === "candidate").length; // 9
 membersOf("eu", { on: "2019-06-30" })?.includes("GB");     // true
+membersOf("brics", { on: "2015-01-01" })?.includes("EG");  // false: Egypt joined in 2024
+unknownMembersOf("brics", { on: "2015-01-01" });          // ["ID"]: no day is given for Indonesia; not counted as a member
+membersOf("g7", { on: "1975-06-01" });                    // []: the page gives 1975 only, so the six are unknown that day
+unknownMembersOf("g7", { on: "1975-06-01" });             // ["DE", "FR", "GB", "IT", "JP", "US"]
+membersOf("g7", { on: "1975-12-31" })?.includes("DE");    // true: a year counts from its end
 groupingsOf("NO", { kind: "membership" }).map((one) => one.id); // ["un", "schengen", "eea", "nato", "oecd", "nordic-council"]
 membersOf("jp-kanto");                                    // ["JP-08", ..., "JP-14"]
 groupings({ kind: "informal" }).map((one) => one.id);     // ["middle-east", "latin-america", ...]
@@ -425,13 +445,15 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts`, and the types `SubdivisionFacts` and `LatLon` |
 | `@johnmorrisdotca/kuni/subdivision-facts/<code>` | the country's subdivision facts as the default export and as `SUBDIVISION_FACTS` |
 | `@johnmorrisdotca/kuni/withdrawn` | `withdrawn`, `withdrawnCountries`, `WITHDRAWN_READ` and the type `WithdrawnCountry` |
+| `@johnmorrisdotca/kuni/capitals` | `capitalsOf`, `CAPITALS_READ`, and the types `CountryCapital` and `CapitalRole` |
 | `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities`, `citiesOf`, `cityById`, `CITY_TIERS`, and the types `City`, `CityAt`, `CitySet`, `CitySource`, `CityTier` and `NearestOptions` |
+| `@johnmorrisdotca/kuni/names/fr`, `@johnmorrisdotca/kuni/names/es`, `@johnmorrisdotca/kuni/names/de`, `@johnmorrisdotca/kuni/names/zh-Hans`, `@johnmorrisdotca/kuni/names/zh-Hant`, `@johnmorrisdotca/kuni/names/ko`, `@johnmorrisdotca/kuni/names/pt`, `@johnmorrisdotca/kuni/names/ar`, `@johnmorrisdotca/kuni/names/ru` | each: `names` (also the default export), with `countryName`, `countryVariants`, `countryByName`, `countries` and `fold`, and the types `Names`, `NamedCountry`, `NamesLanguage`, `NamesListOptions` and `NamesNameOptions` |
 | `@johnmorrisdotca/kuni/places` | `continents`, `countriesOf`, `searchPlaces`, `cityNamesOf`, and the types `CityName`, `PlaceContinent`, `PlaceHit` and `SearchPlacesOptions` |
 | `@johnmorrisdotca/kuni/cities/capitals` | `capitalCities`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/1m` | `cities1m`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/100k` | `cities100k`, `CITIES_READ` |
 | `@johnmorrisdotca/kuni/cities/<code>` | the country's cities as the default export and as `CITIES` |
-| `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
+| `@johnmorrisdotca/kuni/groupings` | `groupings`, `grouping`, `groupingsOf`, `membersOf`, `unknownMembersOf`, `GROUPING_KINDS`, and the types `Grouping`, `GroupingKind`, `GroupingMember`, `GroupingName`, `GroupingOther`, `GroupingSource`, `GroupingStatus`, `GroupingsOptions` and `GroupingDateOptions` |
 
 A country:
 

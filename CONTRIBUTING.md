@@ -88,6 +88,7 @@ later to build, because its data scripts are TypeScript that Node runs as it is.
 pnpm check            # lint, types, build, tests (sizes included) and the packed package
 pnpm test:demo        # build the demo and play it in a real browser
 pnpm data             # rebuild src/data/ from data-sources/ and node_modules (no network)
+pnpm data:names     # rebuild src/names/ and src/data/names/ alone, from node_modules (no network; `pnpm data` runs it too)
 pnpm data:report      # the coverage, and docs/ja-gaps.md
 pnpm data:fetch       # download the CLDR and IANA inputs again (network)
 pnpm data:wikidata    # take a new Wikidata snapshot of the names (network)

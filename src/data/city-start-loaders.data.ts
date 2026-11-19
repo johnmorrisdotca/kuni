@@ -316,6 +316,7 @@ const CITY_NAME_LOADERS: Readonly<Record<string, () => Promise<{ CITY_NAMES: rea
   sg: () => import("../cities/names-sg.js"),
   sh: () => import("../cities/names-sh.js"),
   si: () => import("../cities/names-si.js"),
+  sj: () => import("../cities/names-sj.js"),
   sk: () => import("../cities/names-sk.js"),
   sl: () => import("../cities/names-sl.js"),
   sm: () => import("../cities/names-sm.js"),
