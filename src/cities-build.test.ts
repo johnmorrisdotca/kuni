@@ -462,7 +462,7 @@ describe("a figure that is not the city's own", () => {
     ).toThrow(/IBGE_CHANGE.*Q1 Wide/);
   });
 
-  it("refuses an identical census figure of 100,000 or more that two cities far apart have, and each takes its next figure", () => {
+  it("refuses an identical census figure of 5,000 or more that two cities far apart have, and each takes its next figure", () => {
     const census = (value: number, day: string, host = "stats.example"): PopulationStatement => [value, day, 2, "census", [host]];
     const older = (value: number): PopulationStatement => [value, "2020-01-01", 1, "census", ["stats.example"]];
     const { rows, report } = figures(
@@ -473,10 +473,12 @@ describe("a figure that is not the city's own", () => {
         item(3, "Single", null, [20, 20], "FR", [[170000, "2024-01-01"]]),
         item(4, "Near", null, [30, 30], "FR", [[180000, "2024-01-01"]]),
         item(5, "Nearby", null, [30.01, 30.01], "FR", [[180000, "2024-01-01"]]),
-        item(6, "Small", null, [40, 40], "FR", [[99999, "2024-01-01"]]),
-        item(7, "Smaller", null, [50, 50], "FR", [[99999, "2024-01-01"]]),
+        item(6, "Small", null, [40, 40], "FR", [[4999, "2024-01-01"]], [], ["FR"]),
+        item(7, "Smaller", null, [50, 50], "FR", [[4999, "2024-01-01"]], [], ["FR"]),
         item(8, "Jp", null, [35, 135], "JP", [[190000, "2024-01-01"]]),
         item(9, "Fr", null, [45, 5], "FR", [[190000, "2024-01-01"]]),
+        item(10, "FloorA", null, [60, 60], "FR", [[40000, "2024-01-01"]]),
+        item(11, "FloorB", null, [70, 70], "FR", [[40000, "2024-01-01"]]),
       ],
       statements([
         [1, [older(60000), census(150000, "2024-01-01")]],
@@ -484,17 +486,22 @@ describe("a figure that is not the city's own", () => {
         [3, [census(170000, "2024-01-01")]],
         [4, [census(180000, "2024-01-01")]],
         [5, [census(180000, "2024-01-01")]],
-        [6, [census(99999, "2024-01-01")]],
-        [7, [census(99999, "2024-01-01")]],
+        [6, [census(4999, "2024-01-01")]],
+        [7, [census(4999, "2024-01-01")]],
         [8, [census(190000, "2024-01-01")]],
         [9, [census(190000, "2024-01-01")]],
+        [10, [older(16000), census(40000, "2024-01-01")]],
+        [11, [older(17000), census(40000, "2024-01-01")]],
       ]),
     );
     const found = byName(rows);
     expect([found.Alpha![3], found.Alpha![4]]).toEqual([60000, 2020]);
     expect([found.Beta![3], found.Beta![4]]).toEqual([40000, 2020]);
-    for (const [name, people] of [["Single", 170000], ["Near", 180000], ["Nearby", 180000], ["Small", 99999], ["Smaller", 99999], ["Jp", 190000], ["Fr", 190000]] as const) expect(found[name]![3], name).toBe(people);
-    expect(report.sameCensus).toEqual([{ country: "FR", value: 150000, day: "2024-01-01", ids: ["Q1", "Q2"], kept: null }]);
+    for (const [name, people] of [["Single", 170000], ["Near", 180000], ["Nearby", 180000], ["Small", 4999], ["Smaller", 4999], ["Jp", 190000], ["Fr", 190000], ["FloorA", 16000], ["FloorB", 17000]] as const) expect(found[name]![3], name).toBe(people);
+    expect(report.sameCensus).toEqual([
+      { country: "FR", value: 150000, day: "2024-01-01", ids: ["Q1", "Q2"], kept: null },
+      { country: "FR", value: 40000, day: "2024-01-01", ids: ["Q10", "Q11"], kept: null },
+    ]);
   });
 
   it("lets the city whose own earlier figure is within 1.5 of an identical census figure keep it, and refuses all where none or several are", () => {
