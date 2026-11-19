@@ -7,17 +7,25 @@
 //   node scripts/extract-dump-json.ts [--day <yyyy-mm-dd>] [--url <dump>]
 //
 // Output: ~/.cache/kuni-data/dump-json-subset-<day>.jsonl and a progress file beside it. A dropped connection waits
-// and resumes with one Range request, from a bzip2 block a few MB before the last byte fed. bzip2 then reports a
-// combined-CRC error at the end of a resumed stream; the entities are still whole, and an id already written is skipped.
+// and reads the dump again from byte 0. A Range resume cannot be shown to land on the bzip2 block that continues
+// the last entity (an earlier one jumped from Q56557664 to Q97233421), so an id already in the jsonl is skipped.
+// The same pass also keeps Chinese constellations (P31 Q1074076), and a part-of target once its id has been seen,
+// in ~/.cache/kuni-data/hoshi-1219d-chinese-constellations.jsonl. A target earlier in the dump than the item that
+// names it is not reached again.
 
 import { spawn } from "node:child_process";
 import { appendFileSync, closeSync, createReadStream, createWriteStream, existsSync, ftruncateSync, openSync, readFileSync, readdirSync, readSync, statSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
+import { entityId } from "./dump-claims.ts";
 import { SOURCES_DIR, USER_AGENT } from "./sources.ts";
 
 const CACHE_DIR = process.env.KUNI_DATA_CACHE ?? join(homedir(), ".cache", "kuni-data");
+const STAR_FILE = join(CACHE_DIR, "hoshi-1219d-chinese-constellations.jsonl");
+const CHINESE_CONSTELLATION = "Q1074076";
+const STAR_NEEDLE = Buffer.from(`"${CHINESE_CONSTELLATION}"`);
+const STAR_LANGS = ["zh", "zh-hant", "zh-hans", "en", "ja"] as const;
 const REWIND = 8_000_000;
 const BACKOFF_SECONDS = [60, 120, 240, 300, 300, 300, 300, 300];
 
@@ -36,6 +44,7 @@ interface Progress {
   totalBytes: number | null;
   itemsKept: number;
   linesRead: number;
+  starsKept: number;
   complete: boolean;
 }
 
@@ -57,8 +66,10 @@ const heldIds = (): Set<number> => {
 const logRequest = (text: string): void => appendFileSync(requestLog, `${new Date().toISOString()} ${text}\n`);
 
 const readProgress = (): Progress => {
-  if (!existsSync(progressFile)) return { source: DUMP_URL, header: null, bytesFed: 0, totalBytes: null, itemsKept: 0, linesRead: 0, complete: false };
-  return JSON.parse(readFileSync(progressFile, "utf8")) as Progress;
+  if (!existsSync(progressFile)) return { source: DUMP_URL, header: null, bytesFed: 0, totalBytes: null, itemsKept: 0, linesRead: 0, starsKept: 0, complete: false };
+  const progress = JSON.parse(readFileSync(progressFile, "utf8")) as Progress;
+  if (typeof progress.starsKept !== "number") progress.starsKept = 0;
+  return progress;
 };
 
 const writeProgress = (progress: Progress): void => writeFileSync(progressFile, `${JSON.stringify(progress, null, 2)}\n`);
@@ -115,6 +126,40 @@ const findBlockBit = (buf: Buffer, fromByte: number): number => {
   return -1;
 };
 
+const claimItems = (claims: unknown, property: string): string[] => {
+  const rows = (claims as Record<string, { mainsnak?: Parameters<typeof entityId>[0] }[]> | undefined)?.[property] ?? [];
+  const found: string[] = [];
+  for (const row of rows) {
+    const id = entityId(row.mainsnak);
+    if (id !== null) found.push(id);
+  }
+  return found;
+};
+
+const pickedLabels = (labels: unknown): Record<string, string> => {
+  const source = labels as Record<string, { value?: string }> | undefined;
+  const out: Record<string, string> = {};
+  if (source === undefined) return out;
+  for (const lang of STAR_LANGS) {
+    const value = source[lang]?.value;
+    if (typeof value === "string" && value !== "") out[lang] = value;
+  }
+  return out;
+};
+
+const jaAliases = (aliases: unknown): string[] => {
+  const list = (aliases as Record<string, { value?: string }[]> | undefined)?.ja ?? [];
+  return list.flatMap((row) => (typeof row.value === "string" && row.value !== "" ? [row.value] : []));
+};
+
+const parsedEntity = (text: string): Entity | null => {
+  const at = text.indexOf("{");
+  if (at === -1) return null;
+  let body = text.slice(at).trimEnd();
+  if (body.endsWith(",")) body = body.slice(0, -1);
+  return JSON.parse(body) as Entity;
+};
+
 const slimLine = (text: string): string | null => {
   const at = text.indexOf("{");
   if (at === -1) return null;
@@ -136,10 +181,13 @@ const main = async (): Promise<void> => {
   truncatePartialLine();
   const keptIds = await idsAlreadyKept();
   console.log(`${keptIds.size} items already kept; resuming from ${progress.bytesFed} bytes`);
+  const partTargets = new Set<number>();
+  const starsWritten = new Set<number>();
+  writeFileSync(STAR_FILE, `${JSON.stringify({ dump: DUMP_URL, lastModified: "Tue, 17 Nov 2026 18:42:29 GMT", etag: "6afca015-1832128e37", licence: "CC0", read: day })}\n`);
 
   for (let attempt = 0; attempt <= BACKOFF_SECONDS.length; attempt += 1) {
     try {
-      progress = await onePass(ids, keptIds, progress);
+      progress = await onePass(ids, keptIds, progress, partTargets, starsWritten);
       if (progress.complete) return;
       throw new Error(`stream ended early at ${progress.bytesFed} of ${progress.totalBytes ?? "?"} bytes`);
     } catch (error) {
@@ -153,9 +201,36 @@ const main = async (): Promise<void> => {
   }
 };
 
-const onePass = (ids: Set<number>, keptIds: Set<number>, progress: Progress): Promise<Progress> =>
+const starLine = (text: string, id: number, partTargets: Set<number>, starsWritten: Set<number>, progress: Progress): void => {
+  if (starsWritten.has(id)) return;
+  const entity = parsedEntity(text);
+  if (entity?.id === undefined) return;
+  const p31 = claimItems(entity.claims, "P31");
+  const p361 = claimItems(entity.claims, "P361");
+  const chinese = p31.includes(CHINESE_CONSTELLATION);
+  if (!chinese && !partTargets.has(id)) return;
+  const labels = pickedLabels(entity.labels);
+  if (chinese) {
+    for (const target of p361) {
+      const number = Number(target.slice(1));
+      if (Number.isInteger(number)) partTargets.add(number);
+    }
+    const aliases = jaAliases(entity.aliases);
+    const row = { id: entity.id, labels, ...(aliases.length > 0 ? { aliases: { ja: aliases } } : {}), p31, p361 };
+    appendFileSync(STAR_FILE, `${JSON.stringify(row)}\n`);
+  } else {
+    const targetLabels: Record<string, string> = {};
+    if (labels.en !== undefined) targetLabels.en = labels.en;
+    if (labels.zh !== undefined) targetLabels.zh = labels.zh;
+    appendFileSync(STAR_FILE, `${JSON.stringify({ id: entity.id, role: "p361-target", labels: targetLabels })}\n`);
+  }
+  starsWritten.add(id);
+  progress.starsKept += 1;
+};
+
+const onePass = (ids: Set<number>, keptIds: Set<number>, progress: Progress, partTargets: Set<number>, starsWritten: Set<number>): Promise<Progress> =>
   new Promise((done, fail) => {
-    const start = progress.bytesFed > REWIND ? progress.bytesFed - REWIND : 0;
+    const start = 0;
     const bzip = spawn("bzip2", ["-dc"], { stdio: ["pipe", "pipe", "pipe"] });
     bzip.stdin.on("error", () => undefined);
     bzip.stderr.on("data", () => undefined);
@@ -249,14 +324,20 @@ const onePass = (ids: Set<number>, keptIds: Set<number>, progress: Progress): Pr
           const head = data.toString("utf8", from, Math.min(end, from + 160));
           const match = /"id":"Q(\d+)"/.exec(head);
           const id = match === null ? -1 : Number(match[1]);
-          if (id >= 0 && ids.has(id) && !keptIds.has(id)) {
+          const mentionsStar = data.subarray(from, end).includes(STAR_NEEDLE);
+          const wanted = id >= 0 && (mentionsStar || partTargets.has(id));
+          if (id >= 0 && ((ids.has(id) && !keptIds.has(id)) || wanted)) {
             try {
-              const slim = slimLine(data.toString("utf8", from, end));
-              if (slim !== null) {
-                kept.push(Buffer.from(slim));
-                keptIds.add(id);
-                progress.itemsKept += 1;
+              const text = data.toString("utf8", from, end);
+              if (ids.has(id) && !keptIds.has(id)) {
+                const slim = slimLine(text);
+                if (slim !== null) {
+                  kept.push(Buffer.from(slim));
+                  keptIds.add(id);
+                  progress.itemsKept += 1;
+                }
               }
+              if (wanted) starLine(text, id, partTargets, starsWritten, progress);
             } catch {
               console.log(`skipped Q${id}: the line did not parse`);
             }
@@ -270,7 +351,7 @@ const onePass = (ids: Set<number>, keptIds: Set<number>, progress: Progress): Pr
         lastReport = Date.now();
         progress.header = header;
         writeProgress(progress);
-        console.log(`${new Date().toISOString()} fed ${(progress.bytesFed / 1e9).toFixed(2)} GB, read ${(progress.linesRead / 1e6).toFixed(1)} M lines, kept ${progress.itemsKept}`);
+        console.log(`${new Date().toISOString()} fed ${(progress.bytesFed / 1e9).toFixed(2)} GB, read ${(progress.linesRead / 1e6).toFixed(1)} M lines, kept ${progress.itemsKept}, stars ${progress.starsKept}`);
       }
     });
 
