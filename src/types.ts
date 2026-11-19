@@ -194,6 +194,8 @@ interface Subdivision {
   name: { en: string; ja: string | null };
   /** The name in hiragana, for Japan's prefectures: "とうきょうと" */
   reading?: string;
+  /** Other English names it is found by in `subdivisionsByName`, not shown as its name: CLDR's colloquial form ("Kyivshchyna" for Kyiv Oblast). Absent for most. */
+  aliases?: readonly string[];
 }
 
 /** The side of the road a country drives on.

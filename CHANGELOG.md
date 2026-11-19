@@ -6,6 +6,14 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- Ukraine's oblasts have plain English names (MODULES-1632): "Vinnytsia Oblast", "Kharkiv Oblast", "Ivano-Frankivsk Oblast", not CLDR's colloquial "Vinnychchyna", "Kharkivshchyna", "Prykarpattia". The names are Wikidata's English labels, read from the pinned snapshot `data-sources/wikidata-facts-2026-10-09.json` (each item is cited in `EN_NAME_OVERRIDES`). Kyiv and Sevastopol are unchanged; Crimea is "Autonomous Republic of Crimea". The Japanese names and the codes are unchanged.
+
+### Added
+
+- `Subdivision.aliases`: other English names a subdivision is found by in `subdivisionsByName` and `subdivisionByName`, not shown as its name. Ukraine's 24 changed names keep CLDR's old forms there, so "Kyivshchyna" and "Vinnychchyna" still find their oblasts. Absent for every other subdivision.
+
 ## [1.14.0] - 2026-11-19
 
 ### Fixed

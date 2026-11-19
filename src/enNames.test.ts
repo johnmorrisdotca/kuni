@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 
 import { CODE_CHANGES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES } from "../scripts/data-config";
 import { englishSuspects } from "../scripts/en-names";
-import { allSubdivisions, subdivision, subdivisions } from "./subdivisions";
+import { allSubdivisions, subdivision, subdivisionByName, subdivisions, subdivisionsByName } from "./subdivisions";
 
 const sources = JSON.parse(readFileSync("data-sources/sources.json", "utf8")) as { files: { path: string }[] };
 const read = (prefix: RegExp) => JSON.parse(readFileSync(`data-sources/${sources.files.find((file) => prefix.test(file.path))!.path}`, "utf8"));
@@ -77,5 +77,39 @@ describe("Norway's counties", () => {
     for (const code of Object.keys(CODE_CHANGES.added)) expect(codes, code).toContain(code);
     expect(codes).toHaveLength(17); // fifteen counties, Svalbard and Jan Mayen
     expect(subdivision("NO-55")).toMatchObject({ name: { en: "Troms", ja: "トロムス県" }, type: "county", level: 1 });
+  });
+});
+
+describe("Ukraine's oblasts (MODULES-1632)", () => {
+  const ukraine = subdivisions("UA")!;
+  const PLACES = new Set(["UA-30", "UA-40", "UA-43"]); // Kyiv, Sevastopol, Crimea
+
+  it("are named as Wikidata's English labels have them, \"<Name> Oblast\", the three that are not oblasts apart", () => {
+    expect(ukraine).toHaveLength(27);
+    for (const one of ukraine) {
+      if (PLACES.has(one.code)) continue;
+      expect(one.name.en, one.code).toMatch(/ Oblast$/);
+      expect(one.name.en, one.code).toBe(labelOf(one.code));
+    }
+    expect(subdivision("UA-05")!.name.en).toBe("Vinnytsia Oblast");
+    expect(subdivision("UA-35")!.name.en).toBe("Kirovohrad Oblast");
+    expect(subdivision("UA-30")!.name.en).toBe("Kyiv");
+    expect(subdivision("UA-40")!.name.en).toBe("Sevastopol");
+    expect(subdivision("UA-43")!.name.en).toBe("Autonomous Republic of Crimea");
+  });
+
+  it("keep no colloquial -shchyna or -chchyna form as a name", () => {
+    for (const one of ukraine) expect(one.name.en, one.code).not.toMatch(/(shchyna|chchyna|schyna)$/i);
+  });
+
+  it("are still found by CLDR's colloquial forms, kept as aliases", () => {
+    expect(subdivisionByName("Kyivshchyna")?.code).toBe("UA-32");
+    expect(subdivisionByName("Vinnychchyna")?.code).toBe("UA-05");
+    expect(subdivisionByName("Prykarpattia", { country: "UA" })?.code).toBe("UA-26");
+    expect(subdivisionsByName("Crimea").map((one) => one.code)).toContain("UA-43");
+    expect(subdivisionByName("Vinnytsia Oblast")?.code).toBe("UA-05");
+    expect(subdivision("UA-05")!.aliases).toEqual(["Vinnychchyna"]);
+    expect(subdivision("UA-30")!.aliases).toBeUndefined();
+    expect(subdivision("JP-13")!.aliases).toBeUndefined();
   });
 });
