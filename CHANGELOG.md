@@ -20,6 +20,9 @@ All notable changes to this project are written here. The format follows
 ### Added
 
 - `Subdivision.aliases`: other English names a subdivision is found by in `subdivisionsByName` and `subdivisionByName`, not shown as its name. Ukraine's 24 changed names keep CLDR's old forms there, so "Kyivshchyna" and "Vinnychchyna" still find their oblasts. Absent for every other subdivision.
+### Added
+
+- Subdivision names in Spanish, German, Simplified Chinese and Traditional Chinese, as `/subdivision-names/<language>`, from Unicode CLDR 48.2 and Wikidata labels read from Wikimedia's truthy dump (MODULES-1594). A name neither source gives, or that fails a check (the wrong Chinese script, a Japanese character form, a stray quotation mark), is left out. `docs/subdivision-names.md` lists the coverage and what a native reader should look at.
 
 ## [1.14.0] - 2026-11-19
 

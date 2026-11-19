@@ -1,0 +1,22 @@
+2026-11-18T17:26:01.209Z GET https://raw.githubusercontent.com/robots.txt -> 404 14 bytes
+2026-11-18T17:26:02.898Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/es.xml -> 200 390247 bytes
+2026-11-18T17:26:03.785Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/de.xml -> 200 387964 bytes
+2026-11-18T17:26:05.108Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/zh.xml -> 200 390348 bytes
+2026-11-18T17:26:05.959Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/zh_Hant.xml -> 200 697 bytes
+2026-11-18T17:28:13.000Z GET https://query.wikidata.org/robots.txt -> 200 95 bytes
+2026-11-18T17:28:15.000Z GET https://www.wikidata.org/robots.txt -> 200 15896 bytes
+2026-11-18T17:28:17.000Z GET https://dumps.wikimedia.org/robots.txt -> 404 153 bytes
+2026-11-18T17:25:24.000Z GET https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2 -> started (one long download with curl -C -, saved as ~/.cache/kuni-data/latest-truthy-2026-11-14.nt.bz2, the day of the file the server gave; still running when this line was written)
+# Reading of the three robots.txt above: query.wikidata.org disallows /sparql and /bigdata for every agent; www.wikidata.org disallows /w/, /api/ and /wiki/Special: for every agent; dumps.wikimedia.org has none (404). So the query service and the API are not used; the dump is.
+# Earlier today, before the script existed, the four CLDR files and the robots.txt files above were also fetched once by hand; those requests were not logged by the script.
+2026-11-18T17:28:42.576Z GET https://raw.githubusercontent.com/robots.txt -> 404 14 bytes
+2026-11-18T17:28:42.578Z CACHE https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/es.xml -> 390247 bytes
+2026-11-18T17:28:42.580Z CACHE https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/de.xml -> 387964 bytes
+2026-11-18T17:28:42.581Z CACHE https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/zh.xml -> 390348 bytes
+2026-11-18T17:28:42.581Z CACHE https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/zh_Hant.xml -> 697 bytes
+2026-11-18T17:28:43.767Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/transforms/Hant-Hans.xml -> 404 14 bytes
+2026-11-18T17:28:52.000Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/transforms/Hans-Hant.xml -> 404 14 bytes
+2026-11-18T17:28:53.000Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/transforms/zh-Hans-Hant.xml -> 404 14 bytes
+2026-11-18T17:28:55.000Z GET https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/transforms/zh_Hant-zh_Hans.xml -> 404 14 bytes
+2026-11-18T17:57:01.093Z GET https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2 (Range: bytes=3684036608-) -> streamed through bzip2 into a filter; nothing is stored but the lines kept (scripts/extract-dump-subset.ts)
+2026-11-18T20:54:59.332Z GET https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2 -> HTTP/1.1 206 Partial Content, 43669635611 bytes in all, 11724 s
