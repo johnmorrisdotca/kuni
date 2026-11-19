@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Commonwealth leftovers (MODULES-1645), from the members' pages on thecommonwealth.org: Eswatini is `"1968"` (its page is at /kingdom-eswatini: "1968, following independence from Britain"); the earlier periods that were 1 January placeholders are years: Nigeria `"1960"` to `"1995"` ("membership suspended 1995-99"), Nauru `"1968"` to `"1999"` ("as an associate member ...; full member since 1999"), Pakistan `"1947"` to `"1972"` ("left in 1972, rejoined in 1989"), and the start of Fiji's first period `"1970"`. A suspension is a gap between two periods, as before. Not changed: Nigeria's return (1999-01-01; the page gives only "1995-99") and Fiji's suspensions, which the page gives to the month and the data already has. The build can now name an earlier period of a member in `JOINED` (`match`) and fails if the match is not exactly one.
+
 ## [1.13.0] - 2026-11-19
 
 ### Fixed
