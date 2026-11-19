@@ -642,19 +642,20 @@ describe("each city's own figure, in its own country", () => {
     expect((await cityById("Q3766"))?.source.population).toBe("natural-earth");
   });
 
-  it("keeps the 2024 census figures of Arua, Mbale City and Mbarara City that UBOS gives, which count a larger area than their subdivision figures", async () => {
+  it("keeps the 2024 census figures of Arua, Mbale City and Mbarara City that UBOS gives, which count a larger area than their subdivision figures, and holds Gulu City to its subdivision", async () => {
     // Each is the snapshot's statement of 2024-01-01 with the method census and ubos.org among its references.
     expect(await Promise.all(["Q500111", "Q1015727", "Q731039"].map(async (id) => [(await cityById(id))?.population, (await cityById(id))?.populationDate]))).toEqual([
       [384656, "2024"],
       [586300, "2024"],
       [264425, "2024"],
     ]);
-    // Gulu City's UBOS figure of 2024 (233,271) is a statement of the snapshot, but its best-ranked one is the 2020 estimate (177,400), the figure the build takes.
-    expect((await cityById("Q581379"))?.population).toBe(177400);
+    // Gulu City is held to UG-304's 135,373 (2024): its 2020 estimate (177,400) and its UBOS figure of 2024 (233,271) are above 115% of that, so the 2014 census's 150,306 is taken.
+    const gulu = (await cityById("Q581379"))!;
+    expect([gulu.population, gulu.populationDate]).toEqual([150306, "2014-08-27"]);
   });
 
   it("keeps the figure of each city NOT_INSIDE names, whose code is not a subdivision that holds it", async () => {
-    const expected: Record<string, number> = { Q3688: 1446761, Q9347: 133019, Q25287: 674529, Q27157: 163257, Q27400: 389993, Q3476: 69558, Q2550996: 23512, Q500111: 384656, Q581379: 177400, Q1015727: 586300, Q731039: 264425 };
+    const expected: Record<string, number> = { Q3688: 1446761, Q9347: 133019, Q25287: 674529, Q27157: 163257, Q27400: 389993, Q3476: 69558, Q2550996: 23512, Q500111: 384656, Q1015727: 586300, Q731039: 264425 };
     expect(Object.keys(NOT_INSIDE).sort()).toEqual(Object.keys(expected).sort());
     for (const [id, people] of Object.entries(expected)) expect((await cityById(id))?.population, id).toBe(people);
   });

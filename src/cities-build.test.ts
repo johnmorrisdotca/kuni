@@ -395,7 +395,7 @@ describe("a figure that is not the city's own", () => {
     // Nouakchott's own regions are listed; the table has them under its item (Q3688), codes of its country in the real data.
     expect(NOT_INSIDE.Q3688!.codes).toEqual(["MR-13", "MR-14", "MR-15"]);
     expect(run(3688)).toBeNull(); // FR-75 is not one of its codes here, so the rule holds
-    expect(Object.keys(NOT_INSIDE).sort()).toEqual(["Q1015727", "Q25287", "Q27157", "Q27400", "Q2550996", "Q3476", "Q3688", "Q500111", "Q581379", "Q731039", "Q9347"].sort());
+    expect(Object.keys(NOT_INSIDE).sort()).toEqual(["Q1015727", "Q25287", "Q27157", "Q27400", "Q2550996", "Q3476", "Q3688", "Q500111", "Q731039", "Q9347"].sort());
     for (const [id, entry] of Object.entries(NOT_INSIDE)) {
       expect(entry.codes.length, id).toBeGreaterThan(0);
       expect(entry.why, id).toMatch(/^[^,]+, [^:]+: .+\.$/);
