@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
 
 import { describe, expect, it } from "vitest";
 
@@ -7,9 +8,11 @@ import { loadSubdivisions } from "./load";
 import {
   allSubdivisions,
   subdivision,
+  subdivisionByFormerCode,
   subdivisionByName,
   subdivisionByShortCode,
   subdivisions,
+  subdivisionsByFormerCode,
   subdivisionsByName,
   SUBDIVISION_TYPES,
   subdivisionTypeLabel,
@@ -212,5 +215,78 @@ describe("loadSubdivisions", () => {
   it("gives an empty list for a country with none, and null for a code that is not a country", async () => {
     expect(await loadSubdivisions("AQ")).toEqual([]);
     expect(await loadSubdivisions("ZZ")).toBeNull();
+  });
+});
+
+describe("the retired codes", () => {
+  const all = allSubdivisions();
+  const aliases = createRequire(import.meta.url)("cldr-core/supplemental/aliases.json").supplemental.metadata.alias.subdivisionAlias as Record<string, { _replacement: string; _reason: string }>;
+  const isoOf = (id: string): string => `${id.slice(0, 2).toUpperCase()}-${id.slice(2).toUpperCase()}`;
+  const retired = new Map<string, string[]>();
+  for (const one of all) for (const former of one.formerCodes ?? []) retired.set(former, [...(retired.get(former) ?? []), one.code]);
+
+  it("send FR-A to FR-GES, and FR-D and FR-I to FR-BFC, as CLDR 48.2 does", () => {
+    expect(subdivisionByFormerCode("FR-A")?.code).toBe("FR-GES");
+    expect(subdivisionByFormerCode("fr-d")?.code).toBe("FR-BFC");
+    expect(subdivisionsByFormerCode("FR-I").map((one) => one.code)).toEqual(["FR-BFC"]);
+    expect(subdivision("FR-GES")?.formerCodes).toEqual(["FR-A", "FR-G", "FR-M"]);
+    expect(subdivision("NO-50")?.formerCodes).toEqual(["NO-23"]);
+    expect(subdivisionByFormerCode("PL-DS")?.code).toBe("PL-02");
+  });
+
+  it("have no answer for Norway's NO-04, which CLDR 48.2 has no alias for", () => {
+    expect(aliases.no04).toBeUndefined();
+    expect(subdivisionsByFormerCode("NO-04")).toEqual([]);
+  });
+
+  it("give a split several successors, and no single one", () => {
+    expect(subdivisionsByFormerCode("LU-D").map((one) => one.code)).toEqual(["LU-CL", "LU-DI", "LU-RD", "LU-VD", "LU-WI"]);
+    expect(subdivisionsByFormerCode("NZ-N")).toHaveLength(9);
+    expect(subdivisionsByFormerCode("NZ-S")).toHaveLength(7);
+    expect(subdivisionByFormerCode("LU-D")).toBeNull();
+    expect(subdivision("LU-DI")?.formerCodes).toEqual(["LU-D"]);
+  });
+
+  it("leave out the overlong forms, which kuni keeps as subdivisions", () => {
+    const overlong = Object.entries(aliases).filter(([, alias]) => alias._reason === "overlong");
+    expect(overlong).toHaveLength(27);
+    for (const [id] of overlong) expect(retired.has(isoOf(id)), id).toBe(false);
+    expect(subdivisionsByFormerCode("US-PR")).toEqual([]);
+    expect(subdivision("US-PR")).not.toBeNull();
+  });
+
+  it("keep 109 of CLDR's 120 deprecated aliases, in 136 successor pairs, and no code that is also current", () => {
+    expect(retired.size).toBe(109);
+    expect([...retired.values()].reduce((sum, list) => sum + list.length, 0)).toBe(136);
+    for (const former of retired.keys()) expect(subdivision(former), former).toBeNull();
+  });
+
+  it("each lead to subdivisions that exist, in the same country, and never to the code itself", () => {
+    for (const [former, successors] of retired) {
+      expect(successors.length, former).toBeGreaterThan(0);
+      for (const code of successors) {
+        expect(subdivision(code), `${former} to ${code}`).not.toBeNull();
+        expect(code.slice(0, 2), former).toBe(former.slice(0, 2));
+        expect(code).not.toBe(former);
+      }
+      expect(subdivisionsByFormerCode(former).map((one) => one.code)).toEqual([...successors].sort());
+    }
+  });
+
+  it("say CN-15 is CN-NM, where CLDR writes a code ISO does not use", () => {
+    expect(aliases.cn15._replacement).toBe("cnmn");
+    expect(subdivisionByFormerCode("CN-15")?.code).toBe("CN-NM");
+  });
+
+  it("answer an empty list, or null, for a current code and for anything that is not a code", () => {
+    for (const typed of ["FR-GES", "JP-13", "XX-99", "", "  "]) {
+      expect(subdivisionsByFormerCode(typed)).toEqual([]);
+      expect(subdivisionByFormerCode(typed)).toBeNull();
+    }
+    expect(subdivisionsByFormerCode(undefined as unknown as string)).toEqual([]);
+  });
+
+  it("add nothing to a subdivision nothing was retired for", () => {
+    expect(subdivision("JP-13")).not.toHaveProperty("formerCodes");
   });
 });

@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Retired subdivision codes (MODULES-1628). A subdivision that has had codes retired for it has `formerCodes`, in code order: `subdivision("FR-GES")?.formerCodes` is `["FR-A", "FR-G", "FR-M"]`. `subdivisionsByFormerCode(code)` in `/subdivisions` gives the subdivisions a retired code stands for, several where it was split (`LU-D` is five), and `subdivisionByFormerCode(code)` the one, `null` for a split. Both answer nothing for a code that is not retired. From the `deprecated` aliases of CLDR 48.2's `subdivisionAlias` (already in `cldr-core`, so nothing new is downloaded): 109 retired codes, 136 pairs, for 12 countries (CN, CZ, FR, LA, LU, MR, NO, NZ, OM, PL, TT, TW). The 27 `overlong` aliases are left out, as kuni keeps those codes (`US-PR`) as subdivisions. 11 deprecated aliases are left out because their successor is not a subdivision here (`FORMER_NOT_KEPT` in `scripts/data-config.ts`, with the reasons), and CLDR's `cnmn` for `CN-15` is read as `CN-NM`. No retired code has a name in the data, so no old names are searchable; `NO-04` has no CLDR alias and so no answer.
+
 ## [1.14.0] - 2026-11-19
 
 ### Fixed

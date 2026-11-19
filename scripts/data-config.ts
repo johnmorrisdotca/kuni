@@ -340,6 +340,29 @@ const CODE_CHANGES: { removed: Record<string, string>; added: Record<string, { e
   },
 };
 
+// CLDR's retired subdivision codes (its "deprecated" aliases, see formerOf in scripts/build-data.ts) that are not kept,
+// each with the reason. The build stops on any other alias whose successor is not a subdivision of this package, and on
+// an entry here that is not needed.
+const FORMER_NOT_KEPT: Record<string, string> = {
+  "CZ-10A": "Its successor CZ-110 (a district of Prague) is below the levels this package carries.",
+  "CZ-10B": "Its successor CZ-111 (a district of Prague) is below the levels this package carries.",
+  "CZ-10C": "Its successor CZ-112 (a district of Prague) is below the levels this package carries.",
+  "CZ-10D": "Its successor CZ-113 (a district of Prague) is below the levels this package carries.",
+  "CZ-10E": "Its successor CZ-114 (a district of Prague) is below the levels this package carries.",
+  "CZ-10F": "Its successor CZ-115 (a district of Prague) is below the levels this package carries.",
+  "CZ-611": "Its successor CZ-663 (a district of Vysočina) is below the levels this package carries.",
+  "FR-GUA": "CLDR's successor is the country code GP, and Guadeloupe is a country here, not a subdivision of France.",
+  "FR-LRE": "CLDR's successor is the country code RE, and Réunion is a country here, not a subdivision of France.",
+  "FR-MAY": "CLDR's successor is the country code YT, and Mayotte is a country here, not a subdivision of France.",
+  "FR-H": "CLDR's successor is FR-COR, which ISO 3166-2 has since the collectivity of Corsica, and this package carries Corse as FR-20R.",
+};
+
+// A successor CLDR writes with a code that ISO 3166-2 does not use, and the code it is: CLDR's alias for Inner Mongolia's
+// old number CN-15 is "cnmn", ISO's code for the region is CN-NM (the one this package has).
+const FORMER_SUCCESSOR_FIXES: Record<string, Record<string, string>> = {
+  "CN-15": { "CN-MN": "CN-NM" },
+};
+
 // Wikidata's instance-of (P31) classes, read through their English labels, to a small set of kinds. The
 // label's head is matched (the part before " of " or " in ", so "province of Canada" is read as "province"),
 // and the first rule that matches wins. Labels that say nothing about administration are left out first.
@@ -413,4 +436,4 @@ const CITY_READING_FILLS: Readonly<Record<string, readonly [name: string, readin
 };
 
 export { CITY_READING_FILLS, SHORT_NAME_FILLS };
-export { CALLING_CODE_OVERRIDES, CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };
+export { CALLING_CODE_OVERRIDES, CODE_CHANGES, COUNTRY_ALIASES, EN_NAME_ACCEPTED, EN_NAME_OVERRIDES, FORMER_NOT_KEPT, FORMER_SUCCESSOR_FIXES, JA_BRACKET_COUNTRY_NAMES, JA_BRACKET_WORDS, JA_NAME_OVERRIDES, JA_OPEN_QUESTIONS, JA_TYPE_WORDS, JP_TYPE_BY_SUFFIX, READING_FILLS, TLD_EXCEPTIONS, TYPE_NOISE, TYPE_RULES };

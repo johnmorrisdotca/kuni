@@ -433,7 +433,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | --- | --- |
 | `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
 | `@johnmorrisdotca/kuni/codes` | `COUNTRY_CODES`, `isCountryCode` and the type `CountryCode` |
-| `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionTypeLabel`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions` and `SubdivisionByNameOptions` |
+| `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionByFormerCode`, `subdivisionsByFormerCode`, `subdivisionTypeLabel`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions` and `SubdivisionByNameOptions` |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | the country's list as the default export and as `SUBDIVISIONS` |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions` and the type `Subdivision` |
 | `@johnmorrisdotca/kuni/facts` | `facts`, `allFacts`, `distanceKm`, `FACTS_READ`, and the types `CountryFacts`, `LatLon`, `DrivingSide`, `WeekStart`, `MeasurementSystem`, `PaperSize` and `HourCycle` |

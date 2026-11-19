@@ -17,19 +17,19 @@ HSZ|Hsinchu|新竹市|1
 HUA|Hualien|花蓮県|2
 ILA|Yilan|宜蘭県|2
 KEE|Keelung|基隆市|1
-KHH|Kaohsiung|高雄市|3
+KHH|Kaohsiung|高雄市|3|||KHQ
 KIN|Kinmen|金門県|2
 LIE|Lienchiang|連江県|2
 MIA|Miaoli|苗栗県|2
 NAN|Nantou|南投県|2
-NWT|New Taipei|新北市|3
+NWT|New Taipei|新北市|3|||TPQ
 PEN|Penghu|澎湖県|2
 PIF|Pingtung|屏東県|2
 TAO|Taoyuan|桃園市|3
-TNN|Tainan|台南市|3
+TNN|Tainan|台南市|3|||TNQ
 TPE|Taipei|台北市|0
 TTT|Taitung|台東県|2
-TXG|Taichung|台中市|3
+TXG|Taichung|台中市|3|||TXQ
 YUN|Yunlin|雲林県|2`,
 };
 

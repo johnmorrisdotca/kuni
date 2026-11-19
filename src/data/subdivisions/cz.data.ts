@@ -9,8 +9,8 @@ const CZ: SubdivisionTable = {
   country: "CZ",
   types: ["capital-district","district","region"],
   typesJa: [null,null,"州"],
-  rows: `10|Prague, Hlavní mešto|プラハ|0
-20|Středočeský|中央ボヘミア州|2
+  rows: `10|Prague, Hlavní mešto|プラハ|0|||PR
+20|Středočeský|中央ボヘミア州|2|||ST
 201|Benešov|ベネショフ郡|1|20
 202|Beroun|ベロウン郡|1|20
 203|Kladno||1|20
@@ -23,7 +23,7 @@ const CZ: SubdivisionTable = {
 20A|Prague-West|プラハ＝ザーパト|1|20
 20B|Příbram|プシーブラム郡|1|20
 20C|Rakovník||1|20
-31|Jihočeský|南ボヘミア州|2
+31|Jihočeský|南ボヘミア州|2|||JC
 311|České Budějovice||1|31
 312|Český Krumlov|チェスキー・クルムロフ郡|1|31
 313|Jindřichův Hradec|インジフーフ・フラデツ郡|1|31
@@ -31,7 +31,7 @@ const CZ: SubdivisionTable = {
 315|Prachatice||1|31
 316|Strakonice||1|31
 317|Tábor||1|31
-32|Plzeňský|プルゼニ州|2
+32|Plzeňský|プルゼニ州|2|||PL
 321|Domažlice||1|32
 322|Klatovy||1|32
 323|Plzeň||1|32
@@ -39,11 +39,11 @@ const CZ: SubdivisionTable = {
 325|Plzeň-North||1|32
 326|Rokycany||1|32
 327|Tachov|タホフ郡|1|32
-41|Karlovarský|カルロヴィ・ヴァリ州|2
+41|Karlovarský|カルロヴィ・ヴァリ州|2|||KA
 411|Cheb||1|41
 412|Karlovy Vary||1|41
 413|Sokolov|ソコロフ郡|1|41
-42|Ústecký|ウースチー州|2
+42|Ústecký|ウースチー州|2|||US
 421|Děčín||1|42
 422|Chomutov|ホムトフ地区|1|42
 423|Litoměřice||1|42
@@ -51,48 +51,48 @@ const CZ: SubdivisionTable = {
 425|Most||1|42
 426|Teplice||1|42
 427|Ústí nad Labem||1|42
-51|Liberecký|リベレツ州|2
+51|Liberecký|リベレツ州|2|||LI
 511|Česká Lípa||1|51
 512|Jablonec nad Nisou||1|51
 513|Liberec||1|51
 514|Semily||1|51
-52|Královéhradecký|フラデツ・クラーロヴェー州|2
+52|Královéhradecký|フラデツ・クラーロヴェー州|2|||KR
 521|Hradec Králové|フラデツ・クラーロヴェー郡|1|52
 522|Jičín||1|52
 523|Náchod|ナーハト郡|1|52
 524|Rychnov nad Kněžnou|リフノフ・ナド・クニェジュノウ郡|1|52
 525|Trutnov||1|52
-53|Pardubický|パルドゥビツェ州|2
+53|Pardubický|パルドゥビツェ州|2|||PA
 531|Chrudim|クルディム郡|1|53
 532|Pardubice|パルドゥビツェ郡|1|53
 533|Svitavy|スヴィタヴィ郡|1|53
 534|Ústí nad Orlicí|ウスティ・ナドゥ・オーリシ|1|53
-63|Vysočina|ヴィソチナ州|2
+63|Vysočina|ヴィソチナ州|2|||VY
 631|Havlíčkův Brod||1|63
-632|Jihlava||1|63
-633|Pelhřimov||1|63
-634|Třebíč||1|63
-635|Žďár nad Sázavou||1|63
-64|Jihomoravský|南モラヴィア州|2
-641|Blansko|ブランスコ地区|1|64
-642|Brno-město||1|64
-643|Brno-venkov||1|64
-644|Břeclav|ブジェツラフ郡|1|64
+632|Jihlava||1|63||612
+633|Pelhřimov||1|63||613
+634|Třebíč||1|63||614
+635|Žďár nad Sázavou||1|63||615
+64|Jihomoravský|南モラヴィア州|2|||JM
+641|Blansko|ブランスコ地区|1|64||621
+642|Brno-město||1|64||622
+643|Brno-venkov||1|64||623
+644|Břeclav|ブジェツラフ郡|1|64||624
 645|Hodonín||1|64
-646|Vyškov||1|64
-647|Znojmo||1|64
-71|Olomoucký|オロモウツ州|2
+646|Vyškov||1|64||626
+647|Znojmo||1|64||627
+71|Olomoucký|オロモウツ州|2|||OL
 711|Jeseník|イェセニーク郡|1|71
 712|Olomouc|オロモウツ地区|1|71
 713|Prostějov|プロスチェヨフ郡|1|71
 714|Přerov|プルジェロフ郡|1|71
 715|Šumperk||1|71
-72|Zlínský|ズリーン州|2
+72|Zlínský|ズリーン州|2|||ZL
 721|Kroměříž|クロミェジージュ郡|1|72
 722|Uherské Hradiště||1|72
 723|Vsetín|フセチーン郡|1|72
 724|Zlín|ズリン|1|72
-80|Moravskoslezský|モラヴィア・スレスコ州|2
+80|Moravskoslezský|モラヴィア・スレスコ州|2|||MO
 801|Bruntál||1|80
 802|Frýdek-Místek|フリーデク＝ミーステク郡|1|80
 803|Karviná||1|80

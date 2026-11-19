@@ -60,6 +60,7 @@ interface Tables {
   byCode: ReadonlyMap<string, Subdivision>;
   byCountry: ReadonlyMap<string, readonly Subdivision[]>;
   byName: ReadonlyMap<string, readonly Subdivision[]>;
+  byFormerCode: ReadonlyMap<string, readonly Subdivision[]>;
   tableOf: ReadonlyMap<string, SubdivisionTable>;
 }
 
@@ -82,6 +83,7 @@ const build = (): Tables => {
   const byCode = new Map<string, Subdivision>();
   const byCountry = new Map<string, readonly Subdivision[]>();
   const byName = new Map<string, Subdivision[]>();
+  const byFormerCode = new Map<string, Subdivision[]>();
   const tableOf = new Map<string, SubdivisionTable>();
   const list: Subdivision[] = [];
   const index = (name: string | undefined | null, subdivision: Subdivision): void => {
@@ -98,6 +100,7 @@ const build = (): Tables => {
     for (const one of expanded) {
       list.push(one);
       byCode.set(one.code, one);
+      for (const former of one.formerCodes ?? []) byFormerCode.set(former, [...(byFormerCode.get(former) ?? []), one]);
       index(one.name.en, one);
       index(one.name.ja, one);
       index(one.reading, one);
@@ -109,7 +112,7 @@ const build = (): Tables => {
     }
   }
 
-  return { list: freeze(list), byCode, byCountry, byName, tableOf };
+  return { list: freeze(list), byCode, byCountry, byName, byFormerCode, tableOf };
 };
 
 const getTables = (): Tables => {
@@ -254,6 +257,48 @@ const subdivisionByName = (text: string, options: SubdivisionByNameOptions = {})
   return atTop.length === 1 ? atTop[0] : null;
 };
 
+/**
+ * The subdivisions a retired code now stands for, from CLDR's aliases for codes ISO 3166-2 has replaced: FR-A
+ * (Alsace) is now FR-GES, and NZ-N (the North Island) is ten regions. The list is in code order.
+ *
+ * @param code - The retired code, either case: "FR-A", "nz-n".
+ * @returns The successors, frozen: one where the place was renamed or merged into another, several where it was
+ * split; an empty list for a code that is not retired, a current code among them.
+ * @example
+ * ```ts
+ * import { subdivisionsByFormerCode } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * console.log(subdivisionsByFormerCode("FR-A").map((one) => one.code));    // ["FR-GES"]
+ * console.log(subdivisionsByFormerCode("LU-D").map((one) => one.code));    // ["LU-CL", "LU-DI", "LU-RD", "LU-VD", "LU-WI"]
+ * console.log(subdivisionsByFormerCode("FR-GES"));                         // []
+ * ```
+ */
+const subdivisionsByFormerCode = (code: string): readonly Subdivision[] => {
+  if (typeof code !== "string") return freeze([]);
+
+  return freeze([...(getTables().byFormerCode.get(code.trim().toUpperCase()) ?? [])]);
+};
+
+/**
+ * The one subdivision a retired code now stands for.
+ *
+ * @param code - The retired code, either case: "FR-A", "pl-ds".
+ * @returns The subdivision, frozen; `null` when the code is not retired, or when it was split and so has several
+ * successors (ask `subdivisionsByFormerCode`).
+ * @example
+ * ```ts
+ * import { subdivisionByFormerCode } from "@johnmorrisdotca/kuni/subdivisions";
+ *
+ * console.log(subdivisionByFormerCode("FR-A")?.name.en);   // "Grand-Est"
+ * console.log(subdivisionByFormerCode("LU-D"));            // null (five successors)
+ * ```
+ */
+const subdivisionByFormerCode = (code: string): Subdivision | null => {
+  const found = subdivisionsByFormerCode(code);
+
+  return found.length === 1 ? found[0] : null;
+};
+
 // The kind most of a country's first-level subdivisions are.
 const mainType = (table: SubdivisionTable, list: readonly Subdivision[]): SubdivisionType | null => {
   const counts = new Map<SubdivisionType, number>();
@@ -305,9 +350,11 @@ const subdivisionTypeLabel = (code: string, language: Language = "en"): string |
 export {
   allSubdivisions,
   subdivision,
+  subdivisionByFormerCode,
   subdivisionByName,
   subdivisionByShortCode,
   subdivisions,
+  subdivisionsByFormerCode,
   subdivisionsByName,
   SUBDIVISION_TYPES,
   subdivisionTypeLabel,

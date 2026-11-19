@@ -9,18 +9,18 @@ const LU: SubdivisionTable = {
   country: "LU",
   types: ["canton"],
   typesJa: ["郡"],
-  rows: `CA|Capellen|カペレン郡|0
-CL|Clervaux|クレルヴォー郡|0
-DI|Diekirch|ディーキルヒ郡|0
-EC|Echternach|エヒタナハ郡|0
-ES|Esch-sur-Alzette|エシュ＝シュル＝アルゼット郡|0
-GR|Grevenmacher|グレーヴェンマハ郡|0
-LU|Luxembourg|ルクセンブルク郡|0
-ME|Mersch|メルシュ郡|0
-RD|Redange|ルダンジュ郡|0
-RM|Remich|レーミッヒ郡|0
-VD|Vianden|ヴィアンデン郡|0
-WI|Wiltz|ヴィルツ郡|0`,
+  rows: `CA|Capellen|カペレン郡|0|||L
+CL|Clervaux|クレルヴォー郡|0|||D
+DI|Diekirch|ディーキルヒ郡|0|||D
+EC|Echternach|エヒタナハ郡|0|||G
+ES|Esch-sur-Alzette|エシュ＝シュル＝アルゼット郡|0|||L
+GR|Grevenmacher|グレーヴェンマハ郡|0|||G
+LU|Luxembourg|ルクセンブルク郡|0|||L
+ME|Mersch|メルシュ郡|0|||L
+RD|Redange|ルダンジュ郡|0|||D
+RM|Remich|レーミッヒ郡|0|||G
+VD|Vianden|ヴィアンデン郡|0|||D
+WI|Wiltz|ヴィルツ郡|0|||D`,
 };
 
 export { LU };

@@ -27,6 +27,8 @@ import {
   COUNTRY_ALIASES,
   EN_NAME_ACCEPTED,
   EN_NAME_OVERRIDES,
+  FORMER_NOT_KEPT,
+  FORMER_SUCCESSOR_FIXES,
   JA_BRACKET_COUNTRY_NAMES,
   JA_BRACKET_WORDS,
   JA_NAME_OVERRIDES,
@@ -632,6 +634,48 @@ for (const [code, { en }] of Object.entries(CODE_CHANGES.added)) {
   addCode(code, en);
 }
 for (const code of Object.keys(CODE_CHANGES.removed)) if (!reached.has(code.replace("-", "").toLowerCase())) throw new Error(`CODE_CHANGES removes ${code}, which CLDR does not have`);
+// The codes CLDR has retired for a subdivision that is still there under another code, or in several (France's
+// regions before 2016, Poland's voivodeships before ISO 3166-2:PL was renumbered, the cantons of Luxembourg).
+// CLDR writes them as aliases in lowercase with no hyphen: "no23" becomes "no50", "lud" becomes "lucl ludi lurd
+// luvd luwi". Only the "deprecated" ones are kept. An "overlong" alias is the other way about: CLDR retires the
+// long code (US-PR) for a country code (PR), and kuni keeps the long code as a subdivision, so it is not retired.
+// Every successor has to be a subdivision in the data, and no retired code may also be a current one.
+const FORMER_REASON = "deprecated";
+const formerOf = new Map<string, string[]>();
+const formerKept = { aliases: 0, pairs: 0 };
+{
+  const current = new Set(subdivisions.map((record) => record.code));
+  const usedNotKept = new Set<string>();
+  const usedFixes = new Set<string>();
+  for (const [id, alias] of Object.entries(subdivisionAliases)) {
+    if (alias._reason !== FORMER_REASON) continue;
+    const former = isoOf(id);
+    if (current.has(former)) throw new Error(`CLDR retires ${former}, which is a subdivision here`);
+    const successors = alias._replacement.split(" ").map((replacement) => {
+      const written = /^[A-Z]{2}$/.test(replacement) ? `${former.slice(0, 2)}-${replacement}` : isoOf(replacement);
+      const fixed = FORMER_SUCCESSOR_FIXES[former]?.[written];
+      if (fixed !== undefined) usedFixes.add(`${former} ${written}`);
+
+      return fixed ?? written;
+    });
+    if (successors.includes(former)) throw new Error(`CLDR retires ${former} for itself`);
+    if (former in FORMER_NOT_KEPT) {
+      usedNotKept.add(former);
+      if (successors.some((successor) => current.has(successor))) throw new Error(`FORMER_NOT_KEPT leaves out ${former}, whose successor is a subdivision here`);
+      continue;
+    }
+    const missing = successors.filter((successor) => !current.has(successor));
+    if (missing.length > 0) throw new Error(`CLDR retires ${former} for ${missing.join(", ")}, which is not a subdivision here: fix it or leave it out in FORMER_SUCCESSOR_FIXES or FORMER_NOT_KEPT (scripts/data-config.ts)`);
+    for (const successor of successors) formerOf.set(successor, [...(formerOf.get(successor) ?? []), former]);
+    formerKept.aliases += 1;
+    formerKept.pairs += successors.length;
+  }
+  const unusedNotKept = Object.keys(FORMER_NOT_KEPT).filter((code) => !usedNotKept.has(code));
+  if (unusedNotKept.length > 0) throw new Error(`FORMER_NOT_KEPT names no retired code: ${unusedNotKept.join(", ")}`);
+  const unusedFixes = Object.entries(FORMER_SUCCESSOR_FIXES).flatMap(([former, fixes]) => Object.keys(fixes).map((written) => `${former} ${written}`)).filter((key) => !usedFixes.has(key));
+  if (unusedFixes.length > 0) throw new Error(`FORMER_SUCCESSOR_FIXES names no successor: ${unusedFixes.join(", ")}`);
+  console.log(`Retired subdivision codes: ${formerKept.aliases} kept (${formerKept.pairs} successor pairs), ${Object.keys(FORMER_NOT_KEPT).length} left out.`);
+}
 const unusedEn = Object.keys(EN_NAME_OVERRIDES).filter((code) => !usedEnOverrides.has(code));
 if (unusedEn.length > 0) throw new Error(`EN_NAME_OVERRIDES names no subdivision: ${unusedEn.join(", ")}`);
 for (const id of regular) if (!reached.has(id)) notReached.push(isoOf(id));
@@ -1395,7 +1439,7 @@ const writeSubdivisions = (): void => {
     const types = [...new Set(records.map((record) => record.type).filter((type): type is string => type !== null))].sort(byText);
     const typesJa = types.map((type) => typeWordJa(records.filter((record) => record.type === type)));
     const rows = records.map((record) => {
-      const fields = [record.shortCode, record.en, record.ja ?? "", record.type === null ? "" : String(types.indexOf(record.type)), record.parent === null ? "" : record.parent.slice(3), record.reading ?? ""];
+      const fields = [record.shortCode, record.en, record.ja ?? "", record.type === null ? "" : String(types.indexOf(record.type)), record.parent === null ? "" : record.parent.slice(3), record.reading ?? "", (formerOf.get(record.code) ?? []).map((code) => code.slice(3)).sort(byText).join(" ")];
       for (const field of fields) if (/[|\n`\\]|\$\{/.test(field)) throw new Error(`${record.code}: "${field}" cannot be written in a row`);
       while (fields.length > 2 && fields[fields.length - 1] === "") fields.pop();
 

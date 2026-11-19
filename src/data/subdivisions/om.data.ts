@@ -9,14 +9,14 @@ const OM: SubdivisionTable = {
   country: "OM",
   types: ["governorate"],
   typesJa: [null],
-  rows: `BJ|Janub al Batinah|南バーティナ地方|0
-BS|Shamal al Batinah|北バーティナ地方|0
+  rows: `BJ|Janub al Batinah|南バーティナ地方|0|||BA
+BS|Shamal al Batinah|北バーティナ地方|0|||BA
 BU|Al Buraimi|ブライミ特別行政区|0
 DA|Ad Dakhiliyah|ダーヒリーヤ行政区|0
 MA|Muscat|マスカット特別行政区|0
 MU|Musandam|ムサンダム特別行政区|0
-SJ|Janub ash Sharqiyah|南シャルキーヤ地方|0
-SS|Shamal ash Sharqiyah|北シャルキーヤ地方|0
+SJ|Janub ash Sharqiyah|南シャルキーヤ地方|0|||SH
+SS|Shamal ash Sharqiyah|北シャルキーヤ地方|0|||SH
 WU|Al Wusta|ウスタ行政区|0
 ZA|Ad Dhahirah|ザーヒラ行政区|0
 ZU|Dhofar|ドファール特別行政区|0`,

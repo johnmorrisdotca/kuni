@@ -9,22 +9,22 @@ const PL: SubdivisionTable = {
   country: "PL",
   types: ["voivodeship"],
   typesJa: ["県"],
-  rows: `02|Lower Silesia|ドルヌィ・シロンスク県|0
-04|Kuyavia-Pomerania|クヤヴィ＝ポモージェ県|0
-06|Lublin|ルブリン県|0
-08|Lubusz|ルブシュ県|0
-10|Łódź|ウッチ県|0
-12|Lesser Poland|マウォポルスカ県|0
-14|Mazovia|マゾフシェ県|0
-16|Opole|オポーレ県|0
-18|Subcarpathia|ポトカルパチェ県|0
-20|Podlachia|ポドラシェ県|0
-22|Pomerania|ポモージェ県|0
-24|Silesia|シロンスク県|0
-26|Holy Cross|シフィェンティクシシュ県|0
-28|Warmia-Masuria|ヴァルミア＝マズールィ県|0
-30|Greater Poland|ヴィエルコポルスカ県|0
-32|West Pomerania|西ポモージェ県|0`,
+  rows: `02|Lower Silesia|ドルヌィ・シロンスク県|0|||DS
+04|Kuyavia-Pomerania|クヤヴィ＝ポモージェ県|0|||KP
+06|Lublin|ルブリン県|0|||LU
+08|Lubusz|ルブシュ県|0|||LB
+10|Łódź|ウッチ県|0|||LD
+12|Lesser Poland|マウォポルスカ県|0|||MA
+14|Mazovia|マゾフシェ県|0|||MZ
+16|Opole|オポーレ県|0|||OP
+18|Subcarpathia|ポトカルパチェ県|0|||PK
+20|Podlachia|ポドラシェ県|0|||PD
+22|Pomerania|ポモージェ県|0|||PM
+24|Silesia|シロンスク県|0|||SL
+26|Holy Cross|シフィェンティクシシュ県|0|||SK
+28|Warmia-Masuria|ヴァルミア＝マズールィ県|0|||WN
+30|Greater Poland|ヴィエルコポルスカ県|0|||WP
+32|West Pomerania|西ポモージェ県|0|||ZP`,
 };
 
 export { PL };

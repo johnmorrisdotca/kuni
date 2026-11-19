@@ -33,9 +33,9 @@ type CountryRow = readonly [
   "user"?,
 ];
 
-// One country's subdivisions as text, a line each: shortCode|en|ja|type|parent|reading, where type is an
-// index into the table's types, parent is the shortCode of the subdivision it is inside, and an absent value
-// is empty (trailing ones are left off). Text rather than arrays because it is a third smaller, and Japan's
+// One country's subdivisions as text, a line each: shortCode|en|ja|type|parent|reading|former, where type is an
+// index into the table's types, parent is the shortCode of the subdivision it is inside, former is the
+// shortCodes CLDR has retired for it with spaces between, and an absent value is empty (trailing ones are left off). Text rather than arrays because it is a third smaller, and Japan's
 // 47 prefectures then fit in under 3 KB with the code that reads them.
 interface SubdivisionTable {
   country: string;
@@ -99,7 +99,7 @@ const expandSubdivisions = (table: SubdivisionTable): readonly Subdivision[] => 
 
     return (parents.get(parent) ?? "") === "" ? 2 : 3;
   };
-  const list = rows.map(([shortCode, en, ja = "", type = "", parent = "", reading = ""]) => {
+  const list = rows.map(([shortCode, en, ja = "", type = "", parent = "", reading = "", former = ""]) => {
     const subdivision: Subdivision = {
       code: `${table.country}-${shortCode}`,
       country: table.country,
@@ -110,6 +110,7 @@ const expandSubdivisions = (table: SubdivisionTable): readonly Subdivision[] => 
     };
     if (parent !== "") subdivision.parent = `${table.country}-${parent}`;
     if (reading !== "") subdivision.reading = reading;
+    if (former !== "") subdivision.formerCodes = Object.freeze(former.split(" ").map((short) => `${table.country}-${short}`));
 
     return Object.freeze(subdivision);
   });

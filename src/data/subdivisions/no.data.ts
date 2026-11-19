@@ -23,7 +23,7 @@ const NO: SubdivisionTable = {
 40|Telemark|テレマルク県|1
 42|Agder|アグデル|1
 46|Vestland|ヴェストラン県|1
-50|Trøndelag|トロンデラーグ|1
+50|Trøndelag|トロンデラーグ|1|||23
 55|Troms|トロムス県|1
 56|Finnmark|フィンマルク県|1`,
 };
