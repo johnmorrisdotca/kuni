@@ -437,6 +437,41 @@ describe("a figure that is not the city's own", () => {
     ).toThrow(/IBGE_CHANGE.*Q1 Wide/);
   });
 
+  it("refuses an identical census figure of 100,000 or more that two cities far apart have, and each takes its next figure", () => {
+    const census = (value: number, day: string, host = "stats.example"): PopulationStatement => [value, day, 2, "census", [host]];
+    const older = (value: number): PopulationStatement => [value, "2020-01-01", 1, "census", ["stats.example"]];
+    const { rows, report } = figures(
+      [
+        item(1, "Alpha", null, [1, 1], "FR", [[150000, "2024-01-01"]]),
+        item(2, "Beta", null, [10, 10], "FR", [[150000, "2024-01-01"]]),
+        // A single city with a figure is untouched, and so are two with the same figure in one place (a city and its municipality), two below the threshold, and two of different countries.
+        item(3, "Single", null, [20, 20], "FR", [[170000, "2024-01-01"]]),
+        item(4, "Near", null, [30, 30], "FR", [[180000, "2024-01-01"]]),
+        item(5, "Nearby", null, [30.01, 30.01], "FR", [[180000, "2024-01-01"]]),
+        item(6, "Small", null, [40, 40], "FR", [[99999, "2024-01-01"]]),
+        item(7, "Smaller", null, [50, 50], "FR", [[99999, "2024-01-01"]]),
+        item(8, "Jp", null, [35, 135], "JP", [[190000, "2024-01-01"]]),
+        item(9, "Fr", null, [45, 5], "FR", [[190000, "2024-01-01"]]),
+      ],
+      statements([
+        [1, [older(120000), census(150000, "2024-01-01")]],
+        [2, [older(40000), census(150000, "2024-01-01")]],
+        [3, [census(170000, "2024-01-01")]],
+        [4, [census(180000, "2024-01-01")]],
+        [5, [census(180000, "2024-01-01")]],
+        [6, [census(99999, "2024-01-01")]],
+        [7, [census(99999, "2024-01-01")]],
+        [8, [census(190000, "2024-01-01")]],
+        [9, [census(190000, "2024-01-01")]],
+      ]),
+    );
+    const found = byName(rows);
+    expect([found.Alpha![3], found.Alpha![4]]).toEqual([120000, 2020]);
+    expect([found.Beta![3], found.Beta![4]]).toEqual([40000, 2020]);
+    for (const [name, people] of [["Single", 170000], ["Near", 180000], ["Nearby", 180000], ["Small", 99999], ["Smaller", 99999], ["Jp", 190000], ["Fr", 190000]] as const) expect(found[name]![3], name).toBe(people);
+    expect(report.sameCensus).toEqual([{ country: "FR", value: 150000, day: "2024-01-01", ids: ["Q1", "Q2"] }]);
+  });
+
   it("uses a census figure set by hand, says kuni gave it, and stops when Wikidata's figure is no longer the one it replaces", () => {
     const hand = { Q1: { wikidata: 3903480, population: 443981, date: "2021-06-27", source: "the census", why: "a site's estimate" } };
     const { rows } = figures([item(1, "Kumasi", null, [1, 1], "FR", [[3903480, "2024-01-01"]])], statements([]), hand);

@@ -8,7 +8,7 @@ All notable changes to this project are written here. The format follows
 
 ### Fixed
 
-- Brazil's cities take IBGE's 2022 census where Wikidata prefers IBGE's older estimate (MODULES-1671). Before, Guarulhos was the estimate of 1,324,781 for 2015 and Campinas 1,213,792 for 2020; they are the census's 1,291,771 and 1,139,047 for 2022. Only a census statement whose references are all IBGE's, newer than the estimate and alone on its day is taken, and the build stops if it is not within 80% to 125% of the estimate. Other countries are unchanged.
+- Brazil's cities take IBGE's 2022 census where Wikidata prefers IBGE's older estimate (MODULES-1671). Before, Guarulhos was the estimate of 1,324,781 for 2015 and Campinas 1,213,792 for 2020; they are the census's 1,291,771 and 1,139,047 for 2022. Only a census statement whose references are all IBGE's, newer than the estimate and alone on its day is taken, and the build stops if it is not within 80% to 125% of the estimate. Cubatão's and Itanhaém's identical census figure of 112,476 is left out for both, as one is a copy error, so they keep their estimates. A census figure of 100,000 or more that two cities 25 km or more apart of one country share is refused for both, and each takes its next figure (the build log names them): Buldon and Cotabato City's 383,383 is now their census of 2020, 39,684 and 325,079. Other countries are unchanged.
 
 ## [1.13.0] - 2026-11-19
 

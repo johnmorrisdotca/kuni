@@ -715,6 +715,12 @@ describe("each city's own figure, in its own country", () => {
     expect(await figure("Q184409")).toEqual([1291771, "2022"]); // Guarulhos, not the estimate of 1,324,781 (2015)
     expect(await figure("Q171617")).toEqual([1139047, "2022"]); // Campinas, not 1,213,792 (2020)
     expect(await figure("Q178725")).toEqual([481749, "2022"]); // Niterói, not 496,696 (2015)
+    // Cubatão and Itanhaém have the identical census figure, 112,476: one is a copy error, so both keep their estimates (WRONG_POPULATIONS).
+    expect(await figure("Q817954")).toEqual([131626, "2020-07-01"]);
+    expect(await figure("Q983491")).toEqual([96222, "2015-07-01"]);
+    // Buldon and Cotabato City (Philippines) have the identical 383,383 of 2024: the guard refuses it for both, and each takes the census of 2020.
+    expect(await figure("Q212255")).toEqual([39684, "2020-05-01"]);
+    expect(await figure("Q726993")).toEqual([325079, "2020-05-01"]);
     // A newer census of another country's statistics office is not taken over a preferred estimate (UBOS's of Kampala, 1,797,722 of 2024; Zambia's of Lusaka).
     expect(await figure("Q3894")).toEqual([1680600, "2019"]);
     expect(await figure("Q3881")).toEqual([2467563, "2017"]);
