@@ -60,14 +60,22 @@ export const quantity = (snak: Snak | undefined): { amount: number; unit: string
   return { amount, unit: id.startsWith("Q") ? id : null };
 };
 
-/** "+2014-01-01T00:00:00Z" to "2014-01-01". A year or a month (month or day 00) is the first of that period, which is how the query service writes it. */
+/**
+ * The historical year the query service writes. The JSON dump's year for a date before the common era is one less
+ * than that year, because the dump's numbering has a year 0 (year 0 is 1 BCE, so 3031 BCE is stored as -3032).
+ */
+const historicalYear = (year: number): number => (year < 0 ? year + 1 : year === 0 ? -1 : year);
+
+/** "+2014-01-01T00:00:00Z" to "2014-01-01". A year or a month (month or day 00) is the first of that period, which is how the query service writes it. A dump year before the common era is moved to that historical year. */
 export const timeDay = (snak: Snak | undefined): string | null => {
   if (typeof snak?.datavalue?.value !== "object" || snak.datavalue.value === null) return null;
   const time = (snak.datavalue.value as { time?: unknown }).time;
   if (typeof time !== "string") return null;
   const match = /^([+-]?\d+)-(\d\d)-(\d\d)/.exec(time.replace(/^\+/, ""));
   if (match === null) return null;
-  return `${match[1]}-${match[2] === "00" ? "01" : match[2]}-${match[3] === "00" ? "01" : match[3]}`;
+  const year = historicalYear(Number(match[1]));
+  if (!Number.isFinite(year)) return null;
+  return `${year}-${match[2] === "00" ? "01" : match[2]}-${match[3] === "00" ? "01" : match[3]}`;
 };
 
 /** Latitude then longitude, and only a point on Earth. The dump already writes them in that order. */

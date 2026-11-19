@@ -15,6 +15,7 @@ import { factsFrom } from "./dump-facts.ts";
 import type { FactAnswers, FactRows } from "./dump-facts.ts";
 import { codesFrom, elevationsFrom, populationsFrom } from "./dump-figures.ts";
 import type { DumpEntity } from "./dump-claims.ts";
+import { splitRows } from "./dump-row-diff.ts";
 import { MEMBERSHIPS } from "./groupings-config.ts";
 import { SOURCES_DIR } from "./sources.ts";
 
@@ -58,45 +59,47 @@ const elevationNumbers = (): number[] => {
   return [...numbers];
 };
 
-const round = (value: unknown): unknown => (typeof value === "number" ? Math.round(value * 1e8) / 1e8 : Array.isArray(value) ? value.map(round) : value);
-
-const compareRows = (name: string, pinned: FactRows, next: FactRows): string[] => {
+const compareRows = (name: string, pinned: FactRows, next: FactRows, present: ReadonlySet<string>): string[] => {
   const lines = [`## ${name}`];
   let same = 0;
   let precision = 0;
   let changed = 0;
-  let onlyPinned = 0;
+  let gaps = 0;
   let onlyDump = 0;
   const samples: string[] = [];
   for (const code of [...new Set([...Object.keys(pinned), ...Object.keys(next)])].sort()) {
-    const left = pinned[code];
-    const right = next[code];
-    if (left === undefined) {
-      onlyDump += 1;
-      if (samples.length < 8) samples.push(`- ${code}: only in the dump (${right?.length ?? 0} rows)`);
-      continue;
-    }
-    if (right === undefined) {
-      onlyPinned += 1;
-      if (samples.length < 8) samples.push(`- ${code}: only in the pinned snapshot (${left.length} rows)`);
-      continue;
-    }
-    const rawLeft = JSON.stringify(left);
-    const rawRight = JSON.stringify(right);
-    if (rawLeft === rawRight) {
-      same += 1;
-      continue;
-    }
-    if (JSON.stringify(round(left)) === JSON.stringify(round(right))) {
-      precision += 1;
-      continue;
-    }
-    changed += 1;
-    if (samples.length < 8) samples.push(`- ${code}: pinned ${rawLeft.slice(0, 220)} | dump ${rawRight.slice(0, 220)}`);
+    const split = splitRows(code, pinned[code], next[code], present);
+    same += split.same;
+    precision += split.precision;
+    changed += split.changed;
+    gaps += split.gaps;
+    onlyDump += split.onlyDump;
+    for (const sample of split.samples) if (samples.length < 8) samples.push(sample);
   }
-  lines.push(`${same} codes match, ${precision} differ only past 8 decimal places, ${changed} changed, ${onlyPinned} only in the pinned file, ${onlyDump} only in the dump.`);
+  lines.push(`${same} codes match, ${precision} differ only past 8 decimal places, ${changed} changed, ${gaps} gaps (the item is not in the subset; a gap is not a change), ${onlyDump} only in the dump.`);
   lines.push(...samples);
   return lines;
+};
+
+const compareNumbered = (name: string, pinned: unknown, next: unknown[], present: ReadonlySet<string>): string[] => {
+  const rows = Array.isArray(pinned) ? pinned : [];
+  let same = 0;
+  let changed = 0;
+  let gaps = 0;
+  const byId = new Map<number, unknown>();
+  for (const row of next) if (Array.isArray(row) && typeof row[0] === "number") byId.set(row[0], row);
+  const seen = new Set<number>();
+  for (const row of rows) {
+    if (!Array.isArray(row) || typeof row[0] !== "number") continue;
+    seen.add(row[0]);
+    const split = splitRows(String(row[0]), [row], byId.has(row[0]) ? [byId.get(row[0])] : [], present);
+    same += split.same;
+    changed += split.changed;
+    gaps += split.gaps;
+  }
+  let onlyDump = 0;
+  for (const id of byId.keys()) if (!seen.has(id)) onlyDump += 1;
+  return [`## ${name}`, `${same} match, ${changed} changed, ${gaps} gaps (the item is not in the subset; a gap is not a change), ${onlyDump} only in the dump.`];
 };
 
 const main = async (): Promise<void> => {
@@ -123,16 +126,17 @@ const main = async (): Promise<void> => {
   writeFileSync(join(CACHE_DIR, `dump-elevations-${day}.json`), JSON.stringify({ ...header, elevations: elevations.elevations, unknownUnits: elevations.unknownUnits }));
   writeFileSync(join(CACHE_DIR, `dump-codes-${day}.json`), JSON.stringify({ ...header, ...codes }));
 
+  const present = new Set(entities.keys());
   const pinnedFacts = readJson(join(SOURCES_DIR, "wikidata-facts-2026-10-09.json")).answers!;
-  const lines = ["# Qualifier snapshots rebuilt from the JSON dump", "", `Subset ${subsetFile}, dump ${DUMP}, read ${day}. The pinned files in data-sources/ are unchanged.`, ""];
-  for (const name of Object.keys(facts) as Array<keyof FactAnswers>) lines.push(...compareRows(name, pinnedFacts[name], facts[name]), "");
+  const lines = ["# Qualifier snapshots rebuilt from the JSON dump", "", `Subset ${subsetFile}, dump ${DUMP}, read ${day}. The pinned files in data-sources/ are unchanged. A gap is an item that is not in the subset; it is not counted as a change.`, ""];
+  for (const name of Object.keys(facts) as Array<keyof FactAnswers>) lines.push(...compareRows(name, pinnedFacts[name], facts[name], present), "");
   const pinnedPop = readJson(join(SOURCES_DIR, "wikidata-city-populations-2026-11-17.json"));
   const pinnedElev = readJson(join(SOURCES_DIR, "wikidata-city-elevations-2026-11-13.json"));
   const pinnedCodes = readJson(join(SOURCES_DIR, "wikidata-codes-2026-10-10.json"));
-  lines.push(`## city populations`, `Pinned statements ${Array.isArray(pinnedPop.statements) ? pinnedPop.statements.length : 0}, dump ${populations.statements.length}.`, "");
-  lines.push(`## city elevations`, `Pinned rows ${Array.isArray(pinnedElev.elevations) ? pinnedElev.elevations.length : 0}, dump ${elevations.elevations.length}, unknown units ${elevations.unknownUnits}.`, "");
+  lines.push(...compareNumbered("city populations", pinnedPop.statements, populations.statements, present), "");
+  lines.push(...compareNumbered("city elevations", pinnedElev.elevations, elevations.elevations, present), `Unknown elevation units ${elevations.unknownUnits}.`, "");
   lines.push(`## codes`, `Pinned IOC ${Object.keys(pinnedCodes.ioc ?? {}).length}, dump ${Object.keys(codes.ioc).length}. Pinned withdrawn ${Object.keys(pinnedCodes.withdrawn ?? {}).length}, dump ${Object.keys(codes.withdrawn).length}.`, "");
-  const diffPath = join(CACHE_DIR, `dump-rebuild-diff-${day}.md`);
+  const diffPath = join(CACHE_DIR, `dump-rebuild-diff-${day}-full.md`);
   writeFileSync(diffPath, `${lines.join("\n")}\n`);
   console.log(`wrote candidates and ${diffPath}`);
   console.log(lines.filter((line) => line.endsWith(".")).join("\n"));

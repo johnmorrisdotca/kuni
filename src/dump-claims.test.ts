@@ -16,7 +16,12 @@ describe("dump claims", () => {
 
   it("reads a day, a quantity and an item id the way the facts snapshot writes them", () => {
     expect(timeDay({ datavalue: { type: "time", value: { time: "+2014-00-00T00:00:00Z" } } })).toBe("2014-01-01");
-    expect(timeDay({ datavalue: { type: "time", value: { time: "-0044-03-15T00:00:00Z" } } })).toBe("-0044-03-15");
+    expect(timeDay({ datavalue: { type: "time", value: { time: "+1991-12-26T00:00:00Z" } } })).toBe("1991-12-26");
+    // The dump's year before the common era is one less than the historical year (year 0 is 1 BCE).
+    expect(timeDay({ datavalue: { type: "time", value: { time: "-0044-03-15T00:00:00Z" } } })).toBe("-43-03-15");
+    expect(timeDay({ datavalue: { type: "time", value: { time: "-3032-00-00T00:00:00Z" } } })).toBe("-3031-01-01");
+    expect(timeDay({ datavalue: { type: "time", value: { time: "-2707-00-00T00:00:00Z" } } })).toBe("-2706-01-01");
+    expect(timeDay({ datavalue: { type: "time", value: { time: "+0000-01-01T00:00:00Z" } } })).toBe("-1-01-01");
     expect(quantity({ datavalue: { type: "quantity", value: { amount: "+30688", unit: "http://www.wikidata.org/entity/Q712226" } } })).toEqual({ amount: 30688, unit: "Q712226" });
     expect(quantity({ datavalue: { type: "quantity", value: { amount: "+11", unit: "1" } } })).toEqual({ amount: 11, unit: null });
     expect(entityId({ datavalue: { type: "wikibase-entityid", value: { id: "Q239" } } })).toBe("Q239");

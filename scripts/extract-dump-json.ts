@@ -14,11 +14,12 @@
 // names it is not reached again.
 
 import { spawn } from "node:child_process";
-import { appendFileSync, closeSync, createReadStream, createWriteStream, existsSync, ftruncateSync, openSync, readFileSync, readdirSync, readSync, statSync, writeFileSync } from "node:fs";
+import { appendFileSync, closeSync, createReadStream, createWriteStream, existsSync, ftruncateSync, openSync, readFileSync, readSync, statSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
 import { entityId } from "./dump-claims.ts";
+import { wantedIds } from "./dump-wanted-ids.ts";
 import { SOURCES_DIR, USER_AGENT } from "./sources.ts";
 
 const CACHE_DIR = process.env.KUNI_DATA_CACHE ?? join(homedir(), ".cache", "kuni-data");
@@ -54,14 +55,6 @@ interface Entity {
   aliases?: unknown;
   claims?: unknown;
 }
-
-const heldIds = (): Set<number> => {
-  const ids = new Set<number>();
-  for (const file of readdirSync(SOURCES_DIR).filter((name) => /^(wikidata-.*|city-ids|city-id-aliases)\.json$/.test(name))) {
-    for (const match of readFileSync(join(SOURCES_DIR, file), "utf8").matchAll(/\bQ(\d{1,9})\b/g)) ids.add(Number(match[1]));
-  }
-  return ids;
-};
 
 const logRequest = (text: string): void => appendFileSync(requestLog, `${new Date().toISOString()} ${text}\n`);
 
@@ -171,12 +164,15 @@ const slimLine = (text: string): string | null => {
 };
 
 const main = async (): Promise<void> => {
-  const ids = heldIds();
-  console.log(`${ids.size} items held in data-sources`);
+  const wanted = wantedIds(SOURCES_DIR);
+  const ids = wanted.ids;
+  console.log(`${ids.size} items wanted; city ids asked ${wanted.cityIds}, missing from the wanted set ${wanted.cityIdsMissing}; populations file counts ${wanted.populationsAsked ?? "none"}`);
+  if (wanted.cityIdsMissing > 0) throw new Error(`${wanted.cityIdsMissing} city ids are not in the wanted set`);
   let progress = readProgress();
   if (progress.complete) {
-    console.log(`already complete: ${subsetFile}`);
-    return;
+    progress = { ...progress, bytesFed: 0, linesRead: 0, starsKept: 0, complete: false };
+    writeProgress(progress);
+    console.log("previous pass completed; reading again from byte 0 and skipping ids already kept");
   }
   truncatePartialLine();
   const keptIds = await idsAlreadyKept();
