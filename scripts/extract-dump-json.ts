@@ -94,7 +94,8 @@ const idsAlreadyKept = async (): Promise<Set<number>> => {
       left = data;
       continue;
     }
-    for (const match of data.slice(0, end).matchAll(/"id":"Q(\d+)"/g)) ids.add(Number(match[1]));
+    // Only the entity's own id, which starts the slim line. Claim values also carry "id":"Q…", and counting those would skip the entity when it arrives.
+    for (const match of data.slice(0, end).matchAll(/(?:^|\n)\{"id":"Q(\d+)"/g)) ids.add(Number(match[1]));
     left = data.slice(end + 1);
   }
   return ids;
