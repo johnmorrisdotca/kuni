@@ -67,12 +67,12 @@ A reviewer found these CLDR names wrong, out of date or naming another place. `J
 | TW-CYI | Chiayi City | 嘉義県 | 嘉義市 | 嘉義市 | ISO's TW-CYI is Chiayi City; CLDR has the city's and the county's names the wrong way round. |
 | TW-CYQ | Chiayi County | 嘉義市 | 嘉義県 | 嘉義県 | ISO's TW-CYQ is Chiayi County; CLDR has the city's and the county's names the wrong way round. |
 | UA-30 | Kyiv | キエフ | キーウ | キーウ | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
-| UA-32 | Kyivshchyna | キエフ州 | キーウ州 | キーウ州 | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
-| UA-51 | Odeshchyna | オデッサ州 | オデーサ州 | オデーサ州 | Japan's government adopted the Ukrainian form Odesa (オデーサ) in 2022. |
+| UA-32 | Kyiv Oblast | キエフ州 | キーウ州 | キーウ州 | Japan's government adopted the Ukrainian form Kyiv (キーウ) in 2022. |
+| UA-51 | Odesa Oblast | オデッサ州 | オデーサ州 | オデーサ州 | Japan's government adopted the Ukrainian form Odesa (オデーサ) in 2022. |
 | VC-02 | Saint Andrew | セント・アンドリューズ | セント・アンドリューズ | セント・アンドリュー教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR has セント・アンドリューズ. |
 | VC-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド郡 | セント・デイヴィッド教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR calls it a 郡 (county). |
 
-## English names corrected, 32
+## English names corrected, 59
 
 Every English name is checked against Wikidata's English label for the patterns in `scripts/en-names.ts` (cut short,
 an adjective, marks stripped, swapped, a former place's name). These are corrected by `EN_NAME_OVERRIDES`; the build
@@ -112,6 +112,33 @@ stops on a name a check points at that is neither corrected nor accepted below.
 | MA-10 | Doukkala-Abda | Guelmim-Oued Noun | ISO gave MA-10 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
 | MA-11 | Marrakesh-Tensift-El Haouz | Laâyoune-Sakia El Hamra | ISO gave MA-11 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
 | MA-12 | Tadla-Azilal | Dakhla-Oued Ed-Dahab | ISO gave MA-12 to a new region in 2019; CLDR still names the region of 1997 that had the code. |
+| UA-05 | Vinnychchyna | Vinnytsia Oblast | Wikidata English label of Q166709, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-07 | Volyn | Volyn Oblast | Wikidata English label of Q167859, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-09 | Luhanshchyna | Luhansk Oblast | Wikidata English label of Q171965, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-12 | Dnipropetrovshchyna | Dnipropetrovsk Oblast | Wikidata English label of Q170672, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-14 | Donechchyna | Donetsk Oblast | Wikidata English label of Q2012050, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-18 | Zhytomyrshchyna | Zhytomyr Oblast | Wikidata English label of Q40637, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-21 | Zakarpattia | Zakarpattia Oblast | Wikidata English label of Q170213, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-23 | Zaporizhzhya | Zaporizhzhia Oblast | Wikidata English label of Q171334, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-26 | Prykarpattia | Ivano-Frankivsk Oblast | Wikidata English label of Q178269, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-32 | Kyivshchyna | Kyiv Oblast | Wikidata English label of Q170036, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-35 | Kirovohradschyna | Kirovohrad Oblast | Wikidata English label of Q180981, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-43 | Crimea | Autonomous Republic of Crimea | Wikidata English label of Q756294, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-46 | Lvivshchyna | Lviv Oblast | Wikidata English label of Q164193, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-48 | Mykolayivschyna | Mykolaiv Oblast | Wikidata English label of Q181633, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-51 | Odeshchyna | Odesa Oblast | Wikidata English label of Q171852, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-53 | Poltavshchyna | Poltava Oblast | Wikidata English label of Q169501, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-56 | Rivnenshchyna | Rivne Oblast | Wikidata English label of Q174187, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-59 | Sumshchyna | Sumy Oblast | Wikidata English label of Q170446, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-61 | Ternopilshchyna | Ternopil Oblast | Wikidata English label of Q173407, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-63 | Kharkivshchyna | Kharkiv Oblast | Wikidata English label of Q170666, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-65 | Khersonshchyna | Kherson Oblast | Wikidata English label of Q163271, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-68 | Khmelnychchyna | Khmelnytskyi Oblast | Wikidata English label of Q171331, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-71 | Cherkashchyna | Cherkasy Oblast | Wikidata English label of Q161808, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| UA-74 | Chernihivshchyna | Chernihiv Oblast | Wikidata English label of Q167874, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| IN-CG | Chhattīsgarh | Chhattisgarh | Government of Chhattisgarh's own site, https://cgstate.gov.in/, reads "Official Website Government of Chhattisgarh"; CLDR's macron form stays a search alias. |
+| IN-DH | Dādra and Nagar Haveli and Damān and Diu | Dadra and Nagar Haveli and Daman and Diu | The Administration's site, https://dnh.gov.in/, footer reads "U.T. Administration of Dadra and Nagar Haveli and Daman and Diu. Government of India"; CLDR's macron form stays a search alias. |
+| IN-TS | Telangāna | Telangana | Government of Telangana's site, https://www.telangana.gov.in/, reads "Telangana State Portal" and "Copyright © 2015-2024 Government of Telangana."; CLDR's macron form stays a search alias. |
 
 ## English names kept although a check points at them, 10
 

@@ -111,6 +111,8 @@ interface SubdivisionRecord {
   wikidataJa: string | null;
   type: string | null;
   reading: string | null;
+  // CLDR's own English names, kept as search aliases where the English name is overridden with keepCldr.
+  aliases: string[];
 }
 
 if (process.argv.includes("--docs-only")) { refreshDataDocs(); process.exit(0); }
@@ -592,6 +594,7 @@ const walk = (country: string, ids: string[], parent: string | null, level: numb
       wikidataJa,
       type,
       reading: country === "JP" ? readingFor(code, ja, items) : null,
+      aliases: enOverride?.keepCldr === true && cldrEn !== undefined && cldrEn !== en ? [cldrEn] : [],
     });
     if (level >= 3 && children.length > 0) throw new Error(`${code} has subdivisions below level 3`);
     walk(country, children, id, level + 1);
@@ -623,6 +626,7 @@ const addCode = (code: string, en: string): void => {
     wikidataJa,
     type,
     reading: null,
+    aliases: [],
   });
 };
 
@@ -1466,7 +1470,7 @@ const writeSubdivisions = (): void => {
     const types = [...new Set(records.map((record) => record.type).filter((type): type is string => type !== null))].sort(byText);
     const typesJa = types.map((type) => typeWordJa(records.filter((record) => record.type === type)));
     const rows = records.map((record) => {
-      const fields = [record.shortCode, record.en, record.ja ?? "", record.type === null ? "" : String(types.indexOf(record.type)), record.parent === null ? "" : record.parent.slice(3), record.reading ?? "", (formerOf.get(record.code) ?? []).map((code) => code.slice(3)).sort(byText).join(" "), (formerNamesOf.get(record.code) ?? []).join(";")];
+      const fields = [record.shortCode, record.en, record.ja ?? "", record.type === null ? "" : String(types.indexOf(record.type)), record.parent === null ? "" : record.parent.slice(3), record.reading ?? "", (formerOf.get(record.code) ?? []).map((code) => code.slice(3)).sort(byText).join(" "), (formerNamesOf.get(record.code) ?? []).join(";"), record.aliases.join(";")];
       for (const field of fields) if (/[|\n`\\]|\$\{/.test(field)) throw new Error(`${record.code}: "${field}" cannot be written in a row`);
       while (fields.length > 2 && fields[fields.length - 1] === "") fields.pop();
 

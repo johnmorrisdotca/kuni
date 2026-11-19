@@ -204,6 +204,8 @@ interface Subdivision {
    * "NO-32" and "NO-33". Present only where there are some, and searched by `subdivisionsByName`.
    */
   formerNames?: readonly string[];
+  /** Other English names it is found by in `subdivisionsByName`, not shown as its name: CLDR's colloquial form ("Kyivshchyna" for Kyiv Oblast). Absent for most. */
+  aliases?: readonly string[];
 }
 
 /** The side of the road a country drives on.

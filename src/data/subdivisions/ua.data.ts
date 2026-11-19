@@ -9,32 +9,32 @@ const UA: SubdivisionTable = {
   country: "UA",
   types: ["city","oblast","republic"],
   typesJa: [null,"州","自治共和国"],
-  rows: `05|Vinnychchyna|ヴィーンヌィツャ州|1
-07|Volyn|ヴォルィーニ州|1
-09|Luhanshchyna|ルハーンシク州|1
-12|Dnipropetrovshchyna|ドニプロペトロウシク州|1
-14|Donechchyna|ドネツィク州|1
-18|Zhytomyrshchyna|ジトームィル州|1
-21|Zakarpattia|ザカルパッチャ州|1
-23|Zaporizhzhya|ザポリージャ州|1
-26|Prykarpattia|イヴァーノ＝フランキーウシク州|1
+  rows: `05|Vinnytsia Oblast|ヴィーンヌィツャ州|1|||Vinnychchyna
+07|Volyn Oblast|ヴォルィーニ州|1|||Volyn
+09|Luhansk Oblast|ルハーンシク州|1|||Luhanshchyna
+12|Dnipropetrovsk Oblast|ドニプロペトロウシク州|1|||Dnipropetrovshchyna
+14|Donetsk Oblast|ドネツィク州|1|||Donechchyna
+18|Zhytomyr Oblast|ジトームィル州|1|||Zhytomyrshchyna
+21|Zakarpattia Oblast|ザカルパッチャ州|1|||Zakarpattia
+23|Zaporizhzhia Oblast|ザポリージャ州|1|||Zaporizhzhya
+26|Ivano-Frankivsk Oblast|イヴァーノ＝フランキーウシク州|1|||Prykarpattia
 30|Kyiv|キーウ|0
-32|Kyivshchyna|キーウ州|1
-35|Kirovohradschyna|キロヴォフラード州|1
+32|Kyiv Oblast|キーウ州|1|||Kyivshchyna
+35|Kirovohrad Oblast|キロヴォフラード州|1|||Kirovohradschyna
 40|Sevastopol|セヴァストポリ|0
-43|Crimea|クリミア自治共和国|2
-46|Lvivshchyna|リヴィウ州|1
-48|Mykolayivschyna|ムィコラーイウ州|1
-51|Odeshchyna|オデーサ州|1
-53|Poltavshchyna|ポルタヴァ州|1
-56|Rivnenshchyna|リウネ州|1
-59|Sumshchyna|スームィ州|1
-61|Ternopilshchyna|テルノーピリ州|1
-63|Kharkivshchyna|ハルキウ州|1
-65|Khersonshchyna|ヘルソン州|1
-68|Khmelnychchyna|フメリヌィーツィクィイ州|1
-71|Cherkashchyna|チェルカースィ州|1
-74|Chernihivshchyna|チェルニーヒウ州|1
+43|Autonomous Republic of Crimea|クリミア自治共和国|2|||Crimea
+46|Lviv Oblast|リヴィウ州|1|||Lvivshchyna
+48|Mykolaiv Oblast|ムィコラーイウ州|1|||Mykolayivschyna
+51|Odesa Oblast|オデーサ州|1|||Odeshchyna
+53|Poltava Oblast|ポルタヴァ州|1|||Poltavshchyna
+56|Rivne Oblast|リウネ州|1|||Rivnenshchyna
+59|Sumy Oblast|スームィ州|1|||Sumshchyna
+61|Ternopil Oblast|テルノーピリ州|1|||Ternopilshchyna
+63|Kharkiv Oblast|ハルキウ州|1|||Kharkivshchyna
+65|Kherson Oblast|ヘルソン州|1|||Khersonshchyna
+68|Khmelnytskyi Oblast|フメリヌィーツィクィイ州|1|||Khmelnychchyna
+71|Cherkasy Oblast|チェルカースィ州|1|||Cherkashchyna
+74|Chernihiv Oblast|チェルニーヒウ州|1|||Chernihivshchyna
 77|Chernivtsi Oblast|チェルニウツィー州|1`,
 };
 
