@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Brazil's cities take IBGE's 2022 census where Wikidata prefers IBGE's older estimate (MODULES-1671). Before, Guarulhos was the estimate of 1,324,781 for 2015 and Campinas 1,213,792 for 2020; they are the census's 1,291,771 and 1,139,047 for 2022. Only a census statement whose references are all IBGE's, newer than the estimate and alone on its day is taken, and the build stops if it is not within 80% to 125% of the estimate. Other countries are unchanged.
+
 ## [1.13.0] - 2026-11-19
 
 ### Fixed

@@ -706,6 +706,22 @@ describe("each city's own figure, in its own country", () => {
     for (const [id, people] of Object.entries(expected)) expect((await cityById(id))?.population, id).toBe(people);
   });
 
+  it("takes IBGE's 2022 census over its older estimate in Brazil, and nothing of the kind elsewhere", async () => {
+    const figure = async (id: string) => {
+      const city = (await cityById(id))!;
+
+      return [city.population, city.populationDate];
+    };
+    expect(await figure("Q184409")).toEqual([1291771, "2022"]); // Guarulhos, not the estimate of 1,324,781 (2015)
+    expect(await figure("Q171617")).toEqual([1139047, "2022"]); // Campinas, not 1,213,792 (2020)
+    expect(await figure("Q178725")).toEqual([481749, "2022"]); // Niterói, not 496,696 (2015)
+    // A newer census of another country's statistics office is not taken over a preferred estimate (UBOS's of Kampala, 1,797,722 of 2024; Zambia's of Lusaka).
+    expect(await figure("Q3894")).toEqual([1680600, "2019"]);
+    expect(await figure("Q3881")).toEqual([2467563, "2017"]);
+    // Riyadh: no newer census than its preferred figure.
+    expect(await figure("Q3692")).toEqual([7009100, "2022"]);
+  });
+
   it("puts a territory's towns under its own code: Dededo in Guam, Laayoune in Western Sahara, Saint-Paul in Réunion, Bayamón in Puerto Rico", async () => {
     const country = async (id: string) => (await cityById(id))?.country;
     expect(await country("Q1182147")).toBe("GU");
