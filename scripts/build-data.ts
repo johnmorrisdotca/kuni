@@ -1081,7 +1081,11 @@ const writeCities = (): void => {
   });
   checkCapitalNames(rows);
   for (const id of Object.keys(CITY_POPULATIONS)) if (!report.figures.setByHand.includes(id)) throw new Error(`CITY_POPULATIONS (scripts/city-populations.ts): ${id} is no city now; look at it again`);
-  console.log(`Figures: ${report.figures.estimateSite.length} a web site's estimate, ${report.figures.areaFigure.length} a larger area's, ${report.figures.subdivisionFigure.length} above a subdivision's, ${report.figures.naturalEarthFigure.length} a Natural Earth figure above one's, ${report.figures.ibgeCensus.length} IBGE's census over its estimate, ${report.figures.setByHand.length} set by hand; ${report.figures.land.length} items are land, not a town; ${Object.values(report.ownCountry).reduce((sum, one) => sum + one, 0)} cities in a territory's own country.`);
+  console.log(`Figures: ${report.figures.estimateSite.length} a web site's estimate, ${report.figures.areaFigure.length} a larger area's, ${report.figures.subdivisionFigure.length} above a subdivision's, ${report.figures.naturalEarthFigure.length} a Natural Earth figure above one's, ${report.figures.ibgeCensus.length} IBGE's census over its estimate, ${report.sameCensus.length} identical census figures of two cities refused, ${report.figures.setByHand.length} set by hand; ${report.figures.land.length} items are land, not a town; ${Object.values(report.ownCountry).reduce((sum, one) => sum + one, 0)} cities in a territory's own country.`);
+  {
+    const names = new Map(rows.map((row) => [`Q${row[0]}`, row[7]]));
+    for (const group of report.sameCensus) console.log(`  Identical census figure refused (${group.country}, ${group.value}, ${group.day ?? "no day"}): ${group.ids.map((id) => `${names.get(id) ?? id} (${id})`).join(", ")}`);
+  }
   if (process.env.KUNI_FIGURES !== undefined) for (const [kind, ids] of Object.entries(report.figures)) console.log(`  ${kind}: ${ids.join(" ")}`);
   console.log(`Cities: ${report.withMetro} head an urban area, ${report.inMetroOf} lie inside another city's; ${report.areasUnmatched.length} official areas name no city kuni has${process.env.KUNI_AREAS === undefined ? "" : `: ${report.areasUnmatched.join("; ")}`}.`);
   // Each Japanese name's reading in hiragana: Wikidata's reading in kana (P1814) where the name is Wikidata's own label
