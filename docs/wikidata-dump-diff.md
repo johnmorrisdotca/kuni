@@ -1,0 +1,552 @@
+# Wikidata snapshot rebuilt from the dump (MODULES-1599)
+
+`data-sources/wikidata-2026-10-09.json` was made with SPARQL on its day. `scripts/fetch-wikidata.ts` now rebuilds it from Wikimedia's truthy dump of 2026-11-11
+(https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2) for the same items, and this file lists every value that moved. Written by the script; do not edit.
+
+- subdivision: 110 values moved against the dump of 2026-11-11.
+- country: 0 values moved against the dump of 2026-11-11.
+- 0 of 5740 items are not in the dump subset and keep their old values.
+- 427 items do not carry their code as a best-rank value in the dump (a deprecated or non-best statement, or a changed code) and keep their old values.
+
+## Values that moved
+
+- subdivision BS-HI Q2357510 types: [{"id":"Q1230132","label":"district of The Bahamas"},{"id":"Q149621","label":"district"},{"id":"Q23442","label":"island"},{"id":"Q376799","label":"transport infrastructure"},{"id":"Q515","label":"city"}] -> [{"id":"Q1230132","label":"district of The Bahamas"},{"id":"Q149621","label":"district"},{"id":"Q23442","label":"island"},{"id":"Q515","label":"city"}]
+- subdivision CD-BC Q1043494 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-BU Q652056 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-EQ Q988104 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-HK Q130268 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-HL Q605672 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-HU Q751632 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-IT Q24909562 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-KC Q6702952 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-KE Q917992 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-KG Q24205498 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-KL Q559537 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-LO Q241886 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-LU Q1159531 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-MA Q130566 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-MN Q1163429 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-MO Q847527 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-NK Q130625 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-NU Q843312 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-SA Q209829 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-SK Q488326 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-SU Q834551 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-TA Q826585 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-TO Q630900 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CD-TU Q427246 types: [{"id":"Q141463208","label":"Province of the Democratic Republic of the Congo"}] -> [{"id":"Q654140","label":"province of the Democratic Republic of the Congo"}]
+- subdivision CZ-513 Q739824 ja: null -> "リベレツ郡"
+- subdivision DK-GL Q223 types: [{"id":"Q112099","label":"island country"},{"id":"Q140892892","label":"country sometimes considered transcontinental"},{"id":"Q161243","label":"dependent territory"},{"id":"Q192611","label":"electoral unit"},{"id":"Q6256","label":"country"},{"id":"Q66724388","label":"autonomous country within the Kingdom of Denmark"},{"id":"Q788176","label":"autonomous administrative territorial entity"}] -> [{"id":"Q112099","label":"island country"},{"id":"Q140892892","label":"country sometimes considered transcontinental"},{"id":"Q161243","label":"dependent territory"},{"id":"Q192611","label":"electoral unit"},{"id":"Q66724388","label":"autonomous country within the Kingdom of Denmark"},{"id":"Q788176","label":"autonomous administrative territorial entity"}]
+- subdivision EE-130 Q42892510 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-141 Q44491324 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-142 Q44491738 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-171 Q42811297 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-205 Q31277892 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-214 Q44511402 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-245 Q993036 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-247 Q44624256 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-255 Q42808650 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-37 Q180200 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-39 Q1466462 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-430 Q31273628 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-431 Q42309166 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-441 Q43281154 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-442 Q44826366 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-45 Q189963 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-50 Q189974 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-52 Q188068 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-557 Q44509132 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-56 Q189968 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-586 Q44490248 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-60 Q189952 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-615 Q31273591 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-618 Q44854656 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-638 Q42329911 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-64 Q191813 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-68 Q185036 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-698 Q44511803 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-71 Q192352 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-74 Q203272 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-79 Q192370 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-809 Q44492102 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-81 Q192362 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-834 Q44818587 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EE-84 Q192061 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-87 Q188076 types: [{"id":"Q189672","label":"county of Estonia"}] -> [{"id":"Q189672","label":"county"}]
+- subdivision EE-928 Q1020183 types: [{"id":"Q28122896","label":"rural municipality of Estonia"}] -> [{"id":"Q28122896","label":"rural municipality"}]
+- subdivision EG-DK Q31068 ja: "ダカリーヤ県" -> "ダカフリーヤ県"
+- subdivision GB-BDF Q894077 ja: "ベッドフォード" -> "ベッドフォード・バラ"
+- subdivision GB-LND Q23311 types: [{"id":"Q1066984","label":"financial center"},{"id":"Q17601336","label":"district of the United Kingdom"},{"id":"Q180673","label":"ceremonial county of England"},{"id":"Q21503295","label":"district with city status"},{"id":"Q515","label":"city"},{"id":"Q738570","label":"central business district"},{"id":"Q7897276","label":"unparished area"}] -> [{"id":"Q1066984","label":"financial center"},{"id":"Q17601336","label":"district of the United Kingdom"},{"id":"Q180673","label":"ceremonial county of England"},{"id":"Q21503295","label":"district with city status"},{"id":"Q738570","label":"central business district"},{"id":"Q7897276","label":"unparished area"}]
+- subdivision GN-SI Q1780649 types: [{"id":"Q1067116","label":"region of Guinea"}] -> [{"id":"Q1394653","label":"prefecture of Guinea"}]
+- subdivision GR-12 Q170054 types: [{"id":"Q1234255","label":"regional unit of Greece"},{"id":"Q202595","label":"prefecture of Greece"}] -> [{"id":"Q1234255","label":"regional unit of Greece"}]
+- subdivision GR-55 Q213623 types: [{"id":"Q202595","label":"prefecture of Greece"}] -> [{"id":"Q202595","label":"prefecture of Greece"},{"id":"Q486972","label":"human settlement"}]
+- subdivision HU-SD Q81581 types: [{"id":"Q1175512","label":"county town"},{"id":"Q1175522","label":"County city (council system)"},{"id":"Q13218690","label":"town in Hungary"},{"id":"Q1549591","label":"big city"},{"id":"Q515","label":"city"},{"id":"Q587089","label":"city with municipal rights"},{"id":"Q681277","label":"city with county rights"}] -> [{"id":"Q13218690","label":"town in Hungary"},{"id":"Q1549591","label":"big city"},{"id":"Q515","label":"city"},{"id":"Q681277","label":"city with county rights"}]
+- subdivision IN-MN Q1193 types: [{"id":"Q12443800","label":"state of India"},{"id":"Q3502482","label":"cultural region"}] -> [{"id":"Q12443800","label":"state of India"}]
+- subdivision IN-TR Q1363 types: [{"id":"Q12443800","label":"state of India"},{"id":"Q515","label":"city"}] -> [{"id":"Q12443800","label":"state of India"}]
+- subdivision JP-40 Q123258 kana: ["ふくおかけん","ふくをかけん"] -> ["ふくおかけん"]
+- subdivision RO-B Q19660 types: [{"id":"Q10864048","label":"first-level administrative division"},{"id":"Q1187811","label":"college town"},{"id":"Q1549591","label":"big city"},{"id":"Q34843301","label":"county seat in Romania"},{"id":"Q51929311","label":"largest city"},{"id":"Q640364","label":"municipality of Romania"}] -> [{"id":"Q10864048","label":"first-level administrative division"},{"id":"Q1187811","label":"college town"},{"id":"Q1549591","label":"big city"},{"id":"Q51929311","label":"largest city"},{"id":"Q640364","label":"municipality of Romania"}]
+- subdivision RO-TM Q185586 types: [{"id":"Q1200957","label":"tourist destination"},{"id":"Q1776764","label":"county of Romania"},{"id":"Q1973901","label":"economic region"},{"id":"Q3455524","label":"administrative region"},{"id":"Q4944632","label":"border area"},{"id":"Q5154320","label":"cross-border region"}] -> [{"id":"Q1776764","label":"county of Romania"}]
+- subdivision VN-01 Q36409 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"},{"id":"Q56061","label":"administrative territorial entity"}]
+- subdivision VN-02 Q36446 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-04 Q36865 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-05 Q33379 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-07 Q2332060 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-09 Q33403 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-13 Q33396 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"}] -> [{"id":"Q1381899","label":"cities in Vietnam"}]
+- subdivision VN-18 Q36900 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-21 Q36512 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-22 Q36587 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-23 Q33351 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-25 Q36579 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-26 Q36399 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q27554677","label":"former capital"},{"id":"Q2824648","label":"province of Vietnam"},{"id":"Q515","label":"city"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q27554677","label":"former capital"},{"id":"Q2824648","label":"provinces of Vietnam"},{"id":"Q515","label":"city"}]
+- subdivision VN-29 Q33304 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-30 Q36662 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-33 Q36690 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-34 Q33369 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-35 Q36721 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-37 Q36608 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-39 Q33271 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-44 Q36592 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-45 Q36676 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-49 Q7333405 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-56 Q33408 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"},{"id":"Q1381899","label":"cities in Vietnam"}]
+- subdivision VN-59 Q33354 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-66 Q36235 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-68 Q36610 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-69 Q26575 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-71 Q36955 types: [{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-CT Q216075 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q1549591","label":"big city"},{"id":"Q2824648","label":"province of Vietnam"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q1549591","label":"big city"},{"id":"Q2824648","label":"provinces of Vietnam"}]
+- subdivision VN-DN Q25282 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q1549591","label":"big city"},{"id":"Q515","label":"city"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q1549591","label":"big city"},{"id":"Q515","label":"city"}]
+- subdivision VN-HN Q1858 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q1549591","label":"big city"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q1549591","label":"big city"}]
+- subdivision VN-HP Q72818 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q1549591","label":"big city"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q1549591","label":"big city"}]
+- subdivision VN-SG Q1854 types: [{"id":"Q1381899","label":"centrally-governed cities of Vietnam"},{"id":"Q1549591","label":"big city"},{"id":"Q174844","label":"megacity"},{"id":"Q51929311","label":"largest city"}] -> [{"id":"Q1381899","label":"cities in Vietnam"},{"id":"Q1549591","label":"big city"},{"id":"Q174844","label":"megacity"},{"id":"Q51929311","label":"largest city"}]
+
+## Items kept as they were
+
+- subdivision AD-07 Q1863: code not a best-rank value in the dump
+- subdivision AF-LOW Q6667298: code not a best-rank value in the dump
+- subdivision AF-ORU Q183028: code not a best-rank value in the dump
+- subdivision AR-Z Q215992: code not a best-rank value in the dump
+- subdivision AZ-AGM Q540844: code not a best-rank value in the dump
+- subdivision BD-30 Q1897952: code not a best-rank value in the dump
+- subdivision BQ-BO Q25396: code not a best-rank value in the dump
+- subdivision BQ-SA Q25528: code not a best-rank value in the dump
+- subdivision BS-NP Q858513: code not a best-rank value in the dump
+- subdivision BS-RC Q1859950: code not a best-rank value in the dump
+- subdivision C4833 Q134713297: code not a best-rank value in the dump
+- subdivision C4866 Q20395018: code not a best-rank value in the dump
+- subdivision CD-EQ Q139626: code not a best-rank value in the dump
+- subdivision CD-KC Q209706: code not a best-rank value in the dump
+- subdivision CH-BE Q131340980: code not a best-rank value in the dump
+- subdivision CN-11 Q956: code not a best-rank value in the dump
+- subdivision CN-12 Q11736: code not a best-rank value in the dump
+- subdivision CN-13 Q21208: code not a best-rank value in the dump
+- subdivision CN-14 Q46913: code not a best-rank value in the dump
+- subdivision CN-15 Q41079: code not a best-rank value in the dump
+- subdivision CN-21 Q43934: code not a best-rank value in the dump
+- subdivision CN-22 Q45208: code not a best-rank value in the dump
+- subdivision CN-23 Q19206: code not a best-rank value in the dump
+- subdivision CN-31 Q8686: code not a best-rank value in the dump
+- subdivision CN-32 Q16963: code not a best-rank value in the dump
+- subdivision CN-33 Q16967: code not a best-rank value in the dump
+- subdivision CN-34 Q40956: code not a best-rank value in the dump
+- subdivision CN-35 Q41705: code not a best-rank value in the dump
+- subdivision CN-36 Q57052: code not a best-rank value in the dump
+- subdivision CN-37 Q43407: code not a best-rank value in the dump
+- subdivision CN-41 Q43684: code not a best-rank value in the dump
+- subdivision CN-42 Q46862: code not a best-rank value in the dump
+- subdivision CN-43 Q45761: code not a best-rank value in the dump
+- subdivision CN-44 Q15175: code not a best-rank value in the dump
+- subdivision CN-45 Q15176: code not a best-rank value in the dump
+- subdivision CN-46 Q42200: code not a best-rank value in the dump
+- subdivision CN-50 Q11725: code not a best-rank value in the dump
+- subdivision CN-51 Q19770: code not a best-rank value in the dump
+- subdivision CN-52 Q47097: code not a best-rank value in the dump
+- subdivision CN-53 Q43194: code not a best-rank value in the dump
+- subdivision CN-54 Q17269: code not a best-rank value in the dump
+- subdivision CN-61 Q47974: code not a best-rank value in the dump
+- subdivision CN-62 Q42392: code not a best-rank value in the dump
+- subdivision CN-63 Q45833: code not a best-rank value in the dump
+- subdivision CN-64 Q57448: code not a best-rank value in the dump
+- subdivision CN-65 Q34800: code not a best-rank value in the dump
+- subdivision CN-91 Q8646: code not a best-rank value in the dump
+- subdivision CN-92 Q14773: code not a best-rank value in the dump
+- subdivision CS-KM Q1255: code not a best-rank value in the dump
+- subdivision CS-VO Q44749: code not a best-rank value in the dump
+- subdivision CZ-10A Q2444921: code not a best-rank value in the dump
+- subdivision CZ-10B Q3490864: code not a best-rank value in the dump
+- subdivision CZ-10C Q3490843: code not a best-rank value in the dump
+- subdivision CZ-10D Q2743565: code not a best-rank value in the dump
+- subdivision CZ-10E Q2157550: code not a best-rank value in the dump
+- subdivision CZ-10F Q3490834: code not a best-rank value in the dump
+- subdivision CZ-611 Q368105: code not a best-rank value in the dump
+- subdivision CZ-612 Q852472: code not a best-rank value in the dump
+- subdivision CZ-613 Q852505: code not a best-rank value in the dump
+- subdivision CZ-614 Q856857: code not a best-rank value in the dump
+- subdivision CZ-615 Q579648: code not a best-rank value in the dump
+- subdivision CZ-621 Q804356: code not a best-rank value in the dump
+- subdivision CZ-622 Q850531: code not a best-rank value in the dump
+- subdivision CZ-623 Q286787: code not a best-rank value in the dump
+- subdivision CZ-624 Q582488: code not a best-rank value in the dump
+- subdivision CZ-625 Q637425: code not a best-rank value in the dump
+- subdivision CZ-626 Q570682: code not a best-rank value in the dump
+- subdivision CZ-627 Q853969: code not a best-rank value in the dump
+- subdivision CZ-JC Q188373: code not a best-rank value in the dump
+- subdivision CZ-JM Q192697: code not a best-rank value in the dump
+- subdivision CZ-KA Q191091: code not a best-rank value in the dump
+- subdivision CZ-KR Q193295: code not a best-rank value in the dump
+- subdivision CZ-LI Q193266: code not a best-rank value in the dump
+- subdivision CZ-MO Q190550: code not a best-rank value in the dump
+- subdivision CZ-OL Q193307: code not a best-rank value in the dump
+- subdivision CZ-PA Q193317: code not a best-rank value in the dump
+- subdivision CZ-PL Q46070: code not a best-rank value in the dump
+- subdivision CZ-PR Q1085: code not a best-rank value in the dump
+- subdivision CZ-ST Q188399: code not a best-rank value in the dump
+- subdivision CZ-US Q192702: code not a best-rank value in the dump
+- subdivision CZ-VY Q190930: code not a best-rank value in the dump
+- subdivision CZ-ZL Q192536: code not a best-rank value in the dump
+- subdivision ES-LO Q5727: code not a best-rank value in the dump
+- subdivision FR-A Q1142: code not a best-rank value in the dump
+- subdivision FR-COR Q14112: code not a best-rank value in the dump
+- subdivision FR-E Q12130: code not a best-rank value in the dump
+- subdivision FR-F Q13947: code not a best-rank value in the dump
+- subdivision FR-GF Q3769: code not a best-rank value in the dump
+- subdivision FR-GP Q17012: code not a best-rank value in the dump
+- subdivision FR-GUA Q17012: code not a best-rank value in the dump
+- subdivision FR-H Q14112: code not a best-rank value in the dump
+- subdivision FR-J Q13917: code not a best-rank value in the dump
+- subdivision FR-LRE Q17070: code not a best-rank value in the dump
+- subdivision FR-MAY Q17063: code not a best-rank value in the dump
+- subdivision FR-MQ Q17054: code not a best-rank value in the dump
+- subdivision FR-R Q16994: code not a best-rank value in the dump
+- subdivision FR-RE Q17070: code not a best-rank value in the dump
+- subdivision FR-U Q15104: code not a best-rank value in the dump
+- subdivision FR-YT Q17063: code not a best-rank value in the dump
+- subdivision GB-ABE Q36405: code not a best-rank value in the dump
+- subdivision GB-AGY Q168159: code not a best-rank value in the dump
+- subdivision GB-CAM Q23112: code not a best-rank value in the dump
+- subdivision GB-CHA Q42314: code not a best-rank value in the dump
+- subdivision GB-DBY Q23098: code not a best-rank value in the dump
+- subdivision GB-DEV Q23156: code not a best-rank value in the dump
+- subdivision GB-EDH Q23436: code not a best-rank value in the dump
+- subdivision GB-ESX Q23293: code not a best-rank value in the dump
+- subdivision GB-GLG Q4093: code not a best-rank value in the dump
+- subdivision GB-GLS Q23165: code not a best-rank value in the dump
+- subdivision GB-HAM Q23204: code not a best-rank value in the dump
+- subdivision GB-KEN Q23298: code not a best-rank value in the dump
+- subdivision GB-LAN Q23077: code not a best-rank value in the dump
+- subdivision GB-LEC Q23106: code not a best-rank value in the dump
+- subdivision GB-LIN Q23090: code not a best-rank value in the dump
+- subdivision GB-NTT Q23092: code not a best-rank value in the dump
+- subdivision GB-OXF Q34217: code not a best-rank value in the dump
+- subdivision GB-STS Q23105: code not a best-rank value in the dump
+- subdivision GE-52 Q1953363: code not a best-rank value in the dump
+- subdivision GR-31 Q19896687: code not a best-rank value in the dump
+- subdivision GR-43 Q1884468: code not a best-rank value in the dump
+- subdivision GR-44 Q17320461: code not a best-rank value in the dump
+- subdivision GR-71 Q19896760: code not a best-rank value in the dump
+- subdivision GR-72 Q19896642: code not a best-rank value in the dump
+- subdivision GR-73 Q19896603: code not a best-rank value in the dump
+- subdivision GR-85 Q16332718: code not a best-rank value in the dump
+- subdivision GR-91 Q19896769: code not a best-rank value in the dump
+- subdivision GR-93 Q17317934: code not a best-rank value in the dump
+- subdivision GR-A1 Q758056: code not a best-rank value in the dump
+- subdivision GR-E Q166919: code not a best-rank value in the dump
+- subdivision GZZ Q39760: code not a best-rank value in the dump
+- subdivision IN-CT Q1168: code not a best-rank value in the dump
+- subdivision IN-OR Q22048: code not a best-rank value in the dump
+- subdivision IN-TG Q677037: code not a best-rank value in the dump
+- subdivision IN-UT Q1499: code not a best-rank value in the dump
+- subdivision IR-01 Q176081: code not a best-rank value in the dump
+- subdivision IR-02 Q134411: code not a best-rank value in the dump
+- subdivision IR-03 Q134228: code not a best-rank value in the dump
+- subdivision IR-04 Q1367759: code not a best-rank value in the dump
+- subdivision IR-05 Q170570: code not a best-rank value in the dump
+- subdivision IR-06 Q132945: code not a best-rank value in the dump
+- subdivision IR-08 Q171702: code not a best-rank value in the dump
+- subdivision IR-10 Q241119: code not a best-rank value in the dump
+- subdivision IR-11 Q146726: code not a best-rank value in the dump
+- subdivision IR-12 Q168949: code not a best-rank value in the dump
+- subdivision IR-13 Q939575: code not a best-rank value in the dump
+- subdivision IR-15 Q165352: code not a best-rank value in the dump
+- subdivision IR-16 Q134386: code not a best-rank value in the dump
+- subdivision IR-17 Q174010: code not a best-rank value in the dump
+- subdivision IR-18 Q180068: code not a best-rank value in the dump
+- subdivision IR-19 Q928828: code not a best-rank value in the dump
+- subdivision IR-20 Q1131727: code not a best-rank value in the dump
+- subdivision IR-21 Q308864: code not a best-rank value in the dump
+- subdivision IR-24 Q187373: code not a best-rank value in the dump
+- subdivision IR-25 Q170568: code not a best-rank value in the dump
+- subdivision IR-26 Q131664: code not a best-rank value in the dump
+- subdivision IR-28 Q1105893: code not a best-rank value in the dump
+- subdivision IR-30 Q587090: code not a best-rank value in the dump
+- subdivision IR-31 Q180075: code not a best-rank value in the dump
+- subdivision IR-32 Q392522: code not a best-rank value in the dump
+- subdivision IT-82 Q134470541: code not a best-rank value in the dump
+- subdivision IT-AG Q16112: code not a best-rank value in the dump
+- subdivision IT-BA Q16123: code not a best-rank value in the dump
+- subdivision IT-BO Q16139: code not a best-rank value in the dump
+- subdivision IT-CA Q16149: code not a best-rank value in the dump
+- subdivision IT-CL Q16150: code not a best-rank value in the dump
+- subdivision IT-CT Q16154: code not a best-rank value in the dump
+- subdivision IT-EN Q16166: code not a best-rank value in the dump
+- subdivision IT-FI Q16172: code not a best-rank value in the dump
+- subdivision IT-GE Q16183: code not a best-rank value in the dump
+- subdivision IT-ME Q16208: code not a best-rank value in the dump
+- subdivision IT-MI Q15121: code not a best-rank value in the dump
+- subdivision IT-NA Q15123: code not a best-rank value in the dump
+- subdivision IT-PA Q16227: code not a best-rank value in the dump
+- subdivision IT-RC Q16253: code not a best-rank value in the dump
+- subdivision IT-RG Q16251: code not a best-rank value in the dump
+- subdivision IT-RM Q15119: code not a best-rank value in the dump
+- subdivision IT-SR Q16277: code not a best-rank value in the dump
+- subdivision IT-TO Q16287: code not a best-rank value in the dump
+- subdivision IT-TP Q16288: code not a best-rank value in the dump
+- subdivision IT-VE Q641: code not a best-rank value in the dump
+- subdivision IT-VE Q16310: code not a best-rank value in the dump
+- subdivision KY Q5785: code not a best-rank value in the dump
+- subdivision KZ-ALA Q35493: code not a best-rank value in the dump
+- subdivision KZ-ALM Q186466: code not a best-rank value in the dump
+- subdivision KZ-AST Q1520: code not a best-rank value in the dump
+- subdivision KZ-ATY Q427658: code not a best-rank value in the dump
+- subdivision KZ-BAY Q165413: code not a best-rank value in the dump
+- subdivision KZ-KAR Q485429: code not a best-rank value in the dump
+- subdivision KZ-KUS Q485605: code not a best-rank value in the dump
+- subdivision KZ-KZY Q485322: code not a best-rank value in the dump
+- subdivision KZ-MAN Q238931: code not a best-rank value in the dump
+- subdivision KZ-PAV Q486144: code not a best-rank value in the dump
+- subdivision KZ-SEV Q485088: code not a best-rank value in the dump
+- subdivision KZ-SHY Q485496: code not a best-rank value in the dump
+- subdivision KZ-VOS Q36156: code not a best-rank value in the dump
+- subdivision KZ-YUZ Q815330: code not a best-rank value in the dump
+- subdivision KZ-ZAP Q486007: code not a best-rank value in the dump
+- subdivision KZ-ZHA Q486657: code not a best-rank value in the dump
+- subdivision MA-01 Q389777: code not a best-rank value in the dump
+- subdivision MA-CAS Q7903: code not a best-rank value in the dump
+- subdivision MA-FES Q80985: code not a best-rank value in the dump
+- subdivision MA-MAR Q101625: code not a best-rank value in the dump
+- subdivision MA-OUJ Q193802: code not a best-rank value in the dump
+- subdivision MA-SAL Q466046: code not a best-rank value in the dump
+- subdivision MA-SKH Q1635606: code not a best-rank value in the dump
+- subdivision MA-TNG Q126148: code not a best-rank value in the dump
+- subdivision ME-20 Q189969: code not a best-rank value in the dump
+- subdivision MK-01 Q1992708: code not a best-rank value in the dump
+- subdivision MK-02 Q597345: code not a best-rank value in the dump
+- subdivision MK-03 Q793727: code not a best-rank value in the dump
+- subdivision MK-04 Q159380: code not a best-rank value in the dump
+- subdivision MK-05 Q1992752: code not a best-rank value in the dump
+- subdivision MK-06 Q9035785: code not a best-rank value in the dump
+- subdivision MK-07 Q1779775: code not a best-rank value in the dump
+- subdivision MK-08 Q1057563: code not a best-rank value in the dump
+- subdivision MK-09 Q935620: code not a best-rank value in the dump
+- subdivision MK-10 Q2018965: code not a best-rank value in the dump
+- subdivision MK-11 Q2018980: code not a best-rank value in the dump
+- subdivision MK-12 Q2029825: code not a best-rank value in the dump
+- subdivision MK-13 Q2088561: code not a best-rank value in the dump
+- subdivision MK-14 Q2479526: code not a best-rank value in the dump
+- subdivision MK-16 Q1996740: code not a best-rank value in the dump
+- subdivision MK-17 Q2019836: code not a best-rank value in the dump
+- subdivision MK-18 Q2018974: code not a best-rank value in the dump
+- subdivision MK-19 Q521112: code not a best-rank value in the dump
+- subdivision MK-20 Q1992701: code not a best-rank value in the dump
+- subdivision MK-21 Q1344996: code not a best-rank value in the dump
+- subdivision MK-22 Q1323340: code not a best-rank value in the dump
+- subdivision MK-23 Q1323322: code not a best-rank value in the dump
+- subdivision MK-24 Q2370973: code not a best-rank value in the dump
+- subdivision MK-25 Q856278: code not a best-rank value in the dump
+- subdivision MK-26 Q1996413: code not a best-rank value in the dump
+- subdivision MK-27 Q1992691: code not a best-rank value in the dump
+- subdivision MK-29 Q924278: code not a best-rank value in the dump
+- subdivision MK-30 Q1996410: code not a best-rank value in the dump
+- subdivision MK-32 Q9050283: code not a best-rank value in the dump
+- subdivision MK-33 Q950881: code not a best-rank value in the dump
+- subdivision MK-34 Q657754: code not a best-rank value in the dump
+- subdivision MK-35 Q431908: code not a best-rank value in the dump
+- subdivision MK-36 Q1155055: code not a best-rank value in the dump
+- subdivision MK-37 Q1346554: code not a best-rank value in the dump
+- subdivision MK-38 Q1463246: code not a best-rank value in the dump
+- subdivision MK-39 Q1386136: code not a best-rank value in the dump
+- subdivision MK-40 Q2018957: code not a best-rank value in the dump
+- subdivision MK-41 Q1992728: code not a best-rank value in the dump
+- subdivision MK-42 Q1819289: code not a best-rank value in the dump
+- subdivision MK-43 Q1992716: code not a best-rank value in the dump
+- subdivision MK-44 Q1422453: code not a best-rank value in the dump
+- subdivision MK-45 Q2018930: code not a best-rank value in the dump
+- subdivision MK-46 Q2476159: code not a best-rank value in the dump
+- subdivision MK-47 Q2352376: code not a best-rank value in the dump
+- subdivision MK-48 Q2041236: code not a best-rank value in the dump
+- subdivision MK-49 Q1996470: code not a best-rank value in the dump
+- subdivision MK-50 Q1323332: code not a best-rank value in the dump
+- subdivision MK-51 Q2041219: code not a best-rank value in the dump
+- subdivision MK-52 Q2364199: code not a best-rank value in the dump
+- subdivision MK-53 Q1839369: code not a best-rank value in the dump
+- subdivision MK-54 Q3246545: code not a best-rank value in the dump
+- subdivision MK-55 Q2088022: code not a best-rank value in the dump
+- subdivision MK-56 Q1946579: code not a best-rank value in the dump
+- subdivision MK-58 Q1125333: code not a best-rank value in the dump
+- subdivision MK-59 Q1018191: code not a best-rank value in the dump
+- subdivision MK-60 Q426114: code not a best-rank value in the dump
+- subdivision MK-61 Q2018921: code not a best-rank value in the dump
+- subdivision MK-62 Q6312454: code not a best-rank value in the dump
+- subdivision MK-63 Q2270414: code not a best-rank value in the dump
+- subdivision MK-64 Q2738284: code not a best-rank value in the dump
+- subdivision MK-65 Q1475001: code not a best-rank value in the dump
+- subdivision MK-66 Q740591: code not a best-rank value in the dump
+- subdivision MK-67 Q2088585: code not a best-rank value in the dump
+- subdivision MK-68 Q1309481: code not a best-rank value in the dump
+- subdivision MK-69 Q2308277: code not a best-rank value in the dump
+- subdivision MK-70 Q2282240: code not a best-rank value in the dump
+- subdivision MK-71 Q2128903: code not a best-rank value in the dump
+- subdivision MK-72 Q749618: code not a best-rank value in the dump
+- subdivision MK-73 Q2308287: code not a best-rank value in the dump
+- subdivision MK-74 Q2088034: code not a best-rank value in the dump
+- subdivision MK-75 Q2282274: code not a best-rank value in the dump
+- subdivision MK-76 Q3245456: code not a best-rank value in the dump
+- subdivision MK-77 Q1463152: code not a best-rank value in the dump
+- subdivision MK-78 Q1779085: code not a best-rank value in the dump
+- subdivision MK-79 Q1419314: code not a best-rank value in the dump
+- subdivision MK-80 Q1994547: code not a best-rank value in the dump
+- subdivision MK-81 Q281898: code not a best-rank value in the dump
+- subdivision MK-82 Q629720: code not a best-rank value in the dump
+- subdivision MK-83 Q2423082: code not a best-rank value in the dump
+- subdivision MK-84 Q1020859: code not a best-rank value in the dump
+- subdivision MU-BR Q813337: code not a best-rank value in the dump
+- subdivision MU-CU Q1002525: code not a best-rank value in the dump
+- subdivision MU-PU Q3929: code not a best-rank value in the dump
+- subdivision MU-QB Q1341194: code not a best-rank value in the dump
+- subdivision MU-VP Q676724: code not a best-rank value in the dump
+- subdivision MX-DIF Q1489: code not a best-rank value in the dump
+- subdivision NG-AN Q135162818: code not a best-rank value in the dump
+- subdivision NI-CN Q498452: code not a best-rank value in the dump
+- subdivision NI-CS Q291279: code not a best-rank value in the dump
+- subdivision NL-BQ3 Q26180: code not a best-rank value in the dump
+- subdivision NO-01 Q50614: code not a best-rank value in the dump
+- subdivision NO-02 Q50615: code not a best-rank value in the dump
+- subdivision NO-06 Q50618: code not a best-rank value in the dump
+- subdivision NO-07 Q50619: code not a best-rank value in the dump
+- subdivision NO-08 Q2254: code not a best-rank value in the dump
+- subdivision NO-19 Q50631: code not a best-rank value in the dump
+- subdivision NO-20 Q50632: code not a best-rank value in the dump
+- subdivision NO-3905 Q107392: code not a best-rank value in the dump
+- subdivision PL-DS Q54150: code not a best-rank value in the dump
+- subdivision PL-KP Q54153: code not a best-rank value in the dump
+- subdivision PL-LB Q54157: code not a best-rank value in the dump
+- subdivision PL-LD Q54158: code not a best-rank value in the dump
+- subdivision PL-LU Q54155: code not a best-rank value in the dump
+- subdivision PL-MA Q54159: code not a best-rank value in the dump
+- subdivision PL-MZ Q54169: code not a best-rank value in the dump
+- subdivision PL-OP Q54171: code not a best-rank value in the dump
+- subdivision PL-PD Q54177: code not a best-rank value in the dump
+- subdivision PL-PK Q54175: code not a best-rank value in the dump
+- subdivision PL-PM Q54180: code not a best-rank value in the dump
+- subdivision PL-SK Q54183: code not a best-rank value in the dump
+- subdivision PL-SL Q54181: code not a best-rank value in the dump
+- subdivision PL-WN Q54184: code not a best-rank value in the dump
+- subdivision PL-WP Q54187: code not a best-rank value in the dump
+- subdivision PL-ZP Q54188: code not a best-rank value in the dump
+- subdivision SE-01 Q104231: code not a best-rank value in the dump
+- subdivision SE-03 Q104926: code not a best-rank value in the dump
+- subdivision SE-04 Q106915: code not a best-rank value in the dump
+- subdivision SE-05 Q104940: code not a best-rank value in the dump
+- subdivision SE-06 Q103672: code not a best-rank value in the dump
+- subdivision SE-07 Q104746: code not a best-rank value in the dump
+- subdivision SE-08 Q103707: code not a best-rank value in the dump
+- subdivision SE-09 Q103738: code not a best-rank value in the dump
+- subdivision SE-10 Q102377: code not a best-rank value in the dump
+- subdivision SE-12 Q103659: code not a best-rank value in the dump
+- subdivision SE-13 Q103691: code not a best-rank value in the dump
+- subdivision SE-14 Q103093: code not a best-rank value in the dump
+- subdivision SE-17 Q106789: code not a best-rank value in the dump
+- subdivision SE-18 Q104257: code not a best-rank value in the dump
+- subdivision SE-19 Q105075: code not a best-rank value in the dump
+- subdivision SE-20 Q103732: code not a best-rank value in the dump
+- subdivision SE-21 Q103699: code not a best-rank value in the dump
+- subdivision SE-22 Q104891: code not a best-rank value in the dump
+- subdivision SE-23 Q103679: code not a best-rank value in the dump
+- subdivision SE-24 Q104877: code not a best-rank value in the dump
+- subdivision SE-25 Q103686: code not a best-rank value in the dump
+- subdivision SI-016 Q3107121: code not a best-rank value in the dump
+- subdivision SI-033 Q241462: code not a best-rank value in the dump
+- subdivision SI-040 Q15877: code not a best-rank value in the dump
+- subdivision SI-044 Q1012996: code not a best-rank value in the dump
+- subdivision SI-049 Q556210: code not a best-rank value in the dump
+- subdivision SI-052 Q1021: code not a best-rank value in the dump
+- subdivision SI-076 Q1917707: code not a best-rank value in the dump
+- subdivision SI-090 Q1382: code not a best-rank value in the dump
+- subdivision SI-096 Q15906: code not a best-rank value in the dump
+- subdivision SI-106 Q3502521: code not a best-rank value in the dump
+- subdivision SI-113 Q15917: code not a best-rank value in the dump
+- subdivision SI-114 Q15919: code not a best-rank value in the dump
+- subdivision SI-137 Q1809612: code not a best-rank value in the dump
+- subdivision SI-138 Q2068600: code not a best-rank value in the dump
+- subdivision SI-189 Q510040: code not a best-rank value in the dump
+- subdivision SI-202 Q1015849: code not a best-rank value in the dump
+- subdivision SL Q751387: code not a best-rank value in the dump
+- subdivision SS010101 Q140612904: code not a best-rank value in the dump
+- subdivision ST-S Q6710363: code not a best-rank value in the dump
+- subdivision SX Q26273: code not a best-rank value in the dump
+- subdivision TJ-KR Q633490: code not a best-rank value in the dump
+- subdivision TT-RCM Q2487249: code not a best-rank value in the dump
+- subdivision UA-40 Q4456205: code not a best-rank value in the dump
+- subdivision UG-114 Q1230005: code not a best-rank value in the dump
+- subdivision UG-115 Q432438: code not a best-rank value in the dump
+- subdivision UG-116 Q1375878: code not a best-rank value in the dump
+- subdivision UG-218 Q1375868: code not a best-rank value in the dump
+- subdivision UG-219 Q1375755: code not a best-rank value in the dump
+- subdivision UG-220 Q1375859: code not a best-rank value in the dump
+- subdivision UG-221 Q1375789: code not a best-rank value in the dump
+- subdivision UG-222 Q1375819: code not a best-rank value in the dump
+- subdivision UG-223 Q1365449: code not a best-rank value in the dump
+- subdivision UG-224 Q1375812: code not a best-rank value in the dump
+- subdivision UG-314 Q1318822: code not a best-rank value in the dump
+- subdivision UG-315 Q1229881: code not a best-rank value in the dump
+- subdivision UG-316 Q1318857: code not a best-rank value in the dump
+- subdivision UG-317 Q1375780: code not a best-rank value in the dump
+- subdivision UG-318 Q1318872: code not a best-rank value in the dump
+- subdivision UG-319 Q1375771: code not a best-rank value in the dump
+- subdivision UG-325 Q3537661: code not a best-rank value in the dump
+- subdivision UG-326 Q3539151: code not a best-rank value in the dump
+- subdivision UG-327 Q3539277: code not a best-rank value in the dump
+- subdivision UG-328 Q3539495: code not a best-rank value in the dump
+- subdivision UG-329 Q3539572: code not a best-rank value in the dump
+- subdivision UG-330 Q3539602: code not a best-rank value in the dump
+- subdivision UG-331 Q3539730: code not a best-rank value in the dump
+- subdivision UG-416 Q1318877: code not a best-rank value in the dump
+- subdivision UG-417 Q1318887: code not a best-rank value in the dump
+- subdivision UG-418 Q1318865: code not a best-rank value in the dump
+- subdivision UG-419 Q1229793: code not a best-rank value in the dump
+- subdivision UG-420 Q3539116: code not a best-rank value in the dump
+- subdivision UG-421 Q3539256: code not a best-rank value in the dump
+- subdivision UG-422 Q3539414: code not a best-rank value in the dump
+- subdivision UG-423 Q3539547: code not a best-rank value in the dump
+- subdivision UG-424 Q3539648: code not a best-rank value in the dump
+- subdivision UG-425 Q3539711: code not a best-rank value in the dump
+- subdivision VG Q25305: code not a best-rank value in the dump
+- subdivision VI Q11703: code not a best-rank value in the dump
+- subdivision VI Q26262: code not a best-rank value in the dump
+- subdivision WBK Q36678: code not a best-rank value in the dump
+- subdivision YU-KM Q1255: code not a best-rank value in the dump
+- subdivision YU-VO Q44749: code not a best-rank value in the dump
+- subdivision ZA-GT Q133083: code not a best-rank value in the dump
+- subdivision ZA-NL Q81725: code not a best-rank value in the dump
+- country AI Q1450765: code not a best-rank value in the dump
+- country BQ Q165783: code not a best-rank value in the dump
+- country BU Q836: code not a best-rank value in the dump
+- country BY Q2895: code not a best-rank value in the dump
+- country CT Q2618621: code not a best-rank value in the dump
+- country DY Q798431: code not a best-rank value in the dump
+- country EA Q28868874: code not a best-rank value in the dump
+- country EZ Q8268: code not a best-rank value in the dump
+- country FQ Q129003: code not a best-rank value in the dump
+- country FX Q212429: code not a best-rank value in the dump
+- country GE Q1050859: code not a best-rank value in the dump
+- country HV Q797422: code not a best-rank value in the dump
+- country JT Q131008: code not a best-rank value in the dump
+- country MI Q47863: code not a best-rank value in the dump
+- country NH Q752431: code not a best-rank value in the dump
+- country NQ Q189999: code not a best-rank value in the dump
+- country TP Q574: code not a best-rank value in the dump
+- country UN Q1065: code not a best-rank value in the dump
+- country YD Q199841: code not a best-rank value in the dump
+- country YU Q83286: code not a best-rank value in the dump
+- country YU Q838261: code not a best-rank value in the dump

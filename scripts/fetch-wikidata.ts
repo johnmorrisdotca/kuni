@@ -66,7 +66,7 @@ const unescape = (text: string): string =>
     if (long !== undefined) return String.fromCodePoint(parseInt(long, 16));
 
     return { '"': '"', "\\": "\\", n: "\n", r: "\r", t: "\t" }[plain as string]!;
-  });
+  }).replace(/\u00ad/g, "");
 
 // One line of the subset: <entity> <predicate> object .
 const LINE = /^<http:\/\/www\.wikidata\.org\/entity\/(Q\d+)> <([^>]+)> (.+) \.$/;
@@ -90,7 +90,11 @@ const readDump = async (path: string, items: ReadonlySet<string>): Promise<Map<s
     const match = LINE.exec(line);
     if (match === null) continue;
     const [, id, predicate, object] = match as unknown as [string, string, string, string];
-    const property = predicate.slice(predicate.lastIndexOf("/") + 1);
+    // rdfs:label is http://www.w3.org/2000/01/rdf-schema#label, so the name is the fragment. A direct claim is
+    // http://www.wikidata.org/prop/direct/P300, so the name is the last path segment. The last slash of the label
+    // predicate is inside the date, and reading that as the name dropped every label.
+    const hash = predicate.lastIndexOf("#");
+    const property = hash === -1 ? predicate.slice(predicate.lastIndexOf("/") + 1) : predicate.slice(hash + 1);
     const literal = LITERAL.exec(object);
     if (property === "label") {
       if (literal === null) continue;
@@ -123,10 +127,16 @@ const rebuild = (held: Record<string, WikidataItem[]>, facts: Map<string, Facts>
         if (now === undefined || !codeOf(now).includes(code)) return old;
         const kana = [...new Set(now.kana)].sort(byText);
         if (withTypes) {
-          const types = [...new Set(now.types)]
-            .map((id) => ({ id, label: facts.get(id)?.en ?? old.types?.find((one) => one.id === id)?.label ?? "" }))
-            .filter((type) => type.label !== "")
-            .sort((a, b) => byNumber(a.id, b.id));
+          const ids = [...new Set(now.types)];
+          const oldTypes = old.types ?? [];
+          const labelOf = (id: string): string => facts.get(id)?.en ?? oldTypes.find((one) => one.id === id)?.label ?? "";
+          // Keep the previous order when the set of classes is the same, so a sort does not count as a moved value.
+          const kept = oldTypes.filter((one) => ids.includes(one.id)).map((one) => ({ id: one.id, label: labelOf(one.id) }));
+          const added = ids
+            .filter((id) => !oldTypes.some((one) => one.id === id))
+            .sort(byNumber)
+            .map((id) => ({ id, label: labelOf(id) }));
+          const types = [...kept, ...added].filter((type) => type.label !== "");
 
           return { id: old.id, ja: now.ja ?? null, kana, types };
         }
