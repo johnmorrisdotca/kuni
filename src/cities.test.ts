@@ -624,7 +624,6 @@ describe("each city's own figure, in its own country", () => {
     expect(await figure("Q1563")).toEqual([2141652, "2010"]); // Havana, not 2,492,618 (2022), 17% above Havana Province's 2,137,847 (2022)
     expect(await figure("Q2021983")).toEqual([34540, "2010"]); // Sabaneta, not an unsourced 98,453
     expect(await figure("Q72259")).toEqual([205100, "2011"]); // Portsmouth, not 248,440 (2016) above its unitary authority's 208,420 (2022)
-    expect(await figure("Q581379")).toEqual([150306, "2014-08-27"]); // Gulu City: the figures above Gulu City's 135,373 (2024) by more than 15% are left out
     // Left with no figure of its own, a capital stays and has none (Plav, Charlestown), a city that is no capital goes (Karki, Palorinya).
     expect((await cityById("Q211195"))?.population).toBeNull();
     expect((await cityById("Q992311"))?.population).toBeNull();
@@ -643,8 +642,19 @@ describe("each city's own figure, in its own country", () => {
     expect((await cityById("Q3766"))?.source.population).toBe("natural-earth");
   });
 
+  it("keeps the 2024 census figures of Arua, Mbale City and Mbarara City that UBOS gives, which count a larger area than their subdivision figures", async () => {
+    // Each is the snapshot's statement of 2024-01-01 with the method census and ubos.org among its references.
+    expect(await Promise.all(["Q500111", "Q1015727", "Q731039"].map(async (id) => [(await cityById(id))?.population, (await cityById(id))?.populationDate]))).toEqual([
+      [384656, "2024"],
+      [586300, "2024"],
+      [264425, "2024"],
+    ]);
+    // Gulu City's UBOS figure of 2024 (233,271) is a statement of the snapshot, but its best-ranked one is the 2020 estimate (177,400), the figure the build takes.
+    expect((await cityById("Q581379"))?.population).toBe(177400);
+  });
+
   it("keeps the figure of each city NOT_INSIDE names, whose code is not a subdivision that holds it", async () => {
-    const expected: Record<string, number> = { Q3688: 1446761, Q9347: 133019, Q25287: 674529, Q27157: 163257, Q27400: 389993, Q3476: 69558, Q2550996: 23512 };
+    const expected: Record<string, number> = { Q3688: 1446761, Q9347: 133019, Q25287: 674529, Q27157: 163257, Q27400: 389993, Q3476: 69558, Q2550996: 23512, Q500111: 384656, Q581379: 177400, Q1015727: 586300, Q731039: 264425 };
     expect(Object.keys(NOT_INSIDE).sort()).toEqual(Object.keys(expected).sort());
     for (const [id, people] of Object.entries(expected)) expect((await cityById(id))?.population, id).toBe(people);
   });

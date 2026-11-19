@@ -174,6 +174,10 @@ const NOT_INSIDE: Readonly<Record<string, { codes: readonly string[]; why: strin
   Q27157: { codes: ["TN-73"], why: "Kebili, Tunisia: the governorate's 180 (2019) is 900 times less than its capital's 163,257; it is no count of the governorate." },
   Q27400: { codes: ["SA-08"], why: "Hafar Al-Batin, Saudi Arabia: SA-08 (Northern Borders, Arar) has its point about 380 km from the city; the code is a stray one." },
   Q3476: { codes: ["IT-AQ"], why: "L'Aquila, Italy: IT-AQ's 28,668 (2024) is less than the city's own 69,558 to 71,026 (ISTAT); the code carries a smaller unit's figure." },
+  Q500111: { codes: ["UG-303"], why: "Arua, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
+  Q581379: { codes: ["UG-304"], why: "Gulu City, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
+  Q1015727: { codes: ["UG-209"], why: "Mbale City, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
+  Q731039: { codes: ["UG-410"], why: "Mbarara City, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
   Q2550996: { codes: ["JO-AT"], why: "Tafilah, Jordan: the governorate's 10,000 has no year and is a round figure under its capital's 23,512 (2004)." },
 };
 // Web sites that publish estimates or models of their own of a city's people (often of the urban area round it), not a
