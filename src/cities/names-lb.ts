@@ -6,10 +6,10 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Lebanon, ids and names only, in the order of /cities/lb; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "2y4,3md6,3i5e,1rbq,k5y,ki1,3tzn,7a6cj,1yeu1,345n,jzq,1poee,4cckv,13pbk,j6rn,k6j,keu",
-  en: "Beirut|Tripoli|Sidon|Tyre|Nabatieh|Zahlé|Baalbek|Kabelias|Batroun|Bint Jbeil|Jezzine|Baakleen|Ras Baalbek|Halba|Bourj Hammoud|Jounieh|Baabda",
-  ja: "ベイルート|トリポリ|サイダ|ティルス|ナバティーエ|ザーレ|バールベック||バトルーン|||バクライン||ハルバ|ブルジュ・ハムード|ジュニーエ|バアブダー",
-  native: "بيروت|طرابلس|صيدا|صور|النبطية|زحلة|بعلبك|قب الياس|البترون|بنت جبيل|جزين|بعقلين|راس بعلبك|حلبا|برج حمود|جونيه|بعبدا",
+  id: "2y4,3md6,3i5e,1rbq,j6rn,k5y,k6j,ki1,3tzn,7a6cj,1yeu1,345n,jzq,1poee,4cckv,keu,13pbk",
+  en: "Beirut|Tripoli|Sidon|Tyre|Bourj Hammoud|Nabatieh|Jounieh|Zahlé|Baalbek|Kabelias|Batroun|Bint Jbeil|Jezzine|Baakleen|Ras Baalbek|Baabda|Halba",
+  ja: "ベイルート|トリポリ|サイダ|ティルス|ブルジュ・ハムード|ナバティーエ|ジュニーエ|ザーレ|バールベック||バトルーン|||バクライン||バアブダー|ハルバ",
+  native: "بيروت|طرابلس|صيدا|صور|برج حمود|النبطية|جونيه|زحلة|بعلبك|قب الياس|البترون|بنت جبيل|جزين|بعقلين|راس بعلبك|بعبدا|حلبا",
   reading: "||||||||||||||||",
   major: "11111111111111111",
 });

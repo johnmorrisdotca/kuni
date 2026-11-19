@@ -42,20 +42,20 @@
       "gzip": 1030
     },
     "./cities": {
-      "minified": 4654072,
-      "gzip": 1491300
+      "minified": 4653548,
+      "gzip": 1493814
     },
     "./cities/capitals": {
-      "minified": 528264,
-      "gzip": 188157
+      "minified": 528237,
+      "gzip": 188295
     },
     "./cities/1m": {
-      "minified": 89682,
-      "gzip": 34489
+      "minified": 89355,
+      "gzip": 34228
     },
     "./cities/100k": {
-      "minified": 611712,
-      "gzip": 210544
+      "minified": 611790,
+      "gzip": 212311
     },
     "./places": {
       "minified": 10018427,

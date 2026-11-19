@@ -1048,18 +1048,18 @@ const writeCities = (): void => {
   // town that is neither and is its subdivision's is the subdivision's.
   const answers = factsSnapshot.answers as unknown as Record<string, Record<string, unknown[][]>>;
   const itemsOf = (rows: unknown[][] | undefined, columns: number[]): string[] => [...new Set((rows ?? []).flatMap((row) => columns.map((at) => row[at]).filter((one): one is string => typeof one === "string")))];
-  type AreaFacts = { en: string; population: number | null; items: string[] };
+  type AreaFacts = { en: string; population: number | null; items: string[]; year?: number | null };
   const areas = new Map<string, AreaFacts>([
     ...facts.records.map((record): [string, AreaFacts] => [record.alpha2, { en: countries.find((one) => one.alpha2 === record.alpha2)?.en ?? record.alpha2, population: record.population, items: itemsOf(answers.items?.[record.alpha2], [0]) }]),
+    // Every level: a city's figure is held to each subdivision it lies in (scripts/cities.ts, SUBDIVISION_SHARE); the first level alone is held to AREA_SHARE.
     ...subdivisions
-      .filter((record) => record.level === 1)
       .map((record): [string, AreaFacts] => {
         // Where Wikidata gives the code to an item of its capital's name (PT-05 to the municipality of Castelo Branco),
         // its figure is that town's, not the subdivision's: none is used.
         const labels = new Set((answers.subdivisionLabels?.[record.code] ?? []).map((row) => row[1]));
         const town = (answers.subdivisionCapitals?.[record.code] ?? []).some((row) => labels.has(row[2]));
 
-        return [record.code, { en: record.en, population: town ? null : (subdivisionFacts.records.get(record.code)?.population ?? null), items: itemsOf([...(answers.subdivisionLabels?.[record.code] ?? []), ...(answers.subdivisionCapitals?.[record.code] ?? [])], [0, 1]) }];
+        return [record.code, { en: record.en, population: town ? null : (subdivisionFacts.records.get(record.code)?.population ?? null), year: town ? null : (subdivisionFacts.records.get(record.code)?.populationYear ?? null), items: itemsOf([...(answers.subdivisionLabels?.[record.code] ?? []), ...(answers.subdivisionCapitals?.[record.code] ?? [])], [0, 1]) }];
       }),
   ]);
   const { rows, tiers, report } = buildCities({
@@ -1081,7 +1081,7 @@ const writeCities = (): void => {
   });
   checkCapitalNames(rows);
   for (const id of Object.keys(CITY_POPULATIONS)) if (!report.figures.setByHand.includes(id)) throw new Error(`CITY_POPULATIONS (scripts/city-populations.ts): ${id} is no city now; look at it again`);
-  console.log(`Figures: ${report.figures.estimateSite.length} a web site's estimate, ${report.figures.areaFigure.length} a larger area's, ${report.figures.setByHand.length} set by hand; ${report.figures.land.length} items are land, not a town; ${Object.values(report.ownCountry).reduce((sum, one) => sum + one, 0)} cities in a territory's own country.`);
+  console.log(`Figures: ${report.figures.estimateSite.length} a web site's estimate, ${report.figures.areaFigure.length} a larger area's, ${report.figures.subdivisionFigure.length} above a subdivision's, ${report.figures.setByHand.length} set by hand; ${report.figures.land.length} items are land, not a town; ${Object.values(report.ownCountry).reduce((sum, one) => sum + one, 0)} cities in a territory's own country.`);
   if (process.env.KUNI_FIGURES !== undefined) for (const [kind, ids] of Object.entries(report.figures)) console.log(`  ${kind}: ${ids.join(" ")}`);
   console.log(`Cities: ${report.withMetro} head an urban area, ${report.inMetroOf} lie inside another city's; ${report.areasUnmatched.length} official areas name no city kuni has${process.env.KUNI_AREAS === undefined ? "" : `: ${report.areasUnmatched.join("; ")}`}.`);
   // Each Japanese name's reading in hiragana: Wikidata's reading in kana (P1814) where the name is Wikidata's own label
