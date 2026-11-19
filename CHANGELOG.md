@@ -9,6 +9,7 @@ All notable changes to this project are written here. The format follows
 ### Fixed
 
 - A city that has no Wikidata figure left no longer takes Natural Earth's `POP_MAX` where it is above the people of a subdivision the city lies in, of any figure's age (MODULES-1670). Before, Damascus kept Natural Earth's 2,466,000 against Damascus Governorate's 1,754,000; it now has no figure and stays a capital. Jamame and Arak keep theirs, their subdivision codes being stray ones (`NOT_INSIDE`).
+- Brazil's cities take IBGE's 2022 census where Wikidata prefers IBGE's older estimate (MODULES-1671). Before, Guarulhos was the estimate of 1,324,781 for 2015 and Campinas 1,213,792 for 2020; they are the census's 1,291,771 and 1,139,047 for 2022. Only a census statement whose references are all IBGE's, newer than the estimate and alone on its day is taken, and the build stops if it is not within 80% to 125% of the estimate. Other countries are unchanged.
 
 ## [1.13.0] - 2026-11-19
 

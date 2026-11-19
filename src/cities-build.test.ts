@@ -427,6 +427,41 @@ describe("a figure that is not the city's own", () => {
     }
   });
 
+  it("takes IBGE's census over IBGE's older estimate, only when it is alone on its day, and stops when the two are far apart", () => {
+    const ibge = (value: number, day: string, method: string, host: string): PopulationStatement => [value, day, method === "estimate" ? 2 : 1, method, [host]];
+    const run = (list: [number, PopulationStatement[]][], items: CitiesSnapshot["items"]) => figures(items, statements(list));
+    const { rows, report } = run(
+      [
+        [1, [ibge(1324781, "2015-07-01", "estimate", "ibge.gov.br"), ibge(1291771, "2022-01-01", "census", "sidra.ibge.gov.br")]],
+        // Two census statements on the day (parts of a city): none is preferred.
+        [2, [ibge(500000, "2015-07-01", "estimate", "ftp.ibge.gov.br"), ibge(200000, "2022-01-01", "census", "sidra.ibge.gov.br"), ibge(290000, "2022-01-01", "census", "sidra.ibge.gov.br")]],
+        // An estimate of another office, and a census of the country's own, are not IBGE's pair.
+        [3, [[900000, "2020-01-01", 2, "estimate", ["citypopulation.de"]], ibge(950000, "2022-01-01", "census", "sidra.ibge.gov.br")]],
+        [4, [ibge(700000, "2015-07-01", "estimate", "ibge.gov.br"), [720000, "2022-01-01", 1, "census", ["ubos.org"]]]],
+        // The preferred figure is itself a census: it stays.
+        [5, [[640000, "2022-01-01", 2, "census", ["sidra.ibge.gov.br"]], ibge(660000, "2023-01-01", "census", "sidra.ibge.gov.br")]],
+      ],
+      [
+        item(1, "Guarulhos", null, [1, 1], "BR", [[1324781, "2015-07-01"]]),
+        item(2, "Parts", null, [2, 2], "BR", [[500000, "2015-07-01"]]),
+        item(3, "Site", null, [3, 3], "BR", [[900000, "2020-01-01"]]),
+        item(4, "Other", null, [4, 4], "BR", [[700000, "2015-07-01"]]),
+        item(5, "Census", null, [5, 5], "BR", [[640000, "2022-01-01"]]),
+      ],
+    );
+    const found = byName(rows);
+    expect([found.Guarulhos![3], found.Guarulhos![4]]).toEqual([1291771, 2022]);
+    expect(found.Parts![3]).toBe(500000);
+    expect(found.Site![3]).toBe(900000);
+    expect(found.Other![3]).toBe(700000);
+    expect(found.Census![3]).toBe(640000);
+    expect(report.figures.ibgeCensus).toEqual(["Q1"]);
+    // A census 1.5 times the estimate is another area's: the build stops, naming the city.
+    expect(() =>
+      run([[1, [ibge(1000000, "2015-07-01", "estimate", "ibge.gov.br"), ibge(1500000, "2022-01-01", "census", "sidra.ibge.gov.br")]]], [item(1, "Wide", null, [1, 1], "BR", [[1000000, "2015-07-01"]])]),
+    ).toThrow(/IBGE_CHANGE.*Q1 Wide/);
+  });
+
   it("uses a census figure set by hand, says kuni gave it, and stops when Wikidata's figure is no longer the one it replaces", () => {
     const hand = { Q1: { wikidata: 3903480, population: 443981, date: "2021-06-27", source: "the census", why: "a site's estimate" } };
     const { rows } = figures([item(1, "Kumasi", null, [1, 1], "FR", [[3903480, "2024-01-01"]])], statements([]), hand);
