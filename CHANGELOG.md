@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- A city that has no Wikidata figure left no longer takes Natural Earth's `POP_MAX` where it is above the people of a subdivision the city lies in, of any figure's age (MODULES-1670). Before, Damascus kept Natural Earth's 2,466,000 against Damascus Governorate's 1,754,000; it now has no figure and stays a capital. Jamame and Arak keep theirs, their subdivision codes being stray ones (`NOT_INSIDE`).
+
 ## [1.13.0] - 2026-11-19
 
 ### Fixed

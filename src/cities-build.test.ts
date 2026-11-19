@@ -389,13 +389,38 @@ describe("a figure that is not the city's own", () => {
     expect(run(2010, null)).toBeNull();
   });
 
+  it("holds Natural Earth's POP_MAX, which has no day, to a subdivision's figure of any age, and leaves the city with none", () => {
+    const withAreas = new Map<string, Area>([...areas, ["FR-75", { en: "Paris", population: 1754000, items: ["Q60"], year: 2011 }], ["SO-JH", { en: "Kismayo", population: 643, items: ["Q70"], year: 2008 }]]);
+    const run = (list: CitiesSnapshot["items"], places: NaturalEarthFile["places"]) =>
+      buildCities({ snapshot: snapshot(list), naturalEarth: natural(places), levels, countries: new Set([...countries, "SO"]), populations: statements([]), areas: withAreas, cityPopulations: {} });
+    const { rows, report } = run(
+      [
+        item(1, "Capital", null, [1, 1], "FR", [], ["FR-75"], ["FR-75"]),
+        item(2, "Below", null, [2, 2], "FR", [], ["FR-75"]),
+        item(3, "Above", null, [3, 3], "FR", [], ["FR-75"]),
+        item(4, "Jamame", null, [4, 4], "SO", [], ["SO-JH"]),
+        item(1017154, "Jamame", null, [5, 5], "SO", [], ["SO-JH"]),
+      ],
+      [place("Q1", "Capital", null, 1, 1, 2466000, "Admin-0 capital", "FR"), place("Q2", "Below", null, 2, 2, 1700000, "Populated place", "FR", 2), place("Q3", "Above", null, 3, 3, 1800000, "Populated place", "FR", 3), place("Q4", "Jamame", null, 4, 4, 185270, "Populated place", "SO", 4), place("Q1017154", "Jamame", null, 5, 5, 185270, "Populated place", "SO", 5)],
+    );
+    // A capital stays, with no figure and none from a source; a city that is no capital goes; a figure below the subdivision's stays, as Natural Earth's.
+    const capital = rows.find((row) => row[7] === "Capital")!;
+    expect(capital[3]).toBeNull();
+    expect(expandCities([capital])[0]!.source.population).toBeNull();
+    expect(rows.find((row) => row[7] === "Below")![3]).toBe(1700000);
+    expect(rows.find((row) => row[7] === "Above")).toBeUndefined();
+    // SO-JH's 643 is far below Jamame's 185,270, so Q4 goes; Q1017154 is in NOT_INSIDE for SO-JH and keeps it.
+    expect(rows.filter((row) => row[7] === "Jamame").map((row) => row[3])).toEqual([185270]);
+    expect(report.figures.naturalEarthFigure).toEqual(["Q1", "Q3", "Q4"]);
+  });
+
   it("does not hold a city to the codes NOT_INSIDE names for it", () => {
     const below = new Map<string, Area>([...areas, ["FR-75", { en: "Paris", population: 200000, items: ["Q60"], year: 2023 }]]);
     const run = (number: number) => buildCities({ snapshot: snapshot([item(number, "Nouakchott", null, [1, 1], "FR", [[1446761, "2023-01-01"]], ["FR-75"])]), naturalEarth: natural([]), levels, countries, populations: statements([]), areas: below, cityPopulations: {} }).rows[0]?.[3] ?? null;
     // Nouakchott's own regions are listed; the table has them under its item (Q3688), codes of its country in the real data.
     expect(NOT_INSIDE.Q3688!.codes).toEqual(["MR-13", "MR-14", "MR-15"]);
     expect(run(3688)).toBeNull(); // FR-75 is not one of its codes here, so the rule holds
-    expect(Object.keys(NOT_INSIDE).sort()).toEqual(["Q1015727", "Q25287", "Q27157", "Q27400", "Q2550996", "Q3476", "Q3688", "Q500111", "Q731039", "Q9347"].sort());
+    expect(Object.keys(NOT_INSIDE).sort()).toEqual(["Q1015727", "Q1017154", "Q15185885", "Q25287", "Q27157", "Q27400", "Q2550996", "Q3476", "Q3688", "Q500111", "Q731039", "Q9347"].sort());
     for (const [id, entry] of Object.entries(NOT_INSIDE)) {
       expect(entry.codes.length, id).toBeGreaterThan(0);
       expect(entry.why, id).toMatch(/^[^,]+, [^:]+: .+\.$/);

@@ -74,7 +74,7 @@ interface Report {
    * a larger area's figure, a figure above that of a subdivision the city lies in (`subdivisionFigure`); those set by hand (CITY_POPULATIONS); and the items that
    * are land with a town on it (an island) or no town at all (an atoll).
    */
-  figures: { estimateSite: string[]; areaFigure: string[]; subdivisionFigure: string[]; setByHand: string[]; land: string[] };
+  figures: { estimateSite: string[]; areaFigure: string[]; subdivisionFigure: string[]; naturalEarthFigure: string[]; setByHand: string[]; land: string[] };
   /** The cities placed in a country with a code of its own rather than its parent's (Dededo in GU, not US), by the pair of codes. */
   ownCountry: Record<string, number>;
   /** The cities that have a metropolitan area (CityRow's metro columns). */
@@ -177,6 +177,8 @@ const NOT_INSIDE: Readonly<Record<string, { codes: readonly string[]; why: strin
   Q500111: { codes: ["UG-303"], why: "Arua, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
   Q1015727: { codes: ["UG-209"], why: "Mbale City, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
   Q731039: { codes: ["UG-410"], why: "Mbarara City, Uganda: the city's 2024 census figure (UBOS, ubos.org, referenced in the snapshot) counts a different, larger area than the subdivision figure kuni holds; a newer sourced census figure is not held to it." },
+  Q1017154: { codes: ["SO-JH"], why: "Jamame, Somalia: SO-JH's point (Kismayo, 0.43 N 41.6 E) is about 134 km from the city, and its figure is 643 (2008); the code is a stray one." },
+  Q15185885: { codes: ["DZ-11"], why: "Arak, Algeria: DZ-11's point (Tamanrasset, 22.79 N 5.52 E) is about 330 km from the city; the code is a stray one." },
   Q2550996: { codes: ["JO-AT"], why: "Tafilah, Jordan: the governorate's 10,000 has no year and is a round figure under its capital's 23,512 (2004)." },
 };
 // Web sites that publish estimates or models of their own of a city's people (often of the urban area round it), not a
@@ -611,7 +613,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     naturalEarthOnly: 0,
     naturalEarthLeftOut: { noItemNoMatch: 0, noCountry: 0, belowFloor: 0 },
     leftOut: { noName: 0, noPoint: 0, noCountry: 0, noPopulation: 0, belowFloor: 0, area: 0, duplicate: 0, township: 0 },
-    figures: { estimateSite: [], areaFigure: [], subdivisionFigure: [], setByHand: [], land: [] },
+    figures: { estimateSite: [], areaFigure: [], subdivisionFigure: [], naturalEarthFigure: [], setByHand: [], land: [] },
     ownCountry: {},
     townshipCities: {},
     unitTowns: 0,
@@ -681,6 +683,25 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
   // method (P459) is not trusted to choose: World Population Review's figures are often called a census (Kumasi's), and
   // a city's census figures include its parts' (Riyadh's districts), so preferring a census figure over a later one took
   // a part's or an old figure for most of the 70 cities it would have changed.
+  // Whether a figure is above the people of a subdivision the city lies in, of any level (SUBDIVISION_SHARE), with the day of the
+  // figure, null where it has none: a subdivision's year is then no reason to set the rule aside.
+  const aboveSubdivision = (id: string, subs: string[], capitalCodes: string[], country: string, en: string): ((value: number, day: string | null) => boolean) => {
+    // Every subdivision the city lies in, of any level, with the people it had and the year of that figure.
+    const notInside = NOT_INSIDE[id]?.codes ?? [];
+    const inside = subs
+      .filter((code) => code.startsWith(`${country}-`) && !notInside.includes(code))
+      .flatMap((code) => {
+        const area = input.areas?.get(code);
+        if (area === undefined || area.population === null) return [];
+        const own = capitalCodes.includes(code) || area.items.includes(id) || simple(area.en) === simple(en);
+
+        return [{ people: area.population, year: area.year ?? null, share: own ? SUBDIVISION_SHARE_OWN : SUBDIVISION_SHARE }];
+      });
+    // A subdivision's figure older than the city's own statement does not count: the city may have grown since.
+    const aboveInside = (value: number, day: string | null): boolean => inside.some(({ people, year, share }) => (day === null || year === null || year >= Number(day.slice(0, 4))) && value > share * people);
+
+    return aboveInside;
+  };
   const statementsOf = new Map(input.populations?.statements ?? []);
   const fromSite = (one: PopulationStatement): boolean => one[4].length > 0 && one[4].every((host) => ESTIMATE_SITES.has(host));
   const figureOf = (id: string, pops: [number, string | null][], subs: string[], capitalCodes: string[], country: string, en: string): { value: number; day: string | null; hand: boolean } | null => {
@@ -705,19 +726,7 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
 
         return area === undefined || area.population === null || area.items.includes(id) || simple(area.en) === simple(en) ? [] : [area.population];
       });
-    // Every subdivision the city lies in, of any level, with the people it had and the year of that figure.
-    const notInside = NOT_INSIDE[id]?.codes ?? [];
-    const inside = subs
-      .filter((code) => code.startsWith(`${country}-`) && !notInside.includes(code))
-      .flatMap((code) => {
-        const area = input.areas?.get(code);
-        if (area === undefined || area.population === null) return [];
-        const own = capitalCodes.includes(code) || area.items.includes(id) || simple(area.en) === simple(en);
-
-        return [{ people: area.population, year: area.year ?? null, share: own ? SUBDIVISION_SHARE_OWN : SUBDIVISION_SHARE }];
-      });
-    // A subdivision's figure older than the city's own statement does not count: the city may have grown since.
-    const aboveInside = (value: number, day: string | null): boolean => inside.some(({ people, year, share }) => (day === null || year === null || year >= Number(day.slice(0, 4))) && value > share * people);
+    const aboveInside = aboveSubdivision(id, subs, capitalCodes, country, en);
     const whyTooBig = (value: number, day: string | null): "areaFigure" | "subdivisionFigure" | null =>
       (countryPeople !== null && value > countryPeople) || regions.some((people) => value >= AREA_SHARE[0] * people && value <= AREA_SHARE[1] * people) ? "areaFigure" : aboveInside(value, day) ? "subdivisionFigure" : null;
     const tooBig = (value: number, day: string | null): boolean => whyTooBig(value, day) !== null;
@@ -792,7 +801,11 @@ const buildCities = (input: { snapshot: CitiesSnapshot; naturalEarth: NaturalEar
     }
     if (ownCode !== undefined && wikidataCountry !== null && wikidataCountry !== ownCode) report.ownCountry[`${wikidataCountry} ${ownCode}`] = (report.ownCountry[`${wikidataCountry} ${ownCode}`] ?? 0) + 1;
     const wikidataPopulation = figureOf(`Q${number}`, pops, subs, capitalCodes, country, en);
-    const population = wikidataPopulation?.value ?? place?.[6] ?? null;
+    // Natural Earth's POP_MAX, which has no day, is held to the same rule against a subdivision's figure of any age: it is no figure of the city's own where it is above one (Damascus's 2,466,000 against Damascus Governorate's 1,754,000), and the city has none.
+    const naturalEarth = place?.[6] ?? null;
+    const naturalEarthKept = naturalEarth !== null && !aboveSubdivision(`Q${number}`, subs, capitalCodes, country, en)(naturalEarth, null);
+    if (wikidataPopulation === null && naturalEarth !== null && !naturalEarthKept) report.figures.naturalEarthFigure.push(`Q${number}`);
+    const population = wikidataPopulation?.value ?? (naturalEarthKept ? naturalEarth : null);
     // Natural Earth's Japanese name is used only where it is not hiragana for a place outside Japan (うーんルワバ for Umm Ruwaba): a sign of a machine's guess.
     const neJa = place?.[3] != null && (country === "JP" || !/\p{Script=Hiragana}/u.test(place[3])) ? place[3] : null;
     const written = JA_NAMES[`Q${number}`]?.ja ?? null;
@@ -1426,7 +1439,7 @@ const citiesDoc = (report: Report, snapshot: CitiesSnapshot, naturalEarth: Natur
     `- **Wikidata**: the items that are an instance of a human settlement (Q486972 and every class below it through P279), have coordinates (P625) and a best-ranked population (P1082) of ${n(snapshot.floor)} or more: ${n(snapshot.counts.candidates ?? 0)} items with that population and coordinates, of which ${n(snapshot.counts.settlements ?? 0)} are a city, town or other settlement (${n(snapshot.counts.areas ?? 0)} more are only a metropolitan area, urban area or conurbation, and are left out; the rest are districts, counties and the like); every item that is the current capital (P36) of a country or a subdivision; and every item Natural Earth's places name. The queries are written in the snapshot file itself.`,
     `- **Natural Earth**: ${n(report.naturalEarthPlaces)} places ("Historic place" left out). ${n(report.naturalEarthJoined)} name a Wikidata item (WIKIDATAID) that the snapshot holds; ${n(report.naturalEarthToArea)} name an item that is an area or a unit (Jamalpur naming Jamalpur District) and are matched again as if they named none; ${n(report.naturalEarthMatchedByPlace)} more were matched by position (within 15 km, same country, same name); the ${n(report.naturalEarthOnly + report.naturalEarthLeftOut.noCountry + report.naturalEarthLeftOut.belowFloor)} left have no Wikidata item here: ${n(report.naturalEarthOnly)} are cities of their own, with an id \`ne:<Natural Earth's number>\` (a capital, or 15,000 people or more); the others have no country, or are small and no capital, and are left out.`,
     "- **Which source wins**: Wikidata's label, point and population are kept where it has them. Natural Earth fills a Japanese name, a population or a point Wikidata does not have, and a capital where Wikidata names none; each city says which in its `source` field.",
-    `- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's \`POP_MAX\` has no day. A figure that is not a count of the city's own is not used, and the next is (\`scripts/fetch-city-populations.ts\` reads, for each figure, its rank, its day, how it was found, P459, and the sites its references name, P854): a figure whose every reference is a web site's own estimate, World Population Review's or Demographia's (${n(report.figures.estimateSite.length)}: Lobamba's 114,585); a figure above its country's people, or within 95% to 110% of a first-level subdivision's where the city is neither that subdivision (Prague) nor its capital, which is that subdivision's (${n(report.figures.areaFigure.length)}; Gros Islet's 21,660, the Gros Islet Quarter's, is left out by id, the quarter having the town's name). A figure above the people of a subdivision the city lies in, of any level, is a larger area's too: it is left out when the subdivision's figure is no older than the city's own, and a city that is the subdivision's capital, its item or of its name may be 15% above it, no more (${n(report.figures.subdivisionFigure.length)}; Beirut's 2,421,354 against Beirut Governorate's 433,249). Where the code is not a subdivision that holds the city (Nouakchott's three regions are its parts, Hafar Al-Batin's Northern Borders is 380 km away), \`NOT_INSIDE\` names it and the figure is kept. Wikidata's own word for how a figure was found (P459) does not choose: World Population Review's figures are often called a census. Where Wikidata has no figure for the city itself, the census's is set by hand, with its source and day (${n(report.figures.setByHand.length)}, \`scripts/city-populations.ts\`: Kumasi's 443,981 of 2021, not World Population Review's 3,903,480 for the urban area), and the city's \`source.population\` says \`kuni\`.`,
+    `- **Population**: the best-ranked statement of the latest day (P585); of statements with no day, the largest. Natural Earth's \`POP_MAX\` has no day. A figure that is not a count of the city's own is not used, and the next is (\`scripts/fetch-city-populations.ts\` reads, for each figure, its rank, its day, how it was found, P459, and the sites its references name, P854): a figure whose every reference is a web site's own estimate, World Population Review's or Demographia's (${n(report.figures.estimateSite.length)}: Lobamba's 114,585); a figure above its country's people, or within 95% to 110% of a first-level subdivision's where the city is neither that subdivision (Prague) nor its capital, which is that subdivision's (${n(report.figures.areaFigure.length)}; Gros Islet's 21,660, the Gros Islet Quarter's, is left out by id, the quarter having the town's name). A figure above the people of a subdivision the city lies in, of any level, is a larger area's too: it is left out when the subdivision's figure is no older than the city's own, and a city that is the subdivision's capital, its item or of its name may be 15% above it, no more (${n(report.figures.subdivisionFigure.length)}; Beirut's 2,421,354 against Beirut Governorate's 433,249). Natural Earth's \`POP_MAX\`, which Natural Earth gives no day and which a city takes where Wikidata has no figure left, is held to the same rule against a subdivision's figure of any age (${n(report.figures.naturalEarthFigure.length)}; Damascus's 2,466,000, and the city has none), and \`NOT_INSIDE\` applies to it too. Where the code is not a subdivision that holds the city (Nouakchott's three regions are its parts, Hafar Al-Batin's Northern Borders is 380 km away), \`NOT_INSIDE\` names it and the figure is kept. Wikidata's own word for how a figure was found (P459) does not choose: World Population Review's figures are often called a census. Where Wikidata has no figure for the city itself, the census's is set by hand, with its source and day (${n(report.figures.setByHand.length)}, \`scripts/city-populations.ts\`: Kumasi's 443,981 of 2021, not World Population Review's 3,903,480 for the urban area), and the city's \`source.population\` says \`kuni\`.`,
     "- **Subdivision**: the ISO 3166-2 code, from Wikidata's P300 on the city or the places it is in (P131), restricted to the first-level subdivisions kuni lists for its country; where there are several, the first in code order.",
     `- **Areas**: Wikidata's human settlements include areas of several cities and the units that hold them. An item that is only a metropolitan area, an urban area, a conurbation, an urban agglomeration or a built-up area (by its class) is left out when the snapshot is made, and so is one whose English name ends in Province, County, Prefecture, Governorate, District, Regency, Oblast or Department, or names an area (metropolitan area, urban area, agglomeration, conurbation), or starts 'County of', 'Province of', 'District of', 'Municipality of', 'City of' or 'Greater' (Greater Sudbury, Greater Napanee and Greater Noida are cities and stay), or ends in a number (Prague 5, Sector 3, Municipio 2: a numbered district), or starts 'Metropolitan', 'Metro', 'Metropolis of', 'Commune' or 'Sectorul' (Metropolitan Toronto, Metro Manila, the Metropolis of Lyon, Burundi's communes, Chișinău's sectors), or names a regional municipality or a 'State of' (North East State of Somalia), or ends in 'Region' or 'Region of …' (Øresund Region, Kurdistan Region of Iraq; a name with a comma, a town told apart by its region, stays), 'Capital City' (Podgorica Capital City, the unit round the city), 'Urban Corridor' or 'New Area' (Binhai New Area), or ends in a unit below a district (Upazila, Thana, Tehsil, Taluka, Municipal Okrug, Subdistrict, Ward, Union, Arrondissement, County Borough, Regional Council or Commune: Gazipur Sadar Upazila; the word alone, Union in New Jersey, is a town's name and stays), unless it is a capital or Natural Earth names it. A few items are left out by name, each with its reason (NOT_CITIES in scripts/cities.ts: Moro, Papua New Guinea, at 6.3 million people; Dagbon, a traditional kingdom of Ghana, at 4 million). Land is no town (${n(report.figures.land.length)}): an atoll, a reef island or an archipelago that is no capital (Tarawa, Kiribati: the town is South Tarawa), and an island where a capital or a town of its name stands within ${LAND_KM} km (Saint Thomas, the island of Charlotte Amalie); its id answers with that town. In Iowa, Illinois, Indiana, Kansas, Missouri, Nebraska and the Dakotas a township is a civil unit of its county with cities inside it: every township is left out (${n(report.leftOut.township)}; Kaw Township, round Kansas City), each id answering with the city of its own name, else the nearest within 15 km of a quarter of its people or more; elsewhere a township is the municipality people live in (Toms River, New Jersey; Clinton Township, Michigan) and stays. Some cities with such a name are lost; a city that Natural Earth names is kept. Then a unit or a part of a city that Wikidata names as a settlement is left out: a name ending in County, District, Subdistrict, Microdistrict, Raion, Governorate, Territory, Region or Area (a capital, a name with a comma, and a name in brackets stay), a numbered or named part ("Zone 7 of Milan", "third sector of Marseille"), and a municipality with a town of its own name within 25 km (Kodad municipality); its id answers with that town, else the city it is part of, else a city within 3 km, else the biggest within 15 km of twice its people (Xətai raion, Baku), else none (${n(Object.values(report.townshipCities).length)} ids in all with the townships). Where Natural Earth names such a unit and no city stands apart, it is the town Natural Earth has (${n(report.unitTowns)}: Yishui County is Yishui), with the town's point and people, not the county's.`,
     `- **Capitals**: a country has exactly one national capital (Natural Earth's "Admin-0 capital" among the items that are a capital of it, else the most populous Wikidata names): ${n(report.capitals.national)} cities are one. Another seat of government (Cape Town, Kyoto) is an \`alternate\` (${n(report.capitals.alternate)}); the capital of a subdivision needs an ISO 3166-2 code kuni lists (${n(report.capitals.subdivision)}), and Natural Earth's subdivision capitals with none (${n(report.capitals.droppedWithoutCode)}) are not capitals here. Every capital says what it is the capital of in \`capitalOf\`.`,
