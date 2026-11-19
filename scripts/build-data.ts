@@ -51,7 +51,7 @@ import type { FactsSnapshot } from "./facts.ts";
 import { readManifest, readSource, ROOT } from "./sources.ts";
 import { buildCityFacts, CITY_ELEVATION_DROPPED, CITY_ZONES } from "./city-facts.ts";
 import type { SubdivisionZone } from "./city-facts.ts";
-import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
+import { buildCities, byRank, SAME_CENSUS_CONFIRMED, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
 import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, PopulationsSnapshot, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
 import { CITY_POPULATIONS } from "./city-populations.ts";
 import { INSIDE_AREAS, INSIDE_SUBDIVISIONS, OECD_AREAS } from "./metro-links.ts";
@@ -1063,6 +1063,7 @@ const writeCities = (): void => {
       }),
   ]);
   const { rows, tiers, report } = buildCities({
+    confirmed: SAME_CENSUS_CONFIRMED,
     populations,
     areas,
     cityPopulations: CITY_POPULATIONS,

@@ -724,9 +724,9 @@ describe("each city's own figure, in its own country", () => {
     expect(await figure("Q184409")).toEqual([1291771, "2022"]); // Guarulhos, not the estimate of 1,324,781 (2015)
     expect(await figure("Q171617")).toEqual([1139047, "2022"]); // Campinas, not 1,213,792 (2020)
     expect(await figure("Q178725")).toEqual([481749, "2022"]); // Niterói, not 496,696 (2015)
-    // Cubatão and Itanhaém have the identical census figure, 112,476: one is a copy error, so both keep their estimates (WRONG_POPULATIONS).
-    expect(await figure("Q817954")).toEqual([131626, "2020-07-01"]);
-    expect(await figure("Q983491")).toEqual([96222, "2015-07-01"]);
+    // Cubatão and Itanhaém have the identical census figure, 112,476, as IBGE's own pages say (SAME_CENSUS_CONFIRMED): both keep it.
+    expect(await figure("Q817954")).toEqual([112476, "2022"]);
+    expect(await figure("Q983491")).toEqual([112476, "2022"]);
     // Buldon and Cotabato City (Philippines) have the identical 383,383 of 2024: Cotabato City's census before it, 325,079 of 2020, is within 1.5 of it and it keeps it; Buldon's was 39,684, which it takes.
     expect(await figure("Q726993")).toEqual([383383, "2024-07-01"]);
     expect(await figure("Q212255")).toEqual([39684, "2020-05-01"]);

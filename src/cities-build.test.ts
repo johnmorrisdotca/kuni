@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { buildCities, NOT_INSIDE, cityAliases, columnsText, unresolvedIds } from "../scripts/cities.ts";
+import { buildCities, NOT_INSIDE, SAME_CENSUS_CONFIRMED, cityAliases, columnsText, unresolvedIds } from "../scripts/cities.ts";
 import { expandCities, rowsOf } from "./city-rows";
 import type { CityColumns, CityRow } from "./city-rows";
 import type { CitiesSnapshot, NaturalEarthFile, PopulationsSnapshot, PopulationStatement } from "../scripts/cities.ts";
@@ -534,6 +534,30 @@ describe("a figure that is not the city's own", () => {
     expect(found.Old![3]).toBe(250000);
     expect(found.Fresh).toBeUndefined();
     expect(report.sameCensus.map((group) => [group.value, group.kept])).toEqual([[380000, "Q1"], [150000, null], [200000, null], [250000, "Q8"]]);
+  });
+
+  it("keeps an identical census figure that is confirmed for both its cities, and stops the build where an entry no longer matches", () => {
+    const census = (value: number): PopulationStatement => [value, "2022-01-01", 2, "census", ["sidra.example"]];
+    const older = (value: number): PopulationStatement => [value, "2010-01-01", 1, "census", ["sidra.example"]];
+    const list = (ids: [number, number], value: number) => [
+      item(ids[0], "Cubatão", null, [1, 1], "FR", [[value, "2022-01-01"]]),
+      item(ids[1], "Itanhaém", null, [10, 10], "FR", [[value, "2022-01-01"]]),
+    ];
+    const populations = (ids: [number, number], value: number) => statements([[ids[0], [older(40000), census(value)]], [ids[1], [older(30000), census(value)]]]);
+    // Not confirmed: both are refused, as before.
+    const refused = figures(list([1, 2], 112476), populations([1, 2], 112476));
+    expect(refused.rows.map((row) => row[3]).sort()).toEqual([30000, 40000]);
+    // Confirmed (SAME_CENSUS_CONFIRMED names Q817954 and Q983491, 112,476, 2022): both keep it.
+    const withTable = (items: CitiesSnapshot["items"], populationsSnapshot: PopulationsSnapshot) => buildCities({ snapshot: snapshot(items), naturalEarth: natural([]), levels, countries, populations: populationsSnapshot, areas, cityPopulations: {}, confirmed: SAME_CENSUS_CONFIRMED });
+    const kept = withTable(list([817954, 983491], 112476), populations([817954, 983491], 112476));
+    expect(kept.rows.map((row) => row[3])).toEqual([112476, 112476]);
+    expect(kept.report.sameCensus).toEqual([]);
+    // A figure that is no longer the confirmed one stops the build, naming the entry and the id.
+    expect(() => withTable(list([817954, 983491], 112000), populations([817954, 983491], 112000))).toThrow(/SAME_CENSUS_CONFIRMED.*cubatao_itanhaem.*Q817954/);
+    // So does an id that is gone.
+    expect(() => withTable([item(817954, "Cubatão", null, [1, 1], "FR", [[112476, "2022-01-01"]])], statements([[817954, [census(112476)]]]))).toThrow(/SAME_CENSUS_CONFIRMED.*Q983491/);
+    expect(Object.keys(SAME_CENSUS_CONFIRMED)).toEqual(["cubatao_itanhaem"]);
+    expect(SAME_CENSUS_CONFIRMED.cubatao_itanhaem!.sources.map((one) => one.url)).toEqual(["https://cidades.ibge.gov.br/brasil/sp/cubatao/panorama", "https://cidades.ibge.gov.br/brasil/sp/itanhaem/panorama"]);
   });
 
   it("uses a census figure set by hand, says kuni gave it, and stops when Wikidata's figure is no longer the one it replaces", () => {

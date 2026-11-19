@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Cubatão and Itanhaém have the same 2022 census figure, 112,476, confirmed on IBGE's pages (MODULES-1687); 1.14.0 had held them to their estimates. A figure two cities are known to share is listed with its sources in `SAME_CENSUS_CONFIRMED`, and the build stops if an entry no longer matches the data.
+
 ## [1.14.0] - 2026-11-19
 
 ### Fixed
