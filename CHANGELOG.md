@@ -8,6 +8,7 @@ All notable changes to this project are written here. The format follows
 
 ### Changed
 
+- Three of India's names lose CLDR's macrons (MODULES-1674): "Chhattisgarh" (IN-CG), "Telangana" (IN-TS) and "Dadra and Nagar Haveli and Daman and Diu" (IN-DH), as the governments' own sites write them (cgstate.gov.in, telangana.gov.in, dnh.gov.in). The macron forms stay searchable through `Subdivision.aliases`. Uttarakhand (IN-UK) keeps CLDR's "Uttarākhand" until an official English page is read for it.
 - Ukraine's oblasts have plain English names (MODULES-1632): "Vinnytsia Oblast", "Kharkiv Oblast", "Ivano-Frankivsk Oblast", not CLDR's colloquial "Vinnychchyna", "Kharkivshchyna", "Prykarpattia". The names are Wikidata's English labels, read from the pinned snapshot `data-sources/wikidata-facts-2026-10-09.json` (each item is cited in `EN_NAME_OVERRIDES`). Kyiv and Sevastopol are unchanged; Crimea is "Autonomous Republic of Crimea". The Japanese names and the codes are unchanged.
 
 ### Added

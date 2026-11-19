@@ -113,3 +113,29 @@ describe("Ukraine's oblasts (MODULES-1632)", () => {
     expect(subdivision("JP-13")!.aliases).toBeUndefined();
   });
 });
+
+describe("India's states with a macron in CLDR (MODULES-1674)", () => {
+  const CHANGED = ["IN-CG", "IN-DH", "IN-TS"];
+
+  it("have the plain English name their governments' sites use", () => {
+    expect(subdivision("IN-CG")!.name.en).toBe("Chhattisgarh");
+    expect(subdivision("IN-TS")!.name.en).toBe("Telangana");
+    expect(subdivision("IN-DH")!.name.en).toBe("Dadra and Nagar Haveli and Daman and Diu");
+  });
+
+  it("are still found by CLDR's macron forms", () => {
+    expect(subdivisionByName("Chhattīsgarh")?.code).toBe("IN-CG");
+    expect(subdivisionByName("Telangāna")?.code).toBe("IN-TS");
+    expect(subdivisionByName("Dādra and Nagar Haveli and Damān and Diu")?.code).toBe("IN-DH");
+    expect(subdivision("IN-CG")!.aliases).toEqual(["Chhattīsgarh"]);
+  });
+
+  it("leave the other rows of India as they were: no other alias, the same count and some names", () => {
+    const india = subdivisions("IN")!;
+    expect(india).toHaveLength(36);
+    for (const one of india) if (!CHANGED.includes(one.code)) expect(one.aliases, one.code).toBeUndefined();
+    expect(subdivision("IN-KA")!.name.en).toBe("Karnataka");
+    expect(subdivision("IN-MH")!.name.en).toBe("Maharashtra");
+    expect(subdivision("IN-UK")!.name.en).toBe("Uttarākhand");
+  });
+});

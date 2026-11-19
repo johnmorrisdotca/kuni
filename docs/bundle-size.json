@@ -10,12 +10,12 @@
       "gzip": 631
     },
     "./subdivisions": {
-      "minified": 301281,
-      "gzip": 88681
+      "minified": 301351,
+      "gzip": 88697
     },
     "./load": {
-      "minified": 334842,
-      "gzip": 97807
+      "minified": 334912,
+      "gzip": 97825
     },
     "./facts": {
       "minified": 25423,
@@ -98,12 +98,12 @@
       "gzip": 4297
     },
     "./element": {
-      "minified": 850308,
-      "gzip": 292668
+      "minified": 850378,
+      "gzip": 292685
     },
     "./element/define": {
-      "minified": 850311,
-      "gzip": 292675
+      "minified": 850381,
+      "gzip": 292691
     },
     "./subdivisions/ad": {
       "minified": 1225,
@@ -426,8 +426,8 @@
       "gzip": 532
     },
     "./subdivisions/in": {
-      "minified": 3221,
-      "gzip": 1271
+      "minified": 3291,
+      "gzip": 1293
     },
     "./subdivisions/iq": {
       "minified": 1587,

@@ -330,6 +330,9 @@ const EN_NAME_OVERRIDES: Record<string, { en: string; why: string; keepCldr?: bo
   "UA-68": { en: "Khmelnytskyi Oblast", keepCldr: true, why: "Wikidata English label of Q171331, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias." },
   "UA-71": { en: "Cherkasy Oblast", keepCldr: true, why: "Wikidata English label of Q161808, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias." },
   "UA-74": { en: "Chernihiv Oblast", keepCldr: true, why: "Wikidata English label of Q167874, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias." },
+  "IN-CG": { en: "Chhattisgarh", keepCldr: true, why: "Government of Chhattisgarh's own site, https://cgstate.gov.in/, reads \"Official Website Government of Chhattisgarh\"; CLDR's macron form stays a search alias." },
+  "IN-DH": { en: "Dadra and Nagar Haveli and Daman and Diu", keepCldr: true, why: "The Administration's site, https://dnh.gov.in/, footer reads \"U.T. Administration of Dadra and Nagar Haveli and Daman and Diu. Government of India\"; CLDR's macron form stays a search alias." },
+  "IN-TS": { en: "Telangana", keepCldr: true, why: "Government of Telangana's site, https://www.telangana.gov.in/, reads \"Telangana State Portal\" and \"Copyright © 2015-2024 Government of Telangana.\"; CLDR's macron form stays a search alias." },
 };
 
 // English names the checks in scripts/en-names.ts point at and that are right as CLDR has them, each with the reason.

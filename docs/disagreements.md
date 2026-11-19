@@ -72,7 +72,7 @@ A reviewer found these CLDR names wrong, out of date or naming another place. `J
 | VC-02 | Saint Andrew | セント・アンドリューズ | セント・アンドリューズ | セント・アンドリュー教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR has セント・アンドリューズ. |
 | VC-03 | Saint David | セント・デイヴィッド郡 (ドミニカ国) | セント・デイヴィッド郡 | セント・デイヴィッド教区 | A parish (教区), as the neighbouring islands' parishes are written; CLDR calls it a 郡 (county). |
 
-## English names corrected, 56
+## English names corrected, 59
 
 Every English name is checked against Wikidata's English label for the patterns in `scripts/en-names.ts` (cut short,
 an adjective, marks stripped, swapped, a former place's name). These are corrected by `EN_NAME_OVERRIDES`; the build
@@ -136,6 +136,9 @@ stops on a name a check points at that is neither corrected nor accepted below.
 | UA-68 | Khmelnychchyna | Khmelnytskyi Oblast | Wikidata English label of Q171331, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
 | UA-71 | Cherkashchyna | Cherkasy Oblast | Wikidata English label of Q161808, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
 | UA-74 | Chernihivshchyna | Chernihiv Oblast | Wikidata English label of Q167874, snapshot wikidata-facts-2026-10-09.json; CLDR's colloquial form stays a search alias. |
+| IN-CG | Chhattīsgarh | Chhattisgarh | Government of Chhattisgarh's own site, https://cgstate.gov.in/, reads "Official Website Government of Chhattisgarh"; CLDR's macron form stays a search alias. |
+| IN-DH | Dādra and Nagar Haveli and Damān and Diu | Dadra and Nagar Haveli and Daman and Diu | The Administration's site, https://dnh.gov.in/, footer reads "U.T. Administration of Dadra and Nagar Haveli and Daman and Diu. Government of India"; CLDR's macron form stays a search alias. |
+| IN-TS | Telangāna | Telangana | Government of Telangana's site, https://www.telangana.gov.in/, reads "Telangana State Portal" and "Copyright © 2015-2024 Government of Telangana."; CLDR's macron form stays a search alias. |
 
 ## English names kept although a check points at them, 10
 
