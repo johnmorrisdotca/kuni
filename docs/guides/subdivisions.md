@@ -18,3 +18,14 @@ Subdivision records use full ISO 3166-2 codes, a country alpha-2, short code, ty
 ## Handle ambiguous names
 
 The plural name lookup returns all matches. The singular lookup returns null when it cannot choose one unique place; restrict country/level to disambiguate. Keep full codes when storing a choice because a short code or name can be reused elsewhere. The original [subdivision facts](../subdivision-facts.md) and [resource catalogue](country-resources.md) remain available.
+
+## Vietnam's provinces after 2025
+
+`subdivisions("VN")` is still the 63 current ISO 3166-2 codes. Resolution 202/2025/QH15 rearranges them, and `subdivisionReforms("VN")` is a dated note of that law: which current codes form each unit, under the name the resolution writes. It does not add or remove a code. Article 2 clause 1 takes effect on the day the resolution was passed, 12 June 2025. Article 2 clause 2 says the new provincial governments officially operate from 1 July 2025. Japanese is filled only when kuni already stores it for the code whose name was kept.
+
+```ts
+import { subdivisionReforms, subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+console.log(subdivisions("VN")?.length);
+console.log(subdivisionReforms("VN")?.operating);
+console.log(subdivisionReforms("VN")?.units.length);
+```

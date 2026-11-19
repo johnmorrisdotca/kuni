@@ -147,7 +147,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/codes` | The 250 codes and `isCountryCode`, nothing else | 0.6 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | One country's subdivisions, every level (`/subdivisions/jp`, `/subdivisions/us`, lower case) | 0.4–5.0 kB; Japan 1.5 kB |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions(code)`, one dynamic import per country | 97.6 kB min+gzip |
-| `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 88.4 kB min+gzip |
+| `@johnmorrisdotca/kuni/subdivisions` | All 5,050 subdivisions and the subdivision lookups | 90.3 kB min+gzip |
 | `@johnmorrisdotca/kuni/facts` | Every country's population, area, coordinates, borders, driving side and conventions | 8.6 kB min+gzip |
 | `@johnmorrisdotca/kuni/zones` | A subdivision's IANA time zone, and the zone at a point in a country | 26.9 kB min+gzip |
 | `@johnmorrisdotca/kuni/subdivision-facts` | `loadSubdivisionFacts(code)`, one dynamic import per country | 161.1 kB min+gzip |
@@ -435,7 +435,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 | --- | --- |
 | `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
 | `@johnmorrisdotca/kuni/codes` | `COUNTRY_CODES`, `isCountryCode` and the type `CountryCode` |
-| `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionByFormerCode`, `subdivisionsByFormerCode`, `subdivisionTypeLabel`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions` and `SubdivisionByNameOptions` |
+| `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionByFormerCode`, `subdivisionsByFormerCode`, `subdivisionTypeLabel`, `subdivisionReforms`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions`, `SubdivisionByNameOptions`, `SubdivisionReform` and `SubdivisionReformUnit` |
 | `@johnmorrisdotca/kuni/subdivisions/<code>` | the country's list as the default export and as `SUBDIVISIONS` |
 | `@johnmorrisdotca/kuni/load` | `loadSubdivisions` and the type `Subdivision` |
 | `@johnmorrisdotca/kuni/facts` | `facts`, `allFacts`, `distanceKm`, `FACTS_READ`, and the types `CountryFacts`, `LatLon`, `DrivingSide`, `WeekStart`, `MeasurementSystem`, `PaperSize` and `HourCycle` |
