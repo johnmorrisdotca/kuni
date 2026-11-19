@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { buildCities, cityAliases, columnsText, unresolvedIds } from "../scripts/cities.ts";
+import { buildCities, NOT_INSIDE, cityAliases, columnsText, unresolvedIds } from "../scripts/cities.ts";
 import { expandCities, rowsOf } from "./city-rows";
 import type { CityColumns, CityRow } from "./city-rows";
 import type { CitiesSnapshot, NaturalEarthFile, PopulationsSnapshot, PopulationStatement } from "../scripts/cities.ts";
@@ -295,6 +295,7 @@ describe("a figure that is not the city's own", () => {
     ["FR", { en: "France", population: 68000000, items: ["Q90000"] }],
     ["FR-IDF", { en: "Île-de-France", population: 900000, items: ["Q6"] }],
   ]);
+  type Area = { en: string; population: number | null; items: string[]; year?: number | null };
   const statements = (list: [number, PopulationStatement[]][], land: PopulationsSnapshot["land"] = {}): PopulationsSnapshot => ({ read: "2026-11-17", land, statements: list });
   const figures = (items: CitiesSnapshot["items"], populations: PopulationsSnapshot, cityPopulations = {}) =>
     buildCities({ snapshot: snapshot(items), naturalEarth: natural([]), levels, countries, populations, areas, cityPopulations });
@@ -333,9 +334,72 @@ describe("a figure that is not the city's own", () => {
       ],
       statements([]),
     );
-    // Paris is the subdivision's own item; Stray's figure is twice the subdivision's, so its code is a stray one.
-    expect(Object.keys(byName(rows)).sort()).toEqual(["Kandi", "Monaco", "Paris", "Stray", "Town", "Île-de-France"]);
+    // Paris is the subdivision's own item; Stray's figure is twice the subdivision's, which no city has: left out (SUBDIVISION_SHARE).
+    expect(Object.keys(byName(rows)).sort()).toEqual(["Kandi", "Monaco", "Paris", "Town", "Île-de-France"]);
     expect(report.figures.areaFigure).toEqual(["Q1", "Q4"]);
+    expect(report.figures.subdivisionFigure).toEqual(["Q7"]);
+  });
+
+  it("holds a figure to every subdivision the city lies in, of any level, and takes the next figure", () => {
+    // FR-75 is a second-level subdivision here, and the tests keep clear of the first-level rule (AREA_SHARE, 95% to 110%).
+    const below = new Map<string, Area>([...areas, ["FR-75", { en: "Paris", population: 2000000, items: ["Q60"], year: 2023 }]]);
+    const run = (list: CitiesSnapshot["items"], populations: PopulationsSnapshot) =>
+      buildCities({ snapshot: snapshot(list), naturalEarth: natural([]), levels, countries, populations, areas: below, cityPopulations: {} });
+    const { rows, report } = run(
+      [
+        item(1, "Bigville", null, [1, 1], "FR", [[2500000, "2022-01-01"]], ["FR-75"]),
+        item(2, "Within", null, [2, 2], "FR", [[1700000, "2022-01-01"]], ["FR-75"]),
+        // The subdivision's capital, and a city of its name, may be 15% above it; no more.
+        item(3, "Capitalville", null, [3, 3], "FR", [[2300000, "2022-01-01"]], ["FR-75"], ["FR-75"]),
+        item(4, "Capitalburg", null, [4, 4], "FR", [[2300001, "2022-01-01"]], ["FR-75"], ["FR-75"]),
+        item(5, "Paris", null, [5, 5], "FR", [[2250000, "2022-01-01"]], ["FR-75"]),
+        item(6, "Only", null, [6, 6], "FR", [[2500000, "2022-01-01"]], ["FR-75"]),
+      ],
+      statements([
+        [1, [[1500000, "2010-01-01", 1, null, []], [2500000, "2022-01-01", 2, null, []]]],
+        [4, [[1700000, "2011-01-01", 1, null, []], [2300001, "2022-01-01", 2, null, []]]],
+        [6, [[2500000, "2022-01-01", 2, null, []]]],
+      ]),
+    );
+    const found = byName(rows);
+    expect(found.Bigville![3]).toBe(1500000);
+    expect(found.Bigville![4]).toBe(2010);
+    expect(found.Within![3]).toBe(1700000);
+    expect(found.Capitalville![3]).toBe(2300000);
+    expect(found.Capitalburg![3]).toBe(1700000);
+    expect(found.Paris![3]).toBe(2250000);
+    expect(found.Only).toBeUndefined();
+    expect(report.figures.subdivisionFigure).toEqual(["Q1", "Q4", "Q6"]);
+  });
+
+  it("holds a figure only to a subdivision's figure that is not older than its own day", () => {
+    const run = (year: number | null, day: string | null) => {
+      const one = new Map<string, Area>([...areas, ["FR-75", { en: "Paris", population: 2000000, items: ["Q60"], year }]]);
+      const { rows } = buildCities({ snapshot: snapshot([item(1, "Bigville", null, [1, 1], "FR", [[2500000, day]], ["FR-75"])]), naturalEarth: natural([]), levels, countries, populations: statements([]), areas: one, cityPopulations: {} });
+
+      return rows[0]?.[3] ?? null;
+    };
+    // The subdivision counted in 2010, the city in 2022: the city may have grown, so its figure stays.
+    expect(run(2010, "2022-01-01")).toBe(2500000);
+    // The same year, or a later one, and it is too big.
+    expect(run(2022, "2022-01-01")).toBeNull();
+    expect(run(2023, "2022-01-01")).toBeNull();
+    // No year on either: it cannot be said to be older.
+    expect(run(null, "2022-01-01")).toBeNull();
+    expect(run(2010, null)).toBeNull();
+  });
+
+  it("does not hold a city to the codes NOT_INSIDE names for it", () => {
+    const below = new Map<string, Area>([...areas, ["FR-75", { en: "Paris", population: 200000, items: ["Q60"], year: 2023 }]]);
+    const run = (number: number) => buildCities({ snapshot: snapshot([item(number, "Nouakchott", null, [1, 1], "FR", [[1446761, "2023-01-01"]], ["FR-75"])]), naturalEarth: natural([]), levels, countries, populations: statements([]), areas: below, cityPopulations: {} }).rows[0]?.[3] ?? null;
+    // Nouakchott's own regions are listed; the table has them under its item (Q3688), codes of its country in the real data.
+    expect(NOT_INSIDE.Q3688!.codes).toEqual(["MR-13", "MR-14", "MR-15"]);
+    expect(run(3688)).toBeNull(); // FR-75 is not one of its codes here, so the rule holds
+    expect(Object.keys(NOT_INSIDE).sort()).toEqual(["Q25287", "Q27157", "Q27400", "Q2550996", "Q3476", "Q3688", "Q9347"].sort());
+    for (const [id, entry] of Object.entries(NOT_INSIDE)) {
+      expect(entry.codes.length, id).toBeGreaterThan(0);
+      expect(entry.why, id).toMatch(/^[^,]+, [^:]+: .+\.$/);
+    }
   });
 
   it("uses a census figure set by hand, says kuni gave it, and stops when Wikidata's figure is no longer the one it replaces", () => {

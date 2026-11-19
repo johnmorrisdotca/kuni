@@ -6,10 +6,10 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Dominican Republic, ids and names only, in the order of /cities/do; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "wzv,qv8,1m5my,l6nx,bjux,lv8l,80e7,el5g,em8f,1g38w,1dffc,14rv1,v98,xly7,cfhq,13d6w,17c67,qlum,kjne,18qpt,1dg2w,euds,1fvjn,1g170,19f3e,dlkn,ly33,195yy,167lr,d8kv,19o25,1kc2o,11xwm,2bp60,u7tm",
-  en: "Santiago de los Caballeros|Santo Domingo|Santo Domingo Este|Luperon pto pta|La Vega|Higüey|San Cristóbal|San Pedro de Macorís|San Francisco de Macorís|San Juan de la Maguana|Bonao|Baní|La Romana|Punta Cana|Samaná|Azua|Sabaneta|Moca|Santa Cruz de Barahona|Cotuí|Nagua|Mao|Santa Cruz del Seibo|Hato Mayor del Rey|San José de Ocoa|Monte Plata|Salcedo|Neiba|Dajabón|Comendador|Monte Cristi|Pedernales|Piedra Blanca|Pimentel|Jimaní",
-  ja: "サンティアゴ・デ・ロス・カバリェロス|サント・ドミンゴ|サント・ドミンゴ・エステ|プエルト・プラタ|コンセプシオン・デ・ラ・ベガ|イグエイ|サン・クリストバル|サンペドロ・デ・マコリス|サン・フランシスコ・デ・マコリス|サン・フアン・デ・ラ・マグアーナ|ボナオ|バニ|ラ・ロマーナ|プンタ・カナ|サマナ|アスア (ドミニカ共和国)|サバネタ|モカ (ドミニカ共和国)|バラオナ|コトゥイ|ナグア|マオ|エル・セイボ|アト・マジョール・デル・レイ|サン・ホセ・デ・オコア|モンテ・プラタ|サルセド|ネイバ|ダハボン|コメンダドル|モンテ・クリスティ (ドミニカ共和国)|ペデルナレス|ピエドラ・ブランカ|ピメンテル (ドミニカ共和国)|ヒマニ",
-  native: "|||Puerto Plata||||||San Juan||||||Municipio de Azua|San Ignacio de Sabaneta||||||El Seibo|Hato Mayor||||||||||Pimentel (República Dominicana)|",
+  id: "wzv,qv8,1m5my,l6nx,bjux,lv8l,80e7,el5g,em8f,1g38w,1dffc,14rv1,v98,xly7,cfhq,13d6w,qlum,kjne,18qpt,1dg2w,euds,1fvjn,1g170,19f3e,dlkn,ly33,195yy,17c67,167lr,d8kv,19o25,1kc2o,11xwm,2bp60,u7tm",
+  en: "Santiago de los Caballeros|Santo Domingo|Santo Domingo Este|Luperon pto pta|La Vega|Higüey|San Cristóbal|San Pedro de Macorís|San Francisco de Macorís|San Juan de la Maguana|Bonao|Baní|La Romana|Punta Cana|Samaná|Azua|Moca|Santa Cruz de Barahona|Cotuí|Nagua|Mao|Santa Cruz del Seibo|Hato Mayor del Rey|San José de Ocoa|Monte Plata|Salcedo|Neiba|Sabaneta|Dajabón|Comendador|Monte Cristi|Pedernales|Piedra Blanca|Pimentel|Jimaní",
+  ja: "サンティアゴ・デ・ロス・カバリェロス|サント・ドミンゴ|サント・ドミンゴ・エステ|プエルト・プラタ|コンセプシオン・デ・ラ・ベガ|イグエイ|サン・クリストバル|サンペドロ・デ・マコリス|サン・フランシスコ・デ・マコリス|サン・フアン・デ・ラ・マグアーナ|ボナオ|バニ|ラ・ロマーナ|プンタ・カナ|サマナ|アスア (ドミニカ共和国)|モカ (ドミニカ共和国)|バラオナ|コトゥイ|ナグア|マオ|エル・セイボ|アト・マジョール・デル・レイ|サン・ホセ・デ・オコア|モンテ・プラタ|サルセド|ネイバ|サバネタ|ダハボン|コメンダドル|モンテ・クリスティ (ドミニカ共和国)|ペデルナレス|ピエドラ・ブランカ|ピメンテル (ドミニカ共和国)|ヒマニ",
+  native: "|||Puerto Plata||||||San Juan||||||Municipio de Azua||||||El Seibo|Hato Mayor|||||San Ignacio de Sabaneta||||||Pimentel (República Dominicana)|",
   reading: "||||||||||||||||||||||||||||||||||",
   major: "11111111111111111111000000000000000",
 });

@@ -6,10 +6,10 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Montenegro, ids and names only, in the order of /cities/me; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "i6k,4avx,44zz,4j2n,4g32,1yu7n,3pqy,4iyj,2gy4,3qfx,42kx,4gnc,av13,4sfh,aoy7,5woe,apv4,8fh9,56rv,3o08,hy03,8de5,l8w6,piqy,xc4m,10fyp",
-  en: "Podgorica|Nikšić|Herceg Novi|Pljevlja|Bijelo Polje|Old Royal Capital Cetinje|Cetinje|Plav|Bar|Budva|Ulcinj|Berane|Rožaje|Tivat|Kolašin|Danilovgrad|Mojkovac|Žabljak|Andrijevica|Kotor|Šavnik|Plužine|Tuzi|Golubovci|Gusinje|Petnjica",
-  ja: "ポドゴリツァ|ニクシッチ|ヘルツェグ・ノヴィ|プリェヴリャ|ビイェロ・ポリェ|ツェティニェ|ツェティニェ|プラヴ|バール|ブドヴァ|ウルツィニ|ベラネ|ロジャイェ|ティヴァト|コラシン|ダニロヴグラード|モイコヴァツ|ジャブリャク (モンテネグロ)|アンドリイェヴィツァ|コトル|シャヴニク|プルジネ|トゥジ|ゴルボヴツィ|グシンジェ|ペトニツァ",
-  native: "Подгорица||Херцег Нови|Пљевља||Пријестоница Цетиње|Цетиње||||||||||Мојковац|||Котор||Плужине||||",
+  id: "i6k,4avx,44zz,4j2n,4g32,1yu7n,3pqy,2gy4,3qfx,42kx,4gnc,av13,4sfh,aoy7,5woe,apv4,8fh9,56rv,3o08,hy03,4iyj,8de5,l8w6,piqy,xc4m,10fyp",
+  en: "Podgorica|Nikšić|Herceg Novi|Pljevlja|Bijelo Polje|Old Royal Capital Cetinje|Cetinje|Bar|Budva|Ulcinj|Berane|Rožaje|Tivat|Kolašin|Danilovgrad|Mojkovac|Žabljak|Andrijevica|Kotor|Šavnik|Plav|Plužine|Tuzi|Golubovci|Gusinje|Petnjica",
+  ja: "ポドゴリツァ|ニクシッチ|ヘルツェグ・ノヴィ|プリェヴリャ|ビイェロ・ポリェ|ツェティニェ|ツェティニェ|バール|ブドヴァ|ウルツィニ|ベラネ|ロジャイェ|ティヴァト|コラシン|ダニロヴグラード|モイコヴァツ|ジャブリャク (モンテネグロ)|アンドリイェヴィツァ|コトル|シャヴニク|プラヴ|プルジネ|トゥジ|ゴルボヴツィ|グシンジェ|ペトニツァ",
+  native: "Подгорица||Херцег Нови|Пљевља||Пријестоница Цетиње|Цетиње|||||||||Мојковац|||Котор|||Плужине||||",
   reading: "|||||||||||||||||||||||||",
   major: "11111111111111111111000000",
 });

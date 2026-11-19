@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { NOT_INSIDE } from "../scripts/cities.ts";
 import { CITY_TIERS, citiesOf, citySet, cityById, loadCities } from "./cities";
 import type { City } from "./cities";
 import { cities100k } from "./cities/100k";
@@ -608,6 +609,41 @@ describe("each city's own figure, in its own country", () => {
     // Ghana's largest is Kumasi, not Dagbon; Eswatini's is Mbabane, not Lobamba.
     expect((await citiesOf("GH"))!.map((city) => city.name.en).slice(0, 2)).toEqual(["Kumasi", "Tamale"]);
     expect([...(await citiesOf("SZ"))!].sort((a, b) => (b.population ?? 0) - (a.population ?? 0))[0]!.name.en).toBe("Mbabane");
+  });
+
+  it("does not give a city more people than a subdivision it lies in, as that subdivision was counted no earlier than the city", async () => {
+    const figure = async (id: string) => {
+      const city = (await cityById(id))!;
+
+      return [city.population, city.populationDate];
+    };
+    expect(await figure("Q3820")).toEqual([433249, "2017"]); // Beirut, not the 2,421,354 of its urban area, above Beirut Governorate's 433,249
+    expect(await figure("Q1563")).toEqual([2141652, "2010"]); // Havana, not 2,492,618 (2022), 17% above Havana Province's 2,137,847 (2022)
+    expect(await figure("Q2021983")).toEqual([34540, "2010"]); // Sabaneta, not an unsourced 98,453
+    expect(await figure("Q72259")).toEqual([205100, "2011"]); // Portsmouth, not 248,440 (2016) above its unitary authority's 208,420 (2022)
+    expect(await figure("Q581379")).toEqual([150306, "2014-08-27"]); // Gulu City: the figures above Gulu City's 135,373 (2024) by more than 15% are left out
+    // Left with no figure of its own, a capital stays and has none (Plav, Charlestown), a city that is no capital goes (Karki, Palorinya).
+    expect((await cityById("Q211195"))?.population).toBeNull();
+    expect((await cityById("Q992311"))?.population).toBeNull();
+    expect(await cityById("Q201557")).toBeNull();
+    expect(await cityById("Q55628478")).toBeNull();
+    // Each stays above its subdivision's figure because that figure is older than the city's own (the rule compares only the later): Lagos 2022
+    // against NG-LA's 2016, Garoua 2020 against 2007, Douala 2015 against 2007, Mogadishu 2015 against 2014, Bujumbura 2014 against 2008, Tabuk 2022 against 2011.
+    expect(await figure("Q8673")).toEqual([15070000, "2022-03-21"]);
+    expect(await figure("Q157915")).toEqual([1750000, "2020"]);
+    expect(await figure("Q132830")).toEqual([2768436, "2015"]);
+    expect(await figure("Q2449")).toEqual([2120000, "2015"]);
+    expect(await figure("Q3854")).toEqual([658859, "2014"]);
+    expect(await figure("Q244232")).toEqual([886036, "2022"]);
+    // Damascus's 2,466,000 is Natural Earth's, which the rule does not look at (every Wikidata figure is a World Population Review estimate).
+    expect(await figure("Q3766")).toEqual([2466000, null]);
+    expect((await cityById("Q3766"))?.source.population).toBe("natural-earth");
+  });
+
+  it("keeps the figure of each city NOT_INSIDE names, whose code is not a subdivision that holds it", async () => {
+    const expected: Record<string, number> = { Q3688: 1446761, Q9347: 133019, Q25287: 674529, Q27157: 163257, Q27400: 389993, Q3476: 69558, Q2550996: 23512 };
+    expect(Object.keys(NOT_INSIDE).sort()).toEqual(Object.keys(expected).sort());
+    for (const [id, people] of Object.entries(expected)) expect((await cityById(id))?.population, id).toBe(people);
   });
 
   it("puts a territory's towns under its own code: Dededo in Guam, Laayoune in Western Sahara, Saint-Paul in Réunion, Bayamón in Puerto Rico", async () => {

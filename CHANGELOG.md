@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- A city's population is no longer a figure above the people of a subdivision it lies in, of any level (MODULES-1669). Before, only a figure close to a first-level subdivision's was left out, so Santiago de los Caballeros (1,343,423, above Santiago Province's 1,000,087) and Beirut (2,421,354, above Beirut Governorate's 433,249) kept the figures of larger areas. A city that is the subdivision's capital or has its name may be 15% above it. The subdivision's figure must be no older than the city's own. Where Wikidata has no other figure, the city has none and a capital stays without one. Eleven cities change; Karki and Palorinya Refugee Settlement, whose only figure was above its subdivision's, are no longer cities.
+
 ## [1.12.0] - 2026-11-18
 
 ### Added

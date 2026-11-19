@@ -176,10 +176,10 @@ describe("a city's time zone", () => {
   it("pins the counts: how many cities are given a zone by each way, and how many are estimates", async () => {
     const list = await all();
     const withZone = list.filter((city) => city.timeZone !== undefined);
-    expect(list).toHaveLength(30484);
-    expect(withZone).toHaveLength(30484);
+    expect(list).toHaveLength(30482);
+    expect(withZone).toHaveLength(30482);
     expect(withZone.filter((city) => city.timeZoneEstimated).length).toBe(13564);
-    expect(withZone.filter((city) => !city.timeZoneEstimated).length).toBe(16920);
+    expect(withZone.filter((city) => !city.timeZoneEstimated).length).toBe(16918);
     // An estimate is only ever made for a city of a country with several zones.
     for (const city of withZone.filter((one) => one.timeZoneEstimated)) {
       const zones = new Set([...(country(city.country)?.zones ?? [])]);

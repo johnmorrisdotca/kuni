@@ -6,9 +6,9 @@ import type { CityName } from "../city-rows";
 
 /** The cities of St. Kitts & Nevis, ids and names only, in the order of /cities/kn; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "vv3,1z2wg,l9o7,1orsj,20rqe,20r66,lny2,16a0u,20qvu,20r6e,20rqh,20uhf,2o8oo,4o3c5",
-  en: "Basseterre|Cayon|Charlestown|Newcastle|Monkey Hill|Cotton Ground|Dieppe Bay Town|Sandy Point Town|Middle Island|Nichola Town|Figtree|Market Shop|Saint Paul Capisterre|Trinity",
-  ja: "バセテール|ケイオン|チャールズタウン|ニューカッスル|モンキーヒル|コットン・グラウンド|ディエップベイタウン|サンディ・ポイント|ミドルアイランド|ニコラタウン|フィグツリー|マーケット・ショップ|セントポール・カピステール|トリニティ (セントクリストファー・ネイビス)",
+  id: "vv3,1z2wg,1orsj,20rqe,20r66,l9o7,lny2,16a0u,20qvu,20r6e,20rqh,20uhf,2o8oo,4o3c5",
+  en: "Basseterre|Cayon|Newcastle|Monkey Hill|Cotton Ground|Charlestown|Dieppe Bay Town|Sandy Point Town|Middle Island|Nichola Town|Figtree|Market Shop|Saint Paul Capisterre|Trinity",
+  ja: "バセテール|ケイオン|ニューカッスル|モンキーヒル|コットン・グラウンド|チャールズタウン|ディエップベイタウン|サンディ・ポイント|ミドルアイランド|ニコラタウン|フィグツリー|マーケット・ショップ|セントポール・カピステール|トリニティ (セントクリストファー・ネイビス)",
   native: "|||||||||||||",
   reading: "|||||||||||||",
   major: "11111111111111",
