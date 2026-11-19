@@ -7,7 +7,6 @@ import { SUBDIVISION_TABLES } from "./data/subdivisions/index.data";
 import { fold, foldKey } from "./fold";
 import { expandSubdivisions } from "./rows";
 import type { SubdivisionTable } from "./rows";
-import { subdivisionReforms } from "./subdivision-reforms";
 import { SUBDIVISION_TYPES } from "./types";
 import type { Language, Subdivision, SubdivisionType } from "./types";
 
@@ -356,7 +355,6 @@ export {
   subdivisionByFormerCode,
   subdivisionByName,
   subdivisionByShortCode,
-  subdivisionReforms,
   subdivisions,
   subdivisionsByFormerCode,
   subdivisionsByName,
@@ -364,4 +362,3 @@ export {
   subdivisionTypeLabel,
 };
 export type { Level, Subdivision, SubdivisionByNameOptions, SubdivisionsOptions, SubdivisionType };
-export type { SubdivisionReform, SubdivisionReformUnit } from "./subdivision-reforms";

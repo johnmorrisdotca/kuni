@@ -1,4 +1,4 @@
-// Vietnam's provincial rearrangement, read from the signed text of Resolution 202/2025/QH15
+// The entry @johnmorrisdotca/kuni/subdivision-reforms: Vietnam's provincial rearrangement, read from the signed text of Resolution 202/2025/QH15
 // (https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/6/202qh.signed.pdf, a scan of the signed pages).
 // Article 1 names which current provinces form each unit. Article 2 clause 1 takes effect on the day the
 // resolution was passed. Article 2 clause 2 says the new provincial governments officially operate from 1 July 2025.
@@ -9,7 +9,7 @@
  *
  * @example
  * ```ts
- * import type { SubdivisionReformUnit } from "@johnmorrisdotca/kuni/subdivisions";
+ * import type { SubdivisionReformUnit } from "@johnmorrisdotca/kuni/subdivision-reforms";
  *
  * const value: SubdivisionReformUnit = { name: "Tuyên Quang", nameJa: "トゥエンクアン省", clause: 1, kept: "VN-07", from: ["VN-03", "VN-07"] };
  * console.log(value.kept);
@@ -32,7 +32,7 @@ interface SubdivisionReformUnit {
  *
  * @example
  * ```ts
- * import type { SubdivisionReform } from "@johnmorrisdotca/kuni/subdivisions";
+ * import type { SubdivisionReform } from "@johnmorrisdotca/kuni/subdivision-reforms";
  *
  * const value: SubdivisionReform = {
  *   country: "VN", law: "Resolution 202/2025/QH15", article: "1",
@@ -147,7 +147,8 @@ const VN_REFORM: SubdivisionReform = Object.freeze({
  * @returns The rearrangement, or null when this package has none for that country.
  * @example
  * ```ts
- * import { subdivisionReforms, subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+ * import { subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+ * import { subdivisionReforms } from "@johnmorrisdotca/kuni/subdivision-reforms";
  *
  * console.log(subdivisions("VN")?.length); // 63
  * console.log(subdivisionReforms("VN")?.effective); // "2025-06-12"

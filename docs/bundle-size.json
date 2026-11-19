@@ -10,8 +10,12 @@
       "gzip": 631
     },
     "./subdivisions": {
-      "minified": 306224,
+      "minified": 303003,
       "gzip": 89042
+    },
+    "./subdivision-reforms": {
+      "minified": 3219,
+      "gzip": 1357
     },
     "./load": {
       "minified": 336246,

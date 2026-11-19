@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { subdivision, subdivisionReforms, subdivisions } from "./subdivisions";
+import { subdivisionReforms } from "./subdivision-reforms";
+import { subdivision, subdivisions } from "./subdivisions";
 
 describe("Resolution 202/2025/QH15", () => {
   const reform = subdivisionReforms("VN");

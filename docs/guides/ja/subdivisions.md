@@ -21,10 +21,11 @@ console.log(subdivisionsByName("Punjab").map(place=>place.code),subdivisionByNam
 
 ## 2025年以降のベトナムの省
 
-`subdivisions("VN")`は今のISO 3166-2の63のコードのままです。決議202/2025/QH15がそれらを再編し、`subdivisionReforms("VN")`はその法律の日付のある注記です。決議が書く名前ごとに、今のコードのどれが一つの単位になるかを示します。コードの追加や削除はありません。第2条第1項は、決議が可決された2025年6月12日から効力を持ちます。第2条第2項は、再編後の省の政府が2025年7月1日から正式に業務を始めると定めています。日本語は、名前を残したコードにkuniが既に持っている場合だけ入ります。
+`subdivisions("VN")`は今のISO 3166-2の63のコードのままです。決議202/2025/QH15がそれらを再編し、`subdivisionReforms("VN")`はその法律の日付のある注記です。決議が書く名前ごとに、今のコードのどれが一つの単位になるかを示します。コードの追加や削除はありません。この注記は `@johnmorrisdotca/kuni/subdivision-reforms` という別の入口です。区分の一覧だけを読むページは、この注記を一緒には読みません。第2条第1項は、決議が可決された2025年6月12日から効力を持ちます。第2条第2項は、再編後の省の政府が2025年7月1日から正式に業務を始めると定めています。日本語は、名前を残したコードにkuniが既に持っている場合だけ入ります。
 
 ```ts
-import { subdivisionReforms, subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+import { subdivisions } from "@johnmorrisdotca/kuni/subdivisions";
+import { subdivisionReforms } from "@johnmorrisdotca/kuni/subdivision-reforms";
 console.log(subdivisions("VN")?.length);
 console.log(subdivisionReforms("VN")?.operating);
 console.log(subdivisionReforms("VN")?.units.length);

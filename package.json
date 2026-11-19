@@ -88,6 +88,17 @@
       },
       "default": "./dist/subdivisions/*.js"
     },
+    "./subdivision-reforms": {
+      "import": {
+        "types": "./dist/subdivision-reforms.d.ts",
+        "default": "./dist/subdivision-reforms.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-reforms.d.cts",
+        "default": "./dist/subdivision-reforms.cjs"
+      },
+      "default": "./dist/subdivision-reforms.js"
+    },
     "./load": {
       "import": {
         "types": "./dist/load.d.ts",

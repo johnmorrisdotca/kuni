@@ -19,6 +19,7 @@ import * as cities100kEntry from "./cities/100k.ts";
 import * as main from "./index.ts";
 import * as load from "./load.ts";
 import * as subdivisionFacts from "./subdivision-facts.ts";
+import * as subdivisionReformsEntry from "./subdivision-reforms.ts";
 import * as subdivisions from "./subdivisions.ts";
 
 const pkg = JSON.parse(readFileSync("package.json", "utf8"));
@@ -45,7 +46,7 @@ describe("the README", () => {
   it("names in its API table every runtime export of every entry", () => {
     const table = section("API");
     const rowOf = (entry) => table.split("\n").find((line) => line.startsWith(`| \`${entry}\``)) ?? "";
-    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry], [`${pkg.name}/capitals`, capitalsEntry], [`${pkg.name}/cities`, citiesEntry], [`${pkg.name}/places`, placesEntry], [`${pkg.name}/cities/capitals`, capitalCitiesEntry], [`${pkg.name}/cities/1m`, cities1mEntry], [`${pkg.name}/cities/100k`, cities100kEntry]]) {
+    for (const [entry, module] of [[pkg.name, main], [`${pkg.name}/codes`, codes], [`${pkg.name}/subdivisions`, subdivisions], [`${pkg.name}/subdivision-reforms`, subdivisionReformsEntry], [`${pkg.name}/load`, load], [`${pkg.name}/facts`, facts], [`${pkg.name}/subdivision-facts`, subdivisionFacts], [`${pkg.name}/groupings`, groupingsEntry], [`${pkg.name}/withdrawn`, withdrawnEntry], [`${pkg.name}/capitals`, capitalsEntry], [`${pkg.name}/cities`, citiesEntry], [`${pkg.name}/places`, placesEntry], [`${pkg.name}/cities/capitals`, capitalCitiesEntry], [`${pkg.name}/cities/1m`, cities1mEntry], [`${pkg.name}/cities/100k`, cities100kEntry]]) {
       const row = rowOf(entry);
       for (const name of Object.keys(module)) expect(row, `${name} is not in the API table's row for ${entry}`).toContain(`\`${name}\``);
     }

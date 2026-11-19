@@ -8,7 +8,7 @@ All notable changes to this project are written here. The format follows
 
 ### Added
 
-- `subdivisionReforms("VN")` records Resolution 202/2025/QH15: which of the current 63 ISO 3166-2 codes form each unit the resolution names (MODULES-1629). The codes themselves are unchanged. Article 2 clause 1 takes effect on the day it was passed, 12 June 2025. Article 2 clause 2: the new provincial governments officially operate from 1 July 2025. Japanese is kuni's existing name for a kept code, and is empty where the resolution's name is not that current name (Huế; the current code is still Thừa Thiên–Huế).
+- `subdivisionReforms("VN")` records Resolution 202/2025/QH15: which of the current 63 ISO 3166-2 codes form each unit the resolution names (MODULES-1629). The codes themselves are unchanged. Article 2 clause 1 takes effect on the day it was passed, 12 June 2025. Article 2 clause 2: the new provincial governments officially operate from 1 July 2025. Japanese is kuni's existing name for a kept code, and is empty where the resolution's name is not that current name (Huế; the current code is still Thừa Thiên–Huế). It is its own entry, `@johnmorrisdotca/kuni/subdivision-reforms`, so `/subdivisions` does not carry the note.
 
 ## [1.15.0] - 2026-11-19
 

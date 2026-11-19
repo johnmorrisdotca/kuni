@@ -14,7 +14,7 @@ src/
 ├── index.ts            the main entry: the countries and their lookups
 ├── codes.ts            the "/codes" entry: the codes alone
 ├── subdivisions.ts     the "/subdivisions" entry: every subdivision and its lookups
-├── subdivision-reforms.ts  a dated note of a rearrangement, over the current codes
+├── subdivision-reforms.ts  the "/subdivision-reforms" entry: a dated note of a rearrangement, over the current codes
 ├── load.ts             the "/load" entry: one country's subdivisions by dynamic import
 ├── facts.ts            the "/facts" entry: population, area, coordinates, borders and conventions
 ├── zones.ts            the "/zones" entry: a subdivision's time zone, and the zone at a point
