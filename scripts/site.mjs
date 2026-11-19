@@ -23,7 +23,7 @@ const uses = [
   `countryByName("ドイツ")?.alpha2  // "DE"; also "Germany", "Deutschland"`,
   `countryByName("Holland")?.name.ja  // "オランダ"`,
   `country("JP")?.callingCode  // "+81"`,
-  `import prefectures from "@johnmorrisdotca/kuni/subdivisions/jp";  // 47, under 3 KB`,
+  `import prefectures from "@johnmorrisdotca/kuni/subdivisions/jp";  // 47, about 3 KB`,
   `subdivisionByName("オンタリオ州", { country: "CA" })?.code  // "CA-ON"`,
   `subdivisionTypeLabel("JP-13", "ja")  // "都"`,
   `await loadSubdivisions("CA")  // 13, loaded when asked`,

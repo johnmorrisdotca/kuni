@@ -36,7 +36,7 @@ type CountryRow = readonly [
 // One country's subdivisions as text, a line each: shortCode|en|ja|type|parent|reading|former|formerNames|aliases, where type is an
 // index into the table's types, parent is the shortCode of the subdivision it is inside, former is the
 // shortCodes CLDR has retired for it with spaces between, formerNames is its old names with ";" between, aliases is other English names to find it by with ";" between, and an absent value is empty (trailing ones are left off). Text rather than arrays because it is a third smaller, and Japan's
-// 47 prefectures then fit in under 3 KB with the code that reads them.
+// 47 prefectures then fit in about 3 KB with the code that reads them.
 interface SubdivisionTable {
   country: string;
   types: readonly SubdivisionType[];

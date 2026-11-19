@@ -14,9 +14,9 @@ AP|Andhra Pradesh|アーンドラ・プラデーシュ州|1
 AR|Arunachal Pradesh|アルナーチャル・プラデーシュ州|1
 AS|Assam|アッサム州|1
 BR|Bihar|ビハール州|1
-CG|Chhattisgarh|チャッティースガル州|1|||Chhattīsgarh
+CG|Chhattisgarh|チャッティースガル州|1|||||Chhattīsgarh
 CH|Chandigarh|チャンディーガル|2
-DH|Dadra and Nagar Haveli and Daman and Diu|ダードラー・ナガル・ハヴェーリーおよびダマン・ディーウ連邦直轄領|2|||Dādra and Nagar Haveli and Damān and Diu
+DH|Dadra and Nagar Haveli and Daman and Diu|ダードラー・ナガル・ハヴェーリーおよびダマン・ディーウ連邦直轄領|2|||||Dādra and Nagar Haveli and Damān and Diu
 DL|Delhi|デリー|0
 GA|Goa|ゴア州|1
 GJ|Gujarat|グジャラート州|1
@@ -41,7 +41,7 @@ RJ|Rajasthan|ラージャスターン州|1
 SK|Sikkim|シッキム州|1
 TN|Tamil Nadu|タミル・ナードゥ州|1
 TR|Tripura|トリプラ州|1
-TS|Telangana|テランガーナ州|1|||Telangāna
+TS|Telangana|テランガーナ州|1|||||Telangāna
 UK|Uttarākhand|ウッタラーカンド州|1
 UP|Uttar Pradesh|ウッタル・プラデーシュ州|1
 WB|West Bengal|西ベンガル州|1`,

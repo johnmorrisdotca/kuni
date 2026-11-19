@@ -8,6 +8,6 @@
  * console.log(`kuni ${VERSION}`);
  * ```
  */
-const VERSION = "1.14.0";
+const VERSION = "1.15.0";
 
 export { VERSION };

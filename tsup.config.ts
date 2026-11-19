@@ -54,7 +54,7 @@ entry: { element: "src/element.ts", "element-define": "src/element-define.ts", i
   {
     ...shared,
     entry: countryEntries,
-    // A country's entry is data and the few lines that read it: without the indentation, Japan's is under 3 KB.
+    // A country's entry is data and the few lines that read it: without the indentation, Japan's is about 3 KB.
     esbuildOptions(options) {
       options.charset = "utf8";
       options.minifyWhitespace = true;

@@ -16,8 +16,9 @@ describe("the built entries", () => {
     expect(size("dist/index.js")).toBeLessThan(70 * KB);
   });
 
-  it("keep Japan's subdivisions under 3 KB, and every country's under 14 KB", () => {
-    expect(size("dist/subdivisions/jp.js")).toBeLessThan(3 * KB);
+  it("keep Japan's subdivisions under 3.25 KB, and every country's under 14 KB", () => {
+    // 3 KB until 1.15.0, when the reader learned retired codes, former names and aliases (about 60 bytes).
+    expect(size("dist/subdivisions/jp.js")).toBeLessThan(3.25 * KB);
     const files = readdirSync("dist/subdivisions").filter((file) => file.endsWith(".js"));
     expect(files).toHaveLength(200);
     for (const file of files) expect(size(`dist/subdivisions/${file}`), file).toBeLessThan(14 * KB);
