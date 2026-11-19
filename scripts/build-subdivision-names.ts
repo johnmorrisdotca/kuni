@@ -110,6 +110,12 @@ interface Rejected {
   name: string;
   why: string;
 }
+interface Kept {
+  code: string;
+  name: string;
+  source: string;
+  en: string;
+}
 interface Report {
   language: SubdivisionNamesLanguage;
   label: string;
@@ -120,6 +126,7 @@ interface Report {
   ambiguous: { code: string; tag: string; names: string[] }[];
   sameAsEnglish: { code: string; name: string; source: string }[];
   disagree: { code: string; cldr: string; wikidata: string }[];
+  wikidataKept: Kept[];
   outsideCldr: number;
   wikidataOnlyBareZh: number;
 }
@@ -128,7 +135,7 @@ const reports: Report[] = [];
 for (const { language, label } of LANGUAGES) {
   const { names: fromCldr, outside } = cldr(CLDR_LOCALE[language]);
   const rows = new Map<string, Candidate>();
-  const report: Report = { language, label, named: 0, bySource: new Map(), perCountry: new Map(), rejected: [], ambiguous: [], sameAsEnglish: [], disagree: [], outsideCldr: outside, wikidataOnlyBareZh: 0 };
+  const report: Report = { language, label, named: 0, bySource: new Map(), perCountry: new Map(), rejected: [], ambiguous: [], sameAsEnglish: [], disagree: [], wikidataKept: [], outsideCldr: outside, wikidataOnlyBareZh: 0 };
   for (const [code, one] of [...held.entries()].sort(([a], [b]) => (a < b ? -1 : 1))) {
     let chosen: Candidate | null = null;
     let wikidataName: Candidate | null = null;
@@ -158,6 +165,7 @@ for (const { language, label } of LANGUAGES) {
     if (chosen === null) continue;
     rows.set(code, chosen);
     report.named += 1;
+    if (chosen.source.startsWith("wikidata:")) report.wikidataKept.push({ code, name: chosen.name, source: chosen.source, en: one.en });
     report.bySource.set(chosen.source, (report.bySource.get(chosen.source) ?? 0) + 1);
     report.perCountry.set(one.country, (report.perCountry.get(one.country) ?? 0) + 1);
     if (key(chosen.name) === key(one.en)) report.sameAsEnglish.push({ code, name: chosen.name, source: chosen.source });
@@ -292,15 +300,52 @@ A name that fails a check is not used, and the next source is tried; it is liste
 The Chinese checks are a heuristic over a list of characters that differ between the scripts (\`scripts/subdivision-names-config.ts\`), not a full
 conversion table: they catch a name written in the wrong script, not every name with the wrong word.
 `);
+const rejectionKind = (why: string): string => {
+  if (why.includes("Japanese form")) return "a Japanese form, in a Chinese name";
+  if (why.includes("is Traditional")) return "Traditional, in a Simplified name";
+  if (why.includes("is Simplified")) return "Simplified, in a Traditional name";
+
+  return why;
+};
+const writeRows = (rows: Rejected[]): void => {
+  doc.push("| Code | Source | Name | Why |\n| --- | --- | --- | --- |");
+  for (const one of rows) doc.push(`| ${one.code} | ${one.source} | ${cell(one.name)} | ${one.why} |`);
+  doc.push("");
+};
 for (const report of reports) {
   doc.push(`#### ${report.label} (\`${report.language}\`): ${report.rejected.length}\n`);
-  if (report.rejected.length === 0) doc.push("None.\n");
-  else {
-    doc.push("| Code | Source | Name | Why |\n| --- | --- | --- | --- |");
-    for (const one of report.rejected.slice(0, 60)) doc.push(`| ${one.code} | ${one.source} | ${cell(one.name)} | ${one.why} |`);
-    if (report.rejected.length > 60) doc.push(`\n…and ${report.rejected.length - 60} more.`);
-    doc.push("");
+  if (report.rejected.length === 0) {
+    doc.push("None.\n");
+    continue;
   }
+  const kinds = new Map<string, number>();
+  for (const one of report.rejected) kinds.set(rejectionKind(one.why), (kinds.get(rejectionKind(one.why)) ?? 0) + 1);
+  doc.push(`By reason: ${[...kinds].map(([why, count]) => `${count} ${why}`).join("; ")}.\n`);
+  const fromWikidata = report.rejected.filter((one) => one.source.startsWith("wikidata:"));
+  const fromCldr = report.rejected.filter((one) => one.source.startsWith("cldr:"));
+  if (fromWikidata.length > 0) {
+    doc.push(`Every label from Wikidata that was left out (${fromWikidata.length}):\n`);
+    writeRows(fromWikidata);
+  }
+  if (fromCldr.length > 0) {
+    doc.push(`CLDR (${fromCldr.length}). The first 40:\n`);
+    writeRows(fromCldr.slice(0, 40));
+    if (fromCldr.length > 40) doc.push(`…and ${fromCldr.length - 40} more CLDR names, the same kind of refusal.\n`);
+  }
+}
+doc.push(`### Names taken only from Wikidata
+
+CLDR had no name that passed the checks, so the label below is the one kept. These have not been confirmed by a CLDR committee.
+`);
+for (const report of reports) {
+  doc.push(`#### ${report.label} (\`${report.language}\`): ${report.wikidataKept.length}\n`);
+  if (report.wikidataKept.length === 0) {
+    doc.push("None.\n");
+    continue;
+  }
+  doc.push("| Code | Name | Tag | English |\n| --- | --- | --- | --- |");
+  for (const one of report.wikidataKept) doc.push(`| ${one.code} | ${cell(one.name)} | ${one.source.slice("wikidata:".length)} | ${cell(one.en)} |`);
+  doc.push("");
 }
 doc.push(`### Items with two different labels
 

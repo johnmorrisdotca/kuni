@@ -3,19 +3,17 @@
 
 What `@johnmorrisdotca/kuni/subdivision-names/<language>` holds, counted from the data files. Each of the 5050 subdivisions in the main entry
 has a name in a language where a source gives one that passes the checks, and is left out where none does; none is translated or copied
-from another language. Sources: Unicode CLDR 48.2 (Unicode-3.0).
+from another language. Sources: Unicode CLDR 48.2 (Unicode-3.0), Wikidata labels (CC0) from Wikimedia's dump (`wikidata-labels-2026-11-14.json`).
 The design is in [design/more-languages.md](./design/more-languages.md).
-
-**The Wikidata labels have not been read into this build yet:** every number below is CLDR's alone. Run `node scripts/extract-wikidata-labels.ts` and then `pnpm data:subdivision-names`.
 
 ## By language
 
 | Language | Named | Share | Left out | Sources |
 | --- | ---: | ---: | ---: | --- |
-| Spanish (`es`) | 4794 | 94.9% | 256 | cldr:es:provisional 4791, cldr:es 3 |
-| German (`de`) | 4895 | 96.9% | 155 | cldr:de:provisional 4892, cldr:de 3 |
-| Simplified Chinese (`zh-Hans`) | 2671 | 52.9% | 2379 | cldr:zh:provisional 2668, cldr:zh 3 |
-| Traditional Chinese (`zh-Hant`) | 3 | 0.1% | 5047 | cldr:zh_Hant 3 |
+| Spanish (`es`) | 4830 | 95.6% | 220 | cldr:es:provisional 4791, wikidata:es 36, cldr:es 3 |
+| German (`de`) | 4923 | 97.5% | 127 | cldr:de:provisional 4892, wikidata:de 28, cldr:de 3 |
+| Simplified Chinese (`zh-Hans`) | 4356 | 86.3% | 694 | cldr:zh:provisional 2668, wikidata:zh-hans 1658, wikidata:zh-cn 22, cldr:zh 3, wikidata:zh-sg 5 |
+| Traditional Chinese (`zh-Hant`) | 3155 | 62.5% | 1895 | wikidata:zh-hant 3102, wikidata:zh-tw 41, wikidata:zh-hk 9, cldr:zh_Hant 3 |
 
 CLDR marks nearly every subdivision name in these languages `provisional`: they are CLDR's own first drafts, many imported from Wikidata, and
 not yet confirmed by its Spanish, German or Chinese committees. They are the best published source and still not a reviewed one.
@@ -26,206 +24,206 @@ Subdivisions with a name in each language, out of the number the country has.
 
 | Country | Subdivisions | `es` | `de` | `zh-Hans` | `zh-Hant` |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| AD | 7 | 7 | 7 | 6 | 0 |
-| AE | 7 | 7 | 7 | 7 | 0 |
-| AF | 34 | 34 | 34 | 31 | 0 |
-| AG | 8 | 8 | 8 | 1 | 0 |
-| AL | 12 | 12 | 12 | 7 | 0 |
-| AM | 11 | 11 | 11 | 6 | 0 |
-| AO | 18 | 18 | 18 | 8 | 0 |
-| AR | 24 | 24 | 24 | 21 | 0 |
-| AT | 9 | 9 | 9 | 7 | 0 |
-| AU | 8 | 8 | 8 | 3 | 0 |
-| AZ | 78 | 77 | 78 | 7 | 0 |
-| BA | 3 | 3 | 3 | 0 | 0 |
-| BB | 11 | 11 | 11 | 0 | 0 |
-| BD | 72 | 72 | 72 | 43 | 0 |
-| BE | 13 | 13 | 13 | 7 | 0 |
-| BF | 58 | 58 | 58 | 18 | 0 |
-| BG | 28 | 28 | 28 | 9 | 0 |
-| BH | 4 | 4 | 4 | 4 | 0 |
-| BI | 18 | 18 | 18 | 13 | 0 |
-| BJ | 12 | 12 | 12 | 9 | 0 |
-| BN | 4 | 4 | 4 | 4 | 0 |
-| BO | 9 | 9 | 9 | 8 | 0 |
-| BQ | 3 | 3 | 3 | 2 | 0 |
-| BR | 27 | 27 | 27 | 24 | 0 |
-| BS | 32 | 32 | 32 | 10 | 0 |
-| BT | 20 | 20 | 20 | 20 | 0 |
-| BW | 16 | 16 | 16 | 6 | 0 |
-| BY | 7 | 7 | 7 | 6 | 0 |
-| BZ | 6 | 6 | 6 | 1 | 0 |
-| CA | 13 | 13 | 13 | 8 | 0 |
-| CD | 26 | 25 | 25 | 26 | 0 |
-| CF | 17 | 17 | 17 | 13 | 0 |
-| CG | 12 | 11 | 11 | 9 | 0 |
-| CH | 26 | 26 | 26 | 10 | 0 |
-| CI | 14 | 8 | 14 | 3 | 0 |
-| CL | 16 | 16 | 16 | 16 | 0 |
-| CM | 10 | 10 | 10 | 6 | 0 |
-| CN | 34 | 34 | 34 | 33 | 0 |
-| CO | 33 | 33 | 33 | 30 | 0 |
-| CR | 7 | 7 | 7 | 7 | 0 |
-| CU | 16 | 16 | 16 | 14 | 0 |
-| CV | 24 | 24 | 24 | 1 | 0 |
+| AD | 7 | 7 | 7 | 7 | 1 |
+| AE | 7 | 7 | 7 | 7 | 6 |
+| AF | 34 | 34 | 34 | 34 | 34 |
+| AG | 8 | 8 | 8 | 8 | 5 |
+| AL | 12 | 12 | 12 | 12 | 12 |
+| AM | 11 | 11 | 11 | 11 | 8 |
+| AO | 18 | 18 | 18 | 18 | 16 |
+| AR | 24 | 24 | 24 | 24 | 13 |
+| AT | 9 | 9 | 9 | 9 | 7 |
+| AU | 8 | 8 | 8 | 8 | 8 |
+| AZ | 78 | 77 | 78 | 75 | 61 |
+| BA | 3 | 3 | 3 | 3 | 3 |
+| BB | 11 | 11 | 11 | 8 | 8 |
+| BD | 72 | 72 | 72 | 62 | 59 |
+| BE | 13 | 13 | 13 | 13 | 5 |
+| BF | 58 | 58 | 58 | 52 | 34 |
+| BG | 28 | 28 | 28 | 26 | 8 |
+| BH | 4 | 4 | 4 | 4 | 2 |
+| BI | 18 | 18 | 18 | 18 | 12 |
+| BJ | 12 | 12 | 12 | 12 | 2 |
+| BN | 4 | 4 | 4 | 4 | 2 |
+| BO | 9 | 9 | 9 | 9 | 8 |
+| BQ | 3 | 3 | 3 | 3 | 2 |
+| BR | 27 | 27 | 27 | 27 | 27 |
+| BS | 32 | 32 | 32 | 24 | 11 |
+| BT | 20 | 20 | 20 | 20 | 12 |
+| BW | 16 | 16 | 16 | 15 | 1 |
+| BY | 7 | 7 | 7 | 7 | 6 |
+| BZ | 6 | 6 | 6 | 6 | 6 |
+| CA | 13 | 13 | 13 | 13 | 13 |
+| CD | 26 | 25 | 25 | 26 | 15 |
+| CF | 17 | 17 | 17 | 17 | 13 |
+| CG | 12 | 11 | 11 | 11 | 5 |
+| CH | 26 | 26 | 26 | 25 | 12 |
+| CI | 14 | 14 | 14 | 3 | 5 |
+| CL | 16 | 16 | 16 | 16 | 4 |
+| CM | 10 | 10 | 10 | 10 | 8 |
+| CN | 34 | 34 | 34 | 34 | 33 |
+| CO | 33 | 33 | 33 | 32 | 26 |
+| CR | 7 | 7 | 7 | 7 | 7 |
+| CU | 16 | 16 | 16 | 15 | 15 |
+| CV | 24 | 24 | 24 | 24 | 20 |
 | CY | 6 | 6 | 6 | 6 | 0 |
-| CZ | 90 | 90 | 90 | 6 | 0 |
-| DE | 16 | 16 | 16 | 16 | 0 |
-| DJ | 6 | 6 | 6 | 3 | 0 |
-| DK | 5 | 5 | 5 | 5 | 0 |
-| DM | 10 | 10 | 10 | 1 | 0 |
-| DO | 42 | 34 | 32 | 13 | 0 |
-| DZ | 58 | 58 | 58 | 56 | 0 |
-| EC | 24 | 24 | 24 | 20 | 0 |
-| EE | 94 | 37 | 41 | 22 | 0 |
-| EG | 27 | 27 | 26 | 17 | 0 |
-| ER | 6 | 6 | 6 | 0 | 0 |
-| ES | 69 | 69 | 68 | 40 | 0 |
-| ET | 13 | 13 | 13 | 7 | 0 |
-| FI | 19 | 18 | 18 | 2 | 0 |
-| FJ | 19 | 17 | 17 | 14 | 0 |
-| FM | 4 | 4 | 4 | 4 | 0 |
-| FR | 124 | 115 | 115 | 102 | 0 |
-| GA | 9 | 9 | 9 | 4 | 0 |
-| GB | 221 | 205 | 218 | 124 | 3 |
-| GD | 7 | 7 | 7 | 0 | 0 |
-| GE | 12 | 12 | 12 | 5 | 0 |
-| GH | 16 | 16 | 16 | 0 | 0 |
-| GL | 5 | 5 | 5 | 4 | 0 |
-| GM | 6 | 6 | 6 | 1 | 0 |
-| GN | 41 | 41 | 41 | 8 | 0 |
-| GQ | 10 | 10 | 10 | 10 | 0 |
-| GR | 14 | 14 | 14 | 12 | 0 |
-| GT | 22 | 22 | 22 | 6 | 0 |
-| GW | 12 | 10 | 12 | 1 | 0 |
-| GY | 10 | 10 | 10 | 3 | 0 |
-| HN | 18 | 18 | 18 | 9 | 0 |
-| HR | 21 | 21 | 21 | 1 | 0 |
-| HT | 10 | 10 | 10 | 8 | 0 |
-| HU | 43 | 43 | 43 | 22 | 0 |
-| ID | 45 | 45 | 45 | 35 | 0 |
-| IE | 30 | 30 | 30 | 21 | 0 |
-| IL | 6 | 6 | 6 | 6 | 0 |
-| IN | 36 | 36 | 36 | 33 | 0 |
-| IQ | 19 | 18 | 18 | 7 | 0 |
-| IR | 31 | 31 | 31 | 12 | 0 |
-| IS | 72 | 42 | 46 | 35 | 0 |
-| IT | 126 | 126 | 126 | 56 | 0 |
-| JM | 14 | 14 | 14 | 1 | 0 |
-| JO | 12 | 12 | 12 | 6 | 0 |
-| JP | 47 | 47 | 47 | 28 | 0 |
-| KE | 47 | 47 | 47 | 15 | 0 |
-| KG | 9 | 9 | 9 | 8 | 0 |
-| KH | 25 | 25 | 25 | 23 | 0 |
-| KI | 3 | 3 | 3 | 3 | 0 |
-| KM | 3 | 3 | 3 | 2 | 0 |
-| KN | 16 | 16 | 16 | 2 | 0 |
-| KP | 13 | 13 | 13 | 12 | 0 |
-| KR | 17 | 17 | 17 | 10 | 0 |
-| KW | 6 | 6 | 6 | 5 | 0 |
-| KZ | 20 | 20 | 20 | 11 | 0 |
-| LA | 18 | 18 | 18 | 17 | 0 |
-| LB | 8 | 8 | 8 | 5 | 0 |
-| LC | 10 | 10 | 10 | 0 | 0 |
-| LI | 11 | 11 | 11 | 10 | 0 |
-| LK | 34 | 34 | 34 | 5 | 0 |
-| LR | 15 | 15 | 15 | 11 | 0 |
-| LS | 10 | 10 | 10 | 0 | 0 |
-| LT | 70 | 49 | 70 | 2 | 0 |
-| LU | 12 | 12 | 12 | 12 | 0 |
-| LV | 43 | 43 | 43 | 16 | 0 |
-| LY | 22 | 22 | 22 | 15 | 0 |
-| MA | 87 | 87 | 87 | 48 | 0 |
-| MC | 17 | 11 | 11 | 9 | 0 |
-| MD | 37 | 37 | 36 | 2 | 0 |
-| ME | 25 | 23 | 25 | 3 | 0 |
-| MG | 6 | 6 | 6 | 1 | 0 |
-| MH | 26 | 26 | 26 | 2 | 0 |
-| MK | 80 | 80 | 80 | 31 | 0 |
-| ML | 11 | 11 | 11 | 6 | 0 |
-| MM | 15 | 15 | 15 | 12 | 0 |
-| MN | 22 | 22 | 22 | 22 | 0 |
-| MR | 15 | 12 | 15 | 7 | 0 |
-| MT | 68 | 68 | 68 | 49 | 0 |
-| MU | 12 | 12 | 12 | 2 | 0 |
-| MV | 21 | 21 | 21 | 0 | 0 |
-| MW | 31 | 31 | 29 | 3 | 0 |
-| MX | 32 | 32 | 32 | 17 | 0 |
-| MY | 16 | 16 | 16 | 15 | 0 |
-| MZ | 11 | 11 | 11 | 11 | 0 |
-| NA | 14 | 14 | 14 | 2 | 0 |
-| NE | 8 | 8 | 8 | 7 | 0 |
-| NG | 37 | 37 | 37 | 35 | 0 |
-| NI | 17 | 17 | 17 | 8 | 0 |
-| NL | 18 | 15 | 15 | 13 | 0 |
-| NO | 17 | 9 | 10 | 5 | 0 |
+| CZ | 90 | 90 | 90 | 16 | 74 |
+| DE | 16 | 16 | 16 | 16 | 16 |
+| DJ | 6 | 6 | 6 | 6 | 4 |
+| DK | 5 | 5 | 5 | 5 | 4 |
+| DM | 10 | 10 | 10 | 10 | 8 |
+| DO | 42 | 34 | 32 | 31 | 21 |
+| DZ | 58 | 58 | 58 | 58 | 50 |
+| EC | 24 | 24 | 24 | 24 | 22 |
+| EE | 94 | 37 | 41 | 39 | 17 |
+| EG | 27 | 27 | 27 | 27 | 10 |
+| ER | 6 | 6 | 6 | 6 | 1 |
+| ES | 69 | 69 | 68 | 59 | 32 |
+| ET | 13 | 13 | 13 | 13 | 10 |
+| FI | 19 | 19 | 19 | 16 | 6 |
+| FJ | 19 | 17 | 17 | 19 | 14 |
+| FM | 4 | 4 | 4 | 4 | 1 |
+| FR | 124 | 123 | 123 | 123 | 105 |
+| GA | 9 | 9 | 9 | 9 | 7 |
+| GB | 221 | 206 | 218 | 196 | 169 |
+| GD | 7 | 7 | 7 | 7 | 0 |
+| GE | 12 | 12 | 12 | 12 | 8 |
+| GH | 16 | 16 | 16 | 9 | 10 |
+| GL | 5 | 5 | 5 | 5 | 1 |
+| GM | 6 | 6 | 6 | 6 | 6 |
+| GN | 41 | 41 | 41 | 37 | 24 |
+| GQ | 10 | 10 | 10 | 10 | 8 |
+| GR | 14 | 14 | 14 | 13 | 10 |
+| GT | 22 | 22 | 22 | 22 | 18 |
+| GW | 12 | 10 | 12 | 9 | 6 |
+| GY | 10 | 10 | 10 | 10 | 2 |
+| HN | 18 | 18 | 18 | 18 | 14 |
+| HR | 21 | 21 | 21 | 21 | 4 |
+| HT | 10 | 10 | 10 | 10 | 6 |
+| HU | 43 | 43 | 43 | 42 | 42 |
+| ID | 45 | 45 | 45 | 42 | 28 |
+| IE | 30 | 30 | 30 | 29 | 28 |
+| IL | 6 | 6 | 6 | 6 | 6 |
+| IN | 36 | 36 | 36 | 35 | 34 |
+| IQ | 19 | 18 | 18 | 18 | 16 |
+| IR | 31 | 31 | 31 | 21 | 15 |
+| IS | 72 | 42 | 46 | 43 | 15 |
+| IT | 126 | 126 | 126 | 102 | 56 |
+| JM | 14 | 14 | 14 | 14 | 11 |
+| JO | 12 | 12 | 12 | 12 | 8 |
+| JP | 47 | 47 | 47 | 47 | 47 |
+| KE | 47 | 47 | 47 | 21 | 17 |
+| KG | 9 | 9 | 9 | 9 | 8 |
+| KH | 25 | 25 | 25 | 25 | 23 |
+| KI | 3 | 3 | 3 | 3 | 2 |
+| KM | 3 | 3 | 3 | 3 | 3 |
+| KN | 16 | 16 | 16 | 16 | 9 |
+| KP | 13 | 13 | 13 | 13 | 13 |
+| KR | 17 | 17 | 17 | 17 | 17 |
+| KW | 6 | 6 | 6 | 6 | 5 |
+| KZ | 20 | 20 | 20 | 19 | 16 |
+| LA | 18 | 18 | 18 | 18 | 13 |
+| LB | 8 | 8 | 8 | 7 | 5 |
+| LC | 10 | 10 | 10 | 7 | 2 |
+| LI | 11 | 11 | 11 | 10 | 3 |
+| LK | 34 | 34 | 34 | 30 | 18 |
+| LR | 15 | 15 | 15 | 15 | 11 |
+| LS | 10 | 10 | 10 | 10 | 9 |
+| LT | 70 | 49 | 70 | 37 | 20 |
+| LU | 12 | 12 | 12 | 12 | 1 |
+| LV | 43 | 43 | 43 | 18 | 15 |
+| LY | 22 | 22 | 22 | 19 | 6 |
+| MA | 87 | 87 | 87 | 64 | 42 |
+| MC | 17 | 11 | 11 | 9 | 3 |
+| MD | 37 | 37 | 36 | 35 | 17 |
+| ME | 25 | 23 | 25 | 7 | 7 |
+| MG | 6 | 6 | 6 | 4 | 5 |
+| MH | 26 | 26 | 26 | 13 | 16 |
+| MK | 80 | 80 | 80 | 74 | 57 |
+| ML | 11 | 11 | 11 | 10 | 9 |
+| MM | 15 | 15 | 15 | 15 | 13 |
+| MN | 22 | 22 | 22 | 22 | 20 |
+| MR | 15 | 12 | 15 | 14 | 10 |
+| MT | 68 | 68 | 68 | 68 | 25 |
+| MU | 12 | 12 | 12 | 11 | 9 |
+| MV | 21 | 21 | 21 | 17 | 11 |
+| MW | 31 | 31 | 29 | 30 | 25 |
+| MX | 32 | 32 | 32 | 32 | 27 |
+| MY | 16 | 16 | 16 | 16 | 16 |
+| MZ | 11 | 11 | 11 | 11 | 10 |
+| NA | 14 | 14 | 14 | 13 | 9 |
+| NE | 8 | 8 | 8 | 8 | 6 |
+| NG | 37 | 37 | 37 | 37 | 31 |
+| NI | 17 | 17 | 17 | 17 | 14 |
+| NL | 18 | 18 | 18 | 18 | 12 |
+| NO | 17 | 17 | 17 | 9 | 13 |
 | NP | 7 | 6 | 6 | 6 | 0 |
-| NR | 14 | 14 | 14 | 0 | 0 |
-| NZ | 17 | 16 | 17 | 16 | 0 |
-| OM | 11 | 11 | 11 | 4 | 0 |
-| PA | 14 | 14 | 14 | 6 | 0 |
-| PE | 26 | 26 | 25 | 23 | 0 |
-| PG | 22 | 22 | 22 | 15 | 0 |
-| PH | 99 | 99 | 97 | 62 | 0 |
-| PK | 7 | 6 | 7 | 6 | 0 |
-| PL | 16 | 16 | 16 | 12 | 0 |
-| PS | 16 | 16 | 16 | 16 | 0 |
-| PT | 20 | 20 | 20 | 1 | 0 |
-| PW | 16 | 16 | 16 | 7 | 0 |
-| PY | 18 | 18 | 18 | 11 | 0 |
-| QA | 8 | 8 | 7 | 4 | 0 |
-| RO | 42 | 42 | 42 | 1 | 0 |
-| RS | 32 | 28 | 32 | 19 | 0 |
-| RU | 83 | 83 | 83 | 72 | 0 |
-| RW | 5 | 5 | 5 | 5 | 0 |
-| SA | 13 | 13 | 13 | 13 | 0 |
-| SB | 10 | 10 | 10 | 2 | 0 |
-| SC | 27 | 25 | 27 | 2 | 0 |
-| SD | 18 | 18 | 18 | 14 | 0 |
-| SE | 21 | 21 | 21 | 20 | 0 |
-| SG | 5 | 5 | 5 | 5 | 0 |
+| NR | 14 | 14 | 14 | 14 | 11 |
+| NZ | 17 | 16 | 17 | 16 | 12 |
+| OM | 11 | 11 | 11 | 9 | 2 |
+| PA | 14 | 14 | 14 | 13 | 12 |
+| PE | 26 | 26 | 25 | 26 | 24 |
+| PG | 22 | 22 | 22 | 22 | 17 |
+| PH | 99 | 99 | 97 | 94 | 39 |
+| PK | 7 | 6 | 7 | 7 | 7 |
+| PL | 16 | 16 | 16 | 16 | 8 |
+| PS | 16 | 16 | 16 | 16 | 8 |
+| PT | 20 | 20 | 20 | 19 | 19 |
+| PW | 16 | 16 | 16 | 16 | 9 |
+| PY | 18 | 18 | 18 | 18 | 12 |
+| QA | 8 | 8 | 8 | 5 | 2 |
+| RO | 42 | 42 | 42 | 42 | 40 |
+| RS | 32 | 28 | 32 | 32 | 19 |
+| RU | 83 | 83 | 83 | 82 | 50 |
+| RW | 5 | 5 | 5 | 5 | 3 |
+| SA | 13 | 13 | 13 | 13 | 8 |
+| SB | 10 | 10 | 10 | 9 | 9 |
+| SC | 27 | 25 | 27 | 25 | 9 |
+| SD | 18 | 18 | 18 | 18 | 16 |
+| SE | 21 | 21 | 21 | 21 | 21 |
+| SG | 5 | 5 | 5 | 5 | 1 |
 | SH | 3 | 2 | 2 | 2 | 0 |
-| SI | 212 | 179 | 212 | 101 | 0 |
-| SK | 8 | 8 | 8 | 5 | 0 |
-| SL | 5 | 5 | 5 | 3 | 0 |
-| SM | 9 | 9 | 9 | 8 | 0 |
-| SN | 14 | 14 | 14 | 5 | 0 |
-| SO | 18 | 18 | 18 | 10 | 0 |
-| SR | 10 | 10 | 10 | 10 | 0 |
-| SS | 10 | 10 | 10 | 10 | 0 |
-| ST | 7 | 6 | 6 | 1 | 0 |
-| SV | 14 | 14 | 14 | 13 | 0 |
-| SY | 14 | 14 | 14 | 12 | 0 |
-| SZ | 4 | 4 | 4 | 3 | 0 |
-| TD | 23 | 23 | 23 | 3 | 0 |
-| TG | 5 | 5 | 5 | 2 | 0 |
-| TH | 78 | 78 | 78 | 66 | 0 |
-| TJ | 5 | 5 | 5 | 3 | 0 |
-| TL | 13 | 13 | 13 | 0 | 0 |
-| TM | 6 | 6 | 6 | 2 | 0 |
-| TN | 24 | 24 | 24 | 9 | 0 |
+| SI | 212 | 179 | 212 | 119 | 18 |
+| SK | 8 | 8 | 8 | 8 | 8 |
+| SL | 5 | 5 | 5 | 5 | 3 |
+| SM | 9 | 9 | 9 | 9 | 9 |
+| SN | 14 | 14 | 14 | 14 | 12 |
+| SO | 18 | 18 | 18 | 17 | 12 |
+| SR | 10 | 10 | 10 | 10 | 10 |
+| SS | 10 | 10 | 10 | 10 | 10 |
+| ST | 7 | 6 | 6 | 3 | 6 |
+| SV | 14 | 14 | 14 | 14 | 9 |
+| SY | 14 | 14 | 14 | 13 | 13 |
+| SZ | 4 | 4 | 4 | 4 | 4 |
+| TD | 23 | 23 | 23 | 22 | 13 |
+| TG | 5 | 5 | 5 | 5 | 5 |
+| TH | 78 | 78 | 78 | 78 | 77 |
+| TJ | 5 | 5 | 5 | 5 | 5 |
+| TL | 13 | 13 | 13 | 13 | 5 |
+| TM | 6 | 6 | 6 | 6 | 6 |
+| TN | 24 | 24 | 24 | 24 | 22 |
 | TO | 5 | 5 | 5 | 1 | 0 |
-| TR | 81 | 81 | 81 | 80 | 0 |
-| TT | 15 | 15 | 15 | 11 | 0 |
-| TV | 8 | 8 | 8 | 3 | 0 |
-| TW | 22 | 21 | 21 | 8 | 0 |
-| TZ | 31 | 31 | 31 | 7 | 0 |
-| UA | 27 | 27 | 27 | 14 | 0 |
-| UG | 139 | 114 | 128 | 2 | 0 |
-| UM | 9 | 9 | 9 | 2 | 0 |
-| US | 57 | 51 | 51 | 39 | 0 |
-| UY | 19 | 19 | 19 | 18 | 0 |
-| UZ | 14 | 14 | 14 | 6 | 0 |
-| VC | 6 | 6 | 6 | 1 | 0 |
-| VE | 25 | 25 | 25 | 20 | 0 |
-| VN | 63 | 63 | 63 | 44 | 0 |
-| VU | 6 | 6 | 6 | 6 | 0 |
+| TR | 81 | 81 | 81 | 81 | 65 |
+| TT | 15 | 15 | 15 | 15 | 4 |
+| TV | 8 | 8 | 8 | 7 | 4 |
+| TW | 22 | 21 | 21 | 22 | 22 |
+| TZ | 31 | 31 | 31 | 28 | 25 |
+| UA | 27 | 27 | 27 | 27 | 26 |
+| UG | 139 | 117 | 128 | 81 | 61 |
+| UM | 9 | 9 | 9 | 9 | 9 |
+| US | 57 | 57 | 57 | 55 | 56 |
+| UY | 19 | 19 | 19 | 19 | 4 |
+| UZ | 14 | 14 | 14 | 14 | 13 |
+| VC | 6 | 6 | 6 | 6 | 5 |
+| VE | 25 | 25 | 25 | 25 | 21 |
+| VN | 63 | 63 | 63 | 54 | 12 |
+| VU | 6 | 6 | 6 | 6 | 5 |
 | WF | 3 | 3 | 3 | 3 | 0 |
-| WS | 11 | 11 | 11 | 10 | 0 |
-| YE | 22 | 22 | 21 | 19 | 0 |
-| ZA | 9 | 9 | 9 | 4 | 0 |
-| ZM | 10 | 10 | 10 | 10 | 0 |
-| ZW | 10 | 8 | 9 | 3 | 0 |
+| WS | 11 | 11 | 11 | 11 | 5 |
+| YE | 22 | 22 | 22 | 22 | 19 |
+| ZA | 9 | 9 | 9 | 9 | 9 |
+| ZM | 10 | 10 | 10 | 10 | 5 |
+| ZW | 10 | 8 | 9 | 10 | 8 |
 
 ## For a native reader
 
@@ -239,6 +237,10 @@ conversion table: they catch a name written in the wrong script, not every name 
 
 #### Spanish (`es`): 1
 
+By reason: 1 a stray quotation mark, bracket or bar in the name.
+
+CLDR (1). The first 40:
+
 | Code | Source | Name | Why |
 | --- | --- | --- | --- |
 | NO-46 | cldr:es:provisional | Provincia de Vestland" | a stray quotation mark, bracket or bar in the name |
@@ -247,7 +249,39 @@ conversion table: they catch a name written in the wrong script, not every name 
 
 None.
 
-#### Simplified Chinese (`zh-Hans`): 2199
+#### Simplified Chinese (`zh-Hans`): 2222
+
+By reason: 2222 Traditional, in a Simplified name.
+
+Every label from Wikidata that was left out (23):
+
+| Code | Source | Name | Why |
+| --- | --- | --- | --- |
+| FI-08 | wikidata:zh-hans | 中芬蘭區 | 蘭 is Traditional, in a Simplified name |
+| FI-08 | wikidata:zh-cn | 中芬蘭區 | 蘭 is Traditional, in a Simplified name |
+| GB-CHE | wikidata:zh-hans | 柴郡東 | 東 is Traditional, in a Simplified name |
+| GB-MEA | wikidata:zh-hans | 中及東安特里姆郡 | 東 is Traditional, in a Simplified name |
+| IT-42 | wikidata:zh-hans | 利古里亞 | 亞 is Traditional, in a Simplified name |
+| IT-PG | wikidata:zh-hans | 佩魯賈省 | 魯 is Traditional, in a Simplified name |
+| IT-PG | wikidata:zh-cn | 佩魯賈省 | 魯 is Traditional, in a Simplified name |
+| IT-TR | wikidata:zh-hans | 特爾尼省 | 爾 is Traditional, in a Simplified name |
+| IT-TR | wikidata:zh-cn | 特爾尼省 | 爾 is Traditional, in a Simplified name |
+| IT-TV | wikidata:zh-hans | 特雷維索省 | 維 is Traditional, in a Simplified name |
+| IT-TV | wikidata:zh-cn | 特雷維索省 | 維 is Traditional, in a Simplified name |
+| LI-10 | wikidata:zh-hans | 特里森貝格 | 貝 is Traditional, in a Simplified name |
+| LI-10 | wikidata:zh-cn | 特里森貝格 | 貝 is Traditional, in a Simplified name |
+| MK-603 | wikidata:zh-hans | 弗拉普契什泰市鎮 | 鎮 is Traditional, in a Simplified name |
+| MR-01 | wikidata:zh-hans | 東胡德省 | 東 is Traditional, in a Simplified name |
+| MR-01 | wikidata:zh-cn | 東胡德省 | 東 is Traditional, in a Simplified name |
+| TZ-03 | wikidata:zh-hans | 多多马區 | 區 is Traditional, in a Simplified name |
+| TZ-03 | wikidata:zh-cn | 多多马區 | 區 is Traditional, in a Simplified name |
+| TZ-03 | wikidata:zh-sg | 多多马區 | 區 is Traditional, in a Simplified name |
+| US-WV | wikidata:zh-hans | 西維吉尼亞州 | 維 is Traditional, in a Simplified name |
+| US-WV | wikidata:zh-cn | 西維吉尼亞州 | 維 is Traditional, in a Simplified name |
+| US-WV | wikidata:zh-sg | 西維吉尼亞州 | 維 is Traditional, in a Simplified name |
+| US-WV | wikidata:zh-my | 西維吉尼亞州 | 維 is Traditional, in a Simplified name |
+
+CLDR (2199). The first 40:
 
 | Code | Source | Name | Why |
 | --- | --- | --- | --- |
@@ -291,52 +325,5112 @@ None.
 | AU-NSW | cldr:zh:provisional | 新南威爾士州 | 爾 is Traditional, in a Simplified name |
 | AU-QLD | cldr:zh:provisional | 昆士蘭州 | 蘭 is Traditional, in a Simplified name |
 | AU-TAS | cldr:zh:provisional | 塔斯馬尼亞州 | 馬 is Traditional, in a Simplified name |
-| AU-VIC | cldr:zh:provisional | 維多利亞州 | 維 is Traditional, in a Simplified name |
-| AZ-ABS | cldr:zh:provisional | 阿布歇隆區 | 區 is Traditional, in a Simplified name |
-| AZ-AGA | cldr:zh:provisional | 阿克斯塔法區 | 區 is Traditional, in a Simplified name |
-| AZ-AGC | cldr:zh:provisional | 阿格賈貝迪區 | 貝 is Traditional, in a Simplified name |
-| AZ-AGM | cldr:zh:provisional | 阿格達姆區 | 達 is Traditional, in a Simplified name |
-| AZ-AGS | cldr:zh:provisional | 阿格達什區 | 達 is Traditional, in a Simplified name |
-| AZ-AGU | cldr:zh:provisional | 阿赫蘇區 | 蘇 is Traditional, in a Simplified name |
-| AZ-AST | cldr:zh:provisional | 阿斯塔拉區 | 區 is Traditional, in a Simplified name |
-| AZ-BAB | cldr:zh:provisional | 巴貝克區 | 貝 is Traditional, in a Simplified name |
-| AZ-BAL | cldr:zh:provisional | 巴拉肯區 | 區 is Traditional, in a Simplified name |
-| AZ-BAR | cldr:zh:provisional | 巴爾達區 | 爾 is Traditional, in a Simplified name |
-| AZ-BEY | cldr:zh:provisional | 貝拉甘區 | 貝 is Traditional, in a Simplified name |
-| AZ-BIL | cldr:zh:provisional | 比利亞蘇瓦爾區 | 亞 is Traditional, in a Simplified name |
-| AZ-CAB | cldr:zh:provisional | 傑布拉伊爾區 | 爾 is Traditional, in a Simplified name |
-| AZ-CAL | cldr:zh:provisional | 賈利拉巴德區 | 區 is Traditional, in a Simplified name |
-| AZ-CUL | cldr:zh:provisional | 朱利法區 | 區 is Traditional, in a Simplified name |
-| AZ-DAS | cldr:zh:provisional | 達什卡桑區 | 達 is Traditional, in a Simplified name |
-| AZ-FUZ | cldr:zh:provisional | 菲祖利區 | 區 is Traditional, in a Simplified name |
-| AZ-GAD | cldr:zh:provisional | 凱達貝克區 | 凱 is Traditional, in a Simplified name |
-| AZ-GOR | cldr:zh:provisional | 戈蘭博伊區 | 蘭 is Traditional, in a Simplified name |
 
-…and 2139 more.
+…and 2159 more CLDR names, the same kind of refusal.
 
-#### Traditional Chinese (`zh-Hant`): 0
+#### Traditional Chinese (`zh-Hant`): 60
 
-None.
+By reason: 60 Simplified, in a Traditional name.
+
+Every label from Wikidata that was left out (60):
+
+| Code | Source | Name | Why |
+| --- | --- | --- | --- |
+| AR-K | wikidata:zh-hant | 卡塔马卡省 | 马 is Simplified, in a Traditional name |
+| AR-K | wikidata:zh-tw | 卡塔马卡省 | 马 is Simplified, in a Traditional name |
+| AR-K | wikidata:zh-hk | 卡塔马卡省 | 马 is Simplified, in a Traditional name |
+| AR-K | wikidata:zh-mo | 卡塔马卡省 | 马 is Simplified, in a Traditional name |
+| AR-R | wikidata:zh-hant | 内格羅河省 | 内 is Simplified, in a Traditional name |
+| AR-V | wikidata:zh-hant | 火地岛省 | 岛 is Simplified, in a Traditional name |
+| AR-V | wikidata:zh-tw | 火地岛省 | 岛 is Simplified, in a Traditional name |
+| AR-V | wikidata:zh-hk | 火地岛省 | 岛 is Simplified, in a Traditional name |
+| AR-V | wikidata:zh-mo | 火地岛省 | 岛 is Simplified, in a Traditional name |
+| BD-17 | wikidata:zh-hant | 戈巴尔甘傑縣 | 尔 is Simplified, in a Traditional name |
+| CH-GE | wikidata:zh-hant | 日内瓦州 | 内 is Simplified, in a Traditional name |
+| DO-14 | wikidata:zh-hant | 瑪麗亞·特立尼达·桑切斯省 | 达 is Simplified, in a Traditional name |
+| DO-14 | wikidata:zh-hk | 瑪麗亞·特立尼达·桑切斯省 | 达 is Simplified, in a Traditional name |
+| DZ-55 | wikidata:zh-hant | 图古爾特省 | 图 is Simplified, in a Traditional name |
+| FR-87 | wikidata:zh-hant | 上维埃纳省 | 维 is Simplified, in a Traditional name |
+| FR-976 | wikidata:zh-hant | 马约特 | 马 is Simplified, in a Traditional name |
+| GB-LAN | wikidata:zh-hant | 兰开夏郡 | 兰 is Simplified, in a Traditional name |
+| GB-NFK | wikidata:zh-hant | 诺福克郡 | 诺 is Simplified, in a Traditional name |
+| GB-SWD | wikidata:zh-hant | 斯温登區 | 温 is Simplified, in a Traditional name |
+| ID-PA | wikidata:zh-hant | 巴布亚省 | 亚 is Simplified, in a Traditional name |
+| IN-ML | wikidata:zh-hant | 梅加拉亚邦 | 亚 is Simplified, in a Traditional name |
+| IT-32 | wikidata:zh-hant | 特伦蒂诺-上阿迪杰 | 伦 is Simplified, in a Traditional name |
+| IT-32 | wikidata:zh-tw | 特伦蒂诺-上阿迪杰 | 伦 is Simplified, in a Traditional name |
+| IT-32 | wikidata:zh-hk | 特伦蒂诺-上阿迪杰 | 伦 is Simplified, in a Traditional name |
+| IT-32 | wikidata:zh-mo | 特伦蒂诺-上阿迪杰 | 伦 is Simplified, in a Traditional name |
+| IT-36 | wikidata:zh-hant | 弗留利-威尼斯朱利亚 | 亚 is Simplified, in a Traditional name |
+| IT-36 | wikidata:zh-tw | 弗留利-威尼斯朱利亚 | 亚 is Simplified, in a Traditional name |
+| IT-36 | wikidata:zh-hk | 弗留利-威尼斯朱利亚 | 亚 is Simplified, in a Traditional name |
+| IT-36 | wikidata:zh-mo | 弗留利-威尼斯朱利亚 | 亚 is Simplified, in a Traditional name |
+| LT-50 | wikidata:zh-hant | 陶拉蓋区 | 区 is Simplified, in a Traditional name |
+| MK-209 | wikidata:zh-hant | 普罗比什蒂普市镇 | 罗 is Simplified, in a Traditional name |
+| NL-DR | wikidata:zh-hant | 德伦特省 | 伦 is Simplified, in a Traditional name |
+| NL-GE | wikidata:zh-hant | 海尔德兰省 | 尔 is Simplified, in a Traditional name |
+| NL-GR | wikidata:zh-hant | 格罗宁根省 | 罗 is Simplified, in a Traditional name |
+| NL-OV | wikidata:zh-hant | 上艾瑟尔省 | 尔 is Simplified, in a Traditional name |
+| RU-ARK | wikidata:zh-hant | 阿尔汉格尔斯克州 | 尔 is Simplified, in a Traditional name |
+| RU-ARK | wikidata:zh-tw | 阿尔汉格尔斯克州 | 尔 is Simplified, in a Traditional name |
+| RU-ARK | wikidata:zh-hk | 阿尔汉格尔斯克州 | 尔 is Simplified, in a Traditional name |
+| RU-ARK | wikidata:zh-mo | 阿尔汉格尔斯克州 | 尔 is Simplified, in a Traditional name |
+| RU-KDA | wikidata:zh-hant | 克拉斯诺达尔边疆区 | 诺 is Simplified, in a Traditional name |
+| RU-KR | wikidata:zh-hant | 卡累利阿共和国 | 国 is Simplified, in a Traditional name |
+| RU-KR | wikidata:zh-tw | 卡累利阿共和国 | 国 is Simplified, in a Traditional name |
+| RU-KR | wikidata:zh-hk | 卡累利阿共和国 | 国 is Simplified, in a Traditional name |
+| RU-KR | wikidata:zh-mo | 卡累利阿共和国 | 国 is Simplified, in a Traditional name |
+| RU-NEN | wikidata:zh-hant | 涅涅茨自治区 | 区 is Simplified, in a Traditional name |
+| RU-NEN | wikidata:zh-tw | 涅涅茨自治区 | 区 is Simplified, in a Traditional name |
+| RU-NEN | wikidata:zh-hk | 涅涅茨自治区 | 区 is Simplified, in a Traditional name |
+| RU-NEN | wikidata:zh-mo | 涅涅茨自治区 | 区 is Simplified, in a Traditional name |
+| RU-TUL | wikidata:zh-hant | 图拉州 | 图 is Simplified, in a Traditional name |
+| RU-TUL | wikidata:zh-tw | 图拉州 | 图 is Simplified, in a Traditional name |
+| RU-TUL | wikidata:zh-hk | 图拉州 | 图 is Simplified, in a Traditional name |
+| RU-TUL | wikidata:zh-mo | 图拉州 | 图 is Simplified, in a Traditional name |
+| RU-TVE | wikidata:zh-hant | 特维尔州 | 维 is Simplified, in a Traditional name |
+| RU-TY | wikidata:zh-hant | 图瓦共和国 | 图 is Simplified, in a Traditional name |
+| SD-DE | wikidata:zh-hant | 东達爾富爾州 | 东 is Simplified, in a Traditional name |
+| SI-090 | wikidata:zh-hant | 皮兰 | 兰 is Simplified, in a Traditional name |
+| SI-090 | wikidata:zh-tw | 皮兰 | 兰 is Simplified, in a Traditional name |
+| SI-090 | wikidata:zh-hk | 皮兰 | 兰 is Simplified, in a Traditional name |
+| SI-090 | wikidata:zh-mo | 皮兰 | 兰 is Simplified, in a Traditional name |
+| SS-EE | wikidata:zh-hant | 东赤道州 | 东 is Simplified, in a Traditional name |
+
+### Names taken only from Wikidata
+
+CLDR had no name that passed the checks, so the label below is the one kept. These have not been confirmed by a CLDR committee.
+
+#### Spanish (`es`): 36
+
+| Code | Name | Tag | English |
+| --- | --- | --- | --- |
+| CI-CM | Distrito de Comoé | es | Comoé |
+| CI-GD | Distrito autónomo de Gôh-Djiboua | es | Gôh-Djiboua |
+| CI-LG | Distrito de las Lagunas | es | Lagunes |
+| CI-MG | Distrito de las Montañas | es | Montagnes |
+| CI-SM | Distrito de Sassandra-Marahoué | es | Sassandra-Marahoué |
+| CI-WR | Distrito de Woroba | es | Woroba |
+| FI-01 | Åland | es | Åland Islands |
+| FR-BL | San Bartolomé | es | St. Barthélemy |
+| FR-CP | Isla Clipperton | es | Clipperton Island |
+| FR-MF | San Martín | es | St. Martin |
+| FR-NC | Nueva Caledonia | es | New Caledonia |
+| FR-PF | Polinesia Francesa | es | French Polynesia |
+| FR-PM | San Pedro y Miquelón | es | St. Pierre & Miquelon |
+| FR-TF | Tierras Australes y Antárticas Francesas | es | French Southern Territories |
+| FR-WF | Wallis y Futuna | es | Wallis & Futuna |
+| GB-SND | Sunderland | es | Sunderland |
+| NL-AW | Aruba | es | Aruba |
+| NL-CW | Curazao | es | Curaçao |
+| NL-SX | San Martín | es | Sint Maarten |
+| NO-31 | Østfold | es | Østfold |
+| NO-32 | Akershus | es | Akershus |
+| NO-33 | Buskerud | es | Buskerud |
+| NO-39 | Vestfold | es | Vestfold |
+| NO-40 | Telemark | es | Telemark |
+| NO-46 | Vestland | es | Vestland |
+| NO-55 | Troms | es | Troms |
+| NO-56 | Finnmark | es | Finnmark |
+| UG-331 | Distrito de Zombo | es | Zombo |
+| UG-C | Region Central | es | Central |
+| UG-N | Región Norte de Uganda | es | Northern |
+| US-AS | Samoa Americana | es | American Samoa |
+| US-GU | Guam | es | Guam |
+| US-MP | Islas Marianas del Norte | es | Northern Mariana Islands |
+| US-PR | Puerto Rico | es | Puerto Rico |
+| US-UM | Islas ultramarinas de Estados Unidos | es | U.S. Outlying Islands |
+| US-VI | Islas Vírgenes de los Estados Unidos | es | U.S. Virgin Islands |
+
+#### German (`de`): 28
+
+| Code | Name | Tag | English |
+| --- | --- | --- | --- |
+| EG-PTS | Bur Saʿid | de | Port Said |
+| FI-01 | Åland | de | Åland Islands |
+| FR-BL | Saint-Barthélemy | de | St. Barthélemy |
+| FR-CP | Clipperton-Insel | de | Clipperton Island |
+| FR-MF | Saint-Martin | de | St. Martin |
+| FR-NC | Neukaledonien | de | New Caledonia |
+| FR-PF | Französisch-Polynesien | de | French Polynesia |
+| FR-PM | Saint-Pierre und Miquelon | de | St. Pierre & Miquelon |
+| FR-TF | Französische Süd- und Antarktisgebiete | de | French Southern Territories |
+| FR-WF | Wallis und Futuna | de | Wallis & Futuna |
+| NL-AW | Aruba | de | Aruba |
+| NL-CW | Curaçao | de | Curaçao |
+| NL-SX | Sint Maarten | de | Sint Maarten |
+| NO-31 | Østfold | de | Østfold |
+| NO-32 | Akershus | de | Akershus |
+| NO-33 | Buskerud | de | Buskerud |
+| NO-39 | Vestfold | de | Vestfold |
+| NO-40 | Telemark | de | Telemark |
+| NO-55 | Troms | de | Troms |
+| NO-56 | Finnmark | de | Finnmark |
+| QA-ZA | Ad-Daʿayan | de | Al Daayen |
+| US-AS | Amerikanisch-Samoa | de | American Samoa |
+| US-GU | Guam | de | Guam |
+| US-MP | Nördliche Marianen | de | Northern Mariana Islands |
+| US-PR | Puerto Rico | de | Puerto Rico |
+| US-UM | Kleinere Amerikanische Überseeinseln | de | U.S. Outlying Islands |
+| US-VI | Amerikanische Jungferninseln | de | U.S. Virgin Islands |
+| YE-AM | Gouvernement ʿAmrān | de | Amran |
+
+#### Simplified Chinese (`zh-Hans`): 1685
+
+| Code | Name | Tag | English |
+| --- | --- | --- | --- |
+| AD-08 | 埃斯卡尔德斯-恩戈尔达尼 | zh-hans | Escaldes-Engordany |
+| AF-GHO | 古尔省 | zh-hans | Ghōr |
+| AF-PAN | 潘杰希尔省 | zh-hans | Panjshir |
+| AF-SAR | 萨尔普勒省 | zh-hans | Sar-e Pol |
+| AG-03 | 圣乔治区 | zh-hans | Saint George |
+| AG-05 | 圣玛丽区 | zh-hans | Saint Mary |
+| AG-06 | 圣保罗区 | zh-hans | Saint Paul |
+| AG-07 | 圣彼得区 | zh-hans | Saint Peter |
+| AG-08 | 圣菲利普区 | zh-hans | Saint Philip |
+| AG-10 | 巴布达岛 | zh-hans | Barbuda |
+| AG-11 | 雷东达岛 | zh-hans | Redonda |
+| AL-04 | 费里州 | zh-hans | Fier County |
+| AL-05 | 吉诺卡斯特州 | zh-hans | Gjirokastër County |
+| AL-08 | 莱什州 | zh-hans | Lezhë County |
+| AL-09 | 迪勃拉州 | zh-hans | Dibër County |
+| AL-12 | 发罗拉州 | zh-hans | Vlorë County |
+| AM-AR | 亚拉腊州 | zh-hans | Ararat |
+| AM-AV | 阿尔马维尔州 | zh-hans | Armavir |
+| AM-ER | 埃里温 | zh-hans | Yerevan |
+| AM-GR | 格加尔库尼克州 | zh-hans | Gegharkunik |
+| AM-VD | 瓦约茨佐尔州 | zh-hans | Vayots Dzor |
+| AO-CAB | 卡宾达省 | zh-hans | Cabinda |
+| AO-CNN | 库内内省 | zh-hans | Cunene |
+| AO-CNO | 北宽扎省 | zh-hans | Cuanza Norte |
+| AO-CUS | 南宽扎省 | zh-hans | Cuanza Sul |
+| AO-LNO | 北隆达省 | zh-hans | Lunda Norte |
+| AO-LSU | 南隆达省 | zh-hans | Lunda Sul |
+| AO-LUA | 罗安达省 | zh-hans | Luanda |
+| AO-MAL | 马兰热省 | zh-hans | Malanje |
+| AO-NAM | 纳米贝省 | zh-hans | Namibe |
+| AO-ZAI | 萨伊省 | zh-hans | Zaire |
+| AR-C | 布宜诺斯艾利斯 | zh-hans | Buenos Aires |
+| AR-N | 米西奥内斯省 | zh-hans | Misiones |
+| AR-P | 福尔摩沙省 | zh-hans | Formosa |
+| AT-6 | 施泰尔马克州 | zh-hans | Styria |
+| AT-9 | 维也纳 | zh-hans | Vienna |
+| AU-ACT | 澳大利亚首都特区 | zh-hans | Australian Capital Territory |
+| AU-NSW | 新南威尔士州 | zh-hans | New South Wales |
+| AU-QLD | 昆士兰州 | zh-hans | Queensland |
+| AU-TAS | 塔斯马尼亚州 | zh-hans | Tasmania |
+| AU-VIC | 维多利亚州 | zh-hans | Victoria |
+| AZ-ABS | 阿布歇隆区 | zh-hans | Absheron |
+| AZ-AGA | 阿克斯塔法区 | zh-hans | Agstafa |
+| AZ-AGC | 阿格贾贝迪区 | zh-hans | Aghjabadi |
+| AZ-AGM | 阿格达姆区 | zh-hans | Agdam |
+| AZ-AGS | 阿格达什区 | zh-hans | Agdash |
+| AZ-AGU | 阿赫苏区 | zh-hans | Agsu |
+| AZ-AST | 阿斯塔拉区 | zh-hans | Astara |
+| AZ-BAB | 巴贝克区 | zh-hans | Babek |
+| AZ-BAL | 巴拉肯区 | zh-hans | Balakan |
+| AZ-BAR | 巴尔达区 | zh-hans | Barda |
+| AZ-BEY | 贝拉甘区 | zh-hans | Beylagan |
+| AZ-BIL | 比利亚苏瓦尔区 | zh-hans | Bilasuvar |
+| AZ-CAB | 杰布拉伊尔区 | zh-hans | Jabrayil |
+| AZ-CAL | 贾利拉巴德区 | zh-hans | Jalilabad |
+| AZ-CUL | 朱利法区 | zh-hans | Julfa |
+| AZ-DAS | 达什卡桑区 | zh-hans | Dashkasan |
+| AZ-FUZ | 菲祖利区 | zh-hans | Fizuli |
+| AZ-GAD | 凯达贝克区 | zh-hans | Gadabay |
+| AZ-GOR | 戈兰博伊区 | zh-hans | Goranboy |
+| AZ-GOY | 盖奥克恰伊区 | zh-hans | Goychay |
+| AZ-GYG | 汉拉尔区 | zh-hans | Goygol |
+| AZ-HAC | 卡齐穆罕默德区 | zh-hans | Hajigabul |
+| AZ-IMI | 伊米什利区 | zh-hans | Imishli |
+| AZ-ISM | 伊斯梅尔雷区 | zh-hans | Ismailli |
+| AZ-KAL | 克尔巴贾尔区 | zh-hans | Kalbajar |
+| AZ-KAN | 坎加利区 | zh-hans | Kangarli |
+| AZ-KUR | 丘尔达米尔区 | zh-hans | Kurdamir |
+| AZ-LA | 连科兰 | zh-hans | Lankaran |
+| AZ-LAN | 连科兰区 | zh-hans | Lankaran District |
+| AZ-LER | 列里克区 | zh-hans | Lerik |
+| AZ-MAS | 马萨雷区 | zh-hans | Masally |
+| AZ-NEF | 涅夫捷恰拉区 | zh-hans | Neftchala |
+| AZ-NV | 纳希切万 | zh-hans | Nakhchivan |
+| AZ-OGU | 奥古兹区 | zh-hans | Oghuz |
+| AZ-ORD | 奥尔杜巴德区 | zh-hans | Ordubad |
+| AZ-QAB | 盖贝莱区 | zh-hans | Qabala |
+| AZ-QAX | 卡希区 | zh-hans | Qakh |
+| AZ-QAZ | 哈萨克区 | zh-hans | Qazakh |
+| AZ-QBA | 库巴区 | zh-hans | Quba |
+| AZ-QBI | 库巴特雷区 | zh-hans | Qubadli |
+| AZ-QOB | 戈布斯坦区 | zh-hans | Gobustan |
+| AZ-QUS | 库萨雷区 | zh-hans | Qusar |
+| AZ-SAB | 萨比拉巴德区 | zh-hans | Sabirabad |
+| AZ-SAD | 萨达拉克区 | zh-hans | Sadarak |
+| AZ-SAH | 沙赫布兹区 | zh-hans | Shahbuz |
+| AZ-SAK | 舍基区 | zh-hans | Shaki District |
+| AZ-SAL | 萨利扬区 | zh-hans | Salyan |
+| AZ-SAT | 萨特雷区 | zh-hans | Saatly |
+| AZ-SBN | 迪维奇区 | zh-hans | Shabran |
+| AZ-SIY | 锡阿赞区 | zh-hans | Siazan |
+| AZ-SKR | 沙姆基尔区 | zh-hans | Shamkir |
+| AZ-SMI | 沙马基区 | zh-hans | Shamakhi |
+| AZ-SMX | 萨穆赫区 | zh-hans | Samukh |
+| AZ-SR | 希尔万 | zh-hans | Shirvan |
+| AZ-SUS | 舒沙区 | zh-hans | Shusha |
+| AZ-TAR | 泰尔泰尔区 | zh-hans | Tartar |
+| AZ-TOV | 塔乌兹区 | zh-hans | Tovuz |
+| AZ-UCA | 乌贾雷区 | zh-hans | Ujar |
+| AZ-XA | 汉肯德 | zh-hans | Stepanakert |
+| AZ-XAC | 哈奇马斯区 | zh-hans | Khachmaz |
+| AZ-XCI | 霍贾雷区 | zh-hans | Khojali |
+| AZ-XIZ | 基兹区 | zh-hans | Khizi |
+| AZ-XVD | 霍贾文德区 | zh-hans | Khojavend |
+| AZ-YAR | 亚尔德姆雷区 | zh-hans | Yardymli |
+| AZ-YEV | 叶夫拉赫区 | zh-hans | Yevlakh District |
+| AZ-ZAN | 赞格兰区 | zh-hans | Zangilan |
+| AZ-ZAQ | 扎卡塔雷区 | zh-hans | Zaqatala |
+| AZ-ZAR | 扎尔多布区 | zh-hans | Zardab |
+| BA-BIH | 波斯尼亚和黑塞哥维那联邦 | zh-hans | Federation of Bosnia and Herzegovina |
+| BA-BRC | 布尔奇科特区 | zh-hans | Brčko District |
+| BA-SRP | 塞族共和国 | zh-hans | Republika Srpska |
+| BB-01 | 基督城教区 | zh-hans | Christ Church |
+| BB-02 | 圣安德鲁区 | zh-hans | Saint Andrew |
+| BB-03 | 圣乔治教区 | zh-hans | Saint George |
+| BB-05 | 圣约翰教区 | zh-hans | Saint John |
+| BB-07 | 圣露西教区 | zh-hans | Saint Lucy |
+| BB-08 | 圣迈克尔区 | zh-hans | Saint Michael |
+| BB-10 | 圣菲利普区 | zh-hans | Saint Philip |
+| BB-11 | 圣托马斯区 | zh-hans | Saint Thomas |
+| BD-06 | 巴里萨尔县 | zh-hans | Barisal District |
+| BD-08 | 库米拉县 | zh-hans | Comilla |
+| BD-09 | 坚德布尔县 | zh-hans | Chandpur |
+| BD-11 | 科克斯巴扎尔县 | zh-hans | Cox’s Bazar |
+| BD-25 | 恰洛加蒂县 | zh-hans | Jhalokati |
+| BD-27 | 库尔纳县 | zh-hans | Khulna |
+| BD-29 | 科格拉焦里县 | zh-hans | Khagrachari |
+| BD-31 | 罗基布尔县 | zh-hans | Lakshmipur |
+| BD-51 | 博杜阿卡利县 | zh-hans | Patuakhali |
+| BD-54 | 拉杰沙希县 | zh-hans | Rajshahi |
+| BD-56 | 兰加马蒂县 | zh-hans | Rangamati Hill |
+| BD-60 | 锡尔赫特县 | zh-hans | Sylhet |
+| BD-61 | 苏纳姆甘杰县 | zh-hans | Sunamganj |
+| BD-A | 博里萨尔专区 | zh-hans | Barisal Division |
+| BD-B | 吉大港专区 | zh-hans | Chittagong Division |
+| BD-C | 达卡专区 | zh-hans | Dhaka Division |
+| BD-D | 库尔纳专区 | zh-hans | Khulna Division |
+| BD-E | 拉杰沙希专区 | zh-hans | Rajshahi Division |
+| BD-G | 锡尔赫特专区 | zh-hans | Sylhet Division |
+| BE-BRU | 布鲁塞尔首都大区 | zh-hans | Brussels |
+| BE-VAN | 安特卫普省 | zh-hans | Antwerp |
+| BE-VLG | 弗拉芒大区 | zh-hans | Flanders |
+| BE-WHT | 埃诺省 | zh-hans | Hainaut |
+| BE-WLX | 卢森堡省 | zh-hans | Luxembourg |
+| BE-WNA | 那慕尔省 | zh-hans | Namur |
+| BF-02 | 瀑布大区 | zh-hans | Cascades |
+| BF-05 | 中北大区 | zh-hans | Centre-Nord |
+| BF-06 | 中西大区 | zh-hans | Centre-Ouest |
+| BF-07 | 中南大区 | zh-hans | Centre-Sud |
+| BF-08 | 东部大区 | zh-hans | Est |
+| BF-09 | 上盆地大区 | zh-hans | Hauts-Bassins |
+| BF-10 | 北部大区 | zh-hans | Nord |
+| BF-11 | 高原-中部大区 | zh-hans | Plateau-Central |
+| BF-BAZ | 巴泽加省 | zh-hans | Bazèga |
+| BF-BLG | 布尔古省 | zh-hans | Boulgou |
+| BF-BLK | 布尔基恩德省 | zh-hans | Boulkiemdé |
+| BF-GAN | 冈祖尔古省 | zh-hans | Ganzourgou |
+| BF-GNA | 尼亚尼亚省 | zh-hans | Gnagna |
+| BF-GOU | 古尔马省 | zh-hans | Gourma |
+| BF-HOU | 乌埃省 | zh-hans | Houet |
+| BF-KEN | 凯内杜古省 | zh-hans | Kénédougou |
+| BF-KOP | 库尔佩罗戈省 | zh-hans | Koulpélogo |
+| BF-KOW | 库尔维奥戈省 | zh-hans | Kourwéogo |
+| BF-LOR | 罗卢姆省 | zh-hans | Loroum |
+| BF-NAM | 纳门滕加省 | zh-hans | Namentenga |
+| BF-NAO | 纳乌里省 | zh-hans | Nahouri |
+| BF-NAY | 纳亚拉省 | zh-hans | Nayala |
+| BF-NOU | 努姆比埃尔省 | zh-hans | Noumbiel |
+| BF-OUB | 乌布里滕加省 | zh-hans | Oubritenga |
+| BF-OUD | 乌达兰省 | zh-hans | Oudalan |
+| BF-SEN | 塞诺省 | zh-hans | Séno |
+| BF-SIS | 锡西里省 | zh-hans | Sissili |
+| BF-SMT | 桑马滕加省 | zh-hans | Sanmatenga |
+| BF-SOR | 苏鲁省 | zh-hans | Sourou |
+| BF-TUI | 图伊省 | zh-hans | Tuy |
+| BF-YAG | 亚加省 | zh-hans | Yagha |
+| BF-ZIR | 济罗省 | zh-hans | Ziro |
+| BF-ZON | 宗多马省 | zh-hans | Zondoma |
+| BF-ZOU | 宗德韦奥戈省 | zh-hans | Zoundwéogo |
+| BG-02 | 布尔加斯州 | zh-hans | Burgas |
+| BG-03 | 瓦尔纳州 | zh-hans | Varna |
+| BG-04 | 大特尔诺沃州 | zh-hans | Veliko Tarnovo |
+| BG-05 | 维丁州 | zh-hans | Vidin |
+| BG-07 | 加布罗沃州 | zh-hans | Gabrovo |
+| BG-09 | 克尔贾利州 | zh-hans | Kardzhali |
+| BG-10 | 丘斯滕迪尔州 | zh-hans | Kyustendil |
+| BG-11 | 洛维奇州 | zh-hans | Lovech |
+| BG-13 | 帕扎尔吉克州 | zh-hans | Pazardzhik |
+| BG-14 | 佩尔尼克州 | zh-hans | Pernik |
+| BG-16 | 普罗夫迪夫州 | zh-hans | Plovdiv |
+| BG-18 | 鲁塞州 | zh-hans | Ruse |
+| BG-19 | 锡利斯特拉州 | zh-hans | Silistra |
+| BG-23 | 索菲亚州 | zh-hans | Sofia District |
+| BG-25 | 特尔戈维什特州 | zh-hans | Targovishte |
+| BG-27 | 舒门州 | zh-hans | Shumen |
+| BG-28 | 扬博尔州 | zh-hans | Yambol |
+| BI-BL | 布松布拉乡村省 | zh-hans | Bujumbura Rural |
+| BI-BM | 布琼布拉市省 | zh-hans | Bujumbura |
+| BI-KY | 卡扬扎省 | zh-hans | Kayanza |
+| BI-MA | 马坎巴省 | zh-hans | Makamba |
+| BI-RT | 鲁塔纳省 | zh-hans | Rutana |
+| BJ-BO | 博尔古省 | zh-hans | Borgou |
+| BJ-MO | 莫诺省 | zh-hans | Mono |
+| BJ-OU | 韦梅省 | zh-hans | Ouémé |
+| BO-S | 圣克鲁斯省 | zh-hans | Santa Cruz |
+| BQ-SA | 萨巴 | zh-hans | Saba |
+| BR-DF | 联邦区 | zh-hans | Federal District |
+| BR-RJ | 里约热内卢州 | zh-hans | Rio de Janeiro |
+| BR-RR | 罗赖马州 | zh-hans | Roraima |
+| BS-BI | 北比米尼岛 | zh-hans | Bimini |
+| BS-BY | 贝里群岛 | zh-hans | Berry Islands |
+| BS-CI | 卡特岛 | zh-hans | Cat Island |
+| BS-CK | 克鲁克德岛 (巴哈马) | zh-hans | Crooked Island |
+| BS-EG | 东大巴哈马区 | zh-hans | East Grand Bahama |
+| BS-EX | 埃克苏马 | zh-hans | Exuma |
+| BS-FP | 弗里波特 | zh-hans | Freeport |
+| BS-HT | 希望镇 | zh-hans | Hope Town |
+| BS-IN | 那瓜岛 | zh-hans | Inagua |
+| BS-LI | 长岛 | zh-hans | Long Island |
+| BS-NO | 北阿巴科区 | zh-hans | North Abaco |
+| BS-NP | 新普罗维登斯岛 | zh-hans | New Providence |
+| BS-SA | 南安德罗斯 | zh-hans | South Andros |
+| BS-SO | 南阿巴科区 | zh-hans | South Abaco |
+| BW-CE | 中部区 | zh-hans | Central |
+| BW-GH | 杭济区 | zh-hans | Ghanzi |
+| BW-KG | 卡拉哈迪区 | zh-hans | Kgalagadi |
+| BW-KL | 卡特伦区 | zh-hans | Kgatleng |
+| BW-KW | 奎嫩区 | zh-hans | Kweneng |
+| BW-NE | 东北区 | zh-hans | North East |
+| BW-NW | 西北区 | zh-hans | North West |
+| BW-SE | 东南区 | zh-hans | South East |
+| BW-SO | 南部区 | zh-hans | Southern |
+| BY-HR | 格罗德诺州 | zh-hans | Hrodna |
+| BZ-CY | 卡约区 | zh-hans | Cayo |
+| BZ-CZL | 科罗萨尔区 | zh-hans | Corozal |
+| BZ-OW | 橘园区 | zh-hans | Orange Walk |
+| BZ-SC | 斯坦克里克区 | zh-hans | Stann Creek |
+| BZ-TOL | 托莱多区 | zh-hans | Toledo |
+| CA-NB | 新不伦瑞克 | zh-hans | New Brunswick |
+| CA-NL | 纽芬兰-拉布拉多省 | zh-hans | Newfoundland and Labrador |
+| CA-NU | 努纳武特 | zh-hans | Nunavut |
+| CA-PE | 爱德华王子岛 | zh-hans | Prince Edward Island |
+| CA-SK | 萨斯喀彻温省 | zh-hans | Saskatchewan |
+| CF-HS | 曼贝雷-卡代省 | zh-hans | Mambéré-Kadéï |
+| CF-KG | 凯莫省 | zh-hans | Kémo |
+| CF-MP | 翁贝拉－姆波科省 | zh-hans | Ombella-M’Poko |
+| CF-NM | 纳纳-曼贝雷省 | zh-hans | Nana-Mambéré |
+| CG-12 | 普尔省 | zh-hans | Pool |
+| CG-5 | 奎卢省 | zh-hans | Kouilou |
+| CH-AG | 阿尔高州 | zh-hans | Aargau |
+| CH-AI | 内阿彭策尔州 | zh-hans | Appenzell Innerrhoden |
+| CH-AR | 外阿彭策尔州 | zh-hans | Appenzell Ausserrhoden |
+| CH-BL | 巴塞尔乡村州 | zh-hans | Basel-Landschaft |
+| CH-BS | 巴塞尔城市州 | zh-hans | Basel-Stadt |
+| CH-GE | 日内瓦州 | zh-hans | Geneva |
+| CH-GR | 格劳宾登州 | zh-hans | Graubünden |
+| CH-NE | 纳沙泰尔州 | zh-hans | Neuchâtel |
+| CH-NW | 下瓦尔登州 | zh-hans | Nidwalden |
+| CH-OW | 上瓦尔登州 | zh-hans | Obwalden |
+| CH-SO | 索洛图恩州 | zh-hans | Solothurn |
+| CH-SZ | 施维茨州 | zh-hans | Schwyz |
+| CH-TG | 图尔高州 | zh-hans | Thurgau |
+| CH-TI | 提契诺州 | zh-hans | Ticino |
+| CH-UR | 乌里州 | zh-hans | Uri |
+| CM-EN | 极北区 | zh-hans | Far North |
+| CM-LT | 滨海区 | zh-hans | Littoral |
+| CM-NO | 北部区 | zh-hans | North |
+| CM-NW | 西北区 | zh-hans | Northwest |
+| CN-MO | 澳门 | zh-hans | Macau |
+| CO-COR | 科尔多瓦 | zh-hans | Córdoba |
+| CO-CUN | 昆迪纳马卡省 | zh-hans | Cundinamarca |
+| CU-15 | 阿特米萨省 | zh-hans | Artemisa |
+| CV-BR | 布拉瓦 | zh-hans | Brava |
+| CV-BV | 博阿维斯塔 | zh-hans | Boa Vista |
+| CV-CA | 圣卡塔琳娜 | zh-hans | Santa Catarina |
+| CV-CF | 福古岛圣卡塔琳娜 | zh-hans | Santa Catarina do Fogo |
+| CV-CR | 圣克鲁什 | zh-hans | Santa Cruz |
+| CV-MA | 马尤 | zh-hans | Maio |
+| CV-MO | 莫什泰鲁什 | zh-hans | Mosteiros |
+| CV-PA | 保罗 | zh-hans | Paul |
+| CV-PN | 波多诺伏 | zh-hans | Porto Novo |
+| CV-PR | 普拉亚 | zh-hans | Praia |
+| CV-RB | 里贝拉布拉瓦 | zh-hans | Ribeira Brava |
+| CV-RG | 大里贝拉 | zh-hans | Ribeira Grande |
+| CV-RS | 圣地亚哥岛大里贝拉 | zh-hans | Ribeira Grande de Santiago |
+| CV-S | 背风群岛 | zh-hans | Sotavento Islands |
+| CV-SD | 圣多明戈斯 | zh-hans | São Domingos |
+| CV-SF | 圣菲利佩 | zh-hans | São Filipe |
+| CV-SL | 萨尔 | zh-hans | Sal |
+| CV-SM | 圣米格尔 | zh-hans | São Miguel |
+| CV-SO | 圣洛伦索-杜什奥尔冈什 | zh-hans | São Lourenço dos Órgãos |
+| CV-SS | 圣萨尔瓦多-杜蒙杜 | zh-hans | São Salvador do Mundo |
+| CV-SV | 圣维森特 | zh-hans | São Vicente |
+| CV-TA | 塔拉法尔 | zh-hans | Tarrafal |
+| CV-TS | 圣尼古劳岛塔拉法尔 | zh-hans | Tarrafal de São Nicolau |
+| CZ-203 | 克拉德诺区 | zh-hans | Kladno |
+| CZ-32 | 比尔森州 | zh-hans | Plzeňský |
+| CZ-41 | 卡罗维发利州 | zh-hans | Karlovarský |
+| CZ-42 | 乌斯季州 | zh-hans | Ústecký |
+| CZ-52 | 赫拉德茨-克拉洛韦州 | zh-hans | Královéhradecký |
+| CZ-53 | 帕尔杜比采州 | zh-hans | Pardubický |
+| CZ-63 | 维索奇纳州 | zh-hans | Vysočina |
+| CZ-64 | 南摩拉维亚州 | zh-hans | Jihomoravský |
+| CZ-712 | 奥洛穆茨县 | zh-hans | Olomouc |
+| CZ-80 | 摩拉维亚-西里西亚州 | zh-hans | Moravskoslezský |
+| DJ-AR | 阿尔塔州 (吉布提) | zh-hans | Arta |
+| DJ-AS | 阿里萨比州 | zh-hans | Ali Sabieh |
+| DJ-DI | 迪基尔州 | zh-hans | Dikhil |
+| DM-03 | 圣戴维堂区 | zh-hans | Saint David |
+| DM-04 | 圣乔治堂区 | zh-hans | Saint George |
+| DM-05 | 圣约翰堂区 | zh-hans | Saint John |
+| DM-06 | 圣约瑟夫堂区 | zh-hans | Saint Joseph |
+| DM-07 | 圣卢克堂区 | zh-hans | Saint Luke |
+| DM-08 | 圣马克堂区 | zh-hans | Saint Mark |
+| DM-09 | 圣帕特里克堂区 | zh-hans | Saint Patrick |
+| DM-10 | 圣保罗堂区 | zh-hans | Saint Paul |
+| DM-11 | 圣彼得堂区 | zh-hans | Saint Peter |
+| DO-02 | 阿苏阿省 | zh-hans | Azua |
+| DO-03 | 巴奥鲁可省 | zh-hans | Baoruco |
+| DO-04 | 巴拉奥纳省 | zh-hans | Barahona |
+| DO-05 | 达哈翁省 | zh-hans | Dajabón |
+| DO-06 | 杜华德省 | zh-hans | Duarte |
+| DO-07 | 艾利斯皮亚省 | zh-hans | Elías Piña |
+| DO-08 | 赛堡省 | zh-hans | El Seibo |
+| DO-09 | 艾斯派亚省 | zh-hans | Espaillat |
+| DO-12 | 罗马纳省 | zh-hans | La Romana |
+| DO-13 | 拉维加省 | zh-hans | La Vega |
+| DO-14 | 玛丽亚·特立尼达·桑切斯省 | zh-hans | María Trinidad Sánchez |
+| DO-16 | 佩德纳莱斯省 | zh-hans | Pedernales |
+| DO-17 | 佩拉维亚省 | zh-hans | Peravia |
+| DO-19 | 米拉瓦尔姐妹省 | zh-hans | Hermanas Mirabal |
+| DO-20 | 萨马纳省 | zh-hans | Samaná |
+| DO-26 | 圣地亚哥·罗德里格斯省 | zh-hans | Santiago Rodríguez |
+| DO-27 | 巴尔韦德省 | zh-hans | Valverde |
+| DO-30 | 阿托马约省 | zh-hans | Hato Mayor |
+| DZ-01 | 阿德拉尔省 | zh-hans | Adrar |
+| DZ-52 | 贝尼阿巴斯省 | zh-hans | Béni Abbès |
+| EC-F | 卡尼亚尔省 | zh-hans | Cañar |
+| EC-O | 埃尔奥罗省 | zh-hans | El Oro |
+| EC-SE | 圣埃伦娜省 | zh-hans | Santa Elena |
+| EC-Y | 帕斯塔萨省 | zh-hans | Pastaza |
+| EE-321 | 科赫特拉-耶尔韦 | zh-hans | Kohtla-Järve |
+| EE-37 | 哈尔尤县 | zh-hans | Harju |
+| EE-39 | 希乌县 | zh-hans | Hiiu |
+| EE-45 | 东维鲁县 | zh-hans | Ida-Virumaa |
+| EE-50 | 约盖瓦县 | zh-hans | Jõgevamaa |
+| EE-52 | 耶尔瓦县 | zh-hans | Järvamaa |
+| EE-56 | 莱内县 | zh-hans | Läänemaa |
+| EE-60 | 西维鲁县 | zh-hans | Lääne-Virumaa |
+| EE-64 | 珀尔瓦县 | zh-hans | Põlvamaa |
+| EE-68 | 派尔努县 | zh-hans | Pärnumaa |
+| EE-71 | 拉普拉县 | zh-hans | Raplamaa |
+| EE-735 | 锡拉迈埃 | zh-hans | Sillamäe |
+| EE-74 | 萨雷县 | zh-hans | Saare |
+| EE-79 | 塔尔图县 | zh-hans | Tartumaa |
+| EE-81 | 瓦尔加县 | zh-hans | Valgamaa |
+| EE-84 | 维尔扬迪县 | zh-hans | Viljandi |
+| EE-87 | 沃鲁县 | zh-hans | Võrumaa |
+| EG-ALX | 亚历山大省 | zh-hans | Alexandria |
+| EG-DT | 杜姆亚特省 | zh-hans | Damietta |
+| EG-GZ | 吉萨省 | zh-hans | Giza |
+| EG-KB | 盖卢比尤省 | zh-hans | Qalyubia |
+| EG-KN | 基纳省 | zh-hans | Qena |
+| EG-LX | 卢克索省 | zh-hans | Luxor |
+| EG-MN | 明亚省 | zh-hans | Minya |
+| EG-MT | 马特鲁省 | zh-hans | Matrouh |
+| EG-SHR | 东部省 | zh-hans | Al Sharqia |
+| EG-SUZ | 苏伊士省 | zh-hans | Suez |
+| ER-AN | 安塞巴区 | zh-hans | Anseba |
+| ER-DK | 南红海区 | zh-hans | Southern Red Sea |
+| ER-DU | 南部区 | zh-hans | Debub |
+| ER-GB | 加什-巴尔卡区 | zh-hans | Gash-Barka |
+| ER-MA | 中部区 | zh-hans | Maekel |
+| ER-SK | 北红海区 | zh-hans | Northern Red Sea |
+| ES-AB | 阿尔瓦塞特省 | zh-hans | Albacete |
+| ES-AL | 阿尔梅里亚省 | zh-hans | Almería |
+| ES-AN | 安达卢西亚 | zh-hans | Andalusia |
+| ES-BI | 比斯开省 | zh-hans | Biscay |
+| ES-CO | 科尔多瓦省 | zh-hans | Córdoba |
+| ES-CR | 雷阿尔城省 | zh-hans | Ciudad Real |
+| ES-GC | 拉斯帕尔马斯省 | zh-hans | Las Palmas |
+| ES-GI | 赫罗纳省 | zh-hans | Girona |
+| ES-GR | 格拉纳达省 | zh-hans | Granada |
+| ES-GU | 瓜达拉哈拉省 | zh-hans | Guadalajara |
+| ES-H | 韦尔瓦省 | zh-hans | Huelva |
+| ES-HU | 韦斯卡省 | zh-hans | Huesca |
+| ES-NC | 纳瓦拉自治区 | zh-hans | Navarra Chartered Community |
+| ES-PO | 蓬特韦德拉省 | zh-hans | Pontevedra |
+| ES-SE | 塞维利亚省 | zh-hans | Seville |
+| ES-TF | 圣克鲁斯-德特内里费省 | zh-hans | Santa Cruz de Tenerife |
+| ES-V | 巴伦西亚省 | zh-hans | Valencia |
+| ES-VA | 巴利亚多利德省 | zh-hans | Valladolid |
+| ES-Z | 萨拉戈萨省 | zh-hans | Zaragoza |
+| ET-BE | 本尚古勒-古马兹州 | zh-hans | Benishangul-Gumuz |
+| ET-GA | 甘贝拉州 | zh-hans | Gambela |
+| ET-HA | 哈勒尔州 | zh-hans | Harari |
+| ET-OR | 奥罗米亚州 | zh-hans | Oromia |
+| ET-SI | 锡达马地区 | zh-hans | Sidama |
+| ET-SO | 索马里州 | zh-hans | Somali |
+| FI-01 | 奥兰 | zh-hans | Åland Islands |
+| FI-02 | 南卡累利阿区 | zh-hans | South Karelia |
+| FI-03 | 南波赫扬马区 | zh-hans | Southern Ostrobothnia |
+| FI-05 | 凯努区 | zh-hans | Kainuu |
+| FI-06 | 坎塔海梅区 | zh-hans | Tavastia Proper |
+| FI-07 | 中波赫扬马区 | zh-hans | Central Ostrobothnia |
+| FI-09 | 屈米河谷区 | zh-hans | Kymenlaakso |
+| FI-11 | 皮尔坎马区 | zh-hans | Pirkanmaa |
+| FI-13 | 北卡累利阿区 | zh-hans | North Karelia |
+| FI-14 | 北波赫扬马区 | zh-hans | Northern Ostrobothnia |
+| FI-15 | 北萨沃区 | zh-hans | Northern Savonia |
+| FI-16 | 派耶特海梅区 | zh-cn | Päijänne Tavastia |
+| FI-17 | 萨塔昆塔区 | zh-hans | Satakunta |
+| FI-19 | 芬兰本部区 | zh-hans | Southwest Finland |
+| FJ-04 | 坎达武省 | zh-hans | Kadavu |
+| FJ-07 | 马苏阿塔省 | zh-hans | Macuata |
+| FJ-08 | 楠德龙加-纳沃萨省 | zh-hans | Nadroga-Navosa |
+| FJ-10 | 纳莫西省 | zh-hans | Namosi |
+| FJ-13 | 塞鲁阿省 | zh-hans | Serua |
+| FR-14 | 卡尔瓦多斯省 | zh-hans | Calvados |
+| FR-15 | 康塔尔省 | zh-hans | Cantal |
+| FR-24 | 多尔多涅省 | zh-hans | Dordogne |
+| FR-33 | 吉伦特省 | zh-hans | Gironde |
+| FR-43 | 上卢瓦尔省 | zh-hans | Haute-Loire |
+| FR-971 | 瓜德罗普 | zh-hans | Guadeloupe |
+| FR-972 | 马提尼克 | zh-hans | Martinique |
+| FR-973 | 法属圭亚那 | zh-hans | Guyane (française) |
+| FR-ARA | 奥弗涅-罗讷-阿尔卑斯大区 | zh-hans | Auvergne-Rhône-Alpes |
+| FR-BFC | 勃艮第-弗朗什-孔泰大区 | zh-hans | Burgundy-Franche-Comté |
+| FR-BL | 圣巴泰勒米 | zh-hans | St. Barthélemy |
+| FR-CP | 克利珀顿岛 | zh-hans | Clipperton Island |
+| FR-GES | 大东部大区 | zh-hans | Grand-Est |
+| FR-MF | 法属圣马丁 | zh-hans | St. Martin |
+| FR-NAQ | 新阿基坦大区 | zh-hans | Nouvelle-Aquitaine |
+| FR-NC | 新喀里多尼亚 | zh-hans | New Caledonia |
+| FR-OCC | 奥克西塔尼大区 | zh-hans | Occitanie |
+| FR-PF | 法属波利尼西亚 | zh-hans | French Polynesia |
+| FR-PM | 圣皮埃尔和密克隆 | zh-hans | St. Pierre & Miquelon |
+| FR-TF | 法属南部和南极领地 | zh-hans | French Southern Territories |
+| FR-WF | 瓦利斯和富图纳 | zh-hans | Wallis & Futuna |
+| GA-3 | 中奥果韦省 | zh-hans | Moyen-Ogooué |
+| GA-5 | 尼扬加省 | zh-hans | Nyanga |
+| GA-6 | 奥果韦-伊温多省 | zh-hans | Ogooué-Ivindo |
+| GA-7 | 奥果韦-洛洛省 | zh-hans | Ogooué-Lolo |
+| GA-8 | 滨海奥果韦省 | zh-hans | Ogooué-Maritime |
+| GB-ANN | 安特里姆与纽顿阿比区 | zh-hans | Antrim and Newtownabbey |
+| GB-BAS | 巴斯和东北萨默塞特 | zh-hans | Bath and North East Somerset |
+| GB-BBD | 布莱克本-达文 | zh-hans | Blackburn with Darwen |
+| GB-BDG | 柏京－达格纳姆区 | zh-cn | Barking and Dagenham |
+| GB-BEN | 布伦特区 | zh-hans | Brent |
+| GB-BEX | 贝克斯利区 | zh-hans | Bexley |
+| GB-BFS | 贝尔法斯特区 | zh-hans | Belfast |
+| GB-BNE | 巴尼特区 | zh-hans | Barnet |
+| GB-BOL | 博尔顿都市自治市 | zh-hans | Bolton |
+| GB-BRC | 布拉克内尔森林 | zh-hans | Bracknell Forest |
+| GB-BRY | 布罗姆利区 | zh-hans | Bromley |
+| GB-CBF | 中贝德福德郡 | zh-hans | Central Bedfordshire |
+| GB-CHW | 柴郡与切斯特 | zh-hans | Cheshire West and Chester |
+| GB-CMA | 坎布里亚郡 | zh-hans | Cumbria |
+| GB-CMD | 卡姆登区 | zh-hans | Camden |
+| GB-CRY | 克罗伊登区 | zh-hans | Croydon |
+| GB-DGY | 邓弗里斯-加洛韦 | zh-hans | Dumfries and Galloway |
+| GB-DUD | 达得利市 | zh-hans | Dudley |
+| GB-EAL | 伊灵区 | zh-hans | Ealing |
+| GB-EDU | 东邓巴顿郡 | zh-hans | East Dunbartonshire |
+| GB-ENF | 恩菲尔德区 | zh-hans | Enfield |
+| GB-HAL | 霍尔顿市 | zh-hans | Halton |
+| GB-HAV | 黑弗灵区 | zh-hans | Havering |
+| GB-HCK | 哈克尼区 | zh-hans | Hackney |
+| GB-HIL | 希灵登区 | zh-hans | Hillingdon |
+| GB-HNS | 豪恩斯洛区 | zh-hans | Hounslow |
+| GB-HPL | 哈特尔浦 | zh-hans | Hartlepool |
+| GB-HRW | 哈洛伦敦自治市 | zh-hans | Harrow |
+| GB-HRY | 哈林盖区 | zh-hans | Haringey |
+| GB-ISL | 伊斯灵顿伦敦区 | zh-hans | Islington |
+| GB-KEC | 肯辛顿-切尔西区 | zh-hans | Kensington and Chelsea |
+| GB-KTT | 泰晤士河畔金斯顿皇家自治市镇 | zh-hans | Kingston upon Thames |
+| GB-KWL | 纳奥斯雷 | zh-hans | Knowsley |
+| GB-LBH | 兰贝斯区 | zh-hans | Lambeth |
+| GB-LEW | 刘易舍姆区 | zh-hans | Lewisham |
+| GB-LND | 伦敦城 | zh-hans | London |
+| GB-MDW | 梅德韦 | zh-hans | Medway |
+| GB-MRT | 默顿区 | zh-hans | Merton |
+| GB-MRY | 马里 | zh-hans | Moray |
+| GB-MTY | 梅瑟蒂德菲尔自治市 | zh-hans | Merthyr Tydfil |
+| GB-MUL | 中阿尔斯特 | zh-hans | Mid Ulster |
+| GB-NBL | 诺森伯兰郡 | zh-hans | Northumberland |
+| GB-NTT | 诺丁汉郡 | zh-hans | Nottinghamshire |
+| GB-NTY | 北泰因赛德 | zh-hans | North Tyneside |
+| GB-NWM | 纽汉区 | zh-hans | Newham |
+| GB-RCH | 罗奇代尔都市自治市 | zh-hans | Rochdale |
+| GB-RDB | 雷德布里奇区 | zh-hans | Redbridge |
+| GB-RUT | 拉特兰 | zh-hans | Rutland |
+| GB-SCB | 苏格兰边区 | zh-hans | Scottish Borders |
+| GB-SFK | 萨福克郡 | zh-hans | Suffolk |
+| GB-SFT | 塞夫顿都会自治市 | zh-hans | Sefton |
+| GB-SGC | 南格洛斯特郡 | zh-hans | South Gloucestershire |
+| GB-SLF | 索尔福德市 | zh-hans | Salford |
+| GB-SND | 桑德兰市 | zh-cn | Sunderland |
+| GB-SRY | 萨里郡 | zh-hans | Surrey |
+| GB-STN | 萨顿区 | zh-hans | Sutton |
+| GB-STT | 蒂斯河畔斯托克顿 | zh-hans | Stockton-on-Tees |
+| GB-STY | 南泰因赛德 | zh-hans | South Tyneside |
+| GB-SWD | 斯温登区 | zh-hans | Swindon |
+| GB-SWK | 萨瑟克区 | zh-hans | Southwark |
+| GB-TFW | 特尔福德和雷金 | zh-hans | Telford and Wrekin |
+| GB-THR | 瑟罗克 | zh-hans | Thurrock |
+| GB-TOB | 托贝 | zh-hans | Torbay |
+| GB-TWH | 陶尔哈姆莱茨区 | zh-hans | Tower Hamlets |
+| GB-WDU | 西邓巴顿郡 | zh-hans | West Dunbartonshire |
+| GB-WFT | 沃尔瑟姆福里斯特区 | zh-hans | Waltham Forest |
+| GB-WLL | 沃尔索尔都市自治市 | zh-hans | Walsall |
+| GB-WND | 旺兹沃思区 | zh-hans | Wandsworth |
+| GB-WNM | 温莎-梅登黑德 | zh-hans | Windsor and Maidenhead |
+| GB-WOK | 沃金厄姆区 | zh-hans | Wokingham |
+| GB-WRL | 威勒尔都会自治市 | zh-hans | Wirral |
+| GB-WSX | 西萨塞克斯郡 | zh-hans | West Sussex |
+| GD-01 | 圣安德鲁区 (格林纳达) | zh-hans | Saint Andrew |
+| GD-02 | 圣戴维区 (格林纳达) | zh-hans | Saint David |
+| GD-03 | 圣乔治区 (格林纳达) | zh-hans | Saint George |
+| GD-04 | 圣约翰区 (格林纳达) | zh-hans | Saint John |
+| GD-05 | 圣马克区 (格林纳达) | zh-hans | Saint Mark |
+| GD-06 | 圣帕特里克区 (格林纳达) | zh-hans | Saint Patrick |
+| GD-10 | 卡里亚库和小马提尼克 | zh-hans | Carriacou and Petite Martinique |
+| GE-GU | 古里亚 | zh-hans | Guria |
+| GE-IM | 伊梅雷蒂 | zh-hans | Imereti |
+| GE-KK | 下卡尔特利 | zh-hans | Kvemo Kartli |
+| GE-RL | 拉恰-列其呼米和下斯瓦内蒂 | zh-hans | Racha-Lechkhumi and Kvemo Svaneti |
+| GE-SJ | 萨姆茨赫-贾瓦赫蒂 | zh-hans | Samtskhe-Javakheti |
+| GE-SK | 内卡尔特利 | zh-hans | Shida Kartli |
+| GE-SZ | 萨梅格雷洛-上斯瓦内蒂 | zh-hans | Samegrelo-Zemo Svaneti |
+| GH-AA | 大阿克拉地区 | zh-hans | Greater Accra |
+| GH-AH | 阿散蒂地区 | zh-hans | Ashanti |
+| GH-CP | 中部地区 | zh-hans | Central |
+| GH-EP | 东部地区 | zh-hans | Eastern |
+| GH-NP | 北部地区 | zh-hans | Northern |
+| GH-TV | 沃尔特地区 | zh-hans | Volta |
+| GH-UE | 东北地区 | zh-hans | Upper East |
+| GH-UW | 西北地区 | zh-hans | Upper West |
+| GH-WP | 西部地区 | zh-hans | Western |
+| GL-SM | 塞梅索克 | zh-cn | Sermersooq |
+| GM-L | 下河区 | zh-hans | Lower River Division |
+| GM-M | 中河区 | zh-hans | Central River Division |
+| GM-N | 北岸区 | zh-hans | North Bank Division |
+| GM-U | 上河区 | zh-hans | Upper River Division |
+| GM-W | 西部区 | zh-hans | West Coast Division |
+| GN-B | 博凯大区 | zh-hans | Boké Region |
+| GN-BE | 贝拉省 | zh-hans | Beyla |
+| GN-C | 科纳克里 | zh-hans | Conakry |
+| GN-CO | 科亚省 | zh-hans | Coyah |
+| GN-D | 金迪亚大区 | zh-hans | Kindia Region |
+| GN-DB | 达波拉省 | zh-hans | Dabola |
+| GN-DL | 达拉巴省 | zh-hans | Dalaba |
+| GN-F | 法拉纳大区 | zh-hans | Faranah Region |
+| GN-FR | 弗里亚省 | zh-hans | Fria |
+| GN-GA | 加瓦尔省 | zh-hans | Gaoual |
+| GN-GU | 盖凯杜省 | zh-hans | Guéckédou |
+| GN-K | 康康大区 | zh-hans | Kankan Region |
+| GN-KB | 库比亚省 | zh-hans | Koubia |
+| GN-KE | 凯鲁阿内省 | zh-hans | Kérouané |
+| GN-KN | 孔达拉省 | zh-hans | Koundara |
+| GN-KO | 库鲁萨省 | zh-hans | Kouroussa |
+| GN-L | 拉贝大区 | zh-hans | Labé Region |
+| GN-LA | 拉贝省 | zh-hans | Labé |
+| GN-LE | 莱卢马省 | zh-hans | Lélouma |
+| GN-M | 马木大区 | zh-hans | Mamou Region |
+| GN-MC | 马桑塔省 | zh-hans | Macenta |
+| GN-MD | 芒贾纳省 | zh-hans | Mandiana |
+| GN-ML | 马里省 | zh-hans | Mali |
+| GN-MM | 马木省 | zh-hans | Mamou |
+| GN-N | 恩泽雷科雷大区 | zh-hans | Nzérékoré Region |
+| GN-NZ | 恩泽雷科雷省 | zh-hans | Nzérékoré |
+| GN-SI | 锡吉里省 | zh-hans | Siguiri |
+| GN-TO | 图盖省 | zh-hans | Tougué |
+| GN-YO | 约穆省 | zh-hans | Yomou |
+| GR-I | 阿提卡大区 | zh-hans | Attica |
+| GT-01 | 瓜地马拉省 | zh-hans | Guatemala |
+| GT-02 | 普罗格雷索省 | zh-hans | El Progreso |
+| GT-03 | 萨卡特佩克斯省 | zh-hans | Sacatepéquez |
+| GT-04 | 奇马尔特南戈省 | zh-hans | Chimaltenango |
+| GT-06 | 圣罗萨省 | zh-hans | Santa Rosa |
+| GT-09 | 克萨尔特南戈省 | zh-hans | Quetzaltenango |
+| GT-10 | 苏奇特佩克斯省 | zh-hans | Suchitepéquez |
+| GT-11 | 雷塔卢莱乌省 | zh-hans | Retalhuleu |
+| GT-12 | 圣马科斯省 | zh-hans | San Marcos |
+| GT-13 | 韦韦特南戈省 | zh-hans | Huehuetenango |
+| GT-15 | 下维拉帕斯省 | zh-hans | Baja Verapaz |
+| GT-16 | 上韦拉帕斯省 | zh-hans | Alta Verapaz |
+| GT-17 | 贝登省 | zh-hans | Petén |
+| GT-18 | 伊萨瓦尔省 | zh-hans | Izabal |
+| GT-19 | 萨卡帕省 | zh-hans | Zacapa |
+| GT-22 | 胡蒂亚帕省 | zh-hans | Jutiapa |
+| GW-BA | 巴法塔区 | zh-hans | Bafatá |
+| GW-BL | 博拉马区 | zh-hans | Bolama |
+| GW-BM | 比翁博区 | zh-hans | Biombo |
+| GW-CA | 卡谢乌区 | zh-hans | Cacheu |
+| GW-GA | 加布区 | zh-hans | Gabú |
+| GW-OI | 奥约区 | zh-hans | Oio |
+| GW-QU | 基纳拉区 | zh-hans | Quinara |
+| GW-TO | 通巴利区 | zh-hans | Tombali |
+| GY-CU | 库尤尼-马扎鲁尼区 | zh-hans | Cuyuni-Mazaruni |
+| GY-DE | 德梅拉拉-马海卡区 | zh-hans | Demerara-Mahaica |
+| GY-ES | 埃塞奎博群岛-西德梅拉拉区 | zh-hans | Essequibo Islands-West Demerara |
+| GY-MA | 马海卡-伯比斯区 | zh-hans | Mahaica-Berbice |
+| GY-PM | 波默伦-苏佩纳姆区 | zh-hans | Pomeroon-Supenaam |
+| GY-PT | 波塔罗-锡帕鲁尼区 | zh-hans | Potaro-Siparuni |
+| GY-UD | 上德梅拉拉-伯比斯区 | zh-hans | Upper Demerara-Berbice |
+| HN-AT | 阿特兰蒂达省 | zh-hans | Atlántida |
+| HN-CH | 乔卢特卡省 | zh-hans | Choluteca |
+| HN-CM | 科马亚瓜省 | zh-hans | Comayagua |
+| HN-CR | 科尔特斯省 | zh-hans | Cortés |
+| HN-EP | 埃尔帕拉伊索省 | zh-hans | El Paraíso |
+| HN-IB | 海湾群岛省 | zh-hans | Bay Islands |
+| HN-LE | 伦皮拉省 | zh-hans | Lempira |
+| HN-OL | 奥兰乔省 | zh-hans | Olancho |
+| HN-YO | 约罗省 | zh-hans | Yoro |
+| HR-01 | 萨格勒布县 | zh-hans | Zagreb County |
+| HR-02 | 克拉皮纳-扎戈列县 | zh-hans | Krapina-Zagorje |
+| HR-03 | 锡萨克-莫斯拉维纳县 | zh-hans | Sisak-Moslavina |
+| HR-04 | 卡尔洛瓦茨县 | zh-hans | Karlovac |
+| HR-05 | 瓦拉日丁县 | zh-hans | Varaždin |
+| HR-06 | 科普里夫尼察-克里热夫齐县 | zh-hans | Koprivnica-Križevci |
+| HR-07 | 别洛瓦尔-比洛戈拉县 | zh-hans | Bjelovar-Bilogora |
+| HR-08 | 滨海-山区县 | zh-hans | Primorje-Gorski Kotar |
+| HR-09 | 利卡-塞尼县 | zh-hans | Lika-Senj |
+| HR-10 | 维罗维蒂察-波德拉维纳县 | zh-hans | Virovitica-Podravina |
+| HR-11 | 波热加-斯拉沃尼亚县 | zh-hans | Požega-Slavonia |
+| HR-12 | 布罗德-波萨维纳县 | zh-hans | Brod-Posavina |
+| HR-13 | 扎达尔县 | zh-hans | Zadar |
+| HR-14 | 奥西耶克-巴拉尼亚县 | zh-hans | Osijek-Baranja |
+| HR-15 | 希贝尼克-克宁县 | zh-hans | Šibenik-Knin |
+| HR-16 | 武科瓦尔-斯里耶姆县 | zh-hans | Vukovar-Syrmia |
+| HR-17 | 斯普利特-达尔马提亚县 | zh-hans | Split-Dalmatia |
+| HR-18 | 伊斯特拉县 | zh-hans | Istria |
+| HR-19 | 杜布罗夫尼克-内雷特瓦县 | zh-hans | Dubrovnik-Neretva |
+| HR-20 | 梅吉穆列县 | zh-hans | Međimurje |
+| HT-GA | 格朗当斯省 | zh-hans | Grand’Anse |
+| HT-SE | 东南省 | zh-hans | Sud-Est |
+| HU-BA | 巴兰尼亚州 | zh-hans | Baranya |
+| HU-BC | 贝凯什乔包 | zh-hans | Békéscsaba |
+| HU-BE | 贝凯什州 | zh-hans | Békés |
+| HU-BZ | 包尔绍德-奥包乌伊-曾普伦州 | zh-hans | Borsod-Abaúj-Zemplén |
+| HU-EG | 埃格尔 | zh-hans | Eger |
+| HU-ER | 埃尔德 | zh-hans | Érd |
+| HU-FE | 费耶尔州 | zh-hans | Fejér |
+| HU-GS | 杰尔-莫雄-肖普朗州 | zh-hans | Győr-Moson-Sopron |
+| HU-HB | 豪伊杜-比豪尔州 | zh-hans | Hajdú-Bihar |
+| HU-HE | 赫维什州 | zh-hans | Heves |
+| HU-JN | 亚斯-瑙吉孔-索尔诺克州 | zh-hans | Jász-Nagykun-Szolnok |
+| HU-KE | 科马罗姆-埃斯泰尔戈姆州 | zh-hans | Komárom-Esztergom |
+| HU-NO | 诺格拉德州 | zh-hans | Nógrád |
+| HU-SO | 绍莫吉州 | zh-hans | Somogy |
+| HU-SS | 塞克萨德 | zh-hans | Szekszárd |
+| HU-ST | 绍尔戈陶尔扬 | zh-hans | Salgótarján |
+| HU-SZ | 索博尔奇-索特马尔-拜赖格州 | zh-hans | Szabolcs-Szatmár-Bereg |
+| HU-TO | 托尔瑙州 | zh-hans | Tolna |
+| HU-VE | 维斯普雷姆州 | zh-hans | Veszprém County |
+| HU-VM | 维斯普雷姆 | zh-hans | Veszprém |
+| ID-AC | 亚齐 | zh-hans | Aceh |
+| ID-BE | 明古鲁省 | zh-hans | Bengkulu |
+| ID-KI | 东加里曼丹省 | zh-hans | East Kalimantan |
+| ID-NT | 东努沙登加拉省 | zh-hans | East Nusa Tenggara |
+| ID-PE | 高地巴布亚省 | zh-hans | Papua Pengunungan |
+| ID-PT | 中巴布亚省 | zh-hans | Papua Tengah |
+| ID-RI | 廖内省 | zh-hans | Riau |
+| IE-C | 康诺特省 | zh-hans | Connacht |
+| IE-DL | 多尼戈尔郡 | zh-hans | Donegal |
+| IE-KK | 基尔肯尼郡 | zh-hans | Kilkenny |
+| IE-KY | 凯里郡 | zh-hans | Kerry |
+| IE-L | 伦斯特省 | zh-hans | Leinster |
+| IE-RN | 罗斯康芒郡 | zh-hans | Roscommon |
+| IE-U | 阿尔斯特省 | zh-hans | Ulster |
+| IE-WH | 韦斯特米斯郡 | zh-hans | Westmeath |
+| IN-LA | 拉达克 | zh-hans | Ladakh |
+| IN-LD | 拉克沙群岛 | zh-hans | Lakshadweep |
+| IQ-AR | 埃尔比勒省 | zh-hans | Erbil |
+| IQ-BB | 巴比伦省 | zh-hans | Babylon |
+| IQ-BG | 巴格达省 | zh-hans | Baghdad |
+| IQ-DI | 迪亚拉省 | zh-hans | Diyala |
+| IQ-DQ | 济加尔省 | zh-hans | Dhi Qar |
+| IQ-KA | 卡尔巴拉省 | zh-hans | Karbala |
+| IQ-KI | 基尔库克省 | zh-hans | Kirkuk |
+| IQ-MU | 穆萨纳省 | zh-hans | Al Muthanna |
+| IQ-NA | 纳杰夫省 | zh-hans | Najaf |
+| IQ-QA | 卡迪西亚省 | zh-hans | Al-Qādisiyyah |
+| IQ-SU | 苏莱曼尼亚省 | zh-hans | Sulaymaniyah |
+| IR-03 | 阿尔达比勒省 | zh-sg | Ardabil |
+| IR-06 | 布什尔省 | zh-sg | Bushehr |
+| IR-07 | 法尔斯省 | zh-hans | Tehran |
+| IR-13 | 哈马丹省 | zh-sg | Sistan and Baluchestan |
+| IR-14 | 恰哈马哈勒－巴赫蒂亚里省 | zh-hans | Fars |
+| IR-15 | 克尔曼省 | zh-sg | Kerman |
+| IR-23 | 德黑兰省 | zh-hans | Hormozgan |
+| IR-28 | 北呼罗珊省 | zh-sg | Qazvin |
+| IR-29 | 南呼罗珊省 | zh-hans | South Khorasan |
+| IS-2 | 南半岛区 | zh-hans | Southern Peninsula |
+| IS-3 | 西部区 | zh-hans | Western |
+| IS-4 | 西峡湾区 | zh-hans | Westfjords |
+| IS-5 | 西北区 | zh-hans | Northwestern |
+| IS-6 | 东北区 | zh-hans | Northeastern |
+| IS-7 | 东部区 | zh-hans | Eastern |
+| IS-8 | 南部区 | zh-hans | Southern |
+| IS-HVE | 惠拉盖尔济 | zh-hans | Hveragerðisbær |
+| IT-42 | 利古里亚大区 | zh-cn | Liguria |
+| IT-AL | 亚历山德里亚省 | zh-hans | Alessandria |
+| IT-AN | 安科纳省 | zh-hans | Ancona |
+| IT-AP | 阿斯科利皮切诺省 | zh-hans | Ascoli Piceno |
+| IT-AV | 阿韦利诺省 | zh-hans | Avellino |
+| IT-BG | 贝加莫省 | zh-hans | Bergamo |
+| IT-BL | 贝卢诺省 | zh-hans | Belluno |
+| IT-BN | 贝内文托省 | zh-hans | Benevento |
+| IT-BS | 布雷西亚省 | zh-hans | Brescia |
+| IT-BT | 巴尔莱塔-安德里亚-特兰尼省 | zh-hans | Barletta-Andria-Trani |
+| IT-CN | 库内奥省 | zh-hans | Cuneo |
+| IT-CR | 克雷莫纳省 | zh-hans | Cremona |
+| IT-FC | 费利-切塞纳省 | zh-hans | Forlì-Cesena |
+| IT-FE | 费拉拉省 | zh-hans | Ferrara |
+| IT-FM | 费尔莫省 | zh-hans | Fermo |
+| IT-IM | 因佩里亚省 | zh-hans | Imperia |
+| IT-IS | 伊塞尔尼亚省 | zh-hans | Isernia |
+| IT-KR | 克罗托内省 | zh-hans | Crotone |
+| IT-LI | 里窝那省 | zh-hans | Livorno |
+| IT-LU | 卢卡省 | zh-hans | Lucca |
+| IT-MB | 蒙扎和布里安扎省 | zh-hans | Monza and Brianza |
+| IT-MC | 马切拉塔省 | zh-hans | Macerata |
+| IT-MO | 摩德纳省 | zh-hans | Modena |
+| IT-MS | 马萨-卡拉拉省 | zh-hans | Massa and Carrara |
+| IT-NO | 诺瓦拉省 | zh-hans | Novara |
+| IT-NU | 努奥罗省 | zh-hans | Nuoro |
+| IT-OR | 奥里斯塔诺省 | zh-hans | Oristano |
+| IT-PI | 比萨省 | zh-hans | Pisa |
+| IT-PT | 皮斯托亚省 | zh-hans | Pistoia |
+| IT-PU | 佩萨罗-乌尔比诺省 | zh-hans | Pesaro and Urbino |
+| IT-PV | 帕维亚省 | zh-hans | Pavia |
+| IT-RA | 拉韦纳省 | zh-hans | Ravenna |
+| IT-RE | 雷焦艾米利亚省 | zh-hans | Reggio Emilia |
+| IT-RO | 罗维戈省 | zh-hans | Rovigo |
+| IT-SA | 萨莱诺省 | zh-hans | Salerno |
+| IT-SI | 锡耶纳省 | zh-hans | Siena |
+| IT-SP | 拉斯佩齐亚省 | zh-hans | La Spezia |
+| IT-SV | 萨沃纳省 | zh-hans | Savona |
+| IT-TA | 塔兰托省 | zh-hans | Taranto |
+| IT-TN | 特伦托 | zh-hans | Trentino |
+| IT-VA | 瓦雷泽省 | zh-hans | Varese |
+| IT-VB | 韦尔巴诺-库西亚-奥索拉省 | zh-hans | Verbano-Cusio-Ossola |
+| IT-VC | 韦尔切利省 | zh-hans | Vercelli |
+| IT-VI | 维琴察省 | zh-hans | Vicenza |
+| IT-VR | 维罗纳省 | zh-hans | Verona |
+| IT-VV | 维博瓦伦蒂亚省 | zh-hans | Vibo Valentia |
+| JM-01 | 金斯敦区 | zh-hans | Kingston |
+| JM-02 | 圣安德鲁区 | zh-hans | Saint Andrew |
+| JM-03 | 圣托马斯区 | zh-hans | Saint Thomas |
+| JM-04 | 波特兰区 | zh-hans | Portland |
+| JM-05 | 圣玛丽区 | zh-hans | Saint Mary |
+| JM-06 | 圣安堂区 | zh-hans | Saint Ann |
+| JM-07 | 特里洛尼区 | zh-hans | Trelawny |
+| JM-08 | 圣詹姆斯区 | zh-hans | Saint James |
+| JM-10 | 西摩兰区 | zh-hans | Westmoreland |
+| JM-11 | 圣伊丽莎白区 | zh-hans | Saint Elizabeth |
+| JM-12 | 曼彻斯特区 | zh-hans | Manchester |
+| JM-13 | 克拉伦登区 | zh-hans | Clarendon |
+| JM-14 | 圣凯瑟琳区 | zh-hans | Saint Catherine |
+| JO-AQ | 亚喀巴省 | zh-hans | Aqaba |
+| JO-AZ | 扎尔卡省 | zh-hans | Zarqa |
+| JO-IR | 伊尔比德省 | zh-hans | Irbid |
+| JO-MA | 马弗拉克省 | zh-hans | Mafraq |
+| JO-MD | 马代巴省 | zh-hans | Madaba |
+| JO-MN | 马安省 | zh-hans | Ma’an |
+| JP-02 | 青森县 | zh-hans | Aomori |
+| JP-04 | 宫城县 | zh-hans | Miyagi |
+| JP-08 | 茨城县 | zh-hans | Ibaraki |
+| JP-09 | 栃木县 | zh-hans | Tochigi |
+| JP-10 | 群马县 | zh-hans | Gunma |
+| JP-11 | 埼玉县 | zh-hans | Saitama |
+| JP-12 | 千叶县 | zh-hans | Chiba |
+| JP-13 | 东京都 | zh-hans | Tokyo |
+| JP-14 | 神奈川县 | zh-hans | Kanagawa |
+| JP-16 | 富山县 | zh-hans | Toyama |
+| JP-17 | 石川县 | zh-hans | Ishikawa |
+| JP-18 | 福井县 | zh-hans | Fukui |
+| JP-22 | 静冈县 | zh-hans | Shizuoka |
+| JP-23 | 爱知县 | zh-hans | Aichi |
+| JP-31 | 鸟取县 | zh-hans | Tottori |
+| JP-33 | 冈山县 | zh-hans | Okayama |
+| JP-43 | 熊本县 | zh-hans | Kumamoto |
+| JP-45 | 宫崎县 | zh-hans | Miyazaki |
+| JP-47 | 冲绳县 | zh-hans | Okinawa |
+| KE-15 | 基里尼亚加郡 | zh-hans | Kirinyaga |
+| KE-20 | 莱基皮亚郡 | zh-hans | Laikipia |
+| KE-30 | 内罗毕郡 | zh-hans | Nairobi County |
+| KE-42 | 特兰斯-恩佐亚郡 | zh-hans | Trans Nzoia |
+| KE-44 | 瓦辛基苏郡 | zh-hans | Uasin Gishu |
+| KE-45 | 维希加县 | zh-hans | Vihiga |
+| KG-N | 纳伦州 | zh-hans | Naryn |
+| KH-2 | 马德望省 | zh-hans | Battambang |
+| KH-23 | 白马省 | zh-hans | Kep |
+| KM-M | 莫埃利岛 | zh-hans | Mohéli |
+| KN-01 | 基督教会尼古拉镇区 | zh-hans | Christ Church Nichola Town |
+| KN-02 | 圣安娜沙角区 | zh-hans | Saint Anne Sandy Point |
+| KN-03 | 圣乔治巴塞特莱区 | zh-hans | Saint George Basseterre |
+| KN-04 | 圣乔治金哲兰区 | zh-hans | Saint George Gingerland |
+| KN-05 | 圣詹姆斯温沃德区 | zh-hans | Saint James Windward |
+| KN-06 | 圣约翰卡皮斯特莱区 | zh-hans | Saint John Capisterre |
+| KN-07 | 圣约翰费格特里区 | zh-hans | Saint John Figtree |
+| KN-08 | 圣玛丽卡永区 | zh-hans | Saint Mary Cayon |
+| KN-09 | 圣保罗卡皮斯特莱区 | zh-hans | Saint Paul Capisterre |
+| KN-10 | 圣保罗查尔斯敦区 | zh-hans | Saint Paul Charlestown |
+| KN-11 | 圣彼得巴塞特莱区 | zh-hans | Saint Peter Basseterre |
+| KN-12 | 圣托马斯低地区 | zh-hans | Saint Thomas Lowland |
+| KN-13 | 圣托马斯米德艾兰区 | zh-hans | Saint Thomas Middle Island |
+| KN-15 | 特立尼提帕美托角区 | zh-hans | Trinity Palmetto Point |
+| KP-13 | 罗先市 | zh-hans | Rason |
+| KR-11 | 首尔 | zh-hans | Seoul |
+| KR-27 | 大邱 | zh-hans | Daegu |
+| KR-28 | 仁川 | zh-hans | Incheon |
+| KR-29 | 光州广域市 | zh-hans | Gwangju City |
+| KR-45 | 全北特別自治道 | zh-hans | North Jeolla |
+| KR-46 | 全罗南道 | zh-hans | South Jeolla |
+| KR-49 | 济州特别自治道 | zh-hans | Jeju |
+| KW-FA | 费尔瓦尼耶省 | zh-hans | Al Farwaniyah |
+| KZ-19 | 阿拉木图州 | zh-hans | Almaty oblysy |
+| KZ-27 | 西哈萨克斯坦州 | zh-hans | Batys Qazaqstan oblysy |
+| KZ-31 | 江布尔州 | zh-hans | Zhambyl oblysy |
+| KZ-35 | 卡拉干达州 | zh-hans | Qaraghandy oblysy |
+| KZ-43 | 克孜勒奥尔达州 | zh-hans | Qyzylorda oblysy |
+| KZ-55 | 巴甫洛达尔州 | zh-hans | Pavlodar oblysy |
+| KZ-59 | 北哈萨克斯坦州 | zh-hans | Soltüstik Qazaqstan oblysy |
+| KZ-63 | 东哈萨克斯坦州 | zh-hans | Shyghys Qazaqstan oblysy |
+| LA-XS | 赛宋本省 | zh-cn | Xaisomboun |
+| LB-BI | 贝卡省 | zh-hans | Beqaa |
+| LB-NA | 奈拜提耶省 | zh-hans | Nabatieh |
+| LC-01 | 昂斯拉雷区 | zh-hans | Anse la Raye |
+| LC-05 | 登内里区 | zh-hans | Dennery |
+| LC-06 | 格罗斯伊斯勒区 | zh-hans | Gros Islet |
+| LC-07 | 拉博列区 | zh-hans | Laborie |
+| LC-08 | 米库区 | zh-hans | Micoud |
+| LC-10 | 苏弗里耶尔区 | zh-hans | Soufrière |
+| LC-11 | 伯堡区 | zh-hans | Vieux Fort |
+| LK-11 | 科伦坡区 | zh-cn | Colombo |
+| LK-12 | 加姆珀哈区 | zh-hans | Gampaha |
+| LK-13 | 卡卢特勒区 | zh-hans | Kalutara |
+| LK-2 | 中央省 | zh-hans | Central |
+| LK-21 | 康提区 | zh-hans | Kandy |
+| LK-22 | 马特莱区 | zh-hans | Matale |
+| LK-23 | 努沃勒埃利耶区 | zh-hans | Nuwara Eliya |
+| LK-31 | 加勒区 | zh-hans | Galle |
+| LK-32 | 马特勒区 | zh-hans | Matara |
+| LK-33 | 汉班托特区 | zh-hans | Hambantota |
+| LK-41 | 贾夫纳区 | zh-hans | Jaffna |
+| LK-42 | 基利诺奇区 | zh-hans | Kilinochchi |
+| LK-43 | 马纳尔区 | zh-hans | Mannar |
+| LK-45 | 穆莱蒂武区 | zh-hans | Mullaitivu |
+| LK-5 | 东部省 | zh-hans | Eastern |
+| LK-52 | 安帕赖区 | zh-hans | Ampara |
+| LK-61 | 库鲁内格勒区 | zh-hans | Kurunegala |
+| LK-62 | 普塔勒姆区 | zh-hans | Puttalam |
+| LK-72 | 波隆纳鲁沃区 | zh-hans | Polonnaruwa |
+| LK-8 | 乌沃省 | zh-hans | Uva |
+| LK-81 | 巴杜勒区 | zh-hans | Badulla |
+| LK-82 | 莫讷勒格勒区 | zh-hans | Moneragala |
+| LK-9 | 萨伯勒格穆沃省 | zh-hans | Sabaragamuwa |
+| LK-91 | 拉特纳普勒区 | zh-hans | Ratnapura |
+| LK-92 | 凯格勒区 | zh-hans | Kegalle |
+| LR-MY | 马里兰县 | zh-hans | Maryland |
+| LR-NI | 宁巴县 | zh-hans | Nimba |
+| LR-RI | 里弗塞斯县 | zh-hans | Rivercess |
+| LR-SI | 锡诺县 | zh-hans | Sinoe |
+| LS-A | 马塞卢区 | zh-hans | Maseru |
+| LS-B | 布塔-布泰区 | zh-hans | Butha-Buthe |
+| LS-C | 莱里贝区 | zh-hans | Leribe |
+| LS-D | 伯里亚区 | zh-hans | Berea |
+| LS-E | 马费滕区 | zh-hans | Mafeteng |
+| LS-F | 莫哈莱斯胡克区 | zh-hans | Mohale’s Hoek |
+| LS-G | 古廷区 | zh-hans | Quthing |
+| LS-H | 加查斯内克区 | zh-hans | Qacha’s Nek |
+| LS-J | 莫霍特隆区 | zh-hans | Mokhotlong |
+| LS-K | 塔巴-采卡区 | zh-hans | Thaba-Tseka |
+| LT-01 | 阿克梅内区 | zh-hans | Akmenė |
+| LT-04 | 阿尼克什奇艾区 | zh-hans | Anykščiai |
+| LT-05 | 比尔什托纳斯 | zh-hans | Birštonas |
+| LT-06 | 比尔扎伊区 | zh-hans | Biržai |
+| LT-07 | 德鲁斯基宁凯 | zh-hans | Druskininkai |
+| LT-08 | 埃莱克特雷奈 | zh-hans | Elektrėnai |
+| LT-11 | 约尼什基斯区 | zh-hans | Joniškis |
+| LT-12 | 尤尔巴尔卡斯区 | zh-hans | Jurbarkas |
+| LT-17 | 卡兹卢鲁达 | zh-hans | Kazlų Rūda |
+| LT-18 | 凯代尼艾区 | zh-hans | Kėdainiai |
+| LT-21 | 克莱佩达区 | zh-hans | Klaipėda |
+| LT-23 | 库皮什基斯区 | zh-hans | Kupiškis |
+| LT-25 | 马里扬波莱 | zh-hans | Marijampolė |
+| LT-26 | 马热伊基艾区 | zh-hans | Mažeikiai |
+| LT-27 | 莫雷泰区 | zh-hans | Molėtai |
+| LT-29 | 帕盖吉艾 | zh-hans | Pagėgiai |
+| LT-33 | 帕内韦日斯区 | zh-hans | Panevėžys |
+| LT-34 | 帕斯瓦利斯区 | zh-hans | Pasvalys |
+| LT-39 | 列塔瓦斯 | zh-hans | Rietavas |
+| LT-40 | 罗基什基斯区 | zh-hans | Rokiškis |
+| LT-44 | 希奥利艾区 | zh-hans | Šiauliai |
+| LT-50 | 陶拉盖区 | zh-hans | Tauragė |
+| LT-52 | 特拉凯区 | zh-hans | Trakai |
+| LT-54 | 乌泰纳区 | zh-hans | Utena |
+| LT-56 | 维尔卡维什基斯区 | zh-hans | Vilkaviškis |
+| LT-58 | 维尔纽斯区 | zh-hans | Vilnius |
+| LT-AL | 阿利图斯县 | zh-hans | Alytus County |
+| LT-KU | 考纳斯县 | zh-hans | Kaunas County |
+| LT-MR | 马里扬波莱县 | zh-hans | Marijampolė County |
+| LT-PN | 帕内韦日斯县 | zh-hans | Panevėžys County |
+| LT-SA | 希奥利艾县 | zh-hans | Šiauliai County |
+| LT-TA | 陶拉盖县 | zh-hans | Tauragė County |
+| LT-TE | 泰尔希艾县 | zh-hans | Telšiai County |
+| LT-UT | 乌泰纳县 | zh-hans | Utena County |
+| LT-VL | 维尔纽斯县 | zh-hans | Vilnius County |
+| LV-JUR | 尤尔马拉 | zh-hans | Jūrmala |
+| LV-REZ | 雷泽克内 | zh-hans | Rēzekne |
+| LY-MI | 米苏拉塔省 | zh-hans | Misrata |
+| LY-MJ | 迈尔季省 | zh-hans | Marj |
+| LY-MQ | 穆尔祖格省 | zh-hans | Murzuq |
+| LY-ZA | 扎维耶省 | zh-hans | Zawiya |
+| MA-11 | 阿尤恩-萨基亚-阿姆拉大区 | zh-hans | Laâyoune-Sakia El Hamra |
+| MA-BER | 拜尔坎省 | zh-hans | Berkane |
+| MA-DRI | 德利欧奇省 | zh-hans | Driouch |
+| MA-ESI | 索维拉省 | zh-cn | Essaouira |
+| MA-GUF | 盖尔西夫省 | zh-cn | Guercif |
+| MA-HOC | 胡塞马省 | zh-cn | Al Hoceïma |
+| MA-IFR | 伊夫兰省 | zh-cn | Ifrane |
+| MA-INE | 伊奈兹甘-阿伊特迈卢勒省 | zh-cn | Inezgane-Aït Melloul |
+| MA-JRA | 杰拉达省 | zh-cn | Jerada |
+| MA-KHE | 海米萨特省 | zh-cn | Khemisset |
+| MA-MDF | 迈迪格-费尼迪克专区 | zh-hans | M’diq-Fnideq |
+| MA-NAD | 纳祖尔省 | zh-cn | Nador |
+| MA-REH | 赖哈姆纳省 | zh-hans | Rehamna |
+| MA-SAF | 萨菲省 | zh-hans | Safi |
+| MA-TAI | 陶里尔特省 | zh-cn | Taourirt |
+| MA-TAO | 陶纳特省 | zh-cn | Taounate |
+| MD-AN | 新阿内尼区 | zh-hans | Anenii Noi |
+| MD-BR | 布里切尼区 | zh-hans | Briceni |
+| MD-BS | 巴萨拉贝亚斯卡区 | zh-hans | Basarabeasca |
+| MD-CA | 卡胡尔区 | zh-hans | Cahul |
+| MD-CL | 卡拉拉什区 | zh-hans | Călărași |
+| MD-CM | 奇米什利亚区 | zh-hans | Cimișlia |
+| MD-CR | 克留莱尼区 | zh-hans | Criuleni |
+| MD-CS | 克乌谢尼区 | zh-hans | Căușeni |
+| MD-CT | 冈代米尔区 | zh-hans | Cantemir |
+| MD-DO | 栋杜谢尼区 | zh-hans | Dondușeni |
+| MD-DR | 德罗基亚区 | zh-hans | Drochia |
+| MD-DU | 杜伯萨里区 | zh-hans | Dubăsari |
+| MD-ED | 埃迪内茨区 | zh-hans | Edineț |
+| MD-FA | 弗莱什蒂区 | zh-hans | Fălești |
+| MD-FL | 弗洛雷什蒂区 | zh-hans | Florești |
+| MD-GA | 加告兹自治区 | zh-hans | Gagauzia |
+| MD-GL | 格洛代尼区 | zh-hans | Glodeni |
+| MD-HI | 亨切什蒂区 | zh-hans | Hîncești |
+| MD-IA | 亚洛韦尼区 | zh-hans | Ialoveni |
+| MD-LE | 莱奥瓦区 | zh-hans | Leova |
+| MD-NI | 尼斯波雷尼区 | zh-hans | Nisporeni |
+| MD-OC | 奥克尼察区 | zh-hans | Ocniţa |
+| MD-OR | 奥尔海伊区 | zh-hans | Orhei |
+| MD-RE | 雷济纳区 | zh-hans | Rezina |
+| MD-RI | 雷什卡内区 | zh-hans | Rîșcani |
+| MD-SD | 绍尔德内什蒂区 | zh-hans | Șoldănești |
+| MD-SI | 森杰雷区 | zh-hans | Sîngerei |
+| MD-SO | 索罗卡区 | zh-hans | Soroca |
+| MD-ST | 斯特勒谢尼区 | zh-hans | Strășeni |
+| MD-SV | 斯特凡大公区 | zh-hans | Ştefan Vodă |
+| MD-TA | 塔拉克利亚区 | zh-hans | Taraclia |
+| MD-TE | 泰莱内什蒂区 | zh-hans | Telenești |
+| MD-UN | 温格内区 | zh-hans | Ungheni |
+| ME-08 | 新海尔采格市镇 | zh-hans | Herceg Novi |
+| ME-10 | 科托尔市镇 | zh-hans | Kotor |
+| ME-20 | 乌尔齐尼 | zh-cn | Ulcinj |
+| ME-25 | 泽塔市镇 | zh-cn | Zeta |
+| MG-A | 图阿马西纳省 | zh-hans | Toamasina |
+| MG-D | 安齐拉纳纳省 | zh-hans | Antsiranana |
+| MG-F | 菲亚纳兰楚阿省 | zh-hans | Fianarantsoa |
+| MH-EBO | 埃邦环礁 | zh-hans | Ebon Atoll |
+| MH-ENI | 埃内韦塔克环礁 | zh-hans | Enewetak Atoll |
+| MH-JAB | 贾布沃特岛 | zh-hans | Jabat Island |
+| MH-JAL | 贾卢伊特环礁 | zh-hans | Jaluit Atoll |
+| MH-KWA | 夸贾林环礁 | zh-hans | Kwajalein |
+| MH-MAJ | 马朱罗 | zh-hans | Majuro |
+| MH-MEJ | 梅吉特岛 | zh-hans | Mejit Island |
+| MH-MIL | 米利环礁 | zh-hans | Mili Atoll |
+| MH-NMK | 纳莫里克环礁 | zh-hans | Namdrik Atoll |
+| MH-UJA | 乌贾环礁 | zh-hans | Ujae Atoll |
+| MH-UTI | 乌蒂里克环礁 | zh-hans | Utirik Atoll |
+| MK-101 | 韦莱斯市镇 | zh-hans | Veles |
+| MK-102 | 格拉德斯科市镇 | zh-hans | Gradsko |
+| MK-104 | 卡瓦达尔齐市镇 | zh-hans | Kavadarci |
+| MK-105 | 洛佐沃市镇 | zh-hans | Lozovo |
+| MK-106 | 内戈蒂诺市镇 | zh-hans | Negotino |
+| MK-107 | 罗索曼市镇 | zh-hans | Rosoman |
+| MK-108 | 圣尼古莱市镇 | zh-hans | Sveti Nikole |
+| MK-206 | 科查尼市镇 | zh-hans | Kočani |
+| MK-207 | 马其顿卡梅尼察市镇 | zh-hans | Makedonska Kamenica |
+| MK-208 | 佩赫切沃市镇 | zh-hans | Pehčevo |
+| MK-209 | 普罗比什蒂普市镇 | zh-hans | Probištip |
+| MK-211 | 什蒂普市镇 | zh-hans | Štip |
+| MK-307 | 基切沃市镇 | zh-hans | Kičevo |
+| MK-308 | 马其顿布罗德市镇 | zh-hans | Makedonski Brod |
+| MK-310 | 奥赫里德市镇 | zh-hans | Ohrid |
+| MK-311 | 普拉斯尼察市镇 | zh-hans | Plasnica |
+| MK-312 | 斯特鲁加市镇 | zh-hans | Struga |
+| MK-403 | 瓦兰多沃市镇 | zh-hans | Valandovo |
+| MK-404 | 瓦西莱沃市镇 | zh-hans | Vasilevo |
+| MK-405 | 盖夫盖利亚市镇 | zh-hans | Gevgelija |
+| MK-407 | 孔切市镇 | zh-hans | Konče |
+| MK-408 | 诺沃塞洛市镇 | zh-hans | Novo Selo |
+| MK-409 | 拉多维什市镇 | zh-hans | Radoviš |
+| MK-410 | 斯特鲁米察市镇 | zh-hans | Strumica |
+| MK-507 | 诺瓦齐市镇 | zh-hans | Novaci |
+| MK-508 | 普里莱普市镇 | zh-hans | Prilep |
+| MK-605 | 热利诺市镇 | zh-hans | Želino |
+| MK-607 | 马夫罗沃和罗斯图沙市镇 | zh-hans | Mavrovo i Rostuše |
+| MK-608 | 泰阿尔采市镇 | zh-hans | Tearce |
+| MK-609 | 泰托沃市镇 | zh-hans | Tetovo |
+| MK-701 | 克拉托沃市镇 | zh-hans | Kratovo |
+| MK-702 | 克里瓦帕兰卡市镇 | zh-hans | Kriva Palanka |
+| MK-704 | 利普科沃市镇 | zh-hans | Lipkovo |
+| MK-705 | 兰科夫采市镇 | zh-hans | Rankovce |
+| MK-804 | 加齐巴巴市镇 | zh-hans | Gazi Baba † |
+| MK-806 | 泽莱尼科沃市镇 | zh-hans | Zelenikovo |
+| MK-807 | 伊林登市镇 | zh-hans | Ilinden |
+| MK-808 | 卡尔波什市镇 | zh-hans | Karpoš † |
+| MK-810 | 彼得罗韦茨市镇 | zh-hans | Petrovec |
+| MK-811 | 萨拉伊市镇 | zh-hans | Saraj † |
+| MK-812 | 索皮什泰市镇 | zh-hans | Sopište |
+| MK-813 | 斯图代尼查尼市镇 | zh-hans | Studeničani |
+| MK-817 | 舒托奥里扎里市镇 | zh-hans | Šuto Orizari † |
+| ML-1 | 卡伊区 | zh-hans | Kayes |
+| ML-6 | 通布图区 | zh-hans | Tombouctou |
+| ML-8 | 基达尔区 | zh-hans | Kidal |
+| ML-BKO | 巴马科 | zh-hans | Bamako |
+| MM-03 | 马圭省 | zh-hans | Magway |
+| MM-13 | 克伦邦 | zh-hans | Kayin |
+| MM-16 | 若开邦 | zh-hans | Rakhine |
+| MR-03 | 阿萨巴省 | zh-hans | Assaba |
+| MR-04 | 戈尔戈勒省 | zh-hans | Gorgol |
+| MR-05 | 卜拉克纳省 | zh-hans | Brakna |
+| MR-07 | 阿德拉尔省 (毛里塔尼亚) | zh-hans | Adrar |
+| MR-08 | 努瓦迪布湾省 | zh-hans | Dakhlet Nouadhibou |
+| MR-10 | 吉迪马卡省 | zh-hans | Guidimaka |
+| MR-11 | 提里斯-宰穆尔省 | zh-hans | Tiris Zemmour |
+| MT-01 | 阿塔尔德 | zh-hans | Attard |
+| MT-04 | 比尔基卡拉 | zh-hans | Birkirkara |
+| MT-18 | 哈姆伦 | zh-hans | Ħamrun |
+| MT-25 | 卢加 | zh-hans | Luqa |
+| MT-26 | 马尔萨 | zh-hans | Marsa |
+| MT-27 | 马尔萨斯卡拉 | zh-hans | Marsaskala |
+| MT-34 | 姆西达 | zh-hans | Msida |
+| MT-38 | 纳沙尔 | zh-hans | Naxxar |
+| MT-43 | 戈尔米 | zh-hans | Qormi |
+| MT-44 | 格伦迪 | zh-hans | Qrendi |
+| MT-45 | 维多利亚 | zh-hans | Victoria |
+| MT-51 | 圣保罗湾城 | zh-hans | St. Paul’s Bay |
+| MT-54 | 圣韦内拉 | zh-hans | Santa Venera |
+| MT-55 | 锡杰维 | zh-hans | Siġġiewi |
+| MT-56 | 斯利马 | zh-hans | Sliema |
+| MT-57 | 斯维吉 | zh-hans | Swieqi |
+| MT-59 | 塔尔欣 | zh-hans | Tarxien |
+| MT-64 | 扎巴尔 | zh-hans | Żabbar |
+| MT-66 | 泽布季 | zh-hans | Żebbuġ |
+| MU-AG | 阿加莱加群岛 | zh-hans | Agaléga |
+| MU-BL | 黑河区 | zh-hans | Rivière Noire |
+| MU-FL | 弗拉克区 | zh-hans | Flacq |
+| MU-GP | 大港区 | zh-hans | Grand Port |
+| MU-MO | 莫卡区 | zh-hans | Moka |
+| MU-PA | 庞普勒穆斯区 | zh-hans | Pamplemousses |
+| MU-PW | 威廉平原区 | zh-hans | Plaines Wilhems |
+| MU-RR | 朗帕河区 | zh-hans | Rivière du Rempart |
+| MU-SA | 萨凡纳区 | zh-hans | Savanne |
+| MV-00 | Ari环礁 | zh-hans | Alif Dhaal |
+| MV-01 | Addu环礁 | zh-hans | Addu |
+| MV-02 | 阿利夫阿利夫环礁 | zh-hans | Alif Alif |
+| MV-04 | 瓦武环礁 | zh-hans | Vaavu |
+| MV-05 | 拉穆环礁 | zh-hans | Laamu |
+| MV-07 | 哈阿利夫环礁 | zh-hans | Haa Alif |
+| MV-13 | 拉环礁 | zh-hans | Raa |
+| MV-14 | 法富环礁 | zh-hans | Faafu |
+| MV-20 | 巴环礁 | zh-hans | Baa |
+| MV-23 | 哈达卢环礁 | zh-hans | Haa Dhaalu |
+| MV-24 | 沙维亚尼环礁 | zh-hans | Shaviyani |
+| MV-25 | 诺努环礁 | zh-hans | Noonu |
+| MV-26 | 卡富环礁 | zh-hans | Kaafu |
+| MV-27 | Huvadhoo环礁 | zh-hans | Gaafu Alif |
+| MV-28 | 加富达卢环礁 | zh-hans | Gaafu Dhaalu |
+| MV-29 | 尼亚维亚尼环礁 | zh-hans | Gnaviyani |
+| MV-MLE | 马累 | zh-hans | Malé |
+| MW-BA | 巴拉卡县 | zh-hans | Balaka |
+| MW-BL | 布兰太尔县 | zh-hans | Blantyre |
+| MW-CK | 奇夸瓦县 | zh-hans | Chikwawa |
+| MW-CR | 奇拉祖卢县 | zh-hans | Chiradzulu |
+| MW-CT | 奇蒂帕县 | zh-hans | Chitipa |
+| MW-DE | 代扎县 | zh-hans | Dedza |
+| MW-DO | 多瓦县 | zh-hans | Dowa |
+| MW-KR | 卡龙加县 | zh-hans | Karonga |
+| MW-KS | 卡松古县 | zh-hans | Kasungu |
+| MW-LI | 利隆圭县 | zh-hans | Lilongwe |
+| MW-LK | 利科马县 | zh-hans | Likoma |
+| MW-MC | 姆钦吉县 | zh-hans | Mchinji |
+| MW-MG | 曼戈奇县 | zh-hans | Mangochi |
+| MW-MH | 马钦加县 | zh-hans | Machinga |
+| MW-MU | 姆兰杰县 | zh-hans | Mulanje |
+| MW-MW | 姆万扎县 | zh-hans | Mwanza |
+| MW-MZ | 姆津巴县 | zh-hans | Mzimba |
+| MW-NB | 恩卡塔贝县 | zh-hans | Nkhata Bay |
+| MW-NI | 恩奇西县 | zh-hans | Ntchisi |
+| MW-NK | 恩科塔科塔县 | zh-hans | Nkhotakota |
+| MW-NS | 恩桑杰县 | zh-hans | Nsanje |
+| MW-NU | 恩切乌县 | zh-hans | Ntcheu |
+| MW-PH | 帕隆贝县 | zh-hans | Phalombe |
+| MW-RU | 龙皮县 | zh-hans | Rumphi |
+| MW-SA | 萨利马县 | zh-hans | Salima |
+| MW-TH | 乔洛县 | zh-hans | Thyolo |
+| MW-ZO | 松巴县 | zh-hans | Zomba |
+| MX-BCN | 下加利福尼亚州 | zh-hans | Baja California |
+| MX-BCS | 南下加利福尼亚州 | zh-hans | Baja California Sur |
+| MX-COA | 科阿韦拉州 | zh-hans | Coahuila |
+| MX-COL | 科利马州 | zh-hans | Colima |
+| MX-DUR | 杜兰戈州 | zh-hans | Durango |
+| MX-GRO | 格雷罗州 | zh-hans | Guerrero |
+| MX-GUA | 瓜纳华托州 | zh-hans | Guanajuato |
+| MX-HID | 伊达尔戈州 | zh-hans | Hidalgo |
+| MX-NAY | 纳亚里特州 | zh-hans | Nayarit |
+| MX-QUE | 克雷塔罗州 | zh-hans | Querétaro |
+| MX-ROO | 金塔纳罗奥州 | zh-hans | Quintana Roo |
+| MX-SIN | 锡那罗亚州 | zh-hans | Sinaloa |
+| MX-SON | 索诺拉州 | zh-hans | Sonora |
+| MX-VER | 韦拉克鲁斯州 | zh-hans | Veracruz |
+| MX-ZAC | 萨卡特卡斯州 | zh-hans | Zacatecas |
+| MY-10 | 雪兰莪 | zh-hans | Selangor |
+| NA-ER | 埃龙戈区 | zh-hans | Erongo |
+| NA-HA | 哈达普区 | zh-hans | Hardap |
+| NA-KA | 卡拉斯区 | zh-hans | Karas |
+| NA-KH | 霍马斯区 | zh-hans | Khomas |
+| NA-KU | 库内内区 | zh-hans | Kunene |
+| NA-OD | 奥乔宗朱帕区 | zh-hans | Otjozondjupa |
+| NA-OH | 奥马海凯区 | zh-hans | Omaheke |
+| NA-ON | 奥沙纳区 | zh-hans | Oshana |
+| NA-OS | 奥穆萨蒂区 | zh-hans | Omusati |
+| NA-OT | 奥希科托区 | zh-hans | Oshikoto |
+| NA-OW | 奥汉圭纳区 | zh-hans | Ohangwena |
+| NE-8 | 尼亚美 | zh-hans | Niamey |
+| NG-AD | 阿达马瓦 | zh-hans | Adamawa |
+| NG-FC | 联邦首都特区 | zh-hans | Federal Capital Territory |
+| NI-AN | 北加勒比海岸自治区部门 | zh-hans | North Caribbean Coast |
+| NI-AS | 南加勒比海岸自治区 | zh-hans | South Caribbean Coast |
+| NI-GR | 格拉纳达省 | zh-hans | Granada |
+| NI-JI | 希诺特加省 | zh-hans | Jinotega |
+| NI-MD | 马德里斯省 | zh-hans | Madriz |
+| NI-MN | 马那瓜省 | zh-hans | Managua |
+| NI-MS | 马萨亚省 | zh-hans | Masaya |
+| NI-MT | 马塔加尔帕省 | zh-hans | Matagalpa |
+| NI-NS | 新塞哥维亚省 | zh-hans | Nueva Segovia |
+| NL-AW | 阿鲁巴 | zh-hans | Aruba |
+| NL-BQ2 | 萨巴 | zh-hans | Saba |
+| NL-CW | 库拉索 | zh-hans | Curaçao |
+| NL-SX | 荷属圣马丁 | zh-hans | Sint Maarten |
+| NL-ZH | 南荷兰省 | zh-hans | South Holland |
+| NO-22 | 扬马延 | zh-hans | Jan Mayen |
+| NO-32 | 阿克什胡斯郡 | zh-hans | Akershus |
+| NO-50 | 特伦德拉格郡 | zh-hans | Trøndelag |
+| NO-55 | 特罗姆斯郡 | zh-hans | Troms |
+| NR-01 | 艾沃区 | zh-hans | Aiwo |
+| NR-02 | 阿纳巴尔区 | zh-hans | Anabar |
+| NR-03 | 阿内坦区 | zh-hans | Anetan |
+| NR-04 | 阿尼巴雷区 | zh-hans | Anibare |
+| NR-05 | 拜齐区 | zh-hans | Baiti |
+| NR-06 | 博埃区 | zh-hans | Boe |
+| NR-07 | 布阿达区 | zh-hans | Buada |
+| NR-08 | 代尼戈莫杜区 | zh-hans | Denigomodu |
+| NR-09 | 埃瓦区 | zh-hans | Ewa |
+| NR-10 | 伊朱乌区 | zh-hans | Ijuw |
+| NR-11 | 梅嫩区 | zh-hans | Meneng |
+| NR-12 | 尼博克区 | zh-hans | Nibok |
+| NR-13 | 瓦博埃区 | zh-hans | Uaboe |
+| NR-14 | 亚伦区 | zh-hans | Yaren |
+| OM-DA | 内地省 | zh-hans | Ad Dakhiliyah |
+| OM-MA | 马斯喀特省 | zh-cn | Muscat |
+| OM-SJ | 东南省 | zh-hans | Janub ash Sharqiyah |
+| OM-SS | 东北省 | zh-hans | Shamal ash Sharqiyah |
+| OM-ZU | 佐法尔省 | zh-hans | Dhofar |
+| PA-1 | 博卡斯德尔托罗省 | zh-hans | Bocas del Toro |
+| PA-5 | 达连省 | zh-hans | Darién |
+| PA-8 | 巴拿马省 | zh-hans | Panamá |
+| PA-9 | 贝拉瓜斯省 | zh-hans | Veraguas |
+| PA-EM | 恩贝拉-沃南原住民区 | zh-hans | Emberá |
+| PA-KY | 古纳亚拉原住民区 | zh-hans | Guna Yala |
+| PA-NB | 恩戈韦-布格莱原住民区 | zh-hans | Ngöbe-Buglé |
+| PE-HUV | 万卡韦利卡大区 | zh-hans | Huancavelica |
+| PE-LIM | 利马大区 | zh-hans | Lima Region |
+| PE-LMA | 利马省 | zh-hans | Lima |
+| PG-EBR | 东新不列颠省 | zh-hans | East New Britain |
+| PG-EHG | 东高地省 | zh-hans | Eastern Highlands |
+| PG-GPK | 海湾省 | zh-hans | Gulf |
+| PG-MBA | 米尔恩湾省 | zh-hans | Milne Bay |
+| PG-MPM | 马当省 | zh-hans | Madang |
+| PG-MRL | 马努斯省 | zh-hans | Manus |
+| PG-NIK | 新爱尔兰省 | zh-hans | New Ireland |
+| PH-00 | 马尼拉大都会 | zh-hans | Metro Manila |
+| PH-BTN | 巴丹群岛省 | zh-hans | Batanes |
+| PH-CAN | 北甘马粦 | zh-hans | Camarines Norte |
+| PH-CAS | 南甘马粦省 | zh-hans | Camarines Sur |
+| PH-DAS | 南达沃省 | zh-hans | Davao del Sur |
+| PH-DAV | 北达沃省 | zh-hans | Davao del Norte |
+| PH-DVO | 西达沃省 | zh-hans | Davao Occidental |
+| PH-EAS | 东萨马省 | zh-hans | Eastern Samar |
+| PH-GUI | 吉马拉斯省 | zh-hans | Guimaras |
+| PH-ILN | 北伊罗戈省 | zh-hans | Ilocos Norte |
+| PH-ILS | 南伊罗戈省 | zh-hans | Ilocos Sur |
+| PH-ISA | 伊莎贝拉省 | zh-hans | Isabela |
+| PH-LAG | 内湖省 | zh-hans | Laguna |
+| PH-LUN | 拉乌尼翁省 | zh-hans | La Union |
+| PH-MAD | 马林杜克省 | zh-hans | Marinduque |
+| PH-MAS | 马斯巴特省 | zh-hans | Masbate |
+| PH-MDR | 东民都洛省 | zh-hans | Oriental Mindoro |
+| PH-MSC | 西米萨米斯省 | zh-hans | Misamis Occidental |
+| PH-MSR | 东米萨米斯省 | zh-hans | Misamis Oriental |
+| PH-NEC | 西内格罗省 | zh-hans | Negros Occidental |
+| PH-NER | 东内格罗省 | zh-hans | Negros Oriental |
+| PH-NSA | 北萨马 | zh-cn | Northern Samar |
+| PH-NUV | 新比斯开省 | zh-hans | Nueva Vizcaya |
+| PH-QUI | 季里诺省 | zh-hans | Quirino |
+| PH-SAR | 萨兰加尼省 | zh-hans | Sarangani |
+| PH-SIG | 锡基霍尔 | zh-hans | Siquijor |
+| PH-SLU | 苏禄省 | zh-hans | Sulu |
+| PH-SUK | 苏丹库达拉省 | zh-hans | Sultan Kudarat |
+| PH-WSA | 萨马省 | zh-hans | Samar |
+| PH-ZAN | 北三宝颜省 | zh-hans | Zamboanga del Norte |
+| PH-ZAS | 南三宝颜省 | zh-hans | Zamboanga del Sur |
+| PH-ZSI | 三宝颜锡布格省 | zh-hans | Zamboanga Sibugay |
+| PK-JK | 阿扎德克什米尔 | zh-hans | Azad Kashmir |
+| PL-04 | 库亚维滨海省 | zh-hans | Kuyavia-Pomerania |
+| PL-08 | 卢布斯卡省 | zh-hans | Lubusz |
+| PL-14 | 马佐夫舍省 | zh-hans | Mazovia |
+| PL-28 | 瓦尔米亚-马祖里省 | zh-hans | Warmia-Masuria |
+| PT-01 | 阿威罗区 | zh-hans | Aveiro |
+| PT-02 | 贝雅区 | zh-hans | Beja |
+| PT-03 | 布拉加区 | zh-hans | Braga |
+| PT-04 | 布拉干萨区 | zh-hans | Bragança |
+| PT-05 | 布朗库堡区 | zh-hans | Castelo Branco |
+| PT-06 | 科英布拉区 | zh-hans | Coimbra |
+| PT-07 | 埃武拉区 | zh-hans | Évora |
+| PT-08 | 法鲁区 | zh-hans | Faro |
+| PT-09 | 瓜达区 | zh-hans | Guarda |
+| PT-10 | 莱里亚区 | zh-hans | Leiria |
+| PT-11 | 里斯本区 | zh-hans | Lisbon |
+| PT-13 | 波尔图区 | zh-hans | Porto |
+| PT-14 | 圣塔伦区 | zh-hans | Santarém |
+| PT-15 | 塞图巴尔区 | zh-hans | Setúbal |
+| PT-16 | 维亚纳堡区 | zh-hans | Viana do Castelo |
+| PT-17 | 雷阿尔城区 | zh-hans | Vila Real |
+| PT-18 | 维塞乌区 | zh-hans | Viseu |
+| PT-30 | 马德拉自治区 | zh-hans | Madeira |
+| PW-010 | 安加尔州 | zh-hans | Angaur |
+| PW-100 | 卡扬埃尔 | zh-hans | Kayangel |
+| PW-150 | 科罗尔州 | zh-hans | Koror |
+| PW-214 | 雅拉尔德州 | zh-hans | Ngaraard |
+| PW-222 | 雅德马乌州 | zh-hans | Ngardmau |
+| PW-226 | 恩切萨尔州 | zh-hans | Ngchesar |
+| PW-227 | 埃雷姆伦维州 | zh-hans | Ngeremlengui |
+| PW-350 | 佩莱利乌州 | zh-hans | Peleliu |
+| PW-370 | 松索罗尔 | zh-hans | Sonsorol |
+| PY-14 | 卡宁德尤省 | zh-hans | Canindeyú |
+| PY-15 | 阿耶斯总统省 | zh-hans | Presidente Hayes |
+| PY-2 | 圣佩德罗省 | zh-hans | San Pedro |
+| PY-5 | 卡瓜苏省 | zh-hans | Caaguazú |
+| PY-6 | 卡萨帕省 | zh-hans | Caazapá |
+| PY-8 | 米西奥内斯省 | zh-hans | Misiones |
+| PY-ASU | 亚松森 | zh-hans | Asunción |
+| QA-KH | 艾科尔 | zh-hans | Al Khor |
+| RO-AB | 阿尔巴县 | zh-hans | Alba |
+| RO-AG | 阿尔杰什县 | zh-hans | Argeș |
+| RO-AR | 阿拉德县 | zh-hans | Arad |
+| RO-BC | 巴克乌县 | zh-hans | Bacău |
+| RO-BH | 比霍尔县 | zh-hans | Bihor |
+| RO-BN | 比斯特里察-讷瑟乌德县 | zh-hans | Bistriţa-Năsăud |
+| RO-BR | 布勒伊拉县 | zh-hans | Brăila |
+| RO-BT | 博托沙尼县 | zh-hans | Botoşani |
+| RO-BV | 布拉索夫县 | zh-hans | Braşov |
+| RO-BZ | 布泽乌县 | zh-hans | Buzău |
+| RO-CJ | 克卢日县 | zh-hans | Cluj |
+| RO-CL | 克勒拉希县 | zh-hans | Călărași |
+| RO-CS | 卡拉什-塞维林县 | zh-hans | Caraș-Severin |
+| RO-CT | 康斯坦察县 | zh-hans | Constanța |
+| RO-CV | 科瓦斯纳县 | zh-hans | Covasna |
+| RO-DB | 登博维察县 | zh-hans | Dâmbovița |
+| RO-DJ | 多尔日县 | zh-hans | Dolj |
+| RO-GJ | 戈尔日县 | zh-hans | Gorj |
+| RO-GL | 加拉茨县 | zh-hans | Galați |
+| RO-GR | 久尔久县 | zh-hans | Giurgiu |
+| RO-HD | 胡内多阿拉县 | zh-hans | Hunedoara |
+| RO-HR | 哈尔吉塔县 | zh-hans | Harghita |
+| RO-IF | 伊尔福夫县 | zh-hans | Ilfov |
+| RO-IL | 雅洛米察县 | zh-hans | Ialomița |
+| RO-IS | 雅西县 | zh-hans | Iași |
+| RO-MH | 梅赫丁茨县 | zh-hans | Mehedinți |
+| RO-MM | 马拉穆列什县 | zh-hans | Maramureş |
+| RO-MS | 穆列什县 | zh-hans | Mureş |
+| RO-NT | 尼亚姆茨县 | zh-hans | Neamţ |
+| RO-OT | 奥尔特县 | zh-hans | Olt |
+| RO-PH | 普拉霍瓦县 | zh-hans | Prahova |
+| RO-SB | 锡比乌县 | zh-hans | Sibiu |
+| RO-SJ | 瑟拉日县 | zh-hans | Sălaj |
+| RO-SM | 萨图马雷县 | zh-hans | Satu Mare |
+| RO-SV | 苏恰瓦县 | zh-hans | Suceava |
+| RO-TL | 图尔恰县 | zh-hans | Tulcea |
+| RO-TM | 蒂米什县 | zh-hans | Timiș |
+| RO-TR | 特列奥尔曼县 | zh-hans | Teleorman |
+| RO-VL | 沃尔恰县 | zh-hans | Vâlcea |
+| RO-VN | 弗朗恰县 | zh-hans | Vrancea |
+| RO-VS | 瓦斯卢伊县 | zh-hans | Vaslui |
+| RS-02 | 中巴纳特区 | zh-hans | Central Banat |
+| RS-03 | 北巴纳特区 | zh-hans | North Banat |
+| RS-04 | 南巴纳特区 | zh-hans | South Banat |
+| RS-08 | 马奇瓦区 | zh-hans | Mačva |
+| RS-09 | 科卢巴拉区 | zh-hans | Kolubara |
+| RS-11 | 布拉尼切沃区 | zh-hans | Braničevo |
+| RS-12 | 舒马迪亚区 | zh-hans | Šumadija |
+| RS-14 | 博尔区 | zh-hans | Bor |
+| RS-15 | 扎耶查尔区 | zh-hans | Zaječar |
+| RS-16 | 兹拉蒂博尔区 | zh-hans | Zlatibor |
+| RS-22 | 皮罗特区 | zh-hans | Pirot |
+| RS-23 | 亚布拉尼察区 | zh-hans | Jablanica |
+| RS-24 | 普奇尼亚区 | zh-hans | Pčinja |
+| RU-BU | 布里亚特共和国 | zh-hans | Buryatia |
+| RU-KB | 卡巴尔达-巴尔卡尔共和国 | zh-hans | Kabardino-Balkaria |
+| RU-KYA | 克拉斯诺亚尔斯克边疆区 | zh-hans | Krasnoyarsk Krai |
+| RU-MUR | 摩尔曼斯克州 | zh-hans | Murmansk |
+| RU-NGR | 诺夫哥罗德州 | zh-hans | Novgorod |
+| RU-ORE | 奥伦堡州 | zh-hans | Orenburg |
+| RU-PER | 彼尔姆边疆区 | zh-hans | Perm Krai |
+| RU-SVE | 斯维尔德洛夫斯克州 | zh-hans | Sverdlovsk |
+| RU-YAR | 雅罗斯拉夫尔州 | zh-hans | Yaroslavl |
+| RU-ZAB | 外贝加尔边疆区 | zh-hans | Zabaykalsky Krai |
+| SB-CE | 中部群岛省 | zh-hans | Central |
+| SB-CH | 舒瓦瑟尔省 | zh-hans | Choiseul |
+| SB-GU | 瓜达尔卡纳尔省 | zh-hans | Guadalcanal |
+| SB-IS | 伊莎贝尔省 | zh-hans | Isabel |
+| SB-ML | 马莱塔省 | zh-hans | Malaita |
+| SB-RB | 拉纳尔和贝罗纳省 | zh-hans | Rennell and Bellona |
+| SB-TE | 泰莫图省 | zh-hans | Temotu |
+| SC-01 | 安塞奥潘区 | zh-hans | Anse aux Pins |
+| SC-02 | 安塞布瓦洛区 | zh-hans | Anse Boileau |
+| SC-03 | 安塞艾托瓦区 | zh-hans | Anse Etoile |
+| SC-04 | 奥凯普区 | zh-hans | Au Cap |
+| SC-05 | 安塞罗亚莱区 | zh-hans | Anse Royale |
+| SC-06 | 贝拉扎尔区 | zh-hans | Baie Lazare |
+| SC-07 | 贝圣安那区 | zh-hans | Baie Sainte Anne |
+| SC-08 | 博瓦隆区 | zh-hans | Beau Vallon |
+| SC-09 | 贝尔艾尔区 | zh-hans | Bel Air |
+| SC-10 | 贝尔翁布雷区 | zh-hans | Bel Ombre |
+| SC-11 | 卡斯喀得区 | zh-hans | Cascade |
+| SC-12 | 格拉西斯区 | zh-hans | Glacis |
+| SC-13 | 马埃大安塞区 | zh-hans | Grand’Anse Mahé |
+| SC-14 | 普拉兰大安塞区 | zh-hans | Grand’Anse Praslin |
+| SC-17 | 蒙巴克斯顿区 | zh-hans | Mont Buxton |
+| SC-18 | 蒙弗勒利区 | zh-hans | Mont Fleuri |
+| SC-19 | 普莱桑斯区 | zh-hans | Plaisance |
+| SC-20 | 普安特拉儒区 | zh-hans | Pointe La Rue |
+| SC-21 | 波特格劳德区 | zh-hans | Port Glaud |
+| SC-22 | 圣路易区 | zh-hans | Saint Louis |
+| SC-23 | 塔卡玛卡区 | zh-hans | Takamaka |
+| SC-24 | 雷玛麦尔区 | zh-hans | Les Mamelles |
+| SC-25 | 罗切凯曼区 | zh-hans | Roche Caiman |
+| SD-DC | 中达尔富尔州 | zh-hans | Central Darfur |
+| SD-DE | 东达尔富尔州 | zh-hans | East Darfur |
+| SD-DN | 北达尔富尔州 | zh-hans | North Darfur |
+| SD-NR | 尼罗州 | zh-hans | River Nile |
+| SE-AB | 斯德哥尔摩省 | zh-hans | Stockholm |
+| SI-007 | 布尔达 | zh-hans | Brda |
+| SI-015 | 奇伦绍夫齐 | zh-hans | Črenšovci |
+| SI-024 | 多尔纳瓦 | zh-hans | Dornava |
+| SI-030 | 戈尔尼格勒市镇 | zh-hans | Gornji Grad |
+| SI-043 | 卡姆尼克市镇 | zh-hans | Kamnik |
+| SI-048 | 科切维 | zh-hans | Kočevje |
+| SI-060 | 利蒂亚 | zh-hans | Litija |
+| SI-069 | 马伊什佩克 | zh-hans | Majšperk |
+| SI-072 | 门盖什 | zh-hans | Mengeš |
+| SI-079 | 莫济列 | zh-hans | Mozirje |
+| SI-083 | 纳扎列 | zh-hans | Nazarje |
+| SI-113 | 斯洛文尼亚比斯特里察 | zh-hans | Slovenska Bistrica |
+| SI-114 | 斯洛文尼亚科尼采 | zh-hans | Slovenske Konjice |
+| SI-126 | 绍什塔尼 | zh-hans | Šoštanj |
+| SI-128 | 托尔明 | zh-hans | Tolmin |
+| SI-131 | 特尔日奇 | zh-hans | Tržič |
+| SI-182 | 斯洛文尼亚丘陵内圣安德拉日市镇 | zh-hans | Sveti Andraž v Slovenskih Goricah |
+| SI-202 | 德拉瓦河畔斯雷迪什切 | zh-hans | Središče ob Dravi |
+| SK-TA | 特尔纳瓦州 | zh-hans | Trnava |
+| SK-TC | 特伦钦州 | zh-hans | Trenčín |
+| SK-ZI | 日利纳州 | zh-hans | Žilina |
+| SL-E | 东方省 | zh-hans | Eastern |
+| SL-W | 西部区 | zh-hans | Western Area |
+| SM-07 | 圣马力诺 | zh-hans | San Marino |
+| SN-KA | 卡夫林区 | zh-hans | Kaffrine |
+| SN-KD | 科尔达区 | zh-hans | Kolda |
+| SN-KE | 凯杜古区 | zh-hans | Kédougou |
+| SN-LG | 卢加区 | zh-hans | Louga |
+| SN-MT | 马塔姆区 | zh-hans | Matam |
+| SN-SE | 塞久区 | zh-hans | Sédhiou |
+| SN-SL | 圣路易区 | zh-hans | Saint-Louis |
+| SN-TC | 坦巴昆达区 | zh-hans | Tambacounda |
+| SN-TH | 捷斯区 | zh-hans | Thiès |
+| SO-BN | 巴纳迪尔州 | zh-hans | Banaadir |
+| SO-HI | 希兰州 | zh-hans | Hiran |
+| SO-NU | 努加尔州 | zh-hans | Nugal |
+| SO-SD | 中谢贝利州 | zh-hans | Middle Shebelle |
+| SO-SH | 下谢贝利州 | zh-hans | Lower Shebelle |
+| SO-SO | 苏尔州 | zh-hans | Sool |
+| SO-TO | 托格代尔州 | zh-hans | Togdheer |
+| ST-05 | 洛巴塔区 | zh-hans | Lobata |
+| ST-06 | 梅佐希区 | zh-hans | Mé-Zóchi |
+| SV-SS | 圣萨尔瓦多省 | zh-hans | San Salvador |
+| SY-HM | 哈马省 | zh-hans | Hama |
+| SZ-MA | 曼齐尼区 | zh-hans | Manzini |
+| TD-BG | 加扎勒河区 | zh-hans | Bahr el Gazel |
+| TD-BO | 博尔库区 | zh-hans | Borkou |
+| TD-EE | 东恩内迪区 | zh-cn | Ennedi-Est |
+| TD-GR | 盖拉区 | zh-hans | Guéra |
+| TD-HL | 哈杰尔-拉密区 | zh-hans | Hadjer-Lamis |
+| TD-KA | 加奈姆区 | zh-hans | Kanem |
+| TD-LC | 湖区 | zh-hans | Lac |
+| TD-LO | 西洛贡区 | zh-hans | Logone Occidental |
+| TD-LR | 东洛贡区 | zh-hans | Logone Oriental |
+| TD-MA | 芒杜尔区 | zh-hans | Mandoul |
+| TD-MC | 中沙里区 | zh-hans | Moyen-Chari |
+| TD-ME | 东凯比河区 | zh-hans | Mayo-Kebbi Est |
+| TD-MO | 西凯比河区 | zh-hans | Mayo-Kebbi Ouest |
+| TD-ND | 恩贾梅纳 | zh-hans | N’Djamena |
+| TD-OD | 瓦达伊区 | zh-hans | Ouaddaï |
+| TD-SI | 西拉区 | zh-hans | Sila |
+| TD-TA | 坦吉莱区 | zh-hans | Tandjilé |
+| TD-TI | 提贝斯提区 | zh-hans | Tibesti |
+| TD-WF | 瓦迪菲拉区 | zh-hans | Wadi Fira |
+| TG-M | 滨海区 | zh-hans | Maritime |
+| TG-P | 高原区 | zh-hans | Plateaux |
+| TG-S | 草原区 | zh-hans | Savanes |
+| TH-16 | 华富里府 | zh-hans | Lopburi |
+| TH-18 | 猜纳府 | zh-hans | Chai Nat |
+| TH-21 | 罗勇府 | zh-hans | Rayong |
+| TH-34 | 乌汶府 | zh-hans | Ubon Ratchathani |
+| TH-37 | 安纳乍伦府 | zh-hans | Amnat Charoen |
+| TH-41 | 乌隆府 | zh-hans | Udon Thani |
+| TH-43 | 廊开府 | zh-hans | Nong Khai |
+| TH-50 | 清迈府 | zh-hans | Chiang Mai |
+| TH-58 | 夜丰颂府 | zh-hans | Mae Hong Son |
+| TH-61 | 乌泰他尼府 | zh-hans | Uthai Thani |
+| TH-63 | 达府 | zh-hans | Tak |
+| TH-S | 芭堤雅 | zh-hans | Pattaya |
+| TJ-GB | 山地巴达赫尚自治州 | zh-hans | Gorno-Badakhshan |
+| TJ-RA | 国家直辖区 | zh-hans | Nohiyahoi Tobei Jumhurí |
+| TL-AL | 阿伊莱乌县 | zh-hans | Aileu |
+| TL-AN | 阿伊纳罗县 | zh-hans | Ainaro |
+| TL-BA | 包考县 | zh-hans | Baucau |
+| TL-BO | 博博纳罗县 | zh-hans | Bobonaro |
+| TL-CO | 科瓦利马县 | zh-hans | Cova Lima |
+| TL-DI | 帝力县 | zh-hans | Dili |
+| TL-ER | 埃尔梅拉县 | zh-hans | Ermera |
+| TL-LA | 劳滕县 | zh-hans | Lautém |
+| TL-LI | 利逵萨县 | zh-hans | Liquiçá |
+| TL-MF | 马努法伊县 | zh-hans | Manufahi |
+| TL-MT | 马纳图托县 | zh-hans | Manatuto |
+| TL-OE | 欧库西-安贝诺县 | zh-hans | Oecusse |
+| TL-VI | 维克克县 | zh-hans | Viqueque |
+| TM-A | 阿哈尔州 | zh-hans | Ahal |
+| TM-B | 巴尔坎州 | zh-hans | Balkan |
+| TM-D | 达沙古兹州 | zh-hans | Daşoguz |
+| TM-M | 马雷州 | zh-hans | Mary |
+| TN-12 | 艾尔亚奈省 | zh-hans | Ariana |
+| TN-13 | 本阿鲁斯省 | zh-hans | Ben Arous |
+| TN-14 | 马努巴省 | zh-hans | Manouba |
+| TN-21 | 纳布勒省 | zh-hans | Nabeul |
+| TN-34 | 锡勒亚奈省 | zh-hans | Siliana |
+| TN-41 | 凯鲁万省 | zh-hans | Kairouan |
+| TN-43 | 西迪布济德省 | zh-hans | Sidi Bouzid |
+| TN-51 | 苏塞省 | zh-hans | Sousse |
+| TN-52 | 莫纳斯提尔省 | zh-hans | Monastir |
+| TN-53 | 马赫迪耶省 | zh-hans | Mahdia |
+| TN-71 | 加夫萨省 | zh-hans | Gafsa |
+| TN-72 | 托泽尔省 | zh-hans | Tozeur |
+| TN-81 | 加贝斯省 | zh-hans | Gabès |
+| TN-82 | 梅德宁省 | zh-hans | Medenine |
+| TN-83 | 泰塔温省 | zh-hans | Tataouine |
+| TR-58 | 锡瓦斯省 | zh-hans | Sivas |
+| TT-CHA | 查瓜纳斯 | zh-hans | Chaguanas |
+| TT-PED | 皮纳尔-德贝郡 | zh-hans | Penal-Debe |
+| TT-SFO | 圣费尔南多 | zh-hans | San Fernando |
+| TT-SIP | 锡帕里亚郡 | zh-hans | Siparia |
+| TV-NIT | 纽陶岛 | zh-hans | Niutao |
+| TV-NKF | 努库费陶环礁 | zh-hans | Nukufetau |
+| TV-NKL | 努库莱莱环礁 | zh-hans | Nukulaelae |
+| TV-NMA | 纳努梅阿环礁 | zh-hans | Nanumea |
+| TW-CHA | 彰化县 | zh-hans | Changhua |
+| TW-CYI | 嘉义市 | zh-hans | Chiayi City |
+| TW-CYQ | 嘉义县 | zh-hans | Chiayi County |
+| TW-HSQ | 新竹县 | zh-hans | Hsinchu County |
+| TW-HUA | 花莲县 | zh-hans | Hualien |
+| TW-ILA | 宜兰县 | zh-hans | Yilan |
+| TW-KIN | 金门县 | zh-hans | Kinmen |
+| TW-LIE | 连江县 | zh-hans | Lienchiang |
+| TW-MIA | 苗栗县 | zh-hans | Miaoli |
+| TW-NAN | 南投县 | zh-hans | Nantou |
+| TW-PEN | 澎湖县 | zh-hans | Penghu |
+| TW-PIF | 屏东县 | zh-hans | Pingtung |
+| TW-TTT | 台东县 | zh-hans | Taitung |
+| TW-YUN | 云林县 | zh-hans | Yunlin |
+| TZ-04 | 伊林加区 | zh-hans | Iringa |
+| TZ-05 | 卡盖拉区 | zh-hans | Kagera |
+| TZ-06 | 北奔巴区 | zh-hans | North Pemba |
+| TZ-07 | 尚西巴北区 | zh-hans | Zanzibar North |
+| TZ-08 | 基戈马区 | zh-hans | Kigoma |
+| TZ-09 | 乞力马扎罗区 | zh-hans | Kilimanjaro |
+| TZ-10 | 南奔巴区 | zh-hans | South Pemba |
+| TZ-12 | 林迪区 | zh-hans | Lindi |
+| TZ-13 | 马拉区 | zh-hans | Mara |
+| TZ-14 | 姆贝亚区 | zh-hans | Mbeya |
+| TZ-15 | 尚西巴西区 | zh-hans | Zanzibar Urban/West |
+| TZ-17 | 姆特瓦拉区 | zh-hans | Mtwara |
+| TZ-18 | 姆万扎区 | zh-hans | Mwanza |
+| TZ-19 | 滨海区 | zh-hans | Pwani |
+| TZ-20 | 鲁夸区 | zh-hans | Rukwa |
+| TZ-21 | 鲁伍马区 | zh-hans | Ruvuma |
+| TZ-22 | 欣延加区 | zh-hans | Shinyanga |
+| TZ-23 | 辛吉达区 | zh-hans | Singida |
+| TZ-24 | 塔波拉区 | zh-hans | Tabora |
+| TZ-26 | 曼亚拉区 | zh-hans | Manyara |
+| TZ-29 | 恩琼贝区 | zh-hans | Njombe |
+| UA-07 | 沃伦州 | zh-hans | Volyn |
+| UA-09 | 卢甘斯克州 | zh-hans | Luhanshchyna |
+| UA-18 | 日托米尔州 | zh-hans | Zhytomyrshchyna |
+| UA-21 | 外喀尔巴阡州 | zh-hans | Zakarpattia |
+| UA-23 | 扎波罗热州 | zh-hans | Zaporizhzhya |
+| UA-40 | 塞瓦斯托波尔 | zh-hans | Sevastopol |
+| UA-56 | 罗夫诺州 | zh-hans | Rivnenshchyna |
+| UA-59 | 苏梅州 | zh-hans | Sumshchyna |
+| UA-61 | 捷尔诺波尔州 | zh-hans | Ternopilshchyna |
+| UA-63 | 哈尔科夫州 | zh-hans | Kharkivshchyna |
+| UA-71 | 切尔卡瑟州 | zh-hans | Cherkashchyna |
+| UA-74 | 切尔尼希夫州 | zh-hans | Chernihivshchyna |
+| UA-77 | 切尔尼夫齐州 | zh-hans | Chernivtsi Oblast |
+| UG-101 | 卡兰加拉区 | zh-hans | Kalangala |
+| UG-102 | 坎帕拉区 | zh-hans | Kampala |
+| UG-103 | 基博加区 | zh-hans | Kiboga |
+| UG-104 | 卢韦罗区 | zh-hans | Luwero |
+| UG-105 | 马萨卡区 | zh-hans | Masaka |
+| UG-106 | 姆皮吉区 | zh-hans | Mpigi |
+| UG-107 | 穆本德区 | zh-hans | Mubende |
+| UG-108 | 穆科诺区 | zh-hans | Mukono |
+| UG-109 | 纳卡松戈拉区 | zh-hans | Nakasongola |
+| UG-110 | 拉卡伊区 | zh-hans | Rakai |
+| UG-111 | 森巴布莱区 | zh-hans | Sembabule |
+| UG-112 | 卡永加区 | zh-hans | Kayunga |
+| UG-113 | 瓦基索区 | zh-hans | Wakiso |
+| UG-117 | 布伊奎区 | zh-hans | Buikwe |
+| UG-118 | 布科曼辛比区 | zh-hans | Bukomansibi |
+| UG-119 | 布坦巴拉区 | zh-hans | Butambala |
+| UG-120 | 布武马区 | zh-hans | Buvuma |
+| UG-121 | 贡巴区 | zh-hans | Gomba |
+| UG-122 | 卡伦古区 | zh-hans | Kalungu |
+| UG-123 | 克扬宽齐区 | zh-hans | Kyankwanzi |
+| UG-124 | 卢恩戈区 | zh-hans | Lwengo |
+| UG-202 | 布西亚区 | zh-hans | Busia |
+| UG-203 | 伊甘加区 | zh-hans | Iganga |
+| UG-204 | 金贾区 | zh-hans | Jinja |
+| UG-205 | 卡穆利区 | zh-hans | Kamuli |
+| UG-206 | 卡普乔鲁瓦区 | zh-hans | Kapchorwa |
+| UG-207 | 卡塔奎区 | zh-hans | Katakwi |
+| UG-208 | 库米区 | zh-hans | Kumi |
+| UG-209 | 姆巴莱区 | zh-hans | Mbale |
+| UG-210 | 帕利萨区 | zh-hans | Pallisa |
+| UG-211 | 索罗提区 | zh-hans | Soroti |
+| UG-212 | 托罗罗区 | zh-hans | Tororo |
+| UG-213 | 卡贝拉马伊多区 | zh-hans | Kaberamaido |
+| UG-214 | 马尤盖区 | zh-hans | Mayuge |
+| UG-215 | 锡龙科区 | zh-hans | Sironko |
+| UG-216 | 阿穆里亚区 | zh-hans | Amuria |
+| UG-217 | 布达卡区 | zh-hans | Budaka |
+| UG-225 | 布兰布利区 | zh-hans | Bulambuli |
+| UG-226 | 布延德区 | zh-hans | Buyende |
+| UG-227 | 基布库区 | zh-hans | Kibuku |
+| UG-228 | 奎恩区 | zh-hans | Kween |
+| UG-229 | 卢卡区 | zh-hans | Luuka |
+| UG-230 | 纳马因戈区 | zh-hans | Namayingo |
+| UG-231 | 恩戈拉区 | zh-hans | Ngora |
+| UG-232 | 塞雷雷区 | zh-hans | Serere |
+| UG-301 | 阿朱马尼区 | zh-hans | Adjumani |
+| UG-302 | 阿帕克区 | zh-hans | Apac |
+| UG-303 | 阿鲁阿区 | zh-hans | Arua |
+| UG-304 | 古卢区 | zh-hans | Gulu |
+| UG-305 | 基特古姆区 | zh-hans | Kitgum |
+| UG-306 | 科蒂多区 | zh-hans | Kotido |
+| UG-307 | 利拉区 | zh-hans | Lira |
+| UG-308 | 莫罗托区 | zh-hans | Moroto |
+| UG-309 | 莫约区 | zh-hans | Moyo |
+| UG-310 | 内比区 | zh-hans | Nebbi |
+| UG-311 | 纳卡皮里皮里特区 | zh-hans | Nakapiripirit |
+| UG-313 | 永贝区 | zh-hans | Yumbe |
+| UG-321 | 奥扬区 | zh-hans | Oyam |
+| UG-322 | 阿加戈区 | zh-hans | Agago |
+| UG-323 | 阿莱布通区 | zh-hans | Alebtong |
+| UG-324 | 阿穆达特区 | zh-hans | Amudat |
+| UG-331 | 宗博区 | zh-hans | Zombo |
+| UG-401 | 本迪布焦区 | zh-hans | Bundibugyo |
+| UG-402 | 布谢尼区 | zh-hans | Bushenyi |
+| UG-403 | 霍伊马区 | zh-hans | Hoima |
+| UG-404 | 卡巴莱区 | zh-hans | Kabale |
+| UG-405 | 卡巴罗莱区 | zh-hans | Kabarole |
+| UG-406 | 卡塞塞区 | zh-hans | Kasese |
+| UG-407 | 基巴莱区 | zh-hans | Kibaale |
+| UG-409 | 马辛迪区 | zh-hans | Masindi |
+| UG-410 | 姆巴拉拉区 | zh-hans | Mbarara |
+| UG-412 | 鲁昆吉里区 | zh-hans | Rukungiri |
+| UG-413 | 卡姆文盖区 | zh-hans | Kamwenge |
+| UG-414 | 卡农古区 | zh-hans | Kanungu |
+| UG-415 | 基恩乔乔区 | zh-hans | Kyenjojo |
+| UG-426 | 谢马区 | zh-hans | Sheema |
+| UG-E | 东部区 | zh-hans | Eastern |
+| UG-N | 北部区 | zh-hans | Northern |
+| UG-W | 西部区 | zh-hans | Western |
+| UM-71 | 中途岛 | zh-hans | Midway Atoll |
+| UM-76 | 纳瓦萨岛 | zh-hans | Navassa Island |
+| UM-79 | 威克岛 | zh-hans | Wake Island |
+| UM-81 | 贝克岛 | zh-hans | Baker Island |
+| UM-84 | 豪兰岛 | zh-hans | Howland Island |
+| UM-86 | 贾维斯岛 | zh-hans | Jarvis Island |
+| UM-95 | 巴尔米拉环礁 | zh-hans | Palmyra Atoll |
+| US-AS | 美属萨摩亚 | zh-hans | American Samoa |
+| US-AZ | 亚利桑那州 | zh-hans | Arizona |
+| US-CO | 科罗拉多州 | zh-hans | Colorado |
+| US-GA | 佐治亚州 | zh-hans | Georgia |
+| US-GU | 关岛 | zh-hans | Guam |
+| US-KS | 堪萨斯州 | zh-hans | Kansas |
+| US-MA | 马萨诸塞州 | zh-hans | Massachusetts |
+| US-MN | 明尼苏达州 | zh-hans | Minnesota |
+| US-MO | 密苏里州 | zh-hans | Missouri |
+| US-MP | 北马里亚纳群岛 | zh-hans | Northern Mariana Islands |
+| US-NE | 内布拉斯加州 | zh-hans | Nebraska |
+| US-OK | 俄克拉荷马州 | zh-hans | Oklahoma |
+| US-PR | 波多黎各 | zh-hans | Puerto Rico |
+| US-RI | 罗得岛州 | zh-hans | Rhode Island |
+| US-UM | 美国本土外小岛屿 | zh-hans | U.S. Outlying Islands |
+| US-VI | 美属维尔京群岛 | zh-hans | U.S. Virgin Islands |
+| UY-MO | 蒙得维的亚省 | zh-hans | Montevideo |
+| UZ-FA | 费尔干纳州 | zh-hans | Fergana |
+| UZ-NG | 纳曼干州 | zh-hans | Namangan |
+| UZ-NW | 纳沃伊州 | zh-hans | Navoiy |
+| UZ-QA | 卡什卡达里亚州 | zh-hans | Qashqadaryo |
+| UZ-QR | 卡拉卡尔帕克斯坦共和国 | zh-hans | Karakalpakstan |
+| UZ-SA | 撒马尔罕州 | zh-hans | Samarqand |
+| UZ-SI | 锡尔河州 | zh-hans | Sirdaryo |
+| UZ-SU | 苏尔汉河州 | zh-hans | Surxondaryo |
+| VC-02 | 圣安德鲁区 | zh-hans | Saint Andrew |
+| VC-03 | 圣大卫区 | zh-hans | Saint David |
+| VC-04 | 圣乔治区 | zh-hans | Saint George |
+| VC-05 | 圣派屈克区 | zh-hans | Saint Patrick |
+| VC-06 | 格瑞那丁区 | zh-hans | Grenadines |
+| VE-A | 联邦区 | zh-hans | Capital |
+| VE-F | 玻利瓦尔州 | zh-hans | Bolívar |
+| VE-N | 莫纳加斯州 | zh-hans | Monagas |
+| VE-W | 联邦属地 | zh-hans | Federal Dependencies |
+| VE-Z | 亚马孙州 | zh-hans | Amazonas |
+| VN-05 | 山罗省 | zh-hans | Sơn La |
+| VN-13 | 广宁市 | zh-hans | Quảng Ninh |
+| VN-18 | 宁平省 | zh-hans | Ninh Bình |
+| VN-25 | 广治省 | zh-hans | Quảng Trị |
+| VN-29 | 广义省 | zh-hans | Quảng Ngãi |
+| VN-33 | 多乐省 | zh-hans | Đắk Lắk |
+| VN-37 | 西宁省 | zh-hans | Tây Ninh |
+| VN-56 | 北宁市 | zh-hans | Bắc Ninh |
+| VN-71 | 奠边省 | zh-hans | Điện Biên |
+| VN-HN | 河内 | zh-hans | Hanoi |
+| WS-VS | 韦西加诺 | zh-hans | Vaisigano |
+| YE-AD | 亚丁省 | zh-hans | ’Adan |
+| YE-AM | 阿姆兰省 | zh-hans | Amran |
+| YE-SN | 萨那省 | zh-hans | Sana’a |
+| ZA-EC | 东开普省 | zh-hans | Eastern Cape |
+| ZA-KZN | 夸祖鲁-纳塔尔省 | zh-hans | KwaZulu-Natal |
+| ZA-MP | 姆普马兰加省 | zh-hans | Mpumalanga |
+| ZA-NC | 北开普省 | zh-hans | Northern Cape |
+| ZA-WC | 西开普省 | zh-hans | Western Cape |
+| ZW-MA | 马尼卡兰省 | zh-hans | Manicaland |
+| ZW-MC | 中马绍纳兰省 | zh-hans | Mashonaland Central |
+| ZW-ME | 东马绍纳兰省 | zh-hans | Mashonaland East |
+| ZW-MN | 北马塔贝莱兰省 | zh-hans | Matabeleland North |
+| ZW-MS | 南马塔贝莱兰省 | zh-hans | Matabeleland South |
+| ZW-MV | 马斯温戈省 | zh-hans | Masvingo |
+| ZW-MW | 西马绍纳兰省 | zh-hans | Mashonaland West |
+
+#### Traditional Chinese (`zh-Hant`): 3152
+
+| Code | Name | Tag | English |
+| --- | --- | --- | --- |
+| AD-07 | 老安道爾 | zh-hant | Andorra la Vella |
+| AE-AJ | 阿治曼酋長國 | zh-hant | Ajman |
+| AE-AZ | 阿布達比酋長國 | zh-hant | Abu Dhabi |
+| AE-DU | 杜拜酋長國 | zh-hant | Dubai |
+| AE-RK | 拉斯海瑪酋長國 | zh-hant | Ras al-Khaimah |
+| AE-SH | 沙迦酋長國 | zh-hant | Sharjah |
+| AE-UQ | 烏姆蓋萬酋長國 | zh-hant | Umm al-Quwain |
+| AF-BAL | 巴爾赫省 | zh-hant | Balkh |
+| AF-BAM | 巴米揚省 | zh-hant | Bamyan |
+| AF-BDG | 巴德吉斯省 | zh-hant | Badghis |
+| AF-BDS | 巴達赫尚省 | zh-hant | Badakhshan |
+| AF-BGL | 巴格蘭省 | zh-hant | Baghlan |
+| AF-DAY | 代孔迪省 | zh-hant | Daykundi |
+| AF-FRA | 法拉省 | zh-hant | Farah |
+| AF-FYB | 法利亞布省 | zh-hant | Faryab |
+| AF-GHA | 加茲尼省 | zh-hant | Ghazni |
+| AF-GHO | 古爾省 | zh-hant | Ghōr |
+| AF-HEL | 赫爾曼德省 | zh-hant | Helmand |
+| AF-HER | 赫拉特省 | zh-hant | Herat |
+| AF-JOW | 朱茲詹省 | zh-hant | Jowzjan |
+| AF-KAB | 喀布爾省 | zh-hant | Kabul |
+| AF-KAN | 坎大哈省 | zh-hant | Kandahar |
+| AF-KAP | 卡比薩省 | zh-hant | Kapisa |
+| AF-KDZ | 昆都士省 | zh-hant | Kunduz |
+| AF-KHO | 霍斯特省 | zh-hant | Khost |
+| AF-KNR | 庫納爾省 | zh-hant | Kunar |
+| AF-LAG | 拉格曼省 | zh-hant | Laghman |
+| AF-LOG | 洛加爾省 | zh-tw | Logar |
+| AF-NAN | 楠格哈爾省 | zh-hant | Nangarhar |
+| AF-NIM | 尼姆魯茲省 | zh-hant | Nimruz |
+| AF-NUR | 紐里斯坦省 | zh-hant | Nuristan |
+| AF-PAN | 潘傑希爾省 | zh-hant | Panjshir |
+| AF-PAR | 帕爾旺省 | zh-hant | Parwan |
+| AF-PIA | 帕克蒂亞省 | zh-hant | Paktia |
+| AF-PKA | 帕克蒂卡省 | zh-hant | Paktika |
+| AF-SAM | 薩曼甘省 | zh-hant | Samangan |
+| AF-SAR | 薩爾普勒省 | zh-hant | Sar-e Pol |
+| AF-TAK | 塔哈爾省 | zh-hant | Takhar |
+| AF-URU | 烏魯茲甘省 | zh-hant | Urozgan |
+| AF-WAR | 瓦爾達克省 | zh-hant | Maidan Wardak |
+| AF-ZAB | 扎布爾省 | zh-tw | Zabul |
+| AG-03 | 聖喬治區 | zh-hant | Saint George |
+| AG-05 | 聖瑪麗區 | zh-hant | Saint Mary |
+| AG-08 | 聖菲利普區 | zh-hant | Saint Philip |
+| AG-10 | 巴布達島 | zh-hant | Barbuda |
+| AG-11 | 雷東達島 | zh-hant | Redonda |
+| AL-01 | 培拉特州 | zh-hant | Berat County |
+| AL-02 | 杜勒斯州 | zh-hant | Durrës County |
+| AL-03 | 愛爾巴桑州 | zh-hant | Elbasan County |
+| AL-04 | 費里州 | zh-hant | Fier County |
+| AL-05 | 吉諾卡斯特州 | zh-hant | Gjirokastër County |
+| AL-06 | 科爾察州 | zh-hant | Korçë County |
+| AL-07 | 庫克斯州 | zh-hant | Kukës County |
+| AL-08 | 萊什州 | zh-hant | Lezhë County |
+| AL-09 | 第巴爾州 | zh-hant | Dibër County |
+| AL-10 | 斯庫臺州 | zh-hant | Shkodër County |
+| AL-11 | 地拉那州 | zh-hant | Tirana County |
+| AL-12 | 發羅拉州 | zh-hant | Vlorë County |
+| AM-AR | 亞拉臘州 | zh-hant | Ararat |
+| AM-AV | 阿爾馬維爾州 | zh-hant | Armavir |
+| AM-ER | 葉里溫 | zh-hant | Yerevan |
+| AM-GR | 格加爾庫尼克州 | zh-hant | Gegharkunik |
+| AM-LO | 洛里州 | zh-hant | Lori |
+| AM-SH | 希拉克州 | zh-hant | Shirak |
+| AM-TV | 塔武什州 | zh-hant | Tavush |
+| AM-VD | 瓦約茨佐爾州 | zh-hant | Vayots Dzor |
+| AO-BGO | 本戈省 | zh-hant | Bengo |
+| AO-BGU | 本吉拉省 | zh-hant | Benguela |
+| AO-BIE | 比耶省 | zh-hant | Bié |
+| AO-CAB | 卡賓達省 | zh-hant | Cabinda |
+| AO-CCU | 庫安多古班哥省 | zh-hant | Cuando Cubango |
+| AO-CNN | 庫內納省 | zh-hant | Cunene |
+| AO-CNO | 北廣薩省 | zh-hant | Cuanza Norte |
+| AO-CUS | 南廣薩省 | zh-hant | Cuanza Sul |
+| AO-HUA | 萬博省 | zh-hant | Huambo |
+| AO-HUI | 威拉省 | zh-hant | Huíla |
+| AO-LNO | 北倫達省 | zh-hant | Lunda Norte |
+| AO-LSU | 南倫達省 | zh-hant | Lunda Sul |
+| AO-LUA | 羅安達省 | zh-hant | Luanda |
+| AO-MAL | 馬蘭哲省 | zh-hant | Malanje |
+| AO-NAM | 納米貝省 | zh-hant | Namibe |
+| AO-UIG | 威熱省 | zh-hant | Uíge |
+| AR-B | 布宜諾斯艾利斯省 | zh-hant | Buenos Aires Province |
+| AR-C | 布宜諾斯艾利斯 | zh-hant | Buenos Aires |
+| AR-D | 圣路易斯省 | zh-tw | San Luis |
+| AR-G | 聖地亞哥-德爾埃斯特羅省 | zh-hant | Santiago del Estero |
+| AR-J | 聖胡安省 | zh-hant | San Juan |
+| AR-M | 門多薩 | zh-hant | Mendoza |
+| AR-N | 米西奧內斯省 | zh-hant | Misiones |
+| AR-Q | 內烏肯省 | zh-hant | Neuquén |
+| AR-S | 聖菲省 | zh-hant | Santa Fe |
+| AR-T | 圖庫曼省 | zh-hant | Tucumán |
+| AR-X | 科爾多瓦省 | zh-hant | Córdoba |
+| AR-Y | 胡胡伊省 | zh-hant | Jujuy |
+| AR-Z | 冰川國家公園 | zh-hant | Santa Cruz |
+| AT-2 | 克恩頓州 | zh-hant | Carinthia |
+| AT-4 | 上奧地利邦 | zh-hant | Upper Austria |
+| AT-5 | 薩爾茲堡州 | zh-tw | Salzburg |
+| AT-6 | 施泰爾馬克州 | zh-hant | Styria |
+| AT-7 | 提洛邦 | zh-hant | Tyrol |
+| AT-8 | 福拉爾貝格邦 | zh-hant | Vorarlberg |
+| AT-9 | 維也納 | zh-hant | Vienna |
+| AU-ACT | 澳大利亞首都特區 | zh-hant | Australian Capital Territory |
+| AU-NSW | 新南威爾斯州 | zh-hant | New South Wales |
+| AU-NT | 北領地 | zh-hant | Northern Territory |
+| AU-QLD | 昆士蘭州 | zh-hant | Queensland |
+| AU-SA | 南澳州 | zh-hant | South Australia |
+| AU-TAS | 塔斯馬尼亞州 | zh-hant | Tasmania |
+| AU-VIC | 維多利亞省 | zh-hant | Victoria |
+| AU-WA | 西澳州 | zh-hant | Western Australia |
+| AZ-AGA | 阿克斯塔法區 | zh-hant | Agstafa |
+| AZ-AGC | 阿格賈貝迪區 | zh-hant | Aghjabadi |
+| AZ-AGM | 阿格達姆 | zh-hant | Agdam |
+| AZ-AGS | 阿格達什區 | zh-hant | Agdash |
+| AZ-AGU | 阿赫蘇區 | zh-hant | Agsu |
+| AZ-AST | 阿斯塔拉區 | zh-hant | Astara |
+| AZ-BA | 巴庫 | zh-hant | Baku |
+| AZ-BAB | 巴貝克區 | zh-hant | Babek |
+| AZ-BAL | 巴拉肯區 | zh-hant | Balakan |
+| AZ-BAR | 巴爾達區 | zh-hant | Barda |
+| AZ-BEY | 貝拉甘區 | zh-hant | Beylagan |
+| AZ-BIL | 比利亞蘇瓦爾區 | zh-hant | Bilasuvar |
+| AZ-CAB | 傑布拉伊爾區 | zh-hant | Jabrayil |
+| AZ-CUL | 朱利法區 | zh-hant | Julfa |
+| AZ-DAS | 達什卡桑區 | zh-hant | Dashkasan |
+| AZ-FUZ | 菲祖利區 | zh-hant | Fizuli |
+| AZ-GA | 占賈 | zh-hant | Ganja |
+| AZ-GAD | 凱達貝克區 | zh-hant | Gadabay |
+| AZ-GOR | 戈蘭博伊區 | zh-hant | Goranboy |
+| AZ-GOY | 蓋奧克恰伊區 | zh-hant | Goychay |
+| AZ-GYG | 漢拉爾區 | zh-hant | Goygol |
+| AZ-HAC | 卡齊穆罕默德區 | zh-hant | Hajigabul |
+| AZ-KAL | 克爾巴賈爾區 | zh-hant | Kalbajar |
+| AZ-KAN | 坎加利區 | zh-hant | Kangarli |
+| AZ-KUR | 丘爾達米爾區 | zh-hant | Kurdamir |
+| AZ-LA | 連科蘭 | zh-hant | Lankaran |
+| AZ-LAN | 連科蘭區 | zh-hant | Lankaran District |
+| AZ-LER | 列里克區 | zh-hant | Lerik |
+| AZ-MAS | 馬薩雷區 | zh-hant | Masally |
+| AZ-MI | 明蓋恰烏爾 | zh-hant | Mingachevir |
+| AZ-NEF | 涅夫捷恰拉區 | zh-hant | Neftchala |
+| AZ-NV | 納希契凡 | zh-hant | Nakhchivan |
+| AZ-NX | 納希契凡自治共和國 | zh-hant | Nakhchivan AR |
+| AZ-OGU | 奧古茲區 | zh-hant | Oghuz |
+| AZ-QAX | 卡希區 | zh-hant | Qakh |
+| AZ-QAZ | 哈薩克區 | zh-hant | Qazakh |
+| AZ-QBA | 庫巴區 | zh-hant | Quba |
+| AZ-QBI | 庫巴特雷區 | zh-hant | Qubadli |
+| AZ-QOB | 戈布斯坦區 | zh-hant | Gobustan |
+| AZ-QUS | 庫薩雷區 | zh-hant | Qusar |
+| AZ-SA | 舍基 | zh-hant | Shaki |
+| AZ-SAB | 薩比拉巴德區 | zh-hant | Sabirabad |
+| AZ-SAD | 薩達拉克區 | zh-hant | Sadarak |
+| AZ-SAK | 舍基區 | zh-hant | Shaki District |
+| AZ-SAL | 薩利揚區 | zh-hant | Salyan |
+| AZ-SIY | 錫阿贊區 | zh-hant | Siazan |
+| AZ-SKR | 沙姆基爾區 | zh-hant | Shamkir |
+| AZ-SM | 蘇姆蓋特 | zh-hant | Sumqayit |
+| AZ-SMI | 沙馬基區 | zh-hant | Shamakhi |
+| AZ-SMX | 薩穆赫區 | zh-hant | Samukh |
+| AZ-SR | 希爾萬 | zh-hant | Shirvan |
+| AZ-SUS | 舒沙區 | zh-hant | Shusha |
+| AZ-TAR | 泰爾泰爾區 | zh-hant | Tartar |
+| AZ-TOV | 塔烏茲區 | zh-hant | Tovuz |
+| AZ-UCA | 烏賈雷區 | zh-hant | Ujar |
+| AZ-XA | 漢肯德 | zh-hant | Stepanakert |
+| AZ-XAC | 哈奇馬斯區 | zh-hant | Khachmaz |
+| AZ-XCI | 霍賈雷區 | zh-hant | Khojali |
+| AZ-XIZ | 基茲區 | zh-hant | Khizi |
+| AZ-XVD | 霍賈文德區 | zh-hant | Khojavend |
+| AZ-YEV | 葉夫拉赫區 | zh-hant | Yevlakh District |
+| BA-BIH | 波士尼亞與赫塞哥維納聯邦 | zh-hant | Federation of Bosnia and Herzegovina |
+| BA-BRC | 布爾奇科特區 | zh-hant | Brčko District |
+| BA-SRP | 塞族共和國 | zh-hant | Republika Srpska |
+| BB-01 | 基督城教區 | zh-hant | Christ Church |
+| BB-02 | 聖安德魯區 | zh-hant | Saint Andrew |
+| BB-03 | 聖喬治教區 | zh-hant | Saint George |
+| BB-05 | 聖約翰教區 | zh-hant | Saint John |
+| BB-07 | 聖露西教區 | zh-hant | Saint Lucy |
+| BB-08 | 聖麥可教區 | zh-hant | Saint Michael |
+| BB-10 | 聖菲利普區 | zh-hant | Saint Philip |
+| BB-11 | 聖托馬斯區 | zh-hant | Saint Thomas |
+| BD-01 | 班多爾班縣 | zh-hant | Bandarban |
+| BD-02 | 博爾古納縣 | zh-hant | Barguna |
+| BD-03 | 博格拉縣 | zh-hant | Bogra |
+| BD-04 | 婆羅門巴里亞縣 | zh-hant | Brahmanbaria |
+| BD-05 | 巴蓋爾哈德縣 | zh-hant | Bagerhat |
+| BD-07 | 波拉縣 | zh-hant | Bhola |
+| BD-08 | 庫米拉縣 | zh-hant | Comilla |
+| BD-09 | 堅德布爾縣 | zh-hant | Chandpur |
+| BD-10 | 吉大港縣 | zh-hant | Chittagong |
+| BD-11 | 科克斯巴扎爾縣 | zh-hant | Cox’s Bazar |
+| BD-12 | 朱瓦當加縣 | zh-hant | Chuadanga |
+| BD-13 | 達卡縣 | zh-hant | Dhaka |
+| BD-14 | 迪納傑布爾縣 | zh-hant | Dinajpur |
+| BD-15 | 福里德布爾縣 | zh-hant | Faridpur |
+| BD-16 | 費尼縣 | zh-hant | Feni |
+| BD-18 | 加濟布爾縣 | zh-hant | Gazipur |
+| BD-19 | 戈伊班達縣 | zh-hant | Gaibandha |
+| BD-20 | 霍比甘傑縣 | zh-hant | Habiganj |
+| BD-21 | 傑馬勒布爾縣 | zh-hant | Jamalpur |
+| BD-22 | 傑索爾縣 | zh-hant | Jessore |
+| BD-24 | 焦伊布爾哈德縣 | zh-hant | Joypurhat |
+| BD-25 | 恰洛加蒂縣 | zh-hant | Jhalokati |
+| BD-26 | 吉紹爾甘傑縣 | zh-hant | Kishoreganj |
+| BD-27 | 庫爾納縣 | zh-hant | Khulna |
+| BD-28 | 古里格拉姆縣 | zh-hant | Kurigram |
+| BD-29 | 科格拉焦里縣 | zh-hant | Khagrachari |
+| BD-30 | 庫什蒂亞縣 | zh-tw | Kushtia |
+| BD-31 | 羅基布爾縣 | zh-hant | Lakshmipur |
+| BD-32 | 拉爾莫尼哈德縣 | zh-hant | Lalmonirhat |
+| BD-34 | 邁門辛縣 | zh-hant | Mymensingh |
+| BD-35 | 蒙希甘傑縣 | zh-hant | Munshiganj |
+| BD-37 | 馬古拉縣 | zh-hant | Magura |
+| BD-38 | 毛爾維巴扎爾縣 | zh-hant | Maulvi Bazar |
+| BD-39 | 梅黑爾布爾縣 | zh-hant | Meherpur |
+| BD-42 | 諾爾辛迪縣 | zh-hant | Narsingdi |
+| BD-43 | 諾拉爾縣 | zh-hant | Narail |
+| BD-44 | 諾多爾縣 | zh-hant | Natore |
+| BD-47 | 諾阿卡利縣 | zh-hant | Noakhali |
+| BD-48 | 瑙岡縣 | zh-hant | Naogaon |
+| BD-50 | 比羅傑布爾縣 | zh-hant | Pirojpur |
+| BD-51 | 博杜阿卡利縣 | zh-hant | Patuakhali |
+| BD-52 | 班喬戈爾縣 | zh-hant | Panchagarh |
+| BD-53 | 拉傑巴里縣 | zh-hant | Rajbari |
+| BD-54 | 拉傑沙希縣 | zh-hant | Rajshahi |
+| BD-55 | 朗布爾縣 | zh-hant | Rangpur |
+| BD-56 | 蘭加馬蒂縣 | zh-hant | Rangamati Hill |
+| BD-57 | 謝爾布爾縣 | zh-hant | Sherpur |
+| BD-58 | 薩德基拉縣 | zh-hant | Satkhira |
+| BD-59 | 錫拉傑甘傑縣 | zh-hant | Sirajganj |
+| BD-60 | 錫爾赫特縣 | zh-hant | Sylhet |
+| BD-61 | 蘇納姆甘傑縣 | zh-hant | Sunamganj |
+| BD-64 | 塔古爾岡縣 | zh-hant | Thakurgaon |
+| BD-A | 巴里薩爾專區 | zh-hant | Barisal Division |
+| BD-B | 吉大港專區 | zh-hant | Chittagong Division |
+| BD-C | 達卡專區 | zh-hant | Dhaka Division |
+| BD-D | 庫爾納專區 | zh-hant | Khulna Division |
+| BD-F | 朗布爾專區 | zh-hant | Rangpur Division |
+| BD-G | 錫爾赫特專區 | zh-hant | Sylhet Division |
+| BD-H | 邁門辛專區 | zh-hant | Mymensingh Division |
+| BE-BRU | 布魯塞爾首都大區 | zh-hant | Brussels |
+| BE-VAN | 安特衛普省 | zh-hant | Antwerp |
+| BE-VBR | 佛拉芒布拉邦省 | zh-hant | Flemish Brabant |
+| BE-VLG | 佛萊明大區 | zh-hant | Flanders |
+| BE-VOV | 東法蘭德斯省 | zh-hant | East Flanders |
+| BF-02 | 瀑布大區 | zh-hant | Cascades |
+| BF-05 | 中北大區 | zh-hant | Centre-Nord |
+| BF-06 | 中西大區 | zh-hant | Centre-Ouest |
+| BF-07 | 中南大區 | zh-hant | Centre-Sud |
+| BF-08 | 東部大區 | zh-hant | Est |
+| BF-09 | 上盆地大區 | zh-hant | Hauts-Bassins |
+| BF-10 | 北部大區 | zh-hant | Nord |
+| BF-11 | 高原-中部大區 | zh-hant | Plateau-Central |
+| BF-BAM | 巴姆省 | zh-hant | Bam |
+| BF-BAZ | 巴澤加省 | zh-hant | Bazèga |
+| BF-COM | 科莫埃省 | zh-hant | Comoé |
+| BF-GNA | 尼亞尼亞省 | zh-hant | Gnagna |
+| BF-HOU | 烏埃省 | zh-hant | Houet |
+| BF-IOB | 伊奧巴省 | zh-hant | Ioba |
+| BF-KAD | 卡焦戈省 | zh-hant | Kadiogo |
+| BF-KEN | 凱內杜古省 | zh-hant | Kénédougou |
+| BF-KMD | 科蒙加里省 | zh-hant | Komondjari |
+| BF-KMP | 孔皮恩加省 | zh-hant | Kompienga |
+| BF-KOS | 孔西省 | zh-hant | Kossi |
+| BF-KOT | 庫里滕加省 | zh-hant | Kouritenga |
+| BF-LOR | 羅盧姆省 | zh-hant | Loroum |
+| BF-MOU | 穆翁省 | zh-hant | Mouhoun |
+| BF-NAM | 納門滕加省 | zh-hant | Namentenga |
+| BF-NAO | 納烏里省 | zh-hant | Nahouri |
+| BF-NAY | 納亞拉省 | zh-hant | Nayala |
+| BF-OUB | 烏布里滕加省 | zh-hant | Oubritenga |
+| BF-PAS | 帕索雷省 | zh-hant | Passoré |
+| BF-SEN | 塞諾省 | zh-hant | Séno |
+| BF-SMT | 桑馬滕加省 | zh-hant | Sanmatenga |
+| BF-SNG | 桑吉省 | zh-hant | Sanguié |
+| BF-SOR | 蘇魯省 | zh-hant | Sourou |
+| BF-TAP | 塔波阿省 | zh-hant | Tapoa |
+| BF-YAG | 亞加省 | zh-hant | Yagha |
+| BF-YAT | 雅滕加省 | zh-hant | Yatenga |
+| BG-02 | 布爾加斯州 | zh-hant | Burgas |
+| BG-03 | 瓦爾納州 | zh-hant | Varna |
+| BG-08 | 多布里奇州 | zh-hant | Dobrich |
+| BG-16 | 普羅夫迪夫州 | zh-hant | Plovdiv |
+| BG-22 | 索菲亞市州 | zh-hant | Sofia |
+| BG-23 | 索菲亞州 | zh-hant | Sofia District |
+| BG-26 | 哈斯科沃州 | zh-hant | Haskovo |
+| BG-27 | 舒門州 | zh-hant | Shumen |
+| BH-14 | 南方省 | zh-hant | Southern |
+| BH-17 | 北方省 | zh-hant | Northern |
+| BI-BB | 布班扎省 | zh-hant | Bubanza |
+| BI-BL | 布松布拉鄉村省 | zh-hant | Bujumbura Rural |
+| BI-CA | 坎庫佐省 | zh-hant | Cankuzo |
+| BI-CI | 錫比托凱省 | zh-hant | Cibitoke |
+| BI-GI | 基特加省 | zh-hant | Gitega |
+| BI-KY | 卡揚扎省 | zh-hant | Kayanza |
+| BI-MA | 馬坎巴省 | zh-hant | Makamba |
+| BI-MW | 穆瓦洛省 | zh-hant | Mwaro |
+| BI-MY | 穆因加省 | zh-hant | Muyinga |
+| BI-NG | 恩戈齊省 | zh-hant | Ngozi |
+| BI-RT | 魯塔納省 | zh-hant | Rutana |
+| BI-RY | 魯伊吉省 | zh-hant | Ruyigi |
+| BJ-BO | 博爾古省 | zh-hant | Borgou |
+| BJ-LI | 濱海省 | zh-hant | Littoral |
+| BN-BM | 汶萊-摩拉縣 | zh-hant | Brunei-Muara |
+| BN-TU | 都東縣 | zh-hant | Tutong |
+| BO-B | 貝尼省 | zh-hant | Beni |
+| BO-C | 科恰班巴省 | zh-hant | Cochabamba |
+| BO-H | 丘基薩卡省 | zh-hant | Chuquisaca |
+| BO-L | 拉巴斯省 | zh-hant | La Paz |
+| BO-N | 潘多省 | zh-hant | Pando |
+| BO-P | 波托西省 | zh-hant | Potosí |
+| BO-S | 聖克魯斯省 | zh-hant | Santa Cruz |
+| BO-T | 塔里哈省 | zh-hant | Tarija |
+| BQ-BO | 波奈 | zh-hant | Bonaire |
+| BQ-SA | 薩巴 | zh-hant | Saba |
+| BR-AC | 阿克里州 | zh-hant | Acre |
+| BR-AL | 阿拉戈斯州 | zh-hant | Alagoas |
+| BR-AM | 亞馬遜州 (巴西) | zh-hant | Amazonas |
+| BR-AP | 阿馬帕州 | zh-hant | Amapá |
+| BR-BA | 巴伊亞州 | zh-hant | Bahia |
+| BR-CE | 塞阿拉州 | zh-hant | Ceará |
+| BR-DF | 聯邦區 | zh-hant | Federal District |
+| BR-ES | 聖埃斯皮里圖州 | zh-hant | Espírito Santo |
+| BR-GO | 戈亞斯州 | zh-hant | Goiás |
+| BR-MA | 馬拉尼昂州 | zh-hant | Maranhão |
+| BR-MG | 米納斯吉拉斯州 | zh-hant | Minas Gerais |
+| BR-MS | 南馬托格羅索州 | zh-hant | Mato Grosso do Sul |
+| BR-MT | 馬托格羅索州 | zh-hant | Mato Grosso |
+| BR-PA | 帕拉州 | zh-hant | Pará |
+| BR-PB | 帕拉伊巴州 | zh-hant | Paraíba |
+| BR-PE | 伯南布科州 | zh-hant | Pernambuco |
+| BR-PI | 皮奧伊州 | zh-hant | Piauí |
+| BR-PR | 巴拉那州 | zh-hant | Paraná |
+| BR-RJ | 里約熱內盧州 | zh-hant | Rio de Janeiro |
+| BR-RN | 北里約格朗德州 | zh-hant | Rio Grande do Norte |
+| BR-RO | 朗多尼亞州 | zh-hant | Rondônia |
+| BR-RR | 羅賴馬州 | zh-hant | Roraima |
+| BR-RS | 南大河州 | zh-hant | Rio Grande do Sul |
+| BR-SC | 聖塔卡塔林那 | zh-hant | Santa Catarina |
+| BR-SE | 塞爾希培州 | zh-hant | Sergipe |
+| BR-SP | 聖保羅州 | zh-hant | São Paulo |
+| BR-TO | 托坎廷斯 | zh-hant | Tocantins |
+| BS-BI | 比米尼島 | zh-hant | Bimini |
+| BS-BY | Berry羣島 | zh-hant | Berry Islands |
+| BS-CK | 克魯克德島 | zh-hant | Crooked Island |
+| BS-EX | 大埃克蘇馬島 | zh-hant | Exuma |
+| BS-FP | 弗里波特 | zh-hant | Freeport |
+| BS-HI | 哈勃島 | zh-hant | Harbour Island |
+| BS-IN | 那瓜島 | zh-hant | Inagua |
+| BS-LI | 長島 | zh-hant | Long Island |
+| BS-NP | 新普羅維登斯島 | zh-hant | New Providence |
+| BS-NS | 北安德羅斯島 | zh-hant | North Andros |
+| BS-SS | 聖薩爾瓦多島 | zh-hant | San Salvador |
+| BT-11 | 帕羅宗 | zh-hant | Paro |
+| BT-12 | 楚卡宗 | zh-hant | Chukha |
+| BT-13 | 哈阿宗 | zh-hant | Haa |
+| BT-14 | 薩姆奇宗 | zh-hant | Samtse |
+| BT-21 | 奇朗宗 | zh-hant | Tsirang |
+| BT-22 | 達加納宗 | zh-hant | Dagana |
+| BT-24 | 旺杜波德朗宗 | zh-hant | Wangdue Phodrang |
+| BT-31 | 蓋萊普宗 | zh-hant | Sarpang |
+| BT-32 | 通薩宗 | zh-hant | Trongsa |
+| BT-33 | 布姆唐宗 | zh-hant | Bumthang |
+| BT-41 | 塔希岡宗 | zh-hant | Trashigang |
+| BT-45 | 薩姆德魯瓊卡爾宗 | zh-hant | Samdrup Jongkhar |
+| BW-GA | 嘉柏隆里 | zh-hant | Gaborone |
+| BY-HM | 明斯克 | zh-hant | Minsk |
+| BY-HO | 戈梅利州 | zh-hant | Homel |
+| BY-HR | 格羅德諾州 | zh-hant | Hrodna |
+| BY-MA | 莫吉廖夫州 | zh-hant | Magileu |
+| BY-MI | 明斯克州 | zh-hant | Minsk Region |
+| BY-VI | 維捷布斯克州 | zh-hant | Vitebsk |
+| BZ-BZ | 伯利茲區 | zh-hant | Belize |
+| BZ-CY | 卡約區 | zh-hant | Cayo |
+| BZ-CZL | 科羅薩爾區 | zh-hant | Corozal |
+| BZ-OW | 橘園區 | zh-hant | Orange Walk |
+| BZ-SC | 斯坦克里克區 | zh-hant | Stann Creek |
+| BZ-TOL | 托萊多區 | zh-hant | Toledo |
+| CA-AB | 亞伯達省 | zh-hant | Alberta |
+| CA-BC | 不列顛哥倫比亞省 | zh-hant | British Columbia |
+| CA-MB | 曼尼托巴省 | zh-hant | Manitoba |
+| CA-NB | 新不倫瑞克 | zh-hant | New Brunswick |
+| CA-NL | 紐芬蘭-拉布拉多省 | zh-hant | Newfoundland and Labrador |
+| CA-NS | 新斯科舍省 | zh-hant | Nova Scotia |
+| CA-NT | 西北地區 | zh-hant | Northwest Territories |
+| CA-NU | 努納武特 | zh-hant | Nunavut |
+| CA-ON | 安大略省 | zh-hant | Ontario |
+| CA-PE | 愛德華王子島省 | zh-hant | Prince Edward Island |
+| CA-QC | 魁北克省 | zh-hant | Quebec |
+| CA-SK | 薩斯喀徹溫省 | zh-hant | Saskatchewan |
+| CA-YT | 育空 | zh-hant | Yukon |
+| CD-BC | 中剛果省 | zh-hant | Bas-Congo |
+| CD-HK | 上加丹加省 | zh-hant | Haut-Katanga |
+| CD-HU | 上韋萊省 | zh-hant | Haut-Uélé |
+| CD-KC | 盧盧阿省 | zh-hant | Kasaï Central |
+| CD-KE | 東開賽省 | zh-hant | Kasaï-Oriental |
+| CD-KN | 金夏沙 | zh-hant | Kinshasa |
+| CD-LO | 洛馬米省 | zh-hant | Lomami |
+| CD-MA | 馬涅馬省 | zh-hant | Maniema |
+| CD-MO | 蒙加拉省 | zh-hant | Mongala |
+| CD-NK | 北基伍省 | zh-hant | North Kivu |
+| CD-NU | 北烏班吉省 | zh-hant | Nord-Ubangi |
+| CD-SA | 桑庫魯省 | zh-hant | Sankuru |
+| CD-SK | 南基伍省 | zh-hant | South Kivu |
+| CD-SU | 南烏班吉省 | zh-hant | Sud-Ubangi |
+| CD-TA | 坦噶尼喀省 | zh-hant | Tanganyika |
+| CF-BB | 巴明吉-班戈蘭省 | zh-hant | Bamingui-Bangoran |
+| CF-BGF | 班基 | zh-hant | Bangui |
+| CF-HK | 上科托省 | zh-hant | Haute-Kotto |
+| CF-HM | 上姆博穆省 | zh-hant | Haut-Mbomou |
+| CF-HS | 曼貝雷-卡代省 | zh-hant | Mambéré-Kadéï |
+| CF-KB | 納納-格雷比濟省 | zh-hant | Nana-Grébizi |
+| CF-KG | 凱莫省 | zh-hant | Kémo |
+| CF-LB | 洛巴耶省 | zh-hant | Lobaye |
+| CF-MB | 姆博穆省 | zh-hant | Mbomou |
+| CF-OP | 瓦姆-彭代省 | zh-hant | Ouham-Pendé |
+| CF-SE | 桑加-姆巴埃雷省 | zh-hant | Sangha-Mbaéré |
+| CF-UK | 瓦卡省 | zh-hant | Ouaka |
+| CF-VK | 瓦卡加省 | zh-hant | Vakaga |
+| CG-11 | 布恩扎省 | zh-hant | Bouenza |
+| CG-12 | 普爾省 | zh-hant | Pool |
+| CG-2 | 萊庫穆省 | zh-hant | Lékoumou |
+| CG-5 | 奎盧省 | zh-hant | Kouilou |
+| CG-7 | 利夸拉省 | zh-hant | Likouala |
+| CH-BE | 伯恩州 | zh-hant | Bern |
+| CH-BS | 巴塞爾城市州 | zh-hant | Basel-Stadt |
+| CH-FR | 夫里堡 | zh-hant | Fribourg |
+| CH-GR | 格勞賓登州 | zh-hant | Graubünden |
+| CH-LU | 盧塞恩州 | zh-hant | Lucerne |
+| CH-NE | 納沙泰爾州 | zh-hant | Neuchâtel |
+| CH-SZ | 施維茨州 | zh-hant | Schwyz |
+| CH-TI | 提契諾州 | zh-hant | Ticino |
+| CH-UR | 烏里州 | zh-hant | Uri |
+| CH-VD | 沃州 | zh-hant | Vaud |
+| CH-VS | 瓦萊州 | zh-hant | Valais |
+| CH-ZH | 蘇黎世州 | zh-hant | Zürich |
+| CI-SM | 薩桑德拉-馬拉韋區 | zh-hant | Sassandra-Marahoué |
+| CI-SV | 薩瓦內區 | zh-hant | Savanes |
+| CI-VB | 邦達馬河谷區 | zh-hant | Vallée du Bandama |
+| CI-WR | 沃羅巴區 | zh-hant | Woroba |
+| CI-YM | 雅穆索戈 | zh-tw | Yamoussoukro |
+| CL-AN | 安托法加斯塔大區 | zh-hant | Antofagasta |
+| CL-CO | 科金博大區 | zh-hant | Coquimbo |
+| CL-NB | 紐夫萊大區 | zh-hant | Ñuble |
+| CL-VS | 瓦爾帕萊索大區 | zh-hant | Valparaíso |
+| CM-CE | 中部區 | zh-hant | Centre |
+| CM-EN | 極北區 | zh-hant | Far North |
+| CM-ES | 東部區 | zh-hant | East |
+| CM-LT | 濱海區 | zh-hant | Littoral |
+| CM-NO | 北部區 | zh-hant | North |
+| CM-NW | 西北區 | zh-hant | Northwest |
+| CM-OU | 西部區 | zh-hant | West |
+| CM-SU | 南部區 | zh-hant | South |
+| CN-AH | 安徽省 | zh-hant | Anhui |
+| CN-CQ | 重慶市 | zh-hant | Chongqing |
+| CN-FJ | 福建省 | zh-hant | Fujian |
+| CN-GD | 廣東省 | zh-hant | Guangdong |
+| CN-GS | 甘肅省 | zh-hant | Gansu |
+| CN-GX | 廣西壯族自治區 | zh-hant | Guangxi |
+| CN-GZ | 貴州省 | zh-hant | Guizhou |
+| CN-HA | 河南省 | zh-hant | Henan |
+| CN-HB | 湖北省 | zh-hant | Hubei |
+| CN-HE | 河北省 | zh-hant | Hebei |
+| CN-HI | 海南省 | zh-hant | Hainan |
+| CN-HK | 香港 | zh-hant | Hong Kong |
+| CN-HL | 黑龍江省 | zh-hant | Heilongjiang |
+| CN-HN | 湖南省 | zh-hant | Hunan |
+| CN-JL | 吉林省 | zh-hant | Jilin |
+| CN-JS | 江蘇省 | zh-hant | Jiangsu |
+| CN-JX | 江西省 | zh-hant | Jiangxi |
+| CN-LN | 遼寧省 | zh-hant | Liaoning |
+| CN-MO | 澳門 | zh-hant | Macau |
+| CN-NM | 內蒙古自治區 | zh-hant | Inner Mongolia |
+| CN-NX | 寧夏回族自治區 | zh-hant | Ningxia |
+| CN-QH | 青海省 | zh-hant | Qinghai |
+| CN-SC | 四川省 | zh-hant | Sichuan |
+| CN-SD | 山東省 | zh-hant | Shandong |
+| CN-SH | 上海市 | zh-hant | Shanghai |
+| CN-SN | 陝西省 | zh-hant | Shaanxi |
+| CN-SX | 山西省 | zh-hant | Shanxi |
+| CN-TJ | 天津市 | zh-hant | Tianjin |
+| CN-TW | 臺灣省 | zh-hant | Taiwan |
+| CN-XJ | 新疆維吾爾自治區 | zh-hant | Xinjiang |
+| CN-XZ | 西藏自治區 | zh-hant | Tibet |
+| CN-YN | 雲南省 | zh-hant | Yunnan |
+| CN-ZJ | 浙江省 | zh-hant | Zhejiang |
+| CO-ANT | 安蒂奧基亞省 | zh-hant | Antioquia |
+| CO-ARA | 阿勞卡省 | zh-hant | Arauca |
+| CO-ATL | 大西洋省 | zh-hant | Atlántico |
+| CO-BOL | 玻利瓦省 | zh-hant | Bolívar |
+| CO-BOY | 博亞卡省 | zh-hant | Boyacá |
+| CO-CAL | 卡爾達斯省 | zh-hant | Caldas |
+| CO-CAU | 考卡省 | zh-hant | Cauca |
+| CO-CES | 塞薩爾省 | zh-hant | Cesar |
+| CO-CHO | 喬科省 | zh-hant | Chocó |
+| CO-COR | 哥多華 | zh-hant | Córdoba |
+| CO-CUN | 昆迪納馬卡省 | zh-hant | Cundinamarca |
+| CO-DC | 波哥大 | zh-hant | Bogotá |
+| CO-GUA | 瓜伊尼亞省 | zh-hant | Guainía |
+| CO-GUV | 瓜維亞雷省 | zh-hant | Guaviare |
+| CO-HUI | 烏伊拉省 | zh-hant | Huila |
+| CO-LAG | 瓜希拉省 | zh-hant | La Guajira |
+| CO-MAG | 馬格達萊納省 | zh-hant | Magdalena |
+| CO-MET | 梅塔省 | zh-hant | Meta |
+| CO-NAR | 納里尼奧省 | zh-hant | Nariño |
+| CO-NSA | 北桑坦德省 | zh-hant | Norte de Santander |
+| CO-PUT | 普圖馬約省 | zh-hant | Putumayo |
+| CO-SAN | 桑坦德省 | zh-hant | Santander |
+| CO-SUC | 蘇克雷省 | zh-hant | Sucre |
+| CO-TOL | 托利馬省 | zh-hant | Tolima |
+| CO-VAU | 沃佩斯省 | zh-hant | Vaupés |
+| CO-VID | 比查達省 | zh-hant | Vichada |
+| CR-A | 阿拉胡埃拉省 | zh-hant | Alajuela |
+| CR-C | 卡塔戈省 | zh-hant | Cartago |
+| CR-G | 瓜納卡斯特省 | zh-hant | Guanacaste |
+| CR-H | 埃雷迪亞省 | zh-hant | Heredia |
+| CR-L | 利蒙省 | zh-hant | Limón |
+| CR-P | 蓬塔雷納斯省 | zh-hant | Puntarenas |
+| CR-SJ | 聖何塞省 | zh-hant | San José |
+| CU-01 | 比那爾德里奧省 | zh-hant | Pinar del Río |
+| CU-03 | 哈瓦那省 | zh-hant | Havana |
+| CU-04 | 馬坦薩斯省 | zh-hant | Matanzas |
+| CU-05 | 比亞克拉拉省 | zh-hant | Villa Clara |
+| CU-06 | 西恩富戈斯省 | zh-hant | Cienfuegos |
+| CU-07 | 聖斯皮里圖斯省 | zh-hant | Sancti Spíritus |
+| CU-08 | 謝戈德阿維拉省 | zh-hant | Ciego de Ávila |
+| CU-09 | 卡馬圭省 | zh-hant | Camagüey |
+| CU-10 | 拉斯圖納斯省 | zh-hant | Las Tunas |
+| CU-11 | 奧爾金省 | zh-hant | Holguín |
+| CU-12 | 格拉瑪省 | zh-hant | Granma |
+| CU-13 | 聖地亞哥省 | zh-hant | Santiago de Cuba |
+| CU-14 | 關塔那摩省 | zh-hant | Guantánamo |
+| CU-15 | 阿特米薩省 | zh-hant | Artemisa |
+| CU-99 | 青年島 | zh-hant | Isla de la Juventud |
+| CV-B | 向風群島 | zh-hant | Barlavento Islands |
+| CV-BR | 布拉瓦 | zh-hant | Brava |
+| CV-BV | 博阿維斯塔 | zh-hant | Boa Vista |
+| CV-CA | 聖卡塔琳娜 | zh-hant | Santa Catarina |
+| CV-CF | 福古島聖卡塔琳娜 | zh-hant | Santa Catarina do Fogo |
+| CV-CR | 聖克魯什 | zh-hant | Santa Cruz |
+| CV-MA | 馬尤 | zh-hant | Maio |
+| CV-PA | 保羅 | zh-hant | Paul |
+| CV-PN | 波多諾伏 | zh-hant | Porto Novo |
+| CV-PR | 普拉亞 | zh-hant | Praia |
+| CV-RG | 大里貝拉 | zh-hant | Ribeira Grande |
+| CV-RS | 聖地亞哥島大里貝拉 | zh-hant | Ribeira Grande de Santiago |
+| CV-S | 背風群島 | zh-hant | Sotavento Islands |
+| CV-SD | 聖多明戈斯 | zh-hant | São Domingos |
+| CV-SL | 薩爾 | zh-hant | Sal |
+| CV-SM | 聖米格爾 | zh-hant | São Miguel |
+| CV-SO | 聖洛倫索-杜什奧爾岡什 | zh-hant | São Lourenço dos Órgãos |
+| CV-SS | 聖薩爾瓦多-杜蒙杜 | zh-hant | São Salvador do Mundo |
+| CV-TA | 塔拉法爾 | zh-hant | Tarrafal |
+| CV-TS | 聖尼古勞島塔拉法爾 | zh-hant | Tarrafal de São Nicolau |
+| CZ-10 | 布拉格 | zh-hant | Prague, Hlavní mešto |
+| CZ-20 | 中捷克州 | zh-hant | Středočeský |
+| CZ-201 | 貝內紹夫縣 | zh-hant | Benešov |
+| CZ-202 | 貝龍縣 | zh-hant | Beroun |
+| CZ-203 | 克拉德諾區 | zh-hant | Kladno |
+| CZ-205 | 庫特納霍拉縣 | zh-hant | Kutná Hora |
+| CZ-206 | 梅爾尼克縣 | zh-hant | Mělník |
+| CZ-207 | 姆拉達-博萊斯拉夫縣 | zh-hant | Mladá Boleslav |
+| CZ-208 | 寧布爾克縣 | zh-hant | Nymburk |
+| CZ-209 | 東布拉格縣 | zh-hant | Prague-East |
+| CZ-20A | 西布拉格縣 | zh-hant | Prague-West |
+| CZ-20B | 普日布拉姆縣 | zh-hant | Příbram |
+| CZ-20C | 拉科夫尼克縣 | zh-hant | Rakovník |
+| CZ-31 | 南捷克州 | zh-hant | Jihočeský |
+| CZ-311 | 捷克布傑約維采縣 | zh-hant | České Budějovice |
+| CZ-314 | 皮塞克縣 | zh-hant | Písek |
+| CZ-315 | 普拉哈季采縣 | zh-hant | Prachatice |
+| CZ-316 | 斯特拉科尼采縣 | zh-hant | Strakonice |
+| CZ-317 | 塔博爾縣 | zh-hant | Tábor |
+| CZ-321 | 多馬日利采縣 | zh-hant | Domažlice |
+| CZ-322 | 克拉托維縣 | zh-hant | Klatovy |
+| CZ-325 | 北比爾森縣 | zh-hant | Plzeň-North |
+| CZ-326 | 羅基察尼縣 | zh-hant | Rokycany |
+| CZ-327 | 塔霍夫縣 | zh-hant | Tachov |
+| CZ-41 | 卡羅維發利州 | zh-hant | Karlovarský |
+| CZ-411 | 海布縣 | zh-hant | Cheb |
+| CZ-412 | 卡羅維發利縣 | zh-hant | Karlovy Vary |
+| CZ-413 | 索科洛夫縣 | zh-hant | Sokolov |
+| CZ-42 | 烏斯季州 | zh-hant | Ústecký |
+| CZ-421 | 傑欽縣 | zh-hant | Děčín |
+| CZ-422 | 霍穆托夫縣 | zh-hant | Chomutov |
+| CZ-423 | 利托梅日采縣 | zh-hant | Litoměřice |
+| CZ-424 | 洛烏尼縣 | zh-hant | Louny |
+| CZ-425 | 莫斯特縣 | zh-hant | Most |
+| CZ-426 | 特普利采縣 | zh-hant | Teplice |
+| CZ-427 | 拉貝河畔烏斯季縣 | zh-hant | Ústí nad Labem |
+| CZ-51 | 利貝雷茨州 | zh-hant | Liberecký |
+| CZ-512 | 尼斯河畔亞布洛內茨縣 | zh-hant | Jablonec nad Nisou |
+| CZ-513 | 利貝雷茨縣 | zh-hant | Liberec |
+| CZ-514 | 塞米利縣 | zh-hant | Semily |
+| CZ-52 | 赫拉德茨-克拉洛韋州 | zh-hant | Královéhradecký |
+| CZ-521 | 赫拉德茨克拉洛韋縣 | zh-hant | Hradec Králové |
+| CZ-522 | 伊欽縣 | zh-hant | Jičín |
+| CZ-523 | 納霍德縣 | zh-hant | Náchod |
+| CZ-525 | 特魯特諾夫縣 | zh-hant | Trutnov |
+| CZ-53 | 帕爾杜比采州 | zh-hant | Pardubický |
+| CZ-531 | 赫魯迪姆縣 | zh-hant | Chrudim |
+| CZ-532 | 帕爾杜比采縣 | zh-hant | Pardubice |
+| CZ-533 | 斯維塔維縣 | zh-hant | Svitavy |
+| CZ-63 | 維索奇納州 | zh-hant | Vysočina |
+| CZ-631 | 哈夫利奇庫夫布羅德縣 | zh-hant | Havlíčkův Brod |
+| CZ-632 | 伊赫拉瓦縣 | zh-hant | Jihlava |
+| CZ-633 | 佩爾赫日莫夫縣 | zh-hant | Pelhřimov |
+| CZ-634 | 特熱比奇縣 | zh-hant | Třebíč |
+| CZ-635 | 薩扎瓦河畔日賈爾縣 | zh-hant | Žďár nad Sázavou |
+| CZ-64 | 南摩拉維亞州 | zh-hant | Jihomoravský |
+| CZ-641 | 布蘭斯科縣 | zh-hant | Blansko |
+| CZ-643 | 布爾諾郊縣 | zh-hant | Brno-venkov |
+| CZ-644 | 布熱茨拉夫縣 | zh-hant | Břeclav |
+| CZ-645 | 霍多寧縣 | zh-hant | Hodonín |
+| CZ-646 | 維什科夫縣 | zh-hant | Vyškov |
+| CZ-647 | 茲諾伊莫縣 | zh-hant | Znojmo |
+| CZ-71 | 奧洛穆茨州 | zh-hant | Olomoucký |
+| CZ-711 | 耶塞尼克縣 | zh-hant | Jeseník |
+| CZ-712 | 奧洛穆茨縣 | zh-hant | Olomouc |
+| CZ-713 | 普羅斯捷約夫縣 | zh-hant | Prostějov |
+| CZ-714 | 普熱羅夫縣 | zh-hant | Přerov |
+| CZ-715 | 順佩爾克縣 | zh-hant | Šumperk |
+| CZ-72 | 茲林州 | zh-hant | Zlínský |
+| CZ-721 | 克羅梅日什縣 | zh-hant | Kroměříž |
+| CZ-80 | 摩拉維亞-西里西亞州 | zh-hant | Moravskoslezský |
+| CZ-801 | 布倫塔爾縣 | zh-hant | Bruntál |
+| CZ-803 | 卡爾維納縣 | zh-hant | Karviná |
+| CZ-805 | 奧帕瓦縣 | zh-hant | Opava |
+| DE-BB | 勃蘭登堡州 | zh-hant | Brandenburg |
+| DE-BE | 柏林 | zh-hant | Berlin |
+| DE-BW | 巴登-符腾堡州 | zh-hant | Baden-Württemberg |
+| DE-BY | 巴伐利亞州 | zh-hant | Bavaria |
+| DE-HB | 不來梅州 | zh-hant | Bremen |
+| DE-HE | 黑森州 | zh-hant | Hesse |
+| DE-HH | 漢堡 | zh-hant | Hamburg |
+| DE-MV | 梅克倫堡－前波美拉尼亞 | zh-hant | Mecklenburg-Vorpommern |
+| DE-NI | 下薩克森州 | zh-hant | Lower Saxony |
+| DE-NW | 北萊茵-威斯特法連邦 | zh-hant | North Rhine-Westphalia |
+| DE-RP | 萊因蘭-法爾茲 | zh-hant | Rhineland-Palatinate |
+| DE-SH | 什列斯威-霍爾斯坦 | zh-hant | Schleswig-Holstein |
+| DE-SL | 薩爾蘭州 | zh-hant | Saarland |
+| DE-SN | 薩克森州 | zh-hant | Saxony |
+| DE-ST | 薩克森-安哈爾特州 | zh-hant | Saxony-Anhalt |
+| DE-TH | 圖林根州 | zh-hant | Thuringia |
+| DJ-AS | 阿里薩比州 | zh-hant | Ali Sabieh |
+| DJ-DJ | 吉布地 | zh-tw | Djibouti |
+| DJ-OB | 奧博克州 | zh-hant | Obock |
+| DJ-TA | 塔朱拉州 | zh-hant | Tadjourah |
+| DK-82 | 中日德蘭大區 | zh-hant | Central Denmark |
+| DK-83 | 南丹麥大區 | zh-hant | Southern Denmark |
+| DK-84 | 首都大區 | zh-hant | Capital Region |
+| DK-85 | 西蘭大區 | zh-hant | Zealand |
+| DM-02 | 聖安德魯區 | zh-tw | Saint Andrew |
+| DM-03 | 聖戴維堂區 | zh-hant | Saint David |
+| DM-05 | 聖約翰堂區 | zh-hant | Saint John |
+| DM-06 | 聖約瑟夫堂區 | zh-hant | Saint Joseph |
+| DM-07 | 聖盧克堂區 | zh-hant | Saint Luke |
+| DM-08 | 聖馬克堂區 | zh-hant | Saint Mark |
+| DM-09 | 聖帕特里克堂區 | zh-hant | Saint Patrick |
+| DM-11 | 聖彼得堂區 | zh-hant | Saint Peter |
+| DO-04 | 巴拉奧納省 | zh-hant | Barahona |
+| DO-05 | 達哈翁省 | zh-hant | Dajabón |
+| DO-07 | 艾利斯皮亞省 | zh-hant | Elías Piña |
+| DO-08 | 賽堡省 | zh-hant | El Seibo |
+| DO-10 | 獨立省 | zh-hant | Independencia |
+| DO-11 | 聖母省 | zh-hant | La Altagracia |
+| DO-12 | 羅馬納省 | zh-hant | La Romana |
+| DO-13 | 拉維加省 | zh-hant | La Vega |
+| DO-15 | 基度山省 | zh-hant | Monte Cristi |
+| DO-16 | 佩德納萊斯省 | zh-hant | Pedernales |
+| DO-17 | 佩拉維亞省 | zh-hant | Peravia |
+| DO-20 | 薩馬納省 | zh-hant | Samaná |
+| DO-21 | 聖克里斯多堡省 | zh-hant | San Cristóbal |
+| DO-22 | 聖胡安省 | zh-hant | San Juan |
+| DO-23 | 聖彼德省 | zh-hant | San Pedro de Macorís |
+| DO-25 | 聖地亞哥省 | zh-hant | Santiago |
+| DO-26 | 聖地亞哥·羅德里格斯省 | zh-hant | Santiago Rodríguez |
+| DO-27 | 巴爾韋德省 | zh-hant | Valverde |
+| DO-29 | 蒙特普拉塔省 | zh-hant | Monte Plata |
+| DO-31 | 聖荷西德奧科阿省 | zh-hant | San José de Ocoa |
+| DO-32 | 聖多明哥省 | zh-hant | Santo Domingo |
+| DZ-01 | 阿德拉爾省 | zh-hant | Adrar |
+| DZ-02 | 謝利夫省 | zh-hant | Chlef |
+| DZ-03 | 艾格瓦特省 | zh-hant | Laghouat |
+| DZ-04 | 烏姆布瓦吉省 | zh-hant | Oum El Bouaghi |
+| DZ-05 | 巴特納省 | zh-hant | Batna |
+| DZ-06 | 貝賈亞省 | zh-hant | Béjaïa |
+| DZ-07 | 比斯克拉省 | zh-hant | Biskra |
+| DZ-08 | 貝沙爾省 | zh-hant | Béchar |
+| DZ-09 | 卜利達省 | zh-hant | Blida |
+| DZ-10 | 布維拉省 | zh-hant | Bouira |
+| DZ-11 | 塔曼拉塞特省 | zh-hant | Tamanghasset |
+| DZ-12 | 泰貝薩省 | zh-hant | Tébessa |
+| DZ-13 | 特萊姆森省 | zh-hant | Tlemcen |
+| DZ-14 | 提亞雷特省 | zh-hant | Tiaret |
+| DZ-15 | 提濟烏祖省 | zh-hant | Tizi Ouzou |
+| DZ-16 | 阿爾及爾省 | zh-hant | Algiers |
+| DZ-17 | 傑勒法省 | zh-hant | Djelfa |
+| DZ-18 | 吉傑勒省 | zh-hant | Jijel |
+| DZ-19 | 塞提夫省 | zh-hant | Sétif |
+| DZ-20 | 賽伊達省 | zh-hant | Saïda |
+| DZ-21 | 斯基克達省 | zh-hant | Skikda |
+| DZ-22 | 西迪貝勒阿巴斯省 | zh-hant | Sidi Bel Abbès |
+| DZ-23 | 安納巴省 | zh-hant | Annaba |
+| DZ-24 | 蓋勒馬省 | zh-hant | Guelma |
+| DZ-25 | 君士坦丁省 | zh-hant | Constantine |
+| DZ-26 | 麥迪亞省 | zh-hant | Médéa |
+| DZ-27 | 穆斯塔加奈姆省 | zh-hant | Mostaganem |
+| DZ-28 | 姆西拉省 | zh-hant | M’Sila |
+| DZ-29 | 穆阿斯凱爾省 | zh-hant | Mascara |
+| DZ-30 | 瓦爾格拉省 | zh-hant | Ouargla |
+| DZ-31 | 奧蘭省 | zh-hant | Oran |
+| DZ-32 | 巴亞茲省 | zh-hant | El Bayadh |
+| DZ-33 | 伊利濟省 | zh-hant | Illizi |
+| DZ-34 | 布阿拉里季堡省 | zh-hant | Bordj Bou Arréridj |
+| DZ-35 | 布米爾達斯省 | zh-hant | Boumerdès |
+| DZ-36 | 塔里夫省 | zh-hant | El Tarf |
+| DZ-37 | 廷杜夫省 | zh-hant | Tindouf |
+| DZ-38 | 提塞姆西勒特省 | zh-hant | Tissemsilt |
+| DZ-39 | 瓦迪省 | zh-hant | El Oued |
+| DZ-40 | 漢舍萊省 | zh-hant | Khenchela |
+| DZ-41 | 蘇格艾赫拉斯省 | zh-hant | Souk Ahras |
+| DZ-42 | 提帕薩省 | zh-hant | Tipasa |
+| DZ-43 | 米拉省 | zh-hant | Mila |
+| DZ-44 | 艾因迪夫拉省 | zh-hant | Aïn Defla |
+| DZ-45 | 納馬省 | zh-hant | Naama |
+| DZ-46 | 艾因泰穆尚特省 | zh-hant | Aïn Témouchent |
+| DZ-48 | 埃利贊省 | zh-hant | Relizane |
+| DZ-49 | 提米蒙省 | zh-hant | Timimoun |
+| DZ-52 | 貝尼阿巴斯省 | zh-hant | Béni Abbès |
+| DZ-54 | 因蓋扎姆省 | zh-hant | In Guezzam |
+| EC-A | 阿蘇艾省 | zh-hant | Azuay |
+| EC-C | 卡爾奇省 | zh-hant | Carchi |
+| EC-D | 奧雷亞納省 | zh-hant | Orellana |
+| EC-E | 艾斯美拉達斯省 | zh-hant | Esmeraldas |
+| EC-F | 卡尼亞爾省 | zh-hant | Cañar |
+| EC-G | 瓜亞斯省 | zh-hant | Guayas |
+| EC-H | 欽博拉索省 | zh-hant | Chimborazo |
+| EC-I | 因巴布拉省 | zh-hant | Imbabura |
+| EC-L | 洛哈省 | zh-hant | Loja |
+| EC-M | 馬納比省 | zh-hant | Manabí |
+| EC-N | 納波省 | zh-hant | Napo |
+| EC-O | 埃爾奧羅省 | zh-hant | El Oro |
+| EC-P | 皮欽查省 | zh-hant | Pichincha |
+| EC-R | 洛斯里奧斯省 | zh-hant | Los Ríos |
+| EC-SD | 聖多明各-德洛斯查奇拉斯省 | zh-hant | Santo Domingo de los Tsáchilas |
+| EC-SE | 聖埃倫娜省 | zh-hant | Santa Elena |
+| EC-T | 通古拉瓦省 | zh-hant | Tungurahua |
+| EC-U | 蘇崑比奧斯省 | zh-hant | Sucumbíos |
+| EC-W | 加拉巴哥省 | zh-hant | Galápagos |
+| EC-X | 科托帕希省 | zh-hant | Cotopaxi |
+| EC-Y | 帕斯塔薩省 | zh-hant | Pastaza |
+| EC-Z | 薩莫拉-欽奇佩省 | zh-hant | Zamora-Chinchipe |
+| EE-321 | 科赫特拉-耶爾韋 | zh-hant | Kohtla-Järve |
+| EE-37 | 哈爾尤縣 | zh-hant | Harju |
+| EE-39 | 希烏縣 | zh-hant | Hiiu |
+| EE-45 | 東維魯縣 | zh-hant | Ida-Virumaa |
+| EE-50 | 約蓋瓦縣 | zh-hant | Jõgevamaa |
+| EE-52 | 耶爾瓦縣 | zh-hant | Järvamaa |
+| EE-56 | 萊內縣 | zh-hant | Läänemaa |
+| EE-60 | 西維魯縣 | zh-hant | Lääne-Virumaa |
+| EE-64 | 珀爾瓦縣 | zh-hant | Põlvamaa |
+| EE-68 | 派爾努縣 | zh-hant | Pärnumaa |
+| EE-71 | 拉普拉縣 | zh-hant | Raplamaa |
+| EE-735 | 錫拉邁埃 | zh-hant | Sillamäe |
+| EE-74 | 薩雷縣 | zh-hant | Saare |
+| EE-79 | 塔爾圖縣 | zh-hant | Tartumaa |
+| EE-81 | 瓦爾加縣 | zh-hant | Valgamaa |
+| EE-84 | 維爾揚迪縣 | zh-hant | Viljandi |
+| EE-87 | 沃魯縣 | zh-hant | Võrumaa |
+| EG-ALX | 亞歷山大省 | zh-hant | Alexandria |
+| EG-DK | 代蓋赫利耶省 | zh-hant | Dakahlia |
+| EG-FYM | 法尤姆省 | zh-hant | Faiyum |
+| EG-GZ | 吉薩省 | zh-hant | Giza |
+| EG-KFS | 謝赫村省 | zh-hant | Kafr el-Sheikh |
+| EG-LX | 盧克索省 | zh-hant | Luxor |
+| EG-MN | 明亞省 | zh-hant | Minya |
+| EG-MNF | 米努夫省 | zh-hant | Monufia |
+| EG-SHR | 東部省 | zh-hant | Al Sharqia |
+| EG-SUZ | 蘇伊士省 | zh-hant | Suez |
+| ER-GB | 加什-巴爾卡區 | zh-hant | Gash-Barka |
+| ES-A | 阿利坎特 | zh-hant | Alicante |
+| ES-AN | 安達盧西亞 | zh-hant | Andalusia |
+| ES-AR | 亞拉岡 | zh-hant | Aragon |
+| ES-AS | 阿斯圖里亞斯自治區 | zh-hant | Asturias |
+| ES-B | 巴塞隆納省 | zh-hant | Barcelona |
+| ES-BA | 巴達霍斯省 | zh-hant | Badajoz |
+| ES-BI | 比斯開省 | zh-hant | Biscay |
+| ES-C | 拉科魯尼亞省 | zh-hant | A Coruña |
+| ES-CB | 坎塔布里亞自治區 | zh-hant | Cantabria |
+| ES-CE | 休達 | zh-hant | Ceuta |
+| ES-CL | 卡斯蒂利亞-萊昂自治區 | zh-hant | Castile and León |
+| ES-CM | 卡斯提亞-拉曼查自治區 | zh-hant | Castile-La Mancha |
+| ES-CN | 加納利群島 | zh-hant | Canary Islands |
+| ES-CR | 雷阿爾城省 | zh-hant | Ciudad Real |
+| ES-EX | 埃斯特雷馬杜拉自治區 | zh-hant | Extremadura |
+| ES-GA | 加利西亞自治區 | zh-hant | Galicia |
+| ES-GC | 拉斯帕爾馬斯省 | zh-hant | Las Palmas |
+| ES-GU | 瓜達拉哈拉省 | zh-hant | Guadalajara |
+| ES-HU | 韋斯卡省 | zh-hant | Huesca |
+| ES-LE | 雷昂省 | zh-hant | León |
+| ES-LO | 拉里奧哈自治區 | zh-hant | La Rioja Province |
+| ES-MC | 穆爾西亞自治區 | zh-hant | Murcia Region |
+| ES-MD | 馬德里自治區 | zh-hant | Madrid Autonomous Community |
+| ES-ML | 麥里亞 | zh-hant | Melilla |
+| ES-OR | 奧倫塞省 | zh-hant | Ourense |
+| ES-RI | 拉里奧哈自治區 | zh-hant | La Rioja |
+| ES-SG | 塞哥維亞省 | zh-hant | Segovia |
+| ES-SS | 吉普斯誇省 | zh-hant | Gipuzkoa |
+| ES-TE | 特魯埃爾省 | zh-hant | Teruel |
+| ES-TF | 聖克魯斯-德特內里費省 | zh-hant | Santa Cruz de Tenerife |
+| ES-V | 瓦倫西亞省 | zh-hant | Valencia |
+| ES-ZA | 薩莫拉省 | zh-hant | Zamora |
+| ET-AA | 阿迪斯阿貝巴 | zh-hant | Addis Ababa |
+| ET-AF | 阿法爾州 | zh-hant | Afar |
+| ET-AM | 阿姆哈拉州 | zh-hant | Amhara |
+| ET-BE | 本尚古勒-古馬茲州 | zh-hant | Benishangul-Gumuz |
+| ET-DD | 德雷達瓦 | zh-hant | Dire Dawa |
+| ET-GA | 甘貝拉州 | zh-hant | Gambela |
+| ET-OR | 奧羅米亞州 | zh-hant | Oromia |
+| ET-SI | 錫達馬地區 | zh-hant | Sidama |
+| ET-SO | 索馬里州 | zh-hant | Somali |
+| ET-TI | 提格里州 | zh-hk | Tigray |
+| FI-01 | 奧蘭 | zh-hant | Åland Islands |
+| FI-08 | 中芬蘭區 | zh-hant | Central Finland |
+| FI-14 | 北波赫揚馬區 | zh-hant | Northern Ostrobothnia |
+| FI-16 | 派耶特海梅區 | zh-hant | Päijänne Tavastia |
+| FI-17 | 薩塔昆塔區 | zh-hant | Satakunta |
+| FI-19 | 芬蘭本部區 | zh-hant | Southwest Finland |
+| FJ-01 | 姆巴省 | zh-hant | Ba |
+| FJ-02 | 布阿省 | zh-hant | Bua |
+| FJ-04 | 坎達武省 | zh-hant | Kadavu |
+| FJ-07 | 馬蘇阿塔省 | zh-hant | Macuata |
+| FJ-08 | 楠德龍加-納沃薩省 | zh-hant | Nadroga-Navosa |
+| FJ-09 | 奈塔西里省 | zh-hant | Naitasiri |
+| FJ-10 | 納莫西省 | zh-hant | Namosi |
+| FJ-11 | 拉省 | zh-hant | Ra |
+| FJ-12 | 雷瓦省 | zh-hant | Rewa |
+| FJ-13 | 塞魯阿省 | zh-hant | Serua |
+| FJ-14 | 泰萊武省 | zh-hant | Tailevu |
+| FJ-N | 北部區 | zh-hant | Northern |
+| FJ-R | 羅圖馬島 | zh-hant | Rotuma |
+| FJ-W | 西部區 | zh-hant | Western |
+| FM-TRK | 丘克州 | zh-hant | Chuuk |
+| FR-01 | 安省 | zh-hant | Ain |
+| FR-02 | 埃納省 | zh-hant | Aisne |
+| FR-03 | 阿列省 | zh-hant | Allier |
+| FR-04 | 上普羅旺斯阿爾卑斯省 | zh-hant | Alpes-de-Haute-Provence |
+| FR-05 | 上阿爾卑斯省 | zh-hant | Hautes-Alpes |
+| FR-06 | 濱海阿爾卑斯省 | zh-hant | Alpes-Maritimes |
+| FR-07 | 阿爾代什省 | zh-hant | Ardèche |
+| FR-08 | 阿登省 | zh-hant | Ardennes |
+| FR-09 | 阿列日省 | zh-hant | Ariège |
+| FR-10 | 奧佈省 | zh-hant | Aube |
+| FR-11 | 奧德省 | zh-hant | Aude |
+| FR-12 | 阿韋龍省 | zh-hant | Aveyron |
+| FR-13 | 隆河河口省 | zh-hant | Bouches-du-Rhône |
+| FR-14 | 卡爾瓦多斯省 | zh-hant | Calvados |
+| FR-15 | 康塔爾省 | zh-hant | Cantal |
+| FR-16 | 夏朗德省 | zh-hant | Charente |
+| FR-17 | 濱海夏朗德省 | zh-hant | Charente-Maritime |
+| FR-18 | 謝爾省 | zh-hant | Cher |
+| FR-19 | 科雷茲省 | zh-hant | Corrèze |
+| FR-20R | 科西嘉 | zh-hant | Corse |
+| FR-21 | 科多爾省 | zh-hant | Côte-d’Or |
+| FR-22 | 阿摩爾濱海省 | zh-hant | Côtes-d’Armor |
+| FR-23 | 克勒茲省 | zh-hant | Creuse |
+| FR-24 | 多爾多涅省 | zh-hant | Dordogne |
+| FR-25 | 杜省 | zh-hant | Doubs |
+| FR-26 | 德龍省 | zh-hant | Drôme |
+| FR-27 | 厄爾省 | zh-hant | Eure |
+| FR-28 | 厄爾-盧瓦省 | zh-hant | Eure-et-Loir |
+| FR-29 | 菲尼斯泰爾省 | zh-hant | Finistère |
+| FR-2A | 南科西嘉省 | zh-hant | Corse-du-Sud |
+| FR-2B | 上科西嘉省 | zh-hant | Haute-Corse |
+| FR-30 | 加爾省 | zh-hant | Gard |
+| FR-31 | 上加龍省 | zh-hant | Haute-Garonne |
+| FR-32 | 熱爾省 | zh-hant | Gers |
+| FR-33 | 吉倫特省 | zh-hant | Gironde |
+| FR-34 | 埃羅省 | zh-hant | Hérault |
+| FR-35 | 伊勒-維連省 | zh-hant | Ille-et-Vilaine |
+| FR-36 | 安德爾省 | zh-hant | Indre |
+| FR-37 | 安德爾-羅亞爾省 | zh-hant | Indre-et-Loire |
+| FR-38 | 伊澤爾省 | zh-hant | Isère |
+| FR-39 | 侏羅省 | zh-hant | Jura |
+| FR-40 | 朗德省 | zh-hant | Landes |
+| FR-41 | 盧瓦-謝爾省 | zh-hant | Loir-et-Cher |
+| FR-42 | 盧瓦爾省 | zh-hant | Loire |
+| FR-43 | 上羅亞爾省 | zh-hant | Haute-Loire |
+| FR-44 | 大西洋盧瓦爾省 | zh-hant | Loire-Atlantique |
+| FR-45 | 盧瓦雷省 | zh-hant | Loiret |
+| FR-46 | 洛特省 | zh-hant | Lot |
+| FR-47 | 洛特-加龍省 | zh-hant | Lot-et-Garonne |
+| FR-48 | 洛澤爾省 | zh-hant | Lozère |
+| FR-49 | 曼恩-盧瓦爾省 | zh-hant | Maine-et-Loire |
+| FR-50 | 芒什省 | zh-hant | Manche |
+| FR-51 | 馬恩省 | zh-hant | Marne |
+| FR-52 | 上馬恩省 | zh-hant | Haute-Marne |
+| FR-53 | 馬耶訥省 | zh-hant | Mayenne |
+| FR-57 | 摩澤爾省 | zh-hant | Moselle |
+| FR-59 | 諾爾省 | zh-hant | Nord |
+| FR-60 | 瓦茲省 | zh-hant | Oise |
+| FR-62 | 加萊海峽 | zh-hant | Pas-de-Calais |
+| FR-63 | 多姆山省 | zh-hant | Puy-de-Dôme |
+| FR-64 | 大西洋比利牛斯省 | zh-hant | Pyrénées-Atlantiques |
+| FR-66 | 東比利牛斯省 | zh-hant | Pyrénées-Orientales |
+| FR-69 | 羅訥省 | zh-tw | Rhône |
+| FR-71 | 索恩-盧瓦爾省 | zh-hant | Saône-et-Loire |
+| FR-73 | 薩瓦省 | zh-hant | Savoie |
+| FR-74 | 上薩瓦省 | zh-hant | Haute-Savoie |
+| FR-75C | 巴黎 | zh-hant | Paris |
+| FR-76 | 濱海塞納省 | zh-hant | Seine-Maritime |
+| FR-77 | 塞納-馬恩省 | zh-hant | Seine-et-Marne |
+| FR-78 | 伊夫林 | zh-hant | Yvelines |
+| FR-79 | 德塞夫勒省 | zh-hant | Deux-Sèvres |
+| FR-81 | 塔恩省 | zh-hant | Tarn |
+| FR-83 | 瓦爾省 | zh-tw | Var |
+| FR-84 | 沃克呂茲省 | zh-hant | Vaucluse |
+| FR-85 | 旺代省 | zh-hant | Vendée |
+| FR-86 | 維埃納省 | zh-hant | Vienne |
+| FR-88 | 弗日省 | zh-tw | Vosges |
+| FR-93 | 塞納-聖但尼省 | zh-hant | Seine-Saint-Denis |
+| FR-94 | 馬恩河谷省 | zh-hant | Val-de-Marne |
+| FR-95 | 瓦茲河谷省 | zh-hant | Val-d’Oise |
+| FR-971 | 瓜德羅普 | zh-hant | Guadeloupe |
+| FR-972 | 馬丁尼克 | zh-hant | Martinique |
+| FR-973 | 法屬圭亞那 | zh-hant | Guyane (française) |
+| FR-974 | 留尼旺 | zh-hant | La Réunion |
+| FR-976 | 馬約特 | zh-tw | Mayotte |
+| FR-ARA | 奧弗涅-隆-阿爾卑斯大區 | zh-hant | Auvergne-Rhône-Alpes |
+| FR-BFC | 勃艮第-法蘭琪-康堤大區 | zh-hant | Burgundy-Franche-Comté |
+| FR-BL | 聖巴瑟米 | zh-hant | St. Barthélemy |
+| FR-BRE | 布列塔尼大區 | zh-hant | Brittany |
+| FR-CP | 克利珀頓島 | zh-hant | Clipperton Island |
+| FR-CVL | 中央-羅亞爾河谷大區 | zh-hant | Centre-Val de Loire |
+| FR-GES | 大東部大區 | zh-hant | Grand-Est |
+| FR-HDF | 上法蘭西大區 | zh-hant | Hauts-de-France |
+| FR-IDF | 法蘭西島大區 | zh-hant | Île-de-France |
+| FR-MF | 法屬聖馬丁 | zh-hant | St. Martin |
+| FR-NAQ | 新亞奎丹大區 | zh-hant | Nouvelle-Aquitaine |
+| FR-NC | 新喀里多尼亞 | zh-hant | New Caledonia |
+| FR-NOR | 諾曼第大區 | zh-hant | Normandie |
+| FR-OCC | 奧克西塔尼大區 | zh-hant | Occitanie |
+| FR-PAC | 普羅旺斯-阿爾卑斯-蔚藍海岸大區 | zh-hant | Provence-Alpes-Côte-d’Azur |
+| FR-PDL | 羅亞爾河地區大區 | zh-hant | Pays-de-la-Loire |
+| FR-PF | 法屬玻里尼西亞 | zh-hant | French Polynesia |
+| FR-PM | 聖皮埃與密克隆群島 | zh-hant | St. Pierre & Miquelon |
+| FR-TF | 法屬南部和南極領地 | zh-hant | French Southern Territories |
+| FR-WF | 瓦利斯和富圖納 | zh-hant | Wallis & Futuna |
+| GA-2 | 上奧果韋省 | zh-hant | Haut-Ogooué |
+| GA-4 | 恩古涅省 | zh-hant | Ngounié |
+| GA-5 | 尼揚加省 | zh-hant | Nyanga |
+| GA-6 | 奧果韋-伊溫多省 | zh-hant | Ogooué-Ivindo |
+| GA-7 | 奧果韋-洛洛省 | zh-hant | Ogooué-Lolo |
+| GA-8 | 濱海奧果韋省 | zh-hant | Ogooué-Maritime |
+| GA-9 | 沃勒-恩特姆省 | zh-hant | Woleu-Ntem |
+| GB-ABC | 亞馬 | zh-hant | Armagh, Banbridge and Craigavon |
+| GB-ABD | 亞伯丁郡 | zh-hant | Aberdeenshire |
+| GB-ABE | 亞伯丁 | zh-hant | Aberdeen |
+| GB-AGB | 阿蓋爾-比特 | zh-hant | Argyll and Bute |
+| GB-AGY | 安格爾西島 | zh-hant | Anglesey |
+| GB-AND | 阿德和北道恩 | zh-hant | Ards and North Down |
+| GB-ANN | 安特里姆與紐頓阿比區 | zh-hant | Antrim and Newtownabbey |
+| GB-ANS | 安格斯 | zh-hant | Angus |
+| GB-BAS | 巴斯和東北薩默塞特 | zh-hant | Bath and North East Somerset |
+| GB-BBD | 布萊克本-達文 | zh-hant | Blackburn with Darwen |
+| GB-BCP | 伯恩茅斯，基督城和普爾統一管理區 | zh-hant | Bournemouth, Christchurch and Poole |
+| GB-BDF | 貝德福德區 | zh-hant | Bedford |
+| GB-BDG | 巴金－達根罕區 | zh-hant | Barking and Dagenham |
+| GB-BEN | 布倫特倫敦自治市 | zh-hant | Brent |
+| GB-BEX | 貝克斯利倫敦自治市 | zh-hant | Bexley |
+| GB-BFS | 貝爾法斯特區 | zh-hant | Belfast |
+| GB-BGE | 布里真德郡級自治市 | zh-hant | Bridgend |
+| GB-BGW | 布萊奈格溫特 | zh-hant | Blaenau Gwent |
+| GB-BNE | 巴內特倫敦自治市 | zh-hant | Barnet |
+| GB-BNH | 布萊頓-霍夫 | zh-hant | Brighton and Hove |
+| GB-BNS | 巴恩斯利都市自治市 | zh-hant | Barnsley |
+| GB-BOL | 博爾頓都市自治市 | zh-hant | Bolton |
+| GB-BRC | 布拉克內爾森林 | zh-hant | Bracknell Forest |
+| GB-BRY | 布倫來倫敦自治市 | zh-hant | Bromley |
+| GB-BUR | 貝里都市自治市 | zh-hant | Bury |
+| GB-CAM | 劍橋郡 | zh-hant | Cambridgeshire |
+| GB-CAY | 卡菲利自治市 | zh-hant | Caerphilly |
+| GB-CBF | 中貝德福德郡 | zh-hant | Central Bedfordshire |
+| GB-CCG | 堤道濱谷 | zh-hant | Causeway Coast and Glens |
+| GB-CGN | 錫爾迪金 | zh-hant | Ceredigion |
+| GB-CHE | 車士打郡東 | zh-hant | Cheshire East |
+| GB-CHW | 車士打郡西與車士打 | zh-hant | Cheshire West and Chester |
+| GB-CLK | 克拉克曼南郡 | zh-hant | Clackmannanshire |
+| GB-CMA | 坎布里亞郡 | zh-hant | Cumbria |
+| GB-CMD | 康登倫敦自治市 | zh-hant | Camden |
+| GB-CMN | 卡馬森郡 | zh-hant | Carmarthenshire |
+| GB-CRY | 克羅伊登倫敦自治市 | zh-hant | Croydon |
+| GB-CWY | 康威郡級自治市 | zh-hant | Conwy |
+| GB-DAL | 達靈頓區 | zh-hant | Darlington |
+| GB-DBY | 德比郡 | zh-hant | Derbyshire |
+| GB-DEN | 登比郡 | zh-hant | Denbighshire |
+| GB-DEV | 德文郡 | zh-hant | Devon |
+| GB-DGY | 丹佛里斯-蓋洛威 | zh-hant | Dumfries and Galloway |
+| GB-DND | 丹地市 | zh-hant | Dundee |
+| GB-DUD | 達得利市 | zh-hant | Dudley |
+| GB-EAL | 伊令倫敦自治市 | zh-hant | Ealing |
+| GB-EAY | 東艾爾郡 | zh-hant | East Ayrshire |
+| GB-EDH | 愛丁堡 | zh-tw | Edinburgh |
+| GB-EDU | 東鄧巴頓郡 | zh-hant | East Dunbartonshire |
+| GB-ELN | 東洛錫安 | zh-hant | East Lothian |
+| GB-ELS | 錫爾島區 | zh-hant | Outer Hebrides |
+| GB-ENF | 恩菲爾德倫敦自治市 | zh-hant | Enfield |
+| GB-ERW | 東倫弗魯郡 | zh-hant | East Renfrewshire |
+| GB-ESX | 東薩塞克斯郡 | zh-hant | East Sussex |
+| GB-FAL | 福爾柯克 | zh-hant | Falkirk |
+| GB-FIF | 法夫 | zh-hant | Fife |
+| GB-FLN | 弗林特郡 | zh-hant | Flintshire |
+| GB-GLG | 格拉斯哥 | zh-tw | Glasgow |
+| GB-GLS | 格洛斯特郡 | zh-hant | Gloucestershire |
+| GB-GRE | 格林威治皇家自治市 | zh-tw | Greenwich |
+| GB-GWN | 圭內斯 | zh-hant | Gwynedd |
+| GB-HAL | 霍爾頓市 | zh-hant | Halton |
+| GB-HAM | 漢普郡 | zh-hant | Hampshire |
+| GB-HAV | 黑弗靈倫敦自治市 | zh-hant | Havering |
+| GB-HCK | 哈克尼倫敦自治市 | zh-hant | Hackney |
+| GB-HEF | 赫里福德郡 | zh-hant | Herefordshire |
+| GB-HIL | 希靈登倫敦自治市 | zh-hant | Hillingdon |
+| GB-HLD | 高地 | zh-hant | Highland |
+| GB-HMF | 漢墨斯密和富勒姆倫敦自治市鎮區 | zh-hant | Hammersmith and Fulham |
+| GB-HNS | 豪恩斯洛倫敦自治市 | zh-hant | Hounslow |
+| GB-HPL | 哈特爾浦 | zh-hant | Hartlepool |
+| GB-HRT | 赫特福德郡 | zh-hant | Hertfordshire |
+| GB-HRW | 哈洛倫敦自治市 | zh-hant | Harrow |
+| GB-HRY | 哈林蓋倫敦自治市 | zh-hant | Haringey |
+| GB-IOS | 錫利群島 | zh-hant | Isles of Scilly |
+| GB-IOW | 威特島 | zh-hant | Isle of Wight |
+| GB-ISL | 伊斯林頓倫敦自治市 | zh-hant | Islington |
+| GB-IVC | 因弗克萊德 | zh-hant | Inverclyde |
+| GB-KEC | 肯辛頓-切爾西區 | zh-hant | Kensington and Chelsea |
+| GB-KEN | 肯特郡 | zh-hant | Kent |
+| GB-KTT | 泰晤士河畔金斯頓皇家自治市鎮 | zh-hant | Kingston upon Thames |
+| GB-KWL | 納奧斯雷 | zh-hant | Knowsley |
+| GB-LAN | 蘭開夏郡 | zh-hk | Lancashire |
+| GB-LBH | 蘭貝斯區 | zh-hant | Lambeth |
+| GB-LDS | 利茲市 | zh-hant | Leeds |
+| GB-LEC | 萊斯特郡 | zh-hant | Leicestershire |
+| GB-LEW | 劉易舍姆區 | zh-hant | Lewisham |
+| GB-LIN | 林肯郡 | zh-hant | Lincolnshire |
+| GB-LND | 倫敦市 | zh-hant | London |
+| GB-MDW | 麥德威 | zh-hant | Medway |
+| GB-MEA | 中及東安特里姆郡 | zh-hant | Mid and East Antrim |
+| GB-MIK | 米爾頓凱恩斯 | zh-hant | Milton Keynes |
+| GB-MLN | 中洛錫安 | zh-hant | Midlothian |
+| GB-MON | 蒙茅斯郡 | zh-hant | Monmouthshire |
+| GB-MRT | 默頓區 | zh-hant | Merton |
+| GB-MRY | 馬里 | zh-hant | Moray |
+| GB-MTY | 梅瑟蒂德菲爾自治市 | zh-hant | Merthyr Tydfil |
+| GB-MUL | 中阿爾斯特 | zh-hant | Mid Ulster |
+| GB-NAY | 北艾爾郡 | zh-hant | North Ayrshire |
+| GB-NBL | 諾森伯蘭郡 | zh-hant | Northumberland |
+| GB-NEL | 東北林肯郡 | zh-hant | North East Lincolnshire |
+| GB-NIR | 北愛爾蘭 | zh-hant | Northern Ireland |
+| GB-NLK | 北拉納克郡 | zh-hant | North Lanarkshire |
+| GB-NLN | 北林肯郡 | zh-hant | North Lincolnshire |
+| GB-NMD | 紐里 | zh-hant | Newry, Mourne and Down |
+| GB-NSM | 北森麻錫郡 | zh-hant | North Somerset |
+| GB-NTL | 下塔爾波特港 | zh-hant | Neath Port Talbot |
+| GB-NTT | 諾丁罕郡 | zh-hant | Nottinghamshire |
+| GB-NTY | 北泰因賽德 | zh-hant | North Tyneside |
+| GB-NWM | 紐漢倫敦自治市 | zh-hant | Newham |
+| GB-OLD | 奧爾德姆都市自治市 | zh-hant | Oldham |
+| GB-ORK | 奧克尼群島 | zh-hant | Orkney Islands |
+| GB-PEM | 彭布羅克郡 | zh-hant | Pembrokeshire |
+| GB-PKN | 珀斯-金羅斯 | zh-hant | Perth and Kinross |
+| GB-POW | 波伊斯 | zh-hant | Powys |
+| GB-RCC | 雷德卡-克利夫蘭 | zh-hant | Redcar and Cleveland |
+| GB-RCH | 羅奇代爾都市自治市 | zh-hant | Rochdale |
+| GB-RDB | 紅橋倫敦自治市 | zh-hant | Redbridge |
+| GB-RFW | 倫弗魯郡 | zh-hant | Renfrewshire |
+| GB-RIC | 泰晤士河畔里奇蒙倫敦自治市 | zh-hant | Richmond upon Thames |
+| GB-RUT | 拉特蘭 | zh-hant | Rutland |
+| GB-SAW | 桑德韋爾 | zh-hant | Sandwell |
+| GB-SAY | 南艾爾郡 | zh-hant | South Ayrshire |
+| GB-SCB | 蘇格蘭邊區 | zh-hant | Scottish Borders |
+| GB-SFK | 薩福克郡 | zh-hant | Suffolk |
+| GB-SFT | 塞夫頓都會自治市 | zh-hant | Sefton |
+| GB-SGC | 南告羅士打郡 | zh-hant | South Gloucestershire |
+| GB-SHF | 謝菲爾德 | zh-hant | Sheffield |
+| GB-SHR | 什羅普郡 | zh-hant | Shropshire |
+| GB-SKP | 斯托克波特都市自治市 | zh-hant | Stockport |
+| GB-SLF | 索爾福德市 | zh-hant | Salford |
+| GB-SLG | 斯勞 | zh-hant | Slough |
+| GB-SLK | 南拉納克郡 | zh-hant | South Lanarkshire |
+| GB-SRY | 薩里郡 | zh-hant | Surrey |
+| GB-STG | 史特靈 | zh-hant | Stirling |
+| GB-STN | 索頓倫敦自治市 | zh-hant | Sutton |
+| GB-STS | 斯塔福德郡 | zh-hant | Staffordshire |
+| GB-STT | 蒂斯河畔斯托克頓 | zh-hant | Stockton-on-Tees |
+| GB-STY | 南泰因賽德 | zh-hant | South Tyneside |
+| GB-SWK | 南華克倫敦自治市 | zh-hant | Southwark |
+| GB-TAM | 坦姆賽德 | zh-hant | Tameside |
+| GB-TFW | 特爾福德和雷金 | zh-hant | Telford and Wrekin |
+| GB-THR | 瑟羅克 | zh-hant | Thurrock |
+| GB-TOB | 托貝 | zh-hant | Torbay |
+| GB-TOF | 托法恩自治市 | zh-hant | Torfaen |
+| GB-TRF | 特拉福德 | zh-hant | Trafford |
+| GB-TWH | 陶爾哈姆萊茨倫敦自治市 | zh-hant | Tower Hamlets |
+| GB-VGL | 格拉摩根谷 | zh-hant | Vale of Glamorgan |
+| GB-WAR | 沃里克郡 | zh-hant | Warwickshire |
+| GB-WBK | 西伯克郡 | zh-hant | West Berkshire |
+| GB-WDU | 西鄧巴頓郡 | zh-hant | West Dunbartonshire |
+| GB-WFT | 沃爾瑟姆森林區 | zh-hant | Waltham Forest |
+| GB-WGN | 維根都市自治市 | zh-tw | Wigan |
+| GB-WKF | 韋克菲爾德市 | zh-hant | Wakefield |
+| GB-WLL | 沃爾索爾都市自治市 | zh-hant | Walsall |
+| GB-WLN | 西洛錫安 | zh-hant | West Lothian |
+| GB-WND | 旺茲沃思倫敦自治市 | zh-hant | Wandsworth |
+| GB-WNM | 溫莎-梅登黑德 | zh-hant | Windsor and Maidenhead |
+| GB-WOK | 沃金厄姆 | zh-hant | Wokingham |
+| GB-WOR | 伍斯特郡 | zh-hant | Worcestershire |
+| GB-WRL | 威勒爾都會自治市 | zh-hant | Wirral |
+| GB-WRT | 瓦靈頓 | zh-hant | Warrington |
+| GB-WRX | 域斯咸 | zh-hant | Wrexham |
+| GB-WSM | 西敏市 | zh-hant | Westminster |
+| GB-WSX | 西薩塞克斯郡 | zh-hant | West Sussex |
+| GB-ZET | 昔德蘭 | zh-hant | Shetland |
+| GE-AJ | 阿扎爾自治共和國 | zh-hant | Adjara |
+| GE-IM | 伊梅雷蒂 | zh-hant | Imereti |
+| GE-KA | 卡赫蒂 | zh-hant | Kakheti |
+| GE-KK | 下卡爾特利 | zh-hant | Kvemo Kartli |
+| GE-MM | 姆茨赫塔-姆蒂亞內蒂 | zh-hant | Mtskheta-Mtianeti |
+| GE-SK | 內卡爾特利 | zh-hant | Shida Kartli |
+| GE-SZ | 薩梅格雷洛-上斯瓦內蒂 | zh-hant | Samegrelo-Zemo Svaneti |
+| GE-TB | 提比里斯 | zh-hant | Tbilisi |
+| GH-AA | 大阿克拉地區 | zh-hant | Greater Accra |
+| GH-AH | 阿散蒂地區 | zh-hant | Ashanti |
+| GH-CP | 中部地區 | zh-hant | Central |
+| GH-EP | 東部地區 | zh-hant | Eastern |
+| GH-NP | 北部地區 | zh-hant | Northern |
+| GH-SV | 薩凡納大區 | zh-hant | Savannah |
+| GH-TV | 沃爾特地區 | zh-hant | Volta |
+| GH-UE | 東北地區 | zh-hant | Upper East |
+| GH-UW | 西北地區 | zh-hant | Upper West |
+| GH-WP | 西部地區 | zh-hant | Western |
+| GL-SM | 塞梅索克 | zh-hant | Sermersooq |
+| GM-B | 班珠爾 | zh-hant | Banjul |
+| GM-L | 下河區 | zh-hant | Lower River Division |
+| GM-M | 中河區 | zh-hant | Central River Division |
+| GM-N | 北岸區 | zh-hant | North Bank Division |
+| GM-U | 上河區 | zh-hant | Upper River Division |
+| GM-W | 西部區 | zh-hant | West Coast Division |
+| GN-B | 博凱大區 | zh-hant | Boké Region |
+| GN-C | 柯那克里 | zh-hant | Conakry |
+| GN-D | 金迪亞大區 | zh-hant | Kindia Region |
+| GN-DL | 達拉巴省 | zh-hant | Dalaba |
+| GN-F | 法拉納大區 | zh-hant | Faranah Region |
+| GN-FA | 法拉納省 | zh-hant | Faranah |
+| GN-GU | 蓋凱杜省 | zh-hant | Guéckédou |
+| GN-K | 康康大區 | zh-hant | Kankan Region |
+| GN-KB | 庫比亞省 | zh-hant | Koubia |
+| GN-KD | 金迪亞省 | zh-hant | Kindia |
+| GN-KN | 孔達拉省 | zh-hant | Koundara |
+| GN-KO | 庫魯薩省 | zh-hant | Kouroussa |
+| GN-KS | 基西杜古省 | zh-hant | Kissidougou |
+| GN-L | 拉貝大區 | zh-hant | Labé Region |
+| GN-LA | 拉貝省 | zh-hant | Labé |
+| GN-LO | 洛拉省 | zh-hant | Lola |
+| GN-M | 馬木大區 | zh-hant | Mamou Region |
+| GN-MD | 芒賈納省 | zh-hant | Mandiana |
+| GN-ML | 馬里省 | zh-hant | Mali |
+| GN-MM | 馬木省 | zh-hant | Mamou |
+| GN-N | 恩澤雷科雷大區 | zh-hant | Nzérékoré Region |
+| GN-NZ | 恩澤雷科雷省 | zh-hant | Nzérékoré |
+| GN-SI | 錫吉里省 | zh-hant | Siguiri |
+| GN-YO | 約穆省 | zh-hant | Yomou |
+| GQ-BN | 北比奧科省 | zh-hant | Bioko Norte |
+| GQ-BS | 南比奧科省 | zh-hant | Bioko Sur |
+| GQ-C | 大陸大區 | zh-hant | Río Muni |
+| GQ-CS | 中南省 | zh-hant | Centro Sur |
+| GQ-DJ | 吉布勞省 | zh-hant | Djibloho |
+| GQ-KN | 基埃恩特姆省 | zh-hant | Kié-Ntem |
+| GQ-LI | 海岸省 | zh-hant | Litoral |
+| GQ-WN | 韋萊恩薩斯省 | zh-hant | Wele-Nzas |
+| GR-A | 東馬其頓和色雷斯大區 | zh-hant | East Macedonia and Thrace |
+| GR-B | 中馬其頓大區 | zh-hant | Central Macedonia |
+| GR-C | 西馬其頓大區 | zh-hant | West Macedonia |
+| GR-D | 伊庇魯斯大區 | zh-hant | Epirus |
+| GR-G | 西希臘大區 | zh-hant | West Greece |
+| GR-H | 中希臘大區 | zh-hant | Central Greece |
+| GR-J | 伯羅奔尼撒大區 | zh-hant | Peloponnese |
+| GR-K | 北愛琴大區 | zh-hant | North Aegean |
+| GR-L | 南愛琴大區 | zh-hant | South Aegean |
+| GR-M | 克里特大區 | zh-hant | Crete |
+| GT-01 | 瓜地馬拉省 | zh-hant | Guatemala |
+| GT-02 | 普羅格雷索省 | zh-hant | El Progreso |
+| GT-04 | 奇馬爾特南戈省 | zh-hant | Chimaltenango |
+| GT-05 | 埃斯昆特拉省 | zh-hant | Escuintla |
+| GT-06 | 聖羅薩省 | zh-hant | Santa Rosa |
+| GT-08 | 托托尼卡潘省 | zh-hant | Totonicapán |
+| GT-09 | 克薩爾特南戈省 | zh-hant | Quetzaltenango |
+| GT-10 | 蘇奇特佩克斯省 | zh-hant | Suchitepéquez |
+| GT-11 | 雷塔盧萊烏省 | zh-hant | Retalhuleu |
+| GT-12 | 聖馬科斯省 | zh-hant | San Marcos |
+| GT-13 | 韋韋特南戈省 | zh-hant | Huehuetenango |
+| GT-15 | 下維拉帕斯省 | zh-hant | Baja Verapaz |
+| GT-16 | 上韋拉帕斯省 | zh-hant | Alta Verapaz |
+| GT-17 | 貝登省 | zh-hant | Petén |
+| GT-18 | 伊薩瓦爾省 | zh-hant | Izabal |
+| GT-20 | 奇基穆拉省 | zh-hant | Chiquimula |
+| GT-21 | 哈拉帕省 | zh-hant | Jalapa |
+| GT-22 | 胡蒂亞帕省 | zh-hant | Jutiapa |
+| GW-BM | 比翁博區 | zh-hant | Biombo |
+| GW-BS | 比索 | zh-hant | Bissau |
+| GW-GA | 加布區 | zh-hant | Gabú |
+| GW-OI | 奧約區 | zh-hant | Oio |
+| GW-QU | 基納拉區 | zh-hant | Quinara |
+| GW-TO | 通巴利區 | zh-hant | Tombali |
+| GY-MA | 馬海卡-伯比斯區 | zh-hant | Mahaica-Berbice |
+| GY-UT | 上塔庫圖-上埃塞奎博 | zh-hant | Upper Takutu-Upper Essequibo |
+| HN-AT | 阿特蘭蒂達省 | zh-hant | Atlántida |
+| HN-CH | 喬盧特卡省 | zh-hant | Choluteca |
+| HN-CL | 科隆省 | zh-hant | Colón |
+| HN-CM | 科馬亞瓜省 | zh-hant | Comayagua |
+| HN-CP | 科潘省 | zh-hant | Copán |
+| HN-EP | 埃爾帕拉伊索省 | zh-hant | El Paraíso |
+| HN-FM | 弗朗西斯科·莫拉桑省 | zh-hant | Francisco Morazán |
+| HN-GD | 格拉西亞斯-阿迪奧斯省 | zh-hant | Gracias a Dios |
+| HN-IB | 海灣群島省 | zh-hant | Bay Islands |
+| HN-LP | 拉巴斯省 | zh-hant | La Paz |
+| HN-OC | 奧科特佩克省 | zh-hant | Ocotepeque |
+| HN-OL | 奧蘭喬省 | zh-hant | Olancho |
+| HN-VA | 山谷省 | zh-hant | Valle |
+| HN-YO | 約羅省 | zh-hant | Yoro |
+| HR-04 | 卡爾洛瓦茨縣 | zh-hant | Karlovac |
+| HR-17 | 斯普利特-達爾馬提亞縣 | zh-hant | Split-Dalmatia |
+| HR-19 | 杜布羅夫尼克-內雷特瓦縣 | zh-hant | Dubrovnik-Neretva |
+| HR-21 | 札格雷布 | zh-hant | Zagreb |
+| HT-AR | 阿蒂博尼特省 | zh-hant | Artibonite |
+| HT-CE | 中央省 | zh-hant | Centre |
+| HT-GA | 格朗當斯省 | zh-hant | Grand’Anse |
+| HT-NE | 東北省 | zh-hant | Nord-Est |
+| HT-SD | 南部省 | zh-hant | Sud |
+| HT-SE | 東南省 | zh-hant | Sud-Est |
+| HU-BA | 巴蘭尼亞州 | zh-hant | Baranya |
+| HU-BC | 貝凱什喬包 | zh-hant | Békéscsaba |
+| HU-BE | 貝凱什州 | zh-hant | Békés |
+| HU-BK | 巴奇-基什孔州 | zh-hant | Bács-Kiskun |
+| HU-BU | 布達佩斯 | zh-hant | Budapest |
+| HU-BZ | 包爾紹德-奧包烏伊-曾普倫州 | zh-hant | Borsod-Abaúj-Zemplén |
+| HU-CS | 瓊格拉德-喬納德州 | zh-hant | Csongrád-Csanád |
+| HU-DE | 德布勒森 | zh-hant | Debrecen |
+| HU-DU | 多瑙新城 | zh-hant | Dunaújváros |
+| HU-EG | 埃格爾 | zh-hant | Eger |
+| HU-ER | 埃爾德 | zh-hant | Érd |
+| HU-FE | 費耶爾州 | zh-hant | Fejér |
+| HU-GS | 焦爾-莫松-肖普朗州 | zh-hant | Győr-Moson-Sopron |
+| HU-GY | 焦爾 | zh-hant | Győr |
+| HU-HB | 豪伊杜-比豪爾州 | zh-hant | Hajdú-Bihar |
+| HU-HE | 赫維什州 | zh-hant | Heves |
+| HU-HV | 霍德梅澤瓦沙海伊 | zh-hant | Hódmezővásárhely |
+| HU-JN | 亞斯-瑙吉孔-索爾諾克州 | zh-hant | Jász-Nagykun-Szolnok |
+| HU-KE | 科馬羅姆-埃斯泰爾戈姆州 | zh-hant | Komárom-Esztergom |
+| HU-KM | 凱奇凱梅特 | zh-hant | Kecskemét |
+| HU-KV | 考波什堡 | zh-hant | Kaposvár |
+| HU-MI | 米什科爾茨 | zh-hant | Miskolc |
+| HU-NK | 瑙吉考尼饒 | zh-hant | Nagykanizsa |
+| HU-NO | 諾格拉德州 | zh-hant | Nógrád |
+| HU-NY | 尼賴吉哈佐 | zh-hant | Nyíregyháza |
+| HU-PE | 佩斯州 | zh-hant | Pest |
+| HU-PS | 佩奇 | zh-hant | Pécs |
+| HU-SD | 塞格德 | zh-hant | Szeged |
+| HU-SF | 塞克什白堡 | zh-hant | Székesfehérvár |
+| HU-SH | 松博特海伊 | zh-hant | Szombathely |
+| HU-SK | 索爾諾克 | zh-hant | Szolnok |
+| HU-SN | 肖普朗 | zh-hant | Sopron |
+| HU-SO | 紹莫吉州 | zh-hant | Somogy |
+| HU-SS | 塞克薩德 | zh-hant | Szekszárd |
+| HU-ST | 紹爾戈陶爾揚 | zh-hant | Salgótarján |
+| HU-SZ | 索博爾奇-索特馬爾-拜賴格州 | zh-hant | Szabolcs-Szatmár-Bereg |
+| HU-TB | 陶陶巴尼奧 | zh-hant | Tatabánya |
+| HU-TO | 托爾瑙州 | zh-hant | Tolna |
+| HU-VA | 沃什州 | zh-hant | Vas |
+| HU-VE | 維斯普雷姆州 | zh-hant | Veszprém County |
+| HU-VM | 維斯普雷姆 | zh-hant | Veszprém |
+| HU-ZA | 佐洛州 | zh-hant | Zala |
+| ID-AC | 亞齊特區 | zh-hant | Aceh |
+| ID-BB | 邦加-勿里洞省 | zh-hant | Bangka–Belitung Islands |
+| ID-BE | 明古魯省 | zh-hant | Bengkulu |
+| ID-BT | 萬丹省 | zh-hant | Banten |
+| ID-GO | 哥倫打洛 | zh-hant | Gorontalo |
+| ID-JA | 占碑省 | zh-hant | Jambi |
+| ID-JB | 西爪哇省 | zh-hant | West Java |
+| ID-JI | 東爪哇省 | zh-hant | East Java |
+| ID-JK | 雅加達 | zh-hant | Jakarta |
+| ID-JT | 中爪哇省 | zh-hant | Central Java |
+| ID-KA | 加里曼丹 | zh-tw | Kalimantan |
+| ID-KB | 西加里曼丹省 | zh-hant | West Kalimantan |
+| ID-KI | 東加里曼丹省 | zh-hant | East Kalimantan |
+| ID-KR | 廖內羣島省 | zh-hant | Riau Islands |
+| ID-KT | 中加里曼丹 | zh-hant | Central Kalimantan |
+| ID-LA | 楠榜省 | zh-hant | Lampung |
+| ID-MA | 馬魯古省 | zh-hant | Maluku |
+| ID-MU | 北馬魯古省 | zh-hant | North Maluku |
+| ID-NT | 東努沙登加拉省 | zh-tw | East Nusa Tenggara |
+| ID-PB | 西巴布亞省 | zh-hant | West Papua |
+| ID-PD | 西南巴布亞省 | zh-hant | Papua Barat Daya |
+| ID-PE | 高地巴布亞省 | zh-hant | Papua Pengunungan |
+| ID-PP | 西新畿內亞 | zh-hk | Papua Islands |
+| ID-PT | 中巴布亞省 | zh-hant | Papua Tengah |
+| ID-SA | 北蘇拉威西省 | zh-hant | North Sulawesi |
+| ID-SB | 西蘇門答臘省 | zh-hant | West Sumatra |
+| ID-SG | 東南蘇拉威西省 | zh-hant | Southeast Sulawesi |
+| ID-SU | 北蘇門答臘 | zh-hant | North Sumatra |
+| IE-C | 康諾特省 | zh-hant | Connacht |
+| IE-CE | 克萊爾郡 | zh-hant | Clare |
+| IE-CN | 卡文郡 | zh-hant | Cavan |
+| IE-CO | 科克郡 | zh-hant | Cork |
+| IE-CW | 卡洛郡 | zh-hant | Carlow |
+| IE-DL | 多尼戈爾郡 | zh-hant | Donegal |
+| IE-G | 戈爾韋郡 | zh-hant | Galway |
+| IE-KE | 基爾代爾郡 | zh-hant | Kildare |
+| IE-KK | 基爾肯尼郡 | zh-hant | Kilkenny |
+| IE-KY | 凱里郡 | zh-hant | Kerry |
+| IE-L | 倫斯特省 | zh-hant | Leinster |
+| IE-LD | 朗福德郡 | zh-hant | Longford |
+| IE-LH | 勞斯郡 | zh-hant | Louth |
+| IE-LK | 利默里克郡 | zh-hant | Limerick |
+| IE-LS | 萊伊什郡 | zh-hant | Laois |
+| IE-M | 芒斯特省 | zh-hant | Munster |
+| IE-MH | 米斯郡 | zh-hant | Meath |
+| IE-MN | 莫納亨郡 | zh-hant | Monaghan |
+| IE-MO | 梅奧郡 | zh-hant | Mayo |
+| IE-OY | 奧法利郡 | zh-hant | Offaly |
+| IE-RN | 羅斯康芒郡 | zh-hant | Roscommon |
+| IE-SO | 斯萊戈郡 | zh-hant | Sligo |
+| IE-TA | 蒂珀雷里郡 | zh-hant | Tipperary |
+| IE-U | 阿爾斯特省 | zh-hant | Ulster |
+| IE-WD | 瓦特福郡 | zh-hant | Waterford |
+| IE-WH | 韋斯特米斯郡 | zh-hant | Westmeath |
+| IE-WW | 威克洛郡 | zh-hant | Wicklow |
+| IE-WX | 韋克斯福德郡 | zh-hant | Wexford |
+| IL-D | 南部區 | zh-hant | Southern District |
+| IL-HA | 海法區 | zh-hant | Haifa District |
+| IL-JM | 耶路撒冷區 | zh-hant | Jerusalem |
+| IL-M | 中央區 | zh-hant | Central District |
+| IL-TA | 特拉維夫區 | zh-hant | Tel Aviv District |
+| IL-Z | 北部區 | zh-hant | Northern District |
+| IN-AN | 安達曼-尼科巴群島 | zh-hant | Andaman and Nicobar Islands |
+| IN-AP | 安得拉邦 | zh-hant | Andhra Pradesh |
+| IN-AR | 阿魯納恰爾邦 | zh-hant | Arunachal Pradesh |
+| IN-AS | 阿薩姆邦 | zh-hant | Assam |
+| IN-BR | 比哈爾邦 | zh-hant | Bihar |
+| IN-CG | 切蒂斯格爾邦 | zh-hant | Chhattīsgarh |
+| IN-DH | 達德拉-納加爾哈維利和達曼-第烏 | zh-hant | Dādra and Nagar Haveli and Damān and Diu |
+| IN-GA | 果亞邦 | zh-hant | Goa |
+| IN-GJ | 古吉拉特邦 | zh-hant | Gujarat |
+| IN-HP | 喜馬偕爾邦 | zh-hant | Himachal Pradesh |
+| IN-HR | 哈里亞納邦 | zh-hant | Haryana |
+| IN-JH | 賈坎德邦 | zh-hant | Jharkhand |
+| IN-JK | 查謨和克什米爾 | zh-hant | Jammu and Kashmir |
+| IN-KA | 卡納塔克邦 | zh-hant | Karnataka |
+| IN-KL | 喀拉拉邦 | zh-hant | Kerala |
+| IN-LA | 拉達克 | zh-hant | Ladakh |
+| IN-LD | 拉克沙群島 | zh-hant | Lakshadweep |
+| IN-MH | 馬哈拉什特拉邦 | zh-hant | Maharashtra |
+| IN-ML | 梅加拉亞邦 | zh-hk | Meghalaya |
+| IN-MN | 曼尼普爾邦 | zh-hant | Manipur |
+| IN-MP | 中央邦 | zh-hant | Madhya Pradesh |
+| IN-MZ | 米佐拉姆邦 | zh-hant | Mizoram |
+| IN-NL | 那加蘭邦 | zh-hant | Nagaland |
+| IN-OD | 奥迪沙邦 | zh-hant | Odisha |
+| IN-PB | 旁遮普邦 | zh-hant | Punjab |
+| IN-PY | 本地治里 | zh-hant | Puducherry |
+| IN-RJ | 拉賈斯坦邦 | zh-hant | Rajasthan |
+| IN-SK | 錫金邦 | zh-hant | Sikkim |
+| IN-TN | 坦米爾納杜邦 | zh-hant | Tamil Nadu |
+| IN-TR | 特里普拉邦 | zh-hant | Tripura |
+| IN-TS | 泰倫加納邦 | zh-hant | Telangāna |
+| IN-UK | 北阿坎德邦 | zh-hant | Uttarākhand |
+| IN-UP | 北方邦 | zh-hant | Uttar Pradesh |
+| IN-WB | 西孟加拉邦 | zh-hant | West Bengal |
+| IQ-AN | 安巴爾省 | zh-hant | Al Anbar |
+| IQ-AR | 埃爾比勒省 | zh-hant | Erbil |
+| IQ-BA | 巴士拉省 | zh-hant | Basra |
+| IQ-BG | 巴格達省 | zh-hant | Baghdad |
+| IQ-DA | 杜胡克省 | zh-hant | Dohuk |
+| IQ-DI | 迪亞拉省 | zh-hant | Diyala |
+| IQ-DQ | 濟加爾省 | zh-hant | Dhi Qar |
+| IQ-KA | 卡爾巴拉省 | zh-hant | Karbala |
+| IQ-KI | 基爾庫克省 | zh-hant | Kirkuk |
+| IQ-MA | 米桑省 | zh-hant | Maysan |
+| IQ-MU | 穆薩納省 | zh-hant | Al Muthanna |
+| IQ-NA | 納傑夫省 | zh-hant | Najaf |
+| IQ-NI | 尼尼微省 | zh-hant | Nineveh |
+| IQ-SD | 薩拉赫丁省 | zh-hant | Saladin |
+| IQ-SU | 蘇萊曼尼亞省 | zh-hant | Sulaymaniyah |
+| IQ-WA | 瓦西特省 | zh-hant | Wasit |
+| IR-00 | 中央省 | zh-hant | Markazī |
+| IR-03 | 阿爾達比勒省 | zh-tw | Ardabil |
+| IR-04 | 西亞塞拜然省 | zh-tw | Isfahan |
+| IR-06 | 布什爾省 | zh-tw | Bushehr |
+| IR-13 | 哈馬丹省 | zh-tw | Sistan and Baluchestan |
+| IR-14 | 恰哈馬哈勒－巴赫蒂亞里省 | zh-hant | Fars |
+| IR-15 | 克爾曼省 | zh-tw | Kerman |
+| IR-20 | 塞姆南省 | zh-tw | Lorestan |
+| IR-22 | 霍爾木茲甘省 | zh-hant | Markazi |
+| IR-23 | 德黑蘭省 | zh-hant | Hormozgan |
+| IR-26 | 庫姆省 | zh-tw | Qom |
+| IR-27 | 戈勒斯坦省 | zh-hant | Golestan |
+| IR-28 | 北呼羅珊省 | zh-tw | Qazvin |
+| IR-29 | 南呼羅珊省 | zh-hant | South Khorasan |
+| IR-30 | 厄爾布爾士省 | zh-hant | Razavi Khorasan |
+| IS-1 | 首都區 | zh-hant | Capital |
+| IS-2 | 南半島區 | zh-hant | Southern Peninsula |
+| IS-3 | 西部區 | zh-hant | Western |
+| IS-4 | 西峽灣區 | zh-hant | Westfjords |
+| IS-5 | 西北區 | zh-hant | Northwestern |
+| IS-6 | 東北區 | zh-hant | Northeastern |
+| IS-7 | 東部區 | zh-hant | Eastern |
+| IS-8 | 南部區 | zh-hant | Southern |
+| IS-AKU | 阿克雷里 | zh-hant | Akureyrarbær |
+| IS-DAV | 達爾維克 | zh-hant | Dalvíkurbyggð |
+| IS-HAF | 哈布納菲厄澤 | zh-hant | Hafnarfjarðarkaupstaður |
+| IS-HVE | 惠拉蓋爾濟 | zh-hant | Hveragerðisbær |
+| IS-KOP | 科帕沃于爾 | zh-hant | Kópavogsbær |
+| IS-RKV | 雷克雅未克 | zh-hant | Reykjavíkurborg |
+| IS-VEM | 韋斯特曼納埃亞爾 | zh-hant | Vestmannaeyjabær |
+| IT-21 | 皮埃蒙特 | zh-hant | Piedmont |
+| IT-23 | 奧斯塔谷 | zh-tw | Aosta Valley |
+| IT-25 | 倫巴底 | zh-hant | Lombardy |
+| IT-34 | 威尼托大區 | zh-hant | Veneto |
+| IT-42 | 利古里亞 | zh-hant | Liguria |
+| IT-45 | 艾米利亞-羅馬涅大區 | zh-hant | Emilia-Romagna |
+| IT-52 | 托斯卡納大區 | zh-hant | Tuscany |
+| IT-57 | 馬凱 | zh-hant | Marche |
+| IT-62 | 拉齊奧大區 | zh-hant | Lazio |
+| IT-65 | 阿布魯佐 | zh-tw | Abruzzo |
+| IT-67 | 莫利塞 | zh-hant | Molise |
+| IT-72 | 坎帕尼亞大區 | zh-hant | Campania |
+| IT-75 | 普利亞 | zh-hant | Apulia |
+| IT-77 | 巴西利卡塔 | zh-hant | Basilicata |
+| IT-78 | 卡拉布里亞大區 | zh-hant | Calabria |
+| IT-82 | 西西里島 | zh-hant | Sicily |
+| IT-88 | 薩丁尼亞島 | zh-hant | Sardinia |
+| IT-AN | 安科納省 | zh-hant | Ancona |
+| IT-AR | 阿雷佐省 | zh-hant | Arezzo |
+| IT-AV | 阿韋利諾省 | zh-hant | Avellino |
+| IT-BG | 貝加莫省 | zh-hant | Bergamo |
+| IT-BN | 貝內文托省 | zh-hant | Benevento |
+| IT-BO | 博洛尼亞廣域市 | zh-hant | Bologna |
+| IT-BR | 布林迪西省 | zh-hant | Brindisi |
+| IT-BS | 布雷西亞省 | zh-hant | Brescia |
+| IT-BZ | 波爾察諾-上阿迪傑自治省 | zh-hant | South Tyrol |
+| IT-CO | 科莫省 | zh-hant | Como |
+| IT-CS | 科森札省 | zh-hant | Cosenza |
+| IT-CZ | 卡坦札羅省 | zh-hant | Catanzaro |
+| IT-FG | 福賈省 | zh-hant | Foggia |
+| IT-FI | 佛羅倫斯廣域市 | zh-hant | Florence |
+| IT-GR | 格羅塞托省 | zh-hant | Grosseto |
+| IT-KR | 克羅托內 | zh-tw | Crotone |
+| IT-LE | 雷契省 | zh-hant | Lecce |
+| IT-LT | 拉蒂納省 | zh-hant | Latina |
+| IT-MB | 蒙扎和布里安扎省 | zh-tw | Monza and Brianza |
+| IT-MC | 馬切拉塔省 | zh-hant | Macerata |
+| IT-MI | 米蘭廣域市 | zh-hant | Milan |
+| IT-MN | 曼托瓦省 | zh-hant | Mantua |
+| IT-MS | 馬薩-卡拉拉省 | zh-hant | Massa and Carrara |
+| IT-MT | 馬泰拉省 | zh-hant | Matera |
+| IT-NA | 那不勒斯廣域市 | zh-hant | Naples |
+| IT-PG | 佩魯賈省 | zh-hant | Perugia |
+| IT-PO | 普拉托省 | zh-hant | Prato |
+| IT-PR | 帕爾馬省 | zh-hant | Parma |
+| IT-PZ | 波坦察省 | zh-hant | Potenza |
+| IT-RC | 雷焦卡拉布里亞廣域市 | zh-hant | Reggio Calabria |
+| IT-RE | 雷焦艾米利亞省 | zh-hant | Reggio Emilia |
+| IT-SA | 薩萊諾省 | zh-hant | Salerno |
+| IT-SI | 錫耶納省 | zh-hant | Siena |
+| IT-TA | 塔蘭托省 | zh-hant | Taranto |
+| IT-TN | 特倫托 | zh-hant | Trentino |
+| IT-TR | 特爾尼省 | zh-hant | Terni |
+| IT-TV | 特雷維索省 | zh-hant | Treviso |
+| IT-VA | 瓦雷澤省 | zh-hant | Varese |
+| IT-VE | 威尼斯 | zh-hant | Venice |
+| JM-01 | 金斯敦區 | zh-hant | Kingston |
+| JM-02 | 聖安德魯 | zh-hant | Saint Andrew |
+| JM-03 | 聖托馬斯區 | zh-hant | Saint Thomas |
+| JM-05 | 聖瑪麗區 | zh-hant | Saint Mary |
+| JM-06 | 聖安堂區 | zh-hant | Saint Ann |
+| JM-07 | 特里洛尼區 | zh-hant | Trelawny |
+| JM-08 | 聖詹姆斯區 | zh-hant | Saint James |
+| JM-09 | 漢諾威區 | zh-hant | Hanover |
+| JM-11 | 聖伊麗莎白區 | zh-hant | Saint Elizabeth |
+| JM-12 | 曼徹斯特 | zh-hant | Manchester |
+| JM-14 | 聖凱瑟琳區 | zh-hant | Saint Catherine |
+| JO-AT | 塔菲拉省 | zh-hant | Tafilah |
+| JO-AZ | 扎爾卡省 | zh-hant | Zarqa |
+| JO-BA | 拜勒加省 | zh-hant | Balqa |
+| JO-IR | 伊爾比德省 | zh-hant | Irbid |
+| JO-JA | 傑拉什省 | zh-hant | Jerash |
+| JO-KA | 卡拉克省 | zh-hant | Karak |
+| JO-MA | 馬弗拉克省 | zh-hant | Mafraq |
+| JO-MD | 馬代巴省 | zh-hant | Madaba |
+| JP-01 | 北海道 | zh-hant | Hokkaidō |
+| JP-02 | 青森縣 | zh-hant | Aomori |
+| JP-03 | 岩手縣 | zh-hant | Iwate |
+| JP-04 | 宮城縣 | zh-hant | Miyagi |
+| JP-05 | 秋田縣 | zh-hant | Akita |
+| JP-06 | 山形縣 | zh-hant | Yamagata |
+| JP-07 | 福島縣 | zh-hant | Fukushima |
+| JP-08 | 茨城縣 | zh-hant | Ibaraki |
+| JP-09 | 栃木縣 | zh-hant | Tochigi |
+| JP-10 | 群馬縣 | zh-hant | Gunma |
+| JP-11 | 埼玉縣 | zh-hant | Saitama |
+| JP-12 | 千葉縣 | zh-hant | Chiba |
+| JP-13 | 東京都 | zh-hant | Tokyo |
+| JP-14 | 神奈川縣 | zh-hant | Kanagawa |
+| JP-15 | 新潟縣 | zh-hant | Niigata |
+| JP-16 | 富山縣 | zh-hant | Toyama |
+| JP-17 | 石川縣 | zh-hant | Ishikawa |
+| JP-18 | 福井縣 | zh-hant | Fukui |
+| JP-19 | 山梨縣 | zh-hant | Yamanashi |
+| JP-20 | 長野縣 | zh-hant | Nagano |
+| JP-21 | 岐阜縣 | zh-hant | Gifu |
+| JP-22 | 靜岡縣 | zh-hant | Shizuoka |
+| JP-23 | 愛知縣 | zh-hant | Aichi |
+| JP-24 | 三重縣 | zh-hant | Mie |
+| JP-25 | 滋賀縣 | zh-hant | Shiga |
+| JP-26 | 京都府 | zh-hant | Kyōto |
+| JP-27 | 大阪府 | zh-hant | Ōsaka |
+| JP-28 | 兵庫縣 | zh-hant | Hyōgo |
+| JP-29 | 奈良縣 | zh-hant | Nara |
+| JP-30 | 和歌山縣 | zh-hant | Wakayama |
+| JP-31 | 鳥取縣 | zh-hant | Tottori |
+| JP-32 | 島根縣 | zh-hant | Shimane |
+| JP-33 | 岡山縣 | zh-hant | Okayama |
+| JP-34 | 廣島縣 | zh-hant | Hiroshima |
+| JP-35 | 山口縣 | zh-hant | Yamaguchi |
+| JP-36 | 德島縣 | zh-hant | Tokushima |
+| JP-37 | 香川縣 | zh-hant | Kagawa |
+| JP-38 | 愛媛縣 | zh-hant | Ehime |
+| JP-39 | 高知縣 | zh-hant | Kōchi |
+| JP-40 | 福岡縣 | zh-hant | Fukuoka |
+| JP-41 | 佐賀縣 | zh-hant | Saga |
+| JP-42 | 長崎縣 | zh-hant | Nagasaki |
+| JP-43 | 熊本縣 | zh-hant | Kumamoto |
+| JP-44 | 大分縣 | zh-hant | Ōita |
+| JP-45 | 宮崎縣 | zh-hant | Miyazaki |
+| JP-46 | 鹿兒島縣 | zh-hant | Kagoshima |
+| JP-47 | 沖繩縣 | zh-hant | Okinawa |
+| KE-04 | 布希亞郡 | zh-hant | Busia |
+| KE-05 | 埃爾格約-馬拉奎特郡 | zh-hant | Elgeyo-Marakwet |
+| KE-07 | 加里薩郡 | zh-hant | Garissa |
+| KE-08 | 霍馬灣郡 | zh-hant | Homa Bay |
+| KE-10 | 卡耶亞多郡 | zh-hant | Kajiado |
+| KE-22 | 馬查科斯郡 | zh-hant | Machakos |
+| KE-23 | 馬瓜尼郡 | zh-hant | Makueni |
+| KE-25 | 馬薩比特郡 | zh-hant | Marsabit |
+| KE-28 | 蒙巴薩縣 | zh-hant | Mombasa |
+| KE-31 | 納庫魯郡 | zh-hant | Nakuru |
+| KE-33 | 納羅克郡 | zh-hant | Narok |
+| KE-35 | 年達魯阿郡 | zh-hant | Nyandarua |
+| KE-38 | 夏亞郡 | zh-hant | Siaya |
+| KE-39 | 泰塔塔維塔郡 | zh-hant | Taita-Taveta |
+| KE-43 | 圖爾卡納郡 | zh-hant | Turkana |
+| KE-45 | 維希加縣 | zh-hant | Vihiga |
+| KE-46 | 瓦吉爾郡 | zh-hant | Wajir |
+| KG-B | 巴特肯州 | zh-hant | Batken |
+| KG-C | 楚河州 | zh-hant | Chuy |
+| KG-GB | 比什凱克 | zh-hant | Bishkek |
+| KG-GO | 奧什 | zh-hant | Osh |
+| KG-J | 賈拉拉巴德州 | zh-hant | Jalal-Abad |
+| KG-N | 納倫州 | zh-hant | Naryn |
+| KG-O | 奧什州 | zh-hant | Osh Region |
+| KG-Y | 伊塞克湖州 | zh-hant | Issyk-Kul |
+| KH-10 | 桔井省 | zh-hant | Kratié |
+| KH-11 | 蒙多基里省 | zh-hant | Mondulkiri |
+| KH-12 | 金邊 | zh-hant | Phnom Penh |
+| KH-13 | 柏威夏省 | zh-hant | Preah Vihear |
+| KH-14 | 波蘿勉省 | zh-hant | Prey Veng |
+| KH-15 | 菩薩省 | zh-hant | Pursat |
+| KH-16 | 臘塔納基里省 | zh-hant | Ratanakiri |
+| KH-17 | 暹粒省 | zh-hant | Siem Reap |
+| KH-18 | 施亞努省 | zh-hant | Sihanoukville |
+| KH-19 | 上丁省 | zh-hant | Stung Treng |
+| KH-2 | 馬德望 | zh-hant | Battambang |
+| KH-20 | 柴楨省 | zh-hant | Svay Rieng |
+| KH-21 | 茶膠省 | zh-hant | Takéo |
+| KH-23 | 白馬省 | zh-hant | Kep |
+| KH-24 | 拜林省 | zh-hant | Pailin |
+| KH-25 | 特本克蒙省 | zh-hant | Tbong Khmum |
+| KH-3 | 磅湛省 | zh-hant | Kampong Cham |
+| KH-4 | 磅清揚省 | zh-hant | Kampong Chhnang |
+| KH-5 | 磅士卑省 | zh-hant | Kampong Speu |
+| KH-6 | 磅同省 | zh-hant | Kampong Thom |
+| KH-7 | 貢布省 | zh-hant | Kampot |
+| KH-8 | 干丹省 | zh-hant | Kandal |
+| KH-9 | 戈公省 | zh-hant | Koh Kong |
+| KI-G | 吉爾伯特群島 | zh-hant | Gilbert Islands |
+| KI-P | 鳳凰群島 | zh-hant | Phoenix Islands |
+| KM-A | 昂儒昂島 | zh-hant | Anjouan |
+| KM-G | 大科摩羅島 | zh-hant | Grande Comore |
+| KM-M | 莫埃利島 | zh-hant | Mohéli |
+| KN-02 | 聖安娜沙角區 | zh-hant | Saint Anne Sandy Point |
+| KN-03 | 聖喬治巴塞特萊區 | zh-hant | Saint George Basseterre |
+| KN-04 | 聖喬治金哲蘭區 | zh-hant | Saint George Gingerland |
+| KN-08 | 聖瑪麗卡永區 | zh-hant | Saint Mary Cayon |
+| KN-10 | 聖保羅查爾斯敦區 | zh-hant | Saint Paul Charlestown |
+| KN-12 | 聖托馬斯低地區 | zh-hant | Saint Thomas Lowland |
+| KN-13 | 聖托馬斯米德艾蘭區 | zh-hant | Saint Thomas Middle Island |
+| KN-K | 聖基茨島 | zh-hant | Saint Kitts |
+| KN-N | 尼維斯 | zh-hant | Nevis |
+| KP-01 | 平壤 | zh-hant | Pyongyang |
+| KP-02 | 平安南道 | zh-hant | South Pyongan |
+| KP-03 | 平安北道 | zh-hant | North Pyongan |
+| KP-04 | 慈江道 | zh-hant | Chagang |
+| KP-05 | 黃海南道 | zh-hant | South Hwanghae |
+| KP-06 | 黃海北道 | zh-hant | North Hwanghae |
+| KP-07 | 江原道 | zh-hant | Kangwon |
+| KP-08 | 咸鏡南道 | zh-hant | South Hamgyong |
+| KP-09 | 咸鏡北道 | zh-hant | North Hamgyong |
+| KP-10 | 兩江道 | zh-hant | Ryanggang |
+| KP-13 | 羅先市 | zh-hant | Rason |
+| KP-14 | 南浦特別市 | zh-hant | Nampho |
+| KP-15 | 開城特級市 | zh-hant | Kaeseong |
+| KR-11 | 首爾 | zh-hant | Seoul |
+| KR-26 | 釜山 | zh-hant | Busan |
+| KR-27 | 大邱廣域市 | zh-hant | Daegu |
+| KR-28 | 仁川 | zh-hant | Incheon |
+| KR-29 | 光州廣域市 | zh-hant | Gwangju City |
+| KR-30 | 大田廣域市 | zh-hant | Daejeon |
+| KR-31 | 蔚山廣域市 | zh-hant | Ulsan |
+| KR-41 | 京畿道 | zh-hant | Gyeonggi |
+| KR-42 | 江原道 | zh-hant | Gangwon |
+| KR-43 | 忠清北道 | zh-hant | North Chungcheong |
+| KR-44 | 忠清南道 | zh-hant | South Chungcheong |
+| KR-45 | 全北特別自治道 | zh-hant | North Jeolla |
+| KR-46 | 全羅南道 | zh-hant | South Jeolla |
+| KR-47 | 慶尚北道 | zh-hant | North Gyeongsang |
+| KR-48 | 慶尚南道 | zh-hant | South Gyeongsang |
+| KR-49 | 濟州特別自治道 | zh-hant | Jeju |
+| KR-50 | 世宗特別自治市 | zh-hant | Sejong |
+| KW-FA | 費爾瓦尼耶省 | zh-hant | Al Farwaniyah |
+| KW-HA | 哈瓦利省 | zh-hant | Hawalli |
+| KW-JA | 傑赫拉省 | zh-hant | Al Jahra |
+| KW-KU | 科威特省 | zh-hant | Al Asimah |
+| KW-MU | 大穆巴拉克省 | zh-hant | Mubarak Al-Kabeer |
+| KZ-11 | 阿克莫拉州 | zh-hant | Aqmola oblysy |
+| KZ-15 | 阿克托別州 | zh-hant | Aqtöbe oblysy |
+| KZ-19 | 阿拉木圖州 | zh-hant | Almaty oblysy |
+| KZ-23 | 阿特勞州 | zh-hant | Atyraū oblysy |
+| KZ-27 | 西哈薩克斯坦州 | zh-hant | Batys Qazaqstan oblysy |
+| KZ-31 | 江布爾州 | zh-hant | Zhambyl oblysy |
+| KZ-35 | 卡拉干達州 | zh-hant | Qaraghandy oblysy |
+| KZ-39 | 庫斯塔奈州 | zh-hant | Qostanay oblysy |
+| KZ-43 | 克孜勒奧爾達州 | zh-hant | Qyzylorda oblysy |
+| KZ-47 | 曼吉斯套州 | zh-hant | Mangghystaū oblysy |
+| KZ-55 | 巴甫洛達爾州 | zh-hant | Pavlodar oblysy |
+| KZ-59 | 北哈薩克斯坦州 | zh-hant | Soltüstik Qazaqstan oblysy |
+| KZ-61 | 突厥斯坦州 | zh-hant | Türkistan oblysy |
+| KZ-63 | 東哈薩克斯坦 | zh-hant | Shyghys Qazaqstan oblysy |
+| KZ-71 | 阿斯塔納 | zh-hant | Astana |
+| KZ-79 | 希姆肯特 | zh-hant | Shymkent |
+| LA-AT | 阿速坡省 | zh-hant | Attapeu |
+| LA-BK | 博膠省 | zh-hant | Bokeo |
+| LA-CH | 占巴塞省 | zh-hant | Champasak |
+| LA-HO | 華潘省 | zh-hant | Houaphanh |
+| LA-KH | 甘蒙省 | zh-hant | Khammouane |
+| LA-LP | 琅勃拉邦省 | zh-hant | Luang Prabang |
+| LA-OU | 烏多姆塞省 | zh-hant | Oudomxay |
+| LA-PH | 豐沙里省 | zh-hant | Phongsaly |
+| LA-SV | 沙灣拿吉省 | zh-hant | Savannakhet |
+| LA-VI | 萬象省 | zh-hant | Vientiane Province |
+| LA-VT | 永珍地區 | zh-hant | Vientiane |
+| LA-XA | 沙耶武里省 | zh-hant | Sainyabuli |
+| LA-XI | 川壙省 | zh-hant | Xiangkhouang |
+| LB-AS | 北部省 | zh-hant | North |
+| LB-BA | 貝魯特省 | zh-hant | Beirut |
+| LB-BI | 貝卡省 | zh-hant | Beqaa |
+| LB-JL | 黎巴嫩山省 | zh-hant | Mount Lebanon |
+| LB-NA | 奈拜提耶省 | zh-hant | Nabatieh |
+| LC-10 | 蘇弗里耶爾區 | zh-hant | Soufrière |
+| LC-11 | 伯堡區 | zh-hant | Vieux Fort |
+| LI-02 | 埃申 | zh-hant | Eschen |
+| LI-10 | 特里森貝格 | zh-hant | Triesenberg |
+| LI-11 | 華杜茲 | zh-hant | Vaduz |
+| LK-1 | 西部省 | zh-hant | Western |
+| LK-21 | 康提區 | zh-hant | Kandy |
+| LK-23 | 努沃勒埃利耶區 | zh-hant | Nuwara Eliya |
+| LK-3 | 南部省 | zh-hant | Southern |
+| LK-31 | 加勒區 | zh-hant | Galle |
+| LK-32 | 馬特勒區 | zh-hant | Matara |
+| LK-33 | 漢班托特區 | zh-hant | Hambantota |
+| LK-41 | 賈夫納區 | zh-hant | Jaffna |
+| LK-42 | 基利諾奇區 | zh-hant | Kilinochchi |
+| LK-45 | 穆萊蒂武區 | zh-hant | Mullaitivu |
+| LK-5 | 東部省 | zh-hant | Eastern |
+| LK-53 | 亭可馬里區 | zh-hant | Trincomalee |
+| LK-6 | 西北省 | zh-hant | North Western |
+| LK-7 | 北中省 | zh-hant | North Central |
+| LK-8 | 烏沃省 | zh-hant | Uva |
+| LK-9 | 薩伯勒格穆沃省 | zh-hant | Sabaragamuwa |
+| LK-91 | 拉特納普勒區 | zh-hant | Ratnapura |
+| LK-92 | 凱格勒區 | zh-hant | Kegalle |
+| LR-BG | 邦縣 | zh-hant | Bong |
+| LR-BM | 伯米縣 | zh-hk | Bomi |
+| LR-CM | 大角山縣 | zh-hant | Grand Cape Mount |
+| LR-GB | 大巴薩縣 | zh-hant | Grand Bassa |
+| LR-LO | 洛法縣 | zh-hant | Lofa |
+| LR-MG | 馬吉比縣 | zh-hant | Margibi |
+| LR-MO | 蒙特塞拉多縣 | zh-hant | Montserrado |
+| LR-MY | 馬里蘭縣 | zh-hant | Maryland |
+| LR-NI | 寧巴縣 | zh-hant | Nimba |
+| LR-RG | 吉河縣 | zh-hant | River Gee |
+| LR-SI | 錫諾縣 | zh-hant | Sinoe |
+| LS-A | 馬塞盧區 | zh-hant | Maseru |
+| LS-C | 萊里貝區 | zh-hant | Leribe |
+| LS-D | 伯里亞區 | zh-hant | Berea |
+| LS-E | 馬費滕區 | zh-hant | Mafeteng |
+| LS-F | 莫哈萊斯胡克區 | zh-hant | Mohale’s Hoek |
+| LS-G | 古廷區 | zh-hant | Quthing |
+| LS-H | 加查斯內克區 | zh-hant | Qacha’s Nek |
+| LS-J | 莫霍特隆區 | zh-hant | Mokhotlong |
+| LS-K | 塔巴-采卡區 | zh-hant | Thaba-Tseka |
+| LT-09 | 伊格納利納區 | zh-hant | Ignalina |
+| LT-10 | 約納瓦區 | zh-hant | Jonava |
+| LT-13 | 凱希亞多里斯區 | zh-hant | Kaišiadorys |
+| LT-24 | 拉茲迪亞伊區 | zh-hant | Lazdijai |
+| LT-26 | 馬熱伊基艾區 | zh-hant | Mažeikiai |
+| LT-27 | 莫雷泰區 | zh-hant | Molėtai |
+| LT-35 | 普倫蓋區 | zh-hant | Plungė |
+| LT-37 | 拉德維利什基斯區 | zh-hant | Radviliškis |
+| LT-38 | 拉塞尼艾區 | zh-hant | Raseiniai |
+| LT-48 | 斯庫奧達斯區 | zh-hant | Skuodas |
+| LT-55 | 瓦雷納區 | zh-hant | Varėna |
+| LT-59 | 維薩吉納斯 | zh-hant | Visaginas |
+| LT-KL | 克萊佩達縣 | zh-hant | Klaipėda County |
+| LT-KU | 考納斯縣 | zh-hant | Kaunas County |
+| LT-PN | 帕內韋日斯縣 | zh-hant | Panevėžys County |
+| LT-SA | 希奧利艾縣 | zh-hant | Šiauliai County |
+| LT-TA | 陶拉蓋縣 | zh-hant | Tauragė County |
+| LT-TE | 特爾希艾縣 | zh-hant | Telšiai County |
+| LT-UT | 烏田納縣 | zh-hant | Utena County |
+| LT-VL | 維爾紐斯縣 | zh-hant | Vilnius County |
+| LU-LU | 盧森堡縣 | zh-hk | Luxembourg |
+| LV-015 | 巴爾維市鎮 | zh-hant | Balvi |
+| LV-026 | 多貝萊市鎮 | zh-hant | Dobele |
+| LV-033 | 古爾貝內市鎮 | zh-hant | Gulbene |
+| LV-041 | 葉爾加瓦市鎮 | zh-hant | Jelgava Municipality |
+| LV-042 | 葉卡布皮爾斯市鎮 | zh-hant | Jēkabpils Municipality |
+| LV-059 | 馬多納市鎮 | zh-hant | Madona |
+| LV-091 | 錫古爾達市鎮 | zh-hant | Sigulda |
+| LV-097 | 塔爾西市鎮 | zh-hant | Talsi |
+| LV-DGV | 陶格夫匹爾斯 | zh-hant | Daugavpils |
+| LV-JEL | 葉爾加瓦 | zh-hant | Jelgava |
+| LV-JUR | 尤爾馬拉 | zh-hant | Jūrmala |
+| LV-LPX | 利耶帕亞 | zh-hant | Liepāja |
+| LV-REZ | 雷澤克內 | zh-hant | Rēzekne |
+| LV-RIX | 里加 | zh-hant | Riga |
+| LV-VEN | 文茨皮爾斯 | zh-hant | Ventspils |
+| LY-BA | 班加西 | zh-hant | Benghazi |
+| LY-DR | 德爾納省 | zh-hant | Derna |
+| LY-JI | 吉法拉省 | zh-hant | Jafara |
+| LY-MB | 邁爾蓋卜省 | zh-hant | Murqub |
+| LY-MQ | 穆爾祖格省 | zh-hant | Murzuq |
+| LY-NL | 納盧特省 | zh-hant | Nalut |
+| MA-06 | 卡薩布蘭卡-塞塔特大區 | zh-hant | Casablanca-Settat |
+| MA-09 | 蘇斯-馬塞大區 | zh-hant | Souss-Massa |
+| MA-AOU | 奧塞爾德省 | zh-hant | Aousserd |
+| MA-ASZ | 阿薩-扎格省 | zh-hant | Assa-Zag |
+| MA-BEM | 貝尼邁拉勒省 | zh-hant | Béni-Mellal |
+| MA-BER | 拜爾坎省 | zh-hant | Berkane |
+| MA-BOD | 布支杜爾省 | zh-hant | Boujdour |
+| MA-CAS | 卡薩布蘭卡 | zh-hant | Casablanca |
+| MA-CHE | 舍夫沙萬省 | zh-hant | Chefchaouen |
+| MA-DRI | 德利歐奇省 | zh-hant | Driouch |
+| MA-ESI | 索維拉省 | zh-hant | Essaouira |
+| MA-FAH | 法希安傑拉省 | zh-hant | Fahs-Beni Makada |
+| MA-FES | 費茲 | zh-hant | Fès-Dar-Dbibegh |
+| MA-GUF | 蓋爾西夫省 | zh-hant | Guercif |
+| MA-HAJ | 哈傑卜省 | zh-hant | El Hajeb |
+| MA-HAO | 豪茲省 | zh-hant | Al Haouz |
+| MA-HOC | 胡塞馬省 | zh-hant | Al Hoceïma |
+| MA-IFR | 伊夫蘭省 | zh-hant | Ifrane |
+| MA-JRA | 傑拉達省 | zh-hant | Jerada |
+| MA-KEN | 蓋尼特拉省 | zh-hant | Kénitra |
+| MA-KES | 克拉德斯拉格納省 | zh-hant | Kelaat Sraghna |
+| MA-KHE | 海米薩特省 | zh-hant | Khemisset |
+| MA-LAR | 拉臘什省 | zh-hant | Larache |
+| MA-MAR | 馬拉喀什 | zh-hant | Marrakech |
+| MA-MDF | 邁迪格-費尼迪克專區 | zh-hant | M’diq-Fnideq |
+| MA-MOU | 穆萊雅各布省 | zh-hant | Moulay Yacoub |
+| MA-NAD | 納祖爾省 | zh-hant | Nador |
+| MA-NOU | 諾瓦瑟爾省 | zh-hant | Nouaceur |
+| MA-OUJ | 烏季達 | zh-tw | Oujda-Angad |
+| MA-OUZ | 沃贊省 | zh-hant | Ouezzane |
+| MA-REH | 賴哈姆納省 | zh-hant | Rehamna |
+| MA-SAF | 薩菲省 | zh-hant | Safi |
+| MA-SAL | 塞拉 | zh-hant | Salé |
+| MA-SEF | 塞夫魯省 | zh-hant | Sefrou |
+| MA-SIL | 西迪蘇萊曼省 | zh-hant | Sidi Slimane |
+| MA-SKH | 特馬拉 | zh-hk | Skhirat-Témara |
+| MA-TAI | 陶里爾特省 | zh-hant | Taourirt |
+| MA-TAO | 陶納特省 | zh-hant | Taounate |
+| MA-TAR | 塔魯丹特省 | zh-hant | Taroudant |
+| MA-TET | 得土安省 | zh-hant | Tétouan |
+| MA-TNG | 丹吉爾 | zh-tw | Tangier-Assilah |
+| MA-YUS | 優素菲耶省 | zh-hant | Youssoufia |
+| MC-CL | 拉科勒 | zh-hant | La Colle |
+| MC-MC | 蒙特卡洛 | zh-hant | Monte Carlo |
+| MC-PH | 赫庫勒港 | zh-hant | Port Hercules |
+| MD-BR | 布里切尼區 | zh-hant | Briceni |
+| MD-DO | 棟杜謝尼區 | zh-hant | Dondușeni |
+| MD-DR | 德羅基亞區 | zh-hant | Drochia |
+| MD-DU | 杜伯薩里區 | zh-hant | Dubăsari |
+| MD-ED | 埃迪內茨區 | zh-hant | Edineț |
+| MD-FA | 弗萊什蒂區 | zh-hant | Fălești |
+| MD-FL | 弗洛雷什蒂區 | zh-hant | Florești |
+| MD-GA | 加告茲自治區 | zh-hant | Gagauzia |
+| MD-GL | 格洛代尼區 | zh-hant | Glodeni |
+| MD-HI | 亨切什蒂區 | zh-hant | Hîncești |
+| MD-LE | 萊奧瓦區 | zh-hant | Leova |
+| MD-NI | 尼斯波雷尼區 | zh-hant | Nisporeni |
+| MD-RE | 雷濟納區 | zh-hant | Rezina |
+| MD-SD | 紹爾德內什蒂區 | zh-hant | Șoldănești |
+| MD-ST | 斯特勒謝尼區 | zh-hant | Strășeni |
+| MD-TA | 塔拉克利亞區 | zh-hant | Taraclia |
+| MD-UN | 溫格內區 | zh-hant | Ungheni |
+| ME-01 | 安德里耶維察市鎮 | zh-hant | Andrijevica |
+| ME-07 | 達尼洛夫格勒市鎮 | zh-hant | Danilovgrad |
+| ME-08 | 新海爾采格市鎮 | zh-hant | Herceg Novi |
+| ME-10 | 科托爾市鎮 | zh-hant | Kotor |
+| ME-17 | 羅扎耶市鎮 | zh-hant | Rožaje |
+| ME-20 | 烏爾齊尼 | zh-hant | Ulcinj |
+| ME-25 | 澤塔市鎮 | zh-hant | Zeta |
+| MG-A | 圖阿馬西納省 | zh-hant | Toamasina |
+| MG-D | 安齊拉納納省 | zh-hant | Antsiranana |
+| MG-F | 菲亞納蘭楚阿省 | zh-hant | Fianarantsoa |
+| MG-M | 馬哈贊加省 | zh-hant | Mahajanga |
+| MG-T | 塔那那利佛省 | zh-hant | Antananarivo |
+| MH-EBO | 埃邦環礁 | zh-hant | Ebon Atoll |
+| MH-ENI | 埃內韋塔克環礁 | zh-hant | Enewetak Atoll |
+| MH-JAB | 賈布沃特島 | zh-hant | Jabat Island |
+| MH-JAL | 賈盧伊特環礁 | zh-hant | Jaluit Atoll |
+| MH-KWA | 瓜加林環礁 | zh-hant | Kwajalein |
+| MH-L | 拉利克礁鏈 | zh-hant | Ralik Chain |
+| MH-MAJ | 馬久羅 | zh-hant | Majuro |
+| MH-MAL | 馬洛埃拉普環礁 | zh-hant | Maloelap Atoll |
+| MH-MEJ | 梅吉特島 | zh-hant | Mejit Island |
+| MH-MIL | 米利環礁 | zh-hant | Mili Atoll |
+| MH-NMK | 納莫里克環礁 | zh-hant | Namdrik Atoll |
+| MH-NMU | 納穆環礁 | zh-hant | Namu Atoll |
+| MH-RON | 朗格拉普環礁 | zh-hant | Rongelap Atoll |
+| MH-T | 拉塔克礁鏈 | zh-hant | Ratak Chain |
+| MH-UJA | 烏賈環礁 | zh-hant | Ujae Atoll |
+| MH-UTI | 烏蒂里克環礁 | zh-hant | Utirik Atoll |
+| MK-101 | 韋萊斯市鎮 | zh-hant | Veles |
+| MK-102 | 格拉德斯科市鎮 | zh-hant | Gradsko |
+| MK-103 | 代米爾卡皮亞市鎮 | zh-hant | Demir Kapija |
+| MK-104 | 卡瓦達爾齊市鎮 | zh-hant | Kavadarci |
+| MK-105 | 洛佐沃市鎮 | zh-hant | Lozovo |
+| MK-107 | 羅索曼市鎮 | zh-hant | Rosoman |
+| MK-108 | 聖尼古萊市鎮 | zh-hant | Sveti Nikole |
+| MK-109 | 查什卡市鎮 | zh-hant | Čaška |
+| MK-202 | 維尼察市鎮 | zh-hant | Vinica |
+| MK-203 | 代爾切沃市鎮 | zh-hant | Delčevo |
+| MK-205 | 卡爾賓齊市鎮 | zh-hant | Karbinci |
+| MK-207 | 馬其頓卡梅尼察市鎮 | zh-hant | Makedonska Kamenica |
+| MK-209 | 普羅比什蒂普市鎮 | zh-hk | Probištip |
+| MK-211 | 什蒂普市鎮 | zh-hant | Štip |
+| MK-303 | 德巴爾市鎮 | zh-hant | Debar |
+| MK-304 | 德巴爾察市鎮 | zh-hant | Debrca |
+| MK-307 | 基切沃市鎮 | zh-hant | Kičevo |
+| MK-308 | 馬其頓布羅德市鎮 | zh-hant | Makedonski Brod |
+| MK-311 | 普拉斯尼察市鎮 | zh-hant | Plasnica |
+| MK-313 | 中茹帕市鎮 | zh-hant | Centar Župa |
+| MK-401 | 波格丹齊市鎮 | zh-hant | Bogdanci |
+| MK-402 | 博西洛沃市鎮 | zh-hant | Bosilovo |
+| MK-403 | 瓦蘭多沃市鎮 | zh-hant | Valandovo |
+| MK-404 | 瓦西萊沃市鎮 | zh-hant | Vasilevo |
+| MK-405 | 蓋夫蓋利亞市鎮 | zh-hant | Gevgelija |
+| MK-406 | 多伊蘭市鎮 | zh-hant | Dojran |
+| MK-407 | 孔切市鎮 | zh-hant | Konče |
+| MK-408 | 諾沃塞洛市鎮 | zh-hant | Novo Selo |
+| MK-409 | 拉多維什市鎮 | zh-hant | Radoviš |
+| MK-410 | 斯特魯米察市鎮 | zh-hant | Strumica |
+| MK-501 | 比托拉市鎮 | zh-hant | Bitola |
+| MK-502 | 代米爾希薩爾市鎮 | zh-hant | Demir Hisar |
+| MK-503 | 多爾內尼市鎮 | zh-hant | Dolneni |
+| MK-504 | 克里沃加什塔尼市鎮 | zh-hant | Krivogaštani |
+| MK-505 | 克魯舍沃市鎮 | zh-hant | Kruševo |
+| MK-507 | 諾瓦齊市鎮 | zh-hant | Novaci |
+| MK-602 | 布爾韋尼察市鎮 | zh-hant | Brvenica |
+| MK-603 | 弗拉普契什泰市鎮 | zh-hant | Vrapčište |
+| MK-605 | 熱利諾市鎮 | zh-hant | Želino |
+| MK-607 | 馬夫羅沃和羅斯圖沙市鎮 | zh-hant | Mavrovo i Rostuše |
+| MK-608 | 泰阿爾采市鎮 | zh-hant | Tearce |
+| MK-609 | 泰托沃市鎮 | zh-hant | Tetovo |
+| MK-701 | 克拉托沃市鎮 | zh-hant | Kratovo |
+| MK-702 | 克里瓦帕蘭卡市鎮 | zh-hant | Kriva Palanka |
+| MK-703 | 庫馬諾沃市鎮 | zh-hant | Kumanovo |
+| MK-704 | 利普科沃市鎮 | zh-hant | Lipkovo |
+| MK-705 | 蘭科夫采市鎮 | zh-hant | Rankovce |
+| MK-801 | 艾羅德龍市鎮 | zh-hant | Aerodrom † |
+| MK-804 | 加齊巴巴市鎮 | zh-hant | Gazi Baba † |
+| MK-808 | 卡爾波什市鎮 | zh-hant | Karpoš † |
+| MK-810 | 彼得羅韋茨市鎮 | zh-hant | Petrovec |
+| MK-811 | 薩拉伊市鎮 | zh-hant | Saraj † |
+| MK-812 | 索皮什泰市鎮 | zh-hant | Sopište |
+| MK-813 | 斯圖代尼查尼市鎮 | zh-hant | Studeničani |
+| MK-814 | 岑塔爾市鎮 | zh-hant | Centar † |
+| MK-815 | 查伊爾市鎮 | zh-hant | Čair † |
+| MK-817 | 舒托奧里扎里市鎮 | zh-hant | Šuto Orizari † |
+| ML-1 | 卡伊區 | zh-hant | Kayes |
+| ML-3 | 錫卡索區 | zh-hant | Sikasso |
+| ML-4 | 塞古區 | zh-hant | Ségou |
+| ML-5 | 莫普提區 | zh-hant | Mopti |
+| ML-6 | 通布圖區 | zh-hant | Tombouctou |
+| ML-7 | 加奧區 | zh-hant | Gao |
+| ML-8 | 基達爾區 | zh-hant | Kidal |
+| ML-9 | 馬里行政區 | zh-hant | Ménaka |
+| ML-BKO | 巴馬科 | zh-hant | Bamako |
+| MM-01 | 實皆省 | zh-hant | Sagaing |
+| MM-03 | 馬圭省 | zh-hant | Magway |
+| MM-04 | 曼德勒省 | zh-hant | Mandalay |
+| MM-05 | 德林達依省 | zh-hant | Tanintharyi |
+| MM-06 | 仰光省 | zh-hant | Yangon |
+| MM-11 | 克欽邦 | zh-hant | Kachin |
+| MM-12 | 克耶邦 | zh-hant | Kayah |
+| MM-13 | 克倫邦 | zh-hant | Kayin |
+| MM-14 | 欽邦 | zh-hant | Chin |
+| MM-15 | 孟邦 | zh-hant | Mon |
+| MM-16 | 若開邦 | zh-hant | Rakhine |
+| MM-17 | 撣邦 | zh-hant | Shan |
+| MM-18 | 內比都聯邦區 | zh-hant | Naypyidaw |
+| MN-035 | 鄂爾渾省 | zh-hant | Orkhon |
+| MN-039 | 肯特省 | zh-hant | Khentii |
+| MN-041 | 庫蘇古爾省 | zh-hant | Khövsgöl |
+| MN-043 | 科布多省 | zh-hant | Khovd |
+| MN-046 | 烏布蘇省 | zh-hant | Uvs |
+| MN-047 | 中央省 | zh-hant | Töv |
+| MN-049 | 色楞格省 | zh-hant | Selenge |
+| MN-051 | 蘇赫巴托爾省 | zh-hant | Sükhbaatar |
+| MN-053 | 南戈壁省 | zh-hant | Ömnögovi |
+| MN-055 | 前杭愛省 | zh-hant | Övörkhangai |
+| MN-059 | 中戈壁省 | zh-hant | Dundgovi |
+| MN-061 | 東方省 | zh-hant | Dornod |
+| MN-063 | 東戈壁省 | zh-hant | Dornogovi |
+| MN-064 | 戈壁蘇木貝爾省 | zh-hant | Govisümber |
+| MN-065 | 戈壁阿爾泰省 | zh-hant | Govi-Altai |
+| MN-067 | 布爾干省 | zh-hant | Bulgan |
+| MN-069 | 巴彥洪戈爾省 | zh-hant | Bayankhongor |
+| MN-071 | 巴彥烏列蓋省 | zh-hant | Bayan-Ölgii |
+| MN-073 | 後杭愛省 | zh-hant | Arkhangai |
+| MN-1 | 烏蘭巴托 | zh-hant | Ulaanbaatar |
+| MR-01 | 東胡德省 | zh-hant | Hodh Ech Chargui |
+| MR-02 | 西胡德省 | zh-hant | Hodh El Gharbi |
+| MR-04 | 戈爾戈勒省 | zh-hant | Gorgol |
+| MR-05 | 卜拉克納省 | zh-hant | Brakna |
+| MR-06 | 特拉扎省 | zh-hant | Trarza |
+| MR-07 | 阿德拉爾省 (茅利塔尼亞) | zh-hant | Adrar |
+| MR-08 | 努瓦迪布灣省 | zh-hant | Dakhlet Nouadhibou |
+| MR-09 | 塔甘特省 | zh-hant | Tagant |
+| MR-11 | 提里斯-宰穆爾省 | zh-hant | Tiris Zemmour |
+| MR-12 | 因希里省 | zh-hant | Inchiri |
+| MT-03 | 比爾古 | zh-hant | Birgu |
+| MT-06 | 科斯皮夸 | zh-hant | Cospicua |
+| MT-09 | 弗洛里亞納 | zh-hant | Floriana |
+| MT-14 | 阿爾卜 | zh-hant | Għarb |
+| MT-20 | 森格萊阿 | zh-hant | Senglea |
+| MT-22 | 凱爾切姆 | zh-hant | Kerċem |
+| MT-27 | 馬爾薩斯卡拉 | zh-hant | Marsaskala |
+| MT-29 | 姆迪納 | zh-hant | Mdina |
+| MT-30 | 梅利哈 | zh-hant | Mellieħa |
+| MT-32 | 莫斯塔 | zh-hant | Mosta |
+| MT-36 | 蒙沙爾 | zh-hant | Munxar |
+| MT-37 | 納杜爾 | zh-hant | Nadur |
+| MT-39 | 保拉 | zh-hant | Paola |
+| MT-43 | 戈爾米 | zh-hant | Qormi |
+| MT-45 | 維多利亞 | zh-hant | Victoria |
+| MT-47 | 薩菲 | zh-hant | Safi |
+| MT-50 | 聖勞倫斯 | zh-hant | Saint Lawrence |
+| MT-52 | 桑納特 | zh-hant | Sannat |
+| MT-53 | 聖露西亞 | zh-hant | Santa Luċija |
+| MT-55 | 錫傑維 | zh-hant | Siġġiewi |
+| MT-59 | 塔爾欣 | zh-hant | Tarxien |
+| MT-60 | 瓦萊塔 | zh-hant | Valletta |
+| MT-62 | 紹基亞 | zh-hant | Xewkija |
+| MT-65 | 澤布季 | zh-hant | Żebbuġ Gozo |
+| MT-66 | 澤布季 | zh-hant | Żebbuġ |
+| MU-AG | 阿加萊加群島 | zh-hant | Agaléga |
+| MU-BL | 黑河區 | zh-hant | Rivière Noire |
+| MU-FL | 弗拉克區 | zh-hant | Flacq |
+| MU-GP | 大港區 | zh-hant | Grand Port |
+| MU-MO | 莫卡區 | zh-hant | Moka |
+| MU-PW | 威廉平原區 | zh-hant | Plaines Wilhems |
+| MU-RO | 羅德里格島 | zh-hant | Rodrigues |
+| MU-RR | 朗帕河區 | zh-hant | Rivière du Rempart |
+| MU-SA | 薩凡納區 | zh-hant | Savanne |
+| MV-00 | Ari環礁 | zh-hant | Alif Dhaal |
+| MV-01 | Addu環礁 | zh-hant | Addu |
+| MV-05 | 拉穆環礁 | zh-hant | Laamu |
+| MV-08 | 塔環礁 | zh-hant | Thaa |
+| MV-17 | 達盧環礁 | zh-hant | Dhaalu |
+| MV-20 | 巴環礁 | zh-hant | Baa |
+| MV-23 | 哈達盧環礁 | zh-hant | Haa Dhaalu |
+| MV-27 | Huvadhoo環礁 | zh-hant | Gaafu Alif |
+| MV-28 | 加富達盧環礁 | zh-hant | Gaafu Dhaalu |
+| MV-29 | 尼亞維亞尼環礁 | zh-hant | Gnaviyani |
+| MV-MLE | 馬累 | zh-hant | Malé |
+| MW-BA | 巴拉卡縣 | zh-hant | Balaka |
+| MW-BL | 布蘭太爾縣 | zh-hant | Blantyre |
+| MW-C | 中央區 | zh-hant | Central |
+| MW-CK | 奇夸瓦縣 | zh-hant | Chikwawa |
+| MW-CR | 奇拉祖盧縣 | zh-hant | Chiradzulu |
+| MW-CT | 奇蒂帕縣 | zh-hant | Chitipa |
+| MW-DO | 多瓦縣 | zh-hant | Dowa |
+| MW-KR | 卡龍加縣 | zh-hant | Karonga |
+| MW-KS | 卡松古縣 | zh-hant | Kasungu |
+| MW-LI | 利隆圭縣 | zh-hant | Lilongwe |
+| MW-MC | 姆欽吉縣 | zh-hant | Mchinji |
+| MW-MG | 曼戈奇縣 | zh-hant | Mangochi |
+| MW-MH | 馬欽加縣 | zh-hant | Machinga |
+| MW-MW | 姆萬紮縣 | zh-hant | Mwanza |
+| MW-MZ | 姆津巴縣 | zh-hant | Mzimba |
+| MW-N | 北部區 | zh-hant | Northern |
+| MW-NB | 恩卡塔貝縣 | zh-hant | Nkhata Bay |
+| MW-NI | 恩奇西縣 | zh-hant | Ntchisi |
+| MW-NS | 恩桑傑縣 | zh-hant | Nsanje |
+| MW-NU | 恩切烏縣 | zh-hant | Ntcheu |
+| MW-RU | 龍皮縣 | zh-hant | Rumphi |
+| MW-S | 南部區 | zh-hant | Southern |
+| MW-SA | 薩利馬縣 | zh-hant | Salima |
+| MW-TH | 喬洛縣 | zh-hant | Thyolo |
+| MW-ZO | 松巴縣 | zh-hant | Zomba |
+| MX-AGU | 阿瓜斯卡連特斯州 | zh-hant | Aguascalientes |
+| MX-BCN | 下加利福尼亞 | zh-hant | Baja California |
+| MX-CHH | 奇瓦瓦州 | zh-hant | Chihuahua |
+| MX-CHP | 恰帕斯州 | zh-hant | Chiapas |
+| MX-CMX | 墨西哥城 | zh-hant | Ciudad de Mexico |
+| MX-COA | 科阿韋拉州 | zh-hant | Coahuila |
+| MX-COL | 科利馬州 | zh-hant | Colima |
+| MX-GRO | 格雷羅州 | zh-hant | Guerrero |
+| MX-GUA | 瓜納華托 | zh-hant | Guanajuato |
+| MX-HID | 伊達爾戈州 | zh-hant | Hidalgo |
+| MX-JAL | 哈利斯科州 | zh-hant | Jalisco |
+| MX-MEX | 墨西哥州 | zh-hant | Mexico State |
+| MX-MIC | 米卻肯州 | zh-hant | Michoacán |
+| MX-MOR | 莫雷洛斯州 | zh-hant | Morelos |
+| MX-NAY | 特皮克 | zh-hant | Nayarit |
+| MX-NLE | 新雷昂州 | zh-hant | Nuevo León |
+| MX-OAX | 瓦哈卡市 | zh-hant | Oaxaca |
+| MX-PUE | 普埃布拉州 | zh-hant | Puebla |
+| MX-QUE | 克雷塔羅州 | zh-hant | Querétaro |
+| MX-SIN | 錫那羅亞州 | zh-hant | Sinaloa |
+| MX-SLP | 聖路易斯波托西市 | zh-hant | San Luis Potosí |
+| MX-SON | 索諾拉州 | zh-hant | Sonora |
+| MX-TAB | 塔巴斯科州 | zh-hant | Tabasco |
+| MX-TAM | 塔毛利帕斯州 | zh-hant | Tamaulipas |
+| MX-TLA | 特拉斯卡拉州 | zh-hant | Tlaxcala |
+| MX-VER | 維拉克魯斯州 | zh-hant | Veracruz |
+| MX-ZAC | 薩卡特卡斯州 | zh-hant | Zacatecas |
+| MY-01 | 柔佛州 | zh-hant | Johor |
+| MY-02 | 吉打 | zh-hant | Kedah |
+| MY-03 | 吉蘭丹 | zh-hant | Kelantan |
+| MY-04 | 麻六甲 | zh-hant | Malacca |
+| MY-05 | 森美蘭 | zh-hant | Negeri Sembilan |
+| MY-06 | 彭亨 | zh-hant | Pahang |
+| MY-07 | 檳城 | zh-hant | Penang |
+| MY-08 | 霹靂 | zh-hant | Perak |
+| MY-09 | 玻璃市 | zh-hant | Perlis |
+| MY-10 | 雪蘭莪 | zh-hant | Selangor |
+| MY-11 | 登嘉樓 | zh-hant | Terengganu |
+| MY-12 | 沙巴州 | zh-hant | Sabah |
+| MY-13 | 砂拉越 | zh-hant | Sarawak |
+| MY-14 | 吉隆坡 | zh-hant | Kuala Lumpur |
+| MY-15 | 納閩 | zh-hant | Labuan |
+| MY-16 | 布城 | zh-hant | Putrajaya |
+| MZ-A | 尼亞薩省 | zh-hant | Niassa |
+| MZ-B | 馬尼卡省 | zh-hant | Manica |
+| MZ-G | 加扎省 | zh-hant | Gaza |
+| MZ-I | 伊尼揚巴內省 | zh-hant | Inhambane |
+| MZ-L | 馬普托省 | zh-hant | Maputo Province |
+| MZ-MPM | 馬普托 | zh-hant | Maputo |
+| MZ-N | 楠普拉省 | zh-hant | Nampula |
+| MZ-P | 德爾加杜角省 | zh-hant | Cabo Delgado |
+| MZ-Q | 贊比西亞省 | zh-hant | Zambezia |
+| MZ-S | 索法拉省 | zh-hant | Sofala |
+| NA-CA | 卡普里維區 | zh-hant | Zambezi |
+| NA-HA | 哈達普區 | zh-hant | Hardap |
+| NA-KH | 霍馬斯區 | zh-hant | Khomas |
+| NA-KU | 庫內內區 | zh-hant | Kunene |
+| NA-OD | 奧喬宗朱帕區 | zh-hant | Otjozondjupa |
+| NA-OH | 奧馬海凱區 | zh-hant | Omaheke |
+| NA-OS | 奧穆薩蒂區 | zh-hant | Omusati |
+| NA-OT | 奧希科托區 | zh-hant | Oshikoto |
+| NA-OW | 奧漢圭納區 | zh-hant | Ohangwena |
+| NE-2 | 迪法大區 | zh-hant | Diffa |
+| NE-3 | 多索大區 | zh-hant | Dosso |
+| NE-4 | 馬拉迪大區 | zh-hant | Maradi |
+| NE-5 | 塔瓦大區 | zh-hant | Tahoua |
+| NE-6 | 蒂拉貝里大區 | zh-hant | Tillabéri |
+| NE-8 | 尼阿美 | zh-hant | Niamey |
+| NG-AB | 阿比亞州 | zh-hant | Abia |
+| NG-AD | 阿達馬瓦 | zh-hant | Adamawa |
+| NG-AK | 阿夸伊博姆州 | zh-hant | Akwa Ibom |
+| NG-AN | 阿南布拉州 | zh-hant | Anambra |
+| NG-BA | 包奇州 | zh-hant | Bauchi |
+| NG-BO | 博爾諾州 | zh-hant | Borno |
+| NG-CR | 克羅斯河州 | zh-hant | Cross River |
+| NG-DE | 三角洲州 | zh-hant | Delta |
+| NG-EB | 埃邦伊州 | zh-hant | Ebonyi |
+| NG-ED | 埃多州 | zh-hant | Edo |
+| NG-EK | 埃基蒂州 | zh-hant | Ekiti |
+| NG-EN | 埃努古州 | zh-hant | Enugu |
+| NG-GO | 貢貝州 | zh-hant | Gombe |
+| NG-IM | 伊莫州 | zh-hant | Imo |
+| NG-JI | 吉加瓦州 | zh-hant | Jigawa |
+| NG-KD | 卡杜納州 | zh-hant | Kaduna |
+| NG-KE | 凱比州 | zh-hant | Kebbi |
+| NG-KN | 卡諾州 | zh-hant | Kano |
+| NG-KW | 誇拉州 | zh-hant | Kwara |
+| NG-LA | 拉各斯州 | zh-hant | Lagos |
+| NG-NA | 納薩拉瓦州 | zh-hant | Nasarawa |
+| NG-NI | 尼日爾州 | zh-hant | Niger |
+| NG-OG | 奧貢州 | zh-hant | Ogun |
+| NG-ON | 翁多州 | zh-hant | Ondo |
+| NG-OS | 奧孫州 | zh-hant | Osun |
+| NG-OY | 奧約州 | zh-hant | Oyo |
+| NG-PL | 高原州 | zh-hant | Plateau |
+| NG-RI | 河流州 | zh-hant | Rivers |
+| NG-SO | 索科托州 | zh-hant | Sokoto |
+| NG-TA | 塔拉巴州 | zh-hant | Taraba |
+| NG-YO | 約貝州 | zh-hant | Yobe |
+| NI-AN | 北加勒比海岸自治區部門 | zh-hant | North Caribbean Coast |
+| NI-CA | 卡拉索省 | zh-hant | Carazo |
+| NI-CI | 奇南德加省 | zh-hant | Chinandega |
+| NI-CO | 琼塔萊斯省 | zh-hant | Chontales |
+| NI-ES | 埃斯特利省 | zh-hant | Estelí |
+| NI-GR | 格拉納達省 | zh-hant | Granada |
+| NI-JI | 希諾特加省 | zh-hant | Jinotega |
+| NI-LE | 萊昂省 | zh-hant | León |
+| NI-MD | 馬德里斯省 | zh-hant | Madriz |
+| NI-MN | 馬那瓜省 | zh-hant | Managua |
+| NI-MT | 馬塔加爾帕省 | zh-hant | Matagalpa |
+| NI-NS | 新塞哥維亞省 | zh-hant | Nueva Segovia |
+| NI-RI | 里瓦斯省 | zh-hant | Rivas |
+| NI-SJ | 聖胡安河省 | zh-hant | Río San Juan |
+| NL-AW | 阿魯巴 | zh-hant | Aruba |
+| NL-BQ1 | 波奈 | zh-hant | Bonaire |
+| NL-BQ2 | 薩巴 | zh-hant | Saba |
+| NL-CW | 古拉索 | zh-hant | Curaçao |
+| NL-FR | 弗里斯蘭省 | zh-hant | Friesland |
+| NL-LI | 林堡省 | zh-hant | Limburg |
+| NL-NB | 北布拉班特 | zh-hant | North Brabant |
+| NL-NH | 北荷蘭省 | zh-hant | North Holland |
+| NL-SX | 荷屬聖馬丁 | zh-hant | Sint Maarten |
+| NL-UT | 烏特勒支省 | zh-hant | Utrecht |
+| NL-ZE | 澤蘭省 | zh-hant | Zeeland |
+| NL-ZH | 南荷蘭省 | zh-hant | South Holland |
+| NO-03 | 奧斯陸 | zh-hant | Oslo |
+| NO-11 | 勒斯特蘭 | zh-hant | Rogaland |
+| NO-15 | 默勒-魯姆斯達爾郡 | zh-hant | Møre og Romsdal |
+| NO-21 | 斯瓦巴 | zh-hant | Svalbard |
+| NO-22 | 揚馬延 | zh-hant | Jan Mayen |
+| NO-32 | 阿克什胡斯郡 | zh-hant | Akershus |
+| NO-33 | 布斯克魯郡 | zh-hant | Buskerud |
+| NO-39 | 西福爾郡 | zh-hant | Vestfold |
+| NO-40 | 泰勒馬克郡 | zh-hant | Telemark |
+| NO-42 | 阿格德爾郡 | zh-hant | Agder |
+| NO-46 | 韋斯特蘭郡 | zh-hant | Vestland |
+| NO-50 | 特倫德拉格郡 | zh-hant | Trøndelag |
+| NO-55 | 特羅姆斯郡 | zh-hant | Troms |
+| NR-01 | 艾沃區 | zh-hant | Aiwo |
+| NR-02 | 阿納巴爾區 | zh-hant | Anabar |
+| NR-03 | 阿內坦區 | zh-hant | Anetan |
+| NR-04 | 阿尼巴雷區 | zh-hant | Anibare |
+| NR-05 | 拜齊區 | zh-hant | Baiti |
+| NR-06 | 博埃區 | zh-hant | Boe |
+| NR-09 | 埃瓦區 | zh-hant | Ewa |
+| NR-10 | 伊朱烏區 | zh-hant | Ijuw |
+| NR-11 | 梅嫩區 | zh-hant | Meneng |
+| NR-12 | 尼博克區 | zh-hant | Nibok |
+| NR-13 | 瓦博埃區 | zh-hant | Uaboe |
+| NZ-AUK | 奧克蘭大區 | zh-hant | Auckland |
+| NZ-CAN | 坎特伯雷 | zh-hant | Canterbury |
+| NZ-CIT | 查塔姆群島 | zh-hant | Chatham Islands |
+| NZ-GIS | 吉斯本大區 | zh-hant | Gisborne |
+| NZ-HKB | 豪克斯灣地區 | zh-hant | Hawke’s Bay |
+| NZ-MBH | 馬爾堡 | zh-hant | Marlborough |
+| NZ-MWT | 馬納瓦圖-旺阿努伊 | zh-hant | Manawatu-Wanganui |
+| NZ-OTA | 奧塔哥大區 | zh-hant | Otago |
+| NZ-STL | 南地大區 | zh-hant | Southland |
+| NZ-TKI | 塔拉納基大區 | zh-hant | Taranaki |
+| NZ-WGN | 威靈頓地區 | zh-hant | Wellington |
+| NZ-WKO | 懷卡托 | zh-hant | Waikato |
+| OM-SJ | 東南省 | zh-hant | Janub ash Sharqiyah |
+| OM-SS | 東北省 | zh-hant | Shamal ash Sharqiyah |
+| PA-1 | 博卡斯德爾托羅省 | zh-hant | Bocas del Toro |
+| PA-2 | 科克萊省 | zh-hant | Coclé |
+| PA-3 | 科隆省 | zh-hant | Colón |
+| PA-4 | 奇里基省 | zh-hant | Chiriquí |
+| PA-5 | 達連省 | zh-hant | Darién |
+| PA-6 | 埃雷拉省 | zh-hant | Herrera |
+| PA-7 | 洛斯桑托斯省 | zh-hant | Los Santos |
+| PA-8 | 巴拿馬省 | zh-hant | Panamá |
+| PA-9 | 貝拉瓜斯省 | zh-hant | Veraguas |
+| PA-EM | 恩貝拉-沃南原住民區 | zh-hant | Emberá |
+| PA-KY | 古納亞拉原住民區 | zh-hant | Guna Yala |
+| PA-NB | 恩戈韋-布格萊原住民區 | zh-hant | Ngöbe-Buglé |
+| PE-AMA | 亞馬遜大區 | zh-hant | Amazonas |
+| PE-ANC | 安卡什大區 | zh-hant | Ancash |
+| PE-APU | 阿普里馬克大區 | zh-hant | Apurímac |
+| PE-ARE | 阿雷基帕大區 | zh-hant | Arequipa |
+| PE-AYA | 阿亞庫喬大區 | zh-hant | Ayacucho |
+| PE-CAJ | 卡哈馬卡大區 | zh-hant | Cajamarca |
+| PE-CUS | 庫斯科大區 | zh-hant | Cusco |
+| PE-HUC | 瓦努科大區 | zh-hant | Huánuco |
+| PE-HUV | 萬卡韋利卡大區 | zh-hant | Huancavelica |
+| PE-ICA | 伊卡大區 | zh-hant | Ica |
+| PE-JUN | 胡寧大區 | zh-hant | Junín |
+| PE-LAL | 拉利伯塔德大區 | zh-hant | La Libertad |
+| PE-LAM | 蘭巴耶克大區 | zh-hant | Lambayeque |
+| PE-LIM | 利馬大區 | zh-hant | Lima Region |
+| PE-LOR | 洛雷託大區 | zh-hant | Loreto |
+| PE-MDD | 馬德雷德迪奧斯大區 | zh-hant | Madre de Dios |
+| PE-MOQ | 莫克瓜大區 | zh-hant | Moquegua |
+| PE-PAS | 帕斯科大區 | zh-hant | Pasco |
+| PE-PIU | 皮烏拉地區 | zh-hant | Piura |
+| PE-PUN | 普諾大區 | zh-hant | Puno |
+| PE-SAM | 聖馬丁大區 | zh-hant | San Martín |
+| PE-TAC | 塔克納大區 | zh-hant | Tacna |
+| PE-TUM | 通貝斯大區 | zh-hant | Tumbes |
+| PE-UCA | 烏卡亞利大區 | zh-hant | Ucayali |
+| PG-CPM | 中央省 | zh-hant | Central |
+| PG-EBR | 東新不列顛省 | zh-hant | East New Britain |
+| PG-EHG | 東高地省 | zh-hant | Eastern Highlands |
+| PG-EPW | 恩加省 | zh-hant | Enga |
+| PG-ESW | 東塞皮克省 | zh-hant | East Sepik |
+| PG-GPK | 海灣省 | zh-hant | Gulf |
+| PG-MBA | 米爾恩灣省 | zh-hant | Milne Bay |
+| PG-MPL | 莫雷貝省 | zh-hant | Morobe |
+| PG-MPM | 馬當省 | zh-hant | Madang |
+| PG-MRL | 馬努斯省 | zh-hant | Manus |
+| PG-NCD | 莫士比港 | zh-hant | Port Moresby |
+| PG-NIK | 新愛爾蘭省 | zh-hant | New Ireland |
+| PG-NPP | 北部省 | zh-hant | Oro |
+| PG-SAN | 桑道恩省 | zh-hant | Sandaun |
+| PG-SHM | 南高地省 | zh-hant | Southern Highlands |
+| PG-WHM | 西高地省 | zh-hant | Western Highlands |
+| PG-WPD | 西部省 | zh-hant | Western |
+| PH-00 | 馬尼拉大都會 | zh-hant | Metro Manila |
+| PH-01 | 伊羅戈 | zh-tw | Ilocos |
+| PH-02 | 卡加延河谷 | zh-hant | Cagayan Valley |
+| PH-03 | 中央呂宋 | zh-hant | Central Luzon |
+| PH-05 | 比科爾區 | zh-hant | Bicol |
+| PH-08 | 東維薩亞斯 | zh-hant | Eastern Visayas |
+| PH-09 | 三寶顏半島 | zh-hant | Zamboanga Peninsula |
+| PH-10 | 北民答那峨 | zh-hant | Northern Mindanao |
+| PH-41 | 民馬羅巴區 | zh-hant | Mimaropa |
+| PH-ABR | 阿布拉省 | zh-tw | Abra |
+| PH-BAS | 巴西蘭德省 | zh-hant | Basilan |
+| PH-BEN | 本格特省 | zh-hant | Benguet |
+| PH-BIL | 比利蘭省 | zh-hant | Biliran |
+| PH-BUK | 布基農省 | zh-hant | Bukidnon |
+| PH-BUL | 布拉干省 | zh-hant | Bulacan |
+| PH-CAG | 卡加延省 | zh-hant | Cagayan |
+| PH-CAM | 卡米金省 | zh-hant | Camiguin |
+| PH-CAP | 卡皮茲省 | zh-hant | Capiz |
+| PH-CAV | 甲米地省 | zh-hant | Cavite |
+| PH-CEB | 宿務省 | zh-hant | Cebu |
+| PH-DAV | 北達沃省 | zh-hant | Davao del Norte |
+| PH-DVO | 西達沃省 | zh-hant | Davao Occidental |
+| PH-EAS | 東薩馬省 | zh-hant | Eastern Samar |
+| PH-KAL | 卡林阿省 | zh-hant | Kalinga |
+| PH-LAG | 內湖省 | zh-hant | Laguna |
+| PH-LEY | 禮智省 | zh-hant | Leyte |
+| PH-MAS | 馬斯巴特 | zh-hant | Masbate |
+| PH-NCO | 哥打巴托省 | zh-hant | Cotabato |
+| PH-NSA | 北薩馬 | zh-hant | Northern Samar |
+| PH-PAM | 潘帕嘉 | zh-hant | Pampanga |
+| PH-PAN | 邦阿西楠省 | zh-hant | Pangasinan |
+| PH-PLW | 巴拉望省 | zh-hant | Palawan |
+| PH-QUE | 奎松省 | zh-hant | Quezon |
+| PH-SLE | 南萊特省 | zh-hant | Southern Leyte |
+| PH-SUR | 南蘇里高省 | zh-hant | Surigao del Sur |
+| PH-TAR | 丹轆省 | zh-hant | Tarlac |
+| PH-ZAN | 北三寶顏省 | zh-hant | Zamboanga del Norte |
+| PH-ZAS | 南三寶顏省 | zh-hant | Zamboanga del Sur |
+| PH-ZMB | 三描禮士省 | zh-hant | Zambales |
+| PK-BA | 俾路支省 | zh-hant | Balochistan |
+| PK-GB | 吉爾吉特－巴爾蒂斯坦 | zh-hant | Gilgit-Baltistan |
+| PK-IS | 伊斯蘭堡首都區 | zh-hant | Islamabad |
+| PK-JK | 自由喀什米爾 | zh-hant | Azad Kashmir |
+| PK-KP | 開伯爾-普什圖省 | zh-hant | Khyber Pakhtunkhwa |
+| PK-PB | 旁遮普省 | zh-hant | Punjab |
+| PK-SD | 信德省 | zh-hant | Sindh |
+| PL-04 | 庫亞維濱海省 | zh-hant | Kuyavia-Pomerania |
+| PL-08 | 盧布斯卡省 | zh-hant | Lubusz |
+| PL-12 | 小波蘭省 | zh-hant | Lesser Poland |
+| PL-14 | 馬佐夫舍省 | zh-hant | Mazovia |
+| PL-18 | 喀爾巴阡山麓省 | zh-hant | Subcarpathia |
+| PL-22 | 濱海省 | zh-hant | Pomerania |
+| PL-30 | 大波蘭省 | zh-hant | Greater Poland |
+| PL-32 | 西濱海省 | zh-hant | West Pomerania |
+| PS-JEM | 耶路撒冷省 | zh-hant | Jerusalem |
+| PS-KYS | 汗尤尼斯省 | zh-hant | Khan Yunis |
+| PS-NBS | 納布盧斯省 | zh-hant | Nablus |
+| PS-QQA | 蓋勒吉利耶省 | zh-hant | Qalqilya |
+| PS-RBH | 拉姆安拉和比雷赫省 | zh-hant | Ramallah and al-Bireh |
+| PS-RFH | 拉法赫省 | zh-hant | Rafah |
+| PS-TBS | 圖巴斯省 | zh-hant | Tubas |
+| PS-TKM | 圖勒凱爾姆省 | zh-hant | Tulkarm |
+| PT-01 | 阿威羅區 | zh-hant | Aveiro |
+| PT-02 | 貝雅區 | zh-hant | Beja |
+| PT-03 | 布拉加區 | zh-hant | Braga |
+| PT-04 | 布拉干薩區 | zh-hant | Bragança |
+| PT-05 | 布朗庫堡區 | zh-hant | Castelo Branco |
+| PT-06 | 科英布拉區 | zh-hant | Coimbra |
+| PT-07 | 埃武拉區 | zh-hant | Évora |
+| PT-08 | 法魯區 | zh-hant | Faro |
+| PT-09 | 瓜達區 | zh-hant | Guarda |
+| PT-10 | 萊里亞區 | zh-hant | Leiria |
+| PT-11 | 里斯本區 | zh-hant | Lisbon |
+| PT-13 | 波爾圖區 | zh-hant | Porto |
+| PT-14 | 聖塔倫區 | zh-hant | Santarém |
+| PT-15 | 塞圖巴區 | zh-hant | Setúbal |
+| PT-16 | 維亞納堡區 | zh-hant | Viana do Castelo |
+| PT-17 | 雷阿爾城區 | zh-hant | Vila Real |
+| PT-18 | 維塞烏區 | zh-hant | Viseu |
+| PT-20 | 亞速爾群島 | zh-hant | Azores |
+| PT-30 | 馬德拉自治區 | zh-hant | Madeira |
+| PW-010 | 安加爾州 | zh-hant | Angaur |
+| PW-100 | 卡揚埃爾 | zh-hant | Kayangel |
+| PW-150 | 科羅爾州 | zh-hant | Koror |
+| PW-214 | 雅拉爾德州 | zh-hant | Ngaraard |
+| PW-218 | 雅切隆州 | zh-hant | Ngarchelong |
+| PW-222 | 雅德馬烏州 | zh-hant | Ngardmau |
+| PW-226 | 恩切薩爾州 | zh-hant | Ngchesar |
+| PW-350 | 貝里琉州 | zh-hant | Peleliu |
+| PW-370 | 松索羅爾 | zh-hant | Sonsorol |
+| PY-1 | 康塞普西翁省 | zh-hant | Concepción |
+| PY-10 | 上巴拉那省 | zh-hant | Alto Paraná |
+| PY-12 | 涅恩布庫省 | zh-hant | Ñeembucú |
+| PY-13 | 阿曼拜省 | zh-hant | Amambay |
+| PY-14 | 加寧德優省 | zh-hant | Canindeyú |
+| PY-15 | 阿耶斯總統省 | zh-hant | Presidente Hayes |
+| PY-19 | 博克龍省 | zh-hant | Boquerón |
+| PY-2 | 聖佩德羅省 | zh-hant | San Pedro |
+| PY-3 | 科迪勒拉省 | zh-hant | Cordillera |
+| PY-4 | 瓜伊拉省 | zh-hant | Guairá |
+| PY-5 | 卡瓜蘇省 | zh-hant | Caaguazú |
+| PY-ASU | 亞松森 | zh-hant | Asunción |
+| QA-DA | 杜哈 | zh-hant | Doha |
+| QA-WA | 沃克拉 | zh-hant | Al Wakrah |
+| RO-AB | 阿爾巴縣 | zh-hant | Alba |
+| RO-AG | 阿爾傑什縣 | zh-hant | Argeș |
+| RO-AR | 阿拉德縣 | zh-hant | Arad |
+| RO-B | 布加勒斯特 | zh-hant | Bucharest |
+| RO-BC | 巴克烏縣 | zh-hant | Bacău |
+| RO-BH | 比霍爾縣 | zh-hant | Bihor |
+| RO-BN | 比斯特里察-訥瑟烏德縣 | zh-hant | Bistriţa-Năsăud |
+| RO-BR | 布勒伊拉縣 | zh-hant | Brăila |
+| RO-BT | 博托沙尼縣 | zh-hant | Botoşani |
+| RO-BV | 布拉索夫縣 | zh-hant | Braşov |
+| RO-BZ | 布澤烏縣 | zh-hant | Buzău |
+| RO-CJ | 克盧日縣 | zh-hant | Cluj |
+| RO-CL | 克勒拉希縣 | zh-hant | Călărași |
+| RO-CS | 卡拉什-塞維林縣 | zh-hant | Caraș-Severin |
+| RO-CT | 康斯坦察縣 | zh-hant | Constanța |
+| RO-CV | 科瓦斯納縣 | zh-hant | Covasna |
+| RO-DB | 登博維察縣 | zh-hant | Dâmbovița |
+| RO-DJ | 多爾日縣 | zh-hant | Dolj |
+| RO-GJ | 戈爾日縣 | zh-hant | Gorj |
+| RO-GL | 加拉茨縣 | zh-hant | Galați |
+| RO-GR | 久爾久縣 | zh-hant | Giurgiu |
+| RO-HD | 胡內多阿拉縣 | zh-hant | Hunedoara |
+| RO-HR | 哈爾吉塔縣 | zh-hant | Harghita |
+| RO-IF | 伊爾福夫縣 | zh-hant | Ilfov |
+| RO-IL | 雅洛米察縣 | zh-hant | Ialomița |
+| RO-IS | 雅西縣 | zh-hant | Iași |
+| RO-MH | 梅赫丁茨縣 | zh-hant | Mehedinți |
+| RO-MM | 馬拉穆列什縣 | zh-hant | Maramureş |
+| RO-MS | 穆列什縣 | zh-hant | Mureş |
+| RO-NT | 尼亞姆茨縣 | zh-hant | Neamţ |
+| RO-OT | 奧爾特縣 | zh-hant | Olt |
+| RO-PH | 普拉霍瓦縣 | zh-hant | Prahova |
+| RO-SB | 錫比烏縣 | zh-hant | Sibiu |
+| RO-SJ | 瑟拉日縣 | zh-hant | Sălaj |
+| RO-SV | 蘇恰瓦縣 | zh-hant | Suceava |
+| RO-TL | 圖爾恰縣 | zh-hant | Tulcea |
+| RO-TM | 蒂米什縣 | zh-hant | Timiș |
+| RO-TR | 特列奧爾曼縣 | zh-hant | Teleorman |
+| RO-VL | 沃爾恰縣 | zh-hant | Vâlcea |
+| RO-VN | 弗朗恰縣 | zh-hant | Vrancea |
+| RS-01 | 北巴奇卡區 | zh-hant | North Bačka |
+| RS-03 | 北巴納特區 | zh-hant | North Banat |
+| RS-04 | 南巴納特區 | zh-hant | South Banat |
+| RS-05 | 西巴奇卡區 | zh-hant | West Bačka |
+| RS-06 | 南巴奇卡區 | zh-hant | South Bačka |
+| RS-07 | 斯雷姆區 | zh-hant | Srem |
+| RS-08 | 馬奇瓦區 | zh-hant | Mačva |
+| RS-09 | 科盧巴拉區 | zh-hant | Kolubara |
+| RS-11 | 布拉尼切沃區 | zh-hant | Braničevo |
+| RS-13 | 波莫拉夫列區 | zh-hant | Pomoravlje |
+| RS-16 | 茲拉蒂博爾區 | zh-hant | Zlatibor |
+| RS-18 | 拉什卡區 | zh-hant | Raška |
+| RS-19 | 拉西納區 | zh-hant | Rasina |
+| RS-20 | 尼沙瓦區 | zh-hant | Nišava |
+| RS-21 | 托普利察區 | zh-hant | Toplica |
+| RS-23 | 亞布拉尼察區 | zh-hant | Jablanica |
+| RS-24 | 普奇尼亞區 | zh-hant | Pčinja |
+| RS-KM | 科索沃和梅托希亞自治省 | zh-hant | Kosovo-Metohija |
+| RS-VO | 伏伊伏丁那自治省 | zh-hant | Vojvodina |
+| RU-AD | 阿迪格共和國 | zh-hant | Adygea |
+| RU-ALT | 阿爾泰邊疆區 | zh-hant | Altai Krai |
+| RU-AST | 阿斯特拉罕州 | zh-hant | Astrakhan |
+| RU-BA | 巴什科爾托斯坦共和國 | zh-hant | Bashkortostan |
+| RU-BEL | 別爾哥羅德州 | zh-hant | Belgorod |
+| RU-CE | 車臣共和國 | zh-hant | Chechnya |
+| RU-CHE | 車里雅賓斯克州 | zh-hant | Chelyabinsk |
+| RU-CU | 楚瓦什共和國 | zh-hant | Chuvashia |
+| RU-DA | 達吉斯坦共和國 | zh-hant | Dagestan |
+| RU-IRK | 伊爾庫茨克州 | zh-hant | Irkutsk |
+| RU-IVA | 伊萬諾沃州 | zh-hant | Ivanovo |
+| RU-KAM | 堪察加邊疆區 | zh-tw | Kamchatka Krai |
+| RU-KEM | 克麥羅沃州 | zh-hant | Kemerovo |
+| RU-KGN | 庫爾干州 | zh-hant | Kurgan |
+| RU-KHA | 哈巴羅夫斯克邊疆區 | zh-hant | Khabarovsk Krai |
+| RU-KIR | 基洛夫州 | zh-hant | Kirov |
+| RU-KLU | 卡盧加州 | zh-hant | Kaluga |
+| RU-KRS | 庫爾斯克州 | zh-hant | Kursk |
+| RU-LEN | 列寧格勒州 | zh-hant | Leningrad |
+| RU-LIP | 利佩茨克州 | zh-hant | Lipetsk |
+| RU-MAG | 馬加丹州 | zh-hant | Magadan |
+| RU-MO | 莫爾多維亞共和國 | zh-hant | Mordovia |
+| RU-MOS | 莫斯科州 | zh-hant | Moscow Province |
+| RU-MOW | 莫斯科 | zh-hant | Moscow |
+| RU-MUR | 摩爾曼斯克州 | zh-hant | Murmansk |
+| RU-NIZ | 下諾夫哥羅德州 | zh-hant | Nizhny Novgorod |
+| RU-ORE | 奧倫堡 | zh-hant | Orenburg |
+| RU-ORL | 奧廖爾州 | zh-hant | Oryol |
+| RU-PER | 彼爾姆邊疆區 | zh-hant | Perm Krai |
+| RU-PNZ | 奔薩州 | zh-hant | Penza |
+| RU-PRI | 普列莫爾斯基區 | zh-hant | Primorsky Krai |
+| RU-PSK | 普斯科夫州 | zh-hant | Pskov |
+| RU-ROS | 羅斯托夫州 | zh-hant | Rostov |
+| RU-RYA | 梁贊州 | zh-hant | Ryazan |
+| RU-SA | 薩哈（雅庫特）共和國 | zh-tw | Sakha |
+| RU-SAK | 薩哈林州 | zh-hant | Sakhalin |
+| RU-SAM | 薩馬拉州 | zh-hant | Samara |
+| RU-SAR | 薩拉托夫州 | zh-hant | Saratov |
+| RU-SE | 北奧塞提亞-阿蘭共和國 | zh-hant | North Ossetia-Alania |
+| RU-SMO | 斯摩棱斯克州 | zh-hant | Smolensk |
+| RU-STA | 斯塔夫羅波爾邊疆區 | zh-hant | Stavropol Krai |
+| RU-SVE | 斯維爾德洛夫斯克州 | zh-hant | Sverdlovsk |
+| RU-TA | 韃靼斯坦共和國 | zh-hant | Tatarstan |
+| RU-TAM | 坦波夫州 | zh-hant | Tambov |
+| RU-TVE | 特維爾州 | zh-tw | Tver |
+| RU-VGG | 伏爾加格勒州 | zh-hant | Volgograd |
+| RU-VLA | 弗拉基米爾州 | zh-hant | Vladimir |
+| RU-VLG | 沃洛格達州 | zh-hant | Vologda |
+| RU-VOR | 沃羅涅日州 | zh-hant | Voronezh |
+| RU-ZAB | 外貝加爾邊疆區 | zh-hant | Zabaykalsky Krai |
+| RW-02 | 東部省 | zh-hant | Eastern |
+| RW-03 | 北部省 | zh-hant | Northern |
+| RW-05 | 南部省 | zh-hant | Southern |
+| SA-01 | 利雅得省 | zh-hant | Riyadh |
+| SA-02 | 麥加省 | zh-hant | Makkah |
+| SA-03 | 麥地那省 | zh-hant | Al Madinah |
+| SA-06 | 哈伊勒省 | zh-hant | Ha’il |
+| SA-09 | 吉贊省 | zh-hant | Jizan |
+| SA-10 | 奈季蘭省 | zh-hant | Najran |
+| SA-11 | 巴哈省 | zh-hant | Al Bahah |
+| SA-14 | 阿西爾省 | zh-hant | Asir |
+| SB-CE | 中部群島省 | zh-hant | Central |
+| SB-CH | 舒瓦瑟爾省 | zh-hant | Choiseul |
+| SB-CT | 荷尼阿拉 | zh-hant | Honiara |
+| SB-GU | 瓜達爾卡納爾省 | zh-hant | Guadalcanal |
+| SB-IS | 伊莎貝爾省 | zh-hant | Isabel |
+| SB-MK | 馬基拉-烏拉瓦省 | zh-hant | Makira-Ulawa |
+| SB-ML | 馬萊塔省 | zh-hant | Malaita |
+| SB-RB | 拉納爾和貝羅納省 | zh-hant | Rennell and Bellona |
+| SB-WE | 西部省 | zh-hant | Western |
+| SC-05 | 安塞羅亞萊區 | zh-hant | Anse Royale |
+| SC-10 | 貝爾翁布雷區 | zh-hant | Bel Ombre |
+| SC-12 | 格拉西斯區 | zh-hant | Glacis |
+| SC-13 | 馬埃大安塞區 | zh-hant | Grand’Anse Mahé |
+| SC-15 | 拉蒂格與內島區 | zh-hant | La Digue |
+| SC-17 | 蒙巴克斯頓區 | zh-hant | Mont Buxton |
+| SC-21 | 波特格勞德區 | zh-hant | Port Glaud |
+| SC-23 | 塔卡瑪卡區 | zh-hant | Takamaka |
+| SC-25 | 羅切凱曼區 | zh-hant | Roche Caiman |
+| SD-DC | 中達爾富爾州 | zh-hant | Central Darfur |
+| SD-DN | 北達爾富爾州 | zh-hant | North Darfur |
+| SD-DS | 南達爾富爾州 | zh-hant | South Darfur |
+| SD-DW | 西達爾富爾州 | zh-hant | West Darfur |
+| SD-GD | 加達里夫州 | zh-hant | Al Qadarif |
+| SD-GZ | 傑濟拉州 | zh-hant | Al Jazirah |
+| SD-KA | 卡薩拉州 | zh-hant | Kassala |
+| SD-KH | 喀土穆州 | zh-hant | Khartoum |
+| SD-KN | 北科爾多凡州 | zh-hant | North Kurdufan |
+| SD-KS | 南科爾多凡州 | zh-hant | South Kurdufan |
+| SD-NB | 青尼羅州 | zh-hant | Blue Nile |
+| SD-NO | 北部州 | zh-hant | Northern |
+| SD-NR | 尼羅州 | zh-hant | River Nile |
+| SD-NW | 白尼羅州 | zh-hant | White Nile |
+| SD-RS | 紅海州 | zh-hant | Red Sea |
+| SD-SI | 森納爾州 | zh-hant | Sennar |
+| SE-AB | 斯德哥爾摩省 | zh-hant | Stockholm |
+| SE-AC | 西博滕省 | zh-hant | Västerbotten |
+| SE-BD | 北博滕省 | zh-hant | Norrbotten |
+| SE-C | 烏普薩拉省 | zh-hant | Uppsala |
+| SE-D | 南曼蘭省 | zh-hant | Södermanland |
+| SE-E | 東約特蘭省 | zh-hant | Östergötland |
+| SE-F | 延雪平省 | zh-hant | Jönköping |
+| SE-G | 克魯努貝里省 | zh-hant | Kronoberg |
+| SE-H | 卡爾馬省 | zh-hant | Kalmar |
+| SE-I | 哥得蘭省 | zh-hant | Gotland |
+| SE-K | 布萊金厄省 | zh-hant | Blekinge |
+| SE-M | 斯堪尼省 | zh-hant | Skåne |
+| SE-N | 哈蘭省 | zh-hant | Halland |
+| SE-O | 西約塔蘭省 | zh-hant | Västra Götaland |
+| SE-S | 韋姆蘭省 | zh-hant | Värmland |
+| SE-T | 厄勒布魯省 | zh-hant | Örebro |
+| SE-U | 西曼蘭省 | zh-hant | Västmanland |
+| SE-W | 達拉納省 | zh-hant | Dalarna |
+| SE-X | 耶夫勒堡省 | zh-hant | Gävleborg |
+| SE-Y | 西諾爾蘭省 | zh-hant | Västernorrland |
+| SE-Z | 耶姆特蘭省 | zh-hant | Jämtland |
+| SG-01 | 中區社區發展理事會 | zh-hant | Central Singapore |
+| SI-001 | 阿伊多夫什契納市鎮 | zh-hant | Ajdovščina |
+| SI-013 | 采爾克尼察市鎮 | zh-hant | Cerknica |
+| SI-014 | 采爾克諾市鎮 | zh-hant | Cerkno |
+| SI-016 | 哈羅澤 | zh-hant | Črna na Koroškem |
+| SI-046 | 科巴里德市鎮 | zh-hant | Kobarid |
+| SI-051 | 科茲耶 | zh-hant | Kozje |
+| SI-053 | 克拉尼斯卡戈拉 | zh-hant | Kranjska Gora |
+| SI-061 | 盧布利亞納城市市鎮 | zh-hant | Ljubljana |
+| SI-069 | 馬伊什佩克 | zh-hant | Majšperk |
+| SI-077 | 摩拉夫切 | zh-hant | Moravče |
+| SI-091 | 皮夫卡 | zh-hant | Pivka |
+| SI-092 | 波德切特泰克 | zh-hant | Podčetrtek |
+| SI-096 | 普圖伊 | zh-hant | Ptuj |
+| SI-106 | 羅加什卡-斯拉蒂納 | zh-hant | Rogaška Slatina |
+| SI-137 | 維塔涅 | zh-hant | Vitanje |
+| SI-147 | 日里市鎮 | zh-hant | Žiri |
+| SI-167 | 波霍列山區洛夫倫茨 | zh-hant | Lovrenc na Pohorju |
+| SI-202 | 德拉瓦河畔斯雷迪什切 | zh-hant | Središče ob Dravi |
+| SK-BC | 班斯卡-比斯特里察省 | zh-hant | Banská Bystrica |
+| SK-BL | 布拉迪斯拉發州 | zh-hant | Bratislava |
+| SK-KI | 科希策州 | zh-hant | Košice |
+| SK-NI | 尼特拉州 | zh-hant | Nitra |
+| SK-PV | 普雷紹夫州 | zh-hant | Prešov |
+| SK-TA | 特爾納瓦州 | zh-hant | Trnava |
+| SK-TC | 特倫欽省 | zh-hant | Trenčín |
+| SK-ZI | 日利納省 | zh-hant | Žilina |
+| SL-E | 東方省 | zh-hant | Eastern |
+| SL-N | 北方省 | zh-hant | Northern |
+| SL-W | 西部區 | zh-hant | Western Area |
+| SM-01 | 阿夸維瓦 | zh-hant | Acquaviva |
+| SM-02 | 基耶薩諾瓦 | zh-hant | Chiesanuova |
+| SM-03 | 多馬尼亞諾 | zh-hant | Domagnano |
+| SM-04 | 法埃塔諾 | zh-hant | Faetano |
+| SM-05 | 菲奧倫蒂諾 | zh-hant | Fiorentino |
+| SM-06 | 博爾戈馬焦雷 | zh-hant | Borgo Maggiore |
+| SM-07 | 聖馬力諾 | zh-hant | San Marino |
+| SM-08 | 蒙特賈爾迪諾 | zh-hant | Montegiardino |
+| SM-09 | 塞拉瓦萊 | zh-hant | Serravalle |
+| SN-DB | 久爾貝勒區 | zh-hant | Diourbel |
+| SN-DK | 達卡區 | zh-hant | Dakar |
+| SN-FK | 法蒂克區 | zh-hant | Fatick |
+| SN-KA | 卡夫林區 | zh-hant | Kaffrine |
+| SN-KD | 科爾達區 | zh-hant | Kolda |
+| SN-KE | 凱杜古區 | zh-hant | Kédougou |
+| SN-KL | 考拉克區 | zh-hant | Kaolack |
+| SN-LG | 盧加區 | zh-hant | Louga |
+| SN-MT | 馬塔姆區 | zh-hant | Matam |
+| SN-TC | 坦巴昆達區 | zh-hant | Tambacounda |
+| SN-TH | 捷斯區 | zh-hant | Thiès |
+| SN-ZG | 濟金紹爾區 | zh-hant | Ziguinchor |
+| SO-AW | 奧達勒州 | zh-hant | Awdal |
+| SO-BR | 巴里州 | zh-hant | Bari |
+| SO-GA | 加勒古杜德州 | zh-hant | Galguduud |
+| SO-GE | 蓋多州 | zh-hant | Gedo |
+| SO-JD | 中朱巴州 | zh-hant | Middle Juba |
+| SO-JH | 下朱巴州 | zh-hant | Lower Juba |
+| SO-MU | 穆杜格州 | zh-hant | Mudug |
+| SO-NU | 努加爾州 | zh-hant | Nugal |
+| SO-SH | 下謝貝利州 | zh-hant | Lower Shebelle |
+| SO-SO | 蘇爾州 | zh-hant | Sool |
+| SO-TO | 托格代爾州 | zh-hant | Togdheer |
+| SO-WO | 馬羅迪傑赫州 | zh-hant | Woqooyi Galbeed |
+| SR-BR | 布羅科蓬多區 | zh-hant | Brokopondo |
+| SR-CM | 科默韋訥區 | zh-hant | Commewijne |
+| SR-CR | 科羅尼區 | zh-hant | Coronie |
+| SR-MA | 馬羅韋訥區 | zh-hant | Marowijne |
+| SR-NI | 尼克里區 | zh-hant | Nickerie |
+| SR-PM | 帕拉馬里博區 | zh-hant | Paramaribo |
+| SR-PR | 帕拉區 | zh-hant | Para |
+| SR-SA | 薩拉馬卡區 | zh-hant | Saramacca |
+| SR-SI | 錫帕利維尼區 | zh-hant | Sipaliwini |
+| SR-WA | 瓦尼卡區 | zh-hant | Wanica |
+| SS-BN | 北加扎勒河州 | zh-hant | Northern Bahr el Ghazal |
+| SS-BW | 西加扎勒河州 | zh-hant | Western Bahr el Ghazal |
+| SS-EC | 中赤道州 | zh-hant | Central Equatoria |
+| SS-EE | 東赤道州 | zh-hk | Eastern Equatoria |
+| SS-EW | 西赤道州 | zh-hant | Western Equatoria |
+| SS-JG | 瓊萊州 | zh-hant | Jonglei |
+| SS-LK | 湖泊州 | zh-hant | Lakes |
+| SS-NU | 上尼羅州 | zh-hant | Upper Nile |
+| SS-UY | 團結州 | zh-hant | Unity |
+| SS-WR | 瓦拉卜州 | zh-hant | Warrap |
+| ST-01 | 阿瓜格蘭德區 | zh-hant | Água Grande |
+| ST-02 | 坎塔加盧區 | zh-hant | Cantagalo |
+| ST-03 | 考埃區 | zh-hant | Caué |
+| ST-04 | 倫巴區 | zh-hant | Lembá |
+| ST-05 | 洛巴塔區 | zh-hant | Lobata |
+| ST-06 | 梅佐希區 | zh-hant | Mé-Zóchi |
+| SV-CA | 卡瓦尼亞斯省 | zh-hant | Cabañas |
+| SV-CU | 庫斯卡特蘭省 | zh-hant | Cuscatlán |
+| SV-LI | 拉利伯塔德省 | zh-hant | La Libertad |
+| SV-MO | 莫拉桑省 | zh-hant | Morazán |
+| SV-PA | 拉巴斯省 | zh-hant | La Paz |
+| SV-SM | 聖米格爾省 | zh-hant | San Miguel |
+| SV-SV | 聖維森特省 | zh-hant | San Vicente |
+| SV-UN | 拉烏尼翁省 | zh-hant | La Unión |
+| SV-US | 烏蘇盧坦省 | zh-hant | Usulután |
+| SY-DR | 德拉省 | zh-hant | Daraa |
+| SY-DY | 代爾祖爾省 | zh-hant | Deir ez-Zor |
+| SY-HA | 哈塞克省 | zh-hant | Al-Hasakah |
+| SY-HI | 霍姆斯省 | zh-hant | Homs |
+| SY-HL | 阿勒頗省 | zh-hant | Aleppo |
+| SY-HM | 哈馬省 | zh-hant | Hama |
+| SY-ID | 伊德利卜省 | zh-hant | Idlib |
+| SY-LA | 拉塔基亞省 | zh-hant | Latakia |
+| SY-QU | 庫奈特拉省 | zh-hant | Quneitra |
+| SY-RA | 拉卡省 | zh-hant | Ar-Raqqah |
+| SY-RD | 大馬士革農村省 | zh-hant | Rif Dimashq |
+| SY-SU | 蘇韋達省 | zh-hant | As-Suwayda |
+| SY-TA | 塔爾圖斯省 | zh-hant | Tartus |
+| SZ-HH | 霍霍 | zh-hant | Hhohho |
+| SZ-LU | 盧邦博 | zh-hant | Lubombo |
+| SZ-MA | 曼齊尼 | zh-hant | Manzini |
+| SZ-SH | 希塞盧韋尼 | zh-hant | Shiselweni |
+| TD-BG | 加扎勒河區 | zh-hant | Bahr el Gazel |
+| TD-BO | 博爾庫區 | zh-hant | Borkou |
+| TD-CB | 沙里-巴吉爾米區 | zh-hant | Chari-Baguirmi |
+| TD-HL | 哈傑爾-拉密區 | zh-hant | Hadjer-Lamis |
+| TD-KA | 加奈姆區 | zh-hant | Kanem |
+| TD-LC | 湖區 | zh-hant | Lac |
+| TD-ME | 東凱比河區 | zh-hant | Mayo-Kebbi Est |
+| TD-MO | 西凱比河區 | zh-hant | Mayo-Kebbi Ouest |
+| TD-ND | 恩賈梅納 | zh-hant | N’Djamena |
+| TD-OD | 瓦達伊區 | zh-hant | Ouaddaï |
+| TD-SI | 西拉區 | zh-hant | Sila |
+| TD-TA | 坦吉萊區 | zh-hant | Tandjilé |
+| TD-WF | 瓦迪菲拉區 | zh-hant | Wadi Fira |
+| TG-C | 中部區 | zh-hant | Centrale |
+| TG-K | 卡拉區 | zh-hant | Kara |
+| TG-M | 濱海區 | zh-hant | Maritime |
+| TG-P | 高原區 | zh-hant | Plateaux |
+| TG-S | 草原區 | zh-hant | Savanes |
+| TH-10 | 曼谷 | zh-hant | Bangkok |
+| TH-11 | 沙沒巴干府 | zh-hant | Samut Prakan |
+| TH-12 | 暖武里府 | zh-hant | Nonthaburi |
+| TH-13 | 巴吞他尼府 | zh-hant | Pathum Thani |
+| TH-14 | 大城府 | zh-hant | Phra Nakhon Si Ayutthaya |
+| TH-15 | 紅統府 | zh-hant | Ang Thong |
+| TH-16 | 華富里府 | zh-hant | Lopburi |
+| TH-17 | 信武里府 | zh-hant | Sing Buri |
+| TH-18 | 猜納府 | zh-hant | Chai Nat |
+| TH-19 | 沙拉武里府 | zh-hant | Saraburi |
+| TH-20 | 春武里府 | zh-hant | Chon Buri |
+| TH-21 | 羅勇府 | zh-hant | Rayong |
+| TH-22 | 莊他武里府 | zh-hant | Chanthaburi |
+| TH-23 | 達叻府 | zh-hant | Trat |
+| TH-24 | 差春騷府 | zh-hant | Chachoengsao |
+| TH-25 | 巴真府 | zh-hant | Prachin Buri |
+| TH-26 | 那空那育府 | zh-hant | Nakhon Nayok |
+| TH-27 | 沙繳府 | zh-hant | Sa Kaeo |
+| TH-30 | 那空叻差是瑪府 | zh-hant | Nakhon Ratchasima |
+| TH-31 | 武里南府 | zh-hant | Buri Ram |
+| TH-32 | 素林府 | zh-hant | Surin |
+| TH-33 | 四色菊府 | zh-hant | Si Sa Ket |
+| TH-34 | 烏汶府 | zh-hant | Ubon Ratchathani |
+| TH-35 | 益梭通府 | zh-hant | Yasothon |
+| TH-37 | 安納乍倫府 | zh-hant | Amnat Charoen |
+| TH-38 | 汶干府 | zh-hant | Bueng Kan |
+| TH-39 | 農磨蘭普府 | zh-hant | Nong Bua Lam Phu |
+| TH-40 | 孔敬府 | zh-hant | Khon Kaen |
+| TH-41 | 烏隆府 | zh-hant | Udon Thani |
+| TH-42 | 黎府 | zh-hant | Loei |
+| TH-43 | 廊開府 | zh-hant | Nong Khai |
+| TH-44 | 馬哈沙拉堪府 | zh-hant | Maha Sarakham |
+| TH-45 | 黎逸府 | zh-hant | Roi Et |
+| TH-46 | 加拉信府 | zh-hant | Kalasin |
+| TH-47 | 沙功那空府 | zh-hant | Sakon Nakhon |
+| TH-48 | 那空拍儂府 | zh-hant | Nakhon Phanom |
+| TH-49 | 穆達漢府 | zh-hant | Mukdahan |
+| TH-50 | 清邁府 | zh-hant | Chiang Mai |
+| TH-51 | 南奔府 | zh-hant | Lamphun |
+| TH-52 | 南邦府 | zh-hant | Lampang |
+| TH-53 | 程逸府 | zh-hant | Uttaradit |
+| TH-54 | 帕府 | zh-hant | Phrae |
+| TH-55 | 難府 | zh-hant | Nan |
+| TH-56 | 帕堯府 | zh-hant | Phayao |
+| TH-57 | 清萊府 | zh-hant | Chiang Rai |
+| TH-58 | 夜豐頌府 | zh-hant | Mae Hong Son |
+| TH-60 | 那空沙旺府 | zh-hant | Nakhon Sawan |
+| TH-61 | 烏泰他尼府 | zh-hant | Uthai Thani |
+| TH-62 | 甘烹碧府 | zh-hant | Kamphaeng Phet |
+| TH-63 | 達府 | zh-hant | Tak |
+| TH-64 | 素可泰府 | zh-hant | Sukhothai |
+| TH-65 | 彭世洛府 | zh-hant | Phitsanulok |
+| TH-66 | 披集府 | zh-hant | Phichit |
+| TH-67 | 碧差汶府 | zh-hant | Phetchabun |
+| TH-70 | 叻武里府 | zh-hant | Ratchaburi |
+| TH-71 | 北碧府 | zh-hant | Kanchanaburi |
+| TH-72 | 素攀府 | zh-hant | Suphanburi |
+| TH-73 | 佛統府 | zh-hant | Nakhon Pathom |
+| TH-74 | 沙沒沙空府 | zh-hant | Samut Sakhon |
+| TH-75 | 沙沒頌堪府 | zh-hant | Samut Songkhram |
+| TH-76 | 佛丕府 | zh-hant | Phetchaburi |
+| TH-77 | 巴蜀府 | zh-hant | Prachuap Khiri Khan |
+| TH-80 | 那空是貪瑪叻府 | zh-hant | Nakhon Si Thammarat |
+| TH-81 | 甲米府 | zh-hant | Krabi |
+| TH-82 | 攀牙府 | zh-hant | Phang Nga |
+| TH-83 | 普吉府 | zh-hant | Phuket |
+| TH-84 | 素叻他尼府 | zh-hant | Surat Thani |
+| TH-85 | 拉廊府 | zh-hant | Ranong |
+| TH-86 | 春蓬府 | zh-hant | Chumphon |
+| TH-90 | 宋卡府 | zh-hant | Songkhla |
+| TH-91 | 沙敦府 | zh-hant | Satun |
+| TH-92 | 董里府 | zh-hant | Trang |
+| TH-93 | 博他侖府 | zh-hant | Phatthalung |
+| TH-94 | 北大年府 | zh-hant | Pattani |
+| TH-95 | 也拉府 | zh-hant | Yala |
+| TH-96 | 那拉提瓦府 | zh-hant | Narathiwat |
+| TH-S | 芭達雅 | zh-hant | Pattaya |
+| TJ-DU | 杜尚貝 | zh-hant | Dushanbe |
+| TJ-GB | 山地巴達赫尚自治州 | zh-hant | Gorno-Badakhshan |
+| TJ-KT | 哈特隆州 | zh-hant | Khatlon |
+| TJ-RA | 國家直轄區 | zh-hant | Nohiyahoi Tobei Jumhurí |
+| TJ-SU | 粟特州 | zh-hant | Sughd |
+| TL-BO | 博博納羅縣 | zh-hant | Bobonaro |
+| TL-DI | 帝力縣 | zh-hant | Dili |
+| TL-LI | 利逵薩縣 | zh-hant | Liquiçá |
+| TL-MT | 馬納圖托縣 | zh-hant | Manatuto |
+| TL-OE | 歐庫西-安貝諾縣 | zh-hant | Oecusse |
+| TM-A | 阿哈爾州 | zh-hant | Ahal |
+| TM-B | 巴爾坎州 | zh-hant | Balkan |
+| TM-D | 達沙古茲州 | zh-hant | Daşoguz |
+| TM-L | 列巴普州 | zh-hant | Lebap |
+| TM-M | 馬雷州 | zh-hant | Mary |
+| TM-S | 阿什哈巴特 | zh-hant | Aşgabat |
+| TN-11 | 突尼斯省 | zh-hant | Tunis |
+| TN-12 | 艾爾亞奈省 | zh-hant | Ariana |
+| TN-13 | 本阿魯斯省 | zh-hant | Ben Arous |
+| TN-14 | 馬努巴省 | zh-hant | Manouba |
+| TN-21 | 納布勒省 | zh-hant | Nabeul |
+| TN-23 | 比塞大省 | zh-hant | Bizerte |
+| TN-31 | 巴傑省 | zh-hant | Béja |
+| TN-32 | 堅杜拜省 | zh-hant | Jendouba |
+| TN-33 | 卡夫省 | zh-hant | Kef |
+| TN-34 | 錫勒亞奈省 | zh-hant | Siliana |
+| TN-41 | 凱魯萬省 | zh-hant | Kairouan |
+| TN-42 | 卡塞林省 | zh-hant | Kasserine |
+| TN-43 | 西迪布濟德省 | zh-hant | Sidi Bouzid |
+| TN-51 | 蘇塞省 | zh-hant | Sousse |
+| TN-52 | 莫納斯提爾省 | zh-hant | Monastir |
+| TN-53 | 馬赫迪耶省 | zh-hant | Mahdia |
+| TN-61 | 斯法克斯省 | zh-hant | Sfax |
+| TN-71 | 加夫薩省 | zh-hant | Gafsa |
+| TN-72 | 托澤爾省 | zh-hant | Tozeur |
+| TN-81 | 加貝斯省 | zh-hant | Gabès |
+| TN-82 | 梅德寧省 | zh-hant | Medenine |
+| TN-83 | 泰塔溫省 | zh-hant | Tataouine |
+| TR-01 | 阿達納省 | zh-hant | Adana |
+| TR-04 | 阿勒省 | zh-hant | Ağrı |
+| TR-06 | 安卡拉省 | zh-hant | Ankara |
+| TR-09 | 艾登省 | zh-hant | Aydın |
+| TR-10 | 巴勒克西爾 | zh-hant | Balıkesir |
+| TR-12 | 賓格爾省 | zh-hant | Bingöl |
+| TR-15 | 布爾杜爾省 | zh-hant | Burdur |
+| TR-16 | 布爾薩省 | zh-hant | Bursa |
+| TR-17 | 恰納卡萊省 | zh-hant | Çanakkale |
+| TR-18 | 昌克勒省 | zh-hant | Çankırı |
+| TR-20 | 代尼茲利省 | zh-hant | Denizli |
+| TR-22 | 愛第尼省 | zh-hant | Edirne |
+| TR-23 | 埃拉澤省 | zh-hant | Elazığ |
+| TR-24 | 埃爾津詹省 | zh-hant | Erzincan |
+| TR-25 | 艾斯倫省 | zh-hant | Erzurum |
+| TR-26 | 埃斯基謝希爾省 | zh-hant | Eskişehir |
+| TR-27 | 加濟安泰普省 | zh-hant | Gaziantep |
+| TR-28 | 吉雷松省 | zh-hant | Giresun |
+| TR-29 | 居米什哈內省 | zh-hant | Gümüşhane |
+| TR-30 | 哈卡里省 | zh-hant | Hakkâri |
+| TR-31 | 哈塔伊省 | zh-hant | Hatay |
+| TR-33 | 梅爾辛省 | zh-hant | Mersin |
+| TR-34 | 伊斯坦堡省 | zh-hant | Istanbul |
+| TR-35 | 伊茲密爾省 | zh-hant | Izmir |
+| TR-37 | 卡斯塔莫努省 | zh-hant | Kastamonu |
+| TR-38 | 開塞利省 | zh-hant | Kayseri |
+| TR-39 | 克爾克拉雷利省 | zh-hant | Kırklareli |
+| TR-40 | 克爾謝希爾省 | zh-hant | Kırşehir |
+| TR-41 | 科賈埃利省 | zh-hant | Kocaeli |
+| TR-42 | 科尼亞省 | zh-hant | Konya |
+| TR-43 | 屈塔希亞省 | zh-hant | Kütahya |
+| TR-44 | 馬拉蒂亞省 | zh-hant | Malatya |
+| TR-45 | 馬尼薩省 | zh-hant | Manisa |
+| TR-46 | 卡赫拉曼馬拉什省 | zh-hant | Kahramanmaraş |
+| TR-47 | 馬爾丁省 | zh-hant | Mardin |
+| TR-48 | 穆拉省 | zh-hant | Muğla |
+| TR-49 | 穆什省 | zh-hant | Muş |
+| TR-50 | 內夫謝希爾省 | zh-hant | Nevşehir |
+| TR-51 | 尼代省 | zh-hant | Niğde |
+| TR-52 | 奧爾杜省 | zh-hant | Ordu |
+| TR-53 | 里澤省 | zh-hant | Rize |
+| TR-54 | 薩卡里亞省 | zh-hant | Sakarya |
+| TR-55 | 薩姆松省 | zh-hant | Samsun |
+| TR-56 | 錫爾特省 | zh-hant | Siirt |
+| TR-57 | 錫諾普省 | zh-hant | Sinop |
+| TR-58 | 錫瓦斯省 | zh-hant | Sivas |
+| TR-59 | 泰基爾達省 | zh-hant | Tekirdağ |
+| TR-60 | 托卡特省 | zh-hant | Tokat |
+| TR-61 | 特拉布宗省 | zh-hant | Trabzon |
+| TR-62 | 通傑利省 | zh-hant | Tunceli |
+| TR-63 | 尚勒烏爾法省 | zh-hant | Şanlıurfa |
+| TR-64 | 烏沙克省 | zh-hant | Uşak |
+| TR-65 | 凡省 | zh-hant | Van |
+| TR-66 | 約茲加特省 | zh-hant | Yozgat |
+| TR-67 | 宗古爾達克省 | zh-hant | Zonguldak |
+| TR-69 | 巴伊布爾特省 | zh-hant | Bayburt |
+| TR-70 | 卡拉曼省 | zh-hant | Karaman |
+| TR-71 | 克勒克卡萊省 | zh-hant | Kırıkkale |
+| TR-73 | 舍爾納克省 | zh-hant | Şırnak |
+| TR-74 | 巴爾滕省 | zh-hant | Bartın |
+| TR-76 | 厄德爾省 | zh-hant | Iğdır |
+| TR-77 | 亞洛瓦省 | zh-hant | Yalova |
+| TR-78 | 卡拉比克省 | zh-hant | Karabük |
+| TR-79 | 基利斯省 | zh-hant | Kilis |
+| TR-80 | 奧斯曼尼耶省 | zh-hant | Osmaniye |
+| TT-ARI | 阿里馬 | zh-hant | Arima |
+| TT-POS | 西班牙港 | zh-hant | Port of Spain |
+| TT-SFO | 聖費爾南多 (千里達及托巴哥) | zh-hant | San Fernando |
+| TT-TOB | 多巴哥島 | zh-hant | Tobago |
+| TV-NIT | 紐陶島 | zh-hant | Niutao |
+| TV-NKF | 努庫費陶環礁 | zh-hant | Nukufetau |
+| TV-NKL | 努庫萊萊環礁 | zh-hant | Nukulaelae |
+| TV-NMA | 納努梅阿環礁 | zh-hant | Nanumea |
+| TW-CHA | 彰化縣 | zh-hant | Changhua |
+| TW-CYI | 嘉義市 | zh-hant | Chiayi City |
+| TW-CYQ | 嘉義縣 | zh-hant | Chiayi County |
+| TW-HSQ | 新竹縣 | zh-hant | Hsinchu County |
+| TW-HSZ | 新竹市 | zh-hant | Hsinchu |
+| TW-HUA | 花蓮縣 | zh-hant | Hualien |
+| TW-ILA | 宜蘭縣 | zh-hant | Yilan |
+| TW-KEE | 基隆市 | zh-hant | Keelung |
+| TW-KHH | 高雄市 | zh-hant | Kaohsiung |
+| TW-KIN | 金門縣 | zh-hant | Kinmen |
+| TW-LIE | 連江縣 | zh-hant | Lienchiang |
+| TW-MIA | 苗栗縣 | zh-hant | Miaoli |
+| TW-NAN | 南投縣 | zh-hant | Nantou |
+| TW-NWT | 新北市 | zh-hant | New Taipei |
+| TW-PEN | 澎湖縣 | zh-hant | Penghu |
+| TW-PIF | 屏東縣 | zh-hant | Pingtung |
+| TW-TAO | 桃園市 | zh-hant | Taoyuan |
+| TW-TNN | 臺南市 | zh-hant | Tainan |
+| TW-TPE | 臺北市 | zh-hant | Taipei |
+| TW-TTT | 臺東縣 | zh-hant | Taitung |
+| TW-TXG | 臺中市 | zh-hant | Taichung |
+| TW-YUN | 雲林縣 | zh-hant | Yunlin |
+| TZ-01 | 阿魯沙區 | zh-hant | Arusha |
+| TZ-02 | 達累斯薩拉姆區 | zh-hant | Dar es Salaam |
+| TZ-03 | 杜篤瑪區 | zh-hant | Dodoma |
+| TZ-04 | 伊林加區 | zh-hant | Iringa |
+| TZ-05 | 卡蓋拉區 | zh-hant | Kagera |
+| TZ-06 | 北奔巴區 | zh-hant | North Pemba |
+| TZ-07 | 尚西巴北區 | zh-tw | Zanzibar North |
+| TZ-09 | 乞力馬扎羅區 | zh-hant | Kilimanjaro |
+| TZ-10 | 南奔巴區 | zh-hant | South Pemba |
+| TZ-12 | 林迪區 | zh-hant | Lindi |
+| TZ-13 | 馬拉區 | zh-hant | Mara |
+| TZ-14 | 姆貝亞區 | zh-hant | Mbeya |
+| TZ-16 | 莫羅戈羅區 | zh-hant | Morogoro |
+| TZ-17 | 姆特瓦拉區 | zh-hant | Mtwara |
+| TZ-18 | 姆萬紮區 | zh-hant | Mwanza |
+| TZ-19 | 濱海區 | zh-hant | Pwani |
+| TZ-20 | 魯夸區 | zh-hant | Rukwa |
+| TZ-21 | 魯伍馬區 | zh-hant | Ruvuma |
+| TZ-22 | 欣延加區 | zh-hant | Shinyanga |
+| TZ-23 | 辛吉達區 | zh-hant | Singida |
+| TZ-24 | 塔波拉區 | zh-hant | Tabora |
+| TZ-26 | 曼亞拉區 | zh-hant | Manyara |
+| TZ-27 | 蓋塔區 | zh-hant | Geita |
+| TZ-28 | 卡塔維區 | zh-hant | Katavi |
+| TZ-30 | 錫米尤區 | zh-hant | Simiyu |
+| UA-05 | 文尼察州 | zh-hant | Vinnychchyna |
+| UA-07 | 沃倫州 | zh-hant | Volyn |
+| UA-09 | 盧甘斯克州 | zh-hant | Luhanshchyna |
+| UA-12 | 第聶伯羅彼得羅夫斯克州 | zh-hant | Dnipropetrovshchyna |
+| UA-14 | 頓涅茨克州 | zh-hant | Donechchyna |
+| UA-21 | 外喀爾巴阡州 | zh-hant | Zakarpattia |
+| UA-23 | 扎波羅熱州 | zh-hant | Zaporizhzhya |
+| UA-26 | 伊萬諾-弗蘭基夫斯克州 | zh-hant | Prykarpattia |
+| UA-30 | 基輔 | zh-hant | Kyiv |
+| UA-32 | 基輔州 | zh-hant | Kyivshchyna |
+| UA-35 | 基洛沃赫拉德州 | zh-hant | Kirovohradschyna |
+| UA-40 | 塞瓦斯托波爾 | zh-hant | Sevastopol |
+| UA-43 | 克里米亞自治共和國 | zh-tw | Crimea |
+| UA-46 | 利沃夫州 | zh-hant | Lvivshchyna |
+| UA-48 | 尼古拉耶夫州 | zh-hant | Mykolayivschyna |
+| UA-51 | 奧德薩州 | zh-hant | Odeshchyna |
+| UA-53 | 波爾塔瓦州 | zh-hant | Poltavshchyna |
+| UA-56 | 羅夫諾州 | zh-hant | Rivnenshchyna |
+| UA-59 | 蘇梅州 | zh-hant | Sumshchyna |
+| UA-61 | 捷爾諾波爾州 | zh-hant | Ternopilshchyna |
+| UA-63 | 哈爾科夫州 | zh-hant | Kharkivshchyna |
+| UA-65 | 赫爾松州 | zh-hant | Khersonshchyna |
+| UA-68 | 赫梅利尼茨基州 | zh-hant | Khmelnychchyna |
+| UA-71 | 切爾卡瑟州 | zh-hant | Cherkashchyna |
+| UA-74 | 切爾尼希夫州 | zh-hant | Chernihivshchyna |
+| UA-77 | 切爾尼夫齊州 | zh-hant | Chernivtsi Oblast |
+| UG-101 | 卡蘭加拉區 | zh-hant | Kalangala |
+| UG-103 | 基博加區 | zh-hant | Kiboga |
+| UG-104 | 盧韋羅區 | zh-hant | Luwero |
+| UG-105 | 馬薩卡區 | zh-hant | Masaka |
+| UG-106 | 姆皮吉區 | zh-hant | Mpigi |
+| UG-107 | 穆本德區 | zh-hant | Mubende |
+| UG-108 | 穆科諾區 | zh-hant | Mukono |
+| UG-109 | 納卡松戈拉區 | zh-hant | Nakasongola |
+| UG-110 | 拉卡伊區 | zh-hant | Rakai |
+| UG-111 | 森巴布萊區 | zh-hant | Sembabule |
+| UG-112 | 卡永加區 | zh-hant | Kayunga |
+| UG-113 | 瓦基索區 | zh-hant | Wakiso |
+| UG-114 | 利安通德區 | zh-hant | Lyantonde |
+| UG-116 | 利安通德區 | zh-hant | Nakaseke |
+| UG-117 | 布伊奎區 | zh-hant | Buikwe |
+| UG-118 | 布科曼辛比區 | zh-hant | Bukomansibi |
+| UG-119 | 布坦巴拉區 | zh-hant | Butambala |
+| UG-120 | 布武馬區 | zh-hant | Buvuma |
+| UG-121 | 貢巴區 | zh-hant | Gomba |
+| UG-122 | 卡倫古區 | zh-hant | Kalungu |
+| UG-124 | 盧恩戈區 | zh-hant | Lwengo |
+| UG-208 | 庫米區 | zh-hant | Kumi |
+| UG-210 | 帕利薩區 | zh-hant | Pallisa |
+| UG-211 | 索羅提區 | zh-hant | Soroti |
+| UG-212 | 托羅羅區 | zh-hant | Tororo |
+| UG-214 | 馬尤蓋區 | zh-hant | Mayuge |
+| UG-215 | 錫龍科區 | zh-hant | Sironko |
+| UG-216 | 阿穆里亞區 | zh-hant | Amuria |
+| UG-217 | 布達卡區 | zh-hant | Budaka |
+| UG-225 | 布蘭布利區 | zh-hant | Bulambuli |
+| UG-226 | 布延德區 | zh-hant | Buyende |
+| UG-227 | 基布庫區 | zh-hant | Kibuku |
+| UG-228 | 奎恩區 | zh-hant | Kween |
+| UG-229 | 盧卡區 | zh-hant | Luuka |
+| UG-230 | 納馬因戈區 | zh-hant | Namayingo |
+| UG-231 | 恩戈拉區 | zh-hant | Ngora |
+| UG-232 | 塞雷雷區 | zh-hant | Serere |
+| UG-304 | 古盧區 | zh-hant | Gulu |
+| UG-305 | 基特古姆區 | zh-hant | Kitgum |
+| UG-306 | 科蒂多區 | zh-hant | Kotido |
+| UG-308 | 莫羅托區 | zh-hant | Moroto |
+| UG-310 | 內比區 | zh-hant | Nebbi |
+| UG-311 | 納卡皮里皮里特區 | zh-hant | Nakapiripirit |
+| UG-312 | 帕德爾區 | zh-hant | Pader |
+| UG-313 | 永貝區 | zh-hant | Yumbe |
+| UG-315 | 阿莫拉塔爾區 | zh-hant | Amolatar |
+| UG-318 | 多科洛區 | zh-hant | Kaabong |
+| UG-321 | 奧揚區 | zh-hant | Oyam |
+| UG-401 | 本迪布焦區 | zh-hant | Bundibugyo |
+| UG-403 | 霍伊馬區 | zh-hant | Hoima |
+| UG-408 | 基索羅區 | zh-hant | Kisoro |
+| UG-409 | 馬辛迪區 | zh-hant | Masindi |
+| UG-410 | 姆巴拉拉區 | zh-hant | Mbarara |
+| UG-413 | 卡姆文蓋區 | zh-hant | Kamwenge |
+| UG-414 | 卡農古區 | zh-hant | Kanungu |
+| UG-415 | 基恩喬喬區 | zh-hant | Kyenjojo |
+| UG-416 | 伊班達區 | zh-hant | Buliisa |
+| UG-419 | 基魯胡拉區 | zh-hant | Kiruhura |
+| UG-E | 東部區 | zh-hant | Eastern |
+| UG-N | 北部區 | zh-hant | Northern |
+| UG-W | 西部區 | zh-hant | Western |
+| UM-67 | 強斯頓環礁 | zh-hant | Johnston Atoll |
+| UM-71 | 中途島 | zh-hant | Midway Atoll |
+| UM-76 | 納弗沙島 | zh-hant | Navassa Island |
+| UM-79 | 威克島 | zh-hant | Wake Island |
+| UM-81 | 貝克島 | zh-hant | Baker Island |
+| UM-84 | 豪蘭島 | zh-hant | Howland Island |
+| UM-86 | 賈維斯島 | zh-hant | Jarvis Island |
+| UM-89 | 金曼礁 | zh-hant | Kingman Reef |
+| UM-95 | 巴美拉環礁 | zh-hant | Palmyra Atoll |
+| US-AK | 阿拉斯加州 | zh-hant | Alaska |
+| US-AL | 阿拉巴馬州 | zh-hant | Alabama |
+| US-AR | 阿肯色州 | zh-hant | Arkansas |
+| US-AS | 美屬薩摩亞 | zh-hant | American Samoa |
+| US-AZ | 亞利桑那州 | zh-hant | Arizona |
+| US-CA | 加利福尼亞州 | zh-hant | California |
+| US-CO | 科羅拉多州 | zh-hant | Colorado |
+| US-CT | 康乃狄克州 | zh-hant | Connecticut |
+| US-DE | 特拉華州 | zh-hant | Delaware |
+| US-FL | 佛羅里達州 | zh-hant | Florida |
+| US-GA | 喬治亞州 | zh-hant | Georgia |
+| US-GU | 關島 | zh-hant | Guam |
+| US-HI | 夏威夷州 | zh-hant | Hawaii |
+| US-IA | 愛荷華州 | zh-hant | Iowa |
+| US-ID | 愛達荷州 | zh-hant | Idaho |
+| US-IL | 伊利諾州 | zh-hant | Illinois |
+| US-IN | 印第安納州 | zh-hant | Indiana |
+| US-KS | 堪薩斯州 | zh-hant | Kansas |
+| US-KY | 肯塔基州 | zh-hant | Kentucky |
+| US-LA | 路易斯安那州 | zh-hant | Louisiana |
+| US-MA | 麻薩諸塞州 | zh-hant | Massachusetts |
+| US-MD | 馬里蘭州 | zh-hant | Maryland |
+| US-ME | 緬因州 | zh-hant | Maine |
+| US-MI | 密歇根州 | zh-hant | Michigan |
+| US-MN | 明尼蘇達州 | zh-hant | Minnesota |
+| US-MO | 密蘇里州 | zh-hant | Missouri |
+| US-MP | 北馬里亞納群島 | zh-hant | Northern Mariana Islands |
+| US-MS | 密西西比州 | zh-hant | Mississippi |
+| US-MT | 蒙大拿州 | zh-hant | Montana |
+| US-NC | 北卡羅来納州 | zh-hant | North Carolina |
+| US-ND | 北達科他州 | zh-hant | North Dakota |
+| US-NE | 內布拉斯加州 | zh-hant | Nebraska |
+| US-NH | 新罕布夏州 | zh-hant | New Hampshire |
+| US-NJ | 紐澤西州 | zh-hant | New Jersey |
+| US-NM | 新墨西哥州 | zh-hant | New Mexico |
+| US-NV | 內華達州 | zh-hant | Nevada |
+| US-NY | 紐約州 | zh-hant | New York |
+| US-OH | 俄亥俄州 | zh-hant | Ohio |
+| US-OK | 俄克拉荷馬州 | zh-hant | Oklahoma |
+| US-OR | 奧勒岡州 | zh-hant | Oregon |
+| US-PA | 賓夕法尼亞州 | zh-hant | Pennsylvania |
+| US-PR | 波多黎各 | zh-hant | Puerto Rico |
+| US-RI | 羅德島州 | zh-hant | Rhode Island |
+| US-SC | 南卡羅萊納州 | zh-hant | South Carolina |
+| US-SD | 南達科他州 | zh-hant | South Dakota |
+| US-TN | 田納西州 | zh-hant | Tennessee |
+| US-TX | 德克薩斯州 | zh-hant | Texas |
+| US-UM | 美國本土外小島嶼 | zh-hant | U.S. Outlying Islands |
+| US-UT | 猶他州 | zh-hant | Utah |
+| US-VA | 維吉尼亞州 | zh-hant | Virginia |
+| US-VI | 美屬維京群島 | zh-hant | U.S. Virgin Islands |
+| US-VT | 佛蒙特州 | zh-hant | Vermont |
+| US-WA | 華盛頓州 | zh-hant | Washington |
+| US-WI | 威斯康辛州 | zh-hant | Wisconsin |
+| US-WV | 西維吉尼亞州 | zh-hant | West Virginia |
+| US-WY | 懷俄明州 | zh-hant | Wyoming |
+| UY-LA | 拉瓦耶哈省 | zh-hant | Lavalleja |
+| UY-MA | 馬爾多納多省 | zh-hant | Maldonado |
+| UY-MO | 蒙得維的亞省 | zh-hant | Montevideo |
+| UY-RN | 內格羅河省 | zh-hant | Río Negro |
+| UZ-AN | 安集延州 | zh-hant | Andijan |
+| UZ-BU | 布哈拉州 | zh-hant | Bukhara |
+| UZ-FA | 費爾干納州 | zh-hant | Fergana |
+| UZ-JI | 吉扎克州 | zh-hant | Jizzakh |
+| UZ-NW | 納沃伊州 | zh-hant | Navoiy |
+| UZ-QA | 卡什卡達里亞州 | zh-hant | Qashqadaryo |
+| UZ-QR | 卡拉卡爾帕克共和國 | zh-hant | Karakalpakstan |
+| UZ-SA | 撒馬爾罕州 | zh-hant | Samarqand |
+| UZ-SI | 錫爾河州 | zh-hant | Sirdaryo |
+| UZ-SU | 蘇爾漢河州 | zh-hant | Surxondaryo |
+| UZ-TK | 塔什干 | zh-hant | Tashkent |
+| UZ-TO | 塔什干州 | zh-hant | Tashkent Province |
+| UZ-XO | 花拉子模州 | zh-hant | Xorazm |
+| VC-01 | 夏洛特區 | zh-hant | Charlotte |
+| VC-02 | 聖安德魯區 | zh-hant | Saint Andrew |
+| VC-03 | 聖大衛區 | zh-hant | Saint David |
+| VC-04 | 聖喬治區 | zh-hant | Saint George |
+| VC-06 | 格瑞那丁區 | zh-hant | Grenadines |
+| VE-A | 聯邦區 | zh-hant | Capital |
+| VE-B | 安索阿特吉州 | zh-hant | Anzoátegui |
+| VE-D | 阿拉瓜州 | zh-hant | Aragua |
+| VE-F | 玻利瓦爾州 | zh-hant | Bolívar |
+| VE-G | 卡拉沃沃州 | zh-hant | Carabobo |
+| VE-H | 科赫德斯州 | zh-hant | Cojedes |
+| VE-I | 法爾孔州 | zh-hant | Falcón |
+| VE-J | 瓜里科州 | zh-hant | Guárico |
+| VE-K | 拉臘州 | zh-hant | Lara |
+| VE-M | 米蘭達州 | zh-hant | Miranda |
+| VE-N | 莫納加斯州 | zh-hant | Monagas |
+| VE-O | 新埃斯帕塔州 | zh-hant | Nueva Esparta |
+| VE-P | 波圖格薩州 | zh-hant | Portuguesa |
+| VE-R | 蘇克雷州 | zh-hant | Sucre |
+| VE-T | 特魯希略州 | zh-hant | Trujillo |
+| VE-U | 亞拉奎州 | zh-hant | Yaracuy |
+| VE-V | 蘇利亞 | zh-hant | Zulia |
+| VE-W | 聯邦屬地 | zh-hant | Federal Dependencies |
+| VE-X | 巴爾加斯州 | zh-hant | Vargas |
+| VE-Y | 阿馬庫羅三角洲州 | zh-hant | Delta Amacuro |
+| VE-Z | 亞馬孫州 | zh-hant | Amazonas |
+| VN-13 | 廣寧市 | zh-hant | Quảng Ninh |
+| VN-21 | 清化省 | zh-hant | Thanh Hóa |
+| VN-23 | 河靜省 | zh-tw | Hà Tĩnh |
+| VN-25 | 廣治省 | zh-hant | Quảng Trị |
+| VN-34 | 慶和省 | zh-hant | Khánh Hòa |
+| VN-37 | 西寧省 | zh-hant | Tây Ninh |
+| VN-45 | 同塔省 | zh-hant | Đồng Tháp |
+| VN-CT | 芹苴市 | zh-hant | Cần Thơ |
+| VN-DN | 峴港市 | zh-hant | Da Nang |
+| VN-HN | 河內 | zh-hant | Hanoi |
+| VN-HP | 海防市 | zh-hant | Haiphong |
+| VN-SG | 胡志明市 | zh-hant | Ho Chi Minh City |
+| VU-MAP | 馬朗巴省 | zh-hant | Malampa |
+| VU-PAM | 彭納馬省 | zh-hant | Penama |
+| VU-SAM | 桑馬省 | zh-hant | Sanma |
+| VU-SEE | 謝法省 | zh-hant | Shefa |
+| VU-TOB | 托爾巴省 | zh-hant | Torba |
+| WS-AA | 阿納 | zh-hant | A’ana |
+| WS-AL | 艾加伊勒泰 | zh-hant | Aiga-i-le-Tai |
+| WS-AT | 阿圖阿 | zh-hant | Atua |
+| WS-TU | 圖阿馬薩加 | zh-hant | Tuamasaga |
+| WS-VF | 瓦奧福諾蒂 | zh-hant | Va’a-o-Fonoti |
+| YE-AB | 阿比揚省 | zh-hant | Abyan |
+| YE-AD | 亞丁省 | zh-hant | ’Adan |
+| YE-AM | 阿姆蘭省 | zh-hant | Amran |
+| YE-DA | 達利阿省 | zh-hant | Dhale |
+| YE-DH | 扎馬爾省 | zh-hant | Dhamar |
+| YE-HD | 哈德拉毛省 | zh-hant | Hadramaut |
+| YE-HJ | 哈傑省 | zh-hant | Hajjah |
+| YE-HU | 荷台達省 | zh-hant | Al Hudaydah |
+| YE-IB | 伊卜省 | zh-hant | Ibb |
+| YE-JA | 焦夫省 | zh-tw | Al Jawf |
+| YE-LA | 拉赫季省 | zh-hant | Lahij |
+| YE-MA | 馬里卜省 | zh-hant | Ma’rib |
+| YE-MR | 邁赫拉省 | zh-hant | Al Mahrah |
+| YE-MW | 邁赫維特省 | zh-hant | Al Mahwit |
+| YE-RA | 賴馬省 | zh-hant | Raymah |
+| YE-SD | 薩達省 | zh-hant | Sa’dah |
+| YE-SH | 舍卜沃省 | zh-hant | Shabwah |
+| YE-SN | 沙那省 | zh-hant | Sana’a |
+| YE-TA | 塔伊茲省 | zh-hant | Taiz |
+| ZA-EC | 東開普省 | zh-hant | Eastern Cape |
+| ZA-FS | 自由邦省 | zh-hant | Free State |
+| ZA-GP | 豪滕省 | zh-hant | Gauteng |
+| ZA-KZN | 夸祖魯-納塔爾省 | zh-hant | KwaZulu-Natal |
+| ZA-LP | 林波波省 | zh-hant | Limpopo |
+| ZA-MP | 姆普馬蘭加省 | zh-hant | Mpumalanga |
+| ZA-NC | 北開普省 | zh-hant | Northern Cape |
+| ZA-NW | 西北省 | zh-hant | North West |
+| ZA-WC | 西開普省 | zh-hant | Western Cape |
+| ZM-01 | 西部省 | zh-hant | Western |
+| ZM-03 | 東部省 | zh-hant | Eastern |
+| ZM-06 | 西北省 | zh-hant | North-Western |
+| ZM-07 | 南部省 | zh-hant | Southern |
+| ZM-09 | 盧薩卡省 | zh-hant | Lusaka |
+| ZW-MA | 馬尼卡蘭省 | zh-hant | Manicaland |
+| ZW-MC | 中馬紹納蘭省 | zh-hant | Mashonaland Central |
+| ZW-ME | 東馬紹納蘭省 | zh-hant | Mashonaland East |
+| ZW-MI | 中部省 | zh-hant | Midlands |
+| ZW-MN | 北馬塔貝萊蘭省 | zh-hant | Matabeleland North |
+| ZW-MS | 南馬塔貝萊蘭省 | zh-hant | Matabeleland South |
+| ZW-MV | 馬斯溫戈省 | zh-hant | Masvingo |
+| ZW-MW | 西馬紹納蘭省 | zh-hant | Mashonaland West |
 
 ### Items with two different labels
 
-Where a code has two current Wikidata items with different labels in a language, neither is used. Counts: Spanish 0, German 0, Simplified Chinese 0, Traditional Chinese 0.
+Where a code has two current Wikidata items with different labels in a language, neither is used. Counts: Spanish 71, German 80, Simplified Chinese 101, Traditional Chinese 78.
 
 ### Where CLDR and Wikidata disagree
 
 CLDR is preferred and Wikidata's label is not used when both exist; the number of codes where the two differ, after ignoring case, accents and punctuation:
-Spanish 0, German 0, Simplified Chinese 0, Traditional Chinese 0.
+Spanish 594, German 552, Simplified Chinese 448, Traditional Chinese 0.
+
+#### Spanish: the first 25
+
+| Code | CLDR (used) | Wikidata |
+| --- | --- | --- |
+| AE-AJ | Ajmán | Ajman |
+| AE-SH | Sharjah | Sarja |
+| AF-BAL | Provincia de Balj | Balj |
+| AF-BAM | Provincia de Bamiyan | Bamiyán |
+| AF-BDG | Provincia de Bādgīs | Badghís |
+| AF-BDS | Provincia de Badakhshan | Badajshán |
+| AF-BGL | Provincia de Baghlan | Baglán |
+| AF-DAY | Provincia de Daikondi | Daikondi |
+| AF-FRA | Provincia de Farāh | Farāh |
+| AF-FYB | Provincia de Fāryāb | Fāryāb |
+| AF-GHA | Provincia de Gazni | Gazni |
+| AF-GHO | Provincia de Ġawr | Ġawr |
+| AF-HEL | Provincia de Helmand | Helmand |
+| AF-HER | Provincia de Herāt | Herat |
+| AF-JOW | Provincia de Jawzjān | Jawzjān |
+| AF-KAB | Provincia de Kabul | Kabul |
+| AF-KAN | Provincia de Kandahar | Kandahar |
+| AF-KAP | Provincia de Kāpīsā | Kāpīsā |
+| AF-KDZ | Provincia de Qundūz | Qundūz |
+| AF-KHO | Provincia de Jost | Jost |
+| AF-KNR | Provincia de Kunar | Kunar |
+| AF-LAG | Provincia de Laġmān | Laġmān |
+| AF-LOG | Provincia de Lawgar | Lawgar |
+| AF-NAN | Provincia de Nangarhar | Nangarhar |
+| AF-NIM | Provincia de Nimruz | Nimruz |
+
+#### German: the first 25
+
+| Code | CLDR (used) | Wikidata |
+| --- | --- | --- |
+| AF-KAB | Kabul | Provinz Kabul |
+| AR-A | Provinz Salta | Salta |
+| AR-B | Provinz Buenos Aires | Buenos Aires |
+| AR-D | Provinz San Luis | San Luis |
+| AR-F | Provinz La Rioja | La Rioja |
+| AR-G | Santiago del Estero (Provinz) | Santiago del Estero |
+| AR-H | Provinz Chaco | Chaco |
+| AR-J | Provinz San Juan | San Juan |
+| AR-K | Provinz Catamarca | Catamarca |
+| AR-L | Provinz La Pampa | La Pampa |
+| AR-M | Provinz Mendoza | Mendoza |
+| AR-P | Provinz Formosa | Formosa |
+| AR-Q | Provinz Neuquén | Neuquén |
+| AR-R | Provinz Río Negro | Río Negro |
+| AR-S | Provinz Santa Fe | Santa Fe |
+| AR-T | Provinz Tucumán | Tucumán |
+| AR-U | Provinz Chubut | Chubut |
+| AR-W | Provinz Corrientes | Corrientes |
+| AR-X | Córdoba | Provinz Córdoba |
+| AR-Y | Provinz Jujuy | Jujuy |
+| AU-NT | Northern Territory | Nordterritorium |
+| AU-SA | South Australia | Süd-Australien |
+| AU-WA | Western Australia | Westaustralien |
+| AZ-BAB | Babək | Babək Rayon |
+| AZ-CUL | Culfa | Culfa Rayon |
+
+#### Simplified Chinese: the first 25
+
+| Code | CLDR (used) | Wikidata |
+| --- | --- | --- |
+| AE-AJ | 阿吉曼 | 阿治曼酋长国 |
+| AE-AZ | 阿布扎比 | 阿布扎比酋长国 |
+| AE-FU | 富吉拉 | 富查伊拉酋长国 |
+| AE-RK | 拉斯海玛 | 哈伊马角酋长国 |
+| AE-SH | 夏尔迦 | 沙迦酋长国 |
+| AE-UQ | 欧姆古温 | 乌姆盖万酋长国 |
+| AF-NUR | 努尔斯坦省 | 努里斯坦省 |
+| AL-02 | 杜勒斯州 | 都拉斯州 |
+| AL-03 | 艾巴申州 | 爱尔巴桑州 |
+| AL-06 | 科赤州 | 科尔察州 |
+| AL-07 | 庫克斯州 | 库克斯州 |
+| AL-10 | 士科德州 | 斯库台州 |
+| AM-LO | 洛里省 | 洛里州 |
+| AM-SH | 希拉克省 | 希拉克州 |
+| AM-TV | 塔武什省 | 塔武什州 |
+| AO-BGO | 本哥省 | 本戈省 |
+| AO-BGU | 本吉拉省 | 本格拉省 |
+| AO-CCU | 庫安多古班哥省 | 宽多-库邦戈省 |
+| AO-UIG | 威熱省 | 威热省 |
+| AR-D | 圣路易省 | 圣路易斯省 |
+| AR-S | 聖大非省 | 圣菲省 |
+| AR-Z | 圣克鲁斯省 | 冰川国家公园 |
+| AT-4 | 上奧地利 | 上奥地利州 |
+| AU-NT | 北領地 | 北领地 |
+| BD-17 | 戈巴尔甘尼县 | 戈巴尔甘杰县 |
 
 ### Names the same as the English name
 
-Spanish and German share many names with English (Paris, Texas), so this is a list to look at and not a list of mistakes. Counts: Spanish 1742 of 4794, German 2197 of 4895. In the Chinese entries a name with no Chinese character is always left out, so none is the English name.
+Spanish and German share many names with English (Paris, Texas), so this is a list to look at and not a list of mistakes. Counts: Spanish 1754 of 4830, German 2209 of 4923. In the Chinese entries a name with no Chinese character is always left out, so none is the English name.
 
-- Spanish, by source: cldr:es:provisional 1742.
-- German, by source: cldr:de:provisional 2195, cldr:de 2.
+- Spanish, by source: cldr:es:provisional 1742, wikidata:es 12.
+- German, by source: cldr:de:provisional 2195, cldr:de 2, wikidata:de 12.
 
 ### Chinese labels with no script
 
-Simplified Chinese: 0 subdivisions have only a Wikidata label tagged plain `zh`; Traditional Chinese: 0 subdivisions have only a Wikidata label tagged plain `zh`. Plain `zh` does not say which script it is written in, and Simplified and Traditional use different words for many places even where the characters match, so it is not used. Taking it would raise coverage; it is a decision for a reader of Chinese.
+Simplified Chinese: 502 subdivisions have only a Wikidata label tagged plain `zh`; Traditional Chinese: 1632 subdivisions have only a Wikidata label tagged plain `zh`. Plain `zh` does not say which script it is written in, and Simplified and Traditional use different words for many places even where the characters match, so it is not used. Taking it would raise coverage; it is a decision for a reader of Chinese.
 
 ### CLDR entries outside the main entry's subdivisions
 

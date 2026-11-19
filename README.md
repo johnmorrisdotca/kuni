@@ -157,7 +157,7 @@ It ships ES modules and CommonJS, with types for both and `sideEffects: false`. 
 | `@johnmorrisdotca/kuni/capitals` | `capitalsOf(code)`: the capitals, each with its role, of the countries that have more than one capital city | 1.0 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities` | `citySet`, `loadCities(...tiers)`, `citiesOf(code)` and `cityById(id)`: the lookups, with no city in it | 4.2 kB min+gzip (the docs site's figure counts every tier, which load on demand) |
 | `@johnmorrisdotca/kuni/names/<language>` | The countries' names in one more language, from CLDR: French, Spanish, German, Simplified and Traditional Chinese, Korean, Portuguese, Arabic or Russian (`/names/fr`, `/names/zh-Hans`) | 4.0–4.4 kB gzip each |
-| `@johnmorrisdotca/kuni/subdivision-names/<language>` | The subdivisions' names in Spanish, German, Simplified or Traditional Chinese, from CLDR and Wikidata, each with its source (`/subdivision-names/es`) | 28–44 kB gzip each, from CLDR alone (docs/bundle-size.json) |
+| `@johnmorrisdotca/kuni/subdivision-names/<language>` | The subdivisions' names in Spanish, German, Simplified or Traditional Chinese, from CLDR and Wikidata, each with its source (`/subdivision-names/es`) | 32–44 kB gzip each (docs/bundle-size.json) |
 | `@johnmorrisdotca/kuni/places` | `continents()`, `countriesOf(continent)`, `searchPlaces(text, { lang, limit, match })` and `cityNamesOf(code)`, for a place chooser | 51.2 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities/capitals` | Every capital, of a country or of a subdivision | 188.2 kB min+gzip |
 | `@johnmorrisdotca/kuni/cities/1m` | The cities of a million people or more (capitals too) | 34.7 kB min+gzip |

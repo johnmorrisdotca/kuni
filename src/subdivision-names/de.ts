@@ -6,7 +6,7 @@ import { createSubdivisionNames } from "../subdivision-names";
 import type { NamedSubdivision, NameSource, SubdivisionNames, SubdivisionNamesLanguage, SubdivisionNamesSearchOptions } from "../subdivision-names";
 
 /**
- * The subdivisions' names in German: `subdivisionName`, `subdivisionNameSource`, `subdivisionsByName` and `subdivisionByName` (search that folds as German is typed), `subdivisionsOf`, `count` and `fold`. 4895 of the 5050 subdivisions have a name; the rest answer `null`. Also the default export.
+ * The subdivisions' names in German: `subdivisionName`, `subdivisionNameSource`, `subdivisionsByName` and `subdivisionByName` (search that folds as German is typed), `subdivisionsOf`, `count` and `fold`. 4923 of the 5050 subdivisions have a name; the rest answer `null`. Also the default export.
  *
  * @example
  * ```ts

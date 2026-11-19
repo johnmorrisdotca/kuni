@@ -6,16 +6,16 @@ import { createSubdivisionNames } from "../subdivision-names";
 import type { NamedSubdivision, NameSource, SubdivisionNames, SubdivisionNamesLanguage, SubdivisionNamesSearchOptions } from "../subdivision-names";
 
 /**
- * The subdivisions' names in Traditional Chinese: `subdivisionName`, `subdivisionNameSource`, `subdivisionsByName` and `subdivisionByName` (search that folds as Traditional Chinese is typed), `subdivisionsOf`, `count` and `fold`. 3 of the 5050 subdivisions have a name; the rest answer `null`. Also the default export.
+ * The subdivisions' names in Traditional Chinese: `subdivisionName`, `subdivisionNameSource`, `subdivisionsByName` and `subdivisionByName` (search that folds as Traditional Chinese is typed), `subdivisionsOf`, `count` and `fold`. 3155 of the 5050 subdivisions have a name; the rest answer `null`. Also the default export.
  *
  * @example
  * ```ts
  * import names from "@johnmorrisdotca/kuni/subdivision-names/zh-Hant";
  *
  * console.log(names.language);                                 // "zh-Hant"
- * console.log(names.subdivisionName("GB-ENG"));              // "英格蘭"
- * console.log(names.subdivisionNameSource("GB-ENG")?.source); // "cldr"
- * console.log(names.subdivisionByName("英格蘭", { country: "GB" }));   // "GB-ENG"
+ * console.log(names.subdivisionName("JP-13"));              // "東京都"
+ * console.log(names.subdivisionNameSource("JP-13")?.source); // "wikidata"
+ * console.log(names.subdivisionByName("東京都", { country: "JP" }));   // "JP-13"
  * ```
  */
 const names: SubdivisionNames = createSubdivisionNames(ZH_HANT_SUBDIVISIONS);

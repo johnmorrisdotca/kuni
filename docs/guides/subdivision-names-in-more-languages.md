@@ -30,9 +30,9 @@ Every name carries its source, `subdivisionNameSource(code)`: `{ source, tag, dr
 
 | Language | Subdivisions named | Of 5,050 |
 | --- | --- | --- |
-| Spanish | 4,794 | 95% |
-| German | 4,895 | 97% |
-| Simplified Chinese | 2,671 | 53% |
-| Traditional Chinese | 3 | 0% |
+| Spanish | 4,830 | 95.6% |
+| German | 4,923 | 97.5% |
+| Simplified Chinese | 4,356 | 86.3% |
+| Traditional Chinese | 3,155 | 62.5% |
 
-These are the figures for the CLDR names alone. `docs/subdivision-names.md` in the repository holds the live figures, every name that was left out and why, and a list for a native reader to check. Spanish and German are CLDR's names as CLDR writes them, so German names Tokyo "Präfektur Tokio" and Spanish "Tokio".
+A name comes from CLDR where a CLDR name passes the checks, and from a Wikidata label where it does not. `docs/subdivision-names.md` in the repository holds the live figures, every name that was left out and why, and the names taken only from Wikidata, for a native reader to check. Spanish and German are CLDR's names as CLDR writes them where CLDR has one, so German names Tokyo "Präfektur Tokio" and Spanish "Tokio".

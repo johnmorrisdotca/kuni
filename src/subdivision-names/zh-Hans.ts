@@ -6,16 +6,16 @@ import { createSubdivisionNames } from "../subdivision-names";
 import type { NamedSubdivision, NameSource, SubdivisionNames, SubdivisionNamesLanguage, SubdivisionNamesSearchOptions } from "../subdivision-names";
 
 /**
- * The subdivisions' names in Simplified Chinese: `subdivisionName`, `subdivisionNameSource`, `subdivisionsByName` and `subdivisionByName` (search that folds as Simplified Chinese is typed), `subdivisionsOf`, `count` and `fold`. 2671 of the 5050 subdivisions have a name; the rest answer `null`. Also the default export.
+ * The subdivisions' names in Simplified Chinese: `subdivisionName`, `subdivisionNameSource`, `subdivisionsByName` and `subdivisionByName` (search that folds as Simplified Chinese is typed), `subdivisionsOf`, `count` and `fold`. 4356 of the 5050 subdivisions have a name; the rest answer `null`. Also the default export.
  *
  * @example
  * ```ts
  * import names from "@johnmorrisdotca/kuni/subdivision-names/zh-Hans";
  *
  * console.log(names.language);                                 // "zh-Hans"
- * console.log(names.subdivisionName("US-CA"));              // "加利福尼亚州"
- * console.log(names.subdivisionNameSource("US-CA")?.source); // "cldr"
- * console.log(names.subdivisionByName("加利福尼亚州", { country: "US" }));   // "US-CA"
+ * console.log(names.subdivisionName("JP-13"));              // "东京都"
+ * console.log(names.subdivisionNameSource("JP-13")?.source); // "wikidata"
+ * console.log(names.subdivisionByName("东京都", { country: "JP" }));   // "JP-13"
  * ```
  */
 const names: SubdivisionNames = createSubdivisionNames(ZH_HANS_SUBDIVISIONS);
