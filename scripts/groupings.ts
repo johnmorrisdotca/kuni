@@ -152,13 +152,19 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
     }
     // The days read from the body's own page, for a current member whose day Wikidata lacks or has as a placeholder.
     for (const joined of JOINED.filter((one) => one.body === body.id)) {
-      const at = periods.findIndex(([code, , until]) => code === joined.code && until === null);
-      if (at < 0) problems.push(`${body.id}: ${joined.code} has a day from the body's page and is not a current member`);
+      // A row with `match` names an earlier period by its code and the days Wikidata gives it; it must name exactly one.
+      const wanted = joined.match;
+      const found = periods.flatMap((period, at) => (period[0] === joined.code && (wanted === undefined ? period[2] === null : period[1] === wanted.since && period[2] === wanted.until) ? [at] : []));
+      if (wanted !== undefined && found.length !== 1) problems.push(`${body.id}: ${joined.code} ${JSON.stringify(wanted)} matches ${found.length} periods, not one`);
+      else if (wanted === undefined && found.length !== 1) problems.push(`${body.id}: ${joined.code} has a day from the body's page and ${found.length === 0 ? "is not a current member" : "has two current periods"}`);
       else {
+        const at = found[0];
         // a day the page gives that Wikidata already had is confirmed by the page, not filled from it
-        const confirmed = joined.since !== null && periods[at][1] === joined.since;
-        periods[at] = [joined.code, joined.since, null];
-        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}${confirmed ? " (confirmed: Wikidata has the same day)" : " (filled)"}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
+        const until = joined.until === undefined ? periods[at][2] : joined.until;
+        const confirmed = joined.since !== null && periods[at][1] === joined.since && periods[at][2] === until;
+        periods[at] = [joined.code, joined.since, until];
+        const years = (day: string | null | undefined): boolean => day !== null && day !== undefined && /^\d{4}$/.test(day);
+        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${wanted === undefined ? "" : ` to ${until ?? "now"}`}${years(joined.since) || years(joined.until) ? " (the page gives the year only)" : ""}${confirmed ? " (confirmed: Wikidata has the same day)" : " (filled)"}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
       }
     }
     for (const code of members) {

@@ -343,6 +343,8 @@ interface JoinedConfig {
   url: string; // The body's own page
   line: string; // What the page says, as it says it
   note?: string; // Why the day is what it is, where the page is not taken at its word
+  match?: { since: string | null; until: string | null }; // An earlier period, named by the days Wikidata gives it (exactly one must match); without it, the member's current period
+  until?: string | null; // With `match`: the day (or year) the period ended, where the page gives it; left as it was if absent
 }
 
 const EU_COUNTRY = "https://european-union.europa.eu/principles-countries-history/eu-countries";
@@ -455,6 +457,12 @@ const JOINED: JoinedConfig[] = [
     ["NC", "2016-09-07", "New Caledonia and French Polynesia admitted as Full Forum Members (7 September 2016)"], ["PF", "2016-09-07", "New Caledonia and French Polynesia admitted as Full Forum Members (7 September 2016)"],
   ].map(([code, since, line]) => ({ body: "pacific-islands-forum", code, since, url: "https://forumsec.org/timeline-major-forum-events", line })),
   { body: "eea", code: "LI", since: "1995", url: "https://www.efta.int/about-efta/history", line: "Liechtenstein becomes a full participant in the EEA, together with Iceland and Norway." },
+  // The Commonwealth's page for Eswatini is at /kingdom-eswatini. The earlier periods below were Wikidata's 1 January: the page gives years (Fiji's suspensions to the month, which Wikidata's 1st of the month already says, so only its start is changed). A suspension is a gap between two periods, as it already is for these members, so it is an `until` here and the return is the next period's `since`.
+  { body: "commonwealth", code: "SZ", since: "1968", url: `${CW}/kingdom-eswatini`, line: "Joined the Commonwealth: 1968, following independence from Britain" },
+  { body: "commonwealth", code: "FJ", since: "1970", match: { since: "1970-01-01", until: "1987-10-01" }, url: `${CW}/fiji`, line: "Joined the Commonwealth: 1970, following independence from Britain; membership suspended October 1987 to October 1997, June 2000 to December 2001, and from December 2006 to September 2014" },
+  { body: "commonwealth", code: "NG", since: "1960", until: "1995", match: { since: "1960-01-01", until: "1995-01-01" }, url: `${CW}/nigeria`, line: "Joined the Commonwealth: 1960, following independence from Britain; membership suspended 1995-99" },
+  { body: "commonwealth", code: "NR", since: "1968", until: "1999", match: { since: "1968-01-01", until: "1999-01-01" }, url: `${CW}/nauru`, line: "Joined the Commonwealth: 1968, as an associate member on attaining full independence (former UN trust territory); full member since 1999" },
+  { body: "commonwealth", code: "PK", since: "1947", until: "1972", match: { since: "1947-01-01", until: "1972-01-01" }, url: `${CW}/pakistan`, line: "Joined the Commonwealth: 1947, on partition from India; left in 1972, rejoined in 1989" },
   { body: "schengen", code: "RO", since: "2024-03-31", url: "https://european-union.europa.eu/principles-countries-history/eu-countries/romania_en", line: "Schengen: member since 31 March 2024" },
 ];
 

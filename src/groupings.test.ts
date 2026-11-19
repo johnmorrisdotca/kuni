@@ -202,8 +202,8 @@ describe("the international bodies", () => {
   it("give the Commonwealth's joining years as years, not as 1 January", () => {
     const current = (grouping("commonwealth")?.periods ?? []).filter((period) => period.until === null);
     for (const period of current) {
-      // Eswatini's page could not be read, and Nigeria's page gives no year for its return.
-      if (["SZ", "NG"].includes(period.code)) continue;
+      // Nigeria's page gives no year for its return.
+      if (period.code === "NG") continue;
       expect(period.since ?? "", period.code).not.toMatch(/-01-01$/);
     }
     const since = (code: string) => current.find((period) => period.code === code)?.since;
@@ -235,6 +235,31 @@ describe("the international bodies", () => {
     expect(membersOf("eu", { on: "1958-01-01" })).toEqual(["BE", "DE", "FR", "IT", "LU", "NL"]);
     expect(membersOf("eu", { on: "1973-01-01" })).toEqual(expect.arrayContaining(["DK", "IE", "GB"]));
     expect(grouping("eu")?.note).toMatch(/25 March 1957/);
+  });
+
+  it("hold the Commonwealth's earlier periods to the years its pages give", () => {
+    const periods = (code: string) => (grouping("commonwealth")?.periods ?? []).filter((period) => period.code === code).map((period) => [period.since, period.until]);
+    expect(periods("SZ")).toEqual([["1968", null]]);
+    expect(periods("NG")).toEqual([["1960", "1995"], ["1999-01-01", null]]);
+    expect(periods("NR")).toEqual([["1968", "1999"], ["1999", null]]);
+    expect(periods("PK")).toEqual([["1947", "1972"], ["1989", null]]);
+    expect(periods("FJ")[0]).toEqual(["1970", "1987-10-01"]);
+    // Pakistan left in 1972: a member to the end of 1971, unknown inside 1972, not one after; back from the end of 1989.
+    expect(membersOf("commonwealth", { on: "1971-12-31" })).toContain("PK");
+    expect(membersOf("commonwealth", { on: "1972-01-01" })).not.toContain("PK");
+    expect(unknownMembersOf("commonwealth", { on: "1972-06-01" })).toContain("PK");
+    expect(unknownMembersOf("commonwealth", { on: "1973-01-01" })).not.toContain("PK");
+    expect(membersOf("commonwealth", { on: "1947-12-31" })).toContain("PK");
+    expect(unknownMembersOf("commonwealth", { on: "1947-06-01" })).toContain("PK");
+    expect(membersOf("commonwealth", { on: "1980-01-01" })).not.toContain("PK");
+    expect(membersOf("commonwealth", { on: "1989-12-31" })).toContain("PK");
+    // Nigeria's suspension is the gap between its periods.
+    expect(membersOf("commonwealth", { on: "1994-12-31" })).toContain("NG");
+    expect(membersOf("commonwealth", { on: "1997-01-01" })).not.toContain("NG");
+    // Nauru: an associate to the end of 1998, a full member from the end of 1999.
+    expect(membersOf("commonwealth", { on: "1998-12-31" })).toContain("NR");
+    expect(membersOf("commonwealth", { on: "1999-12-31" })).toContain("NR");
+    expect(unknownMembersOf("commonwealth", { on: "1999-06-01" })).toContain("NR");
   });
 
   it("list no country twice in overlapping periods", () => {
