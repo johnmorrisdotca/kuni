@@ -149,6 +149,10 @@ const expandSubdivisions = (table: SubdivisionTable): readonly Subdivision[] => 
 // conventions lists, with spaces between, only the CLDR values that are not the world's default (mon, metric, A4, h23).
 type FactsRow = readonly [string, ...(string | number | null)[]];
 
+// [alpha2, [[en, ja, role, note], ...]], written by scripts/build-data.ts from scripts/capitals-config.ts: a country's capitals
+// in the order of its table, the note null where there is none.
+type CapitalsRow = readonly [string, readonly (readonly [string, string, string, string | null])[]];
+
 // One country's subdivision facts as text, a line each: shortCode|capitalEn|capitalJa|capitalReading|capitalLat|
 // capitalLon|population|populationYear|areaKm2|areaYear|lat|lon, an absent value empty and trailing ones left off.
 interface SubdivisionFactsTable {
@@ -245,4 +249,4 @@ interface ReservedRow {
 type TriviaRow = readonly [string, ...(string | number | null)[]];
 
 export { expandCountry, expandStandings, expandSubdivisionFacts, expandSubdivisions, flagOf };
-export type { CountryRow, FactsRow, GroupingRow, ReservedRow, SubdivisionFactsTable, SubdivisionTable, TriviaRow, WithdrawnRow };
+export type { CapitalsRow, CountryRow, FactsRow, GroupingRow, ReservedRow, SubdivisionFactsTable, SubdivisionTable, TriviaRow, WithdrawnRow };

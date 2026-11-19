@@ -46,7 +46,7 @@ describe("the trivia", () => {
     expect(trivia("AU")?.largestCity).toEqual({ id: "Q3130", name: { en: "Sydney", ja: "シドニー" } });
     expect(trivia("IT")?.largestCity).toEqual({ id: "Q220", name: { en: "Rome", ja: "ローマ" } });
     expect(trivia("AQ")?.largestCity).toBeNull();
-    expect(allTrivia().filter((one) => one.largestCity !== null)).toHaveLength(228);
+    expect(allTrivia().filter((one) => one.largestCity !== null)).toHaveLength(235);
   });
 
   // The city proper, not the urban area (docs/trivia.md): the capitals people take for the largest city, the cities an
@@ -62,6 +62,8 @@ describe("the trivia", () => {
     IT: "Rome", IL: "Jerusalem", PH: "Quezon City", TW: "New Taipei City", BE: "Antwerp", CY: "Limassol", GH: "Kumasi", SD: "Omdurman",
     // Wikidata's figure set right: a kingdom, a department, an atoll, a district, and estimates of another year.
     BJ: "Cotonou", SZ: "Mbabane", GQ: "Bata", KI: "South Tarawa", LC: "Castries",
+    // A territory's own towns, under its code in /cities.
+    GU: "Dededo", EH: "Laayoune", GP: "Les Abymes", PF: "Faʻaʻā", MT: "St. Paul's Bay", TC: "Providenciales",
     // The capital is the largest.
     JP: "Tokyo", FR: "Paris", GB: "London", CL: "Santiago", EG: "Cairo",
   };
@@ -72,8 +74,8 @@ describe("the trivia", () => {
   });
 
   it("names none rather than a wrong city where kuni lacks the largest place", () => {
-    // Guam's Dededo (under US in /cities), Liechtenstein's Schaan, San Marino's Dogana, Faʼaʼā, St. Paul's Bay, Providenciales.
-    for (const code of ["GU", "LI", "SM", "PF", "MT", "TC", "AS", "EH"]) expect(trivia(code)?.largestCity, code).toBeNull();
+    // Liechtenstein's Schaan, San Marino's Dogana, American Samoa's Tafuna.
+    for (const code of ["LI", "SM", "AS"]) expect(trivia(code)?.largestCity, code).toBeNull();
     const wrong = new Set(["Q24697413", "Q2200458", "Q101418", "Q2486", "Q3116994", "Q30988", "Q1844", "Q1848"]); // Dagbon, Banikoara, Lobamba, Tarawa, Gros Islet, Hagåtña, Vaduz, San Marino
     for (const one of allTrivia()) expect(wrong.has(one.largestCity?.id ?? ""), one.alpha2).toBe(false);
   });

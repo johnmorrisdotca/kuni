@@ -3,7 +3,7 @@
 // the dates Wikidata gives; the informal groupings, each with the definition it follows; and the regions inside a
 // country. Members are alpha-2 codes, or ISO 3166-2 codes for a grouping inside a country.
 
-import { AS_OF, CONTINENT_READINGS, INFORMAL, M49_READINGS, MEMBERSHIPS, MEMBERSHIPS_LEFT_OUT, SUBDIVISION_GROUPINGS } from "./groupings-config.ts";
+import { AS_OF, CONTINENT_READINGS, DATES_READ, INFORMAL, JOINED, M49_READINGS, MEMBERSHIPS, MEMBERSHIPS_LEFT_OUT, SUBDIVISION_GROUPINGS } from "./groupings-config.ts";
 import type { Status } from "./groupings-config.ts";
 
 type Row = unknown[];
@@ -118,6 +118,8 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
   // ----- Memberships ---------------------------------------------------------------------------------------
   const unMembers = (containment.UN?._contains ?? []).filter((code) => known.has(code)).sort(byText);
   const crossCheck: string[] = [];
+  const pageDays: string[] = [];
+  const noDay: string[] = [];
   for (const body of MEMBERSHIPS) {
     const members = body.id === "un" ? unMembers : codesOf(body.members).sort(byText);
     check(body.id, members);
@@ -141,7 +143,38 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       if (members.includes(left.code)) problems.push(`${body.id}: ${left.code} is a member and also listed as former`);
       if (!periods.some(([code, , until]) => code === left.code && until === left.until)) periods.push([left.code, left.since, left.until]);
     }
+    // Wikidata states some memberships twice, the same days over: one is kept.
+    const distinct = new Set<string>();
+    for (let at = periods.length - 1; at >= 0; at--) {
+      const key = JSON.stringify(periods[at]);
+      if (distinct.has(key)) periods.splice(at, 1);
+      else distinct.add(key);
+    }
+    // The days read from the body's own page, for a current member whose day Wikidata lacks or has as a placeholder.
+    for (const joined of JOINED.filter((one) => one.body === body.id)) {
+      const at = periods.findIndex(([code, , until]) => code === joined.code && until === null);
+      if (at < 0) problems.push(`${body.id}: ${joined.code} has a day from the body's page and is not a current member`);
+      else {
+        // a day the page gives that Wikidata already had is confirmed by the page, not filled from it
+        const confirmed = joined.since !== null && periods[at][1] === joined.since;
+        periods[at] = [joined.code, joined.since, null];
+        pageDays.push(`- **${body.shortEn ?? body.en}** ${joined.code}: ${joined.since ?? "unknown"}${joined.since !== null && /^\d{4}$/.test(joined.since) ? " (the page gives the year only)" : ""}${confirmed ? " (confirmed: Wikidata has the same day)" : " (filled)"}: ${joined.url}: "${joined.line}"${joined.note === undefined ? "" : ` (${joined.note})`}`);
+      }
+    }
+    for (const code of members) {
+      const rows = periods.filter(([one, , until]) => one === code && until === null);
+      if (rows.length !== 1) problems.push(`${body.id}: ${code} has ${rows.length} current periods`);
+    }
+    for (const [at, [code, since, until]] of periods.entries()) {
+      for (const [other, otherSince, otherUntil] of periods.slice(at + 1)) {
+        // A year alone is read as the day (a joining year from its end, a leaving year up to its start) that makes it surely a member.
+        const from = (day: string | null): string | null => (day !== null && /^\d{4}$/.test(day) ? `${day}-12-31` : day);
+        const to = (day: string | null): string | null => (day !== null && /^\d{4}$/.test(day) ? `${day}-01-01` : day);
+        if (code === other && from(since) !== null && from(otherSince) !== null && from(since)! < (to(otherUntil) ?? "9999") && from(otherSince)! < (to(until) ?? "9999")) problems.push(`${body.id}: ${code} is in two overlapping periods`);
+      }
+    }
     periods.sort((a, b) => byText(a[0], b[0]) || byText(a[1] ?? "", b[1] ?? ""));
+    noDay.push(`- **${body.shortEn ?? body.en}** (${periods.filter(([, since, until]) => since === null && until === null).length}): ${periods.filter(([, since, until]) => since === null && until === null).map(([code]) => code).join(" ") || "none"}`);
     const current = new Set(stated.filter((one) => one.end === null).map((one) => one.code));
     const wikidataOnly = [...current].filter((code) => !members.includes(code) && !(code in (body.others ?? {}))).sort(byText);
     const listOnly = members.filter((code) => !current.has(code));
@@ -157,7 +190,7 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
       members,
       periods,
       ...(others.length === 0 ? {} : { others }),
-      definition: `The members ${body.id === "un" ? "the United Nations lists" : `${body.source.name.split(",")[0]} lists`} on ${AS_OF}; the dates they joined and left are Wikidata's (CC0), read ${inputs.snapshotRead}.`,
+      definition: `The members ${body.id === "un" ? "the United Nations lists" : `${body.source.name.split(",")[0]} lists`} on ${AS_OF}; the dates they joined and left are Wikidata's (CC0), read ${inputs.snapshotRead}, except those taken from the body's own page (docs/groupings.md). A member with no day is unknown on a day, not a member.`,
       ...(body.note === undefined ? {} : { note: body.note }),
       source: [body.source.name, body.source.url, body.id === "un" ? `${CLDR_LICENCE} (CLDR); dates CC0 (Wikidata)` : "A list of facts; dates CC0 (Wikidata)"],
       asOf: AS_OF,
@@ -255,6 +288,18 @@ const buildGroupings = (inputs: GroupingsInputs): { records: GroupingRecord[]; d
     "| Body | Members | Not current in Wikidata | In Wikidata, not the body's list | With a start date |",
     "| --- | --- | --- | --- | --- |",
     ...crossCheck,
+    "",
+    `### Days read from the body's own page`,
+    "",
+    `Where Wikidata gives a member no day, or a day that is a placeholder, the body's own page is read (on ${DATES_READ}, each page by itself); the day and the line it rests on are in \`scripts/groupings-config.ts\` (\`JOINED\`).`,
+    "",
+    ...pageDays,
+    "",
+    `### Members with no day`,
+    "",
+    "No source gives these a day, so a call for a day (`membersOf(id, { on })`) does not count them; `unknownMembersOf` lists them.",
+    "",
+    ...noDay,
     "",
     "Left out on purpose:",
     "",

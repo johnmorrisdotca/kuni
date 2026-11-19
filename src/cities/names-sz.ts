@@ -6,10 +6,10 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Eswatini, ids and names only, in the order of /cities/sz; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "2696,amia,30g,1dass,17i4m",
-  en: "Lobamba|Manzini|Mbabane|Siteki|Nhlangano",
-  ja: "ロバンバ|マンジニ|ムババーネ|シテキ|ンランガーノ",
-  native: "||ÉMbábáne||",
+  id: "30g,amia,1dass,2696,17i4m",
+  en: "Mbabane|Manzini|Siteki|Lobamba|Nhlangano",
+  ja: "ムババーネ|マンジニ|シテキ|ロバンバ|ンランガーノ",
+  native: "ÉMbábáne||||",
   reading: "||||",
   major: "11111",
 });

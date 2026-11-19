@@ -173,6 +173,8 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `members_now` | {count} members now. | 現在のメンバー数：{count} |
 | `members_on` | {count} members on {day}. | {day}時点のメンバー数：{count} |
 | `others` | Not members | 加盟国以外 |
+| `unknown_on` | Joining day unknown on this date ({count}) | この日の加盟は不明（{count}） |
+| `unknown_hint` | Not counted above: no source gives these members' joining day, or only the year. | 上の人数には含めていません。加盟日が分からない、または年だけが分かっている加盟国です。 |
 | `former` | Former memberships | 過去の加盟 |
 | `status_candidate` | candidate | 加盟候補国 |
 | `status_associate` | associate | 準加盟国 |

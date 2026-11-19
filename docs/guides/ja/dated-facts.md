@@ -16,6 +16,19 @@ console.log(Math.round(distanceKm({lat:35.68,lon:139.76},{lat:51.5,lon:-0.12})))
 
 FACTS_READは保存したWikidataの資料の日付です。人口と面積にはそれぞれの年があり、areaOfは全体か陸地だけかを区別します。座標は資料の代表の位置で、計算した中心ではありません。nullは使える値が資料になかった意味です。0は値で、欠けたものとはしません。国境は国のコードで、島には空の一覧もあります。
 
+## 国の首都と役割を読む
+
+`country(code).capital`は名前が一つです。首都の都市が複数ある国や、首都が一つの答えにならない国が少しあり、capitalsエントリの`capitalsOf`が都市ごとに役割を返します。
+
+```ts
+import { capitalsOf,CAPITALS_READ } from "@johnmorrisdotca/kuni/capitals";
+console.log(capitalsOf("ZA")?.map((one)=>`${one.name.en} ${one.role}`));
+console.log(capitalsOf("BI")?.[1]?.name.ja,CAPITALS_READ);
+console.log(capitalsOf("JP"));
+```
+
+役割はofficial（正式な首都）、administrative（行政）、legislative（立法）、judicial（司法）、seat（政府の所在地）、political（政治）、economic（経済）です。資料が「商業の首都」と言う場合はeconomicとします。どれもその国の政府や法律が述べていることで、[首都の一覧](../../capitals.md)に各項目の資料のページと引用した行があります。項目のない国はnullを返し、その首都は`capital`が示す一つです。`capital`の項目そのものは変わっていません。イスラエルとパレスチナ自治区は、争いのある首都の扱いが管理者の判断のため、項目がありません。
+
 ## 行政区画の不確かさを保つ
 
 行政区画の情報は、資料にない場合や食い違う場合にnullです。首都の文章と座標は別で、カードの首都の印を無効にしても文章の項目は消しません。元の[国の情報](../../facts.md)、[行政区画の情報](../../subdivision-facts.md)、[ライセンス](../../../NOTICE.md)で範囲を読めます。距離の関数は緯度と経度を取り、キロメートルを返します。道順や移動時間ではありません。

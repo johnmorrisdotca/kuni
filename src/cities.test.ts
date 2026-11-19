@@ -585,6 +585,65 @@ describe("the top cities of a country", () => {
   });
 });
 
+describe("each city's own figure, in its own country", () => {
+  it("has no kingdom, atoll or island with a town on it among the cities, and each id answers with the town or with none", async () => {
+    expect(await cityById("Q24697413")).toBeNull(); // Dagbon, a traditional kingdom of Ghana
+    expect((await cityById("Q2486"))?.name.en).toBe("South Tarawa"); // Tarawa, the atoll
+    expect((await cityById("Q463937"))?.name.en).toBe("Charlotte Amalie"); // Saint Thomas, the island
+    expect(await cityById("Q3116994")).toBeNull(); // Gros Islet: its only figure is the Gros Islet Quarter's
+  });
+
+  it("gives a town its own figure, not a region's, an urban area's or a web site's estimate", async () => {
+    const figure = async (id: string) => {
+      const city = (await cityById(id))!;
+
+      return [city.population, city.populationDate, city.source.population];
+    };
+    expect(await figure("Q2200458")).toEqual([246575, "2013-05-11", "kuni"]); // Banikoara, not the Alibori department's 867,463
+    expect(await figure("Q182059")).toEqual([443981, "2021-06-27", "kuni"]); // Kumasi, not World Population Review's 3,903,480
+    expect(await figure("Q1963")).toEqual([1410858, "2008-04-22", "kuni"]); // Khartoum, not Demographia's 5,345,000
+    expect(await figure("Q495730")).toEqual([30248, "2017-05-11", "kuni"]); // Manzini, not an unsourced 110,508
+    expect(await figure("Q3904")).toEqual([60691, "2017-05-11", "wikidata"]); // Mbabane: Wikidata's census figure, not World Population Review's 76,218
+    expect((await cityById("Q101418"))?.population).not.toBe(114585); // Lobamba: World Population Review's
+    // Ghana's largest is Kumasi, not Dagbon; Eswatini's is Mbabane, not Lobamba.
+    expect((await citiesOf("GH"))!.map((city) => city.name.en).slice(0, 2)).toEqual(["Kumasi", "Tamale"]);
+    expect([...(await citiesOf("SZ"))!].sort((a, b) => (b.population ?? 0) - (a.population ?? 0))[0]!.name.en).toBe("Mbabane");
+  });
+
+  it("puts a territory's towns under its own code: Dededo in Guam, Laayoune in Western Sahara, Saint-Paul in Réunion, Bayamón in Puerto Rico", async () => {
+    const country = async (id: string) => (await cityById(id))?.country;
+    expect(await country("Q1182147")).toBe("GU");
+    expect(await country("Q47837")).toBe("EH");
+    expect(await country("Q316887")).toBe("RE");
+    expect(await country("Q125777788")).toBe("PR");
+    expect((await citiesOf("US"))!.filter((city) => ["US-GU", "US-PR", "US-VI", "US-AS", "US-MP", "US-UM"].includes(city.subdivision ?? "")).map((city) => city.name.en)).toEqual([]);
+    expect((await citiesOf("FR"))!.filter((city) => /^FR-(97\d|BL|MF|NC|PF|PM|TF|WF)$/.test(city.subdivision ?? "")).map((city) => city.name.en)).toEqual([]);
+  });
+
+  it("has the largest town of the territories Wikidata names only as a commune, a council or a district", async () => {
+    const names = async (code: string) => (await citiesOf(code))!.map((city) => city.name.en);
+    expect(await names("GP")).toContain("Les Abymes");
+    expect(await names("PF")).toContain("Faʻaʻā");
+    expect(await names("MT")).toContain("St. Paul's Bay");
+    expect(await names("TC")).toContain("Providenciales");
+    expect(await names("GU")).toContain("Dededo");
+  });
+
+  it("gives no city more people than its country", async () => {
+    const { facts } = await import("./facts");
+    const everything = await loadCities("capitals", "1m", "100k", "15k");
+    const over = everything.cities.filter((city) => {
+      const people = facts(city.country)?.population ?? null;
+
+      return city.population !== null && people !== null && city.population > people;
+    });
+    // Two places that are the whole country, whose two figures disagree: Vatican City is its country's own item (949 at
+    // the end of 2024, the country 882 that year), and Diego Garcia holds the Chagos' people (4,202 with no day, the
+    // territory 3,000 for 2018).
+    expect(over.map((city) => `${city.id} ${city.name.en} ${city.country} ${city.population}`)).toEqual(["Q184851 Diego Garcia IO 4202", "Q237 Vatican City VA 949"]);
+  });
+});
+
 describe("what is no city", () => {
   it("names no unit or part of a city as one: a city whose name ends in such a word is a capital, or a municipality that is the town", async () => {
     const set = await loadCities("capitals", "1m", "100k", "15k");

@@ -6,9 +6,9 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Trinidad & Tobago, ids and names only, in the order of /cities/tt; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "uyn3,lxwg,u8a,1jrpz,2usbg,2av08,3vdeu,2w4tu,1i293,kpvo,16dgg,22vid,b0tc,lojc,q5ra,1hsr6,1re2y",
-  en: "Chaguanas|San Fernando|Port of Spain|Couva|Arouca|Morvant|Laventille|Barataria|Tunapuna|Scarborough|San Juan|Siparia|Rio Claro|Princes Town|Diego Martin|Penal|Sangre Grande",
-  ja: "チャグアナス|サンフェルナンド|ポートオブスペイン|クーヴァ|アルーカ|モーヴァント|ラヴェンティル|バラタリア|トゥナプナ|スカボロー|サン・フアン (トリニダード・トバゴ)|シパリア|リオ・クラロ (トリニダード・トバゴ)|プリンセス・タウン|ディエゴ・マーティン|ペナル (町)|サングレ・グランデ",
+  id: "uyn3,lxwg,1jrpz,u8a,2usbg,2av08,3vdeu,2w4tu,1i293,kpvo,16dgg,22vid,b0tc,lojc,q5ra,1hsr6,1re2y",
+  en: "Chaguanas|San Fernando|Couva|Port of Spain|Arouca|Morvant|Laventille|Barataria|Tunapuna|Scarborough|San Juan|Siparia|Rio Claro|Princes Town|Diego Martin|Penal|Sangre Grande",
+  ja: "チャグアナス|サンフェルナンド|クーヴァ|ポートオブスペイン|アルーカ|モーヴァント|ラヴェンティル|バラタリア|トゥナプナ|スカボロー|サン・フアン (トリニダード・トバゴ)|シパリア|リオ・クラロ (トリニダード・トバゴ)|プリンセス・タウン|ディエゴ・マーティン|ペナル (町)|サングレ・グランデ",
   native: "||||||||||||||||",
   reading: "||||||||||||||||",
   major: "11111111111111111",

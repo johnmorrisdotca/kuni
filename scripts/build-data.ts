@@ -21,6 +21,7 @@ import { refreshDataDocs, writeDocumentedFile } from "./data-docs.ts";
 
 import { CONTINENTS, SUBDIVISION_TYPES } from "../src/types.ts";
 import {
+  CALLING_CODE_OVERRIDES,
   CITY_READING_FILLS,
   CODE_CHANGES,
   COUNTRY_ALIASES,
@@ -39,6 +40,7 @@ import {
   TYPE_RULES,
 } from "./data-config.ts";
 import { englishSuspects } from "./en-names.ts";
+import { CAPITALS, CAPITALS_READ } from "./capitals-config.ts";
 import { CAPITAL_ZONES, SPLIT_ZONES, SUBDIVISION_ZONES } from "./facts-config.ts";
 import { buildFacts } from "./facts.ts";
 import { buildStatus } from "./status.ts";
@@ -57,7 +59,8 @@ import { readManifest, readSource, ROOT } from "./sources.ts";
 import { buildCityFacts, CITY_ELEVATION_DROPPED, CITY_ZONES } from "./city-facts.ts";
 import type { SubdivisionZone } from "./city-facts.ts";
 import { buildCities, byRank, citiesDoc, cityAliases, cityFiles, cityIndex, cityLoaders, countryCityFiles, countryNames, SPLIT_TIERS, startLoaders, startParts, TIER_FILES, unresolvedIds } from "./cities.ts";
-import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
+import type { CitiesSnapshot, MetrosSnapshot, NaturalEarthFile, PopulationsSnapshot, StatcanSnapshot, TierName, UrbanSnapshot } from "./cities.ts";
+import { CITY_POPULATIONS } from "./city-populations.ts";
 import { INSIDE_AREAS, INSIDE_SUBDIVISIONS, OECD_AREAS } from "./metro-links.ts";
 import { hiraganaOf, readingOfName } from "../src/ja-reading.ts";
 
@@ -328,15 +331,36 @@ const currentItems = (items: WikidataItem[] | undefined): WikidataItem[] =>
 
 // A calling code as the ITU writes it. Members of the North American plan share +1 and are told apart by
 // area code, which Wikidata writes after it ("+1264"); the country code is +1.
+const countryCode = (value: string): string => (/^\+1\d{3}$/.test(value) ? "+1" : value);
+
+// Where Wikidata's item gives several values that differ as country codes, the first is not necessarily the
+// country's (Türkiye's Q43 lists +36, Hungary's, before +90): the ITU's code is set in CALLING_CODE_OVERRIDES,
+// and a country with several and no entry stops the build.
 const callingOf = (alpha2: string): string | null => {
   const items = wikidata.countries[alpha2] ?? [];
   const own = items.find((item) => (item.calling ?? []).length > 0) ?? null;
-  const values = (own?.calling ?? []).map((value) => value.replace(/[\s-]/g, ""));
+  const values = (own?.calling ?? []).map((value) => countryCode(value.replace(/[\s-]/g, "")));
   const fallback = (countriesList[alpha2]?.phone ?? []).map((value) => `+${value}`);
-  const first = values[0] ?? fallback[0] ?? null;
-  if (first === null) return null;
+  const override = CALLING_CODE_OVERRIDES[alpha2];
+  if (override !== undefined) {
+    if (![...values, ...fallback].some((value) => value.startsWith(override.calling))) {
+      throw new Error(`CALLING_CODE_OVERRIDES[${alpha2}] is ${override.calling}, which none of the values Wikidata and countries-list give (${[...values, ...fallback].join(", ")}) starts with`);
+    }
 
-  return /^\+1\d{3}$/.test(first) ? "+1" : first;
+    return override.calling;
+  }
+  const distinct = [...new Set(values)];
+  if (distinct.length > 1) {
+    throw new Error(`${alpha2}: Wikidata gives calling codes ${distinct.join(", ")}; choose one in CALLING_CODE_OVERRIDES with the ITU as its source`);
+  }
+  const first = values[0] ?? fallback[0] ?? null;
+
+  const code = first === null ? null : countryCode(first);
+  if (code !== null && code.length > 4) {
+    throw new Error(`${alpha2}: ${code} is longer than an ITU country code (at most three digits); set the ITU's code in CALLING_CODE_OVERRIDES`);
+  }
+
+  return code;
 };
 
 const currenciesOf = (alpha2: string): string[] =>
@@ -1130,7 +1154,32 @@ const writeCities = (): void => {
   const urbanFile = manifest.files.find((file) => file.path.startsWith("urban-areas-"));
   if (urbanFile === undefined) throw new Error("No urban areas in data-sources/sources.json: run node scripts/fetch-urban.ts");
   const urban = JSON.parse(readSource(manifest, urbanFile.path).text) as UrbanSnapshot;
+  // What each figure rests on (scripts/fetch-city-populations.ts), so a figure that is not the city's own is left out.
+  const populationsFile = manifest.files.find((file) => file.path.startsWith("wikidata-city-populations-"));
+  if (populationsFile === undefined) throw new Error("No city populations in data-sources/sources.json: run pnpm data:populations");
+  const populations = JSON.parse(readSource(manifest, populationsFile.path).text) as PopulationsSnapshot;
+  // The people of each country and first-level subdivision, with the items that are it or its capital: a figure of a
+  // town that is neither and is its subdivision's is the subdivision's.
+  const answers = factsSnapshot.answers as unknown as Record<string, Record<string, unknown[][]>>;
+  const itemsOf = (rows: unknown[][] | undefined, columns: number[]): string[] => [...new Set((rows ?? []).flatMap((row) => columns.map((at) => row[at]).filter((one): one is string => typeof one === "string")))];
+  type AreaFacts = { en: string; population: number | null; items: string[] };
+  const areas = new Map<string, AreaFacts>([
+    ...facts.records.map((record): [string, AreaFacts] => [record.alpha2, { en: countries.find((one) => one.alpha2 === record.alpha2)?.en ?? record.alpha2, population: record.population, items: itemsOf(answers.items?.[record.alpha2], [0]) }]),
+    ...subdivisions
+      .filter((record) => record.level === 1)
+      .map((record): [string, AreaFacts] => {
+        // Where Wikidata gives the code to an item of its capital's name (PT-05 to the municipality of Castelo Branco),
+        // its figure is that town's, not the subdivision's: none is used.
+        const labels = new Set((answers.subdivisionLabels?.[record.code] ?? []).map((row) => row[1]));
+        const town = (answers.subdivisionCapitals?.[record.code] ?? []).some((row) => labels.has(row[2]));
+
+        return [record.code, { en: record.en, population: town ? null : (subdivisionFacts.records.get(record.code)?.population ?? null), items: itemsOf([...(answers.subdivisionLabels?.[record.code] ?? []), ...(answers.subdivisionCapitals?.[record.code] ?? [])], [0, 1]) }];
+      }),
+  ]);
   const { rows, tiers, report } = buildCities({
+    populations,
+    areas,
+    cityPopulations: CITY_POPULATIONS,
     snapshot,
     naturalEarth,
     metros,
@@ -1144,6 +1193,10 @@ const writeCities = (): void => {
     subdivisions: new Set(subdivisions.map((record) => record.code)),
     capitalNames: new Map(countries.flatMap((country) => (country.capital === null ? [] : [[country.alpha2, country.capital] as [string, string]]))),
   });
+  checkCapitalNames(rows);
+  for (const id of Object.keys(CITY_POPULATIONS)) if (!report.figures.setByHand.includes(id)) throw new Error(`CITY_POPULATIONS (scripts/city-populations.ts): ${id} is no city now; look at it again`);
+  console.log(`Figures: ${report.figures.estimateSite.length} a web site's estimate, ${report.figures.areaFigure.length} a larger area's, ${report.figures.setByHand.length} set by hand; ${report.figures.land.length} items are land, not a town; ${Object.values(report.ownCountry).reduce((sum, one) => sum + one, 0)} cities in a territory's own country.`);
+  if (process.env.KUNI_FIGURES !== undefined) for (const [kind, ids] of Object.entries(report.figures)) console.log(`  ${kind}: ${ids.join(" ")}`);
   console.log(`Cities: ${report.withMetro} head an urban area, ${report.inMetroOf} lie inside another city's; ${report.areasUnmatched.length} official areas name no city kuni has${process.env.KUNI_AREAS === undefined ? "" : `: ${report.areasUnmatched.join("; ")}`}.`);
   // Each Japanese name's reading in hiragana: Wikidata's reading in kana (P1814) where the name is Wikidata's own label
   // (not Natural Earth's, bit 1, nor one written for this package, bit 8), else the name itself where its words are kana
@@ -1278,6 +1331,58 @@ const writeCities = (): void => {
     `// Generated by scripts/build-data.ts. Do not edit by hand: change the script or its inputs and run pnpm data.\n// The Japanese city names src/ja-short.ts keeps whole: 市 or 区 dropped, each would be a country's name.\n\nconst JA_SHORT_KEEP: ReadonlySet<string> = new Set(${JSON.stringify(keep)});\n\nexport { JA_SHORT_KEEP };\n`,
   );
   writeDocumentedFile(join(DOCS, "cities.md"), citiesDoc(report, snapshot, naturalEarth, factsReport).join("\n"));
+};
+
+// The capitals with a role (scripts/capitals-config.ts): one row a country that has an entry, [alpha2, [[en, ja, role,
+// note], ...]], with the note null where there is none; and the record of what each says and where it was read
+// (docs/capitals.md). A city's English and Japanese names must be kuni's own: the country's capital, or its name in /cities.
+const checkCapitalNames = (cityRows: readonly (readonly (string | number | null)[])[]): void => {
+  const problems: string[] = [];
+  for (const [alpha2, entries] of Object.entries(CAPITALS)) {
+    const country = countries.find((one) => one.alpha2 === alpha2);
+    if (country === undefined) {
+      problems.push(`${alpha2} is not a country`);
+      continue;
+    }
+    for (const entry of entries) {
+      const own = country.capital === entry.en ? country.capitalJa : null;
+      const city = cityRows.find((row) => row[5] === alpha2 && row[7] === entry.en);
+      const ja = own ?? (city?.[8] as string | null | undefined) ?? null;
+      if (ja === null) problems.push(`${alpha2} ${entry.en}: kuni has no Japanese name for it`);
+      else if (ja !== entry.ja) problems.push(`${alpha2} ${entry.en}: CAPITALS says ${entry.ja}, kuni's name is ${ja}`);
+      if (entry.sources.length === 0 || entry.sources.some((source) => !/^https:\/\/[^ ]+$/.test(source.url) || source.quote.trim() === "")) problems.push(`${alpha2} ${entry.en}: every entry needs a source address and the quoted line`);
+    }
+  }
+  if (problems.length > 0) throw new Error(`CAPITALS:\n${problems.join("\n")}`);
+};
+
+const writeCapitals = (): void => {
+  const rows = Object.entries(CAPITALS)
+    .sort(([a], [b]) => byText(a, b))
+    .map(([alpha2, entries]) => `  ${literal([alpha2, entries.map((entry) => [entry.en, entry.ja, entry.role, entry.note ?? null])])},`);
+  writeDocumentedFile(
+    join(OUT_DATA, "capitals.data.ts"),
+    header(`The capitals with a role of ${rows.length} countries; src/capitals.ts says what the columns are.`, [`Written for this package, scripts/capitals-config.ts (MIT), each from its own government's page, read on ${CAPITALS_READ}; Japanese names from kuni's own`]) +
+      'import type { CapitalsRow } from "../rows";\n\n' +
+      `/**\n * The day the capitals' pages were read: every role in \`capitalsOf\` is as the country's own government page said on this day.\n *\n * @example\n * \`\`\`ts\n * import { CAPITALS_READ, capitalsOf } from "@johnmorrisdotca/kuni/capitals";\n *\n * console.log(capitalsOf("ZA")?.length, CAPITALS_READ); // 3 "${CAPITALS_READ}"\n * \`\`\`\n */\nconst CAPITALS_READ = ${literal(CAPITALS_READ)};\n\n` +
+      `const CAPITAL_ROWS: readonly CapitalsRow[] = [\n${rows.join("\n")}\n];\n\n` +
+      "export { CAPITAL_ROWS, CAPITALS_READ };\n",
+  );
+  const lines = [
+    "# Capitals with a role",
+    "",
+    `Written by scripts/build-data.ts from scripts/capitals-config.ts; do not edit by hand. The ${rows.length} countries below have more than one capital city, or a capital kuni's \`capital\` does not name alone. For each city: the role, and the page of the country's own government or law that says so, with the line quoted, read on ${CAPITALS_READ}. \`capital\` is unchanged; \`capitalsOf(code)\` in \`/facts\` is the table, \`null\` for a country with no entry here.`,
+    "",
+    "The roles are `official`, `administrative`, `legislative`, `judicial`, `seat` (of government), `political` and `economic`. A source's \"commercial\" capital is `economic`, and the source's word is in the note; where a source's word is another (constitutional), the role is the nearest and the word is in the note. A role needs a line that says it: a city a page only says houses the government is in a note, not in the list.",
+    "",
+  ];
+  for (const [alpha2, entries] of Object.entries(CAPITALS).sort(([a], [b]) => byText(a, b))) {
+    const country = countries.find((one) => one.alpha2 === alpha2)!;
+    lines.push(`## ${alpha2} ${country.en}`, "", `\`capital\` is ${country.capital}.`, "", "| City | 日本語 | Role | Note | Source | Line |", "|---|---|---|---|---|---|");
+    for (const entry of entries) lines.push(`| ${entry.en} | ${entry.ja} | ${entry.role} | ${entry.note ?? ""} | ${entry.sources.map((source) => `[${source.by}: ${source.title.replace(/\|/g, "/")}](${source.url})`).join("<br>")} | ${entry.sources.map((source) => `"${source.quote.replace(/\|/g, "/")}"`).join("<br>")} |`);
+    lines.push("");
+  }
+  writeDocumentedFile(join(DOCS, "capitals.md"), lines.join("\n"));
 };
 
 const writeSubdivisionFacts = (): void => {
@@ -1622,6 +1727,7 @@ if (REPORT) {
   writeDisagreements();
   writeNameRules();
   writeFacts();
+  writeCapitals();
   writeSubdivisionFacts();
   writeGroupings();
   writeWithdrawn();

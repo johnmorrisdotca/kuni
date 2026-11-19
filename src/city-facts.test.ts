@@ -176,10 +176,10 @@ describe("a city's time zone", () => {
   it("pins the counts: how many cities are given a zone by each way, and how many are estimates", async () => {
     const list = await all();
     const withZone = list.filter((city) => city.timeZone !== undefined);
-    expect(list).toHaveLength(29982);
-    expect(withZone).toHaveLength(29982);
-    expect(withZone.filter((city) => city.timeZoneEstimated).length).toBe(13563);
-    expect(withZone.filter((city) => !city.timeZoneEstimated).length).toBe(16419);
+    expect(list).toHaveLength(30484);
+    expect(withZone).toHaveLength(30484);
+    expect(withZone.filter((city) => city.timeZoneEstimated).length).toBe(13564);
+    expect(withZone.filter((city) => !city.timeZoneEstimated).length).toBe(16920);
     // An estimate is only ever made for a city of a country with several zones.
     for (const city of withZone.filter((one) => one.timeZoneEstimated)) {
       const zones = new Set([...(country(city.country)?.zones ?? [])]);
@@ -324,7 +324,7 @@ describe("a city's elevation", () => {
     const list = await all();
     for (const city of list.filter((one) => one.id.startsWith("ne:"))) expect(city.elevation, city.id).toBeUndefined();
     // Pinned: how many cities have one.
-    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17183);
+    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17174);
   });
 
   it("keeps to what land has", async () => {
