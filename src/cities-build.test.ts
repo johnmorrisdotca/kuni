@@ -454,7 +454,7 @@ describe("a figure that is not the city's own", () => {
         item(9, "Fr", null, [45, 5], "FR", [[190000, "2024-01-01"]]),
       ],
       statements([
-        [1, [older(120000), census(150000, "2024-01-01")]],
+        [1, [older(60000), census(150000, "2024-01-01")]],
         [2, [older(40000), census(150000, "2024-01-01")]],
         [3, [census(170000, "2024-01-01")]],
         [4, [census(180000, "2024-01-01")]],
@@ -466,10 +466,49 @@ describe("a figure that is not the city's own", () => {
       ]),
     );
     const found = byName(rows);
-    expect([found.Alpha![3], found.Alpha![4]]).toEqual([120000, 2020]);
+    expect([found.Alpha![3], found.Alpha![4]]).toEqual([60000, 2020]);
     expect([found.Beta![3], found.Beta![4]]).toEqual([40000, 2020]);
     for (const [name, people] of [["Single", 170000], ["Near", 180000], ["Nearby", 180000], ["Small", 99999], ["Smaller", 99999], ["Jp", 190000], ["Fr", 190000]] as const) expect(found[name]![3], name).toBe(people);
-    expect(report.sameCensus).toEqual([{ country: "FR", value: 150000, day: "2024-01-01", ids: ["Q1", "Q2"] }]);
+    expect(report.sameCensus).toEqual([{ country: "FR", value: 150000, day: "2024-01-01", ids: ["Q1", "Q2"], kept: null }]);
+  });
+
+  it("lets the city whose own earlier figure is within 1.5 of an identical census figure keep it, and refuses all where none or several are", () => {
+    const census = (value: number, day: string): PopulationStatement => [value, day, 2, "census", ["stats.example"]];
+    const older = (value: number): PopulationStatement => [value, "2020-01-01", 1, "census", ["stats.example"]];
+    const { rows, report } = figures(
+      [
+        // One leads up (the earlier 325,000 is within 1.5 of 380,000) and keeps it; the other (earlier 40,000) falls back.
+        item(1, "Leads", null, [1, 1], "FR", [[380000, "2024-01-01"]]),
+        item(2, "Copy", null, [10, 10], "FR", [[380000, "2024-01-01"]]),
+        // Both lead up (earlier 140,000 and 160,000 for 150,000): both are refused.
+        item(3, "BothA", null, [20, 20], "FR", [[150000, "2024-01-01"]]),
+        item(4, "BothB", null, [30, 30], "FR", [[150000, "2024-01-01"]]),
+        // Neither does (earlier 40,000 and 50,000 for 200,000): both are refused.
+        item(5, "NoneA", null, [40, 40], "FR", [[200000, "2024-01-01"]]),
+        item(6, "NoneB", null, [50, 50], "FR", [[200000, "2024-01-01"]]),
+        // One has no earlier statement and does not lead; the other, within 1.5, keeps the figure.
+        item(7, "Fresh", null, [60, 60], "FR", [[250000, "2024-01-01"]]),
+        item(8, "Old", null, [70, 70], "FR", [[250000, "2024-01-01"]]),
+      ],
+      statements([
+        [1, [older(325000), census(380000, "2024-01-01")]],
+        [2, [older(40000), census(380000, "2024-01-01")]],
+        [3, [older(140000), census(150000, "2024-01-01")]],
+        [4, [older(160000), census(150000, "2024-01-01")]],
+        [5, [older(40000), census(200000, "2024-01-01")]],
+        [6, [older(50000), census(200000, "2024-01-01")]],
+        [7, [census(250000, "2024-01-01")]],
+        [8, [older(240000), census(250000, "2024-01-01")]],
+      ]),
+    );
+    const found = byName(rows);
+    expect(found.Leads![3]).toBe(380000);
+    expect(found.Copy![3]).toBe(40000);
+    expect([found.BothA![3], found.BothB![3]]).toEqual([140000, 160000]);
+    expect([found.NoneA![3], found.NoneB![3]]).toEqual([40000, 50000]);
+    expect(found.Old![3]).toBe(250000);
+    expect(found.Fresh).toBeUndefined();
+    expect(report.sameCensus.map((group) => [group.value, group.kept])).toEqual([[380000, "Q1"], [150000, null], [200000, null], [250000, "Q8"]]);
   });
 
   it("uses a census figure set by hand, says kuni gave it, and stops when Wikidata's figure is no longer the one it replaces", () => {
