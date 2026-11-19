@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- OPEC's earlier periods for Ecuador and Gabon, from OPEC's own member-countries page (MODULES-1644). Ecuador joined in 1973 and suspended its membership in December 1992, then rejoined in October 2007 (the stored 1 January 2007 was the page's October) and left effective 1 January 2020. Gabon joined in 1975, terminated its membership in January 1995, and rejoined in July 2016. A year or a month the page gives without a day stays a year or a month: the days inside it are unknown, not a chosen day. Gabon stays a current member. The current ISO codes are unchanged.
+
 ## [1.15.0] - 2026-11-19
 
 - **One subdivision row carries retired codes, former names and aliases together.** The three new fields of this release share the row a country's subdivisions are written in (`shortCode|en|ja|type|parent|reading|former|formerNames|aliases`), and Japan's entry, with the code that reads them, is now about 3 KB (3,130 bytes; the guard moves from 3 KB to 3.25 KB).

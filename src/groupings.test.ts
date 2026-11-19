@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { MEMBERSHIPS_LEFT_OUT } from "../scripts/groupings-config";
 import { GROUPING_KINDS, grouping, groupings, groupingsOf, membersOf, unknownMembersOf } from "./groupings";
-import { standing } from "./grouping-days";
+import { standing, sureFrom, sureTo } from "./grouping-days";
 import { countries, COUNTRY_CODES } from "./index";
 import { subdivision, subdivisions } from "./subdivisions";
 
@@ -92,6 +92,20 @@ describe("the international bodies", () => {
     expect(membersOf("eu", { on: "2019-06-30" })).toContain("GB");
     expect(membersOf("eu", { on: "2021-01-01" })).not.toContain("GB");
     expect(membersOf("opec", { on: "2020-06-30" })).toContain("AO");
+    expect(membersOf("opec")).toContain("GA");
+    expect(membersOf("opec")).not.toContain("EC");
+    expect(membersOf("opec", { on: "1980-06-01" })).toEqual(expect.arrayContaining(["EC", "GA"]));
+    expect(membersOf("opec", { on: "1993-06-01" })).not.toContain("EC");
+    expect(membersOf("opec", { on: "1993-06-01" })).toContain("GA");
+    expect(unknownMembersOf("opec", { on: "1992-12-15" })).toContain("EC");
+    expect(membersOf("opec", { on: "2007-06-01" })).not.toContain("EC");
+    expect(unknownMembersOf("opec", { on: "2007-10-01" })).toContain("EC");
+    expect(membersOf("opec", { on: "2007-10-31" })).toContain("EC");
+    expect(membersOf("opec", { on: "2010-01-01" })).toContain("EC");
+    expect(membersOf("opec", { on: "2010-01-01" })).not.toContain("GA");
+    expect(unknownMembersOf("opec", { on: "1995-01-15" })).toContain("GA");
+    expect(unknownMembersOf("opec", { on: "2016-07-01" })).toContain("GA");
+    expect(membersOf("opec", { on: "2016-07-31" })).toContain("GA");
     expect(groupingsOf("GB", { kind: "membership", on: "2015-01-01" }).map((one) => one.id)).toContain("eu");
     expect(membersOf("eu", { on: "not a day" })).toEqual(membersOf("eu"));
   });
@@ -174,6 +188,20 @@ describe("the international bodies", () => {
     expect(standing("1950-01-01", "2020", "1949-12-31")).toBe("no");
     expect(standing("1950", "2020", "1950-12-30")).toBe("unknown");
     expect(standing("1950", "2020", "1950-12-31")).toBe("yes");
+  });
+
+  it("read a month-only day as a member from its last day, unknown inside the month", () => {
+    expect(standing("2007-10", null, "2007-09-30")).toBe("no");
+    expect(standing("2007-10", null, "2007-10-01")).toBe("unknown");
+    expect(standing("2007-10", null, "2007-10-30")).toBe("unknown");
+    expect(standing("2007-10", null, "2007-10-31")).toBe("yes");
+    expect(standing("1950-01-01", "1992-12", "1992-11-30")).toBe("yes");
+    expect(standing("1950-01-01", "1992-12", "1992-12-01")).toBe("unknown");
+    expect(standing("1950-01-01", "1992-12", "1992-12-31")).toBe("unknown");
+    expect(standing("1950-01-01", "1992-12", "1993-01-01")).toBe("no");
+    expect(standing("2024-02", null, "2024-02-28")).toBe("unknown");
+    expect(standing("2024-02", null, "2024-02-29")).toBe("yes");
+    expect(standing("2023-02", null, "2023-02-28")).toBe("yes");
   });
 
   it("keep the rules for a full day", () => {
@@ -268,10 +296,8 @@ describe("the international bodies", () => {
       for (const [at, period] of periods.entries()) {
         for (const other of periods.slice(at + 1)) {
           if (period.code !== other.code || period.since === null || other.since === null) continue;
-          // A year alone counts from its end as `since`, and up to its start as `until`.
-          const from = (day: string): string => (/^\d{4}$/.test(day) ? `${day}-12-31` : day);
-          const to = (day: string | null): string => (day === null ? "9999" : /^\d{4}$/.test(day) ? `${day}-01-01` : day);
-          const overlap = from(period.since) < to(other.until) && from(other.since) < to(period.until);
+          // A year or a month alone counts from its end as `since`, and up to its start as `until`.
+          const overlap = sureFrom(period.since)! < (sureTo(other.until) ?? "9999") && sureFrom(other.since)! < (sureTo(period.until) ?? "9999");
           expect(overlap, `${one.id} ${period.code} ${JSON.stringify(period)} ${JSON.stringify(other)}`).toBe(false);
         }
       }
