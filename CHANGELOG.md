@@ -6,6 +6,8 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.13.0] - 2026-11-19
+
 ### Fixed
 
 - Pacific Islands Forum: all 18 members have a joining day, from the Forum's own timeline (forumsec.org/timeline-major-forum-events): the year for 16 ("Original members were Australia, Cook Islands, Fiji, Nauru, New Zealand, Tonga and Western Samoa", 1971; Papua New Guinea 1974; Niue 1975; Kiribati 1977; Solomon Islands and Tuvalu 1978; Vanuatu 1980; Micronesia and the Marshall Islands 1987; Palau 1995) and the day for New Caledonia and French Polynesia, 2016-09-07 ("admitted as Full Forum Members"). EEA: Liechtenstein, `"1995"` (efta.int, "Liechtenstein becomes a full participant in the EEA, together with Iceland and Norway"). The Benelux page names two starts, a customs agreement in 1944 and the treaty of the Economic Union in 1958, and no rule says which is joining, so the three stay unknown, with a note on the body. Still unknown, as these sites were blocked again (403, or no answer) and give nothing else: the UN (Denmark), the G20, the OECD, Mercosur, the Nordic Council, the GCC, the Arab League and BRICS (Indonesia); efta.int gives no per-state EEA days beyond Liechtenstein. 87 current members in 12 bodies are unknown now, 107 before.

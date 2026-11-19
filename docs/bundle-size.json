@@ -58,8 +58,8 @@
       "gzip": 212311
     },
     "./places": {
-      "minified": 10018427,
-      "gzip": 3329121
+      "minified": 10018821,
+      "gzip": 3333381
     },
     "./names/fr": {
       "minified": 10106,
