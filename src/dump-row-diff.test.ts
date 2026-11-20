@@ -20,6 +20,13 @@ describe("dump row diff", () => {
     expect(split.gaps).toBe(0);
   });
 
+  it("still reports a change when the dump has no row for an item that was kept", () => {
+    const split = splitRows("SU", [["Q15180", "1991-12-26", "1992-01-01"]], undefined, new Set(["Q15180"]));
+    expect(split.changed).toBe(1);
+    expect(split.gaps).toBe(0);
+    expect(split.samples[0]).toContain("changed");
+  });
+
   it("reads a bare city number as its item", () => {
     expect(subjectId([60, [[8419600, "2020-01-01"]]])).toBe("Q60");
     const split = splitRows("60", [[60, [[1, "2020-01-01"]]]], [], new Set<string>());

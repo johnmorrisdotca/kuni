@@ -59,7 +59,8 @@ export const splitRows = (label: string, pinned: unknown, next: unknown, present
   else if (gapRows > 0) result.gaps = 1;
   if (result.changed === 1 || result.gaps === 1 || result.onlyDump === 1) {
     const kind = result.gaps === 1 ? "gap" : result.onlyDump === 1 ? "only in the dump" : "changed";
-    const detail = result.changed === 1 ? ` | pinned ${JSON.stringify(pinned).slice(0, 180)} | dump ${JSON.stringify(next).slice(0, 180)}` : ` (${gapRows} gap rows)`;
+    const shown = (value: unknown): string => (JSON.stringify(value) ?? "none").slice(0, 180);
+    const detail = result.changed === 1 ? ` | pinned ${shown(pinned)} | dump ${shown(next)}` : ` (${gapRows} gap rows)`;
     result.samples.push(`- ${label}: ${kind}${detail}`);
   }
   return result;
