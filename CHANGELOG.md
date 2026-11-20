@@ -6,6 +6,12 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.16.1] - 2026-11-20
+
+### Changed
+
+- Country, subdivision and city figures, ranks, elevations and capital coordinates come from the Wikidata JSON dump of 17 November 2026 (MODULES-1599). The five subdivision items that pointed at a city, a park or a mountain now point at the subdivision. Ten English county towns stay on the ISO 3166-2 item, because the dump records them on the ceremonial county. Disputed-place rows and the Soviet Union's alpha-2 end stay as they were.
+
 ## [1.16.0] - 2026-11-19
 
 ### Added
