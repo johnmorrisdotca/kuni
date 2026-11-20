@@ -2,7 +2,7 @@
   "source": "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2",
   "licence": "CC0-1.0 (Wikidata's structured data, https://www.wikidata.org/wiki/Wikidata:Licensing)",
   "read": "2026-11-17",
-  "note": "Read from the Wikidata JSON dump latest-all.json.bz2 (Last-Modified Tue, 17 Nov 2026 18:42:29 GMT, ETag 6afca015-1832128e37, CC0). The dump is not stored. Disputed-place rows and the Soviet Union's alpha-2 end stay as they were pinned.",
+  "note": "Read from the Wikidata JSON dump latest-all.json.bz2 (Last-Modified Tue, 17 Nov 2026 18:42:29 GMT, ETag 6afca015-1832128e37, CC0). The dump is not stored. Disputed-place rows and the Soviet Union's alpha-2 end stay as they were pinned. Ten English county capitals stay pinned on the ISO 3166-2 item. The dump records each on the ceremonial county, which has no ISO code, and the county town is unchanged: Cambridgeshire, Derbyshire, Devon, East Sussex, Gloucestershire, Hampshire, Kent, Leicestershire, Lincolnshire and Nottinghamshire.",
   "queries": {
     "items": "SELECT ?code ?item ?dissolved ?codeEnd WHERE {\n  ?item p:P297 ?codeStatement .\n  ?codeStatement ps:P297 ?code ; wikibase:rank ?codeRank .\n  FILTER(?codeRank != wikibase:DeprecatedRank)\n  OPTIONAL { ?item wdt:P576 ?dissolved }\n  OPTIONAL { ?codeStatement pq:P582 ?codeEnd }\n}",
     "capitals": "SELECT ?code ?item ?capital ?en ?ja ?coord ?rank ?start ?end WHERE {\n  ?item p:P297 ?codeStatement .\n  ?codeStatement ps:P297 ?code ; wikibase:rank ?codeRank .\n  FILTER(?codeRank != wikibase:DeprecatedRank)\n  ?item p:P36 ?statement .\n  ?statement ps:P36 ?capital ; wikibase:rank ?rank .\n  FILTER(?rank != wikibase:DeprecatedRank)\n  OPTIONAL { ?statement pq:P580 ?start }\n  OPTIONAL { ?statement pq:P582 ?end }\n  OPTIONAL { ?capital rdfs:label ?en . FILTER(LANG(?en) = \"en\") }\n  OPTIONAL { ?capital rdfs:label ?ja . FILTER(LANG(?ja) = \"ja\") }\n  OPTIONAL { ?capital wdt:P625 ?coord }\n}",
@@ -44145,6 +44145,19 @@
           ]
         ]
       ],
+      "GB-CAM": [
+        [
+          "Q21272276",
+          "Q350",
+          "Cambridge",
+          "ケンブリッジ",
+          null,
+          [
+            52.208055555,
+            0.1225
+          ]
+        ]
+      ],
       "GB-CAY": [
         [
           "Q748065",
@@ -44429,6 +44442,19 @@
           ]
         ]
       ],
+      "GB-DBY": [
+        [
+          "Q11775003",
+          "Q1337703",
+          "Matlock",
+          "マトロック (ダービーシャー)",
+          null,
+          [
+            53.14,
+            -1.55
+          ]
+        ]
+      ],
       "GB-DEN": [
         [
           "Q650682",
@@ -44452,6 +44478,19 @@
           [
             52.92166666666667,
             -1.4766666666666666
+          ]
+        ]
+      ],
+      "GB-DEV": [
+        [
+          "Q21694695",
+          "Q134672",
+          "Exeter",
+          "エクセター",
+          null,
+          [
+            50.725555555,
+            -3.526944444
           ]
         ]
       ],
@@ -44685,6 +44724,19 @@
           ]
         ]
       ],
+      "GB-ESX": [
+        [
+          "Q21694646",
+          "Q246884",
+          "Lewes",
+          "ルイス",
+          null,
+          [
+            50.874722222,
+            0.011666666
+          ]
+        ]
+      ],
       "GB-FAL": [
         [
           "Q216802",
@@ -44737,6 +44789,19 @@
           ]
         ]
       ],
+      "GB-GLS": [
+        [
+          "Q21694733",
+          "Q170497",
+          "Gloucester",
+          "グロスター",
+          null,
+          [
+            51.865277777,
+            -2.245833333
+          ]
+        ]
+      ],
       "GB-GRE": [
         [
           "Q693450",
@@ -44773,6 +44838,19 @@
           [
             53.363,
             -2.728
+          ]
+        ]
+      ],
+      "GB-HAM": [
+        [
+          "Q21694653",
+          "Q172157",
+          "Winchester",
+          "ウィンチェスター",
+          null,
+          [
+            51.063333333,
+            -1.308611111
           ]
         ]
       ],
@@ -44919,6 +44997,19 @@
           ]
         ]
       ],
+      "GB-KEN": [
+        [
+          "Q21694674",
+          "Q213180",
+          "Maidstone",
+          "メードストン",
+          null,
+          [
+            51.271666666,
+            0.529444444
+          ]
+        ]
+      ],
       "GB-KHL": [
         [
           "Q21885987",
@@ -44994,6 +45085,32 @@
           [
             53.7975,
             -1.5436111111111113
+          ]
+        ]
+      ],
+      "GB-LEC": [
+        [
+          "Q21272890",
+          "Q83065",
+          "Leicester",
+          "レスター",
+          null,
+          [
+            52.636111111,
+            -1.133055555
+          ]
+        ]
+      ],
+      "GB-LIN": [
+        [
+          "Q21269047",
+          "Q180057",
+          "Lincoln",
+          "リンカン",
+          null,
+          [
+            53.25,
+            -0.55
           ]
         ]
       ],
@@ -45369,6 +45486,19 @@
           [
             51.5980898,
             -3.7648354
+          ]
+        ]
+      ],
+      "GB-NTT": [
+        [
+          "Q21272736",
+          "Q2079944",
+          "West Bridgford",
+          "ウェストブリグフォード",
+          null,
+          [
+            52.92,
+            -1.13
           ]
         ]
       ],

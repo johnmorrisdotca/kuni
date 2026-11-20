@@ -30,8 +30,8 @@
       "gzip": 27031
     },
     "./subdivision-facts": {
-      "minified": 424838,
-      "gzip": 163594
+      "minified": 425333,
+      "gzip": 163739
     },
     "./groupings": {
       "minified": 86821,
@@ -118,12 +118,12 @@
       "gzip": 4297
     },
     "./element": {
-      "minified": 861120,
-      "gzip": 296441
+      "minified": 861615,
+      "gzip": 296597
     },
     "./element/define": {
-      "minified": 861123,
-      "gzip": 296445
+      "minified": 861618,
+      "gzip": 296598
     },
     "./subdivisions/ad": {
       "minified": 1220,
@@ -1170,8 +1170,8 @@
       "gzip": 788
     },
     "./subdivision-facts/gb": {
-      "minified": 18499,
-      "gzip": 7330
+      "minified": 18994,
+      "gzip": 7494
     },
     "./subdivision-facts/gd": {
       "minified": 1147,

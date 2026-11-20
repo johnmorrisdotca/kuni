@@ -6,7 +6,7 @@ Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules a
 
 | Fact | Level 1 | All levels | Why the rest are null |
 | --- | --- | --- | --- |
-| capital | 3079 of 3594 | 4181 of 5050 | 616 none, 157 no item, 53 items disagree, 43 two capitals |
+| capital | 3079 of 3594 | 4191 of 5050 | 606 none, 157 no item, 53 items disagree, 43 two capitals |
 | population | 3148 of 3594 | 4293 of 5050 | 541 none, 157 no item, 59 items disagree |
 | area | 3206 of 3594 | 4403 of 5050 | 347 none, 157 no item, 143 items disagree |
 | point | 3497 of 3594 | 4810 of 5050 | 22 none, 157 no item, 61 items disagree |
@@ -15,7 +15,7 @@ Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules a
 two items hold the code (a city and the district of the same name) and give different values. *two capitals*:
 Wikidata names two current capitals.
 
-Capitals with a Japanese name: 3747; with a reading in kana: 46.
+Capitals with a Japanese name: 3756; with a reading in kana: 46.
 
 ## Capitals named by hand
 
