@@ -13,7 +13,7 @@ import type { City } from "../city-rows";
  * import cities from "@johnmorrisdotca/kuni/cities/mu";
  *
  * console.log(cities.length);      // 16
- * console.log(cities[0].name.en);  // "Port Louis"
+ * console.log(cities[0].name.en);  // "Beau Bassin-Rose Hill"
  * console.log(cities[0].country);  // "MU"
  * ```
  */

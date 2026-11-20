@@ -24,7 +24,7 @@ const GF: CityColumns = {
   reading: "|||||",
   zones: "America/Cayenne",
   zone: [0,0,0,0,0,0],
-  elevation: "143,4,,,2,",
+  elevation: "143,4,10,3,2,",
   extra: [],
 };
 

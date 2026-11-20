@@ -72,8 +72,6 @@ const POPULATION_PARTS: Record<string, string> = {
 // `part` says what the figure kept is for, where Wikidata's own qualifier says otherwise.
 const AREA_CHOICES: Record<string, { km2: number; part?: "whole"; why: string }> = {
   HK: { km2: 2755.03, part: "whole", why: "Land and sea within its boundary together, the figure Hong Kong's government gives as its total; Wikidata labels it the land and also has the land alone, 1,105.69." },
-  MX: { km2: 1964375, why: "INEGI's figure, the one Mexico publishes; Wikidata also has 1,972,550." },
-  SD: { km2: 1886068, why: "Sudan since South Sudan's independence in 2011, the figure most sources give; Wikidata also has 1,840,687." },
 };
 
 // Land borders Natural Earth's 1:50m outlines cannot confirm, each true on the ground. Both directions are added.

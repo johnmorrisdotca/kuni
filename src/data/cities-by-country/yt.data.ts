@@ -24,7 +24,7 @@ const YT: CityColumns = {
   reading: "|||",
   zones: "Indian/Mayotte",
   zone: [0,0,0,0],
-  elevation: "23,,26,",
+  elevation: "23,,26,13",
   extra: [],
 };
 

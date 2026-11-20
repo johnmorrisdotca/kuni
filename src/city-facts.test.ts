@@ -324,7 +324,7 @@ describe("a city's elevation", () => {
     const list = await all();
     for (const city of list.filter((one) => one.id.startsWith("ne:"))) expect(city.elevation, city.id).toBeUndefined();
     // Pinned: how many cities have one.
-    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17174);
+    expect(list.filter((city) => city.elevation !== undefined)).toHaveLength(17338);
   });
 
   it("keeps to what land has", async () => {

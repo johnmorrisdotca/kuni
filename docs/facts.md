@@ -109,8 +109,6 @@ NA–ZW
 - **TV** capital in Japanese, フナフティ: Wikidata's フナフティ島 names the atoll; the capital is written フナフティ.
 - **TW** capital in Japanese, 台北: Wikidata's 台北市 is the municipality's formal name; the capital is written 台北.
 - **HK** area, 2,755.03 km²: Land and sea within its boundary together, the figure Hong Kong's government gives as its total; Wikidata labels it the land and also has the land alone, 1,105.69.
-- **MX** area, 1,964,375 km²: INEGI's figure, the one Mexico publishes; Wikidata also has 1,972,550.
-- **SD** area, 1,886,068 km²: Sudan since South Sudan's independence in 2011, the figure most sources give; Wikidata also has 1,840,687.
 - A population for the part Q33112019 stands for the whole: suburb and locality: an Australian census area that is the whole of Christmas Island and of Norfolk Island
 
 

@@ -113,18 +113,18 @@
       "note": "Wikidata SPARQL answers: the cities whose only class is no kind of human settlement (a municipality of the Netherlands), in the columns of the main cities snapshot; the queries are in the file (CC0)"
     },
     {
-      "path": "wikidata-city-elevations-2026-11-13.json",
-      "url": "https://query.wikidata.org/sparql",
-      "read": "2026-11-13",
-      "sha256": "2f1a92f84ec83d27e01174c85590d69b433da89aae32c1bbd52e41cbd28be3dc",
-      "note": "Wikidata SPARQL answers: the elevations (P2044) of the city items; the queries are in the file"
+      "path": "wikidata-city-elevations-2026-11-17.json",
+      "url": "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2",
+      "read": "2026-11-17",
+      "sha256": "2ed07b66cafd06c83c3188fb3b9ff68aa88d28a4c9190a4833c504a00aa29822",
+      "note": "Wikidata elevations (P2044) of the city items. Read from the Wikidata JSON dump latest-all.json.bz2 (Last-Modified Tue, 17 Nov 2026 18:42:29 GMT, ETag 6afca015-1832128e37, CC0). The dump is not stored. Disputed-place rows and the Soviet Union's alpha-2 end stay as they were pinned."
     },
     {
       "path": "wikidata-city-populations-2026-11-17.json",
-      "url": "https://query.wikidata.org/sparql",
+      "url": "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2",
       "read": "2026-11-17",
-      "sha256": "6479c8b5b0183a742f5f0cb8d60d6cccbf3e9431fda47e3b68b9067f59cc0b57",
-      "note": "Wikidata SPARQL answers: the population statements (P1082) of the city items with their rank, day, method and reference hosts, and the items that are land (an island, an atoll); the queries are in the file"
+      "sha256": "a36df3c1730b6b2728c6c74073d1aeb8ee4b4f640133ff27bd15a6ec3280fab4",
+      "note": "Wikidata population statements (P1082) of the city items with their rank, day, method and reference hosts, and the items that are land (an island, an atoll). Read from the Wikidata JSON dump latest-all.json.bz2 (Last-Modified Tue, 17 Nov 2026 18:42:29 GMT, ETag 6afca015-1832128e37, CC0). The dump is not stored. Disputed-place rows and the Soviet Union's alpha-2 end stay as they were pinned."
     },
     {
       "path": "wikidata-city-readings-2026-11-11.json",
@@ -141,11 +141,11 @@
       "note": "Wikidata SPARQL answers for IOC codes (P984) and the withdrawn ISO 3166-3 codes (P773) with their former codes and successors; the queries are in the file (CC0)"
     },
     {
-      "path": "wikidata-facts-2026-10-09.json",
-      "url": "https://query.wikidata.org/sparql",
-      "read": "2026-10-09",
-      "sha256": "8ce099337ef7d851f27a3067c722d35dac2fc3ec12429a5ac8c7cd24fbef6a77",
-      "note": "Wikidata SPARQL answers for each ISO 3166-1 (P297) country and ISO 3166-2 (P300) subdivision: capital, population, area, coordinates, and for countries driving side, borders and memberships; the queries are in the file (CC0)"
+      "path": "wikidata-facts-2026-11-17.json",
+      "url": "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2",
+      "read": "2026-11-17",
+      "sha256": "7b0215aa0e191567d8c73d95c69fdd3a49f0715dc5a25d1122d770d7816035af",
+      "note": "Wikidata answers for each ISO 3166-1 (P297) country and ISO 3166-2 (P300) subdivision: capital, population, area, coordinates, and for countries driving side, borders and memberships. Read from the Wikidata JSON dump latest-all.json.bz2 (Last-Modified Tue, 17 Nov 2026 18:42:29 GMT, ETag 6afca015-1832128e37, CC0). The dump is not stored. Disputed-place rows and the Soviet Union's alpha-2 end stay as they were pinned."
     },
     {
       "path": "wikidata-labels-2026-11-14.json",

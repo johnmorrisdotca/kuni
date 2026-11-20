@@ -2,20 +2,20 @@
 
 Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules are at the top of
 `scripts/subdivision-facts.ts`. Every figure is Wikidata's (CC0), from the snapshot
-`wikidata-facts-2026-10-09.json`; a fact Wikidata does not give, or gives two ways, is `null`, never a guess.
+`wikidata-facts-2026-11-17.json`; a fact Wikidata does not give, or gives two ways, is `null`, never a guess.
 
 | Fact | Level 1 | All levels | Why the rest are null |
 | --- | --- | --- | --- |
-| capital | 2856 of 3594 | 3968 of 5050 | 826 none, 157 no item, 53 items disagree, 46 two capitals |
-| population | 3130 of 3594 | 4244 of 5050 | 547 none, 157 no item, 102 items disagree |
-| area | 3192 of 3594 | 4371 of 5050 | 351 none, 157 no item, 171 items disagree |
-| point | 3485 of 3594 | 4780 of 5050 | 23 none, 157 no item, 90 items disagree |
+| capital | 3079 of 3594 | 4181 of 5050 | 616 none, 157 no item, 53 items disagree, 43 two capitals |
+| population | 3148 of 3594 | 4293 of 5050 | 541 none, 157 no item, 59 items disagree |
+| area | 3206 of 3594 | 4403 of 5050 | 347 none, 157 no item, 143 items disagree |
+| point | 3497 of 3594 | 4810 of 5050 | 22 none, 157 no item, 61 items disagree |
 
 *none*: Wikidata gives no such statement. *no item*: no current Wikidata item holds the code. *items disagree*:
 two items hold the code (a city and the district of the same name) and give different values. *two capitals*:
 Wikidata names two current capitals.
 
-Capitals with a Japanese name: 3655; with a reading in kana: 46.
+Capitals with a Japanese name: 3747; with a reading in kana: 46.
 
 ## Capitals named by hand
 
@@ -25,14 +25,14 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 
 | Country | Level 1 | Capital | Population | Area | Point |
 | --- | --- | --- | --- | --- | --- |
-| AD | 7 | 7 | 6 | 6 | 6 |
+| AD | 7 | 7 | 7 | 7 | 7 |
 | AE | 7 | 7 | 7 | 7 | 7 |
 | AF | 34 | 34 | 34 | 33 | 34 |
 | AG | 8 | 6 | 8 | 8 | 8 |
 | AL | 12 | 12 | 12 | 12 | 12 |
 | AM | 11 | 10 | 11 | 11 | 11 |
 | AO | 18 | 18 | 18 | 18 | 18 |
-| AR | 24 | 23 | 24 | 23 | 23 |
+| AR | 24 | 23 | 24 | 24 | 24 |
 | AT | 9 | 7 | 8 | 7 | 8 |
 | AU | 8 | 8 | 8 | 8 | 8 |
 | AZ | 70 | 60 | 68 | 69 | 69 |
@@ -49,7 +49,7 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | BO | 9 | 9 | 9 | 9 | 9 |
 | BQ | 3 | 3 | 3 | 3 | 3 |
 | BR | 27 | 27 | 27 | 27 | 27 |
-| BS | 32 | 6 | 13 | 11 | 30 |
+| BS | 32 | 19 | 12 | 11 | 31 |
 | BT | 20 | 20 | 20 | 19 | 20 |
 | BW | 16 | 10 | 13 | 11 | 16 |
 | BY | 7 | 6 | 7 | 7 | 7 |
@@ -58,7 +58,7 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | CD | 26 | 25 | 24 | 24 | 25 |
 | CF | 17 | 16 | 17 | 16 | 17 |
 | CG | 12 | 10 | 10 | 10 | 11 |
-| CH | 26 | 25 | 26 | 26 | 25 |
+| CH | 26 | 25 | 26 | 26 | 26 |
 | CI | 14 | 12 | 3 | 13 | 13 |
 | CL | 16 | 16 | 16 | 16 | 16 |
 | CM | 10 | 10 | 10 | 10 | 10 |
@@ -82,7 +82,7 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | ES | 19 | 13 | 15 | 15 | 15 |
 | ET | 13 | 9 | 11 | 10 | 12 |
 | FI | 19 | 19 | 19 | 19 | 19 |
-| FJ | 5 | 4 | 1 | 2 | 5 |
+| FJ | 5 | 5 | 1 | 2 | 5 |
 | FM | 4 | 4 | 4 | 4 | 4 |
 | FR | 26 | 24 | 26 | 26 | 26 |
 | GA | 9 | 9 | 9 | 9 | 9 |
@@ -91,12 +91,12 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | GE | 12 | 11 | 12 | 12 | 12 |
 | GH | 16 | 16 | 4 | 9 | 16 |
 | GL | 5 | 5 | 5 | 5 | 5 |
-| GM | 6 | 2 | 2 | 6 | 6 |
+| GM | 6 | 5 | 2 | 6 | 6 |
 | GN | 8 | 7 | 4 | 8 | 8 |
 | GQ | 2 | 2 | 1 | 1 | 2 |
 | GR | 14 | 14 | 14 | 13 | 14 |
 | GT | 22 | 22 | 22 | 22 | 22 |
-| GW | 4 | 0 | 1 | 1 | 4 |
+| GW | 4 | 3 | 1 | 1 | 4 |
 | GY | 10 | 9 | 10 | 10 | 10 |
 | HN | 18 | 18 | 18 | 18 | 18 |
 | HR | 21 | 20 | 21 | 19 | 21 |
@@ -109,11 +109,11 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | IQ | 16 | 15 | 15 | 15 | 15 |
 | IR | 31 | 8 | 8 | 8 | 8 |
 | IS | 8 | 8 | 8 | 8 | 8 |
-| IT | 20 | 20 | 20 | 20 | 19 |
+| IT | 20 | 20 | 20 | 20 | 20 |
 | JM | 14 | 14 | 14 | 14 | 14 |
 | JO | 12 | 12 | 9 | 12 | 12 |
 | JP | 47 | 47 | 47 | 46 | 47 |
-| KE | 47 | 35 | 47 | 46 | 47 |
+| KE | 47 | 43 | 47 | 46 | 47 |
 | KG | 9 | 7 | 9 | 9 | 9 |
 | KH | 25 | 24 | 25 | 25 | 25 |
 | KI | 3 | 3 | 3 | 2 | 3 |
@@ -137,7 +137,7 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | MA | 12 | 12 | 12 | 12 | 12 |
 | MC | 17 | 1 | 3 | 9 | 12 |
 | MD | 37 | 36 | 36 | 34 | 37 |
-| ME | 25 | 25 | 24 | 24 | 24 |
+| ME | 25 | 25 | 25 | 24 | 25 |
 | MG | 6 | 5 | 3 | 6 | 6 |
 | MH | 2 | 0 | 0 | 2 | 2 |
 | MK | 80 | 64 | 79 | 80 | 80 |
@@ -146,15 +146,15 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | MN | 22 | 20 | 22 | 22 | 22 |
 | MR | 15 | 15 | 14 | 15 | 15 |
 | MT | 68 | 0 | 68 | 67 | 68 |
-| MU | 12 | 5 | 7 | 12 | 12 |
-| MV | 21 | 0 | 5 | 4 | 21 |
+| MU | 12 | 10 | 8 | 12 | 12 |
+| MV | 21 | 20 | 5 | 4 | 21 |
 | MW | 3 | 3 | 1 | 3 | 3 |
 | MX | 32 | 31 | 32 | 32 | 32 |
 | MY | 16 | 14 | 16 | 16 | 16 |
 | MZ | 11 | 10 | 11 | 11 | 11 |
 | NA | 14 | 14 | 14 | 14 | 14 |
 | NE | 8 | 7 | 8 | 7 | 8 |
-| NG | 37 | 37 | 37 | 37 | 36 |
+| NG | 37 | 37 | 37 | 37 | 37 |
 | NI | 17 | 17 | 17 | 17 | 17 |
 | NL | 18 | 17 | 18 | 18 | 18 |
 | NO | 17 | 13 | 17 | 10 | 17 |
@@ -162,15 +162,15 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | NR | 14 | 2 | 9 | 14 | 14 |
 | NZ | 17 | 15 | 17 | 17 | 17 |
 | OM | 11 | 10 | 11 | 11 | 11 |
-| PA | 14 | 13 | 13 | 13 | 14 |
+| PA | 14 | 14 | 13 | 13 | 14 |
 | PE | 26 | 26 | 26 | 26 | 25 |
-| PG | 22 | 18 | 8 | 21 | 22 |
+| PG | 22 | 19 | 8 | 21 | 22 |
 | PH | 17 | 14 | 16 | 15 | 16 |
 | PK | 7 | 7 | 6 | 7 | 7 |
-| PL | 16 | 14 | 16 | 16 | 16 |
+| PL | 16 | 15 | 16 | 16 | 16 |
 | PS | 16 | 15 | 15 | 16 | 16 |
-| PT | 20 | 19 | 19 | 9 | 20 |
-| PW | 16 | 6 | 6 | 16 | 16 |
+| PT | 20 | 19 | 20 | 16 | 20 |
+| PW | 16 | 10 | 6 | 16 | 16 |
 | PY | 18 | 17 | 18 | 18 | 18 |
 | QA | 8 | 4 | 6 | 7 | 8 |
 | RO | 42 | 41 | 42 | 42 | 42 |
@@ -184,7 +184,7 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | SE | 21 | 21 | 21 | 3 | 21 |
 | SG | 5 | 0 | 0 | 0 | 5 |
 | SH | 3 | 3 | 0 | 0 | 3 |
-| SI | 212 | 59 | 197 | 203 | 207 |
+| SI | 212 | 211 | 212 | 208 | 212 |
 | SK | 8 | 8 | 8 | 8 | 8 |
 | SL | 5 | 4 | 5 | 5 | 4 |
 | SM | 9 | 0 | 9 | 9 | 9 |
@@ -203,9 +203,9 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | TL | 13 | 13 | 13 | 13 | 13 |
 | TM | 6 | 5 | 6 | 6 | 6 |
 | TN | 24 | 24 | 24 | 24 | 24 |
-| TO | 5 | 1 | 1 | 2 | 5 |
+| TO | 5 | 5 | 1 | 2 | 5 |
 | TR | 81 | 80 | 81 | 9 | 81 |
-| TT | 15 | 4 | 6 | 10 | 15 |
+| TT | 15 | 10 | 6 | 10 | 15 |
 | TV | 8 | 2 | 3 | 8 | 8 |
 | TW | 22 | 18 | 22 | 22 | 22 |
 | TZ | 31 | 31 | 31 | 31 | 31 |
@@ -224,4 +224,4 @@ Capitals with a Japanese name: 3655; with a reading in kana: 46.
 | YE | 22 | 21 | 22 | 21 | 22 |
 | ZA | 9 | 9 | 9 | 9 | 9 |
 | ZM | 10 | 10 | 0 | 10 | 10 |
-| ZW | 10 | 8 | 2 | 9 | 10 |
+| ZW | 10 | 9 | 2 | 9 | 10 |

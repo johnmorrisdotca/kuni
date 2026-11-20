@@ -24,7 +24,7 @@ const MT: CityColumns = {
   reading: "|||||||||||||",
   zones: "Europe/Malta",
   zone: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  elevation: ",40,,41,35,12,36,,0,,,0,102,56",
+  elevation: "0,40,,41,35,12,36,,0,,104,0,102,56",
   extra: [],
 };
 

@@ -5,7 +5,7 @@
 // Source: Wikidata (CC0), the snapshot data-sources/wikidata-codes-2026-10-10.json: IOC codes
 // Source: countries-list 3.4.1 (MIT), https://github.com/annexare/Countries: own names, capitals, languages
 // Source: Unicode CLDR 48.2.0 (Unicode-3.0), cldr-localenames-full and cldr-core 48.2.0 on npm: continents, from UN M49
-// Source: Wikidata (CC0), the snapshot data-sources/wikidata-facts-2026-10-09.json: capitals' Japanese names
+// Source: Wikidata (CC0), the snapshot data-sources/wikidata-facts-2026-11-17.json: capitals' Japanese names
 // Source: IANA tzdb 2026e zone.tab (public domain) and the TLD list, Version 2026100900, Last Updated Fri Oct  9 07:07:01 2026 UTC
 
 import type { CountryRow } from "../rows";

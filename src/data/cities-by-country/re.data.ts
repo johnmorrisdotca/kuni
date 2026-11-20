@@ -24,7 +24,7 @@ const RE: CityColumns = {
   reading: "||||||||||||",
   zones: "Indian/Reunion",
   zone: [0,0,0,0,0,0,0,0,0,0,0,0,0],
-  elevation: "23,,,,,,,0,,,,,",
+  elevation: "23,,,,,31,0,0,,,,,",
   extra: [],
 };
 

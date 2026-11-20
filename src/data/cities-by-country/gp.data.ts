@@ -24,7 +24,7 @@ const GP: CityColumns = {
   reading: "|||||||||||",
   zones: "America/Guadeloupe",
   zone: [0,0,0,0,0,0,0,0,0,0,0,0],
-  elevation: ",,,,,,,,,,0,",
+  elevation: ",,,,0,4,,,,0,0,",
   extra: [],
 };
 

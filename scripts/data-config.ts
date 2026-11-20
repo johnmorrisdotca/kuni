@@ -345,8 +345,8 @@ const EN_NAME_ACCEPTED: Record<string, string> = {
   "LA-XA": "Sainyabuli is the usual English spelling; Wikidata's macrons are a romanisation of Lao.",
   "BF-KAD": "Kadiogo is the province; Wikidata gives the same name to the region around it (BF-03), which Burkina Faso renamed in 2025 and ISO 3166-2 still calls Centre.",
   "FR-6AE": "Alsace is the usual name of the European Collectivity of Alsace (2021), which covers the old region's land.",
-  "GR-E": "Thessaly is the region's name, the same as the earlier region Wikidata keeps as a former item.",
   "FR-OCC": "Occitanie is the region's official name, used in English too; Wikidata's Occitania is the historical region's.",
+  "CH-BE": "Bern is the canton's English name; Wikidata's Canton of Berne is its formal title. The second label was a mountain, Kleines Schneehorn, and is not the canton.",
 };
 
 // Changes ISO 3166-2 has made that Unicode CLDR 48.2 has not yet taken in: codes withdrawn, and codes added with their

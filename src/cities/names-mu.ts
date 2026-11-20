@@ -6,10 +6,10 @@ import type { CityName } from "../city-rows";
 
 /** The cities of Mauritius, ids and names only, in the order of /cities/mu; `major` for its capital and its first 20. Also the default export. */
 const CITY_NAMES: readonly CityName[] = namesOf({
-  id: "315,hfkp,sqve,lhjx,dqp6,gia0,1uo8w,or6x,mlf3,rofn,99bq,62ak,lwau,1bhfo,1drqb,20vlf",
-  en: "Port Louis|Beau Bassin-Rose Hill|Quatre Bornes|Curepipe|Triolet|Quartier-Militaire|Goodlands|Saint Pierre|Centre de Flacq|Mahébourg|Bambous|Moka|Port Mathurin|Souillac|Tamarin|Poudre d'Or",
-  ja: "ポートルイス|ボー・バッサン＝ローズ・ヒル|カトル・ボルヌ|キュールピップ|トリオレット|カルティエ・ミリテール|グッドランズ|サンピエール|サントル・ド・フラック|マエブール|バンブース|モカ|ポート・マチュリン|スイヤック (モーリシャス)|タマリン|",
-  native: "Port-Louis|Beau-Bassin Rose-Hill||||quartier Militaire||Saint-Pierre|centre de Flacq|||||||",
+  id: "hfkp,sqve,lhjx,dqp6,gia0,1uo8w,or6x,mlf3,rofn,99bq,62ak,lwau,1bhfo,1drqb,315,20vlf",
+  en: "Beau Bassin-Rose Hill|Quatre Bornes|Curepipe|Triolet|Quartier-Militaire|Goodlands|Saint Pierre|Centre de Flacq|Mahébourg|Bambous|Moka|Port Mathurin|Souillac|Tamarin|Port Louis|Poudre d'Or",
+  ja: "ボー・バッサン＝ローズ・ヒル|カトル・ボルヌ|キュールピップ|トリオレット|カルティエ・ミリテール|グッドランズ|サンピエール|サントル・ド・フラック|マエブール|バンブース|モカ|ポート・マチュリン|スイヤック (モーリシャス)|タマリン|ポートルイス|",
+  native: "Beau-Bassin Rose-Hill||||quartier Militaire||Saint-Pierre|centre de Flacq|||||||Port-Louis|",
   reading: "|||||||||||||||",
   major: "1111111111111111",
 });

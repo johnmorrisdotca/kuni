@@ -24,7 +24,7 @@ const PF: CityColumns = {
   reading: "|||",
   zones: "Pacific/Tahiti",
   zone: [0,0,0,1],
-  elevation: ",,9,",
+  elevation: "5,24,9,",
   extra: [],
 };
 
