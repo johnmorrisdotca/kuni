@@ -86,7 +86,7 @@ const TYPE_CLASSES: { item: string; en?: string; ja?: string | null; why?: strin
   { item: "Q46395", en: "British Overseas Territory", why: "Wikidata labels the class in the plural, British Overseas Territories." },
   { item: "Q185086", en: "Crown Dependency", why: "Wikidata labels the class in the plural, Crown Dependencies." },
   { item: "Q783733" }, // unincorporated territory of the United States
-  { item: "Q15304003", en: "constituent country of the Kingdom of the Netherlands", why: "Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term." },
+  { item: "Q15304003", en: "constituent country of the Kingdom of the Netherlands", ja: "オランダ王国の構成国", why: "Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term. Its Japanese, オランダ王国の国, says the same rejected thing; 構成国 is the usual Japanese." },
   { item: "Q66724388" }, // autonomous country within the Kingdom of Denmark
   { item: "Q779415" }, // special administrative region of China
   { item: "Q202216" }, // overseas department and region of France

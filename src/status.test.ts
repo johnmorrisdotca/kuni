@@ -54,7 +54,7 @@ describe("what each country is", () => {
     expect(country("BM")?.type).toEqual({ en: "British Overseas Territory", ja: "イギリスの海外領土" });
     expect(country("JE")?.type?.en).toBe("Crown Dependency");
     expect(country("PR")?.type?.en).toBe("unincorporated territory of the United States");
-    expect(country("AW")?.type?.en).toBe("constituent country of the Kingdom of the Netherlands");
+    expect(country("AW")?.type).toEqual({ en: "constituent country of the Kingdom of the Netherlands", ja: "オランダ王国の構成国" });
     expect(country("HK")?.type).toEqual({ en: "special administrative region of China", ja: "特別行政区" });
     expect(country("PF")?.type?.en).toBe("overseas collectivity of France");
     expect(country("BV")?.type).toEqual({ en: "dependency of Norway", ja: null });
