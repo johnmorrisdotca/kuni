@@ -20,7 +20,7 @@ Read from Wikidata on 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`
 | AI | Anguilla | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | AQ | Antarctica | `uninhabited` |  |  |  |
 | AS | American Samoa | `territory` | US | unincorporated territory of the United States | アメリカ合衆国の未編入領域 |
-| AW | Aruba | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の国 |
+| AW | Aruba | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の構成国 |
 | AX | Åland Islands | `territory` | FI | autonomous region | 自治区 |
 | BL | St. Barthélemy | `territory` | FR | overseas collectivity of France | 海外共同体 |
 | BM | Bermuda | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
@@ -28,7 +28,7 @@ Read from Wikidata on 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`
 | BV | Bouvet Island | `uninhabited` | NO | dependency of Norway |  |
 | CC | Cocos (Keeling) Islands | `territory` | AU | external territory of Australia | オーストラリアの海外領土 |
 | CK | Cook Islands | `territory` | NZ | associated state | 自由連合 |
-| CW | Curaçao | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の国 |
+| CW | Curaçao | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の構成国 |
 | CX | Christmas Island | `territory` | AU | external territory of Australia | オーストラリアの海外領土 |
 | EH | Western Sahara | `disputed` |  | disputed territory | 係争中の領域 |
 | FK | Falkland Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
@@ -62,7 +62,7 @@ Read from Wikidata on 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`
 | RE | Réunion | `territory` | FR | overseas department and region of France | 海外県 |
 | SH | St. Helena | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | SJ | Svalbard & Jan Mayen | `territory` | NO | statistical territorial entity | 統計上の区画 |
-| SX | Sint Maarten | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の国 |
+| SX | Sint Maarten | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の構成国 |
 | TC | Turks & Caicos Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | TF | French Southern Territories | `territory` | FR | dependent territory | 属領 |
 | TK | Tokelau | `territory` | NZ | dependent territory | 属領 |
@@ -88,7 +88,7 @@ Read from Wikidata on 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`
 - **GI**: Wikidata names ES and GB; the statement of preferred rank is GB.
 - The type from the class Q46395, British Overseas Territory: Wikidata labels the class in the plural, British Overseas Territories.
 - The type from the class Q185086, Crown Dependency: Wikidata labels the class in the plural, Crown Dependencies.
-- The type from the class Q15304003, constituent country of the Kingdom of the Netherlands: Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term.
+- The type from the class Q15304003, constituent country of the Kingdom of the Netherlands: Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term. Its Japanese, オランダ王国の国, says the same rejected thing; 構成国 is the usual Japanese.
 - The type from the class Q5260616, with no Japanese: Wikidata's Japanese label, ノルウェーの南極領, says Norway's Antarctic territory, which Bouvet Island is not.
 - **AQ** has no type: Antarctica: Wikidata's item is the continent, and no class of TYPE_CLASSES fits a continent.
 - **BQ** has no type: The Caribbean Netherlands: Wikidata's item says only that it is an island group and an administrative entity. Its three islands are special municipalities of the Netherlands, which the item for the three together does not say.

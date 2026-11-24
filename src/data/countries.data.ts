@@ -320,7 +320,7 @@ const STATUS_ROWS = "AI|t|GB|0\nAQ|u\nAS|t|US|1\nAW|t|NL|2\nAX|t|FI|3\nBL|t|FR|4
 const STATUS_TYPES: readonly (readonly [string, string | null])[] = [
   ["British Overseas Territory","イギリスの海外領土"],
   ["unincorporated territory of the United States","アメリカ合衆国の未編入領域"],
-  ["constituent country of the Kingdom of the Netherlands","オランダ王国の国"],
+  ["constituent country of the Kingdom of the Netherlands","オランダ王国の構成国"],
   ["autonomous region","自治区"],
   ["overseas collectivity of France","海外共同体"],
   ["dependency of Norway",null],
