@@ -14,7 +14,7 @@ console.log(FACTS_READ,japan?.population,japan?.populationYear,japan?.areaOf);
 console.log(Math.round(distanceKm({lat:35.68,lon:139.76},{lat:51.5,lon:-0.12})));
 ```
 
-FACTS_READは保存したWikidataの資料の日付です。人口は世界銀行のSP.POP.TOTLの2025年の値で、Wikidataが補う国と、コソボ、パレスチナ自治区、台湾、西サハラを除いて、すべての国で同じ年です。その4つはWikidataの値のままです。どちらの値かはpopulationSourceが国ごとに示します。面積にはそれぞれの年があり、areaOfは全体か陸地だけかを区別します。座標は資料の代表の位置で、計算した中心ではありません。nullは使える値が資料になかった意味です。0は値で、欠けたものとはしません。国境は国のコードで、島には空の一覧もあります。
+FACTS_READは保存したWikidataの資料の日付です。人口は世界銀行の世界開発指標（World Development Indicators）のSP.POP.TOTL（CC BY 4.0、2026-11-23に確認、https://datacatalog.worldbank.org/search/dataset/0037712/world-development-indicators）の2025年の値で、Wikidataが補う国と、コソボ、パレスチナ自治区、台湾、西サハラを除いて、すべての国で同じ年です。その4つはWikidataの値のままです。どちらの値かはpopulationSourceが国ごとに示します。面積にはそれぞれの年があり、areaOfは全体か陸地だけかを区別します。座標は資料の代表の位置で、計算した中心ではありません。nullは使える値が資料になかった意味です。0は値で、欠けたものとはしません。国境は国のコードで、島には空の一覧もあります。
 
 ## 国の首都と役割を読む
 

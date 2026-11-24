@@ -614,7 +614,7 @@ The [architecture guide](docs/guides/architecture.md) retains the complete origi
 | Japanese names CLDR lacks, prefecture readings, calling codes, kinds of place | Wikidata, a snapshot of 2026-10-09 | CC0 |
 | Own names, capitals, languages | countries-list 3.4.1 | MIT |
 | Time zones and top-level domains | IANA tzdb 2026e `zone.tab`, IANA's TLD list | Public domain; a list of facts |
-| Population, one year (2025); four disputed rows and the gaps stay Wikidata's | World Bank, Population, total (SP.POP.TOTL), 2025 | CC BY 4.0 |
+| Population, one year (2025); four disputed rows and the gaps stay Wikidata's | World Bank, World Development Indicators, SP.POP.TOTL, read 2026-11-23 | CC BY 4.0 |
 | Capitals in Japanese, coordinates, area, driving side, borders, subdivisions' capitals and figures, and the dates members joined bodies | Wikidata, a snapshot of 2026-10-09 (`data-sources/wikidata-facts-2026-10-09.json`) | CC0 |
 | Land borders, confirmed | Natural Earth 5.1.2 admin-0 at 1:50m, as drawn by Chizu 1.0.2 (a development dependency of the build, never of the package) | Public domain (Natural Earth); MIT (Chizu) |
 | First day of the week, measurement system, paper size, clock; UN M49; the UN's members | Unicode CLDR 48.2 (`cldr-core`) | Unicode-3.0 |

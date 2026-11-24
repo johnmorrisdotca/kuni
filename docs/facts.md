@@ -16,7 +16,7 @@ Written by `pnpm data` (scripts/build-data.ts); do not edit by hand. The rules a
 
 ## Population
 
-Every population is the World Bank's SP.POP.TOTL (Population, total, CC BY 4.0) for 2025, so that the countries can be compared. Kosovo (XK), the Palestinian Territories (PS), Taiwan (TW) and Western Sahara (EH) keep Wikidata's figure: those rows stay as they were. Any other country the series does not give keeps Wikidata's best-ranked figure with its own year, marked `Wikidata` in the row's source (`populationSource`).
+Every population is the World Bank's World Development Indicators series SP.POP.TOTL (Population, total, CC BY 4.0, read 2026-11-23, https://datacatalog.worldbank.org/search/dataset/0037712/world-development-indicators) for 2025, so that the countries can be compared. Kosovo (XK), the Palestinian Territories (PS), Taiwan (TW) and Western Sahara (EH) keep Wikidata's figure: those rows stay as they were. Any other country the series does not give keeps Wikidata's best-ranked figure with its own year, marked `Wikidata` in the row's source (`populationSource`).
 
 ### Wikidata's figure kept, 36
 

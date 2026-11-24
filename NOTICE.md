@@ -118,8 +118,9 @@ https://datacatalog.worldbank.org/public-licenses?fragment=cc, which (read the s
 copy, modify and distribute the data for any purpose, including commercial use, and asks only for credit and a note
 of changes. It is not the Open Database Licence. The credit:
 
-> The World Bank: Population, total (SP.POP.TOTL), https://data.worldbank.org/indicator/SP.POP.TOTL, licensed under
-> CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+> World Bank, World Development Indicators, Population, total (SP.POP.TOTL), CC BY 4.0, read 2026-11-23.
+> https://datacatalog.worldbank.org/search/dataset/0037712/world-development-indicators
+> https://creativecommons.org/licenses/by/4.0/
 
 **What was changed.** The file is kept as the API gave it. The build takes the rows whose ISO 3 code is a country in
 this package and leaves out the World Bank's aggregates (regions, income groups, the world) and the Channel Islands,

@@ -173,7 +173,7 @@
       "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2025&format=json&per_page=20000",
       "read": "2026-11-19",
       "sha256": "8cc129d03e5c6ccc775e960ce35ca5eb77f6ec9fa067a902f38b46ac3919f43f",
-      "note": "World Bank, Population, total (SP.POP.TOTL), every country and aggregate for 2025, as the API v2 answered (CC BY 4.0). The World Development Indicators dataset names this series and licenses the dataset CC BY 4.0."
+      "note": "World Bank, World Development Indicators, Population, total (SP.POP.TOTL), CC BY 4.0, dataset page read 2026-11-23 (https://datacatalog.worldbank.org/search/dataset/0037712/world-development-indicators). The file is the API v2 answer for 2025."
     }
   ]
 }
