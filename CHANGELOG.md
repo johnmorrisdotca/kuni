@@ -6,6 +6,12 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.17.1] - 2026-11-23
+
+### Changed
+
+- Credits the World Bank for the 2025 populations.
+
 ## [1.17.0] - 2026-11-23
 
 ### Changed
