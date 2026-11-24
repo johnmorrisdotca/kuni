@@ -61,7 +61,7 @@ The figures and the groupings are entries of their own:
 import { facts } from "@johnmorrisdotca/kuni/facts";
 import { membersOf } from "@johnmorrisdotca/kuni/groupings";
 
-facts("JP")?.population;                 // 123802000, for 2024
+facts("JP")?.population;                 // 123366734, for 2025
 facts("FR")?.borders;                    // ["AD", "BE", "BR", "CH", "DE", "ES", "IT", "LU", "MC", "SR"]
 membersOf("eu", { on: "2019-06-30" });   // the 28, the United Kingdom among them
 ```
@@ -100,7 +100,7 @@ Install the scoped name: the unscoped `kuni` on npm is somebody else's package.
 - **Found by what somebody typed.** Case, accents, full-width letters, half-width kana and hiragana or katakana are folded away, and the aliases people use (Holland, UK, Burma, 米国) are known.
 - **Kinds of place**: prefecture, state, province, region and some thirty more, read from Wikidata, with the Japanese word for each (県, 州, 省) where a country's names agree on one.
 - **Capitals in both languages.** Every country's capital in English and Japanese (東京, キーウ), and every subdivision's capital Wikidata names (3,968 of 5,050), with readings in kana for Japan's prefectural capitals (さっぽろし).
-- **Facts with their dates** (`/facts`): population and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
+- **Facts with their dates** (`/facts`): population (one year for every country but four) and area with the year each is for, coordinates of the country and its capital, land borders (confirmed by Natural Earth's outlines, so islands have none), the side of the road it drives on, and CLDR's first day of the week, measurement system, paper size and clock. `distanceKm` between two points.
 - **Facts about subdivisions** (`/subdivision-facts`): each one's capital, population, area and coordinates, one country at a time; complete for Japan's 47 prefectures.
 - **Capitals with a role** (`/capitals`): for the nine countries that have more than one capital city or a capital that `capital` does not name alone (Benin, Bolivia, Burundi, Côte d'Ivoire, Malaysia, the Netherlands, South Africa, Sri Lanka, Tanzania), each city with its role (official, administrative, legislative, judicial, seat, political or economic) as the country's own government or law gives it (`docs/capitals.md` has the page and the line); `null` for every other country.
 - **Withdrawn countries** (`/withdrawn`): the 31 entries of ISO 3166-3 (SU, YU, CS, DD, ZR, TP, AN, BU and the rest), each with the four-letter code, the alpha-2, alpha-3 and numeric codes it held, its name in English and Japanese, the years the code was in force and the codes ISO lists for what came after it. They are never in `countries()`, so a picker does not offer the Soviet Union; a lookup by an old code says what it was.
@@ -210,8 +210,8 @@ subdivisionTypeLabel("JP-13", "ja");                         // "都"
 import { allFacts, distanceKm, facts, FACTS_READ } from "@johnmorrisdotca/kuni/facts";
 
 const japan = facts("JP")!;
-japan.population;     // 123802000
-japan.populationYear; // 2024
+japan.population;     // 123366734
+japan.populationYear; // 2025, the same year for every country but the ones Wikidata fills in
 japan.areaKm2;        // 377973.68
 japan.capitalPoint;   // { lat: 35.69, lon: 139.69 }
 japan.borders;        // [], an island
@@ -221,7 +221,7 @@ Math.round(distanceKm(japan.capitalPoint!, facts("GB")!.capitalPoint!)); // 9558
 FACTS_READ;           // "2026-10-09", the day Wikidata was read
 ```
 
-Every figure is Wikidata's, as it stood on the day in `FACTS_READ`. A country with no permanent population (Antarctica) has `population: null`, and an island `borders: []`; `docs/facts.md` lists every gap with its reason.
+Every population is the World Bank's Population, total (SP.POP.TOTL, CC BY 4.0) for 2025, so countries compare (India is ahead of China). `populationSource` says which. Kosovo, the Palestinian Territories, Taiwan, Western Sahara and a country the series does not give keep Wikidata's figure and year. Every other figure is Wikidata's, as it stood on the day in `FACTS_READ`. Antarctica has `population: null`, and an island `borders: []`; `docs/facts.md` lists every gap.
 
 A few countries have more than one capital city. `capital` stays one name; `capitalsOf` (the `/capitals` entry) gives each city and its role (`political` and `economic` as well as `official`, `administrative`, `legislative`, `judicial` and `seat`), as the country's own government or law says (the page and the line are in `docs/capitals.md`), and `null` for every country without an entry:
 
@@ -501,8 +501,9 @@ The facts about a country:
 ```ts
 interface CountryFacts {
   alpha2: string;                 // "JP"
-  population: number | null;      // 123802000; null with no permanent population
-  populationYear: number | null;  // 2024
+  population: number | null;      // 123366734; null with no permanent population
+  populationYear: number | null;  // 2025
+  populationSource: "World Bank SP.POP.TOTL" | "Wikidata" | null;
   areaKm2: number | null;         // 377973.68
   areaYear: number | null;        // where Wikidata gives one
   areaOf: "whole" | "land" | null;
@@ -613,7 +614,8 @@ The [architecture guide](docs/guides/architecture.md) retains the complete origi
 | Japanese names CLDR lacks, prefecture readings, calling codes, kinds of place | Wikidata, a snapshot of 2026-10-09 | CC0 |
 | Own names, capitals, languages | countries-list 3.4.1 | MIT |
 | Time zones and top-level domains | IANA tzdb 2026e `zone.tab`, IANA's TLD list | Public domain; a list of facts |
-| Capitals in Japanese, coordinates, population, area, driving side, borders, subdivisions' capitals and figures, and the dates members joined bodies | Wikidata, a snapshot of 2026-10-09 (`data-sources/wikidata-facts-2026-10-09.json`) | CC0 |
+| Population, one year (2025); four disputed rows and the gaps stay Wikidata's | World Bank, Population, total (SP.POP.TOTL), 2025 | CC BY 4.0 |
+| Capitals in Japanese, coordinates, area, driving side, borders, subdivisions' capitals and figures, and the dates members joined bodies | Wikidata, a snapshot of 2026-10-09 (`data-sources/wikidata-facts-2026-10-09.json`) | CC0 |
 | Land borders, confirmed | Natural Earth 5.1.2 admin-0 at 1:50m, as drawn by Chizu 1.0.2 (a development dependency of the build, never of the package) | Public domain (Natural Earth); MIT (Chizu) |
 | First day of the week, measurement system, paper size, clock; UN M49; the UN's members | Unicode CLDR 48.2 (`cldr-core`) | Unicode-3.0 |
 | The bodies' members, the informal groupings and the regions inside a country | written for this package from each body's own list, on 2026-10-09 (`scripts/groupings-config.ts`) | MIT; lists of facts |

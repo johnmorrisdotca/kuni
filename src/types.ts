@@ -329,10 +329,12 @@ interface CountryCapital {
 interface CountryFacts {
   /** ISO 3166-1 alpha-2, "JP" */
   alpha2: string;
-  /** People, from Wikidata; null where there is no permanent population (Antarctica) */
+  /** People: the World Bank's figure for one year that is the same for every country, Wikidata's where the World Bank has none; null where there is no permanent population (Antarctica) */
   population: number | null;
-  /** The year the population is for; null only where the figure has none (0, uninhabited) */
+  /** The year the population is for: the same year for every country but those with `populationSource` "Wikidata"; null only where the figure has none (0, uninhabited) */
   populationYear: number | null;
+  /** Where the population is from: "World Bank SP.POP.TOTL" (CC BY 4.0), or "Wikidata" (CC0) for a country the World Bank does not give; null where there is no population */
+  populationSource: "World Bank SP.POP.TOTL" | "Wikidata" | null;
   /** Area in square kilometres, from Wikidata */
   areaKm2: number | null;
   /** The year the area is for, where Wikidata says; most areas carry no year */

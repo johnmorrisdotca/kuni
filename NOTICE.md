@@ -13,7 +13,8 @@ address, the day it was read and its SHA-256.
 | Japanese names of the subdivisions CLDR has none for, the kana readings of Japan's prefectures, calling codes, and what kind of place each subdivision is | Wikidata, the snapshot `data-sources/wikidata-2026-10-09.json` | CC0, below |
 | Which calling code a country has where Wikidata's item gives several (`CALLING_CODE_OVERRIDES` in `scripts/data-config.ts`: Türkiye, Saint Helena) | The ITU's "List of Recommendation ITU-T E.164 assigned country codes", Annex to ITU Operational Bulletin No. 1114 (15 December 2016), read; the list is not copied or shipped | ITU, below |
 | Each country's own name, capital and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |
-| Each country's capital in Japanese and its coordinates, population, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the snapshot `data-sources/wikidata-facts-2026-10-09.json` | CC0, below |
+| Each country's population, one year for every country but four (2025) | World Bank, Population, total (SP.POP.TOTL), `data-sources/world-bank-sp-pop-totl-2025.json` | CC BY 4.0, below |
+| Each country's capital in Japanese and its coordinates, population where the World Bank has none, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the snapshot `data-sources/wikidata-facts-2026-10-09.json` | CC0, below |
 | Which land borders are real (two outlines touch) | Natural Earth 5.1.2 admin-0 countries at 1:50m, as drawn by `@johnmorrisdotca/chizu` 1.0.2 (a development dependency of the build; the package does not depend on it) | Public domain (Natural Earth); MIT (Chizu), below |
 | The first day of the week, the measurement system, the paper size and the clock; the UN M49 areas and their members; the members of the United Nations | Unicode CLDR 48.2 (`cldr-core` 48.2.0: weekData, measurementData, timeData, territoryContainment) | Unicode-3.0, below |
 | The members of each international body as the body lists them, the informal groupings with their definitions, the regions inside a country, the readings of the groupings' Japanese names, and the choices in `scripts/facts-config.ts` and `scripts/groupings-config.ts` | Written for this package, from the sources named beside each, read on 2026-10-09 | MIT; lists of facts |
@@ -101,6 +102,30 @@ coordinates; its best-ranked population and area with the day each is for; its c
 side of the road it drives on, the countries it shares a border with and the international bodies it is a member
 of. `scripts/facts.ts`, `scripts/subdivision-facts.ts` and `scripts/groupings.ts` say how each is chosen. Figures are
 kept as Wikidata gives them, rounded only for coordinates (two decimal places).
+
+## World Bank, for the populations
+
+The populations in `/facts` are the World Bank's "Population, total" (indicator SP.POP.TOTL,
+https://data.worldbank.org/indicator/SP.POP.TOTL), for 2025, as its API v2 answered to the request
+`https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2025&format=json&per_page=20000` on 2026-11-19.
+The API names the source as World Development Indicators (source id 2).
+
+**The licence.** The World Development Indicators dataset page
+(https://datacatalog.worldbank.org/search/dataset/0037712/world-development-indicators, read on 2026-11-23) lists
+Population, total as series SP.POP.TOTL and says "License: Creative Commons Attribution 4.0" and "This dataset is
+licensed under Creative Commons Attribution 4.0". That licence link is
+https://datacatalog.worldbank.org/public-licenses?fragment=cc, which (read the same day) says CC BY 4.0 lets a user
+copy, modify and distribute the data for any purpose, including commercial use, and asks only for credit and a note
+of changes. It is not the Open Database Licence. The credit:
+
+> The World Bank: Population, total (SP.POP.TOTL), https://data.worldbank.org/indicator/SP.POP.TOTL, licensed under
+> CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+
+**What was changed.** The file is kept as the API gave it. The build takes the rows whose ISO 3 code is a country in
+this package and leaves out the World Bank's aggregates (regions, income groups, the world) and the Channel Islands,
+which ISO 3166-1 has no code for. Kosovo (XK), the Palestinian Territories (PS), Taiwan (TW) and Western Sahara (EH)
+keep Wikidata's population and year: those rows are not taken from this series. A country the series does not give
+keeps Wikidata's figure, marked as Wikidata's on its row. No endorsement by the World Bank is implied.
 
 ## Wikidata, for the cities
 

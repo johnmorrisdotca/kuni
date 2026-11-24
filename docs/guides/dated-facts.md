@@ -10,11 +10,11 @@ description: Keep measurements, source dates and missing values together.
 ```ts
 import { facts,FACTS_READ,distanceKm } from "@johnmorrisdotca/kuni/facts";
 const japan=facts("JP");
-console.log(FACTS_READ,japan?.population,japan?.populationYear,japan?.areaOf);
+console.log(FACTS_READ,japan?.population,japan?.populationYear,japan?.populationSource,japan?.areaOf);
 console.log(Math.round(distanceKm({lat:35.68,lon:139.76},{lat:51.5,lon:-0.12})));
 ```
 
-FACTS_READ identifies the stored Wikidata snapshot. Population and area retain their own years, and areaOf distinguishes whole area from land-only figures. Coordinates are source representative points, not calculated centroids. Null means a source did not supply a usable value; zero is a value and must not be treated as missing. Borders are stored country codes; an island can have an empty list.
+FACTS_READ identifies the stored Wikidata snapshot. Population is the World Bank's SP.POP.TOTL for one year, 2025, the same for every country except those Wikidata fills in, and except Kosovo, the Palestinian Territories, Taiwan and Western Sahara, which keep Wikidata's figure; `populationSource` says which, per country. Area retains its own year, and areaOf distinguishes whole area from land-only figures. Coordinates are source representative points, not calculated centroids. Null means a source did not supply a usable value; zero is a value and must not be treated as missing. Borders are stored country codes; an island can have an empty list.
 
 ## Read a country's capitals and their roles
 

@@ -3,7 +3,7 @@
   "entries": {
     ".": {
       "minified": 67865,
-      "gzip": 21637
+      "gzip": 21622
     },
     "./codes": {
       "minified": 1356,
@@ -11,147 +11,147 @@
     },
     "./subdivisions": {
       "minified": 303003,
-      "gzip": 89227
+      "gzip": 89232
     },
     "./subdivision-reforms": {
       "minified": 3219,
-      "gzip": 1357
+      "gzip": 1353
     },
     "./load": {
       "minified": 336246,
-      "gzip": 98317
+      "gzip": 98274
     },
     "./facts": {
-      "minified": 25431,
-      "gzip": 10637
+      "minified": 24898,
+      "gzip": 10604
     },
     "./zones": {
-      "minified": 75251,
-      "gzip": 27031
+      "minified": 74714,
+      "gzip": 26850
     },
     "./subdivision-facts": {
       "minified": 425333,
-      "gzip": 163739
+      "gzip": 164780
     },
     "./groupings": {
       "minified": 86821,
-      "gzip": 16931
+      "gzip": 16860
     },
     "./withdrawn": {
       "minified": 6620,
-      "gzip": 2143
+      "gzip": 2126
     },
     "./capitals": {
       "minified": 2307,
-      "gzip": 1029
+      "gzip": 1030
     },
     "./cities": {
       "minified": 4652883,
-      "gzip": 1491065
+      "gzip": 1493791
     },
     "./cities/capitals": {
       "minified": 528212,
-      "gzip": 188174
+      "gzip": 188306
     },
     "./cities/1m": {
       "minified": 89225,
-      "gzip": 34315
+      "gzip": 34169
     },
     "./cities/100k": {
       "minified": 611339,
-      "gzip": 210363
+      "gzip": 212106
     },
     "./places": {
-      "minified": 10017173,
-      "gzip": 3332937
+      "minified": 10016636,
+      "gzip": 3328297
     },
     "./names/fr": {
       "minified": 10106,
-      "gzip": 3755
+      "gzip": 3744
     },
     "./names/es": {
       "minified": 9855,
-      "gzip": 3654
+      "gzip": 3648
     },
     "./names/de": {
       "minified": 9859,
-      "gzip": 3693
+      "gzip": 3688
     },
     "./names/zh-Hans": {
       "minified": 13046,
-      "gzip": 4171
+      "gzip": 4143
     },
     "./names/zh-Hant": {
       "minified": 12950,
-      "gzip": 4147
+      "gzip": 4122
     },
     "./subdivision-names/es": {
       "minified": 110351,
-      "gzip": 43487
+      "gzip": 43531
     },
     "./subdivision-names/de": {
       "minified": 102897,
-      "gzip": 44134
+      "gzip": 44262
     },
     "./subdivision-names/zh-Hans": {
       "minified": 150750,
-      "gzip": 44307
+      "gzip": 44209
     },
     "./subdivision-names/zh-Hant": {
       "minified": 110510,
-      "gzip": 32513
+      "gzip": 32421
     },
     "./names/ko": {
       "minified": 13836,
-      "gzip": 4126
+      "gzip": 4103
     },
     "./names/pt": {
       "minified": 10088,
-      "gzip": 3697
+      "gzip": 3684
     },
     "./names/ar": {
       "minified": 21140,
-      "gzip": 4112
+      "gzip": 4098
     },
     "./names/ru": {
       "minified": 21856,
-      "gzip": 4297
+      "gzip": 4282
     },
     "./element": {
-      "minified": 861615,
-      "gzip": 296597
+      "minified": 861078,
+      "gzip": 296709
     },
     "./element/define": {
-      "minified": 861618,
-      "gzip": 296598
+      "minified": 861081,
+      "gzip": 296714
     },
     "./subdivisions/ad": {
       "minified": 1220,
-      "gzip": 668
+      "gzip": 671
     },
     "./subdivisions/ae": {
       "minified": 1030,
-      "gzip": 626
+      "gzip": 622
     },
     "./subdivisions/af": {
       "minified": 2444,
-      "gzip": 1044
+      "gzip": 1037
     },
     "./subdivisions/ag": {
       "minified": 1195,
-      "gzip": 622
+      "gzip": 623
     },
     "./subdivisions/al": {
       "minified": 1255,
-      "gzip": 651
+      "gzip": 650
     },
     "./subdivisions/am": {
       "minified": 1238,
-      "gzip": 672
+      "gzip": 673
     },
     "./subdivisions/ao": {
       "minified": 1510,
-      "gzip": 745
+      "gzip": 746
     },
     "./subdivisions/ar": {
       "minified": 1988,
@@ -159,39 +159,39 @@
     },
     "./subdivisions/at": {
       "minified": 1210,
-      "gzip": 644
+      "gzip": 645
     },
     "./subdivisions/au": {
       "minified": 1263,
-      "gzip": 692
+      "gzip": 688
     },
     "./subdivisions/az": {
       "minified": 4517,
-      "gzip": 1763
+      "gzip": 1748
     },
     "./subdivisions/ba": {
       "minified": 876,
-      "gzip": 579
+      "gzip": 578
     },
     "./subdivisions/bb": {
       "minified": 1388,
-      "gzip": 660
+      "gzip": 661
     },
     "./subdivisions/bd": {
       "minified": 4746,
-      "gzip": 1712
+      "gzip": 1700
     },
     "./subdivisions/be": {
       "minified": 1577,
-      "gzip": 775
+      "gzip": 770
     },
     "./subdivisions/bf": {
       "minified": 3401,
-      "gzip": 1464
+      "gzip": 1445
     },
     "./subdivisions/bg": {
       "minified": 2072,
-      "gzip": 948
+      "gzip": 947
     },
     "./subdivisions/bh": {
       "minified": 783,
@@ -199,7 +199,7 @@
     },
     "./subdivisions/bi": {
       "minified": 1456,
-      "gzip": 757
+      "gzip": 753
     },
     "./subdivisions/bj": {
       "minified": 1147,
@@ -207,47 +207,47 @@
     },
     "./subdivisions/bn": {
       "minified": 866,
-      "gzip": 525
+      "gzip": 524
     },
     "./subdivisions/bo": {
       "minified": 1010,
-      "gzip": 602
+      "gzip": 603
     },
     "./subdivisions/bq": {
       "minified": 800,
-      "gzip": 513
+      "gzip": 514
     },
     "./subdivisions/br": {
       "minified": 2302,
-      "gzip": 1026
+      "gzip": 1021
     },
     "./subdivisions/bs": {
       "minified": 2677,
-      "gzip": 1102
+      "gzip": 1103
     },
     "./subdivisions/bt": {
       "minified": 1566,
-      "gzip": 786
+      "gzip": 784
     },
     "./subdivisions/bw": {
       "minified": 1500,
-      "gzip": 766
+      "gzip": 765
     },
     "./subdivisions/by": {
       "minified": 965,
-      "gzip": 579
+      "gzip": 578
     },
     "./subdivisions/bz": {
       "minified": 924,
-      "gzip": 569
+      "gzip": 568
     },
     "./subdivisions/ca": {
       "minified": 1603,
-      "gzip": 825
+      "gzip": 821
     },
     "./subdivisions/cd": {
       "minified": 1888,
-      "gzip": 937
+      "gzip": 932
     },
     "./subdivisions/cf": {
       "minified": 1598,
@@ -255,7 +255,7 @@
     },
     "./subdivisions/cg": {
       "minified": 1216,
-      "gzip": 674
+      "gzip": 673
     },
     "./subdivisions/ch": {
       "minified": 2260,
@@ -263,19 +263,19 @@
     },
     "./subdivisions/ci": {
       "minified": 1431,
-      "gzip": 788
+      "gzip": 781
     },
     "./subdivisions/cl": {
       "minified": 1921,
-      "gzip": 908
+      "gzip": 906
     },
     "./subdivisions/cm": {
       "minified": 969,
-      "gzip": 589
+      "gzip": 585
     },
     "./subdivisions/cn": {
       "minified": 2117,
-      "gzip": 1154
+      "gzip": 1138
     },
     "./subdivisions/co": {
       "minified": 2509,
@@ -287,19 +287,19 @@
     },
     "./subdivisions/cu": {
       "minified": 1672,
-      "gzip": 860
+      "gzip": 862
     },
     "./subdivisions/cv": {
       "minified": 2380,
-      "gzip": 1010
+      "gzip": 1013
     },
     "./subdivisions/cy": {
       "minified": 957,
-      "gzip": 569
+      "gzip": 567
     },
     "./subdivisions/cz": {
       "minified": 4804,
-      "gzip": 2005
+      "gzip": 1990
     },
     "./subdivisions/de": {
       "minified": 1874,
@@ -311,35 +311,35 @@
     },
     "./subdivisions/dk": {
       "minified": 954,
-      "gzip": 559
+      "gzip": 557
     },
     "./subdivisions/dm": {
       "minified": 1422,
-      "gzip": 634
+      "gzip": 636
     },
     "./subdivisions/do": {
       "minified": 3145,
-      "gzip": 1352
+      "gzip": 1342
     },
     "./subdivisions/dz": {
       "minified": 3810,
-      "gzip": 1505
+      "gzip": 1501
     },
     "./subdivisions/ec": {
       "minified": 1993,
-      "gzip": 948
+      "gzip": 945
     },
     "./subdivisions/ee": {
       "minified": 2984,
-      "gzip": 1498
+      "gzip": 1487
     },
     "./subdivisions/eg": {
       "minified": 2012,
-      "gzip": 963
+      "gzip": 960
     },
     "./subdivisions/er": {
       "minified": 1048,
-      "gzip": 583
+      "gzip": 585
     },
     "./subdivisions/es": {
       "minified": 4425,
@@ -347,15 +347,15 @@
     },
     "./subdivisions/et": {
       "minified": 1372,
-      "gzip": 781
+      "gzip": 777
     },
     "./subdivisions/fi": {
       "minified": 1804,
-      "gzip": 839
+      "gzip": 840
     },
     "./subdivisions/fj": {
       "minified": 1464,
-      "gzip": 804
+      "gzip": 796
     },
     "./subdivisions/fm": {
       "minified": 795,
@@ -363,7 +363,7 @@
     },
     "./subdivisions/fr": {
       "minified": 9201,
-      "gzip": 2865
+      "gzip": 2853
     },
     "./subdivisions/ga": {
       "minified": 1252,
@@ -371,7 +371,7 @@
     },
     "./subdivisions/gb": {
       "minified": 19381,
-      "gzip": 5047
+      "gzip": 5046
     },
     "./subdivisions/gd": {
       "minified": 1189,
@@ -379,11 +379,11 @@
     },
     "./subdivisions/ge": {
       "minified": 1571,
-      "gzip": 788
+      "gzip": 786
     },
     "./subdivisions/gh": {
       "minified": 1521,
-      "gzip": 720
+      "gzip": 721
     },
     "./subdivisions/gl": {
       "minified": 895,
@@ -391,59 +391,59 @@
     },
     "./subdivisions/gm": {
       "minified": 1037,
-      "gzip": 587
+      "gzip": 586
     },
     "./subdivisions/gn": {
       "minified": 2514,
-      "gzip": 1096
+      "gzip": 1095
     },
     "./subdivisions/gq": {
       "minified": 1140,
-      "gzip": 679
+      "gzip": 678
     },
     "./subdivisions/gr": {
       "minified": 1303,
-      "gzip": 726
+      "gzip": 722
     },
     "./subdivisions/gt": {
       "minified": 1886,
-      "gzip": 886
+      "gzip": 888
     },
     "./subdivisions/gw": {
       "minified": 1052,
-      "gzip": 638
+      "gzip": 639
     },
     "./subdivisions/gy": {
       "minified": 1600,
-      "gzip": 783
+      "gzip": 781
     },
     "./subdivisions/hn": {
       "minified": 1682,
-      "gzip": 835
+      "gzip": 831
     },
     "./subdivisions/hr": {
       "minified": 2313,
-      "gzip": 1042
+      "gzip": 1041
     },
     "./subdivisions/ht": {
       "minified": 1005,
-      "gzip": 597
+      "gzip": 598
     },
     "./subdivisions/hu": {
       "minified": 3510,
-      "gzip": 1451
+      "gzip": 1443
     },
     "./subdivisions/id": {
       "minified": 3292,
-      "gzip": 1197
+      "gzip": 1196
     },
     "./subdivisions/ie": {
       "minified": 2131,
-      "gzip": 977
+      "gzip": 974
     },
     "./subdivisions/il": {
       "minified": 922,
-      "gzip": 558
+      "gzip": 557
     },
     "./subdivisions/in": {
       "minified": 3292,
@@ -451,19 +451,19 @@
     },
     "./subdivisions/iq": {
       "minified": 1582,
-      "gzip": 800
+      "gzip": 797
     },
     "./subdivisions/ir": {
       "minified": 2659,
-      "gzip": 1032
+      "gzip": 1028
     },
     "./subdivisions/is": {
       "minified": 3982,
-      "gzip": 1682
+      "gzip": 1659
     },
     "./subdivisions/it": {
       "minified": 7906,
-      "gzip": 2785
+      "gzip": 2781
     },
     "./subdivisions/jm": {
       "minified": 1671,
@@ -471,15 +471,15 @@
     },
     "./subdivisions/jo": {
       "minified": 1131,
-      "gzip": 640
+      "gzip": 638
     },
     "./subdivisions/jp": {
       "minified": 3852,
-      "gzip": 1513
+      "gzip": 1505
     },
     "./subdivisions/ke": {
       "minified": 2442,
-      "gzip": 1195
+      "gzip": 1189
     },
     "./subdivisions/kg": {
       "minified": 1012,
@@ -487,15 +487,15 @@
     },
     "./subdivisions/kh": {
       "minified": 2045,
-      "gzip": 940
+      "gzip": 942
     },
     "./subdivisions/ki": {
       "minified": 805,
-      "gzip": 513
+      "gzip": 512
     },
     "./subdivisions/km": {
       "minified": 786,
-      "gzip": 506
+      "gzip": 507
     },
     "./subdivisions/kn": {
       "minified": 2546,
@@ -503,11 +503,11 @@
     },
     "./subdivisions/kp": {
       "minified": 1203,
-      "gzip": 674
+      "gzip": 669
     },
     "./subdivisions/kr": {
       "minified": 1506,
-      "gzip": 784
+      "gzip": 777
     },
     "./subdivisions/kw": {
       "minified": 1009,
@@ -515,11 +515,11 @@
     },
     "./subdivisions/kz": {
       "minified": 1857,
-      "gzip": 851
+      "gzip": 850
     },
     "./subdivisions/la": {
       "minified": 1714,
-      "gzip": 826
+      "gzip": 821
     },
     "./subdivisions/lb": {
       "minified": 1081,
@@ -527,19 +527,19 @@
     },
     "./subdivisions/lc": {
       "minified": 1242,
-      "gzip": 683
+      "gzip": 682
     },
     "./subdivisions/li": {
       "minified": 1161,
-      "gzip": 650
+      "gzip": 653
     },
     "./subdivisions/lk": {
       "minified": 2374,
-      "gzip": 1095
+      "gzip": 1091
     },
     "./subdivisions/lr": {
       "minified": 1383,
-      "gzip": 708
+      "gzip": 707
     },
     "./subdivisions/ls": {
       "minified": 1191,
@@ -547,11 +547,11 @@
     },
     "./subdivisions/lt": {
       "minified": 3264,
-      "gzip": 1428
+      "gzip": 1408
     },
     "./subdivisions/lu": {
       "minified": 1374,
-      "gzip": 729
+      "gzip": 727
     },
     "./subdivisions/lv": {
       "minified": 2827,
@@ -559,55 +559,55 @@
     },
     "./subdivisions/ly": {
       "minified": 1862,
-      "gzip": 863
+      "gzip": 864
     },
     "./subdivisions/ma": {
       "minified": 6317,
-      "gzip": 2365
+      "gzip": 2354
     },
     "./subdivisions/mc": {
       "minified": 1304,
-      "gzip": 786
+      "gzip": 780
     },
     "./subdivisions/md": {
       "minified": 2709,
-      "gzip": 1175
+      "gzip": 1177
     },
     "./subdivisions/me": {
       "minified": 1578,
-      "gzip": 843
+      "gzip": 844
     },
     "./subdivisions/mg": {
       "minified": 985,
-      "gzip": 572
+      "gzip": 571
     },
     "./subdivisions/mh": {
       "minified": 2086,
-      "gzip": 926
+      "gzip": 923
     },
     "./subdivisions/mk": {
       "minified": 4748,
-      "gzip": 1842
+      "gzip": 1844
     },
     "./subdivisions/ml": {
       "minified": 1083,
-      "gzip": 643
+      "gzip": 644
     },
     "./subdivisions/mm": {
       "minified": 1349,
-      "gzip": 718
+      "gzip": 717
     },
     "./subdivisions/mn": {
       "minified": 1859,
-      "gzip": 870
+      "gzip": 866
     },
     "./subdivisions/mr": {
       "minified": 1535,
-      "gzip": 777
+      "gzip": 775
     },
     "./subdivisions/mt": {
       "minified": 3627,
-      "gzip": 1545
+      "gzip": 1547
     },
     "./subdivisions/mu": {
       "minified": 1446,
@@ -615,27 +615,27 @@
     },
     "./subdivisions/mv": {
       "minified": 1797,
-      "gzip": 803
+      "gzip": 800
     },
     "./subdivisions/mw": {
       "minified": 1838,
-      "gzip": 960
+      "gzip": 955
     },
     "./subdivisions/mx": {
       "minified": 2443,
-      "gzip": 1136
+      "gzip": 1137
     },
     "./subdivisions/my": {
       "minified": 1388,
-      "gzip": 743
+      "gzip": 742
     },
     "./subdivisions/mz": {
       "minified": 1132,
-      "gzip": 650
+      "gzip": 651
     },
     "./subdivisions/na": {
       "minified": 1298,
-      "gzip": 703
+      "gzip": 700
     },
     "./subdivisions/ne": {
       "minified": 969,
@@ -643,71 +643,71 @@
     },
     "./subdivisions/ng": {
       "minified": 2091,
-      "gzip": 1009
+      "gzip": 1007
     },
     "./subdivisions/ni": {
       "minified": 1581,
-      "gzip": 828
+      "gzip": 824
     },
     "./subdivisions/nl": {
       "minified": 1703,
-      "gzip": 840
+      "gzip": 839
     },
     "./subdivisions/no": {
       "minified": 2280,
-      "gzip": 897
+      "gzip": 899
     },
     "./subdivisions/np": {
       "minified": 909,
-      "gzip": 549
+      "gzip": 546
     },
     "./subdivisions/nr": {
       "minified": 1311,
-      "gzip": 675
+      "gzip": 674
     },
     "./subdivisions/nz": {
       "minified": 1821,
-      "gzip": 876
+      "gzip": 875
     },
     "./subdivisions/om": {
       "minified": 1431,
-      "gzip": 715
+      "gzip": 714
     },
     "./subdivisions/pa": {
       "minified": 1418,
-      "gzip": 759
+      "gzip": 753
     },
     "./subdivisions/pe": {
       "minified": 1914,
-      "gzip": 968
+      "gzip": 963
     },
     "./subdivisions/pg": {
       "minified": 1704,
-      "gzip": 877
+      "gzip": 872
     },
     "./subdivisions/ph": {
       "minified": 6432,
-      "gzip": 2284
+      "gzip": 2272
     },
     "./subdivisions/pk": {
       "minified": 1159,
-      "gzip": 665
+      "gzip": 664
     },
     "./subdivisions/pl": {
       "minified": 1731,
-      "gzip": 851
+      "gzip": 847
     },
     "./subdivisions/ps": {
       "minified": 1447,
-      "gzip": 799
+      "gzip": 794
     },
     "./subdivisions/pt": {
       "minified": 1690,
-      "gzip": 836
+      "gzip": 831
     },
     "./subdivisions/pw": {
       "minified": 1429,
-      "gzip": 740
+      "gzip": 738
     },
     "./subdivisions/py": {
       "minified": 1745,
@@ -715,95 +715,95 @@
     },
     "./subdivisions/qa": {
       "minified": 1138,
-      "gzip": 668
+      "gzip": 667
     },
     "./subdivisions/ro": {
       "minified": 2818,
-      "gzip": 1189
+      "gzip": 1191
     },
     "./subdivisions/rs": {
       "minified": 2254,
-      "gzip": 1026
+      "gzip": 1025
     },
     "./subdivisions/ru": {
       "minified": 5659,
-      "gzip": 2048
+      "gzip": 2041
     },
     "./subdivisions/rw": {
       "minified": 816,
-      "gzip": 528
+      "gzip": 529
     },
     "./subdivisions/sa": {
       "minified": 1223,
-      "gzip": 683
+      "gzip": 680
     },
     "./subdivisions/sb": {
       "minified": 1133,
-      "gzip": 671
+      "gzip": 669
     },
     "./subdivisions/sc": {
       "minified": 2372,
-      "gzip": 1031
+      "gzip": 1034
     },
     "./subdivisions/sd": {
       "minified": 1600,
-      "gzip": 743
+      "gzip": 742
     },
     "./subdivisions/se": {
       "minified": 2002,
-      "gzip": 852
+      "gzip": 853
     },
     "./subdivisions/sg": {
       "minified": 851,
-      "gzip": 527
+      "gzip": 525
     },
     "./subdivisions/sh": {
       "minified": 822,
-      "gzip": 520
+      "gzip": 521
     },
     "./subdivisions/si": {
       "minified": 13056,
-      "gzip": 4101
+      "gzip": 4095
     },
     "./subdivisions/sk": {
       "minified": 1090,
-      "gzip": 624
+      "gzip": 623
     },
     "./subdivisions/sl": {
       "minified": 808,
-      "gzip": 507
+      "gzip": 509
     },
     "./subdivisions/sm": {
       "minified": 1207,
-      "gzip": 660
+      "gzip": 664
     },
     "./subdivisions/sn": {
       "minified": 1293,
-      "gzip": 710
+      "gzip": 709
     },
     "./subdivisions/so": {
       "minified": 1487,
-      "gzip": 757
+      "gzip": 755
     },
     "./subdivisions/sr": {
       "minified": 1080,
-      "gzip": 629
+      "gzip": 628
     },
     "./subdivisions/ss": {
       "minified": 1283,
-      "gzip": 669
+      "gzip": 667
     },
     "./subdivisions/st": {
       "minified": 974,
-      "gzip": 594
+      "gzip": 591
     },
     "./subdivisions/sv": {
       "minified": 1448,
-      "gzip": 739
+      "gzip": 740
     },
     "./subdivisions/sy": {
       "minified": 1286,
-      "gzip": 712
+      "gzip": 710
     },
     "./subdivisions/sz": {
       "minified": 791,
@@ -811,35 +811,35 @@
     },
     "./subdivisions/td": {
       "minified": 1900,
-      "gzip": 911
+      "gzip": 910
     },
     "./subdivisions/tg": {
       "minified": 790,
-      "gzip": 523
+      "gzip": 519
     },
     "./subdivisions/th": {
       "minified": 5370,
-      "gzip": 1787
+      "gzip": 1783
     },
     "./subdivisions/tj": {
       "minified": 950,
-      "gzip": 619
+      "gzip": 615
     },
     "./subdivisions/tl": {
       "minified": 1292,
-      "gzip": 728
+      "gzip": 725
     },
     "./subdivisions/tm": {
       "minified": 888,
-      "gzip": 552
+      "gzip": 551
     },
     "./subdivisions/tn": {
       "minified": 1731,
-      "gzip": 858
+      "gzip": 855
     },
     "./subdivisions/to": {
       "minified": 882,
-      "gzip": 542
+      "gzip": 543
     },
     "./subdivisions/tr": {
       "minified": 4769,
@@ -847,27 +847,27 @@
     },
     "./subdivisions/tt": {
       "minified": 1878,
-      "gzip": 934
+      "gzip": 933
     },
     "./subdivisions/tv": {
       "minified": 1026,
-      "gzip": 604
+      "gzip": 600
     },
     "./subdivisions/tw": {
       "minified": 1466,
-      "gzip": 863
+      "gzip": 853
     },
     "./subdivisions/tz": {
       "minified": 2122,
-      "gzip": 971
+      "gzip": 968
     },
     "./subdivisions/ua": {
       "minified": 2877,
-      "gzip": 1168
+      "gzip": 1164
     },
     "./subdivisions/ug": {
       "minified": 6929,
-      "gzip": 2425
+      "gzip": 2419
     },
     "./subdivisions/um": {
       "minified": 1154,
@@ -875,7 +875,7 @@
     },
     "./subdivisions/us": {
       "minified": 3772,
-      "gzip": 1563
+      "gzip": 1558
     },
     "./subdivisions/uy": {
       "minified": 1634,
@@ -883,19 +883,19 @@
     },
     "./subdivisions/uz": {
       "minified": 1473,
-      "gzip": 783
+      "gzip": 779
     },
     "./subdivisions/vc": {
       "minified": 1088,
-      "gzip": 605
+      "gzip": 606
     },
     "./subdivisions/ve": {
       "minified": 1844,
-      "gzip": 945
+      "gzip": 940
     },
     "./subdivisions/vn": {
       "minified": 4007,
-      "gzip": 1516
+      "gzip": 1511
     },
     "./subdivisions/vu": {
       "minified": 874,
@@ -903,7 +903,7 @@
     },
     "./subdivisions/wf": {
       "minified": 743,
-      "gzip": 483
+      "gzip": 484
     },
     "./subdivisions/ws": {
       "minified": 1280,
@@ -911,195 +911,195 @@
     },
     "./subdivisions/ye": {
       "minified": 1600,
-      "gzip": 804
+      "gzip": 801
     },
     "./subdivisions/za": {
       "minified": 1113,
-      "gzip": 639
+      "gzip": 638
     },
     "./subdivisions/zm": {
       "minified": 1022,
-      "gzip": 609
+      "gzip": 606
     },
     "./subdivisions/zw": {
       "minified": 1238,
-      "gzip": 637
+      "gzip": 634
     },
     "./subdivision-facts/ad": {
       "minified": 1074,
-      "gzip": 638
+      "gzip": 636
     },
     "./subdivision-facts/ae": {
       "minified": 1268,
-      "gzip": 741
+      "gzip": 731
     },
     "./subdivision-facts/af": {
       "minified": 3623,
-      "gzip": 1763
+      "gzip": 1762
     },
     "./subdivision-facts/ag": {
       "minified": 1157,
-      "gzip": 667
+      "gzip": 665
     },
     "./subdivision-facts/al": {
       "minified": 1542,
-      "gzip": 855
+      "gzip": 851
     },
     "./subdivision-facts/am": {
       "minified": 1471,
-      "gzip": 826
+      "gzip": 824
     },
     "./subdivision-facts/ao": {
       "minified": 2088,
-      "gzip": 1151
+      "gzip": 1142
     },
     "./subdivision-facts/ar": {
       "minified": 3043,
-      "gzip": 1452
+      "gzip": 1453
     },
     "./subdivision-facts/at": {
       "minified": 1250,
-      "gzip": 752
+      "gzip": 746
     },
     "./subdivision-facts/au": {
       "minified": 1230,
-      "gzip": 765
+      "gzip": 758
     },
     "./subdivision-facts/az": {
       "minified": 6236,
-      "gzip": 2698
+      "gzip": 2683
     },
     "./subdivision-facts/ba": {
       "minified": 796,
-      "gzip": 527
+      "gzip": 526
     },
     "./subdivision-facts/bb": {
       "minified": 972,
-      "gzip": 562
+      "gzip": 560
     },
     "./subdivision-facts/bd": {
       "minified": 5409,
-      "gzip": 2421
+      "gzip": 2441
     },
     "./subdivision-facts/be": {
       "minified": 1688,
-      "gzip": 912
+      "gzip": 901
     },
     "./subdivision-facts/bf": {
       "minified": 4547,
-      "gzip": 1933
+      "gzip": 1927
     },
     "./subdivision-facts/bg": {
       "minified": 2977,
-      "gzip": 1436
+      "gzip": 1439
     },
     "./subdivision-facts/bh": {
       "minified": 820,
-      "gzip": 531
+      "gzip": 529
     },
     "./subdivision-facts/bi": {
       "minified": 1993,
-      "gzip": 1068
+      "gzip": 1059
     },
     "./subdivision-facts/bj": {
       "minified": 1404,
-      "gzip": 805
+      "gzip": 799
     },
     "./subdivision-facts/bn": {
       "minified": 985,
-      "gzip": 599
+      "gzip": 595
     },
     "./subdivision-facts/bo": {
       "minified": 1377,
-      "gzip": 806
+      "gzip": 800
     },
     "./subdivision-facts/bq": {
       "minified": 860,
-      "gzip": 550
+      "gzip": 547
     },
     "./subdivision-facts/br": {
       "minified": 3313,
-      "gzip": 1710
+      "gzip": 1704
     },
     "./subdivision-facts/bs": {
       "minified": 2520,
-      "gzip": 1231
+      "gzip": 1225
     },
     "./subdivision-facts/bt": {
       "minified": 2058,
-      "gzip": 1072
+      "gzip": 1070
     },
     "./subdivision-facts/bw": {
       "minified": 1562,
-      "gzip": 911
+      "gzip": 899
     },
     "./subdivision-facts/by": {
       "minified": 1122,
-      "gzip": 687
+      "gzip": 682
     },
     "./subdivision-facts/bz": {
       "minified": 1160,
-      "gzip": 696
+      "gzip": 694
     },
     "./subdivision-facts/ca": {
       "minified": 1754,
-      "gzip": 1011
+      "gzip": 1012
     },
     "./subdivision-facts/cd": {
       "minified": 2543,
-      "gzip": 1316
+      "gzip": 1313
     },
     "./subdivision-facts/cf": {
       "minified": 1763,
-      "gzip": 1015
+      "gzip": 1012
     },
     "./subdivision-facts/cg": {
       "minified": 1428,
-      "gzip": 824
+      "gzip": 819
     },
     "./subdivision-facts/ch": {
       "minified": 2767,
-      "gzip": 1409
+      "gzip": 1410
     },
     "./subdivision-facts/ci": {
       "minified": 1468,
-      "gzip": 868
+      "gzip": 861
     },
     "./subdivision-facts/cl": {
       "minified": 2089,
-      "gzip": 1111
+      "gzip": 1104
     },
     "./subdivision-facts/cm": {
       "minified": 1378,
-      "gzip": 784
+      "gzip": 778
     },
     "./subdivision-facts/cn": {
       "minified": 2949,
-      "gzip": 1586
+      "gzip": 1581
     },
     "./subdivision-facts/co": {
       "minified": 3393,
-      "gzip": 1761
+      "gzip": 1760
     },
     "./subdivision-facts/cr": {
       "minified": 1154,
-      "gzip": 704
+      "gzip": 699
     },
     "./subdivision-facts/cu": {
       "minified": 2322,
-      "gzip": 1165
+      "gzip": 1160
     },
     "./subdivision-facts/cv": {
       "minified": 2658,
-      "gzip": 1213
+      "gzip": 1205
     },
     "./subdivision-facts/cy": {
       "minified": 974,
-      "gzip": 595
+      "gzip": 592
     },
     "./subdivision-facts/cz": {
       "minified": 9571,
-      "gzip": 3486
+      "gzip": 3492
     },
     "./subdivision-facts/de": {
       "minified": 1982,
@@ -1107,27 +1107,27 @@
     },
     "./subdivision-facts/dj": {
       "minified": 975,
-      "gzip": 604
+      "gzip": 600
     },
     "./subdivision-facts/dk": {
       "minified": 999,
-      "gzip": 615
+      "gzip": 610
     },
     "./subdivision-facts/dm": {
       "minified": 1071,
-      "gzip": 634
+      "gzip": 633
     },
     "./subdivision-facts/do": {
       "minified": 4051,
-      "gzip": 1745
+      "gzip": 1752
     },
     "./subdivision-facts/dz": {
       "minified": 5508,
-      "gzip": 2467
+      "gzip": 2488
     },
     "./subdivision-facts/ec": {
       "minified": 2863,
-      "gzip": 1420
+      "gzip": 1418
     },
     "./subdivision-facts/ee": {
       "minified": 3582,
@@ -1135,71 +1135,71 @@
     },
     "./subdivision-facts/eg": {
       "minified": 2898,
-      "gzip": 1491
+      "gzip": 1496
     },
     "./subdivision-facts/er": {
       "minified": 960,
-      "gzip": 609
+      "gzip": 605
     },
     "./subdivision-facts/es": {
       "minified": 5416,
-      "gzip": 2511
+      "gzip": 2521
     },
     "./subdivision-facts/et": {
       "minified": 1360,
-      "gzip": 832
+      "gzip": 827
     },
     "./subdivision-facts/fi": {
       "minified": 2243,
-      "gzip": 1199
+      "gzip": 1200
     },
     "./subdivision-facts/fj": {
       "minified": 1493,
-      "gzip": 782
+      "gzip": 775
     },
     "./subdivision-facts/fm": {
       "minified": 893,
-      "gzip": 570
+      "gzip": 565
     },
     "./subdivision-facts/fr": {
       "minified": 10796,
-      "gzip": 4471
+      "gzip": 4512
     },
     "./subdivision-facts/ga": {
       "minified": 1323,
-      "gzip": 788
+      "gzip": 781
     },
     "./subdivision-facts/gb": {
       "minified": 18994,
-      "gzip": 7494
+      "gzip": 7528
     },
     "./subdivision-facts/gd": {
       "minified": 1147,
-      "gzip": 656
+      "gzip": 655
     },
     "./subdivision-facts/ge": {
       "minified": 1527,
-      "gzip": 859
+      "gzip": 858
     },
     "./subdivision-facts/gh": {
       "minified": 1694,
-      "gzip": 964
+      "gzip": 959
     },
     "./subdivision-facts/gl": {
       "minified": 1001,
-      "gzip": 636
+      "gzip": 632
     },
     "./subdivision-facts/gm": {
       "minified": 1066,
-      "gzip": 641
+      "gzip": 638
     },
     "./subdivision-facts/gn": {
       "minified": 2224,
-      "gzip": 1156
+      "gzip": 1155
     },
     "./subdivision-facts/gq": {
       "minified": 1288,
-      "gzip": 754
+      "gzip": 747
     },
     "./subdivision-facts/gr": {
       "minified": 1673,
@@ -1207,15 +1207,15 @@
     },
     "./subdivision-facts/gt": {
       "minified": 2736,
-      "gzip": 1264
+      "gzip": 1268
     },
     "./subdivision-facts/gw": {
       "minified": 1415,
-      "gzip": 797
+      "gzip": 792
     },
     "./subdivision-facts/gy": {
       "minified": 1451,
-      "gzip": 837
+      "gzip": 835
     },
     "./subdivision-facts/hn": {
       "minified": 2267,
@@ -1223,31 +1223,31 @@
     },
     "./subdivision-facts/hr": {
       "minified": 2334,
-      "gzip": 1199
+      "gzip": 1198
     },
     "./subdivision-facts/ht": {
       "minified": 1445,
-      "gzip": 801
+      "gzip": 797
     },
     "./subdivision-facts/hu": {
       "minified": 3305,
-      "gzip": 1584
+      "gzip": 1581
     },
     "./subdivision-facts/id": {
       "minified": 3669,
-      "gzip": 1783
+      "gzip": 1788
     },
     "./subdivision-facts/ie": {
       "minified": 2875,
-      "gzip": 1428
+      "gzip": 1432
     },
     "./subdivision-facts/il": {
       "minified": 1091,
-      "gzip": 662
+      "gzip": 660
     },
     "./subdivision-facts/in": {
       "minified": 3584,
-      "gzip": 1743
+      "gzip": 1752
     },
     "./subdivision-facts/iq": {
       "minified": 2104,
@@ -1255,151 +1255,151 @@
     },
     "./subdivision-facts/ir": {
       "minified": 1400,
-      "gzip": 819
+      "gzip": 813
     },
     "./subdivision-facts/is": {
       "minified": 3563,
-      "gzip": 1659
+      "gzip": 1642
     },
     "./subdivision-facts/it": {
       "minified": 10363,
-      "gzip": 4133
+      "gzip": 4170
     },
     "./subdivision-facts/jm": {
       "minified": 1949,
-      "gzip": 1020
+      "gzip": 1019
     },
     "./subdivision-facts/jo": {
       "minified": 1474,
-      "gzip": 843
+      "gzip": 837
     },
     "./subdivision-facts/jp": {
       "minified": 5593,
-      "gzip": 2373
+      "gzip": 2386
     },
     "./subdivision-facts/ke": {
       "minified": 4144,
-      "gzip": 1977
+      "gzip": 1990
     },
     "./subdivision-facts/kg": {
       "minified": 1183,
-      "gzip": 705
+      "gzip": 698
     },
     "./subdivision-facts/kh": {
       "minified": 2610,
-      "gzip": 1302
+      "gzip": 1300
     },
     "./subdivision-facts/ki": {
       "minified": 842,
-      "gzip": 559
+      "gzip": 557
     },
     "./subdivision-facts/km": {
       "minified": 824,
-      "gzip": 531
+      "gzip": 529
     },
     "./subdivision-facts/kn": {
       "minified": 2224,
-      "gzip": 1021
+      "gzip": 1020
     },
     "./subdivision-facts/kp": {
       "minified": 1426,
-      "gzip": 827
+      "gzip": 819
     },
     "./subdivision-facts/kr": {
       "minified": 1705,
-      "gzip": 972
+      "gzip": 960
     },
     "./subdivision-facts/kw": {
       "minified": 995,
-      "gzip": 609
+      "gzip": 608
     },
     "./subdivision-facts/kz": {
       "minified": 2129,
-      "gzip": 1155
+      "gzip": 1152
     },
     "./subdivision-facts/la": {
       "minified": 2309,
-      "gzip": 1167
+      "gzip": 1165
     },
     "./subdivision-facts/lb": {
       "minified": 1139,
-      "gzip": 686
+      "gzip": 682
     },
     "./subdivision-facts/lc": {
       "minified": 1142,
-      "gzip": 668
+      "gzip": 665
     },
     "./subdivision-facts/li": {
       "minified": 1025,
-      "gzip": 603
+      "gzip": 602
     },
     "./subdivision-facts/lk": {
       "minified": 3047,
-      "gzip": 1323
+      "gzip": 1332
     },
     "./subdivision-facts/lr": {
       "minified": 1886,
-      "gzip": 1045
+      "gzip": 1041
     },
     "./subdivision-facts/ls": {
       "minified": 1516,
-      "gzip": 836
+      "gzip": 826
     },
     "./subdivision-facts/lt": {
       "minified": 6769,
-      "gzip": 2530
+      "gzip": 2552
     },
     "./subdivision-facts/lu": {
       "minified": 1531,
-      "gzip": 851
+      "gzip": 845
     },
     "./subdivision-facts/lv": {
       "minified": 4139,
-      "gzip": 1860
+      "gzip": 1859
     },
     "./subdivision-facts/ly": {
       "minified": 2031,
-      "gzip": 1095
+      "gzip": 1091
     },
     "./subdivision-facts/ma": {
       "minified": 7984,
-      "gzip": 3340
+      "gzip": 3331
     },
     "./subdivision-facts/mc": {
       "minified": 964,
-      "gzip": 548
+      "gzip": 546
     },
     "./subdivision-facts/md": {
       "minified": 3762,
-      "gzip": 1697
+      "gzip": 1696
     },
     "./subdivision-facts/me": {
       "minified": 2689,
-      "gzip": 1269
+      "gzip": 1271
     },
     "./subdivision-facts/mg": {
       "minified": 1099,
-      "gzip": 667
+      "gzip": 663
     },
     "./subdivision-facts/mh": {
       "minified": 1419,
-      "gzip": 817
+      "gzip": 806
     },
     "./subdivision-facts/mk": {
       "minified": 5810,
-      "gzip": 2526
+      "gzip": 2530
     },
     "./subdivision-facts/ml": {
       "minified": 1328,
-      "gzip": 826
+      "gzip": 821
     },
     "./subdivision-facts/mm": {
       "minified": 1759,
-      "gzip": 987
+      "gzip": 988
     },
     "./subdivision-facts/mn": {
       "minified": 2528,
-      "gzip": 1297
+      "gzip": 1298
     },
     "./subdivision-facts/mr": {
       "minified": 1863,
@@ -1407,23 +1407,23 @@
     },
     "./subdivision-facts/mt": {
       "minified": 2960,
-      "gzip": 1183
+      "gzip": 1182
     },
     "./subdivision-facts/mu": {
       "minified": 1535,
-      "gzip": 866
+      "gzip": 865
     },
     "./subdivision-facts/mv": {
       "minified": 1614,
-      "gzip": 915
+      "gzip": 907
     },
     "./subdivision-facts/mw": {
       "minified": 2744,
-      "gzip": 1332
+      "gzip": 1324
     },
     "./subdivision-facts/mx": {
       "minified": 3744,
-      "gzip": 1898
+      "gzip": 1899
     },
     "./subdivision-facts/my": {
       "minified": 1857,
@@ -1431,67 +1431,67 @@
     },
     "./subdivision-facts/mz": {
       "minified": 1412,
-      "gzip": 828
+      "gzip": 825
     },
     "./subdivision-facts/na": {
       "minified": 1887,
-      "gzip": 1025
+      "gzip": 1018
     },
     "./subdivision-facts/ne": {
       "minified": 1151,
-      "gzip": 700
+      "gzip": 697
     },
     "./subdivision-facts/ng": {
       "minified": 3380,
-      "gzip": 1751
+      "gzip": 1761
     },
     "./subdivision-facts/ni": {
       "minified": 1760,
-      "gzip": 950
+      "gzip": 949
     },
     "./subdivision-facts/nl": {
       "minified": 2181,
-      "gzip": 1141
+      "gzip": 1137
     },
     "./subdivision-facts/no": {
       "minified": 1662,
-      "gzip": 964
+      "gzip": 962
     },
     "./subdivision-facts/np": {
       "minified": 1073,
-      "gzip": 659
+      "gzip": 657
     },
     "./subdivision-facts/nr": {
       "minified": 1075,
-      "gzip": 584
+      "gzip": 582
     },
     "./subdivision-facts/nz": {
       "minified": 2066,
-      "gzip": 1114
+      "gzip": 1112
     },
     "./subdivision-facts/om": {
       "minified": 1361,
-      "gzip": 787
+      "gzip": 784
     },
     "./subdivision-facts/pa": {
       "minified": 1772,
-      "gzip": 999
+      "gzip": 997
     },
     "./subdivision-facts/pe": {
       "minified": 2914,
-      "gzip": 1513
+      "gzip": 1512
     },
     "./subdivision-facts/pg": {
       "minified": 2053,
-      "gzip": 1150
+      "gzip": 1143
     },
     "./subdivision-facts/ph": {
       "minified": 8642,
-      "gzip": 3716
+      "gzip": 3743
     },
     "./subdivision-facts/pk": {
       "minified": 1200,
-      "gzip": 734
+      "gzip": 730
     },
     "./subdivision-facts/pl": {
       "minified": 2003,
@@ -1499,91 +1499,91 @@
     },
     "./subdivision-facts/ps": {
       "minified": 1891,
-      "gzip": 1019
+      "gzip": 1018
     },
     "./subdivision-facts/pt": {
       "minified": 1745,
-      "gzip": 983
+      "gzip": 986
     },
     "./subdivision-facts/pw": {
       "minified": 1408,
-      "gzip": 791
+      "gzip": 785
     },
     "./subdivision-facts/py": {
       "minified": 2318,
-      "gzip": 1178
+      "gzip": 1176
     },
     "./subdivision-facts/qa": {
       "minified": 1142,
-      "gzip": 679
+      "gzip": 675
     },
     "./subdivision-facts/ro": {
       "minified": 4493,
-      "gzip": 2047
+      "gzip": 2058
     },
     "./subdivision-facts/rs": {
       "minified": 3402,
-      "gzip": 1505
+      "gzip": 1509
     },
     "./subdivision-facts/ru": {
       "minified": 8176,
-      "gzip": 3711
+      "gzip": 3740
     },
     "./subdivision-facts/rw": {
       "minified": 948,
-      "gzip": 604
+      "gzip": 598
     },
     "./subdivision-facts/sa": {
       "minified": 1564,
-      "gzip": 905
+      "gzip": 903
     },
     "./subdivision-facts/sb": {
       "minified": 1168,
-      "gzip": 714
+      "gzip": 708
     },
     "./subdivision-facts/sc": {
       "minified": 1255,
-      "gzip": 629
+      "gzip": 626
     },
     "./subdivision-facts/sd": {
       "minified": 2083,
-      "gzip": 1159
+      "gzip": 1156
     },
     "./subdivision-facts/se": {
       "minified": 2426,
-      "gzip": 1207
+      "gzip": 1205
     },
     "./subdivision-facts/sg": {
       "minified": 701,
-      "gzip": 441
+      "gzip": 439
     },
     "./subdivision-facts/sh": {
       "minified": 943,
-      "gzip": 567
+      "gzip": 563
     },
     "./subdivision-facts/si": {
       "minified": 17242,
-      "gzip": 6442
+      "gzip": 6450
     },
     "./subdivision-facts/sk": {
       "minified": 1374,
-      "gzip": 773
+      "gzip": 769
     },
     "./subdivision-facts/sl": {
       "minified": 885,
-      "gzip": 575
+      "gzip": 574
     },
     "./subdivision-facts/sm": {
       "minified": 906,
-      "gzip": 550
+      "gzip": 549
     },
     "./subdivision-facts/sn": {
       "minified": 1755,
-      "gzip": 960
+      "gzip": 955
     },
     "./subdivision-facts/so": {
       "minified": 1835,
-      "gzip": 1043
+      "gzip": 1038
     },
     "./subdivision-facts/sr": {
       "minified": 1425,
@@ -1591,11 +1591,11 @@
     },
     "./subdivision-facts/ss": {
       "minified": 1315,
-      "gzip": 801
+      "gzip": 802
     },
     "./subdivision-facts/st": {
       "minified": 1204,
-      "gzip": 698
+      "gzip": 694
     },
     "./subdivision-facts/sv": {
       "minified": 1955,
@@ -1603,59 +1603,59 @@
     },
     "./subdivision-facts/sy": {
       "minified": 1702,
-      "gzip": 925
+      "gzip": 923
     },
     "./subdivision-facts/sz": {
       "minified": 911,
-      "gzip": 571
+      "gzip": 570
     },
     "./subdivision-facts/td": {
       "minified": 2337,
-      "gzip": 1206
+      "gzip": 1205
     },
     "./subdivision-facts/tg": {
       "minified": 932,
-      "gzip": 597
+      "gzip": 595
     },
     "./subdivision-facts/th": {
       "minified": 7510,
-      "gzip": 3038
+      "gzip": 3068
     },
     "./subdivision-facts/tj": {
       "minified": 945,
-      "gzip": 605
+      "gzip": 602
     },
     "./subdivision-facts/tl": {
       "minified": 1674,
-      "gzip": 906
+      "gzip": 902
     },
     "./subdivision-facts/tm": {
       "minified": 1051,
-      "gzip": 647
+      "gzip": 645
     },
     "./subdivision-facts/tn": {
       "minified": 2421,
-      "gzip": 1210
+      "gzip": 1213
     },
     "./subdivision-facts/to": {
       "minified": 949,
-      "gzip": 580
+      "gzip": 574
     },
     "./subdivision-facts/tr": {
       "minified": 7284,
-      "gzip": 3069
+      "gzip": 3114
     },
     "./subdivision-facts/tt": {
       "minified": 1539,
-      "gzip": 850
+      "gzip": 847
     },
     "./subdivision-facts/tv": {
       "minified": 860,
-      "gzip": 565
+      "gzip": 553
     },
     "./subdivision-facts/tw": {
       "minified": 2234,
-      "gzip": 1212
+      "gzip": 1200
     },
     "./subdivision-facts/tz": {
       "minified": 3000,
@@ -1663,67 +1663,67 @@
     },
     "./subdivision-facts/ua": {
       "minified": 2943,
-      "gzip": 1451
+      "gzip": 1456
     },
     "./subdivision-facts/ug": {
       "minified": 7961,
-      "gzip": 3453
+      "gzip": 3463
     },
     "./subdivision-facts/um": {
       "minified": 885,
-      "gzip": 553
+      "gzip": 548
     },
     "./subdivision-facts/us": {
       "minified": 5733,
-      "gzip": 2704
+      "gzip": 2721
     },
     "./subdivision-facts/uy": {
       "minified": 2409,
-      "gzip": 1218
+      "gzip": 1216
     },
     "./subdivision-facts/uz": {
       "minified": 1670,
-      "gzip": 964
+      "gzip": 958
     },
     "./subdivision-facts/vc": {
       "minified": 1024,
-      "gzip": 606
+      "gzip": 605
     },
     "./subdivision-facts/ve": {
       "minified": 2670,
-      "gzip": 1374
+      "gzip": 1371
     },
     "./subdivision-facts/vn": {
       "minified": 3424,
-      "gzip": 1673
+      "gzip": 1662
     },
     "./subdivision-facts/vu": {
       "minified": 1018,
-      "gzip": 635
+      "gzip": 631
     },
     "./subdivision-facts/wf": {
       "minified": 761,
-      "gzip": 503
+      "gzip": 501
     },
     "./subdivision-facts/ws": {
       "minified": 1120,
-      "gzip": 623
+      "gzip": 621
     },
     "./subdivision-facts/ye": {
       "minified": 2231,
-      "gzip": 1172
+      "gzip": 1170
     },
     "./subdivision-facts/za": {
       "minified": 1453,
-      "gzip": 859
+      "gzip": 851
     },
     "./subdivision-facts/zm": {
       "minified": 1268,
-      "gzip": 760
+      "gzip": 755
     },
     "./subdivision-facts/zw": {
       "minified": 1229,
-      "gzip": 745
+      "gzip": 737
     }
   }
 }

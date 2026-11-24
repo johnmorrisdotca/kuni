@@ -4,7 +4,7 @@
 // day of the week, the measurement system, the paper size and the clock). Kept out of the main entry so that a page
 // that only names countries does not carry them.
 
-import { FACT_ROWS, FACTS_READ } from "./data/facts.data";
+import { FACT_ROWS, FACTS_READ, POPULATION_YEAR } from "./data/facts.data";
 import type { FactsRow } from "./rows";
 import type { CountryFacts, DrivingSide, HourCycle, LatLon, MeasurementSystem, PaperSize, WeekStart } from "./types";
 
@@ -25,7 +25,8 @@ const expandFacts = (row: FactsRow): CountryFacts => {
   return Object.freeze({
     alpha2,
     population: numberOr(population),
-    populationYear: numberOr(populationYear),
+    populationYear: populationYear === 0 ? POPULATION_YEAR : numberOr(populationYear),
+    populationSource: numberOr(population) === null ? null : populationYear === 0 ? "World Bank SP.POP.TOTL" : "Wikidata",
     areaKm2,
     areaYear: numberOr(areaYear),
     areaOf: areaKm2 === null ? null : areaOf === "L" ? "land" : "whole",
@@ -61,8 +62,9 @@ const getTable = (): NonNullable<typeof table> => {
  * ```ts
  * import { facts } from "@johnmorrisdotca/kuni/facts";
  *
- * console.log(facts("JP")?.population);    // 123802000
- * console.log(facts("JP")?.populationYear); // 2024
+ * console.log(facts("JP")?.population);    // 123366734
+ * console.log(facts("JP")?.populationYear); // 2025
+ * console.log(facts("JP")?.populationSource); // "World Bank SP.POP.TOTL"
  * console.log(facts("FR")?.borders);        // ["AD", "BE", "BR", "CH", "DE", "ES", "IT", "LU", "MC", "SR"]
  * console.log(facts("GB")?.drivingSide);    // "left"
  * console.log(facts("US")?.weekStart);      // "sun"

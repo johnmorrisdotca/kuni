@@ -6,6 +6,12 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.17.0] - 2026-11-23
+
+### Changed
+
+- `/facts` populations are one comparable year (MODULES-1626): the World Bank's SP.POP.TOTL (Population, total, CC BY 4.0) for 2025, in place of Wikidata's figures of many years. The most populous country is India, ahead of China. `populationSource` on each country says where the figure is from. Kosovo, the Palestinian Territories, Taiwan and Western Sahara keep Wikidata's population and year. Area is unchanged and still Wikidata's. The input is `data-sources/world-bank-sp-pop-totl-2025.json`.
+
 ## [1.16.1] - 2026-11-20
 
 ### Changed

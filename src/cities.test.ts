@@ -764,10 +764,10 @@ describe("each city's own figure, in its own country", () => {
 
       return city.population !== null && people !== null && city.population > people;
     });
-    // One place that is the whole territory, whose two figures disagree: Diego Garcia holds the Chagos' people (4,202
-    // with no day, the territory 3,000 for 2018). Vatican City's item and its country are the same figure, 949 at the
-    // end of 2024.
-    expect(over.map((city) => `${city.id} ${city.name.en} ${city.country} ${city.population}`)).toEqual(["Q184851 Diego Garcia IO 4202"]);
+    // Two places that are the whole territory, whose two figures disagree. Diego Garcia holds the Chagos' people (4,202
+    // with no day, the territory 3,000 for 2018). Monaco the city is 38,857 and the country's 2025 figure is 38,341.
+    // Vatican City's item and its country are the same figure, 949 at the end of 2024.
+    expect(over.map((city) => `${city.id} ${city.name.en} ${city.country} ${city.population}`)).toEqual(["Q235 Monaco MC 38857", "Q184851 Diego Garcia IO 4202"]);
   });
 });
 

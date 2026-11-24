@@ -1,5 +1,6 @@
 // The /facts entry, and the capitals in the main entry: every country has every fact or is listed as having none,
 // with a reason, and the figures are what the sources say for the places a reader would check by heart.
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import { AREA_CHOICES, BORDERS_ADDED, CAPITAL_ITEMS, FACT_GAPS } from "../scripts/facts-config";
@@ -47,6 +48,60 @@ describe("every country, every fact", () => {
       else if (one.population > 0) expect(one.populationYear, one.alpha2).toBeGreaterThanOrEqual(2000);
       if (one.areaKm2 === null) expect(one.areaYear).toBeNull();
     }
+  });
+
+  // MODULES-1626: the populations are one year's series, so that "the most populous" compares like with like.
+  describe("one comparable population year", () => {
+    const bankFile = new URL("../data-sources/world-bank-sp-pop-totl-2025.json", import.meta.url);
+    const [, bankRows] = JSON.parse(readFileSync(bankFile, "utf8")) as [unknown, { countryiso3code: string; value: number }[]];
+    const bank = new Map(bankRows.filter((row) => row.countryiso3code !== "").map((row) => [row.countryiso3code, row.value]));
+    const fromWikidata = allFacts().filter((one) => one.populationSource === "Wikidata");
+
+    it("has India as the most populous country, ahead of China", () => {
+      const ranked = allFacts()
+        .filter((one) => one.population !== null)
+        .sort((a, b) => b.population! - a.population!);
+      expect(ranked[0]!.alpha2).toBe("IN");
+      expect(ranked[1]!.alpha2).toBe("CN");
+      expect(facts("IN")!.population!).toBeGreaterThan(facts("CN")!.population!);
+    });
+
+    it("gives every country the same year, except the listed ones that keep Wikidata's figure", () => {
+      const years = new Set(allFacts().filter((one) => one.populationSource === "World Bank SP.POP.TOTL").map((one) => one.populationYear));
+      expect([...years]).toEqual([2025]);
+      expect(fromWikidata.map((one) => one.alpha2)).toEqual("AI AX BL BQ BV CC CK CX EH FK GF GG GP GS HM IO JE MQ MS NF NU PM PN PS RE SH SJ TF TK TW UM VA WF XK YT".split(" "));
+      expect(facts("AQ")!.population).toBeNull();
+    });
+
+    it("records where each population is from, on every row that has one", () => {
+      for (const one of allFacts()) {
+        if (one.population === null) expect(one.populationSource, one.alpha2).toBeNull();
+        else expect(["World Bank SP.POP.TOTL", "Wikidata"], one.alpha2).toContain(one.populationSource);
+      }
+      expect(facts("IN")!.populationSource).toBe("World Bank SP.POP.TOTL");
+      expect(facts("TW")!.populationSource).toBe("Wikidata");
+    });
+
+    it("takes the World Bank's figure as it is, and leaves the disputed rows on Wikidata", () => {
+      for (const one of allFacts().filter((each) => each.populationSource === "World Bank SP.POP.TOTL")) {
+        expect(one.population, one.alpha2).toBe(bank.get(country(one.alpha2)!.alpha3));
+      }
+      expect(facts("XK")).toMatchObject({ population: 1586659, populationYear: 2024, populationSource: "Wikidata" });
+      expect(facts("PS")).toMatchObject({ population: 5227193, populationYear: 2021, populationSource: "Wikidata" });
+      expect(facts("TW")).toMatchObject({ population: 23262544, populationYear: 2026, populationSource: "Wikidata" });
+      expect(facts("EH")).toMatchObject({ population: 612000, populationYear: 2021, populationSource: "Wikidata" });
+    });
+
+    it("leaves the World Bank's aggregates out: the world, the regions and the income groups are not countries", () => {
+      expect(bank.has("WLD")).toBe(true);
+      expect(allFacts().length).toBe(250);
+      const alpha3 = new Set(countries().map((one) => one.alpha3));
+      for (const aggregate of ["WLD", "EUU", "EAS", "SSF", "LMY", "CHI"]) expect(alpha3.has(aggregate), aggregate).toBe(false);
+      // Counted in, the aggregates would double the world; the countries add up to it.
+      const total = allFacts().reduce((sum, one) => sum + (one.populationSource === "World Bank SP.POP.TOTL" ? one.population! : 0), 0);
+      expect(total / bank.get("WLD")!).toBeGreaterThan(0.99);
+      expect(total / bank.get("WLD")!).toBeLessThan(1.001);
+    });
   });
 
   it("names every capital in Japanese, in Japanese script and with no bracket", () => {
@@ -100,7 +155,7 @@ describe("the land borders", () => {
 
 describe("the figures", () => {
   it("are Wikidata's for places a reader would check", () => {
-    expect(facts("JP")).toMatchObject({ population: 123802000, populationYear: 2024, drivingSide: "left", weekStart: "sun", measurement: "metric", paper: "A4", hourCycle: "h23" });
+    expect(facts("JP")).toMatchObject({ population: 123366734, populationYear: 2025, populationSource: "World Bank SP.POP.TOTL", drivingSide: "left", weekStart: "sun", measurement: "metric", paper: "A4", hourCycle: "h23" });
     expect(facts("US")).toMatchObject({ drivingSide: "right", measurement: "US", paper: "US-Letter", hourCycle: "h12" });
     expect(facts("GB")).toMatchObject({ drivingSide: "left", measurement: "UK", weekStart: "mon" });
     expect(facts("jp")).toBe(facts("JP"));

@@ -16,7 +16,7 @@ test("API anchors retain entry coverage and link to examples and fields", async 
     await page.goto(index);
   }
   await page.locator("#facts-facts h3 a").click();
-  await expect(page.locator("main .docs-output")).toContainText("123802000");
+  await expect(page.locator("main .docs-output")).toContainText("123366734");
   await expect(page.locator("main")).toContainText("null");
   await page.goto(index);
   await page.locator("#groupings-Grouping h3 a").click();
