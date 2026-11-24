@@ -101,6 +101,26 @@
       "minified": 110510,
       "gzip": 32421
     },
+    "./subdivision-names/fr": {
+      "minified": 108145,
+      "gzip": 44494
+    },
+    "./subdivision-names/ko": {
+      "minified": 179300,
+      "gzip": 45502
+    },
+    "./subdivision-names/pt": {
+      "minified": 86537,
+      "gzip": 39395
+    },
+    "./subdivision-names/ar": {
+      "minified": 334356,
+      "gzip": 45934
+    },
+    "./subdivision-names/ru": {
+      "minified": 314997,
+      "gzip": 48912
+    },
     "./names/ko": {
       "minified": 13836,
       "gzip": 4103

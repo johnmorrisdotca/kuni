@@ -2,12 +2,12 @@
 title: Subdivision names in more languages
 section: how-to
 order: 20
-description: Load the names of states, provinces and prefectures in Spanish, German or Chinese, with where each name came from.
+description: Load the names of states, provinces and prefectures in French, Spanish, German, Chinese, Korean, Portuguese, Arabic or Russian, with where each name came from.
 ---
 
 ## Load one language
 
-Each language is its own entry, apart from the country names and from the main entry, so a page pays for the one language it shows and for nothing else. The languages are Spanish (`es`), German (`de`), Simplified Chinese (`zh-Hans`) and Traditional Chinese (`zh-Hant`). English and Japanese subdivision names stay in the main entry.
+Each language is its own entry, apart from the country names and from the main entry, so a page pays for the one language it shows and for nothing else. The languages are French (`fr`), Spanish (`es`), German (`de`), Simplified Chinese (`zh-Hans`), Traditional Chinese (`zh-Hant`), Korean (`ko`), Portuguese (`pt`), Arabic (`ar`) and Russian (`ru`). Unicode CLDR 48.2 (Unicode-3.0) is the source. The import paths are in the [country resource catalogue](country-resources.md). English and Japanese subdivision names stay in the main entry.
 
 ```ts
 import names from "@johnmorrisdotca/kuni/subdivision-names/es";

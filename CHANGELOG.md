@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Subdivision names in French, Korean, Portuguese, Arabic and Russian (MODULES-1435), each its own entry: `@johnmorrisdotca/kuni/subdivision-names/fr`, `/ko`, `/pt`, `/ar` and `/ru`. The names are Unicode CLDR 48.2's (Unicode-3.0). A name CLDR does not give, or that is not in that language's script, is left out. Spanish, German and Chinese are unchanged.
+
 ## [1.17.0] - 2026-11-23
 
 ### Changed

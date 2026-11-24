@@ -10,10 +10,15 @@ The design is in [design/more-languages.md](./design/more-languages.md).
 
 | Language | Named | Share | Left out | Sources |
 | --- | ---: | ---: | ---: | --- |
+| French (`fr`) | 4881 | 96.7% | 169 | cldr:fr:provisional 4878, cldr:fr 3 |
 | Spanish (`es`) | 4830 | 95.6% | 220 | cldr:es:provisional 4791, wikidata:es 36, cldr:es 3 |
 | German (`de`) | 4923 | 97.5% | 127 | cldr:de:provisional 4892, wikidata:de 28, cldr:de 3 |
 | Simplified Chinese (`zh-Hans`) | 4356 | 86.3% | 694 | cldr:zh:provisional 2668, wikidata:zh-hans 1658, wikidata:zh-cn 22, cldr:zh 3, wikidata:zh-sg 5 |
 | Traditional Chinese (`zh-Hant`) | 3155 | 62.5% | 1895 | wikidata:zh-hant 3102, wikidata:zh-tw 41, wikidata:zh-hk 9, cldr:zh_Hant 3 |
+| Korean (`ko`) | 4693 | 92.9% | 357 | cldr:ko:provisional 4690, cldr:ko 3 |
+| Portuguese (`pt`) | 4580 | 90.7% | 470 | cldr:pt:provisional 4577, cldr:pt 3 |
+| Arabic (`ar`) | 4402 | 87.2% | 648 | cldr:ar:provisional 4399, cldr:ar 3 |
+| Russian (`ru`) | 4817 | 95.4% | 233 | cldr:ru:provisional 4814, cldr:ru 3 |
 
 CLDR marks nearly every subdivision name in these languages `provisional`: they are CLDR's own first drafts, many imported from Wikidata, and
 not yet confirmed by its Spanish, German or Chinese committees. They are the best published source and still not a reviewed one.
@@ -22,208 +27,208 @@ not yet confirmed by its Spanish, German or Chinese committees. They are the bes
 
 Subdivisions with a name in each language, out of the number the country has.
 
-| Country | Subdivisions | `es` | `de` | `zh-Hans` | `zh-Hant` |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| AD | 7 | 7 | 7 | 7 | 1 |
-| AE | 7 | 7 | 7 | 7 | 6 |
-| AF | 34 | 34 | 34 | 34 | 34 |
-| AG | 8 | 8 | 8 | 8 | 5 |
-| AL | 12 | 12 | 12 | 12 | 12 |
-| AM | 11 | 11 | 11 | 11 | 8 |
-| AO | 18 | 18 | 18 | 18 | 16 |
-| AR | 24 | 24 | 24 | 24 | 13 |
-| AT | 9 | 9 | 9 | 9 | 7 |
-| AU | 8 | 8 | 8 | 8 | 8 |
-| AZ | 78 | 77 | 78 | 75 | 61 |
-| BA | 3 | 3 | 3 | 3 | 3 |
-| BB | 11 | 11 | 11 | 8 | 8 |
-| BD | 72 | 72 | 72 | 62 | 59 |
-| BE | 13 | 13 | 13 | 13 | 5 |
-| BF | 58 | 58 | 58 | 52 | 34 |
-| BG | 28 | 28 | 28 | 26 | 8 |
-| BH | 4 | 4 | 4 | 4 | 2 |
-| BI | 18 | 18 | 18 | 18 | 12 |
-| BJ | 12 | 12 | 12 | 12 | 2 |
-| BN | 4 | 4 | 4 | 4 | 2 |
-| BO | 9 | 9 | 9 | 9 | 8 |
-| BQ | 3 | 3 | 3 | 3 | 2 |
-| BR | 27 | 27 | 27 | 27 | 27 |
-| BS | 32 | 32 | 32 | 24 | 11 |
-| BT | 20 | 20 | 20 | 20 | 12 |
-| BW | 16 | 16 | 16 | 15 | 1 |
-| BY | 7 | 7 | 7 | 7 | 6 |
-| BZ | 6 | 6 | 6 | 6 | 6 |
-| CA | 13 | 13 | 13 | 13 | 13 |
-| CD | 26 | 25 | 25 | 26 | 15 |
-| CF | 17 | 17 | 17 | 17 | 13 |
-| CG | 12 | 11 | 11 | 11 | 5 |
-| CH | 26 | 26 | 26 | 25 | 12 |
-| CI | 14 | 14 | 14 | 3 | 5 |
-| CL | 16 | 16 | 16 | 16 | 4 |
-| CM | 10 | 10 | 10 | 10 | 8 |
-| CN | 34 | 34 | 34 | 34 | 33 |
-| CO | 33 | 33 | 33 | 32 | 26 |
-| CR | 7 | 7 | 7 | 7 | 7 |
-| CU | 16 | 16 | 16 | 15 | 15 |
-| CV | 24 | 24 | 24 | 24 | 20 |
-| CY | 6 | 6 | 6 | 6 | 0 |
-| CZ | 90 | 90 | 90 | 16 | 74 |
-| DE | 16 | 16 | 16 | 16 | 16 |
-| DJ | 6 | 6 | 6 | 6 | 4 |
-| DK | 5 | 5 | 5 | 5 | 4 |
-| DM | 10 | 10 | 10 | 10 | 8 |
-| DO | 42 | 34 | 32 | 31 | 21 |
-| DZ | 58 | 58 | 58 | 58 | 50 |
-| EC | 24 | 24 | 24 | 24 | 22 |
-| EE | 94 | 37 | 41 | 39 | 17 |
-| EG | 27 | 27 | 27 | 27 | 10 |
-| ER | 6 | 6 | 6 | 6 | 1 |
-| ES | 69 | 69 | 68 | 59 | 32 |
-| ET | 13 | 13 | 13 | 13 | 10 |
-| FI | 19 | 19 | 19 | 16 | 6 |
-| FJ | 19 | 17 | 17 | 19 | 14 |
-| FM | 4 | 4 | 4 | 4 | 1 |
-| FR | 124 | 123 | 123 | 123 | 105 |
-| GA | 9 | 9 | 9 | 9 | 7 |
-| GB | 221 | 206 | 218 | 196 | 169 |
-| GD | 7 | 7 | 7 | 7 | 0 |
-| GE | 12 | 12 | 12 | 12 | 8 |
-| GH | 16 | 16 | 16 | 9 | 10 |
-| GL | 5 | 5 | 5 | 5 | 1 |
-| GM | 6 | 6 | 6 | 6 | 6 |
-| GN | 41 | 41 | 41 | 37 | 24 |
-| GQ | 10 | 10 | 10 | 10 | 8 |
-| GR | 14 | 14 | 14 | 13 | 10 |
-| GT | 22 | 22 | 22 | 22 | 18 |
-| GW | 12 | 10 | 12 | 9 | 6 |
-| GY | 10 | 10 | 10 | 10 | 2 |
-| HN | 18 | 18 | 18 | 18 | 14 |
-| HR | 21 | 21 | 21 | 21 | 4 |
-| HT | 10 | 10 | 10 | 10 | 6 |
-| HU | 43 | 43 | 43 | 42 | 42 |
-| ID | 45 | 45 | 45 | 42 | 28 |
-| IE | 30 | 30 | 30 | 29 | 28 |
-| IL | 6 | 6 | 6 | 6 | 6 |
-| IN | 36 | 36 | 36 | 35 | 34 |
-| IQ | 19 | 18 | 18 | 18 | 16 |
-| IR | 31 | 31 | 31 | 21 | 15 |
-| IS | 72 | 42 | 46 | 43 | 15 |
-| IT | 126 | 126 | 126 | 102 | 56 |
-| JM | 14 | 14 | 14 | 14 | 11 |
-| JO | 12 | 12 | 12 | 12 | 8 |
-| JP | 47 | 47 | 47 | 47 | 47 |
-| KE | 47 | 47 | 47 | 21 | 17 |
-| KG | 9 | 9 | 9 | 9 | 8 |
-| KH | 25 | 25 | 25 | 25 | 23 |
-| KI | 3 | 3 | 3 | 3 | 2 |
-| KM | 3 | 3 | 3 | 3 | 3 |
-| KN | 16 | 16 | 16 | 16 | 9 |
-| KP | 13 | 13 | 13 | 13 | 13 |
-| KR | 17 | 17 | 17 | 17 | 17 |
-| KW | 6 | 6 | 6 | 6 | 5 |
-| KZ | 20 | 20 | 20 | 19 | 16 |
-| LA | 18 | 18 | 18 | 18 | 13 |
-| LB | 8 | 8 | 8 | 7 | 5 |
-| LC | 10 | 10 | 10 | 7 | 2 |
-| LI | 11 | 11 | 11 | 10 | 3 |
-| LK | 34 | 34 | 34 | 30 | 18 |
-| LR | 15 | 15 | 15 | 15 | 11 |
-| LS | 10 | 10 | 10 | 10 | 9 |
-| LT | 70 | 49 | 70 | 37 | 20 |
-| LU | 12 | 12 | 12 | 12 | 1 |
-| LV | 43 | 43 | 43 | 18 | 15 |
-| LY | 22 | 22 | 22 | 19 | 6 |
-| MA | 87 | 87 | 87 | 64 | 42 |
-| MC | 17 | 11 | 11 | 9 | 3 |
-| MD | 37 | 37 | 36 | 35 | 17 |
-| ME | 25 | 23 | 25 | 7 | 7 |
-| MG | 6 | 6 | 6 | 4 | 5 |
-| MH | 26 | 26 | 26 | 13 | 16 |
-| MK | 80 | 80 | 80 | 74 | 57 |
-| ML | 11 | 11 | 11 | 10 | 9 |
-| MM | 15 | 15 | 15 | 15 | 13 |
-| MN | 22 | 22 | 22 | 22 | 20 |
-| MR | 15 | 12 | 15 | 14 | 10 |
-| MT | 68 | 68 | 68 | 68 | 25 |
-| MU | 12 | 12 | 12 | 11 | 9 |
-| MV | 21 | 21 | 21 | 17 | 11 |
-| MW | 31 | 31 | 29 | 30 | 25 |
-| MX | 32 | 32 | 32 | 32 | 27 |
-| MY | 16 | 16 | 16 | 16 | 16 |
-| MZ | 11 | 11 | 11 | 11 | 10 |
-| NA | 14 | 14 | 14 | 13 | 9 |
-| NE | 8 | 8 | 8 | 8 | 6 |
-| NG | 37 | 37 | 37 | 37 | 31 |
-| NI | 17 | 17 | 17 | 17 | 14 |
-| NL | 18 | 18 | 18 | 18 | 12 |
-| NO | 17 | 17 | 17 | 9 | 13 |
-| NP | 7 | 6 | 6 | 6 | 0 |
-| NR | 14 | 14 | 14 | 14 | 11 |
-| NZ | 17 | 16 | 17 | 16 | 12 |
-| OM | 11 | 11 | 11 | 9 | 2 |
-| PA | 14 | 14 | 14 | 13 | 12 |
-| PE | 26 | 26 | 25 | 26 | 24 |
-| PG | 22 | 22 | 22 | 22 | 17 |
-| PH | 99 | 99 | 97 | 94 | 39 |
-| PK | 7 | 6 | 7 | 7 | 7 |
-| PL | 16 | 16 | 16 | 16 | 8 |
-| PS | 16 | 16 | 16 | 16 | 8 |
-| PT | 20 | 20 | 20 | 19 | 19 |
-| PW | 16 | 16 | 16 | 16 | 9 |
-| PY | 18 | 18 | 18 | 18 | 12 |
-| QA | 8 | 8 | 8 | 5 | 2 |
-| RO | 42 | 42 | 42 | 42 | 40 |
-| RS | 32 | 28 | 32 | 32 | 19 |
-| RU | 83 | 83 | 83 | 82 | 50 |
-| RW | 5 | 5 | 5 | 5 | 3 |
-| SA | 13 | 13 | 13 | 13 | 8 |
-| SB | 10 | 10 | 10 | 9 | 9 |
-| SC | 27 | 25 | 27 | 25 | 9 |
-| SD | 18 | 18 | 18 | 18 | 16 |
-| SE | 21 | 21 | 21 | 21 | 21 |
-| SG | 5 | 5 | 5 | 5 | 1 |
-| SH | 3 | 2 | 2 | 2 | 0 |
-| SI | 212 | 179 | 212 | 119 | 18 |
-| SK | 8 | 8 | 8 | 8 | 8 |
-| SL | 5 | 5 | 5 | 5 | 3 |
-| SM | 9 | 9 | 9 | 9 | 9 |
-| SN | 14 | 14 | 14 | 14 | 12 |
-| SO | 18 | 18 | 18 | 17 | 12 |
-| SR | 10 | 10 | 10 | 10 | 10 |
-| SS | 10 | 10 | 10 | 10 | 10 |
-| ST | 7 | 6 | 6 | 3 | 6 |
-| SV | 14 | 14 | 14 | 14 | 9 |
-| SY | 14 | 14 | 14 | 13 | 13 |
-| SZ | 4 | 4 | 4 | 4 | 4 |
-| TD | 23 | 23 | 23 | 22 | 13 |
-| TG | 5 | 5 | 5 | 5 | 5 |
-| TH | 78 | 78 | 78 | 78 | 77 |
-| TJ | 5 | 5 | 5 | 5 | 5 |
-| TL | 13 | 13 | 13 | 13 | 5 |
-| TM | 6 | 6 | 6 | 6 | 6 |
-| TN | 24 | 24 | 24 | 24 | 22 |
-| TO | 5 | 5 | 5 | 1 | 0 |
-| TR | 81 | 81 | 81 | 81 | 65 |
-| TT | 15 | 15 | 15 | 15 | 4 |
-| TV | 8 | 8 | 8 | 7 | 4 |
-| TW | 22 | 21 | 21 | 22 | 22 |
-| TZ | 31 | 31 | 31 | 28 | 25 |
-| UA | 27 | 27 | 27 | 27 | 26 |
-| UG | 139 | 117 | 128 | 81 | 61 |
-| UM | 9 | 9 | 9 | 9 | 9 |
-| US | 57 | 57 | 57 | 55 | 56 |
-| UY | 19 | 19 | 19 | 19 | 4 |
-| UZ | 14 | 14 | 14 | 14 | 13 |
-| VC | 6 | 6 | 6 | 6 | 5 |
-| VE | 25 | 25 | 25 | 25 | 21 |
-| VN | 63 | 63 | 63 | 54 | 12 |
-| VU | 6 | 6 | 6 | 6 | 5 |
-| WF | 3 | 3 | 3 | 3 | 0 |
-| WS | 11 | 11 | 11 | 11 | 5 |
-| YE | 22 | 22 | 22 | 22 | 19 |
-| ZA | 9 | 9 | 9 | 9 | 9 |
-| ZM | 10 | 10 | 10 | 10 | 5 |
-| ZW | 10 | 8 | 9 | 10 | 8 |
+| Country | Subdivisions | `fr` | `es` | `de` | `zh-Hans` | `zh-Hant` | `ko` | `pt` | `ar` | `ru` |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| AD | 7 | 7 | 7 | 7 | 7 | 1 | 7 | 7 | 7 | 7 |
+| AE | 7 | 7 | 7 | 7 | 7 | 6 | 7 | 6 | 7 | 7 |
+| AF | 34 | 34 | 34 | 34 | 34 | 34 | 34 | 34 | 34 | 34 |
+| AG | 8 | 8 | 8 | 8 | 8 | 5 | 8 | 8 | 8 | 8 |
+| AL | 12 | 12 | 12 | 12 | 12 | 12 | 12 | 12 | 12 | 12 |
+| AM | 11 | 11 | 11 | 11 | 11 | 8 | 11 | 11 | 11 | 11 |
+| AO | 18 | 18 | 18 | 18 | 18 | 16 | 18 | 18 | 18 | 18 |
+| AR | 24 | 24 | 24 | 24 | 24 | 13 | 24 | 24 | 24 | 24 |
+| AT | 9 | 9 | 9 | 9 | 9 | 7 | 9 | 9 | 9 | 9 |
+| AU | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 |
+| AZ | 78 | 77 | 77 | 78 | 75 | 61 | 77 | 76 | 77 | 77 |
+| BA | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 |
+| BB | 11 | 11 | 11 | 11 | 8 | 8 | 11 | 11 | 11 | 11 |
+| BD | 72 | 72 | 72 | 72 | 62 | 59 | 68 | 46 | 47 | 72 |
+| BE | 13 | 13 | 13 | 13 | 13 | 5 | 13 | 13 | 13 | 13 |
+| BF | 58 | 58 | 58 | 58 | 52 | 34 | 58 | 58 | 57 | 58 |
+| BG | 28 | 28 | 28 | 28 | 26 | 8 | 28 | 27 | 28 | 28 |
+| BH | 4 | 4 | 4 | 4 | 4 | 2 | 4 | 4 | 4 | 4 |
+| BI | 18 | 18 | 18 | 18 | 18 | 12 | 18 | 17 | 18 | 18 |
+| BJ | 12 | 12 | 12 | 12 | 12 | 2 | 12 | 12 | 12 | 12 |
+| BN | 4 | 4 | 4 | 4 | 4 | 2 | 4 | 4 | 4 | 4 |
+| BO | 9 | 9 | 9 | 9 | 9 | 8 | 9 | 9 | 9 | 9 |
+| BQ | 3 | 3 | 3 | 3 | 3 | 2 | 3 | 3 | 3 | 3 |
+| BR | 27 | 27 | 27 | 27 | 27 | 27 | 27 | 27 | 27 | 27 |
+| BS | 32 | 32 | 32 | 32 | 24 | 11 | 31 | 31 | 32 | 31 |
+| BT | 20 | 20 | 20 | 20 | 20 | 12 | 20 | 20 | 17 | 20 |
+| BW | 16 | 16 | 16 | 16 | 15 | 1 | 15 | 16 | 15 | 16 |
+| BY | 7 | 7 | 7 | 7 | 7 | 6 | 7 | 7 | 7 | 7 |
+| BZ | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 |
+| CA | 13 | 13 | 13 | 13 | 13 | 13 | 13 | 13 | 13 | 13 |
+| CD | 26 | 26 | 25 | 25 | 26 | 15 | 25 | 26 | 10 | 26 |
+| CF | 17 | 17 | 17 | 17 | 17 | 13 | 17 | 17 | 17 | 17 |
+| CG | 12 | 11 | 11 | 11 | 11 | 5 | 11 | 11 | 11 | 11 |
+| CH | 26 | 26 | 26 | 26 | 25 | 12 | 26 | 26 | 26 | 26 |
+| CI | 14 | 14 | 14 | 14 | 3 | 5 | 14 | 7 | 9 | 14 |
+| CL | 16 | 16 | 16 | 16 | 16 | 4 | 15 | 16 | 15 | 15 |
+| CM | 10 | 10 | 10 | 10 | 10 | 8 | 10 | 10 | 10 | 10 |
+| CN | 34 | 34 | 34 | 34 | 34 | 33 | 34 | 34 | 34 | 34 |
+| CO | 33 | 33 | 33 | 33 | 32 | 26 | 33 | 33 | 33 | 33 |
+| CR | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 |
+| CU | 16 | 16 | 16 | 16 | 15 | 15 | 15 | 16 | 16 | 16 |
+| CV | 24 | 24 | 24 | 24 | 24 | 20 | 24 | 24 | 23 | 22 |
+| CY | 6 | 6 | 6 | 6 | 6 | 0 | 6 | 6 | 6 | 6 |
+| CZ | 90 | 90 | 90 | 90 | 16 | 74 | 90 | 86 | 90 | 90 |
+| DE | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 |
+| DJ | 6 | 6 | 6 | 6 | 6 | 4 | 6 | 6 | 6 | 6 |
+| DK | 5 | 5 | 5 | 5 | 5 | 4 | 5 | 5 | 5 | 5 |
+| DM | 10 | 10 | 10 | 10 | 10 | 8 | 10 | 10 | 10 | 10 |
+| DO | 42 | 32 | 34 | 32 | 31 | 21 | 32 | 32 | 30 | 33 |
+| DZ | 58 | 58 | 58 | 58 | 58 | 50 | 47 | 48 | 58 | 54 |
+| EC | 24 | 24 | 24 | 24 | 24 | 22 | 24 | 24 | 24 | 24 |
+| EE | 94 | 41 | 37 | 41 | 39 | 17 | 17 | 21 | 17 | 41 |
+| EG | 27 | 27 | 27 | 27 | 27 | 10 | 27 | 27 | 27 | 27 |
+| ER | 6 | 6 | 6 | 6 | 6 | 1 | 6 | 6 | 6 | 6 |
+| ES | 69 | 69 | 69 | 68 | 59 | 32 | 66 | 66 | 67 | 68 |
+| ET | 13 | 13 | 13 | 13 | 13 | 10 | 13 | 12 | 13 | 13 |
+| FI | 19 | 18 | 19 | 19 | 16 | 6 | 18 | 18 | 18 | 18 |
+| FJ | 19 | 19 | 17 | 17 | 19 | 14 | 19 | 18 | 8 | 15 |
+| FM | 4 | 4 | 4 | 4 | 4 | 1 | 4 | 3 | 3 | 4 |
+| FR | 124 | 115 | 123 | 123 | 123 | 105 | 115 | 115 | 115 | 112 |
+| GA | 9 | 9 | 9 | 9 | 9 | 7 | 9 | 9 | 9 | 9 |
+| GB | 221 | 219 | 206 | 218 | 196 | 169 | 213 | 188 | 135 | 217 |
+| GD | 7 | 7 | 7 | 7 | 7 | 0 | 7 | 7 | 7 | 7 |
+| GE | 12 | 12 | 12 | 12 | 12 | 8 | 12 | 12 | 12 | 12 |
+| GH | 16 | 16 | 16 | 16 | 9 | 10 | 16 | 9 | 12 | 16 |
+| GL | 5 | 5 | 5 | 5 | 5 | 1 | 5 | 5 | 5 | 5 |
+| GM | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 |
+| GN | 41 | 41 | 41 | 41 | 37 | 24 | 34 | 38 | 39 | 41 |
+| GQ | 10 | 10 | 10 | 10 | 10 | 8 | 10 | 9 | 7 | 10 |
+| GR | 14 | 14 | 14 | 14 | 13 | 10 | 14 | 14 | 14 | 14 |
+| GT | 22 | 22 | 22 | 22 | 22 | 18 | 22 | 22 | 22 | 22 |
+| GW | 12 | 12 | 10 | 12 | 9 | 6 | 9 | 12 | 9 | 12 |
+| GY | 10 | 10 | 10 | 10 | 10 | 2 | 10 | 10 | 9 | 10 |
+| HN | 18 | 18 | 18 | 18 | 18 | 14 | 18 | 18 | 18 | 18 |
+| HR | 21 | 21 | 21 | 21 | 21 | 4 | 21 | 21 | 21 | 21 |
+| HT | 10 | 10 | 10 | 10 | 10 | 6 | 10 | 10 | 10 | 10 |
+| HU | 43 | 43 | 43 | 43 | 42 | 42 | 43 | 43 | 43 | 43 |
+| ID | 45 | 45 | 45 | 45 | 42 | 28 | 45 | 44 | 45 | 45 |
+| IE | 30 | 30 | 30 | 30 | 29 | 28 | 30 | 30 | 30 | 30 |
+| IL | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 |
+| IN | 36 | 36 | 36 | 36 | 35 | 34 | 36 | 36 | 36 | 36 |
+| IQ | 19 | 18 | 18 | 18 | 18 | 16 | 18 | 18 | 18 | 18 |
+| IR | 31 | 31 | 31 | 31 | 21 | 15 | 31 | 31 | 31 | 31 |
+| IS | 72 | 46 | 42 | 46 | 43 | 15 | 18 | 40 | 17 | 41 |
+| IT | 126 | 126 | 126 | 126 | 102 | 56 | 126 | 126 | 126 | 124 |
+| JM | 14 | 14 | 14 | 14 | 14 | 11 | 14 | 14 | 14 | 14 |
+| JO | 12 | 12 | 12 | 12 | 12 | 8 | 12 | 12 | 12 | 12 |
+| JP | 47 | 47 | 47 | 47 | 47 | 47 | 47 | 47 | 47 | 47 |
+| KE | 47 | 45 | 47 | 47 | 21 | 17 | 47 | 13 | 8 | 47 |
+| KG | 9 | 9 | 9 | 9 | 9 | 8 | 9 | 9 | 9 | 9 |
+| KH | 25 | 25 | 25 | 25 | 25 | 23 | 25 | 25 | 24 | 25 |
+| KI | 3 | 3 | 3 | 3 | 3 | 2 | 3 | 3 | 2 | 3 |
+| KM | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 |
+| KN | 16 | 16 | 16 | 16 | 16 | 9 | 16 | 16 | 16 | 16 |
+| KP | 13 | 13 | 13 | 13 | 13 | 13 | 13 | 13 | 13 | 13 |
+| KR | 17 | 17 | 17 | 17 | 17 | 17 | 17 | 17 | 17 | 17 |
+| KW | 6 | 6 | 6 | 6 | 6 | 5 | 6 | 6 | 6 | 6 |
+| KZ | 20 | 20 | 20 | 20 | 19 | 16 | 20 | 17 | 17 | 20 |
+| LA | 18 | 18 | 18 | 18 | 18 | 13 | 18 | 17 | 17 | 17 |
+| LB | 8 | 8 | 8 | 8 | 7 | 5 | 8 | 7 | 8 | 8 |
+| LC | 10 | 10 | 10 | 10 | 7 | 2 | 10 | 8 | 7 | 10 |
+| LI | 11 | 11 | 11 | 11 | 10 | 3 | 11 | 11 | 11 | 11 |
+| LK | 34 | 34 | 34 | 34 | 30 | 18 | 34 | 27 | 34 | 34 |
+| LR | 15 | 15 | 15 | 15 | 15 | 11 | 15 | 15 | 15 | 15 |
+| LS | 10 | 10 | 10 | 10 | 10 | 9 | 10 | 10 | 10 | 10 |
+| LT | 70 | 68 | 49 | 70 | 37 | 20 | 64 | 11 | 11 | 70 |
+| LU | 12 | 12 | 12 | 12 | 12 | 1 | 12 | 12 | 3 | 12 |
+| LV | 43 | 42 | 43 | 43 | 18 | 15 | 40 | 40 | 40 | 43 |
+| LY | 22 | 22 | 22 | 22 | 19 | 6 | 22 | 22 | 22 | 22 |
+| MA | 87 | 87 | 87 | 87 | 64 | 42 | 26 | 72 | 87 | 43 |
+| MC | 17 | 16 | 11 | 11 | 9 | 3 | 8 | 9 | 2 | 16 |
+| MD | 37 | 37 | 37 | 36 | 35 | 17 | 37 | 37 | 37 | 37 |
+| ME | 25 | 21 | 23 | 25 | 7 | 7 | 17 | 21 | 17 | 24 |
+| MG | 6 | 6 | 6 | 6 | 4 | 5 | 6 | 6 | 6 | 6 |
+| MH | 26 | 26 | 26 | 26 | 13 | 16 | 26 | 16 | 8 | 26 |
+| MK | 80 | 80 | 80 | 80 | 74 | 57 | 80 | 79 | 57 | 80 |
+| ML | 11 | 11 | 11 | 11 | 10 | 9 | 9 | 9 | 11 | 11 |
+| MM | 15 | 15 | 15 | 15 | 15 | 13 | 15 | 15 | 14 | 14 |
+| MN | 22 | 22 | 22 | 22 | 22 | 20 | 22 | 22 | 22 | 22 |
+| MR | 15 | 15 | 12 | 15 | 14 | 10 | 15 | 12 | 15 | 15 |
+| MT | 68 | 68 | 68 | 68 | 68 | 25 | 68 | 68 | 67 | 68 |
+| MU | 12 | 12 | 12 | 12 | 11 | 9 | 12 | 12 | 11 | 12 |
+| MV | 21 | 21 | 21 | 21 | 17 | 11 | 21 | 19 | 21 | 21 |
+| MW | 31 | 31 | 31 | 29 | 30 | 25 | 31 | 31 | 26 | 30 |
+| MX | 32 | 32 | 32 | 32 | 32 | 27 | 32 | 32 | 32 | 32 |
+| MY | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 |
+| MZ | 11 | 11 | 11 | 11 | 11 | 10 | 11 | 11 | 10 | 11 |
+| NA | 14 | 14 | 14 | 14 | 13 | 9 | 14 | 14 | 12 | 14 |
+| NE | 8 | 8 | 8 | 8 | 8 | 6 | 8 | 8 | 8 | 8 |
+| NG | 37 | 37 | 37 | 37 | 37 | 31 | 37 | 37 | 37 | 37 |
+| NI | 17 | 17 | 17 | 17 | 17 | 14 | 17 | 17 | 17 | 17 |
+| NL | 18 | 15 | 18 | 18 | 18 | 12 | 15 | 15 | 15 | 15 |
+| NO | 17 | 10 | 17 | 17 | 9 | 13 | 10 | 10 | 9 | 10 |
+| NP | 7 | 6 | 6 | 6 | 6 | 0 | 4 | 1 | 0 | 6 |
+| NR | 14 | 14 | 14 | 14 | 14 | 11 | 14 | 14 | 14 | 14 |
+| NZ | 17 | 17 | 16 | 17 | 16 | 12 | 17 | 16 | 16 | 17 |
+| OM | 11 | 11 | 11 | 11 | 9 | 2 | 11 | 11 | 11 | 11 |
+| PA | 14 | 14 | 14 | 14 | 13 | 12 | 13 | 12 | 13 | 14 |
+| PE | 26 | 26 | 26 | 25 | 26 | 24 | 25 | 26 | 26 | 26 |
+| PG | 22 | 22 | 22 | 22 | 22 | 17 | 22 | 22 | 19 | 22 |
+| PH | 99 | 97 | 99 | 97 | 94 | 39 | 97 | 99 | 89 | 96 |
+| PK | 7 | 7 | 6 | 7 | 7 | 7 | 7 | 7 | 7 | 7 |
+| PL | 16 | 16 | 16 | 16 | 16 | 8 | 16 | 16 | 16 | 16 |
+| PS | 16 | 16 | 16 | 16 | 16 | 8 | 16 | 11 | 16 | 16 |
+| PT | 20 | 20 | 20 | 20 | 19 | 19 | 20 | 20 | 20 | 20 |
+| PW | 16 | 16 | 16 | 16 | 16 | 9 | 16 | 16 | 16 | 16 |
+| PY | 18 | 18 | 18 | 18 | 18 | 12 | 18 | 18 | 17 | 18 |
+| QA | 8 | 8 | 8 | 8 | 5 | 2 | 7 | 8 | 8 | 8 |
+| RO | 42 | 42 | 42 | 42 | 42 | 40 | 42 | 42 | 42 | 42 |
+| RS | 32 | 32 | 28 | 32 | 32 | 19 | 32 | 29 | 28 | 32 |
+| RU | 83 | 83 | 83 | 83 | 82 | 50 | 83 | 83 | 83 | 83 |
+| RW | 5 | 5 | 5 | 5 | 5 | 3 | 5 | 5 | 5 | 5 |
+| SA | 13 | 13 | 13 | 13 | 13 | 8 | 13 | 13 | 13 | 13 |
+| SB | 10 | 10 | 10 | 10 | 9 | 9 | 10 | 10 | 9 | 10 |
+| SC | 27 | 27 | 25 | 27 | 25 | 9 | 25 | 25 | 24 | 25 |
+| SD | 18 | 18 | 18 | 18 | 18 | 16 | 18 | 18 | 18 | 18 |
+| SE | 21 | 21 | 21 | 21 | 21 | 21 | 21 | 21 | 21 | 21 |
+| SG | 5 | 5 | 5 | 5 | 5 | 1 | 5 | 0 | 0 | 0 |
+| SH | 3 | 2 | 2 | 2 | 2 | 0 | 2 | 2 | 2 | 2 |
+| SI | 212 | 201 | 179 | 212 | 119 | 18 | 196 | 198 | 175 | 209 |
+| SK | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 |
+| SL | 5 | 5 | 5 | 5 | 5 | 3 | 4 | 5 | 4 | 5 |
+| SM | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 |
+| SN | 14 | 14 | 14 | 14 | 14 | 12 | 14 | 14 | 14 | 14 |
+| SO | 18 | 18 | 18 | 18 | 17 | 12 | 18 | 18 | 18 | 18 |
+| SR | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 |
+| SS | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 |
+| ST | 7 | 7 | 6 | 6 | 3 | 6 | 6 | 7 | 6 | 6 |
+| SV | 14 | 14 | 14 | 14 | 14 | 9 | 14 | 14 | 12 | 14 |
+| SY | 14 | 14 | 14 | 14 | 13 | 13 | 14 | 14 | 14 | 14 |
+| SZ | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 |
+| TD | 23 | 23 | 23 | 23 | 22 | 13 | 21 | 23 | 23 | 23 |
+| TG | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| TH | 78 | 78 | 78 | 78 | 78 | 77 | 78 | 78 | 78 | 78 |
+| TJ | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| TL | 13 | 13 | 13 | 13 | 13 | 5 | 13 | 13 | 13 | 13 |
+| TM | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 |
+| TN | 24 | 24 | 24 | 24 | 24 | 22 | 24 | 24 | 24 | 24 |
+| TO | 5 | 4 | 5 | 5 | 1 | 0 | 5 | 5 | 4 | 5 |
+| TR | 81 | 81 | 81 | 81 | 81 | 65 | 81 | 81 | 81 | 81 |
+| TT | 15 | 15 | 15 | 15 | 15 | 4 | 15 | 15 | 15 | 15 |
+| TV | 8 | 8 | 8 | 8 | 7 | 4 | 8 | 8 | 1 | 8 |
+| TW | 22 | 22 | 21 | 21 | 22 | 22 | 22 | 21 | 21 | 22 |
+| TZ | 31 | 31 | 31 | 31 | 28 | 25 | 30 | 30 | 31 | 31 |
+| UA | 27 | 27 | 27 | 27 | 27 | 26 | 27 | 27 | 27 | 27 |
+| UG | 139 | 117 | 117 | 128 | 81 | 61 | 116 | 113 | 113 | 116 |
+| UM | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 |
+| US | 57 | 51 | 57 | 57 | 55 | 56 | 50 | 51 | 51 | 51 |
+| UY | 19 | 19 | 19 | 19 | 19 | 4 | 19 | 19 | 19 | 19 |
+| UZ | 14 | 14 | 14 | 14 | 14 | 13 | 14 | 14 | 14 | 14 |
+| VC | 6 | 6 | 6 | 6 | 6 | 5 | 6 | 6 | 5 | 6 |
+| VE | 25 | 25 | 25 | 25 | 25 | 21 | 25 | 25 | 25 | 25 |
+| VN | 63 | 63 | 63 | 63 | 54 | 12 | 63 | 63 | 63 | 63 |
+| VU | 6 | 6 | 6 | 6 | 6 | 5 | 6 | 6 | 6 | 6 |
+| WF | 3 | 3 | 3 | 3 | 3 | 0 | 3 | 3 | 3 | 3 |
+| WS | 11 | 11 | 11 | 11 | 11 | 5 | 11 | 11 | 11 | 11 |
+| YE | 22 | 22 | 22 | 22 | 22 | 19 | 22 | 21 | 22 | 21 |
+| ZA | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 |
+| ZM | 10 | 10 | 10 | 10 | 10 | 5 | 10 | 10 | 10 | 10 |
+| ZW | 10 | 9 | 8 | 9 | 10 | 8 | 9 | 10 | 10 | 10 |
 
 ## For a native reader
 
@@ -234,6 +239,10 @@ Nothing here was changed by hand. Each list is what the build found and left to 
 A name that fails a check is not used, and the next source is tried; it is listed here so that a reader can say whether the check is wrong.
 The Chinese checks are a heuristic over a list of characters that differ between the scripts (`scripts/subdivision-names-config.ts`), not a full
 conversion table: they catch a name written in the wrong script, not every name with the wrong word.
+
+#### French (`fr`): 0
+
+None.
 
 #### Spanish (`es`): 1
 
@@ -397,9 +406,29 @@ Every label from Wikidata that was left out (60):
 | SI-090 | wikidata:zh-mo | 皮兰 | 兰 is Simplified, in a Traditional name |
 | SS-EE | wikidata:zh-hant | 东赤道州 | 东 is Simplified, in a Traditional name |
 
+#### Korean (`ko`): 0
+
+None.
+
+#### Portuguese (`pt`): 0
+
+None.
+
+#### Arabic (`ar`): 0
+
+None.
+
+#### Russian (`ru`): 0
+
+None.
+
 ### Names taken only from Wikidata
 
 CLDR had no name that passed the checks, so the label below is the one kept. These have not been confirmed by a CLDR committee.
+
+#### French (`fr`): 0
+
+None.
 
 #### Spanish (`es`): 36
 
@@ -2004,18 +2033,18 @@ CLDR had no name that passed the checks, so the label below is the one kept. The
 | TZ-24 | 塔波拉区 | zh-hans | Tabora |
 | TZ-26 | 曼亚拉区 | zh-hans | Manyara |
 | TZ-29 | 恩琼贝区 | zh-hans | Njombe |
-| UA-07 | 沃伦州 | zh-hans | Volyn |
-| UA-09 | 卢甘斯克州 | zh-hans | Luhanshchyna |
-| UA-18 | 日托米尔州 | zh-hans | Zhytomyrshchyna |
-| UA-21 | 外喀尔巴阡州 | zh-hans | Zakarpattia |
-| UA-23 | 扎波罗热州 | zh-hans | Zaporizhzhya |
+| UA-07 | 沃伦州 | zh-hans | Volyn Oblast |
+| UA-09 | 卢甘斯克州 | zh-hans | Luhansk Oblast |
+| UA-18 | 日托米尔州 | zh-hans | Zhytomyr Oblast |
+| UA-21 | 外喀尔巴阡州 | zh-hans | Zakarpattia Oblast |
+| UA-23 | 扎波罗热州 | zh-hans | Zaporizhzhia Oblast |
 | UA-40 | 塞瓦斯托波尔 | zh-hans | Sevastopol |
-| UA-56 | 罗夫诺州 | zh-hans | Rivnenshchyna |
-| UA-59 | 苏梅州 | zh-hans | Sumshchyna |
-| UA-61 | 捷尔诺波尔州 | zh-hans | Ternopilshchyna |
-| UA-63 | 哈尔科夫州 | zh-hans | Kharkivshchyna |
-| UA-71 | 切尔卡瑟州 | zh-hans | Cherkashchyna |
-| UA-74 | 切尔尼希夫州 | zh-hans | Chernihivshchyna |
+| UA-56 | 罗夫诺州 | zh-hans | Rivne Oblast |
+| UA-59 | 苏梅州 | zh-hans | Sumy Oblast |
+| UA-61 | 捷尔诺波尔州 | zh-hans | Ternopil Oblast |
+| UA-63 | 哈尔科夫州 | zh-hans | Kharkiv Oblast |
+| UA-71 | 切尔卡瑟州 | zh-hans | Cherkasy Oblast |
+| UA-74 | 切尔尼希夫州 | zh-hans | Chernihiv Oblast |
 | UA-77 | 切尔尼夫齐州 | zh-hans | Chernivtsi Oblast |
 | UG-101 | 卡兰加拉区 | zh-hans | Kalangala |
 | UG-102 | 坎帕拉区 | zh-hans | Kampala |
@@ -3518,8 +3547,8 @@ CLDR had no name that passed the checks, so the label below is the one kept. The
 | IN-AR | 阿魯納恰爾邦 | zh-hant | Arunachal Pradesh |
 | IN-AS | 阿薩姆邦 | zh-hant | Assam |
 | IN-BR | 比哈爾邦 | zh-hant | Bihar |
-| IN-CG | 切蒂斯格爾邦 | zh-hant | Chhattīsgarh |
-| IN-DH | 達德拉-納加爾哈維利和達曼-第烏 | zh-hant | Dādra and Nagar Haveli and Damān and Diu |
+| IN-CG | 切蒂斯格爾邦 | zh-hant | Chhattisgarh |
+| IN-DH | 達德拉-納加爾哈維利和達曼-第烏 | zh-hant | Dadra and Nagar Haveli and Daman and Diu |
 | IN-GA | 果亞邦 | zh-hant | Goa |
 | IN-GJ | 古吉拉特邦 | zh-hant | Gujarat |
 | IN-HP | 喜馬偕爾邦 | zh-hant | Himachal Pradesh |
@@ -3543,7 +3572,7 @@ CLDR had no name that passed the checks, so the label below is the one kept. The
 | IN-SK | 錫金邦 | zh-hant | Sikkim |
 | IN-TN | 坦米爾納杜邦 | zh-hant | Tamil Nadu |
 | IN-TR | 特里普拉邦 | zh-hant | Tripura |
-| IN-TS | 泰倫加納邦 | zh-hant | Telangāna |
+| IN-TS | 泰倫加納邦 | zh-hant | Telangana |
 | IN-UK | 北阿坎德邦 | zh-hant | Uttarākhand |
 | IN-UP | 北方邦 | zh-hant | Uttar Pradesh |
 | IN-WB | 西孟加拉邦 | zh-hant | West Bengal |
@@ -5063,31 +5092,31 @@ CLDR had no name that passed the checks, so the label below is the one kept. The
 | TZ-27 | 蓋塔區 | zh-hant | Geita |
 | TZ-28 | 卡塔維區 | zh-hant | Katavi |
 | TZ-30 | 錫米尤區 | zh-hant | Simiyu |
-| UA-05 | 文尼察州 | zh-hant | Vinnychchyna |
-| UA-07 | 沃倫州 | zh-hant | Volyn |
-| UA-09 | 盧甘斯克州 | zh-hant | Luhanshchyna |
-| UA-12 | 第聶伯羅彼得羅夫斯克州 | zh-hant | Dnipropetrovshchyna |
-| UA-14 | 頓涅茨克州 | zh-hant | Donechchyna |
-| UA-21 | 外喀爾巴阡州 | zh-hant | Zakarpattia |
-| UA-23 | 扎波羅熱州 | zh-hant | Zaporizhzhya |
-| UA-26 | 伊萬諾-弗蘭基夫斯克州 | zh-hant | Prykarpattia |
+| UA-05 | 文尼察州 | zh-hant | Vinnytsia Oblast |
+| UA-07 | 沃倫州 | zh-hant | Volyn Oblast |
+| UA-09 | 盧甘斯克州 | zh-hant | Luhansk Oblast |
+| UA-12 | 第聶伯羅彼得羅夫斯克州 | zh-hant | Dnipropetrovsk Oblast |
+| UA-14 | 頓涅茨克州 | zh-hant | Donetsk Oblast |
+| UA-21 | 外喀爾巴阡州 | zh-hant | Zakarpattia Oblast |
+| UA-23 | 扎波羅熱州 | zh-hant | Zaporizhzhia Oblast |
+| UA-26 | 伊萬諾-弗蘭基夫斯克州 | zh-hant | Ivano-Frankivsk Oblast |
 | UA-30 | 基輔 | zh-hant | Kyiv |
-| UA-32 | 基輔州 | zh-hant | Kyivshchyna |
-| UA-35 | 基洛沃赫拉德州 | zh-hant | Kirovohradschyna |
+| UA-32 | 基輔州 | zh-hant | Kyiv Oblast |
+| UA-35 | 基洛沃赫拉德州 | zh-hant | Kirovohrad Oblast |
 | UA-40 | 塞瓦斯托波爾 | zh-hant | Sevastopol |
-| UA-43 | 克里米亞自治共和國 | zh-tw | Crimea |
-| UA-46 | 利沃夫州 | zh-hant | Lvivshchyna |
-| UA-48 | 尼古拉耶夫州 | zh-hant | Mykolayivschyna |
-| UA-51 | 奧德薩州 | zh-hant | Odeshchyna |
-| UA-53 | 波爾塔瓦州 | zh-hant | Poltavshchyna |
-| UA-56 | 羅夫諾州 | zh-hant | Rivnenshchyna |
-| UA-59 | 蘇梅州 | zh-hant | Sumshchyna |
-| UA-61 | 捷爾諾波爾州 | zh-hant | Ternopilshchyna |
-| UA-63 | 哈爾科夫州 | zh-hant | Kharkivshchyna |
-| UA-65 | 赫爾松州 | zh-hant | Khersonshchyna |
-| UA-68 | 赫梅利尼茨基州 | zh-hant | Khmelnychchyna |
-| UA-71 | 切爾卡瑟州 | zh-hant | Cherkashchyna |
-| UA-74 | 切爾尼希夫州 | zh-hant | Chernihivshchyna |
+| UA-43 | 克里米亞自治共和國 | zh-tw | Autonomous Republic of Crimea |
+| UA-46 | 利沃夫州 | zh-hant | Lviv Oblast |
+| UA-48 | 尼古拉耶夫州 | zh-hant | Mykolaiv Oblast |
+| UA-51 | 奧德薩州 | zh-hant | Odesa Oblast |
+| UA-53 | 波爾塔瓦州 | zh-hant | Poltava Oblast |
+| UA-56 | 羅夫諾州 | zh-hant | Rivne Oblast |
+| UA-59 | 蘇梅州 | zh-hant | Sumy Oblast |
+| UA-61 | 捷爾諾波爾州 | zh-hant | Ternopil Oblast |
+| UA-63 | 哈爾科夫州 | zh-hant | Kharkiv Oblast |
+| UA-65 | 赫爾松州 | zh-hant | Kherson Oblast |
+| UA-68 | 赫梅利尼茨基州 | zh-hant | Khmelnytskyi Oblast |
+| UA-71 | 切爾卡瑟州 | zh-hant | Cherkasy Oblast |
+| UA-74 | 切爾尼希夫州 | zh-hant | Chernihiv Oblast |
 | UA-77 | 切爾尼夫齊州 | zh-hant | Chernivtsi Oblast |
 | UG-101 | 卡蘭加拉區 | zh-hant | Kalangala |
 | UG-103 | 基博加區 | zh-hant | Kiboga |
@@ -5322,14 +5351,30 @@ CLDR had no name that passed the checks, so the label below is the one kept. The
 | ZW-MV | 馬斯溫戈省 | zh-hant | Masvingo |
 | ZW-MW | 西馬紹納蘭省 | zh-hant | Mashonaland West |
 
+#### Korean (`ko`): 0
+
+None.
+
+#### Portuguese (`pt`): 0
+
+None.
+
+#### Arabic (`ar`): 0
+
+None.
+
+#### Russian (`ru`): 0
+
+None.
+
 ### Items with two different labels
 
-Where a code has two current Wikidata items with different labels in a language, neither is used. Counts: Spanish 71, German 80, Simplified Chinese 101, Traditional Chinese 78.
+Where a code has two current Wikidata items with different labels in a language, neither is used. Counts: French 0, Spanish 71, German 80, Simplified Chinese 101, Traditional Chinese 78, Korean 0, Portuguese 0, Arabic 0, Russian 0.
 
 ### Where CLDR and Wikidata disagree
 
 CLDR is preferred and Wikidata's label is not used when both exist; the number of codes where the two differ, after ignoring case, accents and punctuation:
-Spanish 594, German 552, Simplified Chinese 448, Traditional Chinese 0.
+French 0, Spanish 594, German 552, Simplified Chinese 448, Traditional Chinese 0, Korean 0, Portuguese 0, Arabic 0, Russian 0.
 
 #### Spanish: the first 25
 
@@ -5423,10 +5468,10 @@ Spanish 594, German 552, Simplified Chinese 448, Traditional Chinese 0.
 
 ### Names the same as the English name
 
-Spanish and German share many names with English (Paris, Texas), so this is a list to look at and not a list of mistakes. Counts: Spanish 1754 of 4830, German 2209 of 4923. In the Chinese entries a name with no Chinese character is always left out, so none is the English name.
+Spanish and German share many names with English (Paris, Texas), so this is a list to look at and not a list of mistakes. Counts: Spanish 1756 of 4830, German 2211 of 4923. In the Chinese entries a name with no Chinese character is always left out, so none is the English name.
 
-- Spanish, by source: cldr:es:provisional 1742, wikidata:es 12.
-- German, by source: cldr:de:provisional 2195, cldr:de 2, wikidata:de 12.
+- Spanish, by source: cldr:es:provisional 1744, wikidata:es 12.
+- German, by source: cldr:de:provisional 2197, cldr:de 2, wikidata:de 12.
 
 ### Chinese labels with no script
 
@@ -5434,5 +5479,5 @@ Simplified Chinese: 502 subdivisions have only a Wikidata label tagged plain `zh
 
 ### CLDR entries outside the main entry's subdivisions
 
-Spanish 179, German 170, Simplified Chinese 158, Traditional Chinese 0 CLDR names are for codes the main entry does not hold (CLDR lists some regions and withdrawn codes), and are not used.
+French 248, Spanish 179, German 170, Simplified Chinese 158, Traditional Chinese 0, Korean 267, Portuguese 154, Arabic 159, Russian 168 CLDR names are for codes the main entry does not hold (CLDR lists some regions and withdrawn codes), and are not used.
 

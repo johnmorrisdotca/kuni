@@ -352,6 +352,61 @@
       },
       "default": "./dist/subdivision-names/zh-Hant.js"
     },
+    "./subdivision-names/fr": {
+      "import": {
+        "types": "./dist/subdivision-names/fr.d.ts",
+        "default": "./dist/subdivision-names/fr.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/fr.d.cts",
+        "default": "./dist/subdivision-names/fr.cjs"
+      },
+      "default": "./dist/subdivision-names/fr.js"
+    },
+    "./subdivision-names/ko": {
+      "import": {
+        "types": "./dist/subdivision-names/ko.d.ts",
+        "default": "./dist/subdivision-names/ko.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/ko.d.cts",
+        "default": "./dist/subdivision-names/ko.cjs"
+      },
+      "default": "./dist/subdivision-names/ko.js"
+    },
+    "./subdivision-names/pt": {
+      "import": {
+        "types": "./dist/subdivision-names/pt.d.ts",
+        "default": "./dist/subdivision-names/pt.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/pt.d.cts",
+        "default": "./dist/subdivision-names/pt.cjs"
+      },
+      "default": "./dist/subdivision-names/pt.js"
+    },
+    "./subdivision-names/ar": {
+      "import": {
+        "types": "./dist/subdivision-names/ar.d.ts",
+        "default": "./dist/subdivision-names/ar.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/ar.d.cts",
+        "default": "./dist/subdivision-names/ar.cjs"
+      },
+      "default": "./dist/subdivision-names/ar.js"
+    },
+    "./subdivision-names/ru": {
+      "import": {
+        "types": "./dist/subdivision-names/ru.d.ts",
+        "default": "./dist/subdivision-names/ru.js"
+      },
+      "require": {
+        "types": "./dist/subdivision-names/ru.d.cts",
+        "default": "./dist/subdivision-names/ru.cjs"
+      },
+      "default": "./dist/subdivision-names/ru.js"
+    },
     "./names/ko": {
       "import": {
         "types": "./dist/names/ko.d.ts",

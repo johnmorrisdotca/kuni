@@ -23,10 +23,15 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES = join(ROOT, "data-sources");
 const CLDR_DIR = join(SOURCES, "cldr", "release-48-2");
 const LANGUAGES: readonly { language: SubdivisionNamesLanguage; label: string }[] = [
+  { language: "fr", label: "French" },
   { language: "es", label: "Spanish" },
   { language: "de", label: "German" },
   { language: "zh-Hans", label: "Simplified Chinese" },
   { language: "zh-Hant", label: "Traditional Chinese" },
+  { language: "ko", label: "Korean" },
+  { language: "pt", label: "Portuguese" },
+  { language: "ar", label: "Arabic" },
+  { language: "ru", label: "Russian" },
 ];
 
 const tidy = (text: string): string =>

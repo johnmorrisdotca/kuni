@@ -1,6 +1,13 @@
 {
   "files": [
     {
+      "path": "cldr/release-48-2/subdivisions-ar.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/ar.xml",
+      "read": "2026-11-24",
+      "sha256": "4315e41b969f4636a09a3deede46847d5a797f063eb5a9b80428e20d4ce9f451",
+      "note": "Unicode CLDR 48.2, Arabic names of subdivisions (Unicode-3.0)"
+    },
+    {
       "path": "cldr/release-48-2/subdivisions-de.xml",
       "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/de.xml",
       "read": "2026-11-18",
@@ -22,11 +29,39 @@
       "note": "Unicode CLDR 48.2, Spanish names of subdivisions (Unicode-3.0)"
     },
     {
+      "path": "cldr/release-48-2/subdivisions-fr.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/fr.xml",
+      "read": "2026-11-24",
+      "sha256": "6b8127e03bff045e95517b77b2f74b5c9484761e4389693afe41eb477c45e765",
+      "note": "Unicode CLDR 48.2, French names of subdivisions (Unicode-3.0)"
+    },
+    {
       "path": "cldr/release-48-2/subdivisions-ja.xml",
       "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/ja.xml",
       "read": "2026-10-09",
       "sha256": "3e220ad56170802ec067d4d2836e1f98e62479293c19ee6dcbb451852eda4fe0",
       "note": "Unicode CLDR 48.2, Japanese names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/subdivisions-ko.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/ko.xml",
+      "read": "2026-11-24",
+      "sha256": "4f11aca12342e7678520502a1871b366407f00c777cb5e51f14ae33b6310eb7a",
+      "note": "Unicode CLDR 48.2, Korean names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/subdivisions-pt.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/pt.xml",
+      "read": "2026-11-24",
+      "sha256": "90184154e43949ea9e4d61a4570726addcad6f1cf0b12ef638f6ddb1fd7e422b",
+      "note": "Unicode CLDR 48.2, Portuguese names of subdivisions (Unicode-3.0)"
+    },
+    {
+      "path": "cldr/release-48-2/subdivisions-ru.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/subdivisions/ru.xml",
+      "read": "2026-11-24",
+      "sha256": "9ea401cea67c2a7b506340453a978569aa955457d108c3673a0776fe4d48329c",
+      "note": "Unicode CLDR 48.2, Russian names of subdivisions (Unicode-3.0)"
     },
     {
       "path": "cldr/release-48-2/subdivisions-zh.xml",

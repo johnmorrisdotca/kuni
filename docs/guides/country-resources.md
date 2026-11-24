@@ -5,6 +5,8 @@ order: 12
 description: Every existing fixed subdivision and subdivision-fact import.
 ---
 
+Subdivision names, one language each: `@johnmorrisdotca/kuni/subdivision-names/fr`, `@johnmorrisdotca/kuni/subdivision-names/es`, `@johnmorrisdotca/kuni/subdivision-names/de`, `@johnmorrisdotca/kuni/subdivision-names/zh-Hans`, `@johnmorrisdotca/kuni/subdivision-names/zh-Hant`, `@johnmorrisdotca/kuni/subdivision-names/ko`, `@johnmorrisdotca/kuni/subdivision-names/pt`, `@johnmorrisdotca/kuni/subdivision-names/ar`, `@johnmorrisdotca/kuni/subdivision-names/ru`.
+
 ## Fixed country resources
 
 These names point to the same files as the retained wildcard imports. Both default and named exports keep their existing native lists. Countries without stored subdivisions have no fixed resource; use the loader for dynamic country selection, including empty-list and null results.

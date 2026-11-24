@@ -33,8 +33,8 @@ describe("the built entries", () => {
 
   it("keep each language's subdivision names in their own entry, out of the main entry and the country names", () => {
     const files = readdirSync("dist/subdivision-names").filter((file) => file.endsWith(".js"));
-    expect(files).toHaveLength(4);
-    // Spanish and German are 5,000 names; Chinese is as many as CLDR and Wikidata give. A budget a name list cannot grow through unseen.
+    expect(files).toHaveLength(9);
+    // Spanish, German, French, Korean, Portuguese, Arabic and Russian are thousands of names; Chinese is as many as CLDR and Wikidata give. A budget a name list cannot grow through unseen.
     for (const file of files) expect(size(`dist/subdivision-names/${file}`), file).toBeLessThan(260 * KB);
     expect(readFileSync("dist/index.js", "utf8")).not.toContain("Cataluña");
     expect(readFileSync("dist/names/es.js", "utf8")).not.toContain("Cataluña");

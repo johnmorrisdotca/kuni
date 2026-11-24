@@ -6,18 +6,23 @@ import { COUNTRY_CODES } from "./codes";
 import { allSubdivisions, subdivision } from "./subdivisions";
 import { createSubdivisionNames } from "./subdivision-names";
 import type { SubdivisionNames, SubdivisionNamesData, SubdivisionNamesLanguage } from "./subdivision-names";
+import ar from "./subdivision-names/ar";
 import de from "./subdivision-names/de";
 import es from "./subdivision-names/es";
+import fr from "./subdivision-names/fr";
+import ko from "./subdivision-names/ko";
+import pt from "./subdivision-names/pt";
+import ru from "./subdivision-names/ru";
 import zhHans from "./subdivision-names/zh-Hans";
 import zhHant from "./subdivision-names/zh-Hant";
 import { checkName as SUBDIVISION_NAME_CHECKS } from "../scripts/subdivision-names-config";
 
-const ALL: Record<SubdivisionNamesLanguage, SubdivisionNames> = { es, de, "zh-Hans": zhHans, "zh-Hant": zhHant };
+const ALL: Record<SubdivisionNamesLanguage, SubdivisionNames> = { fr, es, de, "zh-Hans": zhHans, "zh-Hant": zhHant, ko, pt, ar, ru };
 const codes = new Set(allSubdivisions().map((one) => one.code));
 
 describe("subdivision-names/<language>: the data", () => {
-  it("has the four languages, each saying which it is", () => {
-    expect(Object.keys(ALL).sort()).toEqual(["de", "es", "zh-Hans", "zh-Hant"]);
+  it("has the nine languages, each saying which it is", () => {
+    expect(Object.keys(ALL).sort()).toEqual(["ar", "de", "es", "fr", "ko", "pt", "ru", "zh-Hans", "zh-Hant"]);
     for (const [language, names] of Object.entries(ALL)) expect(names.language).toBe(language);
   });
 
@@ -72,6 +77,11 @@ describe("subdivision-names/<language>: what is answered", () => {
     expect(es.subdivisionName("ES-CT")).toBe("Cataluña");
     expect(de.subdivisionName("DE-BY")).toBe("Bayern");
     expect(es.subdivisionName("jp-13")).toBe("Tokio");
+    expect(fr.subdivisionName("JP-13")).toBe("Tokyo");
+    expect(ko.subdivisionName("JP-13")).toBe("도쿄 도");
+    expect(pt.subdivisionName("JP-13")).toBe("Tóquio");
+    expect(ar.subdivisionName("JP-13")).toBe("طوكيو");
+    expect(ru.subdivisionName("JP-13")).toBe("Токио");
     expect(es.subdivisionName(" JP-13 ")).toBe("Tokio");
   });
 

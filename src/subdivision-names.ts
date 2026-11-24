@@ -21,7 +21,7 @@ import type { NamesLanguage } from "./names";
  * console.log(language);   // "zh-Hant"
  * ```
  */
-type SubdivisionNamesLanguage = Extract<NamesLanguage, "es" | "de" | "zh-Hans" | "zh-Hant">;
+type SubdivisionNamesLanguage = Extract<NamesLanguage, "fr" | "es" | "de" | "zh-Hans" | "zh-Hant" | "ko" | "pt" | "ar" | "ru">;
 
 /**
  * Where a name came from: Unicode CLDR (`tag` is its locale: "es", "zh", "zh_Hant"; `draft` is its draft status, "provisional" for

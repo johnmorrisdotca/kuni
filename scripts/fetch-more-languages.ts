@@ -20,10 +20,15 @@ const CACHE_DIR = process.env.KUNI_DATA_CACHE ?? join(homedir(), ".cache", "kuni
 
 // CLDR's file for each language, named by CLDR's locale (zh is Simplified, zh_Hant is Traditional).
 const LOCALES = [
+  { locale: "fr", language: "French" },
   { locale: "es", language: "Spanish" },
   { locale: "de", language: "German" },
   { locale: "zh", language: "Simplified Chinese" },
   { locale: "zh_Hant", language: "Traditional Chinese" },
+  { locale: "ko", language: "Korean" },
+  { locale: "pt", language: "Portuguese" },
+  { locale: "ar", language: "Arabic" },
+  { locale: "ru", language: "Russian" },
 ] as const;
 
 const today = new Date().toISOString().slice(0, 10);

@@ -5,16 +5,31 @@
 import type { SubdivisionNamesLanguage } from "../src/subdivision-names.ts";
 
 // CLDR's locale for each language (CLDR calls Simplified Chinese plain zh).
-export const CLDR_LOCALE: Record<SubdivisionNamesLanguage, string> = { es: "es", de: "de", "zh-Hans": "zh", "zh-Hant": "zh_Hant" };
+export const CLDR_LOCALE: Record<SubdivisionNamesLanguage, string> = {
+  fr: "fr",
+  es: "es",
+  de: "de",
+  "zh-Hans": "zh",
+  "zh-Hant": "zh_Hant",
+  ko: "ko",
+  pt: "pt",
+  ar: "ar",
+  ru: "ru",
+};
 
 // The Wikidata label tags read for each language, most preferred first. Plain `zh` is not here: it does not say its script.
 // The variants after the first are labels written in the same script for a region (zh-cn for the mainland, zh-tw for Taiwan); each
 // name keeps the tag it was read under, so a page can tell. Traditional prefers Taiwan's wording to Hong Kong's and Macau's.
 export const WIKIDATA_TAGS: Record<SubdivisionNamesLanguage, readonly string[]> = {
+  fr: ["fr"],
   es: ["es"],
   de: ["de"],
   "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my"],
   "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
+  ko: ["ko"],
+  pt: ["pt"],
+  ar: ["ar"],
+  ru: ["ru"],
 };
 
 // Characters one script writes and the other does not (a heuristic: place names use few of the thousands that differ, and these are
@@ -36,6 +51,9 @@ const SIMPLIFIED = new Set([...SIMPLIFIED_ONLY, ...JAPANESE_ONLY]);
 export const checkName = (language: SubdivisionNamesLanguage, name: string): string | null => {
   if (name === "") return "empty";
   if (/["<>|`\\]/.test(name)) return "a stray quotation mark, bracket or bar in the name";
+  if (language === "ko" && !/\p{Script=Hangul}/u.test(name)) return "no Hangul";
+  if (language === "ar" && !/\p{Script=Arabic}/u.test(name)) return "no Arabic letter";
+  if (language === "ru" && !/\p{Script=Cyrillic}/u.test(name)) return "no Cyrillic letter";
   if (language !== "zh-Hans" && language !== "zh-Hant") return null;
   if (!/\p{Script=Han}/u.test(name)) return "no Chinese character";
   const wrong = [...name].find((character) => (language === "zh-Hans" ? TRADITIONAL : SIMPLIFIED).has(character));
