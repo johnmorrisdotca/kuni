@@ -6,6 +6,12 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.17.2] - 2026-11-26
+
+### Changed
+
+- **The continents are written in one style in Japanese, with no 大陸** (MODULES-1858). North America was 北アメリカ大陸 (CLDR's name) while the other continents were アジア, アフリカ, ヨーロッパ, オセアニア and 南アメリカ. It is now 北アメリカ (きたあめりか), in `continentName("NA", "ja")`, the `continent-na` and `m49-003` groupings and the table's continent column. UN M49's subregion Northern America (021), which CLDR also calls 北アメリカ, is now 北部アメリカ (ほくぶあめりか), so the two are told apart: `subregionName("021", "ja")` and `m49-021`. The Americas (019) stays アメリカ大陸. The two choices are `AREA_JA_CHOICES` in `scripts/build-data.ts`, each naming the CLDR name it replaces, so the build stops when CLDR changes one. Tests: `src/countries.test.ts` and `src/groupings.test.ts`. The Japanese was reviewed by a Japanese reader.
+
 ## [1.17.1] - 2026-11-23
 
 ### Changed
