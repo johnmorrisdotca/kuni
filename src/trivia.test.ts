@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { country, COUNTRY_CODES } from "./index";
+import { loadCities } from "./cities";
+import { LARGEST_CITY_ELSEWHERE, LARGEST_CITY_FIGURES } from "../scripts/largest-city";
 import { allTrivia, trivia, TRIVIA_READ } from "./trivia";
 
 describe("the trivia", () => {
@@ -102,4 +104,33 @@ describe("the trivia", () => {
     expect(Object.isFrozen(one) && Object.isFrozen(one.inception) && Object.isFrozen(one.officialLanguages) && Object.isFrozen(one.largestCity) && Object.isFrozen(one.largestCity?.name)).toBe(true);
     expect(Object.isFrozen(allTrivia())).toBe(true);
   });
+  // MODULES-1450: every country, not the ones listed above. The largest city is the one with the most people in the city itself among the cities kuni has of that code: the figure of /cities, or the census figure
+  // scripts/largest-city.ts sets in its place; a city set to none is not ranked. China and India are ranked by their censuses (urban-area facts), a country in LARGEST_CITY_ELSEWHERE has none.
+  it("names, for every country, the city with the most people in the data", async () => {
+    const all = await loadCities("capitals", "1m", "100k", "15k");
+    const censusRanked = new Set(["CN", "IN"]);
+    const figure = (id: string, population: number | null): number | null => (id in LARGEST_CITY_FIGURES ? LARGEST_CITY_FIGURES[id].population : population);
+    let checked = 0;
+    for (const one of allTrivia()) {
+      const largest = one.largestCity;
+      const mine = all.inCountry(one.alpha2);
+      if (largest === null) {
+        // none only where kuni lacks the place, or has no city of that code at all
+        expect(one.alpha2 in LARGEST_CITY_ELSEWHERE || mine.length === 0, `${one.alpha2} has no largest city though kuni has ${mine.length} cities of it`).toBe(true);
+        continue;
+      }
+      expect(mine.some((city) => city.id === largest.id), `${one.alpha2}: ${largest.id} is one of its cities`).toBe(true);
+      if (censusRanked.has(one.alpha2)) continue;
+      const top = figure(largest.id, mine.find((city) => city.id === largest.id)!.population);
+      for (const city of mine) {
+        const people = figure(city.id, city.population);
+        if (people === null) continue;
+        expect(top, `${one.alpha2}: ${largest.name.en} (${top}) is not the largest, ${city.name.en} has ${people}`).not.toBeNull();
+        expect(top!, `${one.alpha2}: ${largest.name.en} has ${top}, ${city.name.en} has ${people}`).toBeGreaterThanOrEqual(people);
+      }
+      checked += 1;
+    }
+    expect(checked).toBeGreaterThan(200);
+  });
+
 });
