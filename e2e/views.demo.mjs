@@ -229,7 +229,7 @@ test("the quiz asks eleven more kinds of question, each from the seed, with a ri
   const asked = await question.getAttribute("data-answer");
   await page.goto("http://kuni.test/?lang=ja#/quiz/driving/4242");
   await page.waitForSelector('main[data-view-ready="true"]');
-  expect((await choices.allTextContents()).map((text) => text.trim()).sort()).toEqual(["右側", "左側"]);
+  expect((await choices.allTextContents()).map((text) => text.trim()).sort()).toEqual(["右側通行", "左側通行"]);
   expect(asked).not.toBeNull();
   expect(errors).toEqual([]);
 });
