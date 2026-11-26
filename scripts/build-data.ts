@@ -225,6 +225,17 @@ const wikidata = JSON.parse(readSource(manifest, wikidataFile.path).text) as {
 
 const territoriesEn = dig(readJson("cldr-localenames-full/main/en/territories.json"), ["main", "en", "localeDisplayNames", "territories"]) as Record<string, string>;
 const territoriesJa = dig(readJson("cldr-localenames-full/main/ja/territories.json"), ["main", "ja", "localeDisplayNames", "territories"]) as Record<string, string>;
+// MODULES-1858: two of CLDR's Japanese names for UN M49 areas are kuni's own choice. The seven continents are written in one style, with no 大陸 (アジア, アフリカ, ヨーロッパ, オセアニア, 南アメリカ), but CLDR
+// writes North America (003) as 北アメリカ大陸; and CLDR's name for the subregion Northern America (021) is 北アメリカ, which would then be the continent's. So North America is 北アメリカ and Northern America is
+// 北部アメリカ. Each entry names the CLDR name it replaces: when CLDR changes it the build stops, so that the choice is looked at again.
+const AREA_JA_CHOICES: Record<string, { cldr: string; ja: string }> = {
+  "003": { cldr: "北アメリカ大陸", ja: "北アメリカ" },
+  "021": { cldr: "北アメリカ", ja: "北部アメリカ" },
+};
+for (const [area, { cldr, ja }] of Object.entries(AREA_JA_CHOICES)) {
+  if (territoriesJa[area] !== cldr) throw new Error(`scripts/build-data.ts: CLDR's Japanese name of ${area} is now ${territoriesJa[area]}, not ${cldr}: look at AREA_JA_CHOICES again`);
+  territoriesJa[area] = ja;
+}
 const codeMappings = dig(readJson("cldr-core/supplemental/codeMappings.json"), ["supplemental", "codeMappings"]) as Record<string, { _numeric?: string; _alpha3?: string }>;
 const currencyData = dig(readJson("cldr-core/supplemental/currencyData.json"), ["supplemental", "currencyData", "region"]) as Record<string, Record<string, { _to?: string; _tender?: string }>[]>;
 const territoryContainment = dig(readJson("cldr-core/supplemental/territoryContainment.json"), ["supplemental", "territoryContainment"]) as Record<string, { _contains: string[]; _grouping?: string }>;
@@ -822,7 +833,7 @@ const subregions = [...new Set(countries.map((country) => country.subregion).fil
 const regionNames = (area: string): [string, string] => [tidy(territoriesEn[area]), tidy(territoriesJa[area])];
 // Each continent's Japanese name in hiragana, for sorting in Japanese order: a name in kana is its own reading; the ones
 // with kanji are read here, each against the name it reads, so a new CLDR name stops the build rather than keep a stale one.
-const CONTINENT_KANJI_READINGS: Record<string, string> = { 南極: "なんきょく", 北アメリカ大陸: "きたあめりかたいりく", 南アメリカ: "みなみあめりか" };
+const CONTINENT_KANJI_READINGS: Record<string, string> = { 南極: "なんきょく", 北アメリカ: "きたあめりか", 南アメリカ: "みなみあめりか" };
 const continentReading = (continent: string): string => {
   const ja = regionNames(CONTINENT_AREAS[continent]!)[1];
   const reading = CONTINENT_KANJI_READINGS[ja] ?? hiraganaOf(ja);

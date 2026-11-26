@@ -669,11 +669,11 @@ const SUBDIVISION_GROUPINGS: SubdivisionGroupingConfig[] = [
 
 // The continents: seven, read from UN M49 as the `continent` field is, named from CLDR, with the
 // readings of the names written with kanji.
-const CONTINENT_READINGS: Record<string, string> = { AN: "なんきょく", NA: "きたあめりかたいりく", SA: "みなみあめりか" };
+const CONTINENT_READINGS: Record<string, string> = { AN: "なんきょく", NA: "きたあめりか", SA: "みなみあめりか" };
 
 // The readings of CLDR's Japanese names of the UN M49 areas that are written with kanji.
 const M49_READINGS: Record<string, string> = {
-  "003": "きたあめりかたいりく",
+  "003": "きたあめりか",
   "005": "みなみあめりか",
   "011": "にしあふりか",
   "013": "ちゅうおうあめりか",
@@ -682,7 +682,7 @@ const M49_READINGS: Record<string, string> = {
   "017": "ちゅうぶあふりか",
   "018": "なんぶあふりか",
   "019": "あめりかたいりく",
-  "021": "きたあめりか",
+  "021": "ほくぶあめりか",
   "030": "ひがしあじあ",
   "034": "みなみあじあ",
   "035": "とうなんあじあ",

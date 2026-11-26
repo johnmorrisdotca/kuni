@@ -226,13 +226,23 @@ describe("continentName and subregionName", () => {
     for (const one of countries()) if (one.subregion !== undefined) expect(subregionName(one.subregion), one.alpha2).not.toBeNull();
   });
 
+  // MODULES-1858: one style for the seven continents, none with 大陸 (CLDR writes 北アメリカ大陸 for North America only), and the UN subregion Northern America, which CLDR also calls 北アメリカ, is 北部アメリカ so the two are told apart.
+  it("name the continents in one style, with no 大陸, and Northern America apart from North America", () => {
+    expect(CONTINENTS.map((one) => continentName(one, "ja"))).toEqual(["アフリカ", "南極", "アジア", "ヨーロッパ", "北アメリカ", "オセアニア", "南アメリカ"]);
+    for (const one of CONTINENTS) expect(continentName(one, "ja"), one).not.toContain("大陸");
+    expect(continentName("NA")).toBe("North America");
+    expect(subregionName("021")).toBe("Northern America");
+    expect(subregionName("021", "ja")).toBe("北部アメリカ");
+    expect(subregionName("021", "ja")).not.toBe(continentName("NA", "ja"));
+  });
+
   it("read each continent's Japanese name in hiragana, so the seven sort in Japanese order", () => {
     expect(CONTINENTS.map((one) => [one, continentReading(one)])).toEqual([
       ["AF", "あふりか"],
       ["AN", "なんきょく"],
       ["AS", "あじあ"],
       ["EU", "よーろっぱ"],
-      ["NA", "きたあめりかたいりく"],
+      ["NA", "きたあめりか"],
       ["OC", "おせあにあ"],
       ["SA", "みなみあめりか"],
     ]);

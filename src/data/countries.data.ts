@@ -269,7 +269,7 @@ const CONTINENT_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   AN: ["Antarctica","南極"],
   AS: ["Asia","アジア"],
   EU: ["Europe","ヨーロッパ"],
-  NA: ["North America","北アメリカ大陸"],
+  NA: ["North America","北アメリカ"],
   OC: ["Oceania","オセアニア"],
   SA: ["South America","南アメリカ"],
 };
@@ -280,7 +280,7 @@ const CONTINENT_READINGS: Readonly<Record<string, string>> = {
   AN: "なんきょく",
   AS: "あじあ",
   EU: "よーろっぱ",
-  NA: "きたあめりかたいりく",
+  NA: "きたあめりか",
   OC: "おせあにあ",
   SA: "みなみあめりか",
 };
@@ -293,7 +293,7 @@ const SUBREGION_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   "015": ["Northern Africa","北アフリカ"],
   "017": ["Middle Africa","中部アフリカ"],
   "018": ["Southern Africa","南部アフリカ"],
-  "021": ["Northern America","北アメリカ"],
+  "021": ["Northern America","北部アメリカ"],
   "029": ["Caribbean","カリブ"],
   "030": ["Eastern Asia","東アジア"],
   "034": ["Southern Asia","南アジア"],

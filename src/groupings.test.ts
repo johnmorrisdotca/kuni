@@ -53,6 +53,12 @@ describe("every grouping", () => {
   });
 
   it("gives UN M49's tree, with Antarctica in no area", () => {
+    // MODULES-1858: the continents have one style (no 大陸), and Northern America (021) is told apart from North America (003, the continent's own members)
+    expect(grouping("continent-na")).toMatchObject({ name: { en: "North America", ja: "北アメリカ" }, reading: "きたあめりか" });
+    expect(grouping("continent-sa")).toMatchObject({ name: { en: "South America", ja: "南アメリカ" }, reading: "みなみあめりか" });
+    expect(grouping("m49-003")).toMatchObject({ name: { en: "North America", ja: "北アメリカ" }, reading: "きたあめりか" });
+    expect(grouping("m49-021")).toMatchObject({ name: { en: "Northern America", ja: "北部アメリカ" }, reading: "ほくぶあめりか" });
+    for (const one of groupings({ kind: "continent" })) expect(one.name.ja, one.id).not.toContain("大陸");
     expect(grouping("m49-030")?.members).toEqual(["CN", "HK", "JP", "KP", "KR", "MN", "MO", "TW"]);
     expect(grouping("m49-030")?.parent).toBe("m49-142");
     expect(grouping("m49-005")?.parent).toBe("m49-419");
