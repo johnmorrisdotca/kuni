@@ -8,7 +8,7 @@ Written by `pnpm data`; do not edit by hand. The rules are at the top of `script
 | --- | --- |
 | `inception` | 224 of 250, 145 to the day |
 | `officialLanguages` | 246 of 250 |
-| `largestCity` | 228 of 250 |
+| `largestCity` | 235 of 250 |
 
 ## What an inception is
 
@@ -40,47 +40,28 @@ The figure is the one `/cities` holds: Wikidata's latest best-ranked population 
 
 By the urban area round it, the answer would be another city in 9 countries: Belgium, Brussels (the City of Brussels has 195,546; Antwerp 529,247); Cyprus, Nicosia (Limassol is the largest municipality, 108,105 at the 2021 census, Nicosia 56,848); Ghana, Accra (the Kumasi Metropolitan District had 443,981 at the 2021 census, Accra's 284,124); India, Delhi today; Israel, Tel Aviv; Italy, Milan; the Philippines, Manila; Sudan, Khartoum (at the 2008 census Omdurman had 1,849,659, Khartoum 1,410,858); Taiwan, Taipei.
 
-### Figures set by hand, 14
+### Figures set by hand, 1
 
 | City | Wikidata's figure | Used | Day | Why |
 | --- | --- | --- | --- | --- |
-| Dagbon (Q24697413) | 4,000,000 | none |  | Dagbon, Ghana: a traditional kingdom of the north, and its 4,000,000 its people; not a city. |
-| Tarawa (Q2486) | 70,090 | none |  | Tarawa, Kiribati: the atoll, North Tarawa with it; its town is South Tarawa (Q131233), the capital. |
-| Banikoara (Q2200458) | 867,463 | 246,575 | 2013-05-11 | Banikoara, Benin: Wikidata's 867,463 is the census figure of the whole Alibori department. |
-| Kumasi (Q182059) | 3,903,480 | 443,981 | 2021-06-27 | Kumasi, Ghana: Wikidata's 3,903,480 (2024) is World Population Review's estimate of the urban area. |
-| Accra (Q3761) | 1,782,150 | 284,124 | 2021-06-27 | Accra, Ghana: Wikidata's 1,782,150 is the census's urban population of the area round the city. |
-| Tamale (Q217040) | 729,768 | 374,744 | 2021-06-27 | Tamale, Ghana: Wikidata's 729,768 (2023) is no census figure. |
-| Sekondi-Takoradi (Q243293) | 539,548 | 245,382 | 2021-06-27 | Sekondi-Takoradi, Ghana: Wikidata's 539,548 is the 2010 figure of the district before it was split. |
-| Khartoum (Q1963) | 5,345,000 | 1,410,858 | 2008-04-22 | Khartoum, Sudan: Wikidata's 5,345,000 (2018) is Demographia's estimate of the urban area of the three cities, Omdurman and Khartoum North with it. |
-| Omdurman (Q180921) | 2,805,396 | 1,849,659 | 2008-04-22 | Omdurman, Sudan: Wikidata's 2,805,396 (2012) has no source; the census figure, of the day Khartoum's is. |
-| Lobamba (Q101418) | 114,585 | none |  | Lobamba, Eswatini: Wikidata's 114,585 (2025) is World Population Review's; Wikidata's own earlier figure is 5,800, and the 2017 census does not list it among the towns. |
-| Manzini (Q495730) | 110,508 | 30,248 | 2017-05-11 | Manzini, Eswatini: Wikidata's 110,508 (2005) has no source and is more than three times the census's figure. |
-| Mbabane (Q3904) | 76,218 | 60,691 | 2017-05-11 | Mbabane, Eswatini: Wikidata's 76,218 (2025) is World Population Review's; the census figure, of the day Manzini's is. |
 | Malabo (Q3818) | 297,000 | 257,000 | 2015-07-04 | Malabo, Equatorial Guinea: Wikidata's 297,000 is for 2018 and Bata's 290,000 for 2015; the same source and day give Malabo 257,000. |
-| Gros Islet (Q3116994) | 21,660 | none |  | Gros Islet, Saint Lucia: Wikidata's 21,660 is the Gros Islet District's, not the town's; Castries' 20,000 is the city's. |
 
-Sources: INSAE, Benin, fourth General Census of Population and Housing (RGPH-4, 2013), the commune; Ghana Statistical Service, 2021 Population and Housing Census (27 June 2021), the metropolitan district; Central Bureau of Statistics, Sudan, Fifth Population and Housing Census (22 April 2008), the city; Central Statistical Office, Eswatini, 2017 Population and Housing Census (11 May 2017), the town; The 2015 census of Equatorial Guinea, the city as citypopulation.de (Thomas Brinkhoff) calculates it.
+Sources: the 2015 census of Equatorial Guinea, the city as citypopulation.de (Thomas Brinkhoff) calculates it.
 
-### The largest place is not among kuni's cities, 16
+### The largest place is not among kuni's cities, 10
 
 These have no `largestCity`, rather than the wrong one:
 
 - AS American Samoa: Tafuna; Tafuna had 7,988 people in 2020, Pago Pago 3,656 in 2010; kuni has only the capital, below 15,000.
 - BM Bermuda: St. George's; the Town of St. George is larger than the City of Hamilton; kuni has only the capital, below 15,000.
 - CC Cocos (Keeling) Islands: Home Island; most of the islands' 593 people live on Home Island, 147 on West Island; kuni has only the capital.
-- EH Western Sahara: Laayoune; kuni's cities, as Wikidata does, give Laayoune the code MA.
 - FM Micronesia: Weno; Weno, in Chuuk, is larger than Palikir; kuni has neither it nor the other towns below 15,000.
-- GP Guadeloupe: Les Abymes; the largest commune; kuni has Basse-Terre, the capital, alone.
-- GU Guam: Dededo; Dededo had 44,908 people in 2020, Hagåtña 943; kuni's cities, as Wikidata does, give Dededo the code US.
-- LI Liechtenstein: Schaan; Schaan had 5,998 people on 30 June 2019, Vaduz 5,668; kuni has only the capital, below 15,000.
-- MT Malta: St. Paul's Bay; the largest locality at the 2021 census; kuni does not have it.
+- LI Liechtenstein: Schaan; Schaan had 5,998 people on 30 June 2019, Vaduz 5,668; kuni has Schaan with no figure, so it cannot rank it and would name the capital.
 - NF Norfolk Island: Burnt Pine; the island's main settlement; kuni has only Kingston, the capital, with no figure.
 - NR Nauru: Denigomodu; the district with the most people; kuni has only Yaren District, the seat of government.
-- PF French Polynesia: Faʼaʼā; the most populous commune, larger than Papeete; kuni does not have it.
 - SH St. Helena: Half Tree Hollow; the settlement with the most people, larger than Jamestown; kuni has only the capital.
 - SM San Marino: Dogana; Dogana, in Serravalle, had about 7,000 people, the City of San Marino 3,997; kuni has only the capital.
 - SX Sint Maarten: Lower Prince's Quarter; the largest district, larger than Philipsburg; kuni has only the capital.
-- TC Turks & Caicos Islands: Providenciales; the island town with most of the people, far larger than Cockburn Town; kuni does not have it.
 
 ## No city of 15,000 people in kuni
 

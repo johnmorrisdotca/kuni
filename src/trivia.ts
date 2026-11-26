@@ -95,7 +95,7 @@ const trivia = (code: string): CountryTrivia | null => {
  * import { allTrivia } from "@johnmorrisdotca/kuni/trivia";
  *
  * console.log(allTrivia().length);                                              // 250
- * console.log(allTrivia().filter((one) => one.largestCity !== null).length);    // 228
+ * console.log(allTrivia().filter((one) => one.largestCity !== null).length);    // 235
  * ```
  */
 const allTrivia = (): readonly CountryTrivia[] => getTable().list;

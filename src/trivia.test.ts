@@ -48,7 +48,7 @@ describe("the trivia", () => {
     expect(trivia("AU")?.largestCity).toEqual({ id: "Q3130", name: { en: "Sydney", ja: "シドニー" } });
     expect(trivia("IT")?.largestCity).toEqual({ id: "Q220", name: { en: "Rome", ja: "ローマ" } });
     expect(trivia("AQ")?.largestCity).toBeNull();
-    expect(allTrivia().filter((one) => one.largestCity !== null)).toHaveLength(228);
+    expect(allTrivia().filter((one) => one.largestCity !== null)).toHaveLength(235);
   });
 
   // The city proper, not the urban area (docs/trivia.md): the capitals people take for the largest city, the cities an
@@ -61,7 +61,7 @@ describe("the trivia", () => {
     // China and India, by their censuses: not Chongqing's municipality, not Delhi's territory.
     CN: "Shanghai", IN: "Mumbai",
     // The city itself, where its urban area would give another.
-    IT: "Rome", IL: "Jerusalem", PH: "Quezon City", TW: "New Taipei City", BE: "Antwerp", CY: "Limassol", GH: "Kumasi", SD: "Omdurman",
+    IT: "Rome", IL: "Jerusalem", PH: "Quezon City", TW: "New Taipei City", BE: "Antwerp", CY: "Limassol", GH: "Kumasi", SD: "Omdurman", EH: "Laayoune", GU: "Dededo", GP: "Les Abymes", MT: "St. Paul's Bay", PF: "Faʻaʻā", TC: "Providenciales",
     // Wikidata's figure set right: a kingdom, a department, an atoll, a district, and estimates of another year.
     BJ: "Cotonou", SZ: "Mbabane", GQ: "Bata", KI: "South Tarawa", LC: "Castries",
     // The capital is the largest.
@@ -74,8 +74,8 @@ describe("the trivia", () => {
   });
 
   it("names none rather than a wrong city where kuni lacks the largest place", () => {
-    // Guam's Dededo (under US in /cities), Liechtenstein's Schaan, San Marino's Dogana, Faʼaʼā, St. Paul's Bay, Providenciales.
-    for (const code of ["GU", "LI", "SM", "PF", "MT", "TC", "AS", "EH"]) expect(trivia(code)?.largestCity, code).toBeNull();
+    // Liechtenstein's Schaan (kuni has no figure for it), San Marino's Dogana.
+    for (const code of ["LI", "SM", "AS"]) expect(trivia(code)?.largestCity, code).toBeNull();
     const wrong = new Set(["Q24697413", "Q2200458", "Q101418", "Q2486", "Q3116994", "Q30988", "Q1844", "Q1848"]); // Dagbon, Banikoara, Lobamba, Tarawa, Gros Islet, Hagåtña, Vaduz, San Marino
     for (const one of allTrivia()) expect(wrong.has(one.largestCity?.id ?? ""), one.alpha2).toBe(false);
   });
