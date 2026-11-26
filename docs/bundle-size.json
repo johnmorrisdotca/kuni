@@ -2,8 +2,8 @@
   "measured": "esbuild 0.28.2, bundled, minified, ES2020, gzip level 9",
   "entries": {
     ".": {
-      "minified": 70488,
-      "gzip": 22691
+      "minified": 70830,
+      "gzip": 22710
     },
     "./codes": {
       "minified": 1356,
@@ -50,8 +50,8 @@
       "gzip": 1030
     },
     "./reserved": {
-      "minified": 6193,
-      "gzip": 1542
+      "minified": 6237,
+      "gzip": 1567
     },
     "./cities": {
       "minified": 4652883,
@@ -70,8 +70,8 @@
       "gzip": 212106
     },
     "./places": {
-      "minified": 10019018,
-      "gzip": 3329432
+      "minified": 10019360,
+      "gzip": 3329456
     },
     "./names/fr": {
       "minified": 10106,
@@ -126,12 +126,12 @@
       "gzip": 4282
     },
     "./element": {
-      "minified": 863422,
-      "gzip": 297610
+      "minified": 863764,
+      "gzip": 297640
     },
     "./element/define": {
-      "minified": 863425,
-      "gzip": 297625
+      "minified": 863767,
+      "gzip": 297655
     },
     "./subdivisions/ad": {
       "minified": 1220,

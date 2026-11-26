@@ -2,7 +2,7 @@
 // use and are no country of ISO 3166-1 (Ascension Island, the Canary Islands, Abkhazia, Somaliland). The rules are
 // written at the top of scripts/reserved-config.ts.
 
-import { DE_FACTO, DE_FACTO_CLASSES, ORGANISATIONS, PARENT_ITEMS, RESERVED_ITEMS, USER_ASSIGNED, USER_ASSIGNED_SOURCE } from "./reserved-config.ts";
+import { DE_FACTO, DE_FACTO_CLASSES, JA_NAMES, ORGANISATIONS, PARENT_ITEMS, RESERVED_ITEMS, USER_ASSIGNED, USER_ASSIGNED_SOURCE } from "./reserved-config.ts";
 
 type Row = unknown[];
 type Kind = "iso-reserved" | "user-assigned" | "de-facto";
@@ -56,6 +56,7 @@ const buildReserved = (inputs: ReservedInputs): { records: ReservedRecord[]; doc
   const problems: string[] = [];
   const notes: string[] = [];
   const usedParents = new Set<string>();
+  const usedNames = new Set<string>();
   const known = new Set(subdivisions.map((one) => one.code));
 
   // ----- Which codes are iso-reserved -------------------------------------------------------------------------
@@ -80,6 +81,15 @@ const buildReserved = (inputs: ReservedInputs): { records: ReservedRecord[]; doc
     }
 
     return [...out].sort(byText);
+  };
+
+  const named = (id: string, ja: string | null): string | null => {
+    const fix = JA_NAMES[id];
+    if (fix === undefined) return ja;
+    usedNames.add(id);
+    if (ja !== fix.from) problems.push(`${id}: its Japanese name is ${ja ?? "none"} now, not ${fix.from}: check JA_NAMES again`);
+
+    return fix.ja;
   };
 
   const make = (id: string, code: string | null, kind: Kind, items: string[], source: [string, string]): ReservedRecord | null => {
@@ -145,7 +155,7 @@ const buildReserved = (inputs: ReservedInputs): { records: ReservedRecord[]; doc
       alpha3: kind === "iso-reserved" && code !== null ? (cldr.alpha3[code]?._alpha3 ?? null) : null,
       kind,
       en: tidy(en),
-      ja: ja === null ? null : tidy(ja),
+      ja: named(id, ja === null ? null : tidy(ja)),
       status,
       parent,
       subdivisions: [...linked].sort(byText),
@@ -164,6 +174,7 @@ const buildReserved = (inputs: ReservedInputs): { records: ReservedRecord[]; doc
     .sort((a, b) => byText(a.id, b.id));
   const ids = new Set(records.map((one) => one.id));
   if (ids.size !== records.length) problems.push("Two places have one id");
+  for (const id of Object.keys(JA_NAMES)) if (!usedNames.has(id)) problems.push(`JA_NAMES lists ${id}, which nothing used`);
   for (const item of Object.keys(PARENT_ITEMS)) if (!usedParents.has(item)) problems.push(`PARENT_ITEMS lists ${item}, which nothing used`);
   if (problems.length > 0) throw new Error(`The reserved places cannot be built:\n${problems.join("\n")}`);
 
@@ -186,6 +197,7 @@ const buildReserved = (inputs: ReservedInputs): { records: ReservedRecord[]; doc
     ...Object.entries(ORGANISATIONS).map(([code, why]) => `- **${code}** is a region subtag of the registry and is not here: ${why}`),
     ...Object.entries(USER_ASSIGNED).map(([code, { words }]) => `- **${code}** as ${USER_ASSIGNED_SOURCE.name} has it (read ${USER_ASSIGNED_SOURCE.read}): "${words}". Unicode CLDR uses XA for a testing locale; no standard gives these codes to anyone.`),
     ...Object.entries(PARENT_ITEMS).map(([item, { code, why }]) => `- A country item ${item} is read as **${code}**: ${why}`),
+    ...Object.entries(JA_NAMES).map(([id, { from, ja, why }]) => `- **${id}** is named ${ja} in Japanese, where the source has ${from}: ${why}`),
     ...notes.map((line) => `- ${line}`),
     "- A parent of a `user-assigned` or `de-facto` place is what Wikidata records, and says nothing about who governs it.",
     "",

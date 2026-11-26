@@ -38,6 +38,10 @@ describe("the places outside ISO 3166-1", () => {
     expect(reservedPlace("IC")?.name).toEqual({ en: "Canary Islands", ja: "カナリア諸島" });
     expect(reservedPlace("EA")?.name).toEqual({ en: "Ceuta & Melilla", ja: "セウタ・メリリャ" });
     expect(reservedPlace("somaliland")?.name).toEqual({ en: "Somaliland", ja: "ソマリランド" });
+    expect(reservedPlace("abkhazia")?.name.ja).toBe("アブハジア");
+    expect(reservedPlace("south-ossetia")?.name.ja).toBe("南オセチア");
+    expect(reservedPlace("DG")?.name.ja).toBe("ディエゴ・ガルシア島");
+    expect(reservedPlace("artsakh")?.name).toEqual({ en: "Republic of Artsakh", ja: "ナゴルノ・カラバフ(アルツァフ共和国)" });
     for (const one of reservedPlaces()) {
       expect(one.name.en, one.id).not.toBe("");
       if (one.name.ja !== null) expect(one.name.ja, one.id).toMatch(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u);

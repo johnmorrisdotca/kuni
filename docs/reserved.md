@@ -8,13 +8,13 @@ Read from IANA's Language Subtag Registry (File-Date 2026-09-17, read 2026-11-17
 
 | Id | Code | Kind | Name | In Japanese | Status | Parent | Subdivisions | Until |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| abkhazia | XA | `user-assigned` | Republic of Abkhazia | アブハジア共和国 | `disputed` | GE |  |  |
-| artsakh |  | `de-facto` | Republic of Artsakh | アルツァフ共和国 | `disputed` |  |  | 2023 |
+| abkhazia | XA | `user-assigned` | Republic of Abkhazia | アブハジア | `disputed` | GE |  |  |
+| artsakh |  | `de-facto` | Republic of Artsakh | ナゴルノ・カラバフ(アルツァフ共和国) | `disputed` |  |  | 2023 |
 | ascension-island | AC | `iso-reserved` | Ascension Island | アセンション島 | `territory` | GB | SH-AC |  |
 | canary-islands | IC | `iso-reserved` | Canary Islands | カナリア諸島 | `territory` | ES | ES-CN |  |
 | ceuta-and-melilla | EA | `iso-reserved` | Ceuta & Melilla | セウタ・メリリャ | `territory` | ES | ES-CE, ES-ML |  |
 | clipperton-island | CP | `iso-reserved` | Clipperton Island | クリッパートン島 | `uninhabited` | FR | FR-CP |  |
-| diego-garcia | DG | `iso-reserved` | Diego Garcia | ディエゴガルシア島 | `territory` | GB |  |  |
+| diego-garcia | DG | `iso-reserved` | Diego Garcia | ディエゴ・ガルシア島 | `territory` | GB |  |  |
 | northern-cyprus | XC | `user-assigned` | Northern Cyprus | 北キプロス・トルコ共和国 | `disputed` | CY |  |  |
 | sahrawi-republic |  | `de-facto` | Sahrawi Arab Democratic Republic | サハラ・アラブ民主共和国 | `disputed` |  |  |  |
 | sark | CQ | `iso-reserved` | Sark | サーク島 | `territory` | GB |  |  |
@@ -32,6 +32,9 @@ Read from IANA's Language Subtag Registry (File-Date 2026-09-17, read 2026-11-17
 - **XC** as country-flag-icons 1.6.20 (MIT), its README has it (read 2026-11-17): "`XC` — Northern Cyprus". Unicode CLDR uses XA for a testing locale; no standard gives these codes to anyone.
 - **XO** as country-flag-icons 1.6.20 (MIT), its README has it (read 2026-11-17): "`XO` — South Ossetia". Unicode CLDR uses XA for a testing locale; no standard gives these codes to anyone.
 - A country item Q124653007 is read as **GB**: The realm of the United Kingdom: the United Kingdom with its Crown Dependencies and overseas territories, the state whose ISO 3166-1 code is GB.
+- **abkhazia** is named アブハジア in Japanese, where the source has アブハジア共和国: Written like 南オセチア, the other user-assigned place of the Caucasus, with no 共和国.
+- **diego-garcia** is named ディエゴ・ガルシア島 in Japanese, where the source has ディエゴガルシア島: The usual way to write it, with the dot between the two names.
+- **artsakh** is named ナゴルノ・カラバフ(アルツァフ共和国) in Japanese, where the source has アルツァフ共和国: Japanese sources say ナゴルノ・カラバフ first; the name the English one uses stays in brackets.
 - **northern-cyprus**: Wikidata names no state it is in (P17); the parent CY is the one state it records as claiming it (P1336).
 - **artsakh**: no parent. Wikidata names no member of the United Nations it is in (P17) and none as claiming it (P1336).
 - **sahrawi-republic**: no parent. Wikidata names no member of the United Nations it is in (P17) and none as claiming it (P1336).

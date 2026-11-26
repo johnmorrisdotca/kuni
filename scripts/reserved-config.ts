@@ -74,4 +74,12 @@ const PARENT_ITEMS: Record<string, { code: string; why: string }> = {
   Q124653007: { code: "GB", why: "The realm of the United Kingdom: the United Kingdom with its Crown Dependencies and overseas territories, the state whose ISO 3166-1 code is GB." },
 };
 
-export { DE_FACTO, DE_FACTO_CLASSES, ORGANISATIONS, PARENT_ITEMS, RESERVED_ITEMS, USER_ASSIGNED, USER_ASSIGNED_SOURCE };
+// Japanese names reworded by hand: `from` is the name CLDR or Wikidata gives now, so that the build stops when it
+// changes. They are set after the name's brackets are tidied away.
+const JA_NAMES: Record<string, { from: string; ja: string; why: string }> = {
+  abkhazia: { from: "アブハジア共和国", ja: "アブハジア", why: "Written like 南オセチア, the other user-assigned place of the Caucasus, with no 共和国." },
+  "diego-garcia": { from: "ディエゴガルシア島", ja: "ディエゴ・ガルシア島", why: "The usual way to write it, with the dot between the two names." },
+  artsakh: { from: "アルツァフ共和国", ja: "ナゴルノ・カラバフ(アルツァフ共和国)", why: "Japanese sources say ナゴルノ・カラバフ first; the name the English one uses stays in brackets." },
+};
+
+export { DE_FACTO, JA_NAMES, DE_FACTO_CLASSES, ORGANISATIONS, PARENT_ITEMS, RESERVED_ITEMS, USER_ASSIGNED, USER_ASSIGNED_SOURCE };

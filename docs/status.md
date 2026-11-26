@@ -21,59 +21,59 @@ Read from Wikidata on 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`
 | AQ | Antarctica | `uninhabited` |  |  |  |
 | AS | American Samoa | `territory` | US | unincorporated territory of the United States | アメリカ合衆国の未編入領域 |
 | AW | Aruba | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の構成国 |
-| AX | Åland Islands | `territory` | FI | autonomous region | 自治区 |
-| BL | St. Barthélemy | `territory` | FR | overseas collectivity of France | 海外共同体 |
+| AX | Åland Islands | `territory` | FI | autonomous region | フィンランドの自治領 |
+| BL | St. Barthélemy | `territory` | FR | overseas collectivity of France | フランスの海外共同体 |
 | BM | Bermuda | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | BQ | Caribbean Netherlands | `territory` | NL |  |  |
-| BV | Bouvet Island | `uninhabited` | NO | dependency of Norway |  |
+| BV | Bouvet Island | `uninhabited` | NO | dependency of Norway | ノルウェーの属領 |
 | CC | Cocos (Keeling) Islands | `territory` | AU | external territory of Australia | オーストラリアの海外領土 |
-| CK | Cook Islands | `territory` | NZ | associated state | 自由連合 |
+| CK | Cook Islands | `territory` | NZ | in free association with New Zealand | ニュージーランドとの自由連合 |
 | CW | Curaçao | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の構成国 |
 | CX | Christmas Island | `territory` | AU | external territory of Australia | オーストラリアの海外領土 |
-| EH | Western Sahara | `disputed` |  | disputed territory | 係争中の領域 |
+| EH | Western Sahara | `disputed` |  | disputed territory | 領有権が争われている地域 |
 | FK | Falkland Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
-| FO | Faroe Islands | `territory` | DK | autonomous country within the Kingdom of Denmark | デンマーク王国自治領 |
-| GF | French Guiana | `territory` | FR | overseas department and region of France | 海外県 |
+| FO | Faroe Islands | `territory` | DK | autonomous country within the Kingdom of Denmark | デンマーク王国の自治領 |
+| GF | French Guiana | `territory` | FR | overseas department and region of France | フランスの海外県 |
 | GG | Guernsey | `territory` | GB | Crown Dependency | イギリスの王室属領 |
 | GI | Gibraltar | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
-| GL | Greenland | `territory` | DK | autonomous country within the Kingdom of Denmark | デンマーク王国自治領 |
-| GP | Guadeloupe | `territory` | FR | overseas department and region of France | 海外県 |
+| GL | Greenland | `territory` | DK | autonomous country within the Kingdom of Denmark | デンマーク王国の自治領 |
+| GP | Guadeloupe | `territory` | FR | overseas department and region of France | フランスの海外県 |
 | GS | South Georgia & South Sandwich Islands | `uninhabited` | GB | British Overseas Territory | イギリスの海外領土 |
 | GU | Guam | `territory` | US | unincorporated territory of the United States | アメリカ合衆国の未編入領域 |
-| HK | Hong Kong SAR China | `special-region` | CN | special administrative region of China | 特別行政区 |
+| HK | Hong Kong SAR China | `special-region` | CN | special administrative region of China | 中国の特別行政区 |
 | HM | Heard & McDonald Islands | `uninhabited` | AU | external territory of Australia | オーストラリアの海外領土 |
 | IM | Isle of Man | `territory` | GB | Crown Dependency | イギリスの王室属領 |
 | IO | British Indian Ocean Territory | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | JE | Jersey | `territory` | GB | Crown Dependency | イギリスの王室属領 |
 | KY | Cayman Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
-| MF | St. Martin | `territory` | FR | overseas collectivity of France | 海外共同体 |
-| MO | Macao SAR China | `special-region` | CN | special administrative region of China | 特別行政区 |
+| MF | St. Martin | `territory` | FR | overseas collectivity of France | フランスの海外共同体 |
+| MO | Macao SAR China | `special-region` | CN | special administrative region of China | 中国の特別行政区 |
 | MP | Northern Mariana Islands | `territory` | US | unincorporated territory of the United States | アメリカ合衆国の未編入領域 |
-| MQ | Martinique | `territory` | FR | overseas department and region of France | 海外県 |
+| MQ | Martinique | `territory` | FR | overseas department and region of France | フランスの海外県 |
 | MS | Montserrat | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
-| NC | New Caledonia | `territory` | FR | overseas collectivity of France | 海外共同体 |
+| NC | New Caledonia | `territory` | FR | overseas collectivity of France | フランスの海外共同体 |
 | NF | Norfolk Island | `territory` | AU | external territory of Australia | オーストラリアの海外領土 |
 | NU | Niue | `territory` | NZ | in free association with New Zealand | ニュージーランドとの自由連合 |
-| PF | French Polynesia | `territory` | FR | overseas collectivity of France | 海外共同体 |
-| PM | St. Pierre & Miquelon | `territory` | FR | overseas collectivity of France | 海外共同体 |
+| PF | French Polynesia | `territory` | FR | overseas collectivity of France | フランスの海外共同体 |
+| PM | St. Pierre & Miquelon | `territory` | FR | overseas collectivity of France | フランスの海外共同体 |
 | PN | Pitcairn Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | PR | Puerto Rico | `territory` | US | unincorporated territory of the United States | アメリカ合衆国の未編入領域 |
 | PS | Palestinian Territories | `un-observer` |  |  |  |
-| RE | Réunion | `territory` | FR | overseas department and region of France | 海外県 |
+| RE | Réunion | `territory` | FR | overseas department and region of France | フランスの海外県 |
 | SH | St. Helena | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
-| SJ | Svalbard & Jan Mayen | `territory` | NO | statistical territorial entity | 統計上の区画 |
+| SJ | Svalbard & Jan Mayen | `territory` | NO | statistical territorial entity | ノルウェーの領土 |
 | SX | Sint Maarten | `territory` | NL | constituent country of the Kingdom of the Netherlands | オランダ王国の構成国 |
 | TC | Turks & Caicos Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
-| TF | French Southern Territories | `territory` | FR | dependent territory | 属領 |
-| TK | Tokelau | `territory` | NZ | dependent territory | 属領 |
+| TF | French Southern Territories | `territory` | FR | dependent territory | フランスの属領 |
+| TK | Tokelau | `territory` | NZ | dependent territory | ニュージーランドの属領 |
 | TW | Taiwan | `disputed` |  |  |  |
-| UM | U.S. Outlying Islands | `territory` | US | insular area of the United States | 島嶼地域 |
+| UM | U.S. Outlying Islands | `territory` | US | insular area of the United States | アメリカ合衆国の島嶼地域 |
 | VA | Vatican City | `un-observer` |  |  |  |
 | VG | British Virgin Islands | `territory` | GB | British Overseas Territory | イギリスの海外領土 |
 | VI | U.S. Virgin Islands | `territory` | US | unincorporated territory of the United States | アメリカ合衆国の未編入領域 |
-| WF | Wallis & Futuna | `territory` | FR | overseas collectivity of France | 海外共同体 |
+| WF | Wallis & Futuna | `territory` | FR | overseas collectivity of France | フランスの海外共同体 |
 | XK | Kosovo | `disputed` |  |  |  |
-| YT | Mayotte | `territory` | FR | overseas department and region of France | 海外県 |
+| YT | Mayotte | `territory` | FR | overseas department and region of France | フランスの海外県 |
 
 ## Choices
 
@@ -83,13 +83,24 @@ Read from Wikidata on 2026-11-17 (`data-sources/wikidata-status-2026-11-17.json`
 - **TW**, `disputed` with no sovereign: Taiwan keeps the name it already has. It is neither a member nor an observer of the United Nations, and no sovereign is given. No type is added.
 - **XK**, `disputed` with no sovereign: Kosovo keeps the name it already has. It is neither a member nor an observer of the United Nations, its code is user-assigned, and no sovereign is given. No type is added.
 - **NU** belongs to **NZ** and its type is "in free association with New Zealand": Niue is in free association with New Zealand. Wikidata names no other state for it.
+- **CK** belongs to **NZ** and its type is "in free association with New Zealand": The Cook Islands are in free association with New Zealand, as Niue is. Wikidata's class, associated state, names the arrangement and not the state in it.
 - **GS** is `uninhabited` though Wikidata gives it a population: "There are no permanent residents in the Territory but the British Antarctic Survey (BAS) operates two bases on South Georgia." (https://gov.gs/about-sgssi/, read 2026-11-17).
 - A country item Q756617 is read as **DK**: The Kingdom of Denmark (the Danish Realm), the state whose ISO 3166-1 code is DK; Wikidata keeps the code on Denmark (Q35).
 - **GI**: Wikidata names ES and GB; the statement of preferred rank is GB.
 - The type from the class Q46395, British Overseas Territory: Wikidata labels the class in the plural, British Overseas Territories.
 - The type from the class Q185086, Crown Dependency: Wikidata labels the class in the plural, Crown Dependencies.
 - The type from the class Q15304003, constituent country of the Kingdom of the Netherlands: Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term. Its Japanese, オランダ王国の国, says the same rejected thing; 構成国 is the usual Japanese.
-- The type from the class Q5260616, with no Japanese: Wikidata's Japanese label, ノルウェーの南極領, says Norway's Antarctic territory, which Bouvet Island is not.
+- The type from the class Q66724388: Wikidata's Japanese label, デンマーク王国自治領, lacks the の that the other types have.
+- The type from the class Q779415: Wikidata's Japanese label, 特別行政区, leaves out whose it is, which the English label says.
+- The type from the class Q202216: Wikidata's Japanese label, 海外県, leaves out whose it is, which the English label says.
+- The type from the class Q719487: Wikidata's Japanese label, 海外共同体, leaves out whose it is, which the English label says.
+- The type from the class Q5260616: Wikidata's Japanese label, ノルウェーの南極領, says Norway's Antarctic territory, which Bouvet Island is not; it is a dependency of Norway.
+- The type from the class Q782614: Wikidata's Japanese label, 自治区, is the name of China's autonomous regions; Japanese Wikipedia calls Åland フィンランドの自治領, the only one of this class here.
+- The type from the class Q15239622: Wikidata's Japanese label, 係争中の領域, is stiff; this says what is disputed, and there is no sovereign to name.
+- The type from the class Q462778: Wikidata's Japanese label, 島嶼地域, leaves out whose it is, which the English label says.
+- The type from the class Q15042037: Wikidata's Japanese label, 統計上の区画, is a census word; Svalbard is Norway's territory.
+- **TF** has the Japanese type フランスの属領: French Southern and Antarctic Lands: Wikidata's Japanese label for the class, 属領, leaves out whose it is.
+- **TK** has the Japanese type ニュージーランドの属領: Tokelau: Wikidata's Japanese label for the class, 属領, leaves out whose it is.
 - **AQ** has no type: Antarctica: Wikidata's item is the continent, and no class of TYPE_CLASSES fits a continent.
 - **BQ** has no type: The Caribbean Netherlands: Wikidata's item says only that it is an island group and an administrative entity. Its three islands are special municipalities of the Netherlands, which the item for the three together does not say.
 

@@ -37,7 +37,7 @@ describe("what each country is", () => {
   it("takes no side where sovereignty is disputed", () => {
     expect(countries({ status: "disputed" }).map((one) => one.alpha2)).toEqual(["EH", "TW", "XK"]);
     for (const one of countries({ status: "disputed" })) expect(one.sovereign, one.alpha2).toBeUndefined();
-    expect(country("EH")?.type).toEqual({ en: "disputed territory", ja: "係争中の領域" });
+    expect(country("EH")?.type).toEqual({ en: "disputed territory", ja: "領有権が争われている地域" });
     expect(country("TW")?.type).toBeUndefined();
     expect(country("XK")?.type).toBeUndefined();
     expect(country("TW")?.name.en).toBe("Taiwan");
@@ -55,10 +55,22 @@ describe("what each country is", () => {
     expect(country("JE")?.type?.en).toBe("Crown Dependency");
     expect(country("PR")?.type?.en).toBe("unincorporated territory of the United States");
     expect(country("AW")?.type).toEqual({ en: "constituent country of the Kingdom of the Netherlands", ja: "オランダ王国の構成国" });
-    expect(country("HK")?.type).toEqual({ en: "special administrative region of China", ja: "特別行政区" });
+    expect(country("HK")?.type).toEqual({ en: "special administrative region of China", ja: "中国の特別行政区" });
     expect(country("PF")?.type?.en).toBe("overseas collectivity of France");
-    expect(country("BV")?.type).toEqual({ en: "dependency of Norway", ja: null });
+    expect(country("BV")?.type).toEqual({ en: "dependency of Norway", ja: "ノルウェーの属領" });
+    expect(country("CK")?.type).toEqual({ en: "in free association with New Zealand", ja: "ニュージーランドとの自由連合" });
+    expect(country("PF")?.type?.ja).toBe("フランスの海外共同体");
+    expect(country("GP")?.type?.ja).toBe("フランスの海外県");
+    expect(country("TF")?.type?.ja).toBe("フランスの属領");
+    expect(country("TK")?.type?.ja).toBe("ニュージーランドの属領");
+    expect(country("FO")?.type?.ja).toBe("デンマーク王国の自治領");
+    expect(country("AX")?.type?.ja).toBe("フィンランドの自治領");
+    expect(country("UM")?.type?.ja).toBe("アメリカ合衆国の島嶼地域");
+    expect(country("SJ")?.type?.ja).toBe("ノルウェーの領土");
+    expect(country("PR")?.type?.ja).toBe("アメリカ合衆国の未編入領域");
     expect(country("NU")?.type).toEqual({ en: "in free association with New Zealand", ja: "ニュージーランドとの自由連合" });
+    // Whoever has a sovereign names it in Japanese.
+    for (const one of countries({ status: "territory" })) if (one.type?.ja != null && one.alpha2 !== "BQ") expect(one.type.ja, one.alpha2).toMatch(/の|との/);
     expect(country("JP")?.type).toBeUndefined();
     expect(country("VA")?.type).toBeUndefined();
     // The two with no type are the two the build explains (scripts/status-config.ts, TYPE_GAPS).

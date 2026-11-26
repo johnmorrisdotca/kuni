@@ -67,13 +67,19 @@ const NO_SOVEREIGN: Record<string, { status: "disputed" | "territory"; why: stri
   },
 };
 
-// Niue is self-governing in free association with New Zealand. The Cook Islands already take New Zealand from Wikidata.
+// Niue and the Cook Islands are self-governing in free association with New Zealand, and say so the same way.
 const FREE_ASSOCIATION: Record<string, { sovereign: string; en: string; ja: string; why: string }> = {
   NU: {
     sovereign: "NZ",
     en: "in free association with New Zealand",
     ja: "ニュージーランドとの自由連合",
     why: "Niue is in free association with New Zealand. Wikidata names no other state for it.",
+  },
+  CK: {
+    sovereign: "NZ",
+    en: "in free association with New Zealand",
+    ja: "ニュージーランドとの自由連合",
+    why: "The Cook Islands are in free association with New Zealand, as Niue is. Wikidata's class, associated state, names the arrangement and not the state in it.",
   },
 };
 
@@ -87,20 +93,26 @@ const TYPE_CLASSES: { item: string; en?: string; ja?: string | null; why?: strin
   { item: "Q185086", en: "Crown Dependency", why: "Wikidata labels the class in the plural, Crown Dependencies." },
   { item: "Q783733" }, // unincorporated territory of the United States
   { item: "Q15304003", en: "constituent country of the Kingdom of the Netherlands", ja: "オランダ王国の構成国", why: "Wikidata's label, country of the Kingdom of the Netherlands, reads as any country in it; constituent country is the usual English term. Its Japanese, オランダ王国の国, says the same rejected thing; 構成国 is the usual Japanese." },
-  { item: "Q66724388" }, // autonomous country within the Kingdom of Denmark
-  { item: "Q779415" }, // special administrative region of China
-  { item: "Q202216" }, // overseas department and region of France
-  { item: "Q719487" }, // overseas collectivity of France
+  { item: "Q66724388", ja: "デンマーク王国の自治領", why: "Wikidata's Japanese label, デンマーク王国自治領, lacks the の that the other types have." },
+  { item: "Q779415", ja: "中国の特別行政区", why: "Wikidata's Japanese label, 特別行政区, leaves out whose it is, which the English label says." },
+  { item: "Q202216", ja: "フランスの海外県", why: "Wikidata's Japanese label, 海外県, leaves out whose it is, which the English label says." },
+  { item: "Q719487", ja: "フランスの海外共同体", why: "Wikidata's Japanese label, 海外共同体, leaves out whose it is, which the English label says." },
   { item: "Q11687019" }, // external territory of Australia
-  { item: "Q5260616", ja: null, why: "Wikidata's Japanese label, ノルウェーの南極領, says Norway's Antarctic territory, which Bouvet Island is not." },
-  { item: "Q1138279" }, // associated state
-  { item: "Q782614" }, // autonomous region
+  { item: "Q5260616", ja: "ノルウェーの属領", why: "Wikidata's Japanese label, ノルウェーの南極領, says Norway's Antarctic territory, which Bouvet Island is not; it is a dependency of Norway." },
+  { item: "Q1138279" }, // associated state, which Niue and the Cook Islands say in FREE_ASSOCIATION
+  { item: "Q782614", ja: "フィンランドの自治領", why: "Wikidata's Japanese label, 自治区, is the name of China's autonomous regions; Japanese Wikipedia calls Åland フィンランドの自治領, the only one of this class here." },
   { item: "Q10711424" }, // state with limited recognition
-  { item: "Q15239622" }, // disputed territory
+  { item: "Q15239622", ja: "領有権が争われている地域", why: "Wikidata's Japanese label, 係争中の領域, is stiff; this says what is disputed, and there is no sovereign to name." },
   { item: "Q161243" }, // dependent territory
-  { item: "Q462778" }, // insular area of the United States
-  { item: "Q15042037" }, // statistical territorial entity
+  { item: "Q462778", ja: "アメリカ合衆国の島嶼地域", why: "Wikidata's Japanese label, 島嶼地域, leaves out whose it is, which the English label says." },
+  { item: "Q15042037", ja: "ノルウェーの領土", why: "Wikidata's Japanese label, 統計上の区画, is a census word; Svalbard is Norway's territory." },
 ];
+
+// A class whose Japanese cannot name the sovereign because two states have it: the label for each code.
+const TYPE_JA_BY_CODE: Record<string, { ja: string; why: string }> = {
+  TF: { ja: "フランスの属領", why: "French Southern and Antarctic Lands: Wikidata's Japanese label for the class, 属領, leaves out whose it is." },
+  TK: { ja: "ニュージーランドの属領", why: "Tokelau: Wikidata's Japanese label for the class, 属領, leaves out whose it is." },
+};
 
 // The codes that get no type, because their item is an instance of nothing in TYPE_CLASSES.
 const TYPE_GAPS: Record<string, string> = {
@@ -108,5 +120,5 @@ const TYPE_GAPS: Record<string, string> = {
   BQ: "The Caribbean Netherlands: Wikidata's item says only that it is an island group and an administrative entity. Its three islands are special municipalities of the Netherlands, which the item for the three together does not say.",
 };
 
-export { FREE_ASSOCIATION, NO_PERMANENT_RESIDENTS, NO_SOVEREIGN, NO_TYPE, SOVEREIGN_ITEMS, SPECIAL_REGION_CLASS, TYPE_CLASSES, TYPE_GAPS, UN_OBSERVERS };
+export { FREE_ASSOCIATION, NO_PERMANENT_RESIDENTS, NO_SOVEREIGN, NO_TYPE, SOVEREIGN_ITEMS, SPECIAL_REGION_CLASS, TYPE_CLASSES, TYPE_GAPS, TYPE_JA_BY_CODE, UN_OBSERVERS };
 export type { Status };

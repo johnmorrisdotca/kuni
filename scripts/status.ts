@@ -3,7 +3,7 @@
 // and a short type in English and Japanese ("British Overseas Territory", イギリスの海外領土). The rules are
 // written at the top of scripts/status-config.ts; the exceptions are listed there.
 
-import { FREE_ASSOCIATION, NO_PERMANENT_RESIDENTS, NO_SOVEREIGN, NO_TYPE, SOVEREIGN_ITEMS, SPECIAL_REGION_CLASS, TYPE_CLASSES, TYPE_GAPS, UN_OBSERVERS } from "./status-config.ts";
+import { FREE_ASSOCIATION, NO_PERMANENT_RESIDENTS, NO_SOVEREIGN, NO_TYPE, SOVEREIGN_ITEMS, SPECIAL_REGION_CLASS, TYPE_CLASSES, TYPE_GAPS, TYPE_JA_BY_CODE, UN_OBSERVERS } from "./status-config.ts";
 import type { Status } from "./status-config.ts";
 
 type Row = unknown[];
@@ -35,7 +35,7 @@ const byText = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
 const buildStatus = (inputs: StatusInputs): { records: StatusRecord[]; doc: string[] } => {
   const { snapshot, countries, itemOf, unMembers, populationOf } = inputs;
   const problems: string[] = [];
-  const used = { sovereignItems: new Set<string>(), noSovereign: new Set<string>(), residents: new Set<string>(), classes: new Set<string>(), gaps: new Set<string>(), free: new Set<string>() };
+  const used = { sovereignItems: new Set<string>(), noSovereign: new Set<string>(), residents: new Set<string>(), classes: new Set<string>(), gaps: new Set<string>(), free: new Set<string>(), jaByCode: new Set<string>() };
   const leftOut: string[] = [];
   const decided: string[] = [];
 
@@ -92,7 +92,10 @@ const buildStatus = (inputs: StatusInputs): { records: StatusRecord[]; doc: stri
       return null;
     }
 
-    return { en: english, ja: chosen.ja === undefined ? ja : chosen.ja };
+    const byCode = TYPE_JA_BY_CODE[alpha2];
+    if (byCode !== undefined) used.jaByCode.add(alpha2);
+
+    return { en: english, ja: byCode?.ja ?? (chosen.ja === undefined ? ja : chosen.ja) };
   };
 
   const records: StatusRecord[] = countries.map(({ alpha2 }) => {
@@ -135,6 +138,7 @@ const buildStatus = (inputs: StatusInputs): { records: StatusRecord[]; doc: stri
   unused("TYPE_CLASSES", TYPE_CLASSES.map((one) => one.item), used.classes);
   unused("TYPE_GAPS", Object.keys(TYPE_GAPS), used.gaps);
   unused("FREE_ASSOCIATION", Object.keys(FREE_ASSOCIATION), used.free);
+  unused("TYPE_JA_BY_CODE", Object.keys(TYPE_JA_BY_CODE), used.jaByCode);
   if (problems.length > 0) throw new Error(`The statuses cannot be built:\n${problems.join("\n")}`);
 
   // ----- The record of what was decided (docs/status.md) ------------------------------------------------------
@@ -167,6 +171,7 @@ const buildStatus = (inputs: StatusInputs): { records: StatusRecord[]; doc: stri
     ...Object.entries(SOVEREIGN_ITEMS).map(([item, { code, why }]) => `- A country item ${item} is read as **${code}**: ${why}`),
     ...decided.map((line) => `- **${line.slice(0, 2)}**${line.slice(2)}`),
     ...TYPE_CLASSES.filter((one) => one.why !== undefined).map((one) => `- The type from the class ${one.item}${one.en === undefined ? "" : `, ${one.en}`}${one.ja === null ? ", with no Japanese" : ""}: ${one.why}`),
+    ...Object.entries(TYPE_JA_BY_CODE).map(([code, { ja, why }]) => `- **${code}** has the Japanese type ${ja}: ${why}`),
     ...Object.entries(TYPE_GAPS).map(([code, why]) => `- **${code}** has no type: ${why}`),
     "",
     "## Countries Wikidata names that were not read as a sovereign",

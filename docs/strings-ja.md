@@ -181,31 +181,31 @@ open a *Fix a translation* issue with the string's name. `{name}` and the other 
 | `status_observer` | observer | オブザーバー |
 | `status_suspended` | suspended | 資格停止中 |
 | `title_quiz` | Quiz | クイズ |
-| `blurb_quiz` | Capitals, state capitals, calling codes, domains, currencies, languages, largest cities, neighbours, continents, the side of the road, and which of two countries is bigger. Each round comes from a seed: share the link and a friend gets the same questions. | 首都、州や県などの行政の中心地、国番号、ドメイン、通貨、言語、最大の都市、隣国、大陸、車の通行、2つの国の人口と面積を比べるクイズです。問題はシード値から作るので、リンクを送れば友だちにも同じ問題が出ます。 |
+| `blurb_quiz` | Capitals, state capitals, calling codes, domains, currencies, languages, largest cities, neighbours, continents, the side of the road, and which of two countries is bigger. Each round comes from a seed: share the link and a friend gets the same questions. | 首都、州都・県庁所在地、国番号、ドメイン、通貨、公用語、最大の都市、隣国、大陸、車の通行、人口と面積の比較など、いろいろな問題が出ます。問題はシード値から作るので、リンクを送れば友だちにも同じ問題が出ます。 |
 | `help_quiz` | Choose what to be asked. | 出題の種類を選びます。 |
 | `help_quiz_seed` | Start a new round, or copy the link to this one. | 新しく始めるか、このラウンドへのリンクをコピーします。 |
 | `quiz_kind` | Ask | 出題 |
 | `quiz_capital` | Capitals | 首都 |
 | `quiz_subdivision` | Which country? | どこの国？ |
 | `quiz_calling` | Calling codes | 国番号 |
-| `quiz_country` | Whose capital? | どこの首都？ |
-| `quiz_state_capital` | State capitals | 行政の中心地 |
+| `quiz_country` | Whose capital? | どの国の首都？ |
+| `quiz_state_capital` | State capitals | 州都・県庁所在地 |
 | `quiz_domain` | Domains | ドメイン |
 | `quiz_currency` | Currencies | 通貨 |
-| `quiz_language` | Languages | 言語 |
+| `quiz_language` | Languages | 公用語 |
 | `quiz_largest_city` | Largest cities | 最大の都市 |
 | `quiz_borders` | Neighbours | 隣国 |
 | `quiz_continent` | Continents | 大陸 |
 | `quiz_driving` | Driving side | 車の通行 |
-| `quiz_population` | More people | 人口が多いのは |
-| `quiz_area` | More land | 面積が広いのは |
+| `quiz_population` | More people | 人口くらべ |
+| `quiz_area` | More land | 面積くらべ |
 | `quiz_new` | New round | 新しく始める |
 | `quiz_capital_q` | What is the capital of {name}? | {name}の首都は？ |
 | `quiz_subdivision_q` | Which country is {name} in? | {name}はどの国にある？ |
 | `quiz_calling_q` | Whose calling code is {code}? | 国番号 {code} の国は？ |
 | `quiz_country_q` | {name} is the capital of which country? | {name}はどの国の首都？ |
 | `quiz_state_capital_q` | What is the capital of {name}, {country}? | {country}の{name}の行政の中心地は？ |
-| `quiz_domain_q` | Whose internet domain is {code}? | ドメイン {code} の国は？ |
+| `quiz_domain_q` | Whose internet domain is {code}? | {code} ドメインの国は？ |
 | `quiz_currency_q` | Which currency does {name} use? | {name}の通貨は？ |
 | `quiz_language_q` | Which of these is an official language of {name}? | {name}の公用語はどれ？ |
 | `quiz_largest_city_q` | What is the largest city of {name}? | {name}で最大の都市は？ |
