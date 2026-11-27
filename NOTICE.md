@@ -14,7 +14,7 @@ address, the day it was read and its SHA-256.
 | Which calling code a country has where Wikidata's item gives several (`CALLING_CODE_OVERRIDES` in `scripts/data-config.ts`: Türkiye, Saint Helena) | The ITU's "List of Recommendation ITU-T E.164 assigned country codes", Annex to ITU Operational Bulletin No. 1114 (15 December 2016), read; the list is not copied or shipped | ITU, below |
 | Each country's own name, capital and languages, and the calling code where Wikidata has none | countries-list 3.4.1 by Annexare Studio | MIT, below |
 | Each country's population, one year for every country but four (2025) | World Bank, Population, total (SP.POP.TOTL), `data-sources/world-bank-sp-pop-totl-2025.json` | CC BY 4.0, below |
-| Each country's capital in Japanese and its coordinates, population where the World Bank has none, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the snapshot `data-sources/wikidata-facts-2026-10-09.json` | CC0, below |
+| Each country's capital in Japanese and its coordinates, population where the World Bank has none, area (with the year each is for), coordinates, driving side and the countries it shares a border with; each subdivision's capital, population, area and coordinates; the days members joined and left international bodies | Wikidata, the JSON dump of 2026-11-17 (`data-sources/wikidata-facts-2026-11-17.json`, from `latest-all.json.bz2`) | CC0, below |
 | Which land borders are real (two outlines touch) | Natural Earth 5.1.2 admin-0 countries at 1:50m, as drawn by `@johnmorrisdotca/chizu` 1.0.2 (a development dependency of the build; the package does not depend on it) | Public domain (Natural Earth); MIT (Chizu), below |
 | The first day of the week, the measurement system, the paper size and the clock; the UN M49 areas and their members; the members of the United Nations | Unicode CLDR 48.2 (`cldr-core` 48.2.0: weekData, measurementData, timeData, territoryContainment) | Unicode-3.0, below |
 | The members of each international body as the body lists them, the informal groupings with their definitions, the regions inside a country, the readings of the groupings' Japanese names, and the choices in `scripts/facts-config.ts` and `scripts/groupings-config.ts` | Written for this package, from the sources named beside each, read on 2026-10-09 | MIT; lists of facts |
@@ -101,7 +101,7 @@ is used only when CLDR has no Japanese name, when every current item for the cod
 written in Japanese with no bracketed explanation; a reading only when Wikidata gives exactly one for the same
 name. Kinds of place are read from the English labels of the classes an item is an instance of.
 
-The facts snapshot (`data-sources/wikidata-facts-2026-10-09.json`) holds the answers to the queries written in it:
+The facts snapshot (`data-sources/wikidata-facts-2026-11-17.json`), read from the Wikidata JSON dump `latest-all.json.bz2` on 2026-11-17 and not from the query service, holds the answers to the queries written in it:
 for every country and every subdivision, its capital with the capital's English and Japanese labels, kana name and
 coordinates; its best-ranked population and area with the day each is for; its coordinates; and, for countries, the
 side of the road it drives on, the countries it shares a border with and the international bodies it is a member

@@ -102,6 +102,17 @@ describe("the other documents", () => {
     }
   });
 
+  it("name the facts snapshot that is in the tree, read from the dump", () => {
+    const facts = JSON.parse(readFileSync("data-sources/wikidata-facts-2026-11-17.json", "utf8"));
+    expect(facts.source).toBe("https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2");
+    expect(facts.read).toBe("2026-11-17");
+    for (const file of ["NOTICE.md", "README.md", "data-sources/README.md"]) {
+      const text = readFileSync(file, "utf8");
+      expect(text, file).toContain("wikidata-facts-2026-11-17.json");
+      expect(text, file).not.toContain("wikidata-facts-2026-10-09.json");
+    }
+  });
+
   it("carry the Unicode licence in NOTICE.md, which the package ships", () => {
     const notice = readFileSync("NOTICE.md", "utf8");
     expect(notice).toContain("UNICODE LICENSE V3");

@@ -13,7 +13,7 @@ bytes are not the recorded ones.
 | `iana/tzdb-2026e/zone.tab` | https://data.iana.org/time-zones/tzdb-2026e/zone.tab | 2026-10-09 | Public domain |
 | `iana/tlds-alpha-by-domain.txt` | https://data.iana.org/TLD/tlds-alpha-by-domain.txt (version 2026100900) | 2026-10-09 | IANA, a list of facts |
 | `wikidata-2026-10-09.json` | https://query.wikidata.org/sparql, the two queries written in the file | 2026-10-09 | CC0 |
-| `wikidata-facts-2026-10-09.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-09 | CC0 |
+| `wikidata-facts-2026-11-17.json` | https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2, read from the dump, not the query service | 2026-11-17 | CC0 |
 | `wikidata-codes-2026-10-10.json` | https://query.wikidata.org/sparql, the queries written in the file | 2026-10-10 | CC0 |
 | `wikidata-status-2026-11-17.json` | https://query.wikidata.org/sparql, the queries written in the file (`pnpm data:status`): what each ISO 3166-1 code's item is an instance of (P31), the country it is in (P17) and who claims it (P1336) | 2026-11-17 | CC0 |
 | `iana/language-subtag-regions.json` | https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry (File-Date 2026-09-17), cut down to its two-letter region subtags: subtag, description, added, deprecated (`pnpm data:reserved`) | 2026-11-17 | IANA, a registry of facts |
