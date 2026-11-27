@@ -6,6 +6,12 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+## [1.19.0] - 2026-11-27
+
+### Added
+
+- **Small and full-size kana find the same place.** `foldKana` writes hiragana as katakana, widens half-width katakana and turns a small kana (ァィゥェォッャュョヮヵヶ) into its full-size one; the long-vowel mark stays. `fold` and every name lookup use it, so とうきよう finds とうきょう and 霞ケ関 finds 霞ヶ関.
+
 ### Changed
 
 - The United Arab Emirates is no longer a member of OPEC (MODULES-1690). It left on 1 May 2026, the day the Emirates News Agency announced on 28 April 2026. `membersOf("opec")` omits AE; a day before 1 May 2026 still includes it. The join day stays 1 March 1967, the day already recorded. OPEC's own member page still answers 402, so the exit is taken from that announcement.

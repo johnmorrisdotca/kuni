@@ -24,6 +24,8 @@ describe("fold", () => {
   it("treats a small kana and its full-size one as the same sound", () => {
     expect(foldKana("はっぶる")).toBe("ハツブル");
     expect(foldKana("ハッブル")).toBe("ハツブル");
+    expect(fold("霞ヶ関")).toBe(fold("霞ケ関"));
+    expect(foldKana("ゕゖ")).toBe("カケ");
     expect(foldKana("はっぶる")).toBe(foldKana("ハッブル"));
     expect(foldKana("ちゃんどら")).toBe(foldKana("チャンドラ"));
     expect(foldKana("ちゃ")).toBe("チヤ");
