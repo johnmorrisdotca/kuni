@@ -6,6 +6,10 @@ All notable changes to this project are written here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- The United Arab Emirates is no longer a member of OPEC (MODULES-1690). It left on 1 May 2026, the day the Emirates News Agency announced on 28 April 2026. `membersOf("opec")` omits AE; a day before 1 May 2026 still includes it. The join day stays 1 March 1967, the day already recorded. OPEC's own member page still answers 402, so the exit is taken from that announcement.
+
 ## [1.18.0] - 2026-11-26
 
 ### Added

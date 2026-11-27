@@ -84,6 +84,7 @@ describe("the international bodies", () => {
     expect(membersOf("commonwealth")).toHaveLength(56);
     expect(membersOf("un")).toHaveLength(193);
     expect(membersOf("opec")).not.toContain("AO");
+    expect(membersOf("opec")).not.toContain("AE");
     expect(membersOf("mercosur")).not.toContain("VE");
   });
 
@@ -98,6 +99,8 @@ describe("the international bodies", () => {
     expect(membersOf("eu", { on: "2019-06-30" })).toContain("GB");
     expect(membersOf("eu", { on: "2021-01-01" })).not.toContain("GB");
     expect(membersOf("opec", { on: "2020-06-30" })).toContain("AO");
+    expect(membersOf("opec", { on: "2026-04-30" })).toContain("AE");
+    expect(membersOf("opec", { on: "2026-05-01" })).not.toContain("AE");
     expect(membersOf("opec")).toContain("GA");
     expect(membersOf("opec")).not.toContain("EC");
     expect(membersOf("opec", { on: "1980-06-01" })).toEqual(expect.arrayContaining(["EC", "GA"]));

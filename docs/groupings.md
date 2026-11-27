@@ -36,7 +36,7 @@ countries Wikidata lists that the body does not (stale or wrong statements there
 | Arab League | 22 | – | – | 21 |
 | GCC | 6 | AE KW QA | – | 2 |
 | Commonwealth | 56 | GB | – | 55 |
-| OPEC | 12 | – | AO | 12 |
+| OPEC | 11 | – | AE AO | 11 |
 | BRICS | 10 | – | – | 9 |
 | Mercosur | 5 | – | MX | 0 |
 | USMCA | 3 | CA US | – | 3 |
@@ -181,6 +181,7 @@ Where Wikidata gives a member no day, or a day that is a placeholder, the body's
 - **Commonwealth** NG: 1960 to 1995 (the page gives the year only) (the page gives the year only) (filled): https://thecommonwealth.org/our-member-countries/nigeria: "Joined the Commonwealth: 1960, following independence from Britain; membership suspended 1995-99"
 - **Commonwealth** NR: 1968 to 1999 (the page gives the year only) (the page gives the year only) (filled): https://thecommonwealth.org/our-member-countries/nauru: "Joined the Commonwealth: 1968, as an associate member on attaining full independence (former UN trust territory); full member since 1999"
 - **Commonwealth** PK: 1947 to 1972 (the page gives the year only) (the page gives the year only) (filled): https://thecommonwealth.org/our-member-countries/pakistan: "Joined the Commonwealth: 1947, on partition from India; left in 1972, rejoined in 1989"
+- **OPEC** AE: 1967-03-01 to 2026-05-01: https://www.wam.ae/en/article/bzxzuh7-uae-announces-decision-exit-opec: "The United Arab Emirates today announced its decision to exit the Organisation of the Petroleum Exporting Countries (OPEC and OPEC+), effective 1 May 2026."
 - **OPEC** EC: 1973 to 1992 (the page gives the year only) (the page gives the year only): https://en.wikipedia.org/wiki/OPEC: "Ecuador: member 1973-1992 (dates from the membership table on Wikipedia's OPEC article)."
 - **OPEC** EC: 2007 to 2020 (the page gives the year only) (the page gives the year only): https://en.wikipedia.org/wiki/OPEC: "Ecuador: member 2007-2020 (dates from the membership table on Wikipedia's OPEC article)."
 - **OPEC** GA: 1975 to 1995 (the page gives the year only) (the page gives the year only): https://en.wikipedia.org/wiki/OPEC: "Gabon: member 1975-1995 (dates from the membership table on Wikipedia's OPEC article)."

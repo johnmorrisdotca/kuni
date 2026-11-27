@@ -226,8 +226,9 @@ const MEMBERSHIPS: MembershipConfig[] = [
     reading: "せきゆゆしゅつこくきこう",
     shortEn: "OPEC",
     shortJa: "OPEC",
-    members: "AE CG DZ GA GQ IQ IR KW LY NG SA VE",
+    members: "CG DZ GA GQ IQ IR KW LY NG SA VE",
     former: [
+      { code: "AE", since: "1967-03-01", until: "2026-05-01", why: "The United Arab Emirates left OPEC on 1 May 2026.", url: "https://www.wam.ae/en/article/bzxzuh7-uae-announces-decision-exit-opec", line: "The United Arab Emirates today announced its decision to exit the Organisation of the Petroleum Exporting Countries (OPEC and OPEC+), effective 1 May 2026." },
       { code: "AO", since: "2007-01-01", until: "2024-01-01", why: "Angola left OPEC on 1 January 2024." },
       { code: "QA", since: "1961-01-01", until: "2019-01-01", why: "Qatar left OPEC on 1 January 2019." },
       { code: "EC", since: "1973", until: "1992", why: "Ecuador: member 1973-1992 (Wikipedia's OPEC article, membership table).", url: OPEC_TABLE, line: "Ecuador: member 1973-1992 (dates from the membership table on Wikipedia's OPEC article)." },
@@ -235,7 +236,7 @@ const MEMBERSHIPS: MembershipConfig[] = [
       { code: "GA", since: "1975", until: "1995", why: "Gabon: member 1975-1995 (Wikipedia's OPEC article, membership table).", url: OPEC_TABLE, line: "Gabon: member 1975-1995 (dates from the membership table on Wikipedia's OPEC article)." },
     ],
     source: { name: "OPEC, Member Countries", url: "https://www.opec.org/opec_web/en/about_us/25.htm" },
-    note: "OPEC+ (Russia and others) is an agreement beside OPEC, not membership of it.",
+    note: "The United Arab Emirates left on 1 May 2026 (Emirates News Agency, 28 April 2026). OPEC+ (Russia and others) is an agreement beside OPEC, not membership of it.",
   },
   {
     id: "brics",
