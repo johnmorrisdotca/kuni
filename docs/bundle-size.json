@@ -2,7 +2,7 @@
   "measured": "esbuild 0.28.2, bundled, minified, ES2020, gzip level 9",
   "entries": {
     ".": {
-      "minified": 70830,
+      "minified": 71187,
       "gzip": 22710
     },
     "./codes": {
@@ -10,7 +10,7 @@
       "gzip": 631
     },
     "./subdivisions": {
-      "minified": 303003,
+      "minified": 303346,
       "gzip": 89232
     },
     "./subdivision-reforms": {
@@ -70,67 +70,67 @@
       "gzip": 212106
     },
     "./places": {
-      "minified": 10019360,
+      "minified": 10019703,
       "gzip": 3329456
     },
     "./names/fr": {
-      "minified": 10106,
+      "minified": 10445,
       "gzip": 3744
     },
     "./names/es": {
-      "minified": 9855,
+      "minified": 10194,
       "gzip": 3648
     },
     "./names/de": {
-      "minified": 9859,
+      "minified": 10198,
       "gzip": 3688
     },
     "./names/zh-Hans": {
-      "minified": 13046,
+      "minified": 13385,
       "gzip": 4143
     },
     "./names/zh-Hant": {
-      "minified": 12950,
+      "minified": 13289,
       "gzip": 4122
     },
     "./subdivision-names/es": {
-      "minified": 110351,
+      "minified": 110690,
       "gzip": 43531
     },
     "./subdivision-names/de": {
-      "minified": 102897,
+      "minified": 103236,
       "gzip": 44262
     },
     "./subdivision-names/zh-Hans": {
-      "minified": 150750,
+      "minified": 151089,
       "gzip": 44209
     },
     "./subdivision-names/zh-Hant": {
-      "minified": 110510,
+      "minified": 110849,
       "gzip": 32421
     },
     "./names/ko": {
-      "minified": 13836,
+      "minified": 14175,
       "gzip": 4103
     },
     "./names/pt": {
-      "minified": 10088,
+      "minified": 10427,
       "gzip": 3684
     },
     "./names/ar": {
-      "minified": 21140,
+      "minified": 21479,
       "gzip": 4098
     },
     "./names/ru": {
-      "minified": 21856,
+      "minified": 22195,
       "gzip": 4282
     },
     "./element": {
-      "minified": 863764,
+      "minified": 864107,
       "gzip": 297640
     },
     "./element/define": {
-      "minified": 863767,
+      "minified": 864110,
       "gzip": 297655
     },
     "./subdivisions/ad": {

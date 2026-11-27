@@ -68,6 +68,9 @@ describe("searchPlaces", () => {
     expect((await searchPlaces("paris"))[0]!.label).toBe("Paris");
     // A name in kanji, by its reading: in the whole search and from the start.
     expect((await searchPlaces("とうきょう", { lang: "ja" })).find((one) => one.kind === "city")).toMatchObject({ label: "東京都" });
+    expect((await searchPlaces("とうきよう", { lang: "ja" })).find((one) => one.kind === "city")).toMatchObject({ label: "東京都" });
+    expect((await searchPlaces("トウキョウ", { lang: "ja" })).find((one) => one.kind === "city")).toMatchObject({ label: "東京都" });
+    expect((await searchPlaces("ﾄｳｷｮｳ", { lang: "ja" })).find((one) => one.kind === "city")).toMatchObject({ label: "東京都" });
     expect((await searchPlaces("やまぐち", { lang: "ja", match: "start" })).some((one) => one.kind === "city" && one.label === "山口市")).toBe(true);
   });
 

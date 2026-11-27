@@ -7,7 +7,7 @@
 import { COUNTRY_CODES, isCountryCode } from "./codes";
 import type { CountryCode } from "./codes";
 import { CONTINENT_NAMES, CONTINENT_READINGS, COUNTRY_ROWS, STATUS_ROWS, STATUS_TYPES, SUBREGION_NAMES } from "./data/countries.data";
-import { fold, foldKey } from "./fold";
+import { fold, foldKana, foldKey } from "./fold";
 import { expandCountry, expandStandings } from "./rows";
 import { CONTINENTS, COUNTRY_STATUSES, LANGUAGES } from "./types";
 import type { Continent, Country, CountryStatus, Language } from "./types";
@@ -328,6 +328,7 @@ export {
   dependenciesOf,
   flag,
   fold,
+  foldKana,
   isCountryCode,
   LANGUAGES,
   subregionName,

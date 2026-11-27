@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { fold, foldKey } from "./fold";
+import { fold, foldKana, foldKey } from "./fold";
 
 describe("fold", () => {
   it("writes the letters that do not decompose as the letters they stand for", () => {
@@ -19,5 +19,23 @@ describe("fold", () => {
     expect(fold("ドイツ")).toBe("どいつ");
     expect(fold("パリ")).not.toBe(fold("ハリ"));
     expect(foldKey("Viet Nam")).toBe("vietnam");
+  });
+
+  it("treats a small kana and its full-size one as the same sound", () => {
+    expect(foldKana("はっぶる")).toBe("ハツブル");
+    expect(foldKana("ハッブル")).toBe("ハツブル");
+    expect(foldKana("はっぶる")).toBe(foldKana("ハッブル"));
+    expect(foldKana("ちゃんどら")).toBe(foldKana("チャンドラ"));
+    expect(foldKana("ちゃ")).toBe("チヤ");
+    expect(foldKana("ラー")).toBe("ラー");
+    expect(foldKana("あー")).toBe("アー");
+    expect(foldKana("ゔ")).toBe("ヴ");
+    expect(foldKana("ISS 衛星 123")).toBe("ISS 衛星 123");
+    expect(foldKana("ﾊｯﾌﾞﾙ")).toBe("ハツブル");
+    expect(foldKana("")).toBe("");
+    expect(foldKana("とうきょう")).toBe("トウキヨウ");
+    expect(fold("とうきょう")).toBe(fold("とうきよう"));
+    expect(fold("トウキョウ")).toBe(fold("ﾄｳｷｮｳ"));
+    expect(fold("とうきょう")).toBe(fold("トウキョウ"));
   });
 });

@@ -438,7 +438,7 @@ The [API reference](https://johnmorrisdotca.github.io/kuni/api.html) lists every
 
 | Entry | Exports |
 | --- | --- |
-| `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `dependenciesOf`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `isCountryCode`, `COUNTRY_CODES`, `COUNTRY_STATUSES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `CountryStatus`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
+| `@johnmorrisdotca/kuni` | `country`, `countries`, `countryByName`, `countryName`, `dependenciesOf`, `flag`, `continentName`, `continentReading`, `subregionName`, `fold`, `foldKana`, `isCountryCode`, `COUNTRY_CODES`, `COUNTRY_STATUSES`, `CONTINENTS`, `LANGUAGES`, `VERSION`, and the types `Country`, `CountryCode`, `CountryStatus`, `Continent`, `Language`, `CountriesOptions`, `CountryOrder`, `CountryNameOptions`, `Subdivision` and `SubdivisionType` |
 | `@johnmorrisdotca/kuni/codes` | `COUNTRY_CODES`, `isCountryCode` and the type `CountryCode` |
 | `@johnmorrisdotca/kuni/subdivisions` | `subdivisions`, `allSubdivisions`, `subdivision`, `subdivisionByShortCode`, `subdivisionByName`, `subdivisionsByName`, `subdivisionByFormerCode`, `subdivisionsByFormerCode`, `subdivisionTypeLabel`, `SUBDIVISION_TYPES`, and the types `Subdivision`, `SubdivisionType`, `Level`, `SubdivisionsOptions` and `SubdivisionByNameOptions` |
 | `@johnmorrisdotca/kuni/subdivision-reforms` | `subdivisionReforms`, and the types `SubdivisionReform` and `SubdivisionReformUnit` |

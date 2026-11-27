@@ -34,7 +34,7 @@ src/
 ├── places.ts           the "/places" entry: the countries of a continent, and a search over countries and cities
 ├── names.ts            the shared part of the "/names/<language>" entries: one language's country names, their search folding and lookups
 ├── subdivision-names.ts the shared part of the "/subdivision-names/<language>" entries: one language's subdivision names, where each came from, and their lookups
-├── fold.ts             folding what somebody typed: case, accents, width, kana
+├── fold.ts             folding what somebody typed: case, accents, width, kana, a small kana as its full-size one
 ├── rows.ts             turning the data's compact rows into objects
 ├── types.ts            the shapes of a country and a subdivision, and the kinds of place
 ├── version.ts          the package's version
